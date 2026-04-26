@@ -46,6 +46,20 @@
     nav ul li a:hover { color: var(--ink); }
 
     .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding-top: 120px; }
+    .hero-inner { display: flex; align-items: flex-start; justify-content: space-between; gap: 60px; }
+    .hero-text { flex: 1; }
+    .hero-photo { flex-shrink: 0; }
+    .hero-photo img {
+      width: 260px;
+      height: 320px;
+      object-fit: cover;
+      object-position: top;
+      border-radius: 4px;
+      -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 100%), linear-gradient(to right, transparent 0%, black 30%);
+      -webkit-mask-composite: source-in;
+      mask-image: linear-gradient(to bottom, black 40%, transparent 100%), linear-gradient(to right, transparent 0%, black 30%);
+      mask-composite: intersect;
+    }
     .hero-label { font-family: 'Noto Sans KR', sans-serif; font-size: 0.78rem; font-weight: 400; letter-spacing: 0.18em; color: var(--accent); margin-bottom: 28px; text-transform: uppercase; }
     .hero h1 { font-size: clamp(2.8rem, 6vw, 5.2rem); font-weight: 400; line-height: 1.25; letter-spacing: -0.01em; margin-bottom: 12px; }
     .hero h1 em { font-style: normal; color: var(--accent); }
@@ -68,6 +82,16 @@
     .about-body { max-width: 640px; }
     .about-body p { font-family: 'Noto Sans KR', sans-serif; font-size: 0.95rem; font-weight: 400; color: var(--ink-soft); line-height: 2.0; margin-bottom: 20px; }
     .about-body p:last-child { margin-bottom: 0; font-weight: 500; color: var(--ink); }
+    .about-body blockquote {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: var(--ink-soft);
+      border-left: 2px solid var(--accent);
+      padding-left: 16px;
+      margin-top: 20px;
+      font-style: italic;
+    }
 
     .channel-group { margin-bottom: 48px; }
     .channel-group-label { font-family: 'Noto Sans KR', sans-serif; font-size: 0.72rem; font-weight: 400; letter-spacing: 0.15em; color: var(--accent2); margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
@@ -161,22 +185,29 @@
 <main>
 
   <section class="hero">
-    <p class="hero-label fade-up">1인미디어 프로듀서</p>
-    <h1 class="fade-up">함동민<br><em>햄PD</em></h1>
-    <p class="hero-sub fade-up">기획 · 촬영 · 편집 · 퍼블리싱 — 혼자서 전부</p>
-    <p class="hero-desc fade-up">
-      30년에 걸친 현장 경험을 콘텐츠로 설계합니다.<br>
-      스타벅스 14년, 레스토랑 창업 8년, 하이엔드 공간 기획을 거쳐<br>
-      지금은 5개 YouTube 채널을 혼자 기획·제작·운영하는 1인 미디어 프로듀서입니다.
-    </p>
-    <div class="hero-tags fade-up">
-      <span class="hero-tag">브랜드 스토리텔링</span>
-      <span class="hero-tag">고객 경험 설계</span>
-      <span class="hero-tag">1인미디어 제작</span>
-      <span class="hero-tag">하이엔드 오디오</span>
-      <span class="hero-tag">조직 문화 전파</span>
+    <div class="hero-inner">
+      <div class="hero-text">
+        <p class="hero-label fade-up">1인미디어 프로듀서</p>
+        <h1 class="fade-up">함동민<br><em>햄PD</em></h1>
+        <p class="hero-sub fade-up">기획 · 촬영 · 편집 · 퍼블리싱 — 혼자서 전부</p>
+        <p class="hero-desc fade-up">
+          30년에 걸친 현장 경험을 콘텐츠로 설계합니다.<br>
+          스타벅스 14년, 레스토랑 창업 8년, 하이엔드 공간 기획을 거쳐<br>
+          지금은 5개 YouTube 채널을 혼자 기획·제작·운영하는 1인 미디어 프로듀서입니다.
+        </p>
+        <div class="hero-tags fade-up">
+          <span class="hero-tag">브랜드 스토리텔링</span>
+          <span class="hero-tag">고객 경험 설계</span>
+          <span class="hero-tag">1인미디어 제작</span>
+          <span class="hero-tag">하이엔드 오디오</span>
+          <span class="hero-tag">조직 문화 전파</span>
+        </div>
+        <div class="hero-scroll fade-up">scroll to explore</div>
+      </div>
+      <div class="hero-photo">
+        <img src="./profile.JPG" alt="함동민 햄PD">
+      </div>
     </div>
-    <div class="hero-scroll fade-up">scroll to explore</div>
   </section>
 
   <hr class="divider">
@@ -190,6 +221,8 @@
       <p>무속 채널, 병원 채널, 오디오 채널. 하나씩 조심스럽게 계약했고, 지금은 5개 채널을 혼자 기획·촬영·편집·퍼블리싱합니다. 내가 만든 콘텐츠로 수익을 만들어가고 있습니다.</p>
       <p>아무것도 모르는 상태에서 다시 시작했다는 사실 자체가, 저의 50대 인생 2막입니다.</p>
       <p>아직 갈 길은 멉니다. 그래도 오늘도, 달립니다.</p>
+      <p><strong>포기하지 않으면, 끝난 게 아니니까요.</strong></p>
+      <blockquote>"스스로 설계한 삶을 자신이 옳다고 믿는 방식으로"</blockquote>
     </div>
   </section>
 
