@@ -1,9 +1,8 @@
 # 안녕하세요, 함동민(햄PD)입니다 👋
 
-**1인미디어 프로듀서 · Emotional Recovery Engineer**
+**1인미디어 프로듀서**
 
-기획부터 촬영·편집·퍼블리싱까지 혼자 합니다.  
-30년의 현장 경험을 콘텐츠로 설계합니다.
+아무것도 모르는 상태에서 시작했습니다. AI와 함께 배우고, AI와 함께 만들고, 매일 조금씩 나아가고 있습니다.
 
 **Portfolio** [hammedia.github.io/hammedia/#about](https://hammedia.github.io/hammedia/#about)
 
