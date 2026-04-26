@@ -41,7 +41,7 @@
       backdrop-filter: blur(12px); border-bottom: 1px solid var(--line);
     }
     .nav-logo { font-family: 'Noto Serif KR', serif; font-weight: 500; font-size: 1rem; color: var(--ink); text-decoration: none; letter-spacing: 0.05em; }
-    nav ul { list-style: none; display: flex; gap: 32px; flex-wrap: wrap; }
+    nav ul { list-style: none; display: flex; gap: 32px; }
     nav ul li a { font-family: 'Noto Sans KR', sans-serif; font-size: 0.8rem; font-weight: 400; color: var(--ink-soft); text-decoration: none; letter-spacing: 0.06em; transition: color 0.25s; }
     nav ul li a:hover { color: var(--ink); }
     .lang-switch { display: flex; gap: 8px; align-items: center; }
@@ -126,6 +126,21 @@
     .channel-tag { display: inline-block; font-family: 'Noto Sans KR', sans-serif; font-size: 0.68rem; font-weight: 400; letter-spacing: 0.08em; padding: 3px 12px; border-radius: 20px; margin-top: 10px; }
     .tag-personal { background: rgba(122,92,71,0.10); color: var(--accent); }
     .tag-client { background: rgba(78,138,106,0.12); color: var(--accent2); }
+    .video-embed {
+      margin-top: 16px;
+      border-radius: 8px;
+      overflow: hidden;
+      width: 100%;
+      max-width: 560px;
+      height: 315px;
+      display: block;
+    }
+    .video-embed iframe {
+      width: 100%;
+      height: 315px;
+      border: none;
+      display: block;
+    }
 
     .eq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
     .eq-block h3 { font-family: 'Noto Sans KR', sans-serif; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.12em; color: var(--accent); text-transform: uppercase; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid var(--line); }
@@ -170,34 +185,13 @@
     .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
     .fade-up.visible { opacity: 1; transform: translateY(0); }
 
-    @media (max-width: 960px) {
-      nav {
-        padding: 18px 24px;
-        flex-wrap: wrap;
-        align-items: flex-start;
-        gap: 14px 20px;
-      }
-      .nav-logo { flex: 1 1 auto; }
-      .lang-switch { flex: 0 0 auto; margin-left: auto; }
-      nav ul {
-        width: 100%;
-        gap: 12px 18px;
-      }
-      .hero { padding-top: 190px; }
-    }
-
     @media (max-width: 700px) {
-      nav { padding: 16px 20px; }
-      .nav-logo { font-size: 0.95rem; }
-      nav ul { gap: 10px 14px; }
-      nav ul li a { font-size: 0.74rem; }
-      .lang-switch { margin-left: 0; }
+      nav { padding: 18px 24px; } nav ul { gap: 16px; }
       section { padding: 80px 24px; }
       .eq-grid, .cred-grid { grid-template-columns: 1fr; }
       .career-item { grid-template-columns: 1fr; gap: 8px; }
       .career-item::before { display: none; }
       .contact-wrap { grid-template-columns: 1fr; gap: 40px; }
-      .hero { padding-top: 220px; }
       .hero h1 { font-size: 2.4rem; }
     }
   </style>
@@ -292,6 +286,9 @@
           <h3><a href="https://www.youtube.com/@ookkio" target="_blank" class="ch-link">우리끼리오디오</a></h3>
           <p>하이파이 오디오 전문 채널. 스피커 케이블 연결 영상 70K+ 뷰, Shorts 누적 3M+ 뷰. 일본·브라질·미국 시청자 중심의 국제적 오디오 커뮤니티.</p>
           <span class="channel-tag tag-personal">오디오 · 하이파이</span>
+          <div class="video-embed">
+            <iframe src="https://www.youtube.com/embed/duw8G46JzwQ" allowfullscreen loading="lazy"></iframe>
+          </div>
         </div>
       </div>
       <div class="channel-card">
@@ -300,6 +297,9 @@
           <h3><a href="https://www.youtube.com/channel/UCqy1LrWDKht1ACXTmtLShEg" target="_blank" class="ch-link">이번인생은경주다</a></h3>
           <p>50대의 인생 재정비 서사를 담은 채널. 늦은 시작, 다시 달리는 삶을 주제로 같은 세대의 공감을 이끌어냅니다.</p>
           <span class="channel-tag tag-personal">인생 · 재도전</span>
+          <div class="video-embed">
+            <iframe src="https://www.youtube.com/embed/jc0vNk4tjtM" allowfullscreen loading="lazy"></iframe>
+          </div>
         </div>
       </div>
     </div>
@@ -312,6 +312,9 @@
           <h3><a href="https://www.youtube.com/channel/UC7nfli6RwhfkT8-L3tjcwPg" target="_blank" class="ch-link">성형외과전문의 김종명 (디바성형외과)</a></h3>
           <p>의료 전문 채널. 안면거상·지방이식·실리프팅 등 장편 수술 정보 영상과 Shorts 시리즈 제작. YouTube 의료 전문가 배지 취득 목표.</p>
           <span class="channel-tag tag-client">의료 · 성형외과</span>
+          <div class="video-embed">
+            <iframe src="https://www.youtube.com/embed/sgVzKxMxCEM" allowfullscreen loading="lazy"></iframe>
+          </div>
         </div>
       </div>
       <div class="channel-card">
@@ -320,6 +323,9 @@
           <h3><a href="https://www.youtube.com/channel/UCwI4qqT9ta850_Aak-0kP8Q" target="_blank" class="ch-link">광명천신보살TV</a></h3>
           <p>무속·영성 콘텐츠 채널. 시청자 공감 기반의 스토리텔링 운영.</p>
           <span class="channel-tag tag-client">영성 · 무속</span>
+          <div class="video-embed">
+            <iframe src="https://www.youtube.com/embed/f5bZ-rKDITM" allowfullscreen loading="lazy"></iframe>
+          </div>
         </div>
       </div>
       <div class="channel-card">
@@ -328,6 +334,9 @@
           <h3><a href="https://www.youtube.com/@Wassadacom" target="_blank" class="ch-link">와싸다닷컴</a></h3>
           <p>오디오 쇼핑몰 전문 채널. 제품 소개 및 리뷰 콘텐츠 운영.</p>
           <span class="channel-tag tag-client">오디오 · 쇼핑</span>
+          <div class="video-embed">
+            <iframe src="https://www.youtube.com/embed/PGzwTeTgvHY" allowfullscreen loading="lazy"></iframe>
+          </div>
         </div>
       </div>
     </div>
@@ -542,6 +551,7 @@
     <div class="contact-wrap fade-up">
       <div>
         <a class="contact-email" href="mailto:hammedia002@gmail.com">hammedia002@gmail.com</a>
+        <p class="contact-phone">010-3936-3571</p>
         <p class="contact-note">
           채널 제작 대행 · 콜라보 · 협찬 · 강의 문의 환영합니다.<br>
           인천 부평구 베이스 · 보통 1–2일 내 답변.
@@ -589,6 +599,12 @@
             <a href="https://www.instagram.com/dellacasa_2" target="_blank">
               <div class="sns-icon">◻</div>
               <div><div class="sns-name">Instagram</div><div class="sns-handle">@dellacasa_2</div></div>
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/hammedia" target="_blank">
+              <div class="sns-icon">⌥</div>
+              <div><div class="sns-name">GitHub</div><div class="sns-handle">hammedia</div></div>
             </a>
           </li>
         </ul>
