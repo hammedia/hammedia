@@ -37,21 +37,14 @@
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       display: flex; justify-content: space-between; align-items: center;
-      padding: 22px 48px; background: rgba(249,247,243,0.92);
+      padding: 22px 160px 22px 48px; background: rgba(249,247,243,0.92);
       backdrop-filter: blur(12px); border-bottom: 1px solid var(--line);
     }
     .nav-logo { font-family: 'Noto Serif KR', serif; font-weight: 500; font-size: 1rem; color: var(--ink); text-decoration: none; letter-spacing: 0.05em; }
     nav ul { list-style: none; display: flex; gap: 32px; }
     nav ul li a { font-family: 'Noto Sans KR', sans-serif; font-size: 0.8rem; font-weight: 400; color: var(--ink-soft); text-decoration: none; letter-spacing: 0.06em; transition: color 0.25s; }
     nav ul li a:hover { color: var(--ink); }
-    .lang-switch {
-      position: fixed;
-      top: 22px;
-      right: 48px;
-      z-index: 200;
-      display: flex;
-      gap: 8px;
-    }
+    .lang-switch { display: flex; gap: 8px; align-items: center; }
     .lang-btn {
       font-family: 'Noto Sans KR', sans-serif;
       font-size: 0.75rem;
@@ -207,12 +200,11 @@
     <li><a href="#dashboard">분석도구</a></li>
     <li><a href="#contact">연락처</a></li>
   </ul>
+  <div class="lang-switch">
+    <a href="./index.html" class="lang-btn active">🇰🇷 KR</a>
+    <a href="./index_jp.html" class="lang-btn">🇯🇵 JP</a>
+  </div>
 </nav>
-
-<div class="lang-switch">
-  <a href="./index.html" class="lang-btn active">🇰🇷 KR</a>
-  <a href="./index_jp.html" class="lang-btn">🇯🇵 JP</a>
-</div>
 
 <main>
 
