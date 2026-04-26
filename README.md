@@ -5,6 +5,8 @@
 기획부터 촬영·편집·퍼블리싱까지 혼자 합니다.  
 30년의 현장 경험을 콘텐츠로 설계합니다.
 
+**Portfolio** [hammedia.github.io/hammedia/#about](https://hammedia.github.io/hammedia/#about)
+
 ---
 
 ## 📺 운영 채널
