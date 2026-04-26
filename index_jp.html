@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>함동민 — ハムPD | 一人メディアプロデューサー</title>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;700&family=Noto+Sans+JP:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #F9F7F3;
+      --bg2: #EDE8DF;
+      --ink: #1C1814;
+      --ink-soft: #4A423C;
+      --accent: #7A5C47;
+      --accent2: #4E8A6A;
+      --line: rgba(42,37,32,0.15);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg); color: var(--ink);
+      font-family: 'Noto Serif JP', serif; font-weight: 400;
+      line-height: 1.9; overflow-x: hidden;
+    }
+    .wc-bg { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+    .wc-bg svg { position: absolute; filter: blur(72px); opacity: 0.28; }
+    .blob1 { top: -10%; left: -10%; width: 60vw; }
+    .blob2 { top: 30%; right: -15%; width: 55vw; }
+    .blob3 { bottom: -10%; left: 10%; width: 50vw; }
+    .blob4 { top: 60%; left: 35%; width: 40vw; }
+    main { position: relative; z-index: 1; }
+    section { max-width: 880px; margin: 0 auto; padding: 100px 40px; }
+    .divider { max-width: 880px; margin: 0 auto; padding: 0 40px; border: none; border-top: 1px solid var(--line); }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 22px 48px; background: rgba(249,247,243,0.92);
+      backdrop-filter: blur(12px); border-bottom: 1px solid var(--line);
+    }
+    .nav-logo { font-family: 'Noto Serif JP', serif; font-weight: 500; font-size: 1rem; color: var(--ink); text-decoration: none; letter-spacing: 0.05em; }
+    nav ul { list-style: none; display: flex; gap: 32px; }
+    nav ul li a { font-family: 'Noto Sans JP', sans-serif; font-size: 0.8rem; font-weight: 400; color: var(--ink-soft); text-decoration: none; letter-spacing: 0.06em; transition: color 0.25s; }
+    nav ul li a:hover { color: var(--ink); }
+
+    .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding-top: 120px; }
+    .hero-inner { display: flex; align-items: flex-start; justify-content: space-between; gap: 60px; }
+    .hero-text { flex: 1; }
+    .hero-photo { flex-shrink: 0; }
+    .hero-photo img {
+      width: 260px;
+      height: 320px;
+      object-fit: cover;
+      object-position: top;
+      border-radius: 4px;
+      -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 100%), linear-gradient(to right, transparent 0%, black 30%);
+      -webkit-mask-composite: source-in;
+      mask-image: linear-gradient(to bottom, black 40%, transparent 100%), linear-gradient(to right, transparent 0%, black 30%);
+      mask-composite: intersect;
+    }
+    .hero-label { font-family: 'Noto Sans JP', sans-serif; font-size: 0.78rem; font-weight: 400; letter-spacing: 0.18em; color: var(--accent); margin-bottom: 28px; text-transform: uppercase; }
+    .hero h1 { font-size: clamp(2.8rem, 6vw, 5.2rem); font-weight: 400; line-height: 1.25; letter-spacing: -0.01em; margin-bottom: 12px; }
+    .hero h1 em { font-style: normal; color: var(--accent); }
+    .hero-sub { font-family: 'Noto Sans JP', sans-serif; font-size: 0.95rem; font-weight: 400; color: var(--ink-soft); letter-spacing: 0.06em; margin-bottom: 48px; }
+    .hero-desc { max-width: 560px; font-size: 1.05rem; font-weight: 400; line-height: 2.0; color: var(--ink-soft); margin-bottom: 40px; }
+    .hero-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 56px; }
+    .hero-tag { font-family: 'Noto Sans JP', sans-serif; font-size: 0.72rem; font-weight: 400; letter-spacing: 0.08em; padding: 6px 16px; border: 1px solid rgba(42,37,32,0.25); border-radius: 20px; color: var(--ink-soft); }
+    .hero-scroll { display: flex; align-items: center; gap: 12px; font-family: 'Noto Sans JP', sans-serif; font-size: 0.75rem; letter-spacing: 0.12em; color: var(--ink-soft); }
+    .hero-scroll::before { content: ''; display: block; width: 40px; height: 1px; background: var(--ink-soft); opacity: 0.6; }
+    [data-lucide] {
+      width: 18px;
+      height: 18px;
+      stroke: var(--accent);
+      stroke-width: 1.5;
+      vertical-align: middle;
+    }
+
+    .sec-label { font-family: 'Noto Sans JP', sans-serif; font-size: 0.72rem; font-weight: 400; letter-spacing: 0.22em; color: var(--accent); text-transform: uppercase; margin-bottom: 16px; }
+    .sec-title { font-size: 2rem; font-weight: 400; letter-spacing: -0.01em; margin-bottom: 56px; line-height: 1.3; }
+    .about-body { max-width: 640px; }
+    .about-body p { font-family: 'Noto Sans JP', sans-serif; font-size: 0.95rem; font-weight: 400; color: var(--ink-soft); line-height: 2.0; margin-bottom: 20px; }
+    .about-body p:last-child { margin-bottom: 0; font-weight: 500; color: var(--ink); }
+    .about-body blockquote {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: var(--ink-soft);
+      border-left: 2px solid var(--accent);
+      padding-left: 16px;
+      margin-top: 20px;
+      font-style: italic;
+    }
+
+    .channel-group { margin-bottom: 48px; }
+    .channel-group-label { font-family: 'Noto Sans JP', sans-serif; font-size: 0.72rem; font-weight: 400; letter-spacing: 0.15em; color: var(--accent2); margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
+    .channel-group-label::after { content: ''; flex: 1; height: 1px; background: var(--accent2); opacity: 0.4; }
+    .channel-card { display: flex; align-items: flex-start; gap: 24px; padding: 28px 0; border-bottom: 1px solid var(--line); transition: transform 0.2s; }
+    .channel-card:last-child { border-bottom: none; }
+    .channel-card:hover { transform: translateX(6px); }
+    .channel-num { font-family: 'Noto Sans JP', sans-serif; font-size: 0.75rem; font-weight: 400; color: var(--accent); min-width: 28px; padding-top: 4px; }
+    .channel-info h3 { font-size: 1.08rem; font-weight: 500; margin-bottom: 8px; }
+    .channel-info p { font-family: 'Noto Sans JP', sans-serif; font-size: 0.88rem; font-weight: 400; color: var(--ink-soft); line-height: 1.75; }
+    .channel-tag { display: inline-block; font-family: 'Noto Sans JP', sans-serif; font-size: 0.68rem; font-weight: 400; letter-spacing: 0.08em; padding: 3px 12px; border-radius: 20px; margin-top: 10px; }
+    .tag-personal { background: rgba(122,92,71,0.10); color: var(--accent); }
+    .tag-client { background: rgba(78,138,106,0.12); color: var(--accent2); }
+
+    .eq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+    .eq-block h3 { font-family: 'Noto Sans JP', sans-serif; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.12em; color: var(--accent); text-transform: uppercase; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid var(--line); }
+    .eq-block ul { list-style: none; }
+    .eq-block ul li { font-family: 'Noto Sans JP', sans-serif; font-size: 0.88rem; font-weight: 400; color: var(--ink-soft); padding: 8px 0; border-bottom: 1px solid var(--line); display: flex; align-items: center; gap: 10px; }
+    .eq-block ul li::before { content: ''; width: 4px; height: 4px; border-radius: 50%; background: var(--accent); opacity: 0.7; flex-shrink: 0; }
+
+    .career-list { display: flex; flex-direction: column; }
+    .career-item { display: grid; grid-template-columns: 210px 1fr; gap: 32px; padding: 40px 0; border-bottom: 1px solid var(--line); position: relative; }
+    .career-item::before { content: ''; position: absolute; left: 198px; top: 0; bottom: 0; width: 1px; background: var(--line); }
+    .career-item:last-child { border-bottom: none; }
+    .career-year { font-family: 'Noto Sans JP', sans-serif; font-size: 0.78rem; font-weight: 500; color: var(--accent); padding-top: 4px; letter-spacing: 0.04em; line-height: 1.7; }
+    .career-year .duration { display: block; font-size: 0.72rem; font-weight: 400; color: var(--ink-soft); margin-top: 4px; }
+    .career-body h3 { font-size: 1.1rem; font-weight: 500; margin-bottom: 4px; }
+    .career-body .role { font-family: 'Noto Sans JP', sans-serif; font-size: 0.82rem; font-weight: 400; color: var(--accent); margin-bottom: 12px; letter-spacing: 0.03em; }
+    .career-body p { font-family: 'Noto Sans JP', sans-serif; font-size: 0.88rem; font-weight: 400; color: var(--ink-soft); line-height: 1.9; }
+    .career-awards { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+    .career-award { font-family: 'Noto Sans JP', sans-serif; font-size: 0.7rem; font-weight: 400; padding: 4px 14px; background: rgba(122,92,71,0.10); border-radius: 20px; color: var(--accent); letter-spacing: 0.04em; }
+
+    .cred-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 32px; }
+    .cred-block h3 { font-family: 'Noto Sans JP', sans-serif; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.12em; color: var(--accent); text-transform: uppercase; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid var(--line); }
+    .cred-block ul { list-style: none; }
+    .cred-block ul li { font-family: 'Noto Sans JP', sans-serif; font-size: 0.88rem; font-weight: 400; color: var(--ink-soft); padding: 8px 0; border-bottom: 1px solid var(--line); display: flex; align-items: center; gap: 10px; }
+    .cred-block ul li::before { content: ''; width: 4px; height: 4px; border-radius: 50%; background: var(--accent2); opacity: 0.8; flex-shrink: 0; }
+
+    .contact-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+    .contact-email { font-size: 1rem; font-weight: 400; color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--accent); padding-bottom: 4px; transition: color 0.2s; display: inline-block; margin-bottom: 8px; }
+    .contact-email:hover { color: var(--accent); }
+    .contact-phone { font-family: 'Noto Sans JP', sans-serif; font-size: 0.9rem; font-weight: 400; color: var(--ink-soft); margin-bottom: 20px; }
+    .contact-note { font-family: 'Noto Sans JP', sans-serif; font-size: 0.85rem; font-weight: 400; color: var(--ink-soft); line-height: 1.8; }
+    .sns-list { list-style: none; display: flex; flex-direction: column; }
+    .sns-list li a { display: flex; align-items: center; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--line); text-decoration: none; color: var(--ink); transition: transform 0.2s, color 0.2s; }
+    .sns-list li a:hover { transform: translateX(6px); color: var(--accent); }
+    .sns-icon { width: 36px; height: 36px; border-radius: 50%; background: var(--bg2); display: flex; align-items: center; justify-content: center; font-size: 0.9rem; flex-shrink: 0; }
+    .sns-name { font-family: 'Noto Sans JP', sans-serif; font-size: 0.88rem; font-weight: 400; letter-spacing: 0.04em; }
+    .sns-handle { font-family: 'Noto Sans JP', sans-serif; font-size: 0.75rem; font-weight: 400; color: var(--ink-soft); margin-top: 2px; }
+
+    footer { text-align: center; padding: 48px 40px; font-family: 'Noto Sans JP', sans-serif; font-size: 0.75rem; font-weight: 400; color: var(--ink-soft); letter-spacing: 0.08em; position: relative; z-index: 1; }
+    .ch-link { color: inherit; text-decoration: none; border-bottom: 1px solid var(--line); transition: color 0.2s, border-color 0.2s; }
+    .ch-link:hover { color: var(--accent); border-color: var(--accent); }
+
+    .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 700px) {
+      nav { padding: 18px 24px; } nav ul { gap: 16px; }
+      section { padding: 80px 24px; }
+      .eq-grid, .cred-grid { grid-template-columns: 1fr; }
+      .career-item { grid-template-columns: 1fr; gap: 8px; }
+      .career-item::before { display: none; }
+      .contact-wrap { grid-template-columns: 1fr; gap: 40px; }
+      .hero h1 { font-size: 2.4rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="wc-bg">
+  <svg class="blob1" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg"><path d="M300,80 C420,60 540,160 520,280 C500,400 380,480 260,460 C140,440 60,340 80,220 C100,100 180,100 300,80Z" fill="rgba(147,174,192,0.6)"/></svg>
+  <svg class="blob2" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg"><path d="M280,100 C400,80 500,180 480,310 C460,440 340,520 210,490 C80,460 40,340 70,210 C100,80 160,120 280,100Z" fill="rgba(210,175,150,0.5)"/></svg>
+  <svg class="blob3" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg"><path d="M310,90 C430,70 530,180 510,300 C490,420 360,500 240,470 C120,440 70,320 100,200 C130,80 190,110 310,90Z" fill="rgba(143,170,148,0.5)"/></svg>
+  <svg class="blob4" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg"><path d="M290,110 C410,90 500,200 470,320 C440,440 310,510 190,470 C70,430 50,300 90,180 C130,60 170,130 290,110Z" fill="rgba(178,162,190,0.45)"/></svg>
+</div>
+
+<nav>
+  <a class="nav-logo" href="#">함동민 · ハムPD</a>
+  <ul>
+    <li><a href="#about">紹介</a></li>
+    <li><a href="#channels">チャンネル</a></li>
+    <li><a href="#equipment">機材</a></li>
+    <li><a href="#career">経歴</a></li>
+    <li><a href="#credentials">スキル</a></li>
+    <li><a href="#dashboard">分析ツール</a></li>
+    <li><a href="#contact">お問い合わせ</a></li>
+  </ul>
+</nav>
+
+<main>
+
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <p class="hero-label fade-up">一人メディアプロデューサー</p>
+        <h1 class="fade-up">함동민<br><em>ハムPD</em></h1>
+        <p class="hero-sub fade-up">企画・撮影・編集・配信 — すべてひとりで</p>
+        <p class="hero-desc fade-up">
+          退職した日、正直、途方に暮れました。<br>
+          50代を過ぎて無職になり、周りも心配し、私自身も不安でした。<br>
+          何も知らない状態から始めた今、5つのYouTubeチャンネルをひとりで企画・制作・運営しています。
+        </p>
+        <div class="hero-tags fade-up">
+          <span class="hero-tag">ブランドストーリーテリング</span>
+          <span class="hero-tag">顧客体験設計</span>
+          <span class="hero-tag">一人メディア制作</span>
+          <span class="hero-tag">ハイエンドオーディオ</span>
+          <span class="hero-tag">組織文化伝播</span>
+        </div>
+        <div class="hero-scroll fade-up">scroll to explore</div>
+      </div>
+      <div class="hero-photo">
+        <img src="./profile.JPG" alt="함동민 ハムPD">
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section id="about">
+    <p class="sec-label">About</p>
+    <h2 class="sec-title">私はこんな人間です</h2>
+    <div class="about-body">
+      <p>退職した日、正直、途方に暮れました。</p>
+      <p>50代を過ぎて無職になり、周りも心配し、私自身も不安でした。企画も、撮影も、編集も、全部わかりませんでした。退職後、Claude・ChatGPT・Geminiを先生に、ひとつひとつ独学しました。まったく新しい世界でした。</p>
+      <p>霊能チャンネル、病院チャンネル、オーディオチャンネル。ひとつずつ慎重に契約し、今は5つのチャンネルをひとりで企画・撮影・編集・配信しています。自分が作ったコンテンツで収益を生み出しています。</p>
+      <p>何も知らない状態から再スタートしたという事実そのものが、私の50代・人生第2章です。</p>
+      <p>まだ道は長い。それでも今日も、走り続けます。</p>
+      <p><strong>諦めなければ、終わりじゃないから。</strong></p>
+      <blockquote>「自らが設計した人生を、自分が正しいと信じる方法で」</blockquote>
+    </div>
+  </section>
+
+  <section id="channels">
+    <p class="sec-label fade-up">Channels</p>
+    <h2 class="sec-title fade-up">運営チャンネル</h2>
+
+    <div class="channel-group fade-up">
+      <p class="channel-group-label">個人チャンネル</p>
+      <div class="channel-card">
+        <span class="channel-num"><i data-lucide="headphones"></i></span>
+        <div class="channel-info">
+          <h3><a href="https://www.youtube.com/@ookkio" target="_blank" class="ch-link">ウリッキリオーディオ</a></h3>
+          <p>ハイファイオーディオ専門チャンネル。スピーカーケーブル接続動画70K+再生、Shorts累計3M+再生。日本・ブラジル・アメリカの視聴者を中心とした国際的なオーディオコミュニティ。</p>
+          <span class="channel-tag tag-personal">オーディオ・ハイファイ</span>
+        </div>
+      </div>
+      <div class="channel-card">
+        <span class="channel-num"><i data-lucide="flag"></i></span>
+        <div class="channel-info">
+          <h3><a href="https://www.youtube.com/channel/UCqy1LrWDKht1ACXTmtLShEg" target="_blank" class="ch-link">今回の人生はレースだ</a></h3>
+          <p>50代の人生再設計をテーマにしたチャンネル。遅いスタート、もう一度走る人生をテーマに、同世代の共感を呼び起こします。</p>
+          <span class="channel-tag tag-personal">人生・再挑戦</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="channel-group fade-up">
+      <p class="channel-group-label">クライアントチャンネル管理</p>
+      <div class="channel-card">
+        <span class="channel-num"><i data-lucide="stethoscope"></i></span>
+        <div class="channel-info">
+          <h3><a href="https://www.youtube.com/channel/UC7nfli6RwhfkT8-L3tjcwPg" target="_blank" class="ch-link">整形外科専門医キム・ジョンミョン（DIVAクリニック）</a></h3>
+          <p>医療専門チャンネル。フェイスリフト・脂肪移植・スレッドリフトなど長編手術情報動画とShortsシリーズ制作。YouTube医療専門家バッジ取得目標。</p>
+          <span class="channel-tag tag-client">医療・美容外科</span>
+        </div>
+      </div>
+      <div class="channel-card">
+        <span class="channel-num"><i data-lucide="moon-star"></i></span>
+        <div class="channel-info">
+          <h3><a href="https://www.youtube.com/channel/UCwI4qqT9ta850_Aak-0kP8Q" target="_blank" class="ch-link">クァンミョンチョンシンボサルTV</a></h3>
+          <p>巫俗・スピリチュアルコンテンツチャンネル。視聴者共感型ストーリーテリング運営。</p>
+          <span class="channel-tag tag-client">スピリチュアル・巫俗</span>
+        </div>
+      </div>
+      <div class="channel-card">
+        <span class="channel-num"><i data-lucide="speaker"></i></span>
+        <div class="channel-info">
+          <h3><a href="https://www.youtube.com/@Wassadacom" target="_blank" class="ch-link">ワッサダドットコム</a></h3>
+          <p>オーディオショッピングモール専門チャンネル。製品紹介・レビューコンテンツ運営。</p>
+          <span class="channel-tag tag-client">オーディオ・ショッピング</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section id="equipment">
+    <p class="sec-label fade-up">Equipment</p>
+    <h2 class="sec-title fade-up">制作機材</h2>
+    <div class="eq-grid fade-up">
+      <div class="eq-block">
+        <h3><i data-lucide="camera"></i> カメラ</h3>
+        <ul>
+          <li>Sony A6700（メイン）</li>
+          <li>iPhone 15 Pro + Blackmagic Cam</li>
+          <li>DJI Pocket 3</li>
+          <li>DJI Osmo Action 6</li>
+        </ul>
+      </div>
+      <div class="eq-block">
+        <h3><i data-lucide="mic"></i> オーディオ</h3>
+        <ul>
+          <li>RØDE Wireless GO II</li>
+          <li>TASCAM X8</li>
+          <li>DJI Mic Mini</li>
+          <li>RØDE Lavalier</li>
+          <li>RØDE PodMic White</li>
+        </ul>
+      </div>
+      <div class="eq-block">
+        <h3><i data-lucide="lightbulb"></i> 照明</h3>
+        <ul>
+          <li>Amaran 200x（キー）</li>
+          <li>Godox ML100Bi + ソフトボックス（フィル）</li>
+          <li>Zhiyun F100（リム/背景）</li>
+          <li>Sunwayfoto FL-96C</li>
+        </ul>
+      </div>
+      <div class="eq-block">
+        <h3><i data-lucide="monitor"></i> 編集・AI</h3>
+        <ul>
+          <li>MacBook Pro M4 Pro 14" — 編集専用</li>
+          <li>MacBook Pro M1 13" — AI・自動化ハブ</li>
+          <li>Final Cut Pro / Vrew</li>
+          <li>Claude・ChatGPT・Gemini マルチワークフロー</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section id="career">
+    <p class="sec-label fade-up">Career</p>
+    <h2 class="sec-title fade-up">経歴</h2>
+
+    <div class="career-list">
+
+      <div class="career-item fade-up">
+        <div class="career-year">2025年 — 現在<span class="duration">一人メディア</span></div>
+        <div class="career-body">
+          <h3>ハムメディア</h3>
+          <div class="role">一人メディアプロデューサー</div>
+          <p>退職後、Claude・ChatGPT・Geminiで企画・撮影・編集を独学しました。何も知らない状態から始め、今は5つのチャンネルをひとりで企画・撮影・編集・配信しています。クライアントチャンネル代行で収益を生み出しながら、AIとともに毎日成長しています。</p>
+          <div class="career-awards">
+            <span class="career-award">5チャンネル全工程単独対応</span>
+            <span class="career-award">AI独学で全工程習得</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="career-item fade-up">
+        <div class="career-year">2024年05月 — 2025年04月<span class="duration">1年</span></div>
+        <div class="career-body">
+          <h3>アコースティクス・スペース</h3>
+          <div class="role">企画部長 / 初期事業企画メンバー</div>
+          <p>高級住宅向けハイエンドオーディオルーム・スマートHVAC・照明・音響・空気統合設計を総括。サンジ建設Escalaプロジェクト参加 — 静粛25dBA、聴取動線、空調・照明統合制御。全プロジェクト企画・スケジュール管理、顧客コミュニケーション、技術仕様書および役員報告文書作成。</p>
+          <div class="career-awards">
+            <span class="career-award">Escalaプロジェクト参加</span>
+            <span class="career-award">プレミアム空間統合設計</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="career-item fade-up">
+        <div class="career-year">2023年05月 — 2024年01月<span class="duration">9ヶ月</span></div>
+        <div class="career-body">
+          <h3>テウ開発コンサルティング</h3>
+          <div class="role">部長 / 工場不動産コンサルタント</div>
+          <p>工場・倉庫など産業用不動産仲介実務。立地分析・予算最適化・構造活用計画提案。顧客・工場運営者・建築主など意思決定者別信頼構築。</p>
+        </div>
+      </div>
+
+      <div class="career-item fade-up">
+        <div class="career-year">2022年02月 — 2022年10月<span class="duration">9ヶ月</span></div>
+        <div class="career-body">
+          <h3>エービーワッサダ（ワッサダドットコム）</h3>
+          <div class="role">運営チーム部長</div>
+          <p>ハイエンドオーディオ製品相談・販売。YouTube動画撮影・編集・チャンネル運営。ブランド認知度向上に貢献。</p>
+        </div>
+      </div>
+
+      <div class="career-item fade-up">
+        <div class="career-year">2014年06月 — 2022年07月<span class="duration">8年2ヶ月</span></div>
+        <div class="career-body">
+          <h3>デッラカーサ</h3>
+          <div class="role">オーナーシェフ / 代表</div>
+          <p>仁川新浦洞・青羅にイタリアンレストラン「デッラカーサ」1・2号店を企画・立ち上げ・運営。高級顧客層をターゲットに売上2倍成長。地域の建築様式からインスピレーションを得たインテリアコンセプトを自ら設計。メニュー・空間・サービス・ブランディング・収益構造を全て自分で運営。パンデミックによる2号店閉店を経て「失敗回復コンテンツ」哲学の実質的基盤を形成。</p>
+          <div class="career-awards">
+            <span class="career-award">売上2倍成長</span>
+            <span class="career-award">ブランド企画・運営全工程</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="career-item fade-up">
+        <div class="career-year">2001年01月 — 2014年05月<span class="duration">13年5ヶ月</span></div>
+        <div class="career-body">
+          <h3>スターバックスコーヒーコリア</h3>
+          <div class="role">バリスタ → 店長 → エリアマネージャー → 人材開発チームリーダーシップトレーナー → 仁川地域総括マネージャー</div>
+          <p>GS店・金浦空港1・2号店の赤字店舗を黒字転換。光化門店の売上改善・人員安定化。仁川空港店出店および売上増大。人材開発チームでマネージャー・店長・エリアマネージャー職級別教育プログラム全国企画・運営。スターバックスイマージョンプログラム直接設計・運営。米国シアトルサポートセンター研修修了、ハワード・シュルツ会長とコーヒーテイスティング。コーヒーマスター・地域コーヒーマスターとして活動。ニックネーム「ハム(Ham)」この時期に誕生。</p>
+          <div class="career-awards">
+            <span class="career-award">🏆 年間最優秀マネージャー賞</span>
+            <span class="career-award">🏆 年間最優秀エリアマネージャー賞</span>
+            <span class="career-award">シアトルサポートセンター研修</span>
+            <span class="career-award">コーヒーマスター・地域コーヒーマスター</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="career-item fade-up">
+        <div class="career-year">1996年 — 1999年<span class="duration">海外滞在</span></div>
+        <div class="career-body">
+          <h3>海外語学・文化研修</h3>
+          <div class="role">日本東京（1年5ヶ月）/ 米国カリフォルニア州フレズノ（1年）</div>
+          <p>東京：語学留学＋現地アルバイト、サービス感性・JLPT1級取得。米国カリフォルニア：英語集中研修および現地勤務、グローバル思考・多文化コミュニケーション能力形成。</p>
+          <div class="career-awards">
+            <span class="career-award">日本語JLPT1級</span>
+            <span class="career-award">多文化コミュニケーション</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="career-item fade-up">
+        <div class="career-year">1994年 — 1996年<span class="duration">兵役</span></div>
+        <div class="career-body">
+          <h3>大韓民国陸軍</h3>
+          <div class="role">工兵部隊 運転兵・兵長満期除隊</div>
+          <p>チームワーク・命令系統・時間管理など組織生活の基礎を習得。臨機応変能力・緊急対応訓練。</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section id="credentials">
+    <p class="sec-label fade-up">Skills & Credentials</p>
+    <h2 class="sec-title fade-up">スキル・資格</h2>
+    <div class="cred-grid fade-up">
+      <div class="cred-block">
+        <h3>🛠 コアスキル</h3>
+        <ul>
+          <li>店舗・空間運営最適化</li>
+          <li>ブランド企画および成長戦略</li>
+          <li>顧客体験デザイン</li>
+          <li>チームリーダーシップ / 人材育成</li>
+          <li>教育プログラム設計</li>
+          <li>YouTubeコンテンツ全工程制作</li>
+          <li>生成AI活用（マルチワークフロー）</li>
+        </ul>
+      </div>
+      <div class="cred-block">
+        <h3>🌐 語学・資格</h3>
+        <ul>
+          <li>日本語 JLPT1級（2000年09月）</li>
+          <li>英語（ビジネス会話）</li>
+          <li>第一種普通自動車免許（2017年09月）</li>
+          <li>Final Cut Pro</li>
+          <li>PowerPoint・Excel・Word</li>
+        </ul>
+      </div>
+      <div class="cred-block">
+        <h3>🎯 趣味・没入活動</h3>
+        <ul>
+          <li>ハイエンドオーディオコレクション</li>
+          <li>万年筆コレクション（12種以上）</li>
+          <li>写真・カメラ</li>
+          <li>自動車・モーターサイクル（サーキット走行）</li>
+          <li>ロードバイク</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section id="dashboard">
+    <p class="sec-label">Tools</p>
+    <h2 class="sec-title">YouTubeチャンネル分析ツール</h2>
+    <p style="font-family:'Noto Sans JP',sans-serif; font-size:0.95rem; font-weight:400; color:var(--ink-soft); line-height:2.0; max-width:640px;">
+      YouTube Studioから書き出したデータをアップロードすると、チャンネル成果を自動で分析してくれるツールです。どなたでも無料でご利用いただけます。
+    </p>
+    <a href="https://hammedia.github.io/youtube-channel-report-codex" target="_blank" style="display:inline-block; margin-top:24px; padding:12px 28px; background:var(--accent); color:#fff; font-family:'Noto Sans JP',sans-serif; font-size:0.85rem; font-weight:400; letter-spacing:0.06em; text-decoration:none; border-radius:4px;">ツールを開く →</a>
+  </section>
+
+  <section id="contact">
+    <p class="sec-label fade-up">Contact & SNS</p>
+    <h2 class="sec-title fade-up">お問い合わせ</h2>
+    <div class="contact-wrap fade-up">
+      <div>
+        <a class="contact-email" href="mailto:hammedia002@gmail.com">hammedia002@gmail.com</a>
+        <p class="contact-phone">010-3936-3571</p>
+        <p class="contact-note">
+          チャンネル制作代行・コラボ・スポンサー・講演のお問い合わせ歓迎します。<br>
+          仁川富平区ベース・通常1〜2日以内にご返信します。
+        </p>
+      </div>
+      <div>
+        <ul class="sns-list">
+          <li>
+            <a href="https://www.youtube.com/@ookkio" target="_blank">
+              <div class="sns-icon">▶</div>
+              <div><div class="sns-name">ウリッキリオーディオ</div><div class="sns-handle">youtube.com/@ookkio</div></div>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.youtube.com/channel/UCqy1LrWDKht1ACXTmtLShEg" target="_blank">
+              <div class="sns-icon">▶</div>
+              <div><div class="sns-name">今回の人生はレースだ</div><div class="sns-handle">youtube.com/channel</div></div>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.youtube.com/channel/UC7nfli6RwhfkT8-L3tjcwPg" target="_blank">
+              <div class="sns-icon">▶</div>
+              <div><div class="sns-name">整形外科専門医キム・ジョンミョン</div><div class="sns-handle">youtube.com/channel</div></div>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.youtube.com/channel/UCwI4qqT9ta850_Aak-0kP8Q" target="_blank">
+              <div class="sns-icon">▶</div>
+              <div><div class="sns-name">クァンミョンチョンシンボサルTV</div><div class="sns-handle">youtube.com/channel</div></div>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.youtube.com/@Wassadacom" target="_blank">
+              <div class="sns-icon">▶</div>
+              <div><div class="sns-name">ワッサダドットコム</div><div class="sns-handle">youtube.com/@Wassadacom</div></div>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.threads.net/@dellacasa_2" target="_blank">
+              <div class="sns-icon">@</div>
+              <div><div class="sns-name">Threads</div><div class="sns-handle">@dellacasa_2</div></div>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.instagram.com/dellacasa_2" target="_blank">
+              <div class="sns-icon">◻</div>
+              <div><div class="sns-name">Instagram</div><div class="sns-handle">@dellacasa_2</div></div>
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/hammedia" target="_blank">
+              <div class="sns-icon">⌥</div>
+              <div><div class="sns-name">GitHub</div><div class="sns-handle">hammedia</div></div>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  © 2025 함동민 · ハムPD — Ham Media. All rights reserved.
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(el => { if (el.isIntersecting) el.target.classList.add('visible'); });
+  }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+  document.querySelectorAll('.fade-up').forEach((el, i) => {
+    el.style.transitionDelay = (i % 4) * 0.08 + 's';
+    observer.observe(el);
+  });
+</script>
+<script>lucide.createIcons();</script>
+</body>
+</html>
