@@ -41,6 +41,5 @@
 ## 📫 연락처
 
 **Email** hammedia002@gmail.com  
-**Phone** 010-3936-3571  
 **Instagram / Threads** [@dellacasa_2](https://www.instagram.com/dellacasa_2)  
 **Portfolio** [hammedia.github.io/hammedia](https://hammedia.github.io/hammedia/)

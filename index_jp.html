@@ -41,12 +41,12 @@
       backdrop-filter: blur(12px); border-bottom: 1px solid var(--line);
     }
     .nav-logo { font-family: 'Noto Serif JP', serif; font-weight: 500; font-size: 1rem; color: var(--ink); text-decoration: none; letter-spacing: 0.05em; }
-    nav ul { list-style: none; display: flex; gap: 32px; }
+    nav ul { list-style: none; display: flex; gap: 32px; flex-wrap: wrap; }
     nav ul li a { font-family: 'Noto Sans JP', sans-serif; font-size: 0.8rem; font-weight: 400; color: var(--ink-soft); text-decoration: none; letter-spacing: 0.06em; transition: color 0.25s; }
     nav ul li a:hover { color: var(--ink); }
     .lang-switch { display: flex; gap: 8px; align-items: center; }
     .lang-btn {
-      font-family: 'Noto Sans KR', sans-serif;
+      font-family: 'Noto Sans JP', sans-serif;
       font-size: 0.75rem;
       font-weight: 400;
       padding: 4px 12px;
@@ -169,13 +169,34 @@
     .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
     .fade-up.visible { opacity: 1; transform: translateY(0); }
 
+    @media (max-width: 960px) {
+      nav {
+        padding: 18px 24px;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        gap: 14px 20px;
+      }
+      .nav-logo { flex: 1 1 auto; }
+      .lang-switch { flex: 0 0 auto; margin-left: auto; }
+      nav ul {
+        width: 100%;
+        gap: 12px 18px;
+      }
+      .hero { padding-top: 190px; }
+    }
+
     @media (max-width: 700px) {
-      nav { padding: 18px 24px; } nav ul { gap: 16px; }
+      nav { padding: 16px 20px; }
+      .nav-logo { font-size: 0.95rem; }
+      nav ul { gap: 10px 14px; }
+      nav ul li a { font-size: 0.74rem; }
+      .lang-switch { margin-left: 0; }
       section { padding: 80px 24px; }
       .eq-grid, .cred-grid { grid-template-columns: 1fr; }
       .career-item { grid-template-columns: 1fr; gap: 8px; }
       .career-item::before { display: none; }
       .contact-wrap { grid-template-columns: 1fr; gap: 40px; }
+      .hero { padding-top: 220px; }
       .hero h1 { font-size: 2.4rem; }
     }
   </style>
