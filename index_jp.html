@@ -37,7 +37,7 @@
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       display: flex; justify-content: space-between; align-items: center;
-      padding: 22px 160px 22px 48px; background: rgba(249,247,243,0.92);
+      padding: 22px 48px; background: rgba(249,247,243,0.92);
       backdrop-filter: blur(12px); border-bottom: 1px solid var(--line);
     }
     .nav-logo { font-family: 'Noto Serif JP', serif; font-weight: 500; font-size: 1rem; color: var(--ink); text-decoration: none; letter-spacing: 0.05em; }
@@ -75,10 +75,8 @@
       object-fit: cover;
       object-position: top;
       border-radius: 4px;
-      -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 100%), linear-gradient(to right, transparent 0%, black 30%);
-      -webkit-mask-composite: source-in;
-      mask-image: linear-gradient(to bottom, black 40%, transparent 100%), linear-gradient(to right, transparent 0%, black 30%);
-      mask-composite: intersect;
+      -webkit-mask-image: linear-gradient(to bottom, black 55%, transparent 100%);
+      mask-image: linear-gradient(to bottom, black 55%, transparent 100%);
     }
     .hero-label { font-family: 'Noto Sans JP', sans-serif; font-size: 0.78rem; font-weight: 400; letter-spacing: 0.18em; color: var(--accent); margin-bottom: 28px; text-transform: uppercase; }
     .hero h1 { font-size: clamp(2.8rem, 6vw, 5.2rem); font-weight: 400; line-height: 1.25; letter-spacing: -0.01em; margin-bottom: 12px; }
@@ -165,8 +163,38 @@
     footer { text-align: center; padding: 48px 40px; font-family: 'Noto Sans JP', sans-serif; font-size: 0.75rem; font-weight: 400; color: var(--ink-soft); letter-spacing: 0.08em; position: relative; z-index: 1; }
     .ch-link { color: inherit; text-decoration: none; border-bottom: 1px solid var(--line); transition: color 0.2s, border-color 0.2s; }
     .ch-link:hover { color: var(--accent); border-color: var(--accent); }
-    .video-embed { margin-top: 16px; border-radius: 8px; overflow: hidden; width: 100%; max-width: 560px; height: 315px; display: block; }
-    .video-embed iframe { width: 100%; height: 315px; border: none; display: block; }
+    .video-embed {
+      margin-top: 16px; border-radius: 8px; overflow: hidden;
+      width: 100%; max-width: 560px; height: 315px; display: block;
+      position: relative; cursor: pointer; background: #000;
+    }
+    .video-embed iframe { width: 100%; height: 100%; border: none; display: block; }
+    .video-thumb {
+      width: 100%; height: 100%;
+      background-size: cover; background-position: center;
+      transition: filter 0.25s;
+    }
+    .video-embed::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0) 55%, rgba(0,0,0,0.35) 100%);
+      pointer-events: none;
+    }
+    .video-embed:hover .video-thumb { filter: brightness(0.82); }
+    .video-play {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 64px; height: 64px; border-radius: 50%;
+      background: rgba(220, 32, 32, 0.92);
+      border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s, transform 0.2s;
+      z-index: 2; box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+    .video-embed:hover .video-play {
+      background: rgb(220, 32, 32);
+      transform: translate(-50%, -50%) scale(1.08);
+    }
+    .video-play svg { width: 24px; height: 24px; fill: white; margin-left: 4px; }
 
     .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
     .fade-up.visible { opacity: 1; transform: translateY(0); }
@@ -200,6 +228,11 @@
       .contact-wrap { grid-template-columns: 1fr; gap: 40px; }
       .hero { padding-top: 220px; }
       .hero h1 { font-size: 2.4rem; }
+      .hero-inner { flex-direction: column-reverse; gap: 36px; align-items: flex-start; }
+      .hero-photo img { width: 200px; height: 240px; }
+      .video-embed { height: 220px; }
+      .video-play { width: 52px; height: 52px; }
+      .video-play svg { width: 20px; height: 20px; }
     }
   </style>
   <!-- Google Analytics -->
@@ -293,8 +326,9 @@
           <h3><a href="https://www.youtube.com/@ookkio" target="_blank" class="ch-link">ウリッキリオーディオ</a></h3>
           <p>ハイファイオーディオ専門チャンネル。スピーカーケーブル接続動画70K+再生、Shorts累計3M+再生。日本・ブラジル・アメリカの視聴者を中心とした国際的なオーディオコミュニティ。</p>
           <span class="channel-tag tag-personal">オーディオ・ハイファイ</span>
-          <div class="video-embed">
-            <iframe src="https://www.youtube.com/embed/duw8G46JzwQ" allowfullscreen loading="lazy"></iframe>
+          <div class="video-embed" data-video-id="duw8G46JzwQ">
+            <div class="video-thumb" style="background-image:url('https://img.youtube.com/vi/duw8G46JzwQ/hqdefault.jpg')"></div>
+            <button class="video-play" aria-label="動画を再生"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
           </div>
         </div>
       </div>
@@ -304,8 +338,9 @@
           <h3><a href="https://www.youtube.com/channel/UCqy1LrWDKht1ACXTmtLShEg" target="_blank" class="ch-link">今回の人生はレースだ</a></h3>
           <p>50代の人生再設計をテーマにしたチャンネル。遅いスタート、もう一度走る人生をテーマに、同世代の共感を呼び起こします。</p>
           <span class="channel-tag tag-personal">人生・再挑戦</span>
-          <div class="video-embed">
-            <iframe src="https://www.youtube.com/embed/jc0vNk4tjtM" allowfullscreen loading="lazy"></iframe>
+          <div class="video-embed" data-video-id="jc0vNk4tjtM">
+            <div class="video-thumb" style="background-image:url('https://img.youtube.com/vi/jc0vNk4tjtM/hqdefault.jpg')"></div>
+            <button class="video-play" aria-label="動画を再生"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
           </div>
         </div>
       </div>
@@ -319,8 +354,9 @@
           <h3><a href="https://www.youtube.com/channel/UC7nfli6RwhfkT8-L3tjcwPg" target="_blank" class="ch-link">整形外科専門医キム・ジョンミョン（DIVAクリニック）</a></h3>
           <p>医療専門チャンネル。フェイスリフト・脂肪移植・スレッドリフトなど長編手術情報動画とShortsシリーズ制作。YouTube医療専門家バッジ取得目標。</p>
           <span class="channel-tag tag-client">医療・美容外科</span>
-          <div class="video-embed">
-            <iframe src="https://www.youtube.com/embed/sgVzKxMxCEM" allowfullscreen loading="lazy"></iframe>
+          <div class="video-embed" data-video-id="sgVzKxMxCEM">
+            <div class="video-thumb" style="background-image:url('https://img.youtube.com/vi/sgVzKxMxCEM/hqdefault.jpg')"></div>
+            <button class="video-play" aria-label="動画を再生"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
           </div>
         </div>
       </div>
@@ -330,8 +366,9 @@
           <h3><a href="https://www.youtube.com/channel/UCwI4qqT9ta850_Aak-0kP8Q" target="_blank" class="ch-link">クァンミョンチョンシンボサルTV</a></h3>
           <p>巫俗・スピリチュアルコンテンツチャンネル。視聴者共感型ストーリーテリング運営。</p>
           <span class="channel-tag tag-client">スピリチュアル・巫俗</span>
-          <div class="video-embed">
-            <iframe src="https://www.youtube.com/embed/f5bZ-rKDITM" allowfullscreen loading="lazy"></iframe>
+          <div class="video-embed" data-video-id="f5bZ-rKDITM">
+            <div class="video-thumb" style="background-image:url('https://img.youtube.com/vi/f5bZ-rKDITM/hqdefault.jpg')"></div>
+            <button class="video-play" aria-label="動画を再生"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
           </div>
         </div>
       </div>
@@ -341,8 +378,9 @@
           <h3><a href="https://www.youtube.com/@Wassadacom" target="_blank" class="ch-link">ワッサダドットコム</a></h3>
           <p>オーディオショッピングモール専門チャンネル。製品紹介・レビューコンテンツ運営。</p>
           <span class="channel-tag tag-client">オーディオ・ショッピング</span>
-          <div class="video-embed">
-            <iframe src="https://www.youtube.com/embed/PGzwTeTgvHY" allowfullscreen loading="lazy"></iframe>
+          <div class="video-embed" data-video-id="PGzwTeTgvHY">
+            <div class="video-thumb" style="background-image:url('https://img.youtube.com/vi/PGzwTeTgvHY/hqdefault.jpg')"></div>
+            <button class="video-play" aria-label="動画を再生"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
           </div>
         </div>
       </div>
@@ -465,12 +503,14 @@
         <div class="career-body">
           <h3>スターバックスコーヒーコリア</h3>
           <div class="role">バリスタ → 店長 → エリアマネージャー → 人材開発チームリーダーシップトレーナー → 仁川地域総括マネージャー</div>
-          <p>GS店・金浦空港1・2号店の赤字店舗を黒字転換。光化門店の売上改善・人員安定化。仁川空港店出店および売上増大。人材開発チームでマネージャー・店長・エリアマネージャー職級別教育プログラム全国企画・運営。スターバックスイマージョンプログラム直接設計・運営。米国シアトルサポートセンター研修修了、ハワード・シュルツ会長とコーヒーテイスティング。コーヒーマスター・地域コーヒーマスターとして活動。ニックネーム「ハム(Ham)」この時期に誕生。</p>
+          <p>赤字店舗3店（GS店・金浦空港1・2号店）を黒字転換し、富平・永登浦・忠清・仁川の4エリア総括マネージャーを歴任。人材開発チームでは全職級別の教育プログラムとイマージョンプログラム（Immersion Program）を直接設計・運営しました。ニックネーム「ハム(Ham)」はこの時期に誕生しました。</p>
           <div class="career-awards">
             <span class="career-award">🏆 年間最優秀マネージャー賞</span>
             <span class="career-award">🏆 年間最優秀エリアマネージャー賞</span>
-            <span class="career-award">シアトルサポートセンター研修</span>
+            <span class="career-award">赤字店舗3店 黒字転換</span>
+            <span class="career-award">シアトル本社招聘・ハワード・シュルツ会長ミーティング</span>
             <span class="career-award">コーヒーマスター・地域コーヒーマスター</span>
+            <span class="career-award">全国職級別教育プログラム設計</span>
           </div>
         </div>
       </div>
@@ -628,5 +668,13 @@
   });
 </script>
 <script>lucide.createIcons();</script>
+<script>
+  document.querySelectorAll('.video-embed[data-video-id]').forEach(function(el){
+    el.addEventListener('click', function(){
+      var id = el.getAttribute('data-video-id');
+      el.innerHTML = '<iframe src="https://www.youtube.com/embed/' + id + '?autoplay=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
+    });
+  });
+</script>
 </body>
 </html>

@@ -37,7 +37,7 @@
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       display: flex; justify-content: space-between; align-items: center;
-      padding: 22px 160px 22px 48px; background: rgba(249,247,243,0.92);
+      padding: 22px 48px; background: rgba(249,247,243,0.92);
       backdrop-filter: blur(12px); border-bottom: 1px solid var(--line);
     }
     .nav-logo { font-family: 'Noto Serif KR', serif; font-weight: 500; font-size: 1rem; color: var(--ink); text-decoration: none; letter-spacing: 0.05em; }
@@ -75,10 +75,8 @@
       object-fit: cover;
       object-position: top;
       border-radius: 4px;
-      -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 100%), linear-gradient(to right, transparent 0%, black 30%);
-      -webkit-mask-composite: source-in;
-      mask-image: linear-gradient(to bottom, black 40%, transparent 100%), linear-gradient(to right, transparent 0%, black 30%);
-      mask-composite: intersect;
+      -webkit-mask-image: linear-gradient(to bottom, black 55%, transparent 100%);
+      mask-image: linear-gradient(to bottom, black 55%, transparent 100%);
     }
     .hero-label { font-family: 'Noto Sans KR', sans-serif; font-size: 0.78rem; font-weight: 400; letter-spacing: 0.18em; color: var(--accent); margin-bottom: 28px; text-transform: uppercase; }
     .hero h1 { font-size: clamp(2.8rem, 6vw, 5.2rem); font-weight: 400; line-height: 1.25; letter-spacing: -0.01em; margin-bottom: 12px; }
@@ -134,12 +132,50 @@
       max-width: 560px;
       height: 315px;
       display: block;
+      position: relative;
+      cursor: pointer;
+      background: #000;
     }
-    .video-embed iframe {
+    .video-embed iframe { width: 100%; height: 100%; border: none; display: block; }
+    .video-thumb {
       width: 100%;
-      height: 315px;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      transition: filter 0.25s;
+    }
+    .video-embed::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0) 55%, rgba(0,0,0,0.35) 100%);
+      pointer-events: none;
+    }
+    .video-embed:hover .video-thumb { filter: brightness(0.82); }
+    .video-play {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 64px; height: 64px;
+      border-radius: 50%;
+      background: rgba(220, 32, 32, 0.92);
       border: none;
-      display: block;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s, transform 0.2s;
+      z-index: 2;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+    .video-embed:hover .video-play {
+      background: rgb(220, 32, 32);
+      transform: translate(-50%, -50%) scale(1.08);
+    }
+    .video-play svg {
+      width: 24px; height: 24px;
+      fill: white;
+      margin-left: 4px;
     }
 
     .eq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
@@ -186,13 +222,21 @@
     .fade-up.visible { opacity: 1; transform: translateY(0); }
 
     @media (max-width: 700px) {
-      nav { padding: 18px 24px; } nav ul { gap: 16px; }
+      nav { padding: 18px 20px; flex-wrap: wrap; gap: 12px; }
+      nav ul { gap: 14px; flex-wrap: wrap; }
+      nav ul li a { font-size: 0.74rem; }
       section { padding: 80px 24px; }
       .eq-grid, .cred-grid { grid-template-columns: 1fr; }
       .career-item { grid-template-columns: 1fr; gap: 8px; }
       .career-item::before { display: none; }
       .contact-wrap { grid-template-columns: 1fr; gap: 40px; }
+      .hero { padding-top: 140px; }
       .hero h1 { font-size: 2.4rem; }
+      .hero-inner { flex-direction: column-reverse; gap: 36px; align-items: flex-start; }
+      .hero-photo img { width: 200px; height: 240px; }
+      .video-embed { height: 220px; }
+      .video-play { width: 52px; height: 52px; }
+      .video-play svg { width: 20px; height: 20px; }
     }
   </style>
   <!-- Google Analytics -->
@@ -286,8 +330,9 @@
           <h3><a href="https://www.youtube.com/@ookkio" target="_blank" class="ch-link">우리끼리오디오</a></h3>
           <p>하이파이 오디오 전문 채널. 스피커 케이블 연결 영상 70K+ 뷰, Shorts 누적 3M+ 뷰. 일본·브라질·미국 시청자 중심의 국제적 오디오 커뮤니티.</p>
           <span class="channel-tag tag-personal">오디오 · 하이파이</span>
-          <div class="video-embed">
-            <iframe src="https://www.youtube.com/embed/duw8G46JzwQ" allowfullscreen loading="lazy"></iframe>
+          <div class="video-embed" data-video-id="duw8G46JzwQ">
+            <div class="video-thumb" style="background-image:url('https://img.youtube.com/vi/duw8G46JzwQ/hqdefault.jpg')"></div>
+            <button class="video-play" aria-label="영상 재생"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
           </div>
         </div>
       </div>
@@ -297,8 +342,9 @@
           <h3><a href="https://www.youtube.com/channel/UCqy1LrWDKht1ACXTmtLShEg" target="_blank" class="ch-link">이번인생은경주다</a></h3>
           <p>50대의 인생 재정비 서사를 담은 채널. 늦은 시작, 다시 달리는 삶을 주제로 같은 세대의 공감을 이끌어냅니다.</p>
           <span class="channel-tag tag-personal">인생 · 재도전</span>
-          <div class="video-embed">
-            <iframe src="https://www.youtube.com/embed/jc0vNk4tjtM" allowfullscreen loading="lazy"></iframe>
+          <div class="video-embed" data-video-id="jc0vNk4tjtM">
+            <div class="video-thumb" style="background-image:url('https://img.youtube.com/vi/jc0vNk4tjtM/hqdefault.jpg')"></div>
+            <button class="video-play" aria-label="영상 재생"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
           </div>
         </div>
       </div>
@@ -312,8 +358,9 @@
           <h3><a href="https://www.youtube.com/channel/UC7nfli6RwhfkT8-L3tjcwPg" target="_blank" class="ch-link">성형외과전문의 김종명 (디바성형외과)</a></h3>
           <p>의료 전문 채널. 안면거상·지방이식·실리프팅 등 장편 수술 정보 영상과 Shorts 시리즈 제작. YouTube 의료 전문가 배지 취득 목표.</p>
           <span class="channel-tag tag-client">의료 · 성형외과</span>
-          <div class="video-embed">
-            <iframe src="https://www.youtube.com/embed/sgVzKxMxCEM" allowfullscreen loading="lazy"></iframe>
+          <div class="video-embed" data-video-id="sgVzKxMxCEM">
+            <div class="video-thumb" style="background-image:url('https://img.youtube.com/vi/sgVzKxMxCEM/hqdefault.jpg')"></div>
+            <button class="video-play" aria-label="영상 재생"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
           </div>
         </div>
       </div>
@@ -323,8 +370,9 @@
           <h3><a href="https://www.youtube.com/channel/UCwI4qqT9ta850_Aak-0kP8Q" target="_blank" class="ch-link">광명천신보살TV</a></h3>
           <p>무속·영성 콘텐츠 채널. 시청자 공감 기반의 스토리텔링 운영.</p>
           <span class="channel-tag tag-client">영성 · 무속</span>
-          <div class="video-embed">
-            <iframe src="https://www.youtube.com/embed/f5bZ-rKDITM" allowfullscreen loading="lazy"></iframe>
+          <div class="video-embed" data-video-id="f5bZ-rKDITM">
+            <div class="video-thumb" style="background-image:url('https://img.youtube.com/vi/f5bZ-rKDITM/hqdefault.jpg')"></div>
+            <button class="video-play" aria-label="영상 재생"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
           </div>
         </div>
       </div>
@@ -334,8 +382,9 @@
           <h3><a href="https://www.youtube.com/@Wassadacom" target="_blank" class="ch-link">와싸다닷컴</a></h3>
           <p>오디오 쇼핑몰 전문 채널. 제품 소개 및 리뷰 콘텐츠 운영.</p>
           <span class="channel-tag tag-client">오디오 · 쇼핑</span>
-          <div class="video-embed">
-            <iframe src="https://www.youtube.com/embed/PGzwTeTgvHY" allowfullscreen loading="lazy"></iframe>
+          <div class="video-embed" data-video-id="PGzwTeTgvHY">
+            <div class="video-thumb" style="background-image:url('https://img.youtube.com/vi/PGzwTeTgvHY/hqdefault.jpg')"></div>
+            <button class="video-play" aria-label="영상 재생"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
           </div>
         </div>
       </div>
@@ -458,12 +507,14 @@
         <div class="career-body">
           <h3>스타벅스 커피 코리아</h3>
           <div class="role">바리스타 → 점장 → 지역 매니저 → 인재개발팀 리더십 트레이너 → 인천 지역 총괄 매니저</div>
-          <p>GS점·김포공항 1·2호점 적자 매장 흑자 전환. 광화문점 매출 개선 및 인원 안정화. 부평·영등포·충청·인천 총괄 매니저 역임. 인천공항 매장 출점 및 매출 증대. 인재개발팀 전입 후 매니저·점장·지역매니저 직급별 교육 프로그램 전국 기획·운영. 스타벅스 이머전 프로그램(Immersion Program) 직접 설계·운영. 미국 시애틀 서포트센터 교육 수료, 하워드 슐츠 회장과 커피 테이스팅. 커피 마스터·지역 커피 마스터로 활동. 별명 '햄(Ham)' 이 시기 탄생.</p>
+          <p>적자 매장 3곳(GS점·김포공항 1·2호점)을 흑자로 전환하고, 부평·영등포·충청·인천 4개 권역 총괄 매니저를 역임했습니다. 인재개발팀에서는 전 직급별 교육 프로그램과 이머전 프로그램(Immersion Program)을 직접 설계·운영했습니다. 별명 '햄(Ham)'이 이 시기 탄생했습니다.</p>
           <div class="career-awards">
             <span class="career-award">🏆 올해의 매니저상</span>
             <span class="career-award">🏆 올해의 지역 매니저상</span>
-            <span class="career-award">시애틀 본사 초청</span>
+            <span class="career-award">적자 매장 3곳 흑자 전환</span>
+            <span class="career-award">시애틀 본사 초청 · 하워드 슐츠 미팅</span>
             <span class="career-award">커피 마스터 · 지역 커피 마스터</span>
+            <span class="career-award">전국 직급별 교육 프로그램 설계</span>
           </div>
         </div>
       </div>
@@ -628,5 +679,13 @@
   });
 </script>
 <script>lucide.createIcons();</script>
+<script>
+  document.querySelectorAll('.video-embed[data-video-id]').forEach(function(el){
+    el.addEventListener('click', function(){
+      var id = el.getAttribute('data-video-id');
+      el.innerHTML = '<iframe src="https://www.youtube.com/embed/' + id + '?autoplay=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
+    });
+  });
+</script>
 </body>
 </html>
