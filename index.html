@@ -5,27 +5,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>함동민 — 햄PD | 1인미디어 프로듀서</title>
   <script src="https://unpkg.com/lucide@latest"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500;700&family=Noto+Sans+KR:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
   <style>
     :root {
       --bg: #F9F7F3;
-      --bg2: #EDE8DF;
+      --bg2: #F5F3EE;
+      --surface: rgba(255,253,249,0.72);
       --ink: #1C1814;
       --ink-soft: #4A423C;
       --accent: #7A5C47;
-      --accent2: #4E8A6A;
-      --line: rgba(42,37,32,0.15);
+      --accent2: #00704A;
+      --accent-blue: #7EB5E8;
+      --line: rgba(28,24,20,0.13);
+      --shadow-soft: 0 18px 48px rgba(44,34,26,0.055);
+      --font-main: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
       background: var(--bg); color: var(--ink);
-      font-family: 'Noto Serif KR', serif; font-weight: 400;
+      font-family: var(--font-main); font-weight: 400;
       line-height: 1.9; overflow-x: hidden;
     }
-    .wc-bg { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
-    .wc-bg svg { position: absolute; filter: blur(72px); opacity: 0.28; }
+    .wc-bg { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; background: radial-gradient(circle at 12% 10%, rgba(245,243,238,0.72), transparent 28%); }
+    .wc-bg svg { position: absolute; filter: blur(78px); opacity: 0.22; }
     .blob1 { top: -10%; left: -10%; width: 60vw; }
     .blob2 { top: 30%; right: -15%; width: 55vw; }
     .blob3 { bottom: -10%; left: 10%; width: 50vw; }
@@ -40,30 +44,38 @@
       padding: 22px 48px; background: rgba(249,247,243,0.92);
       backdrop-filter: blur(12px); border-bottom: 1px solid var(--line);
     }
-    .nav-logo { font-family: 'Noto Serif KR', serif; font-weight: 500; font-size: 1rem; color: var(--ink); text-decoration: none; letter-spacing: 0.05em; }
+    .nav-logo { font-family: var(--font-main); font-weight: 700; font-size: 1rem; color: var(--ink); text-decoration: none; letter-spacing: 0.05em; }
     nav ul { list-style: none; display: flex; gap: 32px; }
-    nav ul li a { font-family: 'Noto Sans KR', sans-serif; font-size: 0.8rem; font-weight: 400; color: var(--ink-soft); text-decoration: none; letter-spacing: 0.06em; transition: color 0.25s; }
-    nav ul li a:hover { color: var(--ink); }
+    nav ul li a { font-family: var(--font-main); font-size: 0.8rem; font-weight: 500; color: var(--ink-soft); text-decoration: none; letter-spacing: 0.06em; transition: color 0.25s, border-color 0.25s; border-bottom: 1px solid transparent; }
+    nav ul li a:hover { color: var(--accent); border-color: rgba(122,92,71,0.38); }
     .lang-switch { display: flex; gap: 8px; align-items: center; }
     .lang-btn {
-      font-family: 'Noto Sans KR', sans-serif;
+      font-family: var(--font-main);
       font-size: 0.75rem;
-      font-weight: 400;
-      padding: 4px 12px;
-      border-radius: 20px;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 999px;
       border: 1px solid var(--line);
-      background: transparent;
+      background: rgba(255,253,249,0.58);
       color: var(--ink-soft);
       cursor: pointer;
       text-decoration: none;
-      transition: all 0.2s;
+      transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.2s;
     }
     .lang-btn.active {
       background: var(--accent);
       color: #fff;
       border-color: var(--accent);
     }
-    .lang-btn:hover { color: var(--ink); }
+    .lang-btn:hover { color: var(--accent); border-color: rgba(122,92,71,0.45); transform: translateY(-1px); }
+    .lang-btn.active:hover { color: #fff; }
+    .lang-btn:focus-visible,
+    .contact-email:focus-visible,
+    .sns-list li a:focus-visible,
+    .ch-link:focus-visible {
+      outline: 2px solid var(--accent-blue);
+      outline-offset: 3px;
+    }
 
     .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding-top: 120px; }
     .hero-inner { display: flex; align-items: flex-start; justify-content: space-between; gap: 60px; }
@@ -74,18 +86,18 @@
       height: 320px;
       object-fit: cover;
       object-position: top;
-      border-radius: 4px;
+      border-radius: 12px;
       -webkit-mask-image: linear-gradient(to bottom, black 55%, transparent 100%);
       mask-image: linear-gradient(to bottom, black 55%, transparent 100%);
     }
-    .hero-label { font-family: 'Noto Sans KR', sans-serif; font-size: 0.78rem; font-weight: 400; letter-spacing: 0.18em; color: var(--accent); margin-bottom: 28px; text-transform: uppercase; }
-    .hero h1 { font-size: clamp(2.8rem, 6vw, 5.2rem); font-weight: 400; line-height: 1.25; letter-spacing: -0.01em; margin-bottom: 12px; }
+    .hero-label { font-family: var(--font-main); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.18em; color: var(--accent); margin-bottom: 28px; text-transform: uppercase; }
+    .hero h1 { font-size: 4.8rem; font-weight: 800; line-height: 1.12; letter-spacing: 0; margin-bottom: 12px; }
     .hero h1 em { font-style: normal; color: var(--accent); }
-    .hero-sub { font-family: 'Noto Sans KR', sans-serif; font-size: 0.95rem; font-weight: 400; color: var(--ink-soft); letter-spacing: 0.06em; margin-bottom: 48px; }
+    .hero-sub { font-family: var(--font-main); font-size: 0.95rem; font-weight: 500; color: var(--ink-soft); letter-spacing: 0.06em; margin-bottom: 48px; }
     .hero-desc { max-width: 560px; font-size: 1.05rem; font-weight: 400; line-height: 2.0; color: var(--ink-soft); margin-bottom: 40px; }
     .hero-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 56px; }
-    .hero-tag { font-family: 'Noto Sans KR', sans-serif; font-size: 0.72rem; font-weight: 400; letter-spacing: 0.08em; padding: 6px 16px; border: 1px solid rgba(42,37,32,0.25); border-radius: 20px; color: var(--ink-soft); }
-    .hero-scroll { display: flex; align-items: center; gap: 12px; font-family: 'Noto Sans KR', sans-serif; font-size: 0.75rem; letter-spacing: 0.12em; color: var(--ink-soft); }
+    .hero-tag { font-family: var(--font-main); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.08em; padding: 7px 16px; border: 1px solid rgba(122,92,71,0.22); border-radius: 999px; background: var(--surface); color: var(--ink-soft); }
+    .hero-scroll { display: flex; align-items: center; gap: 12px; font-family: var(--font-main); font-size: 0.75rem; letter-spacing: 0.12em; color: var(--ink-soft); }
     .hero-scroll::before { content: ''; display: block; width: 40px; height: 1px; background: var(--ink-soft); opacity: 0.6; }
     [data-lucide] {
       width: 18px;
@@ -95,15 +107,15 @@
       vertical-align: middle;
     }
 
-    .sec-label { font-family: 'Noto Sans KR', sans-serif; font-size: 0.72rem; font-weight: 400; letter-spacing: 0.22em; color: var(--accent); text-transform: uppercase; margin-bottom: 16px; }
-    .sec-title { font-size: 2rem; font-weight: 400; letter-spacing: -0.01em; margin-bottom: 56px; line-height: 1.3; }
+    .sec-label { font-family: var(--font-main); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.22em; color: var(--accent); text-transform: uppercase; margin-bottom: 16px; }
+    .sec-title { font-size: 2rem; font-weight: 700; letter-spacing: 0; margin-bottom: 56px; line-height: 1.3; }
     .about-body { max-width: 640px; }
-    .about-body p { font-family: 'Noto Sans KR', sans-serif; font-size: 0.95rem; font-weight: 400; color: var(--ink-soft); line-height: 2.0; margin-bottom: 20px; }
+    .about-body p { font-family: var(--font-main); font-size: 0.95rem; font-weight: 400; color: var(--ink-soft); line-height: 2.0; margin-bottom: 20px; }
     .about-body p:last-child { margin-bottom: 0; font-weight: 500; color: var(--ink); }
     .about-body blockquote {
-      font-family: 'Noto Serif KR', serif;
+      font-family: var(--font-main);
       font-size: 0.9rem;
-      font-weight: 300;
+      font-weight: 400;
       color: var(--ink-soft);
       border-left: 2px solid var(--accent);
       padding-left: 16px;
@@ -112,21 +124,21 @@
     }
 
     .channel-group { margin-bottom: 48px; }
-    .channel-group-label { font-family: 'Noto Sans KR', sans-serif; font-size: 0.72rem; font-weight: 400; letter-spacing: 0.15em; color: var(--accent2); margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
+    .channel-group-label { font-family: var(--font-main); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.15em; color: var(--accent2); margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
     .channel-group-label::after { content: ''; flex: 1; height: 1px; background: var(--accent2); opacity: 0.4; }
-    .channel-card { display: flex; align-items: flex-start; gap: 24px; padding: 28px 0; border-bottom: 1px solid var(--line); transition: transform 0.2s; }
-    .channel-card:last-child { border-bottom: none; }
-    .channel-card:hover { transform: translateX(6px); }
-    .channel-num { font-family: 'Noto Sans KR', sans-serif; font-size: 0.75rem; font-weight: 400; color: var(--accent); min-width: 28px; padding-top: 4px; }
+    .channel-card { display: flex; align-items: flex-start; gap: 24px; padding: 28px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); box-shadow: var(--shadow-soft); transition: transform 0.2s, border-color 0.2s, background 0.2s; margin-bottom: 16px; }
+    .channel-card:last-child { margin-bottom: 0; }
+    .channel-card:hover { transform: translateY(-2px); border-color: rgba(122,92,71,0.24); background: rgba(255,253,249,0.86); }
+    .channel-num { font-family: var(--font-main); font-size: 0.75rem; font-weight: 600; color: var(--accent); min-width: 28px; padding-top: 4px; }
     .channel-info { flex: 1; min-width: 0; }
-    .channel-info h3 { font-size: 1.08rem; font-weight: 500; margin-bottom: 8px; }
-    .channel-info p { font-family: 'Noto Sans KR', sans-serif; font-size: 0.88rem; font-weight: 400; color: var(--ink-soft); line-height: 1.75; }
-    .channel-tag { display: inline-block; font-family: 'Noto Sans KR', sans-serif; font-size: 0.68rem; font-weight: 400; letter-spacing: 0.08em; padding: 3px 12px; border-radius: 20px; margin-top: 10px; }
+    .channel-info h3 { font-size: 1.08rem; font-weight: 700; margin-bottom: 8px; }
+    .channel-info p { font-family: var(--font-main); font-size: 0.88rem; font-weight: 400; color: var(--ink-soft); line-height: 1.75; }
+    .channel-tag { display: inline-block; font-family: var(--font-main); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.08em; padding: 4px 12px; border-radius: 999px; margin-top: 10px; }
     .tag-personal { background: rgba(122,92,71,0.10); color: var(--accent); }
-    .tag-client { background: rgba(78,138,106,0.12); color: var(--accent2); }
+    .tag-client { background: rgba(0,112,74,0.10); color: var(--accent2); }
     .video-embed {
       margin-top: 16px;
-      border-radius: 8px;
+      border-radius: 12px;
       overflow: hidden;
       width: 100%;
       max-width: 560px;
@@ -179,42 +191,43 @@
     }
 
     .eq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
-    .eq-block h3 { font-family: 'Noto Sans KR', sans-serif; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.12em; color: var(--accent); text-transform: uppercase; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid var(--line); }
+    .eq-block, .cred-block { background: rgba(245,243,238,0.72); border: 1px solid var(--line); border-radius: 12px; padding: 24px; box-shadow: 0 12px 30px rgba(44,34,26,0.035); }
+    .eq-block h3 { font-family: var(--font-main); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; color: var(--accent); text-transform: uppercase; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid var(--line); }
     .eq-block ul { list-style: none; }
-    .eq-block ul li { font-family: 'Noto Sans KR', sans-serif; font-size: 0.88rem; font-weight: 400; color: var(--ink-soft); padding: 8px 0; border-bottom: 1px solid var(--line); display: flex; align-items: center; gap: 10px; }
+    .eq-block ul li { font-family: var(--font-main); font-size: 0.88rem; font-weight: 400; color: var(--ink-soft); padding: 8px 0; border-bottom: 1px solid var(--line); display: flex; align-items: center; gap: 10px; }
     .eq-block ul li::before { content: ''; width: 4px; height: 4px; border-radius: 50%; background: var(--accent); opacity: 0.7; flex-shrink: 0; }
 
     .career-list { display: flex; flex-direction: column; }
-    .career-item { display: grid; grid-template-columns: 160px 1fr; gap: 32px; padding: 40px 0; border-bottom: 1px solid var(--line); position: relative; }
-    .career-item::before { content: ''; position: absolute; left: 148px; top: 0; bottom: 0; width: 1px; background: var(--line); }
-    .career-item:last-child { border-bottom: none; }
-    .career-year { font-family: 'Noto Sans KR', sans-serif; font-size: 0.78rem; font-weight: 500; color: var(--accent); padding-top: 4px; letter-spacing: 0.04em; line-height: 1.7; }
+    .career-item { display: grid; grid-template-columns: 160px 1fr; gap: 32px; padding: 32px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); box-shadow: var(--shadow-soft); position: relative; margin-bottom: 18px; }
+    .career-item::before { content: ''; position: absolute; left: 184px; top: 24px; bottom: 24px; width: 1px; background: var(--line); }
+    .career-item:last-child { margin-bottom: 0; }
+    .career-year { font-family: var(--font-main); font-size: 0.78rem; font-weight: 700; color: var(--accent); padding-top: 4px; letter-spacing: 0.04em; line-height: 1.7; }
     .career-year .duration { display: block; font-size: 0.72rem; font-weight: 400; color: var(--ink-soft); margin-top: 4px; }
-    .career-body h3 { font-size: 1.1rem; font-weight: 500; margin-bottom: 4px; }
-    .career-body .role { font-family: 'Noto Sans KR', sans-serif; font-size: 0.82rem; font-weight: 400; color: var(--accent); margin-bottom: 12px; letter-spacing: 0.03em; }
-    .career-body p { font-family: 'Noto Sans KR', sans-serif; font-size: 0.88rem; font-weight: 400; color: var(--ink-soft); line-height: 1.9; }
+    .career-body h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 4px; }
+    .career-body .role { font-family: var(--font-main); font-size: 0.82rem; font-weight: 600; color: var(--accent); margin-bottom: 12px; letter-spacing: 0.03em; }
+    .career-body p { font-family: var(--font-main); font-size: 0.88rem; font-weight: 400; color: var(--ink-soft); line-height: 1.9; }
     .career-awards { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
-    .career-award { font-family: 'Noto Sans KR', sans-serif; font-size: 0.7rem; font-weight: 400; padding: 4px 14px; background: rgba(122,92,71,0.10); border-radius: 20px; color: var(--accent); letter-spacing: 0.04em; }
+    .career-award { font-family: var(--font-main); font-size: 0.7rem; font-weight: 600; padding: 5px 14px; background: rgba(122,92,71,0.10); border-radius: 999px; color: var(--accent); letter-spacing: 0.04em; }
 
     .cred-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 32px; }
-    .cred-block h3 { font-family: 'Noto Sans KR', sans-serif; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.12em; color: var(--accent); text-transform: uppercase; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid var(--line); }
+    .cred-block h3 { font-family: var(--font-main); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; color: var(--accent); text-transform: uppercase; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid var(--line); }
     .cred-block ul { list-style: none; }
-    .cred-block ul li { font-family: 'Noto Sans KR', sans-serif; font-size: 0.88rem; font-weight: 400; color: var(--ink-soft); padding: 8px 0; border-bottom: 1px solid var(--line); display: flex; align-items: center; gap: 10px; }
+    .cred-block ul li { font-family: var(--font-main); font-size: 0.88rem; font-weight: 400; color: var(--ink-soft); padding: 8px 0; border-bottom: 1px solid var(--line); display: flex; align-items: center; gap: 10px; }
     .cred-block ul li::before { content: ''; width: 4px; height: 4px; border-radius: 50%; background: var(--accent2); opacity: 0.8; flex-shrink: 0; }
 
     .contact-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
     .contact-email { font-size: 1rem; font-weight: 400; color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--accent); padding-bottom: 4px; transition: color 0.2s; display: inline-block; margin-bottom: 8px; }
     .contact-email:hover { color: var(--accent); }
-    .contact-phone { font-family: 'Noto Sans KR', sans-serif; font-size: 0.9rem; font-weight: 400; color: var(--ink-soft); margin-bottom: 20px; }
-    .contact-note { font-family: 'Noto Sans KR', sans-serif; font-size: 0.85rem; font-weight: 400; color: var(--ink-soft); line-height: 1.8; }
+    .contact-phone { font-family: var(--font-main); font-size: 0.9rem; font-weight: 400; color: var(--ink-soft); margin-bottom: 20px; }
+    .contact-note { font-family: var(--font-main); font-size: 0.85rem; font-weight: 400; color: var(--ink-soft); line-height: 1.8; }
     .sns-list { list-style: none; display: flex; flex-direction: column; }
     .sns-list li a { display: flex; align-items: center; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--line); text-decoration: none; color: var(--ink); transition: transform 0.2s, color 0.2s; }
     .sns-list li a:hover { transform: translateX(6px); color: var(--accent); }
-    .sns-icon { width: 36px; height: 36px; border-radius: 50%; background: var(--bg2); display: flex; align-items: center; justify-content: center; font-size: 0.9rem; flex-shrink: 0; }
-    .sns-name { font-family: 'Noto Sans KR', sans-serif; font-size: 0.88rem; font-weight: 400; letter-spacing: 0.04em; }
-    .sns-handle { font-family: 'Noto Sans KR', sans-serif; font-size: 0.75rem; font-weight: 400; color: var(--ink-soft); margin-top: 2px; }
+    .sns-icon { width: 36px; height: 36px; border-radius: 50%; background: var(--bg2); border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; font-size: 0.9rem; flex-shrink: 0; }
+    .sns-name { font-family: var(--font-main); font-size: 0.88rem; font-weight: 600; letter-spacing: 0.04em; }
+    .sns-handle { font-family: var(--font-main); font-size: 0.75rem; font-weight: 400; color: var(--ink-soft); margin-top: 2px; }
 
-    footer { text-align: center; padding: 48px 40px; font-family: 'Noto Sans KR', sans-serif; font-size: 0.75rem; font-weight: 400; color: var(--ink-soft); letter-spacing: 0.08em; position: relative; z-index: 1; }
+    footer { text-align: center; padding: 48px 40px; font-family: var(--font-main); font-size: 0.75rem; font-weight: 400; color: var(--ink-soft); letter-spacing: 0.08em; position: relative; z-index: 1; }
     .ch-link { color: inherit; text-decoration: none; border-bottom: 1px solid var(--line); transition: color 0.2s, border-color 0.2s; }
     .ch-link:hover { color: var(--accent); border-color: var(--accent); }
 
@@ -226,12 +239,17 @@
       nav ul { gap: 14px; flex-wrap: wrap; }
       nav ul li a { font-size: 0.74rem; }
       section { padding: 80px 24px; }
+      .wc-bg svg { opacity: 0.13; filter: blur(64px); }
+      .blob1 { width: 92vw; }
+      .blob2 { width: 82vw; right: -30%; }
+      .blob3 { width: 78vw; left: -18%; }
+      .blob4 { display: none; }
       .eq-grid, .cred-grid { grid-template-columns: 1fr; }
       .career-item { grid-template-columns: 1fr; gap: 8px; }
       .career-item::before { display: none; }
       .contact-wrap { grid-template-columns: 1fr; gap: 40px; }
       .hero { padding-top: 140px; }
-      .hero h1 { font-size: 2.4rem; }
+      .hero h1 { font-size: 2.55rem; }
       .hero-inner { flex-direction: column-reverse; gap: 36px; align-items: flex-start; }
       .hero-photo img { width: 200px; height: 240px; }
       .video-embed { height: 220px; }
@@ -251,10 +269,10 @@
 <body>
 
 <div class="wc-bg">
-  <svg class="blob1" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg"><path d="M300,80 C420,60 540,160 520,280 C500,400 380,480 260,460 C140,440 60,340 80,220 C100,100 180,100 300,80Z" fill="rgba(147,174,192,0.6)"/></svg>
-  <svg class="blob2" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg"><path d="M280,100 C400,80 500,180 480,310 C460,440 340,520 210,490 C80,460 40,340 70,210 C100,80 160,120 280,100Z" fill="rgba(210,175,150,0.5)"/></svg>
-  <svg class="blob3" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg"><path d="M310,90 C430,70 530,180 510,300 C490,420 360,500 240,470 C120,440 70,320 100,200 C130,80 190,110 310,90Z" fill="rgba(143,170,148,0.5)"/></svg>
-  <svg class="blob4" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg"><path d="M290,110 C410,90 500,200 470,320 C440,440 310,510 190,470 C70,430 50,300 90,180 C130,60 170,130 290,110Z" fill="rgba(178,162,190,0.45)"/></svg>
+  <svg class="blob1" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg"><path d="M300,80 C420,60 540,160 520,280 C500,400 380,480 260,460 C140,440 60,340 80,220 C100,100 180,100 300,80Z" fill="rgba(198,164,132,0.46)"/></svg>
+  <svg class="blob2" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg"><path d="M280,100 C400,80 500,180 480,310 C460,440 340,520 210,490 C80,460 40,340 70,210 C100,80 160,120 280,100Z" fill="rgba(245,220,186,0.42)"/></svg>
+  <svg class="blob3" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg"><path d="M310,90 C430,70 530,180 510,300 C490,420 360,500 240,470 C120,440 70,320 100,200 C130,80 190,110 310,90Z" fill="rgba(0,112,74,0.17)"/></svg>
+  <svg class="blob4" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg"><path d="M290,110 C410,90 500,200 470,320 C440,440 310,510 190,470 C70,430 50,300 90,180 C130,60 170,130 290,110Z" fill="rgba(126,181,232,0.12)"/></svg>
 </div>
 
 <nav>
@@ -590,10 +608,10 @@
   <section id="dashboard">
     <p class="sec-label">Tools</p>
     <h2 class="sec-title">YouTube 채널 분석 도구</h2>
-    <p style="font-family:'Noto Sans KR',sans-serif; font-size:0.95rem; font-weight:400; color:var(--ink-soft); line-height:2.0; max-width:640px;">
+    <p style="font-family:var(--font-main); font-size:0.95rem; font-weight:400; color:var(--ink-soft); line-height:2.0; max-width:640px;">
       YouTube 스튜디오에서 내보낸 데이터를 업로드하면 채널 성과를 자동으로 분석해주는 도구입니다. 누구나 무료로 사용할 수 있습니다.
     </p>
-    <a href="https://hammedia.github.io/youtube-channel-report-codex" target="_blank" style="display:inline-block; margin-top:24px; padding:12px 28px; background:var(--accent); color:#fff; font-family:'Noto Sans KR',sans-serif; font-size:0.85rem; font-weight:400; letter-spacing:0.06em; text-decoration:none; border-radius:4px;">대시보드 열기 →</a>
+    <a href="https://hammedia.github.io/youtube-channel-report-codex" target="_blank" style="display:inline-block; margin-top:24px; padding:13px 28px; background:var(--accent); color:#fff; font-family:var(--font-main); font-size:0.9rem; font-weight:600; letter-spacing:0.06em; text-decoration:none; border-radius:999px; box-shadow:0 14px 30px rgba(122,92,71,0.16);">대시보드 열기 →</a>
   </section>
 
   <section id="contact">
