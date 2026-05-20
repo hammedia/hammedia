@@ -3,260 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>함동민 — 햄PD | 1인미디어 프로듀서</title>
+  <title>함동민 — 햄PD | HAM MEDIA</title>
+  <meta name="description" content="콘텐츠로 신뢰를 만드는 1인미디어 프로듀서 함동민(햄PD). 기획·촬영·편집·퍼블리싱 전 과정 단독 수행. 5개 채널 운영, 누적 조회수 1,969만.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="함동민 — 햄PD | HAM MEDIA">
+  <meta property="og:description" content="콘텐츠로 신뢰를 만드는 1인미디어 프로듀서. 기획부터 퍼블리싱까지 혼자서 전부. 5개 채널, 누적 조회수 1,969만.">
+  <meta property="og:image" content="https://hammedia.github.io/hammedia/profile.JPG">
+  <meta property="og:url" content="https://hammedia.github.io/hammedia/">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="함동민 — 햄PD | HAM MEDIA">
+  <meta name="twitter:description" content="콘텐츠로 신뢰를 만드는 1인미디어 프로듀서. 기획부터 퍼블리싱까지 혼자서 전부.">
+  <meta name="twitter:image" content="https://hammedia.github.io/hammedia/profile.JPG">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
   <script src="https://unpkg.com/lucide@latest"></script>
-  <link rel="preconnect" href="https://cdn.jsdelivr.net">
-  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
-  <style>
-    :root {
-      --bg: #F9F7F3;
-      --bg2: #F5F3EE;
-      --surface: rgba(255,253,249,0.72);
-      --ink: #1C1814;
-      --ink-soft: #4A423C;
-      --accent: #7A5C47;
-      --accent2: #00704A;
-      --accent-blue: #7EB5E8;
-      --line: rgba(28,24,20,0.13);
-      --shadow-soft: 0 18px 48px rgba(44,34,26,0.055);
-      --font-main: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-    }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      background: var(--bg); color: var(--ink);
-      font-family: var(--font-main); font-weight: 400;
-      line-height: 1.9; overflow-x: hidden;
-    }
-    .wc-bg { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; background: radial-gradient(circle at 12% 10%, rgba(245,243,238,0.72), transparent 28%); }
-    .wc-bg svg { position: absolute; filter: blur(78px); opacity: 0.22; }
-    .blob1 { top: -10%; left: -10%; width: 60vw; }
-    .blob2 { top: 30%; right: -15%; width: 55vw; }
-    .blob3 { bottom: -10%; left: 10%; width: 50vw; }
-    .blob4 { top: 60%; left: 35%; width: 40vw; }
-    main { position: relative; z-index: 1; }
-    section { max-width: 880px; margin: 0 auto; padding: 100px 40px; }
-    .divider { max-width: 880px; margin: 0 auto; padding: 0 40px; border: none; border-top: 1px solid var(--line); }
-
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 22px 48px; background: rgba(249,247,243,0.92);
-      backdrop-filter: blur(12px); border-bottom: 1px solid var(--line);
-    }
-    .nav-logo { font-family: var(--font-main); font-weight: 700; font-size: 1rem; color: var(--ink); text-decoration: none; letter-spacing: 0.05em; }
-    nav ul { list-style: none; display: flex; gap: 32px; }
-    nav ul li a { font-family: var(--font-main); font-size: 0.8rem; font-weight: 500; color: var(--ink-soft); text-decoration: none; letter-spacing: 0.06em; transition: color 0.25s, border-color 0.25s; border-bottom: 1px solid transparent; }
-    nav ul li a:hover { color: var(--accent); border-color: rgba(122,92,71,0.38); }
-    .lang-switch { display: flex; gap: 8px; align-items: center; }
-    .lang-btn {
-      font-family: var(--font-main);
-      font-size: 0.75rem;
-      font-weight: 600;
-      padding: 6px 14px;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      background: rgba(255,253,249,0.58);
-      color: var(--ink-soft);
-      cursor: pointer;
-      text-decoration: none;
-      transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.2s;
-    }
-    .lang-btn.active {
-      background: var(--accent);
-      color: #fff;
-      border-color: var(--accent);
-    }
-    .lang-btn:hover { color: var(--accent); border-color: rgba(122,92,71,0.45); transform: translateY(-1px); }
-    .lang-btn.active:hover { color: #fff; }
-    .lang-btn:focus-visible,
-    .contact-email:focus-visible,
-    .sns-list li a:focus-visible,
-    .ch-link:focus-visible {
-      outline: 2px solid var(--accent-blue);
-      outline-offset: 3px;
-    }
-
-    .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding-top: 120px; }
-    .hero-inner { display: flex; align-items: flex-start; justify-content: space-between; gap: 60px; }
-    .hero-text { flex: 1; }
-    .hero-photo { flex-shrink: 0; }
-    .hero-photo img {
-      width: 260px;
-      height: 320px;
-      object-fit: cover;
-      object-position: top;
-      border-radius: 12px;
-      -webkit-mask-image: linear-gradient(to bottom, black 55%, transparent 100%);
-      mask-image: linear-gradient(to bottom, black 55%, transparent 100%);
-    }
-    .hero-label { font-family: var(--font-main); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.18em; color: var(--accent); margin-bottom: 28px; text-transform: uppercase; }
-    .hero h1 { font-size: 4.8rem; font-weight: 800; line-height: 1.12; letter-spacing: 0; margin-bottom: 12px; }
-    .hero h1 em { font-style: normal; color: var(--accent); }
-    .hero-sub { font-family: var(--font-main); font-size: 0.95rem; font-weight: 500; color: var(--ink-soft); letter-spacing: 0.06em; margin-bottom: 48px; }
-    .hero-desc { max-width: 560px; font-size: 1.05rem; font-weight: 400; line-height: 2.0; color: var(--ink-soft); margin-bottom: 40px; }
-    .hero-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 56px; }
-    .hero-tag { font-family: var(--font-main); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.08em; padding: 7px 16px; border: 1px solid rgba(122,92,71,0.22); border-radius: 999px; background: var(--surface); color: var(--ink-soft); }
-    .hero-scroll { display: flex; align-items: center; gap: 12px; font-family: var(--font-main); font-size: 0.75rem; letter-spacing: 0.12em; color: var(--ink-soft); }
-    .hero-scroll::before { content: ''; display: block; width: 40px; height: 1px; background: var(--ink-soft); opacity: 0.6; }
-    [data-lucide] {
-      width: 18px;
-      height: 18px;
-      stroke: var(--accent);
-      stroke-width: 1.5;
-      vertical-align: middle;
-    }
-
-    .sec-label { font-family: var(--font-main); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.22em; color: var(--accent); text-transform: uppercase; margin-bottom: 16px; }
-    .sec-title { font-size: 2rem; font-weight: 700; letter-spacing: 0; margin-bottom: 56px; line-height: 1.3; }
-    .about-body { max-width: 640px; }
-    .about-body p { font-family: var(--font-main); font-size: 0.95rem; font-weight: 400; color: var(--ink-soft); line-height: 2.0; margin-bottom: 20px; }
-    .about-body p:last-child { margin-bottom: 0; font-weight: 500; color: var(--ink); }
-    .about-body blockquote {
-      font-family: var(--font-main);
-      font-size: 0.9rem;
-      font-weight: 400;
-      color: var(--ink-soft);
-      border-left: 2px solid var(--accent);
-      padding-left: 16px;
-      margin-top: 20px;
-      font-style: italic;
-    }
-
-    .channel-group { margin-bottom: 48px; }
-    .channel-group-label { font-family: var(--font-main); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.15em; color: var(--accent2); margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
-    .channel-group-label::after { content: ''; flex: 1; height: 1px; background: var(--accent2); opacity: 0.4; }
-    .channel-card { display: flex; align-items: flex-start; gap: 24px; padding: 28px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); box-shadow: var(--shadow-soft); transition: transform 0.2s, border-color 0.2s, background 0.2s; margin-bottom: 16px; }
-    .channel-card:last-child { margin-bottom: 0; }
-    .channel-card:hover { transform: translateY(-2px); border-color: rgba(122,92,71,0.24); background: rgba(255,253,249,0.86); }
-    .channel-num { font-family: var(--font-main); font-size: 0.75rem; font-weight: 600; color: var(--accent); min-width: 28px; padding-top: 4px; }
-    .channel-info { flex: 1; min-width: 0; }
-    .channel-info h3 { font-size: 1.08rem; font-weight: 700; margin-bottom: 8px; }
-    .channel-info p { font-family: var(--font-main); font-size: 0.88rem; font-weight: 400; color: var(--ink-soft); line-height: 1.75; }
-    .channel-tag { display: inline-block; font-family: var(--font-main); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.08em; padding: 4px 12px; border-radius: 999px; margin-top: 10px; }
-    .tag-personal { background: rgba(122,92,71,0.10); color: var(--accent); }
-    .tag-client { background: rgba(0,112,74,0.10); color: var(--accent2); }
-    .video-embed {
-      margin-top: 16px;
-      border-radius: 12px;
-      overflow: hidden;
-      width: 100%;
-      max-width: 560px;
-      height: 315px;
-      display: block;
-      position: relative;
-      cursor: pointer;
-      background: #000;
-    }
-    .video-embed iframe { width: 100%; height: 100%; border: none; display: block; }
-    .video-thumb {
-      width: 100%;
-      height: 100%;
-      background-size: cover;
-      background-position: center;
-      transition: filter 0.25s;
-    }
-    .video-embed::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to bottom, rgba(0,0,0,0) 55%, rgba(0,0,0,0.35) 100%);
-      pointer-events: none;
-    }
-    .video-embed:hover .video-thumb { filter: brightness(0.82); }
-    .video-play {
-      position: absolute;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      width: 64px; height: 64px;
-      border-radius: 50%;
-      background: rgba(220, 32, 32, 0.92);
-      border: none;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background 0.2s, transform 0.2s;
-      z-index: 2;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-    }
-    .video-embed:hover .video-play {
-      background: rgb(220, 32, 32);
-      transform: translate(-50%, -50%) scale(1.08);
-    }
-    .video-play svg {
-      width: 24px; height: 24px;
-      fill: white;
-      margin-left: 4px;
-    }
-
-    .eq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
-    .eq-block, .cred-block { background: rgba(245,243,238,0.72); border: 1px solid var(--line); border-radius: 12px; padding: 24px; box-shadow: 0 12px 30px rgba(44,34,26,0.035); }
-    .eq-block h3 { font-family: var(--font-main); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; color: var(--accent); text-transform: uppercase; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid var(--line); }
-    .eq-block ul { list-style: none; }
-    .eq-block ul li { font-family: var(--font-main); font-size: 0.88rem; font-weight: 400; color: var(--ink-soft); padding: 8px 0; border-bottom: 1px solid var(--line); display: flex; align-items: center; gap: 10px; }
-    .eq-block ul li::before { content: ''; width: 4px; height: 4px; border-radius: 50%; background: var(--accent); opacity: 0.7; flex-shrink: 0; }
-
-    .career-list { display: flex; flex-direction: column; }
-    .career-item { display: grid; grid-template-columns: 160px 1fr; gap: 32px; padding: 32px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); box-shadow: var(--shadow-soft); position: relative; margin-bottom: 18px; }
-    .career-item::before { content: ''; position: absolute; left: 184px; top: 24px; bottom: 24px; width: 1px; background: var(--line); }
-    .career-item:last-child { margin-bottom: 0; }
-    .career-year { font-family: var(--font-main); font-size: 0.78rem; font-weight: 700; color: var(--accent); padding-top: 4px; letter-spacing: 0.04em; line-height: 1.7; }
-    .career-year .duration { display: block; font-size: 0.72rem; font-weight: 400; color: var(--ink-soft); margin-top: 4px; }
-    .career-body h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 4px; }
-    .career-body .role { font-family: var(--font-main); font-size: 0.82rem; font-weight: 600; color: var(--accent); margin-bottom: 12px; letter-spacing: 0.03em; }
-    .career-body p { font-family: var(--font-main); font-size: 0.88rem; font-weight: 400; color: var(--ink-soft); line-height: 1.9; }
-    .career-awards { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
-    .career-award { font-family: var(--font-main); font-size: 0.7rem; font-weight: 600; padding: 5px 14px; background: rgba(122,92,71,0.10); border-radius: 999px; color: var(--accent); letter-spacing: 0.04em; }
-
-    .cred-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 32px; }
-    .cred-block h3 { font-family: var(--font-main); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; color: var(--accent); text-transform: uppercase; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid var(--line); }
-    .cred-block ul { list-style: none; }
-    .cred-block ul li { font-family: var(--font-main); font-size: 0.88rem; font-weight: 400; color: var(--ink-soft); padding: 8px 0; border-bottom: 1px solid var(--line); display: flex; align-items: center; gap: 10px; }
-    .cred-block ul li::before { content: ''; width: 4px; height: 4px; border-radius: 50%; background: var(--accent2); opacity: 0.8; flex-shrink: 0; }
-
-    .contact-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
-    .contact-email { font-size: 1rem; font-weight: 400; color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--accent); padding-bottom: 4px; transition: color 0.2s; display: inline-block; margin-bottom: 8px; }
-    .contact-email:hover { color: var(--accent); }
-    .contact-phone { font-family: var(--font-main); font-size: 0.9rem; font-weight: 400; color: var(--ink-soft); margin-bottom: 20px; }
-    .contact-note { font-family: var(--font-main); font-size: 0.85rem; font-weight: 400; color: var(--ink-soft); line-height: 1.8; }
-    .sns-list { list-style: none; display: flex; flex-direction: column; }
-    .sns-list li a { display: flex; align-items: center; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--line); text-decoration: none; color: var(--ink); transition: transform 0.2s, color 0.2s; }
-    .sns-list li a:hover { transform: translateX(6px); color: var(--accent); }
-    .sns-icon { width: 36px; height: 36px; border-radius: 50%; background: var(--bg2); border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; font-size: 0.9rem; flex-shrink: 0; }
-    .sns-name { font-family: var(--font-main); font-size: 0.88rem; font-weight: 600; letter-spacing: 0.04em; }
-    .sns-handle { font-family: var(--font-main); font-size: 0.75rem; font-weight: 400; color: var(--ink-soft); margin-top: 2px; }
-
-    footer { text-align: center; padding: 48px 40px; font-family: var(--font-main); font-size: 0.75rem; font-weight: 400; color: var(--ink-soft); letter-spacing: 0.08em; position: relative; z-index: 1; }
-    .ch-link { color: inherit; text-decoration: none; border-bottom: 1px solid var(--line); transition: color 0.2s, border-color 0.2s; }
-    .ch-link:hover { color: var(--accent); border-color: var(--accent); }
-
-    .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
-    .fade-up.visible { opacity: 1; transform: translateY(0); }
-
-    @media (max-width: 700px) {
-      nav { padding: 18px 20px; flex-wrap: wrap; gap: 12px; }
-      nav ul { gap: 14px; flex-wrap: wrap; }
-      nav ul li a { font-size: 0.74rem; }
-      section { padding: 80px 24px; }
-      .wc-bg svg { opacity: 0.13; filter: blur(64px); }
-      .blob1 { width: 92vw; }
-      .blob2 { width: 82vw; right: -30%; }
-      .blob3 { width: 78vw; left: -18%; }
-      .blob4 { display: none; }
-      .eq-grid, .cred-grid { grid-template-columns: 1fr; }
-      .career-item { grid-template-columns: 1fr; gap: 8px; }
-      .career-item::before { display: none; }
-      .contact-wrap { grid-template-columns: 1fr; gap: 40px; }
-      .hero { padding-top: 140px; }
-      .hero h1 { font-size: 2.55rem; }
-      .hero-inner { flex-direction: column-reverse; gap: 36px; align-items: flex-start; }
-      .hero-photo img { width: 200px; height: 240px; }
-      .video-embed { height: 220px; }
-      .video-play { width: 52px; height: 52px; }
-      .video-play svg { width: 20px; height: 20px; }
-    }
-  </style>
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-TEBKMGWPQS"></script>
   <script>
@@ -265,445 +26,1018 @@
     gtag('js', new Date());
     gtag('config', 'G-TEBKMGWPQS');
   </script>
+  <style>
+    :root {
+      --pearl:   #F9F7F3;
+      --ivory:   #F5F3EE;
+      --warm:    #1C1814;
+      --muted:   #4A423C;
+      --accent:  #7A5C47;
+      --green:   #00704A;
+      --sky:     #7EB5E8;
+      --yellow:  #F4DC59;
+      --line:    rgba(28,24,20,0.10);
+      --shadow:  0 20px 50px rgba(44,34,26,0.07);
+      --font:    'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+      --serif:   'Noto Serif KR', 'Georgia', serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--pearl);
+      color: var(--warm);
+      font-family: var(--font);
+      font-size: 16px;
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(249,247,243,0.94);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--line);
+      padding: 0 3rem;
+      height: 58px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo {
+      font-size: 13px; font-weight: 800;
+      letter-spacing: 0.08em; color: var(--warm);
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      font-size: 12px; font-weight: 500;
+      color: var(--muted); text-decoration: none;
+      letter-spacing: 0.05em;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+    .nav-lang { display: flex; gap: .6rem; }
+    .lang-btn {
+      font-size: 11px; font-weight: 600;
+      padding: 5px 12px; border-radius: 999px;
+      border: 1px solid var(--line);
+      background: transparent; color: var(--muted);
+      text-decoration: none; cursor: pointer;
+      transition: all .2s;
+    }
+    .lang-btn.active, .lang-btn:hover {
+      background: var(--accent); color: #fff;
+      border-color: var(--accent);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      max-width: 900px; margin: 0 auto;
+      padding: 5rem 3rem 4rem;
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 4rem;
+      align-items: center;
+      min-height: 88vh;
+      position: relative;
+    }
+    .hero::after {
+      content: '';
+      position: absolute; bottom: 0; left: 3rem; right: 3rem;
+      height: 1px; background: var(--line);
+    }
+    .hero-accent-line {
+      width: 44px; height: 4px;
+      background: var(--sky); border-radius: 2px;
+      margin-bottom: 2rem;
+      animation: fadeUp .5s .05s both;
+    }
+    .hero-label {
+      font-size: 11px; font-weight: 700;
+      letter-spacing: .18em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 1rem;
+      animation: fadeUp .5s .1s both;
+    }
+    .hero-title {
+      font-family: var(--serif);
+      font-size: clamp(2.6rem, 5.5vw, 4rem);
+      font-weight: 700;
+      line-height: 1.18;
+      letter-spacing: -0.01em;
+      color: var(--warm);
+      margin-bottom: 1.5rem;
+      animation: fadeUp .5s .16s both;
+    }
+    .hero-title .sky { color: var(--sky); }
+    .hero-title .underline-yellow {
+      position: relative; display: inline;
+    }
+    .hero-title .underline-yellow::after {
+      content: '';
+      position: absolute; left: 0; bottom: -3px;
+      width: 100%; height: 5px;
+      background: var(--yellow); border-radius: 2px;
+    }
+    .hero-sub {
+      font-size: 1rem; color: var(--muted);
+      margin-bottom: 3rem; line-height: 1.8;
+      animation: fadeUp .5s .22s both;
+    }
+
+    /* Stats */
+    .hero-stats {
+      display: flex; gap: 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 2.5rem;
+      animation: fadeUp .5s .28s both;
+    }
+    .hero-stat { flex: 1; padding: 1.4rem 1.4rem 1.4rem 0; }
+    .hero-stat + .hero-stat {
+      padding-left: 1.4rem;
+      border-left: 1px solid var(--line);
+    }
+    .stat-n {
+      font-size: 1.75rem; font-weight: 800;
+      color: var(--warm); letter-spacing: -0.02em;
+      line-height: 1; margin-bottom: .35rem;
+      white-space: nowrap;
+    }
+    .stat-l {
+      font-size: 11px; font-weight: 700;
+      color: var(--sky); margin-bottom: .15rem;
+      letter-spacing: .04em;
+    }
+    .stat-d { font-size: 11px; color: var(--muted); }
+
+    /* Hero quote */
+    .hero-quote {
+      border-left: 4px solid var(--yellow);
+      padding: .85rem 1.1rem;
+      font-size: .9rem; color: var(--warm);
+      font-style: italic; line-height: 1.75;
+      background: var(--ivory);
+      border-radius: 0 6px 6px 0;
+      max-width: 520px;
+      animation: fadeUp .5s .34s both;
+    }
+
+    /* Hero photo */
+    .hero-photo { animation: fadeUp .6s .2s both; }
+    .hero-photo img {
+      width: 100%; max-width: 280px;
+      height: 340px;
+      object-fit: cover; object-position: top center;
+      border-radius: 12px;
+      display: block;
+      -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+      mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+      box-shadow: var(--shadow);
+    }
+
+    /* ── 공통 섹션 ── */
+    .section {
+      max-width: 900px; margin: 0 auto;
+      padding: 5rem 3rem;
+      border-bottom: 1px solid var(--line);
+    }
+    .section:last-of-type { border-bottom: none; }
+
+    .sec-label {
+      font-size: 10px; font-weight: 700;
+      letter-spacing: .18em; text-transform: uppercase;
+      color: var(--sky); margin-bottom: .6rem;
+    }
+    .sec-title {
+      font-family: var(--serif);
+      font-size: 1.85rem; font-weight: 700;
+      letter-spacing: -.01em;
+      color: var(--warm); margin-bottom: 2.5rem;
+      line-height: 1.3;
+    }
+
+    /* ── WHAT I DO ── */
+    .what-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .what-item {
+      background: var(--pearl);
+      padding: 1.6rem 1.2rem;
+      transition: background .2s;
+    }
+    .what-item:hover { background: var(--ivory); }
+    .what-icon {
+      width: 36px; height: 36px;
+      border-radius: 8px;
+      background: rgba(126,181,232,.12);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1rem;
+    }
+    .what-icon [data-lucide] {
+      width: 18px; height: 18px;
+      stroke: var(--sky); stroke-width: 1.8;
+    }
+    .what-name {
+      font-size: 13px; font-weight: 700;
+      color: var(--warm); margin-bottom: .4rem;
+      line-height: 1.4;
+    }
+    .what-desc {
+      font-size: 12px; color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* ── ABOUT ── */
+    .about-chapters { max-width: 680px; }
+    .about-chapter { margin-bottom: 2.5rem; }
+    .about-chapter:last-child { margin-bottom: 0; }
+    .chapter-title {
+      font-size: .82rem; font-weight: 700;
+      color: var(--accent); margin-bottom: .9rem;
+      display: flex; align-items: center; gap: .6rem;
+      letter-spacing: .04em;
+    }
+    .chapter-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--sky); flex-shrink: 0;
+    }
+    .chapter-dot.green { background: var(--green); }
+    .chapter-dot.yellow { background: var(--yellow); }
+    .about-chapter p {
+      font-size: .95rem; color: var(--muted);
+      line-height: 2.0; margin-bottom: .75rem;
+    }
+    .about-chapter p:last-child { margin-bottom: 0; }
+    .about-chapter p strong { color: var(--warm); font-weight: 600; }
+    .blockq {
+      border-left: 4px solid var(--yellow);
+      padding: .85rem 1.1rem;
+      background: var(--ivory);
+      border-radius: 0 6px 6px 0;
+      font-size: .9rem; color: var(--warm);
+      font-style: italic; line-height: 1.75;
+      margin: 1.2rem 0;
+    }
+    .blockq.sky-q { border-left-color: var(--sky); }
+    .blockq.green-q { border-left-color: var(--green); }
+
+    /* ── CHANNELS ── */
+    .ch-table-wrap { overflow-x: auto; margin-bottom: 2.5rem; }
+    .ch-table {
+      width: 100%; border-collapse: collapse;
+      font-size: 13.5px;
+    }
+    .ch-table th {
+      background: var(--warm); color: #fff;
+      font-weight: 600; font-size: 12px;
+      padding: .7rem 1rem; text-align: left;
+    }
+    .ch-table th:not(:first-child) { text-align: center; }
+    .ch-table td {
+      padding: .65rem 1rem;
+      border-bottom: 1px solid var(--line);
+      color: var(--warm);
+    }
+    .ch-table td:not(:first-child) { text-align: center; color: var(--muted); }
+    .ch-table tr:nth-child(even) td { background: var(--ivory); }
+    .ch-table tr:nth-child(odd) td { background: var(--pearl); }
+    .ch-note {
+      font-size: 11px; color: var(--muted);
+      margin-top: .5rem; font-style: italic;
+    }
+
+    /* Channel cards */
+    .ch-cards {
+      display: flex; flex-direction: column;
+      gap: 1px; background: var(--line);
+      border: 1px solid var(--line);
+      border-radius: 10px; overflow: hidden;
+    }
+    .ch-card {
+      background: var(--pearl);
+      padding: 1.1rem 1.3rem;
+      display: flex; gap: 1rem; align-items: flex-start;
+      transition: background .2s;
+    }
+    .ch-card:hover { background: var(--ivory); }
+    .ch-tag {
+      font-size: 10px; font-weight: 700;
+      color: #fff; background: var(--sky);
+      padding: .2rem .55rem; border-radius: 4px;
+      white-space: nowrap; margin-top: .15rem;
+      flex-shrink: 0; letter-spacing: .04em;
+    }
+    .ch-tag.green-tag { background: var(--green); }
+    .ch-card-name {
+      font-size: 14px; font-weight: 700;
+      color: var(--warm); margin-bottom: .2rem;
+    }
+    .ch-card-name a {
+      color: inherit; text-decoration: none;
+    }
+    .ch-card-name a:hover { color: var(--sky); }
+    .ch-card-desc { font-size: 12.5px; color: var(--muted); line-height: 1.6; }
+
+    /* Video embed */
+    .video-wrap { margin-top: 1rem; width: 100%; }
+    .ch-card-with-video { flex-direction: column; align-items: stretch; }
+    .ch-card-with-video .ch-card-top {
+      display: flex; gap: 1rem; align-items: flex-start;
+    }
+    .video-embed {
+      border-radius: 10px; overflow: hidden;
+      width: 100%; max-width: 500px; height: 280px;
+      position: relative; cursor: pointer;
+      background: #000; display: block;
+    }
+    .video-embed iframe { width: 100%; height: 100%; border: none; display: block; }
+    .video-thumb {
+      width: 100%; height: 100%;
+      background-size: cover; background-position: center;
+      transition: filter .25s;
+    }
+    .video-embed:hover .video-thumb { filter: brightness(.82); }
+    .video-embed::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0) 55%, rgba(0,0,0,.32) 100%);
+      pointer-events: none;
+    }
+    .video-play {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
+      width: 58px; height: 58px; border-radius: 50%;
+      background: rgba(220,32,32,.92); border: none;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      transition: transform .2s, background .2s;
+      z-index: 2; box-shadow: 0 4px 20px rgba(0,0,0,.28);
+    }
+    .video-embed:hover .video-play {
+      transform: translate(-50%,-50%) scale(1.08);
+    }
+    .video-play svg { width: 22px; height: 22px; fill: #fff; margin-left: 3px; }
+
+    /* ── EQUIPMENT ── */
+    .eq-intro {
+      font-size: .92rem; color: var(--muted);
+      line-height: 1.9; max-width: 560px;
+      margin-bottom: 2rem;
+    }
+    .eq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .eq-block {
+      background: var(--ivory);
+      border: 1px solid var(--line);
+      border-radius: 10px; padding: 1.4rem;
+    }
+    .eq-block-title {
+      font-size: 11px; font-weight: 700;
+      color: var(--sky); margin-bottom: .75rem;
+      letter-spacing: .08em; text-transform: uppercase;
+    }
+    .eq-list { list-style: none; }
+    .eq-list li {
+      font-size: 13.5px; color: var(--muted);
+      padding: .3rem 0; border-bottom: 1px solid var(--line);
+      display: flex; align-items: center; gap: .5rem;
+    }
+    .eq-list li::before {
+      content: '';
+      width: 4px; height: 4px; border-radius: 50%;
+      background: var(--sky); flex-shrink: 0;
+    }
+
+    /* ── CAREER ── */
+    .timeline { position: relative; padding-left: 1.6rem; }
+    .timeline::before {
+      content: '';
+      position: absolute; left: 0; top: .4rem; bottom: .4rem;
+      width: 2px; background: var(--line);
+    }
+    .tl-item { position: relative; margin-bottom: 2.6rem; }
+    .tl-item:last-child { margin-bottom: 0; }
+    .tl-dot {
+      position: absolute; left: -1.75rem; top: .35rem;
+      width: 10px; height: 10px; border-radius: 50%;
+      background: var(--sky); border: 2px solid var(--pearl);
+    }
+    .tl-dot.green { background: var(--green); }
+    .tl-dot.yellow { background: var(--yellow); }
+    .tl-period {
+      font-size: 11px; color: var(--sky);
+      font-weight: 700; margin-bottom: .25rem;
+    }
+    .tl-role { font-size: 15px; font-weight: 700; color: var(--warm); margin-bottom: .15rem; }
+    .tl-company { font-size: 13px; font-weight: 600; color: var(--muted); margin-bottom: .6rem; }
+    .tl-desc { font-size: 13.5px; color: var(--muted); line-height: 1.85; }
+    .tl-badges { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .65rem; }
+    .tl-badge {
+      font-size: 11px; font-weight: 600;
+      padding: .2rem .6rem; border-radius: 4px;
+      background: var(--ivory); color: var(--muted);
+      border: 1px solid var(--line);
+    }
+    .tl-badge.sky { background: rgba(126,181,232,.12); color: #5A9DD4; border-color: rgba(126,181,232,.3); }
+    .tl-badge.green { background: rgba(0,112,74,.1); color: var(--green); border-color: rgba(0,112,74,.25); }
+
+    /* ── SKILLS ── */
+    .cred-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; }
+    .cred-block {
+      background: var(--ivory);
+      border: 1px solid var(--line);
+      border-radius: 10px; padding: 1.4rem;
+    }
+    .cred-title {
+      font-size: 11px; font-weight: 700;
+      color: var(--sky); margin-bottom: .75rem;
+      letter-spacing: .08em; text-transform: uppercase;
+      padding-bottom: .6rem; border-bottom: 1px solid var(--line);
+    }
+    .cred-list { list-style: none; }
+    .cred-list li {
+      font-size: 13.5px; color: var(--muted);
+      padding: .35rem 0; border-bottom: 1px solid var(--line);
+      display: flex; align-items: center; gap: .5rem;
+    }
+    .cred-list li:last-child { border-bottom: none; }
+    .cred-list li::before {
+      content: '';
+      width: 4px; height: 4px; border-radius: 50%;
+      background: var(--green); flex-shrink: 0;
+    }
+
+    /* ── CONTACT CTA ── */
+    .cta-heading {
+      font-family: var(--serif);
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 700; line-height: 1.35;
+      letter-spacing: -.01em; margin-bottom: .75rem;
+    }
+    .cta-heading .sky { color: var(--sky); }
+    .cta-sub {
+      font-size: .95rem; color: var(--muted);
+      margin-bottom: 2.5rem; max-width: 480px;
+      line-height: 1.9;
+    }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+    .contact-rows { display: flex; flex-direction: column; gap: .75rem; }
+    .contact-row { display: flex; align-items: center; gap: 1rem; }
+    .contact-key {
+      font-size: 12px; font-weight: 700;
+      color: var(--warm); min-width: 70px;
+    }
+    .contact-val {
+      font-size: 14px; color: var(--sky);
+      text-decoration: none;
+      word-break: break-all;
+    }
+    .contact-val:hover { text-decoration: underline; }
+    .sns-list { list-style: none; }
+    .sns-list li a {
+      display: flex; align-items: center; gap: 14px;
+      padding: 13px 0; border-bottom: 1px solid var(--line);
+      text-decoration: none; color: var(--warm);
+      transition: transform .2s, color .2s;
+    }
+    .sns-list li a:hover { transform: translateX(5px); color: var(--sky); }
+    .sns-icon {
+      width: 34px; height: 34px; border-radius: 50%;
+      background: var(--ivory); border: 1px solid var(--line);
+      display: flex; align-items: center; justify-content: center;
+      font-size: .85rem; flex-shrink: 0;
+      color: var(--muted);
+    }
+    .sns-name { font-size: 13px; font-weight: 600; }
+    .sns-handle { font-size: 11px; color: var(--muted); margin-top: 1px; }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center; padding: 2.5rem 3rem;
+      font-size: 11px; color: var(--muted);
+      letter-spacing: .08em;
+      border-top: 1px solid var(--line);
+    }
+
+    /* ── FADE-UP ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade-up { opacity: 0; transform: translateY(22px); transition: opacity .7s ease, transform .7s ease; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 760px) {
+      nav { padding: 0 1.25rem; }
+      .nav-links { display: none; }
+      .hero { grid-template-columns: 1fr; padding: 3.5rem 1.5rem 3rem; gap: 2.5rem; min-height: auto; }
+      .hero-photo { order: -1; }
+      .hero-photo img { width: 160px; height: 200px; }
+      .hero-stats { flex-direction: column; }
+      .hero-stat + .hero-stat { border-left: none; border-top: 1px solid var(--line); padding-left: 0; padding-top: 1.2rem; }
+      .section { padding: 3.5rem 1.5rem; }
+      .what-grid { grid-template-columns: 1fr 1fr; }
+      .eq-grid, .cred-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .hero-title { font-size: 2.4rem; }
+    }
+  </style>
 </head>
 <body>
 
-<div class="wc-bg">
-  <svg class="blob1" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg"><path d="M300,80 C420,60 540,160 520,280 C500,400 380,480 260,460 C140,440 60,340 80,220 C100,100 180,100 300,80Z" fill="rgba(198,164,132,0.46)"/></svg>
-  <svg class="blob2" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg"><path d="M280,100 C400,80 500,180 480,310 C460,440 340,520 210,490 C80,460 40,340 70,210 C100,80 160,120 280,100Z" fill="rgba(245,220,186,0.42)"/></svg>
-  <svg class="blob3" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg"><path d="M310,90 C430,70 530,180 510,300 C490,420 360,500 240,470 C120,440 70,320 100,200 C130,80 190,110 310,90Z" fill="rgba(0,112,74,0.17)"/></svg>
-  <svg class="blob4" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg"><path d="M290,110 C410,90 500,200 470,320 C440,440 310,510 190,470 C70,430 50,300 90,180 C130,60 170,130 290,110Z" fill="rgba(126,181,232,0.12)"/></svg>
-</div>
-
+<!-- NAV -->
 <nav>
-  <a class="nav-logo" href="#">함동민 · 햄PD</a>
-  <ul>
+  <a class="nav-logo" href="#">HAM MEDIA</a>
+  <ul class="nav-links">
+    <li><a href="#what">하는 일</a></li>
     <li><a href="#about">소개</a></li>
     <li><a href="#channels">채널</a></li>
     <li><a href="#equipment">장비</a></li>
     <li><a href="#career">경력</a></li>
-    <li><a href="#credentials">역량</a></li>
-    <li><a href="#dashboard">분석도구</a></li>
-    <li><a href="#contact">연락처</a></li>
+    <li><a href="#skills">역량</a></li>
+    <li><a href="#contact">연락</a></li>
   </ul>
-  <div class="lang-switch">
-    <a href="./index.html" class="lang-btn active">🇰🇷 KR</a>
-    <a href="./index_jp.html" class="lang-btn">🇯🇵 JP</a>
+  <div class="nav-lang">
+    <a href="index.html" class="lang-btn active">🇰🇷 KR</a>
+    <a href="index_jp.html" class="lang-btn">🇯🇵 JP</a>
+    <a href="index_en.html" class="lang-btn">🇺🇸 EN</a>
   </div>
 </nav>
 
-<main>
-
-  <section class="hero">
-    <div class="hero-inner">
-      <div class="hero-text">
-        <p class="hero-label fade-up">1인미디어 프로듀서</p>
-        <h1 class="fade-up">함동민<br><em>햄PD</em></h1>
-        <p class="hero-sub fade-up">기획 · 촬영 · 편집 · 퍼블리싱 — 혼자서 전부</p>
-        <p class="hero-desc fade-up">
-          30년에 걸친 현장 경험을 콘텐츠로 설계합니다.<br>
-          스타벅스 14년, 레스토랑 창업 8년, 하이엔드 공간 기획을 거쳐<br>
-          지금은 5개 YouTube 채널을 혼자 기획·제작·운영하는 1인 미디어 프로듀서입니다.
-        </p>
-        <div class="hero-tags fade-up">
-          <span class="hero-tag">브랜드 스토리텔링</span>
-          <span class="hero-tag">고객 경험 설계</span>
-          <span class="hero-tag">1인미디어 제작</span>
-          <span class="hero-tag">하이엔드 오디오</span>
-          <span class="hero-tag">조직 문화 전파</span>
-        </div>
-        <div class="hero-scroll fade-up">scroll to explore</div>
-      </div>
-      <div class="hero-photo">
-        <img src="./profile.JPG" alt="함동민 햄PD">
-      </div>
-    </div>
-  </section>
-
-  <hr class="divider">
-
-  <section id="about">
-    <p class="sec-label">About</p>
-    <h2 class="sec-title">저는 이런 사람입니다</h2>
-    <div class="about-body">
-      <p>퇴사하던 날, 솔직히 막막했습니다.</p>
-      <p>50대가 넘어 백수가 되자 주변도 걱정했고, 나 역시 걱정했습니다. 기획도, 촬영도, 편집도 전부 몰랐습니다. 퇴사 후 Claude·ChatGPT·Gemini를 선생님 삼아 하나씩 독학했습니다. 완전히 새로운 세계였습니다.</p>
-      <p>무속 채널, 병원 채널, 오디오 채널. 하나씩 조심스럽게 계약했고, 지금은 5개 채널을 혼자 기획·촬영·편집·퍼블리싱합니다. 내가 만든 콘텐츠로 수익을 만들어가고 있습니다.</p>
-      <p>아무것도 모르는 상태에서 다시 시작했다는 사실 자체가, 저의 50대 인생 2막입니다.</p>
-      <p>아직 갈 길은 멉니다. 그래도 오늘도, 달립니다.</p>
-      <p><strong>포기하지 않으면, 끝난 게 아니니까요.</strong></p>
-      <blockquote>"스스로 설계한 삶을 자신이 옳다고 믿는 방식으로"</blockquote>
-    </div>
-  </section>
-
-  <section id="channels">
-    <p class="sec-label fade-up">Channels</p>
-    <h2 class="sec-title fade-up">운영 채널</h2>
-
-    <div class="channel-group fade-up">
-      <p class="channel-group-label">개인 채널</p>
-      <div class="channel-card">
-        <span class="channel-num"><i data-lucide="headphones"></i></span>
-        <div class="channel-info">
-          <h3><a href="https://www.youtube.com/@ookkio" target="_blank" class="ch-link">우리끼리오디오</a></h3>
-          <p>하이파이 오디오 전문 채널. 스피커 케이블 연결 영상 70K+ 뷰, Shorts 누적 3M+ 뷰. 일본·브라질·미국 시청자 중심의 국제적 오디오 커뮤니티.</p>
-          <span class="channel-tag tag-personal">오디오 · 하이파이</span>
-          <div class="video-embed" data-video-id="duw8G46JzwQ">
-            <div class="video-thumb" style="background-image:url('https://img.youtube.com/vi/duw8G46JzwQ/hqdefault.jpg')"></div>
-            <button class="video-play" aria-label="영상 재생"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
-          </div>
-        </div>
-      </div>
-      <div class="channel-card">
-        <span class="channel-num"><i data-lucide="flag"></i></span>
-        <div class="channel-info">
-          <h3><a href="https://www.youtube.com/channel/UCqy1LrWDKht1ACXTmtLShEg" target="_blank" class="ch-link">이번인생은경주다</a></h3>
-          <p>50대의 인생 재정비 서사를 담은 채널. 늦은 시작, 다시 달리는 삶을 주제로 같은 세대의 공감을 이끌어냅니다.</p>
-          <span class="channel-tag tag-personal">인생 · 재도전</span>
-          <div class="video-embed" data-video-id="jc0vNk4tjtM">
-            <div class="video-thumb" style="background-image:url('https://img.youtube.com/vi/jc0vNk4tjtM/hqdefault.jpg')"></div>
-            <button class="video-play" aria-label="영상 재생"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="channel-group fade-up">
-      <p class="channel-group-label">클라이언트 채널 관리</p>
-      <div class="channel-card">
-        <span class="channel-num"><i data-lucide="stethoscope"></i></span>
-        <div class="channel-info">
-          <h3><a href="https://www.youtube.com/channel/UC7nfli6RwhfkT8-L3tjcwPg" target="_blank" class="ch-link">성형외과전문의 김종명 (디바성형외과)</a></h3>
-          <p>의료 전문 채널. 안면거상·지방이식·실리프팅 등 장편 수술 정보 영상과 Shorts 시리즈 제작. YouTube 의료 전문가 배지 취득 목표.</p>
-          <span class="channel-tag tag-client">의료 · 성형외과</span>
-          <div class="video-embed" data-video-id="sgVzKxMxCEM">
-            <div class="video-thumb" style="background-image:url('https://img.youtube.com/vi/sgVzKxMxCEM/hqdefault.jpg')"></div>
-            <button class="video-play" aria-label="영상 재생"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
-          </div>
-        </div>
-      </div>
-      <div class="channel-card">
-        <span class="channel-num"><i data-lucide="moon-star"></i></span>
-        <div class="channel-info">
-          <h3><a href="https://www.youtube.com/channel/UCwI4qqT9ta850_Aak-0kP8Q" target="_blank" class="ch-link">광명천신보살TV</a></h3>
-          <p>무속·영성 콘텐츠 채널. 시청자 공감 기반의 스토리텔링 운영.</p>
-          <span class="channel-tag tag-client">영성 · 무속</span>
-          <div class="video-embed" data-video-id="f5bZ-rKDITM">
-            <div class="video-thumb" style="background-image:url('https://img.youtube.com/vi/f5bZ-rKDITM/hqdefault.jpg')"></div>
-            <button class="video-play" aria-label="영상 재생"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
-          </div>
-        </div>
-      </div>
-      <div class="channel-card">
-        <span class="channel-num"><i data-lucide="speaker"></i></span>
-        <div class="channel-info">
-          <h3><a href="https://www.youtube.com/@Wassadacom" target="_blank" class="ch-link">와싸다닷컴</a></h3>
-          <p>오디오 쇼핑몰 전문 채널. 제품 소개 및 리뷰 콘텐츠 운영.</p>
-          <span class="channel-tag tag-client">오디오 · 쇼핑</span>
-          <div class="video-embed" data-video-id="PGzwTeTgvHY">
-            <div class="video-thumb" style="background-image:url('https://img.youtube.com/vi/PGzwTeTgvHY/hqdefault.jpg')"></div>
-            <button class="video-play" aria-label="영상 재생"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <hr class="divider">
-
-  <section id="equipment">
-    <p class="sec-label fade-up">Equipment</p>
-    <h2 class="sec-title fade-up">제작 장비</h2>
-    <div class="eq-grid fade-up">
-      <div class="eq-block">
-        <h3><i data-lucide="camera"></i> 카메라</h3>
-        <ul>
-          <li>Sony A6700 (메인)</li>
-          <li>iPhone 15 Pro + Blackmagic Cam</li>
-          <li>DJI Pocket 3</li>
-          <li>DJI Osmo Action 6</li>
-        </ul>
-      </div>
-      <div class="eq-block">
-        <h3><i data-lucide="mic"></i> 오디오</h3>
-        <ul>
-          <li>RØDE Wireless GO II</li>
-          <li>TASCAM X8</li>
-          <li>DJI Mic Mini</li>
-          <li>RØDE Lavalier</li>
-          <li>RØDE PodMic White</li>
-        </ul>
-      </div>
-      <div class="eq-block">
-        <h3><i data-lucide="lightbulb"></i> 조명</h3>
-        <ul>
-          <li>Amaran 200x (키)</li>
-          <li>Godox ML100Bi + 소프트박스 (필)</li>
-          <li>Zhiyun F100 (림/배경)</li>
-          <li>Sunwayfoto FL-96C</li>
-        </ul>
-      </div>
-      <div class="eq-block">
-        <h3><i data-lucide="monitor"></i> 편집·AI</h3>
-        <ul>
-          <li>MacBook Pro M4 Pro 14" — 편집 전용</li>
-          <li>MacBook Pro M1 13" — AI·자동화 허브</li>
-          <li>Final Cut Pro / Vrew</li>
-          <li>Claude · ChatGPT · Gemini 멀티 워크플로</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <hr class="divider">
-
-  <section id="career">
-    <p class="sec-label fade-up">Career</p>
-    <h2 class="sec-title fade-up">경력</h2>
-
-    <div class="career-list">
-
-      <div class="career-item fade-up">
-        <div class="career-year">2025 — 현재<span class="duration">1인미디어</span></div>
-        <div class="career-body">
-          <h3>햄미디어</h3>
-          <div class="role">1인미디어 프로듀서</div>
-          <p>퇴사 후 Claude·ChatGPT·Gemini로 기획·촬영·편집을 독학했습니다. 아무것도 모르는 상태에서 시작해 지금은 5개 채널을 혼자 기획·촬영·편집·퍼블리싱합니다. 클라이언트 채널 대행으로 수익을 만들어가며 AI와 함께 매일 성장하고 있습니다.</p>
-          <div class="career-awards">
-            <span class="career-award">5개 채널 全과정 단독 수행</span>
-            <span class="career-award">AI 독학으로 전 과정 습득</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="career-item fade-up">
-        <div class="career-year">2024. 05 — 2025. 04<span class="duration">1년</span></div>
-        <div class="career-body">
-          <h3>어코스틱스 스페이스</h3>
-          <div class="role">기획 부장 / 초기 사업기획 멤버</div>
-          <p>고급 주택 대상 하이엔드 오디오룸·스마트 HVAC·조명·소리·공기 통합 설계 총괄. 상지건설 Escala 프로젝트 참여 — 정숙 25dBA, 청취 동선, 공조·조명 통합 제어. 전체 프로젝트 기획·일정 관리, 고객사 커뮤니케이션, 기술 사양서 및 임원 보고 문서 작성.</p>
-          <div class="career-awards">
-            <span class="career-award">Escala 프로젝트 참여</span>
-            <span class="career-award">프리미엄 공간 통합 설계</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="career-item fade-up">
-        <div class="career-year">2023. 05 — 2024. 01<span class="duration">9개월</span></div>
-        <div class="career-body">
-          <h3>대우개발컨설팅</h3>
-          <div class="role">부장 / 공장 부동산 컨설턴트</div>
-          <p>공장·창고 등 산업용 부동산 중개 실무. 입지 분석·예산 최적화·구조 활용 계획 제안. 고객·공장 운영자·건축주 등 의사결정자별 신뢰 구축.</p>
-        </div>
-      </div>
-
-      <div class="career-item fade-up">
-        <div class="career-year">2022. 02 — 2022. 10<span class="duration">9개월</span></div>
-        <div class="career-body">
-          <h3>에이브이와사람들 (와싸다닷컴)</h3>
-          <div class="role">운영팀 부장</div>
-          <p>하이엔드 오디오 제품 상담 및 판매. YouTube 영상 촬영·편집·채널 운영. 브랜드 인지도 향상 기여.</p>
-        </div>
-      </div>
-
-      <div class="career-item fade-up">
-        <div class="career-year">2014. 06 — 2022. 07<span class="duration">8년 2개월</span></div>
-        <div class="career-body">
-          <h3>델라카사</h3>
-          <div class="role">오너 셰프 / 대표</div>
-          <p>인천 신포동·청라에 이탈리안 레스토랑 '델라카사' 1·2호점 직접 기획·런칭·운영. 고급 고객층 타깃으로 매출 2배 성장. 지역 건축양식에서 영감 받은 인테리어 콘셉트 직접 설계. 메뉴·공간·서비스·브랜딩·수익 구조 전반 총괄. 팬데믹 2호점 폐점 경험은 이후 "실패 회복 콘텐츠" 철학의 실질적 기반이 됨.</p>
-          <div class="career-awards">
-            <span class="career-award">매출 2배 성장</span>
-            <span class="career-award">브랜드 기획·운영 全과정</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="career-item fade-up">
-        <div class="career-year">2001. 01 — 2014. 05<span class="duration">13년 5개월</span></div>
-        <div class="career-body">
-          <h3>스타벅스 커피 코리아</h3>
-          <div class="role">바리스타 → 점장 → 지역 매니저 → 인재개발팀 리더십 트레이너 → 인천 지역 총괄 매니저</div>
-          <p>적자 매장 3곳(GS점·김포공항 1·2호점)을 흑자로 전환하고, 부평·영등포·충청·인천 4개 권역 총괄 매니저를 역임했습니다. 인재개발팀에서는 전 직급별 교육 프로그램과 이머전 프로그램(Immersion Program)을 직접 설계·운영했습니다. 별명 '햄(Ham)'이 이 시기 탄생했습니다.</p>
-          <div class="career-awards">
-            <span class="career-award">🏆 올해의 매니저상</span>
-            <span class="career-award">🏆 올해의 지역 매니저상</span>
-            <span class="career-award">적자 매장 3곳 흑자 전환</span>
-            <span class="career-award">시애틀 본사 초청 · 하워드 슐츠 미팅</span>
-            <span class="career-award">커피 마스터 · 지역 커피 마스터</span>
-            <span class="career-award">전국 직급별 교육 프로그램 설계</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="career-item fade-up">
-        <div class="career-year">1996 — 1999<span class="duration">해외 체류</span></div>
-        <div class="career-body">
-          <h3>해외 언어·문화 연수</h3>
-          <div class="role">일본 도쿄 (1년 5개월) / 미국 캘리포니아 프레즈노 (1년)</div>
-          <p>일본 도쿄: 언어유학 + 다양한 업종 현장 근무, 서비스 감수성·JLPT 1급 취득. 미국 캘리포니아: 영어 집중 연수 및 현지 근무, 글로벌 사고·다문화 커뮤니케이션 역량 형성.</p>
-          <div class="career-awards">
-            <span class="career-award">일본어 JLPT 1급</span>
-            <span class="career-award">다문화 커뮤니케이션</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="career-item fade-up">
-        <div class="career-year">1994 — 1996<span class="duration">군 복무</span></div>
-        <div class="career-body">
-          <h3>대한민국 육군</h3>
-          <div class="role">공병부대 운전병 · 병장 만기 제대</div>
-          <p>팀워크·명령 체계·시간 관리 등 조직 생활 기초 체득. 임기응변 능력·긴급 상황 대응 훈련. 이후 리더십 기반 형성의 기점.</p>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <hr class="divider">
-
-  <section id="credentials">
-    <p class="sec-label fade-up">Skills & Credentials</p>
-    <h2 class="sec-title fade-up">역량 및 자격</h2>
-    <div class="cred-grid fade-up">
-      <div class="cred-block">
-        <h3>🛠 핵심 역량</h3>
-        <ul>
-          <li>매장·공간 운영 최적화</li>
-          <li>브랜드 기획 및 성장 전략</li>
-          <li>고객 경험 디자인</li>
-          <li>팀 리더십 / 인재 개발</li>
-          <li>교육 프로그램 설계</li>
-          <li>YouTube 콘텐츠 全과정 제작</li>
-          <li>생성형 AI 활용 (멀티 워크플로)</li>
-        </ul>
-      </div>
-      <div class="cred-block">
-        <h3>🌐 어학 / 자격</h3>
-        <ul>
-          <li>일본어 JLPT 1급 (2000. 09)</li>
-          <li>영어 (비즈니스 회화)</li>
-          <li>1종보통운전면허 (2017. 09)</li>
-          <li>Final Cut Pro</li>
-          <li>PowerPoint · Excel · Word</li>
-        </ul>
-      </div>
-      <div class="cred-block">
-        <h3>🎯 몰입 활동</h3>
-        <ul>
-          <li>하이엔드 오디오 컬렉션</li>
-          <li>만년필 컬렉션 (12종+)</li>
-          <li>사진·카메라</li>
-          <li>자동차·모터사이클 (서킷 주행)</li>
-          <li>로드바이크</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <hr class="divider">
-
-  <section id="dashboard">
-    <p class="sec-label">Tools</p>
-    <h2 class="sec-title">YouTube 채널 분석 도구</h2>
-    <p style="font-family:var(--font-main); font-size:0.95rem; font-weight:400; color:var(--ink-soft); line-height:2.0; max-width:640px;">
-      YouTube 스튜디오에서 내보낸 데이터를 업로드하면 채널 성과를 자동으로 분석해주는 도구입니다. 누구나 무료로 사용할 수 있습니다.
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-text">
+    <div class="hero-accent-line"></div>
+    <p class="hero-label">1인미디어 프로듀서 · 햄PD</p>
+    <h1 class="hero-title">
+      콘텐츠로<br>
+      <span class="underline-yellow">신뢰를 만드는</span><br>
+      <span class="sky">사람.</span>
+    </h1>
+    <p class="hero-sub">
+      기획 · 촬영 · 편집 · 퍼블리싱 — 혼자서 전부.<br>
+      30년 현장 경험을 콘텐츠로 설계합니다.
     </p>
-    <a href="https://hammedia.github.io/youtube-channel-report-codex" target="_blank" style="display:inline-block; margin-top:24px; padding:13px 28px; background:var(--accent); color:#fff; font-family:var(--font-main); font-size:0.9rem; font-weight:600; letter-spacing:0.06em; text-decoration:none; border-radius:999px; box-shadow:0 14px 30px rgba(122,92,71,0.16);">대시보드 열기 →</a>
-  </section>
-
-  <section id="contact">
-    <p class="sec-label fade-up">Contact & SNS</p>
-    <h2 class="sec-title fade-up">연락처</h2>
-    <div class="contact-wrap fade-up">
-      <div>
-        <a class="contact-email" href="mailto:hammedia002@gmail.com">hammedia002@gmail.com</a>
-        <p class="contact-phone">010-3936-3571</p>
-        <p class="contact-note">
-          채널 제작 대행 · 콜라보 · 협찬 · 강의 문의 환영합니다.<br>
-          인천 부평구 베이스 · 보통 1–2일 내 답변.
-        </p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="stat-n">1,969만</div>
+        <div class="stat-l">누적 조회수</div>
+        <div class="stat-d">우리끼리오디오 · 6년 운영</div>
       </div>
-      <div>
-        <ul class="sns-list">
-          <li>
-            <a href="https://www.youtube.com/@ookkio" target="_blank">
-              <div class="sns-icon">▶</div>
-              <div><div class="sns-name">우리끼리오디오</div><div class="sns-handle">youtube.com/@ookkio</div></div>
-            </a>
-          </li>
-          <li>
-            <a href="https://www.youtube.com/channel/UCqy1LrWDKht1ACXTmtLShEg" target="_blank">
-              <div class="sns-icon">▶</div>
-              <div><div class="sns-name">이번인생은경주다</div><div class="sns-handle">youtube.com/channel</div></div>
-            </a>
-          </li>
-          <li>
-            <a href="https://www.youtube.com/channel/UC7nfli6RwhfkT8-L3tjcwPg" target="_blank">
-              <div class="sns-icon">▶</div>
-              <div><div class="sns-name">성형외과전문의 김종명</div><div class="sns-handle">youtube.com/channel</div></div>
-            </a>
-          </li>
-          <li>
-            <a href="https://www.youtube.com/channel/UCwI4qqT9ta850_Aak-0kP8Q" target="_blank">
-              <div class="sns-icon">▶</div>
-              <div><div class="sns-name">광명천신보살TV</div><div class="sns-handle">youtube.com/channel</div></div>
-            </a>
-          </li>
-          <li>
-            <a href="https://www.youtube.com/@Wassadacom" target="_blank">
-              <div class="sns-icon">▶</div>
-              <div><div class="sns-name">와싸다닷컴</div><div class="sns-handle">youtube.com/@Wassadacom</div></div>
-            </a>
-          </li>
-          <li>
-            <a href="https://www.threads.net/@dellacasa_2" target="_blank">
-              <div class="sns-icon">@</div>
-              <div><div class="sns-name">Threads</div><div class="sns-handle">@dellacasa_2</div></div>
-            </a>
-          </li>
-          <li>
-            <a href="https://www.instagram.com/dellacasa_2" target="_blank">
-              <div class="sns-icon">◻</div>
-              <div><div class="sns-name">Instagram</div><div class="sns-handle">@dellacasa_2</div></div>
-            </a>
-          </li>
-          <li>
-            <a href="https://github.com/hammedia" target="_blank">
-              <div class="sns-icon">⌥</div>
-              <div><div class="sns-name">GitHub</div><div class="sns-handle">hammedia</div></div>
-            </a>
-          </li>
-        </ul>
+      <div class="hero-stat">
+        <div class="stat-n">132%</div>
+        <div class="stat-l">구독자 성장률</div>
+        <div class="stat-d">와싸다닷컴 · 2025.11 재합류</div>
+      </div>
+      <div class="hero-stat">
+        <div class="stat-n">5개</div>
+        <div class="stat-l">동시 운영 채널</div>
+        <div class="stat-d">의료 · 무속 · 오디오 · 라이프</div>
       </div>
     </div>
-  </section>
+    <div class="hero-quote">
+      저는 채널을 '만들어드리는' 사람이 아닙니다.<br>
+      전문가가 가진 것을 시청자가 믿게 만드는 <strong>구조를 설계합니다.</strong>
+    </div>
+  </div>
+  <div class="hero-photo">
+    <img src="./profile.JPG" alt="함동민 햄PD">
+  </div>
+</div>
 
-</main>
+<!-- WHAT I DO -->
+<section class="section fade-up" id="what">
+  <p class="sec-label">What I Do</p>
+  <h2 class="sec-title">하는 일</h2>
+  <div class="what-grid">
+    <div class="what-item">
+      <div class="what-icon"><i data-lucide="layout-template"></i></div>
+      <div class="what-name">채널 전략</div>
+      <div class="what-desc">채널 포지셔닝, 콘텐츠 방향 설계, 타깃 시청자 분석</div>
+    </div>
+    <div class="what-item">
+      <div class="what-icon"><i data-lucide="video"></i></div>
+      <div class="what-name">촬영 · 편집</div>
+      <div class="what-desc">기획부터 퍼블리싱까지 전 과정 단독 수행</div>
+    </div>
+    <div class="what-item">
+      <div class="what-icon"><i data-lucide="scissors"></i></div>
+      <div class="what-name">쇼츠 분해</div>
+      <div class="what-desc">롱폼 영상을 Shorts로 재구성 · 최적화</div>
+    </div>
+    <div class="what-item">
+      <div class="what-icon"><i data-lucide="message-square-quote"></i></div>
+      <div class="what-name">브랜드 스토리텔링</div>
+      <div class="what-desc">전문가의 신뢰를 시청자 언어로 설계</div>
+    </div>
+    <div class="what-item">
+      <div class="what-icon"><i data-lucide="bot"></i></div>
+      <div class="what-name">AI 제작 시스템</div>
+      <div class="what-desc">Claude · ChatGPT · Gemini 멀티 워크플로 운용</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section fade-up" id="about">
+  <p class="sec-label">About</p>
+  <h2 class="sec-title">저는 고졸입니다.</h2>
+
+  <div class="about-chapters">
+    <div class="about-chapter">
+      <p>하지만 배움에서 멀리 있었던 사람은 아닙니다. 일본에서는 대학에 합격했지만 IMF로 귀국했고, 미국에서는 입학 직전까지 갔지만 현실이 먼저였습니다. 스타벅스에서 일하는 동안 한양사이버대학교 경영학과에 입학했지만, 배움이 승진의 도구처럼 느껴지는 순간 그만뒀습니다. 1년이었습니다.</p>
+      <p>포기한 게 아닙니다. 매번 현실이 먼저였습니다.</p>
+      <p><strong>저는 학력보다 능력이, 지식보다 지혜가 사람을 증명한다고 믿습니다. 그 믿음은 철학이 아니라, 살아오면서 몸으로 확인한 것입니다.</strong></p>
+    </div>
+
+    <div class="about-chapter">
+      <div class="chapter-title"><span class="chapter-dot green"></span>스타벅스 13년 — 학력이 아닌 능력으로 인정받은 시간</div>
+      <p>바리스타로 시작해 점장, 지역 매니저, 인재개발팀 과장, 인천 지역 총괄 매니저까지 일했습니다. 연간 200억 원대 매출을 관리하고, 약 200명의 파트너와 함께 지역 전체를 움직이는 일을 했습니다. 적자 매장 3곳을 흑자로 전환했고, 2013년에는 전 직급 교육 프로그램을 직접 설계했습니다.</p>
+      <div class="blockq green-q">하워드 슐츠가 초청한 시애틀 본사에서 커피 테이스팅을 하던 날, 저는 처음으로 분명하게 알았습니다. 저는 커피보다 그 경험을 설계하는 사람이 되고 싶다는 것을.</div>
+    </div>
+
+    <div class="about-chapter">
+      <div class="chapter-title"><span class="chapter-dot yellow"></span>델라카사 창업 — 감각이 매출로 이어지는 과정</div>
+      <p>인천 신포동·청라에 이탈리안 레스토랑을 직접 기획하고 운영했습니다. 사람은 음식만 먹으러 오지 않는다는 것을 그때 배웠습니다. 조명 하나, 음악 하나, 말투 하나가 재방문과 객단가와 리뷰로 연결됩니다. 팬데믹으로 문을 닫았고, 그 무게는 이후 제 모든 판단에 현실 감각으로 남아 있습니다.</p>
+    </div>
+
+    <div class="about-chapter">
+      <div class="chapter-title"><span class="chapter-dot"></span>HAM MEDIA — 이 모든 경험이 도착한 자리</div>
+      <p>지금 저는 HAM MEDIA라는 이름으로 혼자 미디어 스튜디오를 운영하고 있습니다. 촬영 전에 먼저 봅니다. 이 사람은 어떤 고객을 만나야 하는지. 그 고객은 무엇을 불안해하는지. 어떤 말에서 신뢰를 느끼는지.</p>
+      <div class="blockq sky-q">
+        좋은 콘텐츠는 예쁘게 만든 영상이 아닙니다.<br>
+        고객이 '이 사람에게 맡겨도 되겠다'고 느끼게 만드는 <strong>신뢰의 구조</strong>입니다.
+      </div>
+      <p>이건 이론으로 배운 것이 아닙니다. 스타벅스 매장에서, 델라카사 주방에서, 오디오 판매 현장에서, 부동산 거래 테이블에서 몸으로 익힌 것입니다.</p>
+      <div class="blockq">
+        <strong>누가 나를 알아봐주지 않으면, 나라도 나를 알아봐야 한다.<br>
+        그래서 저는 저를 뽑았습니다. 그리고 저에게 일을 시켰습니다.</strong>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHANNELS -->
+<section class="section fade-up" id="channels">
+  <p class="sec-label">Channels · Proof</p>
+  <h2 class="sec-title">운영 채널</h2>
+
+  <div class="ch-table-wrap">
+    <table class="ch-table">
+      <thead>
+        <tr><th>채널명</th><th>누적 조회수</th><th>구독자</th><th>비고</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>우리끼리오디오</td><td>1,969만</td><td>38,014</td><td>2020년 직접 개설 · 6년</td></tr>
+        <tr><td>광명천신보살TV</td><td>44.8만</td><td>2,167</td><td>2025.6 직접 개설</td></tr>
+        <tr><td>와싸다닷컴</td><td>22.9만(1년)</td><td>4,825</td><td>2025.11 재합류 · 구독자 132%↑</td></tr>
+        <tr><td>이번인생은경주다</td><td>15.9만</td><td>324</td><td>2026.2 직접 개설</td></tr>
+        <tr><td>성형외과전문의 김종명</td><td>14.8만</td><td>184+</td><td>2025.9 직접 개설</td></tr>
+      </tbody>
+    </table>
+    <p class="ch-note">* 2026년 5월 기준 YouTube Studio 실측값</p>
+  </div>
+
+  <!-- 채널 카드 + 대표 영상 (3개 임베드 + 2개 링크 카드) -->
+  <div class="ch-cards">
+
+    <!-- 1. 우리끼리오디오 — 개인 채널 실력 증거 -->
+    <div class="ch-card ch-card-with-video">
+      <div class="ch-card-top">
+        <span class="ch-tag">개인</span>
+        <div>
+          <div class="ch-card-name"><a href="https://www.youtube.com/@ookkio" target="_blank" rel="noopener noreferrer">우리끼리오디오</a></div>
+          <div class="ch-card-desc">하이파이 오디오 전문 채널. 스피커 케이블 연결 영상 70K+ 뷰, Shorts 누적 3M+ 뷰. 일본·브라질·미국 시청자 중심의 국제 오디오 커뮤니티.</div>
+        </div>
+      </div>
+      <div class="video-wrap">
+        <div class="video-embed" data-video-id="duw8G46JzwQ">
+          <div class="video-thumb" style="background-image:url('https://img.youtube.com/vi/duw8G46JzwQ/hqdefault.jpg')"></div>
+          <button class="video-play" aria-label="영상 재생"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. 성형외과전문의 김종명 — 클라이언트 대행 능력 증거 -->
+    <div class="ch-card ch-card-with-video">
+      <div class="ch-card-top">
+        <span class="ch-tag green-tag">클라이언트</span>
+        <div>
+          <div class="ch-card-name"><a href="https://www.youtube.com/channel/UC7nfli6RwhfkT8-L3tjcwPg" target="_blank" rel="noopener noreferrer">성형외과전문의 김종명 (디바성형외과)</a></div>
+          <div class="ch-card-desc">의료 전문 채널. 안면거상·지방이식·실리프팅 등 전문 정보 영상과 Shorts 시리즈 제작.</div>
+        </div>
+      </div>
+      <div class="video-wrap">
+        <div class="video-embed" data-video-id="sgVzKxMxCEM">
+          <div class="video-thumb" style="background-image:url('https://img.youtube.com/vi/sgVzKxMxCEM/hqdefault.jpg')"></div>
+          <button class="video-play" aria-label="영상 재생"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. 이번인생은경주다 — 서사형 콘텐츠 증거 -->
+    <div class="ch-card ch-card-with-video">
+      <div class="ch-card-top">
+        <span class="ch-tag">개인</span>
+        <div>
+          <div class="ch-card-name"><a href="https://www.youtube.com/channel/UCqy1LrWDKht1ACXTmtLShEg" target="_blank" rel="noopener noreferrer">이번인생은경주다</a></div>
+          <div class="ch-card-desc">50대의 인생 재정비 서사. 늦은 시작, 다시 달리는 삶을 주제로 같은 세대의 공감을 이끌어냅니다.</div>
+        </div>
+      </div>
+      <div class="video-wrap">
+        <div class="video-embed" data-video-id="jc0vNk4tjtM">
+          <div class="video-thumb" style="background-image:url('https://img.youtube.com/vi/jc0vNk4tjtM/hqdefault.jpg')"></div>
+          <button class="video-play" aria-label="영상 재생"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. 광명천신보살TV — 링크 카드 -->
+    <div class="ch-card">
+      <span class="ch-tag green-tag">클라이언트</span>
+      <div>
+        <div class="ch-card-name"><a href="https://www.youtube.com/channel/UCwI4qqT9ta850_Aak-0kP8Q" target="_blank" rel="noopener noreferrer">광명천신보살TV →</a></div>
+        <div class="ch-card-desc">무속·영성 콘텐츠 채널. 시청자 공감 기반 스토리텔링 운영.</div>
+      </div>
+    </div>
+
+    <!-- 5. 와싸다닷컴 — 링크 카드 -->
+    <div class="ch-card">
+      <span class="ch-tag green-tag">클라이언트</span>
+      <div>
+        <div class="ch-card-name"><a href="https://www.youtube.com/@Wassadacom" target="_blank" rel="noopener noreferrer">와싸다닷컴 →</a></div>
+        <div class="ch-card-desc">오디오 쇼핑몰 전문 채널. 2025년 11월 다시 합류해 운영을 맡은 뒤 구독자 132% 성장.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- EQUIPMENT -->
+<section class="section fade-up" id="equipment">
+  <p class="sec-label">Equipment</p>
+  <h2 class="sec-title">1인 제작 시스템</h2>
+  <p class="eq-intro">기획부터 퍼블리싱까지 혼자 처리하는 시스템입니다. 장비를 늘리기보다 판단을 빠르게 만드는 방향으로 구성했습니다.</p>
+  <div class="eq-grid">
+    <div class="eq-block">
+      <div class="eq-block-title"><i data-lucide="camera" style="width:13px;height:13px;stroke:var(--sky);vertical-align:middle;margin-right:4px;"></i> 카메라</div>
+      <ul class="eq-list">
+        <li>Sony A6700 (메인)</li>
+        <li>iPhone 15 Pro + Blackmagic Cam</li>
+        <li>DJI Pocket 3</li>
+        <li>DJI Osmo Action 6</li>
+      </ul>
+    </div>
+    <div class="eq-block">
+      <div class="eq-block-title"><i data-lucide="mic" style="width:13px;height:13px;stroke:var(--sky);vertical-align:middle;margin-right:4px;"></i> 오디오</div>
+      <ul class="eq-list">
+        <li>RØDE Wireless GO II</li>
+        <li>TASCAM X8</li>
+        <li>DJI Mic Mini</li>
+        <li>RØDE Lavalier</li>
+        <li>RØDE PodMic White</li>
+      </ul>
+    </div>
+    <div class="eq-block">
+      <div class="eq-block-title"><i data-lucide="lightbulb" style="width:13px;height:13px;stroke:var(--sky);vertical-align:middle;margin-right:4px;"></i> 조명</div>
+      <ul class="eq-list">
+        <li>Amaran 200x (키)</li>
+        <li>Godox ML100Bi + 소프트박스 (필)</li>
+        <li>Zhiyun F100 (림/배경)</li>
+        <li>Sunwayfoto FL-96C</li>
+      </ul>
+    </div>
+    <div class="eq-block">
+      <div class="eq-block-title"><i data-lucide="monitor" style="width:13px;height:13px;stroke:var(--sky);vertical-align:middle;margin-right:4px;"></i> 편집 · AI</div>
+      <ul class="eq-list">
+        <li>MacBook Pro M4 Pro 14" — 편집 전용</li>
+        <li>MacBook Pro M1 13" — AI 자동화 허브</li>
+        <li>Final Cut Pro / Vrew</li>
+        <li>Claude · ChatGPT · Gemini 멀티 워크플로</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CAREER -->
+<section class="section fade-up" id="career">
+  <p class="sec-label">Career</p>
+  <h2 class="sec-title">경력</h2>
+  <div class="timeline">
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-period">2025 — 현재</div>
+      <div class="tl-role">1인미디어 프로듀서</div>
+      <div class="tl-company">HAM MEDIA</div>
+      <div class="tl-desc">5개 YouTube 채널 기획·촬영·편집·퍼블리싱 단독 수행. AI 멀티 워크플로 구축 및 운영. 클라이언트 채널 대행으로 수익 창출.</div>
+      <div class="tl-badges">
+        <span class="tl-badge sky">5개 채널 全과정 단독</span>
+        <span class="tl-badge sky">AI 제작 시스템</span>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-period">2024.05 — 2025.04</div>
+      <div class="tl-role">기획 부장 / 초기 사업기획 멤버</div>
+      <div class="tl-company">어코스틱스 스페이스</div>
+      <div class="tl-desc">고급 주택 대상 하이엔드 오디오룸·스마트 HVAC·조명·공조 통합 설계 총괄. 상지건설 Escala 프로젝트 참여.</div>
+      <div class="tl-badges">
+        <span class="tl-badge">Escala 프로젝트</span>
+        <span class="tl-badge">프리미엄 공간 통합 설계</span>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-period">2023.05 — 2024.01</div>
+      <div class="tl-role">부장 / 공장 부동산 컨설턴트</div>
+      <div class="tl-company">대우개발컨설팅</div>
+      <div class="tl-desc">공장·창고 등 산업용 부동산 중개 실무. 입지 분석·예산 최적화·구조 활용 계획 제안.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-period">2022.02 — 2022.10</div>
+      <div class="tl-role">운영팀 부장</div>
+      <div class="tl-company">에이브이와사람들 (와싸다닷컴)</div>
+      <div class="tl-desc">하이엔드 오디오 제품 상담·판매. YouTube 채널 촬영·편집·운영. 브랜드 인지도 향상 기여.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot yellow"></div>
+      <div class="tl-period">2014.06 — 2022.07</div>
+      <div class="tl-role">오너 셰프 / 대표</div>
+      <div class="tl-company">델라카사</div>
+      <div class="tl-desc">인천 신포동·청라 이탈리안 레스토랑 직접 기획·런칭·운영. 고급 고객층 타깃 매출 2배 성장. 메뉴·공간·서비스·브랜딩·수익 구조 전반 총괄. 팬데믹 폐점 경험은 이후 실패 회복 콘텐츠 철학의 실질적 기반이 됨.</div>
+      <div class="tl-badges">
+        <span class="tl-badge">매출 2배 성장</span>
+        <span class="tl-badge">공간·브랜드 기획 全과정</span>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot green"></div>
+      <div class="tl-period">2001.01 — 2014.05</div>
+      <div class="tl-role">바리스타 → 점장 → 지역 매니저 → 인재개발팀 → 인천 총괄</div>
+      <div class="tl-company">스타벅스 커피 코리아</div>
+      <div class="tl-desc">적자 매장 3곳 흑자 전환. 충청·인천 4개 권역 총괄. 인재개발팀에서 전 직급 교육 프로그램 설계. 연 200억 원대 매출 관리, 약 200명 파트너 운영.</div>
+      <div class="tl-badges">
+        <span class="tl-badge green">🏆 올해의 매니저상</span>
+        <span class="tl-badge green">🏆 올해의 지역 매니저상</span>
+        <span class="tl-badge green">시애틀 본사 초청 · 하워드 슐츠 미팅</span>
+        <span class="tl-badge">적자 매장 3곳 흑자 전환</span>
+        <span class="tl-badge">커피 마스터 · 지역 커피 마스터</span>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-period">1996 — 1999</div>
+      <div class="tl-role">해외 언어·문화 연수</div>
+      <div class="tl-company">일본 도쿄 / 미국 캘리포니아 프레즈노</div>
+      <div class="tl-desc">일본 도쿄에서는 JET일본어학교에서 약 2년간 어학연수와 현지 아르바이트를 병행하며 일본어와 현지 생활을 익혔고, JLPT 1급을 취득했습니다. 이후 미국 캘리포니아 프레즈노에서는 California State University, Fresno의 American English Institute(AEI)에서 영어를 공부하며 현지 아르바이트를 병행했습니다.</div>
+      <div class="tl-badges">
+        <span class="tl-badge">일본어 JLPT 1급</span>
+        <span class="tl-badge">다문화 커뮤니케이션</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="section fade-up" id="skills">
+  <p class="sec-label">Skills & Credentials</p>
+  <h2 class="sec-title">역량 및 자격</h2>
+  <div class="cred-grid">
+    <div class="cred-block">
+      <div class="cred-title">핵심 역량</div>
+      <ul class="cred-list">
+        <li>YouTube 콘텐츠 全과정 제작</li>
+        <li>채널 전략 · 브랜드 기획</li>
+        <li>고객 경험 설계</li>
+        <li>AI 멀티 워크플로 운용</li>
+        <li>팀 리더십 / 인재 개발</li>
+        <li>교육 프로그램 설계</li>
+        <li>제안서 · 발표자료 · 카드뉴스 제작</li>
+      </ul>
+    </div>
+    <div class="cred-block">
+      <div class="cred-title">어학 / 자격</div>
+      <ul class="cred-list">
+        <li>일본어 JLPT 1급 (2000. 09)</li>
+        <li>영어 (비즈니스 회화)</li>
+        <li>Final Cut Pro</li>
+        <li>PowerPoint · Excel · Word</li>
+        <li>1종보통운전면허</li>
+      </ul>
+    </div>
+    <div class="cred-block">
+      <div class="cred-title">몰입 활동</div>
+      <ul class="cred-list">
+        <li>하이엔드 오디오 컬렉션</li>
+        <li>만년필 컬렉션 (12종+)</li>
+        <li>사진 · 카메라</li>
+        <li>자동차 · 모터사이클 (서킷 주행)</li>
+        <li>로드바이크</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section fade-up" id="contact">
+  <p class="sec-label">Contact</p>
+  <h2 class="cta-heading">
+    영상을 만드는 사람은 많습니다.<br>
+    <span class="sky">구조를 아는 사람은 적습니다.</span>
+  </h2>
+  <p class="cta-sub">
+    채널 운영 파트너십 · 콘텐츠 제작 · 콜라보 · 강의 문의 환영합니다.<br>
+    인천 부평구 베이스 · 보통 1–2일 내 답변.
+  </p>
+
+  <div class="contact-grid">
+    <div>
+      <div class="contact-rows">
+        <div class="contact-row">
+          <span class="contact-key">이메일</span>
+          <a class="contact-val" href="mailto:hammedia002@gmail.com">hammedia002@gmail.com</a>
+        </div>
+        <div class="contact-row">
+          <span class="contact-key">Threads</span>
+          <a class="contact-val" href="https://threads.net/@dellacasa_2" target="_blank" rel="noopener noreferrer">@dellacasa_2</a>
+        </div>
+        <div class="contact-row">
+          <span class="contact-key">홈페이지</span>
+          <a class="contact-val" href="https://hammedia.github.io/hammedia" target="_blank" rel="noopener noreferrer">hammedia.github.io/hammedia</a>
+        </div>
+        <div class="contact-row">
+          <span class="contact-key">분석 도구</span>
+          <a class="contact-val" href="https://hammedia.github.io/youtube-channel-report-codex" target="_blank" rel="noopener noreferrer">YouTube 채널 분석 대시보드 →</a>
+        </div>
+      </div>
+    </div>
+    <div>
+      <ul class="sns-list">
+        <li>
+          <a href="https://www.threads.net/@dellacasa_2" target="_blank" rel="noopener noreferrer">
+            <div class="sns-icon">@</div>
+            <div><div class="sns-name">Threads</div><div class="sns-handle">@dellacasa_2</div></div>
+          </a>
+        </li>
+        <li>
+          <a href="https://x.com/ookkio2020" target="_blank" rel="noopener noreferrer">
+            <div class="sns-icon">𝕏</div>
+            <div><div class="sns-name">X (Twitter)</div><div class="sns-handle">@ookkio2020</div></div>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.instagram.com/dellacasa_2" target="_blank" rel="noopener noreferrer">
+            <div class="sns-icon">◻</div>
+            <div><div class="sns-name">Instagram</div><div class="sns-handle">@dellacasa_2</div></div>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/hammedia" target="_blank" rel="noopener noreferrer">
+            <div class="sns-icon">⌥</div>
+            <div><div class="sns-name">GitHub</div><div class="sns-handle">hammedia</div></div>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
 
 <footer>
-  © 2025 함동민 · 햄PD — Ham Media. All rights reserved.
+  © 2026 함동민 · 햄PD — HAM MEDIA. All rights reserved.
 </footer>
 
 <script>
+  // Fade-up observer
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(el => { if (el.isIntersecting) el.target.classList.add('visible'); });
-  }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
-  document.querySelectorAll('.fade-up').forEach((el, i) => {
-    el.style.transitionDelay = (i % 4) * 0.08 + 's';
-    observer.observe(el);
-  });
-</script>
-<script>lucide.createIcons();</script>
-<script>
-  document.querySelectorAll('.video-embed[data-video-id]').forEach(function(el){
-    el.addEventListener('click', function(){
+  }, { threshold: 0.07, rootMargin: '0px 0px -30px 0px' });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // Lucide icons
+  if (window.lucide) { lucide.createIcons(); }
+
+  // Video embed click
+  document.querySelectorAll('.video-embed[data-video-id]').forEach(function(el) {
+    el.addEventListener('click', function() {
       var id = el.getAttribute('data-video-id');
-      el.innerHTML = '<iframe src="https://www.youtube.com/embed/' + id + '?autoplay=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
+      el.innerHTML = '<iframe src="https://www.youtube.com/embed/' + id + '?autoplay=1" allow="autoplay; encrypted-media" allowfullscreen title="YouTube video"></iframe>';
     });
   });
 </script>
+
 </body>
 </html>
