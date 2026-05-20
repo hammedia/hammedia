@@ -93,12 +93,12 @@
     /* ── HERO ── */
     .hero {
       max-width: 900px; margin: 0 auto;
-      padding: 5rem 3rem 4rem;
+      padding: 3rem 3rem 3rem;
       display: grid;
-      grid-template-columns: 1fr 280px;
-      gap: 4rem;
+      grid-template-columns: 1fr 300px;
+      gap: 3rem;
       align-items: center;
-      min-height: 88vh;
+      min-height: 78vh;
       position: relative;
     }
     .hero::after {
@@ -183,10 +183,10 @@
     }
 
     /* Hero photo */
-    .hero-photo { animation: fadeUp .6s .2s both; }
+    .hero-photo { animation: fadeUp .6s .2s both; align-self: center; margin-top: -20px; }
     .hero-photo img {
-      width: 100%; max-width: 280px;
-      height: 340px;
+      width: 100%; max-width: 300px;
+      height: 365px;
       object-fit: cover; object-position: top center;
       border-radius: 12px;
       display: block;
@@ -536,7 +536,7 @@
       nav { padding: 0 1.25rem; }
       .nav-links { display: none; }
       .hero { grid-template-columns: 1fr; padding: 3.5rem 1.5rem 3rem; gap: 2.5rem; min-height: auto; }
-      .hero-photo { order: -1; }
+      .hero-photo { order: -1; margin-top: 0; }
       .hero-photo img { width: 160px; height: 200px; }
       .hero-stats { flex-direction: column; }
       .hero-stat + .hero-stat { border-left: none; border-top: 1px solid var(--line); padding-left: 0; padding-top: 1.2rem; }
