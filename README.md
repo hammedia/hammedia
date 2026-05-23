@@ -1,38 +1,53 @@
-# Ham PD Portfolio / 햄PD 포트폴리오
+# HAM MEDIA Portfolio Public Files
 
-이 저장소는 햄PD(Ham PD)의 공개 포트폴리오 페이지를 위한 파일을 담고 있습니다.  
-This repository contains the public portfolio files for Ham PD.
+이 폴더는 GitHub Pages에 올라가는 HAM MEDIA 포트폴리오 공개 파일 폴더다.
 
-## Pages / 페이지
+내부 기획 문서와 작업 기록은 상위 `docs/working/`에서 관리한다. 이 폴더에는 실제 공개 배포에 필요한 파일만 둔다.
 
-- Korean portfolio / 한국어 포트폴리오: `index.html`
-- Japanese portfolio / 일본어 포트폴리오: `index_jp.html`
-- English portfolio / 영어 포트폴리오: `index_en.html`
+## 공개 페이지
 
-## Assets / 에셋
+- `index.html`: 한국어 포트폴리오 페이지
+- `index_en.html`: 영어 포트폴리오 페이지
+- `index_jp.html`: 일본어 포트폴리오 페이지
+- `profile.JPG`: 3개 언어 페이지에서 공통으로 사용하는 프로필 이미지
 
-- `profile.JPG`: 모든 포트폴리오 페이지에서 사용하는 프로필 이미지입니다.  
-  `profile.JPG`: profile image used by all portfolio pages.
+3개 언어 페이지는 같은 메시지 구조를 유지해야 한다. 다만 영어와 일본어는 단순 직역이 아니라 각 언어 방문자가 자연스럽게 읽을 수 있도록 로컬라이즈한다.
 
-HTML 파일들과 `profile.JPG`는 같은 폴더에 있어야 합니다.  
-각 페이지가 상대 경로로 이미지를 불러오기 때문입니다.
+## 현재 포트폴리오 방향
 
-The HTML files and `profile.JPG` should stay in the same folder because the pages reference the image with a relative path.
+현재 포트폴리오는 단순 유튜브/영상 작업물 목록이 아니라, 현장 운영, 교육, 문서, 발표자료, 콘텐츠, AI 제작 흐름을 연결해 결과물을 만드는 포트폴리오로 정리되어 있다.
 
-## Portfolio / 포트폴리오
+기존 유튜브 채널 카드, 영상 임베드, 운영 수치는 삭제 대상이 아니라 하단 사례 영역의 증거로 유지한다.
+
+## 공개 전 확인 항목
+
+배포 또는 업로드 전에는 아래를 확인한다.
+
+- `index.html`, `index_en.html`, `index_jp.html` 3개 페이지 브라우저 확인
+- 모바일 390px 전후에서 가로 overflow 없음 확인
+- 언어 전환 링크 확인
+- `profile.JPG` 상대경로 확인
+- 금지 표현 검색
+- 일본어 이름 한자 `咸東旼` 확인
+- `git diff --check` 통과
+
+## HTML 수정 시 주의
+
+- 새 조회수, 구독자 수, 성과 숫자를 임의로 추가하지 않는다.
+- 와싸다닷컴은 채널을 시작했다 / 개설했다 / 만들었다 / 재담당했다처럼 보이게 쓰지 않는다.
+- 와싸다닷컴은 콘텐츠 운영 참여 수준으로 표현한다.
+- 스타벅스 교육 시스템을 단독 설계한 것처럼 보이는 표현을 쓰지 않는다.
+- 확인되지 않은 수치와 과장된 성과 표현을 넣지 않는다.
+- 일본어 페이지의 한자 표기는 `咸東旼`이다.
+- `profile.JPG` 파일명 대소문자를 바꾸지 않는다.
+- 새 라이브러리나 외부 자산을 추가하기 전에 별도 확인을 받는다.
+
+## 공개 URL
 
 - https://hammedia.github.io/hammedia/
 
-## Contact / 연락
+## Contact
 
 - Email: hammedia002@gmail.com
-- Threads / Instagram: @dellacasa_2
-- X / Twitter: @ookkio2020
-
-## Note / 메모
-
-이 README는 공개 포트폴리오 폴더 설명용입니다.  
-내부 기획 문서와 운영 문서는 이 폴더 밖에서 별도로 관리합니다.
-
-This README is for the public portfolio folder only.  
-Internal planning notes and operating documents are managed outside this folder.
+- Threads / Instagram: `@dellacasa_2`
+- X / Twitter: `@ookkio2020`

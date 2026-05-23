@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>咸東旻 — ハムPD | HAM MEDIA</title>
-  <meta name="description" content="信頼を生むコンテンツを設計するひとりメディアプロデューサー、咸東旻（ハムPD）。企画・撮影・編集・公開まで一人で担当。5チャンネル運営、累計再生数1,969万。">
+  <title>咸東旼 — ハムPD | HAM MEDIA</title>
+  <meta name="description" content="積み重ねてきた経験がまだ十分に伝わっていないなら、HAM MEDIAが映像、資料、講義、AIを活用した制作フローへと形にします。">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="咸東旻 — ハムPD | HAM MEDIA">
-  <meta property="og:description" content="信頼を生むコンテンツを設計するひとりメディアプロデューサー。企画から公開まで一人で担当。5チャンネル、累計再生数1,969万。">
+  <meta property="og:title" content="咸東旼 — ハムPD | HAM MEDIA">
+  <meta property="og:description" content="積み重ねてきた経験がまだ十分に伝わっていないなら、HAM MEDIAが映像、資料、講義、AIを活用した制作フローへと形にします。">
   <meta property="og:image" content="https://hammedia.github.io/hammedia/profile.JPG">
   <meta property="og:url" content="https://hammedia.github.io/hammedia/">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="咸東旻 — ハムPD | HAM MEDIA">
-  <meta name="twitter:description" content="信頼を生むコンテンツを設計するひとりメディアプロデューサー。企画から公開まで一人で担当。">
+  <meta name="twitter:title" content="咸東旼 — ハムPD | HAM MEDIA">
+  <meta name="twitter:description" content="現場の言葉を、伝わるコンテンツへ。HAM MEDIA 咸東旼。">
   <meta name="twitter:image" content="https://hammedia.github.io/hammedia/profile.JPG">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
@@ -92,11 +92,11 @@
 
     /* ── HERO ── */
     .hero {
-      max-width: 900px; margin: 0 auto;
+      max-width: 960px; margin: 0 auto;
       padding: 3rem 3rem 3rem;
       display: grid;
       grid-template-columns: 1fr 300px;
-      gap: 3rem;
+      gap: 2rem;
       align-items: center;
       min-height: 78vh;
       position: relative;
@@ -109,7 +109,7 @@
     .hero-accent-line {
       width: 44px; height: 4px;
       background: var(--sky); border-radius: 2px;
-      margin-bottom: 2rem;
+      margin-bottom: 1.4rem;
       animation: fadeUp .5s .05s both;
     }
     .hero-label {
@@ -120,67 +120,48 @@
     }
     .hero-title {
       font-family: var(--serif);
-      font-size: clamp(2.6rem, 5.5vw, 4rem);
+      font-size: clamp(2.15rem, 4vw, 3rem);
       font-weight: 700;
-      line-height: 1.18;
+      line-height: 1.16;
       letter-spacing: -0.01em;
       color: var(--warm);
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
+      word-break: keep-all;
       animation: fadeUp .5s .16s both;
     }
-    .hero-title .sky { color: var(--sky); }
-    .hero-title .underline-yellow {
-      position: relative; display: inline;
+    .hero-title .sky {
+      color: var(--sky);
+      font-weight: 800;
+      display: inline-block;
+      letter-spacing: -0.02em;
     }
-    .hero-title .underline-yellow::after {
-      content: '';
-      position: absolute; left: 0; bottom: -3px;
-      width: 100%; height: 5px;
-      background: var(--yellow); border-radius: 2px;
+    .hero-bridge {
+      font-size: 1.16rem;
+      font-weight: 700;
+      color: var(--warm);
+      line-height: 1.55;
+      margin-bottom: 1rem;
+      animation: fadeUp .5s .2s both;
     }
     .hero-sub {
-      font-size: 1rem; color: var(--muted);
-      margin-bottom: 3rem; line-height: 1.8;
-      animation: fadeUp .5s .22s both;
+      max-width: 560px;
+      font-size: 1.02rem; color: var(--muted);
+      margin-bottom: 2rem; line-height: 1.85;
+      animation: fadeUp .5s .24s both;
     }
-
-    /* Stats */
-    .hero-stats {
-      display: flex; gap: 0;
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-      margin-bottom: 2.5rem;
-      animation: fadeUp .5s .28s both;
-    }
-    .hero-stat { flex: 1; padding: 1.4rem 1.4rem 1.4rem 0; }
-    .hero-stat + .hero-stat {
-      padding-left: 1.4rem;
-      border-left: 1px solid var(--line);
-    }
-    .stat-n {
-      font-size: 1.75rem; font-weight: 800;
-      color: var(--warm); letter-spacing: -0.02em;
-      line-height: 1; margin-bottom: .35rem;
-      white-space: nowrap;
-    }
-    .stat-l {
-      font-size: 11px; font-weight: 700;
-      color: var(--sky); margin-bottom: .15rem;
-      letter-spacing: .04em;
-    }
-    .stat-d { font-size: 11px; color: var(--muted); }
 
     /* Hero quote */
     .hero-quote {
       border-left: 4px solid var(--yellow);
-      padding: .85rem 1.1rem;
-      font-size: .9rem; color: var(--warm);
+      padding: .8rem 1rem;
+      font-size: .86rem; color: var(--muted);
       font-style: italic; line-height: 1.75;
       background: var(--ivory);
       border-radius: 0 6px 6px 0;
       max-width: 520px;
       animation: fadeUp .5s .34s both;
     }
+    .hero-quote strong { color: var(--warm); font-weight: 650; }
 
     /* Hero photo */
     .hero-photo { animation: fadeUp .6s .2s both; align-self: center; margin-top: -20px; }
@@ -219,7 +200,7 @@
     /* ── WHAT I DO ── */
     .what-grid {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 1px;
       background: var(--line);
       border: 1px solid var(--line);
@@ -228,7 +209,7 @@
     }
     .what-item {
       background: var(--pearl);
-      padding: 1.6rem 1.2rem;
+      padding: 1.7rem 1.25rem;
       transition: background .2s;
     }
     .what-item:hover { background: var(--ivory); }
@@ -244,13 +225,84 @@
       stroke: var(--sky); stroke-width: 1.8;
     }
     .what-name {
-      font-size: 13px; font-weight: 700;
-      color: var(--warm); margin-bottom: .4rem;
-      line-height: 1.4;
+      font-size: 1rem; font-weight: 800;
+      color: var(--warm); margin-bottom: .65rem;
+      line-height: 1.35;
     }
     .what-desc {
-      font-size: 12px; color: var(--muted);
-      line-height: 1.65;
+      font-size: 13px; color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* ── POSITIONING / SERVICES ── */
+    .positioning-wrap {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 2rem;
+      align-items: start;
+    }
+    .positioning-copy p {
+      font-size: .95rem;
+      color: var(--muted);
+      line-height: 2;
+      margin-bottom: 1rem;
+    }
+    .positioning-copy p:last-child { margin-bottom: 0; }
+    .positioning-card {
+      background: var(--ivory);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 1.4rem;
+    }
+    .positioning-card-title {
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--sky);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: .65rem;
+    }
+    .positioning-card p {
+      font-size: 13.5px;
+      color: var(--muted);
+      line-height: 1.85;
+    }
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .service-item {
+      background: var(--pearl);
+      padding: 1.75rem 1.25rem 1.45rem;
+      position: relative;
+      transition: background .2s;
+    }
+    .service-item.is-primary {
+      background: var(--ivory);
+      box-shadow:
+        inset 0 4px 0 var(--sky),
+        inset 0 0 0 1px rgba(126,181,232,.26);
+    }
+    .service-item.is-secondary {
+      background: rgba(245,243,238,.72);
+      box-shadow: inset 0 3px 0 var(--yellow);
+    }
+    .service-name {
+      font-size: 1.08rem;
+      font-weight: 800;
+      color: var(--warm);
+      margin-bottom: .7rem;
+      line-height: 1.35;
+    }
+    .service-desc {
+      font-size: 13.5px;
+      color: var(--muted);
+      line-height: 1.7;
     }
 
     /* ── ABOUT ── */
@@ -310,6 +362,13 @@
     .ch-note {
       font-size: 11px; color: var(--muted);
       margin-top: .5rem; font-style: italic;
+    }
+    .section-intro {
+      font-size: .92rem;
+      color: var(--muted);
+      line-height: 1.9;
+      max-width: 640px;
+      margin: -1.2rem 0 2rem;
     }
 
     /* Channel cards */
@@ -538,13 +597,15 @@
       .hero { grid-template-columns: 1fr; padding: 3.5rem 1.5rem 3rem; gap: 2.5rem; min-height: auto; }
       .hero-photo { order: -1; margin-top: 0; }
       .hero-photo img { width: 160px; height: 200px; }
-      .hero-stats { flex-direction: column; }
-      .hero-stat + .hero-stat { border-left: none; border-top: 1px solid var(--line); padding-left: 0; padding-top: 1.2rem; }
       .section { padding: 3.5rem 1.5rem; }
-      .what-grid { grid-template-columns: 1fr 1fr; }
-      .eq-grid, .cred-grid { grid-template-columns: 1fr; }
+      .what-grid { grid-template-columns: 1fr; }
+      .positioning-wrap, .service-grid, .eq-grid, .cred-grid { grid-template-columns: 1fr; }
       .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-      .hero-title { font-size: 2.4rem; }
+      .hero-title { font-size: 2rem; line-height: 1.17; }
+      .hero-bridge { font-size: 1.02rem; line-height: 1.6; }
+      .hero-sub { font-size: .96rem; line-height: 1.8; margin-bottom: 1.6rem; }
+      .service-name { font-size: 1.12rem; }
+      .what-name { font-size: 1.05rem; }
     }
   </style>
 </head>
@@ -554,10 +615,11 @@
 <nav>
   <a class="nav-logo" href="#">HAM MEDIA</a>
   <ul class="nav-links">
-    <li><a href="#what">できること</a></li>
     <li><a href="#about">紹介</a></li>
-    <li><a href="#channels">チャンネル</a></li>
-    <li><a href="#equipment">機材</a></li>
+    <li><a href="#what">してきたこと</a></li>
+    <li><a href="#services">依頼できること</a></li>
+    <li><a href="#channels">事例</a></li>
+    <li><a href="#equipment">制作フロー</a></li>
     <li><a href="#career">経歴</a></li>
     <li><a href="#skills">スキル</a></li>
     <li><a href="#contact">連絡先</a></li>
@@ -573,119 +635,111 @@
 <div class="hero">
   <div class="hero-text">
     <div class="hero-accent-line"></div>
-    <p class="hero-label">ひとりメディアプロデューサー · ハムPD</p>
+    <p class="hero-label">HAM MEDIA Portfolio</p>
     <h1 class="hero-title">
-      信頼をつくる<br>
-      <span class="underline-yellow">コンテンツを、</span><br>
-      <span class="sky">ひとりで。</span>
+      積み重ねてきた経験が、<br>
+      まだ十分に<br>
+      <span class="sky">伝わっていないなら。</span>
     </h1>
+    <p class="hero-bridge">現場の言葉を、伝わるコンテンツへ。</p>
     <p class="hero-sub">
-      企画・撮影・編集・公開まで、一人で完結。<br>
-      30年の現場経験を、伝わるコンテンツに設計します。
+      28年間、店舗を運営し、人を育て、空間をつくってきました。<br>
+      今はその経験を、映像、資料、講義、AIを活用した制作フローへと形にしています。
     </p>
-    <div class="hero-stats">
-      <div class="hero-stat">
-        <div class="stat-n">1,969万</div>
-        <div class="stat-l">累計再生数</div>
-        <div class="stat-d">ウリッキリオーディオ · 6年運営</div>
-      </div>
-      <div class="hero-stat">
-        <div class="stat-n">132%</div>
-        <div class="stat-l">登録者成長率</div>
-        <div class="stat-d">ワッサダドットコム · 2025年11月 再合流</div>
-      </div>
-      <div class="hero-stat">
-        <div class="stat-n">5チャンネル</div>
-        <div class="stat-l">同時運営</div>
-        <div class="stat-d">医療 · スピリチュアル · オーディオ · ライフ</div>
-      </div>
-    </div>
     <div class="hero-quote">
-      私はチャンネルを「作るだけ」の人ではありません。<br>
-      専門家の価値が視聴者に信頼として届くよう、<strong>構造を設計します。</strong>
+      よい経験も、伝わらなければ存在しないのと同じです。<br>
+      <strong>HAM MEDIAは、その距離を縮める仕事をしています。</strong>
     </div>
   </div>
   <div class="hero-photo">
-    <img src="./profile.JPG" alt="咸東旻 ハムPD">
+    <img src="./profile.JPG" alt="咸東旼 ハムPD">
   </div>
 </div>
 
-<!-- WHAT I DO -->
-<section class="section fade-up" id="what">
-  <p class="sec-label">What I Do</p>
-  <h2 class="sec-title">できること</h2>
-  <div class="what-grid">
-    <div class="what-item">
-      <div class="what-icon"><i data-lucide="layout-template"></i></div>
-      <div class="what-name">チャンネル戦略</div>
-      <div class="what-desc">ポジショニング、コンテンツ方針、視聴者分析</div>
+<!-- POSITIONING -->
+<section class="section fade-up" id="about">
+  <p class="sec-label">私がしていること</p>
+  <h2 class="sec-title">経験を、伝わる形に変えること</h2>
+
+  <div class="positioning-wrap">
+    <div class="positioning-copy">
+      <p>バリスタから始まり、店長、ディストリクトマネージャーへと進みました。約10〜15店舗の運営を見ながら、アメリカ本社の教育資料を韓国の現場に合わせて調整し、教育課程の運営や講師育成にも関わりました。</p>
+      <p>今、HAM MEDIAでしていることは、その経験の延長線上にあります。映像、資料、プレゼンテーション、講義、AIを活用した制作フローを通じて、複雑な経験やビジネスを、人に伝わる形へと整えています。</p>
     </div>
-    <div class="what-item">
-      <div class="what-icon"><i data-lucide="video"></i></div>
-      <div class="what-name">撮影 · 編集</div>
-      <div class="what-desc">企画から公開まで、全工程を一人で担当</div>
-    </div>
-    <div class="what-item">
-      <div class="what-icon"><i data-lucide="scissors"></i></div>
-      <div class="what-name">ショート動画化</div>
-      <div class="what-desc">ロング動画をShorts向けに再構成・最適化</div>
-    </div>
-    <div class="what-item">
-      <div class="what-icon"><i data-lucide="message-square-quote"></i></div>
-      <div class="what-name">ブランドストーリー</div>
-      <div class="what-desc">専門家の信頼を視聴者の言葉で設計</div>
-    </div>
-    <div class="what-item">
-      <div class="what-icon"><i data-lucide="bot"></i></div>
-      <div class="what-name">AI制作システム</div>
-      <div class="what-desc">Claude · ChatGPT · Geminiを使った制作ワークフロー</div>
+    <div class="positioning-card">
+      <div class="positioning-card-title">仕事の基準</div>
+      <p>現場運営、教育、資料整理、コンテンツ制作、AIを活用した制作フローをつなぎ、人が見て、使って、共有できる成果物へと変えていきます。</p>
     </div>
   </div>
 </section>
 
-<!-- ABOUT -->
-<section class="section fade-up" id="about">
-  <p class="sec-label">About</p>
-  <h2 class="sec-title">私は高卒です。</h2>
-
-  <div class="about-chapters">
-    <div class="about-chapter">
-      <p>でも、学ぶことから離れていたわけではありません。日本では大学に合格しましたが、IMF危機で韓国へ戻りました。アメリカでは入学直前まで進みましたが、生活の現実が先にありました。スターバックスで働きながら漢陽サイバー大学の経営学科にも入りましたが、学びが昇進のための道具に見えた瞬間、1年で離れました。</p>
-      <p>あきらめたのではありません。いつも現実を先に受け止めてきただけです。</p>
-      <p><strong>人を証明するのは学歴よりも実力であり、知識よりも知恵だと考えています。それは理念ではなく、これまでの現場で確かめてきた実感です。</strong></p>
+<!-- CORE CAPABILITIES -->
+<section class="section fade-up" id="what">
+  <p class="sec-label">してきたこと</p>
+  <h2 class="sec-title">経験が成果物になるまで</h2>
+  <div class="what-grid">
+    <div class="what-item">
+      <div class="what-icon"><i data-lucide="store"></i></div>
+      <div class="what-name">運営を理解しています</div>
+      <div class="what-desc">店舗運営からディストリクト単位の管理まで、現場に近い場所で人、顧客体験、事業の流れを見てきました。</div>
     </div>
-
-    <div class="about-chapter">
-      <div class="chapter-title"><span class="chapter-dot green"></span>スターバックス13年 — 学歴ではなく実力で認められた時間</div>
-      <p>バリスタから始まり、店長、地域マネージャー、人材開発チーム課長、仁川地域統括マネージャーまで経験しました。年間200億ウォン規模の売上を管理し、約200名のパートナーとともに地域全体を動かす仕事をしてきました。赤字店舗3店を黒字化し、2013年には全職級向けの教育プログラムも自ら設計しました。</p>
-      <div class="blockq green-q">ハワード・シュルツの招待で訪れたシアトル本社でコーヒーテイスティングをした日、はっきり分かりました。私はコーヒーそのものより、その体験を設計する人になりたいのだと。</div>
+    <div class="what-item">
+      <div class="what-icon"><i data-lucide="users"></i></div>
+      <div class="what-name">人に伝える方法を知っています</div>
+      <div class="what-desc">コーヒーセミナー、オンボーディング、職級別教育、店長教育、サポートセンター教育、講師育成に関わってきました。</div>
     </div>
-
-    <div class="about-chapter">
-      <div class="chapter-title"><span class="chapter-dot yellow"></span>デラカーサ創業 — 感覚が売上につながる過程</div>
-      <p>仁川の新浦洞と青羅で、イタリアンレストランを自ら企画し運営しました。人は料理だけを食べに来るわけではない。そのことをこの時に学びました。照明、音楽、言葉づかいの一つひとつが、再来店、客単価、レビューにつながります。パンデミックで店を閉じましたが、その重みは今も私の判断に現実感として残っています。</p>
+    <div class="what-item">
+      <div class="what-icon"><i data-lucide="file-text"></i></div>
+      <div class="what-name">資料を説得の構造に整えます</div>
+      <div class="what-desc">提案書、プレゼン資料、ポートフォリオ、事業紹介資料など、相手に伝わる順序と流れを整えます。</div>
     </div>
+    <div class="what-item">
+      <div class="what-icon"><i data-lucide="video"></i></div>
+      <div class="what-name">物語をコンテンツに変えます</div>
+      <div class="what-desc">YouTubeの企画、撮影、編集、公開、Shorts化、コンテンツ方針整理まで、実際の制作に関わってきました。</div>
+    </div>
+    <div class="what-item">
+      <div class="what-icon"><i data-lucide="bot"></i></div>
+      <div class="what-name">制作の流れを構造化します</div>
+      <div class="what-desc">資料分析、企画、原稿整理、カードニュース制作、Webページ制作など、繰り返される作業をAIを活用して整理します。</div>
+    </div>
+    <div class="what-item">
+      <div class="what-icon"><i data-lucide="message-circle"></i></div>
+      <div class="what-name">自分で試せるように教えます</div>
+      <div class="what-desc">AIが初めての人には実習を、1人専門家やフリーランスには経験をオンラインで見せる形に整理する方法を伝えます。</div>
+    </div>
+  </div>
+</section>
 
-    <div class="about-chapter">
-      <div class="chapter-title"><span class="chapter-dot"></span>HAM MEDIA — すべての経験がたどり着いた場所</div>
-      <p>今はHAM MEDIAという名前で、一人のメディアスタジオを運営しています。撮影の前に、まず考えます。この人はどんな顧客と出会うべきなのか。その顧客は何を不安に思っているのか。どんな言葉に信頼を感じるのか。</p>
-      <div class="blockq sky-q">
-        良いコンテンツは、きれいに作られた映像だけではありません。<br>
-        顧客が「この人に任せても大丈夫だ」と感じるための<strong>信頼の構造</strong>です。
-      </div>
-      <p>これは理論で学んだものではありません。スターバックスの店舗で、デラカーサの厨房で、オーディオ販売の現場で、不動産取引のテーブルで、身体で覚えてきたものです。</p>
-      <div class="blockq">
-        <strong>誰かが自分を見つけてくれないなら、自分だけは自分を見つけなければならない。<br>
-        だから私は、自分を採用しました。そして自分に仕事を任せました。</strong>
-      </div>
+<!-- WORK CATEGORIES -->
+<section class="section fade-up" id="services">
+  <p class="sec-label">依頼できること</p>
+  <h2 class="sec-title">形にできる仕事</h2>
+  <div class="service-grid">
+    <div class="service-item">
+      <div class="service-name">YouTubeと映像コンテンツ</div>
+      <div class="service-desc">チャンネルの目的、視聴者の期待、コンテンツの方向性、制作フローを整理します。</div>
+    </div>
+    <div class="service-item is-primary">
+      <div class="service-name">提案書とプレゼン資料</div>
+      <div class="service-desc">資料を読み、核となるメッセージを見つけ、相手が理解しやすい順序に再構成します。</div>
+    </div>
+    <div class="service-item is-secondary">
+      <div class="service-name">AI講義と実習型トレーニング</div>
+      <div class="service-desc">説明だけで終わらせず、受講者が自分で試せる実習の流れを設計します。</div>
+    </div>
+    <div class="service-item">
+      <div class="service-name">1人制作フローの整理</div>
+      <div class="service-desc">1人で抱え込みがちな繰り返し作業を、AIを活用した制作フローとして整理します。</div>
     </div>
   </div>
 </section>
 
 <!-- CHANNELS -->
 <section class="section fade-up" id="channels">
-  <p class="sec-label">Channels · Proof</p>
-  <h2 class="sec-title">運営チャンネル</h2>
+  <p class="sec-label">実際の制作事例</p>
+  <h2 class="sec-title">コンテンツ・YouTube運営事例</h2>
+  <p class="section-intro">HAM MEDIAが関わってきたYouTubeチャンネルと映像制作の事例です。自ら企画・制作したものと、コンテンツ運営に参加したものがあります。</p>
 
   <div class="ch-table-wrap">
     <table class="ch-table">
@@ -695,7 +749,7 @@
       <tbody>
         <tr><td>ウリッキリオーディオ</td><td>1,969万</td><td>38,014</td><td>2020年に自ら開設 · 6年</td></tr>
         <tr><td>クァンミョンチョンシンボサルTV</td><td>44.8万</td><td>2,167</td><td>2025.6 自ら開設</td></tr>
-        <tr><td>ワッサダドットコム</td><td>22.9万（1年）</td><td>4,825</td><td>2025年11月 再合流 · 登録者132%↑</td></tr>
+        <tr><td>ワッサダドットコム</td><td>22.9万（1年）</td><td>4,825</td><td>コンテンツ運営参加 · 登録者132%↑</td></tr>
         <tr><td>今回の人生はレースだ</td><td>15.9万</td><td>324</td><td>2026年2月 自ら開設</td></tr>
         <tr><td>整形外科専門医 キム・ジョンミョン</td><td>14.8万</td><td>184+</td><td>2025.9 自ら開設</td></tr>
       </tbody>
@@ -771,7 +825,7 @@
       <span class="ch-tag green-tag">クライアント</span>
       <div>
         <div class="ch-card-name"><a href="https://www.youtube.com/@Wassadacom" target="_blank" rel="noopener noreferrer">ワッサダドットコム →</a></div>
-        <div class="ch-card-desc">オーディオショップ専門チャンネル。2025年11月に再合流して運営を担当し、登録者132%成長。</div>
+          <div class="ch-card-desc">ハイエンドオーディオの小売チャンネル。HAM MEDIAはチャンネルのコンテンツ運営に参加しました。</div>
       </div>
     </div>
 
@@ -780,9 +834,9 @@
 
 <!-- EQUIPMENT -->
 <section class="section fade-up" id="equipment">
-  <p class="sec-label">Equipment</p>
-  <h2 class="sec-title">一人制作システム</h2>
-  <p class="eq-intro">企画から公開まで一人で処理するためのシステムです。機材を増やすことより、判断を速くする構成を重視しています。</p>
+  <p class="sec-label">制作フロー</p>
+  <h2 class="sec-title">速く、安定して形にするための制作フロー</h2>
+  <p class="eq-intro">1人で制作していますが、感覚だけに頼っているわけではありません。資料分析、企画、原稿整理、撮影・編集、Webページ制作などを、AIと制作機材を組み合わせて整理しています。</p>
   <div class="eq-grid">
     <div class="eq-block">
       <div class="eq-block-title"><i data-lucide="camera" style="width:13px;height:13px;stroke:var(--sky);vertical-align:middle;margin-right:4px;"></i> カメラ</div>
@@ -816,9 +870,9 @@
       <div class="eq-block-title"><i data-lucide="monitor" style="width:13px;height:13px;stroke:var(--sky);vertical-align:middle;margin-right:4px;"></i> 編集 · AI</div>
       <ul class="eq-list">
         <li>MacBook Pro M4 Pro 14" — 編集専用</li>
-        <li>MacBook Pro M1 13" — AI自動化ハブ</li>
+        <li>MacBook Pro M1 13" — AIを活用した制作フローハブ</li>
         <li>Final Cut Pro / Vrew</li>
-        <li>Claude · ChatGPT · Gemini マルチワークフロー</li>
+        <li>Claude · ChatGPT · Gemini 制作ワークフロー</li>
       </ul>
     </div>
   </div>
@@ -826,7 +880,7 @@
 
 <!-- CAREER -->
 <section class="section fade-up" id="career">
-  <p class="sec-label">Career</p>
+  <p class="sec-label">経歴</p>
   <h2 class="sec-title">経歴</h2>
   <div class="timeline">
 
@@ -835,39 +889,39 @@
       <div class="tl-period">2025年 — 現在</div>
       <div class="tl-role">ひとりメディアプロデューサー</div>
       <div class="tl-company">HAM MEDIA</div>
-      <div class="tl-desc">5つのYouTubeチャンネルで企画・撮影・編集・公開を一人で担当。AIマルチワークフローを構築・運用し、クライアントチャンネルの運営代行で収益化。</div>
+      <div class="tl-desc">映像、資料、プレゼン資料、講義、AIを活用した制作フローを通じて、複雑な経験やビジネスを人に伝わる成果物へと変えています。</div>
       <div class="tl-badges">
-        <span class="tl-badge sky">5チャンネル全工程を単独担当</span>
-        <span class="tl-badge sky">AI制作システム</span>
+        <span class="tl-badge sky">コンテンツ・YouTube運営</span>
+        <span class="tl-badge sky">制作フローの整理</span>
       </div>
     </div>
 
     <div class="tl-item">
       <div class="tl-dot"></div>
       <div class="tl-period">2024.05 — 2025.04</div>
-      <div class="tl-role">企画部長 / 初期事業企画メンバー</div>
+      <div class="tl-role">企画マネージャー / 初期事業企画メンバー</div>
       <div class="tl-company">Acoustics Space</div>
-      <div class="tl-desc">高級住宅向けハイエンドオーディオルーム、スマートHVAC、照明・空調の統合設計を統括。Sangji Construction Escalaプロジェクトに参加。</div>
+      <div class="tl-desc">高級住宅向けのハイエンドオーディオルーム、スマートHVAC、照明・空調プロジェクトで、企画、進行、顧客・協力会社とのコミュニケーション、文書整理に関わりました。</div>
       <div class="tl-badges">
-        <span class="tl-badge">Escalaプロジェクト</span>
-        <span class="tl-badge">プレミアム空間統合設計</span>
+        <span class="tl-badge">プレミアム空間企画</span>
+        <span class="tl-badge">顧客・協力会社コミュニケーション</span>
       </div>
     </div>
 
     <div class="tl-item">
       <div class="tl-dot"></div>
       <div class="tl-period">2023.05 — 2024.01</div>
-      <div class="tl-role">部長 / 工場不動産コンサルタント</div>
+      <div class="tl-role">産業用不動産コンサルタント</div>
       <div class="tl-company">Daewoo Development Consulting</div>
-      <div class="tl-desc">工場・倉庫など産業用不動産の仲介実務。立地分析、予算最適化、建物活用計画を提案。</div>
+      <div class="tl-desc">工場・倉庫など産業用不動産の仲介実務に関わり、立地確認、予算計画、空間活用の提案を行いました。</div>
     </div>
 
     <div class="tl-item">
       <div class="tl-dot"></div>
       <div class="tl-period">2022.02 — 2022.10</div>
-      <div class="tl-role">運営チーム部長</div>
+      <div class="tl-role">運営マネージャー</div>
       <div class="tl-company">AV & People（ワッサダドットコム）</div>
-      <div class="tl-desc">ハイエンドオーディオ製品の相談・販売。YouTubeチャンネルの撮影・編集・運営を担当し、ブランド認知向上に貢献。</div>
+      <div class="tl-desc">ハイエンドオーディオ製品の相談・販売を経験し、ワッサダドットコムのチャンネルのコンテンツ運営に参加しました。</div>
     </div>
 
     <div class="tl-item">
@@ -875,24 +929,24 @@
       <div class="tl-period">2014.06 — 2022.07</div>
       <div class="tl-role">オーナーシェフ / 代表</div>
       <div class="tl-company">デラカーサ</div>
-      <div class="tl-desc">仁川の新浦洞・青羅でイタリアンレストランを自ら企画・開業・運営。高級顧客層を狙い、売上を2倍に成長。メニュー、空間、サービス、ブランディング、収益構造まで全体を統括。パンデミックによる閉店経験は、その後の失敗回復コンテンツ哲学の現実的な土台となった。</div>
+      <div class="tl-desc">仁川の新浦洞・青羅でイタリアンレストランを企画・運営しました。メニュー、空間、サービス、ブランディング、収益構造を見ながら、顧客体験が結果につながる過程を学びました。</div>
       <div class="tl-badges">
-        <span class="tl-badge">売上2倍成長</span>
-        <span class="tl-badge">空間・ブランド企画の全工程</span>
+        <span class="tl-badge">空間・ブランド企画</span>
+        <span class="tl-badge">顧客体験運営</span>
       </div>
     </div>
 
     <div class="tl-item">
       <div class="tl-dot green"></div>
       <div class="tl-period">2001.01 — 2014.05</div>
-      <div class="tl-role">バリスタ → 店長 → 地域マネージャー → 人材開発チーム → 仁川統括</div>
+      <div class="tl-role">バリスタ → 店長 → ディストリクトマネージャー → 人材開発領域</div>
       <div class="tl-company">スターバックス コーヒー コリア</div>
-      <div class="tl-desc">赤字店舗3店を黒字化。忠清・仁川の4エリアを統括。人材開発チームで全職級向け教育プログラムを設計。年間200億ウォン規模の売上を管理し、約200名のパートナーを運営。</div>
+      <div class="tl-desc">バリスタから始まり、店長、ディストリクトマネージャーへと進みました。約10〜15店舗の運営を見ながら、アメリカ本社の教育資料を韓国の現場に合わせて調整し、教育課程の運営や講師育成にも関わりました。</div>
       <div class="tl-badges">
         <span class="tl-badge green">🏆 年間最優秀マネージャー賞</span>
         <span class="tl-badge green">🏆 年間最優秀エリアマネージャー賞</span>
         <span class="tl-badge green">シアトル本社招待 · ハワード・シュルツ面談</span>
-        <span class="tl-badge">赤字店舗3店を黒字化</span>
+        <span class="tl-badge">成果改善への関わり</span>
         <span class="tl-badge">コーヒーマスター · 地域コーヒーマスター</span>
       </div>
     </div>
@@ -914,19 +968,18 @@
 
 <!-- SKILLS -->
 <section class="section fade-up" id="skills">
-  <p class="sec-label">Skills & Credentials</p>
+  <p class="sec-label">整理されたスキル</p>
   <h2 class="sec-title">スキル・資格</h2>
   <div class="cred-grid">
     <div class="cred-block">
       <div class="cred-title">コアスキル</div>
       <ul class="cred-list">
-        <li>YouTubeコンテンツ全工程制作</li>
-        <li>チャンネル戦略 · ブランド企画</li>
+        <li>企画・運営・教育経験の構造化</li>
+        <li>資料・提案書・プレゼン資料の構成</li>
+        <li>コンテンツ・YouTube運営</li>
         <li>顧客体験設計</li>
-        <li>AIマルチワークフロー運用</li>
-        <li>チームリーダーシップ / 人材開発</li>
-        <li>教育プログラム設計</li>
-        <li>文書 · PPT · カードニュース制作</li>
+        <li>AIを活用した制作フロー運用</li>
+        <li>講義とコンテンツ相談</li>
       </ul>
     </div>
     <div class="cred-block">
@@ -954,17 +1007,37 @@
 
 <!-- CONTACT -->
 <section class="section fade-up" id="contact">
-  <p class="sec-label">Contact</p>
+  <p class="sec-label">お問い合わせ</p>
   <h2 class="cta-heading">
-    映像を作る人は多い。<br>
-    <span class="sky">構造を理解している人は少ない。</span>
+    経験やビジネスを、<br>
+    <span class="sky">伝わる形にしたいなら。</span>
   </h2>
   <p class="cta-sub">
-    チャンネル運営代行、コラボ、協賛、講演のご相談を歓迎します。<br>
+    映像、資料、講義、AIを活用した制作フローまで。今ある経験や資料を、どのような形で見せるべきか一緒に整理します。<br>
     韓国・仁川富平区を拠点に、通常1〜2日以内に返信します。
   </p>
 
   <div class="contact-grid">
+    <div>
+      <div class="contact-rows">
+        <div class="contact-row">
+          <span class="contact-key">Email</span>
+          <a class="contact-val" href="mailto:hammedia002@gmail.com">hammedia002@gmail.com</a>
+        </div>
+        <div class="contact-row">
+          <span class="contact-key">Threads</span>
+          <a class="contact-val" href="https://threads.net/@dellacasa_2" target="_blank" rel="noopener noreferrer">@dellacasa_2</a>
+        </div>
+        <div class="contact-row">
+          <span class="contact-key">Website</span>
+          <a class="contact-val" href="https://hammedia.github.io/hammedia" target="_blank" rel="noopener noreferrer">hammedia.github.io/hammedia</a>
+        </div>
+        <div class="contact-row">
+          <span class="contact-key">分析</span>
+          <a class="contact-val" href="https://hammedia.github.io/youtube-channel-report-codex" target="_blank" rel="noopener noreferrer">YouTubeチャンネル分析ダッシュボード →</a>
+        </div>
+      </div>
+    </div>
     <div>
       <ul class="sns-list">
         <li>
@@ -979,10 +1052,6 @@
             <div><div class="sns-name">X</div><div class="sns-handle">@ookkio2020</div></div>
           </a>
         </li>
-      </ul>
-    </div>
-    <div>
-      <ul class="sns-list">
         <li>
           <a href="https://www.instagram.com/dellacasa_2" target="_blank" rel="noopener noreferrer">
             <div class="sns-icon">◻</div>
