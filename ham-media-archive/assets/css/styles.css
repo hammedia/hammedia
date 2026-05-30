@@ -1093,6 +1093,44 @@ h1 {
   color: var(--ink);
 }
 
+.room-card-note {
+  display: block;
+  color: var(--muted);
+  font-size: 0.86rem;
+  font-weight: 650;
+  line-height: 1.55;
+}
+
+.room-record-unit {
+  padding: clamp(0.75rem, 2vw, 1rem);
+}
+
+.room-record-figure {
+  display: grid;
+  gap: 0.72rem;
+  margin: 0;
+}
+
+.room-record-photo {
+  height: clamp(11.5rem, 28vw, 16.5rem);
+  border-radius: 18px;
+  aspect-ratio: 4 / 3;
+}
+
+.room-record-caption {
+  display: grid;
+  gap: 0.22rem;
+  padding-inline: 0.12rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.room-record-caption .room-card-title {
+  font-size: clamp(1.02rem, 1.7vw, 1.2rem);
+  line-height: 1.42;
+}
+
 .room-related {
   display: flex;
   flex-wrap: wrap;
