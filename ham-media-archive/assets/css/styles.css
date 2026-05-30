@@ -96,13 +96,13 @@ h2 {
 .home-body {
   color: rgba(255, 252, 244, 0.94);
   background:
-    radial-gradient(circle at 18% 22%, rgba(255, 202, 109, 0.1), transparent 15rem),
-    radial-gradient(circle at 78% 16%, rgba(148, 190, 255, 0.08), transparent 18rem),
-    linear-gradient(160deg, #02050a 0%, #07101d 48%, #02040a 100%);
+    radial-gradient(circle at 18% 22%, rgba(255, 202, 109, 0.035), transparent 15rem),
+    radial-gradient(circle at 78% 16%, rgba(80, 118, 180, 0.028), transparent 18rem),
+    linear-gradient(160deg, #000000 0%, #01040a 52%, #000000 100%);
 }
 
 .home-body::before {
-  opacity: 0.72;
+  opacity: 0.58;
   background-image:
     radial-gradient(circle, rgba(255, 248, 220, 0.82) 0 1px, transparent 1.8px),
     radial-gradient(circle, rgba(255, 207, 111, 0.42) 0 1px, transparent 2px);
@@ -1802,7 +1802,8 @@ h1 {
 .constellation-entry .constellation-intro h2 {
   max-width: 11.5em;
   color: rgba(255, 252, 244, 0.96);
-  font-size: clamp(1.45rem, 3.1vw, 2.8rem);
+  font-size: clamp(1.12rem, 2.1vw, 1.8rem);
+  line-height: 1.18;
   text-shadow: 0 0 28px rgba(255, 184, 48, 0.14);
 }
 
@@ -1810,7 +1811,7 @@ h1 {
   max-width: 25rem;
   margin: 0;
   color: rgba(255, 252, 244, 0.64);
-  font-size: clamp(0.86rem, 1.2vw, 0.98rem);
+  font-size: clamp(0.72rem, 0.9vw, 0.84rem);
   line-height: 1.6;
 }
 
@@ -1856,6 +1857,8 @@ h1 {
 }
 
 .constellation-entry .constellation-window {
+  width: min(76vw, 42rem);
+  justify-self: center;
   min-height: clamp(25rem, 48vw, 36rem);
   border: 0;
   border-radius: 0;
@@ -1878,20 +1881,21 @@ h1 {
 }
 
 .constellation-entry .constellation-window::before {
-  inset: auto auto auto -34%;
-  top: 24%;
+  inset: auto auto auto 56%;
+  top: -18%;
   z-index: 1;
   display: block;
-  width: min(42vw, 20rem);
-  height: 2px;
+  width: min(10vw, 4.5rem);
+  height: 1px;
   border: 0;
   border-radius: 999px;
-  background: linear-gradient(90deg, transparent 0%, rgba(255, 244, 210, 0.1) 28%, rgba(255, 244, 210, 0.92) 72%, #ffffff 100%);
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 244, 210, 0.1) 18%, rgba(255, 232, 178, 0.92) 62%, #ffffff 100%);
   box-shadow:
-    0 0 12px rgba(255, 219, 141, 0.72),
-    0 0 28px rgba(255, 162, 58, 0.28);
+    0 0 12px rgba(255, 244, 216, 0.98),
+    0 0 28px rgba(255, 199, 94, 0.7),
+    0 0 52px rgba(255, 130, 38, 0.32);
   opacity: 0;
-  transform: rotate(-18deg) translate3d(0, 0, 0);
+  transform: rotate(104deg);
   animation: shootingStarSweep 12s ease-in-out infinite;
 }
 
@@ -1922,10 +1926,13 @@ h1 {
 
 .constellation-path-line {
   fill: none;
-  stroke: rgba(255, 190, 72, 0.28);
+  stroke: rgba(255, 190, 72, 0.18);
   stroke-width: 0.32;
   stroke-linecap: round;
   stroke-linejoin: round;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  opacity: 0;
 }
 
 .constellation-entry .constellation-path-line {
@@ -2380,7 +2387,7 @@ h1 {
   0%,
   28% {
     opacity: 1;
-    filter: brightness(1);
+    filter: brightness(1.16);
   }
 
   43%,
@@ -2392,14 +2399,14 @@ h1 {
   76%,
   100% {
     opacity: 1;
-    filter: brightness(1);
+    filter: brightness(1.16);
   }
 }
 
 @keyframes constellationHaloBreath {
   0%,
   28% {
-    opacity: 0.62;
+    opacity: 0.76;
   }
 
   43%,
@@ -2409,14 +2416,14 @@ h1 {
 
   76%,
   100% {
-    opacity: 0.62;
+    opacity: 0.76;
   }
 }
 
 @keyframes constellationSparkBreath {
   0%,
   28% {
-    opacity: 0.14;
+    opacity: 0.24;
   }
 
   43%,
@@ -2426,24 +2433,42 @@ h1 {
 
   76%,
   100% {
-    opacity: 0.14;
+    opacity: 0.24;
   }
 }
 
 @keyframes constellationLineBreath {
   0%,
-  28% {
-    opacity: 1;
+  12% {
+    opacity: 0;
+    stroke-dashoffset: 100;
   }
 
-  43%,
-  58% {
-    opacity: 0.03;
+  28%,
+  34% {
+    opacity: 0.72;
+    stroke-dashoffset: 0;
   }
 
-  76%,
+  46%,
+  68% {
+    opacity: 0;
+    stroke-dashoffset: 0;
+  }
+
+  76% {
+    opacity: 0;
+    stroke-dashoffset: 100;
+  }
+
+  92% {
+    opacity: 0.52;
+    stroke-dashoffset: 0;
+  }
+
   100% {
-    opacity: 1;
+    opacity: 0;
+    stroke-dashoffset: 0;
   }
 }
 
@@ -2451,21 +2476,28 @@ h1 {
   0%,
   42% {
     opacity: 0;
-    transform: rotate(-18deg) translate3d(0, 0, 0);
+    left: 56%;
+    top: -18%;
+    transform: rotate(104deg) scaleX(0.82);
   }
 
   47% {
     opacity: 1;
+    transform: rotate(104deg) scaleX(1);
   }
 
   56% {
     opacity: 0;
-    transform: rotate(-18deg) translate3d(168vw, 58vw, 0);
+    left: 46%;
+    top: 82%;
+    transform: rotate(104deg) scaleX(0.78);
   }
 
   100% {
     opacity: 0;
-    transform: rotate(-18deg) translate3d(168vw, 58vw, 0);
+    left: 46%;
+    top: 82%;
+    transform: rotate(104deg) scaleX(0.78);
   }
 }
 
@@ -2747,7 +2779,7 @@ h1 {
   }
 
   .constellation-entry .constellation-intro h2 {
-    font-size: clamp(1.45rem, 7vw, 2.15rem);
+    font-size: clamp(1.02rem, 4.4vw, 1.28rem);
   }
 
   .constellation-window {
@@ -2756,7 +2788,8 @@ h1 {
   }
 
   .constellation-entry .constellation-window {
-    min-height: 24rem;
+    width: min(76vw, 22rem);
+    min-height: min(72vw, 20rem);
   }
 
   .constellation-window::before {

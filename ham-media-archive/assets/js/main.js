@@ -145,6 +145,7 @@ function updateConstellationPath() {
     .join(" ");
 
   constellationPath.setAttribute("points", points);
+  constellationPath.setAttribute("pathLength", "100");
 }
 
 function selectConstellationStar(star) {
