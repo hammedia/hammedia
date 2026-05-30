@@ -1926,8 +1926,8 @@ h1 {
 
 .constellation-path-line {
   fill: none;
-  stroke: rgba(255, 190, 72, 0.18);
-  stroke-width: 0.32;
+  stroke: rgba(255, 190, 72, 0.3);
+  stroke-width: 0.45;
   stroke-linecap: round;
   stroke-linejoin: round;
   stroke-dasharray: 100;
@@ -1958,12 +1958,13 @@ h1 {
 
 .star-light {
   position: relative;
-  width: 0.42rem;
+  width: 0.5rem;
   aspect-ratio: 1;
   border-radius: 999px;
   background:
     radial-gradient(circle at 45% 38%, #fff8d8 0 18%, #ffd15f 28% 56%, #f0a51f 72% 100%);
   box-shadow:
+    0 0 4px rgba(255, 255, 255, 0.9),
     0 0 0 3px rgba(255, 184, 48, 0.07),
     0 0 11px rgba(255, 183, 50, 0.72),
     0 0 26px rgba(226, 119, 20, 0.24);
@@ -2005,6 +2006,24 @@ h1 {
 
 .constellation-entry .star-light::after {
   animation: constellationSparkBreath 12s ease-in-out infinite;
+}
+
+.constellation-entry .constellation-star:nth-of-type(2n) .star-light,
+.constellation-entry .constellation-star:nth-of-type(2n) .star-light::before,
+.constellation-entry .constellation-star:nth-of-type(2n) .star-light::after {
+  animation-delay: -3s;
+}
+
+.constellation-entry .constellation-star:nth-of-type(3n) .star-light,
+.constellation-entry .constellation-star:nth-of-type(3n) .star-light::before,
+.constellation-entry .constellation-star:nth-of-type(3n) .star-light::after {
+  animation-delay: -7s;
+}
+
+.constellation-entry .constellation-star:nth-of-type(5n) .star-light,
+.constellation-entry .constellation-star:nth-of-type(5n) .star-light::before,
+.constellation-entry .constellation-star:nth-of-type(5n) .star-light::after {
+  animation-delay: -10s;
 }
 
 .star-label {
@@ -2446,7 +2465,7 @@ h1 {
 
   28%,
   34% {
-    opacity: 0.72;
+    opacity: 1;
     stroke-dashoffset: 0;
   }
 
@@ -2462,7 +2481,7 @@ h1 {
   }
 
   92% {
-    opacity: 0.52;
+    opacity: 0.8;
     stroke-dashoffset: 0;
   }
 
