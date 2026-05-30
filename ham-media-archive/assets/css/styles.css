@@ -141,13 +141,11 @@ h2 {
 }
 
 .brand-icon {
-  width: 1.35rem;
-  height: 1.35rem;
-  border-radius: 9px;
-  background: rgba(255, 198, 81, 0.88);
-  box-shadow:
-    0 0 18px rgba(255, 188, 54, 0.5),
-    inset 1px 1px 5px rgba(255, 255, 255, 0.35);
+  display: block;
+  width: 2rem;
+  height: 2rem;
+  object-fit: contain;
+  flex: 0 0 auto;
 }
 
 .hub-stage {
