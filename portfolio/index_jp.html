@@ -1,0 +1,1226 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>咸東旼 — ハムPD | HAM MEDIA</title>
+  <meta name="description" content="積み重ねてきた経験がまだ十分に伝わっていないなら、HAM MEDIAが映像、資料、講義、AIを活用した制作フローへと形にします。">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="咸東旼 — ハムPD | HAM MEDIA">
+  <meta property="og:description" content="積み重ねてきた経験がまだ十分に伝わっていないなら、HAM MEDIAが映像、資料、講義、AIを活用した制作フローへと形にします。">
+  <meta property="og:image" content="https://hammedia.co.kr/profile.JPG">
+  <meta property="og:url" content="https://hammedia.co.kr/portfolio/">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="咸東旼 — ハムPD | HAM MEDIA">
+  <meta name="twitter:description" content="現場の言葉を、伝わるコンテンツへ。HAM MEDIA 咸東旼。">
+  <meta name="twitter:image" content="https://hammedia.co.kr/profile.JPG">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TEBKMGWPQS"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-TEBKMGWPQS');
+  </script>
+  <style>
+    :root {
+      --pearl:   #F9F7F3;
+      --ivory:   #F5F3EE;
+      --warm:    #1C1814;
+      --muted:   #4A423C;
+      --accent:  #7A5C47;
+      --green:   #00704A;
+      --sky:     #7EB5E8;
+      --yellow:  #F4DC59;
+      --line:    rgba(28,24,20,0.10);
+      --shadow:  0 20px 50px rgba(44,34,26,0.07);
+      --font:    'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+      --serif:   'Noto Serif KR', 'Georgia', serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--pearl);
+      color: var(--warm);
+      font-family: var(--font);
+      font-size: 16px;
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(249,247,243,0.94);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--line);
+      padding: 0 3rem;
+      height: 58px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo {
+      font-size: 13px; font-weight: 800;
+      letter-spacing: 0.08em; color: var(--warm);
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      font-size: 12px; font-weight: 500;
+      color: var(--muted); text-decoration: none;
+      letter-spacing: 0.05em;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+    .nav-lang { display: flex; gap: .6rem; }
+    .lang-btn {
+      font-size: 11px; font-weight: 600;
+      padding: 5px 12px; border-radius: 999px;
+      border: 1px solid var(--line);
+      background: transparent; color: var(--muted);
+      text-decoration: none; cursor: pointer;
+      transition: all .2s;
+    }
+    .lang-btn.active, .lang-btn:hover {
+      background: var(--accent); color: #fff;
+      border-color: var(--accent);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      max-width: 960px; margin: 0 auto;
+      padding: 3rem 3rem 3rem;
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 2rem;
+      align-items: center;
+      min-height: 78vh;
+      position: relative;
+    }
+    .hero::after {
+      content: '';
+      position: absolute; bottom: 0; left: 3rem; right: 3rem;
+      height: 1px; background: var(--line);
+    }
+    .hero-accent-line {
+      width: 44px; height: 4px;
+      background: var(--sky); border-radius: 2px;
+      margin-bottom: 1.4rem;
+      animation: fadeUp .5s .05s both;
+    }
+    .hero-label {
+      font-size: 11px; font-weight: 700;
+      letter-spacing: .18em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 1rem;
+      animation: fadeUp .5s .1s both;
+    }
+    .hero-title {
+      font-family: var(--serif);
+      font-size: clamp(2.15rem, 4vw, 3rem);
+      font-weight: 700;
+      line-height: 1.16;
+      letter-spacing: -0.01em;
+      color: var(--warm);
+      margin-bottom: 1rem;
+      word-break: keep-all;
+      animation: fadeUp .5s .16s both;
+    }
+    .hero-title .sky {
+      color: var(--sky);
+      font-weight: 800;
+      display: inline-block;
+      letter-spacing: -0.02em;
+    }
+    .hero-bridge {
+      font-size: 1.16rem;
+      font-weight: 700;
+      color: var(--warm);
+      line-height: 1.55;
+      margin-bottom: 1rem;
+      animation: fadeUp .5s .2s both;
+    }
+    .hero-sub {
+      max-width: 560px;
+      font-size: 1.02rem; color: var(--muted);
+      margin-bottom: 2rem; line-height: 1.85;
+      animation: fadeUp .5s .24s both;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: .75rem 1.15rem;
+      border-radius: 999px;
+      background: var(--accent);
+      color: var(--pearl);
+      border: 1px solid var(--accent);
+      font-size: .9rem;
+      font-weight: 800;
+      line-height: 1.2;
+      text-decoration: none;
+      transition: transform .2s, background .2s, border-color .2s;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      background: var(--warm);
+      border-color: var(--warm);
+    }
+    .hero-quote + .btn-primary { margin-top: 1rem; animation: fadeUp .5s .38s both; }
+
+    /* Hero quote */
+    .hero-quote {
+      border-left: 4px solid var(--yellow);
+      padding: .8rem 1rem;
+      font-size: .86rem; color: var(--muted);
+      font-style: italic; line-height: 1.75;
+      background: var(--ivory);
+      border-radius: 0 6px 6px 0;
+      max-width: 520px;
+      animation: fadeUp .5s .34s both;
+    }
+    .hero-quote strong { color: var(--warm); font-weight: 650; }
+
+    /* Hero photo */
+    .hero-photo { animation: fadeUp .6s .2s both; align-self: center; margin-top: -20px; }
+    .hero-photo img {
+      width: 100%; max-width: 300px;
+      height: 365px;
+      object-fit: cover; object-position: top center;
+      border-radius: 12px;
+      display: block;
+      -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+      mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+      box-shadow: var(--shadow);
+    }
+
+    /* ── COMMON SECTIONS ── */
+    .section {
+      max-width: 900px; margin: 0 auto;
+      padding: 5rem 3rem;
+      border-bottom: 1px solid var(--line);
+    }
+    .section:last-of-type { border-bottom: none; }
+
+    .sec-label {
+      font-size: 10px; font-weight: 700;
+      letter-spacing: .18em; text-transform: uppercase;
+      color: var(--sky); margin-bottom: .6rem;
+    }
+    .sec-title {
+      font-family: var(--serif);
+      font-size: 1.85rem; font-weight: 700;
+      letter-spacing: -.01em;
+      color: var(--warm); margin-bottom: 2.5rem;
+      line-height: 1.3;
+    }
+
+    /* ── WHAT I DO ── */
+    .what-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .what-item {
+      background: var(--pearl);
+      padding: 1.7rem 1.25rem;
+      transition: background .2s;
+    }
+    .what-item:hover { background: var(--ivory); }
+    .what-icon {
+      width: 36px; height: 36px;
+      border-radius: 8px;
+      background: rgba(126,181,232,.12);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1rem;
+    }
+    .what-icon [data-lucide] {
+      width: 18px; height: 18px;
+      stroke: var(--sky); stroke-width: 1.8;
+    }
+    .what-name {
+      font-size: 1rem; font-weight: 800;
+      color: var(--warm); margin-bottom: .65rem;
+      line-height: 1.35;
+    }
+    .what-desc {
+      font-size: 13px; color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* ── POSITIONING / SERVICES ── */
+    .positioning-wrap {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 2rem;
+      align-items: start;
+    }
+    .positioning-copy p {
+      font-size: .95rem;
+      color: var(--muted);
+      line-height: 2;
+      margin-bottom: 1rem;
+    }
+    .positioning-copy p:last-child { margin-bottom: 0; }
+    .positioning-card {
+      background: var(--ivory);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 1.4rem;
+    }
+    .positioning-card-title {
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--sky);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: .65rem;
+    }
+    .positioning-card p {
+      font-size: 13.5px;
+      color: var(--muted);
+      line-height: 1.85;
+    }
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 1px;
+      width: min(1040px, calc(100vw - 6rem));
+      margin-left: 50%;
+      transform: translateX(-50%);
+      background: var(--line);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .service-item {
+      background: var(--pearl);
+      padding: 1.75rem 1.25rem 1.45rem;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      transition: background .2s;
+    }
+    .service-item.is-primary {
+      background: var(--ivory);
+      box-shadow:
+        inset 0 4px 0 var(--sky),
+        inset 0 0 0 1px rgba(126,181,232,.26);
+    }
+    .service-item.is-secondary {
+      background: rgba(245,243,238,.72);
+      box-shadow: inset 0 3px 0 var(--yellow);
+    }
+    .service-name {
+      font-size: 1.08rem;
+      font-weight: 800;
+      color: var(--warm);
+      margin-bottom: .7rem;
+      line-height: 1.35;
+    }
+    .service-desc {
+      font-size: 13.5px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+    .svc-name {
+      font-size: 1.04rem;
+      font-weight: 800;
+      color: var(--warm);
+      margin-bottom: .8rem;
+      line-height: 1.35;
+    }
+    .svc-for,
+    .svc-do,
+    .svc-out {
+      font-size: 13.2px;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: .7rem;
+    }
+    .svc-out {
+      color: var(--warm);
+      font-weight: 650;
+      margin-bottom: 1rem;
+    }
+    .svc-proof {
+      font-size: 12.5px;
+      color: var(--muted);
+      line-height: 1.65;
+      margin: -.25rem 0 1rem;
+    }
+    .svc-cta {
+      width: 100%;
+      min-height: 40px;
+      font-size: .82rem;
+      padding: .65rem .9rem;
+      margin-top: auto;
+      align-self: stretch;
+    }
+
+    /* ── ABOUT ── */
+    .about-chapters { max-width: 680px; }
+    .about-chapter { margin-bottom: 2.5rem; }
+    .about-chapter:last-child { margin-bottom: 0; }
+    .chapter-title {
+      font-size: .82rem; font-weight: 700;
+      color: var(--accent); margin-bottom: .9rem;
+      display: flex; align-items: center; gap: .6rem;
+      letter-spacing: .04em;
+    }
+    .chapter-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--sky); flex-shrink: 0;
+    }
+    .chapter-dot.green { background: var(--green); }
+    .chapter-dot.yellow { background: var(--yellow); }
+    .about-chapter p {
+      font-size: .95rem; color: var(--muted);
+      line-height: 2.0; margin-bottom: .75rem;
+    }
+    .about-chapter p:last-child { margin-bottom: 0; }
+    .about-chapter p strong { color: var(--warm); font-weight: 600; }
+    .blockq {
+      border-left: 4px solid var(--yellow);
+      padding: .85rem 1.1rem;
+      background: var(--ivory);
+      border-radius: 0 6px 6px 0;
+      font-size: .9rem; color: var(--warm);
+      font-style: italic; line-height: 1.75;
+      margin: 1.2rem 0;
+    }
+    .blockq.sky-q { border-left-color: var(--sky); }
+    .blockq.green-q { border-left-color: var(--green); }
+
+    /* ── CHANNELS ── */
+    .ch-table-wrap { overflow-x: auto; margin-bottom: 2.5rem; }
+    .ch-table {
+      width: 100%; border-collapse: collapse;
+      font-size: 13.5px;
+    }
+    .ch-table th {
+      background: var(--warm); color: #fff;
+      font-weight: 600; font-size: 12px;
+      padding: .7rem 1rem; text-align: left;
+    }
+    .ch-table th:not(:first-child) { text-align: center; }
+    .ch-table td {
+      padding: .65rem 1rem;
+      border-bottom: 1px solid var(--line);
+      color: var(--warm);
+    }
+    .ch-table td:not(:first-child) { text-align: center; color: var(--muted); }
+    .ch-table tr:nth-child(even) td { background: var(--ivory); }
+    .ch-table tr:nth-child(odd) td { background: var(--pearl); }
+    .ch-note {
+      font-size: 11px; color: var(--muted);
+      margin-top: .5rem; font-style: italic;
+    }
+    .section-intro {
+      font-size: .92rem;
+      color: var(--muted);
+      line-height: 1.9;
+      max-width: 640px;
+      margin: -1.2rem 0 2rem;
+    }
+
+    /* Channel cards */
+    .ch-cards {
+      display: flex; flex-direction: column;
+      gap: 1px; background: var(--line);
+      border: 1px solid var(--line);
+      border-radius: 10px; overflow: hidden;
+    }
+    .ch-card {
+      background: var(--pearl);
+      padding: 1.1rem 1.3rem;
+      display: flex; gap: 1rem; align-items: flex-start;
+      transition: background .2s;
+    }
+    .ch-card:hover { background: var(--ivory); }
+    .ch-tag {
+      font-size: 10px; font-weight: 700;
+      color: #fff; background: var(--sky);
+      padding: .2rem .55rem; border-radius: 4px;
+      white-space: nowrap; margin-top: .15rem;
+      flex-shrink: 0; letter-spacing: .04em;
+    }
+    .ch-tag.green-tag { background: var(--green); }
+    .ch-card-name {
+      font-size: 14px; font-weight: 700;
+      color: var(--warm); margin-bottom: .2rem;
+    }
+    .ch-card-name a {
+      color: inherit; text-decoration: none;
+    }
+    .ch-card-name a:hover { color: var(--sky); }
+    .ch-card-desc { font-size: 12.5px; color: var(--muted); line-height: 1.6; }
+
+    /* Video embed */
+    .video-wrap { margin-top: 1rem; width: 100%; }
+    .ch-card-with-video { flex-direction: column; align-items: stretch; }
+    .ch-card-with-video .ch-card-top {
+      display: flex; gap: 1rem; align-items: flex-start;
+    }
+    .video-embed {
+      border-radius: 10px; overflow: hidden;
+      width: 100%; max-width: 500px; height: 280px;
+      position: relative; cursor: pointer;
+      background: #000; display: block;
+    }
+    .video-embed iframe { width: 100%; height: 100%; border: none; display: block; }
+    .video-thumb {
+      width: 100%; height: 100%;
+      background-size: cover; background-position: center;
+      transition: filter .25s;
+    }
+    .video-embed:hover .video-thumb { filter: brightness(.82); }
+    .video-embed::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0) 55%, rgba(0,0,0,.32) 100%);
+      pointer-events: none;
+    }
+    .video-play {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
+      width: 58px; height: 58px; border-radius: 50%;
+      background: rgba(220,32,32,.92); border: none;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      transition: transform .2s, background .2s;
+      z-index: 2; box-shadow: 0 4px 20px rgba(0,0,0,.28);
+    }
+    .video-embed:hover .video-play {
+      transform: translate(-50%,-50%) scale(1.08);
+    }
+    .video-play svg { width: 22px; height: 22px; fill: #fff; margin-left: 3px; }
+
+    /* ── EQUIPMENT ── */
+    .eq-intro {
+      font-size: .92rem; color: var(--muted);
+      line-height: 1.9; max-width: 560px;
+      margin-bottom: 2rem;
+    }
+    .eq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .eq-block {
+      background: var(--ivory);
+      border: 1px solid var(--line);
+      border-radius: 10px; padding: 1.4rem;
+    }
+    .eq-block-title {
+      font-size: 11px; font-weight: 700;
+      color: var(--sky); margin-bottom: .75rem;
+      letter-spacing: .08em; text-transform: uppercase;
+    }
+    .eq-list { list-style: none; }
+    .eq-list li {
+      font-size: 13.5px; color: var(--muted);
+      padding: .3rem 0; border-bottom: 1px solid var(--line);
+      display: flex; align-items: center; gap: .5rem;
+    }
+    .eq-list li::before {
+      content: '';
+      width: 4px; height: 4px; border-radius: 50%;
+      background: var(--sky); flex-shrink: 0;
+    }
+
+    /* ── CAREER ── */
+    .timeline { position: relative; padding-left: 1.6rem; }
+    .timeline::before {
+      content: '';
+      position: absolute; left: 0; top: .4rem; bottom: .4rem;
+      width: 2px; background: var(--line);
+    }
+    .tl-item { position: relative; margin-bottom: 2.6rem; }
+    .tl-item:last-child { margin-bottom: 0; }
+    .tl-dot {
+      position: absolute; left: -1.75rem; top: .35rem;
+      width: 10px; height: 10px; border-radius: 50%;
+      background: var(--sky); border: 2px solid var(--pearl);
+    }
+    .tl-dot.green { background: var(--green); }
+    .tl-dot.yellow { background: var(--yellow); }
+    .tl-period {
+      font-size: 11px; color: var(--sky);
+      font-weight: 700; margin-bottom: .25rem;
+    }
+    .tl-role { font-size: 15px; font-weight: 700; color: var(--warm); margin-bottom: .15rem; }
+    .tl-company { font-size: 13px; font-weight: 600; color: var(--muted); margin-bottom: .6rem; }
+    .tl-desc { font-size: 13.5px; color: var(--muted); line-height: 1.85; }
+    .tl-badges { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .65rem; }
+    .tl-badge {
+      font-size: 11px; font-weight: 600;
+      padding: .2rem .6rem; border-radius: 4px;
+      background: var(--ivory); color: var(--muted);
+      border: 1px solid var(--line);
+    }
+    .tl-badge.sky { background: rgba(126,181,232,.12); color: #5A9DD4; border-color: rgba(126,181,232,.3); }
+    .tl-badge.green { background: rgba(0,112,74,.1); color: var(--green); border-color: rgba(0,112,74,.25); }
+
+    /* ── SKILLS ── */
+    .cred-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; }
+    .cred-block {
+      background: var(--ivory);
+      border: 1px solid var(--line);
+      border-radius: 10px; padding: 1.4rem;
+    }
+    .cred-title {
+      font-size: 11px; font-weight: 700;
+      color: var(--sky); margin-bottom: .75rem;
+      letter-spacing: .08em; text-transform: uppercase;
+      padding-bottom: .6rem; border-bottom: 1px solid var(--line);
+    }
+    .cred-list { list-style: none; }
+    .cred-list li {
+      font-size: 13.5px; color: var(--muted);
+      padding: .35rem 0; border-bottom: 1px solid var(--line);
+      display: flex; align-items: center; gap: .5rem;
+    }
+    .cred-list li:last-child { border-bottom: none; }
+    .cred-list li::before {
+      content: '';
+      width: 4px; height: 4px; border-radius: 50%;
+      background: var(--green); flex-shrink: 0;
+    }
+
+    /* ── CONTACT CTA ── */
+    .cta-heading {
+      font-family: var(--serif);
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 700; line-height: 1.35;
+      letter-spacing: -.01em; margin-bottom: .75rem;
+    }
+    .cta-heading .sky { color: var(--sky); }
+    .cta-sub {
+      font-size: .95rem; color: var(--muted);
+      margin-bottom: 2.5rem; max-width: 480px;
+      line-height: 1.9;
+    }
+    .contact-form-block {
+      margin-bottom: 2.7rem;
+      max-width: 760px;
+    }
+    .contact-form-note {
+      font-size: .95rem;
+      color: var(--muted);
+      line-height: 1.85;
+      margin-bottom: 1rem;
+    }
+    .contact-form-note.is-after {
+      margin-top: 1rem;
+      margin-bottom: 0;
+    }
+    .contact-form-help {
+      font-size: .84rem;
+      color: var(--muted);
+      line-height: 1.75;
+      margin: -.35rem 0 1rem;
+    }
+    .tally-embed {
+      background: var(--ivory);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .tally-embed iframe {
+      display: block;
+      width: 100%;
+    }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+    .contact-rows { display: flex; flex-direction: column; gap: .75rem; }
+    .contact-row { display: flex; align-items: center; gap: 1rem; }
+    .contact-key {
+      font-size: 12px; font-weight: 700;
+      color: var(--warm); min-width: 70px;
+    }
+    .contact-val {
+      font-size: 14px; color: var(--sky);
+      text-decoration: none;
+      word-break: break-all;
+    }
+    .contact-val:hover { text-decoration: underline; }
+    .sns-list { list-style: none; }
+    .sns-list li a {
+      display: flex; align-items: center; gap: 14px;
+      padding: 13px 0; border-bottom: 1px solid var(--line);
+      text-decoration: none; color: var(--warm);
+      transition: transform .2s, color .2s;
+    }
+    .sns-list li a:hover { transform: translateX(5px); color: var(--sky); }
+    .sns-icon {
+      width: 34px; height: 34px; border-radius: 50%;
+      background: var(--ivory); border: 1px solid var(--line);
+      display: flex; align-items: center; justify-content: center;
+      font-size: .85rem; flex-shrink: 0;
+      color: var(--muted);
+    }
+    .sns-name { font-size: 13px; font-weight: 600; }
+    .sns-handle { font-size: 11px; color: var(--muted); margin-top: 1px; }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center; padding: 2.5rem 3rem;
+      font-size: 11px; color: var(--muted);
+      letter-spacing: .08em;
+      border-top: 1px solid var(--line);
+    }
+
+    /* ── FADE-UP ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade-up { opacity: 0; transform: translateY(22px); transition: opacity .7s ease, transform .7s ease; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 980px) {
+      .service-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        width: 100%;
+        margin-left: 0;
+        transform: none;
+      }
+    }
+    @media (max-width: 760px) {
+      nav { padding: 0 1.25rem; }
+      .nav-links { display: none; }
+      .hero { grid-template-columns: 1fr; padding: 3.5rem 1.5rem 3rem; gap: 2.5rem; min-height: auto; }
+      .hero-photo { order: -1; margin-top: 0; }
+      .hero-photo img { width: 160px; height: 200px; }
+      .section { padding: 3.5rem 1.5rem; }
+      .what-grid { grid-template-columns: 1fr; }
+      .positioning-wrap, .service-grid, .eq-grid, .cred-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .hero-title { font-size: 2rem; line-height: 1.17; }
+      .hero-bridge { font-size: 1.02rem; line-height: 1.6; }
+      .hero-sub { font-size: .96rem; line-height: 1.8; margin-bottom: 1.6rem; }
+      .service-name { font-size: 1.12rem; }
+      .what-name { font-size: 1.05rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">HAM MEDIA</a>
+  <ul class="nav-links">
+    <li><a href="#about">紹介</a></li>
+    <li><a href="#what">してきたこと</a></li>
+    <li><a href="#services">依頼できること</a></li>
+    <li><a href="#channels">事例</a></li>
+    <li><a href="#equipment">制作フロー</a></li>
+    <li><a href="#career">経歴</a></li>
+    <li><a href="#skills">スキル</a></li>
+    <li><a href="#contact">連絡先</a></li>
+  </ul>
+  <div class="nav-lang">
+    <a href="index.html" class="lang-btn">🇰🇷 KR</a>
+    <a href="index_jp.html" class="lang-btn active">🇯🇵 JP</a>
+    <a href="index_en.html" class="lang-btn">🇺🇸 EN</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-text">
+    <div class="hero-accent-line"></div>
+    <p class="hero-label">HAM MEDIA Portfolio</p>
+    <h1 class="hero-title">
+      積み重ねてきた経験が、<br>
+      まだ十分に<br>
+      <span class="sky">伝わっていないなら。</span>
+    </h1>
+    <p class="hero-bridge">現場の言葉を、伝わるコンテンツへ。</p>
+    <p class="hero-sub">
+      28年間、店舗を運営し、人を育て、空間をつくってきました。<br>
+      今はその経験を、映像、資料、講義、AIを活用した制作フローへと形にしています。
+    </p>
+    <div class="hero-quote">
+      よい経験も、伝わらなければ存在しないのと同じです。<br>
+      <strong>HAM MEDIAは、その距離を縮める仕事をしています。</strong>
+    </div>
+    <a class="btn-primary" href="#contact">相談する</a>
+  </div>
+  <div class="hero-photo">
+    <img src="/profile.JPG" alt="咸東旼 ハムPD">
+  </div>
+</div>
+
+<!-- POSITIONING -->
+<section class="section fade-up" id="about">
+  <p class="sec-label">私がしていること</p>
+  <h2 class="sec-title">経験を、伝わる形に変えること</h2>
+
+  <div class="positioning-wrap">
+    <div class="positioning-copy">
+      <p>バリスタから始まり、店長、ディストリクトマネージャーへと進みました。約10〜15店舗の運営を見ながら、アメリカ本社の教育資料を韓国の現場に合わせて調整し、教育課程の運営や講師育成にも関わりました。</p>
+      <p>今、HAM MEDIAでしていることは、その経験の延長線上にあります。映像、資料、プレゼンテーション、講義、AIを活用した制作フローを通じて、複雑な経験やビジネスを、人に伝わる形へと整えています。</p>
+    </div>
+    <div class="positioning-card">
+      <div class="positioning-card-title">仕事の基準</div>
+      <p>現場運営、教育、資料整理、コンテンツ制作、AIを活用した制作フローをつなぎ、人が見て、使って、共有できる成果物へと変えていきます。</p>
+    </div>
+  </div>
+</section>
+
+<!-- CORE CAPABILITIES -->
+<section class="section fade-up" id="what">
+  <p class="sec-label">してきたこと</p>
+  <h2 class="sec-title">経験が成果物になるまで</h2>
+  <div class="what-grid">
+    <div class="what-item">
+      <div class="what-icon"><i data-lucide="store"></i></div>
+      <div class="what-name">運営を理解しています</div>
+      <div class="what-desc">店舗運営からディストリクト単位の管理まで、現場に近い場所で人、顧客体験、事業の流れを見てきました。</div>
+    </div>
+    <div class="what-item">
+      <div class="what-icon"><i data-lucide="users"></i></div>
+      <div class="what-name">人に伝える方法を知っています</div>
+      <div class="what-desc">コーヒーセミナー、オンボーディング、職級別教育、店長教育、サポートセンター教育、講師育成に関わってきました。</div>
+    </div>
+    <div class="what-item">
+      <div class="what-icon"><i data-lucide="file-text"></i></div>
+      <div class="what-name">資料を説得の構造に整えます</div>
+      <div class="what-desc">提案書、プレゼン資料、ポートフォリオ、事業紹介資料など、相手に伝わる順序と流れを整えます。</div>
+    </div>
+    <div class="what-item">
+      <div class="what-icon"><i data-lucide="video"></i></div>
+      <div class="what-name">物語をコンテンツに変えます</div>
+      <div class="what-desc">YouTubeの企画、撮影、編集、公開、Shorts化、コンテンツ方針整理まで、実際の制作に関わってきました。</div>
+    </div>
+    <div class="what-item">
+      <div class="what-icon"><i data-lucide="bot"></i></div>
+      <div class="what-name">制作の流れを構造化します</div>
+      <div class="what-desc">資料分析、企画、原稿整理、カードニュース制作、Webページ制作など、繰り返される作業をAIを活用して整理します。</div>
+    </div>
+    <div class="what-item">
+      <div class="what-icon"><i data-lucide="message-circle"></i></div>
+      <div class="what-name">自分で試せるように教えます</div>
+      <div class="what-desc">AIが初めての人には実習を、1人専門家やフリーランスには経験をオンラインで見せる形に整理する方法を伝えます。</div>
+    </div>
+  </div>
+</section>
+
+<!-- WORK CATEGORIES -->
+<section class="section fade-up" id="services">
+  <p class="sec-label">依頼できること</p>
+  <h2 class="sec-title">形にできる仕事</h2>
+  <div class="service-grid">
+    <div class="service-item">
+      <h3 class="svc-name">専門家向けYouTube・映像コンテンツ</h3>
+      <p class="svc-for">こんな方へ — 専門性は深いのにチャンネルがない、または伸び悩んでいる医師・講師・コンサルタント・個人事業主</p>
+      <p class="svc-do">企画・撮影・編集・アップロード・ショート動画への展開</p>
+      <p class="svc-out">成果物 — 月単位のロング動画 + ショート動画パッケージ</p>
+      <a class="svc-cta btn-primary" href="#contact">相談する</a>
+    </div>
+    <div class="service-item">
+      <h3 class="svc-name">ホームページ・詳細ページ制作</h3>
+      <p class="svc-for">こんな方へ — 商品や専門性はあるのに、伝えるページがない/弱い専門家・小規模事業者・ECセラー</p>
+      <p class="svc-do">説得構造の設計・コピー・制作（AI活用による高速制作）</p>
+      <p class="svc-out">成果物 — 問い合わせにつながるホームページ/詳細ページ + 問い合わせフォーム・分析連携</p>
+      <p class="svc-proof">例 — 今ご覧のこのサイトも直接制作しました。</p>
+      <a class="svc-cta btn-primary" href="#contact">相談する</a>
+    </div>
+    <div class="service-item">
+      <h3 class="svc-name">提案書・プレゼン資料の構造化</h3>
+      <p class="svc-for">こんな方へ — 資料はあるのに審査員・顧客に伝わりきらない方</p>
+      <p class="svc-do">核心の抽出・説得構造の再配置</p>
+      <p class="svc-out">成果物 — 流れが整った提案書・プレゼン資料</p>
+      <a class="svc-cta btn-primary" href="#contact">相談する</a>
+    </div>
+    <div class="service-item">
+      <h3 class="svc-name">AI講義・実習型トレーニング</h3>
+      <p class="svc-for">こんな方へ — AIを仕事に取り入れたい個人事業主・中高年・実務担当者</p>
+      <p class="svc-do">実習中心の講義・業務フロー整理</p>
+      <p class="svc-out">成果物 — すぐ使えるAI業務ルーティン</p>
+      <a class="svc-cta btn-primary" href="#contact">相談する</a>
+    </div>
+    <div class="service-item">
+      <h3 class="svc-name">1人制作システム構築</h3>
+      <p class="svc-for">こんな方へ — 1人で全部やらなければならない個人事業主・クリエイター</p>
+      <p class="svc-do">企画から公開までのパイプライン設計</p>
+      <p class="svc-out">成果物 — 1人でも回る制作システム</p>
+      <a class="svc-cta btn-primary" href="#contact">相談する</a>
+    </div>
+  </div>
+</section>
+
+<!-- CHANNELS -->
+<section class="section fade-up" id="channels">
+  <p class="sec-label">実際の制作事例</p>
+  <h2 class="sec-title">コンテンツ・YouTube運営事例</h2>
+  <p class="section-intro">HAM MEDIAが関わってきたYouTubeチャンネルと映像制作の事例です。自ら企画・制作したものと、コンテンツ運営に参加したものがあります。</p>
+
+  <div class="ch-table-wrap">
+    <table class="ch-table">
+      <thead>
+        <tr><th>チャンネル名</th><th>累計再生数</th><th>登録者数</th><th>備考</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>ウリッキリオーディオ</td><td>1,969万</td><td>38,014</td><td>2020年に自ら開設 · 6年</td></tr>
+        <tr><td>クァンミョンチョンシンボサルTV</td><td>44.8万</td><td>2,167</td><td>2025.6 自ら開設</td></tr>
+        <tr><td>ワッサダドットコム</td><td>22.9万（1年）</td><td>4,825</td><td>コンテンツ運営参加 · 登録者132%↑</td></tr>
+        <tr><td>今回の人生はレースだ</td><td>15.9万</td><td>324</td><td>2026年2月 自ら開設</td></tr>
+        <tr><td>整形外科専門医 キム・ジョンミョン</td><td>14.8万</td><td>184+</td><td>2025.9 自ら開設</td></tr>
+      </tbody>
+    </table>
+    <p class="ch-note">* 2026年5月時点のYouTube Studio実測値</p>
+  </div>
+
+  <!-- Channel cards + featured videos (3 embeds + 2 link cards) -->
+  <div class="ch-cards">
+
+    <!-- 1. Ookkio Audio — proof of personal channel skill -->
+    <div class="ch-card ch-card-with-video">
+      <div class="ch-card-top">
+        <span class="ch-tag">個人</span>
+        <div>
+          <div class="ch-card-name"><a href="https://www.youtube.com/@ookkio" target="_blank" rel="noopener noreferrer">ウリッキリオーディオ</a></div>
+          <div class="ch-card-desc">ハイファイオーディオ専門チャンネル。スピーカーケーブル接続動画は70K+再生、Shortsは累計3M+再生。日本・ブラジル・米国の視聴者を中心にした国際的なオーディオコミュニティ。</div>
+        </div>
+      </div>
+      <div class="video-wrap">
+        <div class="video-embed" data-video-id="duw8G46JzwQ">
+          <div class="video-thumb" style="background-image:url('https://img.youtube.com/vi/duw8G46JzwQ/hqdefault.jpg')"></div>
+          <button class="video-play" aria-label="動画を再生"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. Dr. Kim Jongmyung — proof of client channel operation -->
+    <div class="ch-card ch-card-with-video">
+      <div class="ch-card-top">
+        <span class="ch-tag green-tag">クライアント</span>
+        <div>
+          <div class="ch-card-name"><a href="https://www.youtube.com/channel/UC7nfli6RwhfkT8-L3tjcwPg" target="_blank" rel="noopener noreferrer">整形外科専門医 キム・ジョンミョン（DIVA整形外科）</a></div>
+          <div class="ch-card-desc">医療専門チャンネル。フェイスリフト、脂肪移植、糸リフトなどの専門情報動画とShortsシリーズを制作。</div>
+        </div>
+      </div>
+      <div class="video-wrap">
+        <div class="video-embed" data-video-id="sgVzKxMxCEM">
+          <div class="video-thumb" style="background-image:url('https://img.youtube.com/vi/sgVzKxMxCEM/hqdefault.jpg')"></div>
+          <button class="video-play" aria-label="動画を再生"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. This Life Is a Race — proof of narrative content -->
+    <div class="ch-card ch-card-with-video">
+      <div class="ch-card-top">
+        <span class="ch-tag">個人</span>
+        <div>
+          <div class="ch-card-name"><a href="https://www.youtube.com/channel/UCqy1LrWDKht1ACXTmtLShEg" target="_blank" rel="noopener noreferrer">今回の人生はレースだ</a></div>
+          <div class="ch-card-desc">50代から人生を整え直すストーリー。遅いスタート、もう一度走る人生をテーマに、同世代の共感を引き出します。</div>
+        </div>
+      </div>
+      <div class="video-wrap">
+        <div class="video-embed" data-video-id="jc0vNk4tjtM">
+          <div class="video-thumb" style="background-image:url('https://img.youtube.com/vi/jc0vNk4tjtM/hqdefault.jpg')"></div>
+          <button class="video-play" aria-label="動画を再生"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. Gwangmyeong Cheonsin Bosal TV — link card -->
+    <div class="ch-card">
+      <span class="ch-tag green-tag">クライアント</span>
+      <div>
+        <div class="ch-card-name"><a href="https://www.youtube.com/channel/UCwI4qqT9ta850_Aak-0kP8Q" target="_blank" rel="noopener noreferrer">クァンミョンチョンシンボサルTV →</a></div>
+        <div class="ch-card-desc">巫俗・スピリチュアル系コンテンツチャンネル。視聴者の共感を軸にしたストーリーテリングで運営。</div>
+      </div>
+    </div>
+
+    <!-- 5. Wassada.com — link card -->
+    <div class="ch-card">
+      <span class="ch-tag green-tag">クライアント</span>
+      <div>
+        <div class="ch-card-name"><a href="https://www.youtube.com/@Wassadacom" target="_blank" rel="noopener noreferrer">ワッサダドットコム →</a></div>
+          <div class="ch-card-desc">ハイエンドオーディオの小売チャンネル。HAM MEDIAはチャンネルのコンテンツ運営に参加しました。</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- EQUIPMENT -->
+<section class="section fade-up" id="equipment">
+  <p class="sec-label">制作フロー</p>
+  <h2 class="sec-title">速く、安定して形にするための制作フロー</h2>
+  <p class="eq-intro">1人で制作していますが、感覚だけに頼っているわけではありません。資料分析、企画、原稿整理、撮影・編集、Webページ制作などを、AIと制作機材を組み合わせて整理しています。</p>
+  <div class="eq-grid">
+    <div class="eq-block">
+      <div class="eq-block-title"><i data-lucide="camera" style="width:13px;height:13px;stroke:var(--sky);vertical-align:middle;margin-right:4px;"></i> カメラ</div>
+      <ul class="eq-list">
+        <li>Sony A6700（メイン）</li>
+        <li>iPhone 15 Pro + Blackmagic Cam</li>
+        <li>DJI Pocket 3</li>
+        <li>DJI Osmo Action 6</li>
+      </ul>
+    </div>
+    <div class="eq-block">
+      <div class="eq-block-title"><i data-lucide="mic" style="width:13px;height:13px;stroke:var(--sky);vertical-align:middle;margin-right:4px;"></i> オーディオ</div>
+      <ul class="eq-list">
+        <li>RØDE Wireless GO II</li>
+        <li>TASCAM X8</li>
+        <li>DJI Mic Mini</li>
+        <li>RØDE Lavalier</li>
+        <li>RØDE PodMic White</li>
+      </ul>
+    </div>
+    <div class="eq-block">
+      <div class="eq-block-title"><i data-lucide="lightbulb" style="width:13px;height:13px;stroke:var(--sky);vertical-align:middle;margin-right:4px;"></i> 照明</div>
+      <ul class="eq-list">
+        <li>Amaran 200x（キー）</li>
+        <li>Godox ML100Bi + ソフトボックス（フィル）</li>
+        <li>Zhiyun F100（リム/背景）</li>
+        <li>Sunwayfoto FL-96C</li>
+      </ul>
+    </div>
+    <div class="eq-block">
+      <div class="eq-block-title"><i data-lucide="monitor" style="width:13px;height:13px;stroke:var(--sky);vertical-align:middle;margin-right:4px;"></i> 編集 · AI</div>
+      <ul class="eq-list">
+        <li>MacBook Pro M4 Pro 14" — 編集専用</li>
+        <li>MacBook Pro M1 13" — AIを活用した制作フローハブ</li>
+        <li>Final Cut Pro / Vrew</li>
+        <li>Claude · ChatGPT · Gemini 制作ワークフロー</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CAREER -->
+<section class="section fade-up" id="career">
+  <p class="sec-label">経歴</p>
+  <h2 class="sec-title">経歴</h2>
+  <div class="timeline">
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-period">2025年 — 現在</div>
+      <div class="tl-role">ひとりメディアプロデューサー</div>
+      <div class="tl-company">HAM MEDIA</div>
+      <div class="tl-desc">映像、資料、プレゼン資料、講義、AIを活用した制作フローを通じて、複雑な経験やビジネスを人に伝わる成果物へと変えています。</div>
+      <div class="tl-badges">
+        <span class="tl-badge sky">コンテンツ・YouTube運営</span>
+        <span class="tl-badge sky">制作フローの整理</span>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-period">2024.05 — 2025.04</div>
+      <div class="tl-role">企画マネージャー / 初期事業企画メンバー</div>
+      <div class="tl-company">Acoustics Space</div>
+      <div class="tl-desc">高級住宅向けのハイエンドオーディオルーム、スマートHVAC、照明・空調プロジェクトで、企画、進行、顧客・協力会社とのコミュニケーション、文書整理に関わりました。</div>
+      <div class="tl-badges">
+        <span class="tl-badge">プレミアム空間企画</span>
+        <span class="tl-badge">顧客・協力会社コミュニケーション</span>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-period">2023.05 — 2024.01</div>
+      <div class="tl-role">産業用不動産コンサルタント</div>
+      <div class="tl-company">Daewoo Development Consulting</div>
+      <div class="tl-desc">工場・倉庫など産業用不動産の仲介実務に関わり、立地確認、予算計画、空間活用の提案を行いました。</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-period">2022.02 — 2022.10</div>
+      <div class="tl-role">運営マネージャー</div>
+      <div class="tl-company">AV & People（ワッサダドットコム）</div>
+      <div class="tl-desc">ハイエンドオーディオ製品の相談・販売を経験し、ワッサダドットコムのチャンネルのコンテンツ運営に参加しました。</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot yellow"></div>
+      <div class="tl-period">2014.06 — 2022.07</div>
+      <div class="tl-role">オーナーシェフ / 代表</div>
+      <div class="tl-company">デラカーサ</div>
+      <div class="tl-desc">仁川の新浦洞・青羅でイタリアンレストランを企画・運営しました。メニュー、空間、サービス、ブランディング、収益構造を見ながら、顧客体験が結果につながる過程を学びました。</div>
+      <div class="tl-badges">
+        <span class="tl-badge">空間・ブランド企画</span>
+        <span class="tl-badge">顧客体験運営</span>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot green"></div>
+      <div class="tl-period">2001.01 — 2014.05</div>
+      <div class="tl-role">バリスタ → 店長 → ディストリクトマネージャー → 人材開発領域</div>
+      <div class="tl-company">スターバックス コーヒー コリア</div>
+      <div class="tl-desc">バリスタから始まり、店長、ディストリクトマネージャーへと進みました。約10〜15店舗の運営を見ながら、アメリカ本社の教育資料を韓国の現場に合わせて調整し、教育課程の運営や講師育成にも関わりました。</div>
+      <div class="tl-badges">
+        <span class="tl-badge green">🏆 年間最優秀マネージャー賞</span>
+        <span class="tl-badge green">🏆 年間最優秀エリアマネージャー賞</span>
+        <span class="tl-badge green">シアトル本社招待 · ハワード・シュルツ面談</span>
+        <span class="tl-badge">成果改善への関わり</span>
+        <span class="tl-badge">コーヒーマスター · 地域コーヒーマスター</span>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-period">1996 — 1999</div>
+      <div class="tl-role">海外語学・文化研修</div>
+      <div class="tl-company">日本 東京 / 米国 カリフォルニア州フレズノ</div>
+      <div class="tl-desc">日本・東京ではJET日本語学校に通いながら、約2年間の語学留学と現地でのアルバイトを経験し、日本語と現地生活を学びました。JLPT1級を取得しました。その後、米国カリフォルニア州フレズノでは、California State University, Fresno の American English Institute（AEI）で英語を学びながら、現地でのアルバイトも経験しました。</div>
+      <div class="tl-badges">
+        <span class="tl-badge">日本語 JLPT1級</span>
+        <span class="tl-badge">多文化コミュニケーション</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="section fade-up" id="skills">
+  <p class="sec-label">整理されたスキル</p>
+  <h2 class="sec-title">スキル・資格</h2>
+  <div class="cred-grid">
+    <div class="cred-block">
+      <div class="cred-title">コアスキル</div>
+      <ul class="cred-list">
+        <li>企画・運営・教育経験の構造化</li>
+        <li>資料・提案書・プレゼン資料の構成</li>
+        <li>コンテンツ・YouTube運営</li>
+        <li>顧客体験設計</li>
+        <li>AIを活用した制作フロー運用</li>
+        <li>講義とコンテンツ相談</li>
+      </ul>
+    </div>
+    <div class="cred-block">
+      <div class="cred-title">語学 / 資格</div>
+      <ul class="cred-list">
+        <li>日本語 JLPT1級（2000. 09）</li>
+        <li>英語（ビジネス会話）</li>
+        <li>Final Cut Pro</li>
+        <li>PowerPoint · Excel · Word</li>
+        <li>韓国第一種普通運転免許</li>
+      </ul>
+    </div>
+    <div class="cred-block">
+      <div class="cred-title">関心領域</div>
+      <ul class="cred-list">
+        <li>ハイエンドオーディオコレクション</li>
+        <li>万年筆コレクション（12本+）</li>
+        <li>写真 · カメラ</li>
+        <li>自動車 · モーターサイクル（サーキット走行）</li>
+        <li>ロードバイク</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section fade-up" id="contact">
+  <p class="sec-label">お問い合わせ</p>
+  <h2 class="cta-heading">
+    経験やビジネスを、<br>
+    <span class="sky">伝わる形にしたいなら。</span>
+  </h2>
+  <p class="cta-sub">
+    映像、資料、講義、AIを活用した制作フローまで。今ある経験や資料を、どのような形で見せるべきか一緒に整理します。
+  </p>
+
+  <div class="contact-form-block">
+    <p class="contact-form-note">整理された資料がなくても大丈夫です。今の状態を教えていただければ、どこから始めるか一緒に整理します。</p>
+    <p class="contact-form-help">フォーム内の項目が韓国語で表示される場合があります。日本語または英語で大丈夫です。お名前/ブランド名、連絡方法、相談内容、参考リンク、希望時期・予算、今の悩みを簡単に書いてください。</p>
+    <div class="tally-embed">
+      <iframe data-tally-src="https://tally.so/embed/vGK44d?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="520" frameborder="0" marginheight="0" marginwidth="0" title="相談する"></iframe>
+      <script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach(function(e){e.src=e.dataset.tallySrc})};if("undefined"!=typeof Tally)v();else if(null==d.querySelector('script[src="'+w+'"]')){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
+    </div>
+    <p class="contact-form-note is-after">韓国・仁川富平区ベース · 通常1〜2日以内に返信します</p>
+  </div>
+
+  <div class="contact-grid">
+    <div>
+      <div class="contact-rows">
+        <div class="contact-row">
+          <span class="contact-key">ホームページ</span>
+          <a class="contact-val" href="https://hammedia.co.kr/" target="_blank" rel="noopener noreferrer">私の好きなもの</a>
+        </div>
+        <div class="contact-row">
+          <span class="contact-key">Email</span>
+          <a class="contact-val" href="mailto:hammedia002@gmail.com">hammedia002@gmail.com</a>
+        </div>
+        <div class="contact-row">
+          <span class="contact-key">Threads</span>
+          <a class="contact-val" href="https://threads.net/@dellacasa_2" target="_blank" rel="noopener noreferrer">@dellacasa_2</a>
+        </div>
+        <div class="contact-row">
+          <span class="contact-key">分析</span>
+          <a class="contact-val" href="https://hammedia.github.io/youtube-channel-report-codex" target="_blank" rel="noopener noreferrer">YouTubeチャンネル分析ダッシュボード →</a>
+        </div>
+      </div>
+    </div>
+    <div>
+      <ul class="sns-list">
+        <li>
+          <a href="https://www.threads.net/@dellacasa_2" target="_blank" rel="noopener noreferrer">
+            <div class="sns-icon">@</div>
+            <div><div class="sns-name">Threads</div><div class="sns-handle">@dellacasa_2</div></div>
+          </a>
+        </li>
+        <li>
+          <a href="https://x.com/ookkio2020" target="_blank" rel="noopener noreferrer">
+            <div class="sns-icon">X</div>
+            <div><div class="sns-name">X</div><div class="sns-handle">@ookkio2020</div></div>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.instagram.com/dellacasa_2" target="_blank" rel="noopener noreferrer">
+            <div class="sns-icon">◻</div>
+            <div><div class="sns-name">Instagram</div><div class="sns-handle">@dellacasa_2</div></div>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/hammedia" target="_blank" rel="noopener noreferrer">
+            <div class="sns-icon">⌥</div>
+            <div><div class="sns-name">GitHub</div><div class="sns-handle">hammedia</div></div>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 Dongmin Ham · ハムPD — HAM MEDIA. All rights reserved.
+</footer>
+
+<script>
+  // Fade-up observer
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(el => { if (el.isIntersecting) el.target.classList.add('visible'); });
+  }, { threshold: 0.07, rootMargin: '0px 0px -30px 0px' });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // Lucide icons
+  if (window.lucide) { lucide.createIcons(); }
+
+  // Video embed click
+  document.querySelectorAll('.video-embed[data-video-id]').forEach(function(el) {
+    el.addEventListener('click', function() {
+      var id = el.getAttribute('data-video-id');
+      el.innerHTML = '<iframe src="https://www.youtube.com/embed/' + id + '?autoplay=1" allow="autoplay; encrypted-media" allowfullscreen title="YouTube video"></iframe>';
+    });
+  });
+</script>
+
+</body>
+</html>

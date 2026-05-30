@@ -219,7 +219,7 @@ function selectConstellationStar(star) {
 
   if (starData.roomHref) {
     detailRoomLink.hidden = false;
-    detailRoomLink.href = starData.roomHref;
+    detailRoomLink.href = star.href;
     detailRoomLink.textContent = starData.roomLabel;
     detailRoomStatus.hidden = true;
   } else {
