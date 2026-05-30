@@ -328,7 +328,7 @@
     }
     .service-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
       gap: 1px;
       background: var(--line);
       border: 1px solid var(--line);
@@ -383,6 +383,12 @@
       color: var(--warm);
       font-weight: 650;
       margin-bottom: 1rem;
+    }
+    .svc-proof {
+      font-size: 12.5px;
+      color: var(--muted);
+      line-height: 1.65;
+      margin: -.25rem 0 1rem;
     }
     .svc-cta {
       width: 100%;
@@ -837,14 +843,22 @@
       <p class="svc-out">결과물 — 월 단위 롱폼 + 쇼츠 패키지</p>
       <a class="svc-cta btn-primary" href="#contact">상담 신청하기</a>
     </div>
-    <div class="service-item is-primary">
+    <div class="service-item">
+      <h3 class="svc-name">홈페이지·상세페이지 제작</h3>
+      <p class="svc-for">이런 분께 — 제품·전문성은 있는데 보여줄 페이지가 없거나 약한 전문가·소상공인·이커머스 셀러</p>
+      <p class="svc-do">설득 구조 설계·카피·제작 (AI 활용 고속 제작)</p>
+      <p class="svc-out">결과물 — 전환되는 홈페이지/상세페이지 + 문의 폼·분석 연동</p>
+      <p class="svc-proof">예시 — 지금 보고 계신 이 사이트도 직접 제작했습니다.</p>
+      <a class="svc-cta btn-primary" href="#contact">상담 신청하기</a>
+    </div>
+    <div class="service-item">
       <h3 class="svc-name">제안서·발표자료 구조화</h3>
       <p class="svc-for">이런 분께 — 자료는 있는데 심사위원·고객에게 안 꽂히는 분</p>
       <p class="svc-do">핵심 추출·설득 구조 재배치</p>
       <p class="svc-out">결과물 — 흐름이 잡힌 제안서·발표자료</p>
       <a class="svc-cta btn-primary" href="#contact">상담 신청하기</a>
     </div>
-    <div class="service-item is-secondary">
+    <div class="service-item">
       <h3 class="svc-name">AI 강의·실습 교육</h3>
       <p class="svc-for">이런 분께 — AI를 업무에 들이려는 1인 사업자·중장년·실무자</p>
       <p class="svc-do">실습 중심 강의·업무 흐름 정리</p>
