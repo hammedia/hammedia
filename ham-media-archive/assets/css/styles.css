@@ -1869,6 +1869,14 @@ h1 {
   line-height: 1.6;
 }
 
+.constellation-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.58rem;
+  align-items: center;
+  padding-top: 0.18rem;
+}
+
 .constellation-scene {
   display: grid;
   grid-template-columns: minmax(0, 1.18fr) minmax(18rem, 0.82fr);
@@ -2665,6 +2673,32 @@ h1 {
 
 .portfolio-intro p {
   margin-bottom: 0;
+}
+
+.portfolio-bridge {
+  display: grid;
+  gap: 0.85rem;
+  width: 100%;
+  padding: clamp(1rem, 2.4vw, 1.35rem);
+  border: 1px solid rgba(38, 33, 28, 0.1);
+  border-radius: 20px;
+  background:
+    radial-gradient(circle at 9% 0%, rgba(255, 207, 111, 0.12), transparent 10rem),
+    linear-gradient(145deg, rgba(255, 252, 244, 0.5), rgba(238, 232, 220, 0.26));
+}
+
+.portfolio-bridge p {
+  max-width: 47rem;
+  margin: 0;
+  color: var(--muted);
+  font-size: clamp(0.96rem, 1.3vw, 1.05rem);
+  line-height: 1.75;
+}
+
+.portfolio-bridge-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
 }
 
 .portfolio-evidence {
