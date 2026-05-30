@@ -133,13 +133,14 @@ const detailInvite = document.querySelector("#constellation-invite");
 const detailAsset = document.querySelector("#constellation-asset");
 const detailRoomLink = document.querySelector("#constellation-room-link");
 const detailRoomStatus = document.querySelector("#constellation-room-status");
+const constellationEntry = document.querySelector(".constellation-entry");
 const visitedStars = [];
-const supportsHover = window.matchMedia("(hover: hover)").matches;
+let activeStar = null;
 
 function updateConstellationPath() {
   if (!constellationPath) return;
 
-  const points = visitedStars
+  const points = constellationStars
     .map((star) => `${star.dataset.x},${star.dataset.y}`)
     .join(" ");
 
@@ -149,6 +150,14 @@ function updateConstellationPath() {
 function selectConstellationStar(star) {
   const starData = constellationData[star.dataset.star];
   if (!starData) return;
+
+  activeStar = star;
+  if (constellationEntry) {
+    constellationEntry.classList.add("is-invitation-open");
+  }
+  if (detailName && detailName.closest("[hidden]")) {
+    detailName.closest("[hidden]").hidden = false;
+  }
 
   constellationStars.forEach((item) => {
     const isSelected = item === star;
@@ -188,13 +197,18 @@ function selectConstellationStar(star) {
 
 if (constellationStars.length) {
   constellationStars.forEach((star) => {
-    star.addEventListener("click", () => selectConstellationStar(star));
-    star.addEventListener("focus", () => selectConstellationStar(star));
+    star.addEventListener("click", (event) => {
+      const isEntering = activeStar === star && star.classList.contains("is-selected");
+      if (isEntering) return;
 
-    if (supportsHover) {
-      star.addEventListener("pointerenter", () => selectConstellationStar(star));
-    }
+      event.preventDefault();
+      selectConstellationStar(star);
+      detailName?.closest(".constellation-detail")?.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest"
+      });
+    });
+
   });
-
-  selectConstellationStar(constellationStars[0]);
+  updateConstellationPath();
 }
