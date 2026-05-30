@@ -1869,14 +1869,6 @@ h1 {
   line-height: 1.6;
 }
 
-.constellation-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.58rem;
-  align-items: center;
-  padding-top: 0.18rem;
-}
-
 .constellation-scene {
   display: grid;
   grid-template-columns: minmax(0, 1.18fr) minmax(18rem, 0.82fr);
@@ -2404,16 +2396,14 @@ h1 {
   font-size: 0.86rem;
 }
 
-.constellation-entry .constellation-soft-link,
-.constellation-entry .constellation-work-link {
+.constellation-entry .constellation-soft-link {
   border-color: rgba(255, 230, 181, 0.18);
   color: rgba(255, 252, 244, 0.94);
   background: rgba(255, 198, 81, 0.08);
   box-shadow: none;
 }
 
-.constellation-entry .constellation-soft-link:hover,
-.constellation-entry .constellation-work-link:hover {
+.constellation-entry .constellation-soft-link:hover {
   border-color: rgba(255, 207, 111, 0.52);
   background: rgba(255, 198, 81, 0.14);
 }
@@ -2446,7 +2436,13 @@ h1 {
 }
 
 .constellation-entry .constellation-bridge {
-  display: none;
+  display: flex;
+  justify-content: flex-start;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
 }
 
 .constellation-bridge p {
@@ -2458,7 +2454,28 @@ h1 {
 }
 
 .constellation-entry .constellation-bridge p {
-  color: rgba(255, 252, 244, 0.88);
+  color: rgba(255, 252, 244, 0.58);
+  font-size: 0.78rem;
+  font-weight: 650;
+}
+
+.constellation-entry .constellation-bridge .constellation-work-link {
+  min-height: auto;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  color: rgba(255, 207, 111, 0.78);
+  background: transparent;
+  box-shadow: none;
+  font-size: 0.78rem;
+  text-decoration: underline;
+  text-decoration-color: rgba(255, 207, 111, 0.28);
+  text-underline-offset: 0.24em;
+}
+
+.constellation-entry .constellation-bridge .constellation-work-link:hover {
+  color: rgba(255, 224, 153, 0.96);
+  text-decoration-color: rgba(255, 224, 153, 0.62);
 }
 
 .star-enter-veil {
