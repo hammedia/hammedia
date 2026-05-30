@@ -863,6 +863,23 @@ h1 {
   gap: clamp(1.2rem, 3vw, 1.8rem);
 }
 
+.room-top-link {
+  justify-self: start;
+  color: rgba(249, 247, 243, 0.68);
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  text-shadow: 0 1px 16px rgba(0, 0, 0, 0.48);
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.room-top-link:hover,
+.room-top-link:focus-visible {
+  color: rgba(249, 247, 243, 0.94);
+  transform: translateX(-2px);
+}
+
 .room-header {
   display: grid;
   gap: 0.74rem;

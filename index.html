@@ -156,9 +156,9 @@
       min-height: 44px;
       padding: .75rem 1.15rem;
       border-radius: 999px;
-      background: var(--warm);
+      background: var(--accent);
       color: var(--pearl);
-      border: 1px solid var(--warm);
+      border: 1px solid var(--accent);
       font-size: .9rem;
       font-weight: 800;
       line-height: 1.2;
@@ -167,8 +167,8 @@
     }
     .btn-primary:hover {
       transform: translateY(-2px);
-      background: var(--accent);
-      border-color: var(--accent);
+      background: var(--warm);
+      border-color: var(--warm);
     }
     .hero-quote + .btn-primary { margin-top: 1rem; animation: fadeUp .5s .38s both; }
 
@@ -328,8 +328,11 @@
     }
     .service-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      grid-template-columns: repeat(5, minmax(0, 1fr));
       gap: 1px;
+      width: min(1040px, calc(100vw - 6rem));
+      margin-left: 50%;
+      transform: translateX(-50%);
       background: var(--line);
       border: 1px solid var(--line);
       border-radius: 12px;
@@ -339,6 +342,8 @@
       background: var(--pearl);
       padding: 1.75rem 1.25rem 1.45rem;
       position: relative;
+      display: flex;
+      flex-direction: column;
       transition: background .2s;
     }
     .service-item.is-primary {
@@ -395,6 +400,8 @@
       min-height: 40px;
       font-size: .82rem;
       padding: .65rem .9rem;
+      margin-top: auto;
+      align-self: stretch;
     }
 
     /* ── ABOUT ── */
@@ -649,6 +656,12 @@
       margin-top: 1rem;
       margin-bottom: 0;
     }
+    .contact-form-help {
+      font-size: .84rem;
+      color: var(--muted);
+      line-height: 1.75;
+      margin: -.35rem 0 1rem;
+    }
     .tally-embed {
       background: var(--ivory);
       border: 1px solid var(--line);
@@ -708,6 +721,14 @@
     .fade-up.visible { opacity: 1; transform: translateY(0); }
 
     /* ── RESPONSIVE ── */
+    @media (max-width: 980px) {
+      .service-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        width: 100%;
+        margin-left: 0;
+        transform: none;
+      }
+    }
     @media (max-width: 760px) {
       nav { padding: 0 1.25rem; }
       .nav-links { display: none; }
