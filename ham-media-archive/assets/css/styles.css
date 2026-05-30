@@ -47,6 +47,14 @@ body::before {
   mask-image: linear-gradient(to bottom, black 0%, transparent 86%);
 }
 
+body.portfolio-body {
+  background: #f7f4ec;
+}
+
+body.portfolio-body::before {
+  display: none;
+}
+
 a {
   color: inherit;
 }
@@ -2668,6 +2676,13 @@ h1 {
   width: min(1020px, 100%);
   align-content: start;
   gap: clamp(1.4rem, 3vw, 2.4rem);
+  background:
+    radial-gradient(circle at 78% 18%, rgba(199, 211, 213, 0.18), transparent 16rem),
+    rgba(255, 252, 244, 0.72);
+}
+
+.portfolio-page::before {
+  content: none;
 }
 
 .portfolio-header {
@@ -2678,6 +2693,7 @@ h1 {
 .portfolio-header h1 {
   max-width: 11em;
   margin-bottom: 0;
+  color: #1b1a17;
 }
 
 .portfolio-intro {
