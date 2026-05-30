@@ -1,9 +1,12 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
+
 :root {
-  --paper: #f8f5ed;
-  --paper-deep: #eee8dc;
-  --ink: #26211c;
-  --muted: #675e54;
-  --line: rgba(38, 33, 28, 0.14);
+  --paper: #F9F7F3;
+  --paper-deep: #F5F3EE;
+  --ink: #1C1814;
+  --muted: #4A423C;
+  --accent: #7EB5E8;
+  --line: rgba(28, 24, 20, 0.14);
   --blue-gray: #c7d3d5;
   --sage: #b9c3ae;
   --beige: #ded2be;
@@ -866,12 +869,27 @@ h1 {
   max-width: 40rem;
 }
 
+.room-page .room-header .eyebrow {
+  color: rgba(249, 247, 243, 0.72);
+  text-shadow: 0 1px 16px rgba(0, 0, 0, 0.42);
+}
+
 .room-header h1 {
   margin-bottom: 0;
 }
 
+.room-page .room-header h1 {
+  color: rgba(249, 247, 243, 0.94);
+  text-shadow: 0 1px 20px rgba(0, 0, 0, 0.5);
+}
+
 .room-intro {
   margin: 0;
+}
+
+.room-page .room-intro {
+  color: rgba(249, 247, 243, 0.72);
+  text-shadow: 0 1px 16px rgba(0, 0, 0, 0.44);
 }
 
 .room-welcome {
@@ -884,7 +902,7 @@ h1 {
   border: 1px solid rgba(38, 33, 28, 0.1);
   border-radius: 22px;
   background:
-    radial-gradient(circle at 8% 4%, rgba(168, 52, 38, 0.1), transparent 12rem),
+    radial-gradient(circle at 8% 4%, rgba(126, 181, 232, 0.1), transparent 12rem),
     linear-gradient(145deg, rgba(255, 252, 244, 0.84), rgba(243, 236, 223, 0.56));
   box-shadow:
     inset 1px 1px 0 rgba(255,255,255,0.72),
@@ -896,9 +914,9 @@ h1 {
   min-height: 100%;
   border-radius: 999px;
   background:
-    linear-gradient(180deg, rgba(168, 52, 38, 0.92), rgba(168, 52, 38, 0.18)),
+    linear-gradient(180deg, rgba(126, 181, 232, 0.96), rgba(126, 181, 232, 0.3)),
     var(--accent);
-  box-shadow: 0 0 0 6px rgba(168, 52, 38, 0.08);
+  box-shadow: 0 0 0 6px rgba(126, 181, 232, 0.1);
 }
 
 .room-welcome-copy {
@@ -1140,7 +1158,7 @@ h1 {
 
 .room-soft-link:hover,
 .room-soft-link:focus-visible {
-  border-color: rgba(168, 52, 38, 0.28);
+  border-color: rgba(126, 181, 232, 0.42);
   color: var(--accent);
 }
 
@@ -1186,7 +1204,7 @@ h1 {
   position: absolute;
   inset: 0.72rem 0.84rem;
   border-radius: 999px;
-  background: rgba(168, 52, 38, 0.18);
+  background: rgba(126, 181, 232, 0.18);
   transform: rotate(-32deg);
 }
 
