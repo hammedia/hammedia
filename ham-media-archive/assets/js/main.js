@@ -134,6 +134,7 @@ const detailAsset = document.querySelector("#constellation-asset");
 const detailRoomLink = document.querySelector("#constellation-room-link");
 const detailRoomStatus = document.querySelector("#constellation-room-status");
 const constellationEntry = document.querySelector(".constellation-entry");
+const constellationDetail = document.querySelector(".constellation-detail");
 const visitedStars = [];
 let activeStar = null;
 
@@ -194,13 +195,42 @@ function selectConstellationStar(star) {
   }
 
   updateConstellationPath();
+
+  if (constellationDetail) {
+    constellationDetail.classList.remove("is-opening");
+    void constellationDetail.offsetWidth;
+    constellationDetail.classList.add("is-opening");
+  }
+}
+
+function enterStarRoom(href) {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    window.location.href = href;
+    return;
+  }
+
+  const veil = document.createElement("div");
+  veil.className = "star-enter-veil";
+  document.body.appendChild(veil);
+
+  requestAnimationFrame(() => {
+    veil.classList.add("is-active");
+  });
+
+  setTimeout(() => {
+    window.location.href = href;
+  }, 460);
 }
 
 if (constellationStars.length) {
   constellationStars.forEach((star) => {
     star.addEventListener("click", (event) => {
       const isEntering = activeStar === star && star.classList.contains("is-selected");
-      if (isEntering) return;
+      if (isEntering) {
+        event.preventDefault();
+        enterStarRoom(star.href);
+        return;
+      }
 
       event.preventDefault();
       selectConstellationStar(star);
