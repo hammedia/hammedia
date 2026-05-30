@@ -10,7 +10,7 @@
   <body class="home-body">
     <a class="skip-link" href="#main">본문으로 이동</a>
 
-    <main class="home-hub" id="main">
+    <main class="home-hub constellation-home" id="main">
       <header class="hub-header">
         <a class="brand-mark" href="./" aria-label="HAM MEDIA">
           <span class="brand-icon" aria-hidden="true"></span>
@@ -18,188 +18,64 @@
         </a>
       </header>
 
-      <section class="hub-stage" aria-labelledby="home-title">
-        <div class="wash wash-one" aria-hidden="true"></div>
-        <div class="wash wash-two" aria-hidden="true"></div>
-
-        <div class="hub-copy">
-          <p class="eyebrow">HAM MEDIA</p>
-          <!-- TODO: 28년 최종 확인 필요 -->
-          <h1 id="home-title">현장 경험을 콘텐츠로 번역하는 사람.</h1>
-          <p class="hub-name">함동민 · HAM MEDIA</p>
-          <p class="hub-line">경험을 구조로, 지식을 언어로, 가치를 콘텐츠로.</p>
-        </div>
-
-        <nav class="world-map" aria-label="HAM MEDIA archive rooms" data-ripple-scope>
-          <a class="world-door fountain" href="pages/fountain-pens.html" aria-label="Fountain Pens / 만년필">
-            <span class="door-picto" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="m14 4 6 6-9 9H5v-6z"/><path d="m13 5 6 6"/></svg>
-            </span>
-            <span class="diorama-scene" aria-hidden="true">
-              <span class="scene-object pen-nib"></span>
-              <span class="scene-object ink-drop"></span>
-              <span class="scene-object paper-lines"></span>
-            </span>
-            <span class="door-label">Fountain Pens / 만년필</span>
-          </a>
-
-          <a class="world-door cars" href="pages/cars.html" aria-label="Cars / 자동차">
-            <span class="door-picto" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M4 14h16l-2-5H6z"/><path d="M6 14v3M18 14v3"/><circle cx="7" cy="17" r="1.5"/><circle cx="17" cy="17" r="1.5"/></svg>
-            </span>
-            <span class="diorama-scene" aria-hidden="true">
-              <span class="scene-object road-line"></span>
-              <span class="scene-object headlight left"></span>
-              <span class="scene-object headlight right"></span>
-            </span>
-            <span class="door-label">Cars / 자동차</span>
-          </a>
-
-          <a class="world-door motorcycles" href="pages/motorcycles.html" aria-label="Motorcycles / 바이크">
-            <span class="door-picto" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><circle cx="6" cy="17" r="2.5"/><circle cx="18" cy="17" r="2.5"/><path d="M8 17h3l3-6h3l1 2"/><path d="m10 10 2 2"/></svg>
-            </span>
-            <span class="diorama-scene" aria-hidden="true">
-              <span class="scene-object handlebar"></span>
-              <span class="scene-object metal-ring"></span>
-              <span class="scene-object wind-line"></span>
-            </span>
-            <span class="door-label">Motorcycles / 바이크</span>
-          </a>
-
-          <a class="world-door cameras" href="pages/cameras.html" aria-label="Cameras / 카메라">
-            <span class="door-picto" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M4 8h4l1.5-2h5L16 8h4v10H4z"/><circle cx="12" cy="13" r="3"/></svg>
-            </span>
-            <span class="diorama-scene" aria-hidden="true">
-              <span class="scene-object lens"></span>
-              <span class="scene-object film-strip"></span>
-              <span class="scene-object photo-frame"></span>
-            </span>
-            <span class="door-label">Cameras / 카메라</span>
-          </a>
-
-          <a class="world-door journal" href="pages/journal.html" aria-label="Journal / 글">
-            <span class="door-picto" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M6 4h11a2 2 0 0 1 2 2v14H7a2 2 0 0 1-2-2V5a1 1 0 0 1 1-1z"/><path d="M8 8h7M8 12h6"/></svg>
-            </span>
-            <span class="diorama-scene" aria-hidden="true">
-              <span class="scene-object notebook"></span>
-              <span class="scene-object sentence-lines"></span>
-              <span class="scene-object desk-dot"></span>
-            </span>
-            <span class="door-label">Journal / 글</span>
-          </a>
-
-          <a class="world-door gallery" href="pages/gallery.html" aria-label="Gallery / 사진">
-            <span class="door-picto" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M5 5h14v14H5z"/><path d="m7 16 4-4 3 3 2-2 2 3"/><circle cx="15" cy="9" r="1.5"/></svg>
-            </span>
-            <span class="diorama-scene" aria-hidden="true">
-              <span class="scene-object stacked-photo one"></span>
-              <span class="scene-object stacked-photo two"></span>
-              <span class="scene-object light-spot"></span>
-            </span>
-            <span class="door-label">Gallery / 사진</span>
-          </a>
-
-          <a class="world-door community" href="pages/community.html" aria-label="Community / Comments">
-            <span class="door-picto" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M5 6h14v9H8l-3 3z"/><path d="M8 10h8M8 13h5"/></svg>
-            </span>
-            <span class="diorama-scene" aria-hidden="true">
-              <span class="scene-object table-top"></span>
-              <span class="scene-object chair left"></span>
-              <span class="scene-object chair right"></span>
-            </span>
-            <span class="door-label">Community / Comments</span>
-          </a>
-
-          <a class="world-door work" href="pages/ham-media-work.html" aria-label="Ham Media Work / 햄미디어 작업">
-            <span class="door-picto" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M5 7h14v12H5z"/><path d="M9 7V5h6v2"/><path d="M8 12h8M8 15h5"/></svg>
-            </span>
-            <span class="diorama-scene" aria-hidden="true">
-              <span class="scene-object monitor"></span>
-              <span class="scene-object tool-line"></span>
-              <span class="scene-object edit-dot"></span>
-            </span>
-            <span class="door-label">Ham Media Work / 햄미디어 작업</span>
-          </a>
-
-          <a class="world-door history" href="pages/history.html" aria-label="History / 히스토리">
-            <span class="door-picto" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M12 5v7l4 3"/><circle cx="12" cy="12" r="8"/></svg>
-            </span>
-            <span class="diorama-scene" aria-hidden="true">
-              <span class="scene-object old-photo"></span>
-              <span class="scene-object timeline-pin one"></span>
-              <span class="scene-object timeline-pin two"></span>
-            </span>
-            <span class="door-label">History / 히스토리</span>
-          </a>
-        </nav>
-
-        <a class="contact-link" href="pages/contact.html">문의하기</a>
-      </section>
-
-      <section class="about-constellation" id="about-constellation" aria-labelledby="constellation-title">
+      <section class="about-constellation constellation-entry" id="about-constellation" aria-labelledby="constellation-title">
         <div class="constellation-intro">
-          <p class="eyebrow">About</p>
+          <p class="eyebrow">HAM MEDIA</p>
           <h2 id="constellation-title">좋아하는 것들이 나를 여기까지 데려왔다.</h2>
+          <p class="constellation-guide">별을 눌러 취미방으로 들어가세요.</p>
         </div>
 
         <div class="constellation-scene">
-          <div class="constellation-window" aria-label="햄PD의 취향 별자리">
+          <nav class="constellation-window" aria-label="햄PD의 취향 별자리">
             <svg class="constellation-path" viewBox="0 0 100 100" aria-hidden="true">
               <polyline class="constellation-path-line" points=""></polyline>
             </svg>
 
-            <button class="constellation-star star-fountain is-selected" type="button" data-star="fountain" data-x="18" data-y="28" aria-controls="constellation-detail" aria-pressed="true">
+            <a class="constellation-star star-fountain is-selected" href="pages/fountain-pens.html" data-star="fountain" data-x="18" data-y="28" aria-controls="constellation-detail">
               <span class="star-light" aria-hidden="true"></span>
               <span class="star-label">살아남은 별</span>
-            </button>
+            </a>
 
-            <button class="constellation-star star-motorcycle" type="button" data-star="motorcycle" data-x="75" data-y="20" aria-controls="constellation-detail" aria-pressed="false">
+            <a class="constellation-star star-motorcycle" href="pages/motorcycles.html" data-star="motorcycle" data-x="75" data-y="20" aria-controls="constellation-detail">
               <span class="star-light" aria-hidden="true"></span>
               <span class="star-label">살아 있음을 확인한 별</span>
-            </button>
+            </a>
 
-            <button class="constellation-star star-travel" type="button" data-star="travel" data-x="54" data-y="33" aria-controls="constellation-detail" aria-pressed="false">
+            <a class="constellation-star star-travel" href="pages/travel.html" data-star="travel" data-x="54" data-y="33" aria-controls="constellation-detail">
               <span class="star-light" aria-hidden="true"></span>
               <span class="star-label">자리를 옮겨 보는 별</span>
-            </button>
+            </a>
 
-            <button class="constellation-star star-bike" type="button" data-star="bike" data-x="31" data-y="47" aria-controls="constellation-detail" aria-pressed="false">
+            <a class="constellation-star star-bike" href="pages/bicycles.html" data-star="bike" data-x="31" data-y="47" aria-controls="constellation-detail">
               <span class="star-light" aria-hidden="true"></span>
               <span class="star-label">비워낸 별</span>
-            </button>
+            </a>
 
-            <button class="constellation-star star-space" type="button" data-star="space" data-x="84" data-y="52" aria-controls="constellation-detail" aria-pressed="false">
+            <a class="constellation-star star-space" href="pages/spaces.html" data-star="space" data-x="84" data-y="52" aria-controls="constellation-detail">
               <span class="star-light" aria-hidden="true"></span>
               <span class="star-label">머무는 방식을 배운 별</span>
-            </button>
+            </a>
 
-            <button class="constellation-star star-car" type="button" data-star="car" data-x="43" data-y="66" aria-controls="constellation-detail" aria-pressed="false">
+            <a class="constellation-star star-car" href="pages/cars.html" data-star="car" data-x="43" data-y="66" aria-controls="constellation-detail">
               <span class="star-light" aria-hidden="true"></span>
               <span class="star-label">길을 찾는 별</span>
-            </button>
+            </a>
 
-            <button class="constellation-star star-food" type="button" data-star="food" data-x="67" data-y="75" aria-controls="constellation-detail" aria-pressed="false">
+            <a class="constellation-star star-food" href="pages/food.html" data-star="food" data-x="67" data-y="75" aria-controls="constellation-detail">
               <span class="star-light" aria-hidden="true"></span>
               <span class="star-label">감각을 익힌 별</span>
-            </button>
+            </a>
 
-            <button class="constellation-star star-audio" type="button" data-star="audio" data-x="21" data-y="78" aria-controls="constellation-detail" aria-pressed="false">
+            <a class="constellation-star star-audio" href="pages/music-audio.html" data-star="audio" data-x="21" data-y="78" aria-controls="constellation-detail">
               <span class="star-light" aria-hidden="true"></span>
               <span class="star-label">고르고 빼는 별</span>
-            </button>
+            </a>
 
-            <button class="constellation-star star-camera" type="button" data-star="camera" data-x="89" data-y="83" aria-controls="constellation-detail" aria-pressed="false">
+            <a class="constellation-star star-camera" href="pages/cameras.html" data-star="camera" data-x="89" data-y="83" aria-controls="constellation-detail">
               <span class="star-light" aria-hidden="true"></span>
               <span class="star-label">무엇을 담을지 보는 별</span>
-            </button>
-          </div>
+            </a>
+          </nav>
 
           <aside class="constellation-detail" id="constellation-detail" aria-live="polite">
             <p class="detail-kicker" id="constellation-kind">사람</p>

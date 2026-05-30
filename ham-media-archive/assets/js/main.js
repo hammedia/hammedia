@@ -153,7 +153,11 @@ function selectConstellationStar(star) {
   constellationStars.forEach((item) => {
     const isSelected = item === star;
     item.classList.toggle("is-selected", isSelected);
-    item.setAttribute("aria-pressed", String(isSelected));
+    if (isSelected) {
+      item.setAttribute("aria-current", "true");
+    } else {
+      item.removeAttribute("aria-current");
+    }
   });
 
   if (!visitedStars.includes(star)) {
