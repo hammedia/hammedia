@@ -149,6 +149,28 @@
       margin-bottom: 2rem; line-height: 1.85;
       animation: fadeUp .5s .24s both;
     }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: .75rem 1.15rem;
+      border-radius: 999px;
+      background: var(--warm);
+      color: var(--pearl);
+      border: 1px solid var(--warm);
+      font-size: .9rem;
+      font-weight: 800;
+      line-height: 1.2;
+      text-decoration: none;
+      transition: transform .2s, background .2s, border-color .2s;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+    .hero-quote + .btn-primary { margin-top: 1rem; animation: fadeUp .5s .38s both; }
 
     /* Hero quote */
     .hero-quote {
@@ -269,7 +291,7 @@
     }
     .service-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
       gap: 1px;
       background: var(--line);
       border: 1px solid var(--line);
@@ -303,6 +325,38 @@
       font-size: 13.5px;
       color: var(--muted);
       line-height: 1.7;
+    }
+    .svc-name {
+      font-size: 1.04rem;
+      font-weight: 800;
+      color: var(--warm);
+      margin-bottom: .8rem;
+      line-height: 1.35;
+    }
+    .svc-for,
+    .svc-do,
+    .svc-out {
+      font-size: 13.2px;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: .7rem;
+    }
+    .svc-out {
+      color: var(--warm);
+      font-weight: 650;
+      margin-bottom: 1rem;
+    }
+    .svc-proof {
+      font-size: 12.5px;
+      color: var(--muted);
+      line-height: 1.65;
+      margin: -.25rem 0 1rem;
+    }
+    .svc-cta {
+      width: 100%;
+      min-height: 40px;
+      font-size: .82rem;
+      padding: .65rem .9rem;
     }
 
     /* ── ABOUT ── */
@@ -543,6 +597,31 @@
       margin-bottom: 2.5rem; max-width: 480px;
       line-height: 1.9;
     }
+    .contact-form-block {
+      margin-bottom: 2.7rem;
+      max-width: 760px;
+    }
+    .contact-form-note {
+      font-size: .95rem;
+      color: var(--muted);
+      line-height: 1.85;
+      margin-bottom: 1rem;
+    }
+    .contact-form-note.is-after {
+      margin-top: 1rem;
+      margin-bottom: 0;
+    }
+    .tally-embed {
+      background: var(--ivory);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .tally-embed iframe {
+      display: block;
+      width: 100%;
+    }
     .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
     .contact-rows { display: flex; flex-direction: column; gap: .75rem; }
     .contact-row { display: flex; align-items: center; gap: 1rem; }
@@ -650,6 +729,7 @@
       よい経験も、伝わらなければ存在しないのと同じです。<br>
       <strong>HAM MEDIAは、その距離を縮める仕事をしています。</strong>
     </div>
+    <a class="btn-primary" href="#contact">相談する</a>
   </div>
   <div class="hero-photo">
     <img src="./profile.JPG" alt="咸東旼 ハムPD">
@@ -717,20 +797,40 @@
   <h2 class="sec-title">形にできる仕事</h2>
   <div class="service-grid">
     <div class="service-item">
-      <div class="service-name">YouTubeと映像コンテンツ</div>
-      <div class="service-desc">チャンネルの目的、視聴者の期待、コンテンツの方向性、制作フローを整理します。</div>
-    </div>
-    <div class="service-item is-primary">
-      <div class="service-name">提案書とプレゼン資料</div>
-      <div class="service-desc">資料を読み、核となるメッセージを見つけ、相手が理解しやすい順序に再構成します。</div>
-    </div>
-    <div class="service-item is-secondary">
-      <div class="service-name">AI講義と実習型トレーニング</div>
-      <div class="service-desc">説明だけで終わらせず、受講者が自分で試せる実習の流れを設計します。</div>
+      <h3 class="svc-name">専門家向けYouTube・映像コンテンツ</h3>
+      <p class="svc-for">こんな方へ — 専門性は深いのにチャンネルがない、または伸び悩んでいる医師・講師・コンサルタント・個人事業主</p>
+      <p class="svc-do">企画・撮影・編集・アップロード・ショート動画への展開</p>
+      <p class="svc-out">成果物 — 月単位のロング動画 + ショート動画パッケージ</p>
+      <a class="svc-cta btn-primary" href="#contact">相談する</a>
     </div>
     <div class="service-item">
-      <div class="service-name">1人制作フローの整理</div>
-      <div class="service-desc">1人で抱え込みがちな繰り返し作業を、AIを活用した制作フローとして整理します。</div>
+      <h3 class="svc-name">ホームページ・詳細ページ制作</h3>
+      <p class="svc-for">こんな方へ — 商品や専門性はあるのに、伝えるページがない/弱い専門家・小規模事業者・ECセラー</p>
+      <p class="svc-do">説得構造の設計・コピー・制作（AI活用による高速制作）</p>
+      <p class="svc-out">成果物 — 問い合わせにつながるホームページ/詳細ページ + 問い合わせフォーム・分析連携</p>
+      <p class="svc-proof">例 — 今ご覧のこのサイトも直接制作しました。</p>
+      <a class="svc-cta btn-primary" href="#contact">相談する</a>
+    </div>
+    <div class="service-item">
+      <h3 class="svc-name">提案書・プレゼン資料の構造化</h3>
+      <p class="svc-for">こんな方へ — 資料はあるのに審査員・顧客に伝わりきらない方</p>
+      <p class="svc-do">核心の抽出・説得構造の再配置</p>
+      <p class="svc-out">成果物 — 流れが整った提案書・プレゼン資料</p>
+      <a class="svc-cta btn-primary" href="#contact">相談する</a>
+    </div>
+    <div class="service-item">
+      <h3 class="svc-name">AI講義・実習型トレーニング</h3>
+      <p class="svc-for">こんな方へ — AIを仕事に取り入れたい個人事業主・中高年・実務担当者</p>
+      <p class="svc-do">実習中心の講義・業務フロー整理</p>
+      <p class="svc-out">成果物 — すぐ使えるAI業務ルーティン</p>
+      <a class="svc-cta btn-primary" href="#contact">相談する</a>
+    </div>
+    <div class="service-item">
+      <h3 class="svc-name">1人制作システム構築</h3>
+      <p class="svc-for">こんな方へ — 1人で全部やらなければならない個人事業主・クリエイター</p>
+      <p class="svc-do">企画から公開までのパイプライン設計</p>
+      <p class="svc-out">成果物 — 1人でも回る制作システム</p>
+      <a class="svc-cta btn-primary" href="#contact">相談する</a>
     </div>
   </div>
 </section>
@@ -1013,9 +1113,17 @@
     <span class="sky">伝わる形にしたいなら。</span>
   </h2>
   <p class="cta-sub">
-    映像、資料、講義、AIを活用した制作フローまで。今ある経験や資料を、どのような形で見せるべきか一緒に整理します。<br>
-    韓国・仁川富平区を拠点に、通常1〜2日以内に返信します。
+    映像、資料、講義、AIを活用した制作フローまで。今ある経験や資料を、どのような形で見せるべきか一緒に整理します。
   </p>
+
+  <div class="contact-form-block">
+    <p class="contact-form-note">整理された資料がなくても大丈夫です。今の状態を教えていただければ、どこから始めるか一緒に整理します。</p>
+    <div class="tally-embed">
+      <iframe data-tally-src="https://tally.so/embed/vGK44d?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="520" frameborder="0" marginheight="0" marginwidth="0" title="相談する"></iframe>
+      <script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach(function(e){e.src=e.dataset.tallySrc})};if("undefined"!=typeof Tally)v();else if(null==d.querySelector('script[src="'+w+'"]')){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
+    </div>
+    <p class="contact-form-note is-after">韓国・仁川富平区ベース · 通常1〜2日以内に返信します</p>
+  </div>
 
   <div class="contact-grid">
     <div>

@@ -149,6 +149,28 @@
       margin-bottom: 2rem; line-height: 1.85;
       animation: fadeUp .5s .24s both;
     }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: .75rem 1.15rem;
+      border-radius: 999px;
+      background: var(--warm);
+      color: var(--pearl);
+      border: 1px solid var(--warm);
+      font-size: .9rem;
+      font-weight: 800;
+      line-height: 1.2;
+      text-decoration: none;
+      transition: transform .2s, background .2s, border-color .2s;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+    .hero-quote + .btn-primary { margin-top: 1rem; animation: fadeUp .5s .38s both; }
 
     /* Stats */
     .hero-stats {
@@ -295,7 +317,7 @@
     }
     .service-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
       gap: 1px;
       background: var(--line);
       border: 1px solid var(--line);
@@ -329,6 +351,38 @@
       font-size: 13.5px;
       color: var(--muted);
       line-height: 1.7;
+    }
+    .svc-name {
+      font-size: 1.04rem;
+      font-weight: 800;
+      color: var(--warm);
+      margin-bottom: .8rem;
+      line-height: 1.35;
+    }
+    .svc-for,
+    .svc-do,
+    .svc-out {
+      font-size: 13.2px;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: .7rem;
+    }
+    .svc-out {
+      color: var(--warm);
+      font-weight: 650;
+      margin-bottom: 1rem;
+    }
+    .svc-proof {
+      font-size: 12.5px;
+      color: var(--muted);
+      line-height: 1.65;
+      margin: -.25rem 0 1rem;
+    }
+    .svc-cta {
+      width: 100%;
+      min-height: 40px;
+      font-size: .82rem;
+      padding: .65rem .9rem;
     }
 
     /* ── ABOUT ── */
@@ -569,6 +623,31 @@
       margin-bottom: 2.5rem; max-width: 480px;
       line-height: 1.9;
     }
+    .contact-form-block {
+      margin-bottom: 2.7rem;
+      max-width: 760px;
+    }
+    .contact-form-note {
+      font-size: .95rem;
+      color: var(--muted);
+      line-height: 1.85;
+      margin-bottom: 1rem;
+    }
+    .contact-form-note.is-after {
+      margin-top: 1rem;
+      margin-bottom: 0;
+    }
+    .tally-embed {
+      background: var(--ivory);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .tally-embed iframe {
+      display: block;
+      width: 100%;
+    }
     .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
     .contact-rows { display: flex; flex-direction: column; gap: .75rem; }
     .contact-row { display: flex; align-items: center; gap: 1rem; }
@@ -676,6 +755,7 @@
       Great experience means little if people cannot see it.<br>
       <strong>HAM MEDIA closes that gap.</strong>
     </div>
+    <a class="btn-primary" href="#contact">Request a Consultation</a>
   </div>
   <div class="hero-photo">
     <img src="./profile.JPG" alt="Dongmin Ham, Ham PD">
@@ -743,20 +823,40 @@
   <h2 class="sec-title">What you can ask me to build</h2>
   <div class="service-grid">
     <div class="service-item">
-      <div class="service-name">YouTube and Video Content</div>
-      <div class="service-desc">I help clarify a channel's purpose, viewer expectations, content direction, and production flow.</div>
-    </div>
-    <div class="service-item is-primary">
-      <div class="service-name">Proposals and Presentations</div>
-      <div class="service-desc">I read the source material, find the core message, and rebuild it in an order the audience can follow. Within the range that can be shared publicly, I have experience contributing to project acquisition processes through proposal and presentation structure.</div>
-    </div>
-    <div class="service-item is-secondary">
-      <div class="service-name">AI Lectures and Practice-Based Training</div>
-      <div class="service-desc">I do not stop at explaining information. I design sessions where participants can try the work themselves.</div>
+      <h3 class="svc-name">Expert YouTube & Video Content</h3>
+      <p class="svc-for">For — Doctors, lecturers, consultants, and small business owners with deep expertise but no channel, or a stalled one</p>
+      <p class="svc-do">Planning, filming, editing, uploading, and repurposing into Shorts</p>
+      <p class="svc-out">Deliverable — Monthly long-form videos + Shorts package</p>
+      <a class="svc-cta btn-primary" href="#contact">Request a Consultation</a>
     </div>
     <div class="service-item">
-      <div class="service-name">Solo Production Workflow Setup</div>
-      <div class="service-desc">I help solo operators reduce repeated work by organizing a practical production flow with AI-assisted tools.</div>
+      <h3 class="svc-name">Website & Product Page Production</h3>
+      <p class="svc-for">For — Experts, small businesses, and e-commerce sellers with strong products or expertise but weak pages</p>
+      <p class="svc-do">Persuasion structure, copy, and production with AI-assisted fast build</p>
+      <p class="svc-out">Deliverable — Conversion-focused website/product page + inquiry form and analytics setup</p>
+      <p class="svc-proof">Example — this site you are viewing was also built directly.</p>
+      <a class="svc-cta btn-primary" href="#contact">Request a Consultation</a>
+    </div>
+    <div class="service-item">
+      <h3 class="svc-name">Proposal & Presentation Structuring</h3>
+      <p class="svc-for">For — People with materials that are not yet landing with judges or clients</p>
+      <p class="svc-do">Extracting the core message and rebuilding the persuasion flow</p>
+      <p class="svc-out">Deliverable — Proposal/presentation with a clear flow</p>
+      <a class="svc-cta btn-primary" href="#contact">Request a Consultation</a>
+    </div>
+    <div class="service-item">
+      <h3 class="svc-name">AI Lectures & Hands-on Training</h3>
+      <p class="svc-for">For — Solo operators, mid-career workers, and practical teams bringing AI into work</p>
+      <p class="svc-do">Hands-on training and workflow organization</p>
+      <p class="svc-out">Deliverable — AI work routine you can use right away</p>
+      <a class="svc-cta btn-primary" href="#contact">Request a Consultation</a>
+    </div>
+    <div class="service-item">
+      <h3 class="svc-name">Solo Production System Setup</h3>
+      <p class="svc-for">For — Solo business owners and creators doing everything themselves</p>
+      <p class="svc-do">Designing a pipeline from planning to publishing</p>
+      <p class="svc-out">Deliverable — A production system that keeps moving even solo</p>
+      <a class="svc-cta btn-primary" href="#contact">Request a Consultation</a>
     </div>
   </div>
 </section>
@@ -1039,9 +1139,17 @@
     <span class="sky">into something people can see?</span>
   </h2>
   <p class="cta-sub">
-    Video, documents, lectures, and AI-assisted workflows can all become ways to show what you already know. HAM MEDIA helps organize your experience and materials into a form other people can understand.<br>
-    Based in Bupyeong-gu, Incheon, Korea. I usually reply within 1–2 days.
+    Video, documents, lectures, and AI-assisted workflows can all become ways to show what you already know. HAM MEDIA helps organize your experience and materials into a form other people can understand.
   </p>
+
+  <div class="contact-form-block">
+    <p class="contact-form-note">You do not need to have everything organized. Tell me where things stand now, and we will find where to begin together.</p>
+    <div class="tally-embed">
+      <iframe data-tally-src="https://tally.so/embed/vGK44d?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="520" frameborder="0" marginheight="0" marginwidth="0" title="Request a Consultation"></iframe>
+      <script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach(function(e){e.src=e.dataset.tallySrc})};if("undefined"!=typeof Tally)v();else if(null==d.querySelector('script[src="'+w+'"]')){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
+    </div>
+    <p class="contact-form-note is-after">Based in Bupyeong-gu, Incheon, Korea · Usually replies within 1–2 days</p>
+  </div>
 
   <div class="contact-grid">
     <div>
