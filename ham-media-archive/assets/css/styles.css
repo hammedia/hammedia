@@ -109,6 +109,7 @@ h2 {
   background-position: 0 0, 32px 48px;
   background-size: 86px 86px, 132px 132px;
   mask-image: linear-gradient(to bottom, black 0%, black 100%);
+  animation: skyFieldBreath 12s ease-in-out infinite;
 }
 
 .home-hub {
@@ -1877,7 +1878,21 @@ h1 {
 }
 
 .constellation-entry .constellation-window::before {
-  display: none;
+  inset: auto auto auto -34%;
+  top: 24%;
+  z-index: 1;
+  display: block;
+  width: min(42vw, 20rem);
+  height: 2px;
+  border: 0;
+  border-radius: 999px;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 244, 210, 0.1) 28%, rgba(255, 244, 210, 0.92) 72%, #ffffff 100%);
+  box-shadow:
+    0 0 12px rgba(255, 219, 141, 0.72),
+    0 0 28px rgba(255, 162, 58, 0.28);
+  opacity: 0;
+  transform: rotate(-18deg) translate3d(0, 0, 0);
+  animation: shootingStarSweep 12s ease-in-out infinite;
 }
 
 .constellation-window::after {
@@ -1913,6 +1928,10 @@ h1 {
   stroke-linejoin: round;
 }
 
+.constellation-entry .constellation-path-line {
+  animation: constellationLineBreath 12s ease-in-out infinite;
+}
+
 .constellation-star {
   position: absolute;
   z-index: 2;
@@ -1944,6 +1963,10 @@ h1 {
   transition: transform 220ms ease, box-shadow 220ms ease, background 220ms ease;
 }
 
+.constellation-entry .star-light {
+  animation: constellationStarBreath 12s ease-in-out infinite;
+}
+
 .star-light::before {
   content: "";
   position: absolute;
@@ -1953,6 +1976,10 @@ h1 {
   opacity: 0.62;
   transform: scale(0.74);
   transition: opacity 220ms ease, transform 220ms ease;
+}
+
+.constellation-entry .star-light::before {
+  animation: constellationHaloBreath 12s ease-in-out infinite;
 }
 
 .star-light::after {
@@ -1967,6 +1994,10 @@ h1 {
   opacity: 0.14;
   transform: scale(0.7);
   transition: opacity 220ms ease, transform 220ms ease;
+}
+
+.constellation-entry .star-light::after {
+  animation: constellationSparkBreath 12s ease-in-out infinite;
 }
 
 .star-label {
@@ -2328,6 +2359,116 @@ h1 {
   color: rgba(255, 252, 244, 0.88);
 }
 
+@keyframes skyFieldBreath {
+  0%,
+  26% {
+    opacity: 0.76;
+  }
+
+  43%,
+  58% {
+    opacity: 0.18;
+  }
+
+  74%,
+  100% {
+    opacity: 0.72;
+  }
+}
+
+@keyframes constellationStarBreath {
+  0%,
+  28% {
+    opacity: 1;
+    filter: brightness(1);
+  }
+
+  43%,
+  58% {
+    opacity: 0.05;
+    filter: brightness(0.7);
+  }
+
+  76%,
+  100% {
+    opacity: 1;
+    filter: brightness(1);
+  }
+}
+
+@keyframes constellationHaloBreath {
+  0%,
+  28% {
+    opacity: 0.62;
+  }
+
+  43%,
+  58% {
+    opacity: 0;
+  }
+
+  76%,
+  100% {
+    opacity: 0.62;
+  }
+}
+
+@keyframes constellationSparkBreath {
+  0%,
+  28% {
+    opacity: 0.14;
+  }
+
+  43%,
+  58% {
+    opacity: 0;
+  }
+
+  76%,
+  100% {
+    opacity: 0.14;
+  }
+}
+
+@keyframes constellationLineBreath {
+  0%,
+  28% {
+    opacity: 1;
+  }
+
+  43%,
+  58% {
+    opacity: 0.03;
+  }
+
+  76%,
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes shootingStarSweep {
+  0%,
+  42% {
+    opacity: 0;
+    transform: rotate(-18deg) translate3d(0, 0, 0);
+  }
+
+  47% {
+    opacity: 1;
+  }
+
+  56% {
+    opacity: 0;
+    transform: rotate(-18deg) translate3d(168vw, 58vw, 0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: rotate(-18deg) translate3d(168vw, 58vw, 0);
+  }
+}
+
 .constellation-work-link {
   padding: 0.72rem 1rem;
   border-radius: 999px;
@@ -2668,6 +2809,6 @@ h1 {
   *::after {
     scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
-    animation-duration: 0.01ms !important;
+    animation: none !important;
   }
 }
