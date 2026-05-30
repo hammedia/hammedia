@@ -149,6 +149,28 @@
       margin-bottom: 2rem; line-height: 1.85;
       animation: fadeUp .5s .24s both;
     }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: .75rem 1.15rem;
+      border-radius: 999px;
+      background: var(--warm);
+      color: var(--pearl);
+      border: 1px solid var(--warm);
+      font-size: .9rem;
+      font-weight: 800;
+      line-height: 1.2;
+      text-decoration: none;
+      transition: transform .2s, background .2s, border-color .2s;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+    .hero-quote + .btn-primary { margin-top: 1rem; animation: fadeUp .5s .38s both; }
 
     /* Hero proof points */
     .hero-points {
@@ -341,6 +363,32 @@
       font-size: 13.5px;
       color: var(--muted);
       line-height: 1.7;
+    }
+    .svc-name {
+      font-size: 1.04rem;
+      font-weight: 800;
+      color: var(--warm);
+      margin-bottom: .8rem;
+      line-height: 1.35;
+    }
+    .svc-for,
+    .svc-do,
+    .svc-out {
+      font-size: 13.2px;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: .7rem;
+    }
+    .svc-out {
+      color: var(--warm);
+      font-weight: 650;
+      margin-bottom: 1rem;
+    }
+    .svc-cta {
+      width: 100%;
+      min-height: 40px;
+      font-size: .82rem;
+      padding: .65rem .9rem;
     }
 
     /* ── ABOUT ── */
@@ -581,6 +629,31 @@
       margin-bottom: 2.5rem; max-width: 480px;
       line-height: 1.9;
     }
+    .contact-form-block {
+      margin-bottom: 2.7rem;
+      max-width: 760px;
+    }
+    .contact-form-note {
+      font-size: .95rem;
+      color: var(--muted);
+      line-height: 1.85;
+      margin-bottom: 1rem;
+    }
+    .contact-form-note.is-after {
+      margin-top: 1rem;
+      margin-bottom: 0;
+    }
+    .tally-embed {
+      background: var(--ivory);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .tally-embed iframe {
+      display: block;
+      width: 100%;
+    }
     .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
     .contact-rows { display: flex; flex-direction: column; gap: .75rem; }
     .contact-row { display: flex; align-items: center; gap: 1rem; }
@@ -690,6 +763,7 @@
       좋은 경험도 전달되지 않으면 없는 것과 같습니다.<br>
       <strong>HAM MEDIA는 그 간격을 줄이는 일을 합니다.</strong>
     </div>
+    <a class="btn-primary" href="#contact">상담 신청하기</a>
   </div>
   <div class="hero-photo">
     <img src="./profile.JPG" alt="함동민 햄PD">
@@ -757,20 +831,32 @@
   <h2 class="sec-title">맡길 수 있는 작업</h2>
   <div class="service-grid">
     <div class="service-item">
-      <div class="service-name">유튜브와 영상 콘텐츠</div>
-      <div class="service-desc">채널의 성격과 시청자의 기대를 분석하고, 콘텐츠 방향과 제작 흐름을 함께 설계합니다.</div>
+      <h3 class="svc-name">전문가 유튜브·영상 콘텐츠</h3>
+      <p class="svc-for">이런 분께 — 전문성은 깊은데 채널이 없거나 정체된 병원장·강사·컨설턴트·자영업자</p>
+      <p class="svc-do">기획·촬영·편집·업로드·쇼츠 분해</p>
+      <p class="svc-out">결과물 — 월 단위 롱폼 + 쇼츠 패키지</p>
+      <a class="svc-cta btn-primary" href="#contact">상담 신청하기</a>
     </div>
     <div class="service-item is-primary">
-      <div class="service-name">제안서와 발표자료</div>
-      <div class="service-desc">자료를 읽고, 핵심을 뽑고, 상대가 이해할 수 있는 순서로 다시 정리합니다. 공개 가능한 범위 안에서 프로젝트 수주 과정에 기여한 경험이 있습니다.</div>
+      <h3 class="svc-name">제안서·발표자료 구조화</h3>
+      <p class="svc-for">이런 분께 — 자료는 있는데 심사위원·고객에게 안 꽂히는 분</p>
+      <p class="svc-do">핵심 추출·설득 구조 재배치</p>
+      <p class="svc-out">결과물 — 흐름이 잡힌 제안서·발표자료</p>
+      <a class="svc-cta btn-primary" href="#contact">상담 신청하기</a>
     </div>
     <div class="service-item is-secondary">
-      <div class="service-name">AI 강의와 실습 교육</div>
-      <div class="service-desc">지식을 전달하는 데서 끝나지 않고, 수강자가 직접 해볼 수 있는 구조를 만듭니다.</div>
+      <h3 class="svc-name">AI 강의·실습 교육</h3>
+      <p class="svc-for">이런 분께 — AI를 업무에 들이려는 1인 사업자·중장년·실무자</p>
+      <p class="svc-do">실습 중심 강의·업무 흐름 정리</p>
+      <p class="svc-out">결과물 — 바로 쓰는 AI 업무 루틴</p>
+      <a class="svc-cta btn-primary" href="#contact">상담 신청하기</a>
     </div>
     <div class="service-item">
-      <div class="service-name">1인 제작 시스템 정리</div>
-      <div class="service-desc">1인 사업자가 혼자 모든 일을 감당하지 않도록, AI를 활용한 제작 흐름을 설계합니다.</div>
+      <h3 class="svc-name">1인 제작 시스템 구축</h3>
+      <p class="svc-for">이런 분께 — 혼자 다 해야 하는 1인 사업자·창작자</p>
+      <p class="svc-do">기획~퍼블리싱 파이프라인 설계</p>
+      <p class="svc-out">결과물 — 혼자서도 굴러가는 제작 시스템</p>
+      <a class="svc-cta btn-primary" href="#contact">상담 신청하기</a>
     </div>
   </div>
 </section>
@@ -1054,9 +1140,17 @@
   </h2>
   <p class="cta-sub">
     영상, 문서, 강의, AI 제작 흐름까지.<br>
-    지금 가진 경험과 자료를 어떤 형태로 보여줘야 할지 함께 정리합니다.<br>
-    인천 부평구 베이스 · 보통 1–2일 내 답변.
+    지금 가진 경험과 자료를 어떤 형태로 보여줘야 할지 함께 정리합니다.
   </p>
+
+  <div class="contact-form-block">
+    <p class="contact-form-note">정리된 자료가 없어도 괜찮습니다. 지금 상태만 알려주시면 어디서부터 시작할지 함께 잡습니다.</p>
+    <div class="tally-embed">
+      <iframe data-tally-src="https://tally.so/embed/vGK44d?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="520" frameborder="0" marginheight="0" marginwidth="0" title="상담 신청하기"></iframe>
+      <script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach(function(e){e.src=e.dataset.tallySrc})};if("undefined"!=typeof Tally)v();else if(null==d.querySelector('script[src="'+w+'"]')){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
+    </div>
+    <p class="contact-form-note is-after">인천 부평구 베이스 · 보통 1~2일 내 답변</p>
+  </div>
 
   <div class="contact-grid">
     <div>
