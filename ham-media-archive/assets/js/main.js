@@ -57,7 +57,7 @@ const constellationData = {
     previewAlt: "붉은 두카티 바이크",
     previewCaption: "바이크별 대표 이미지",
     roomHref: "pages/motorcycles.html",
-    roomLabel: "바이크 방으로 들어가기"
+    roomLabel: "바이크별로 들어가기"
   },
   travel: {
     code: "LPH B-613-03",
@@ -71,7 +71,7 @@ const constellationData = {
     previewAlt: "기차역에서 캐리어와 함께 기다리는 순간",
     previewCaption: "여행별 대표 이미지",
     roomHref: "pages/travel.html",
-    roomLabel: "여행 방으로 들어가기"
+    roomLabel: "여행별로 들어가기"
   },
   bike: {
     code: "LPH B-613-04",
@@ -85,7 +85,7 @@ const constellationData = {
     previewAlt: "길 위의 자전거",
     previewCaption: "자전거별 대표 이미지",
     roomHref: "pages/bicycles.html",
-    roomLabel: "자전거 방으로 들어가기"
+    roomLabel: "자전거별로 들어가기"
   },
   space: {
     code: "LPH B-613-05",
@@ -96,7 +96,7 @@ const constellationData = {
     invite: "나만의 공간과, 함께 하는 공간. 그 디테일을 아는 사람이라면.",
     asset: "실제 사진 준비 중: 실제 책상, 차 안, 작업실, 공간 디테일 사진",
     roomHref: "pages/spaces.html",
-    roomLabel: "공간 방으로 들어가기"
+    roomLabel: "공간별로 들어가기"
   },
   car: {
     code: "LPH B-613-06",
@@ -110,7 +110,7 @@ const constellationData = {
     previewAlt: "밤길 위 자동차의 방향",
     previewCaption: "자동차별 대표 이미지",
     roomHref: "pages/cars.html",
-    roomLabel: "자동차 방으로 들어가기"
+    roomLabel: "자동차별로 들어가기"
   },
   food: {
     code: "LPH B-613-07",
@@ -124,7 +124,7 @@ const constellationData = {
     previewAlt: "카페 테이블 위 커피",
     previewCaption: "음식별 대표 이미지",
     roomHref: "pages/food.html",
-    roomLabel: "음식 방으로 들어가기"
+    roomLabel: "음식별로 들어가기"
   },
   audio: {
     code: "LPH B-613-08",
@@ -138,7 +138,7 @@ const constellationData = {
     previewAlt: "스피커와 청취 공간",
     previewCaption: "음악·오디오별 대표 이미지",
     roomHref: "pages/music-audio.html",
-    roomLabel: "음악·오디오 방으로 들어가기"
+    roomLabel: "음악·오디오별로 들어가기"
   },
   camera: {
     code: "LPH B-613-09",
@@ -152,7 +152,7 @@ const constellationData = {
     previewAlt: "노트와 함께 놓인 카메라",
     previewCaption: "카메라별 대표 이미지",
     roomHref: "pages/cameras.html",
-    roomLabel: "카메라 방으로 들어가기"
+    roomLabel: "카메라별로 들어가기"
   }
 };
 
