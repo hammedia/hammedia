@@ -2405,6 +2405,42 @@ h1 {
   display: none;
 }
 
+.constellation-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  align-items: center;
+  margin-top: 0.15rem;
+}
+
+.constellation-action-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.45rem;
+  padding: 0.62rem 0.92rem;
+  border: 1px solid rgba(255, 230, 181, 0.2);
+  border-radius: 999px;
+  color: rgba(255, 252, 244, 0.78);
+  background: rgba(255, 252, 244, 0.045);
+  font-size: 0.82rem;
+  font-weight: 780;
+  text-decoration: none;
+}
+
+.constellation-action-link.is-primary {
+  border-color: rgba(255, 207, 111, 0.44);
+  color: rgba(255, 230, 181, 0.94);
+  background: rgba(255, 198, 81, 0.12);
+}
+
+.constellation-action-link:hover,
+.constellation-action-link:focus-visible {
+  border-color: rgba(255, 224, 153, 0.62);
+  color: rgba(255, 252, 244, 0.98);
+  background: rgba(255, 198, 81, 0.16);
+}
+
 .constellation-soft-link,
 .constellation-work-link {
   display: inline-flex;
@@ -2689,7 +2725,8 @@ h1 {
 }
 
 .constellation-soft-link:focus-visible,
-.constellation-work-link:focus-visible {
+.constellation-work-link:focus-visible,
+.constellation-action-link:focus-visible {
   outline: 3px solid rgba(38, 33, 28, 0.32);
   outline-offset: 4px;
 }
