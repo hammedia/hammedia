@@ -32,7 +32,7 @@ document.querySelectorAll(".world-door, .contact-link, .back-link").forEach((tar
 
 const constellationData = {
   fountain: {
-    code: "LPH B-613-01",
+    code: "LPH-B613-01",
     kind: "사람",
     name: "살아남은 별",
     teaser: "마음에 쌓인 걸 몸 밖으로 꺼내던 도구",
@@ -233,7 +233,7 @@ function selectConstellationStar(star) {
   star.classList.add("is-visited");
   detailKind.textContent = starData.kind;
   if (detailCode) {
-    detailCode.textContent = starData.code || "LPH B-613";
+    detailCode.textContent = starData.code || "LPH-B613";
   }
   detailName.textContent = starData.name;
   detailTeaser.textContent = starData.teaser;
