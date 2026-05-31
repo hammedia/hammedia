@@ -39,8 +39,9 @@ const constellationData = {
     result: "글이 좋아서가 아니었다. 마음에 쌓인 걸 몸 밖으로 빼내려 펜을 잡았고, 그렇게 겨우 살아났다. 무거운 날이면, 손이 결국 펜으로 간다.",
     invite: "손으로 뭔가를 꺼내며 버텨본 사람이라면, 우린 말이 통한다.",
     asset: "실제 사진 준비 중: 실제 만년필, 손글씨, 노트, 잉크 흔적 사진",
+    ticketHint: "만년필별로 들어가려면 입장권 발권 버튼을 누르세요.",
     roomHref: "pages/fountain-pens.html",
-    roomLabel: "만년필별로 들어가기"
+    roomLabel: "입장권 발권"
   },
   motorcycle: {
     code: "LPH B-613-02",
@@ -140,6 +141,7 @@ const detailName = document.querySelector("#constellation-name");
 const detailTeaser = document.querySelector("#constellation-teaser");
 const detailResult = document.querySelector("#constellation-result");
 const detailInvite = document.querySelector("#constellation-invite");
+const detailTicketHint = document.querySelector("#constellation-ticket-hint");
 const detailAsset = document.querySelector("#constellation-asset");
 const detailRoomLink = document.querySelector("#constellation-room-link");
 const detailRoomStatus = document.querySelector("#constellation-room-status");
@@ -150,6 +152,12 @@ const constellationGuide = document.querySelector(".constellation-guide");
 const fineHoverQuery = window.matchMedia("(hover: hover) and (pointer: fine)");
 const visitedStars = [];
 let activeStar = null;
+
+const scriptAssetRoot = new URL("../images/", document.currentScript?.src || window.location.href);
+const fountainTicketTrainImages = [
+  new URL("fountain-pens/ticket-train-1.jpg", scriptAssetRoot).href,
+  new URL("fountain-pens/ticket-train-2.jpg", scriptAssetRoot).href
+];
 
 function syncConstellationGuide() {
   if (!constellationGuide) return;
@@ -239,6 +247,10 @@ function selectConstellationStar(star) {
   detailTeaser.textContent = starData.teaser;
   detailResult.textContent = starData.result;
   detailInvite.textContent = starData.invite;
+  if (detailTicketHint) {
+    detailTicketHint.hidden = !starData.ticketHint;
+    detailTicketHint.textContent = starData.ticketHint || "";
+  }
   detailAsset.textContent = starData.asset;
 
   if (starData.roomHref) {
@@ -280,6 +292,35 @@ function enterStarRoom(href) {
   }, 460);
 }
 
+function showFountainTicketTrainAndEnter(href) {
+  if (!fountainTicketTrainImages.length || document.querySelector(".ticket-train-veil")) return;
+
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const trainImage = fountainTicketTrainImages[Math.floor(Math.random() * fountainTicketTrainImages.length)];
+  const veil = document.createElement("div");
+  veil.className = "ticket-train-veil";
+  veil.setAttribute("role", "status");
+  veil.setAttribute("aria-label", "은하철도 613 입장권 발권 중");
+  veil.innerHTML = `
+    <div class="ticket-train-stage">
+      <img src="${trainImage}" alt="은하철도 613">
+      <div class="ticket-train-caption">
+        <span>은하철도 613</span>
+        <strong>만년필별 입장권 발권 중</strong>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(veil);
+
+  requestAnimationFrame(() => {
+    veil.classList.add("is-active");
+  });
+
+  setTimeout(() => {
+    window.location.href = href;
+  }, prefersReducedMotion ? 900 : 1650);
+}
+
 syncConstellationGuide();
 fineHoverQuery.addEventListener?.("change", syncConstellationGuide);
 
@@ -311,6 +352,11 @@ if (detailRoomLink) {
     if (detailRoomLink.hidden || !detailRoomLink.href) return;
 
     event.preventDefault();
+    if (activeStar?.dataset.star === "fountain") {
+      showFountainTicketTrainAndEnter(detailRoomLink.href);
+      return;
+    }
+
     enterStarRoom(detailRoomLink.href);
   });
 }
