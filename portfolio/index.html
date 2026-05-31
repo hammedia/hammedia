@@ -476,6 +476,21 @@
       aspect-ratio: 16 / 9;
       background: #000;
     }
+    .workflow-proof-media.is-square {
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      background: #10100f;
+    }
+    .workflow-proof-media.is-square video {
+      width: min(100%, 380px);
+      height: auto;
+      max-height: 380px;
+      aspect-ratio: 1 / 1;
+      object-fit: contain;
+      border-radius: 10px;
+      box-shadow: 0 16px 36px rgba(0,0,0,.24);
+    }
 
     /* ── ABOUT ── */
     .about-chapters { max-width: 680px; }
@@ -986,6 +1001,25 @@
     <div class="workflow-proof-media">
       <video controls preload="metadata" poster="assets/media/ai-ppt-workflow-guide-poster.png">
         <source src="assets/media/ai-ppt-workflow-guide.mp4" type="video/mp4">
+        이 브라우저에서는 영상을 재생할 수 없습니다.
+      </video>
+    </div>
+  </div>
+  <div class="workflow-proof">
+    <div class="workflow-proof-copy">
+      <p class="workflow-proof-label">카드뉴스 제작 사례</p>
+      <h3 class="workflow-proof-title">50대가 AI를 자기 경험에 붙이는 법</h3>
+      <p class="workflow-proof-desc">AI 사용법을 기술 설명이 아니라, 살아온 경험을 다시 꺼내는 방식으로 풀어낸 카드뉴스입니다. 글의 흐름을 짧은 시각 자료로 바꾸는 작업 예시입니다.</p>
+      <div class="workflow-proof-tags" aria-label="관련 작업">
+        <span>카드뉴스</span>
+        <span>AI 강의</span>
+        <span>중장년 교육</span>
+      </div>
+      <a class="btn-primary" href="#contact">상담 신청하기</a>
+    </div>
+    <div class="workflow-proof-media is-square">
+      <video controls autoplay muted loop playsinline preload="metadata" poster="assets/media/50s-ai-life-cardnews-poster.png" aria-label="50대 AI 카드뉴스 미리보기 영상">
+        <source src="assets/media/50s-ai-life-cardnews.mp4" type="video/mp4">
         이 브라우저에서는 영상을 재생할 수 없습니다.
       </video>
     </div>
