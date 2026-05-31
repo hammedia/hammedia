@@ -7,11 +7,11 @@
     <link rel="stylesheet" href="../assets/css/styles.css">
   </head>
   <body class="world-body">
-    <main class="world-page room-page fountain-room">
-      <a class="room-top-link" href="/#about-constellation">← 별자리</a>
+    <main class="world-page room-page room-house-page fountain-room">
       <header class="room-header">
         <p class="eyebrow">Fountain Pens</p>
         <h1>Fountain Pens / 만년필</h1>
+        <p class="room-star-code">LPH B-613-01</p>
         <p class="room-intro">살아남은 별</p>
       </header>
 
@@ -33,10 +33,33 @@
         </figure>
       </section>
 
-      <section class="room-posts" aria-label="만년필 글 목록">
+      <section class="room-house" aria-label="만년필의 집">
         <div class="room-section-heading">
-          <p class="room-section-label">글 / 사진 기록</p>
-          <p class="room-section-help">손으로 쓴 문장과, 그 곁에 남은 사진을 모아둡니다.</p>
+          <p class="room-section-label">만년필의 집</p>
+          <p class="room-section-help">현관에서 대표 사진을 보고, 안쪽 방으로 들어가 글과 사진을 따로 봅니다.</p>
+        </div>
+
+        <nav class="room-house-nav" aria-label="만년필의 집 방 목록">
+          <button class="room-house-door" type="button" data-house-target="fountain-writing-room">
+            <strong>글방</strong>
+            <span>1개 기록 보기</span>
+          </button>
+          <button class="room-house-door" type="button" data-house-target="fountain-photo-room">
+            <strong>사진방</strong>
+            <span>3장 보기</span>
+          </button>
+          <button class="room-house-door" type="button" disabled>
+            <strong>자료방</strong>
+            <span>나중에 열 방</span>
+          </button>
+        </nav>
+      </section>
+
+      <section class="room-house-panel" id="fountain-writing-room" aria-label="만년필 글방" hidden>
+        <div class="room-house-panel-header">
+          <p class="room-section-label">글방</p>
+          <h2>마음 밖으로 꺼낸 문장들</h2>
+          <button class="room-house-back" type="button">만년필의 집으로 돌아가기</button>
         </div>
 
         <div class="room-card-list">
@@ -51,40 +74,40 @@
               </figcaption>
             </figure>
           </article>
-
-          <article class="room-post room-card room-record-unit fountain-record-card">
-            <figure class="room-record-figure">
-              <img class="room-photo-image room-record-photo" src="../assets/images/fountain-pens/photo-nib-closeup.jpg" alt="잉크가 묻은 만년필 펜촉 클로즈업">
-              <figcaption class="room-record-caption">
-                <span class="room-card-meta">사진</span>
-                <strong class="room-card-title">펜촉과 잉크의 흔적</strong>
-                <span class="room-card-note">펜촉 / 잉크 / 종이</span>
-                <span>펜촉 끝에 남는 감각.</span>
-              </figcaption>
-            </figure>
-          </article>
-
-          <article class="room-post room-card room-record-unit fountain-record-card room-record-extra">
-            <figure class="room-record-figure">
-              <img class="room-photo-image room-record-photo" src="../assets/images/fountain-pens/archive-ink-test.jpg" alt="잉크병, 컬러 테스트, 펜, 종이, 티슈">
-              <figcaption class="room-record-caption">
-                <span class="room-card-meta">사진</span>
-                <strong class="room-card-title">잉크와 종이, 그리고 써본 흔적</strong>
-                <span class="room-card-note">펜촉 / 잉크 / 종이</span>
-                <span>잉크와 종이, 그리고 써본 흔적.</span>
-              </figcaption>
-            </figure>
-          </article>
         </div>
+      </section>
+
+      <section class="room-house-panel" id="fountain-photo-room" aria-label="만년필 사진방" hidden>
+        <div class="room-house-panel-header">
+          <p class="room-section-label">사진방</p>
+          <h2>펜과 잉크, 손에 남은 흔적</h2>
+          <button class="room-house-back" type="button">만년필의 집으로 돌아가기</button>
+        </div>
+
+        <div class="room-house-photo-grid">
+          <figure class="room-house-photo">
+            <img class="room-photo-image room-house-photo-thumb" src="../assets/images/fountain-pens/essay-handwriting-pens.jpg" alt="손글씨와 만년필 두 자루">
+            <figcaption>손으로 적어야 남는 문장들이 있다.</figcaption>
+          </figure>
+          <figure class="room-house-photo">
+            <img class="room-photo-image room-house-photo-thumb" src="../assets/images/fountain-pens/photo-nib-closeup.jpg" alt="잉크가 묻은 만년필 펜촉 클로즈업">
+            <figcaption>펜촉 끝에 남는 감각.</figcaption>
+          </figure>
+          <figure class="room-house-photo">
+            <img class="room-photo-image room-house-photo-thumb" src="../assets/images/fountain-pens/archive-ink-test.jpg" alt="잉크병, 컬러 테스트, 펜, 종이, 티슈">
+            <figcaption>잉크와 종이, 그리고 써본 흔적.</figcaption>
+          </figure>
+        </div>
+
+        <aside class="room-gallery-detail room-house-photo-detail" aria-live="polite" hidden></aside>
       </section>
 
       <nav class="room-related" aria-label="취미방 이동">
         <a class="room-soft-link" href="motorcycles.html">다음 취미방: 바이크</a>
-        <a class="room-soft-link" href="/portfolio/">그래서, 지금은 이런 일을 합니다</a>
-        <a class="room-soft-link" href="/#about-constellation">별자리로 돌아가기</a>
+        <a class="room-soft-link" href="../index.html#about-constellation">별자리로 돌아가기</a>
       </nav>
 
-      <a class="back-link" href="/">HAM MEDIA</a>
+      <a class="back-link" href="../index.html">HAM MEDIA</a>
     </main>
     <script src="../assets/js/main.js"></script>
   </body>

@@ -32,6 +32,7 @@ document.querySelectorAll(".world-door, .contact-link, .back-link").forEach((tar
 
 const constellationData = {
   fountain: {
+    code: "LPH B-613-01",
     kind: "사람",
     name: "살아남은 별",
     teaser: "마음에 쌓인 걸 몸 밖으로 꺼내던 도구",
@@ -42,6 +43,7 @@ const constellationData = {
     roomLabel: "만년필 방으로 들어가기"
   },
   motorcycle: {
+    code: "LPH B-613-02",
     kind: "사람",
     name: "살아 있음을 확인한 별",
     teaser: "살아 있다는 감각을 확인한 일",
@@ -52,6 +54,7 @@ const constellationData = {
     roomLabel: "바이크 방으로 들어가기"
   },
   travel: {
+    code: "LPH B-613-03",
     kind: "일",
     name: "자리를 옮겨 보는 별",
     teaser: "자리를 바꾸면 생각도 바뀐다는 믿음",
@@ -62,6 +65,7 @@ const constellationData = {
     roomLabel: "여행 방으로 들어가기"
   },
   bike: {
+    code: "LPH B-613-04",
     kind: "사람",
     name: "비워낸 별",
     teaser: "몸을 비워 머리를 비운 일",
@@ -72,6 +76,7 @@ const constellationData = {
     roomLabel: "자전거 방으로 들어가기"
   },
   space: {
+    code: "LPH B-613-05",
     kind: "사람",
     name: "머무는 방식을 배운 별",
     teaser: "머무는 곳을 그냥 두지 못하는 마음",
@@ -82,6 +87,7 @@ const constellationData = {
     roomLabel: "공간 방으로 들어가기"
   },
   car: {
+    code: "LPH B-613-06",
     kind: "일",
     name: "길을 찾는 별",
     teaser: "길을 잘 찾는 사람이라는 발견",
@@ -92,6 +98,7 @@ const constellationData = {
     roomLabel: "자동차 방으로 들어가기"
   },
   food: {
+    code: "LPH B-613-07",
     kind: "일",
     name: "감각을 익힌 별",
     teaser: "입으로 들어가 마음에 담기는 일",
@@ -102,6 +109,7 @@ const constellationData = {
     roomLabel: "음식 방으로 들어가기"
   },
   audio: {
+    code: "LPH B-613-08",
     kind: "일",
     name: "고르고 빼는 별",
     teaser: "무엇을 틀고 뺄지 고르는 감각",
@@ -112,6 +120,7 @@ const constellationData = {
     roomLabel: "음악·오디오 방으로 들어가기"
   },
   camera: {
+    code: "LPH B-613-09",
     kind: "일",
     name: "무엇을 담을지 보는 별",
     teaser: "찍기보다 무엇을 담을지 고르는 눈",
@@ -126,6 +135,7 @@ const constellationData = {
 const constellationStars = Array.from(document.querySelectorAll(".constellation-star"));
 const constellationPath = document.querySelector(".constellation-path-line");
 const detailKind = document.querySelector("#constellation-kind");
+const detailCode = document.querySelector("#constellation-code");
 const detailName = document.querySelector("#constellation-name");
 const detailTeaser = document.querySelector("#constellation-teaser");
 const detailResult = document.querySelector("#constellation-result");
@@ -135,62 +145,23 @@ const detailRoomLink = document.querySelector("#constellation-room-link");
 const detailRoomStatus = document.querySelector("#constellation-room-status");
 const constellationEntry = document.querySelector(".constellation-entry");
 const constellationDetail = document.querySelector(".constellation-detail");
-const constellationWindow = document.querySelector(".constellation-window");
 const constellationGuide = document.querySelector(".constellation-guide");
+const fineHoverQuery = window.matchMedia("(hover: hover) and (pointer: fine)");
 const visitedStars = [];
-const hoverInvitationQuery = window.matchMedia("(hover: hover) and (pointer: fine)");
 let activeStar = null;
 
-function canOpenInvitationOnHover() {
-  return hoverInvitationQuery.matches;
-}
-
-function updateConstellationGuideText() {
+function syncConstellationGuide() {
   if (!constellationGuide) return;
 
-  constellationGuide.textContent = canOpenInvitationOnHover()
+  constellationGuide.textContent = fineHoverQuery.matches
     ? "별에 마우스를 올리면 초대장이 열립니다. 누르면 입장합니다."
     : "별을 누르면 초대장이 열리고, 다시 누르면 입장합니다.";
-}
-
-function createBackgroundStars() {
-  if (!constellationWindow || constellationWindow.querySelector(".bg-star")) return;
-
-  const clusters = [
-    { x: 22, y: 24, spread: 16 },
-    { x: 74, y: 20, spread: 20 },
-    { x: 38, y: 74, spread: 18 },
-    { x: 82, y: 72, spread: 14 }
-  ];
-
-  for (let i = 0; i < 112; i += 1) {
-    const star = document.createElement("span");
-    const cluster = Math.random() < 0.58
-      ? clusters[Math.floor(Math.random() * clusters.length)]
-      : null;
-    const left = cluster
-      ? cluster.x + (Math.random() - 0.5) * cluster.spread
-      : Math.random() * 100;
-    const top = cluster
-      ? cluster.y + (Math.random() - 0.5) * cluster.spread
-      : Math.random() * 100;
-    const size = 1 + Math.random() * 1.5;
-
-    star.className = "bg-star";
-    star.style.left = `${Math.max(0, Math.min(100, left))}%`;
-    star.style.top = `${Math.max(0, Math.min(100, top))}%`;
-    star.style.width = `${size}px`;
-    star.style.height = `${size}px`;
-    star.style.opacity = `${0.12 + Math.random() * 0.33}`;
-    constellationWindow.appendChild(star);
-  }
 }
 
 function updateConstellationPath() {
   if (!constellationPath) return;
 
-  const pathStars = visitedStars.length > 1 ? visitedStars : [];
-  const points = pathStars
+  const points = visitedStars
     .map((star) => `${star.dataset.x},${star.dataset.y}`)
     .join(" ");
 
@@ -226,6 +197,9 @@ function selectConstellationStar(star) {
 
   star.classList.add("is-visited");
   detailKind.textContent = starData.kind;
+  if (detailCode) {
+    detailCode.textContent = starData.code || "LPH B-613";
+  }
   detailName.textContent = starData.name;
   detailTeaser.textContent = starData.teaser;
   detailResult.textContent = starData.result;
@@ -234,7 +208,7 @@ function selectConstellationStar(star) {
 
   if (starData.roomHref) {
     detailRoomLink.hidden = false;
-    detailRoomLink.href = star.href;
+    detailRoomLink.href = starData.roomHref;
     detailRoomLink.textContent = starData.roomLabel;
     detailRoomStatus.hidden = true;
   } else {
@@ -271,23 +245,18 @@ function enterStarRoom(href) {
   }, 460);
 }
 
+syncConstellationGuide();
+fineHoverQuery.addEventListener?.("change", syncConstellationGuide);
+
 if (constellationStars.length) {
-  createBackgroundStars();
-  updateConstellationGuideText();
-
-  if (typeof hoverInvitationQuery.addEventListener === "function") {
-    hoverInvitationQuery.addEventListener("change", updateConstellationGuideText);
-  } else if (typeof hoverInvitationQuery.addListener === "function") {
-    hoverInvitationQuery.addListener(updateConstellationGuideText);
-  }
-
   constellationStars.forEach((star) => {
-    star.addEventListener("pointerenter", () => {
-      if (!canOpenInvitationOnHover()) return;
-      selectConstellationStar(star);
-    });
-
     star.addEventListener("click", (event) => {
+      if (fineHoverQuery.matches) {
+        event.preventDefault();
+        enterStarRoom(star.href);
+        return;
+      }
+
       const isEntering = activeStar === star && star.classList.contains("is-selected");
       if (isEntering) {
         event.preventDefault();
@@ -303,6 +272,205 @@ if (constellationStars.length) {
       });
     });
 
+    star.addEventListener("focus", () => selectConstellationStar(star));
+
+    if (fineHoverQuery.matches) {
+      star.addEventListener("pointerenter", () => selectConstellationStar(star));
+    }
   });
   updateConstellationPath();
 }
+
+function findRoomGallerySection(roomPage) {
+  return Array.from(roomPage.querySelectorAll("section")).find((section) =>
+    Array.from(section.classList).some((className) => className.endsWith("-gallery"))
+  );
+}
+
+function findRoomGalleryGrid(gallerySection) {
+  return Array.from(gallerySection.querySelectorAll("div")).find((element) =>
+    Array.from(element.classList).some((className) => className.endsWith("-gallery-grid"))
+  );
+}
+
+function buildRoomEntryNavigation() {
+  const roomPage = document.querySelector(".room-page:not(.memory-room)");
+  if (!roomPage || roomPage.classList.contains("room-house-page") || roomPage.querySelector(".room-entry-nav")) return;
+
+  const roomHero = roomPage.querySelector(".room-hero");
+  const roomPosts = roomPage.querySelector(".room-posts");
+  const roomGallery = findRoomGallerySection(roomPage);
+
+  if (!roomHero || (!roomPosts && !roomGallery)) return;
+
+  const nav = document.createElement("nav");
+  nav.className = "room-entry-nav";
+  nav.setAttribute("aria-label", "방 안 보기");
+
+  if (roomPosts) {
+    roomPosts.id = roomPosts.id || "room-writing";
+    const postCount = roomPosts.querySelectorAll(".room-post").length;
+    const writingLink = document.createElement("a");
+    writingLink.className = "room-entry-link";
+    writingLink.href = `#${roomPosts.id}`;
+    writingLink.innerHTML = `<strong>글</strong><span>${postCount}개 기록 보기</span>`;
+    nav.appendChild(writingLink);
+  }
+
+  if (roomGallery) {
+    roomGallery.id = roomGallery.id || "room-photos";
+    const photoCount = roomGallery.querySelectorAll("figure").length;
+    const photoLink = document.createElement("a");
+    photoLink.className = "room-entry-link";
+    photoLink.href = `#${roomGallery.id}`;
+    photoLink.innerHTML = `<strong>사진</strong><span>${photoCount}장 보기</span>`;
+    nav.appendChild(photoLink);
+  }
+
+  roomHero.insertAdjacentElement("afterend", nav);
+}
+
+function openGalleryDetail(detail, figure, image, captionText) {
+  detail.replaceChildren();
+
+  const detailImage = image.cloneNode(false);
+  detailImage.className = "room-gallery-detail-photo";
+
+  const detailCopy = document.createElement("p");
+  detailCopy.className = "room-gallery-detail-copy";
+  detailCopy.textContent = captionText || image.alt || "아직 기록할 기억을 기다리는 사진입니다.";
+
+  detail.append(detailImage, detailCopy);
+  detail.hidden = false;
+
+  figure.parentElement
+    ?.querySelectorAll(".room-memory-clickable.is-active")
+    .forEach((activeFigure) => activeFigure.classList.remove("is-active"));
+  figure.classList.add("is-active");
+
+  detail.scrollIntoView({
+    behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+    block: "nearest"
+  });
+}
+
+function buildRoomGalleryDetails() {
+  const roomPage = document.querySelector(".room-page:not(.memory-room)");
+  if (!roomPage || roomPage.classList.contains("room-house-page")) return;
+
+  const roomGallery = findRoomGallerySection(roomPage);
+  if (!roomGallery || roomGallery.querySelector(".room-gallery-detail")) return;
+
+  const galleryGrid = findRoomGalleryGrid(roomGallery);
+  if (!galleryGrid) return;
+
+  const detail = document.createElement("aside");
+  detail.className = "room-gallery-detail";
+  detail.hidden = true;
+  detail.setAttribute("aria-live", "polite");
+  galleryGrid.insertAdjacentElement("afterend", detail);
+
+  galleryGrid.querySelectorAll("figure").forEach((figure, index) => {
+    const image = figure.querySelector("img");
+    if (!image) return;
+
+    const caption = figure.querySelector("figcaption");
+    const captionText = caption?.textContent.trim() || "";
+
+    figure.classList.add("room-memory-clickable");
+    figure.tabIndex = 0;
+    figure.setAttribute("role", "button");
+    figure.setAttribute("aria-label", `${image.alt || `사진 ${index + 1}`} 크게 보기`);
+
+    const open = () => openGalleryDetail(detail, figure, image, captionText);
+
+    figure.addEventListener("click", open);
+    figure.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        open();
+      }
+    });
+  });
+}
+
+buildRoomEntryNavigation();
+buildRoomGalleryDetails();
+
+function buildRoomHouse() {
+  const housePage = document.querySelector(".room-house-page");
+  if (!housePage) return;
+
+  const doors = Array.from(housePage.querySelectorAll(".room-house-door[data-house-target]"));
+  const panels = Array.from(housePage.querySelectorAll(".room-house-panel"));
+  const houseNav = housePage.querySelector(".room-house-nav");
+
+  function closePanels() {
+    panels.forEach((panel) => {
+      panel.hidden = true;
+    });
+    doors.forEach((door) => {
+      door.classList.remove("is-active");
+      door.setAttribute("aria-expanded", "false");
+    });
+  }
+
+  doors.forEach((door) => {
+    const target = housePage.querySelector(`#${door.dataset.houseTarget}`);
+    if (!target) return;
+
+    door.setAttribute("aria-expanded", "false");
+    door.addEventListener("click", () => {
+      const isOpen = !target.hidden;
+      closePanels();
+
+      if (!isOpen) {
+        target.hidden = false;
+        door.classList.add("is-active");
+        door.setAttribute("aria-expanded", "true");
+        target.scrollIntoView({
+          behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+          block: "start"
+        });
+      }
+    });
+  });
+
+  housePage.querySelectorAll(".room-house-back").forEach((button) => {
+    button.addEventListener("click", () => {
+      closePanels();
+      houseNav?.scrollIntoView({
+        behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+        block: "center"
+      });
+    });
+  });
+
+  const photoDetail = housePage.querySelector(".room-house-photo-detail");
+  const photoPanel = housePage.querySelector("[id$='photo-room']");
+  const photoFigures = Array.from(photoPanel?.querySelectorAll("figure") || housePage.querySelectorAll(".room-house-photo"));
+  photoFigures.forEach((figure, index) => {
+    const image = figure.querySelector("img");
+    const captionText = figure.querySelector("figcaption")?.textContent.trim() || "";
+    if (!image || !photoDetail) return;
+
+    figure.classList.add("room-house-photo", "room-memory-clickable");
+    figure.tabIndex = 0;
+    figure.setAttribute("role", "button");
+    figure.setAttribute("aria-label", `${image.alt || `사진 ${index + 1}`} 크게 보기`);
+
+    const open = () => {
+      openGalleryDetail(photoDetail, figure, image, captionText);
+    };
+
+    figure.addEventListener("click", open);
+    figure.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        open();
+      }
+    });
+  });
+}
+
+buildRoomHouse();

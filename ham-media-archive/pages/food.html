@@ -7,11 +7,11 @@
     <link rel="stylesheet" href="../assets/css/styles.css">
   </head>
   <body class="world-body">
-    <main class="world-page room-page food-room">
-      <a class="room-top-link" href="/#about-constellation">← 별자리</a>
+    <main class="world-page room-page room-house-page food-room">
       <header class="room-header">
         <p class="eyebrow">Food</p>
         <h1>Food / 음식</h1>
+        <p class="room-star-code">LPH B-613-07</p>
         <p class="room-intro">감각을 익힌 별</p>
       </header>
 
@@ -28,14 +28,37 @@
       <section class="room-hero" aria-label="음식 대표 사진">
         <figure class="food-featured">
           <img class="room-photo-image food-photo-slot" src="../assets/images/food/hero-cafe-table-coffee.jpg" alt="카페 테이블 위에 놓인 커피와 컵">
-          <figcaption>커피 한 잔과 테이블. 감각은 이렇게 매일 훈련됐다.</figcaption>
+          <figcaption>스타벅스 리저브 매장. 가끔씩 사치를 부려본다.</figcaption>
         </figure>
       </section>
 
-      <section class="room-posts" aria-label="음식 글 목록">
+      <section class="room-house" aria-label="음식의 집">
         <div class="room-section-heading">
-          <p class="room-section-label">글 / 사진 기록</p>
-          <p class="room-section-help">기존 글과 사진을 차례로 정리할 자리입니다.</p>
+          <p class="room-section-label">음식의 집</p>
+          <p class="room-section-help">현관에서 대표 사진을 보고, 안쪽 방으로 들어가 글과 사진을 따로 봅니다.</p>
+        </div>
+
+        <nav class="room-house-nav" aria-label="음식의 집 방 목록">
+          <button class="room-house-door" type="button" data-house-target="food-writing-room">
+            <strong>글방</strong>
+            <span>2개 기록 보기</span>
+          </button>
+          <button class="room-house-door" type="button" data-house-target="food-photo-room">
+            <strong>사진방</strong>
+            <span>21장 보기</span>
+          </button>
+          <button class="room-house-door" type="button" disabled>
+            <strong>자료방</strong>
+            <span>나중에 열 방</span>
+          </button>
+        </nav>
+      </section>
+
+      <section class="room-house-panel" id="food-writing-room" aria-label="음식 글 목록" hidden>
+        <div class="room-house-panel-header">
+          <p class="room-section-label">글방</p>
+          <h2>맛과 서비스가 남긴 글</h2>
+          <button class="room-house-back" type="button">음식의 집으로 돌아가기</button>
         </div>
 
         <div class="room-card-list">
@@ -44,9 +67,9 @@
               <img class="room-photo-image room-record-photo" src="../assets/images/food/essay-delacasa-trace.jpg" alt="델라카사의 흔적이 보이는 음식 공간 사진">
               <figcaption class="room-record-caption">
                 <span class="room-card-meta">글</span>
-                <strong class="room-card-title">사람 입으로 들어가 마음에 담기는 일</strong>
-                <span class="room-card-note">음식 / 서비스 / 기억</span>
-                <span>맛은 입에만 남지 않는다. 서비스를 지나 기억의 모양으로 남는다.</span>
+                <strong class="room-card-title">델라카사 신포점</strong>
+                <span class="room-card-note">첫 매장 / 기획 / 기억</span>
+                <span>나의 첫 매장. 내가 기획하고, 내가 만들고, 내가 문 닫은, 정말 나의 모든 것이 들어가 있는 곳.</span>
               </figcaption>
             </figure>
           </article>
@@ -56,93 +79,121 @@
               <img class="room-photo-image room-record-photo" src="../assets/images/food/photo-plate-texture.jpg" alt="음식의 질감과 접시가 보이는 사진">
               <figcaption class="room-record-caption">
                 <span class="room-card-meta">사진</span>
-                <strong class="room-card-title">맛을 익힌 감각</strong>
-                <span class="room-card-note">음식 / 접시 / 디테일</span>
-                <span>접시 위의 질감과 여백을 오래 보다 보면, 보는 눈도 조금씩 훈련된다.</span>
+                <strong class="room-card-title">철판 앞의 기억</strong>
+                <span class="room-card-note">송도 / 오코노미야키 / 철판</span>
+                <span>송도에서 오코노미야키를 잠시 만들었던 때가 있었다. 정말 철판 앞이 너무 더웠다.</span>
               </figcaption>
             </figure>
           </article>
         </div>
       </section>
 
-      <section class="food-gallery" aria-label="음식 갤러리">
+      <section class="room-house-panel food-gallery" id="food-photo-room" aria-label="음식 갤러리" hidden>
+        <div class="room-house-panel-header">
+          <p class="room-section-label">사진방</p>
+          <h2>커피, 접시, 테이블의 사진들</h2>
+          <button class="room-house-back" type="button">음식의 집으로 돌아가기</button>
+        </div>
+
         <div class="room-section-heading">
           <p class="room-section-label">커피, 접시, 테이블의 흔적</p>
         </div>
         <div class="food-gallery-grid">
           <figure>
             <img class="room-photo-image food-gallery-photo" src="../assets/images/food/gallery-img-9578.jpg" alt="커피, 접시, 테이블 사진 1">
+            <figcaption>신포시장의 추억.</figcaption>
           </figure>
           <figure>
             <img class="room-photo-image food-gallery-photo" src="../assets/images/food/gallery-img-5262.jpg" alt="커피, 접시, 테이블 사진 2">
+            <figcaption>델라카사 신포점 직원식. 빠네 먹고 싶다.</figcaption>
           </figure>
           <figure>
             <img class="room-photo-image food-gallery-photo" src="../assets/images/food/gallery-img-6686.jpg" alt="커피, 접시, 테이블 사진 3">
+            <figcaption>한국인을 위한 대파 파스타. ㅋ</figcaption>
           </figure>
           <figure>
             <img class="room-photo-image food-gallery-photo" src="../assets/images/food/gallery-img-3243.jpg" alt="커피, 접시, 테이블 사진 4">
+            <figcaption>이 머그잔을 기억하는 사람이 있을까?</figcaption>
           </figure>
           <figure>
             <img class="room-photo-image food-gallery-photo" src="../assets/images/food/gallery-img-2645.jpg" alt="커피, 접시, 테이블 사진 5">
+            <figcaption>야식은 언제나 옳다.</figcaption>
           </figure>
           <figure>
             <img class="room-photo-image food-gallery-photo" src="../assets/images/food/gallery-img-5037.jpg" alt="커피, 접시, 테이블 사진 6">
+            <figcaption>애증의 청라점이라고. 라구 파스타.. ㅜㅜ</figcaption>
           </figure>
           <figure>
             <img class="room-photo-image food-gallery-photo" src="../assets/images/food/gallery-img-6654.jpg" alt="커피, 접시, 테이블 사진 7">
+            <figcaption>직원식은 항상 푸짐하게.</figcaption>
           </figure>
           <figure>
             <img class="room-photo-image food-gallery-photo" src="../assets/images/food/gallery-img-7353.jpg" alt="커피, 접시, 테이블 사진 8">
+            <figcaption>제주에서의 추억. 제시카와 소율이가 좋아했던 키티 박물관.</figcaption>
           </figure>
           <figure>
             <img class="room-photo-image food-gallery-photo" src="../assets/images/food/gallery-img-6659.jpg" alt="커피, 접시, 테이블 사진 9">
+            <figcaption>이거 맛있었는데. 꽈리고추 해물 파스타. ㅋ 이름이 좀 거시기하다.</figcaption>
           </figure>
           <figure>
             <img class="room-photo-image food-gallery-photo" src="../assets/images/food/gallery-img-3108.jpg" alt="커피, 접시, 테이블 사진 10">
+            <figcaption>항상 매장에 들어가기 전, 고객의 시선에서 매장을 보고 들어가 점검하기.</figcaption>
           </figure>
           <figure>
             <img class="room-photo-image food-gallery-photo" src="../assets/images/food/gallery-img-3097.jpg" alt="커피, 접시, 테이블 사진 11">
+            <figcaption>내가 사랑했던 사브와 스타벅스. 과거형.</figcaption>
           </figure>
           <figure>
             <img class="room-photo-image food-gallery-photo" src="../assets/images/food/gallery-img-3222.jpg" alt="커피, 접시, 테이블 사진 12">
+            <figcaption>힘내세요~ 그땐 그랬지. 고마워요.</figcaption>
           </figure>
           <figure>
             <img class="room-photo-image food-gallery-photo" src="../assets/images/food/gallery-img-4141.jpg" alt="커피, 접시, 테이블 사진 13">
+            <figcaption>스타벅스 리저브. 오늘은 어떤 원두를 고를까?</figcaption>
           </figure>
           <figure>
             <img class="room-photo-image food-gallery-photo" src="../assets/images/food/gallery-img-8809.jpg" alt="커피, 접시, 테이블 사진 14">
+            <figcaption>어느 날인가, 위스키와 하이볼, 싱글몰트에 빠져들었다.</figcaption>
           </figure>
           <figure>
             <img class="room-photo-image food-gallery-photo" src="../assets/images/food/gallery-img-6656.jpg" alt="커피, 접시, 테이블 사진 15">
+            <figcaption>델라카사 신포점. 저 접시가 다 얼마일까요? ㅋ</figcaption>
           </figure>
           <figure>
             <img class="room-photo-image food-gallery-photo" src="../assets/images/food/gallery-img-5186.jpg" alt="커피, 접시, 테이블 사진 16">
+            <figcaption>이 아름다운 접시는 나중에 접시에 대해서도 이야기해야겠다.</figcaption>
           </figure>
           <figure>
             <img class="room-photo-image food-gallery-photo" src="../assets/images/food/gallery-img-3170.jpg" alt="커피, 접시, 테이블 사진 17">
+            <figcaption>델라카사 신포점. 접시 사세요~~</figcaption>
           </figure>
           <figure>
             <img class="room-photo-image food-gallery-photo" src="../assets/images/food/gallery-img-4853.jpg" alt="커피, 접시, 테이블 사진 18">
+            <figcaption>델라카사 청라점. 좋아하는 접시를 골라 음식을 받게 했다.</figcaption>
           </figure>
           <figure>
             <img class="room-photo-image food-gallery-photo" src="../assets/images/food/gallery-img-4686.jpg" alt="커피, 접시, 테이블 사진 19">
+            <figcaption>델라카사 청라점. 봄, 여름, 가을, 겨울 포시즌 접시. 저기서 하나가 깨졌다. 힝.</figcaption>
           </figure>
           <figure>
             <img class="room-photo-image food-gallery-photo" src="../assets/images/food/gallery-img-4173.jpg" alt="커피, 접시, 테이블 사진 20">
+            <figcaption>밥을 먹을 때도 최고급 오디오에서 클래식을 틀어 놓고. 모차르트가 좋겠군.</figcaption>
           </figure>
           <figure>
             <img class="room-photo-image food-gallery-photo" src="../assets/images/food/gallery-img-0557.jpg" alt="커피, 접시, 테이블 사진 21">
+            <figcaption>피클, 피클, 피클.</figcaption>
           </figure>
         </div>
+
+        <aside class="room-gallery-detail room-house-photo-detail" aria-live="polite" hidden></aside>
       </section>
 
       <nav class="room-related" aria-label="취미방 이동">
         <a class="room-soft-link" href="travel.html">다음 취미방: 여행</a>
-        <a class="room-soft-link" href="/portfolio/">그래서, 지금은 이런 일을 합니다</a>
-        <a class="room-soft-link" href="/#about-constellation">별자리로 돌아가기</a>
+        <a class="room-soft-link" href="../index.html#about-constellation">별자리로 돌아가기</a>
       </nav>
 
-      <a class="back-link" href="/">HAM MEDIA</a>
+      <a class="back-link" href="../index.html">HAM MEDIA</a>
     </main>
     <script src="../assets/js/main.js"></script>
   </body>

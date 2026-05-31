@@ -7,11 +7,11 @@
     <link rel="stylesheet" href="../assets/css/styles.css">
   </head>
   <body class="world-body">
-    <main class="world-page room-page audio-room">
-      <a class="room-top-link" href="/#about-constellation">← 별자리</a>
+    <main class="world-page room-page room-house-page audio-room">
       <header class="room-header">
         <p class="eyebrow">Music &amp; Audio</p>
         <h1>Music &amp; Audio / 음악·오디오</h1>
+        <p class="room-star-code">LPH B-613-08</p>
         <p class="room-intro">고르고 빼는 별</p>
       </header>
 
@@ -28,14 +28,37 @@
       <section class="room-hero" aria-label="음악·오디오 대표 사진">
         <figure class="audio-featured">
           <img class="room-photo-image audio-photo-slot" src="../assets/images/music-audio/hero-listening-space.jpg" alt="큰 스피커와 청취 공간이 보이는 음악 감상 공간">
-          <figcaption>소리를 듣는 공간. 무엇을 틀지 고르는 자리.</figcaption>
+          <figcaption>오디오, 공간 음향, 공조, 조명을 모두 신경 써서 만든 첫 작품.</figcaption>
         </figure>
       </section>
 
-      <section class="room-posts" aria-label="음악·오디오 글 목록">
+      <section class="room-house" aria-label="음악·오디오의 집">
         <div class="room-section-heading">
-          <p class="room-section-label">글 / 사진 기록</p>
-          <p class="room-section-help">기존 글과 사진을 차례로 정리할 자리입니다.</p>
+          <p class="room-section-label">음악·오디오의 집</p>
+          <p class="room-section-help">현관에서 대표 사진을 보고, 안쪽 방으로 들어가 글과 사진을 따로 봅니다.</p>
+        </div>
+
+        <nav class="room-house-nav" aria-label="음악·오디오의 집 방 목록">
+          <button class="room-house-door" type="button" data-house-target="audio-writing-room">
+            <strong>글방</strong>
+            <span>2개 기록 보기</span>
+          </button>
+          <button class="room-house-door" type="button" data-house-target="audio-photo-room">
+            <strong>사진방</strong>
+            <span>14장 보기</span>
+          </button>
+          <button class="room-house-door" type="button" disabled>
+            <strong>자료방</strong>
+            <span>나중에 열 방</span>
+          </button>
+        </nav>
+      </section>
+
+      <section class="room-house-panel" id="audio-writing-room" aria-label="음악·오디오 글 목록" hidden>
+        <div class="room-house-panel-header">
+          <p class="room-section-label">글방</p>
+          <h2>무엇을 틀고 뺄지 고른 글</h2>
+          <button class="room-house-back" type="button">음악·오디오의 집으로 돌아가기</button>
         </div>
 
         <div class="room-card-list">
@@ -44,9 +67,9 @@
               <img class="room-photo-image room-record-photo" src="../assets/images/music-audio/essay-audio-rack-books-amp.jpg" alt="오디오랙, 책, 앰프가 함께 놓인 공간">
               <figcaption class="room-record-caption">
                 <span class="room-card-meta">글</span>
-                <strong class="room-card-title">무엇을 틀고 뺄지 고르는 시간</strong>
-                <span class="room-card-note">선곡 / 오디오 / 취향</span>
-                <span>오디오랙과 책, 앰프가 함께 놓인 자리. 결국 남기는 것은 취향의 순서다.</span>
+                <strong class="room-card-title">쉬고 있는 독일산과 중국산</strong>
+                <span class="room-card-note">하이파이로즈 / 독일산 / 중국산</span>
+                <span>하이파이로즈(한국산)로 인해 쉬고 있는 독일산과 중국산.</span>
               </figcaption>
             </figure>
           </article>
@@ -56,31 +79,41 @@
               <img class="room-photo-image room-record-photo" src="../assets/images/music-audio/photo-amp-music-screen.jpg" alt="앰프와 음악 화면이 함께 보이는 책상">
               <figcaption class="room-record-caption">
                 <span class="room-card-meta">사진</span>
-                <strong class="room-card-title">소리를 고르는 손</strong>
-                <span class="room-card-note">앰프 / 음악 / 편집</span>
-                <span>틀어둔 음악과 손끝의 조절. 편집도 결국 이 감각에서 시작된다.</span>
+                <strong class="room-card-title">가족과 함께 즐기는 하이파이</strong>
+                <span class="room-card-note">하이파이로즈 / 시각 / 청각</span>
+                <span>하이파이로즈. 시각과 청각을 동시에 만족시킨다. 가족과 함께 즐기는 하이파이.</span>
               </figcaption>
             </figure>
           </article>
         </div>
       </section>
 
-      <section class="audio-gallery" aria-label="음악·오디오 갤러리">
+      <section class="room-house-panel audio-gallery" id="audio-photo-room" aria-label="음악·오디오 갤러리" hidden>
+        <div class="room-house-panel-header">
+          <p class="room-section-label">사진방</p>
+          <h2>소리와 청취 공간의 사진들</h2>
+          <button class="room-house-back" type="button">음악·오디오의 집으로 돌아가기</button>
+        </div>
+
         <div class="room-section-heading">
           <p class="room-section-label">오디오와 청취 공간의 흔적</p>
         </div>
         <div class="audio-gallery-grid">
           <figure>
             <img class="room-photo-image audio-gallery-photo" src="../assets/images/music-audio/gallery-img-9818.jpg" alt="오디오와 청취 공간 사진 1">
+            <figcaption>하이파이로즈와 판도라, 그리고 피에가. 정말 최고의 책상 위 하이파이 시스템.</figcaption>
           </figure>
           <figure>
             <img class="room-photo-image audio-gallery-photo" src="../assets/images/music-audio/gallery-img-5452.jpg" alt="오디오와 청취 공간 사진 2">
+            <figcaption>다인 컨투어 1.3 SE. 2005년에는 그렇게 갖고 싶었는데, 결국 2015년에 소장했었다.</figcaption>
           </figure>
           <figure>
             <img class="room-photo-image audio-gallery-photo" src="../assets/images/music-audio/gallery-img-3305.jpg" alt="오디오와 청취 공간 사진 3">
+            <figcaption>잡스 DAC와 DDC. 가격 대비 최고!!! 중고가 보이면 한번 노려보세요. 둘이 함께일 때 정말 좋았음.</figcaption>
           </figure>
           <figure>
             <img class="room-photo-image audio-gallery-photo" src="../assets/images/music-audio/gallery-img-5949.jpg" alt="오디오와 청취 공간 사진 4">
+            <figcaption>많은 LS3/5a가 있지만, 그라함만의 고급스러움이 좋았다. 도도했다. ㅋㅋ</figcaption>
           </figure>
           <figure>
             <img class="room-photo-image audio-gallery-photo" src="../assets/images/music-audio/gallery-img-3430.jpg" alt="오디오와 청취 공간 사진 5">
@@ -113,15 +146,16 @@
             <img class="room-photo-image audio-gallery-photo" src="../assets/images/music-audio/gallery-img-7693.jpg" alt="오디오와 청취 공간 사진 14">
           </figure>
         </div>
+
+        <aside class="room-gallery-detail room-house-photo-detail" aria-live="polite" hidden></aside>
       </section>
 
       <nav class="room-related" aria-label="취미방 이동">
         <a class="room-soft-link" href="cameras.html">다음 취미방: 카메라</a>
-        <a class="room-soft-link" href="/portfolio/">그래서, 지금은 이런 일을 합니다</a>
-        <a class="room-soft-link" href="/#about-constellation">별자리로 돌아가기</a>
+        <a class="room-soft-link" href="../index.html#about-constellation">별자리로 돌아가기</a>
       </nav>
 
-      <a class="back-link" href="/">HAM MEDIA</a>
+      <a class="back-link" href="../index.html">HAM MEDIA</a>
     </main>
     <script src="../assets/js/main.js"></script>
   </body>

@@ -7,11 +7,11 @@
     <link rel="stylesheet" href="../assets/css/styles.css">
   </head>
   <body class="world-body">
-    <main class="world-page room-page camera-room">
-      <a class="room-top-link" href="/#about-constellation">← 별자리</a>
+    <main class="world-page room-page room-house-page camera-room">
       <header class="room-header">
         <p class="eyebrow">Cameras</p>
         <h1>Cameras / 카메라</h1>
+        <p class="room-star-code">LPH B-613-09</p>
         <p class="room-intro">무엇을 담을지 보는 별</p>
       </header>
 
@@ -32,10 +32,33 @@
         </figure>
       </section>
 
-      <section class="room-posts" aria-label="카메라 글 목록">
+      <section class="room-house" aria-label="카메라의 집">
         <div class="room-section-heading">
-          <p class="room-section-label">글 / 사진 기록</p>
-          <p class="room-section-help">촬영 준비 / 프레임 / 현장</p>
+          <p class="room-section-label">카메라의 집</p>
+          <p class="room-section-help">현관에서 대표 사진을 보고, 안쪽 방으로 들어가 글과 사진을 따로 봅니다.</p>
+        </div>
+
+        <nav class="room-house-nav" aria-label="카메라의 집 방 목록">
+          <button class="room-house-door" type="button" data-house-target="camera-writing-room">
+            <strong>글방</strong>
+            <span>2개 기록 보기</span>
+          </button>
+          <button class="room-house-door" type="button" data-house-target="camera-photo-room">
+            <strong>사진방</strong>
+            <span>6장 보기</span>
+          </button>
+          <button class="room-house-door" type="button" disabled>
+            <strong>자료방</strong>
+            <span>나중에 열 방</span>
+          </button>
+        </nav>
+      </section>
+
+      <section class="room-house-panel" id="camera-writing-room" aria-label="카메라 글 목록" hidden>
+        <div class="room-house-panel-header">
+          <p class="room-section-label">글방</p>
+          <h2>무엇을 담을지 고른 글</h2>
+          <button class="room-house-back" type="button">카메라의 집으로 돌아가기</button>
         </div>
 
         <div class="room-card-list">
@@ -46,7 +69,7 @@
                 <span class="room-card-meta">글</span>
                 <strong class="room-card-title">무엇을 담을지 고르는 현장</strong>
                 <span class="room-card-note">촬영 준비 / 프레임 / 현장</span>
-                <span>무엇을 담을지 먼저 정하고 나면, 셔터는 그다음이다.</span>
+                <span>촬영 준비 / 프레임 / 현장</span>
               </figcaption>
             </figure>
           </article>
@@ -58,14 +81,20 @@
                 <span class="room-card-meta">사진</span>
                 <strong class="room-card-title">프레임을 보는 눈</strong>
                 <span class="room-card-note">카메라 / 렌즈 / 시선</span>
-                <span>렌즈를 고르는 일은 결국 무엇을 볼지 고르는 일이다.</span>
+                <span>카메라 / 렌즈 / 시선</span>
               </figcaption>
             </figure>
           </article>
         </div>
       </section>
 
-      <section class="camera-gallery" aria-label="카메라 갤러리">
+      <section class="room-house-panel camera-gallery" id="camera-photo-room" aria-label="카메라 갤러리" hidden>
+        <div class="room-house-panel-header">
+          <p class="room-section-label">사진방</p>
+          <h2>카메라와 시선이 남긴 사진들</h2>
+          <button class="room-house-back" type="button">카메라의 집으로 돌아가기</button>
+        </div>
+
         <div class="room-section-heading">
           <p class="room-section-label">카메라와 현장의 흔적</p>
         </div>
@@ -89,15 +118,16 @@
             <img class="room-photo-image camera-gallery-photo" src="../assets/images/cameras/gallery-action-camera-note.jpg" alt="액션 카메라와 노트가 놓인 책상">
           </figure>
         </div>
+
+        <aside class="room-gallery-detail room-house-photo-detail" aria-live="polite" hidden></aside>
       </section>
 
       <nav class="room-related" aria-label="취미방 이동">
         <a class="room-soft-link" href="fountain-pens.html">다음 취미방: 만년필</a>
-        <a class="room-soft-link" href="/portfolio/">그래서, 지금은 이런 일을 합니다</a>
-        <a class="room-soft-link" href="/#about-constellation">별자리로 돌아가기</a>
+        <a class="room-soft-link" href="../index.html#about-constellation">별자리로 돌아가기</a>
       </nav>
 
-      <a class="back-link" href="/">HAM MEDIA</a>
+      <a class="back-link" href="../index.html">HAM MEDIA</a>
     </main>
     <script src="../assets/js/main.js"></script>
   </body>

@@ -1,12 +1,9 @@
-@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
-
 :root {
-  --paper: #F9F7F3;
-  --paper-deep: #F5F3EE;
-  --ink: #1C1814;
-  --muted: #4A423C;
-  --accent: #7EB5E8;
-  --line: rgba(28, 24, 20, 0.14);
+  --paper: #f8f5ed;
+  --paper-deep: #eee8dc;
+  --ink: #26211c;
+  --muted: #675e54;
+  --line: rgba(38, 33, 28, 0.14);
   --blue-gray: #c7d3d5;
   --sage: #b9c3ae;
   --beige: #ded2be;
@@ -28,11 +25,26 @@ body {
   color: var(--ink);
   font-family: var(--font);
   line-height: 1.65;
-  background: var(--paper);
+  background:
+    radial-gradient(circle at 8% 12%, rgba(199, 211, 213, 0.38), transparent 25rem),
+    radial-gradient(circle at 86% 18%, rgba(185, 195, 174, 0.32), transparent 28rem),
+    radial-gradient(circle at 58% 82%, rgba(222, 210, 190, 0.34), transparent 22rem),
+    linear-gradient(135deg, rgba(255,255,255,0.35) 0 25%, transparent 25% 50%, rgba(255,255,255,0.22) 50% 75%, transparent 75%),
+    var(--paper);
+  background-size: auto, auto, auto, 34px 34px, auto;
 }
 
 body::before {
-  display: none;
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.2;
+  background-image:
+    linear-gradient(rgba(38, 33, 28, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(38, 33, 28, 0.032) 1px, transparent 1px);
+  background-size: 46px 46px;
+  mask-image: linear-gradient(to bottom, black 0%, transparent 86%);
 }
 
 body.portfolio-body {
@@ -98,7 +110,14 @@ h2 {
 }
 
 .home-body::before {
-  display: none;
+  opacity: 0.58;
+  background-image:
+    radial-gradient(circle, rgba(255, 248, 220, 0.82) 0 1px, transparent 1.8px),
+    radial-gradient(circle, rgba(255, 207, 111, 0.42) 0 1px, transparent 2px);
+  background-position: 0 0, 32px 48px;
+  background-size: 86px 86px, 132px 132px;
+  mask-image: linear-gradient(to bottom, black 0%, black 100%);
+  animation: skyFieldBreath 12s ease-in-out infinite;
 }
 
 .home-hub {
@@ -129,11 +148,13 @@ h2 {
 }
 
 .brand-icon {
-  display: block;
-  width: 2rem;
-  height: 2rem;
-  object-fit: contain;
-  flex: 0 0 auto;
+  width: 1.35rem;
+  height: 1.35rem;
+  border-radius: 9px;
+  background: rgba(255, 198, 81, 0.88);
+  box-shadow:
+    0 0 18px rgba(255, 188, 54, 0.5),
+    inset 1px 1px 5px rgba(255, 255, 255, 0.35);
 }
 
 .hub-stage {
@@ -857,60 +878,10 @@ h1 {
   padding: 0.72rem 1rem;
 }
 
-.archive-contact-panel {
-  display: grid;
-  gap: 0.82rem;
-  width: 100%;
-}
-
-.archive-contact-note {
-  max-width: 42rem;
-  margin: 0;
-  color: var(--muted);
-  font-size: 0.96rem;
-}
-
-.archive-contact-note.is-after {
-  font-size: 0.86rem;
-}
-
-.tally-embed {
-  overflow: hidden;
-  width: 100%;
-  max-width: 46rem;
-  border: 1px solid rgba(28, 24, 20, 0.12);
-  border-radius: 20px;
-  background: rgba(255, 252, 244, 0.48);
-  box-shadow: 0 16px 36px rgba(45, 37, 27, 0.065);
-}
-
-.tally-embed iframe {
-  display: block;
-  width: 100%;
-  border: 0;
-}
-
 .room-page {
   width: min(920px, 100%);
   align-content: start;
   gap: clamp(1.2rem, 3vw, 1.8rem);
-}
-
-.room-top-link {
-  justify-self: start;
-  color: rgba(249, 247, 243, 0.68);
-  font-size: 0.82rem;
-  font-weight: 800;
-  letter-spacing: 0.02em;
-  text-decoration: none;
-  text-shadow: 0 1px 16px rgba(0, 0, 0, 0.48);
-  transition: color 0.2s ease, transform 0.2s ease;
-}
-
-.room-top-link:hover,
-.room-top-link:focus-visible {
-  color: rgba(249, 247, 243, 0.94);
-  transform: translateX(-2px);
 }
 
 .room-header {
@@ -919,27 +890,25 @@ h1 {
   max-width: 40rem;
 }
 
-.room-page .room-header .eyebrow {
-  color: rgba(249, 247, 243, 0.72);
-  text-shadow: 0 1px 16px rgba(0, 0, 0, 0.42);
-}
-
 .room-header h1 {
   margin-bottom: 0;
-}
-
-.room-page .room-header h1 {
-  color: rgba(249, 247, 243, 0.94);
-  text-shadow: 0 1px 20px rgba(0, 0, 0, 0.5);
 }
 
 .room-intro {
   margin: 0;
 }
 
-.room-page .room-intro {
-  color: rgba(249, 247, 243, 0.72);
-  text-shadow: 0 1px 16px rgba(0, 0, 0, 0.44);
+.room-star-code {
+  width: fit-content;
+  margin: 0;
+  padding: 0.18rem 0.52rem;
+  border: 1px solid rgba(38, 33, 28, 0.12);
+  border-radius: 999px;
+  color: var(--muted);
+  background: rgba(255, 252, 244, 0.52);
+  font-size: 0.74rem;
+  font-weight: 850;
+  letter-spacing: 0.08em;
 }
 
 .room-welcome {
@@ -952,7 +921,7 @@ h1 {
   border: 1px solid rgba(38, 33, 28, 0.1);
   border-radius: 22px;
   background:
-    radial-gradient(circle at 8% 4%, rgba(126, 181, 232, 0.1), transparent 12rem),
+    radial-gradient(circle at 8% 4%, rgba(168, 52, 38, 0.1), transparent 12rem),
     linear-gradient(145deg, rgba(255, 252, 244, 0.84), rgba(243, 236, 223, 0.56));
   box-shadow:
     inset 1px 1px 0 rgba(255,255,255,0.72),
@@ -964,9 +933,9 @@ h1 {
   min-height: 100%;
   border-radius: 999px;
   background:
-    linear-gradient(180deg, rgba(126, 181, 232, 0.96), rgba(126, 181, 232, 0.3)),
+    linear-gradient(180deg, rgba(168, 52, 38, 0.92), rgba(168, 52, 38, 0.18)),
     var(--accent);
-  box-shadow: 0 0 0 6px rgba(126, 181, 232, 0.1);
+  box-shadow: 0 0 0 6px rgba(168, 52, 38, 0.08);
 }
 
 .room-welcome-copy {
@@ -1009,6 +978,7 @@ h1 {
 
 .room-hero,
 .room-description,
+.room-entry-nav,
 .room-posts,
 .room-related {
   width: 100%;
@@ -1048,9 +1018,10 @@ h1 {
   width: 100%;
   border: 1px solid rgba(38, 33, 28, 0.1);
   border-radius: 24px;
-  background: rgba(255, 252, 244, 0.58);
+  background: rgba(255, 252, 244, 0.78);
   box-shadow: 0 14px 34px rgba(45, 37, 27, 0.07);
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center;
 }
 
 .room-posts {
@@ -1081,6 +1052,160 @@ h1 {
 .room-card-list {
   display: grid;
   gap: 0.8rem;
+}
+
+.room-entry-nav {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.72rem;
+}
+
+.room-entry-link {
+  display: grid;
+  gap: 0.18rem;
+  min-height: 4.2rem;
+  padding: 0.9rem 1rem;
+  border: 1px solid rgba(38, 33, 28, 0.1);
+  border-radius: 16px;
+  background: rgba(255, 252, 244, 0.58);
+  color: var(--ink);
+  text-decoration: none;
+  box-shadow: 0 10px 24px rgba(45, 37, 27, 0.045);
+}
+
+.room-entry-link strong {
+  font-size: 1rem;
+  line-height: 1.3;
+}
+
+.room-entry-link span {
+  color: var(--muted);
+  font-size: 0.84rem;
+  line-height: 1.45;
+}
+
+.room-entry-link:hover,
+.room-entry-link:focus-visible {
+  border-color: rgba(126, 181, 232, 0.48);
+  outline: none;
+  box-shadow: 0 14px 30px rgba(45, 37, 27, 0.075);
+}
+
+.room-house,
+.room-house-panel {
+  display: grid;
+  gap: 0.9rem;
+  width: 100%;
+}
+
+.room-house-nav {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.72rem;
+}
+
+.room-house-door {
+  display: grid;
+  gap: 0.2rem;
+  min-height: 5rem;
+  padding: 1rem;
+  border: 1px solid rgba(38, 33, 28, 0.1);
+  border-radius: 18px;
+  background: rgba(255, 252, 244, 0.6);
+  color: var(--ink);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  box-shadow: 0 10px 24px rgba(45, 37, 27, 0.045);
+}
+
+.room-house-door strong {
+  font-size: 1.06rem;
+  line-height: 1.3;
+}
+
+.room-house-door span {
+  color: var(--muted);
+  font-size: 0.84rem;
+  line-height: 1.45;
+}
+
+.room-house-door:hover,
+.room-house-door:focus-visible,
+.room-house-door.is-active {
+  border-color: rgba(126, 181, 232, 0.52);
+  outline: none;
+  box-shadow: 0 14px 30px rgba(45, 37, 27, 0.075);
+}
+
+.room-house-door:disabled {
+  cursor: default;
+  opacity: 0.5;
+  box-shadow: none;
+}
+
+.room-house-panel {
+  padding: clamp(1rem, 2.6vw, 1.4rem);
+  border: 1px solid rgba(38, 33, 28, 0.1);
+  border-radius: 22px;
+  background: rgba(255, 252, 244, 0.58);
+  box-shadow: 0 16px 36px rgba(45, 37, 27, 0.055);
+}
+
+.room-house-panel[hidden] {
+  display: none;
+}
+
+.room-house-panel-header {
+  display: grid;
+  gap: 0.42rem;
+}
+
+.room-house-panel-header h2 {
+  margin: 0;
+  color: var(--ink);
+  font-size: clamp(1.35rem, 3vw, 1.9rem);
+  line-height: 1.28;
+}
+
+.room-house-back {
+  justify-self: start;
+  min-height: 2.4rem;
+  margin-top: 0.15rem;
+  padding: 0.55rem 0.82rem;
+  border: 1px solid rgba(38, 33, 28, 0.1);
+  border-radius: 999px;
+  background: rgba(255, 252, 244, 0.62);
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.room-house-photo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.room-house-photo {
+  display: grid;
+  gap: 0.55rem;
+  margin: 0;
+}
+
+.room-house-photo-thumb {
+  height: clamp(9rem, 18vw, 13rem);
+  border-radius: 16px;
+  aspect-ratio: 4 / 3;
+}
+
+.room-house-photo figcaption {
+  color: var(--muted);
+  font-size: 0.82rem;
+  line-height: 1.55;
+  padding-inline: 0.1rem;
 }
 
 .room-post {
@@ -1191,6 +1316,84 @@ h1 {
   padding-top: 0.3rem;
 }
 
+.memory-room-section {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.memory-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.memory-grid figure {
+  display: grid;
+  gap: 0.62rem;
+  margin: 0;
+}
+
+.memory-photo {
+  height: clamp(10rem, 19vw, 14rem);
+  border-radius: 16px;
+  aspect-ratio: 4 / 3;
+}
+
+.memory-grid figcaption {
+  color: var(--muted);
+  font-size: 0.86rem;
+  line-height: 1.58;
+  padding-inline: 0.12rem;
+}
+
+.room-memory-clickable {
+  cursor: zoom-in;
+}
+
+.room-memory-clickable:focus-visible {
+  outline: 2px solid rgba(126, 181, 232, 0.75);
+  outline-offset: 4px;
+}
+
+.room-memory-clickable.is-active .room-photo-image {
+  border-color: rgba(126, 181, 232, 0.58);
+  box-shadow: 0 16px 34px rgba(45, 37, 27, 0.1);
+}
+
+.room-gallery-detail {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  padding: 1rem;
+  border: 1px solid rgba(38, 33, 28, 0.1);
+  border-radius: 20px;
+  background: rgba(255, 252, 244, 0.66);
+  box-shadow: 0 18px 40px rgba(45, 37, 27, 0.06);
+}
+
+.room-gallery-detail[hidden] {
+  display: none;
+}
+
+.room-gallery-detail-photo {
+  display: block;
+  width: 100%;
+  max-height: min(68vh, 34rem);
+  border: 1px solid rgba(38, 33, 28, 0.1);
+  border-radius: 16px;
+  background: rgba(255, 252, 244, 0.78);
+  object-fit: contain;
+  object-position: center;
+}
+
+.room-gallery-detail-copy {
+  margin: 0;
+  color: var(--ink);
+  font-size: clamp(0.98rem, 1.8vw, 1.12rem);
+  font-weight: 700;
+  line-height: 1.7;
+}
+
 .room-soft-link {
   display: inline-flex;
   align-items: center;
@@ -1208,7 +1411,7 @@ h1 {
 
 .room-soft-link:hover,
 .room-soft-link:focus-visible {
-  border-color: rgba(126, 181, 232, 0.42);
+  border-color: rgba(168, 52, 38, 0.28);
   color: var(--accent);
 }
 
@@ -1245,7 +1448,8 @@ h1 {
 
 .fountain-card-thumb-image {
   display: block;
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center;
   box-shadow: none;
 }
 
@@ -1254,7 +1458,7 @@ h1 {
   position: absolute;
   inset: 0.72rem 0.84rem;
   border-radius: 999px;
-  background: rgba(126, 181, 232, 0.18);
+  background: rgba(168, 52, 38, 0.18);
   transform: rotate(-32deg);
 }
 
@@ -1348,7 +1552,8 @@ h1 {
 .camera-card-thumb-image {
   display: block;
   overflow: hidden;
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center;
   box-shadow: none;
 }
 
@@ -1451,7 +1656,8 @@ h1 {
 .audio-card-thumb-image {
   display: block;
   overflow: hidden;
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center;
   box-shadow: none;
 }
 
@@ -1541,6 +1747,16 @@ h1 {
   padding-inline: 0.25rem;
 }
 
+.food-gallery figcaption,
+.travel-gallery figcaption,
+.bicycle-gallery figcaption,
+.audio-gallery figcaption {
+  color: var(--muted);
+  font-size: 0.78rem;
+  line-height: 1.5;
+  padding-inline: 0.12rem;
+}
+
 .food-photo-slot {
   height: clamp(15rem, 34vw, 23rem);
   aspect-ratio: 3 / 2;
@@ -1549,7 +1765,8 @@ h1 {
 .food-card-thumb-image {
   display: block;
   overflow: hidden;
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center;
   box-shadow: none;
 }
 
@@ -1648,7 +1865,8 @@ h1 {
 .travel-card-thumb-image {
   display: block;
   overflow: hidden;
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center;
   box-shadow: none;
 }
 
@@ -1776,7 +1994,8 @@ h1 {
 .motorcycle-card-thumb-image {
   display: block;
   overflow: hidden;
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center;
   box-shadow: none;
 }
 
@@ -2022,19 +2241,8 @@ h1 {
   display: none;
 }
 
-.bg-star {
-  position: absolute;
-  z-index: 0;
-  display: block;
-  border-radius: 50%;
-  background: #f5d97a;
-  box-shadow: 0 0 5px rgba(245, 217, 122, 0.28);
-  pointer-events: none;
-}
-
 .constellation-path {
   position: absolute;
-  z-index: 1;
   inset: 0;
   width: 100%;
   height: 100%;
@@ -2376,6 +2584,7 @@ h1 {
 }
 
 .detail-kicker,
+.detail-code,
 .detail-teaser,
 .detail-copy p,
 .asset-note {
@@ -2399,6 +2608,18 @@ h1 {
   background: rgba(255, 198, 81, 0.08);
 }
 
+.detail-code {
+  width: fit-content;
+  padding: 0.14rem 0.48rem;
+  border: 1px solid rgba(255, 230, 181, 0.16);
+  border-radius: 999px;
+  color: rgba(255, 252, 244, 0.58);
+  background: rgba(255, 252, 244, 0.04);
+  font-size: 0.7rem;
+  font-weight: 850;
+  letter-spacing: 0.08em;
+}
+
 .constellation-detail h3 {
   margin: 0;
   font-size: clamp(1.45rem, 2.6vw, 2rem);
@@ -2416,6 +2637,10 @@ h1 {
 .constellation-entry .detail-copy,
 .constellation-entry .asset-note {
   color: rgba(255, 252, 244, 0.68);
+}
+
+.constellation-entry .detail-teaser {
+  display: none;
 }
 
 .detail-copy {
@@ -2436,42 +2661,6 @@ h1 {
 
 .constellation-entry .asset-note {
   display: none;
-}
-
-.constellation-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.55rem;
-  align-items: center;
-  margin-top: 0.15rem;
-}
-
-.constellation-action-link {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 2.45rem;
-  padding: 0.62rem 0.92rem;
-  border: 1px solid rgba(255, 230, 181, 0.2);
-  border-radius: 999px;
-  color: rgba(255, 252, 244, 0.78);
-  background: rgba(255, 252, 244, 0.045);
-  font-size: 0.82rem;
-  font-weight: 780;
-  text-decoration: none;
-}
-
-.constellation-action-link.is-primary {
-  border-color: rgba(255, 207, 111, 0.44);
-  color: rgba(255, 230, 181, 0.94);
-  background: rgba(255, 198, 81, 0.12);
-}
-
-.constellation-action-link:hover,
-.constellation-action-link:focus-visible {
-  border-color: rgba(255, 224, 153, 0.62);
-  color: rgba(255, 252, 244, 0.98);
-  background: rgba(255, 198, 81, 0.16);
 }
 
 .constellation-soft-link,
@@ -2758,8 +2947,7 @@ h1 {
 }
 
 .constellation-soft-link:focus-visible,
-.constellation-work-link:focus-visible,
-.constellation-action-link:focus-visible {
+.constellation-work-link:focus-visible {
   outline: 3px solid rgba(38, 33, 28, 0.32);
   outline-offset: 4px;
 }
@@ -3000,6 +3188,15 @@ h1 {
   .room-welcome-mark {
     width: 3.2rem;
     min-height: 0.42rem;
+  }
+
+  .room-entry-nav {
+    grid-template-columns: 1fr;
+  }
+
+  .room-house-nav,
+  .room-house-photo-grid {
+    grid-template-columns: 1fr;
   }
 
   .camera-gallery-grid {

@@ -7,11 +7,11 @@
     <link rel="stylesheet" href="../assets/css/styles.css">
   </head>
   <body class="world-body">
-    <main class="world-page room-page travel-room">
-      <a class="room-top-link" href="/#about-constellation">← 별자리</a>
+    <main class="world-page room-page room-house-page travel-room">
       <header class="room-header">
         <p class="eyebrow">Travel</p>
         <h1>Travel / 여행</h1>
+        <p class="room-star-code">LPH B-613-03</p>
         <p class="room-intro">자리를 옮겨 보는 별</p>
       </header>
 
@@ -28,14 +28,37 @@
       <section class="room-hero" aria-label="여행 대표 사진">
         <figure class="travel-featured">
           <img class="room-photo-image travel-photo-slot" src="../assets/images/travel/hero-station-suitcase-waiting.jpg" alt="기차역에서 캐리어를 곁에 두고 기다리는 사람">
-          <figcaption>길 위에서, 자리를 옮기면 생각도 바뀐다.</figcaption>
+          <figcaption>아버지와 함께 여행을 왜 더 많이 못했을까. 사랑합니다, 아버지.</figcaption>
         </figure>
       </section>
 
-      <section class="room-posts" aria-label="여행 글 목록">
+      <section class="room-house" aria-label="여행의 집">
         <div class="room-section-heading">
-          <p class="room-section-label">글 / 사진 기록</p>
-          <p class="room-section-help">기존 글과 사진을 차례로 정리할 자리입니다.</p>
+          <p class="room-section-label">여행의 집</p>
+          <p class="room-section-help">현관에서 대표 사진을 보고, 안쪽 방으로 들어가 글과 사진을 따로 봅니다.</p>
+        </div>
+
+        <nav class="room-house-nav" aria-label="여행의 집 방 목록">
+          <button class="room-house-door" type="button" data-house-target="travel-writing-room">
+            <strong>글방</strong>
+            <span>2개 기록 보기</span>
+          </button>
+          <button class="room-house-door" type="button" data-house-target="travel-photo-room">
+            <strong>사진방</strong>
+            <span>5장 보기</span>
+          </button>
+          <button class="room-house-door" type="button" disabled>
+            <strong>자료방</strong>
+            <span>나중에 열 방</span>
+          </button>
+        </nav>
+      </section>
+
+      <section class="room-house-panel" id="travel-writing-room" aria-label="여행 글 목록" hidden>
+        <div class="room-house-panel-header">
+          <p class="room-section-label">글방</p>
+          <h2>자리를 옮기며 남긴 글</h2>
+          <button class="room-house-back" type="button">여행의 집으로 돌아가기</button>
         </div>
 
         <div class="room-card-list">
@@ -44,9 +67,9 @@
               <img class="room-photo-image room-record-photo" src="../assets/images/travel/essay-place-car-stay.jpg" alt="낯선 장소와 차, 머무는 공간이 보이는 사진">
               <figcaption class="room-record-caption">
                 <span class="room-card-meta">글</span>
-                <strong class="room-card-title">자리를 옮겨 보는 일</strong>
-                <span class="room-card-note">이동 / 장소 / 생각</span>
-                <span>낯선 장소에 잠시 머물면, 익숙한 생각도 다른 각도로 놓인다.</span>
+                <strong class="room-card-title">춘천의 강이 보이는 독채 펜션</strong>
+                <span class="room-card-note">춘천 / 펜션 / 강</span>
+                <span>춘천의 강이 보이는 독채 펜션. 함께 남긴 사진과 한 세트.</span>
               </figcaption>
             </figure>
           </article>
@@ -56,45 +79,57 @@
               <img class="room-photo-image room-record-photo" src="../assets/images/travel/photo-seaside-walk.jpg" alt="바닷가에서 걷는 장면">
               <figcaption class="room-record-caption">
                 <span class="room-card-meta">사진</span>
-                <strong class="room-card-title">낯선 곳에서 보이는 것들</strong>
-                <span class="room-card-note">바다 / 길 / 시선</span>
-                <span>길이 바뀌면 시선도 바뀐다. 같은 사람도 다른 풍경 안에서는 다르게 보인다.</span>
+                <strong class="room-card-title">서해 바다의 추억</strong>
+                <span class="room-card-note">서해 / 바다 / 팬데믹</span>
+                <span>서해 바다의 추억. 우리 모두가 마스크를 끼고 살았던 팬데믹 시절.</span>
               </figcaption>
             </figure>
           </article>
         </div>
       </section>
 
-      <section class="travel-gallery" aria-label="여행 갤러리">
+      <section class="room-house-panel travel-gallery" id="travel-photo-room" aria-label="여행 갤러리" hidden>
+        <div class="room-house-panel-header">
+          <p class="room-section-label">사진방</p>
+          <h2>길과 장소, 이동의 사진들</h2>
+          <button class="room-house-back" type="button">여행의 집으로 돌아가기</button>
+        </div>
+
         <div class="room-section-heading">
           <p class="room-section-label">자리를 옮기며 남은 길의 흔적</p>
         </div>
         <div class="travel-gallery-grid">
           <figure>
             <img class="room-photo-image travel-gallery-photo" src="../assets/images/travel/gallery-img-5134.jpg" alt="길과 장소의 여행 사진 1">
+            <figcaption>부산은 인천과 다르더라. 또 가자, 부산.</figcaption>
           </figure>
           <figure>
             <img class="room-photo-image travel-gallery-photo" src="../assets/images/travel/gallery-img-3233.jpg" alt="길과 장소의 여행 사진 2">
+            <figcaption>워싱턴 D.C.에서 여동생네 가족과 함께한 여행.</figcaption>
           </figure>
           <figure>
             <img class="room-photo-image travel-gallery-photo" src="../assets/images/travel/gallery-img-1104.jpg" alt="길과 장소의 여행 사진 3">
+            <figcaption>속리산 법주사. 정말 거대한 불상.</figcaption>
           </figure>
           <figure>
             <img class="room-photo-image travel-gallery-photo" src="../assets/images/travel/gallery-img-0182.jpg" alt="여행 중 가족 또는 동행과 함께한 작은 기록">
+            <figcaption>동해 바다. 너무 더운 날은 풍경도 필요 없다. 실내로 가자.</figcaption>
           </figure>
           <figure>
             <img class="room-photo-image travel-gallery-photo" src="../assets/images/travel/gallery-img-3526.jpg" alt="여행 기록 말미에 둔 일러스트 느낌의 이미지">
+            <figcaption>우리 가족. 나, 와이프, 소율이, 코코. ㅋㅋ</figcaption>
           </figure>
         </div>
+
+        <aside class="room-gallery-detail room-house-photo-detail" aria-live="polite" hidden></aside>
       </section>
 
       <nav class="room-related" aria-label="취미방 이동">
         <a class="room-soft-link" href="music-audio.html">다음 취미방: 음악·오디오</a>
-        <a class="room-soft-link" href="/portfolio/">그래서, 지금은 이런 일을 합니다</a>
-        <a class="room-soft-link" href="/#about-constellation">별자리로 돌아가기</a>
+        <a class="room-soft-link" href="../index.html#about-constellation">별자리로 돌아가기</a>
       </nav>
 
-      <a class="back-link" href="/">HAM MEDIA</a>
+      <a class="back-link" href="../index.html">HAM MEDIA</a>
     </main>
     <script src="../assets/js/main.js"></script>
   </body>

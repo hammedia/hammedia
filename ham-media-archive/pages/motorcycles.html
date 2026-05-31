@@ -7,11 +7,11 @@
     <link rel="stylesheet" href="../assets/css/styles.css">
   </head>
   <body class="world-body">
-    <main class="world-page room-page motorcycle-room">
-      <a class="room-top-link" href="/#about-constellation">← 별자리</a>
+    <main class="world-page room-page room-house-page motorcycle-room">
       <header class="room-header">
         <p class="eyebrow">Motorcycles</p>
         <h1>Motorcycles / 바이크</h1>
+        <p class="room-star-code">LPH B-613-02</p>
         <p class="room-intro">살아 있음을 확인한 별</p>
       </header>
 
@@ -32,10 +32,33 @@
         </figure>
       </section>
 
-      <section class="room-posts" aria-label="바이크 글 목록">
+      <section class="room-house" aria-label="바이크의 집">
         <div class="room-section-heading">
-          <p class="room-section-label">글 / 사진 기록</p>
-          <p class="room-section-help">기존 글과 사진을 차례로 정리할 자리입니다.</p>
+          <p class="room-section-label">바이크의 집</p>
+          <p class="room-section-help">현관에서 대표 사진을 보고, 안쪽 방으로 들어가 글과 사진을 따로 봅니다.</p>
+        </div>
+
+        <nav class="room-house-nav" aria-label="바이크의 집 방 목록">
+          <button class="room-house-door" type="button" data-house-target="motorcycle-writing-room">
+            <strong>글방</strong>
+            <span>2개 기록 보기</span>
+          </button>
+          <button class="room-house-door" type="button" data-house-target="motorcycle-photo-room">
+            <strong>사진방</strong>
+            <span>8장 보기</span>
+          </button>
+          <button class="room-house-door" type="button" disabled>
+            <strong>자료방</strong>
+            <span>나중에 열 방</span>
+          </button>
+        </nav>
+      </section>
+
+      <section class="room-house-panel" id="motorcycle-writing-room" aria-label="바이크 글 목록" hidden>
+        <div class="room-house-panel-header">
+          <p class="room-section-label">글방</p>
+          <h2>살아 있음을 확인한 기록</h2>
+          <button class="room-house-back" type="button">바이크의 집으로 돌아가기</button>
         </div>
 
         <div class="room-card-list">
@@ -65,7 +88,13 @@
         </div>
       </section>
 
-      <section class="motorcycle-gallery" aria-label="바이크 갤러리">
+      <section class="room-house-panel motorcycle-gallery" id="motorcycle-photo-room" aria-label="바이크 갤러리" hidden>
+        <div class="room-house-panel-header">
+          <p class="room-section-label">사진방</p>
+          <h2>엔진과 속도, 마음에 남은 장면</h2>
+          <button class="room-house-back" type="button">바이크의 집으로 돌아가기</button>
+        </div>
+
         <div class="room-section-heading">
           <p class="room-section-label">두카티와 길 위의 흔적</p>
         </div>
@@ -79,15 +108,16 @@
           <figure><img class="room-photo-image motorcycle-gallery-photo" src="../assets/images/motorcycles/gallery-img-8864.jpg" alt="두카티 바이크 사진 7"></figure>
           <figure><img class="room-photo-image motorcycle-gallery-photo" src="../assets/images/motorcycles/gallery-iphone-3.jpg" alt="두카티 바이크 사진 8"></figure>
         </div>
+
+        <aside class="room-gallery-detail room-house-photo-detail" aria-live="polite" hidden></aside>
       </section>
 
       <nav class="room-related" aria-label="취미방 이동">
         <a class="room-soft-link" href="bicycles.html">다음 취미방: 자전거</a>
-        <a class="room-soft-link" href="/portfolio/">그래서, 지금은 이런 일을 합니다</a>
-        <a class="room-soft-link" href="/#about-constellation">별자리로 돌아가기</a>
+        <a class="room-soft-link" href="../index.html#about-constellation">별자리로 돌아가기</a>
       </nav>
 
-      <a class="back-link" href="/">HAM MEDIA</a>
+      <a class="back-link" href="../index.html">HAM MEDIA</a>
     </main>
     <script src="../assets/js/main.js"></script>
   </body>

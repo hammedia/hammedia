@@ -7,11 +7,11 @@
     <link rel="stylesheet" href="../assets/css/styles.css">
   </head>
   <body class="world-body">
-    <main class="world-page room-page bicycle-room">
-      <a class="room-top-link" href="/#about-constellation">← 별자리</a>
+    <main class="world-page room-page room-house-page bicycle-room">
       <header class="room-header">
         <p class="eyebrow">Bicycles</p>
         <h1>Bicycles / 자전거</h1>
+        <p class="room-star-code">LPH B-613-04</p>
         <p class="room-intro">비워낸 별</p>
       </header>
 
@@ -27,15 +27,38 @@
       </section>
       <section class="room-hero" aria-label="자전거 대표 사진">
         <figure class="bicycle-featured">
-          <img class="room-photo-image bicycle-photo-slot" src="../assets/images/bicycles/hero-city-ride.jpg" alt="도심 길 위를 달리는 자전거 라이더">
-          <figcaption>두 발로 전진하면, 머릿속 소음이 조금씩 비워진다.</figcaption>
+          <img class="room-photo-image bicycle-photo-slot" src="../assets/images/bicycles/gallery-img-4187.jpg" alt="미시령 산길을 오르는 자전거 라이더">
+          <figcaption>미시령을 넘어가며 내가 알고 있던 욕을 다 했다. 그리고 내려오며 천국을 맛봤다. 그렇게 추월하던 바이크를 보며, 꼭 나도 바이크로 미시령을 오르기로 했다.</figcaption>
         </figure>
       </section>
 
-      <section class="room-posts" aria-label="자전거 글 목록">
+      <section class="room-house" aria-label="자전거의 집">
         <div class="room-section-heading">
-          <p class="room-section-label">글 / 사진 기록</p>
-          <p class="room-section-help">기존 글과 사진을 차례로 정리할 자리입니다.</p>
+          <p class="room-section-label">자전거의 집</p>
+          <p class="room-section-help">현관에서 대표 사진을 보고, 안쪽 방으로 들어가 글과 사진을 따로 봅니다.</p>
+        </div>
+
+        <nav class="room-house-nav" aria-label="자전거의 집 방 목록">
+          <button class="room-house-door" type="button" data-house-target="bicycle-writing-room">
+            <strong>글방</strong>
+            <span>2개 기록 보기</span>
+          </button>
+          <button class="room-house-door" type="button" data-house-target="bicycle-photo-room">
+            <strong>사진방</strong>
+            <span>7장 보기</span>
+          </button>
+          <button class="room-house-door" type="button" disabled>
+            <strong>자료방</strong>
+            <span>나중에 열 방</span>
+          </button>
+        </nav>
+      </section>
+
+      <section class="room-house-panel" id="bicycle-writing-room" aria-label="자전거 글 목록" hidden>
+        <div class="room-house-panel-header">
+          <p class="room-section-label">글방</p>
+          <h2>다리를 믿고 전진한 기록</h2>
+          <button class="room-house-back" type="button">자전거의 집으로 돌아가기</button>
         </div>
 
         <div class="room-card-list">
@@ -51,40 +74,52 @@
             </figure>
           </article>
 
+          <article class="room-post room-card room-record-unit bicycle-record-card">
+            <figure class="room-record-figure">
+              <img class="room-photo-image room-record-photo" src="../assets/images/bicycles/photo-bib-detail.jpg" alt="자전거 프레임과 번호표가 가까이 보이는 사진">
+              <figcaption class="room-record-caption">
+                <span class="room-card-meta">사진</span>
+                <strong class="room-card-title">몸이 먼저 기억하는 번호</strong>
+                <span class="room-card-note">라이딩 / 기록 / 집중</span>
+                <span>속도보다 집중이 먼저다. 번호와 프레임 사이에 남은 몸의 기록.</span>
+              </figcaption>
+            </figure>
+          </article>
         </div>
       </section>
 
-      <section class="bicycle-gallery" aria-label="자전거 갤러리">
+      <section class="room-house-panel bicycle-gallery" id="bicycle-photo-room" aria-label="자전거 갤러리" hidden>
+        <div class="room-house-panel-header">
+          <p class="room-section-label">사진방</p>
+          <h2>길 위에서 몸이 기억한 장면</h2>
+          <button class="room-house-back" type="button">자전거의 집으로 돌아가기</button>
+        </div>
+
         <div class="room-section-heading">
           <p class="room-section-label">몸을 비우며 지나온 길</p>
         </div>
-        <figure class="room-record-figure">
-          <img class="room-photo-image room-record-photo" src="../assets/images/bicycles/photo-bib-detail.jpg" alt="자전거 프레임과 번호표가 가까이 보이는 사진">
-          <figcaption class="room-record-caption">
-            <span class="room-card-meta">사진</span>
-            <strong class="room-card-title">패배는 일시적이지만, 포기는 영구적이다</strong>
-            <span class="room-card-note">로또팀 / 반덴브록 / 탑튜브</span>
-            <span>“being defeated is often a temporary condition, giving up is what makes it permanent.” 패배는 단지 일시적인 것에 불과하지만, 포기해버리면 그걸로 모든 건 끝이다.</span>
-          </figcaption>
-        </figure>
         <div class="bicycle-gallery-grid">
           <figure><img class="room-photo-image bicycle-gallery-photo" src="../assets/images/bicycles/gallery-img-7462.jpg" alt="자전거 사진 1"></figure>
-          <figure><img class="room-photo-image bicycle-gallery-photo" src="../assets/images/bicycles/gallery-img-4187.jpg" alt="자전거 사진 2"></figure>
+          <figure><img class="room-photo-image bicycle-gallery-photo" src="../assets/images/bicycles/hero-city-ride.jpg" alt="자전거 사진 2"></figure>
           <figure><img class="room-photo-image bicycle-gallery-photo" src="../assets/images/bicycles/gallery-img-6681.jpg" alt="자전거 사진 3"></figure>
           <figure><img class="room-photo-image bicycle-gallery-photo" src="../assets/images/bicycles/gallery-img-7636.jpg" alt="자전거 사진 4"></figure>
           <figure><img class="room-photo-image bicycle-gallery-photo" src="../assets/images/bicycles/gallery-img-5757.jpg" alt="자전거 사진 5"></figure>
-          <figure><img class="room-photo-image bicycle-gallery-photo" src="../assets/images/bicycles/gallery-img-5752.jpg" alt="자전거 사진 6"></figure>
+          <figure>
+            <img class="room-photo-image bicycle-gallery-photo" src="../assets/images/bicycles/gallery-img-5752.jpg" alt="차에 실린 자전거 사진">
+            <figcaption>스웨덴산 사브와 대만산 자이언트(GIANT), 그리고 한국산 햄.</figcaption>
+          </figure>
           <figure><img class="room-photo-image bicycle-gallery-photo" src="../assets/images/bicycles/gallery-1f9a31a9.jpg" alt="자전거 사진 7"></figure>
         </div>
+
+        <aside class="room-gallery-detail room-house-photo-detail" aria-live="polite" hidden></aside>
       </section>
 
       <nav class="room-related" aria-label="취미방 이동">
         <a class="room-soft-link" href="spaces.html">다음 취미방: 공간</a>
-        <a class="room-soft-link" href="/portfolio/">그래서, 지금은 이런 일을 합니다</a>
-        <a class="room-soft-link" href="/#about-constellation">별자리로 돌아가기</a>
+        <a class="room-soft-link" href="../index.html#about-constellation">별자리로 돌아가기</a>
       </nav>
 
-      <a class="back-link" href="/">HAM MEDIA</a>
+      <a class="back-link" href="../index.html">HAM MEDIA</a>
     </main>
     <script src="../assets/js/main.js"></script>
   </body>

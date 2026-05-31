@@ -7,11 +7,11 @@
     <link rel="stylesheet" href="../assets/css/styles.css">
   </head>
   <body class="world-body">
-    <main class="world-page room-page car-room">
-      <a class="room-top-link" href="/#about-constellation">← 별자리</a>
+    <main class="world-page room-page room-house-page car-room">
       <header class="room-header">
         <p class="eyebrow">Cars</p>
         <h1>Cars / 자동차</h1>
+        <p class="room-star-code">LPH B-613-06</p>
         <p class="room-intro">길을 찾는 별</p>
       </header>
 
@@ -32,10 +32,33 @@
         </figure>
       </section>
 
-      <section class="room-posts" aria-label="자동차 글 목록">
+      <section class="room-house" aria-label="자동차의 집">
         <div class="room-section-heading">
-          <p class="room-section-label">글 / 사진 기록</p>
-          <p class="room-section-help">기존 글과 사진을 차례로 정리할 자리입니다.</p>
+          <p class="room-section-label">자동차의 집</p>
+          <p class="room-section-help">현관에서 대표 사진을 보고, 안쪽 방으로 들어가 글과 사진을 따로 봅니다.</p>
+        </div>
+
+        <nav class="room-house-nav" aria-label="자동차의 집 방 목록">
+          <button class="room-house-door" type="button" data-house-target="car-writing-room">
+            <strong>글방</strong>
+            <span>2개 기록 보기</span>
+          </button>
+          <button class="room-house-door" type="button" data-house-target="car-photo-room">
+            <strong>사진방</strong>
+            <span>17장 보기</span>
+          </button>
+          <button class="room-house-door" type="button" disabled>
+            <strong>자료방</strong>
+            <span>나중에 열 방</span>
+          </button>
+        </nav>
+      </section>
+
+      <section class="room-house-panel" id="car-writing-room" aria-label="자동차 글 목록" hidden>
+        <div class="room-house-panel-header">
+          <p class="room-section-label">글방</p>
+          <h2>이동의 감각을 남긴 글</h2>
+          <button class="room-house-back" type="button">자동차의 집으로 돌아가기</button>
         </div>
 
         <div class="room-card-list">
@@ -65,7 +88,13 @@
         </div>
       </section>
 
-      <section class="car-gallery" aria-label="자동차 갤러리">
+      <section class="room-house-panel car-gallery" id="car-photo-room" aria-label="자동차 갤러리" hidden>
+        <div class="room-house-panel-header">
+          <p class="room-section-label">사진방</p>
+          <h2>차와 길, 움직임의 사진들</h2>
+          <button class="room-house-back" type="button">자동차의 집으로 돌아가기</button>
+        </div>
+
         <div class="room-section-heading">
           <p class="room-section-label">길을 찾던 자리의 흔적</p>
         </div>
@@ -88,15 +117,16 @@
           <figure><img class="room-photo-image car-gallery-photo" src="../assets/images/cars/gallery-output-1883912203.jpg" alt="자동차 사진 16"></figure>
           <figure><img class="room-photo-image car-gallery-photo" src="../assets/images/cars/gallery-img-0260.jpg" alt="자동차 사진 17"></figure>
         </div>
+
+        <aside class="room-gallery-detail room-house-photo-detail" aria-live="polite" hidden></aside>
       </section>
 
       <nav class="room-related" aria-label="취미방 이동">
         <a class="room-soft-link" href="food.html">다음 취미방: 음식</a>
-        <a class="room-soft-link" href="/portfolio/">그래서, 지금은 이런 일을 합니다</a>
-        <a class="room-soft-link" href="/#about-constellation">별자리로 돌아가기</a>
+        <a class="room-soft-link" href="../index.html#about-constellation">별자리로 돌아가기</a>
       </nav>
 
-      <a class="back-link" href="/">HAM MEDIA</a>
+      <a class="back-link" href="../index.html">HAM MEDIA</a>
     </main>
     <script src="../assets/js/main.js"></script>
   </body>
