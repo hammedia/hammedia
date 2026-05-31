@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Fountain Pens / 만년필 | HAM MEDIA</title>
-    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="stylesheet" href="../assets/css/styles.css?v=ticket-compact">
   </head>
   <body class="world-body">
     <main class="world-page room-page room-house-page fountain-room">
@@ -58,12 +58,25 @@
       <section class="room-house-panel" id="fountain-writing-room" aria-label="만년필 글방" hidden>
         <div class="room-house-panel-header">
           <p class="room-section-label">글방</p>
-          <h2>취미라는 것에 대하여.</h2>
+          <h2>만년필 글 목록</h2>
           <button class="room-house-back" type="button">만년필의 집으로 돌아가기</button>
         </div>
 
-        <div class="room-card-list">
-          <article class="room-post fountain-essay">
+        <div class="room-article-list" aria-label="만년필 글 목록">
+          <button class="room-article-link" type="button" data-article-target="fountain-hobby-essay">
+            <span>글</span>
+            <strong>취미라는 것에 대하여.</strong>
+            <em>만년필 / 취미 / 기록</em>
+          </button>
+          <button class="room-article-link" type="button" data-article-target="fountain-beethoven-emperor-note">
+            <span>글</span>
+            <strong>베토벤 황제 2악장, 열 가지 잉크로 쓴 밤</strong>
+            <em>만년필 / 자필 / 음악</em>
+          </button>
+        </div>
+
+        <div class="room-card-list room-article-panels">
+          <article class="room-post fountain-essay room-article-panel" id="fountain-hobby-essay" hidden>
             <header class="fountain-essay-header">
               <p class="room-card-meta">글</p>
               <h3>취미라는 것에 대하여.</h3>
@@ -126,7 +139,7 @@
             </div>
           </article>
 
-          <article class="room-post shared-memory-card" id="fountain-beethoven-emperor-note">
+          <article class="room-post shared-memory-card room-article-panel" id="fountain-beethoven-emperor-note" hidden>
             <header class="fountain-essay-header">
               <p class="room-card-meta">글</p>
               <h3>베토벤 황제 2악장, 열 가지 잉크로 쓴 밤</h3>
@@ -190,6 +203,6 @@
 
       <a class="back-link" href="../index.html">HAM MEDIA</a>
     </main>
-    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/main.js?v=ticket-compact"></script>
   </body>
 </html>

@@ -42,12 +42,6 @@ const constellationData = {
     previewImage: "fountain-pens/hero-window-table.jpg",
     previewAlt: "창가 테이블 위의 만년필과 노트",
     previewCaption: "만년필별 대표 이미지",
-    ticketHint: "만년필별로 들어가려면 입장권 발권 버튼을 누르세요.",
-    ticketTrains: [
-      { name: "은하철도 613-01", image: "fountain-pens/ticket-train-1.jpg" },
-      { name: "은하철도 613-02", image: "fountain-pens/ticket-train-2.jpg" },
-      { name: "은하철도 613-03", image: "fountain-pens/ticket-train-3.jpg" }
-    ],
     roomHref: "pages/fountain-pens.html",
     roomLabel: "입장권 발권"
   },
@@ -176,21 +170,14 @@ const detailPreviewCaption = document.querySelector("#constellation-preview-capt
 const detailTicketHint = document.querySelector("#constellation-ticket-hint");
 const detailAsset = document.querySelector("#constellation-asset");
 const detailRoomLink = document.querySelector("#constellation-room-link");
-const detailTicketArrival = document.querySelector("#constellation-ticket-arrival");
-const detailTicketTrainImage = document.querySelector("#constellation-ticket-train-image");
-const detailTicketTrainName = document.querySelector("#constellation-ticket-train-name");
 const detailRoomStatus = document.querySelector("#constellation-room-status");
 const constellationEntry = document.querySelector(".constellation-entry");
 const constellationDetail = document.querySelector(".constellation-detail");
-const constellationScene = document.querySelector(".constellation-scene");
 const constellationWindow = document.querySelector(".constellation-window");
 const constellationGuide = document.querySelector(".constellation-guide");
 const fineHoverQuery = window.matchMedia("(hover: hover) and (pointer: fine)");
 const visitedStars = [];
 let activeStar = null;
-let ticketArrivalTimer = null;
-let currentTicketTrain = null;
-let currentTicketTrainIndex = 0;
 
 const scriptAssetRoot = new URL("../images/", document.currentScript?.src || window.location.href);
 
@@ -251,10 +238,6 @@ function updateConstellationPath() {
   constellationPath.setAttribute("pathLength", "100");
 }
 
-function clampNumber(value, min, max) {
-  return Math.min(Math.max(value, min), max);
-}
-
 function updateDetailPreview(starData) {
   if (!detailPreview || !detailPreviewImage || !detailPreviewCaption) return;
 
@@ -272,81 +255,12 @@ function updateDetailPreview(starData) {
   detailPreviewCaption.textContent = starData.previewCaption || "대표 이미지";
 }
 
-function clearTicketArrival() {
-  if (ticketArrivalTimer) {
-    window.clearInterval(ticketArrivalTimer);
-    ticketArrivalTimer = null;
-  }
-
-  currentTicketTrain = null;
-  currentTicketTrainIndex = 0;
-  if (detailTicketArrival) {
-    detailTicketArrival.hidden = true;
-  }
-  if (detailTicketTrainImage) {
-    detailTicketTrainImage.removeAttribute("src");
-    detailTicketTrainImage.alt = "";
-  }
-  if (detailTicketTrainName) {
-    detailTicketTrainName.textContent = "";
-  }
-}
-
-function showTicketTrain(train) {
-  if (!train || !detailTicketArrival || !detailTicketTrainImage || !detailTicketTrainName) return;
-
-  currentTicketTrain = train;
-  detailTicketArrival.hidden = false;
-  detailTicketTrainImage.src = getAssetImageUrl(train.image);
-  detailTicketTrainImage.alt = train.name;
-  detailTicketTrainName.textContent = train.name;
-}
-
-function startTicketArrivalCycle(starData) {
-  clearTicketArrival();
-
-  if (!starData.ticketTrains?.length) return;
-
-  showTicketTrain(starData.ticketTrains[0]);
-  currentTicketTrainIndex = 1;
-
-  ticketArrivalTimer = window.setInterval(() => {
-    showTicketTrain(starData.ticketTrains[currentTicketTrainIndex % starData.ticketTrains.length]);
-    currentTicketTrainIndex += 1;
-  }, 1800);
-}
-
 function positionConstellationTicket(star) {
-  if (!constellationScene || !constellationDetail) return;
+  if (!constellationDetail) return;
 
-  if (!fineHoverQuery.matches) {
-    constellationDetail.classList.remove("is-floating-ticket");
-    constellationDetail.style.removeProperty("--ticket-left");
-    constellationDetail.style.removeProperty("--ticket-top");
-    return;
-  }
-
-  constellationDetail.classList.add("is-floating-ticket");
-  const sceneRect = constellationScene.getBoundingClientRect();
-  const starRect = star.getBoundingClientRect();
-  const cardRect = constellationDetail.getBoundingClientRect();
-  const gap = 20;
-  const padding = 8;
-  const starCenterX = starRect.left + starRect.width / 2 - sceneRect.left;
-  const starCenterY = starRect.top + starRect.height / 2 - sceneRect.top;
-  const maxLeft = Math.max(padding, sceneRect.width - cardRect.width - padding);
-  const maxTop = Math.max(padding, sceneRect.height - cardRect.height - padding);
-  let left = starCenterX + gap;
-  let top = starCenterY - cardRect.height / 2;
-
-  if (left + cardRect.width > sceneRect.width - padding) {
-    left = starCenterX - cardRect.width - gap;
-  }
-
-  left = clampNumber(left, padding, maxLeft);
-  top = clampNumber(top, padding, maxTop);
-  constellationDetail.style.setProperty("--ticket-left", `${left}px`);
-  constellationDetail.style.setProperty("--ticket-top", `${top}px`);
+  constellationDetail.classList.remove("is-floating-ticket");
+  constellationDetail.style.removeProperty("--ticket-left");
+  constellationDetail.style.removeProperty("--ticket-top");
 }
 
 function selectConstellationStar(star) {
@@ -389,7 +303,6 @@ function selectConstellationStar(star) {
     detailTicketHint.hidden = !starData.ticketHint;
     detailTicketHint.textContent = starData.ticketHint || "";
   }
-  startTicketArrivalCycle(starData);
   detailAsset.textContent = starData.asset;
 
   if (starData.roomHref) {
@@ -430,37 +343,6 @@ function enterStarRoom(href) {
   setTimeout(() => {
     window.location.href = href;
   }, 460);
-}
-
-function showFountainTicketTrainAndEnter(href) {
-  if (document.querySelector(".ticket-train-veil")) return;
-
-  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const train = currentTicketTrain || constellationData.fountain.ticketTrains?.[0];
-  if (!train) return;
-
-  const veil = document.createElement("div");
-  veil.className = "ticket-train-veil";
-  veil.setAttribute("role", "status");
-  veil.setAttribute("aria-label", "은하철도 613 입장권 발권 중");
-  veil.innerHTML = `
-    <div class="ticket-train-stage">
-      <img src="${getAssetImageUrl(train.image)}" alt="${train.name}">
-      <div class="ticket-train-caption">
-        <span>${train.name}</span>
-        <strong>만년필별 입장권 발권 중</strong>
-      </div>
-    </div>
-  `;
-  document.body.appendChild(veil);
-
-  requestAnimationFrame(() => {
-    veil.classList.add("is-active");
-  });
-
-  setTimeout(() => {
-    window.location.href = href;
-  }, prefersReducedMotion ? 900 : 1650);
 }
 
 syncConstellationGuide();
@@ -507,11 +389,6 @@ if (detailRoomLink) {
     if (detailRoomLink.hidden || !detailRoomLink.href) return;
 
     event.preventDefault();
-    if (activeStar?.dataset.star === "fountain") {
-      showFountainTicketTrainAndEnter(detailRoomLink.href);
-      return;
-    }
-
     enterStarRoom(detailRoomLink.href);
   });
 }
@@ -644,6 +521,7 @@ function buildRoomHouse() {
     panels.forEach((panel) => {
       panel.hidden = true;
     });
+    closeArticles();
     doors.forEach((door) => {
       door.classList.remove("is-active");
       door.setAttribute("aria-expanded", "false");
@@ -677,6 +555,36 @@ function buildRoomHouse() {
       houseNav?.scrollIntoView({
         behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
         block: "center"
+      });
+    });
+  });
+
+  const articleLinks = Array.from(housePage.querySelectorAll(".room-article-link[data-article-target]"));
+  const articlePanels = Array.from(housePage.querySelectorAll(".room-article-panel"));
+
+  function closeArticles() {
+    articlePanels.forEach((panel) => {
+      panel.hidden = true;
+    });
+    articleLinks.forEach((link) => {
+      link.classList.remove("is-active");
+      link.setAttribute("aria-expanded", "false");
+    });
+  }
+
+  articleLinks.forEach((link) => {
+    const target = housePage.querySelector(`#${link.dataset.articleTarget}`);
+    if (!target) return;
+
+    link.setAttribute("aria-expanded", "false");
+    link.addEventListener("click", () => {
+      closeArticles();
+      target.hidden = false;
+      link.classList.add("is-active");
+      link.setAttribute("aria-expanded", "true");
+      target.scrollIntoView({
+        behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+        block: "start"
       });
     });
   });
