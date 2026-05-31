@@ -2866,7 +2866,7 @@ h1 {
 .detail-preview img {
   display: block;
   width: 100%;
-  height: clamp(5.4rem, 10vw, 8rem);
+  height: clamp(4.2rem, 7.2vw, 6.2rem);
   object-fit: contain;
   border: 1px solid rgba(255, 230, 181, 0.16);
   border-radius: 16px;
@@ -2901,6 +2901,10 @@ h1 {
   gap: 0.76rem;
   color: var(--ink);
   font-size: clamp(0.98rem, 1.3vw, 1.06rem);
+}
+
+.detail-copy[hidden] {
+  display: none;
 }
 
 .asset-note {
