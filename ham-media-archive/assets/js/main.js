@@ -137,7 +137,12 @@ const constellationEntry = document.querySelector(".constellation-entry");
 const constellationDetail = document.querySelector(".constellation-detail");
 const constellationWindow = document.querySelector(".constellation-window");
 const visitedStars = [];
+const hoverInvitationQuery = window.matchMedia("(hover: hover) and (pointer: fine)");
 let activeStar = null;
+
+function canOpenInvitationOnHover() {
+  return hoverInvitationQuery.matches;
+}
 
 function createBackgroundStars() {
   if (!constellationWindow || constellationWindow.querySelector(".bg-star")) return;
@@ -175,7 +180,8 @@ function createBackgroundStars() {
 function updateConstellationPath() {
   if (!constellationPath) return;
 
-  const points = constellationStars
+  const pathStars = visitedStars.length > 1 ? visitedStars : [];
+  const points = pathStars
     .map((star) => `${star.dataset.x},${star.dataset.y}`)
     .join(" ");
 
@@ -260,6 +266,11 @@ if (constellationStars.length) {
   createBackgroundStars();
 
   constellationStars.forEach((star) => {
+    star.addEventListener("pointerenter", () => {
+      if (!canOpenInvitationOnHover()) return;
+      selectConstellationStar(star);
+    });
+
     star.addEventListener("click", (event) => {
       const isEntering = activeStar === star && star.classList.contains("is-selected");
       if (isEntering) {
