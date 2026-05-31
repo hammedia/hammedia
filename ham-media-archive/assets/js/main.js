@@ -39,7 +39,15 @@ const constellationData = {
     result: "글이 좋아서가 아니었다. 마음에 쌓인 걸 몸 밖으로 빼내려 펜을 잡았고, 그렇게 겨우 살아났다. 무거운 날이면, 손이 결국 펜으로 간다.",
     invite: "손으로 뭔가를 꺼내며 버텨본 사람이라면, 우린 말이 통한다.",
     asset: "실제 사진 준비 중: 실제 만년필, 손글씨, 노트, 잉크 흔적 사진",
+    previewImage: "fountain-pens/hero-window-table.jpg",
+    previewAlt: "창가 테이블 위의 만년필과 노트",
+    previewCaption: "만년필별 대표 이미지",
     ticketHint: "만년필별로 들어가려면 입장권 발권 버튼을 누르세요.",
+    ticketTrains: [
+      { name: "은하철도 613-01", image: "fountain-pens/ticket-train-1.jpg" },
+      { name: "은하철도 613-02", image: "fountain-pens/ticket-train-2.jpg" },
+      { name: "은하철도 613-03", image: "fountain-pens/ticket-train-3.jpg" }
+    ],
     roomHref: "pages/fountain-pens.html",
     roomLabel: "입장권 발권"
   },
@@ -51,6 +59,9 @@ const constellationData = {
     result: "더 빨리, 더 멀리, 그리고 더 위험하게. 마흔, 병상에서 정했다. 죽기 전에 하고 싶은 건 하자. 면허도 없이 두카티를 계약했다. 그때 살아 있다는 감각은 아직 내 안에 남았다.",
     invite: "미루지 않는 사람들끼리는 안다. (HAM MEDIA의 빨강이 두카티에서 온 건, 그래서다.)",
     asset: "실제 사진 준비 중: 실제 바이크, 두카티 관련 사진, 장비, 라이딩 흔적 사진",
+    previewImage: "motorcycles/hero-ducati-red-front.jpg",
+    previewAlt: "붉은 두카티 바이크",
+    previewCaption: "바이크별 대표 이미지",
     roomHref: "pages/motorcycles.html",
     roomLabel: "바이크 방으로 들어가기"
   },
@@ -62,6 +73,9 @@ const constellationData = {
     result: "서 있는 자리가 바뀌면 보이는 게 달라진다. 모르는 곳에서 다른 생각을 하면, 거기서 뜻이 생긴다. 자리를 옮겨 보는 그 버릇이, 내 번역의 방식이 됐다.",
     invite: "전문가의 자리에서 보던 걸 청중의 자리로 옮겨 보는 일. 그게 내가 하는 번역이다.",
     asset: "실제 사진 준비 중: 실제 여행 사진, 이동 중 메모, 장소 디테일 사진",
+    previewImage: "travel/hero-station-suitcase-waiting.jpg",
+    previewAlt: "기차역에서 캐리어와 함께 기다리는 순간",
+    previewCaption: "여행별 대표 이미지",
     roomHref: "pages/travel.html",
     roomLabel: "여행 방으로 들어가기"
   },
@@ -73,6 +87,9 @@ const constellationData = {
     result: "두 발로 가는 건 딴생각하면 큰일 난다. 머리가 복잡한 날엔 다리를 믿고 그냥 전진했다. 그렇게 몸을 비우는 법이, 지금도 나를 재운다.",
     invite: "비워야 채워진다는 걸 아는 사람이라면.",
     asset: "실제 사진 준비 중: 실제 자전거, 라이딩 장비, 길 위의 흔적 사진",
+    previewImage: "bicycles/hero-city-ride.jpg",
+    previewAlt: "길 위의 자전거",
+    previewCaption: "자전거별 대표 이미지",
     roomHref: "pages/bicycles.html",
     roomLabel: "자전거 방으로 들어가기"
   },
@@ -95,6 +112,9 @@ const constellationData = {
     result: "차를 좋아해 멀리 다녔고, 많은 사람을 만났다. 그러다 알았다. 나는 길을 잘 찾는 사람이라는 걸. 길 찾던 그 버릇이, 일이 되어 돌아왔다.",
     invite: "막막한 사람에게 방향을 찾아주는 일. 지금 내가 하는 게 그거다.",
     asset: "실제 사진 준비 중: 실제 자동차, 운전석, 길, 지도, 이동 기록 사진",
+    previewImage: "cars/hero-night-direction.jpg",
+    previewAlt: "밤길 위 자동차의 방향",
+    previewCaption: "자동차별 대표 이미지",
     roomHref: "pages/cars.html",
     roomLabel: "자동차 방으로 들어가기"
   },
@@ -106,6 +126,9 @@ const constellationData = {
     result: "일본에서, 미국에서, 한국에서. 평생 사람 입으로 들어가 마음에 담기는 일을 했다. 커피로 맛과 향을 훈련하며 세상의 맛을 익혔다. 혀로 익힌 그 감각이, 콘텐츠를 보는 눈으로 이어졌다.",
     invite: "감각은 타고나는 게 아니라 훈련된다. 보는 눈도 그렇게 길렀다.",
     asset: "실제 사진 준비 중: 실제 커피, 음식, 매장 운영 시절, 메뉴와 도구 사진",
+    previewImage: "food/hero-cafe-table-coffee.jpg",
+    previewAlt: "카페 테이블 위 커피",
+    previewCaption: "음식별 대표 이미지",
     roomHref: "pages/food.html",
     roomLabel: "음식 방으로 들어가기"
   },
@@ -117,6 +140,9 @@ const constellationData = {
     result: "나는 늘 내 인생의 OST를 생각한다. 좋은 오디오일수록 더 깊이 빠져든다. 그래서 오디오 유튜브를 했고, 오디오 업체에서 일했다. 무엇을 틀고 무엇을 뺄지 고르던 그 귀가, 지금 내 편집의 본질이다.",
     invite: "음악은 결국 선곡이다. 내 콘텐츠도 똑같다.",
     asset: "실제 사진 준비 중: 실제 오디오 기기, 음반, 작업 장면, 오디오 콘텐츠 관련 사진",
+    previewImage: "music-audio/hero-listening-space.jpg",
+    previewAlt: "스피커와 청취 공간",
+    previewCaption: "음악·오디오별 대표 이미지",
     roomHref: "pages/music-audio.html",
     roomLabel: "음악·오디오 방으로 들어가기"
   },
@@ -128,6 +154,9 @@ const constellationData = {
     result: "찍는 것보다, 무엇을 찍을지 고르는 순간이 좋았다. 그 눈이 카메라를 들게 했고, 지금도 그 눈으로 화면을 고른다.",
     invite: "무엇을 담을지 아는 게 먼저다. 영상은 거기서 시작된다.",
     asset: "실제 사진 준비 중: 실제 카메라, 렌즈, 촬영 현장, 프레임 선택 장면 사진",
+    previewImage: "cameras/hero-camera-notebook.jpg",
+    previewAlt: "노트와 함께 놓인 카메라",
+    previewCaption: "카메라별 대표 이미지",
     roomHref: "pages/cameras.html",
     roomLabel: "카메라 방으로 들어가기"
   }
@@ -141,23 +170,33 @@ const detailName = document.querySelector("#constellation-name");
 const detailTeaser = document.querySelector("#constellation-teaser");
 const detailResult = document.querySelector("#constellation-result");
 const detailInvite = document.querySelector("#constellation-invite");
+const detailPreview = document.querySelector("#constellation-preview");
+const detailPreviewImage = document.querySelector("#constellation-preview-image");
+const detailPreviewCaption = document.querySelector("#constellation-preview-caption");
 const detailTicketHint = document.querySelector("#constellation-ticket-hint");
 const detailAsset = document.querySelector("#constellation-asset");
 const detailRoomLink = document.querySelector("#constellation-room-link");
+const detailTicketArrival = document.querySelector("#constellation-ticket-arrival");
+const detailTicketTrainImage = document.querySelector("#constellation-ticket-train-image");
+const detailTicketTrainName = document.querySelector("#constellation-ticket-train-name");
 const detailRoomStatus = document.querySelector("#constellation-room-status");
 const constellationEntry = document.querySelector(".constellation-entry");
 const constellationDetail = document.querySelector(".constellation-detail");
+const constellationScene = document.querySelector(".constellation-scene");
 const constellationWindow = document.querySelector(".constellation-window");
 const constellationGuide = document.querySelector(".constellation-guide");
 const fineHoverQuery = window.matchMedia("(hover: hover) and (pointer: fine)");
 const visitedStars = [];
 let activeStar = null;
+let ticketArrivalTimer = null;
+let currentTicketTrain = null;
+let currentTicketTrainIndex = 0;
 
 const scriptAssetRoot = new URL("../images/", document.currentScript?.src || window.location.href);
-const fountainTicketTrainImages = [
-  new URL("fountain-pens/ticket-train-1.jpg", scriptAssetRoot).href,
-  new URL("fountain-pens/ticket-train-2.jpg", scriptAssetRoot).href
-];
+
+function getAssetImageUrl(path) {
+  return new URL(path, scriptAssetRoot).href;
+}
 
 function syncConstellationGuide() {
   if (!constellationGuide) return;
@@ -212,6 +251,104 @@ function updateConstellationPath() {
   constellationPath.setAttribute("pathLength", "100");
 }
 
+function clampNumber(value, min, max) {
+  return Math.min(Math.max(value, min), max);
+}
+
+function updateDetailPreview(starData) {
+  if (!detailPreview || !detailPreviewImage || !detailPreviewCaption) return;
+
+  if (!starData.previewImage) {
+    detailPreview.hidden = true;
+    detailPreviewImage.removeAttribute("src");
+    detailPreviewImage.alt = "";
+    detailPreviewCaption.textContent = "";
+    return;
+  }
+
+  detailPreview.hidden = false;
+  detailPreviewImage.src = getAssetImageUrl(starData.previewImage);
+  detailPreviewImage.alt = starData.previewAlt || `${starData.name} 대표 이미지`;
+  detailPreviewCaption.textContent = starData.previewCaption || "대표 이미지";
+}
+
+function clearTicketArrival() {
+  if (ticketArrivalTimer) {
+    window.clearInterval(ticketArrivalTimer);
+    ticketArrivalTimer = null;
+  }
+
+  currentTicketTrain = null;
+  currentTicketTrainIndex = 0;
+  if (detailTicketArrival) {
+    detailTicketArrival.hidden = true;
+  }
+  if (detailTicketTrainImage) {
+    detailTicketTrainImage.removeAttribute("src");
+    detailTicketTrainImage.alt = "";
+  }
+  if (detailTicketTrainName) {
+    detailTicketTrainName.textContent = "";
+  }
+}
+
+function showTicketTrain(train) {
+  if (!train || !detailTicketArrival || !detailTicketTrainImage || !detailTicketTrainName) return;
+
+  currentTicketTrain = train;
+  detailTicketArrival.hidden = false;
+  detailTicketTrainImage.src = getAssetImageUrl(train.image);
+  detailTicketTrainImage.alt = train.name;
+  detailTicketTrainName.textContent = train.name;
+}
+
+function startTicketArrivalCycle(starData) {
+  clearTicketArrival();
+
+  if (!starData.ticketTrains?.length) return;
+
+  showTicketTrain(starData.ticketTrains[0]);
+  currentTicketTrainIndex = 1;
+
+  ticketArrivalTimer = window.setInterval(() => {
+    showTicketTrain(starData.ticketTrains[currentTicketTrainIndex % starData.ticketTrains.length]);
+    currentTicketTrainIndex += 1;
+  }, 1800);
+}
+
+function positionConstellationTicket(star) {
+  if (!constellationScene || !constellationDetail) return;
+
+  if (!fineHoverQuery.matches) {
+    constellationDetail.classList.remove("is-floating-ticket");
+    constellationDetail.style.removeProperty("--ticket-left");
+    constellationDetail.style.removeProperty("--ticket-top");
+    return;
+  }
+
+  constellationDetail.classList.add("is-floating-ticket");
+  const sceneRect = constellationScene.getBoundingClientRect();
+  const starRect = star.getBoundingClientRect();
+  const cardRect = constellationDetail.getBoundingClientRect();
+  const gap = 20;
+  const padding = 8;
+  const starCenterX = starRect.left + starRect.width / 2 - sceneRect.left;
+  const starCenterY = starRect.top + starRect.height / 2 - sceneRect.top;
+  const maxLeft = Math.max(padding, sceneRect.width - cardRect.width - padding);
+  const maxTop = Math.max(padding, sceneRect.height - cardRect.height - padding);
+  let left = starCenterX + gap;
+  let top = starCenterY - cardRect.height / 2;
+
+  if (left + cardRect.width > sceneRect.width - padding) {
+    left = starCenterX - cardRect.width - gap;
+  }
+
+  left = clampNumber(left, padding, maxLeft);
+  top = clampNumber(top, padding, maxTop);
+  constellationDetail.style.setProperty("--ticket-left", `${left}px`);
+  constellationDetail.style.setProperty("--ticket-top", `${top}px`);
+}
+
 function selectConstellationStar(star) {
   const starData = constellationData[star.dataset.star];
   if (!starData) return;
@@ -247,10 +384,12 @@ function selectConstellationStar(star) {
   detailTeaser.textContent = starData.teaser;
   detailResult.textContent = starData.result;
   detailInvite.textContent = starData.invite;
+  updateDetailPreview(starData);
   if (detailTicketHint) {
     detailTicketHint.hidden = !starData.ticketHint;
     detailTicketHint.textContent = starData.ticketHint || "";
   }
+  startTicketArrivalCycle(starData);
   detailAsset.textContent = starData.asset;
 
   if (starData.roomHref) {
@@ -270,6 +409,7 @@ function selectConstellationStar(star) {
     constellationDetail.classList.remove("is-opening");
     void constellationDetail.offsetWidth;
     constellationDetail.classList.add("is-opening");
+    positionConstellationTicket(star);
   }
 }
 
@@ -293,19 +433,21 @@ function enterStarRoom(href) {
 }
 
 function showFountainTicketTrainAndEnter(href) {
-  if (!fountainTicketTrainImages.length || document.querySelector(".ticket-train-veil")) return;
+  if (document.querySelector(".ticket-train-veil")) return;
 
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const trainImage = fountainTicketTrainImages[Math.floor(Math.random() * fountainTicketTrainImages.length)];
+  const train = currentTicketTrain || constellationData.fountain.ticketTrains?.[0];
+  if (!train) return;
+
   const veil = document.createElement("div");
   veil.className = "ticket-train-veil";
   veil.setAttribute("role", "status");
   veil.setAttribute("aria-label", "은하철도 613 입장권 발권 중");
   veil.innerHTML = `
     <div class="ticket-train-stage">
-      <img src="${trainImage}" alt="은하철도 613">
+      <img src="${getAssetImageUrl(train.image)}" alt="${train.name}">
       <div class="ticket-train-caption">
-        <span>은하철도 613</span>
+        <span>${train.name}</span>
         <strong>만년필별 입장권 발권 중</strong>
       </div>
     </div>
@@ -322,7 +464,18 @@ function showFountainTicketTrainAndEnter(href) {
 }
 
 syncConstellationGuide();
-fineHoverQuery.addEventListener?.("change", syncConstellationGuide);
+fineHoverQuery.addEventListener?.("change", () => {
+  syncConstellationGuide();
+  if (activeStar) {
+    positionConstellationTicket(activeStar);
+  }
+});
+
+window.addEventListener("resize", () => {
+  if (activeStar) {
+    positionConstellationTicket(activeStar);
+  }
+});
 
 if (constellationStars.length) {
   createBackgroundStars();
@@ -336,10 +489,12 @@ if (constellationStars.length) {
     star.addEventListener("click", (event) => {
       event.preventDefault();
       selectConstellationStar(star);
-      detailName?.closest(".constellation-detail")?.scrollIntoView({
-        behavior: "smooth",
-        block: "nearest"
-      });
+      if (!fineHoverQuery.matches) {
+        detailName?.closest(".constellation-detail")?.scrollIntoView({
+          behavior: "smooth",
+          block: "nearest"
+        });
+      }
     });
 
     star.addEventListener("focus", () => selectConstellationStar(star));

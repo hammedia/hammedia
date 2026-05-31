@@ -80,6 +80,10 @@
             <p class="detail-kicker" id="constellation-kind">사람</p>
             <p class="detail-code" id="constellation-code">LPH-B613-01</p>
             <h3 id="constellation-name">살아남은 별</h3>
+            <figure class="detail-preview" id="constellation-preview" hidden>
+              <img id="constellation-preview-image" src="" alt="">
+              <figcaption id="constellation-preview-caption">대표 이미지</figcaption>
+            </figure>
             <p class="detail-teaser" id="constellation-teaser">마음에 쌓인 걸 몸 밖으로 꺼내던 도구</p>
             <div class="detail-copy">
               <p id="constellation-result">글이 좋아서가 아니었다. 마음에 쌓인 걸 몸 밖으로 빼내려 펜을 잡았고, 그렇게 겨우 살아났다. 무거운 날이면, 손이 결국 펜으로 간다.</p>
@@ -87,7 +91,16 @@
             </div>
             <p class="detail-ticket-hint" id="constellation-ticket-hint" hidden>만년필별로 들어가려면 입장권 발권 버튼을 누르세요.</p>
             <p class="asset-note" id="constellation-asset">실제 사진 준비 중: 실제 만년필, 손글씨, 노트, 잉크 흔적 사진</p>
-            <a class="constellation-soft-link" id="constellation-room-link" href="ham-media-archive/pages/fountain-pens.html">입장권 발권</a>
+            <div class="detail-ticket-actions">
+              <a class="constellation-soft-link" id="constellation-room-link" href="ham-media-archive/pages/fountain-pens.html">입장권 발권</a>
+              <div class="ticket-arrival" id="constellation-ticket-arrival" hidden aria-live="polite">
+                <img id="constellation-ticket-train-image" src="" alt="">
+                <span>
+                  <em>곧 도착</em>
+                  <strong id="constellation-ticket-train-name">은하철도 613-01</strong>
+                </span>
+              </div>
+            </div>
             <p class="constellation-room-status" id="constellation-room-status" hidden>방 정리 중</p>
           </aside>
         </div>
@@ -99,6 +112,6 @@
       </section>
     </main>
 
-    <script src="ham-media-archive/assets/js/main.js?v=ticket-train-613"></script>
+    <script src="ham-media-archive/assets/js/main.js?v=ticket-preview-arrival"></script>
   </body>
 </html>
