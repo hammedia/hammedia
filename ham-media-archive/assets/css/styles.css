@@ -2562,7 +2562,7 @@ h1 {
 }
 
 .constellation-entry .constellation-detail::before {
-  content: "초대장";
+  content: "입장권";
   width: fit-content;
   padding: 0.16rem 0.46rem;
   border: 1px solid rgba(255, 230, 181, 0.22);

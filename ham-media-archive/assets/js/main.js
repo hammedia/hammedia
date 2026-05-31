@@ -40,7 +40,7 @@ const constellationData = {
     invite: "손으로 뭔가를 꺼내며 버텨본 사람이라면, 우린 말이 통한다.",
     asset: "실제 사진 준비 중: 실제 만년필, 손글씨, 노트, 잉크 흔적 사진",
     roomHref: "pages/fountain-pens.html",
-    roomLabel: "만년필 방으로 들어가기"
+    roomLabel: "만년필별로 들어가기"
   },
   motorcycle: {
     code: "LPH B-613-02",
@@ -155,8 +155,8 @@ function syncConstellationGuide() {
   if (!constellationGuide) return;
 
   constellationGuide.textContent = fineHoverQuery.matches
-    ? "별에 마우스를 올리면 초대장이 열립니다. 누르면 입장합니다."
-    : "별을 누르면 초대장이 열리고, 다시 누르면 입장합니다.";
+    ? "별에 마우스를 올리면 입장권이 열립니다. 입장은 입장권 버튼으로 합니다."
+    : "별을 누르면 입장권이 열립니다. 입장권 버튼으로 들어갑니다.";
 }
 
 function createBackgroundStars() {
@@ -293,19 +293,6 @@ if (constellationStars.length) {
     });
 
     star.addEventListener("click", (event) => {
-      if (fineHoverQuery.matches) {
-        event.preventDefault();
-        enterStarRoom(star.href);
-        return;
-      }
-
-      const isEntering = activeStar === star && star.classList.contains("is-selected");
-      if (isEntering) {
-        event.preventDefault();
-        enterStarRoom(star.href);
-        return;
-      }
-
       event.preventDefault();
       selectConstellationStar(star);
       detailName?.closest(".constellation-detail")?.scrollIntoView({
@@ -317,6 +304,15 @@ if (constellationStars.length) {
     star.addEventListener("focus", () => selectConstellationStar(star));
   });
   updateConstellationPath();
+}
+
+if (detailRoomLink) {
+  detailRoomLink.addEventListener("click", (event) => {
+    if (detailRoomLink.hidden || !detailRoomLink.href) return;
+
+    event.preventDefault();
+    enterStarRoom(detailRoomLink.href);
+  });
 }
 
 function findRoomGallerySection(roomPage) {
