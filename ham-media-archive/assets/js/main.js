@@ -145,6 +145,7 @@ const detailRoomLink = document.querySelector("#constellation-room-link");
 const detailRoomStatus = document.querySelector("#constellation-room-status");
 const constellationEntry = document.querySelector(".constellation-entry");
 const constellationDetail = document.querySelector(".constellation-detail");
+const constellationWindow = document.querySelector(".constellation-window");
 const constellationGuide = document.querySelector(".constellation-guide");
 const fineHoverQuery = window.matchMedia("(hover: hover) and (pointer: fine)");
 const visitedStars = [];
@@ -158,10 +159,44 @@ function syncConstellationGuide() {
     : "별을 누르면 초대장이 열리고, 다시 누르면 입장합니다.";
 }
 
+function createBackgroundStars() {
+  if (!constellationWindow || constellationWindow.querySelector(".bg-star")) return;
+
+  const clusters = [
+    { x: 22, y: 24, spread: 16 },
+    { x: 74, y: 20, spread: 20 },
+    { x: 38, y: 74, spread: 18 },
+    { x: 82, y: 72, spread: 14 }
+  ];
+
+  for (let i = 0; i < 112; i += 1) {
+    const star = document.createElement("span");
+    const cluster = Math.random() < 0.58
+      ? clusters[Math.floor(Math.random() * clusters.length)]
+      : null;
+    const left = cluster
+      ? cluster.x + (Math.random() - 0.5) * cluster.spread
+      : Math.random() * 100;
+    const top = cluster
+      ? cluster.y + (Math.random() - 0.5) * cluster.spread
+      : Math.random() * 100;
+    const size = 1 + Math.random() * 1.5;
+
+    star.className = "bg-star";
+    star.style.left = `${Math.max(0, Math.min(100, left))}%`;
+    star.style.top = `${Math.max(0, Math.min(100, top))}%`;
+    star.style.width = `${size}px`;
+    star.style.height = `${size}px`;
+    star.style.opacity = `${0.12 + Math.random() * 0.33}`;
+    constellationWindow.appendChild(star);
+  }
+}
+
 function updateConstellationPath() {
   if (!constellationPath) return;
 
-  const points = visitedStars
+  const pathStars = visitedStars.length > 1 ? visitedStars : [];
+  const points = pathStars
     .map((star) => `${star.dataset.x},${star.dataset.y}`)
     .join(" ");
 
@@ -249,7 +284,14 @@ syncConstellationGuide();
 fineHoverQuery.addEventListener?.("change", syncConstellationGuide);
 
 if (constellationStars.length) {
+  createBackgroundStars();
+
   constellationStars.forEach((star) => {
+    star.addEventListener("pointerenter", () => {
+      if (!fineHoverQuery.matches) return;
+      selectConstellationStar(star);
+    });
+
     star.addEventListener("click", (event) => {
       if (fineHoverQuery.matches) {
         event.preventDefault();
@@ -273,10 +315,6 @@ if (constellationStars.length) {
     });
 
     star.addEventListener("focus", () => selectConstellationStar(star));
-
-    if (fineHoverQuery.matches) {
-      star.addEventListener("pointerenter", () => selectConstellationStar(star));
-    }
   });
   updateConstellationPath();
 }
