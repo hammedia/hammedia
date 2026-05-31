@@ -391,6 +391,94 @@
       margin-top: auto;
       align-self: stretch;
     }
+    .workflow-proof {
+      width: min(1040px, calc(100vw - 6rem));
+      margin: 2rem 0 0 50%;
+      transform: translateX(-50%);
+      background: var(--ivory);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: minmax(0, .9fr) minmax(0, 1.25fr);
+      box-shadow: var(--shadow);
+    }
+    .workflow-proof-copy {
+      padding: 1.65rem 1.55rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .workflow-proof-label {
+      font-size: 10.5px;
+      font-weight: 800;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--sky);
+      margin-bottom: .7rem;
+    }
+    .workflow-proof-title {
+      font-size: 1.18rem;
+      font-weight: 850;
+      line-height: 1.35;
+      color: var(--warm);
+      margin-bottom: .75rem;
+    }
+    .workflow-proof-desc {
+      font-size: 13.5px;
+      line-height: 1.78;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+    .workflow-proof-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .45rem;
+      margin-bottom: 1.1rem;
+    }
+    .workflow-proof-tags span {
+      font-size: 11px;
+      font-weight: 650;
+      color: var(--muted);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: .26rem .58rem;
+      background: rgba(249,247,243,.58);
+    }
+    .workflow-proof .btn-primary {
+      width: fit-content;
+      min-height: 40px;
+      font-size: .82rem;
+      padding: .65rem 1.05rem;
+    }
+    .workflow-proof-media {
+      background: #000;
+      min-height: 100%;
+      display: flex;
+      align-items: stretch;
+    }
+    .workflow-proof-media video {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      aspect-ratio: 16 / 9;
+      background: #000;
+    }
+    .workflow-proof-media.is-square {
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      background: #10100f;
+    }
+    .workflow-proof-media.is-square video {
+      width: min(100%, 380px);
+      height: auto;
+      max-height: 380px;
+      aspect-ratio: 1 / 1;
+      object-fit: contain;
+      border-radius: 10px;
+    }
 
     /* ── ABOUT ── */
     .about-chapters { max-width: 680px; }
@@ -716,6 +804,12 @@
         margin-left: 0;
         transform: none;
       }
+      .workflow-proof {
+        width: 100%;
+        margin-left: 0;
+        transform: none;
+        grid-template-columns: 1fr;
+      }
     }
     @media (max-width: 760px) {
       nav { padding: 0 1.25rem; }
@@ -879,6 +973,44 @@
       <p class="svc-do">Designing a pipeline from planning to publishing</p>
       <p class="svc-out">Deliverable — A production system that keeps moving even solo</p>
       <a class="svc-cta btn-primary" href="#contact">Request a Consultation</a>
+    </div>
+  </div>
+  <div class="workflow-proof">
+    <div class="workflow-proof-copy">
+      <p class="workflow-proof-label">Real Production Flow</p>
+      <h3 class="workflow-proof-title">A real workflow for making presentation materials with AI</h3>
+      <p class="workflow-proof-desc">A 32-second example of the flow used for lectures and document production: separating source material, assigning roles, and turning the structure into slide output.</p>
+      <div class="workflow-proof-tags" aria-label="Related work">
+        <span>Presentation</span>
+        <span>AI Lecture</span>
+        <span>Production System</span>
+      </div>
+      <a class="btn-primary" href="#contact">Request a Consultation</a>
+    </div>
+    <div class="workflow-proof-media">
+      <video controls autoplay muted loop playsinline preload="metadata" poster="assets/media/ai-ppt-workflow-guide-poster.png" aria-label="AI presentation workflow preview video">
+        <source src="assets/media/ai-ppt-workflow-guide.mp4" type="video/mp4">
+        Your browser does not support video playback.
+      </video>
+    </div>
+  </div>
+  <div class="workflow-proof">
+    <div class="workflow-proof-copy">
+      <p class="workflow-proof-label">Card News Production Example</p>
+      <h3 class="workflow-proof-title">How people in their 50s can connect AI to their own experience</h3>
+      <p class="workflow-proof-desc">A card-news example that explains AI not as a technical trick, but as a way to bring lived experience back into a visible format.</p>
+      <div class="workflow-proof-tags" aria-label="Related work">
+        <span>Card News</span>
+        <span>AI Lecture</span>
+        <span>Mid-career Education</span>
+      </div>
+      <a class="btn-primary" href="#contact">Request a Consultation</a>
+    </div>
+    <div class="workflow-proof-media is-square">
+      <video controls autoplay muted loop playsinline preload="metadata" poster="assets/media/50s-ai-life-cardnews-poster.png" aria-label="50s AI card-news preview video">
+        <source src="assets/media/50s-ai-life-cardnews.mp4" type="video/mp4">
+        Your browser does not support video playback.
+      </video>
     </div>
   </div>
 </section>

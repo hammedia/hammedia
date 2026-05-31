@@ -365,6 +365,94 @@
       margin-top: auto;
       align-self: stretch;
     }
+    .workflow-proof {
+      width: min(1040px, calc(100vw - 6rem));
+      margin: 2rem 0 0 50%;
+      transform: translateX(-50%);
+      background: var(--ivory);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: minmax(0, .9fr) minmax(0, 1.25fr);
+      box-shadow: var(--shadow);
+    }
+    .workflow-proof-copy {
+      padding: 1.65rem 1.55rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .workflow-proof-label {
+      font-size: 10.5px;
+      font-weight: 800;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--sky);
+      margin-bottom: .7rem;
+    }
+    .workflow-proof-title {
+      font-size: 1.18rem;
+      font-weight: 850;
+      line-height: 1.35;
+      color: var(--warm);
+      margin-bottom: .75rem;
+    }
+    .workflow-proof-desc {
+      font-size: 13.5px;
+      line-height: 1.78;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+    .workflow-proof-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .45rem;
+      margin-bottom: 1.1rem;
+    }
+    .workflow-proof-tags span {
+      font-size: 11px;
+      font-weight: 650;
+      color: var(--muted);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: .26rem .58rem;
+      background: rgba(249,247,243,.58);
+    }
+    .workflow-proof .btn-primary {
+      width: fit-content;
+      min-height: 40px;
+      font-size: .82rem;
+      padding: .65rem 1.05rem;
+    }
+    .workflow-proof-media {
+      background: #000;
+      min-height: 100%;
+      display: flex;
+      align-items: stretch;
+    }
+    .workflow-proof-media video {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      aspect-ratio: 16 / 9;
+      background: #000;
+    }
+    .workflow-proof-media.is-square {
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      background: #10100f;
+    }
+    .workflow-proof-media.is-square video {
+      width: min(100%, 380px);
+      height: auto;
+      max-height: 380px;
+      aspect-ratio: 1 / 1;
+      object-fit: contain;
+      border-radius: 10px;
+    }
 
     /* ── ABOUT ── */
     .about-chapters { max-width: 680px; }
@@ -690,6 +778,12 @@
         margin-left: 0;
         transform: none;
       }
+      .workflow-proof {
+        width: 100%;
+        margin-left: 0;
+        transform: none;
+        grid-template-columns: 1fr;
+      }
     }
     @media (max-width: 760px) {
       nav { padding: 0 1.25rem; }
@@ -853,6 +947,44 @@
       <p class="svc-do">企画から公開までのパイプライン設計</p>
       <p class="svc-out">成果物 — 1人でも回る制作システム</p>
       <a class="svc-cta btn-primary" href="#contact">相談する</a>
+    </div>
+  </div>
+  <div class="workflow-proof">
+    <div class="workflow-proof-copy">
+      <p class="workflow-proof-label">実際の制作フロー</p>
+      <h3 class="workflow-proof-title">AIでプレゼン資料を作る実際のワークフロー</h3>
+      <p class="workflow-proof-desc">講義や資料制作で使っている流れを32秒にまとめた実例です。素材を分け、役割を整理し、スライド成果物へ移す過程を見せています。</p>
+      <div class="workflow-proof-tags" aria-label="関連する仕事">
+        <span>プレゼン資料</span>
+        <span>AI講義</span>
+        <span>制作システム</span>
+      </div>
+      <a class="btn-primary" href="#contact">相談する</a>
+    </div>
+    <div class="workflow-proof-media">
+      <video controls autoplay muted loop playsinline preload="metadata" poster="assets/media/ai-ppt-workflow-guide-poster.png" aria-label="AIプレゼン資料制作ワークフローのプレビュー動画">
+        <source src="assets/media/ai-ppt-workflow-guide.mp4" type="video/mp4">
+        このブラウザでは動画を再生できません。
+      </video>
+    </div>
+  </div>
+  <div class="workflow-proof">
+    <div class="workflow-proof-copy">
+      <p class="workflow-proof-label">カードニュース制作事例</p>
+      <h3 class="workflow-proof-title">50代がAIを自分の経験につなげる方法</h3>
+      <p class="workflow-proof-desc">AIの使い方を技術説明ではなく、これまでの経験をもう一度取り出す方法として整理したカードニュースです。</p>
+      <div class="workflow-proof-tags" aria-label="関連する仕事">
+        <span>カードニュース</span>
+        <span>AI講義</span>
+        <span>中高年向け教育</span>
+      </div>
+      <a class="btn-primary" href="#contact">相談する</a>
+    </div>
+    <div class="workflow-proof-media is-square">
+      <video controls autoplay muted loop playsinline preload="metadata" poster="assets/media/50s-ai-life-cardnews-poster.png" aria-label="50代AIカードニュースのプレビュー動画">
+        <source src="assets/media/50s-ai-life-cardnews.mp4" type="video/mp4">
+        このブラウザでは動画を再生できません。
+      </video>
     </div>
   </div>
 </section>
