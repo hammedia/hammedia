@@ -136,12 +136,21 @@ const detailRoomStatus = document.querySelector("#constellation-room-status");
 const constellationEntry = document.querySelector(".constellation-entry");
 const constellationDetail = document.querySelector(".constellation-detail");
 const constellationWindow = document.querySelector(".constellation-window");
+const constellationGuide = document.querySelector(".constellation-guide");
 const visitedStars = [];
 const hoverInvitationQuery = window.matchMedia("(hover: hover) and (pointer: fine)");
 let activeStar = null;
 
 function canOpenInvitationOnHover() {
   return hoverInvitationQuery.matches;
+}
+
+function updateConstellationGuideText() {
+  if (!constellationGuide) return;
+
+  constellationGuide.textContent = canOpenInvitationOnHover()
+    ? "별에 마우스를 올리면 초대장이 열립니다. 누르면 입장합니다."
+    : "별을 누르면 초대장이 열리고, 다시 누르면 입장합니다.";
 }
 
 function createBackgroundStars() {
@@ -264,6 +273,13 @@ function enterStarRoom(href) {
 
 if (constellationStars.length) {
   createBackgroundStars();
+  updateConstellationGuideText();
+
+  if (typeof hoverInvitationQuery.addEventListener === "function") {
+    hoverInvitationQuery.addEventListener("change", updateConstellationGuideText);
+  } else if (typeof hoverInvitationQuery.addListener === "function") {
+    hoverInvitationQuery.addListener(updateConstellationGuideText);
+  }
 
   constellationStars.forEach((star) => {
     star.addEventListener("pointerenter", () => {

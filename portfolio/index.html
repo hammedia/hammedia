@@ -404,8 +404,9 @@
       align-self: stretch;
     }
     .workflow-proof {
-      width: min(920px, calc(100vw - 6rem));
-      margin: 2rem auto 0;
+      width: min(1040px, calc(100vw - 6rem));
+      margin: 2rem 0 0 50%;
+      transform: translateX(-50%);
       background: var(--ivory);
       border: 1px solid var(--line);
       border-radius: 12px;
@@ -818,6 +819,8 @@
       }
       .workflow-proof {
         width: 100%;
+        margin-left: 0;
+        transform: none;
         grid-template-columns: 1fr;
       }
     }
