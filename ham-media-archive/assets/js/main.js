@@ -42,6 +42,8 @@ const constellationData = {
     previewImage: "fountain-pens/hero-window-table.jpg",
     previewAlt: "창가 테이블 위의 만년필과 노트",
     previewCaption: "만년필별 대표 이미지",
+    stampImage: "fountain-pens/stamps/lph-b613-01-fountain-pen-stamp.png",
+    stampAlt: "LPH-B613-01 만년필별 도착 스탬프",
     roomHref: "pages/fountain-pens.html",
     roomLabel: "입장권 발권"
   },
@@ -160,6 +162,7 @@ const constellationStars = Array.from(document.querySelectorAll(".constellation-
 const constellationPath = document.querySelector(".constellation-path-line");
 const detailKind = document.querySelector("#constellation-kind");
 const detailCode = document.querySelector("#constellation-code");
+const detailArrivalStamp = document.querySelector("#constellation-arrival-stamp");
 const detailName = document.querySelector("#constellation-name");
 const detailTeaser = document.querySelector("#constellation-teaser");
 const detailResult = document.querySelector("#constellation-result");
@@ -255,6 +258,21 @@ function updateDetailPreview(starData) {
   detailPreviewCaption.textContent = starData.previewCaption || "대표 이미지";
 }
 
+function updateArrivalStamp(starData) {
+  if (!detailArrivalStamp) return;
+
+  if (!starData.stampImage) {
+    detailArrivalStamp.hidden = true;
+    detailArrivalStamp.removeAttribute("src");
+    detailArrivalStamp.alt = "";
+    return;
+  }
+
+  detailArrivalStamp.hidden = false;
+  detailArrivalStamp.src = getAssetImageUrl(starData.stampImage);
+  detailArrivalStamp.alt = starData.stampAlt || `${starData.name} 도착 스탬프`;
+}
+
 function positionConstellationTicket(star) {
   if (!constellationDetail) return;
 
@@ -299,6 +317,7 @@ function selectConstellationStar(star) {
   detailResult.textContent = starData.result;
   detailInvite.textContent = starData.invite;
   updateDetailPreview(starData);
+  updateArrivalStamp(starData);
   if (detailTicketHint) {
     detailTicketHint.hidden = !starData.ticketHint;
     detailTicketHint.textContent = starData.ticketHint || "";
