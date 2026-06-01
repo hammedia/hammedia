@@ -530,6 +530,9 @@ function buildRoomHouse() {
       panel.hidden = true;
       panel.closest(".room-house-panel")?.classList.remove("is-detail-mode");
     });
+    if (!photoPanel?.classList.contains("is-photo-detail-mode")) {
+      housePage.classList.remove("is-reading-mode");
+    }
     if (articleList) articleList.hidden = false;
     articleLinks.forEach((link) => {
       link.classList.remove("is-active");
@@ -543,6 +546,9 @@ function buildRoomHouse() {
       photoDetail.replaceChildren();
     }
     photoPanel?.classList.remove("is-photo-detail-mode");
+    if (!articlePanels.some((panel) => !panel.hidden)) {
+      housePage.classList.remove("is-reading-mode");
+    }
     if (photoGrid) photoGrid.hidden = false;
     photoFigures.forEach((figure) => figure.classList.remove("is-active"));
   }
@@ -596,10 +602,12 @@ function buildRoomHouse() {
 
     link.setAttribute("aria-expanded", "false");
     link.addEventListener("click", () => {
+      closePhotoDetail();
       closeArticles();
       if (articleList) articleList.hidden = true;
       target.hidden = false;
       target.closest(".room-house-panel")?.classList.add("is-detail-mode");
+      housePage.classList.add("is-reading-mode");
       link.classList.add("is-active");
       link.setAttribute("aria-expanded", "true");
       target.scrollIntoView({
@@ -676,6 +684,7 @@ function buildRoomHouse() {
     photoDetail.append(actions, detailImage, detailCopy, nav);
     photoDetail.hidden = false;
     photoPanel?.classList.add("is-photo-detail-mode");
+    housePage.classList.add("is-reading-mode");
     if (photoGrid) photoGrid.hidden = true;
 
     photoFigures.forEach((activeFigure) => activeFigure.classList.remove("is-active"));
