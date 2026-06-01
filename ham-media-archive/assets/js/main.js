@@ -596,35 +596,73 @@ function buildRoomHouse() {
     });
   });
 
-  articleLinks.forEach((link) => {
+  function returnToArticleList() {
+    closeArticles();
+    articleList?.scrollIntoView({
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+      block: "start"
+    });
+  }
+
+  function openArticleAt(index) {
+    const link = articleLinks[index];
+    const target = link ? housePage.querySelector(`#${link.dataset.articleTarget}`) : null;
+    if (!target) return;
+
+    closePhotoDetail();
+    closeArticles();
+    if (articleList) articleList.hidden = true;
+    target.hidden = false;
+    target.closest(".room-house-panel")?.classList.add("is-detail-mode");
+    housePage.classList.add("is-reading-mode");
+    link.classList.add("is-active");
+    link.setAttribute("aria-expanded", "true");
+    target.scrollIntoView({
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+      block: "start"
+    });
+  }
+
+  articlePanels.forEach((panel, index) => {
+    if (panel.querySelector(":scope > .room-article-bottom-nav")) return;
+
+    const nav = document.createElement("nav");
+    nav.className = "room-article-bottom-nav";
+    nav.setAttribute("aria-label", "글 이동");
+
+    const listButton = document.createElement("button");
+    listButton.type = "button";
+    listButton.textContent = "글 목록";
+    listButton.addEventListener("click", returnToArticleList);
+
+    const previousButton = document.createElement("button");
+    previousButton.type = "button";
+    previousButton.textContent = "이전 글";
+    previousButton.disabled = index === 0;
+    previousButton.addEventListener("click", () => openArticleAt(index - 1));
+
+    const nextButton = document.createElement("button");
+    nextButton.type = "button";
+    nextButton.textContent = "다음 글";
+    nextButton.disabled = index === articlePanels.length - 1;
+    nextButton.addEventListener("click", () => openArticleAt(index + 1));
+
+    nav.append(listButton, previousButton, nextButton);
+    panel.append(nav);
+  });
+
+  articleLinks.forEach((link, index) => {
     const target = housePage.querySelector(`#${link.dataset.articleTarget}`);
     if (!target) return;
 
     link.setAttribute("aria-expanded", "false");
     link.addEventListener("click", () => {
-      closePhotoDetail();
-      closeArticles();
-      if (articleList) articleList.hidden = true;
-      target.hidden = false;
-      target.closest(".room-house-panel")?.classList.add("is-detail-mode");
-      housePage.classList.add("is-reading-mode");
-      link.classList.add("is-active");
-      link.setAttribute("aria-expanded", "true");
-      target.scrollIntoView({
-        behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
-        block: "start"
-      });
+      openArticleAt(index);
     });
   });
 
   articleBackButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      closeArticles();
-      articleList?.scrollIntoView({
-        behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
-        block: "start"
-      });
-    });
+    button.addEventListener("click", returnToArticleList);
   });
 
   function openHousePhoto(index) {
