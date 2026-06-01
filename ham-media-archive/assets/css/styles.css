@@ -908,6 +908,24 @@ h1 {
   letter-spacing: 0.08em;
 }
 
+.room-stamp-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.42rem;
+  width: fit-content;
+}
+
+.room-arrival-stamp {
+  display: inline-block;
+  width: clamp(1.55rem, 2.4vw, 2.05rem);
+  height: clamp(1.55rem, 2.4vw, 2.05rem);
+  object-fit: contain;
+  opacity: 0.88;
+  transform: rotate(-6deg);
+  filter: saturate(0.95) contrast(1.08);
+  pointer-events: none;
+}
+
 .room-welcome {
   position: relative;
   display: grid;
