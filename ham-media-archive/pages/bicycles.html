@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>자전거별 | HAM MEDIA</title>
-    <link rel="stylesheet" href="../assets/css/styles.css?v=bicycle-stamp-1">
+    <link rel="stylesheet" href="../assets/css/styles.css?v=bicycle-room-v2">
   </head>
   <body class="world-body">
     <main class="world-page room-page room-house-page bicycle-room">
@@ -58,33 +58,56 @@
       <section class="room-house-panel" id="bicycle-writing-room" aria-label="자전거 글 목록" hidden>
         <div class="room-house-panel-header">
           <p class="room-section-label">글</p>
-          <h2>다리를 믿고 전진한 기록</h2>
+          <h2>글 목록</h2>
           <button class="room-house-back" type="button">자전거별로 돌아가기</button>
         </div>
 
-        <div class="room-card-list">
-          <article class="room-post room-card room-record-unit bicycle-record-card">
-            <figure class="room-record-figure">
-              <img class="room-photo-image room-record-photo" src="../assets/images/bicycles/essay-before-ride.jpg" alt="자전거 옆에서 라이딩을 준비하는 모습">
-              <figcaption class="room-record-caption">
-                <span class="room-card-meta">글</span>
-                <strong class="room-card-title">다리를 믿고 나아가는 시간</strong>
-                <span class="room-card-note">자전거 / 전진 / 비움</span>
-                <span>복잡한 생각보다 먼저 움직이는 몸이 있다. 그때 마음도 같이 비워진다.</span>
-              </figcaption>
-            </figure>
+        <div class="room-article-list" aria-label="자전거 글 목록">
+          <button class="room-article-link" type="button" data-article-target="bicycle-moving-forward-note" aria-label="다리를 믿는 시간 읽기">
+            <strong>다리를 믿는 시간</strong>
+          </button>
+          <button class="room-article-link" type="button" data-article-target="bicycle-number-memory-note" aria-label="몸이 기억한 번호 읽기">
+            <strong>몸이 기억한 번호</strong>
+          </button>
+        </div>
+
+        <div class="room-card-list room-article-panels">
+          <article class="room-post fountain-essay room-article-panel" id="bicycle-moving-forward-note" hidden>
+            <button class="room-article-back" type="button">글 목록</button>
+            <header class="fountain-essay-header">
+              <p class="room-card-meta">글</p>
+              <h3>다리를 믿는 시간</h3>
+              <p>자전거 / 전진 / 비움</p>
+            </header>
+
+            <div class="fountain-essay-body">
+              <figure class="fountain-essay-figure">
+                <img class="room-photo-image fountain-essay-photo" src="../assets/images/bicycles/essay-before-ride.jpg" alt="자전거 옆에서 라이딩을 준비하는 모습">
+                <figcaption>복잡한 생각보다 먼저 움직이는 몸이 있다.</figcaption>
+              </figure>
+              <p>두 발로 가는 건 딴생각하면 큰일 난다.</p>
+              <p>머리가 복잡한 날엔 다리를 믿고 그냥 전진했다.</p>
+              <p>그렇게 몸을 비우는 법이, 지금도 나를 재운다.</p>
+            </div>
           </article>
 
-          <article class="room-post room-card room-record-unit bicycle-record-card">
-            <figure class="room-record-figure">
-              <img class="room-photo-image room-record-photo" src="../assets/images/bicycles/photo-bib-detail.jpg" alt="자전거 프레임과 번호표가 가까이 보이는 사진">
-              <figcaption class="room-record-caption">
-                <span class="room-card-meta">사진</span>
-                <strong class="room-card-title">몸이 먼저 기억하는 번호</strong>
-                <span class="room-card-note">라이딩 / 기록 / 집중</span>
-                <span>속도보다 집중이 먼저다. 번호와 프레임 사이에 남은 몸의 기록.</span>
-              </figcaption>
-            </figure>
+          <article class="room-post fountain-essay room-article-panel" id="bicycle-number-memory-note" hidden>
+            <button class="room-article-back" type="button">글 목록</button>
+            <header class="fountain-essay-header">
+              <p class="room-card-meta">글</p>
+              <h3>몸이 기억한 번호</h3>
+              <p>라이딩 / 기록 / 집중</p>
+            </header>
+
+            <div class="fountain-essay-body">
+              <figure class="fountain-essay-figure">
+                <img class="room-photo-image fountain-essay-photo" src="../assets/images/bicycles/photo-bib-detail.jpg" alt="자전거 프레임과 번호표가 가까이 보이는 사진">
+                <figcaption>번호와 프레임 사이에 남은 몸의 기록.</figcaption>
+              </figure>
+              <p>속도보다 집중이 먼저다.</p>
+              <p>패배는 일시적인 상태일 수 있지만, 포기하면 그것은 영구적인 것이 된다.</p>
+              <p><span lang="en">Being defeated is often a temporary condition, giving up is what makes it permanent.</span></p>
+            </div>
           </article>
         </div>
       </section>
@@ -99,29 +122,42 @@
         <div class="room-section-heading">
           <p class="room-section-label">몸을 비우며 지나온 길</p>
         </div>
-        <div class="bicycle-gallery-grid">
-          <figure><img class="room-photo-image bicycle-gallery-photo" src="../assets/images/bicycles/gallery-img-7462.jpg" alt="자전거 사진 1"></figure>
-          <figure><img class="room-photo-image bicycle-gallery-photo" src="../assets/images/bicycles/hero-city-ride.jpg" alt="자전거 사진 2"></figure>
-          <figure><img class="room-photo-image bicycle-gallery-photo" src="../assets/images/bicycles/gallery-img-6681.jpg" alt="자전거 사진 3"></figure>
-          <figure><img class="room-photo-image bicycle-gallery-photo" src="../assets/images/bicycles/gallery-img-7636.jpg" alt="자전거 사진 4"></figure>
-          <figure><img class="room-photo-image bicycle-gallery-photo" src="../assets/images/bicycles/gallery-img-5757.jpg" alt="자전거 사진 5"></figure>
-          <figure>
+        <div class="room-house-photo-grid bicycle-gallery-grid">
+          <figure class="room-house-photo" data-memory="벽에 걸어둔 자전거. 쉬는 날에도 몸은 길을 기억한다."><img class="room-photo-image bicycle-gallery-photo" src="../assets/images/bicycles/gallery-img-7462.jpg" alt="벽에 걸린 자전거"></figure>
+          <figure class="room-house-photo" data-memory="도심을 지나는 자전거. 길 위에서는 몸이 먼저 균형을 잡는다."><img class="room-photo-image bicycle-gallery-photo" src="../assets/images/bicycles/hero-city-ride.jpg" alt="도심에서 자전거를 타는 모습"></figure>
+          <figure class="room-house-photo" data-memory="잠시 세워둔 자전거. 달린 시간은 프레임에 남는다."><img class="room-photo-image bicycle-gallery-photo" src="../assets/images/bicycles/gallery-img-6681.jpg" alt="거리 데크 위에 세워둔 자전거"></figure>
+          <figure class="room-house-photo" data-memory="문 앞에 세워둔 자전거. 다시 나갈 시간을 기다리는 물건."><img class="room-photo-image bicycle-gallery-photo" src="../assets/images/bicycles/gallery-img-7636.jpg" alt="가게 앞에 세워둔 자전거"></figure>
+          <figure class="room-house-photo" data-memory="강가에서 멈춘 자전거. 속도보다 오래 남는 장면이 있다."><img class="room-photo-image bicycle-gallery-photo" src="../assets/images/bicycles/gallery-img-5757.jpg" alt="강가에서 자전거와 함께 선 모습"></figure>
+          <figure class="room-house-photo" data-memory="스웨덴산 사브와 대만산 자이언트(GIANT), 그리고 한국산 햄.">
             <img class="room-photo-image bicycle-gallery-photo" src="../assets/images/bicycles/gallery-img-5752.jpg" alt="차에 실린 자전거 사진">
             <figcaption>스웨덴산 사브와 대만산 자이언트(GIANT), 그리고 한국산 햄.</figcaption>
           </figure>
-          <figure><img class="room-photo-image bicycle-gallery-photo" src="../assets/images/bicycles/gallery-1f9a31a9.jpg" alt="자전거 사진 7"></figure>
+          <figure class="room-house-photo" data-memory="작은 자전거도 결국 균형을 배우는 물건이다."><img class="room-photo-image bicycle-gallery-photo" src="../assets/images/bicycles/gallery-1f9a31a9.jpg" alt="작은 분홍색 자전거"></figure>
         </div>
 
         <aside class="room-gallery-detail room-house-photo-detail" aria-live="polite" hidden></aside>
       </section>
 
-      <nav class="room-related" aria-label="별 이동">
-        <a class="room-soft-link" href="spaces.html">다음 별: 공간별</a>
-        <a class="room-soft-link" href="../index.html#about-constellation">별자리로 돌아가기</a>
+      <nav class="room-star-list" aria-label="전체 별 목록">
+        <p>별 목록</p>
+        <div>
+          <a href="fountain-pens.html">만년필별</a>
+          <a href="music-audio.html">음악·오디오별</a>
+          <a href="cameras.html">카메라별</a>
+          <a href="travel.html">여행별</a>
+          <a href="food.html">음식별</a>
+          <span class="is-current">자전거별</span>
+          <a href="cars.html">자동차별</a>
+          <a href="motorcycles.html">바이크별</a>
+          <a href="spaces.html">공간별</a>
+        </div>
       </nav>
 
-      <a class="back-link" href="../index.html">HAM MEDIA</a>
+      <nav class="room-related" aria-label="별 이동">
+        <a class="room-soft-link" href="../index.html#about-constellation">별자리로 돌아가기</a>
+        <a class="room-soft-link room-work-link" href="ham-media-work.html">그래서, 지금은 이런 일을 합니다</a>
+      </nav>
     </main>
-    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/main.js?v=bicycle-room-v2"></script>
   </body>
 </html>
