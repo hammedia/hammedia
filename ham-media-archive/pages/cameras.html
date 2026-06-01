@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Cameras / 카메라 | HAM MEDIA</title>
-    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="stylesheet" href="../assets/css/styles.css?v=room-writing-v1">
   </head>
   <body class="world-body">
     <main class="world-page room-page room-house-page camera-room">
@@ -15,7 +15,7 @@
         <p class="room-intro">무엇을 담을지 보는 별</p>
       </header>
 
-      <section class="room-welcome" aria-label="카메라 방 웰컴 글">
+      <section class="room-welcome" aria-label="카메라별 첫 문장">
         <span class="room-welcome-mark" aria-hidden="true"></span>
         <div class="room-welcome-copy">
           <p class="room-welcome-label">방의 첫 문장</p>
@@ -32,73 +32,111 @@
         </figure>
       </section>
 
-      <section class="room-house" aria-label="카메라의 집">
+      <section class="room-house" aria-label="카메라별">
         <div class="room-section-heading">
-          <p class="room-section-label">카메라의 집</p>
-          <p class="room-section-help">현관에서 대표 사진을 보고, 안쪽 방으로 들어가 글과 사진을 따로 봅니다.</p>
+          <p class="room-section-label">카메라별</p>
+          <p class="room-section-help">대표 사진을 지나 별 안으로 들어오면, 글과 사진과 자료를 따로 봅니다.</p>
         </div>
 
-        <nav class="room-house-nav" aria-label="카메라의 집 방 목록">
+        <nav class="room-house-nav" aria-label="카메라별 메뉴">
           <button class="room-house-door" type="button" data-house-target="camera-writing-room">
-            <strong>글방</strong>
-            <span>2개 기록 보기</span>
+            <strong>글</strong>
+            <span>2개</span>
           </button>
           <button class="room-house-door" type="button" data-house-target="camera-photo-room">
-            <strong>사진방</strong>
-            <span>6장 보기</span>
+            <strong>사진</strong>
+            <span>7장</span>
           </button>
           <button class="room-house-door" type="button" disabled>
-            <strong>자료방</strong>
-            <span>나중에 열 방</span>
+            <strong>자료</strong>
+            <span>준비 중</span>
           </button>
         </nav>
       </section>
 
-      <section class="room-house-panel" id="camera-writing-room" aria-label="카메라 글 목록" hidden>
+      <section class="room-house-panel" id="camera-writing-room" aria-label="카메라 글" hidden>
         <div class="room-house-panel-header">
-          <p class="room-section-label">글방</p>
-          <h2>무엇을 담을지 고른 글</h2>
-          <button class="room-house-back" type="button">카메라의 집으로 돌아가기</button>
+          <p class="room-section-label">글</p>
+          <h2>글 목록</h2>
+          <button class="room-house-back" type="button">카메라별로 돌아가기</button>
         </div>
 
-        <div class="room-card-list">
-          <article class="room-post room-card room-record-unit camera-record-card">
+        <div class="room-article-list" aria-label="카메라 글 목록">
+          <button class="room-article-link" type="button" data-article-target="camera-shooting-setup-note" aria-label="무엇을 담을지 고르는 현장 읽기">
+            <strong>담을지 고르기</strong>
+          </button>
+          <button class="room-article-link" type="button" data-article-target="camera-fear-starting-note" aria-label="두려움 읽기">
+            <strong>두려움</strong>
+          </button>
+        </div>
+
+        <div class="room-card-list room-article-panels">
+          <article class="room-post room-card room-record-unit camera-record-card room-article-panel" id="camera-shooting-setup-note" hidden>
+            <button class="room-article-back" type="button">글 목록</button>
             <figure class="room-record-figure">
               <img class="room-photo-image room-record-photo" src="../assets/images/cameras/essay-shooting-setup.jpg" alt="촬영 조명과 삼각대를 세팅하는 현장">
               <figcaption class="room-record-caption">
                 <span class="room-card-meta">글</span>
                 <strong class="room-card-title">무엇을 담을지 고르는 현장</strong>
                 <span class="room-card-note">촬영 준비 / 프레임 / 현장</span>
-                <span>촬영 준비 / 프레임 / 현장</span>
+                <span>무엇을 담을지 먼저 정하고 나면, 셔터는 그다음이다.</span>
               </figcaption>
             </figure>
           </article>
 
-          <article class="room-post room-card room-record-unit camera-record-card">
-            <figure class="room-record-figure">
-              <img class="room-photo-image room-record-photo" src="../assets/images/cameras/photo-frame-eye.jpg" alt="거울 앞에서 카메라를 들고 프레임을 보는 모습">
-              <figcaption class="room-record-caption">
-                <span class="room-card-meta">사진</span>
-                <strong class="room-card-title">프레임을 보는 눈</strong>
-                <span class="room-card-note">카메라 / 렌즈 / 시선</span>
-                <span>카메라 / 렌즈 / 시선</span>
-              </figcaption>
-            </figure>
+          <article class="room-post shared-memory-card room-article-panel" id="camera-fear-starting-note" hidden>
+            <button class="room-article-back" type="button">글 목록</button>
+            <header class="fountain-essay-header">
+              <p class="room-card-meta">글</p>
+              <h3>두려움</h3>
+              <p>카메라 / 시작 / 유튜브</p>
+            </header>
+
+            <div class="shared-memory-layout">
+              <figure class="shared-memory-figure">
+                <img class="room-photo-image shared-memory-photo" src="../assets/images/cameras/fear-starting-youtube.jpeg" alt="두려움이 시작을 막는다는 문장을 적은 손글씨 노트와 만년필">
+                <figcaption>두려움이 모든 시작을 막는다는 문장을 손글씨로 다시 적은 기록.</figcaption>
+              </figure>
+
+              <div class="shared-memory-copy">
+                <p>"인간의 모든 감정 가운데, 판단력을 가장 깊이 흐려놓는 것은 두려움이다."</p>
+                <p>— Cardinal de Retz</p>
+                <p>유튜브를 해야지, 해야지 하면서도 못하는 이유.</p>
+                <p>카메라 앞에 서는 게 두려워서.</p>
+                <p>편집을 못할까 봐 두려워서.</p>
+                <p>잘 못하면 어쩌나 두려워서.</p>
+                <p>그 두려움이 판단력을 흐려놓는다.</p>
+                <p>사실은 한 번만 하면 되는데.</p>
+                <p>누구도 처음부터 잘하지 못한다.</p>
+                <p>못함을 통과한 사람이 고수가 되는 거다.</p>
+                <p>하면 추억이 되고, 안 하면 후회가 된다.</p>
+                <p>유튜브만이 아니다.</p>
+                <p>모든 시작을 막는 건 결국 두려움이다.</p>
+                <p>그렇게 카메라를 샀다!! ㅋ</p>
+                <div class="room-video">
+                  <iframe src="https://www.youtube.com/embed/-bdL4ZBqGqQ" title="두려움과 시작에 연결한 YouTube 영상" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                <p class="shared-memory-link"><a href="https://youtu.be/-bdL4ZBqGqQ" target="_blank" rel="noopener">YouTube에서 보기</a></p>
+              </div>
+            </div>
           </article>
         </div>
       </section>
 
       <section class="room-house-panel camera-gallery" id="camera-photo-room" aria-label="카메라 갤러리" hidden>
         <div class="room-house-panel-header">
-          <p class="room-section-label">사진방</p>
+          <p class="room-section-label">사진</p>
           <h2>카메라와 시선이 남긴 사진들</h2>
-          <button class="room-house-back" type="button">카메라의 집으로 돌아가기</button>
+          <button class="room-house-back" type="button">카메라별로 돌아가기</button>
         </div>
 
         <div class="room-section-heading">
           <p class="room-section-label">카메라와 현장의 흔적</p>
         </div>
         <div class="camera-gallery-grid">
+          <figure>
+            <img class="room-photo-image camera-gallery-photo" src="../assets/images/cameras/photo-frame-eye.jpg" alt="거울 앞에서 카메라를 들고 프레임을 보는 모습">
+          </figure>
           <figure>
             <img class="room-photo-image camera-gallery-photo" src="../assets/images/cameras/gallery-camera-self-portrait.jpg" alt="엘리베이터 거울 앞에서 카메라를 든 모습">
           </figure>
@@ -122,13 +160,13 @@
         <aside class="room-gallery-detail room-house-photo-detail" aria-live="polite" hidden></aside>
       </section>
 
-      <nav class="room-related" aria-label="취미방 이동">
-        <a class="room-soft-link" href="fountain-pens.html">다음 취미방: 만년필</a>
+      <nav class="room-related" aria-label="별 이동">
+        <a class="room-soft-link" href="fountain-pens.html">다음 별: 만년필</a>
         <a class="room-soft-link" href="../index.html#about-constellation">별자리로 돌아가기</a>
       </nav>
 
       <a class="back-link" href="../index.html">HAM MEDIA</a>
     </main>
-    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/main.js?v=room-writing-v1"></script>
   </body>
 </html>
