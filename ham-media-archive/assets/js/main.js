@@ -76,9 +76,9 @@ const constellationData = {
     roomLabel: "여행별로 들어가기"
   },
   bike: {
-    code: "LPH B-613-04",
+    code: "LPH-B613-04",
     kind: "사람",
-    name: "비워낸 별",
+    name: "비워낸 이야기",
     teaser: "몸을 비워 머리를 비운 일",
     result: "두 발로 가는 건 딴생각하면 큰일 난다. 머리가 복잡한 날엔 다리를 믿고 그냥 전진했다. 그렇게 몸을 비우는 법이, 지금도 나를 재운다.",
     invite: "비워야 채워진다는 걸 아는 사람이라면.",
@@ -86,8 +86,11 @@ const constellationData = {
     previewImage: "bicycles/hero-city-ride.jpg",
     previewAlt: "길 위의 자전거",
     previewCaption: "자전거별 대표 이미지",
+    stampImage: "bicycles/stamps/lph-b613-04-bicycle-stamp.png",
+    stampAlt: "LPH-B613-04 자전거별 도착 스탬프",
+    stampVariant: "wide",
     roomHref: "pages/bicycles.html",
-    roomLabel: "자전거별로 들어가기"
+    roomLabel: "입장권 발권"
   },
   space: {
     code: "LPH B-613-05",
@@ -265,12 +268,14 @@ function updateArrivalStamp(starData) {
     detailArrivalStamp.hidden = true;
     detailArrivalStamp.removeAttribute("src");
     detailArrivalStamp.alt = "";
+    detailArrivalStamp.classList.remove("is-wide-stamp");
     return;
   }
 
   detailArrivalStamp.hidden = false;
   detailArrivalStamp.src = getAssetImageUrl(starData.stampImage);
   detailArrivalStamp.alt = starData.stampAlt || `${starData.name} 도착 스탬프`;
+  detailArrivalStamp.classList.toggle("is-wide-stamp", starData.stampVariant === "wide");
 }
 
 function positionConstellationTicket(star) {
