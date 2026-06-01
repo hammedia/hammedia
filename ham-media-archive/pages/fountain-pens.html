@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Fountain Pens / 만년필 | HAM MEDIA</title>
-    <link rel="stylesheet" href="../assets/css/styles.css?v=ticket-compact">
+    <link rel="stylesheet" href="../assets/css/styles.css?v=room-list-v1">
   </head>
   <body class="world-body">
     <main class="world-page room-page room-house-page fountain-room">
@@ -15,7 +15,7 @@
         <p class="room-intro">살아남은 별</p>
       </header>
 
-      <section class="room-welcome" aria-label="만년필 방 웰컴 글">
+      <section class="room-welcome" aria-label="만년필 별 첫 문장">
         <span class="room-welcome-mark" aria-hidden="true"></span>
         <div class="room-welcome-copy">
           <p class="room-welcome-label">방의 첫 문장</p>
@@ -33,50 +33,47 @@
         </figure>
       </section>
 
-      <section class="room-house" aria-label="만년필의 집">
+      <section class="room-house" aria-label="만년필 별">
         <div class="room-section-heading">
-          <p class="room-section-label">만년필의 집</p>
-          <p class="room-section-help">현관에서 대표 사진을 보고, 안쪽 방으로 들어가 글과 사진을 따로 봅니다.</p>
+          <p class="room-section-label">만년필 별</p>
+          <p class="room-section-help">대표 사진을 지나 별 안으로 들어오면, 글과 사진과 자료를 따로 봅니다.</p>
         </div>
 
-        <nav class="room-house-nav" aria-label="만년필의 집 방 목록">
+        <nav class="room-house-nav" aria-label="만년필 별 메뉴">
           <button class="room-house-door" type="button" data-house-target="fountain-writing-room">
-            <strong>글방</strong>
-            <span>2개 기록 보기</span>
+            <strong>글</strong>
+            <span>2개</span>
           </button>
           <button class="room-house-door" type="button" data-house-target="fountain-photo-room">
-            <strong>사진방</strong>
-            <span>3장 보기</span>
+            <strong>사진</strong>
+            <span>3장</span>
           </button>
           <button class="room-house-door" type="button" disabled>
-            <strong>자료방</strong>
-            <span>나중에 열 방</span>
+            <strong>자료</strong>
+            <span>준비 중</span>
           </button>
         </nav>
       </section>
 
-      <section class="room-house-panel" id="fountain-writing-room" aria-label="만년필 글방" hidden>
+      <section class="room-house-panel" id="fountain-writing-room" aria-label="만년필 글" hidden>
         <div class="room-house-panel-header">
-          <p class="room-section-label">글방</p>
-          <h2>만년필 글 목록</h2>
-          <button class="room-house-back" type="button">만년필의 집으로 돌아가기</button>
+          <p class="room-section-label">글</p>
+          <h2>글 목록</h2>
+          <button class="room-house-back" type="button">만년필 별로 돌아가기</button>
         </div>
 
         <div class="room-article-list" aria-label="만년필 글 목록">
-          <button class="room-article-link" type="button" data-article-target="fountain-hobby-essay">
-            <span>글</span>
-            <strong>취미라는 것에 대하여.</strong>
-            <em>만년필 / 취미 / 기록</em>
+          <button class="room-article-link" type="button" data-article-target="fountain-hobby-essay" aria-label="취미라는 것에 대하여 읽기">
+            <strong>취미란 뭘까</strong>
           </button>
-          <button class="room-article-link" type="button" data-article-target="fountain-beethoven-emperor-note">
-            <span>글</span>
-            <strong>베토벤 황제 2악장, 열 가지 잉크로 쓴 밤</strong>
-            <em>만년필 / 자필 / 음악</em>
+          <button class="room-article-link" type="button" data-article-target="fountain-beethoven-emperor-note" aria-label="베토벤 황제 2악장, 열 가지 잉크로 쓴 밤 읽기">
+            <strong>황제의 밤</strong>
           </button>
         </div>
 
         <div class="room-card-list room-article-panels">
           <article class="room-post fountain-essay room-article-panel" id="fountain-hobby-essay" hidden>
+            <button class="room-article-back" type="button">글 목록</button>
             <header class="fountain-essay-header">
               <p class="room-card-meta">글</p>
               <h3>취미라는 것에 대하여.</h3>
@@ -140,6 +137,7 @@
           </article>
 
           <article class="room-post shared-memory-card room-article-panel" id="fountain-beethoven-emperor-note" hidden>
+            <button class="room-article-back" type="button">글 목록</button>
             <header class="fountain-essay-header">
               <p class="room-card-meta">글</p>
               <h3>베토벤 황제 2악장, 열 가지 잉크로 쓴 밤</h3>
@@ -171,38 +169,38 @@
         </div>
       </section>
 
-      <section class="room-house-panel" id="fountain-photo-room" aria-label="만년필 사진방" hidden>
+      <section class="room-house-panel" id="fountain-photo-room" aria-label="만년필 사진" hidden>
         <div class="room-house-panel-header">
-          <p class="room-section-label">사진방</p>
-          <h2>펜과 잉크, 손에 남은 흔적</h2>
-          <button class="room-house-back" type="button">만년필의 집으로 돌아가기</button>
+          <p class="room-section-label">사진</p>
+          <h2>사진 목록</h2>
+          <button class="room-house-back" type="button">만년필 별로 돌아가기</button>
         </div>
 
         <div class="room-house-photo-grid">
-          <figure class="room-house-photo">
+          <figure class="room-house-photo" data-memory="손으로 적어야 남는 문장들이 있다.">
             <img class="room-photo-image room-house-photo-thumb" src="../assets/images/fountain-pens/essay-handwriting-pens.jpg" alt="손글씨와 만년필 두 자루">
-            <figcaption>손으로 적어야 남는 문장들이 있다.</figcaption>
+            <figcaption>손글씨</figcaption>
           </figure>
-          <figure class="room-house-photo">
+          <figure class="room-house-photo" data-memory="펜촉 끝에 남는 감각.">
             <img class="room-photo-image room-house-photo-thumb" src="../assets/images/fountain-pens/photo-nib-closeup.jpg" alt="잉크가 묻은 만년필 펜촉 클로즈업">
-            <figcaption>펜촉 끝에 남는 감각.</figcaption>
+            <figcaption>펜촉</figcaption>
           </figure>
-          <figure class="room-house-photo">
+          <figure class="room-house-photo" data-memory="잉크와 종이, 그리고 써본 흔적.">
             <img class="room-photo-image room-house-photo-thumb" src="../assets/images/fountain-pens/archive-ink-test.jpg" alt="잉크병, 컬러 테스트, 펜, 종이, 티슈">
-            <figcaption>잉크와 종이, 그리고 써본 흔적.</figcaption>
+            <figcaption>잉크 테스트</figcaption>
           </figure>
         </div>
 
         <aside class="room-gallery-detail room-house-photo-detail" aria-live="polite" hidden></aside>
       </section>
 
-      <nav class="room-related" aria-label="취미방 이동">
-        <a class="room-soft-link" href="motorcycles.html">다음 취미방: 바이크</a>
+      <nav class="room-related" aria-label="별 이동">
+        <a class="room-soft-link" href="motorcycles.html">다음 별: 바이크</a>
         <a class="room-soft-link" href="../index.html#about-constellation">별자리로 돌아가기</a>
       </nav>
 
       <a class="back-link" href="../index.html">HAM MEDIA</a>
     </main>
-    <script src="../assets/js/main.js?v=ticket-compact"></script>
+    <script src="../assets/js/main.js?v=room-list-v1"></script>
   </body>
 </html>

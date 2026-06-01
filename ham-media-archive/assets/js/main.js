@@ -516,12 +516,41 @@ function buildRoomHouse() {
   const doors = Array.from(housePage.querySelectorAll(".room-house-door[data-house-target]"));
   const panels = Array.from(housePage.querySelectorAll(".room-house-panel"));
   const houseNav = housePage.querySelector(".room-house-nav");
+  const articleList = housePage.querySelector(".room-article-list");
+  const articleLinks = Array.from(housePage.querySelectorAll(".room-article-link[data-article-target]"));
+  const articlePanels = Array.from(housePage.querySelectorAll(".room-article-panel"));
+  const articleBackButtons = Array.from(housePage.querySelectorAll(".room-article-back"));
+  const photoDetail = housePage.querySelector(".room-house-photo-detail");
+  const photoPanel = housePage.querySelector("[id$='photo-room']");
+  const photoGrid = photoPanel?.querySelector(".room-house-photo-grid");
+  const photoFigures = Array.from(photoGrid?.querySelectorAll("figure") || housePage.querySelectorAll(".room-house-photo"));
+
+  function closeArticles() {
+    articlePanels.forEach((panel) => {
+      panel.hidden = true;
+    });
+    if (articleList) articleList.hidden = false;
+    articleLinks.forEach((link) => {
+      link.classList.remove("is-active");
+      link.setAttribute("aria-expanded", "false");
+    });
+  }
+
+  function closePhotoDetail() {
+    if (photoDetail) {
+      photoDetail.hidden = true;
+      photoDetail.replaceChildren();
+    }
+    if (photoGrid) photoGrid.hidden = false;
+    photoFigures.forEach((figure) => figure.classList.remove("is-active"));
+  }
 
   function closePanels() {
     panels.forEach((panel) => {
       panel.hidden = true;
     });
     closeArticles();
+    closePhotoDetail();
     doors.forEach((door) => {
       door.classList.remove("is-active");
       door.setAttribute("aria-expanded", "false");
@@ -559,19 +588,6 @@ function buildRoomHouse() {
     });
   });
 
-  const articleLinks = Array.from(housePage.querySelectorAll(".room-article-link[data-article-target]"));
-  const articlePanels = Array.from(housePage.querySelectorAll(".room-article-panel"));
-
-  function closeArticles() {
-    articlePanels.forEach((panel) => {
-      panel.hidden = true;
-    });
-    articleLinks.forEach((link) => {
-      link.classList.remove("is-active");
-      link.setAttribute("aria-expanded", "false");
-    });
-  }
-
   articleLinks.forEach((link) => {
     const target = housePage.querySelector(`#${link.dataset.articleTarget}`);
     if (!target) return;
@@ -579,6 +595,7 @@ function buildRoomHouse() {
     link.setAttribute("aria-expanded", "false");
     link.addEventListener("click", () => {
       closeArticles();
+      if (articleList) articleList.hidden = true;
       target.hidden = false;
       link.classList.add("is-active");
       link.setAttribute("aria-expanded", "true");
@@ -589,12 +606,85 @@ function buildRoomHouse() {
     });
   });
 
-  const photoDetail = housePage.querySelector(".room-house-photo-detail");
-  const photoPanel = housePage.querySelector("[id$='photo-room']");
-  const photoFigures = Array.from(photoPanel?.querySelectorAll("figure") || housePage.querySelectorAll(".room-house-photo"));
+  articleBackButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      closeArticles();
+      articleList?.scrollIntoView({
+        behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+        block: "start"
+      });
+    });
+  });
+
+  function openHousePhoto(index) {
+    const figure = photoFigures[index];
+    const image = figure?.querySelector("img");
+    if (!figure || !image || !photoDetail) return;
+
+    const captionText = figure.dataset.memory || figure.querySelector("figcaption")?.textContent.trim() || image.alt || "아직 기록할 기억을 기다리는 사진입니다.";
+
+    photoDetail.replaceChildren();
+
+    const actions = document.createElement("div");
+    actions.className = "room-gallery-detail-actions";
+
+    const backButton = document.createElement("button");
+    backButton.className = "room-gallery-detail-button";
+    backButton.type = "button";
+    backButton.textContent = "사진 목록";
+    backButton.addEventListener("click", () => {
+      closePhotoDetail();
+      photoGrid?.scrollIntoView({
+        behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+        block: "start"
+      });
+    });
+
+    const indexLabel = document.createElement("span");
+    indexLabel.className = "room-gallery-detail-index";
+    indexLabel.textContent = `${index + 1} / ${photoFigures.length}`;
+    actions.append(backButton, indexLabel);
+
+    const detailImage = image.cloneNode(false);
+    detailImage.className = "room-gallery-detail-photo";
+
+    const detailCopy = document.createElement("p");
+    detailCopy.className = "room-gallery-detail-copy";
+    detailCopy.textContent = captionText;
+
+    const nav = document.createElement("div");
+    nav.className = "room-gallery-detail-nav";
+
+    const previousButton = document.createElement("button");
+    previousButton.className = "room-gallery-detail-button";
+    previousButton.type = "button";
+    previousButton.textContent = "이전";
+    previousButton.disabled = index === 0;
+    previousButton.addEventListener("click", () => openHousePhoto(index - 1));
+
+    const nextButton = document.createElement("button");
+    nextButton.className = "room-gallery-detail-button";
+    nextButton.type = "button";
+    nextButton.textContent = "다음";
+    nextButton.disabled = index === photoFigures.length - 1;
+    nextButton.addEventListener("click", () => openHousePhoto(index + 1));
+
+    nav.append(previousButton, nextButton);
+    photoDetail.append(actions, detailImage, detailCopy, nav);
+    photoDetail.hidden = false;
+    if (photoGrid) photoGrid.hidden = true;
+
+    photoFigures.forEach((activeFigure) => activeFigure.classList.remove("is-active"));
+    figure.classList.add("is-active");
+
+    photoDetail.scrollIntoView({
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+      block: "start"
+    });
+  }
+
   photoFigures.forEach((figure, index) => {
     const image = figure.querySelector("img");
-    const captionText = figure.querySelector("figcaption")?.textContent.trim() || "";
     if (!image || !photoDetail) return;
 
     figure.classList.add("room-house-photo", "room-memory-clickable");
@@ -602,9 +692,7 @@ function buildRoomHouse() {
     figure.setAttribute("role", "button");
     figure.setAttribute("aria-label", `${image.alt || `사진 ${index + 1}`} 크게 보기`);
 
-    const open = () => {
-      openGalleryDetail(photoDetail, figure, image, captionText);
-    };
+    const open = () => openHousePhoto(index);
 
     figure.addEventListener("click", open);
     figure.addEventListener("keydown", (event) => {
