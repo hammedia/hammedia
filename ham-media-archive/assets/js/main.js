@@ -528,6 +528,7 @@ function buildRoomHouse() {
   function closeArticles() {
     articlePanels.forEach((panel) => {
       panel.hidden = true;
+      panel.closest(".room-house-panel")?.classList.remove("is-detail-mode");
     });
     if (articleList) articleList.hidden = false;
     articleLinks.forEach((link) => {
@@ -541,6 +542,7 @@ function buildRoomHouse() {
       photoDetail.hidden = true;
       photoDetail.replaceChildren();
     }
+    photoPanel?.classList.remove("is-photo-detail-mode");
     if (photoGrid) photoGrid.hidden = false;
     photoFigures.forEach((figure) => figure.classList.remove("is-active"));
   }
@@ -597,6 +599,7 @@ function buildRoomHouse() {
       closeArticles();
       if (articleList) articleList.hidden = true;
       target.hidden = false;
+      target.closest(".room-house-panel")?.classList.add("is-detail-mode");
       link.classList.add("is-active");
       link.setAttribute("aria-expanded", "true");
       target.scrollIntoView({
@@ -672,6 +675,7 @@ function buildRoomHouse() {
     nav.append(previousButton, nextButton);
     photoDetail.append(actions, detailImage, detailCopy, nav);
     photoDetail.hidden = false;
+    photoPanel?.classList.add("is-photo-detail-mode");
     if (photoGrid) photoGrid.hidden = true;
 
     photoFigures.forEach((activeFigure) => activeFigure.classList.remove("is-active"));
