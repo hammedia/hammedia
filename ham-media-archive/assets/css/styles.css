@@ -2019,6 +2019,54 @@ h1 {
   line-height: 1.75;
 }
 
+.bicycle-room .room-article-list {
+  gap: 0;
+  border-top: 1px solid rgba(28, 24, 20, 0.1);
+  border-bottom: 1px solid rgba(28, 24, 20, 0.1);
+}
+
+.bicycle-room .room-article-link {
+  min-height: 3rem;
+  padding: 0.88rem 0.1rem;
+  border: 0;
+  border-bottom: 1px solid rgba(28, 24, 20, 0.09);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.bicycle-room .room-article-link:last-child {
+  border-bottom: 0;
+}
+
+.bicycle-room .room-article-link:hover,
+.bicycle-room .room-article-link:focus-visible,
+.bicycle-room .room-article-link.is-active {
+  background: rgba(255, 252, 244, 0.52);
+  box-shadow: none;
+}
+
+.bicycle-room .room-house-photo {
+  cursor: zoom-in;
+}
+
+.bicycle-room .room-house-photo .room-photo-image {
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+.bicycle-room .room-house-photo:hover .room-photo-image,
+.bicycle-room .room-house-photo:focus-within .room-photo-image {
+  transform: translateY(-2px);
+  border-color: rgba(126, 181, 232, 0.44);
+  box-shadow: 0 14px 32px rgba(45, 37, 27, 0.08);
+}
+
+.bicycle-room .room-house-photo-detail .room-gallery-detail-photo {
+  justify-self: center;
+  width: min(100%, 58rem);
+  max-height: min(86vh, 52rem);
+}
+
 .room-video {
   position: relative;
   width: 100%;
@@ -3876,6 +3924,11 @@ h1 {
 
   .room-house-photo-detail .room-gallery-detail-photo {
     max-height: 72vh;
+  }
+
+  .bicycle-room .room-house-photo-detail .room-gallery-detail-photo {
+    width: 100%;
+    max-height: none;
   }
 
   .room-star-list div {
