@@ -42,6 +42,7 @@ const constellationData = {
     previewImage: "fountain-pens/hero-window-table.jpg",
     previewAlt: "창가 테이블 위의 만년필과 노트",
     previewCaption: "만년필별 대표 이미지",
+    previewFit: "cover",
     stampImage: "fountain-pens/stamps/lph-b613-01-fountain-pen-stamp.png",
     stampAlt: "LPH-B613-01 만년필별 도착 스탬프",
     roomHref: "pages/fountain-pens.html",
@@ -267,6 +268,7 @@ function updateDetailPreview(starData) {
 
   if (!starData.previewImage) {
     detailPreview.hidden = true;
+    detailPreview.classList.remove("is-cover-preview");
     detailPreviewImage.removeAttribute("src");
     detailPreviewImage.alt = "";
     detailPreviewCaption.textContent = "";
@@ -277,6 +279,7 @@ function updateDetailPreview(starData) {
   detailPreviewImage.src = getAssetImageUrl(starData.previewImage);
   detailPreviewImage.alt = starData.previewAlt || `${starData.name} 대표 이미지`;
   detailPreviewCaption.textContent = starData.previewCaption || "대표 이미지";
+  detailPreview.classList.toggle("is-cover-preview", starData.previewFit === "cover");
 }
 
 function updateArrivalStamp(starData) {

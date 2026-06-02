@@ -3309,6 +3309,12 @@ h1 {
   box-shadow: 0 16px 38px rgba(0, 0, 0, 0.18);
 }
 
+.detail-preview.is-cover-preview img {
+  height: clamp(8.8rem, 19vw, 12.8rem);
+  object-fit: cover;
+  background: rgba(0, 0, 0, 0.34);
+}
+
 .detail-preview figcaption {
   display: none;
 }
