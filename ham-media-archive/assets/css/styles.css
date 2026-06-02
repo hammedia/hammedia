@@ -2020,6 +2020,7 @@ h1 {
 }
 
 .bicycle-room .room-article-list,
+.camera-room .room-article-list,
 .food-room .room-article-list,
 .travel-room .room-article-list {
   gap: 0;
@@ -2028,6 +2029,7 @@ h1 {
 }
 
 .bicycle-room .room-article-link,
+.camera-room .room-article-link,
 .food-room .room-article-link,
 .travel-room .room-article-link {
   min-height: 3rem;
@@ -2040,6 +2042,7 @@ h1 {
 }
 
 .bicycle-room .room-article-link:last-child,
+.camera-room .room-article-link:last-child,
 .food-room .room-article-link:last-child,
 .travel-room .room-article-link:last-child {
   border-bottom: 0;
@@ -2048,6 +2051,9 @@ h1 {
 .bicycle-room .room-article-link:hover,
 .bicycle-room .room-article-link:focus-visible,
 .bicycle-room .room-article-link.is-active,
+.camera-room .room-article-link:hover,
+.camera-room .room-article-link:focus-visible,
+.camera-room .room-article-link.is-active,
 .food-room .room-article-link:hover,
 .food-room .room-article-link:focus-visible,
 .food-room .room-article-link.is-active,
@@ -2059,12 +2065,14 @@ h1 {
 }
 
 .bicycle-room .room-house-photo,
+.camera-room .room-house-photo,
 .food-room .room-house-photo,
 .travel-room .room-house-photo {
   cursor: zoom-in;
 }
 
 .bicycle-room .room-house-photo .room-photo-image,
+.camera-room .room-house-photo .room-photo-image,
 .food-room .room-house-photo .room-photo-image,
 .travel-room .room-house-photo .room-photo-image {
   transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
@@ -2072,6 +2080,8 @@ h1 {
 
 .bicycle-room .room-house-photo:hover .room-photo-image,
 .bicycle-room .room-house-photo:focus-within .room-photo-image,
+.camera-room .room-house-photo:hover .room-photo-image,
+.camera-room .room-house-photo:focus-within .room-photo-image,
 .food-room .room-house-photo:hover .room-photo-image,
 .food-room .room-house-photo:focus-within .room-photo-image,
 .travel-room .room-house-photo:hover .room-photo-image,
@@ -2082,6 +2092,7 @@ h1 {
 }
 
 .bicycle-room .room-house-photo-detail .room-gallery-detail-photo,
+.camera-room .room-house-photo-detail .room-gallery-detail-photo,
 .food-room .room-house-photo-detail .room-gallery-detail-photo,
 .travel-room .room-house-photo-detail .room-gallery-detail-photo {
   justify-self: center;

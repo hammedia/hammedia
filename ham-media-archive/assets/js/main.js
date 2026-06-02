@@ -153,9 +153,9 @@ const constellationData = {
     roomLabel: "입장권 발권"
   },
   camera: {
-    code: "LPH B-613-09",
+    code: "LPH-B613-09",
     kind: "일",
-    name: "무엇을 담을지 보는 별",
+    name: "무엇을 담을지 보는 이야기",
     teaser: "찍기보다 무엇을 담을지 고르는 눈",
     result: "찍는 것보다, 무엇을 찍을지 고르는 순간이 좋았다. 그 눈이 카메라를 들게 했고, 지금도 그 눈으로 화면을 고른다.",
     invite: "무엇을 담을지 아는 게 먼저다. 영상은 거기서 시작된다.",
@@ -163,8 +163,10 @@ const constellationData = {
     previewImage: "cameras/hero-camera-notebook.jpg",
     previewAlt: "노트와 함께 놓인 카메라",
     previewCaption: "카메라별 대표 이미지",
+    stampImage: "cameras/stamps/lph-b613-09-cameras-stamp.jpg",
+    stampAlt: "LPH-B613-09 카메라별 도착 스탬프",
     roomHref: "pages/cameras.html",
-    roomLabel: "카메라별로 들어가기"
+    roomLabel: "입장권 발권"
   }
 };
 
