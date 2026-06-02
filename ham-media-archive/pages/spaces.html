@@ -3,19 +3,20 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Spaces / 공간 | HAM MEDIA</title>
-    <link rel="stylesheet" href="../assets/css/styles.css">
+    <title>공간별 | HAM MEDIA</title>
+    <link rel="stylesheet" href="../assets/css/styles.css?v=room-panel-clean-v3">
   </head>
   <body class="world-body">
     <main class="world-page room-page room-house-page space-room">
       <header class="room-header">
-        <p class="eyebrow">Spaces</p>
-        <h1>Spaces / 공간</h1>
-        <p class="room-star-code">LPH B-613-05</p>
-        <p class="room-intro">머무는 방식을 배운 별</p>
+        <div class="room-stamp-row" aria-label="공간별 도착 스탬프">
+          <p class="room-star-code">LPH-B613-05</p>
+          <img class="room-arrival-stamp is-wide-stamp" src="../assets/images/spaces/stamps/lph-b613-05-spaces-stamp.jpg" alt="LPH-B613-05 공간별 도착 스탬프">
+        </div>
+        <h1>공간별</h1>
       </header>
 
-      <section class="room-welcome" aria-label="공간 방 웰컴 글">
+      <section class="room-welcome" aria-label="공간별 첫 문장">
         <span class="room-welcome-mark" aria-hidden="true"></span>
         <div class="room-welcome-copy">
           <p class="room-welcome-label">방의 첫 문장</p>
@@ -25,33 +26,54 @@
           </blockquote>
         </div>
       </section>
-      <section class="room-house" aria-label="공간의 집">
+
+      <section class="room-hero" aria-label="공간별 대표 사진">
+        <figure class="space-featured">
+          <img class="room-photo-image space-photo-slot" src="../assets/images/spaces/hero-working-desk.jpg" alt="영상 편집 화면과 원고 화면이 함께 놓인 작업 책상">
+          <figcaption>영상 편집과 원고가 함께 놓인 자리. 머무는 방식이 일하는 방식이 된다.</figcaption>
+        </figure>
+      </section>
+
+      <section class="room-house" aria-label="공간별">
         <div class="room-section-heading">
-          <p class="room-section-label">공간의 집</p>
-          <p class="room-section-help">이 방은 아직 글과 사진을 채우기 전입니다. 먼저 첫 문장만 남겨 둡니다.</p>
+          <p class="room-section-label">공간별</p>
         </div>
 
-        <nav class="room-house-nav" aria-label="공간의 집 방 목록">
+        <nav class="room-house-nav" aria-label="공간별 메뉴">
           <button class="room-house-door" type="button" disabled>
-            <strong>글방</strong>
-            <span>기록 준비 중</span>
+            <strong>글</strong>
+            <span>준비 중</span>
           </button>
           <button class="room-house-door" type="button" disabled>
-            <strong>사진방</strong>
-            <span>사진 준비 중</span>
+            <strong>사진</strong>
+            <span>준비 중</span>
           </button>
           <button class="room-house-door" type="button" disabled>
-            <strong>자료방</strong>
-            <span>나중에 열 방</span>
+            <strong>자료</strong>
+            <span>준비 중</span>
           </button>
         </nav>
       </section>
-      <nav class="room-related" aria-label="취미방 이동">
-        <a class="room-soft-link" href="cars.html">다음 취미방: 자동차</a>
-        <a class="room-soft-link" href="../index.html#about-constellation">별자리로 돌아가기</a>
+
+      <nav class="room-star-list" aria-label="전체 별 목록">
+        <p>별 목록</p>
+        <div>
+          <a href="fountain-pens.html">만년필별</a>
+          <a href="music-audio.html">음악·오디오별</a>
+          <a href="cameras.html">카메라별</a>
+          <a href="travel.html">여행별</a>
+          <a href="food.html">음식별</a>
+          <a href="bicycles.html">자전거별</a>
+          <a href="cars.html">자동차별</a>
+          <a href="motorcycles.html">바이크별</a>
+          <span class="is-current">공간별</span>
+        </div>
       </nav>
 
-      <a class="back-link" href="../index.html">HAM MEDIA</a>
+      <nav class="room-related" aria-label="별 이동">
+        <a class="room-soft-link" href="../index.html#about-constellation">별자리로 돌아가기</a>
+        <a class="room-soft-link room-work-link" href="ham-media-work.html">그래서, 지금은 이런 일을 합니다</a>
+      </nav>
     </main>
     <script src="../assets/js/main.js"></script>
   </body>

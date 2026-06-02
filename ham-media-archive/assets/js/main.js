@@ -98,15 +98,18 @@ const constellationData = {
     roomLabel: "입장권 발권"
   },
   space: {
-    code: "LPH B-613-05",
+    code: "LPH-B613-05",
     kind: "사람",
-    name: "머무는 방식을 배운 별",
+    name: "머무는 방식을 배운 이야기",
     teaser: "머무는 곳을 그냥 두지 못하는 마음",
     result: "책상이건 차 안이건 공원 벤치건, 나는 내가 머무는 곳을 그냥 두지 못했다. 작은 물건 하나, 빛의 방향 하나가 사람의 기분을 바꾼다는 걸 아니까.",
     invite: "나만의 공간과, 함께 하는 공간. 그 디테일을 아는 사람이라면.",
-    asset: "실제 사진 준비 중: 실제 책상, 차 안, 작업실, 공간 디테일 사진",
+    asset: "작업 화면과 원고가 함께 놓인 실제 작업 공간 사진",
+    stampImage: "spaces/stamps/lph-b613-05-spaces-stamp.jpg",
+    stampAlt: "LPH-B613-05 공간별 도착 스탬프",
+    stampVariant: "wide",
     roomHref: "pages/spaces.html",
-    roomLabel: "공간별로 들어가기"
+    roomLabel: "입장권 발권"
   },
   car: {
     code: "LPH B-613-06",
