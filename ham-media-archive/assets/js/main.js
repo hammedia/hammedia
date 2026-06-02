@@ -62,9 +62,9 @@ const constellationData = {
     roomLabel: "바이크별로 들어가기"
   },
   travel: {
-    code: "LPH B-613-03",
+    code: "LPH-B613-03",
     kind: "일",
-    name: "자리를 옮겨 보는 별",
+    name: "자리를 옮기는 이야기",
     teaser: "자리를 바꾸면 생각도 바뀐다는 믿음",
     result: "서 있는 자리가 바뀌면 보이는 게 달라진다. 모르는 곳에서 다른 생각을 하면, 거기서 뜻이 생긴다. 자리를 옮겨 보는 그 버릇이, 내 번역의 방식이 됐다.",
     invite: "전문가의 자리에서 보던 걸 청중의 자리로 옮겨 보는 일. 그게 내가 하는 번역이다.",
@@ -72,8 +72,10 @@ const constellationData = {
     previewImage: "travel/hero-station-suitcase-waiting.jpg",
     previewAlt: "기차역에서 캐리어와 함께 기다리는 순간",
     previewCaption: "여행별 대표 이미지",
+    stampImage: "travel/stamps/lph-b613-03-travel-stamp.jpg",
+    stampAlt: "LPH-B613-03 여행별 도착 스탬프",
     roomHref: "pages/travel.html",
-    roomLabel: "여행별로 들어가기"
+    roomLabel: "입장권 발권"
   },
   bike: {
     code: "LPH-B613-04",
