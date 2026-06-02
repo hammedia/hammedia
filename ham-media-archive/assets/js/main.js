@@ -118,9 +118,9 @@ const constellationData = {
     roomLabel: "자동차별로 들어가기"
   },
   food: {
-    code: "LPH B-613-07",
+    code: "LPH-B613-07",
     kind: "일",
-    name: "감각을 익힌 별",
+    name: "감각을 익힌 이야기",
     teaser: "입으로 들어가 마음에 담기는 일",
     result: "일본에서, 미국에서, 한국에서. 평생 사람 입으로 들어가 마음에 담기는 일을 했다. 커피로 맛과 향을 훈련하며 세상의 맛을 익혔다. 혀로 익힌 그 감각이, 콘텐츠를 보는 눈으로 이어졌다.",
     invite: "감각은 타고나는 게 아니라 훈련된다. 보는 눈도 그렇게 길렀다.",
@@ -128,8 +128,10 @@ const constellationData = {
     previewImage: "food/hero-cafe-table-coffee.jpg",
     previewAlt: "카페 테이블 위 커피",
     previewCaption: "음식별 대표 이미지",
+    stampImage: "food/stamps/lph-b613-07-food-stamp.jpg",
+    stampAlt: "LPH-B613-07 음식별 도착 스탬프",
     roomHref: "pages/food.html",
-    roomLabel: "음식별로 들어가기"
+    roomLabel: "입장권 발권"
   },
   audio: {
     code: "LPH-B613-08",

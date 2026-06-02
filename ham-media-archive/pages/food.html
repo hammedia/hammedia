@@ -3,16 +3,18 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Food / 음식 | HAM MEDIA</title>
-    <link rel="stylesheet" href="../assets/css/styles.css">
+    <title>음식별 | HAM MEDIA</title>
+    <link rel="stylesheet" href="../assets/css/styles.css?v=food-room-v1">
   </head>
   <body class="world-body">
     <main class="world-page room-page room-house-page food-room">
       <header class="room-header">
         <p class="eyebrow">Food</p>
-        <h1>Food / 음식</h1>
-        <p class="room-star-code">LPH B-613-07</p>
-        <p class="room-intro">감각을 익힌 별</p>
+        <div class="room-stamp-row" aria-label="음식별 도착 스탬프">
+          <p class="room-star-code">LPH-B613-07</p>
+          <img class="room-arrival-stamp" src="../assets/images/food/stamps/lph-b613-07-food-stamp.jpg" alt="LPH-B613-07 음식별 도착 스탬프">
+        </div>
+        <h1>음식별</h1>
       </header>
 
       <section class="room-welcome" aria-label="음식 방 웰컴 글">
@@ -32,73 +34,77 @@
         </figure>
       </section>
 
-      <section class="room-house" aria-label="음식의 집">
+      <section class="room-house" aria-label="음식별">
         <div class="room-section-heading">
-          <p class="room-section-label">음식의 집</p>
-          <p class="room-section-help">현관에서 대표 사진을 보고, 안쪽 방으로 들어가 글과 사진을 따로 봅니다.</p>
+          <p class="room-section-label">음식별</p>
         </div>
 
-        <nav class="room-house-nav" aria-label="음식의 집 방 목록">
+        <nav class="room-house-nav" aria-label="음식별 보기">
           <button class="room-house-door" type="button" data-house-target="food-writing-room">
-            <strong>글방</strong>
+            <strong>글</strong>
             <span>2개 기록 보기</span>
           </button>
           <button class="room-house-door" type="button" data-house-target="food-photo-room">
-            <strong>사진방</strong>
+            <strong>사진</strong>
             <span>21장 보기</span>
           </button>
           <button class="room-house-door" type="button" disabled>
-            <strong>자료방</strong>
-            <span>나중에 열 방</span>
+            <strong>자료</strong>
+            <span>준비 중</span>
           </button>
         </nav>
       </section>
 
       <section class="room-house-panel" id="food-writing-room" aria-label="음식 글 목록" hidden>
         <div class="room-house-panel-header">
-          <p class="room-section-label">글방</p>
+          <p class="room-section-label">글</p>
           <h2>맛과 서비스가 남긴 글</h2>
-          <button class="room-house-back" type="button">음식의 집으로 돌아가기</button>
+          <button class="room-house-back" type="button">음식별로 돌아가기</button>
         </div>
 
-        <div class="room-card-list">
-          <article class="room-post room-card room-record-unit food-record-card">
-            <figure class="room-record-figure">
-              <img class="room-photo-image room-record-photo" src="../assets/images/food/essay-delacasa-trace.jpg" alt="델라카사의 흔적이 보이는 음식 공간 사진">
-              <figcaption class="room-record-caption">
-                <span class="room-card-meta">글</span>
-                <strong class="room-card-title">델라카사 신포점</strong>
-                <span class="room-card-note">첫 매장 / 기획 / 기억</span>
-                <span>나의 첫 매장. 내가 기획하고, 내가 만들고, 내가 문 닫은, 정말 나의 모든 것이 들어가 있는 곳.</span>
-              </figcaption>
-            </figure>
-          </article>
-
-          <article class="room-post room-card room-record-unit food-record-card">
-            <figure class="room-record-figure">
-              <img class="room-photo-image room-record-photo" src="../assets/images/food/photo-plate-texture.jpg" alt="음식의 질감과 접시가 보이는 사진">
-              <figcaption class="room-record-caption">
-                <span class="room-card-meta">사진</span>
-                <strong class="room-card-title">철판 앞의 기억</strong>
-                <span class="room-card-note">송도 / 오코노미야키 / 철판</span>
-                <span>송도에서 오코노미야키를 잠시 만들었던 때가 있었다. 정말 철판 앞이 너무 더웠다.</span>
-              </figcaption>
-            </figure>
-          </article>
+        <div class="room-article-list" aria-label="음식별 글 목록">
+          <button class="room-article-link" type="button" data-article-target="food-article-delacasa">
+            <span>첫 매장</span>
+            <strong>델라카사 신포점</strong>
+          </button>
+          <button class="room-article-link" type="button" data-article-target="food-article-plate">
+            <span>철판</span>
+            <strong>철판 앞의 기억</strong>
+          </button>
         </div>
+
+        <article class="room-article-panel" id="food-article-delacasa" hidden>
+          <button class="room-article-back" type="button">글 목록</button>
+          <h2>델라카사 신포점</h2>
+          <p class="room-card-note">첫 매장 / 기획 / 기억</p>
+          <figure class="room-article-figure">
+            <img class="room-photo-image room-record-photo" src="../assets/images/food/essay-delacasa-trace.jpg" alt="델라카사의 흔적이 보이는 음식 공간 사진">
+            <figcaption>나의 첫 매장. 내가 기획하고, 내가 만들고, 내가 문 닫은, 정말 나의 모든 것이 들어가 있는 곳.</figcaption>
+          </figure>
+        </article>
+
+        <article class="room-article-panel" id="food-article-plate" hidden>
+          <button class="room-article-back" type="button">글 목록</button>
+          <h2>철판 앞의 기억</h2>
+          <p class="room-card-note">송도 / 오코노미야키 / 철판</p>
+          <figure class="room-article-figure">
+            <img class="room-photo-image room-record-photo" src="../assets/images/food/photo-plate-texture.jpg" alt="음식의 질감과 접시가 보이는 사진">
+            <figcaption>송도에서 오코노미야키를 잠시 만들었던 때가 있었다. 정말 철판 앞이 너무 더웠다.</figcaption>
+          </figure>
+        </article>
       </section>
 
       <section class="room-house-panel food-gallery" id="food-photo-room" aria-label="음식 갤러리" hidden>
         <div class="room-house-panel-header">
-          <p class="room-section-label">사진방</p>
+          <p class="room-section-label">사진</p>
           <h2>커피, 접시, 테이블의 사진들</h2>
-          <button class="room-house-back" type="button">음식의 집으로 돌아가기</button>
+          <button class="room-house-back" type="button">음식별로 돌아가기</button>
         </div>
 
         <div class="room-section-heading">
           <p class="room-section-label">커피, 접시, 테이블의 흔적</p>
         </div>
-        <div class="food-gallery-grid">
+        <div class="room-house-photo-grid food-gallery-grid">
           <figure>
             <img class="room-photo-image food-gallery-photo" src="../assets/images/food/gallery-img-9578.jpg" alt="커피, 접시, 테이블 사진 1">
             <figcaption>신포시장의 추억.</figcaption>
@@ -188,13 +194,26 @@
         <aside class="room-gallery-detail room-house-photo-detail" aria-live="polite" hidden></aside>
       </section>
 
-      <nav class="room-related" aria-label="취미방 이동">
-        <a class="room-soft-link" href="travel.html">다음 취미방: 여행</a>
-        <a class="room-soft-link" href="../index.html#about-constellation">별자리로 돌아가기</a>
+      <nav class="room-star-list" aria-label="전체 별 목록">
+        <p>별 목록</p>
+        <div>
+          <a href="fountain-pens.html">만년필별</a>
+          <a href="music-audio.html">음악·오디오별</a>
+          <a href="cameras.html">카메라별</a>
+          <a href="travel.html">여행별</a>
+          <span class="is-current">음식별</span>
+          <a href="bicycles.html">자전거별</a>
+          <a href="cars.html">자동차별</a>
+          <a href="motorcycles.html">바이크별</a>
+          <a href="spaces.html">공간별</a>
+        </div>
       </nav>
 
-      <a class="back-link" href="../index.html">HAM MEDIA</a>
+      <nav class="room-related" aria-label="별 이동">
+        <a class="room-soft-link" href="../index.html#about-constellation">별자리로 돌아가기</a>
+        <a class="room-soft-link room-work-link" href="ham-media-work.html">그래서, 지금은 이런 일을 합니다</a>
+      </nav>
     </main>
-    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/main.js?v=food-room-v1"></script>
   </body>
 </html>
