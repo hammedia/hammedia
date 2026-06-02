@@ -1942,6 +1942,28 @@ h1 {
   display: none;
 }
 
+.room-house-page .room-article-panel .room-record-figure {
+  width: 100%;
+}
+
+.room-house-page .room-article-panel .room-record-photo {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  max-height: none;
+  border: 0;
+  border-radius: 10px;
+  aspect-ratio: auto;
+  background: transparent;
+  box-shadow: none;
+  object-fit: contain;
+  justify-self: stretch;
+}
+
+.room-house-page .room-article-panel .room-record-caption {
+  max-width: 58rem;
+}
+
 .room-house-page .fountain-essay-header,
 .room-house-page .shared-memory-card .fountain-essay-header {
   max-width: 48rem;
