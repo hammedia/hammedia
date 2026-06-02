@@ -132,9 +132,9 @@ const constellationData = {
     roomLabel: "음식별로 들어가기"
   },
   audio: {
-    code: "LPH B-613-08",
+    code: "LPH-B613-08",
     kind: "일",
-    name: "고르고 빼는 별",
+    name: "고르고 빼는 이야기",
     teaser: "무엇을 틀고 뺄지 고르는 감각",
     result: "나는 늘 내 인생의 OST를 생각한다. 좋은 오디오일수록 더 깊이 빠져든다. 그래서 오디오 유튜브를 했고, 오디오 업체에서 일했다. 무엇을 틀고 무엇을 뺄지 고르던 그 귀가, 지금 내 편집의 본질이다.",
     invite: "음악은 결국 선곡이다. 내 콘텐츠도 똑같다.",
@@ -142,8 +142,11 @@ const constellationData = {
     previewImage: "music-audio/hero-listening-space.jpg",
     previewAlt: "스피커와 청취 공간",
     previewCaption: "음악·오디오별 대표 이미지",
+    stampImage: "music-audio/stamps/lph-b613-08-audio-stamp.png",
+    stampAlt: "LPH-B613-08 음악·오디오별 도착 스탬프",
+    stampVariant: "wide",
     roomHref: "pages/music-audio.html",
-    roomLabel: "음악·오디오별로 들어가기"
+    roomLabel: "입장권 발권"
   },
   camera: {
     code: "LPH B-613-09",

@@ -3,19 +3,20 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Music &amp; Audio / 음악·오디오 | HAM MEDIA</title>
-    <link rel="stylesheet" href="../assets/css/styles.css">
+    <title>음악·오디오별 | HAM MEDIA</title>
+    <link rel="stylesheet" href="../assets/css/styles.css?v=audio-room-v1">
   </head>
   <body class="world-body">
     <main class="world-page room-page room-house-page audio-room">
       <header class="room-header">
-        <p class="eyebrow">Music &amp; Audio</p>
-        <h1>Music &amp; Audio / 음악·오디오</h1>
-        <p class="room-star-code">LPH B-613-08</p>
-        <p class="room-intro">고르고 빼는 별</p>
+        <div class="room-stamp-row" aria-label="음악·오디오별 도착 스탬프">
+          <p class="room-star-code">LPH-B613-08</p>
+          <img class="room-arrival-stamp is-wide-stamp" src="../assets/images/music-audio/stamps/lph-b613-08-audio-stamp.png" alt="LPH-B613-08 음악·오디오별 도착 스탬프">
+        </div>
+        <h1>음악·오디오별</h1>
       </header>
 
-      <section class="room-welcome" aria-label="음악·오디오 방 웰컴 글">
+      <section class="room-welcome" aria-label="음악·오디오별 첫 문장">
         <span class="room-welcome-mark" aria-hidden="true"></span>
         <div class="room-welcome-copy">
           <p class="room-welcome-label">방의 첫 문장</p>
@@ -32,23 +33,22 @@
         </figure>
       </section>
 
-      <section class="room-house" aria-label="음악·오디오의 집">
+      <section class="room-house" aria-label="음악·오디오별">
         <div class="room-section-heading">
-          <p class="room-section-label">음악·오디오의 집</p>
-          <p class="room-section-help">현관에서 대표 사진을 보고, 안쪽 방으로 들어가 글과 사진을 따로 봅니다.</p>
+          <p class="room-section-label">음악·오디오별</p>
         </div>
 
-        <nav class="room-house-nav" aria-label="음악·오디오의 집 방 목록">
+        <nav class="room-house-nav" aria-label="음악·오디오별 메뉴">
           <button class="room-house-door" type="button" data-house-target="audio-writing-room">
-            <strong>글방</strong>
+            <strong>글</strong>
             <span>5개 기록 보기</span>
           </button>
           <button class="room-house-door" type="button" data-house-target="audio-photo-room">
-            <strong>사진방</strong>
+            <strong>사진</strong>
             <span>14장 보기</span>
           </button>
           <button class="room-house-door" type="button" disabled>
-            <strong>자료방</strong>
+            <strong>자료</strong>
             <span>나중에 열 방</span>
           </button>
         </nav>
@@ -56,13 +56,32 @@
 
       <section class="room-house-panel" id="audio-writing-room" aria-label="음악·오디오 글 목록" hidden>
         <div class="room-house-panel-header">
-          <p class="room-section-label">글방</p>
-          <h2>무엇을 틀고 뺄지 고른 글</h2>
-          <button class="room-house-back" type="button">음악·오디오의 집으로 돌아가기</button>
+          <p class="room-section-label">글</p>
+          <h2>글 목록</h2>
+          <button class="room-house-back" type="button">음악·오디오별로 돌아가기</button>
         </div>
 
-        <div class="room-card-list">
-          <article class="room-post shared-memory-card" id="audio-beethoven-emperor-note">
+        <div class="room-article-list" aria-label="음악·오디오 글 목록">
+          <button class="room-article-link" type="button" data-article-target="audio-beethoven-emperor-note" aria-label="황제의 밤 읽기">
+            <strong>황제의 밤</strong>
+          </button>
+          <button class="room-article-link" type="button" data-article-target="audio-brahms-piano-trios-note" aria-label="다독거림 읽기">
+            <strong>다독거림</strong>
+          </button>
+          <button class="room-article-link" type="button" data-article-target="audio-keith-jarrett-career-note" aria-label="키스 자렛 읽기">
+            <strong>키스 자렛</strong>
+          </button>
+          <button class="room-article-link" type="button" data-article-target="audio-rack-books-note" aria-label="쉬는 장비 읽기">
+            <strong>쉬는 장비</strong>
+          </button>
+          <button class="room-article-link" type="button" data-article-target="audio-family-hifi-note" aria-label="가족의 하이파이 읽기">
+            <strong>가족의 하이파이</strong>
+          </button>
+        </div>
+
+        <div class="room-card-list room-article-panels">
+          <article class="room-post shared-memory-card room-article-panel" id="audio-beethoven-emperor-note" hidden>
+            <button class="room-article-back" type="button">글 목록</button>
             <header class="audio-entry-header">
               <p class="room-card-meta">글</p>
               <h3>베토벤 황제 2악장, 열 가지 잉크로 쓴 밤</h3>
@@ -92,7 +111,8 @@
             </div>
           </article>
 
-          <article class="room-post shared-memory-card" id="audio-brahms-piano-trios-note">
+          <article class="room-post shared-memory-card room-article-panel" id="audio-brahms-piano-trios-note" hidden>
+            <button class="room-article-back" type="button">글 목록</button>
             <header class="audio-entry-header">
               <p class="room-card-meta">글</p>
               <h3>누군가의 다독거림이 듣고 싶을 때</h3>
@@ -120,7 +140,8 @@
             </div>
           </article>
 
-          <article class="room-post shared-memory-card" id="audio-keith-jarrett-career-note">
+          <article class="room-post shared-memory-card room-article-panel" id="audio-keith-jarrett-career-note" hidden>
+            <button class="room-article-back" type="button">글 목록</button>
             <header class="audio-entry-header">
               <p class="room-card-meta">글</p>
               <h3>Keith Jarrett의 경력과 음악</h3>
@@ -164,7 +185,8 @@
             </div>
           </article>
 
-          <article class="room-post room-card room-record-unit audio-record-card">
+          <article class="room-post room-card room-record-unit audio-record-card room-article-panel" id="audio-rack-books-note" hidden>
+            <button class="room-article-back" type="button">글 목록</button>
             <figure class="room-record-figure">
               <img class="room-photo-image room-record-photo" src="../assets/images/music-audio/essay-audio-rack-books-amp.jpg" alt="오디오랙, 책, 앰프가 함께 놓인 공간">
               <figcaption class="room-record-caption">
@@ -176,7 +198,8 @@
             </figure>
           </article>
 
-          <article class="room-post room-card room-record-unit audio-record-card">
+          <article class="room-post room-card room-record-unit audio-record-card room-article-panel" id="audio-family-hifi-note" hidden>
+            <button class="room-article-back" type="button">글 목록</button>
             <figure class="room-record-figure">
               <img class="room-photo-image room-record-photo" src="../assets/images/music-audio/photo-amp-music-screen.jpg" alt="앰프와 음악 화면이 함께 보이는 책상">
               <figcaption class="room-record-caption">
@@ -192,15 +215,15 @@
 
       <section class="room-house-panel audio-gallery" id="audio-photo-room" aria-label="음악·오디오 갤러리" hidden>
         <div class="room-house-panel-header">
-          <p class="room-section-label">사진방</p>
+          <p class="room-section-label">사진</p>
           <h2>소리와 청취 공간의 사진들</h2>
-          <button class="room-house-back" type="button">음악·오디오의 집으로 돌아가기</button>
+          <button class="room-house-back" type="button">음악·오디오별로 돌아가기</button>
         </div>
 
         <div class="room-section-heading">
           <p class="room-section-label">오디오와 청취 공간의 흔적</p>
         </div>
-        <div class="audio-gallery-grid">
+        <div class="room-house-photo-grid audio-gallery-grid">
           <figure>
             <img class="room-photo-image audio-gallery-photo" src="../assets/images/music-audio/gallery-img-9818.jpg" alt="오디오와 청취 공간 사진 1">
             <figcaption>하이파이로즈와 판도라, 그리고 피에가. 정말 최고의 책상 위 하이파이 시스템.</figcaption>
@@ -252,13 +275,26 @@
         <aside class="room-gallery-detail room-house-photo-detail" aria-live="polite" hidden></aside>
       </section>
 
-      <nav class="room-related" aria-label="취미방 이동">
-        <a class="room-soft-link" href="cameras.html">다음 취미방: 카메라</a>
-        <a class="room-soft-link" href="../index.html#about-constellation">별자리로 돌아가기</a>
+      <nav class="room-star-list" aria-label="전체 별 목록">
+        <p>별 목록</p>
+        <div>
+          <a href="fountain-pens.html">만년필별</a>
+          <span class="is-current">음악·오디오별</span>
+          <a href="cameras.html">카메라별</a>
+          <a href="travel.html">여행별</a>
+          <a href="food.html">음식별</a>
+          <a href="bicycles.html">자전거별</a>
+          <a href="cars.html">자동차별</a>
+          <a href="motorcycles.html">바이크별</a>
+          <a href="spaces.html">공간별</a>
+        </div>
       </nav>
 
-      <a class="back-link" href="../index.html">HAM MEDIA</a>
+      <nav class="room-related" aria-label="별 이동">
+        <a class="room-soft-link" href="../index.html#about-constellation">별자리로 돌아가기</a>
+        <a class="room-soft-link room-work-link" href="ham-media-work.html">그래서, 지금은 이런 일을 합니다</a>
+      </nav>
     </main>
-    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/main.js?v=audio-room-v1"></script>
   </body>
 </html>
