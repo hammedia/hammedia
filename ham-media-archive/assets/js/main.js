@@ -48,9 +48,9 @@ const constellationData = {
     roomLabel: "입장권 발권"
   },
   motorcycle: {
-    code: "LPH B-613-02",
+    code: "LPH-B613-02",
     kind: "사람",
-    name: "살아 있음을 확인한 별",
+    name: "살아 있음을 확인한 이야기",
     teaser: "살아 있다는 감각을 확인한 일",
     result: "더 빨리, 더 멀리, 그리고 더 위험하게. 마흔, 병상에서 정했다. 죽기 전에 하고 싶은 건 하자. 면허도 없이 두카티를 계약했다. 그때 살아 있다는 감각은 아직 내 안에 남았다.",
     invite: "미루지 않는 사람들끼리는 안다. (HAM MEDIA의 빨강이 두카티에서 온 건, 그래서다.)",
@@ -58,8 +58,11 @@ const constellationData = {
     previewImage: "motorcycles/hero-ducati-red-front.jpg",
     previewAlt: "붉은 두카티 바이크",
     previewCaption: "바이크별 대표 이미지",
+    stampImage: "motorcycles/stamps/lph-b613-02-motorcycle-stamp.png",
+    stampAlt: "LPH-B613-02 바이크별 도착 스탬프",
+    stampVariant: "wide",
     roomHref: "pages/motorcycles.html",
-    roomLabel: "바이크별로 들어가기"
+    roomLabel: "입장권 발권"
   },
   travel: {
     code: "LPH-B613-03",

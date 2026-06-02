@@ -3,19 +3,20 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Motorcycles / 바이크 | HAM MEDIA</title>
-    <link rel="stylesheet" href="../assets/css/styles.css">
+    <title>바이크별 | HAM MEDIA</title>
+    <link rel="stylesheet" href="../assets/css/styles.css?v=room-panel-clean-v3">
   </head>
   <body class="world-body">
     <main class="world-page room-page room-house-page motorcycle-room">
       <header class="room-header">
-        <p class="eyebrow">Motorcycles</p>
-        <h1>Motorcycles / 바이크</h1>
-        <p class="room-star-code">LPH B-613-02</p>
-        <p class="room-intro">살아 있음을 확인한 별</p>
+        <div class="room-stamp-row" aria-label="바이크별 도착 스탬프">
+          <p class="room-star-code">LPH-B613-02</p>
+          <img class="room-arrival-stamp is-wide-stamp" src="../assets/images/motorcycles/stamps/lph-b613-02-motorcycle-stamp.png" alt="LPH-B613-02 바이크별 도착 스탬프">
+        </div>
+        <h1>바이크별</h1>
       </header>
 
-      <section class="room-welcome" aria-label="바이크 방 웰컴 글">
+      <section class="room-welcome" aria-label="바이크별 첫 문장">
         <span class="room-welcome-mark" aria-hidden="true"></span>
         <div class="room-welcome-copy">
           <p class="room-welcome-label">방의 첫 문장</p>
@@ -32,23 +33,22 @@
         </figure>
       </section>
 
-      <section class="room-house" aria-label="바이크의 집">
+      <section class="room-house" aria-label="바이크별">
         <div class="room-section-heading">
-          <p class="room-section-label">바이크의 집</p>
-          <p class="room-section-help">현관에서 대표 사진을 보고, 안쪽 방으로 들어가 글과 사진을 따로 봅니다.</p>
+          <p class="room-section-label">바이크별</p>
         </div>
 
-        <nav class="room-house-nav" aria-label="바이크의 집 방 목록">
+        <nav class="room-house-nav" aria-label="바이크별 메뉴">
           <button class="room-house-door" type="button" data-house-target="motorcycle-writing-room">
-            <strong>글방</strong>
+            <strong>글</strong>
             <span>2개 기록 보기</span>
           </button>
           <button class="room-house-door" type="button" data-house-target="motorcycle-photo-room">
-            <strong>사진방</strong>
+            <strong>사진</strong>
             <span>8장 보기</span>
           </button>
           <button class="room-house-door" type="button" disabled>
-            <strong>자료방</strong>
+            <strong>자료</strong>
             <span>나중에 열 방</span>
           </button>
         </nav>
@@ -56,13 +56,23 @@
 
       <section class="room-house-panel" id="motorcycle-writing-room" aria-label="바이크 글 목록" hidden>
         <div class="room-house-panel-header">
-          <p class="room-section-label">글방</p>
-          <h2>살아 있음을 확인한 기록</h2>
-          <button class="room-house-back" type="button">바이크의 집으로 돌아가기</button>
+          <p class="room-section-label">글</p>
+          <h2>글 목록</h2>
+          <button class="room-house-back" type="button">바이크별로 돌아가기</button>
         </div>
 
-        <div class="room-card-list">
-          <article class="room-post room-card room-record-unit motorcycle-record-card">
+        <div class="room-article-list" aria-label="바이크 글 목록">
+          <button class="room-article-link" type="button" data-article-target="motorcycle-alive-note">
+            <strong>살아 있음</strong>
+          </button>
+          <button class="room-article-link" type="button" data-article-target="motorcycle-road-note">
+            <strong>길 위의 감각</strong>
+          </button>
+        </div>
+
+        <div class="room-card-list room-article-panels">
+          <article class="room-post room-card room-record-unit motorcycle-record-card room-article-panel" id="motorcycle-alive-note" hidden>
+            <button class="room-article-back" type="button">글 목록</button>
             <figure class="room-record-figure">
               <img class="room-photo-image room-record-photo" src="../assets/images/motorcycles/essay-rider-ducati-red.jpg" alt="붉은 두카티 바이크 위에 앉아 있는 모습">
               <figcaption class="room-record-caption">
@@ -74,7 +84,8 @@
             </figure>
           </article>
 
-          <article class="room-post room-card room-record-unit motorcycle-record-card">
+          <article class="room-post room-card room-record-unit motorcycle-record-card room-article-panel" id="motorcycle-road-note" hidden>
+            <button class="room-article-back" type="button">글 목록</button>
             <figure class="room-record-figure">
               <img class="room-photo-image room-record-photo" src="../assets/images/motorcycles/photo-road-ride.jpg" alt="산길 위의 바이크 라이딩 장면">
               <figcaption class="room-record-caption">
@@ -90,34 +101,47 @@
 
       <section class="room-house-panel motorcycle-gallery" id="motorcycle-photo-room" aria-label="바이크 갤러리" hidden>
         <div class="room-house-panel-header">
-          <p class="room-section-label">사진방</p>
+          <p class="room-section-label">사진</p>
           <h2>엔진과 속도, 마음에 남은 장면</h2>
-          <button class="room-house-back" type="button">바이크의 집으로 돌아가기</button>
+          <button class="room-house-back" type="button">바이크별로 돌아가기</button>
         </div>
 
         <div class="room-section-heading">
           <p class="room-section-label">두카티와 길 위의 흔적</p>
         </div>
-        <div class="motorcycle-gallery-grid">
-          <figure><img class="room-photo-image motorcycle-gallery-photo" src="../assets/images/motorcycles/gallery-img-0142.jpg" alt="두카티 바이크 사진 1"></figure>
-          <figure><img class="room-photo-image motorcycle-gallery-photo" src="../assets/images/motorcycles/gallery-img-3231.jpg" alt="두카티 바이크 사진 2"></figure>
-          <figure><img class="room-photo-image motorcycle-gallery-photo" src="../assets/images/motorcycles/gallery-img-4190.jpg" alt="두카티 바이크 사진 3"></figure>
-          <figure><img class="room-photo-image motorcycle-gallery-photo" src="../assets/images/motorcycles/gallery-img-6839.jpg" alt="두카티 바이크 사진 4"></figure>
-          <figure><img class="room-photo-image motorcycle-gallery-photo" src="../assets/images/motorcycles/gallery-img-7899.jpg" alt="두카티 바이크 사진 5"></figure>
-          <figure><img class="room-photo-image motorcycle-gallery-photo" src="../assets/images/motorcycles/gallery-img-7900.jpg" alt="두카티 바이크 사진 6"></figure>
-          <figure><img class="room-photo-image motorcycle-gallery-photo" src="../assets/images/motorcycles/gallery-img-8864.jpg" alt="두카티 바이크 사진 7"></figure>
-          <figure><img class="room-photo-image motorcycle-gallery-photo" src="../assets/images/motorcycles/gallery-iphone-3.jpg" alt="두카티 바이크 사진 8"></figure>
+        <div class="room-house-photo-grid motorcycle-gallery-grid">
+          <figure class="room-house-photo"><img class="room-photo-image motorcycle-gallery-photo" src="../assets/images/motorcycles/gallery-img-0142.jpg" alt="두카티 바이크 사진 1"></figure>
+          <figure class="room-house-photo"><img class="room-photo-image motorcycle-gallery-photo" src="../assets/images/motorcycles/gallery-img-3231.jpg" alt="두카티 바이크 사진 2"></figure>
+          <figure class="room-house-photo"><img class="room-photo-image motorcycle-gallery-photo" src="../assets/images/motorcycles/gallery-img-4190.jpg" alt="두카티 바이크 사진 3"></figure>
+          <figure class="room-house-photo"><img class="room-photo-image motorcycle-gallery-photo" src="../assets/images/motorcycles/gallery-img-6839.jpg" alt="두카티 바이크 사진 4"></figure>
+          <figure class="room-house-photo"><img class="room-photo-image motorcycle-gallery-photo" src="../assets/images/motorcycles/gallery-img-7899.jpg" alt="두카티 바이크 사진 5"></figure>
+          <figure class="room-house-photo"><img class="room-photo-image motorcycle-gallery-photo" src="../assets/images/motorcycles/gallery-img-7900.jpg" alt="두카티 바이크 사진 6"></figure>
+          <figure class="room-house-photo"><img class="room-photo-image motorcycle-gallery-photo" src="../assets/images/motorcycles/gallery-img-8864.jpg" alt="두카티 바이크 사진 7"></figure>
+          <figure class="room-house-photo"><img class="room-photo-image motorcycle-gallery-photo" src="../assets/images/motorcycles/gallery-iphone-3.jpg" alt="두카티 바이크 사진 8"></figure>
         </div>
 
         <aside class="room-gallery-detail room-house-photo-detail" aria-live="polite" hidden></aside>
       </section>
 
-      <nav class="room-related" aria-label="취미방 이동">
-        <a class="room-soft-link" href="bicycles.html">다음 취미방: 자전거</a>
-        <a class="room-soft-link" href="../index.html#about-constellation">별자리로 돌아가기</a>
+      <nav class="room-star-list" aria-label="전체 별 목록">
+        <p>별 목록</p>
+        <div>
+          <a href="fountain-pens.html">만년필별</a>
+          <a href="music-audio.html">음악·오디오별</a>
+          <a href="cameras.html">카메라별</a>
+          <a href="travel.html">여행별</a>
+          <a href="food.html">음식별</a>
+          <a href="bicycles.html">자전거별</a>
+          <a href="cars.html">자동차별</a>
+          <span class="is-current">바이크별</span>
+          <a href="spaces.html">공간별</a>
+        </div>
       </nav>
 
-      <a class="back-link" href="../index.html">HAM MEDIA</a>
+      <nav class="room-related" aria-label="별 이동">
+        <a class="room-soft-link" href="../index.html#about-constellation">별자리로 돌아가기</a>
+        <a class="room-soft-link room-work-link" href="ham-media-work.html">그래서, 지금은 이런 일을 합니다</a>
+      </nav>
     </main>
     <script src="../assets/js/main.js"></script>
   </body>
