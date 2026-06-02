@@ -3,19 +3,19 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Cars / 자동차 | HAM MEDIA</title>
-    <link rel="stylesheet" href="../assets/css/styles.css">
+    <title>자동차별 | HAM MEDIA</title>
+    <link rel="stylesheet" href="../assets/css/styles.css?v=room-panel-clean-v2">
   </head>
   <body class="world-body">
     <main class="world-page room-page room-house-page car-room">
       <header class="room-header">
         <p class="eyebrow">Cars</p>
-        <h1>Cars / 자동차</h1>
+        <h1>자동차별</h1>
         <p class="room-star-code">LPH B-613-06</p>
         <p class="room-intro">길을 찾는 별</p>
       </header>
 
-      <section class="room-welcome" aria-label="자동차 방 웰컴 글">
+      <section class="room-welcome" aria-label="자동차별 첫 문장">
         <span class="room-welcome-mark" aria-hidden="true"></span>
         <div class="room-welcome-copy">
           <p class="room-welcome-label">방의 첫 문장</p>
@@ -32,23 +32,22 @@
         </figure>
       </section>
 
-      <section class="room-house" aria-label="자동차의 집">
+      <section class="room-house" aria-label="자동차별">
         <div class="room-section-heading">
-          <p class="room-section-label">자동차의 집</p>
-          <p class="room-section-help">현관에서 대표 사진을 보고, 안쪽 방으로 들어가 글과 사진을 따로 봅니다.</p>
+          <p class="room-section-label">자동차별</p>
         </div>
 
-        <nav class="room-house-nav" aria-label="자동차의 집 방 목록">
+        <nav class="room-house-nav" aria-label="자동차별 메뉴">
           <button class="room-house-door" type="button" data-house-target="car-writing-room">
-            <strong>글방</strong>
+            <strong>글</strong>
             <span>2개 기록 보기</span>
           </button>
           <button class="room-house-door" type="button" data-house-target="car-photo-room">
-            <strong>사진방</strong>
+            <strong>사진</strong>
             <span>17장 보기</span>
           </button>
           <button class="room-house-door" type="button" disabled>
-            <strong>자료방</strong>
+            <strong>자료</strong>
             <span>나중에 열 방</span>
           </button>
         </nav>
@@ -56,13 +55,23 @@
 
       <section class="room-house-panel" id="car-writing-room" aria-label="자동차 글 목록" hidden>
         <div class="room-house-panel-header">
-          <p class="room-section-label">글방</p>
-          <h2>이동의 감각을 남긴 글</h2>
-          <button class="room-house-back" type="button">자동차의 집으로 돌아가기</button>
+          <p class="room-section-label">글</p>
+          <h2>글 목록</h2>
+          <button class="room-house-back" type="button">자동차별로 돌아가기</button>
         </div>
 
-        <div class="room-card-list">
-          <article class="room-post room-card room-record-unit car-record-card">
+        <div class="room-article-list" aria-label="자동차 글 목록">
+          <button class="room-article-link" type="button" data-article-target="car-direction-note">
+            <strong>방향 찾기</strong>
+          </button>
+          <button class="room-article-link" type="button" data-article-target="car-line-note">
+            <strong>선과 거리</strong>
+          </button>
+        </div>
+
+        <div class="room-card-list room-article-panels">
+          <article class="room-post room-card room-record-unit car-record-card room-article-panel" id="car-direction-note" hidden>
+            <button class="room-article-back" type="button">글 목록</button>
             <figure class="room-record-figure">
               <img class="room-photo-image room-record-photo" src="../assets/images/cars/essay-open-parking-direction.jpg" alt="하늘 아래 주차된 흰 자동차">
               <figcaption class="room-record-caption">
@@ -74,7 +83,8 @@
             </figure>
           </article>
 
-          <article class="room-post room-card room-record-unit car-record-card">
+          <article class="room-post room-card room-record-unit car-record-card room-article-panel" id="car-line-note" hidden>
+            <button class="room-article-back" type="button">글 목록</button>
             <figure class="room-record-figure">
               <img class="room-photo-image room-record-photo" src="../assets/images/cars/photo-white-car-line.jpg" alt="주차장에 세워진 흰 자동차의 선">
               <figcaption class="room-record-caption">
@@ -90,43 +100,56 @@
 
       <section class="room-house-panel car-gallery" id="car-photo-room" aria-label="자동차 갤러리" hidden>
         <div class="room-house-panel-header">
-          <p class="room-section-label">사진방</p>
+          <p class="room-section-label">사진</p>
           <h2>차와 길, 움직임의 사진들</h2>
-          <button class="room-house-back" type="button">자동차의 집으로 돌아가기</button>
+          <button class="room-house-back" type="button">자동차별로 돌아가기</button>
         </div>
 
         <div class="room-section-heading">
           <p class="room-section-label">길을 찾던 자리의 흔적</p>
         </div>
-        <div class="car-gallery-grid">
-          <figure><img class="room-photo-image car-gallery-photo" src="../assets/images/cars/gallery-img-9289.jpg" alt="자동차 사진 1"></figure>
-          <figure><img class="room-photo-image car-gallery-photo" src="../assets/images/cars/gallery-img-7499.jpg" alt="자동차 사진 2"></figure>
-          <figure><img class="room-photo-image car-gallery-photo" src="../assets/images/cars/gallery-img-0943.jpg" alt="자동차 사진 3"></figure>
-          <figure><img class="room-photo-image car-gallery-photo" src="../assets/images/cars/gallery-img-3567.jpg" alt="자동차 사진 4"></figure>
-          <figure><img class="room-photo-image car-gallery-photo" src="../assets/images/cars/gallery-img-3233.jpg" alt="자동차 사진 5"></figure>
-          <figure><img class="room-photo-image car-gallery-photo" src="../assets/images/cars/gallery-img-2958.jpg" alt="자동차 사진 6"></figure>
-          <figure><img class="room-photo-image car-gallery-photo" src="../assets/images/cars/gallery-img-1886.jpg" alt="자동차 사진 7"></figure>
-          <figure><img class="room-photo-image car-gallery-photo" src="../assets/images/cars/gallery-img-2526.jpg" alt="자동차 사진 8"></figure>
-          <figure><img class="room-photo-image car-gallery-photo" src="../assets/images/cars/gallery-img-0496.jpg" alt="자동차 사진 9"></figure>
-          <figure><img class="room-photo-image car-gallery-photo" src="../assets/images/cars/gallery-img-0216.jpg" alt="자동차 사진 10"></figure>
-          <figure><img class="room-photo-image car-gallery-photo" src="../assets/images/cars/gallery-1510842055.jpg" alt="자동차 사진 11"></figure>
-          <figure><img class="room-photo-image car-gallery-photo" src="../assets/images/cars/gallery-1510842067.jpg" alt="자동차 사진 12"></figure>
-          <figure><img class="room-photo-image car-gallery-photo" src="../assets/images/cars/gallery-ec438dff.jpg" alt="자동차 사진 13"></figure>
-          <figure><img class="room-photo-image car-gallery-photo" src="../assets/images/cars/gallery-img-0215.jpg" alt="자동차 사진 14"></figure>
-          <figure><img class="room-photo-image car-gallery-photo" src="../assets/images/cars/gallery-img-0268.jpg" alt="자동차 사진 15"></figure>
-          <figure><img class="room-photo-image car-gallery-photo" src="../assets/images/cars/gallery-output-1883912203.jpg" alt="자동차 사진 16"></figure>
-          <figure><img class="room-photo-image car-gallery-photo" src="../assets/images/cars/gallery-img-0260.jpg" alt="자동차 사진 17"></figure>
+        <div class="room-house-photo-grid car-gallery-grid">
+          <figure class="room-house-photo" data-memory="차가 멈춰 섰던 자리에서부터 이야기는 시작되었다."><img class="room-photo-image car-gallery-photo" src="../assets/images/cars/gallery-img-9289.jpg" alt="자동차 사진 1"></figure>
+          <figure class="room-house-photo" data-memory="거리에서 잠시 멈춘 순간, 방향은 잠시 보류되었다."><img class="room-photo-image car-gallery-photo" src="../assets/images/cars/gallery-img-7499.jpg" alt="자동차 사진 2"></figure>
+          <figure class="room-house-photo" data-memory="조용한 차고 앞에서 길이 다시 정리되는 장면."><img class="room-photo-image car-gallery-photo" src="../assets/images/cars/gallery-img-0943.jpg" alt="자동차 사진 3"></figure>
+          <figure class="room-house-photo" data-memory="주차선 사이로 보여오던 빛과 그림자의 경계."><img class="room-photo-image car-gallery-photo" src="../assets/images/cars/gallery-img-3567.jpg" alt="자동차 사진 4"></figure>
+          <figure class="room-house-photo" data-memory="밤길의 표면은 방향감각을 천천히 되돌려준다."><img class="room-photo-image car-gallery-photo" src="../assets/images/cars/gallery-img-3233.jpg" alt="자동차 사진 5"></figure>
+          <figure class="room-house-photo" data-memory="멀리서 본 자동차는 언제나 다른 이야기를 갖고 있다."><img class="room-photo-image car-gallery-photo" src="../assets/images/cars/gallery-img-2958.jpg" alt="자동차 사진 6"></figure>
+          <figure class="room-house-photo" data-memory="움직임이 멈춘 자리도 결국 이동의 일부였다."><img class="room-photo-image car-gallery-photo" src="../assets/images/cars/gallery-img-1886.jpg" alt="자동차 사진 7"></figure>
+          <figure class="room-house-photo" data-memory="길 위로 떨어진 빛이 프레임을 가볍게 바꾼다."><img class="room-photo-image car-gallery-photo" src="../assets/images/cars/gallery-img-2526.jpg" alt="자동차 사진 8"></figure>
+          <figure class="room-house-photo" data-memory="짧은 이동, 길고 남은 여운."><img class="room-photo-image car-gallery-photo" src="../assets/images/cars/gallery-img-0496.jpg" alt="자동차 사진 9"></figure>
+          <figure class="room-house-photo" data-memory="차와 멈춤은 같은 문장을 반복하지 않는다."><img class="room-photo-image car-gallery-photo" src="../assets/images/cars/gallery-img-0216.jpg" alt="자동차 사진 10"></figure>
+          <figure class="room-house-photo" data-memory="하얀 차선 위의 정적, 다시 움직임을 준비한다."><img class="room-photo-image car-gallery-photo" src="../assets/images/cars/gallery-1510842055.jpg" alt="자동차 사진 11"></figure>
+          <figure class="room-house-photo" data-memory="길을 알 때는 가끔 고요함이 답이다."><img class="room-photo-image car-gallery-photo" src="../assets/images/cars/gallery-1510842067.jpg" alt="자동차 사진 12"></figure>
+          <figure class="room-house-photo" data-memory="멀어지는 야간 풍경, 차는 조용히 거리를 기록한다."><img class="room-photo-image car-gallery-photo" src="../assets/images/cars/gallery-ec438dff.jpg" alt="자동차 사진 13"></figure>
+          <figure class="room-house-photo" data-memory="기다림은 늘 다음 장면의 신호가 된다."><img class="room-photo-image car-gallery-photo" src="../assets/images/cars/gallery-img-0215.jpg" alt="자동차 사진 14"></figure>
+          <figure class="room-house-photo" data-memory="도시의 모퉁이를 돌며 바닥면이 바뀌었다."><img class="room-photo-image car-gallery-photo" src="../assets/images/cars/gallery-img-0268.jpg" alt="자동차 사진 15"></figure>
+          <figure class="room-house-photo" data-memory="정비된 공간은 늘 다음 출발을 위한 준비다."><img class="room-photo-image car-gallery-photo" src="../assets/images/cars/gallery-output-1883912203.jpg" alt="자동차 사진 16"></figure>
+          <figure class="room-house-photo" data-memory="한 번의 멈춤이 남기는 흔적이 결국 길의 방향이다."><img class="room-photo-image car-gallery-photo" src="../assets/images/cars/gallery-img-0260.jpg" alt="자동차 사진 17"></figure>
         </div>
 
         <aside class="room-gallery-detail room-house-photo-detail" aria-live="polite" hidden></aside>
       </section>
 
-      <nav class="room-related" aria-label="취미방 이동">
-        <a class="room-soft-link" href="food.html">다음 취미방: 음식</a>
-        <a class="room-soft-link" href="../index.html#about-constellation">별자리로 돌아가기</a>
+      <nav class="room-star-list" aria-label="전체 별 목록">
+        <p>별 목록</p>
+        <div>
+          <a href="fountain-pens.html">만년필별</a>
+          <a href="music-audio.html">음악·오디오별</a>
+          <a href="cameras.html">카메라별</a>
+          <a href="travel.html">여행별</a>
+          <a href="food.html">음식별</a>
+          <a href="bicycles.html">자전거별</a>
+          <span class="is-current">자동차별</span>
+          <a href="motorcycles.html">바이크별</a>
+          <a href="spaces.html">공간별</a>
+        </div>
       </nav>
 
-      <a class="back-link" href="../index.html">HAM MEDIA</a>
+      <nav class="room-related" aria-label="별 이동">
+        <a class="room-soft-link" href="../index.html#about-constellation">별자리로 돌아가기</a>
+        <a class="room-soft-link room-work-link" href="ham-media-work.html">그래서, 지금은 이런 일을 합니다</a>
+      </nav>
     </main>
     <script src="../assets/js/main.js"></script>
   </body>
