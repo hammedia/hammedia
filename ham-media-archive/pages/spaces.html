@@ -40,19 +40,68 @@
         </div>
 
         <nav class="room-house-nav" aria-label="공간별 메뉴">
-          <button class="room-house-door" type="button" disabled>
+          <button class="room-house-door" type="button" data-house-target="space-writing-room">
             <strong>글</strong>
-            <span>준비 중</span>
+            <span>1개</span>
           </button>
-          <button class="room-house-door" type="button" disabled>
+          <button class="room-house-door" type="button" data-house-target="space-photo-room">
             <strong>사진</strong>
-            <span>준비 중</span>
+            <span>1장</span>
           </button>
           <button class="room-house-door" type="button" disabled>
             <strong>자료</strong>
             <span>준비 중</span>
           </button>
         </nav>
+      </section>
+
+      <section class="room-house-panel" id="space-writing-room" aria-label="공간별 글 목록" hidden>
+        <div class="room-house-panel-header">
+          <p class="room-section-label">글</p>
+          <h2>글 목록</h2>
+          <button class="room-house-back" type="button">공간별로 돌아가기</button>
+        </div>
+
+        <div class="room-article-list" aria-label="공간별 글 목록">
+          <button class="room-article-link" type="button" data-article-target="space-everyday-desk-note" aria-label="내가 요즘 가장 많이 사용하는 공간 읽기">
+            <strong>요즘의 공간</strong>
+          </button>
+        </div>
+
+        <div class="room-card-list room-article-panels">
+          <article class="room-post room-article-panel" id="space-everyday-desk-note" hidden>
+            <button class="room-article-back" type="button">글 목록</button>
+            <header>
+              <p class="room-card-meta">글</p>
+              <h3>내가 요즘 가장 많이 사용하는 공간</h3>
+              <p>책상 / 작업 / 생각</p>
+            </header>
+
+            <p>내가 요즘 가장 많이 사용하는 공간.</p>
+
+            <figure class="room-record-figure">
+              <img class="room-photo-image room-record-photo" src="../assets/images/spaces/hero-working-desk.jpg" alt="영상 편집 화면과 원고 화면이 함께 놓인 작업 책상">
+              <figcaption class="room-record-caption">영상 편집과 원고가 함께 놓인 자리. 내가 요즘 가장 많이 사용하는 공간.</figcaption>
+            </figure>
+          </article>
+        </div>
+      </section>
+
+      <section class="room-house-panel" id="space-photo-room" aria-label="공간별 사진 목록" hidden>
+        <div class="room-house-panel-header">
+          <p class="room-section-label">사진</p>
+          <h2>사진 목록</h2>
+          <button class="room-house-back" type="button">공간별로 돌아가기</button>
+        </div>
+
+        <div class="room-house-photo-grid">
+          <figure class="room-house-photo" data-memory="언제나 새로운 곳에서는 새로운 생각을 하게 된다.">
+            <img class="room-photo-image room-house-photo-thumb" src="../assets/images/spaces/photo-screen-golf.jpg" alt="스크린골프장 공간">
+            <figcaption>언제나 새로운 곳에서는 새로운 생각을 하게 된다.</figcaption>
+          </figure>
+        </div>
+
+        <aside class="room-gallery-detail room-house-photo-detail" aria-live="polite" hidden></aside>
       </section>
 
       <nav class="room-star-list" aria-label="전체 별 목록">
