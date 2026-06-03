@@ -140,6 +140,7 @@ const constellationData = {
     previewImage: "food/hero-cafe-table-coffee.jpg",
     previewAlt: "카페 테이블 위 커피",
     previewCaption: "음식별 대표 이미지",
+    previewFit: "cover",
     stampImage: "food/stamps/lph-b613-07-food-stamp.jpg",
     stampAlt: "LPH-B613-07 음식별 도착 스탬프",
     roomHref: "pages/food.html",
