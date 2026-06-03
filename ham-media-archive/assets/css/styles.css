@@ -863,6 +863,15 @@ h1 {
   gap: clamp(1.2rem, 3vw, 1.8rem);
 }
 
+.room-house-page {
+  width: min(1120px, 100%);
+  padding-inline: clamp(1.25rem, 4vw, 3.5rem);
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
 .room-house-page.is-reading-mode {
   width: min(1120px, 100%);
   border: 0;
@@ -3943,8 +3952,10 @@ h1 {
     padding: clamp(1.15rem, 5vw, 1.7rem);
   }
 
+  .room-house-page,
   .room-house-page.is-reading-mode {
     padding-inline: clamp(0.9rem, 5vw, 1.25rem);
+    border-radius: 0;
   }
 
   .room-welcome {
