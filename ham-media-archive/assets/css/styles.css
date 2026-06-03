@@ -1686,6 +1686,83 @@ h1 {
   aspect-ratio: 3 / 2;
 }
 
+.fountain-room .room-welcome {
+  padding: clamp(0.7rem, 2.4vw, 1.1rem) 0 clamp(0.9rem, 2.8vw, 1.35rem);
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.fountain-room .room-welcome-mark {
+  width: 0.38rem;
+  box-shadow: none;
+}
+
+.fountain-room .room-hero {
+  margin-top: clamp(0.2rem, 1.2vw, 0.6rem);
+}
+
+.fountain-room .fountain-featured {
+  gap: 0.55rem;
+}
+
+.fountain-room .fountain-photo-slot {
+  height: auto;
+  max-height: none;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  object-fit: contain;
+}
+
+.fountain-room .room-house {
+  gap: clamp(0.7rem, 1.8vw, 1rem);
+  padding-top: clamp(0.4rem, 1.8vw, 1rem);
+}
+
+.fountain-room .room-house-nav {
+  gap: 0;
+  border-top: 1px solid rgba(28, 24, 20, 0.12);
+  border-bottom: 1px solid rgba(28, 24, 20, 0.12);
+}
+
+.fountain-room .room-house-door {
+  min-height: 4.1rem;
+  padding: 0.86rem 0.35rem;
+  border: 0;
+  border-right: 1px solid rgba(28, 24, 20, 0.09);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.fountain-room .room-house-door:last-child {
+  border-right: 0;
+}
+
+.fountain-room .room-house-door:hover,
+.fountain-room .room-house-door:focus-visible,
+.fountain-room .room-house-door.is-active {
+  background: rgba(255, 252, 244, 0.48);
+  box-shadow: none;
+}
+
+.fountain-room .room-house-panel {
+  gap: clamp(0.85rem, 2vw, 1.15rem);
+  padding-top: clamp(0.35rem, 1.5vw, 0.7rem);
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.fountain-room .room-house-panel-header {
+  padding-bottom: 0.2rem;
+  border-bottom: 1px solid rgba(28, 24, 20, 0.1);
+}
+
 .fountain-card-thumb,
 .fountain-card-thumb-image {
   overflow: hidden;
@@ -2080,6 +2157,15 @@ h1 {
 .room-house-page .room-article-link.is-active {
   background: rgba(255, 252, 244, 0.52);
   box-shadow: none;
+}
+
+.fountain-room .room-article-list {
+  border-top: 0;
+  border-bottom: 0;
+}
+
+.fountain-room .room-article-link {
+  padding-inline: 0;
 }
 
 .room-house-page .room-house-photo {
@@ -4016,6 +4102,15 @@ h1 {
   .shared-memory-layout,
   .shared-memory-gallery {
     grid-template-columns: 1fr;
+  }
+
+  .fountain-room .room-house-door {
+    border-right: 0;
+    border-bottom: 1px solid rgba(28, 24, 20, 0.09);
+  }
+
+  .fountain-room .room-house-door:last-child {
+    border-bottom: 0;
   }
 
   .shared-memory-photo {
