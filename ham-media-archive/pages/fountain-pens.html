@@ -1,59 +1,1302 @@
 <!doctype html>
 <html lang="ko">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Fountain Pens / 만년필 | HAM MEDIA</title>
-    <link rel="stylesheet" href="../assets/css/styles.css?v=room-stamp-1">
-  </head>
-  <body class="world-body">
-    <main class="world-page room-page room-house-page fountain-room">
-      <header class="room-header">
-        <div class="room-stamp-row" aria-label="만년필별 도착 스탬프">
-          <p class="room-star-code">LPH-B613-01</p>
-          <img class="room-arrival-stamp" src="../assets/images/fountain-pens/stamps/lph-b613-01-fountain-pen-stamp.png" alt="LPH-B613-01 만년필별 도착 스탬프">
-        </div>
-        <h1>만년필별</h1>
-      </header>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fountain Pens / 만년필별 | HAM MEDIA</title>
+  <style>
+    @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
+    @import url("https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap");
 
-      <section class="room-welcome" aria-label="만년필별 첫 문장">
-        <span class="room-welcome-mark" aria-hidden="true"></span>
-        <div class="room-welcome-copy">
-          <p class="room-welcome-label">방의 첫 문장</p>
-          <blockquote>
-            <p>글이 좋아서가 아니었다. 마음에 쌓인 걸 몸 밖으로 빼내려 펜을 잡았고, 그렇게 겨우 살아났다.</p>
-            <p>지금도 무거운 날엔 펜부터 든다. 당신도 그렇다면, 우린 통한다.</p>
-          </blockquote>
-          <p class="room-welcome-note">안에 있는 걸 밖으로 꺼내는 일 — 그게 내 직업이 된 것도 우연은 아닐 거다.</p>
-        </div>
-      </section>
-      <section class="room-hero" aria-label="만년필 대표 사진">
-        <figure class="fountain-featured">
-          <img class="room-photo-image fountain-photo-slot" src="../assets/images/fountain-pens/hero-window-table.jpg" alt="창가 테이블 위에 놓인 만년필과 노트, 커피">
-          <figcaption>창가에 놓인 펜과 노트. 마음을 밖으로 꺼내던 자리.</figcaption>
-        </figure>
-      </section>
+    :root {
+      --color-fountain-wall-black: #0b0f14;
+      --color-yonaga-blue-black: #141b2d;
+      --color-paper-ivory: #f3ead8;
+      --color-graphite-gray: #8b8a84;
+      --color-syo-ro-teal: #5a7974;
+      --color-platinum-blue-black: #2f4652;
+      --color-kiri-same-gray: #9a9b96;
+      --color-ink-studio-143: #5491dd;
+      --color-yu-yake-orange: #c6936f;
+      --color-hana-ikada-pink: #e392a0;
+      --color-rose-quartz: #c687a8;
+      --color-hotarubi-yellow: #cede85;
+      --color-aurora-black: #080808;
+      --color-sterling-silver: #9cadc2;
+      --color-paper-shadow: rgba(8, 8, 8, 0.28);
+      --color-wall-line: rgba(243, 234, 216, 0.16);
+      --color-paper-line: rgba(11, 15, 20, 0.12);
 
-      <section class="room-house" aria-label="만년필별">
-        <div class="room-section-heading">
-          <p class="room-section-label">만년필별</p>
-        </div>
+      --font-structure: Pretendard, "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
+      --font-hand: "Nanum Pen Script", cursive;
+      --font-code: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 
-        <nav class="room-house-nav" aria-label="만년필별 메뉴">
-          <button class="room-house-door" type="button" data-house-target="fountain-writing-room">
-            <strong>글</strong>
-            <span>5개</span>
-          </button>
-          <button class="room-house-door" type="button" data-house-target="fountain-photo-room">
-            <strong>사진</strong>
-            <span>3장</span>
-          </button>
-          <button class="room-house-door" type="button" disabled>
-            <strong>자료</strong>
-            <span>준비 중</span>
-          </button>
-        </nav>
-      </section>
+      --type-display: 76px;
+      --type-hero: 48px;
+      --type-section: 34px;
+      --type-card: 24px;
+      --type-body-lg: 19px;
+      --type-body: 16px;
+      --type-caption: 13px;
+      --type-micro: 11px;
+      --type-hand: 38px;
+      --type-hand-lg: 48px;
+
+      --leading-tight: 1.08;
+      --leading-title: 1.18;
+      --leading-body: 1.7;
+      --leading-caption: 1.45;
+
+      --space-4: 4px;
+      --space-8: 8px;
+      --space-12: 12px;
+      --space-16: 16px;
+      --space-24: 24px;
+      --space-32: 32px;
+      --space-48: 48px;
+      --space-64: 64px;
+      --space-96: 96px;
+
+      --radius-none: 0;
+      --radius-soft: 10px;
+      --radius-paper: 18px;
+      --radius-pill: 999px;
+
+      --shadow-wall-photo: 0 26px 70px rgba(0, 0, 0, 0.45);
+      --shadow-paper: 0 18px 48px var(--color-paper-shadow);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(47, 70, 82, 0.18), transparent 34%),
+        linear-gradient(180deg, var(--color-fountain-wall-black), #090b0f 42%, var(--color-paper-ivory) 42%);
+      color: var(--color-paper-ivory);
+      font-family: var(--font-structure);
+      font-size: var(--type-body);
+      line-height: var(--leading-body);
+      word-break: keep-all;
+    }
+
+    body {
+      min-height: 100vh;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    h1,
+    h2,
+    h3,
+    p,
+    figure {
+      margin: 0;
+    }
+
+    .page {
+      margin: 0 auto;
+      max-width: 1480px;
+      padding: var(--space-48);
+    }
+
+    .hero {
+      display: grid;
+      gap: var(--space-64);
+      grid-template-columns: minmax(0, 0.9fr) minmax(420px, 0.74fr);
+      min-height: 820px;
+      padding: var(--space-64) 0 var(--space-96);
+    }
+
+    .eyebrow,
+    .section-kicker,
+    .mono,
+    .museum-label {
+      font-family: var(--font-code);
+      font-size: var(--type-micro);
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      line-height: 1.5;
+      text-transform: uppercase;
+    }
+
+    .eyebrow {
+      color: var(--color-kiri-same-gray);
+    }
+
+    h1 {
+      color: var(--color-paper-ivory);
+      font-size: var(--type-display);
+      font-weight: 600;
+      letter-spacing: 0;
+      line-height: var(--leading-tight);
+      margin-top: var(--space-24);
+      max-width: 780px;
+    }
+
+    .hero-lead {
+      color: rgba(243, 234, 216, 0.78);
+      font-size: var(--type-body-lg);
+      line-height: 1.75;
+      margin-top: var(--space-32);
+      max-width: 680px;
+    }
+
+    .hand-line {
+      font-family: var(--font-hand);
+      font-size: var(--type-hand-lg);
+      line-height: 1.05;
+      margin-top: var(--space-48);
+      max-width: 620px;
+    }
+
+    .hand-line span {
+      display: block;
+    }
+
+    .hand-line .teal {
+      color: var(--color-syo-ro-teal);
+    }
+
+    .hand-line .fade {
+      color: var(--color-ink-studio-143);
+      margin-top: var(--space-8);
+    }
+
+    .stamp-row {
+      align-items: center;
+      display: flex;
+      gap: var(--space-16);
+      margin-top: var(--space-32);
+    }
+
+    .stamp-row img {
+      filter: sepia(0.18) saturate(0.82);
+      height: 82px;
+      opacity: 0.88;
+      transform: rotate(-4deg);
+      width: auto;
+    }
+
+    .code-pill {
+      border: 1px solid var(--color-wall-line);
+      border-radius: var(--radius-pill);
+      color: var(--color-platinum-blue-black);
+      padding: var(--space-8) var(--space-16);
+    }
+
+    .tiny-light {
+      background: var(--color-hotarubi-yellow);
+      border-radius: 50%;
+      box-shadow: 0 0 18px rgba(206, 222, 133, 0.48);
+      display: inline-block;
+      height: 8px;
+      margin-left: var(--space-8);
+      width: 8px;
+    }
+
+    .photo-wall {
+      align-self: center;
+      justify-self: end;
+      max-width: 520px;
+      width: 100%;
+    }
+
+    .museum-frame {
+      background: #0f141d;
+      border: 1px solid var(--color-wall-line);
+      box-shadow: var(--shadow-wall-photo);
+      padding: var(--space-12);
+    }
+
+    .museum-frame img {
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+      width: 100%;
+    }
+
+    .museum-label {
+      border-left: 2px solid var(--color-syo-ro-teal);
+      color: var(--color-kiri-same-gray);
+      margin-top: var(--space-16);
+      padding-left: var(--space-12);
+    }
+
+    .paper-wrap {
+      background: var(--color-paper-ivory);
+      color: var(--color-aurora-black);
+      margin: 0 calc(var(--space-48) * -1);
+      padding: var(--space-96) var(--space-48);
+    }
+
+    .paper-inner {
+      display: grid;
+      gap: var(--space-96);
+      margin: 0 auto;
+      max-width: 1480px;
+    }
+
+    .section {
+      display: grid;
+      gap: var(--space-32);
+    }
+
+    .section-head {
+      max-width: 860px;
+    }
+
+    .section-kicker {
+      color: var(--color-platinum-blue-black);
+      margin-bottom: var(--space-12);
+    }
+
+    h2 {
+      color: var(--color-aurora-black);
+      font-size: var(--type-section);
+      font-weight: 600;
+      letter-spacing: 0;
+      line-height: var(--leading-title);
+    }
+
+    .section-desc {
+      color: #4c4942;
+      font-size: var(--type-body-lg);
+      line-height: 1.75;
+      margin-top: var(--space-16);
+      max-width: 820px;
+    }
+
+    .notice {
+      background: rgba(80, 106, 130, 0.1);
+      border: 1px solid rgba(80, 106, 130, 0.18);
+      border-radius: var(--radius-paper);
+      color: #4d5961;
+      padding: var(--space-24);
+    }
+
+    .swatch-grid {
+      display: grid;
+      gap: var(--space-16);
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .swatch {
+      background: rgba(255, 255, 255, 0.48);
+      border: 1px solid var(--color-paper-line);
+      border-radius: var(--radius-paper);
+      display: grid;
+      gap: var(--space-16);
+      min-height: 210px;
+      padding: var(--space-24);
+    }
+
+    .ink-chip {
+      border: 1px solid var(--color-paper-line);
+      border-radius: var(--radius-soft);
+      height: 72px;
+    }
+
+    .swatch strong {
+      color: var(--color-aurora-black);
+      display: block;
+      font-size: var(--type-body);
+      font-weight: 600;
+      line-height: 1.3;
+    }
+
+    .swatch span {
+      color: #68645c;
+      display: block;
+      font-family: var(--font-code);
+      font-size: var(--type-micro);
+      line-height: 1.5;
+      margin-top: var(--space-4);
+      text-transform: uppercase;
+    }
+
+    .evidence-note {
+      background: rgba(11, 15, 20, 0.04);
+      border-left: 3px solid var(--color-syo-ro-teal);
+      color: #5f5a50;
+      font-size: var(--type-caption);
+      line-height: 1.65;
+      padding: var(--space-16) var(--space-24);
+    }
+
+    .evidence-note strong {
+      color: var(--color-aurora-black);
+      font-family: var(--font-code);
+      font-size: var(--type-micro);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .role-grid,
+    .component-grid,
+    .do-grid {
+      display: grid;
+      gap: var(--space-24);
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .role-card,
+    .component-card,
+    .rule-card {
+      background: rgba(255, 255, 255, 0.58);
+      border: 1px solid var(--color-paper-line);
+      border-radius: var(--radius-paper);
+      padding: var(--space-32);
+    }
+
+    .role-card h3,
+    .component-card h3,
+    .rule-card h3 {
+      color: var(--color-aurora-black);
+      font-size: var(--type-card);
+      font-weight: 600;
+      letter-spacing: 0;
+      line-height: 1.25;
+      margin-bottom: var(--space-12);
+    }
+
+    .role-card p,
+    .component-card p,
+    .rule-card p,
+    .rule-card li {
+      color: #504d47;
+      line-height: 1.65;
+    }
+
+    .type-board {
+      background: rgba(255, 255, 255, 0.62);
+      border: 1px solid var(--color-paper-line);
+      display: grid;
+    }
+
+    .type-row {
+      align-items: center;
+      border-bottom: 1px solid var(--color-paper-line);
+      display: grid;
+      gap: var(--space-24);
+      grid-template-columns: 210px minmax(0, 1fr) 300px;
+      padding: var(--space-24);
+    }
+
+    .type-row:last-child {
+      border-bottom: 0;
+    }
+
+    .sample-display {
+      color: var(--color-aurora-black);
+      font-size: var(--type-hero);
+      font-weight: 600;
+      letter-spacing: 0;
+      line-height: 1.12;
+    }
+
+    .sample-body {
+      color: #2d2a25;
+      font-size: var(--type-body-lg);
+      line-height: 1.7;
+    }
+
+    .sample-hand {
+      color: var(--color-syo-ro-teal);
+      font-family: var(--font-hand);
+      font-size: var(--type-hand);
+      line-height: 1.1;
+    }
+
+    .sample-label {
+      color: var(--color-graphite-gray);
+      font-size: var(--type-caption);
+      line-height: var(--leading-caption);
+    }
+
+    .meta {
+      color: #716d65;
+      font-family: var(--font-code);
+      font-size: var(--type-micro);
+      line-height: 1.55;
+      text-transform: uppercase;
+    }
+
+    .dark-demo {
+      background:
+        radial-gradient(circle at 84% 18%, rgba(217, 198, 101, 0.14), transparent 12%),
+        linear-gradient(145deg, var(--color-fountain-wall-black), var(--color-yonaga-blue-black));
+      border: 1px solid var(--color-wall-line);
+      color: var(--color-paper-ivory);
+      display: grid;
+      gap: var(--space-24);
+      grid-template-columns: minmax(0, 1fr) minmax(280px, 0.66fr);
+      min-height: 380px;
+      padding: var(--space-48);
+    }
+
+    .dark-demo h3 {
+      color: var(--color-paper-ivory);
+      font-size: var(--type-section);
+      letter-spacing: 0;
+      line-height: 1.16;
+      margin: 0;
+    }
+
+    .dark-demo p {
+      color: rgba(243, 234, 216, 0.76);
+      margin-top: var(--space-16);
+    }
+
+    .mini-photo {
+      align-self: center;
+      border: 1px solid var(--color-wall-line);
+      box-shadow: var(--shadow-wall-photo);
+      padding: var(--space-8);
+    }
+
+    .mini-photo img {
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      width: 100%;
+    }
+
+    .tab-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-12);
+    }
+
+    .tab {
+      border: 1px solid rgba(80, 106, 130, 0.28);
+      border-radius: 6px;
+      color: var(--color-platinum-blue-black);
+      padding: var(--space-8) var(--space-16);
+    }
+
+    .tab.active {
+      background: var(--color-platinum-blue-black);
+      color: var(--color-paper-ivory);
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 1.1em;
+    }
+
+    li + li {
+      margin-top: var(--space-8);
+    }
+
+    .footer {
+      color: rgba(243, 234, 216, 0.52);
+      font-size: var(--type-caption);
+      line-height: var(--leading-caption);
+      padding: var(--space-48) 0 0;
+    }
+
+    .star-room-nav {
+      align-items: center;
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-16);
+      justify-content: flex-end;
+      margin-bottom: var(--space-48);
+    }
+
+    .star-room-nav > :nth-child(1) {
+      --nav-ink: var(--color-ink-studio-143);
+    }
+
+    .star-room-nav > :nth-child(2) {
+      --nav-ink: var(--color-hana-ikada-pink);
+    }
+
+    .star-room-nav > :nth-child(3) {
+      --nav-ink: var(--color-hotarubi-yellow);
+    }
+
+    .star-room-nav > :nth-child(4) {
+      --nav-ink: var(--color-syo-ro-teal);
+    }
+
+    .star-room-nav a {
+      border-bottom: 2px solid var(--nav-ink, rgba(243, 234, 216, 0.24));
+      color: rgba(243, 234, 216, 0.74);
+      font-size: var(--type-caption);
+      font-weight: 600;
+      line-height: 1.4;
+      padding-bottom: var(--space-4);
+      text-decoration: none;
+    }
+
+    .star-room-nav a:hover {
+      border-color: var(--color-syo-ro-teal);
+      color: var(--color-paper-ivory);
+    }
+
+    .star-map-panel {
+      align-items: center;
+      background: rgba(255, 255, 255, 0.46);
+      border: 1px solid var(--color-paper-line);
+      display: grid;
+      gap: var(--space-32);
+      grid-template-columns: minmax(0, 1fr) minmax(220px, 340px);
+      padding: var(--space-32);
+    }
+
+    .star-map-panel img {
+      justify-self: center;
+      max-width: 320px;
+      opacity: 0.86;
+      transform: rotate(-5deg);
+      width: 100%;
+    }
+
+    .star-list {
+      border-top: 1px solid var(--color-paper-line);
+      padding-top: var(--space-48);
+    }
+
+    .star-list-grid,
+    .page-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-12);
+    }
+
+    .star-pill,
+    .action-pill {
+      align-items: center;
+      border: 1px solid var(--color-paper-line);
+      border-radius: var(--radius-pill);
+      color: var(--color-aurora-black);
+      display: inline-flex;
+      font-weight: 700;
+      line-height: 1.2;
+      min-height: 46px;
+      padding: var(--space-12) var(--space-24);
+      text-decoration: none;
+    }
+
+    .star-pill.is-current {
+      border-color: rgba(84, 145, 221, 0.46);
+      box-shadow: inset 0 0 0 1px rgba(84, 145, 221, 0.18);
+    }
+
+    .action-pill.is-work {
+      color: var(--color-platinum-blue-black);
+    }
+
+    .action-pill.is-tool {
+      color: var(--color-syo-ro-teal);
+    }
+
+    .page-actions {
+      margin-top: var(--space-32);
+    }
+
+
+    .star-room-nav button {
+      border: 0;
+      border-bottom: 2px solid var(--nav-ink, rgba(243, 234, 216, 0.24));
+      background: transparent;
+      color: rgba(243, 234, 216, 0.74);
+      cursor: pointer;
+      font: inherit;
+      font-size: var(--type-caption);
+      font-weight: 600;
+      line-height: 1.4;
+      padding: 0 0 var(--space-4);
+      text-decoration: none;
+    }
+
+    .star-room-nav button:hover {
+      border-color: var(--color-syo-ro-teal);
+      color: var(--color-paper-ivory);
+    }
+
+    .room-house-panel,
+    .room-article-panel {
+      display: grid;
+      gap: var(--space-32);
+    }
+
+    .room-house-panel[hidden],
+    .room-article-panel[hidden],
+    .room-article-list[hidden],
+    .room-house-photo-grid[hidden],
+    .room-house-photo-detail[hidden] {
+      display: none !important;
+    }
+
+    .room-house-panel {
+      background:
+        radial-gradient(circle at 88% 0%, rgba(84, 145, 221, 0.08), transparent 24%),
+        var(--color-paper-ivory);
+      color: var(--color-aurora-black);
+      display: block;
+      inset: 0;
+      overflow: auto;
+      padding: clamp(32px, 5vw, 72px);
+      position: fixed;
+      z-index: 80;
+    }
+
+    .room-house-panel > * {
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 1120px;
+      width: 100%;
+    }
+
+    .room-house-panel > * + * {
+      margin-top: var(--space-32);
+    }
+
+    .room-article-panel:not([hidden]) {
+      border-left: 3px solid var(--color-syo-ro-teal);
+      padding-left: var(--space-24);
+    }
+
+    .room-house-panel-header {
+      align-items: start;
+      border-bottom: 1px solid var(--color-paper-line);
+      display: grid;
+      gap: var(--space-16);
+      grid-template-columns: minmax(0, 1fr) auto;
+      margin-bottom: var(--space-24);
+      padding-bottom: var(--space-24);
+    }
+
+    .room-house-panel-header h2 {
+      grid-column: 1 / -1;
+    }
+
+    .room-house-panel.is-detail-mode > .room-house-panel-header,
+    .room-house-panel.is-detail-mode > .room-list-pager {
+      display: none;
+    }
+
+    .room-section-label,
+    .room-card-meta {
+      color: var(--color-platinum-blue-black);
+      font-family: var(--font-code);
+      font-size: var(--type-micro);
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      line-height: 1.5;
+      text-transform: uppercase;
+    }
+
+    .room-house-back,
+    .room-article-back,
+    .room-article-bottom-nav button,
+    .room-gallery-detail-button {
+      border: 1px solid var(--color-paper-line);
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.44);
+      color: var(--color-aurora-black);
+      cursor: pointer;
+      font: inherit;
+      font-weight: 700;
+      line-height: 1.2;
+      min-height: 42px;
+      padding: var(--space-8) var(--space-16);
+    }
+
+    .room-article-list {
+      border-top: 1px solid var(--color-paper-line);
+      display: grid;
+      gap: 0;
+    }
+
+    .room-article-link {
+      align-items: center;
+      background: transparent;
+      border: 0;
+      border-bottom: 1px solid var(--color-paper-line);
+      border-radius: 0;
+      color: var(--color-aurora-black);
+      cursor: pointer;
+      display: grid;
+      font: inherit;
+      gap: var(--space-16);
+      grid-template-columns: minmax(0, 1fr) auto;
+      min-height: 64px;
+      padding: var(--space-16) 0;
+      text-align: left;
+      width: 100%;
+    }
+
+    .room-article-link strong {
+      display: block;
+      font-size: var(--type-body-lg);
+      font-weight: 700;
+      line-height: 1.35;
+    }
+
+    .room-article-link::after {
+      color: var(--color-platinum-blue-black);
+      content: "읽기";
+      font-family: var(--font-code);
+      font-size: var(--type-micro);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .room-list-pager {
+      align-items: center;
+      color: #68645c;
+      display: flex;
+      flex-wrap: wrap;
+      font-size: var(--type-caption);
+      gap: var(--space-12);
+      justify-content: flex-end;
+      margin-top: var(--space-16);
+    }
+
+    .room-list-pager button {
+      border: 1px solid var(--color-paper-line);
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.44);
+      color: #68645c;
+      font: inherit;
+      min-height: 36px;
+      padding: var(--space-8) var(--space-12);
+    }
+
+    .room-list-pager button:disabled {
+      cursor: not-allowed;
+      opacity: 0.48;
+    }
+
+    .room-article-link.is-active,
+    .room-house-photo.is-active {
+      color: var(--color-platinum-blue-black);
+    }
+
+    .fountain-essay-header,
+    .shared-memory-copy,
+    .fountain-essay-body {
+      display: grid;
+      gap: var(--space-16);
+    }
+
+    .fountain-essay-header h3,
+    .room-article-panel h3 {
+      color: var(--color-aurora-black);
+      font-size: var(--type-section);
+      font-weight: 600;
+      line-height: var(--leading-title);
+    }
+
+    .fountain-essay-body,
+    .shared-memory-copy {
+      color: #2d2a25;
+      font-size: var(--type-body-lg);
+      line-height: 1.78;
+      max-width: 980px;
+    }
+
+    .shared-memory-ink {
+      border-left: 2px solid var(--color-ink-studio-143);
+      color: var(--color-platinum-blue-black);
+      font-size: var(--type-caption);
+      line-height: 1.65;
+      padding-left: var(--space-16);
+    }
+
+    .fountain-essay-sign {
+      color: var(--color-syo-ro-teal);
+      font-family: var(--font-hand);
+      font-size: var(--type-hand);
+      line-height: 1.1;
+    }
+
+    .fountain-essay-figure,
+    .shared-memory-figure,
+    .room-house-photo {
+      display: grid;
+      gap: var(--space-12);
+      margin: var(--space-16) 0;
+    }
+
+    .fountain-essay-figure figcaption,
+    .shared-memory-figure figcaption,
+    .room-house-photo figcaption {
+      color: #68645c;
+      font-size: var(--type-caption);
+      line-height: var(--leading-caption);
+    }
+
+    .room-photo-image,
+    .shared-memory-photo,
+    .fountain-essay-photo {
+      height: auto;
+      width: 100%;
+    }
+
+    .fountain-essay-split,
+    .shared-memory-layout,
+    .shared-memory-gallery,
+    .shared-memory-sequence,
+    .room-house-photo-grid {
+      display: grid;
+      gap: var(--space-24);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .shared-memory-layout {
+      align-items: start;
+    }
+
+    .room-video iframe {
+      aspect-ratio: 16 / 9;
+      display: block;
+      width: 100%;
+    }
+
+    .room-house-photo {
+      border: 1px solid var(--color-paper-line);
+      background: rgba(255, 255, 255, 0.5);
+      cursor: pointer;
+      padding: var(--space-12);
+    }
+
+    .room-house-photo-thumb {
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+    }
+
+    .room-house-photo-detail {
+      border-left: 3px solid var(--color-ink-studio-143);
+      display: grid;
+      gap: var(--space-16);
+      margin-top: var(--space-24);
+      max-width: 980px;
+      padding-left: var(--space-24);
+    }
+
+    .room-gallery-detail-actions,
+    .room-gallery-detail-nav,
+    .room-article-bottom-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-12);
+    }
+
+    .room-gallery-detail-index,
+    .room-gallery-detail-copy {
+      color: #4c4942;
+      font-size: var(--type-body-lg);
+      line-height: 1.7;
+    }
+
+    .room-gallery-detail-photo {
+      background: rgba(255, 255, 255, 0.62);
+      border: 1px solid var(--color-paper-line);
+      box-shadow: 0 18px 44px rgba(8, 8, 8, 0.14);
+      height: auto;
+      padding: var(--space-8);
+      width: 100%;
+    }
+
+    @media (max-width: 760px) {
+      html,
+      body {
+        background: var(--color-fountain-wall-black);
+      }
+
+      .page {
+        background: var(--color-paper-ivory);
+        max-width: 100%;
+        padding: 0;
+        width: 100%;
+      }
+
+      .star-room-nav {
+        background:
+          radial-gradient(circle at 88% 0%, rgba(84, 145, 221, 0.18), transparent 26%),
+          linear-gradient(145deg, var(--color-fountain-wall-black), var(--color-yonaga-blue-black));
+        gap: 16px;
+        justify-content: flex-start;
+        margin: 0;
+        padding: 16px 20px 8px;
+      }
+
+      .star-room-nav a,
+      .star-room-nav button {
+        font-size: 12px;
+        min-height: 28px;
+      }
+
+      .hero,
+      .dark-demo {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        background:
+          radial-gradient(circle at 84% 12%, rgba(84, 145, 221, 0.16), transparent 18%),
+          linear-gradient(145deg, var(--color-fountain-wall-black), var(--color-yonaga-blue-black));
+        color: var(--color-paper-ivory);
+        gap: 24px;
+        min-height: 0;
+        padding: 30px 22px 32px;
+      }
+
+      .eyebrow {
+        font-size: 9px;
+      }
+
+      h1 {
+        font-size: clamp(30px, 8vw, 38px);
+        margin-top: 14px;
+      }
+
+      .hero-lead {
+        font-size: 13px;
+        line-height: 1.55;
+        margin-top: 16px;
+      }
+
+      .hand-line {
+        font-size: 26px;
+        margin-top: 20px;
+      }
+
+      .stamp-row {
+        gap: 10px;
+        margin-top: 16px;
+      }
+
+      .stamp-row img {
+        height: 42px;
+      }
+
+      .code-pill {
+        font-size: 8px;
+        padding: 5px 9px;
+      }
+
+      .photo-wall {
+        justify-self: start;
+        max-width: 210px;
+      }
+
+      .museum-frame {
+        padding: 7px;
+      }
+
+      .museum-label {
+        font-size: 7px;
+        margin-top: 7px;
+        padding-left: 7px;
+      }
+
+      .paper-wrap {
+        margin: 0;
+        padding: 34px 20px 38px;
+      }
+
+      .paper-inner {
+        gap: 38px;
+      }
+
+      .section {
+        gap: 16px;
+      }
+
+      .section-kicker {
+        font-size: 9px;
+        margin-bottom: 6px;
+      }
+
+      h2 {
+        font-size: 23px;
+      }
+
+      .section-desc,
+      .notice,
+      .evidence-note,
+      .role-card p,
+      .component-card p,
+      .rule-card p,
+      .rule-card li,
+      .dark-demo p {
+        font-size: 13px;
+        line-height: 1.55;
+      }
+
+      .notice,
+      .evidence-note {
+        padding: 12px 14px;
+      }
+
+      .swatch-grid,
+      .room-house-photo-grid,
+      .fountain-essay-split,
+      .shared-memory-layout,
+      .shared-memory-gallery,
+      .shared-memory-sequence,
+      .star-map-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .swatch-grid {
+        gap: 10px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .swatch {
+        border-radius: 8px;
+        gap: 8px;
+        min-height: 70px;
+        padding: 10px;
+      }
+
+      .ink-chip {
+        height: 32px;
+      }
+
+      .swatch strong {
+        font-size: 11px;
+      }
+
+      .swatch span {
+        font-size: 7px;
+      }
+
+      .type-row {
+        gap: 8px;
+        grid-template-columns: 1fr;
+        padding: 12px;
+      }
+
+      .sample-display {
+        font-size: 28px;
+      }
+
+      .sample-body {
+        font-size: 13px;
+      }
+
+      .sample-hand {
+        font-size: 28px;
+      }
+
+      .component-grid,
+      .do-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .role-card,
+      .component-card,
+      .rule-card {
+        padding: 18px;
+      }
+
+      .role-card h3,
+      .component-card h3,
+      .rule-card h3 {
+        font-size: 18px;
+      }
+
+      .dark-demo {
+        min-height: 0;
+        padding: 20px;
+      }
+
+      .dark-demo h3 {
+        font-size: 22px;
+      }
+
+      .room-house-panel {
+        padding: 22px 18px;
+      }
+
+      .room-house-panel-header {
+        grid-template-columns: 1fr;
+      }
+
+      .room-article-panel:not([hidden]),
+      .room-house-photo-detail {
+        padding-left: 14px;
+      }
+
+      .fountain-essay-header h3,
+      .room-article-panel h3 {
+        font-size: 24px;
+      }
+
+      .fountain-essay-body,
+      .shared-memory-copy,
+      .room-gallery-detail-copy {
+        font-size: 15px;
+        line-height: 1.72;
+      }
+
+      .room-gallery-detail-photo {
+        padding: 6px;
+      }
+
+      .star-map-panel {
+        padding: 20px;
+      }
+
+      .star-map-panel img {
+        max-width: 220px;
+      }
+
+      .star-list-grid,
+      .page-actions {
+        gap: 8px;
+      }
+
+      .star-pill,
+      .action-pill {
+        font-size: 12px;
+        min-height: 38px;
+        padding: 8px 12px;
+      }
+
+      .footer {
+        background: var(--color-fountain-wall-black);
+        margin: 0;
+        padding: 22px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page room-house-page">
+    <nav class="star-room-nav room-house-nav" aria-label="만년필별 이동">
+      <button class="room-house-door" type="button" data-house-target="fountain-writing-room">글</button>
+      <button class="room-house-door" type="button" data-house-target="fountain-photo-room">사진</button>
+      <button class="room-house-door" type="button" data-house-target="fountain-map-room">지도</button>
+      <a href="#star-list">다른 별</a>
+    </nav>
+
+    <section class="hero" aria-label="Fountain Pens Star hero">
+      <div>
+        <p class="eyebrow">HAM MEDIA Star Room · Fountain Pens Star</p>
+        <h1>검은 전시 벽 위에 걸린 만년필의 기억</h1>
+        <p class="hero-lead">만년필별은 취미를 자랑하는 방이 아니라, 잉크와 손글씨로 안에 있던 것을 밖으로 꺼내는 조용한 기록실입니다.</p>
+        <div class="hand-line" aria-label="handwritten phrase">
+          <span class="teal">잉크는 처음 펜에서 나왔을 때와</span>
+          <span class="fade">마른 뒤의 색이 다르다.</span>
+        </div>
+        <div class="stamp-row">
+          <img src="../assets/images/fountain-pens/stamps/lph-b613-01-fountain-pen-stamp.png" alt="LPH-B613-01 fountain pen arrival stamp" />
+          <span class="code-pill mono">LPH-B613-01 <i class="tiny-light" aria-hidden="true"></i></span>
+        </div>
+      </div>
+      <figure class="photo-wall">
+        <div class="museum-frame">
+          <img src="../assets/images/fountain-pens/photo-nib-closeup.jpg" alt="만년필 닙 클로즈업 사진" />
+        </div>
+        <figcaption class="museum-label">Symbolic photo · real fountain pen image · thin museum wall treatment</figcaption>
+      </figure>
+    </section>
+
+    <div class="paper-wrap">
+      <div class="paper-inner">
+        <section class="section">
+          <div class="section-head">
+            <p class="section-kicker">01 · Core Direction</p>
+            <h2>색은 장식이 아니라, 시간이 지난 잉크의 상태다</h2>
+            <p class="section-desc">한 화면에 여러 잉크색이 있어도 됩니다. 대신 동시에 강하게 보이는 색은 3~4개로 제한하고, 모든 색은 제목·코드·스탬프·손글씨·캡션 같은 역할을 가져야 합니다.</p>
+          </div>
+          <div class="notice">
+            이 스타일시트의 HEX는 제조사 공식 필기 샘플을 우선 기준으로 다시 잡은 프리뷰 값입니다. 공식 필기 샘플이 없는 색은 제품명 그대로의 공식색이 아니라, 공식 설명·공식 스와치를 참고한 inspired approximation으로만 사용합니다.
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-head">
+            <p class="section-kicker">02 · Color System</p>
+            <h2>검은 벽, 종이색, 그리고 역할이 있는 잉크색</h2>
+          </div>
+          <div class="swatch-grid">
+            <div class="swatch"><div class="ink-chip" style="background:var(--color-fountain-wall-black);"></div><p><strong>Fountain Wall Black</strong><span>Hero wall · preview #0b0f14</span></p></div>
+            <div class="swatch"><div class="ink-chip" style="background:var(--color-yonaga-blue-black);"></div><p><strong>Yonaga Blue Black</strong><span>Depth · preview #141b2d</span></p></div>
+            <div class="swatch"><div class="ink-chip" style="background:var(--color-paper-ivory);"></div><p><strong>Paper Ivory</strong><span>Reading surface · preview #f3ead8</span></p></div>
+            <div class="swatch"><div class="ink-chip" style="background:var(--color-graphite-gray);"></div><p><strong>Graphite Gray</strong><span>Metadata · preview #8b8a84</span></p></div>
+            <div class="swatch"><div class="ink-chip" style="background:var(--color-syo-ro-teal);"></div><p><strong>Syo-ro-inspired Dried Teal</strong><span>PILOT writing sample approx · #5a7974</span></p></div>
+            <div class="swatch"><div class="ink-chip" style="background:var(--color-platinum-blue-black);"></div><p><strong>Platinum-inspired Blue Black</strong><span>Official behavior note approx · #2f4652</span></p></div>
+            <div class="swatch"><div class="ink-chip" style="background:var(--color-kiri-same-gray);"></div><p><strong>Kiri-same-inspired Dry Gray</strong><span>PILOT writing sample approx · #9a9b96</span></p></div>
+            <div class="swatch"><div class="ink-chip" style="background:var(--color-ink-studio-143);"></div><p><strong>Ink Studio 143-inspired Blue</strong><span>Sailor writing sample approx · #5491dd</span></p></div>
+            <div class="swatch"><div class="ink-chip" style="background:var(--color-yu-yake-orange);"></div><p><strong>Yu-yake-inspired Dried Orange</strong><span>PILOT writing sample approx · #c6936f</span></p></div>
+            <div class="swatch"><div class="ink-chip" style="background:var(--color-hana-ikada-pink);"></div><p><strong>Hana-ikada-inspired Soft Pink</strong><span>PILOT writing sample approx · #e392a0</span></p></div>
+            <div class="swatch"><div class="ink-chip" style="background:var(--color-rose-quartz);"></div><p><strong>Rose Quartz-inspired Soft Rose</strong><span>Pelikan color drop approx · #c687a8</span></p></div>
+            <div class="swatch"><div class="ink-chip" style="background:var(--color-hotarubi-yellow);"></div><p><strong>Hotarubi-inspired Tiny Light</strong><span>PILOT writing sample approx · #cede85</span></p></div>
+            <div class="swatch"><div class="ink-chip" style="background:var(--color-aurora-black);"></div><p><strong>Aurora-inspired Black Anchor</strong><span>Aurora official note approx · #080808</span></p></div>
+            <div class="swatch"><div class="ink-chip" style="background:var(--color-sterling-silver);"></div><p><strong>Sterling Silver-inspired Cool Gray</strong><span>Birmingham swab approx · #9cadc2</span></p></div>
+          </div>
+          <p class="evidence-note"><strong>Evidence note</strong><br />병 색이 아니라 종이에 남은 필기 상태를 우선으로 봤습니다. PILOT Syo-ro · Kiri-same · Yu-yake는 PILOT 色彩雫見本帖 필기 샘플, Hana-ikada · Hotarubi는 PILOT 공식 필기 샘플, Sailor 143은 Sailor 공식 143 필기/스와치 이미지를 기준으로 잡았습니다. Platinum Blue-Black · Rose Quartz · Aurora Black · Sterling Silver는 공식 필기 샘플을 찾지 못해 공식 설명 또는 공식 스와치 기반 inspired approximation으로만 읽습니다.</p>
+        </section>
+
+        <section class="section">
+          <div class="section-head">
+            <p class="section-kicker">03 · Typography</p>
+            <h2>Pretendard가 구조를 잡고, NanumPen은 한두 줄만 남긴다</h2>
+          </div>
+          <div class="type-board">
+            <div class="type-row">
+              <p class="meta">Structure title<br>Pretendard SemiBold</p>
+              <p class="sample-display">만년필별</p>
+              <p class="meta">Clear and present, but never shouted.</p>
+            </div>
+            <div class="type-row">
+              <p class="meta">Reading body<br>Pretendard Regular</p>
+              <p class="sample-body">잉크는 처음 펜에서 나왔을 때와 마른 뒤의 색이 다르다. 시간이 지나 다시 보면 또 달라진다.</p>
+              <p class="meta">Long text stays readable on Paper Ivory.</p>
+            </div>
+            <div class="type-row">
+              <p class="meta">Handwritten mood<br>NanumPen only short lines</p>
+              <p class="sample-hand">조용히 잉크를 채우던 시간들.</p>
+              <p class="meta">Atmosphere, not full article.</p>
+            </div>
+            <div class="type-row">
+              <p class="meta">Museum caption<br>Graphite gray</p>
+              <p class="sample-label">LPH-B613-01 · fountain pen arrival record · ink dries differently over time</p>
+              <p class="meta">Quiet, but readable.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" id="star-doors">
+          <div class="section-head">
+            <p class="section-kicker">04 · Components</p>
+            <h2>두꺼운 액자가 아니라, 조용한 전시 장치</h2>
+          </div>
+          <div class="component-grid">
+            <div class="component-card">
+              <h3>Arrival Stamp</h3>
+              <p>별 코드 근처에 두고, 로고가 아니라 도착 표시처럼 보이게 합니다. 약한 회전은 허용됩니다.</p>
+            </div>
+            <div class="component-card">
+              <h3>Museum Image</h3>
+              <p>사진은 카드 안 장식이 아니라 전시 벽의 상징 이미지입니다. 얇은 베젤과 낮은 그림자만 허용합니다.</p>
+            </div>
+            <div class="component-card">
+              <h3>Star Doors</h3>
+              <div class="tab-row" aria-label="star room tabs">
+                <span class="tab active">글</span>
+                <span class="tab">사진</span>
+                <span class="tab">지도</span>
+              </div>
+              <p style="margin-top:16px;">첫 화면 뒤는 긴 피드가 아니라 별 안으로 들어가는 문이어야 합니다.</p>
+            </div>
+          </div>
+        </section>
 
       <section class="room-house-panel" id="fountain-writing-room" aria-label="만년필 글" hidden>
         <div class="room-house-panel-header">
@@ -78,6 +1321,10 @@
           <button class="room-article-link" type="button" data-article-target="fountain-happiness-note" aria-label="행복에 관한 짧은 글 중 1 읽기">
             <strong>행복 짧은 글</strong>
           </button>
+        </div>
+        <div class="room-list-pager" aria-label="만년필 글 페이지">
+          <span>1-5 / 5</span>
+          <button type="button" disabled>다음 5개</button>
         </div>
 
         <div class="room-card-list room-article-panels">
@@ -319,26 +1566,101 @@
         <aside class="room-gallery-detail room-house-photo-detail" aria-live="polite" hidden></aside>
       </section>
 
-      <nav class="room-star-list" aria-label="전체 별 목록">
-        <p>별 목록</p>
-        <div>
-          <span class="is-current">만년필별</span>
-          <a href="music-audio.html">음악·오디오별</a>
-          <a href="cameras.html">카메라별</a>
-          <a href="travel.html">여행별</a>
-          <a href="food.html">음식별</a>
-          <a href="bicycles.html">자전거별</a>
-          <a href="cars.html">자동차별</a>
-          <a href="motorcycles.html">바이크별</a>
-          <a href="spaces.html">공간별</a>
+      <section class="room-house-panel" id="fountain-map-room" aria-label="만년필별 지도" hidden>
+        <div class="room-house-panel-header">
+          <p class="room-section-label">지도</p>
+          <h2>만년필별 지도는 아직 그리는 중입니다</h2>
+          <button class="room-house-back" type="button">만년필별로 돌아가기</button>
         </div>
-      </nav>
+        <div class="star-map-panel">
+          <p class="section-desc">별 안의 글, 사진, 자료가 쌓이면 이곳에 만년필별의 지도가 놓입니다. 지금은 준비중 스탬프만 남겨둡니다.</p>
+          <img src="../assets/images/fountain-pens/map-in-progress-stamp.png" alt="MAP IN PROGRESS 준비중 스탬프" />
+        </div>
+      </section>
 
-      <nav class="room-related" aria-label="별 이동">
-        <a class="room-soft-link" href="../index.html#about-constellation">별자리로 돌아가기</a>
-        <a class="room-soft-link room-work-link" href="ham-media-work.html">그래서, 지금은 이런 일을 합니다</a>
-      </nav>
-    </main>
-    <script src="../assets/js/main.js?v=article-detail-v3"></script>
-  </body>
+        <section class="section" id="star-image">
+          <div class="section-head">
+            <p class="section-kicker">05 · Hero / Image Treatment</p>
+            <h2>사진은 실제이고, 잘리지 않아야 한다</h2>
+          </div>
+          <div class="dark-demo">
+            <div>
+              <p class="mono">LPH-B613-01 · first screen sample</p>
+              <h3>정보 이미지가 아니라, 한 점의 기억처럼 보이게</h3>
+              <p>스톡, AI 이미지, 과한 제품컷은 금지입니다. 햄PD의 실제 만년필·노트·손글씨만 사용하고, 중요한 손글씨를 숨기는 크롭은 피합니다.</p>
+            </div>
+            <figure class="mini-photo">
+              <img src="../assets/images/fountain-pens/essay-handwriting-pens.jpg" alt="만년필과 손글씨가 함께 놓인 실제 사진" />
+            </figure>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-head">
+            <p class="section-kicker">06 · Do / Don't</p>
+            <h2>장비 자랑이 아니라, 시간을 보관하는 사람의 방</h2>
+          </div>
+          <div class="do-grid">
+            <div class="rule-card">
+              <h3>Do</h3>
+              <ul>
+                <li>실제 사진과 실제 손글씨를 사용한다.</li>
+                <li>잉크색은 역할이 있을 때만 쓴다.</li>
+                <li>긴 글은 Paper Ivory 위에서 읽히게 한다.</li>
+                <li>박물관 라벨처럼 조용한 설명을 둔다.</li>
+              </ul>
+            </div>
+            <div class="rule-card">
+              <h3>Don't</h3>
+              <ul>
+                <li>쇼핑몰, 장비 자랑, 구매 유도 톤으로 만들지 않는다.</li>
+                <li>네온 우주, 과한 금색, 무지개 팔레트를 쓰지 않는다.</li>
+                <li>AI/스톡 만년필 이미지를 쓰지 않는다.</li>
+                <li>두꺼운 액자나 장식 프레임을 만들지 않는다.</li>
+              </ul>
+            </div>
+            <div class="rule-card">
+              <h3>Risk Guard</h3>
+              <ul>
+                <li>사진과 글에 없는 이야기를 만들지 않는다.</li>
+                <li>제품 성능을 단정하지 않는다.</li>
+                <li>브랜드명은 사용 기록의 맥락 안에서만 다룬다.</li>
+                <li>손글씨 폰트는 긴 본문에 쓰지 않는다.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section class="section star-list" id="star-list">
+          <div class="section-head">
+            <p class="section-kicker">07 · Stars</p>
+            <h2>다른 별 보기</h2>
+            <p class="section-desc">이 별은 HAM MEDIA Design MD 방식으로 정리한 첫 번째 별입니다. 좋아하는 것의 감각을 브랜드의 기준으로 바꾸는 실험이기도 합니다.</p>
+          </div>
+          <div class="star-list-grid" aria-label="별 목록">
+            <a class="star-pill is-current" href="fountain-pens.html">만년필별</a>
+            <a class="star-pill" href="music-audio.html">음악·오디오별</a>
+            <a class="star-pill" href="cameras.html">카메라별</a>
+            <a class="star-pill" href="travel.html">여행별</a>
+            <a class="star-pill" href="food.html">음식별</a>
+            <a class="star-pill" href="bicycles.html">자전거별</a>
+            <a class="star-pill" href="cars.html">자동차별</a>
+            <a class="star-pill" href="motorcycles.html">바이크별</a>
+            <a class="star-pill" href="spaces.html">공간별</a>
+          </div>
+          <div class="page-actions" aria-label="만년필별 하단 링크">
+            <a class="action-pill" href="../index.html#about-constellation">별자리로 돌아가기</a>
+            <a class="action-pill is-work" href="ham-media-work.html">그래서, 지금은 이런 일을 합니다</a>
+            <a class="action-pill is-tool" href="https://hammedia.github.io/design-brief/">Design MD 만드는 도구</a>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <p>Source: 05_HAM_DesignStudio/reference/clients/fountain_pens_star/DESIGN.md · Status: proposal visual style sheet · HAM MEDIA x Codex · Real display images copied with metadata stripped.</p>
+    </footer>
+  </main>
+  <script src="../assets/js/fountain-pens-main.js?v=article-detail-v3"></script>
+</body>
 </html>
