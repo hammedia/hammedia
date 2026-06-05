@@ -1,64 +1,1478 @@
 <!doctype html>
 <html lang="ko">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>음식별 | HAM MEDIA</title>
-    <link rel="stylesheet" href="../assets/css/styles.css?v=food-room-v1">
-  </head>
-  <body class="world-body">
-    <main class="world-page room-page room-house-page food-room">
-      <header class="room-header">
-        <p class="eyebrow">Food</p>
-        <div class="room-stamp-row" aria-label="음식별 도착 스탬프">
-          <p class="room-star-code">LPH-B613-07</p>
-          <img class="room-arrival-stamp" src="../assets/images/food/stamps/lph-b613-07-food-stamp.jpg" alt="LPH-B613-07 음식별 도착 스탬프">
-        </div>
-        <h1>음식별</h1>
-      </header>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>음식별 | HAM MEDIA 별자리</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
+  <style>
+    @font-face {
+      font-family: "KoPubWorldBatang";
+      src: url("../assets/fonts/KoPubWorld_Batang_Pro_Light.otf") format("opentype");
+      font-weight: 300;
+      font-style: normal;
+      font-display: swap;
+    }
 
-      <section class="room-welcome" aria-label="음식 방 웰컴 글">
-        <span class="room-welcome-mark" aria-hidden="true"></span>
-        <div class="room-welcome-copy">
-          <p class="room-welcome-label">방의 첫 문장</p>
-          <blockquote>
-            <p>일본에서, 미국에서, 한국에서. 평생 사람 입으로 들어가 마음에 담기는 일을 했다. 커피로 맛과 향을 훈련하며 세상의 맛을 익혔다. 혀로 익힌 그 감각이, 콘텐츠를 보는 눈으로 이어졌다.</p>
-            <p>감각은 타고나는 게 아니라 훈련된다. 보는 눈도 그렇게 길렀다.</p>
-          </blockquote>
-        </div>
-      </section>
-      <section class="room-hero" aria-label="음식 대표 사진">
-        <figure class="food-featured">
-          <img class="room-photo-image food-photo-slot" src="../assets/images/food/hero-cafe-table-coffee.jpg" alt="카페 테이블 위에 놓인 커피와 컵">
-          <figcaption>스타벅스 리저브 매장. 가끔씩 사치를 부려본다.</figcaption>
-        </figure>
-      </section>
+    @font-face {
+      font-family: "KoPubWorldBatang";
+      src: url("../assets/fonts/KoPubWorld_Batang_Pro_Medium.otf") format("opentype");
+      font-weight: 500;
+      font-style: normal;
+      font-display: swap;
+    }
 
-      <section class="room-house" aria-label="음식별">
-        <div class="room-section-heading">
-          <p class="room-section-label">음식별</p>
-        </div>
+    @font-face {
+      font-family: "KoPubWorldBatang";
+      src: url("../assets/fonts/KoPubWorld_Batang_Pro_Bold.otf") format("opentype");
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
 
-        <nav class="room-house-nav" aria-label="음식별 보기">
-          <button class="room-house-door" type="button" data-house-target="food-writing-room">
-            <strong>글</strong>
-            <span>2개 기록 보기</span>
-          </button>
-          <button class="room-house-door" type="button" data-house-target="food-photo-room">
-            <strong>사진</strong>
-            <span>21장 보기</span>
-          </button>
-          <button class="room-house-door" type="button" disabled>
-            <strong>자료</strong>
-            <span>준비 중</span>
-          </button>
+    :root {
+      --color-table: #f5f0e8;
+      --color-cream: #faf7f2;
+      --color-green: #00704a;
+      --color-door: #f5c518;
+      --color-aged: #e8a020;
+      --color-espresso: #3d2b1f;
+      --color-plate: #b8afa3;
+      --ink: var(--color-espresso);
+      --muted: color-mix(in srgb, var(--color-espresso) 66%, transparent);
+      --line: color-mix(in srgb, var(--color-plate) 42%, transparent);
+      --line-strong: color-mix(in srgb, var(--color-espresso) 26%, transparent);
+      --font-sans: "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --font-star: "KoPubWorldBatang", "Pretendard", serif;
+      --radius: 7px;
+      --space-1: 4px;
+      --space-2: 8px;
+      --space-3: 12px;
+      --space-4: 16px;
+      --space-5: 24px;
+      --space-6: 32px;
+      --space-7: 48px;
+      --space-8: 64px;
+      --space-9: 96px;
+      --sheet-width: 1440px;
+      --sheet-pad: 64px;
+      --hero-title: 116px;
+      --h1: 62px;
+      --h2: 34px;
+      --body: 18px;
+      --small: 13px;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      margin: 0;
+      background: var(--color-table);
+      color: var(--ink);
+      font-family: var(--font-sans);
+      overflow-x: hidden;
+    }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      background:
+        radial-gradient(circle at 82% 8%, rgba(245, 197, 24, 0.2), transparent 23%),
+        radial-gradient(circle at 8% 18%, rgba(0, 112, 74, 0.12), transparent 20%),
+        linear-gradient(180deg, var(--color-table), var(--color-cream) 42%, color-mix(in srgb, var(--color-table) 84%, var(--color-aged)) 100%);
+      color: var(--ink);
+      letter-spacing: 0;
+      word-break: keep-all;
+      overflow-wrap: break-word;
+      overflow-x: hidden;
+    }
+
+    body.variant-tablet {
+      --sheet-width: 1024px;
+      --sheet-pad: 44px;
+      --hero-title: 88px;
+      --h1: 48px;
+      --h2: 29px;
+      --body: 17px;
+    }
+
+    body.variant-mobile {
+      --sheet-width: 430px;
+      --sheet-pad: 22px;
+      --hero-title: 54px;
+      --h1: 34px;
+      --h2: 23px;
+      --body: 15px;
+      --small: 12px;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .sheet {
+      width: min(100%, var(--sheet-width));
+      margin: 0 auto;
+      padding: var(--sheet-pad);
+      overflow: hidden;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 760px;
+      display: grid;
+      grid-template-columns: minmax(0, 0.96fr) minmax(0, 1.04fr);
+      gap: var(--space-8);
+      align-items: center;
+      padding: var(--space-7) 0 var(--space-9);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 34px auto auto 34%;
+      width: min(420px, 32vw);
+      height: min(420px, 32vw);
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(232, 160, 32, 0.22), transparent 65%);
+      pointer-events: none;
+    }
+
+    .hero-text {
+      position: relative;
+      z-index: 2;
+    }
+
+    .eyebrow {
+      margin: 0 0 var(--space-5);
+      color: var(--muted);
+      font-size: var(--small);
+      font-weight: 900;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-family: var(--font-star);
+      font-size: var(--hero-title);
+      line-height: 0.94;
+      font-weight: 700;
+      color: var(--ink);
+      text-wrap: balance;
+    }
+
+    .hero .lead {
+      max-width: 760px;
+      margin: var(--space-6) 0 0;
+      color: var(--ink);
+      font-family: var(--font-star);
+      font-size: clamp(27px, 2.9vw, 43px);
+      line-height: 1.34;
+      font-weight: 500;
+      text-wrap: balance;
+    }
+
+    .hero .door-line {
+      color: var(--color-green);
+      font-weight: 700;
+    }
+
+    .entry-nav {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: var(--space-2);
+      margin-top: var(--space-5);
+      padding: var(--space-2);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: color-mix(in srgb, var(--color-cream) 72%, transparent);
+    }
+
+    .entry-link {
+      min-height: 50px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 0;
+      border-bottom: 3px solid var(--color-door);
+      border-radius: var(--radius);
+      color: var(--ink);
+      background: var(--color-cream);
+      font-family: var(--font-star);
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 1;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .entry-link:nth-child(2) {
+      border-bottom-color: var(--color-green);
+    }
+
+    .entry-link:nth-child(3) {
+      border-bottom-color: var(--color-aged);
+    }
+
+    .entry-link:nth-child(4) {
+      border-bottom-color: var(--color-plate);
+    }
+
+    .hero-photo {
+      position: relative;
+      min-height: 660px;
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(180deg, transparent 46%, rgba(61, 43, 31, 0.68)),
+        url("../assets/images/food/hero-cafe-table-coffee.jpg") center / cover no-repeat;
+      box-shadow: inset 0 0 0 1px rgba(250, 247, 242, 0.28);
+    }
+
+    .hero-photo::after {
+      content: "가끔씩 사치를 부려본다.";
+      position: absolute;
+      left: var(--space-5);
+      right: var(--space-5);
+      bottom: var(--space-5);
+      color: var(--color-cream);
+      font-size: var(--small);
+      font-weight: 800;
+      line-height: 1.55;
+      letter-spacing: 0.02em;
+    }
+
+    .stamp-wrap {
+      width: 154px;
+      margin-top: var(--space-5);
+      transform: rotate(-4deg);
+    }
+
+    .stamp-wrap img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+    }
+
+    .star-code-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      min-height: 42px;
+      margin-top: var(--space-4);
+      padding: 0 var(--space-4);
+      border: 1px solid var(--line-strong);
+      border-radius: 999px;
+      color: var(--ink);
+      background: var(--color-cream);
+      font-size: var(--small);
+      font-weight: 900;
+      letter-spacing: 0.14em;
+    }
+
+    .star-signal {
+      --signal-color: var(--color-green);
+      flex: 0 0 auto;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--signal-color);
+      box-shadow: 0 0 16px color-mix(in srgb, var(--signal-color) 54%, transparent);
+    }
+
+    .section {
+      padding: var(--space-9) 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section.dark {
+      margin-left: calc(var(--sheet-pad) * -1);
+      margin-right: calc(var(--sheet-pad) * -1);
+      padding-left: var(--sheet-pad);
+      padding-right: var(--sheet-pad);
+      background:
+        radial-gradient(circle at 84% 12%, rgba(245, 197, 24, 0.14), transparent 20%),
+        linear-gradient(180deg, color-mix(in srgb, var(--color-espresso) 90%, #000), var(--color-espresso));
+      color: var(--color-cream);
+      border-bottom: 0;
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: 180px minmax(0, 1fr);
+      gap: var(--space-6);
+      align-items: start;
+      margin-bottom: var(--space-7);
+    }
+
+    .section-number {
+      color: var(--color-green);
+      font-size: var(--small);
+      font-weight: 900;
+      letter-spacing: 0.14em;
+    }
+
+    .dark .section-number {
+      color: var(--color-door);
+    }
+
+    .section h2 {
+      margin: 0;
+      font-family: var(--font-star);
+      font-size: var(--h1);
+      line-height: 1.08;
+      font-weight: 700;
+      text-wrap: balance;
+    }
+
+    .section-intro {
+      max-width: 780px;
+      margin: var(--space-4) 0 0;
+      color: var(--muted);
+      font-size: var(--body);
+      line-height: 1.75;
+    }
+
+    .dark .section-intro {
+      color: color-mix(in srgb, var(--color-cream) 72%, transparent);
+    }
+
+    .color-grid {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(0, 1fr));
+      gap: var(--space-3);
+    }
+
+    .color-card {
+      min-height: 210px;
+      padding: var(--space-4);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      color: var(--ink);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .color-card.dark-ink {
+      color: var(--color-cream);
+    }
+
+    .color-card strong {
+      display: block;
+      margin-bottom: var(--space-2);
+      font-size: 15px;
+      line-height: 1.28;
+    }
+
+    .color-card code {
+      color: inherit;
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .color-card p {
+      margin: var(--space-4) 0 0;
+      font-size: 13px;
+      line-height: 1.55;
+      color: currentColor;
+      opacity: 0.78;
+    }
+
+    .rhythm-grid {
+      display: grid;
+      grid-template-columns: 0.94fr 1.06fr;
+      gap: var(--space-5);
+      align-items: stretch;
+    }
+
+    .type-panel,
+    .quote-panel,
+    .door-panel,
+    .memory-card,
+    .rule-card,
+    .final-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--color-cream);
+      overflow: hidden;
+    }
+
+    .dark .door-panel,
+    .dark .final-card {
+      border-color: color-mix(in srgb, var(--color-cream) 18%, transparent);
+      background: color-mix(in srgb, var(--color-cream) 7%, transparent);
+    }
+
+    .type-panel {
+      padding: var(--space-6);
+    }
+
+    .type-panel h3 {
+      margin: 0 0 var(--space-4);
+      font-family: var(--font-star);
+      font-size: var(--h2);
+      line-height: 1.2;
+      font-weight: 700;
+      color: var(--ink);
+      text-wrap: balance;
+    }
+
+    .type-panel p {
+      margin: 0;
+      color: var(--muted);
+      font-size: var(--body);
+      line-height: 1.75;
+    }
+
+    .type-stack {
+      display: grid;
+      gap: var(--space-3);
+    }
+
+    .quote-panel {
+      padding: var(--space-6);
+      display: grid;
+      align-content: end;
+      min-height: 360px;
+      background:
+        linear-gradient(135deg, rgba(245, 197, 24, 0.24), transparent 34%),
+        var(--color-espresso);
+    }
+
+    .quote-panel p {
+      margin: 0;
+      font-family: var(--font-star);
+      font-size: clamp(28px, 3vw, 48px);
+      line-height: 1.25;
+      color: var(--color-cream);
+      text-wrap: balance;
+    }
+
+    .doors {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: var(--space-3);
+    }
+
+    .door-panel {
+      min-height: 220px;
+      padding: var(--space-5);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      color: var(--color-cream);
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    button.door-panel {
+      text-align: left;
+    }
+
+    .door-panel h3 {
+      margin: 0;
+      font-family: var(--font-star);
+      font-size: 34px;
+      line-height: 1;
+      font-weight: 700;
+      color: var(--color-cream);
+    }
+
+    .door-panel p {
+      margin: var(--space-4) 0 0;
+      color: color-mix(in srgb, var(--color-cream) 72%, transparent);
+      font-size: 15px;
+      line-height: 1.65;
+    }
+
+    .door-panel span {
+      margin-top: var(--space-5);
+      color: var(--color-door);
+      font-size: var(--small);
+      font-weight: 900;
+    }
+
+    .memory-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: var(--space-3);
+    }
+
+    .memory-card {
+      background: var(--color-cream);
+      min-height: 316px;
+    }
+
+    .memory-card.feature {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+
+    .memory-card img {
+      display: block;
+      width: 100%;
+      height: 190px;
+      object-fit: cover;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .memory-card.feature img {
+      height: 492px;
+    }
+
+    .memory-card figcaption {
+      margin: 0;
+      padding: var(--space-4);
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.58;
+    }
+
+    .memory-card strong {
+      display: block;
+      margin-bottom: var(--space-2);
+      color: var(--ink);
+      font-family: var(--font-star);
+      font-size: 22px;
+      line-height: 1.2;
+      font-weight: 700;
+    }
+
+    .rule-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-5);
+    }
+
+    .rule-card {
+      padding: var(--space-6);
+    }
+
+    .rule-card h3 {
+      margin: 0 0 var(--space-4);
+      font-family: var(--font-star);
+      font-size: var(--h2);
+      line-height: 1.18;
+      font-weight: 700;
+    }
+
+    .rule-card ul {
+      display: grid;
+      gap: var(--space-3);
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      color: var(--muted);
+      font-size: var(--body);
+      line-height: 1.7;
+    }
+
+    .rule-card li {
+      padding-left: var(--space-4);
+      border-left: 3px solid var(--color-green);
+    }
+
+    .rule-card.no li {
+      border-left-color: var(--color-aged);
+    }
+
+    .final-card {
+      padding: var(--space-7);
+      background:
+        linear-gradient(135deg, rgba(245, 197, 24, 0.15), transparent 34%),
+        color-mix(in srgb, var(--color-cream) 7%, transparent);
+    }
+
+    .final-card p {
+      margin: 0;
+      font-family: var(--font-star);
+      font-size: clamp(30px, 4vw, 64px);
+      line-height: 1.22;
+      color: var(--color-cream);
+      text-wrap: balance;
+    }
+
+    .final-card .body-line {
+      max-width: 800px;
+      margin-top: var(--space-5);
+      color: color-mix(in srgb, var(--color-cream) 74%, transparent);
+      font-family: var(--font-sans);
+      font-size: var(--body);
+      line-height: 1.8;
+    }
+
+    .star-exit {
+      padding: var(--space-9) 0 var(--space-7);
+    }
+
+    .star-exit h2 {
+      margin: 0;
+      font-family: var(--font-star);
+      font-size: var(--h1);
+      line-height: 1.08;
+      font-weight: 700;
+    }
+
+    .star-exit .intro {
+      max-width: 760px;
+      margin: var(--space-4) 0 var(--space-6);
+      color: var(--muted);
+      font-size: var(--body);
+      line-height: 1.75;
+    }
+
+    .star-grid {
+      display: grid;
+      grid-template-columns: repeat(9, minmax(0, 1fr));
+      gap: var(--space-2);
+    }
+
+    .star-button,
+    .bottom-link {
+      min-height: 52px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      color: var(--ink);
+      background: var(--color-cream);
+      font-size: 14px;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .star-button.active {
+      color: var(--ink);
+      background: var(--color-door);
+      border-color: color-mix(in srgb, var(--color-door) 76%, var(--color-espresso));
+    }
+
+    .star-button.active .star-signal {
+      --signal-color: var(--color-espresso);
+    }
+
+    .bottom-links {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--space-3);
+      margin-top: var(--space-5);
+    }
+
+    .footer {
+      padding: var(--space-5) 0 0;
+      color: var(--muted);
+      font-size: var(--small);
+      line-height: 1.6;
+    }
+
+
+    /* Homepage hidden rooms: writing / photo / map */
+    .room-house-panel[hidden],
+    .room-article-panel[hidden],
+    .room-house-photo-grid[hidden],
+    .room-house-photo-detail[hidden] {
+      display: none !important;
+    }
+
+    .room-house-panel:not([hidden]) {
+      display: block;
+    }
+
+    .room-house-panel {
+      margin: var(--space-8) calc(var(--sheet-pad) * -1);
+      padding: var(--space-8) var(--sheet-pad);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: color-mix(in srgb, var(--color-cream) 78%, var(--color-table));
+      color: var(--ink);
+    }
+
+    .room-house-panel > * {
+      max-width: 1120px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .room-house-panel > * + * {
+      margin-top: var(--space-6);
+    }
+
+    .room-house-panel-header {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: var(--space-5);
+      align-items: end;
+      padding-bottom: var(--space-5);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .room-house-panel-header h2 {
+      margin: 0;
+      font-family: var(--font-star);
+      font-size: var(--h2);
+      line-height: 1.16;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .room-section-label {
+      margin: 0 0 var(--space-2);
+      color: var(--color-green);
+      font-size: var(--small);
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .room-house-back,
+    .room-article-back,
+    .room-gallery-detail-button,
+    .room-article-bottom-nav button {
+      min-height: 42px;
+      padding: 0 var(--space-4);
+      border: 1px solid var(--line-strong);
+      border-radius: var(--radius);
+      background: var(--color-cream);
+      color: var(--ink);
+      font-family: var(--font-sans);
+      font-weight: 850;
+      cursor: pointer;
+    }
+
+    .room-article-list {
+      display: grid;
+      margin: 0 0 var(--space-5);
+      border-top: 1px solid var(--line);
+    }
+
+    .room-article-link {
+      width: 100%;
+      min-height: 58px;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: var(--space-3);
+      align-items: center;
+      border: 0;
+      border-bottom: 1px solid var(--line);
+      background: transparent;
+      color: var(--ink);
+      padding: var(--space-3) 0;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .room-article-link span {
+      min-width: 4.5em;
+      color: var(--color-aged);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .room-article-link strong {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      font-size: 20px;
+      font-weight: 850;
+    }
+
+    .room-article-panel {
+      padding: var(--space-6);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--color-cream);
+    }
+
+    .room-house-panel.is-detail-mode > .room-house-panel-header,
+    .room-house-panel.is-detail-mode > .room-article-list {
+      display: none;
+    }
+
+    .room-article-panel h2 {
+      margin: var(--space-4) 0 var(--space-2);
+      font-family: var(--font-star);
+      font-size: var(--h2);
+      line-height: 1.18;
+    }
+
+    .room-card-note {
+      margin: 0 0 var(--space-4);
+      color: var(--color-green);
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+    }
+
+    .room-article-figure,
+    .room-house-photo-grid figure {
+      margin: 0;
+    }
+
+    .room-photo-image,
+    .room-record-photo,
+    .room-gallery-detail-photo {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius);
+    }
+
+    .room-article-figure figcaption,
+    .room-house-photo-grid figcaption {
+      margin-top: var(--space-3);
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.65;
+    }
+
+    .room-house-photo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--space-3);
+    }
+
+    .room-house-photo {
+      cursor: pointer;
+    }
+
+    .room-house-photo img,
+    .room-house-photo-thumb {
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+    }
+
+    .room-house-photo-detail {
+      max-width: 1120px;
+    }
+
+    .room-gallery-detail-actions,
+    .room-gallery-detail-nav,
+    .room-article-bottom-nav {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-3);
+      margin-top: var(--space-5);
+    }
+
+    .room-gallery-detail-index {
+      color: var(--color-green);
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    .room-gallery-detail-copy {
+      color: var(--ink);
+      font-size: var(--body);
+      line-height: 1.8;
+    }
+
+    .room-map-placeholder {
+      display: grid;
+      gap: var(--space-3);
+      min-height: 220px;
+      padding: var(--space-6);
+      border: 1px dashed var(--line-strong);
+      border-radius: var(--radius);
+      background: var(--color-cream);
+    }
+
+    .room-map-placeholder strong {
+      font-family: var(--font-star);
+      font-size: var(--h2);
+      line-height: 1.18;
+    }
+
+    .room-map-placeholder p {
+      max-width: 780px;
+      margin: 0;
+      color: var(--muted);
+      font-size: var(--body);
+      line-height: 1.75;
+    }
+
+    @media (max-width: 760px) {
+      .room-house-panel {
+        margin-left: calc(var(--sheet-pad) * -1);
+        margin-right: calc(var(--sheet-pad) * -1);
+        padding: var(--space-7) var(--sheet-pad);
+      }
+
+      .room-house-panel-header {
+        grid-template-columns: 1fr;
+        align-items: start;
+      }
+
+      .room-house-photo-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: var(--space-2);
+      }
+
+      .room-article-panel,
+      .room-map-placeholder {
+        padding: var(--space-4);
+      }
+
+      .room-article-link strong {
+        font-size: 16px;
+      }
+    }
+
+    @media (max-width: 1120px) {
+      .hero,
+      .rhythm-grid,
+      .rule-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: auto;
+      }
+
+      .hero-photo {
+        min-height: 560px;
+      }
+
+      .section-head {
+        grid-template-columns: 1fr;
+        gap: var(--space-3);
+      }
+
+      .color-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .doors {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .memory-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .memory-card.feature {
+        grid-column: span 2;
+        grid-row: span 1;
+      }
+
+      .memory-card.feature img {
+        height: 380px;
+      }
+
+      .star-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    body.variant-tablet .hero {
+      gap: var(--space-6);
+      min-height: 650px;
+    }
+
+    body.variant-tablet .hero-photo {
+      min-height: 520px;
+    }
+
+    body.variant-tablet .color-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    body.variant-tablet .doors {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    body.variant-tablet .door-panel {
+      min-height: 170px;
+      padding: var(--space-4);
+    }
+
+    body.variant-tablet .memory-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    body.variant-tablet .memory-card.feature {
+      grid-column: span 2;
+    }
+
+    body.variant-tablet .memory-card.feature img,
+    body.variant-tablet .memory-card img {
+      height: 240px;
+    }
+
+    body.variant-tablet .star-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    body.variant-mobile .hero {
+      display: block;
+      min-height: auto;
+      padding: var(--space-5) 0 var(--space-7);
+    }
+
+    body.variant-mobile .hero::before {
+      inset: 110px auto auto 38%;
+      width: 210px;
+      height: 210px;
+    }
+
+    body.variant-mobile .hero .lead {
+      font-size: 25px;
+      line-height: 1.35;
+    }
+
+    body.variant-mobile .entry-nav {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 6px;
+      padding: 6px;
+    }
+
+    body.variant-mobile .entry-link {
+      min-height: 44px;
+      font-size: 16px;
+      border-bottom-width: 2px;
+    }
+
+    body.variant-mobile .hero-photo {
+      min-height: 430px;
+      margin-top: var(--space-6);
+    }
+
+    body.variant-mobile .stamp-wrap {
+      width: 118px;
+    }
+
+    body.variant-mobile .section {
+      padding: var(--space-7) 0;
+    }
+
+    body.variant-mobile .section.dark {
+      margin-left: calc(var(--sheet-pad) * -1);
+      margin-right: calc(var(--sheet-pad) * -1);
+      padding-left: var(--sheet-pad);
+      padding-right: var(--sheet-pad);
+    }
+
+    body.variant-mobile .section-head {
+      gap: var(--space-3);
+      margin-bottom: var(--space-5);
+    }
+
+    body.variant-mobile .color-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-2);
+    }
+
+    body.variant-mobile .color-card {
+      min-height: 146px;
+      padding: var(--space-3);
+    }
+
+    body.variant-mobile .color-card p {
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    body.variant-mobile .type-panel,
+    body.variant-mobile .quote-panel,
+    body.variant-mobile .rule-card,
+    body.variant-mobile .final-card {
+      padding: var(--space-4);
+    }
+
+    body.variant-mobile .quote-panel {
+      min-height: 240px;
+    }
+
+    body.variant-mobile .doors {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-2);
+    }
+
+    body.variant-mobile .door-panel {
+      min-height: 136px;
+      padding: var(--space-3);
+    }
+
+    body.variant-mobile .door-panel h3 {
+      font-size: 25px;
+    }
+
+    body.variant-mobile .door-panel p {
+      font-size: 12px;
+      line-height: 1.48;
+    }
+
+    body.variant-mobile .door-panel span {
+      margin-top: var(--space-3);
+      font-size: 11px;
+    }
+
+    body.variant-mobile .memory-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-2);
+    }
+
+    body.variant-mobile .memory-card,
+    body.variant-mobile .memory-card.feature {
+      grid-column: auto;
+      grid-row: auto;
+      min-height: 124px;
+      display: grid;
+      grid-template-columns: 106px minmax(0, 1fr);
+    }
+
+    body.variant-mobile .memory-card img,
+    body.variant-mobile .memory-card.feature img {
+      height: 100%;
+      min-height: 124px;
+      border-right: 1px solid var(--line);
+      border-bottom: 0;
+    }
+
+    body.variant-mobile .memory-card figcaption {
+      padding: var(--space-3);
+      font-size: 12px;
+      line-height: 1.42;
+    }
+
+    body.variant-mobile .memory-card strong {
+      font-size: 18px;
+    }
+
+    body.variant-mobile .star-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--space-2);
+    }
+
+    body.variant-mobile .star-button {
+      min-height: 46px;
+      padding: 0 var(--space-2);
+      font-size: 12px;
+    }
+
+    body.variant-mobile .bottom-links {
+      grid-template-columns: 1fr;
+    }
+    /* Homepage mobile compact rules copied from approved mobile style sheet */
+
+    @media (max-width: 640px) {
+
+    :root {
+      --sheet-width: 430px;
+      --sheet-pad: 22px;
+      --hero-title: 54px;
+      --h1: 34px;
+      --h2: 23px;
+      --body: 15px;
+      --small: 12px;
+    }
+
+
+    .hero {
+      display: block;
+      min-height: auto;
+      padding: var(--space-5) 0 var(--space-7);
+    }
+
+
+    .hero::before {
+      inset: 110px auto auto 38%;
+      width: 210px;
+      height: 210px;
+    }
+
+
+    .hero .lead {
+      font-size: 25px;
+      line-height: 1.35;
+    }
+
+
+    .entry-nav {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 6px;
+      padding: 6px;
+    }
+
+
+    .entry-link {
+      min-height: 44px;
+      font-size: 16px;
+      border-bottom-width: 2px;
+    }
+
+
+    .hero-photo {
+      min-height: 430px;
+      margin-top: var(--space-6);
+    }
+
+
+    .stamp-wrap {
+      width: 118px;
+    }
+
+
+    .section {
+      padding: var(--space-7) 0;
+    }
+
+
+    .section.dark {
+      margin-left: calc(var(--sheet-pad) * -1);
+      margin-right: calc(var(--sheet-pad) * -1);
+      padding-left: var(--sheet-pad);
+      padding-right: var(--sheet-pad);
+    }
+
+
+    .section-head {
+      gap: var(--space-3);
+      margin-bottom: var(--space-5);
+    }
+
+
+    .color-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-2);
+    }
+
+
+    .color-card {
+      min-height: 146px;
+      padding: var(--space-3);
+    }
+
+
+    .color-card p {
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+
+    .type-panel,
+    .quote-panel,
+    .rule-card,
+    .final-card {
+      padding: var(--space-4);
+    }
+
+
+    .quote-panel {
+      min-height: 240px;
+    }
+
+
+    .doors {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-2);
+    }
+
+
+    .door-panel {
+      min-height: 136px;
+      padding: var(--space-3);
+    }
+
+
+    .door-panel h3 {
+      font-size: 25px;
+    }
+
+
+    .door-panel p {
+      font-size: 12px;
+      line-height: 1.48;
+    }
+
+
+    .door-panel span {
+      margin-top: var(--space-3);
+      font-size: 11px;
+    }
+
+
+    .memory-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-2);
+    }
+
+
+    .memory-card,
+    .memory-card.feature {
+      grid-column: auto;
+      grid-row: auto;
+      min-height: 124px;
+      display: grid;
+      grid-template-columns: 106px minmax(0, 1fr);
+    }
+
+
+    .memory-card img,
+    .memory-card.feature img {
+      height: 100%;
+      min-height: 124px;
+      border-right: 1px solid var(--line);
+      border-bottom: 0;
+    }
+
+
+    .memory-card figcaption {
+      padding: var(--space-3);
+      font-size: 12px;
+      line-height: 1.42;
+    }
+
+
+    .memory-card strong {
+      font-size: 18px;
+    }
+
+
+    .star-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--space-2);
+    }
+
+
+    .star-button {
+      min-height: 46px;
+      padding: 0 var(--space-2);
+      font-size: 12px;
+    }
+
+
+    .bottom-links {
+      grid-template-columns: 1fr;
+    }
+    }
+
+  </style>
+</head>
+<body>
+  <main class="sheet room-house-page food-style-page" id="food-star">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-text">
+        <p class="eyebrow">음식별 · LPH-B613-07 · HAM MEDIA 별자리</p>
+        <h1 id="hero-title">음식별</h1>
+        <p class="lead">
+          일본에서, 미국에서, 한국에서.<br />
+          평생 사람 입으로 들어가<br />
+          마음에 담기는 일을 했다.<br />
+          <span class="door-line">혀로 익힌 감각이</span><br />
+          콘텐츠를 보는 눈으로 이어졌다.
+        </p>
+        <nav class="entry-nav room-house-nav" aria-label="음식별 입구">
+          <button class="entry-link room-house-door" type="button" data-scroll-target="#food-writing" data-house-target="food-writing-room">글</button>
+          <button class="entry-link room-house-door" type="button" data-scroll-target="#food-photos" data-house-target="food-photo-room">사진</button>
+          <button class="entry-link room-house-door" type="button" data-scroll-target="#food-map" data-house-target="food-map-room">지도</button>
+          <a class="entry-link" href="#star-list">다른 별</a>
         </nav>
-      </section>
+        <div class="stamp-wrap" aria-label="음식별 스탬프">
+          <img src="../assets/images/food/stamps/lph-b613-07-food-stamp.jpg" alt="LPH-B613-07 음식별 스탬프" />
+        </div>
+        <div class="star-code-pill">LPH-B613-07 <span class="star-signal" aria-label="열린 별"></span></div>
+      </div>
+      <div class="hero-photo" role="img" aria-label="스타벅스 리저브 테이블 위 커피"></div>
+    </section>
+
+    <section class="section" id="food-color">
+      <div class="section-head">
+        <div class="section-number">01 / 색의 방향</div>
+        <div>
+          <h2>따뜻한 식탁 위에, 기억난 문 색을 얹는다.</h2>
+          <p class="section-intro">음식별의 색은 식탁보, 커피, 문, 접시에서 온다. 노랑은 오래 기억나는 문이고, 초록은 커피 일을 지나온 시간이고, 브라운은 맛과 향을 잡아주는 깊이다.</p>
+        </div>
+      </div>
+      <div class="color-grid" aria-label="음식별 색">
+        <div class="color-card" style="background: var(--color-table);"><div><strong>테이블클로스 아이보리</strong><code>#f5f0e8</code></div><p>따뜻한 식탁, 첫 화면의 공기.</p></div>
+        <div class="color-card" style="background: var(--color-cream);"><div><strong>크림 화이트</strong><code>#faf7f2</code></div><p>긴 글과 음식 기억을 읽는 표면.</p></div>
+        <div class="color-card dark-ink" style="background: var(--color-green);"><div><strong>스타벅스 그린</strong><code>#00704a</code></div><p>오래 일하며 훈련한 커피의 조용한 신호.</p></div>
+        <div class="color-card" style="background: var(--color-door);"><div><strong>델라카사 도어 옐로</strong><code>#f5c518</code></div><p>처음 기억나는 문 색, 작은 강조.</p></div>
+        <div class="color-card" style="background: var(--color-aged);"><div><strong>오래된 문 옐로</strong><code>#e8a020</code></div><p>시간이 지난 문, 스탬프의 온기.</p></div>
+        <div class="color-card dark-ink" style="background: var(--color-espresso);"><div><strong>에스프레소 브라운</strong><code>#3d2b1f</code></div><p>커피 원두와 단단한 글의 깊이.</p></div>
+        <div class="color-card" style="background: var(--color-plate);"><div><strong>웜 플레이트 그레이</strong><code>#b8afa3</code></div><p>접시, 선, 오래된 테이블 그림자.</p></div>
+      </div>
+    </section>
+
+    <section class="section dark" id="food-type">
+      <div class="section-head">
+        <div class="section-number">02 / 말의 리듬</div>
+        <div>
+          <h2>메뉴판처럼 짧게, 기억처럼 천천히 읽힌다.</h2>
+          <p class="section-intro">짧은 문장은 바탕체로 세우고, 긴 기억은 Pretendard로 둔다. 음식별의 말은 맛을 평가하지 않고, 그 자리에 남은 감각을 천천히 꺼낸다.</p>
+        </div>
+      </div>
+      <div class="rhythm-grid">
+        <div class="type-stack">
+          <article class="type-panel">
+            <h3>혀로 훈련한 감각이<br />콘텐츠를 보는 눈이 됐다.</h3>
+            <p>별 이름과 핵심 문장에는 KoPubWorld Batang Pro를 쓴다. 클래식한 식당 간판처럼, 하지만 과하게 장식하지 않는다.</p>
+          </article>
+          <article class="type-panel">
+            <h3>사람 입으로 들어가<br />마음에 담기는 일을 했다.</h3>
+            <p>긴 글은 읽히는 것이 먼저다. 커피, 서비스, 접시, 기억은 차분하게 이어질 때 힘이 난다.</p>
+          </article>
+        </div>
+        <article class="quote-panel">
+          <p>감각은 타고나는 게 아니라<br />훈련된다.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section dark" id="food-doors">
+      <div class="section-head">
+        <div class="section-number">03 / 별 안으로</div>
+        <div>
+          <h2>이 별의 문은 추천이 아니라, 기억으로 열린다.</h2>
+          <p class="section-intro">글은 음식이 일이었던 시간으로 들어가고, 사진은 테이블과 접시와 커피의 흔적을 보여준다. 지도는 아직 완성된 코스가 아니라, 나중에 다시 짚어볼 자리들이다.</p>
+        </div>
+      </div>
+      <div class="doors">
+        <button class="door-panel room-house-door" type="button" data-scroll-target="#food-writing" data-house-target="food-writing-room">
+          <div><h3>글</h3><p>음식, 커피, 서비스, 그리고 감각이 어떻게 훈련됐는지 적는 곳.</p></div>
+          <span>글방으로</span>
+        </button>
+        <button class="door-panel room-house-door" type="button" data-scroll-target="#food-photos" data-house-target="food-photo-room">
+          <div><h3>사진</h3><p>많이 먹은 기록이 아니라, 왜 기억나는지 남기는 사진들.</p></div>
+          <span>사진방으로</span>
+        </button>
+        <button class="door-panel room-house-door" type="button" data-scroll-target="#food-map" data-house-target="food-map-room">
+          <div><h3>지도</h3><p>신포시장, 델라카사, 커피를 배운 자리들이 천천히 이어질 길.</p></div>
+          <span>지도 보기</span>
+        </button>
+        <a class="door-panel" href="#star-list">
+          <div><h3>다른 별</h3><p>음식에서 훈련한 감각이 다른 별의 눈과 귀로 이어진다.</p></div>
+          <span>별 목록으로</span>
+        </a>
+      </div>
+    </section>
+
+
 
       <section class="room-house-panel" id="food-writing-room" aria-label="음식 글 목록" hidden>
         <div class="room-house-panel-header">
           <p class="room-section-label">글</p>
-          <h2>맛과 서비스가 남긴 글</h2>
+          <h2>글 목록</h2>
           <button class="room-house-back" type="button">음식별로 돌아가기</button>
         </div>
 
@@ -94,126 +1508,226 @@
         </article>
       </section>
 
-      <section class="room-house-panel food-gallery" id="food-photo-room" aria-label="음식 갤러리" hidden>
+      <section class="room-house-panel" id="food-photo-room" aria-label="음식 사진 목록" hidden>
         <div class="room-house-panel-header">
           <p class="room-section-label">사진</p>
-          <h2>커피, 접시, 테이블의 사진들</h2>
+          <h2>사진 목록</h2>
           <button class="room-house-back" type="button">음식별로 돌아가기</button>
         </div>
 
-        <div class="room-section-heading">
-          <p class="room-section-label">커피, 접시, 테이블의 흔적</p>
-        </div>
-        <div class="room-house-photo-grid food-gallery-grid">
+        <div class="room-house-photo-grid">
           <figure>
-            <img class="room-photo-image food-gallery-photo" src="../assets/images/food/gallery-img-9578.jpg" alt="커피, 접시, 테이블 사진 1">
+            <img class="room-photo-image room-house-photo-thumb" src="../assets/images/food/gallery-img-9578.jpg" alt="커피, 접시, 테이블 사진 1">
             <figcaption>신포시장의 추억.</figcaption>
           </figure>
           <figure>
-            <img class="room-photo-image food-gallery-photo" src="../assets/images/food/gallery-img-5262.jpg" alt="커피, 접시, 테이블 사진 2">
+            <img class="room-photo-image room-house-photo-thumb" src="../assets/images/food/gallery-img-5262.jpg" alt="커피, 접시, 테이블 사진 2">
             <figcaption>델라카사 신포점 직원식. 빠네 먹고 싶다.</figcaption>
           </figure>
           <figure>
-            <img class="room-photo-image food-gallery-photo" src="../assets/images/food/gallery-img-6686.jpg" alt="커피, 접시, 테이블 사진 3">
+            <img class="room-photo-image room-house-photo-thumb" src="../assets/images/food/gallery-img-6686.jpg" alt="커피, 접시, 테이블 사진 3">
             <figcaption>한국인을 위한 대파 파스타. ㅋ</figcaption>
           </figure>
           <figure>
-            <img class="room-photo-image food-gallery-photo" src="../assets/images/food/gallery-img-3243.jpg" alt="커피, 접시, 테이블 사진 4">
+            <img class="room-photo-image room-house-photo-thumb" src="../assets/images/food/gallery-img-3243.jpg" alt="커피, 접시, 테이블 사진 4">
             <figcaption>이 머그잔을 기억하는 사람이 있을까?</figcaption>
           </figure>
           <figure>
-            <img class="room-photo-image food-gallery-photo" src="../assets/images/food/gallery-img-2645.jpg" alt="커피, 접시, 테이블 사진 5">
+            <img class="room-photo-image room-house-photo-thumb" src="../assets/images/food/gallery-img-2645.jpg" alt="커피, 접시, 테이블 사진 5">
             <figcaption>야식은 언제나 옳다.</figcaption>
           </figure>
           <figure>
-            <img class="room-photo-image food-gallery-photo" src="../assets/images/food/gallery-img-5037.jpg" alt="커피, 접시, 테이블 사진 6">
+            <img class="room-photo-image room-house-photo-thumb" src="../assets/images/food/gallery-img-5037.jpg" alt="커피, 접시, 테이블 사진 6">
             <figcaption>애증의 청라점이라고. 라구 파스타.. ㅜㅜ</figcaption>
           </figure>
           <figure>
-            <img class="room-photo-image food-gallery-photo" src="../assets/images/food/gallery-img-6654.jpg" alt="커피, 접시, 테이블 사진 7">
+            <img class="room-photo-image room-house-photo-thumb" src="../assets/images/food/gallery-img-6654.jpg" alt="커피, 접시, 테이블 사진 7">
             <figcaption>직원식은 항상 푸짐하게.</figcaption>
           </figure>
           <figure>
-            <img class="room-photo-image food-gallery-photo" src="../assets/images/food/gallery-img-7353.jpg" alt="커피, 접시, 테이블 사진 8">
+            <img class="room-photo-image room-house-photo-thumb" src="../assets/images/food/gallery-img-7353.jpg" alt="커피, 접시, 테이블 사진 8">
             <figcaption>제주에서의 추억. 제시카와 소율이가 좋아했던 키티 박물관.</figcaption>
           </figure>
           <figure>
-            <img class="room-photo-image food-gallery-photo" src="../assets/images/food/gallery-img-6659.jpg" alt="커피, 접시, 테이블 사진 9">
+            <img class="room-photo-image room-house-photo-thumb" src="../assets/images/food/gallery-img-6659.jpg" alt="커피, 접시, 테이블 사진 9">
             <figcaption>이거 맛있었는데. 꽈리고추 해물 파스타. ㅋ 이름이 좀 거시기하다.</figcaption>
           </figure>
           <figure>
-            <img class="room-photo-image food-gallery-photo" src="../assets/images/food/gallery-img-3108.jpg" alt="커피, 접시, 테이블 사진 10">
+            <img class="room-photo-image room-house-photo-thumb" src="../assets/images/food/gallery-img-3108.jpg" alt="커피, 접시, 테이블 사진 10">
             <figcaption>항상 매장에 들어가기 전, 고객의 시선에서 매장을 보고 들어가 점검하기.</figcaption>
           </figure>
           <figure>
-            <img class="room-photo-image food-gallery-photo" src="../assets/images/food/gallery-img-3097.jpg" alt="커피, 접시, 테이블 사진 11">
+            <img class="room-photo-image room-house-photo-thumb" src="../assets/images/food/gallery-img-3097.jpg" alt="커피, 접시, 테이블 사진 11">
             <figcaption>내가 사랑했던 사브와 스타벅스. 과거형.</figcaption>
           </figure>
           <figure>
-            <img class="room-photo-image food-gallery-photo" src="../assets/images/food/gallery-img-3222.jpg" alt="커피, 접시, 테이블 사진 12">
+            <img class="room-photo-image room-house-photo-thumb" src="../assets/images/food/gallery-img-3222.jpg" alt="커피, 접시, 테이블 사진 12">
             <figcaption>힘내세요~ 그땐 그랬지. 고마워요.</figcaption>
           </figure>
           <figure>
-            <img class="room-photo-image food-gallery-photo" src="../assets/images/food/gallery-img-4141.jpg" alt="커피, 접시, 테이블 사진 13">
+            <img class="room-photo-image room-house-photo-thumb" src="../assets/images/food/gallery-img-4141.jpg" alt="커피, 접시, 테이블 사진 13">
             <figcaption>스타벅스 리저브. 오늘은 어떤 원두를 고를까?</figcaption>
           </figure>
           <figure>
-            <img class="room-photo-image food-gallery-photo" src="../assets/images/food/gallery-img-8809.jpg" alt="커피, 접시, 테이블 사진 14">
+            <img class="room-photo-image room-house-photo-thumb" src="../assets/images/food/gallery-img-8809.jpg" alt="커피, 접시, 테이블 사진 14">
             <figcaption>어느 날인가, 위스키와 하이볼, 싱글몰트에 빠져들었다.</figcaption>
           </figure>
           <figure>
-            <img class="room-photo-image food-gallery-photo" src="../assets/images/food/gallery-img-6656.jpg" alt="커피, 접시, 테이블 사진 15">
+            <img class="room-photo-image room-house-photo-thumb" src="../assets/images/food/gallery-img-6656.jpg" alt="커피, 접시, 테이블 사진 15">
             <figcaption>델라카사 신포점. 저 접시가 다 얼마일까요? ㅋ</figcaption>
           </figure>
           <figure>
-            <img class="room-photo-image food-gallery-photo" src="../assets/images/food/gallery-img-5186.jpg" alt="커피, 접시, 테이블 사진 16">
+            <img class="room-photo-image room-house-photo-thumb" src="../assets/images/food/gallery-img-5186.jpg" alt="커피, 접시, 테이블 사진 16">
             <figcaption>이 아름다운 접시는 나중에 접시에 대해서도 이야기해야겠다.</figcaption>
           </figure>
           <figure>
-            <img class="room-photo-image food-gallery-photo" src="../assets/images/food/gallery-img-3170.jpg" alt="커피, 접시, 테이블 사진 17">
+            <img class="room-photo-image room-house-photo-thumb" src="../assets/images/food/gallery-img-3170.jpg" alt="커피, 접시, 테이블 사진 17">
             <figcaption>델라카사 신포점. 접시 사세요~~</figcaption>
           </figure>
           <figure>
-            <img class="room-photo-image food-gallery-photo" src="../assets/images/food/gallery-img-4853.jpg" alt="커피, 접시, 테이블 사진 18">
+            <img class="room-photo-image room-house-photo-thumb" src="../assets/images/food/gallery-img-4853.jpg" alt="커피, 접시, 테이블 사진 18">
             <figcaption>델라카사 청라점. 좋아하는 접시를 골라 음식을 받게 했다.</figcaption>
           </figure>
           <figure>
-            <img class="room-photo-image food-gallery-photo" src="../assets/images/food/gallery-img-4686.jpg" alt="커피, 접시, 테이블 사진 19">
+            <img class="room-photo-image room-house-photo-thumb" src="../assets/images/food/gallery-img-4686.jpg" alt="커피, 접시, 테이블 사진 19">
             <figcaption>델라카사 청라점. 봄, 여름, 가을, 겨울 포시즌 접시. 저기서 하나가 깨졌다. 힝.</figcaption>
           </figure>
           <figure>
-            <img class="room-photo-image food-gallery-photo" src="../assets/images/food/gallery-img-4173.jpg" alt="커피, 접시, 테이블 사진 20">
+            <img class="room-photo-image room-house-photo-thumb" src="../assets/images/food/gallery-img-4173.jpg" alt="커피, 접시, 테이블 사진 20">
             <figcaption>밥을 먹을 때도 최고급 오디오에서 클래식을 틀어 놓고. 모차르트가 좋겠군.</figcaption>
           </figure>
           <figure>
-            <img class="room-photo-image food-gallery-photo" src="../assets/images/food/gallery-img-0557.jpg" alt="커피, 접시, 테이블 사진 21">
+            <img class="room-photo-image room-house-photo-thumb" src="../assets/images/food/gallery-img-0557.jpg" alt="커피, 접시, 테이블 사진 21">
             <figcaption>피클, 피클, 피클.</figcaption>
           </figure>
         </div>
 
         <aside class="room-gallery-detail room-house-photo-detail" aria-live="polite" hidden></aside>
       </section>
-
-      <nav class="room-star-list" aria-label="전체 별 목록">
-        <p>별 목록</p>
-        <div>
-          <a href="fountain-pens.html">만년필별</a>
-          <a href="music-audio.html">음악·오디오별</a>
-          <a href="cameras.html">카메라별</a>
-          <a href="travel.html">여행별</a>
-          <span class="is-current">음식별</span>
-          <a href="bicycles.html">자전거별</a>
-          <a href="cars.html">자동차별</a>
-          <a href="motorcycles.html">바이크별</a>
-          <a href="spaces.html">공간별</a>
+      <section class="room-house-panel" id="food-map-room" aria-label="음식별 지도" hidden>
+        <div class="room-house-panel-header">
+          <p class="room-section-label">지도</p>
+          <h2>내가 기억하는 자리들</h2>
+          <button class="room-house-back" type="button">음식별로 돌아가기</button>
         </div>
-      </nav>
+        <article class="room-map-placeholder">
+          <strong>지도는 아직 완성되지 않아도 된다.</strong>
+          <p>신포시장, 델라카사 신포점, 스타벅스 리저브처럼 감각이 남은 자리들을 천천히 모읍니다. 완성된 코스보다, 왜 그 자리가 아직 기억나는지가 먼저입니다.</p>
+        </article>
+      </section>
 
-      <nav class="room-related" aria-label="별 이동">
-        <a class="room-soft-link" href="../index.html#about-constellation">별자리로 돌아가기</a>
-        <a class="room-soft-link room-work-link" href="ham-media-work.html">그래서, 지금은 이런 일을 합니다</a>
-      </nav>
-    </main>
-    <script src="../assets/js/main.js?v=food-room-v1"></script>
-  </body>
+    <section class="section" id="food-photos">
+      <div class="section-head">
+        <div class="section-number">04 / 사진 방향</div>
+        <div>
+          <h2>사진은 조금 많아도 된다. 대신 이유가 있어야 한다.</h2>
+          <p class="section-intro">음식별은 카메라별처럼 적게 남기는 별이 아니다. 쌓인 기억이 곧 성격이다. 다만 사진마다 장소 자랑보다 그 자리에 남은 감각을 말해야 한다.</p>
+        </div>
+      </div>
+      <div class="memory-grid">
+        <figure class="memory-card feature">
+          <img src="../assets/images/food/essay-delacasa-trace.jpg" alt="델라카사 신포점의 내부와 주방" />
+          <figcaption><strong>델라카사 신포점</strong>내가 기획하고, 만들고, 문 닫은 첫 매장. 정말 나의 모든 것이 들어간 곳.</figcaption>
+        </figure>
+        <figure class="memory-card">
+          <img src="../assets/images/food/photo-plate-texture.jpg" alt="오코노미야키가 담긴 접시" />
+          <figcaption><strong>철판 앞</strong>송도에서 오코노미야키를 만들던 때. 철판 앞이 정말 더웠다.</figcaption>
+        </figure>
+        <figure class="memory-card">
+          <img src="../assets/images/food/gallery-img-9578.jpg" alt="신포시장의 음식 기억" />
+          <figcaption><strong>신포시장</strong>어디서 먹었는지보다, 왜 아직도 그 시장을 기억하는지가 남는다.</figcaption>
+        </figure>
+        <figure class="memory-card">
+          <img src="../assets/images/food/gallery-img-5262.jpg" alt="델라카사 직원식 빠네" />
+          <figcaption><strong>직원식</strong>델라카사 신포점 직원식. 빠네 먹고 싶다.</figcaption>
+        </figure>
+        <figure class="memory-card">
+          <img src="../assets/images/food/gallery-img-6686.jpg" alt="대파 파스타" />
+          <figcaption><strong>대파 파스타</strong>한국인을 위한 대파 파스타. 이름까지 기억나는 음식.</figcaption>
+        </figure>
+        <figure class="memory-card">
+          <img src="../assets/images/food/gallery-img-3243.jpg" alt="기억 속 머그잔" />
+          <figcaption><strong>머그잔</strong>이 머그잔을 기억하는 사람이 있을까?</figcaption>
+        </figure>
+        <figure class="memory-card">
+          <img src="../assets/images/food/gallery-img-3108.jpg" alt="매장 앞에서 본 고객의 시선" />
+          <figcaption><strong>입장 전</strong>항상 매장에 들어가기 전, 고객의 시선에서 먼저 보던 습관.</figcaption>
+        </figure>
+        <figure class="memory-card">
+          <img src="../assets/images/food/gallery-img-4141.jpg" alt="스타벅스 리저브의 원두 선택" />
+          <figcaption><strong>원두</strong>스타벅스 리저브. 오늘은 어떤 원두를 고를까?</figcaption>
+        </figure>
+        <figure class="memory-card">
+          <img src="../assets/images/food/gallery-img-8809.jpg" alt="위스키와 하이볼, 싱글몰트" />
+          <figcaption><strong>향</strong>어느 날인가, 위스키와 하이볼, 싱글몰트에 빠져들었다.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section" id="food-writing">
+      <div class="section-head">
+        <div class="section-number">05 / 이 별이 권하는 것</div>
+        <div>
+          <h2>맛을 평가하기보다, 감각이 만들어진 시간을 본다.</h2>
+          <p class="section-intro">음식별은 많이 먹은 자랑이 아니다. 사람의 입으로 들어가 마음에 남는 일을 오래 하며, 맛과 향과 서비스와 기억을 훈련한 사람의 별이다.</p>
+        </div>
+      </div>
+      <div class="rule-grid">
+        <article class="rule-card">
+          <h3>남겨도 되는 말</h3>
+          <ul>
+            <li>감각은 타고나는 게 아니라 훈련된다.</li>
+            <li>커피로 맛과 향을 훈련했다.</li>
+            <li>그 자리에서 무엇을 느꼈는지가 중요하다.</li>
+          </ul>
+        </article>
+        <article class="rule-card no">
+          <h3>덜어내야 하는 말</h3>
+          <ul>
+            <li>장소를 점수로 줄 세우는 말.</li>
+            <li>비싸고 유명해서 좋았다는 말.</li>
+            <li>꼭 가야 한다고 밀어붙이는 말.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section dark" id="food-map">
+      <div class="section-head">
+        <div class="section-number">06 / 지도</div>
+        <div>
+          <h2>나중에 다시 짚어볼 자리들이 있다.</h2>
+          <p class="section-intro">신포시장, 델라카사 신포점, 스타벅스 리저브. 음식별의 지도는 완성된 코스가 아니라, 감각을 길렀던 자리를 하나씩 다시 확인하는 일이다.</p>
+        </div>
+      </div>
+      <article class="final-card">
+        <p>감각은 타고나는 게 아니라 훈련된다.<br />음악을 듣는 귀도,<br />사물을 보는 눈도,<br />세상을 그리는 감각도 그렇게 길렀다.</p>
+        <p class="body-line">HAM MEDIA의 일도 기술만으로 끝나지 않는다. 맛, 향, 서비스, 타이밍, 배려, 그리고 사람 마음에 무엇이 남는지 알아보는 감각이 함께 움직인다.</p>
+      </article>
+    </section>
+
+    <section class="star-exit" id="star-list" aria-labelledby="star-list-title">
+      <h2 id="star-list-title">다른 별 보기</h2>
+      <p class="intro">이 별은 HAM MEDIA Design MD 방식으로 정리한 별입니다. 좋아하는 것의 감각을 브랜드의 기준으로 바꾸는 실험이기도 합니다.</p>
+      <div class="star-grid" aria-label="다른 별 목록">
+        <a class="star-button" href="fountain-pens.html">만년필별</a>
+        <a class="star-button" href="music-audio.html">음악·오디오별</a>
+        <a class="star-button" href="cameras.html">카메라별</a>
+        <a class="star-button" href="travel.html">여행별</a>
+        <a class="star-button active" href="food.html" aria-current="page">음식별 <span class="star-signal" aria-label="현재 별"></span></a>
+        <a class="star-button" href="bicycles.html">자전거별</a>
+        <a class="star-button" href="cars.html">자동차별</a>
+        <a class="star-button" href="motorcycles.html">바이크별</a>
+        <a class="star-button" href="spaces.html">공간별</a>
+      </div>
+      <div class="bottom-links" aria-label="하단 이동">
+        <a class="bottom-link" href="../index.html#about-constellation">별자리로 돌아가기</a>
+        <a class="bottom-link" href="ham-media-work.html">그래서, 지금은 이런 일을 합니다</a>
+        <a class="bottom-link" href="https://hammedia.github.io/design-brief/">Design MD 만드는 도구</a>
+      </div>
+      <footer class="footer">음식별 · LPH-B613-07 · HAM MEDIA · Design MD로 만든 별 페이지</footer>
+    </section>
+  </main>
+  <script src="../assets/js/main.js?v=food-star-sheet-v1"></script>
+</body>
 </html>
