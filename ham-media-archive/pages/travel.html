@@ -1,172 +1,1687 @@
 <!doctype html>
 <html lang="ko">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>여행별 | HAM MEDIA</title>
-    <link rel="stylesheet" href="../assets/css/styles.css?v=travel-room-v1">
-  </head>
-  <body class="world-body">
-    <main class="world-page room-page room-house-page travel-room">
-      <header class="room-header">
-        <p class="eyebrow">Travel</p>
-        <div class="room-stamp-row" aria-label="여행별 도착 스탬프">
-          <p class="room-star-code">LPH-B613-03</p>
-          <img class="room-arrival-stamp" src="../assets/images/travel/stamps/lph-b613-03-travel-stamp.jpg" alt="LPH-B613-03 여행별 도착 스탬프">
-        </div>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>여행별 | HAM MEDIA</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
+  <style>
+    @font-face {
+      font-family: "HakgyoansimYeohaeng";
+      src: url("../assets/fonts/HakgyoansimYeohaengOTFR.otf") format("opentype");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    :root {
+      --color-dawn: #4f6472;
+      --color-ticket: #f3ead8;
+      --color-luggage: #7a5230;
+      --color-fog: #c7d0cf;
+      --color-rail: #6f777c;
+      --color-amber: #d7a64a;
+      --ink-on-dark: var(--color-ticket);
+      --ink-on-light: var(--color-dawn);
+      --muted-on-dark: color-mix(in srgb, var(--color-ticket) 72%, transparent);
+      --muted-on-light: color-mix(in srgb, var(--color-dawn) 72%, transparent);
+      --line-dark: color-mix(in srgb, var(--color-fog) 26%, transparent);
+      --line-light: color-mix(in srgb, var(--color-rail) 28%, transparent);
+      --font-sans: "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --font-travel: "HakgyoansimYeohaeng", "Pretendard", sans-serif;
+      --radius: 6px;
+      --space-1: 4px;
+      --space-2: 8px;
+      --space-3: 12px;
+      --space-4: 16px;
+      --space-5: 24px;
+      --space-6: 32px;
+      --space-7: 48px;
+      --space-8: 64px;
+      --space-9: 96px;
+      --sheet-width: 1440px;
+      --sheet-pad: 64px;
+      --hero-title: 118px;
+      --h1: 62px;
+      --h2: 34px;
+      --body: 18px;
+      --small: 13px;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      margin: 0;
+      background: var(--color-dawn);
+      color: var(--ink-on-dark);
+      font-family: var(--font-sans);
+    }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      background:
+        linear-gradient(180deg, color-mix(in srgb, var(--color-dawn) 92%, var(--color-rail)), var(--color-dawn) 42%, color-mix(in srgb, var(--color-dawn) 78%, var(--color-luggage)) 100%),
+        var(--color-dawn);
+      color: var(--ink-on-dark);
+      letter-spacing: 0;
+      word-break: keep-all;
+      overflow-wrap: break-word;
+    }
+
+    body.variant-tablet {
+      --sheet-width: 1024px;
+      --sheet-pad: 44px;
+      --hero-title: 86px;
+      --h1: 48px;
+      --h2: 29px;
+      --body: 17px;
+    }
+
+    body.variant-mobile {
+      --sheet-width: 430px;
+      --sheet-pad: 22px;
+      --hero-title: 52px;
+      --h1: 34px;
+      --h2: 23px;
+      --body: 15px;
+      --small: 12px;
+    }
+
+    .sheet {
+      width: min(100%, var(--sheet-width));
+      margin: 0 auto;
+      padding: var(--sheet-pad);
+      overflow: hidden;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 740px;
+      display: grid;
+      grid-template-columns: minmax(0, 0.96fr) minmax(0, 1.04fr);
+      gap: var(--space-8);
+      align-items: center;
+      padding: var(--space-7) 0 var(--space-9);
+      border-bottom: 1px solid var(--line-dark);
+    }
+
+    .hero-copy {
+      position: relative;
+      z-index: 2;
+    }
+
+    .eyebrow {
+      margin: 0 0 var(--space-5);
+      color: var(--color-fog);
+      font-size: var(--small);
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-family: var(--font-travel);
+      font-size: var(--hero-title);
+      line-height: 0.96;
+      font-weight: 400;
+      color: var(--ink-on-dark);
+    }
+
+    .hero .lead {
+      max-width: 720px;
+      margin: var(--space-6) 0 0;
+      color: var(--ink-on-dark);
+      font-size: clamp(27px, 3vw, 45px);
+      line-height: 1.26;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+    }
+
+    .hero .travel-line {
+      font-family: var(--font-travel);
+      font-weight: 400;
+      color: var(--color-amber);
+    }
+
+    .hero p {
+      max-width: 720px;
+    }
+
+    .hero-photo {
+      position: relative;
+      min-height: 640px;
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--line-dark);
+      background:
+        linear-gradient(180deg, transparent 42%, color-mix(in srgb, var(--color-dawn) 88%, transparent)),
+        url("../assets/images/travel/hero-station-suitcase-waiting.jpg") center / cover no-repeat;
+      box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--color-ticket) 8%, transparent);
+    }
+
+    .hero-photo::after {
+      content: "다시는 갈 수 없는 길";
+      position: absolute;
+      left: var(--space-5);
+      right: var(--space-5);
+      bottom: var(--space-5);
+      color: var(--ink-on-dark);
+      font-size: var(--small);
+      font-weight: 700;
+      line-height: 1.55;
+      letter-spacing: 0.04em;
+    }
+
+    .stamp-wrap {
+      width: 154px;
+      margin-top: var(--space-5);
+      transform: rotate(-5deg);
+      filter: drop-shadow(0 14px 20px color-mix(in srgb, var(--color-dawn) 58%, transparent));
+    }
+
+    .stamp-wrap img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius);
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--space-4);
+      margin-top: var(--space-7);
+    }
+
+    .meta-item {
+      min-height: 104px;
+      border-left: 3px solid var(--color-amber);
+      padding: var(--space-3) var(--space-4);
+      background: color-mix(in srgb, var(--color-fog) 12%, transparent);
+      border-radius: var(--radius);
+    }
+
+    .meta-item strong,
+    .meta-item span {
+      display: block;
+    }
+
+    .meta-item strong {
+      color: var(--ink-on-dark);
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
+    .meta-item span {
+      margin-top: 3px;
+      color: var(--muted-on-dark);
+      font-size: var(--small);
+      line-height: 1.5;
+    }
+
+    section {
+      padding: var(--space-8) var(--space-6);
+      margin: 0 calc(var(--space-6) * -1);
+      border-bottom: 1px solid var(--line-dark);
+    }
+
+    .band-ticket {
+      color: var(--ink-on-light);
+      background:
+        linear-gradient(135deg, color-mix(in srgb, var(--color-ticket) 98%, var(--color-fog)), color-mix(in srgb, var(--color-ticket) 82%, var(--color-fog))),
+        var(--color-ticket);
+      border-bottom-color: var(--line-light);
+    }
+
+    .band-dawn {
+      background:
+        linear-gradient(135deg, color-mix(in srgb, var(--color-dawn) 92%, var(--color-rail)), var(--color-dawn)),
+        repeating-linear-gradient(90deg, color-mix(in srgb, var(--color-fog) 7%, transparent) 0 1px, transparent 1px 18px);
+    }
+
+    .band-fog {
+      color: var(--ink-on-light);
+      background: linear-gradient(135deg, var(--color-fog), color-mix(in srgb, var(--color-ticket) 62%, var(--color-fog)));
+      border-bottom-color: var(--line-light);
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+      gap: var(--space-7);
+      align-items: end;
+      margin-bottom: var(--space-7);
+    }
+
+    .section-kicker {
+      margin: 0 0 var(--space-3);
+      color: var(--color-amber);
+      font-size: var(--small);
+      font-weight: 900;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    h2,
+    h3,
+    p {
+      margin: 0;
+    }
+
+    h2 {
+      color: currentColor;
+      font-family: var(--font-travel);
+      font-size: var(--h1);
+      line-height: 1.08;
+      font-weight: 400;
+      letter-spacing: 0;
+    }
+
+    h3 {
+      margin-bottom: var(--space-4);
+      color: currentColor;
+      font-size: var(--h2);
+      line-height: 1.16;
+      font-weight: 850;
+      letter-spacing: -0.01em;
+    }
+
+    p,
+    li {
+      color: var(--muted-on-dark);
+      font-size: var(--body);
+      line-height: 1.72;
+    }
+
+    .band-ticket p,
+    .band-ticket li,
+    .band-fog p,
+    .band-fog li {
+      color: var(--muted-on-light);
+    }
+
+    .note {
+      border-left: 3px solid var(--color-amber);
+      padding: var(--space-4) var(--space-5);
+      background: color-mix(in srgb, var(--color-ticket) 7%, transparent);
+      border-radius: var(--radius);
+      color: var(--muted-on-dark);
+      font-size: var(--small);
+      line-height: 1.6;
+    }
+
+    .band-ticket .note,
+    .band-fog .note {
+      background: color-mix(in srgb, var(--color-dawn) 7%, transparent);
+      color: var(--muted-on-light);
+    }
+
+    .grid-6 {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: var(--space-4);
+    }
+
+    .swatch {
+      min-height: 252px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: var(--space-5);
+      border: 1px solid var(--line-light);
+      border-radius: var(--radius);
+      background: var(--swatch);
+      color: var(--swatch-text, var(--ink-on-dark));
+    }
+
+    .swatch small {
+      display: block;
+      margin-bottom: var(--space-3);
+      color: currentColor;
+      opacity: 0.72;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .swatch strong {
+      display: block;
+      margin-bottom: var(--space-2);
+      font-size: 21px;
+      line-height: 1.18;
+    }
+
+    .swatch code {
+      display: inline-block;
+      color: currentColor;
+      font-size: 15px;
+      font-weight: 900;
+      letter-spacing: 0.02em;
+    }
+
+    .swatch p {
+      color: currentColor;
+      opacity: 0.76;
+      font-size: 15px;
+      line-height: 1.56;
+    }
+
+    .ratio {
+      display: grid;
+      grid-template-columns: 34fr 30fr 12fr 10fr 8fr 6fr;
+      height: 56px;
+      overflow: hidden;
+      border: 1px solid var(--line-light);
+      border-radius: var(--radius);
+      margin-top: var(--space-6);
+    }
+
+    .ratio span {
+      display: block;
+      background: var(--r);
+      border-right: 1px solid color-mix(in srgb, var(--color-ticket) 20%, transparent);
+    }
+
+    .component-grid,
+    .rule-grid,
+    .image-grid,
+    .type-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-5);
+    }
+
+    .panel {
+      padding: var(--space-6);
+      border: 1px solid var(--line-dark);
+      border-radius: var(--radius);
+      background: color-mix(in srgb, var(--color-dawn) 78%, var(--color-rail));
+      color: var(--ink-on-dark);
+    }
+
+    .band-ticket .panel,
+    .band-fog .panel {
+      border-color: var(--line-light);
+      background: color-mix(in srgb, var(--color-ticket) 72%, var(--color-fog));
+      color: var(--ink-on-light);
+    }
+
+    .panel.deep {
+      background: color-mix(in srgb, var(--color-dawn) 82%, var(--color-luggage));
+      color: var(--ink-on-dark);
+    }
+
+    .ticket-card {
+      position: relative;
+      min-height: 260px;
+      padding: var(--space-6);
+      border: 1px solid var(--line-light);
+      border-radius: var(--radius);
+      background:
+        linear-gradient(90deg, transparent calc(100% - 92px), color-mix(in srgb, var(--color-luggage) 18%, transparent) calc(100% - 92px)),
+        var(--color-ticket);
+      color: var(--ink-on-light);
+      overflow: hidden;
+    }
+
+    .ticket-card::before,
+    .ticket-card::after {
+      content: "";
+      position: absolute;
+      right: 82px;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: var(--color-dawn);
+    }
+
+    .ticket-card::before {
+      top: -13px;
+    }
+
+    .ticket-card::after {
+      bottom: -13px;
+    }
+
+    .ticket-card h3 {
+      max-width: 720px;
+      font-family: var(--font-travel);
+      font-size: clamp(34px, 4vw, 58px);
+      font-weight: 400;
+      line-height: 1.12;
+      color: var(--ink-on-light);
+    }
+
+    .ticket-card p {
+      max-width: 740px;
+      color: var(--muted-on-light);
+    }
+
+    .label {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      margin-bottom: var(--space-4);
+      padding: 0 var(--space-3);
+      border: 1px solid currentColor;
+      border-radius: var(--radius);
+      color: var(--color-amber);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+      margin-top: var(--space-5);
+    }
+
+    .button {
+      appearance: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0 var(--space-5);
+      border: 1px solid var(--line-dark);
+      border-radius: var(--radius);
+      color: var(--ink-on-dark);
+      background: transparent;
+      cursor: pointer;
+      font-family: var(--font-sans);
+      font-size: 15px;
+      font-weight: 850;
+    }
+
+    .button.primary {
+      border-color: var(--color-amber);
+      background: var(--color-amber);
+      color: var(--color-dawn);
+    }
+
+    .button.secondary {
+      border-color: var(--color-ticket);
+      background: var(--color-ticket);
+      color: var(--color-dawn);
+    }
+
+    .button.light {
+      border-color: var(--color-fog);
+      color: var(--color-fog);
+    }
+
+    .type-sample {
+      padding: var(--space-5) 0;
+      border-bottom: 1px solid currentColor;
+      border-color: color-mix(in srgb, currentColor 18%, transparent);
+    }
+
+    .type-sample:last-child {
+      border-bottom: 0;
+    }
+
+    .display-type {
+      font-family: var(--font-travel);
+      font-size: clamp(48px, 6vw, 94px);
+      line-height: 1.02;
+      font-weight: 400;
+    }
+
+    .travel-command {
+      line-height: 1.08;
+    }
+
+    .travel-command span {
+      display: block;
+    }
+
+    .headline-type {
+      font-family: var(--font-travel);
+      font-size: clamp(32px, 4vw, 58px);
+      line-height: 1.08;
+      font-weight: 400;
+      letter-spacing: 0;
+    }
+
+    .body-type {
+      font-size: 21px;
+      line-height: 1.65;
+    }
+
+    .caption-type {
+      color: var(--color-amber);
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+    }
+
+    .door-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: var(--space-4);
+    }
+
+    .door {
+      min-height: 190px;
+      padding: var(--space-5);
+      border: 1px solid var(--line-light);
+      border-radius: var(--radius);
+      background: color-mix(in srgb, var(--color-ticket) 72%, var(--color-fog));
+      color: var(--ink-on-light);
+    }
+
+    .door strong {
+      display: block;
+      margin-bottom: var(--space-4);
+      color: var(--color-luggage);
+      font-family: var(--font-travel);
+      font-size: 26px;
+      font-weight: 400;
+    }
+
+    .door p {
+      color: var(--muted-on-light);
+      font-size: 15px;
+      line-height: 1.58;
+    }
+
+    .image-card {
+      min-height: 390px;
+      display: grid;
+      grid-template-rows: minmax(240px, 1fr) auto;
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--line-dark);
+      background: color-mix(in srgb, var(--color-dawn) 70%, var(--color-rail));
+    }
+
+    .image-card .photo {
+      min-height: 240px;
+      background: var(--photo) center / cover no-repeat;
+    }
+
+    .image-card .photo.sea {
+      background-position: center 42%;
+    }
+
+    .image-card .caption {
+      padding: var(--space-5);
+    }
+
+    .image-card h3 {
+      margin-bottom: var(--space-2);
+      font-family: var(--font-travel);
+      font-size: 25px;
+      font-weight: 400;
+    }
+
+    .image-card p {
+      font-size: 15px;
+      line-height: 1.62;
+    }
+
+    .map-strip {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr auto 1fr;
+      align-items: center;
+      gap: var(--space-3);
+      margin-top: var(--space-6);
+    }
+
+    .map-line {
+      height: 3px;
+      background: var(--color-rail);
+    }
+
+    .map-dot {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--color-amber);
+      box-shadow: 0 0 0 8px color-mix(in srgb, var(--color-amber) 20%, transparent);
+    }
+
+    .stamp-sample {
+      display: grid;
+      grid-template-columns: 148px minmax(0, 1fr);
+      gap: var(--space-5);
+      align-items: center;
+    }
+
+    .stamp-sample img {
+      width: 148px;
+      height: 148px;
+      object-fit: cover;
+      border-radius: var(--radius);
+      transform: rotate(-4deg);
+    }
+
+    .movement-photo {
+      min-height: 260px;
+      display: grid;
+      grid-template-rows: minmax(190px, 1fr) auto;
+      border: 1px solid var(--line-dark);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: color-mix(in srgb, var(--color-dawn) 78%, var(--color-rail));
+      color: var(--ink-on-dark);
+    }
+
+    .movement-photo .movement-image {
+      min-height: 190px;
+      background: linear-gradient(180deg, transparent 42%, color-mix(in srgb, var(--color-dawn) 72%, transparent)), url("../assets/images/travel/photo-seaside-walk.jpg") center 44% / cover no-repeat;
+    }
+
+    .movement-photo .movement-caption {
+      padding: var(--space-5);
+    }
+
+    .movement-photo h3 {
+      margin-bottom: var(--space-2);
+      font-family: var(--font-travel);
+      font-size: 26px;
+      font-weight: 400;
+    }
+
+    .movement-photo p {
+      font-size: 15px;
+      line-height: 1.62;
+    }
+
+    .quote {
+      padding: var(--space-7);
+      border-left: 4px solid var(--color-amber);
+      background: color-mix(in srgb, var(--color-ticket) 8%, transparent);
+      border-radius: var(--radius);
+    }
+
+    .quote p {
+      max-width: 980px;
+      color: var(--ink-on-dark);
+      font-family: var(--font-travel);
+      font-size: clamp(34px, 4.2vw, 64px);
+      line-height: 1.15;
+    }
+
+    .do-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-5);
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 1.1em;
+    }
+
+    li + li {
+      margin-top: var(--space-3);
+    }
+
+    footer {
+      padding: var(--space-7) 0 0;
+      color: var(--muted-on-dark);
+      font-size: var(--small);
+      line-height: 1.7;
+    }
+
+    @media (max-width: 1120px) {
+      .hero,
+      .section-head,
+      .component-grid,
+      .rule-grid,
+      .image-grid,
+      .type-grid,
+      .do-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .grid-6 {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .door-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .hero-photo {
+        min-height: 520px;
+      }
+    }
+
+    body.variant-mobile .sheet {
+      padding-left: var(--sheet-pad);
+      padding-right: var(--sheet-pad);
+    }
+
+    body.variant-mobile .hero {
+      min-height: auto;
+      padding-top: var(--space-5);
+      padding-bottom: var(--space-7);
+      gap: var(--space-6);
+    }
+
+    body.variant-mobile .hero-photo {
+      min-height: 430px;
+    }
+
+    body.variant-mobile section {
+      padding: var(--space-7) var(--space-5);
+      margin-left: calc(var(--space-5) * -1);
+      margin-right: calc(var(--space-5) * -1);
+    }
+
+    body.variant-mobile .grid-6,
+    body.variant-mobile .door-grid,
+    body.variant-mobile .meta-grid,
+    body.variant-mobile .stamp-sample {
+      grid-template-columns: 1fr;
+    }
+
+    body.variant-mobile .ratio {
+      grid-template-columns: 34fr 30fr minmax(22px, 12fr) minmax(22px, 10fr) minmax(22px, 8fr) minmax(22px, 6fr);
+    }
+
+    body.variant-mobile .stamp-wrap {
+      width: 126px;
+    }
+
+    body.variant-mobile .quote {
+      padding: var(--space-5);
+    }
+
+
+    .star-room-nav {
+      align-items: center;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 28px;
+      margin: 0 0 var(--space-6);
+      position: relative;
+      z-index: 10;
+    }
+
+    .star-room-nav > :nth-child(1) { --nav-ink: #5491dd; }
+    .star-room-nav > :nth-child(2) { --nav-ink: #e392a0; }
+    .star-room-nav > :nth-child(3) { --nav-ink: #cede85; }
+    .star-room-nav > :nth-child(4) { --nav-ink: #5a7974; }
+
+    .star-room-nav a,
+    .star-room-nav button {
+      appearance: none;
+      background: transparent;
+      border: 0;
+      color: var(--ink-on-dark);
+      cursor: pointer;
+      display: inline-flex;
+      font-family: var(--font-sans);
+      font-size: 20px;
+      font-weight: 900;
+      line-height: 1;
+      padding: 0 0 13px;
+      position: relative;
+      text-decoration: none;
+    }
+
+    .star-room-nav a::after,
+    .star-room-nav button::after {
+      background: var(--nav-ink);
+      bottom: 0;
+      content: "";
+      height: 4px;
+      left: 0;
+      position: absolute;
+      width: 100%;
+    }
+
+    .star-room-nav a:hover,
+    .star-room-nav button:hover {
+      color: var(--color-ticket);
+    }
+
+    .door-grid .door {
+      align-items: flex-start;
+      appearance: none;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      font-family: var(--font-sans);
+      justify-content: flex-start;
+      min-height: 168px;
+      text-align: left;
+      text-decoration: none;
+      transition: transform 180ms ease, border-color 180ms ease;
+      width: 100%;
+    }
+
+    .door-grid .door strong {
+      line-height: 1.08;
+      margin-bottom: var(--space-3);
+    }
+
+    .door-grid .door p {
+      margin: 0;
+    }
+
+    .door-grid .door:hover {
+      border-color: var(--color-amber);
+      transform: translateY(-2px);
+    }
+
+    .room-house-panel,
+    .room-house-photo-grid[hidden],
+    .room-house-photo-detail[hidden] {
+      display: none;
+    }
+
+    .room-house-panel:not([hidden]) {
+      display: block;
+    }
+
+    .room-house-panel {
+      background: var(--color-ticket);
+      color: var(--ink-on-light);
+      margin-left: calc(var(--space-6) * -1);
+      margin-right: calc(var(--space-6) * -1);
+      padding: var(--space-8) var(--space-6);
+    }
+
+    .room-house-panel > * {
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 1120px;
+    }
+
+    .room-house-panel > * + * {
+      margin-top: var(--space-6);
+    }
+
+    .room-house-panel-header {
+      align-items: end;
+      border-bottom: 1px solid var(--line-light);
+      display: grid;
+      gap: var(--space-5);
+      grid-template-columns: minmax(0, 1fr) auto;
+      padding-bottom: var(--space-5);
+    }
+
+    .room-house-panel-header h2 {
+      color: var(--ink-on-light);
+      font-family: var(--font-travel);
+      font-size: clamp(40px, 5vw, 72px);
+    }
+
+    .room-section-label {
+      color: var(--color-luggage);
+      font-size: var(--small);
+      font-weight: 900;
+      letter-spacing: 0.1em;
+      margin-bottom: var(--space-2);
+      text-transform: uppercase;
+    }
+
+    .room-house-back,
+    .room-article-back,
+    .room-gallery-detail-button {
+      appearance: none;
+      background: transparent;
+      border: 1px solid var(--line-light);
+      border-radius: var(--radius);
+      color: var(--ink-on-light);
+      cursor: pointer;
+      font-family: var(--font-sans);
+      font-size: 15px;
+      font-weight: 850;
+      min-height: 44px;
+      padding: 0 var(--space-4);
+    }
+
+    .room-house-back:hover,
+    .room-article-back:hover,
+    .room-gallery-detail-button:hover {
+      border-color: var(--color-amber);
+    }
+
+    .room-article-list {
+      border-top: 1px solid var(--line-light);
+      display: grid;
+    }
+
+    .room-article-link {
+      align-items: center;
+      appearance: none;
+      background: transparent;
+      border: 0;
+      border-bottom: 1px solid var(--line-light);
+      color: var(--ink-on-light);
+      cursor: pointer;
+      display: grid;
+      font-family: var(--font-sans);
+      gap: var(--space-2);
+      grid-template-columns: auto minmax(0, 1fr);
+      min-height: 58px;
+      padding: var(--space-3) 0;
+      text-align: left;
+      width: 100%;
+    }
+
+    .room-article-link span {
+      color: var(--color-amber);
+      font-size: 13px;
+      font-weight: 900;
+      min-width: 2.6em;
+    }
+
+    .room-article-link strong {
+      font-size: 20px;
+      font-weight: 850;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .room-article-panel {
+      background: color-mix(in srgb, var(--color-ticket) 88%, white);
+      border: 1px solid var(--line-light);
+      border-radius: var(--radius);
+      padding: var(--space-6);
+    }
+
+    .room-article-panel[hidden],
+    .room-house-panel.is-detail-mode > .room-house-panel-header,
+    .room-house-panel.is-detail-mode > .room-article-list {
+      display: none;
+    }
+
+    .travel-essay-header h3 {
+      color: var(--ink-on-light);
+      font-family: var(--font-travel);
+      font-size: clamp(34px, 4vw, 58px);
+      font-weight: 400;
+    }
+
+    .travel-essay-header p,
+    .travel-essay-body p,
+    .room-gallery-detail-copy {
+      color: var(--muted-on-light);
+    }
+
+    .travel-essay-body {
+      display: grid;
+      gap: var(--space-5);
+      margin-top: var(--space-5);
+    }
+
+    .travel-essay-figure {
+      margin: 0;
+    }
+
+    .travel-essay-photo,
+    .room-gallery-detail-photo {
+      border-radius: var(--radius);
+      display: block;
+      height: auto;
+      width: 100%;
+    }
+
+    .travel-essay-figure figcaption,
+    .room-house-photo figcaption {
+      color: var(--muted-on-light);
+      font-size: 14px;
+      line-height: 1.5;
+      margin-top: var(--space-2);
+    }
+
+    .room-article-bottom-nav,
+    .room-gallery-detail-actions,
+    .room-gallery-detail-nav {
+      align-items: center;
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+      justify-content: space-between;
+      margin-top: var(--space-6);
+    }
+
+    .room-house-photo-grid {
+      display: grid;
+      gap: var(--space-4);
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .room-house-photo {
+      cursor: pointer;
+      margin: 0;
+    }
+
+    .room-house-photo img {
+      aspect-ratio: 4 / 3;
+      border-radius: var(--radius);
+      display: block;
+      height: auto;
+      object-fit: cover;
+      width: 100%;
+    }
+
+    .room-gallery-detail-index {
+      color: var(--color-luggage);
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    .star-map-panel {
+      border: 1px solid var(--line-light);
+      border-radius: var(--radius);
+      padding: var(--space-6);
+    }
+
+    .star-list {
+      color: var(--ink-on-light);
+    }
+
+    .star-list .section-head {
+      align-items: start;
+    }
+
+    .star-list .section-kicker,
+    .star-list h2,
+    .star-list p {
+      color: var(--ink-on-light);
+    }
+
+    .star-list-grid,
+    .page-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+    }
+
+    .star-pill,
+    .action-pill {
+      align-items: center;
+      background: rgba(255, 255, 255, 0.16);
+      border: 1px solid rgba(79, 100, 114, 0.2);
+      border-radius: var(--radius);
+      color: var(--ink-on-light);
+      display: inline-flex;
+      font-weight: 900;
+      line-height: 1.2;
+      min-height: 46px;
+      padding: var(--space-3) var(--space-5);
+      text-decoration: none;
+    }
+
+    .star-pill.is-current {
+      border-color: color-mix(in srgb, var(--color-amber) 66%, transparent);
+      box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--color-amber) 18%, transparent);
+    }
+
+    .action-pill.is-work {
+      color: var(--color-luggage);
+    }
+
+    .action-pill.is-tool {
+      color: var(--color-dawn);
+    }
+
+    .page-actions {
+      margin-top: var(--space-7);
+    }
+
+    @media (max-width: 760px) {
+      .star-room-nav {
+        gap: 18px;
+      }
+
+      .star-room-nav a,
+      .star-room-nav button {
+        font-size: 16px;
+      }
+
+      .room-house-panel {
+        margin-left: calc(var(--space-5) * -1);
+        margin-right: calc(var(--space-5) * -1);
+        padding: var(--space-7) var(--space-5);
+      }
+
+      .room-house-panel-header,
+      .room-house-photo-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      :root {
+        --sheet-width: 430px;
+        --sheet-pad: 22px;
+        --hero-title: 52px;
+        --h1: 34px;
+        --h2: 23px;
+        --body: 15px;
+        --small: 12px;
+      }
+
+      .sheet {
+        padding-left: var(--sheet-pad);
+        padding-right: var(--sheet-pad);
+      }
+
+      .star-room-nav {
+        display: grid;
+        gap: var(--space-2);
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        margin-bottom: var(--space-5);
+      }
+
+      .star-room-nav a,
+      .star-room-nav button {
+        align-items: center;
+        justify-content: center;
+        min-height: 46px;
+        font-size: 12px;
+        padding-bottom: 10px;
+        text-align: center;
+      }
+
+      .hero {
+        min-height: auto;
+        padding-top: var(--space-5);
+        padding-bottom: var(--space-7);
+        gap: var(--space-6);
+      }
+
+      .hero-photo {
+        min-height: 430px;
+      }
+
+      section {
+        padding: var(--space-7) var(--sheet-pad);
+        margin-left: calc(var(--sheet-pad) * -1);
+        margin-right: calc(var(--sheet-pad) * -1);
+      }
+
+      .meta-grid,
+      .stamp-sample {
+        grid-template-columns: 1fr;
+      }
+
+      .grid-6 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: var(--space-2);
+      }
+
+      .swatch {
+        min-height: 148px;
+        padding: var(--space-3);
+      }
+
+      .swatch small {
+        margin-bottom: var(--space-2);
+        font-size: 10px;
+        letter-spacing: 0.03em;
+      }
+
+      .swatch strong {
+        margin-bottom: var(--space-1);
+        font-size: 15px;
+        line-height: 1.2;
+      }
+
+      .swatch code {
+        font-size: 11px;
+      }
+
+      .swatch p {
+        font-size: 11px;
+        line-height: 1.42;
+      }
+
+      .ratio {
+        grid-template-columns: 34fr 30fr minmax(22px, 12fr) minmax(22px, 10fr) minmax(22px, 8fr) minmax(22px, 6fr);
+      }
+
+      .stamp-wrap {
+        width: 126px;
+      }
+
+      .quote {
+        padding: var(--space-5);
+      }
+
+      .door-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: var(--space-2);
+        padding: var(--space-3);
+        border: 1px solid var(--line-light);
+        border-radius: var(--radius);
+        background: color-mix(in srgb, var(--color-ticket) 62%, var(--color-fog));
+      }
+
+      .door-grid .door {
+        min-height: 98px;
+        padding: var(--space-3);
+        border-color: color-mix(in srgb, var(--color-rail) 24%, transparent);
+        border-bottom-width: 3px;
+        background: color-mix(in srgb, var(--color-ticket) 82%, var(--color-fog));
+      }
+
+      .door-grid .door strong {
+        margin-bottom: var(--space-1);
+        font-size: 21px;
+        line-height: 1.05;
+      }
+
+      .door-grid .door p {
+        font-size: 12px;
+        line-height: 1.45;
+      }
+
+      .room-house-panel {
+        margin-left: calc(var(--sheet-pad) * -1);
+        margin-right: calc(var(--sheet-pad) * -1);
+        padding: var(--space-7) var(--sheet-pad);
+      }
+
+      .room-house-panel-header {
+        align-items: start;
+        grid-template-columns: 1fr;
+      }
+
+      .room-house-panel-header h2 {
+        font-size: clamp(34px, 12vw, 52px);
+      }
+
+      .room-article-link strong {
+        font-size: 16px;
+      }
+
+      .room-article-panel,
+      .star-map-panel {
+        padding: var(--space-4);
+      }
+
+      .room-house-photo-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: var(--space-2);
+      }
+
+      .room-house-photo figcaption {
+        font-size: 12px;
+      }
+
+      .star-list-grid,
+      .page-actions {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .star-pill,
+      .action-pill {
+        justify-content: center;
+        min-height: 46px;
+        padding: var(--space-3);
+        text-align: center;
+      }
+    }
+
+  </style>
+</head>
+<body class="variant-desktop">
+  <main class="sheet room-house-page travel-star-page">
+    <nav class="star-room-nav room-house-nav" aria-label="여행별 이동">
+      <button class="room-house-door" type="button" data-house-target="travel-writing-room">글</button>
+      <button class="room-house-door" type="button" data-house-target="travel-photo-room">사진</button>
+      <button class="room-house-door" type="button" data-house-target="travel-map-room">지도</button>
+      <a href="#star-list">다른 별</a>
+    </nav>
+    <header class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">여행별 · LPH-B613-03 · HAM MEDIA 별자리</p>
         <h1>여행별</h1>
-      </header>
-
-      <section class="room-welcome" aria-label="여행별 첫 문장">
-        <span class="room-welcome-mark" aria-hidden="true"></span>
-        <div class="room-welcome-copy">
-          <p class="room-welcome-label">방의 첫 문장</p>
-          <blockquote>
-            <p>서 있는 자리가 바뀌면 보이는 게 달라진다. 모르는 곳에서 다른 생각을 하면, 거기서 뜻이 생긴다. 자리를 옮겨 보는 그 버릇이, 내 번역의 방식이 됐다.</p>
-            <p>전문가의 자리에서 보던 걸 청중의 자리로 옮겨 보는 일. 그게 내가 하는 번역이다.</p>
-          </blockquote>
+        <p class="lead">
+          <span class="travel-line">다시는 갈 수 없는 길</span>
+        </p>
+        <div class="stamp-wrap" aria-label="여행별 스탬프">
+          <img src="../assets/images/travel/stamps/lph-b613-03-travel-stamp.jpg" alt="여행별 실제 스탬프 이미지" />
         </div>
-      </section>
-
-      <section class="room-hero" aria-label="여행 대표 사진">
-        <figure class="travel-featured">
-          <img class="room-photo-image travel-photo-slot" src="../assets/images/travel/hero-station-suitcase-waiting.jpg" alt="기차역에서 캐리어를 곁에 두고 기다리는 사람">
-          <figcaption>아버지와 함께 여행을 왜 더 많이 못했을까. 사랑합니다, 아버지.</figcaption>
-        </figure>
-      </section>
-
-      <section class="room-house" aria-label="여행별">
-        <div class="room-section-heading">
-          <p class="room-section-label">여행별</p>
+        <div class="meta-grid">
+          <div class="meta-item">
+            <strong>이 여행은</strong>
+            <span>좋은 곳을 자랑하러 떠나는 일이 아니다. 멈춘 생각을 깨우러 자리를 옮기는 일이다.</span>
+          </div>
+          <div class="meta-item">
+            <strong>대문 사진</strong>
+            <span>사랑하는 아버지와, 몇 번 안 되는 여행길. 이젠 더 이상 갈 수 없는, 둘만의 여행. 그래서 안다. 갈 수 있을 때 움직여야 한다는 걸.</span>
+          </div>
+          <div class="meta-item">
+            <strong>다만</strong>
+            <span>떠난 곳보다, 떠난 뒤 달라진 시선을 더 오래 본다.</span>
+          </div>
         </div>
+      </div>
+      <div class="hero-photo" role="img" aria-label="다시는 갈 수 없는 길을 담은 아버지와 캐리어가 있는 역 대문 사진"></div>
+    </header>
 
-        <nav class="room-house-nav" aria-label="여행별 메뉴">
-          <button class="room-house-door" type="button" data-house-target="travel-writing-room">
-            <strong>글</strong>
-            <span>2개 기록 보기</span>
-          </button>
-          <button class="room-house-door" type="button" data-house-target="travel-photo-room">
-            <strong>사진</strong>
-            <span>5장 보기</span>
-          </button>
-          <button class="room-house-door" type="button" disabled>
-            <strong>자료</strong>
-            <span>준비 중</span>
-          </button>
-        </nav>
-      </section>
+    <section class="band-ticket">
+      <div class="section-head">
+        <div>
+          <p class="section-kicker">01 · 곁에 있던 색</p>
+          <h2>화려한 색은 없다. 곁에 있던 색이다.</h2>
+        </div>
+        <p>새벽 역의 푸른 회색, 손에 쥔 종이표, 낡은 캐리어의 갈색, 창문에 낀 흐린 공기. 여행별의 색은 멀리서 가져온 색이 아니라 그때 곁에 있던 색입니다.</p>
+      </div>
+      <div class="grid-6">
+        <div class="swatch" style="--swatch: var(--color-dawn);">
+          <div><small>Dawn Station Blue Gray</small><strong>새벽 플랫폼 블루 그레이</strong><code>#4f6472</code></div>
+          <p>아직 밝지 않은 역. 말보다 먼저 몸이 움직이던 시간.</p>
+        </div>
+        <div class="swatch" style="--swatch: var(--color-ticket); --swatch-text: var(--color-dawn);">
+          <div><small>Ticket Ivory</small><strong>종이표 아이보리</strong><code>#f3ead8</code></div>
+          <p>표처럼 접히고, 편지처럼 남는 밝은 종이.</p>
+        </div>
+        <div class="swatch" style="--swatch: var(--color-luggage);">
+          <div><small>Luggage Brown</small><strong>캐리어 브라운</strong><code>#7a5230</code></div>
+          <p>캐리어 손잡이와 오래 든 가방의 온기.</p>
+        </div>
+        <div class="swatch" style="--swatch: var(--color-fog); --swatch-text: var(--color-dawn);">
+          <div><small>Window Fog Gray</small><strong>창문 안개 그레이</strong><code>#c7d0cf</code></div>
+          <p>창밖을 볼 때 생각도 같이 흐려지는 색.</p>
+        </div>
+        <div class="swatch" style="--swatch: var(--color-rail);">
+          <div><small>Rail Steel</small><strong>철로 스틸</strong><code>#6f777c</code></div>
+          <p>플랫폼의 선, 철로의 선, 어디론가 이어지는 선.</p>
+        </div>
+        <div class="swatch" style="--swatch: var(--color-amber); --swatch-text: var(--color-dawn);">
+          <div><small>Signal Amber</small><strong>신호 앰버</strong><code>#d7a64a</code></div>
+          <p>지금 움직이라고 말하는 작은 불빛.</p>
+        </div>
+      </div>
+      <div class="ratio" aria-label="여행별 색상 사용 비율 예시">
+        <span style="--r: var(--color-dawn)"></span>
+        <span style="--r: var(--color-ticket)"></span>
+        <span style="--r: var(--color-luggage)"></span>
+        <span style="--r: var(--color-fog)"></span>
+        <span style="--r: var(--color-rail)"></span>
+        <span style="--r: var(--color-amber)"></span>
+      </div>
+      <p class="note" style="margin-top: var(--space-5);">노란빛은 금빛 장식이 아니다. 어두운 역에서 한 번 켜지는 신호다.</p>
+    </section>
 
-      <section class="room-house-panel" id="travel-writing-room" aria-label="여행 글 목록" hidden>
-        <div class="room-house-panel-header">
+    <section class="band-dawn">
+      <div class="section-head">
+        <div>
+          <p class="section-kicker">02 · 말의 리듬</p>
+          <h2>떠나라는 말은 짧게, 남는 마음은 천천히.</h2>
+        </div>
+        <p>여행별의 말은 길게 설득하지 않는다. 움직이라고 말할 때는 짧게, 왜 움직였는지 말할 때는 천천히 읽힌다.</p>
+      </div>
+      <div class="type-grid">
+        <div class="panel">
+          <div class="type-sample">
+            <p class="caption-type">별 이름</p>
+            <div class="display-type">여행별</div>
+          </div>
+          <div class="type-sample">
+            <p class="caption-type">짧고 굵은 말</p>
+            <div class="display-type travel-command" style="font-size: clamp(38px, 4.8vw, 70px);">
+              <span>움직여라.</span>
+              <span>위치를 바꿔라.</span>
+            </div>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="type-sample">
+            <p class="caption-type">남는 문장</p>
+            <div class="headline-type">전문가의 자리에서 청중의 자리로 옮겨 보는 일</div>
+          </div>
+          <div class="type-sample">
+            <p class="caption-type">본문</p>
+            <p class="body-type">익숙한 자리에서 한 발 물러나 다른 사람의 자리로 가보면, 같은 장면도 다르게 보입니다. 그래서 콘텐츠도 결국 자리를 옮기는 일입니다.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="band-fog">
+      <div class="section-head">
+        <div>
+          <p class="section-kicker">03 · 별 안으로</p>
+          <h2>여기서부터 여행별 안으로 들어간다.</h2>
+        </div>
+        <p>표를 들고, 문을 지나고, 아직 완성되지 않은 지도를 본다. 목적지가 아니라 움직이는 마음을 따라가는 입구입니다.</p>
+      </div>
+      <div class="component-grid">
+        <div class="ticket-card">
+          <span class="label">종이 티켓</span>
+          <h3>서 있는 곳이 바뀌면<br />보이는 것도 달라진다.</h3>
+          <p style="margin-top: var(--space-5);">이 표는 목적지를 증명하지 않는다. 한 자리를 떠나 다른 생각으로 넘어간 시간을 남긴다.</p>
+          <div class="button-row">
+            <button class="button primary room-house-door" type="button" data-house-target="travel-photo-room">계속 움직이기</button>
+            <button class="button secondary room-house-door" type="button" data-house-target="travel-writing-room">기록 읽기</button>
+            <button class="button light room-house-door" type="button" data-house-target="travel-map-room">지도 보기</button>
+          </div>
+        </div>
+        <article class="movement-photo">
+          <div class="movement-image" role="img" aria-label="해변에서 걸어가는 실제 여행 사진"></div>
+          <div class="movement-caption">
+            <span class="label">걷는 방향</span>
+            <h3>앞모습이 아니라 어디로 걷는지가 중요하다.</h3>
+            <p>여행별에서 사람은 카메라를 향해 서 있지 않아도 된다. 어디론가 가는 뒷모습이면 충분하다.</p>
+          </div>
+        </article>
+      </div>
+      <div class="door-grid" style="margin-top: var(--space-5);">
+        <button class="door room-house-door" type="button" data-house-target="travel-writing-room"><strong>글</strong><p>떠난 이유, 바뀐 생각, 돌아와서도 남은 것.</p></button>
+        <button class="door room-house-door" type="button" data-house-target="travel-photo-room"><strong>사진</strong><p>관광 인증보다 움직임의 흔적. 역, 길, 창문, 기다림.</p></button>
+        <button class="door room-house-door" type="button" data-house-target="travel-map-room"><strong>지도</strong><p>완성된 길보다 아직 가는 중인 선.</p></button>
+        <a class="door" href="#star-list"><strong>다른 별</strong><p>여행이 다른 별의 생각을 건드리는 곳.</p></a>
+      </div>
+      <div class="panel" style="margin-top: var(--space-5);">
+        <span class="label">진행 중인 지도</span>
+        <h3>지도는 아직 완성되지 않아도 된다.</h3>
+        <p>모든 길을 다 설명하지 않아도 된다. 지금은 어디까지 왔고, 다음에는 어디로 갈지 작은 점과 선이면 충분하다.</p>
+        <div class="map-strip" aria-hidden="true">
+          <span class="map-line"></span><span class="map-dot"></span><span class="map-line"></span><span class="map-dot"></span><span class="map-line"></span>
+        </div>
+      </div>
+    </section>
+
+
+
+    <section class="room-house-panel" id="travel-writing-room" aria-label="여행별 글 목록" hidden>
+      <div class="room-house-panel-header">
+        <div>
           <p class="room-section-label">글</p>
           <h2>글 목록</h2>
-          <button class="room-house-back" type="button">여행별로 돌아가기</button>
         </div>
+        <button class="room-house-back" type="button">여행별로 돌아가기</button>
+      </div>
 
-        <div class="room-article-list" aria-label="여행별 글 목록">
-          <button class="room-article-link" type="button" data-article-target="travel-place-note" aria-label="춘천의 강이 보이는 독채 펜션 읽기">
-            <strong>춘천 독채 펜션</strong>
-          </button>
-          <button class="room-article-link" type="button" data-article-target="travel-seaside-note" aria-label="서해 바다의 추억 읽기">
-            <strong>서해 바다의 추억</strong>
-          </button>
-        </div>
+      <div class="room-article-list" aria-label="여행별 글 목록">
+        <button class="room-article-link" type="button" data-article-target="travel-place-note" aria-label="춘천 독채 펜션 읽기"><span>01</span><strong>춘천 독채 펜션</strong></button>
+        <button class="room-article-link" type="button" data-article-target="travel-seaside-note" aria-label="서해 바다의 추억 읽기"><span>02</span><strong>서해 바다의 추억</strong></button>
+      </div>
 
-        <div class="room-card-list room-article-panels">
-          <article class="room-post fountain-essay room-article-panel" id="travel-place-note" hidden>
-            <button class="room-article-back" type="button">글 목록</button>
-            <header class="fountain-essay-header">
-              <p class="room-card-meta">글</p>
-              <h3>춘천의 강이 보이는 독채 펜션</h3>
-              <p>춘천 / 펜션 / 강</p>
-            </header>
+      <div class="room-article-panels">
+        <article class="room-article-panel" id="travel-place-note" hidden>
+          <button class="room-article-back" type="button">글 목록</button>
+          <header class="travel-essay-header">
+            <p class="room-section-label">글</p>
+            <h3>춘천의 강이 보이는 독채 펜션</h3>
+            <p>춘천 / 펜션 / 강</p>
+          </header>
+          <div class="travel-essay-body">
+            <figure class="travel-essay-figure">
+              <img class="travel-essay-photo" src="../assets/images/travel/essay-place-car-stay.jpg" alt="낯선 장소와 차, 머무는 공간이 보이는 사진" />
+              <figcaption>춘천의 강이 보이는 독채 펜션. 함께 남긴 사진과 한 세트.</figcaption>
+            </figure>
+            <p>낯선 곳에 머물면 생각의 방향도 조금 바뀐다.</p>
+            <p>차를 세우고, 짐을 내려놓고, 창밖의 물길을 바라보던 시간.</p>
+          </div>
+        </article>
 
-            <div class="fountain-essay-body">
-              <figure class="fountain-essay-figure">
-                <img class="room-photo-image fountain-essay-photo" src="../assets/images/travel/essay-place-car-stay.jpg" alt="낯선 장소와 차, 머무는 공간이 보이는 사진">
-                <figcaption>춘천의 강이 보이는 독채 펜션. 함께 남긴 사진과 한 세트.</figcaption>
-              </figure>
-              <p>낯선 곳에 머물면 생각의 방향도 조금 바뀐다.</p>
-              <p>차를 세우고, 짐을 내려놓고, 창밖의 물길을 바라보던 시간.</p>
-            </div>
-          </article>
+        <article class="room-article-panel" id="travel-seaside-note" hidden>
+          <button class="room-article-back" type="button">글 목록</button>
+          <header class="travel-essay-header">
+            <p class="room-section-label">글</p>
+            <h3>서해 바다의 추억</h3>
+            <p>서해 / 바다 / 팬데믹</p>
+          </header>
+          <div class="travel-essay-body">
+            <figure class="travel-essay-figure">
+              <img class="travel-essay-photo" src="../assets/images/travel/photo-seaside-walk.jpg" alt="바닷가에서 걷는 장면" />
+              <figcaption>서해 바다의 추억. 우리 모두가 마스크를 끼고 살았던 팬데믹 시절.</figcaption>
+            </figure>
+            <p>바닷가를 걸으면 멈춰 있던 생각도 조금씩 움직인다.</p>
+            <p>그 시절의 공기와 거리감이 아직 사진 안에 남아 있다.</p>
+          </div>
+        </article>
+      </div>
+    </section>
 
-          <article class="room-post fountain-essay room-article-panel" id="travel-seaside-note" hidden>
-            <button class="room-article-back" type="button">글 목록</button>
-            <header class="fountain-essay-header">
-              <p class="room-card-meta">글</p>
-              <h3>서해 바다의 추억</h3>
-              <p>서해 / 바다 / 팬데믹</p>
-            </header>
-
-            <div class="fountain-essay-body">
-              <figure class="fountain-essay-figure">
-                <img class="room-photo-image fountain-essay-photo" src="../assets/images/travel/photo-seaside-walk.jpg" alt="바닷가에서 걷는 장면">
-                <figcaption>서해 바다의 추억. 우리 모두가 마스크를 끼고 살았던 팬데믹 시절.</figcaption>
-              </figure>
-              <p>바닷가를 걸으면 멈춰 있던 생각도 조금씩 움직인다.</p>
-              <p>그 시절의 공기와 거리감이 아직 사진 안에 남아 있다.</p>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <section class="room-house-panel travel-gallery" id="travel-photo-room" aria-label="여행 갤러리" hidden>
-        <div class="room-house-panel-header">
+    <section class="room-house-panel" id="travel-photo-room" aria-label="여행별 사진" hidden>
+      <div class="room-house-panel-header">
+        <div>
           <p class="room-section-label">사진</p>
           <h2>길과 장소, 이동의 사진들</h2>
-          <button class="room-house-back" type="button">여행별로 돌아가기</button>
         </div>
+        <button class="room-house-back" type="button">여행별로 돌아가기</button>
+      </div>
 
-        <div class="room-section-heading">
-          <p class="room-section-label">자리를 옮기며 남은 길의 흔적</p>
-        </div>
-        <div class="room-house-photo-grid travel-gallery-grid">
-          <figure class="room-house-photo" data-memory="부산은 인천과 다르더라. 또 가자, 부산.">
-            <img class="room-photo-image travel-gallery-photo" src="../assets/images/travel/gallery-img-5134.jpg" alt="길과 장소의 여행 사진 1">
-            <figcaption>부산은 인천과 다르더라. 또 가자, 부산.</figcaption>
-          </figure>
-          <figure class="room-house-photo" data-memory="워싱턴 D.C.에서 여동생네 가족과 함께한 여행.">
-            <img class="room-photo-image travel-gallery-photo" src="../assets/images/travel/gallery-img-3233.jpg" alt="길과 장소의 여행 사진 2">
-            <figcaption>워싱턴 D.C.에서 여동생네 가족과 함께한 여행.</figcaption>
-          </figure>
-          <figure class="room-house-photo" data-memory="속리산 법주사. 정말 거대한 불상.">
-            <img class="room-photo-image travel-gallery-photo" src="../assets/images/travel/gallery-img-1104.jpg" alt="길과 장소의 여행 사진 3">
-            <figcaption>속리산 법주사. 정말 거대한 불상.</figcaption>
-          </figure>
-          <figure class="room-house-photo" data-memory="동해 바다. 너무 더운 날은 풍경도 필요 없다. 실내로 가자.">
-            <img class="room-photo-image travel-gallery-photo" src="../assets/images/travel/gallery-img-0182.jpg" alt="여행 중 가족 또는 동행과 함께한 작은 기록">
-            <figcaption>동해 바다. 너무 더운 날은 풍경도 필요 없다. 실내로 가자.</figcaption>
-          </figure>
-          <figure class="room-house-photo" data-memory="우리 가족. 나, 와이프, 소율이, 코코. ㅋㅋ">
-            <img class="room-photo-image travel-gallery-photo" src="../assets/images/travel/gallery-img-3526.jpg" alt="여행 기록 말미에 둔 일러스트 느낌의 이미지">
-            <figcaption>우리 가족. 나, 와이프, 소율이, 코코. ㅋㅋ</figcaption>
-          </figure>
-        </div>
+      <div class="room-house-photo-grid travel-gallery-grid">
+        <figure class="room-house-photo" data-memory="부산은 인천과 다르더라. 또 가자, 부산."><img src="../assets/images/travel/gallery-img-5134.jpg" alt="길과 장소의 여행 사진 1" /><figcaption>부산은 인천과 다르더라. 또 가자, 부산.</figcaption></figure>
+        <figure class="room-house-photo" data-memory="워싱턴 D.C.에서 여동생네 가족과 함께한 여행."><img src="../assets/images/travel/gallery-img-3233.jpg" alt="길과 장소의 여행 사진 2" /><figcaption>워싱턴 D.C.에서 여동생네 가족과 함께한 여행.</figcaption></figure>
+        <figure class="room-house-photo" data-memory="속리산 법주사. 정말 거대한 불상."><img src="../assets/images/travel/gallery-img-1104.jpg" alt="길과 장소의 여행 사진 3" /><figcaption>속리산 법주사. 정말 거대한 불상.</figcaption></figure>
+        <figure class="room-house-photo" data-memory="동해 바다. 너무 더운 날은 풍경도 필요 없다. 실내로 가자."><img src="../assets/images/travel/gallery-img-0182.jpg" alt="여행 중 가족 또는 동행과 함께한 작은 기록" /><figcaption>동해 바다. 너무 더운 날은 풍경도 필요 없다. 실내로 가자.</figcaption></figure>
+        <figure class="room-house-photo" data-memory="우리 가족. 나, 와이프, 소율이, 코코. ㅋㅋ"><img src="../assets/images/travel/gallery-img-3526.jpg" alt="여행 기록 말미에 둔 일러스트 느낌의 이미지" /><figcaption>우리 가족. 나, 와이프, 소율이, 코코. ㅋㅋ</figcaption></figure>
+      </div>
+      <aside class="room-gallery-detail room-house-photo-detail" aria-live="polite" hidden></aside>
+    </section>
 
-        <aside class="room-gallery-detail room-house-photo-detail" aria-live="polite" hidden></aside>
-      </section>
-
-      <nav class="room-star-list" aria-label="전체 별 목록">
-        <p>별 목록</p>
+    <section class="room-house-panel" id="travel-map-room" aria-label="여행별 지도" hidden>
+      <div class="room-house-panel-header">
         <div>
-          <a href="fountain-pens.html">만년필별</a>
-          <a href="music-audio.html">음악·오디오별</a>
-          <a href="cameras.html">카메라별</a>
-          <span class="is-current">여행별</span>
-          <a href="food.html">음식별</a>
-          <a href="bicycles.html">자전거별</a>
-          <a href="cars.html">자동차별</a>
-          <a href="motorcycles.html">바이크별</a>
-          <a href="spaces.html">공간별</a>
+          <p class="room-section-label">지도</p>
+          <h2>지도는 아직 완성되지 않아도 된다.</h2>
         </div>
-      </nav>
+        <button class="room-house-back" type="button">여행별로 돌아가기</button>
+      </div>
+      <div class="star-map-panel">
+        <span class="label">진행 중인 지도</span>
+        <h3>완성된 관광 지도 대신, 움직임이 진행 중인 선</h3>
+        <p>자세한 루트맵을 꾸며내지 않습니다. 지금은 어디까지 왔고, 다음에는 어디로 갈지 작은 점과 선으로만 남깁니다.</p>
+        <div class="map-strip" aria-hidden="true">
+          <span class="map-line"></span><span class="map-dot"></span><span class="map-line"></span><span class="map-dot"></span><span class="map-line"></span>
+        </div>
+      </div>
+    </section>
 
-      <nav class="room-related" aria-label="별 이동">
-        <a class="room-soft-link" href="../index.html#about-constellation">별자리로 돌아가기</a>
-        <a class="room-soft-link room-work-link" href="ham-media-work.html">그래서, 지금은 이런 일을 합니다</a>
-      </nav>
-    </main>
-    <script src="../assets/js/main.js?v=travel-room-v1"></script>
-  </body>
+    <section class="band-dawn">
+      <div class="section-head">
+        <div>
+          <p class="section-kicker">04 · 보이는 것</p>
+          <h2>장소를 자랑하지 말고, 시선이 바뀌는 순간을 본다.</h2>
+        </div>
+        <p>여행별의 사진은 명소를 증명하지 않는다. 어디에 서 있었고, 그 자리에서 무엇이 달라 보였는지를 남긴다.</p>
+      </div>
+      <div class="image-grid">
+        <article class="image-card">
+          <div class="photo" style="--photo: url('../assets/images/travel/essay-place-car-stay.jpg');"></div>
+          <div class="caption">
+            <h3>머문 장소의 공기</h3>
+            <p>건물, 하늘, 길, 차가 함께 들어간 장면. 멋진 장소보다 그날 서 있던 자리가 먼저 보입니다.</p>
+          </div>
+        </article>
+        <article class="image-card">
+          <div class="photo sea" style="--photo: url('../assets/images/travel/gallery-img-5134.jpg');"></div>
+          <div class="caption">
+            <h3>얼굴보다 움직임</h3>
+            <p>앞모습이 없어도 된다. 어디로 걷는지가 보이면, 그 사진은 이미 여행별의 문장입니다.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="band-ticket">
+      <div class="section-head">
+        <div>
+          <p class="section-kicker">05 · 이 별이 권하는 것</p>
+          <h2>여행을 팔지 않는다. 시선을 옮긴다.</h2>
+        </div>
+        <p>여행별은 떠나고 싶게 만드는 광고가 아니다. 잠깐이라도 다른 자리에서 생각해 보자는 말입니다.</p>
+      </div>
+      <div class="do-grid">
+        <div class="panel">
+          <span class="label">권하는 말</span>
+          <ul>
+            <li>움직여라.</li>
+            <li>생각을 바꿔라.</li>
+            <li>그 자리를 벗어나라.</li>
+            <li>서 있는 곳이 바뀌면 보이는 것도 달라진다.</li>
+            <li>전문가의 자리에서 보던 걸 청중의 자리로 옮겨 보는 일.</li>
+          </ul>
+        </div>
+        <div class="panel">
+          <span class="label">이게 아닌 것</span>
+          <ul>
+            <li>힐링 여행, 인생 여행지, 감성 숙소.</li>
+            <li>맛집 투어, 핫플, 럭셔리 여행.</li>
+            <li>여행사 포스터 같은 밝은 휴가 광고.</li>
+            <li>관광지 추천 중심의 랜드마크 자랑.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="band-dawn">
+      <div class="quote">
+        <p>전문가의 자리에서 보던 걸 청중의 자리로 옮겨 보는 일.</p>
+      </div>
+      <p class="note" style="margin-top: var(--space-5);">이 별은 HAM MEDIA Design MD 방식으로 정리한 첫 페이지입니다. 자리를 옮기면, 문장도 사진도 다르게 보입니다.</p>
+    </section>
+
+    <section class="band-ticket star-list" id="star-list">
+      <div class="section-head">
+        <div>
+          <p class="section-kicker">07 · STARS</p>
+          <h2>다른 별 보기</h2>
+        </div>
+        <p>이 별은 HAM MEDIA Design MD 방식으로 정리한 세 번째 별입니다. 자리를 옮기면, 문장도 사진도 다르게 보입니다.</p>
+      </div>
+      <div class="star-list-grid" aria-label="별 목록">
+        <a class="star-pill" href="fountain-pens.html">만년필별</a>
+        <a class="star-pill" href="music-audio.html">음악·오디오별</a>
+        <a class="star-pill" href="cameras.html">카메라별</a>
+        <a class="star-pill is-current" href="travel.html" aria-current="page">여행별</a>
+        <a class="star-pill" href="food.html">음식별</a>
+        <a class="star-pill" href="bicycles.html">자전거별</a>
+        <a class="star-pill" href="cars.html">자동차별</a>
+        <a class="star-pill" href="motorcycles.html">바이크별</a>
+        <a class="star-pill" href="spaces.html">공간별</a>
+      </div>
+      <div class="page-actions" aria-label="여행별 하단 링크">
+        <a class="action-pill" href="../index.html#about-constellation">별자리로 돌아가기</a>
+        <a class="action-pill is-work" href="ham-media-work.html">그래서, 지금은 이런 일을 합니다</a>
+        <a class="action-pill is-tool" href="https://hammedia.github.io/design-brief/">Design MD 만드는 도구</a>
+      </div>
+    </section>
+
+    <footer>
+      여행별 · LPH-B613-03 · HAM MEDIA · Design MD로 만든 별 페이지
+    </footer>
+  </main>
+  <script src="../assets/js/main.js?v=travel-star-desktop-v2"></script>
+</body>
 </html>
