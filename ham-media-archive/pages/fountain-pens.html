@@ -479,10 +479,16 @@
     }
 
     .tab {
+      appearance: none;
+      background: transparent;
       border: 1px solid rgba(80, 106, 130, 0.28);
       border-radius: 6px;
       color: var(--color-platinum-blue-black);
+      cursor: pointer;
+      display: inline-flex;
+      font: inherit;
       padding: var(--space-8) var(--space-16);
+      text-decoration: none;
     }
 
     .tab.active {
@@ -1295,10 +1301,10 @@
             <div class="component-card">
               <h3>별의 문</h3>
               <div class="tab-row" aria-label="만년필별 입구">
-                <span class="tab active">글</span>
-                <span class="tab">사진</span>
-                <span class="tab">지도</span>
-                <span class="tab">다른 별</span>
+                <button class="tab active room-house-door" type="button" data-house-target="fountain-writing-room">글</button>
+                <button class="tab room-house-door" type="button" data-house-target="fountain-photo-room">사진</button>
+                <button class="tab room-house-door" type="button" data-house-target="fountain-map-room">지도</button>
+                <a class="tab" href="#star-list">다른 별</a>
               </div>
               <p style="margin-top:16px;">첫 화면 뒤는 긴 피드가 아니라 글, 사진, 지도, 다른 별로 들어가는 문이다.</p>
             </div>
