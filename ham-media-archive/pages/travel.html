@@ -193,6 +193,32 @@
       border-radius: var(--radius);
     }
 
+    .star-code-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-3);
+      min-height: 34px;
+      margin-top: var(--space-5);
+      padding: 0 var(--space-4);
+      border: 1px solid var(--line-dark);
+      border-radius: 999px;
+      color: var(--color-ticket);
+      background: color-mix(in srgb, var(--color-dawn) 72%, transparent);
+      font-size: var(--small);
+      font-weight: 900;
+      letter-spacing: 0.14em;
+    }
+
+    .star-signal {
+      --signal-color: var(--color-amber);
+      flex: 0 0 auto;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--signal-color);
+      box-shadow: 0 0 18px color-mix(in srgb, var(--signal-color) 62%, transparent);
+    }
+
     .meta-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -681,7 +707,7 @@
 
     .movement-photo .movement-image {
       min-height: 190px;
-      background: linear-gradient(180deg, transparent 42%, color-mix(in srgb, var(--color-dawn) 72%, transparent)), url("../assets/images/travel/photo-seaside-walk.jpg") center 44% / cover no-repeat;
+      background: linear-gradient(180deg, transparent 42%, color-mix(in srgb, var(--color-dawn) 72%, transparent)), url("../assets/images/travel/walking-seaside-back.jpg") center 58% / cover no-repeat;
     }
 
     .movement-photo .movement-caption {
@@ -1198,6 +1224,11 @@
       box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--color-amber) 18%, transparent);
     }
 
+    .star-pill .star-signal {
+      --signal-color: var(--color-dawn);
+      margin-left: var(--space-2);
+    }
+
     .action-pill.is-work {
       color: var(--color-luggage);
     }
@@ -1426,6 +1457,7 @@
         <div class="stamp-wrap" aria-label="여행별 스탬프">
           <img src="../assets/images/travel/stamps/lph-b613-03-travel-stamp.jpg" alt="여행별 실제 스탬프 이미지" />
         </div>
+        <div class="star-code-pill" aria-label="여행별 별 코드">LPH-B613-03 <span class="star-signal" aria-hidden="true"></span></div>
         <div class="meta-grid">
           <div class="meta-item">
             <strong>이 여행은</strong>
@@ -1719,7 +1751,7 @@
       <div class="quote">
         <p>전문가의 자리에서 보던 걸 청중의 자리로 옮겨 보는 일.</p>
       </div>
-      <p class="note" style="margin-top: var(--space-5);">이 별은 HAM MEDIA Design MD 방식으로 정리한 첫 페이지입니다. 자리를 옮기면, 문장도 사진도 다르게 보입니다.</p>
+      <p class="note" style="margin-top: var(--space-5);">이 별은 HAM MEDIA Design MD 방식으로 정리한 세 번째 별입니다. 자리를 옮기면, 문장도 사진도 다르게 보입니다.</p>
     </section>
 
     <section class="band-ticket star-list" id="star-list">
@@ -1734,7 +1766,7 @@
         <a class="star-pill" href="fountain-pens.html">만년필별</a>
         <a class="star-pill" href="music-audio.html">음악·오디오별</a>
         <a class="star-pill" href="cameras.html">카메라별</a>
-        <a class="star-pill is-current" href="travel.html" aria-current="page">여행별</a>
+        <a class="star-pill is-current" href="travel.html" aria-current="page">여행별 <span class="star-signal" aria-hidden="true"></span></a>
         <a class="star-pill" href="food.html">음식별</a>
         <a class="star-pill" href="bicycles.html">자전거별</a>
         <a class="star-pill" href="cars.html">자동차별</a>
