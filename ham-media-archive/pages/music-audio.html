@@ -1,60 +1,1524 @@
 <!doctype html>
 <html lang="ko">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>음악·오디오별 | HAM MEDIA</title>
-    <link rel="stylesheet" href="../assets/css/styles.css?v=audio-room-v1">
-  </head>
-  <body class="world-body">
-    <main class="world-page room-page room-house-page audio-room">
-      <header class="room-header">
-        <div class="room-stamp-row" aria-label="음악·오디오별 도착 스탬프">
-          <p class="room-star-code">LPH-B613-08</p>
-          <img class="room-arrival-stamp is-wide-stamp" src="../assets/images/music-audio/stamps/lph-b613-08-audio-stamp.png" alt="LPH-B613-08 음악·오디오별 도착 스탬프">
-        </div>
-        <h1>음악·오디오별</h1>
-      </header>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>음악·오디오별 | HAM MEDIA 별자리</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
+  <style>
+    @font-face {
+      font-family: "Ghanachocolate";
+      src: url("../assets/fonts/Ghanachocolate.ttf") format("truetype");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
 
-      <section class="room-welcome" aria-label="음악·오디오별 첫 문장">
-        <span class="room-welcome-mark" aria-hidden="true"></span>
-        <div class="room-welcome-copy">
-          <p class="room-welcome-label">방의 첫 문장</p>
-          <blockquote>
-            <p>나는 늘 내 인생의 OST를 생각한다. 좋은 오디오일수록 더 깊이 빠져든다. 그래서 오디오 유튜브를 했고, 오디오 업체에서 일했다. 무엇을 틀고 무엇을 뺄지 고르던 그 귀가, 지금 내 편집의 본질이다.</p>
-            <p>음악은 결국 선곡이다. 내 콘텐츠도 똑같다.</p>
-          </blockquote>
-        </div>
-      </section>
-      <section class="room-hero" aria-label="음악·오디오 대표 사진">
-        <figure class="audio-featured">
-          <img class="room-photo-image audio-photo-slot" src="../assets/images/music-audio/hero-listening-space.jpg" alt="큰 스피커와 청취 공간이 보이는 음악 감상 공간">
-          <figcaption>오디오, 공간 음향, 공조, 조명을 모두 신경 써서 만든 첫 작품.</figcaption>
-        </figure>
-      </section>
+    :root {
+      --color-room: #111318;
+      --color-gold: #c9a84c;
+      --color-wood: #7a5c3e;
+      --color-score: #f0ece2;
+      --color-record: #1a1a1a;
+      --color-piano: #9c9a94;
+      --color-vinyl: #e8449a;
+      --ink-on-dark: #f6f0e6;
+      --muted-on-dark: color-mix(in srgb, var(--ink-on-dark) 68%, transparent);
+      --muted-on-light: color-mix(in srgb, var(--color-room) 66%, transparent);
+      --line-dark: color-mix(in srgb, var(--color-score) 18%, transparent);
+      --line-light: color-mix(in srgb, var(--color-record) 18%, transparent);
+      --font-sans: "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --font-star: "Ghanachocolate", "Pretendard", sans-serif;
+      --radius: 6px;
+      --space-1: 4px;
+      --space-2: 8px;
+      --space-3: 12px;
+      --space-4: 16px;
+      --space-5: 24px;
+      --space-6: 32px;
+      --space-7: 48px;
+      --space-8: 64px;
+      --space-9: 96px;
+      --sheet-width: 1440px;
+      --sheet-pad: 64px;
+      --hero-title: 104px;
+      --h1: 60px;
+      --h2: 34px;
+      --body: 18px;
+      --small: 13px;
+    }
 
-      <section class="room-house" aria-label="음악·오디오별">
-        <div class="room-section-heading">
-          <p class="room-section-label">음악·오디오별</p>
-        </div>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
 
-        <nav class="room-house-nav" aria-label="음악·오디오별 메뉴">
-          <button class="room-house-door" type="button" data-house-target="audio-writing-room">
-            <strong>글</strong>
-            <span>5개 기록 보기</span>
-          </button>
-          <button class="room-house-door" type="button" data-house-target="audio-photo-room">
-            <strong>사진</strong>
-            <span>14장 보기</span>
-          </button>
-          <button class="room-house-door" type="button" disabled>
-            <strong>자료</strong>
-            <span>나중에 열 방</span>
-          </button>
+    html {
+      margin: 0;
+      background: var(--color-room);
+      color: var(--ink-on-dark);
+      font-family: var(--font-sans);
+      overflow-x: hidden;
+    }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      background:
+        radial-gradient(circle at 82% 12%, rgba(201, 168, 76, 0.2), transparent 22%),
+        radial-gradient(circle at 18% 28%, rgba(122, 92, 62, 0.2), transparent 24%),
+        linear-gradient(180deg, #171a21, var(--color-room) 44%, #090a0d 100%),
+        repeating-linear-gradient(90deg, rgba(240, 236, 226, 0.035) 0 1px, transparent 1px 14px);
+      color: var(--ink-on-dark);
+      letter-spacing: 0;
+      word-break: keep-all;
+      overflow-wrap: break-word;
+      overflow-x: hidden;
+    }
+
+    body.variant-tablet {
+      --sheet-width: 1024px;
+      --sheet-pad: 44px;
+      --hero-title: 78px;
+      --h1: 48px;
+      --h2: 29px;
+      --body: 17px;
+    }
+
+    body.variant-mobile {
+      --sheet-width: 430px;
+      --sheet-pad: 22px;
+      --hero-title: 44px;
+      --h1: 33px;
+      --h2: 23px;
+      --body: 15px;
+      --small: 12px;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .sheet {
+      width: min(100%, var(--sheet-width));
+      margin: 0 auto;
+      padding: var(--sheet-pad);
+      overflow: hidden;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 760px;
+      display: grid;
+      grid-template-columns: minmax(0, 0.94fr) minmax(0, 1.06fr);
+      gap: var(--space-8);
+      align-items: center;
+      padding: var(--space-7) 0 var(--space-9);
+      border-bottom: 1px solid var(--line-dark);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 38px auto auto 30%;
+      width: min(450px, 34vw);
+      height: min(450px, 34vw);
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201, 168, 76, 0.24), transparent 64%);
+      pointer-events: none;
+    }
+
+    .hero-text {
+      position: relative;
+      z-index: 2;
+    }
+
+    .eyebrow {
+      margin: 0 0 var(--space-5);
+      color: var(--color-piano);
+      font-size: var(--small);
+      font-weight: 900;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-family: var(--font-star);
+      font-size: var(--hero-title);
+      line-height: 0.98;
+      font-weight: 700;
+      color: var(--ink-on-dark);
+      text-wrap: balance;
+    }
+
+    .hero .lead {
+      max-width: 760px;
+      margin: var(--space-6) 0 0;
+      color: var(--ink-on-dark);
+      font-family: var(--font-star);
+      font-size: clamp(27px, 2.75vw, 42px);
+      line-height: 1.34;
+      font-weight: 400;
+      text-wrap: balance;
+    }
+
+    .hero .gold-line {
+      color: var(--color-gold);
+      font-weight: 700;
+    }
+
+    .entry-nav {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: var(--space-2);
+      margin-top: var(--space-5);
+      padding: var(--space-2);
+      border: 1px solid var(--line-dark);
+      border-radius: var(--radius);
+      background: rgba(240, 236, 226, 0.055);
+    }
+
+    .entry-link {
+      min-height: 50px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 0;
+      border-bottom: 3px solid var(--color-gold);
+      border-radius: var(--radius);
+      color: var(--ink-on-dark);
+      background: rgba(26, 26, 26, 0.82);
+      font-family: var(--font-star);
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 1;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .entry-link:nth-child(2) {
+      border-bottom-color: var(--color-wood);
+    }
+
+    .entry-link:nth-child(3) {
+      border-bottom-color: var(--color-piano);
+    }
+
+    .entry-link:nth-child(4) {
+      border-bottom-color: var(--color-score);
+    }
+
+    .hero-photo {
+      position: relative;
+      min-height: 660px;
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--line-dark);
+      background:
+        linear-gradient(180deg, transparent 48%, rgba(17, 19, 24, 0.9)),
+        url("../assets/images/music-audio/hero-listening-space.jpg") center / cover no-repeat;
+      box-shadow: inset 0 0 0 1px rgba(240, 236, 226, 0.06);
+    }
+
+    .hero-photo::after {
+      content: "오디오, 공간 음향, 공조, 조명을 모두 신경 써서 만든 첫 작품.";
+      position: absolute;
+      left: var(--space-5);
+      right: var(--space-5);
+      bottom: var(--space-5);
+      color: var(--ink-on-dark);
+      font-size: var(--small);
+      font-weight: 800;
+      line-height: 1.55;
+      letter-spacing: 0.02em;
+    }
+
+    .stamp-wrap {
+      width: 154px;
+      margin-top: var(--space-5);
+      transform: rotate(-4deg);
+    }
+
+    .stamp-wrap img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius);
+    }
+
+    .star-code-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      min-height: 42px;
+      margin-top: var(--space-4);
+      padding: 0 var(--space-4);
+      border: 1px solid var(--line-dark);
+      border-radius: 999px;
+      color: var(--color-score);
+      background: rgba(26, 26, 26, 0.68);
+      font-size: var(--small);
+      font-weight: 900;
+      letter-spacing: 0.14em;
+    }
+
+    .star-signal {
+      --signal-color: var(--color-gold);
+      flex: 0 0 auto;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--signal-color);
+      box-shadow: 0 0 18px color-mix(in srgb, var(--signal-color) 58%, transparent);
+    }
+
+    .section {
+      padding: var(--space-9) 0;
+      border-bottom: 1px solid var(--line-dark);
+    }
+
+    .section.light {
+      margin-left: calc(var(--sheet-pad) * -1);
+      margin-right: calc(var(--sheet-pad) * -1);
+      padding-left: var(--sheet-pad);
+      padding-right: var(--sheet-pad);
+      background: var(--color-score);
+      color: var(--color-room);
+      border-bottom: 0;
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: 180px minmax(0, 1fr);
+      gap: var(--space-6);
+      align-items: start;
+      margin-bottom: var(--space-7);
+    }
+
+    .section-number {
+      color: var(--color-gold);
+      font-size: var(--small);
+      font-weight: 900;
+      letter-spacing: 0.14em;
+    }
+
+    .section h2 {
+      margin: 0;
+      font-family: var(--font-star);
+      font-size: var(--h1);
+      line-height: 1.08;
+      font-weight: 700;
+      text-wrap: balance;
+    }
+
+    .section-intro {
+      max-width: 780px;
+      margin: var(--space-4) 0 0;
+      color: var(--muted-on-dark);
+      font-size: var(--body);
+      line-height: 1.75;
+    }
+
+    .light .section-intro {
+      color: var(--muted-on-light);
+    }
+
+    .color-grid {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(0, 1fr));
+      gap: var(--space-3);
+    }
+
+    .color-card {
+      min-height: 210px;
+      padding: var(--space-4);
+      border: 1px solid var(--line-dark);
+      border-radius: var(--radius);
+      color: var(--ink-on-dark);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .color-card.light-ink {
+      color: var(--color-room);
+    }
+
+    .color-card strong {
+      display: block;
+      margin-bottom: var(--space-2);
+      font-size: 15px;
+      line-height: 1.28;
+    }
+
+    .color-card code {
+      color: inherit;
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .color-card p {
+      margin: var(--space-4) 0 0;
+      font-size: 13px;
+      line-height: 1.55;
+      color: currentColor;
+      opacity: 0.78;
+    }
+
+    .rhythm-grid {
+      display: grid;
+      grid-template-columns: 0.94fr 1.06fr;
+      gap: var(--space-5);
+      align-items: stretch;
+    }
+
+    .type-panel,
+    .quote-panel,
+    .door-panel,
+    .memory-card,
+    .rule-card,
+    .final-card {
+      border: 1px solid var(--line-dark);
+      border-radius: var(--radius);
+      background: rgba(240, 236, 226, 0.055);
+      overflow: hidden;
+    }
+
+    .type-panel {
+      padding: var(--space-6);
+    }
+
+    .type-panel h3 {
+      margin: 0 0 var(--space-4);
+      font-family: var(--font-star);
+      font-size: var(--h2);
+      line-height: 1.2;
+      font-weight: 700;
+      color: var(--ink-on-dark);
+      text-wrap: balance;
+    }
+
+    .type-panel p {
+      margin: 0;
+      color: var(--muted-on-dark);
+      font-size: var(--body);
+      line-height: 1.75;
+    }
+
+    .type-stack {
+      display: grid;
+      gap: var(--space-3);
+    }
+
+    .quote-panel {
+      padding: var(--space-6);
+      display: grid;
+      align-content: end;
+      min-height: 360px;
+      background:
+        linear-gradient(135deg, rgba(201, 168, 76, 0.16), transparent 34%),
+        rgba(26, 26, 26, 0.72);
+    }
+
+    .quote-panel p {
+      margin: 0;
+      font-family: var(--font-star);
+      font-size: clamp(28px, 3vw, 48px);
+      line-height: 1.25;
+      color: var(--ink-on-dark);
+      text-wrap: balance;
+    }
+
+    .doors {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: var(--space-3);
+    }
+
+    .door-panel {
+      min-height: 220px;
+      padding: var(--space-5);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      color: var(--ink-on-dark);
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    button.door-panel {
+      text-align: left;
+    }
+
+    .door-panel h3 {
+      margin: 0;
+      font-family: var(--font-star);
+      font-size: 34px;
+      line-height: 1;
+      font-weight: 700;
+      color: var(--ink-on-dark);
+    }
+
+    .door-panel p {
+      margin: var(--space-4) 0 0;
+      color: var(--muted-on-dark);
+      font-size: 15px;
+      line-height: 1.65;
+    }
+
+    .door-panel span {
+      margin-top: var(--space-5);
+      color: var(--color-gold);
+      font-size: var(--small);
+      font-weight: 900;
+    }
+
+    .memory-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: var(--space-3);
+    }
+
+    .memory-card {
+      min-height: 316px;
+      background: rgba(26, 26, 26, 0.56);
+    }
+
+    .memory-card.feature {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+
+    .memory-card img {
+      display: block;
+      width: 100%;
+      height: 190px;
+      object-fit: cover;
+      border-bottom: 1px solid var(--line-dark);
+    }
+
+    .memory-card.feature img {
+      height: 492px;
+    }
+
+    .memory-card figcaption {
+      margin: 0;
+      padding: var(--space-4);
+      color: var(--muted-on-dark);
+      font-size: 14px;
+      line-height: 1.58;
+    }
+
+    .memory-card strong {
+      display: block;
+      margin-bottom: var(--space-2);
+      color: var(--ink-on-dark);
+      font-family: var(--font-star);
+      font-size: 22px;
+      line-height: 1.2;
+      font-weight: 700;
+    }
+
+    .rule-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-5);
+    }
+
+    .rule-card {
+      padding: var(--space-6);
+      background: var(--color-score);
+      color: var(--color-room);
+      border-color: var(--line-light);
+    }
+
+    .rule-card h3 {
+      margin: 0 0 var(--space-4);
+      font-family: var(--font-star);
+      font-size: var(--h2);
+      line-height: 1.18;
+      font-weight: 700;
+    }
+
+    .rule-card ul {
+      display: grid;
+      gap: var(--space-3);
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      color: var(--muted-on-light);
+      font-size: var(--body);
+      line-height: 1.7;
+    }
+
+    .rule-card li {
+      padding-left: var(--space-4);
+      border-left: 3px solid var(--color-gold);
+    }
+
+    .rule-card.no li {
+      border-left-color: var(--color-wood);
+    }
+
+    .final-card {
+      padding: var(--space-7);
+      background:
+        linear-gradient(135deg, rgba(201, 168, 76, 0.13), transparent 34%),
+        rgba(26, 26, 26, 0.78);
+    }
+
+    .final-card p {
+      margin: 0;
+      font-family: var(--font-star);
+      font-size: clamp(30px, 4vw, 64px);
+      line-height: 1.22;
+      color: var(--ink-on-dark);
+      text-wrap: balance;
+    }
+
+    .final-card .body-line {
+      max-width: 800px;
+      margin-top: var(--space-5);
+      color: var(--muted-on-dark);
+      font-family: var(--font-sans);
+      font-size: var(--body);
+      line-height: 1.8;
+    }
+
+    .star-exit {
+      padding: var(--space-9) 0 var(--space-7);
+    }
+
+    .star-exit h2 {
+      margin: 0;
+      font-family: var(--font-star);
+      font-size: var(--h1);
+      line-height: 1.08;
+      font-weight: 700;
+    }
+
+    .star-exit .intro {
+      max-width: 760px;
+      margin: var(--space-4) 0 var(--space-6);
+      color: var(--muted-on-dark);
+      font-size: var(--body);
+      line-height: 1.75;
+    }
+
+    .star-grid {
+      display: grid;
+      grid-template-columns: repeat(9, minmax(0, 1fr));
+      gap: var(--space-2);
+    }
+
+    .star-button,
+    .bottom-link {
+      min-height: 52px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      border: 1px solid var(--line-dark);
+      border-radius: var(--radius);
+      color: var(--ink-on-dark);
+      background: rgba(240, 236, 226, 0.055);
+      font-size: 14px;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .star-button.active {
+      color: var(--color-record);
+      background: var(--color-gold);
+      border-color: var(--color-gold);
+    }
+
+    .star-button.active .star-signal {
+      --signal-color: var(--color-record);
+    }
+
+    .bottom-links {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--space-3);
+      margin-top: var(--space-5);
+    }
+
+    .footer {
+      padding: var(--space-5) 0 0;
+      color: var(--muted-on-dark);
+      font-size: var(--small);
+      line-height: 1.6;
+    }
+
+    @media (max-width: 1120px) {
+      .hero,
+      .rhythm-grid,
+      .rule-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: auto;
+      }
+
+      .hero-photo {
+        min-height: 560px;
+      }
+
+      .section-head {
+        grid-template-columns: 1fr;
+        gap: var(--space-3);
+      }
+
+      .color-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .doors {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .memory-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .memory-card.feature {
+        grid-column: span 2;
+        grid-row: span 1;
+      }
+
+      .memory-card.feature img {
+        height: 380px;
+      }
+
+      .star-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    body.variant-tablet .hero {
+      gap: var(--space-6);
+      min-height: 650px;
+    }
+
+    body.variant-tablet .hero-photo {
+      min-height: 520px;
+    }
+
+    body.variant-tablet .color-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    body.variant-tablet .doors {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    body.variant-tablet .door-panel {
+      min-height: 170px;
+      padding: var(--space-4);
+    }
+
+    body.variant-tablet .memory-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    body.variant-tablet .memory-card.feature {
+      grid-column: span 2;
+    }
+
+    body.variant-tablet .memory-card.feature img,
+    body.variant-tablet .memory-card img {
+      height: 240px;
+    }
+
+    body.variant-tablet .star-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    body.variant-mobile .hero {
+      display: block;
+      min-height: auto;
+      padding: var(--space-5) 0 var(--space-7);
+    }
+
+    body.variant-mobile .hero::before {
+      inset: 110px auto auto 38%;
+      width: 210px;
+      height: 210px;
+    }
+
+    body.variant-mobile .hero .lead {
+      font-size: 24px;
+      line-height: 1.36;
+    }
+
+    body.variant-mobile .entry-nav {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 6px;
+      padding: 6px;
+    }
+
+    body.variant-mobile .entry-link {
+      min-height: 44px;
+      font-size: 15px;
+      border-bottom-width: 2px;
+    }
+
+    body.variant-mobile .hero-photo {
+      min-height: 430px;
+      margin-top: var(--space-6);
+    }
+
+    body.variant-mobile .stamp-wrap {
+      width: 118px;
+    }
+
+    body.variant-mobile .section {
+      padding: var(--space-7) 0;
+    }
+
+    body.variant-mobile .section.light {
+      margin-left: calc(var(--sheet-pad) * -1);
+      margin-right: calc(var(--sheet-pad) * -1);
+      padding-left: var(--sheet-pad);
+      padding-right: var(--sheet-pad);
+    }
+
+    body.variant-mobile .section-head {
+      gap: var(--space-3);
+      margin-bottom: var(--space-5);
+    }
+
+    body.variant-mobile .color-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-2);
+    }
+
+    body.variant-mobile .color-card {
+      min-height: 146px;
+      padding: var(--space-3);
+    }
+
+    body.variant-mobile .color-card p {
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    body.variant-mobile .type-panel,
+    body.variant-mobile .quote-panel,
+    body.variant-mobile .rule-card,
+    body.variant-mobile .final-card {
+      padding: var(--space-4);
+    }
+
+    body.variant-mobile .quote-panel {
+      min-height: 240px;
+    }
+
+    body.variant-mobile .doors {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-2);
+    }
+
+    body.variant-mobile .door-panel {
+      min-height: 136px;
+      padding: var(--space-3);
+    }
+
+    body.variant-mobile .door-panel h3 {
+      font-size: 25px;
+    }
+
+    body.variant-mobile .door-panel p {
+      font-size: 12px;
+      line-height: 1.48;
+    }
+
+    body.variant-mobile .door-panel span {
+      margin-top: var(--space-3);
+      font-size: 11px;
+    }
+
+    body.variant-mobile .memory-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-2);
+    }
+
+    body.variant-mobile .memory-card,
+    body.variant-mobile .memory-card.feature {
+      grid-column: auto;
+      grid-row: auto;
+      min-height: 124px;
+      display: grid;
+      grid-template-columns: 106px minmax(0, 1fr);
+    }
+
+    body.variant-mobile .memory-card img,
+    body.variant-mobile .memory-card.feature img {
+      height: 100%;
+      min-height: 124px;
+      border-right: 1px solid var(--line-dark);
+      border-bottom: 0;
+    }
+
+    body.variant-mobile .memory-card figcaption {
+      padding: var(--space-3);
+      font-size: 12px;
+      line-height: 1.42;
+    }
+
+    body.variant-mobile .memory-card strong {
+      font-size: 18px;
+    }
+
+    body.variant-mobile .star-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--space-2);
+    }
+
+    body.variant-mobile .star-button {
+      min-height: 46px;
+      padding: 0 var(--space-2);
+      font-size: 12px;
+    }
+
+    body.variant-mobile .bottom-links {
+      grid-template-columns: 1fr;
+    }
+
+
+    /* Homepage hidden rooms: writing / photo / map */
+    .room-house-panel[hidden],
+    .room-article-panel[hidden],
+    .room-house-photo-grid[hidden],
+    .room-house-photo-detail[hidden] {
+      display: none !important;
+    }
+
+    .room-house-panel:not([hidden]) {
+      display: block;
+    }
+
+    .room-house-panel {
+      margin: var(--space-8) calc(var(--sheet-pad) * -1);
+      padding: var(--space-8) var(--sheet-pad);
+      border-top: 1px solid var(--line-light);
+      border-bottom: 1px solid var(--line-light);
+      background: var(--color-score);
+      color: var(--color-room);
+    }
+
+    .room-house-panel > * {
+      max-width: 1120px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .room-house-panel > * + * {
+      margin-top: var(--space-6);
+    }
+
+    .room-house-panel-header {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: var(--space-5);
+      align-items: end;
+      padding-bottom: var(--space-5);
+      border-bottom: 1px solid var(--line-light);
+    }
+
+    .room-house-panel-header h2 {
+      margin: 0;
+      font-family: var(--font-star);
+      font-size: var(--h2);
+      line-height: 1.16;
+      font-weight: 700;
+      color: var(--color-room);
+    }
+
+    .room-section-label,
+    .room-card-meta {
+      margin: 0 0 var(--space-2);
+      color: var(--color-wood);
+      font-size: var(--small);
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .room-house-back,
+    .room-article-back,
+    .room-gallery-detail-button,
+    .room-article-bottom-nav button {
+      min-height: 42px;
+      padding: 0 var(--space-4);
+      border: 1px solid var(--line-light);
+      border-radius: var(--radius);
+      background: color-mix(in srgb, var(--color-score) 82%, white);
+      color: var(--color-room);
+      font-family: var(--font-sans);
+      font-weight: 850;
+      cursor: pointer;
+    }
+
+    .room-article-list {
+      display: grid;
+      margin: 0 0 var(--space-5);
+      border-top: 1px solid var(--line-light);
+    }
+
+    .room-article-list[hidden] {
+      display: none !important;
+    }
+
+    .room-article-link {
+      width: 100%;
+      min-height: 58px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--space-3);
+      align-items: center;
+      border: 0;
+      border-bottom: 1px solid var(--line-light);
+      background: transparent;
+      color: var(--color-room);
+      padding: var(--space-3) 0;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .room-article-link strong {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      font-size: 20px;
+      font-weight: 850;
+    }
+
+    .room-article-panel {
+      padding: var(--space-6);
+      border: 1px solid var(--line-light);
+      border-radius: var(--radius);
+      background: color-mix(in srgb, var(--color-score) 84%, white);
+      color: var(--color-room);
+    }
+
+    .room-house-panel.is-detail-mode > .room-house-panel-header,
+    .room-house-panel.is-detail-mode > .room-article-list,
+    .room-house-panel.is-photo-detail-mode > .room-house-panel-header {
+      display: none;
+    }
+
+    .room-article-panel h3,
+    .audio-entry-header h3,
+    .room-card-title {
+      margin: var(--space-3) 0;
+      font-family: var(--font-star);
+      font-size: var(--h2);
+      line-height: 1.18;
+      color: var(--color-room);
+    }
+
+    .audio-entry-header p,
+    .room-card-note {
+      color: var(--muted-on-light);
+    }
+
+    .room-article-figure,
+    .room-house-photo-grid figure,
+    .shared-memory-figure,
+    .shared-memory-gallery figure,
+    .room-record-figure {
+      margin: 0;
+    }
+
+    .room-photo-image,
+    .room-record-photo,
+    .room-gallery-detail-photo {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius);
+    }
+
+    .room-house-photo-grid figcaption,
+    .shared-memory-figure figcaption,
+    .room-record-caption,
+    .room-article-figure figcaption {
+      margin-top: var(--space-3);
+      color: var(--muted-on-light);
+      font-size: 14px;
+      line-height: 1.65;
+    }
+
+    .room-house-photo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--space-3);
+    }
+
+    .room-house-photo-grid figure {
+      cursor: pointer;
+    }
+
+    .room-house-photo-grid img,
+    .room-house-photo-thumb,
+    .audio-gallery-photo {
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+    }
+
+    .room-house-photo-detail {
+      max-width: 1120px;
+    }
+
+    .room-gallery-detail-actions,
+    .room-gallery-detail-nav,
+    .room-article-bottom-nav {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-3);
+      margin-top: var(--space-5);
+    }
+
+    .room-gallery-detail-index {
+      color: var(--color-wood);
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    .room-gallery-detail-copy,
+    .shared-memory-copy,
+    .shared-memory-copy p {
+      color: var(--color-room);
+      font-size: var(--body);
+      line-height: 1.8;
+    }
+
+    .shared-memory-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+      gap: var(--space-5);
+      align-items: start;
+    }
+
+    .shared-memory-gallery {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-3);
+      margin-top: var(--space-5);
+    }
+
+    .shared-memory-link a {
+      color: var(--color-wood);
+      font-weight: 850;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 0.22em;
+    }
+
+    .room-video {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      border-radius: var(--radius);
+      background: var(--color-record);
+    }
+
+    .room-video iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .room-map-placeholder {
+      display: grid;
+      gap: var(--space-3);
+      min-height: 220px;
+      padding: var(--space-6);
+      border: 1px dashed var(--line-light);
+      border-radius: var(--radius);
+      background: color-mix(in srgb, var(--color-score) 84%, white);
+    }
+
+    .room-map-placeholder strong {
+      font-family: var(--font-star);
+      font-size: var(--h2);
+      line-height: 1.18;
+      color: var(--color-room);
+    }
+
+    .room-map-placeholder p {
+      max-width: 780px;
+      margin: 0;
+      color: var(--muted-on-light);
+      font-size: var(--body);
+      line-height: 1.75;
+    }
+
+    @media (max-width: 640px) {
+      body {
+        --sheet-width: 430px;
+        --sheet-pad: 22px;
+        --hero-title: 44px;
+        --h1: 33px;
+        --h2: 23px;
+        --body: 15px;
+        --small: 12px;
+      }
+
+      .hero {
+        display: block;
+        min-height: auto;
+        padding: var(--space-5) 0 var(--space-7);
+      }
+
+      .hero::before {
+        inset: 110px auto auto 38%;
+        width: 210px;
+        height: 210px;
+      }
+
+      .hero .lead {
+        font-size: 24px;
+        line-height: 1.36;
+      }
+
+      .entry-nav {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 6px;
+        padding: 6px;
+      }
+
+      .entry-link {
+        min-height: 44px;
+        font-size: 15px;
+        border-bottom-width: 2px;
+      }
+
+      .hero-photo {
+        min-height: 430px;
+        margin-top: var(--space-6);
+      }
+
+      .stamp-wrap {
+        width: 118px;
+      }
+
+      .section {
+        padding: var(--space-7) 0;
+      }
+
+      .section.light {
+        margin-left: calc(var(--sheet-pad) * -1);
+        margin-right: calc(var(--sheet-pad) * -1);
+        padding-left: var(--sheet-pad);
+        padding-right: var(--sheet-pad);
+      }
+
+      .section-head {
+        gap: var(--space-3);
+        margin-bottom: var(--space-5);
+      }
+
+      .color-grid,
+      .doors {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: var(--space-2);
+      }
+
+      .color-card {
+        min-height: 146px;
+        padding: var(--space-3);
+      }
+
+      .color-card p,
+      .door-panel p {
+        font-size: 12px;
+        line-height: 1.45;
+      }
+
+      .type-panel,
+      .quote-panel,
+      .rule-card,
+      .final-card,
+      .room-article-panel,
+      .room-map-placeholder {
+        padding: var(--space-4);
+      }
+
+      .doors {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .door-panel {
+        min-height: 136px;
+        padding: var(--space-3);
+      }
+
+      .door-panel h3 {
+        font-size: 25px;
+      }
+
+      .memory-grid,
+      .room-house-photo-grid,
+      .shared-memory-layout,
+      .shared-memory-gallery {
+        grid-template-columns: 1fr;
+      }
+
+      .memory-card,
+      .memory-card.feature {
+        grid-column: auto;
+        grid-row: auto;
+        min-height: 124px;
+        display: grid;
+        grid-template-columns: 106px minmax(0, 1fr);
+      }
+
+      .memory-card img,
+      .memory-card.feature img {
+        height: 100%;
+        min-height: 124px;
+        border-right: 1px solid var(--line-dark);
+        border-bottom: 0;
+      }
+
+      .memory-card figcaption {
+        padding: var(--space-3);
+        font-size: 12px;
+        line-height: 1.42;
+      }
+
+      .memory-card strong {
+        font-size: 18px;
+      }
+
+      .star-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: var(--space-2);
+      }
+
+      .star-button {
+        min-height: 46px;
+        padding: 0 var(--space-2);
+        font-size: 12px;
+      }
+
+      .bottom-links,
+      .room-house-panel-header {
+        grid-template-columns: 1fr;
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <main class="sheet room-house-page audio-style-page" id="music-audio-star">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-text">
+        <p class="eyebrow">음악·오디오별 · LPH-B613-08 · HAM MEDIA 별자리</p>
+        <h1 id="hero-title">음악·오디오별</h1>
+        <p class="lead">
+          음악은 나를 방해해선 안 된다.<br />
+          나와 함께 있지만,<br />
+          날 더 돋보이게 해주는 역할.<br />
+          그리고 가끔,<br />
+          <span class="gold-line">음악에게서 위로를 받는다.</span>
+        </p>
+        <nav class="entry-nav room-house-nav" aria-label="음악·오디오별 입구">
+          <button class="entry-link room-house-door" type="button" data-scroll-target="#audio-writing" data-house-target="music-audio-writing-room">글</button>
+          <button class="entry-link room-house-door" type="button" data-scroll-target="#audio-photos" data-house-target="music-audio-photo-room">사진</button>
+          <button class="entry-link room-house-door" type="button" data-scroll-target="#audio-map" data-house-target="music-audio-map-room">지도</button>
+          <a class="entry-link" href="#star-list">다른 별</a>
         </nav>
-      </section>
+        <div class="stamp-wrap" aria-label="음악·오디오별 스탬프">
+          <img src="../assets/images/music-audio/stamps/lph-b613-08-audio-stamp.png" alt="LPH-B613-08 음악·오디오별 스탬프" />
+        </div>
+        <div class="star-code-pill">LPH-B613-08 <span class="star-signal" aria-label="열린 별"></span></div>
+      </div>
+      <div class="hero-photo" role="img" aria-label="PMC 스피커가 있는 청취 공간"></div>
+    </section>
 
-      <section class="room-house-panel" id="audio-writing-room" aria-label="음악·오디오 글 목록" hidden>
+    <section class="section" id="audio-color">
+      <div class="section-head">
+        <div class="section-number">01 / 색의 방향</div>
+        <div>
+          <h2>어두운 방 안에서, 불빛 하나만 따뜻하게 남긴다.</h2>
+          <p class="section-intro">음악·오디오별의 색은 조용한 청음실에서 온다. 검은 방은 소리를 앞으로 세우고, 골드는 앰프 불빛처럼 작게 켜지고, 우드는 스피커가 가진 물성을 낮게 받친다.</p>
+        </div>
+      </div>
+      <div class="color-grid" aria-label="음악·오디오별 색">
+        <div class="color-card" style="background: var(--color-room);"><div><strong>청음실 다크</strong><code>#111318</code></div><p>소리가 중심이 되는 조용한 방.</p></div>
+        <div class="color-card light-ink" style="background: var(--color-gold);"><div><strong>앰프 골드</strong><code>#c9a84c</code></div><p>작게 켜지는 진공관 불빛과 선택 신호.</p></div>
+        <div class="color-card" style="background: var(--color-wood);"><div><strong>스피커 우드</strong><code>#7a5c3e</code></div><p>장비를 자랑하지 않고, 방을 따뜻하게 받친다.</p></div>
+        <div class="color-card light-ink" style="background: var(--color-score);"><div><strong>악보 크림</strong><code>#f0ece2</code></div><p>긴 글과 음악 메모를 읽는 표면.</p></div>
+        <div class="color-card" style="background: var(--color-record);"><div><strong>레코드 블랙</strong><code>#1a1a1a</code></div><p>스탬프와 프레임의 깊은 면.</p></div>
+        <div class="color-card light-ink" style="background: var(--color-piano);"><div><strong>소프트 피아노 그레이</strong><code>#9c9a94</code></div><p>캡션과 조용한 설명의 낮은 목소리.</p></div>
+        <div class="color-card" style="background: var(--color-vinyl);"><div><strong>바이닐 핑크</strong><code>#e8449a</code></div><p>기존 스탬프의 색. 화면 강조로 번지지 않는다.</p></div>
+      </div>
+    </section>
+
+    <section class="section light" id="audio-type">
+      <div class="section-head">
+        <div class="section-number">02 / 말의 리듬</div>
+        <div>
+          <h2>설명보다 먼저, 듣는 자세가 보여야 한다.</h2>
+          <p class="section-intro">짧은 문장은 조용히 세우고, 긴 이야기는 읽기 편하게 풀어낸다. 오디오 지식보다 그날 왜 그 소리가 필요했는지가 먼저다.</p>
+        </div>
+      </div>
+      <div class="rhythm-grid">
+        <div class="type-stack">
+          <article class="type-panel" style="background: var(--color-room); color: var(--ink-on-dark);">
+            <h3>듣는 태도.</h3>
+            <p>별 이름과 첫 문장은 조용한 음반 표지처럼 세운다. 분위기는 만들되, 듣는 사람을 시험하지 않는다.</p>
+          </article>
+          <article class="type-panel" style="background: var(--color-score); color: var(--color-room); border-color: var(--line-light);">
+            <h3 style="color: var(--color-room);">어떤 소리를 왜 틀었는지.</h3>
+            <p style="color: var(--muted-on-light);">긴 글은 읽히는 것이 먼저다. 선곡, 매칭, 위로, 시행착오는 조용한 문단으로 이어진다.</p>
+          </article>
+        </div>
+        <article class="quote-panel">
+          <p>음악이 있어<br />위로 받은<br />그날의 기억.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="audio-doors">
+      <div class="section-head">
+        <div class="section-number">03 / 별 안으로</div>
+        <div>
+          <h2>이 별의 문은 장비가 아니라, 선택한 소리로 열린다.</h2>
+          <p class="section-intro">글은 왜 이 소리를 골랐는지로 들어가고, 사진은 음악이 머물던 방을 보여준다. 지도는 아직 완성된 목록이 아니라, 소리가 오래 남은 장소를 천천히 모으는 일이다.</p>
+        </div>
+      </div>
+      <div class="doors">
+        <button class="door-panel room-house-door" type="button" data-scroll-target="#audio-writing" data-house-target="music-audio-writing-room">
+          <div><h3>글</h3><p>오디오 매칭, 선곡, 앨범 기억, 왜 그 소리가 필요했는지.</p></div>
+          <span>글방으로</span>
+        </button>
+        <button class="door-panel room-house-door" type="button" data-scroll-target="#audio-photos" data-house-target="music-audio-photo-room">
+          <div><h3>사진</h3><p>장비 목록이 아니라, 소리가 머물렀던 방과 순간의 흔적.</p></div>
+          <span>사진방으로</span>
+        </button>
+        <button class="door-panel room-house-door" type="button" data-scroll-target="#audio-map" data-house-target="music-audio-map-room">
+          <div><h3>지도</h3><p>청음회, 공연장, 기억에 남는 소리의 장소를 나중에 잇는다.</p></div>
+          <span>지도 보기</span>
+        </button>
+        <a class="door-panel" href="#star-list">
+          <div><h3>다른 별</h3><p>듣는 태도는 사진, 영상, 편집의 태도와도 연결된다.</p></div>
+          <span>별 목록으로</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="section" id="audio-photos">
+      <div class="section-head">
+        <div class="section-number">04 / 사진 방향</div>
+        <div>
+          <h2>사진은 장비 목록이 아니라, 듣던 자리의 흔적이다.</h2>
+          <p class="section-intro">음악·오디오별은 음식별만큼 많이 쌓지 않고, 카메라별만큼 줄이지도 않는다. 방, 매칭, 스피커, 앰프가 모두 나오지만 질문은 하나다. 왜 그 소리를 선택했는가.</p>
+        </div>
+      </div>
+      <div class="memory-grid">
+        <figure class="memory-card feature">
+          <img src="../assets/images/music-audio/hero-listening-space.jpg" alt="스피커와 화면이 있는 전체 청취 공간" />
+          <figcaption><strong>첫 청취 공간</strong>오디오, 공간 음향, 공조, 조명까지 신경 써서 만든 첫 작품.</figcaption>
+        </figure>
+        <figure class="memory-card">
+          <img src="../assets/images/music-audio/photo-amp-music-screen.jpg" alt="음악 화면과 오디오 장비" />
+          <figcaption><strong>가족과 듣는 하이파이</strong>시각과 청각을 동시에 만족시킨다. 함께 즐기는 소리.</figcaption>
+        </figure>
+        <figure class="memory-card">
+          <img src="../assets/images/music-audio/essay-audio-rack-books-amp.jpg" alt="책과 앰프가 놓인 오디오 랙" />
+          <figcaption><strong>쉬고 있는 기기들</strong>새로운 조합이 들어오면, 어떤 기기는 잠시 뒤로 물러난다.</figcaption>
+        </figure>
+        <figure class="memory-card">
+          <img src="../assets/images/music-audio/gallery-img-9818.jpg" alt="책상 위 작은 오디오 시스템" />
+          <figcaption><strong>책상 위 조합</strong>큰 방이 아니어도, 내 자리에서 맞는 소리는 따로 있다.</figcaption>
+        </figure>
+        <figure class="memory-card">
+          <img src="../assets/images/music-audio/gallery-img-5452.jpg" alt="다인 스피커 사진" />
+          <figcaption><strong>오래 갖고 싶던 소리</strong>2005년에 바라보던 마음이 시간이 지나 손에 닿았던 기록.</figcaption>
+        </figure>
+        <figure class="memory-card">
+          <img src="../assets/images/music-audio/gallery-img-3305.jpg" alt="DAC와 DDC 장비" />
+          <figcaption><strong>둘이 함께일 때</strong>기기는 혼자보다 조합 속에서 자기 역할을 찾는다.</figcaption>
+        </figure>
+        <figure class="memory-card">
+          <img src="../assets/images/music-audio/gallery-img-5949.jpg" alt="그라함 LS3/5a 스피커" />
+          <figcaption><strong>도도한 고급스러움</strong>같은 계열 안에서도 각자 다른 표정이 있다.</figcaption>
+        </figure>
+        <figure class="memory-card">
+          <img src="../assets/images/music-audio/gallery-img-3430.jpg" alt="매지코 A1 스피커" />
+          <figcaption><strong>정확한 소리</strong>정확함이 차갑게만 들리지 않도록, 방과 취향이 함께 맞아야 한다.</figcaption>
+        </figure>
+        <figure class="memory-card">
+          <img src="../assets/images/music-audio/audio-matching-01.jpeg" alt="오디오 매칭을 위한 장비 사진 1" />
+          <figcaption><strong>매칭의 시작</strong>좋다는 것들을 모아도 내 방과 내 취향에 맞는지는 다시 들어봐야 한다.</figcaption>
+        </figure>
+        <figure class="memory-card">
+          <img src="../assets/images/music-audio/audio-matching-02.jpeg" alt="오디오 매칭을 위한 장비 사진 2" />
+          <figcaption><strong>다른 조합</strong>바꿈질은 나빠서가 아니라, 달라서 하게 되는 일.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section light" id="audio-writing">
+      <div class="section-head">
+        <div class="section-number">05 / 이 별이 권하는 것</div>
+        <div>
+          <h2>좋은 소리는 단체전이다.</h2>
+          <p class="section-intro">스피커만 좋아도, 앰프만 좋아도 끝나지 않는다. 내가 듣는 시간, 공간, 볼륨, 취향, 함께 듣는 사람까지 들어와야 비로소 내 소리가 된다.</p>
+        </div>
+      </div>
+      <div class="rule-grid">
+        <article class="rule-card">
+          <h3>남겨도 되는 말</h3>
+          <ul>
+            <li>어떻게 듣는가.</li>
+            <li>오디오와 음악은 사람마다 다르다.</li>
+            <li>좋은 편집도 좋은 청취처럼, 무엇을 뺄지에서 시작된다.</li>
+          </ul>
+        </article>
+        <article class="rule-card no">
+          <h3>덜어내야 하는 말</h3>
+          <ul>
+            <li>이 정도는 들어야 한다는 말.</li>
+            <li>장비로 사람을 줄 세우는 말.</li>
+            <li>음악을 교양 시험처럼 만드는 말.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="audio-map">
+      <div class="section-head">
+        <div class="section-number">06 / 지도</div>
+        <div>
+          <h2>소리가 오래 머문 장소를 천천히 모은다.</h2>
+          <p class="section-intro">청음회, 공연장, 방, 책상 위 작은 시스템. 아직 완성된 지도는 아니지만, 언젠가 이 별은 소리가 머물렀던 자리를 하나씩 다시 꺼내게 된다.</p>
+        </div>
+      </div>
+      <article class="final-card">
+        <p>좋은 편집도<br />좋은 청취처럼,<br />무엇을 남길지보다<br />무엇을 뺄지에서 시작된다.</p>
+        <p class="body-line">HAM MEDIA의 일도 먼저 듣는 일에서 시작한다. 어떤 소리가 필요한지, 어떤 장면이 남아야 하는지, 무엇을 덜어낼 때 더 선명해지는지 듣고 나서 고른다.</p>
+      </article>
+    </section>
+
+      <section class="room-house-panel" id="music-audio-writing-room" aria-label="음악·오디오 글 목록" hidden>
         <div class="room-house-panel-header">
           <p class="room-section-label">글</p>
           <h2>글 목록</h2>
@@ -70,6 +1534,9 @@
           </button>
           <button class="room-article-link" type="button" data-article-target="audio-keith-jarrett-career-note" aria-label="키스 자렛 읽기">
             <strong>키스 자렛</strong>
+          </button>
+          <button class="room-article-link" type="button" data-article-target="audio-matching-note" aria-label="오디오 매칭 읽기">
+            <strong>오디오 매칭</strong>
           </button>
           <button class="room-article-link" type="button" data-article-target="audio-rack-books-note" aria-label="쉬는 장비 읽기">
             <strong>쉬는 장비</strong>
@@ -185,6 +1652,50 @@
             </div>
           </article>
 
+          <article class="room-post shared-memory-card room-article-panel" id="audio-matching-note" hidden>
+            <button class="room-article-back" type="button">글 목록</button>
+            <header class="audio-entry-header">
+              <p class="room-card-meta">글</p>
+              <h3>오디오 매칭</h3>
+              <p>오디오 / 매칭 / 취향</p>
+            </header>
+
+            <figure class="shared-memory-figure">
+              <img class="room-photo-image shared-memory-photo" src="../assets/images/music-audio/audio-matching-01.jpeg" alt="오디오 매칭을 위해 여러 스피커와 앰프가 세팅된 청음 공간">
+              <figcaption>여러 조합을 거치며 오디오 매칭을 고민하던 시간의 기록.</figcaption>
+            </figure>
+
+            <div class="shared-memory-copy">
+              <p>오디오를 하다 보면 "이 스피커가 좋다", "저 앰프가 좋다"는 이야기를 듣고 하나씩 구입하게 됩니다.</p>
+              <p>그런데 오디오는 어느 한 기기만으로 평가할 수 없습니다. 액티브 스피커는 예외처럼 보일 수 있지만, 사실 액티브 스피커도 프리앰프나 소스기기와의 매칭이 존재합니다.</p>
+              <p>우리가 즐기는 오디오라는 취미는 개인전이 아니라 단체전입니다. 스피커만 좋아서도, 앰프만 좋아서도 안 됩니다. 물론 소스기기도 빼놓을 수 없고요.</p>
+              <p>그렇게 다 좋다는 기기들을 모아 이른바 '올스타 팀'을 구성했는데도 나랑은 맞지 않는 경우가 있습니다. 반대로 매칭이 좋지 않은 기기들끼리 모였는데도 소리가 산만하고 생기가 없는 경우도 있습니다. 매칭까지 공부해서 시스템을 꾸렸는데 기대했던 소리가 아니거나, 내 취향과 맞지 않는 경우도 있고요.</p>
+              <p>오디오를 하는 이유는 결국 내가 좋아하는 음악을 더 좋은 퀄리티로, 더 감동적으로 듣고 싶어서가 아닐까요.</p>
+              <p>그런데 퀄리티는 엄청 좋아졌는데 감동이 없는 경우가 있습니다. 반대로 퀄리티는 조금 떨어지지만 음악에 감동이 있는 경우도 있습니다. 여러분은 어느 쪽에 한 표를 주시겠어요?</p>
+              <p>물론 퀄리티도 좋고 감동도 있는 시스템이 제일 좋겠죠 ^^</p>
+              <p>오디오와 음악은 사람마다 다릅니다. 10분을 진하게 집중해서 듣는 분이 있는가 하면, 하루 종일 편안하게 틀어두는 분도 있습니다. 스타일이 이렇게 다양하니 정답이 하나일 수 없는 것이겠죠.</p>
+              <p>오디오가 좋아서 음악을 좋아하게 된 사람, 음악이 좋아서 오디오를 좋아하게 된 사람 — 출발점도 이유도 제각각입니다. 그 사연을 다 책으로 엮으면 제가 죽을 때까지도 연재가 끝나지 않을 것 같습니다.</p>
+              <p>오디오 매칭 이야기를 하면서 서론이 좀 길었습니다.</p>
+              <p><strong>오디오 매칭에서 가장 중요한 것</strong></p>
+              <p><strong>1. 나의 취향과 나의 제약</strong><br>내가 듣는 음악 장르, 듣는 시간, 듣는 공간, 볼륨 수준, 함께 듣는 구성원, 그리고 나만의 취향.</p>
+              <p><strong>2. 예산</strong><br>스피커, 앰프, 소스기기, 케이블 등 각 항목에 배분할 예산.</p>
+              <p><strong>3. 세팅</strong><br>오디오 배치, 청취 환경, 청음 위치.</p>
+              <p>대부분 이런 것들을 간과하고 남들이 좋다는 것에만 집중하다 실패를 겪습니다. 하지만 그 실수와 실패는 분명 오디오라는 취미 안에서 우리를 성장시켜 줍니다. 아무리 베테랑이라도 처음에는 눈팅도 하고, 매칭에서 쓴맛도 보면서 지금에 이른 것이니까요.</p>
+              <p>위 사항을 충분히 고민하고 시작해도 실패는 찾아옵니다. 하지만 너무 걱정하지 마세요. 시간이 지나면 분명 여러분만의 매칭을 찾게 될 것입니다.</p>
+              <p>그리고 한 가지 — 놀라지 마세요. 그렇게 좋다고 했던 조합도 시간이 지나면 "다른 매칭은 어떨까?" 하는 궁금증이 생깁니다 ㅋㅋㅋ</p>
+              <p>다들 그렇게 바꿈질을 합니다. 나빠서가 아니라, 달라서요 ^^</p>
+            </div>
+
+            <div class="shared-memory-gallery" aria-label="오디오 매칭 연결 사진">
+              <figure>
+                <img class="room-photo-image shared-memory-photo" src="../assets/images/music-audio/audio-matching-02.jpeg" alt="오디오 매칭을 위해 세팅된 스피커와 앰프">
+              </figure>
+              <figure>
+                <img class="room-photo-image shared-memory-photo" src="../assets/images/music-audio/audio-matching-03.jpeg" alt="오디오 매칭을 위해 배치한 오디오 시스템">
+              </figure>
+            </div>
+          </article>
+
           <article class="room-post room-card room-record-unit audio-record-card room-article-panel" id="audio-rack-books-note" hidden>
             <button class="room-article-back" type="button">글 목록</button>
             <figure class="room-record-figure">
@@ -213,7 +1724,7 @@
         </div>
       </section>
 
-      <section class="room-house-panel audio-gallery" id="audio-photo-room" aria-label="음악·오디오 갤러리" hidden>
+      <section class="room-house-panel audio-gallery" id="music-audio-photo-room" aria-label="음악·오디오 갤러리" hidden>
         <div class="room-house-panel-header">
           <p class="room-section-label">사진</p>
           <h2>소리와 청취 공간의 사진들</h2>
@@ -275,26 +1786,41 @@
         <aside class="room-gallery-detail room-house-photo-detail" aria-live="polite" hidden></aside>
       </section>
 
-      <nav class="room-star-list" aria-label="전체 별 목록">
-        <p>별 목록</p>
-        <div>
-          <a href="fountain-pens.html">만년필별</a>
-          <span class="is-current">음악·오디오별</span>
-          <a href="cameras.html">카메라별</a>
-          <a href="travel.html">여행별</a>
-          <a href="food.html">음식별</a>
-          <a href="bicycles.html">자전거별</a>
-          <a href="cars.html">자동차별</a>
-          <a href="motorcycles.html">바이크별</a>
-          <a href="spaces.html">공간별</a>
+      <section class="room-house-panel" id="music-audio-map-room" aria-label="음악·오디오별 지도" hidden>
+        <div class="room-house-panel-header">
+          <p class="room-section-label">지도</p>
+          <h2>소리가 오래 머문 장소</h2>
+          <button class="room-house-back" type="button">음악·오디오별로 돌아가기</button>
         </div>
-      </nav>
+        <article class="room-map-placeholder">
+          <strong>지도는 아직 완성되지 않아도 된다.</strong>
+          <p>청음회, 공연장, 방, 책상 위 작은 시스템. 지금은 소리가 오래 남았던 자리를 천천히 모으는 중이다.</p>
+        </article>
+      </section>
 
-      <nav class="room-related" aria-label="별 이동">
-        <a class="room-soft-link" href="../index.html#about-constellation">별자리로 돌아가기</a>
-        <a class="room-soft-link room-work-link" href="ham-media-work.html">그래서, 지금은 이런 일을 합니다</a>
-      </nav>
-    </main>
-    <script src="../assets/js/main.js?v=audio-room-v1"></script>
-  </body>
+    <section class="star-exit" id="star-list" aria-labelledby="star-list-title">
+      <h2 id="star-list-title">다른 별 보기</h2>
+      <p class="intro">이 별은 HAM MEDIA Design MD 방식으로 정리한 별입니다. 좋아하는 것의 감각을 브랜드의 기준으로 바꾸는 실험이기도 합니다.</p>
+      <div class="star-grid" aria-label="다른 별 목록">
+        <a class="star-button" href="fountain-pens.html">만년필별</a>
+        <a class="star-button active" href="music-audio.html" aria-current="page">음악·오디오별 <span class="star-signal" aria-label="현재 별"></span></a>
+        <a class="star-button" href="cameras.html">카메라별</a>
+        <a class="star-button" href="travel.html">여행별</a>
+        <a class="star-button" href="food.html">음식별</a>
+        <a class="star-button" href="bicycles.html">자전거별</a>
+        <a class="star-button" href="cars.html">자동차별</a>
+        <a class="star-button" href="motorcycles.html">바이크별</a>
+        <a class="star-button" href="spaces.html">공간별</a>
+      </div>
+      <div class="bottom-links" aria-label="하단 이동">
+        <a class="bottom-link" href="../index.html#about-constellation">별자리로 돌아가기</a>
+        <a class="bottom-link" href="ham-media-work.html">그래서, 지금은 이런 일을 합니다</a>
+        <a class="bottom-link" href="https://hammedia.github.io/design-brief/">Design MD 만드는 도구</a>
+      </div>
+      <footer class="footer">음악·오디오별 · LPH-B613-08 · HAM MEDIA · Design MD로 만든 별 페이지</footer>
+    </section>
+  </main>
+
+  <script src="../assets/js/main.js?v=music-audio-star-sheet-v1"></script>
+</body>
 </html>
