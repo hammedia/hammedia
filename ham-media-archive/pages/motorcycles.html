@@ -1,148 +1,1575 @@
 <!doctype html>
 <html lang="ko">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>바이크별 | HAM MEDIA</title>
-    <link rel="stylesheet" href="../assets/css/styles.css?v=room-panel-clean-v3">
-  </head>
-  <body class="world-body">
-    <main class="world-page room-page room-house-page motorcycle-room">
-      <header class="room-header">
-        <div class="room-stamp-row" aria-label="바이크별 도착 스탬프">
-          <p class="room-star-code">LPH-B613-02</p>
-          <img class="room-arrival-stamp is-wide-stamp" src="../assets/images/motorcycles/stamps/lph-b613-02-motorcycle-stamp.png" alt="LPH-B613-02 바이크별 도착 스탬프">
-        </div>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>바이크별 | HAM MEDIA</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
+  <style>
+    @font-face {
+      font-family: "Cafe24Classic";
+      src: url("../assets/fonts/Cafe24Classictype-v1.1.otf") format("opentype");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    :root {
+      --color-wall: #0f0c0b;
+      --color-slate: #1a1f2e;
+      --color-silver: #9ca3a8;
+      --color-red: #cc0000;
+      --color-ivory: #f3ead8;
+      --color-ink: #f7f0e4;
+      --color-muted: rgba(247, 240, 228, 0.66);
+      --color-faint: rgba(247, 240, 228, 0.14);
+      --color-line: rgba(156, 163, 168, 0.28);
+      --color-line-strong: rgba(156, 163, 168, 0.48);
+      --font-sans: "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --font-display: "Cafe24Classic", "Pretendard", serif;
+      --radius: 4px;
+      --space-1: 4px;
+      --space-2: 8px;
+      --space-3: 12px;
+      --space-4: 16px;
+      --space-5: 24px;
+      --space-6: 32px;
+      --space-7: 48px;
+      --space-8: 64px;
+      --space-9: 96px;
+      --sheet-width: 1440px;
+      --sheet-pad: 64px;
+      --hero-title: 118px;
+      --h1: 64px;
+      --h2: 34px;
+      --body: 18px;
+      --small: 13px;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      margin: 0;
+      background: var(--color-wall);
+      color: var(--color-ink);
+      font-family: var(--font-sans);
+    }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      background:
+        radial-gradient(circle at 88% 8%, rgba(204, 0, 0, 0.14), transparent 28%),
+        linear-gradient(180deg, rgba(15, 12, 11, 0.92), rgba(26, 31, 46, 0.72) 44%, rgba(15, 12, 11, 1) 100%),
+        repeating-linear-gradient(90deg, rgba(156, 163, 168, 0.05) 0 1px, transparent 1px 8px),
+        var(--color-wall);
+      color: var(--color-ink);
+      letter-spacing: 0;
+      word-break: keep-all;
+      overflow-wrap: break-word;
+    }
+
+    body.variant-tablet {
+      --sheet-width: 1024px;
+      --sheet-pad: 44px;
+      --hero-title: 88px;
+      --h1: 50px;
+      --h2: 30px;
+      --body: 17px;
+    }
+
+    body.variant-mobile {
+      --sheet-width: 430px;
+      --sheet-pad: 22px;
+      --hero-title: 54px;
+      --h1: 34px;
+      --h2: 24px;
+      --body: 15px;
+      --small: 12px;
+    }
+
+    .sheet {
+      width: min(100%, var(--sheet-width));
+      margin: 0 auto;
+      padding: var(--sheet-pad);
+      overflow: hidden;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 720px;
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: var(--space-8);
+      align-items: center;
+      padding: var(--space-8) 0 var(--space-9);
+      border-bottom: 1px solid var(--color-line);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 22px 0 auto auto;
+      width: min(52%, 620px);
+      height: 72%;
+      border: 1px solid var(--color-line);
+      border-radius: var(--radius);
+      background:
+        linear-gradient(180deg, rgba(15, 12, 11, 0.1), rgba(15, 12, 11, 0.72)),
+        linear-gradient(135deg, rgba(204, 0, 0, 0.18), transparent 34%),
+        url("../assets/images/motorcycles/ham-pd-walking-to-bike.jpg") center / cover no-repeat;
+      opacity: 0.94;
+      box-shadow: inset 0 0 0 1px rgba(243, 234, 216, 0.04);
+    }
+
+    .hero::after {
+      content: "앞태보다 뒷태가 멋진 사람.";
+      position: absolute;
+      right: 24px;
+      bottom: 128px;
+      width: min(420px, 44%);
+      color: rgba(247, 240, 228, 0.48);
+      font-size: var(--small);
+      line-height: 1.6;
+      letter-spacing: 0.08em;
+    }
+
+    .eyebrow {
+      margin: 0 0 var(--space-5);
+      color: var(--color-silver);
+      font-size: var(--small);
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-family: var(--font-display);
+      font-size: var(--hero-title);
+      line-height: 0.92;
+      font-weight: 400;
+      color: var(--color-ink);
+    }
+
+    .hero .lead {
+      max-width: 760px;
+      margin: var(--space-6) 0 0;
+      color: var(--color-ink);
+      font-family: var(--font-display);
+      font-size: clamp(26px, 3vw, 44px);
+      line-height: 1.24;
+      font-weight: 400;
+    }
+
+    .hero .red-line {
+      color: var(--color-red);
+      font-family: var(--font-display);
+      font-weight: 400;
+    }
+
+    .hero-copy {
+      position: relative;
+      z-index: 2;
+    }
+
+    .stamp-wrap {
+      position: relative;
+      z-index: 2;
+      width: 172px;
+      margin-top: var(--space-5);
+      transform: rotate(-7deg);
+      filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.32));
+    }
+
+    .stamp-wrap img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .star-code-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      min-height: 42px;
+      margin-top: var(--space-4);
+      padding: 0 var(--space-4);
+      border: 1px solid var(--color-line-strong);
+      border-radius: 999px;
+      color: var(--color-silver);
+      background: rgba(15, 12, 11, 0.42);
+      font-size: var(--small);
+      font-weight: 900;
+      letter-spacing: 0.14em;
+    }
+
+    .star-signal {
+      --signal-color: var(--color-red);
+      flex: 0 0 auto;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--signal-color);
+      box-shadow: 0 0 18px color-mix(in srgb, var(--signal-color) 58%, transparent);
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--space-4);
+      margin-top: var(--space-7);
+    }
+
+    .meta-item {
+      border-left: 2px solid var(--color-red);
+      padding: var(--space-3) var(--space-4);
+      background: rgba(26, 31, 46, 0.42);
+      border-radius: var(--radius);
+    }
+
+    .meta-item strong {
+      display: block;
+      color: var(--color-ink);
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
+    .meta-item span {
+      display: block;
+      margin-top: 2px;
+      color: var(--color-muted);
+      font-size: var(--small);
+      line-height: 1.5;
+    }
+
+    section {
+      padding: var(--space-8) var(--space-6);
+      margin: 0 calc(var(--space-6) * -1);
+      border-bottom: 1px solid var(--color-line);
+    }
+
+    .band-slate {
+      background:
+        linear-gradient(135deg, rgba(26, 31, 46, 0.86), rgba(15, 12, 11, 0.68)),
+        repeating-linear-gradient(90deg, rgba(156, 163, 168, 0.07) 0 1px, transparent 1px 16px);
+      border-left: 3px solid rgba(204, 0, 0, 0.72);
+    }
+
+    .band-ivory {
+      background:
+        linear-gradient(135deg, rgba(243, 234, 216, 0.97), rgba(156, 163, 168, 0.58));
+      color: var(--color-wall);
+      border-bottom-color: rgba(15, 12, 11, 0.14);
+    }
+
+    .band-ivory .section-kicker,
+    .band-ivory h2,
+    .band-ivory h3,
+    .band-ivory p,
+    .band-ivory li {
+      color: var(--color-wall);
+    }
+
+    .band-ivory .section-head p,
+    .band-ivory .body-type,
+    .band-ivory ul {
+      color: rgba(15, 12, 11, 0.68);
+    }
+
+    .band-ivory .panel {
+      background: rgba(15, 12, 11, 0.88);
+      border-color: rgba(15, 12, 11, 0.18);
+      color: var(--color-ink);
+    }
+
+    .band-ivory .panel h3,
+    .band-ivory .panel p,
+    .band-ivory .panel li,
+    .band-ivory .panel .body-type {
+      color: var(--color-ink);
+    }
+
+    .band-ivory .panel p,
+    .band-ivory .panel li,
+    .band-ivory .panel .body-type {
+      opacity: 0.74;
+    }
+
+    .band-ivory .panel.light {
+      background: rgba(243, 234, 216, 0.92);
+      color: var(--color-wall);
+    }
+
+    .band-ivory .panel.light h3,
+    .band-ivory .panel.light p,
+    .band-ivory .panel.light li {
+      color: var(--color-wall);
+    }
+
+    .band-redwash {
+      background:
+        linear-gradient(135deg, rgba(204, 0, 0, 0.16), rgba(26, 31, 46, 0.84) 46%, rgba(15, 12, 11, 0.72));
+      border-left: 3px solid rgba(204, 0, 0, 0.78);
+    }
+
+    .band-silver {
+      background:
+        linear-gradient(135deg, rgba(156, 163, 168, 0.34), rgba(26, 31, 46, 0.76));
+      border-left: 3px solid rgba(156, 163, 168, 0.8);
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+      gap: var(--space-7);
+      align-items: end;
+      margin-bottom: var(--space-7);
+    }
+
+    .section-kicker {
+      margin: 0 0 var(--space-3);
+      color: var(--color-red);
+      font-size: var(--small);
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: var(--h1);
+      line-height: 1.04;
+      letter-spacing: -0.02em;
+    }
+
+    h3 {
+      margin: 0 0 var(--space-4);
+      color: var(--color-ink);
+      font-size: var(--h2);
+      line-height: 1.16;
+      letter-spacing: -0.01em;
+    }
+
+    p {
+      margin: 0;
+      color: var(--color-muted);
+      font-size: var(--body);
+      line-height: 1.72;
+    }
+
+    .note {
+      border-left: 3px solid var(--color-silver);
+      padding: var(--space-4) var(--space-5);
+      background: rgba(243, 234, 216, 0.06);
+      border-radius: var(--radius);
+      color: var(--color-muted);
+      font-size: var(--small);
+      line-height: 1.6;
+    }
+
+    .grid-5 {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: var(--space-4);
+    }
+
+    .swatch {
+      min-height: 244px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: var(--space-5);
+      border: 1px solid var(--color-line);
+      border-radius: var(--radius);
+      background: var(--swatch);
+      color: var(--swatch-text, var(--color-ink));
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+    }
+
+    .swatch small {
+      display: block;
+      margin-bottom: var(--space-3);
+      color: currentColor;
+      opacity: 0.68;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .swatch strong {
+      display: block;
+      margin-bottom: var(--space-2);
+      font-size: 22px;
+      line-height: 1.16;
+    }
+
+    .swatch code {
+      display: inline-block;
+      color: currentColor;
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+    }
+
+    .swatch p {
+      color: currentColor;
+      opacity: 0.74;
+    }
+
+    .ratio {
+      display: grid;
+      grid-template-columns: 52fr 22fr 8fr 4fr 14fr;
+      height: 54px;
+      overflow: hidden;
+      border: 1px solid var(--color-line);
+      border-radius: var(--radius);
+      margin-top: var(--space-6);
+    }
+
+    .ratio span {
+      display: block;
+      background: var(--r);
+      border-right: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .rule-grid,
+    .component-grid,
+    .do-grid,
+    .type-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-5);
+    }
+
+    .panel {
+      padding: var(--space-6);
+      border: 1px solid var(--color-line);
+      border-radius: var(--radius);
+      background: linear-gradient(160deg, rgba(26, 31, 46, 0.58), rgba(15, 12, 11, 0.62));
+    }
+
+    .panel.light {
+      background: var(--color-ivory);
+      color: var(--color-wall);
+      border-color: rgba(15, 12, 11, 0.14);
+    }
+
+    .panel.light h3 {
+      color: var(--color-wall);
+    }
+
+    .panel.light p,
+    .panel.light li,
+    .panel.light .label {
+      color: rgba(15, 12, 11, 0.68);
+    }
+
+    .label {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      padding: 0 var(--space-3);
+      border: 1px solid var(--color-line-strong);
+      border-radius: var(--radius);
+      color: var(--color-silver);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .type-sample {
+      padding: var(--space-5) 0;
+      border-bottom: 1px solid var(--color-line);
+    }
+
+    .type-sample:last-child {
+      border-bottom: 0;
+    }
+
+    .display-type {
+      font-family: var(--font-display);
+      font-size: clamp(44px, 6vw, 86px);
+      line-height: 0.98;
+      font-weight: 400;
+    }
+
+    .headline-type {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 4vw, 58px);
+      line-height: 1.08;
+      font-weight: 400;
+      letter-spacing: 0;
+    }
+
+    .body-type {
+      color: var(--color-muted);
+      font-size: 21px;
+      line-height: 1.65;
+    }
+
+    .caption-type {
+      color: var(--color-silver);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+      margin-top: var(--space-5);
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0 var(--space-5);
+      border: 1px solid var(--color-line-strong);
+      border-radius: var(--radius);
+      color: var(--color-ink);
+      background: transparent;
+      font-size: 15px;
+      font-weight: 800;
+    }
+
+    .button.primary {
+      border-color: var(--color-red);
+      background: var(--color-red);
+      color: #fff;
+    }
+
+    .button.silver {
+      color: var(--color-wall);
+      background: var(--color-silver);
+      border-color: var(--color-silver);
+    }
+
+    .door-row {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: var(--space-3);
+      margin-top: var(--space-5);
+    }
+
+    .door {
+      appearance: none;
+      min-height: 112px;
+      padding: var(--space-4);
+      border: 1px solid var(--color-line);
+      border-radius: var(--radius);
+      background: rgba(15, 12, 11, 0.38);
+      cursor: pointer;
+      display: block;
+      font: inherit;
+      text-align: left;
+      text-decoration: none;
+      width: 100%;
+    }
+
+    .door strong {
+      display: block;
+      color: var(--color-ink);
+      font-size: 24px;
+      line-height: 1.2;
+    }
+
+    .door span {
+      display: block;
+      margin-top: var(--space-2);
+      color: var(--color-muted);
+      font-size: var(--small);
+      line-height: 1.5;
+    }
+
+    .quote {
+      margin-top: var(--space-5);
+      padding: var(--space-5);
+      border-left: 4px solid var(--color-red);
+      background: rgba(204, 0, 0, 0.08);
+      border-radius: var(--radius);
+      color: var(--color-ink);
+      font-family: var(--font-display);
+      font-size: 26px;
+      font-weight: 400;
+      line-height: 1.38;
+    }
+
+    .texture-card {
+      min-height: 320px;
+      border: 1px solid var(--color-line);
+      border-radius: var(--radius);
+      background:
+        linear-gradient(90deg, rgba(15, 12, 11, 0.2), rgba(15, 12, 11, 0.82)),
+        linear-gradient(0deg, rgba(204, 0, 0, 0.14), transparent 38%),
+        url("../assets/images/motorcycles/ham-pd-riding-bike.jpg") center / cover no-repeat;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .texture-card::before {
+      content: "";
+      position: absolute;
+      inset: 14% 18% 24% 10%;
+      border: 1px solid rgba(156, 163, 168, 0.38);
+      border-radius: var(--radius);
+      transform: skewX(-12deg);
+      opacity: 0.56;
+    }
+
+    .texture-card::after {
+      content: "자전거로 넘었던 고갯길을, 이번엔 바이크로 넘어간다.";
+      position: absolute;
+      left: var(--space-5);
+      bottom: var(--space-5);
+      color: rgba(247, 240, 228, 0.54);
+      font-size: var(--small);
+      font-weight: 800;
+      letter-spacing: 0.08em;
+    }
+
+    ul {
+      margin: var(--space-4) 0 0;
+      padding-left: 20px;
+      color: var(--color-muted);
+      font-size: var(--body);
+      line-height: 1.68;
+    }
+
+    li + li {
+      margin-top: var(--space-2);
+    }
+
+    .do-grid .panel:first-child {
+      border-color: rgba(156, 163, 168, 0.42);
+    }
+
+    .do-grid .panel:last-child {
+      border-color: rgba(204, 0, 0, 0.46);
+    }
+
+    .footer {
+      padding: var(--space-7) 0 0;
+      color: rgba(247, 240, 228, 0.5);
+      font-size: var(--small);
+      line-height: 1.7;
+    }
+
+    .variant-tablet .hero {
+      min-height: 640px;
+      gap: var(--space-6);
+    }
+
+    .variant-tablet .grid-5 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .variant-tablet .swatch:last-child {
+      grid-column: span 2;
+    }
+
+    .variant-mobile .sheet {
+      padding-top: 28px;
+    }
+
+    .variant-mobile .hero,
+    .variant-mobile .section-head,
+    .variant-mobile .rule-grid,
+    .variant-mobile .component-grid,
+    .variant-mobile .do-grid,
+    .variant-mobile .type-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .variant-mobile .hero {
+      min-height: auto;
+      padding: var(--space-6) 0 var(--space-8);
+      gap: var(--space-6);
+    }
+
+    .variant-mobile .hero::before {
+      position: relative;
+      display: block;
+      inset: auto;
+      width: 100%;
+      height: 260px;
+      order: -1;
+    }
+
+    .variant-mobile .hero::after {
+      position: static;
+      width: auto;
+      margin-top: var(--space-3);
+    }
+
+    .variant-mobile .stamp-wrap {
+      justify-self: start;
+      width: 138px;
+    }
+
+    .variant-mobile .meta-grid,
+    .variant-mobile .grid-5,
+    .variant-mobile .door-row {
+      grid-template-columns: 1fr;
+    }
+
+    .variant-mobile section {
+      padding: var(--space-7) var(--space-5);
+      margin: 0;
+    }
+
+    .variant-mobile .panel {
+      padding: var(--space-5);
+    }
+
+    .variant-mobile .quote {
+      font-size: 21px;
+    }
+
+
+    .star-room-nav {
+      align-items: center;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 26px;
+      justify-content: flex-start;
+      margin-bottom: var(--space-6);
+      position: relative;
+      z-index: 3;
+    }
+
+    .star-room-nav > :nth-child(1) { --nav-ink: #5491dd; }
+    .star-room-nav > :nth-child(2) { --nav-ink: #e392a0; }
+    .star-room-nav > :nth-child(3) { --nav-ink: #cede85; }
+    .star-room-nav > :nth-child(4) { --nav-ink: #5a7974; }
+
+    .star-room-nav a,
+    .star-room-nav button {
+      background: transparent;
+      border: 0;
+      border-bottom: 3px solid var(--nav-ink, rgba(247, 240, 228, 0.24));
+      color: rgba(247, 240, 228, 0.72);
+      cursor: pointer;
+      font: inherit;
+      font-size: 18px;
+      font-weight: 800;
+      line-height: 1.4;
+      padding: 0 0 7px;
+      text-decoration: none;
+    }
+
+    .star-room-nav a:hover,
+    .star-room-nav button:hover {
+      color: var(--color-ink);
+      border-color: var(--color-red);
+    }
+
+    .room-house-panel,
+    .room-article-panel {
+      display: grid;
+      gap: var(--space-6);
+    }
+
+    .room-house-panel[hidden],
+    .room-article-panel[hidden],
+    .room-article-list[hidden],
+    .room-house-photo-grid[hidden],
+    .room-house-photo-detail[hidden] {
+      display: none !important;
+    }
+
+    .room-house-panel {
+      background: var(--color-ivory);
+      color: var(--color-wall);
+      display: block;
+      inset: 0;
+      overflow: auto;
+      padding: clamp(34px, 5vw, 76px);
+      position: fixed;
+      z-index: 80;
+    }
+
+    .room-house-panel > * {
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 1120px;
+      width: 100%;
+    }
+
+    .room-house-panel > * + * {
+      margin-top: var(--space-6);
+    }
+
+    .room-house-panel-header {
+      align-items: start;
+      border-bottom: 1px solid rgba(15, 12, 11, 0.14);
+      display: grid;
+      gap: var(--space-4);
+      grid-template-columns: minmax(0, 1fr) auto;
+      margin-bottom: var(--space-5);
+      padding-bottom: var(--space-5);
+    }
+
+    .room-house-panel-header h2 {
+      color: var(--color-wall);
+      grid-column: 1 / -1;
+    }
+
+    .room-house-panel.is-detail-mode > .room-house-panel-header,
+    .room-house-panel.is-detail-mode > .room-list-pager {
+      display: none;
+    }
+
+    .room-section-label,
+    .room-card-meta {
+      color: var(--color-red);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      line-height: 1.5;
+      text-transform: uppercase;
+    }
+
+    .room-house-back,
+    .room-article-back,
+    .room-article-bottom-nav button,
+    .room-gallery-detail-button {
+      background: rgba(255, 255, 255, 0.42);
+      border: 1px solid rgba(15, 12, 11, 0.16);
+      border-radius: var(--radius);
+      color: var(--color-wall);
+      cursor: pointer;
+      font: inherit;
+      font-weight: 800;
+      line-height: 1.2;
+      min-height: 42px;
+      padding: var(--space-2) var(--space-4);
+    }
+
+    .room-article-list {
+      border-top: 1px solid rgba(15, 12, 11, 0.14);
+      display: grid;
+      gap: 0;
+    }
+
+    .room-article-link {
+      align-items: center;
+      background: transparent;
+      border: 0;
+      border-bottom: 1px solid rgba(15, 12, 11, 0.14);
+      border-radius: 0;
+      color: var(--color-wall);
+      cursor: pointer;
+      display: grid;
+      font: inherit;
+      gap: var(--space-4);
+      grid-template-columns: minmax(0, 1fr) auto;
+      min-height: 64px;
+      padding: var(--space-4) 0;
+      text-align: left;
+      width: 100%;
+    }
+
+    .room-article-link strong {
+      display: block;
+      font-size: 20px;
+      font-weight: 800;
+      line-height: 1.35;
+    }
+
+    .room-article-link::after {
+      color: var(--color-red);
+      content: "읽기";
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .room-list-pager {
+      align-items: center;
+      color: rgba(15, 12, 11, 0.58);
+      display: flex;
+      flex-wrap: wrap;
+      font-size: 13px;
+      gap: var(--space-3);
+    }
+
+    .room-list-pager button {
+      border: 1px solid rgba(15, 12, 11, 0.12);
+      border-radius: var(--radius);
+      background: transparent;
+      color: rgba(15, 12, 11, 0.42);
+      min-height: 34px;
+      padding: 0 var(--space-3);
+    }
+
+    .room-article-panel:not([hidden]) {
+      border-left: 3px solid var(--color-red);
+      color: var(--color-wall);
+      padding-left: var(--space-5);
+    }
+
+    .motorcycle-essay-header h3 {
+      color: var(--color-wall);
+      font-size: clamp(32px, 5vw, 56px);
+      line-height: 1.06;
+      margin-top: var(--space-2);
+    }
+
+    .motorcycle-essay-header p:last-child,
+    .motorcycle-copy p,
+    .room-gallery-detail-copy,
+    .star-map-panel p {
+      color: rgba(15, 12, 11, 0.68);
+    }
+
+    .motorcycle-copy {
+      display: grid;
+      gap: var(--space-4);
+      max-width: 780px;
+    }
+
+    .motorcycle-essay-figure,
+    .room-house-photo,
+    .room-gallery-detail-photo {
+      margin: 0;
+    }
+
+    .motorcycle-essay-figure {
+      display: grid;
+      gap: var(--space-3);
+      margin: var(--space-6) 0;
+      max-width: 860px;
+    }
+
+    .motorcycle-essay-figure img,
+    .room-gallery-detail-photo {
+      background: var(--color-wall);
+      border-radius: var(--radius);
+      height: auto;
+      width: 100%;
+    }
+
+    .motorcycle-essay-figure figcaption,
+    .room-house-photo figcaption {
+      color: rgba(15, 12, 11, 0.58);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .room-house-photo-grid {
+      display: grid;
+      gap: var(--space-4);
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .room-house-photo {
+      cursor: pointer;
+      display: grid;
+      gap: var(--space-2);
+    }
+
+    .room-house-photo-thumb {
+      aspect-ratio: 1 / 1;
+      border-radius: var(--radius);
+      object-fit: cover;
+      width: 100%;
+    }
+
+    .room-gallery-detail-actions,
+    .room-gallery-detail-nav,
+    .room-article-bottom-nav {
+      align-items: center;
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+    }
+
+    .room-gallery-detail-index {
+      color: rgba(15, 12, 11, 0.54);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .room-gallery-detail-copy {
+      font-size: 18px;
+      line-height: 1.75;
+      max-width: 760px;
+    }
+
+    .star-map-panel {
+      align-items: center;
+      background: rgba(255, 255, 255, 0.42);
+      border: 1px solid rgba(15, 12, 11, 0.14);
+      border-radius: var(--radius);
+      display: grid;
+      gap: var(--space-6);
+      grid-template-columns: minmax(0, 1fr) minmax(220px, 340px);
+      padding: var(--space-6);
+    }
+
+    .star-map-panel img {
+      justify-self: center;
+      max-width: 320px;
+      opacity: 0.86;
+      transform: rotate(-5deg);
+      width: 100%;
+    }
+
+    .star-list {
+      background: var(--color-ivory);
+      border-bottom: 0;
+      color: var(--color-wall);
+      margin-top: 0;
+    }
+
+    .star-list .section-head {
+      align-items: start;
+    }
+
+    .star-list .section-kicker,
+    .star-list h2,
+    .star-list p {
+      color: var(--color-wall);
+    }
+
+    .star-list .section-kicker {
+      color: var(--color-slate);
+    }
+
+    .star-list-grid,
+    .page-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+    }
+
+    .star-pill,
+    .action-pill {
+      align-items: center;
+      background: rgba(255, 255, 255, 0.18);
+      border: 1px solid rgba(15, 12, 11, 0.14);
+      border-radius: var(--radius);
+      color: var(--color-wall);
+      display: inline-flex;
+      font-weight: 900;
+      line-height: 1.2;
+      min-height: 46px;
+      padding: var(--space-3) var(--space-5);
+      text-decoration: none;
+    }
+
+    .star-pill.is-current {
+      border-color: rgba(84, 145, 221, 0.56);
+      box-shadow: inset 0 0 0 1px rgba(84, 145, 221, 0.18);
+    }
+
+    .star-pill .star-signal {
+      --signal-color: var(--color-ivory);
+      width: 7px;
+      height: 7px;
+      margin-left: var(--space-1);
+    }
+
+    .action-pill.is-work {
+      color: #506a7f;
+    }
+
+    .action-pill.is-tool {
+      color: #314e55;
+    }
+
+    .page-actions {
+      margin-top: var(--space-7);
+    }
+
+    @media (max-width: 1100px) {
+      :root {
+        --sheet-width: 1024px;
+        --sheet-pad: 44px;
+        --hero-title: 88px;
+        --h1: 50px;
+        --h2: 30px;
+        --body: 17px;
+      }
+
+      .hero {
+        min-height: 640px;
+        gap: var(--space-6);
+      }
+
+      .grid-5 {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .swatch:last-child {
+        grid-column: span 2;
+      }
+    }
+
+    @media (max-width: 760px) {
+      :root {
+        --sheet-width: 430px;
+        --sheet-pad: 22px;
+        --hero-title: 54px;
+        --h1: 34px;
+        --h2: 24px;
+        --body: 15px;
+        --small: 12px;
+      }
+
+      .sheet {
+        padding-top: 28px;
+      }
+
+      .hero,
+      .section-head,
+      .rule-grid,
+      .component-grid,
+      .do-grid,
+      .type-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: auto;
+        padding: var(--space-6) 0 var(--space-8);
+        gap: var(--space-6);
+      }
+
+      .hero::before {
+        position: relative;
+        display: block;
+        inset: auto;
+        width: 100%;
+        height: 260px;
+        order: -1;
+      }
+
+      .hero::after {
+        position: static;
+        width: auto;
+        margin-top: var(--space-3);
+      }
+
+      .stamp-wrap {
+        justify-self: start;
+        width: 138px;
+      }
+
+      .meta-grid,
+      .grid-5,
+      .door-row,
+      .room-house-photo-grid,
+      .star-map-panel {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: var(--space-7) var(--space-5);
+        margin: 0;
+      }
+
+      .panel {
+        padding: var(--space-5);
+      }
+
+      .quote {
+        font-size: 21px;
+      }
+
+      .star-room-nav {
+        gap: 18px;
+        margin-bottom: var(--space-5);
+      }
+
+      .star-room-nav a,
+      .star-room-nav button {
+        font-size: 16px;
+      }
+
+      .room-house-panel {
+        padding: 28px 20px 44px;
+      }
+
+      .room-house-panel-header {
+        grid-template-columns: 1fr;
+      }
+
+      .room-article-panel:not([hidden]) {
+        padding-left: var(--space-4);
+      }
+    }
+
+  </style>
+</head>
+<body class="variant-desktop">
+<main class="sheet room-house-page">
+    <nav class="star-room-nav room-house-nav" aria-label="바이크별 이동">
+      <button class="room-house-door" type="button" data-house-target="motorcycle-writing-room">글</button>
+      <button class="room-house-door" type="button" data-house-target="motorcycle-photo-room">사진</button>
+      <button class="room-house-door" type="button" data-house-target="motorcycle-map-room">지도</button>
+      <a href="#star-list">다른 별</a>
+    </nav>
+
+    <header class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">HAM MEDIA 별자리 시스템 / LPH-B613-02</p>
         <h1>바이크별</h1>
-      </header>
-
-      <section class="room-welcome" aria-label="바이크별 첫 문장">
-        <span class="room-welcome-mark" aria-hidden="true"></span>
-        <div class="room-welcome-copy">
-          <p class="room-welcome-label">방의 첫 문장</p>
-          <blockquote>
-            <p>더 빨리, 더 멀리, 그리고 더 위험하게. 마흔, 병상에서 정했다. 죽기 전에 하고 싶은 건 하자. 면허도 없이 두카티를 계약했다. 그때 살아 있다는 감각은 아직 내 안에 남았다.</p>
-            <p>미루지 않는 사람들끼리는 안다. HAM MEDIA의 빨강이 두카티에서 온 건, 그래서다.</p>
-          </blockquote>
+        <p class="lead">인생에 딱 좋은 시기가 있다.<br />나에게는 40대의 바이크가 그랬다.<br /><span class="red-line">딱 좋았던 3년.</span></p>
+        <div class="stamp-wrap" aria-label="LPH-B613-02 STILL MOVING 스탬프">
+          <img src="../assets/images/motorcycles/stamps/lph-b613-02-motorcycle-stamp.png" alt="LPH-B613-02 STILL MOVING 스탬프" />
         </div>
-      </section>
-      <section class="room-hero" aria-label="바이크 대표 사진">
-        <figure class="motorcycle-featured">
-          <img class="room-photo-image motorcycle-photo-slot" src="../assets/images/motorcycles/hero-ducati-red-front.jpg" alt="붉은 두카티 바이크 정면 사진">
-          <figcaption>미루지 않기로 한 마음이 빨강으로 남았다.</figcaption>
-        </figure>
-      </section>
-
-      <section class="room-house" aria-label="바이크별">
-        <div class="room-section-heading">
-          <p class="room-section-label">바이크별</p>
+        <div class="star-code-pill" aria-label="바이크별 별 코드">LPH-B613-02 <span class="star-signal" aria-hidden="true"></span></div>
+        <div class="meta-grid">
+          <div class="meta-item">
+            <strong>핵심 문장</strong>
+            <span>해도 후회, 안 해도 후회라면 해보고 후회하자.</span>
+          </div>
+          <div class="meta-item">
+            <strong>감정의 흐름</strong>
+            <span>처음은 절박함, 끝은 자신감.</span>
+          </div>
+          <div class="meta-item">
+            <strong>안전 기준</strong>
+            <span>브랜드 가이드가 아니라 햄PD의 바이크별 기록.</span>
+          </div>
         </div>
+      </div>
+    </header>
 
-        <nav class="room-house-nav" aria-label="바이크별 메뉴">
-          <button class="room-house-door" type="button" data-house-target="motorcycle-writing-room">
-            <strong>글</strong>
-            <span>2개 기록 보기</span>
-          </button>
-          <button class="room-house-door" type="button" data-house-target="motorcycle-photo-room">
-            <strong>사진</strong>
-            <span>8장 보기</span>
-          </button>
-          <button class="room-house-door" type="button" disabled>
-            <strong>자료</strong>
-            <span>나중에 열 방</span>
-          </button>
-        </nav>
-      </section>
-
-      <section class="room-house-panel" id="motorcycle-writing-room" aria-label="바이크 글 목록" hidden>
-        <div class="room-house-panel-header">
-          <p class="room-section-label">글</p>
-          <h2>글 목록</h2>
-          <button class="room-house-back" type="button">바이크별로 돌아가기</button>
-        </div>
-
-        <div class="room-article-list" aria-label="바이크 글 목록">
-          <button class="room-article-link" type="button" data-article-target="motorcycle-alive-note">
-            <strong>살아 있음</strong>
-          </button>
-          <button class="room-article-link" type="button" data-article-target="motorcycle-road-note">
-            <strong>길 위의 감각</strong>
-          </button>
-        </div>
-
-        <div class="room-card-list room-article-panels">
-          <article class="room-post room-card room-record-unit motorcycle-record-card room-article-panel" id="motorcycle-alive-note" hidden>
-            <button class="room-article-back" type="button">글 목록</button>
-            <figure class="room-record-figure">
-              <img class="room-photo-image room-record-photo" src="../assets/images/motorcycles/essay-rider-ducati-red.jpg" alt="붉은 두카티 바이크 위에 앉아 있는 모습">
-              <figcaption class="room-record-caption">
-                <span class="room-card-meta">글</span>
-                <strong class="room-card-title">살아 있음을 확인하던 순간</strong>
-                <span class="room-card-note">두카티 / 결심 / 감각</span>
-                <span>하고 싶은 일을 미루지 않겠다는 결심은 몸의 기억으로 남는다.</span>
-              </figcaption>
-            </figure>
-          </article>
-
-          <article class="room-post room-card room-record-unit motorcycle-record-card room-article-panel" id="motorcycle-road-note" hidden>
-            <button class="room-article-back" type="button">글 목록</button>
-            <figure class="room-record-figure">
-              <img class="room-photo-image room-record-photo" src="../assets/images/motorcycles/photo-road-ride.jpg" alt="산길 위의 바이크 라이딩 장면">
-              <figcaption class="room-record-caption">
-                <span class="room-card-meta">사진</span>
-                <strong class="room-card-title">길 위에서 확인한 감각</strong>
-                <span class="room-card-note">바이크 / 길 / 속도</span>
-                <span>길 위에 서면 생각보다 먼저 감각이 깨어난다.</span>
-              </figcaption>
-            </figure>
-          </article>
-        </div>
-      </section>
-
-      <section class="room-house-panel motorcycle-gallery" id="motorcycle-photo-room" aria-label="바이크 갤러리" hidden>
-        <div class="room-house-panel-header">
-          <p class="room-section-label">사진</p>
-          <h2>엔진과 속도, 마음에 남은 장면</h2>
-          <button class="room-house-back" type="button">바이크별로 돌아가기</button>
-        </div>
-
-        <div class="room-section-heading">
-          <p class="room-section-label">두카티와 길 위의 흔적</p>
-        </div>
-        <div class="room-house-photo-grid motorcycle-gallery-grid">
-          <figure class="room-house-photo"><img class="room-photo-image motorcycle-gallery-photo" src="../assets/images/motorcycles/gallery-img-0142.jpg" alt="두카티 바이크 사진 1"></figure>
-          <figure class="room-house-photo"><img class="room-photo-image motorcycle-gallery-photo" src="../assets/images/motorcycles/gallery-img-3231.jpg" alt="두카티 바이크 사진 2"></figure>
-          <figure class="room-house-photo"><img class="room-photo-image motorcycle-gallery-photo" src="../assets/images/motorcycles/gallery-img-4190.jpg" alt="두카티 바이크 사진 3"></figure>
-          <figure class="room-house-photo"><img class="room-photo-image motorcycle-gallery-photo" src="../assets/images/motorcycles/gallery-img-6839.jpg" alt="두카티 바이크 사진 4"></figure>
-          <figure class="room-house-photo"><img class="room-photo-image motorcycle-gallery-photo" src="../assets/images/motorcycles/gallery-img-7899.jpg" alt="두카티 바이크 사진 5"></figure>
-          <figure class="room-house-photo"><img class="room-photo-image motorcycle-gallery-photo" src="../assets/images/motorcycles/gallery-img-7900.jpg" alt="두카티 바이크 사진 6"></figure>
-          <figure class="room-house-photo"><img class="room-photo-image motorcycle-gallery-photo" src="../assets/images/motorcycles/gallery-img-8864.jpg" alt="두카티 바이크 사진 7"></figure>
-          <figure class="room-house-photo"><img class="room-photo-image motorcycle-gallery-photo" src="../assets/images/motorcycles/gallery-iphone-3.jpg" alt="두카티 바이크 사진 8"></figure>
-        </div>
-
-        <aside class="room-gallery-detail room-house-photo-detail" aria-live="polite" hidden></aside>
-      </section>
-
-      <nav class="room-star-list" aria-label="전체 별 목록">
-        <p>별 목록</p>
+    <section class="band-slate">
+      <div class="section-head">
         <div>
-          <a href="fountain-pens.html">만년필별</a>
-          <a href="music-audio.html">음악·오디오별</a>
-          <a href="cameras.html">카메라별</a>
-          <a href="travel.html">여행별</a>
-          <a href="food.html">음식별</a>
-          <a href="bicycles.html">자전거별</a>
-          <a href="cars.html">자동차별</a>
-          <span class="is-current">바이크별</span>
-          <a href="spaces.html">공간별</a>
+          <p class="section-kicker">01 · 결심의 색</p>
+          <h2>빨강은 배경이 아니라 결심의 도장입니다.</h2>
         </div>
-      </nav>
+        <p>검정은 밤이자 벽이다. 빨강은 오래 미뤄둔 마음이 도착했을 때, 딱 한 번 찍히는 도장이다.</p>
+      </div>
+      <div class="grid-5">
+        <div class="swatch" style="--swatch: var(--color-wall);">
+          <div><small>벽</small><strong>웜 매트 블랙</strong><code>#0f0c0b</code></div>
+          <p>첫 화면의 벽. 만년필별보다 더 따뜻한 검정.</p>
+        </div>
+        <div class="swatch" style="--swatch: var(--color-slate);">
+          <div><small>깊이</small><strong>딥 슬레이트</strong><code>#1a1f2e</code></div>
+          <p>그림자, 어두운 그라디언트, 도로 기억의 깊이.</p>
+        </div>
+        <div class="swatch" style="--swatch: var(--color-silver); --swatch-text: #0f0c0b;">
+          <div><small>금속</small><strong>알루미늄 실버</strong><code>#9ca3a8</code></div>
+          <p>얇은 선, 작은 정보, 금속처럼 차가운 가장자리.</p>
+        </div>
+        <div class="swatch" style="--swatch: var(--color-red);">
+          <div><small>도장</small><strong>도착 레드</strong><code>#CC0000</code></div>
+          <p>결심이 도착한 순간, 스탬프처럼 한 번만.</p>
+        </div>
+        <div class="swatch" style="--swatch: var(--color-ivory); --swatch-text: #0f0c0b;">
+          <div><small>지면</small><strong>페이퍼 아이보리</strong><code>#f3ead8</code></div>
+          <p>오래 남길 이야기를 조용히 읽는 밝은 지면.</p>
+        </div>
+      </div>
+      <div class="ratio" aria-label="바이크별 색 비율">
+        <span style="--r: var(--color-wall);"></span>
+        <span style="--r: var(--color-slate);"></span>
+        <span style="--r: var(--color-silver);"></span>
+        <span style="--r: var(--color-red);"></span>
+        <span style="--r: var(--color-ivory);"></span>
+      </div>
+      <p class="note" style="margin-top: 16px;">빨강은 배경이 아니라 한 번 찍는 도장입니다. 많아지면 결심이 아니라 장식처럼 보이기 때문에, 이 별에서는 드물게 남깁니다.</p>
+    </section>
 
-      <nav class="room-related" aria-label="별 이동">
-        <a class="room-soft-link" href="../index.html#about-constellation">별자리로 돌아가기</a>
-        <a class="room-soft-link room-work-link" href="ham-media-work.html">그래서, 지금은 이런 일을 합니다</a>
-      </nav>
-    </main>
-    <script src="../assets/js/main.js"></script>
-  </body>
+    <section id="bike-writing" class="band-ivory">
+      <div class="section-head">
+        <div>
+          <p class="section-kicker">02 · 말의 힘</p>
+          <h2>할 말은 짧다. 결심한 사람은 길게 말하지 않는다.</h2>
+        </div>
+        <p>별 이름과 결심의 한 줄만 굵게. 오래 곱씹는 이야기는 조용히 흐른다.</p>
+      </div>
+      <div class="type-grid">
+        <div class="panel">
+          <div class="type-sample">
+            <div class="caption-type">별 이름</div>
+            <div class="display-type">바이크별</div>
+          </div>
+          <div class="type-sample">
+            <div class="caption-type">결심의 한 줄</div>
+            <div class="headline-type">죽기 전에 하고 싶은 건 하자.</div>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="type-sample">
+            <div class="caption-type">본문</div>
+            <p class="body-type">바이크별은 무엇을 탔는지보다, 왜 더 미루지 않았는지를 남기는 곳입니다. 마흔에 몸으로 정한 결심이 이 별의 중심입니다.</p>
+          </div>
+          <div class="type-sample">
+            <div class="caption-type">별의 코드</div>
+            <p>LPH-B613-02 / 아직 달리는 중 / HAM MEDIA 별자리</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="bike-map" class="band-redwash">
+      <div class="section-head">
+        <div>
+          <p class="section-kicker">03 · 별 안으로</p>
+          <h2>날카롭게 열리지만, 자랑하러 열리는 문은 아닙니다.</h2>
+        </div>
+        <p>여기 눌러 들어가는 곳은 장비 리뷰가 아니다. 결심과, 사진과, 달렸던 길의 기록이다.</p>
+      </div>
+      <div class="component-grid">
+        <div class="panel">
+          <span class="label">들어가는 버튼</span>
+          <div class="button-row">
+            <span class="button primary">아직 달리는 중</span>
+            <span class="button silver">사진 보기</span>
+            <span class="button">글 읽기</span>
+          </div>
+          <div class="quote">콘텐츠도 바이크도 같다. 완벽한 준비를 기다리지 않는다.</div>
+        </div>
+        <div class="panel">
+          <span class="label">별의 문</span>
+          <div class="door-row">
+            <button class="door room-house-door" type="button" data-house-target="motorcycle-writing-room"><strong>글</strong><span>결심과 이후의 기록</span></button>
+            <button class="door room-house-door" type="button" data-house-target="motorcycle-photo-room"><strong>사진</strong><span>그 시절의 실제 사진</span></button>
+            <button class="door room-house-door" type="button" data-house-target="motorcycle-map-room"><strong>지도</strong><span>아직 준비 중인 길</span></button>
+            <a class="door" href="#star-list"><strong>다른 별</strong><span>별자리 목록</span></a>
+          </div>
+        </div>
+        <div class="panel light">
+          <span class="label">긴 글</span>
+          <h3>긴 글은 밝은 지면 위에 둡니다.</h3>
+          <p>어두운 화면에서 모든 이야기를 밀어붙이지 않습니다. 오래 읽어야 하는 문장은 한 번 밝은 곳으로 옮깁니다.</p>
+        </div>
+        <div class="panel">
+          <span class="label">아직 달리는 도장</span>
+          <p>LPH-B613-02 스탬프는 끝났다는 표시가 아닙니다. 딱 좋았던 3년 뒤에도, 마음은 아직 달리는 중이라는 표식입니다.</p>
+          <div style="width: 180px; margin-top: 20px; transform: rotate(-7deg);">
+            <img src="../assets/images/motorcycles/stamps/lph-b613-02-motorcycle-stamp.png" alt="LPH-B613-02 아직 달리는 중 스탬프" style="width:100%; height:auto; display:block;" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="room-house-panel" id="motorcycle-writing-room" aria-label="바이크 글" hidden>
+      <div class="room-house-panel-header">
+        <p class="room-section-label">글</p>
+        <h2>글 목록</h2>
+        <button class="room-house-back" type="button">바이크별로 돌아가기</button>
+      </div>
+
+      <div class="room-article-list" aria-label="바이크 글 목록">
+        <button class="room-article-link" type="button" data-article-target="motorcycle-alive-note" aria-label="살아 있음을 확인하던 순간 읽기">
+          <strong>살아 있음</strong>
+        </button>
+        <button class="room-article-link" type="button" data-article-target="motorcycle-road-note" aria-label="길 위에서 확인한 감각 읽기">
+          <strong>길 위 감각</strong>
+        </button>
+      </div>
+      <div class="room-list-pager" aria-label="바이크 글 페이지">
+        <span>1-2 / 2</span>
+        <button type="button" disabled>다음 5개</button>
+      </div>
+
+      <div class="room-article-panels">
+        <article class="room-post room-article-panel" id="motorcycle-alive-note" hidden>
+          <button class="room-article-back" type="button">글 목록</button>
+          <header class="motorcycle-essay-header">
+            <p class="room-card-meta">글</p>
+            <h3>살아 있음을 확인하던 순간</h3>
+            <p>바이크 / 결심 / 감각</p>
+          </header>
+          <figure class="motorcycle-essay-figure">
+            <img class="room-photo-image" src="../assets/images/motorcycles/essay-rider-ducati-red.jpg" alt="붉은 두카티 바이크 위에 앉아 있는 모습">
+            <figcaption>하고 싶은 일을 미루지 않겠다는 결심은 몸의 기억으로 남는다.</figcaption>
+          </figure>
+          <div class="motorcycle-copy">
+            <p>더 빨리, 더 멀리, 그리고 더 위험하게.</p>
+            <p>마흔, 병상에서 정했다. 죽기 전에 하고 싶은 건 하자. 면허도 없이 두카티를 계약했다.</p>
+            <p>그때 살아 있다는 감각은 아직 내 안에 남았다. 미루지 않는 사람들끼리는 안다. HAM MEDIA의 빨강이 두카티에서 온 건, 그래서다.</p>
+          </div>
+        </article>
+
+        <article class="room-post room-article-panel" id="motorcycle-road-note" hidden>
+          <button class="room-article-back" type="button">글 목록</button>
+          <header class="motorcycle-essay-header">
+            <p class="room-card-meta">글</p>
+            <h3>길 위에서 확인한 감각</h3>
+            <p>바이크 / 길 / 속도</p>
+          </header>
+          <figure class="motorcycle-essay-figure">
+            <img class="room-photo-image" src="../assets/images/motorcycles/photo-road-ride.jpg" alt="산길 위의 바이크 라이딩 장면">
+            <figcaption>길 위에 서면 생각보다 먼저 감각이 깨어난다.</figcaption>
+          </figure>
+          <div class="motorcycle-copy">
+            <p>콘텐츠도 바이크도 같다. 완벽한 준비를 기다리지 않는다.</p>
+            <p>해도 후회, 안 해도 후회라면 해보고 후회하자. 바이크별은 그 결심이 남긴 짧은 기록이다.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="room-house-panel motorcycle-gallery" id="motorcycle-photo-room" aria-label="바이크 사진" hidden>
+      <div class="room-house-panel-header">
+        <p class="room-section-label">사진</p>
+        <h2>사진 목록</h2>
+        <button class="room-house-back" type="button">바이크별로 돌아가기</button>
+      </div>
+
+      <div class="room-house-photo-grid motorcycle-gallery-grid">
+        <figure class="room-house-photo" data-memory="두카티와 함께 남은 첫 장면."><img class="room-photo-image room-house-photo-thumb" src="../assets/images/motorcycles/gallery-img-0142.jpg" alt="두카티 바이크 사진 1"><figcaption>두카티 1</figcaption></figure>
+        <figure class="room-house-photo" data-memory="바이크를 향해 가는 사람의 기억."><img class="room-photo-image room-house-photo-thumb" src="../assets/images/motorcycles/gallery-img-3231.jpg" alt="두카티 바이크 사진 2"><figcaption>두카티 2</figcaption></figure>
+        <figure class="room-house-photo" data-memory="멈춰 있지 않겠다고 마음먹은 날의 질감."><img class="room-photo-image room-house-photo-thumb" src="../assets/images/motorcycles/gallery-img-4190.jpg" alt="두카티 바이크 사진 3"><figcaption>두카티 3</figcaption></figure>
+        <figure class="room-house-photo" data-memory="장비보다 결심이 먼저 보이면 좋겠다."><img class="room-photo-image room-house-photo-thumb" src="../assets/images/motorcycles/gallery-img-6839.jpg" alt="두카티 바이크 사진 4"><figcaption>두카티 4</figcaption></figure>
+        <figure class="room-house-photo" data-memory="그때의 빨강은 과시가 아니라 생존감에 가까웠다."><img class="room-photo-image room-house-photo-thumb" src="../assets/images/motorcycles/gallery-img-7899.jpg" alt="두카티 바이크 사진 5"><figcaption>두카티 5</figcaption></figure>
+        <figure class="room-house-photo" data-memory="바이크 쪽으로 걸어가던 실제 순간."><img class="room-photo-image room-house-photo-thumb" src="../assets/images/motorcycles/gallery-img-7900.jpg" alt="두카티 바이크 사진 6"><figcaption>걷는 사람</figcaption></figure>
+        <figure class="room-house-photo" data-memory="아직 달리는 중이라는 도장 같은 사진."><img class="room-photo-image room-house-photo-thumb" src="../assets/images/motorcycles/gallery-img-8864.jpg" alt="두카티 바이크 사진 7"><figcaption>아직 달림</figcaption></figure>
+        <figure class="room-house-photo" data-memory="폰에 남은 바이크 시절의 작은 기록."><img class="room-photo-image room-house-photo-thumb" src="../assets/images/motorcycles/gallery-iphone-3.jpg" alt="두카티 바이크 사진 8"><figcaption>폰 기록</figcaption></figure>
+      </div>
+
+      <aside class="room-gallery-detail room-house-photo-detail" aria-live="polite" hidden></aside>
+    </section>
+
+    <section class="room-house-panel" id="motorcycle-map-room" aria-label="바이크별 지도" hidden>
+      <div class="room-house-panel-header">
+        <p class="room-section-label">지도</p>
+        <h2>바이크별 지도는 아직 그리는 중입니다</h2>
+        <button class="room-house-back" type="button">바이크별로 돌아가기</button>
+      </div>
+      <div class="star-map-panel">
+        <p>바이크별의 글, 사진, 이동의 흔적이 더 쌓이면 이곳에 지도가 놓입니다. 지금은 준비중 스탬프만 남겨둡니다.</p>
+        <img src="../assets/images/fountain-pens/map-in-progress-stamp.png" alt="MAP IN PROGRESS 준비중 스탬프" />
+      </div>
+    </section>
+
+    <section id="bike-photos" class="band-slate">
+      <div class="section-head">
+        <div>
+          <p class="section-kicker">04 · 고갯길</p>
+          <h2>고갯길은 장비 자랑이 아니라 다시 넘는 감각입니다.</h2>
+        </div>
+        <p>이 사진은 속도나 장비를 과시하는 장면이 아닙니다. 자전거로 넘었던 속초 가는 고갯길을, 드디어 바이크로 다시 넘어가는 기억을 보여줍니다.</p>
+      </div>
+      <div class="rule-grid">
+        <div class="texture-card" aria-label="자전거로 넘었던 속초 가는 고갯길을 바이크로 넘어가는 실제 사진"></div>
+        <div class="panel">
+          <h3>이 사진에서 보는 것</h3>
+          <ul>
+            <li>실제로 몸으로 지나간 길입니다.</li>
+            <li>자전거로 넘었던 길을 바이크로 다시 넘는 기억을 우선합니다.</li>
+            <li>엔진, 핸들, 그립, 금속, 도로, 재킷, 그림자를 질감으로 씁니다.</li>
+            <li>“무엇을 소유했나”보다 “무엇을 결심했나”가 보이는 사진을 고릅니다.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="band-ivory">
+      <div class="section-head">
+        <div>
+          <p class="section-kicker">05 · 이 별이 권하는 것</p>
+          <h2>짧게, 겪은 사람처럼, 장비 자랑 없이.</h2>
+        </div>
+        <p>바이크별은 무리하라고 부추기는 말이 아닙니다. 하고 싶었던 일을 계속 미루지 말자는 쪽에 가깝습니다.</p>
+      </div>
+      <div class="do-grid">
+        <div class="panel">
+          <h3>권하는 말</h3>
+          <ul>
+            <li>“마흔, 병상에서 정했다.”</li>
+            <li>“죽기 전에 하고 싶은 건 하자.”</li>
+            <li>“해도 후회, 안 해도 후회라면 해보고 후회하자.”</li>
+            <li>“딱 좋았던 3년.”</li>
+          </ul>
+        </div>
+        <div class="panel">
+          <h3>이게 아닌 것</h3>
+          <ul>
+            <li>“남자의 로망 같은 건 모른다.”</li>
+            <li>“질주가 목적이 아니다.”</li>
+            <li>“라이더 감성? 그런 건 조금만..”</li>
+            <li>“제일 빠른 게 중요한 게 아니다.”</li>
+            <li>“타는 걸 자랑하려는 게 아니다.”</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="band-silver">
+      <div class="section-head">
+        <div>
+          <p class="section-kicker">06 · 마지막 기준</p>
+          <h2>속도보다, 살아본 기억에서 출발합니다.</h2>
+        </div>
+        <p>빠르게 달렸다는 말보다, 아팠던 자리에서 다시 움직이기로 했다는 말이 먼저입니다. 이 별은 소유의 자랑이 아니라 살아본 기억에서 시작합니다.</p>
+      </div>
+      <div class="rule-grid">
+        <div class="panel">
+          <h3>남겨도 되는 말</h3>
+          <ul>
+            <li>딱 좋았던 3년</li>
+            <li>아직 달리는 중</li>
+            <li>빨간 도착 스탬프</li>
+            <li>따뜻한 매트 블랙 벽</li>
+            <li>다시 움직이기로 한 결심</li>
+          </ul>
+        </div>
+        <div class="panel">
+          <h3>읽히는 방식</h3>
+          <ul>
+            <li>빨간 말은 크게, 드물게 남깁니다.</li>
+            <li>긴 글은 밝은 지면으로 옮깁니다.</li>
+            <li>장비보다 기억을 먼저 둡니다.</li>
+            <li>속도보다 결심이 보이게 합니다.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section star-list" id="star-list">
+      <div class="section-head">
+        <div>
+          <p class="section-kicker">07 · 다른 별 보기</p>
+          <h2>다른 별 보기</h2>
+        </div>
+        <p>이 별은 HAM MEDIA Design MD 방식으로 정리한 별입니다.<br />좋아하는 것의 감각을 브랜드의 기준으로 바꾸는 실험이기도 합니다.</p>
+      </div>
+      <div class="star-list-grid" aria-label="별 목록">
+        <a class="star-pill" href="fountain-pens.html">만년필별</a>
+        <a class="star-pill" href="music-audio.html">음악·오디오별</a>
+        <a class="star-pill" href="cameras.html">카메라별</a>
+        <a class="star-pill" href="travel.html">여행별</a>
+        <a class="star-pill" href="food.html">음식별</a>
+        <a class="star-pill" href="bicycles.html">자전거별</a>
+        <a class="star-pill" href="cars.html">자동차별</a>
+        <a class="star-pill is-current" href="motorcycles.html">바이크별 <span class="star-signal" aria-hidden="true"></span></a>
+        <a class="star-pill" href="spaces.html">공간별</a>
+      </div>
+      <div class="page-actions" aria-label="바이크별 하단 링크">
+        <a class="action-pill" href="../index.html#about-constellation">별자리로 돌아가기</a>
+        <a class="action-pill is-work" href="ham-media-work.html">그래서, 지금은 이런 일을 합니다</a>
+        <a class="action-pill is-tool" href="https://hammedia.github.io/design-brief/">Design MD 만드는 도구</a>
+      </div>
+    </section>
+
+    <footer class="footer">
+      바이크별 · LPH-B613-02 · HAM MEDIA · Design MD로 만든 별 페이지
+    </footer>
+  </main>
+  <script src="../assets/js/fountain-pens-main.js?v=motorcycle-star-v1"></script>
+</body>
 </html>
