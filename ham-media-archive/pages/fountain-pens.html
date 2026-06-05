@@ -191,14 +191,20 @@
       padding: var(--space-8) var(--space-16);
     }
 
-    .tiny-light {
-      background: var(--color-hotarubi-yellow);
+    .star-signal {
+      --signal-color: var(--color-hotarubi-yellow);
+      background: var(--signal-color);
       border-radius: 50%;
-      box-shadow: 0 0 18px rgba(206, 222, 133, 0.48);
+      box-shadow: 0 0 18px color-mix(in srgb, var(--signal-color) 56%, transparent);
       display: inline-block;
       height: 8px;
       margin-left: var(--space-8);
       width: 8px;
+    }
+
+    .star-pill .star-signal {
+      flex: 0 0 auto;
+      margin-left: var(--space-8);
     }
 
     .photo-wall {
@@ -392,7 +398,7 @@
       border-bottom: 0;
     }
 
-    .sample-display {
+    .type-display-line {
       color: var(--color-aurora-black);
       font-size: var(--type-hero);
       font-weight: 600;
@@ -400,20 +406,20 @@
       line-height: 1.12;
     }
 
-    .sample-body {
+    .type-body-line {
       color: #2d2a25;
       font-size: var(--type-body-lg);
       line-height: 1.7;
     }
 
-    .sample-hand {
+    .type-hand-line {
       color: var(--color-syo-ro-teal);
       font-family: var(--font-hand);
       font-size: var(--type-hand);
       line-height: 1.1;
     }
 
-    .sample-label {
+    .type-label-line {
       color: var(--color-graphite-gray);
       font-size: var(--type-caption);
       line-height: var(--leading-caption);
@@ -1080,15 +1086,15 @@
         padding: 12px;
       }
 
-      .sample-display {
+      .type-display-line {
         font-size: 28px;
       }
 
-      .sample-body {
+      .type-body-line {
         font-size: 13px;
       }
 
-      .sample-hand {
+      .type-hand-line {
         font-size: 28px;
       }
 
@@ -1186,7 +1192,7 @@
 
     <section class="hero" aria-label="Fountain Pens Star hero">
       <div>
-        <p class="eyebrow">HAM MEDIA Star Room · Fountain Pens Star</p>
+        <p class="eyebrow">만년필별 · LPH-B613-01 · HAM MEDIA 별자리</p>
         <h1>검은 전시 벽 위에 걸린 만년필의 기억</h1>
         <p class="hero-lead">만년필별은 취미를 자랑하는 방이 아니라, 잉크와 손글씨로 안에 있던 것을 밖으로 꺼내는 조용한 기록실입니다.</p>
         <div class="hand-line" aria-label="handwritten phrase">
@@ -1195,14 +1201,14 @@
         </div>
         <div class="stamp-row">
           <img src="../assets/images/fountain-pens/stamps/lph-b613-01-fountain-pen-stamp.png" alt="LPH-B613-01 fountain pen arrival stamp" />
-          <span class="code-pill mono">LPH-B613-01 <i class="tiny-light" aria-hidden="true"></i></span>
+          <span class="code-pill mono">LPH-B613-01 <span class="star-signal" aria-hidden="true"></span></span>
         </div>
       </div>
       <figure class="photo-wall">
         <div class="museum-frame">
           <img src="../assets/images/fountain-pens/photo-nib-closeup.jpg" alt="만년필 닙 클로즈업 사진" />
         </div>
-        <figcaption class="museum-label">Symbolic photo · real fountain pen image · thin museum wall treatment</figcaption>
+        <figcaption class="museum-label">실제 만년필 사진 · 얇은 전시 벽처럼</figcaption>
       </figure>
     </section>
 
@@ -1210,90 +1216,91 @@
       <div class="paper-inner">
         <section class="section">
           <div class="section-head">
-            <p class="section-kicker">01 · Core Direction</p>
+            <p class="section-kicker">01 · 색의 방향</p>
             <h2>색은 장식이 아니라, 시간이 지난 잉크의 상태다</h2>
-            <p class="section-desc">한 화면에 여러 잉크색이 있어도 됩니다. 대신 동시에 강하게 보이는 색은 3~4개로 제한하고, 모든 색은 제목·코드·스탬프·손글씨·캡션 같은 역할을 가져야 합니다.</p>
+            <p class="section-desc">잉크색은 많아도 된다. 다만 색마다 머무는 자리가 있어야 한다. 제목, 코드, 스탬프, 손글씨, 캡션처럼 각자의 역할이 있을 때만 오래 남는다.</p>
           </div>
           <div class="notice">
-            이 스타일시트의 HEX는 제조사 공식 필기 샘플을 우선 기준으로 다시 잡은 프리뷰 값입니다. 공식 필기 샘플이 없는 색은 제품명 그대로의 공식색이 아니라, 공식 설명·공식 스와치를 참고한 inspired approximation으로만 사용합니다.
+            병에 담긴 색보다 종이에 남은 색을 먼저 봤습니다. 처음보다 마른 뒤의 색, 선명함보다 시간이 지난 농도가 이 별에 더 오래 어울립니다.
           </div>
         </section>
 
         <section class="section">
           <div class="section-head">
-            <p class="section-kicker">02 · Color System</p>
+            <p class="section-kicker">02 · 잉크의 색</p>
             <h2>검은 벽, 종이색, 그리고 역할이 있는 잉크색</h2>
           </div>
           <div class="swatch-grid">
-            <div class="swatch"><div class="ink-chip" style="background:var(--color-fountain-wall-black);"></div><p><strong>Fountain Wall Black</strong><span>Hero wall · preview #0b0f14</span></p></div>
-            <div class="swatch"><div class="ink-chip" style="background:var(--color-yonaga-blue-black);"></div><p><strong>Yonaga Blue Black</strong><span>Depth · preview #141b2d</span></p></div>
-            <div class="swatch"><div class="ink-chip" style="background:var(--color-paper-ivory);"></div><p><strong>Paper Ivory</strong><span>Reading surface · preview #f3ead8</span></p></div>
-            <div class="swatch"><div class="ink-chip" style="background:var(--color-graphite-gray);"></div><p><strong>Graphite Gray</strong><span>Metadata · preview #8b8a84</span></p></div>
-            <div class="swatch"><div class="ink-chip" style="background:var(--color-syo-ro-teal);"></div><p><strong>Syo-ro-inspired Dried Teal</strong><span>PILOT writing sample approx · #5a7974</span></p></div>
-            <div class="swatch"><div class="ink-chip" style="background:var(--color-platinum-blue-black);"></div><p><strong>Platinum-inspired Blue Black</strong><span>Official behavior note approx · #2f4652</span></p></div>
-            <div class="swatch"><div class="ink-chip" style="background:var(--color-kiri-same-gray);"></div><p><strong>Kiri-same-inspired Dry Gray</strong><span>PILOT writing sample approx · #9a9b96</span></p></div>
-            <div class="swatch"><div class="ink-chip" style="background:var(--color-ink-studio-143);"></div><p><strong>Ink Studio 143-inspired Blue</strong><span>Sailor writing sample approx · #5491dd</span></p></div>
-            <div class="swatch"><div class="ink-chip" style="background:var(--color-yu-yake-orange);"></div><p><strong>Yu-yake-inspired Dried Orange</strong><span>PILOT writing sample approx · #c6936f</span></p></div>
-            <div class="swatch"><div class="ink-chip" style="background:var(--color-hana-ikada-pink);"></div><p><strong>Hana-ikada-inspired Soft Pink</strong><span>PILOT writing sample approx · #e392a0</span></p></div>
-            <div class="swatch"><div class="ink-chip" style="background:var(--color-rose-quartz);"></div><p><strong>Rose Quartz-inspired Soft Rose</strong><span>Pelikan color drop approx · #c687a8</span></p></div>
-            <div class="swatch"><div class="ink-chip" style="background:var(--color-hotarubi-yellow);"></div><p><strong>Hotarubi-inspired Tiny Light</strong><span>PILOT writing sample approx · #cede85</span></p></div>
-            <div class="swatch"><div class="ink-chip" style="background:var(--color-aurora-black);"></div><p><strong>Aurora-inspired Black Anchor</strong><span>Aurora official note approx · #080808</span></p></div>
-            <div class="swatch"><div class="ink-chip" style="background:var(--color-sterling-silver);"></div><p><strong>Sterling Silver-inspired Cool Gray</strong><span>Birmingham swab approx · #9cadc2</span></p></div>
+            <div class="swatch"><div class="ink-chip" style="background:var(--color-fountain-wall-black);"></div><p><strong>검은 전시 벽</strong><span>대문 벽 · #0b0f14</span></p></div>
+            <div class="swatch"><div class="ink-chip" style="background:var(--color-yonaga-blue-black);"></div><p><strong>요나가 블루 블랙</strong><span>깊이 · #141b2d</span></p></div>
+            <div class="swatch"><div class="ink-chip" style="background:var(--color-paper-ivory);"></div><p><strong>페이퍼 아이보리</strong><span>읽는 지면 · #f3ead8</span></p></div>
+            <div class="swatch"><div class="ink-chip" style="background:var(--color-graphite-gray);"></div><p><strong>그래파이트 그레이</strong><span>작은 설명 · #8b8a84</span></p></div>
+            <div class="swatch"><div class="ink-chip" style="background:var(--color-syo-ro-teal);"></div><p><strong>소로 마른 틸</strong><span>마른 필기감 · #5a7974</span></p></div>
+            <div class="swatch"><div class="ink-chip" style="background:var(--color-platinum-blue-black);"></div><p><strong>플래티넘 블루 블랙</strong><span>어두운 잉크감 · #2f4652</span></p></div>
+            <div class="swatch"><div class="ink-chip" style="background:var(--color-kiri-same-gray);"></div><p><strong>키리사메 드라이 그레이</strong><span>마른 회색감 · #9a9b96</span></p></div>
+            <div class="swatch"><div class="ink-chip" style="background:var(--color-ink-studio-143);"></div><p><strong>잉크 스튜디오 143 블루</strong><span>맑은 파란 기록 · #5491dd</span></p></div>
+            <div class="swatch"><div class="ink-chip" style="background:var(--color-yu-yake-orange);"></div><p><strong>유야케 마른 오렌지</strong><span>마른 노을감 · #c6936f</span></p></div>
+            <div class="swatch"><div class="ink-chip" style="background:var(--color-hana-ikada-pink);"></div><p><strong>하나이카다 소프트 핑크</strong><span>부드러운 분홍감 · #e392a0</span></p></div>
+            <div class="swatch"><div class="ink-chip" style="background:var(--color-rose-quartz);"></div><p><strong>로즈 쿼츠 소프트 로즈</strong><span>은은한 장밋빛 · #c687a8</span></p></div>
+            <div class="swatch"><div class="ink-chip" style="background:var(--color-hotarubi-yellow);"></div><p><strong>호타루비 작은 빛</strong><span>작은 노란빛 · #cede85</span></p></div>
+            <div class="swatch"><div class="ink-chip" style="background:var(--color-aurora-black);"></div><p><strong>오로라 블랙 앵커</strong><span>검은 기준점 · #080808</span></p></div>
+            <div class="swatch"><div class="ink-chip" style="background:var(--color-sterling-silver);"></div><p><strong>스털링 실버 쿨 그레이</strong><span>차가운 은빛 · #9cadc2</span></p></div>
           </div>
-          <p class="evidence-note"><strong>Evidence note</strong><br />병 색이 아니라 종이에 남은 필기 상태를 우선으로 봤습니다. PILOT Syo-ro · Kiri-same · Yu-yake는 PILOT 色彩雫見本帖 필기 샘플, Hana-ikada · Hotarubi는 PILOT 공식 필기 샘플, Sailor 143은 Sailor 공식 143 필기/스와치 이미지를 기준으로 잡았습니다. Platinum Blue-Black · Rose Quartz · Aurora Black · Sterling Silver는 공식 필기 샘플을 찾지 못해 공식 설명 또는 공식 스와치 기반 inspired approximation으로만 읽습니다.</p>
+          <p class="evidence-note"><strong>색을 고른 근거</strong><br />병 색이 아니라 종이에 남은 필기 상태를 우선으로 봤습니다. 확인 가능한 필기 이미지는 마른 뒤의 온도와 농도를 먼저 보았고, 자료가 부족한 색은 이름과 색면이 주는 인상만 조심스럽게 참고했습니다.</p>
         </section>
 
         <section class="section">
           <div class="section-head">
-            <p class="section-kicker">03 · Typography</p>
+            <p class="section-kicker">03 · 말의 리듬</p>
             <h2>Pretendard가 구조를 잡고, NanumPen은 한두 줄만 남긴다</h2>
           </div>
           <div class="type-board">
             <div class="type-row">
-              <p class="meta">Structure title<br>Pretendard SemiBold</p>
-              <p class="sample-display">만년필별</p>
-              <p class="meta">Clear and present, but never shouted.</p>
+              <p class="meta">별 이름<br>또렷한 구조</p>
+              <p class="type-display-line">만년필별</p>
+              <p class="meta">크지만 소리치지 않는다.</p>
             </div>
             <div class="type-row">
-              <p class="meta">Reading body<br>Pretendard Regular</p>
-              <p class="sample-body">잉크는 처음 펜에서 나왔을 때와 마른 뒤의 색이 다르다. 시간이 지나 다시 보면 또 달라진다.</p>
-              <p class="meta">Long text stays readable on Paper Ivory.</p>
+              <p class="meta">긴 기록<br>읽히는 본문</p>
+              <p class="type-body-line">잉크는 처음 펜에서 나왔을 때와 마른 뒤의 색이 다르다. 시간이 지나 다시 보면 또 달라진다.</p>
+              <p class="meta">긴 글은 밝은 종이 위에 둔다.</p>
             </div>
             <div class="type-row">
-              <p class="meta">Handwritten mood<br>NanumPen only short lines</p>
-              <p class="sample-hand">조용히 잉크를 채우던 시간들.</p>
-              <p class="meta">Atmosphere, not full article.</p>
+              <p class="meta">손글씨의 기분<br>짧은 문장만</p>
+              <p class="type-hand-line">조용히 잉크를 채우던 시간들.</p>
+              <p class="meta">분위기만 남기고, 본문은 맡기지 않는다.</p>
             </div>
             <div class="type-row">
-              <p class="meta">Museum caption<br>Graphite gray</p>
-              <p class="sample-label">LPH-B613-01 · fountain pen arrival record · ink dries differently over time</p>
-              <p class="meta">Quiet, but readable.</p>
+              <p class="meta">전시 캡션<br>작은 회색 글</p>
+              <p class="type-label-line">LPH-B613-01 · 만년필 도착 기록 · 마른 뒤에 달라지는 잉크</p>
+              <p class="meta">작지만 읽혀야 한다.</p>
             </div>
           </div>
         </section>
 
         <section class="section" id="star-doors">
           <div class="section-head">
-            <p class="section-kicker">04 · Components</p>
+            <p class="section-kicker">04 · 별 안으로</p>
             <h2>두꺼운 액자가 아니라, 조용한 전시 장치</h2>
           </div>
           <div class="component-grid">
             <div class="component-card">
-              <h3>Arrival Stamp</h3>
-              <p>별 코드 근처에 두고, 로고가 아니라 도착 표시처럼 보이게 합니다. 약한 회전은 허용됩니다.</p>
+              <h3>도착 스탬프</h3>
+              <p>별 코드 근처에 둔다. 로고보다 도착 표시처럼 보이면 충분하다. 약하게 기울어진 종이 느낌은 남긴다.</p>
             </div>
             <div class="component-card">
-              <h3>Museum Image</h3>
-              <p>사진은 카드 안 장식이 아니라 전시 벽의 상징 이미지입니다. 얇은 베젤과 낮은 그림자만 허용합니다.</p>
+              <h3>전시 사진</h3>
+              <p>사진은 장식이 아니라 전시 벽에 걸린 기억이다. 얇은 가장자리와 낮은 그림자만 남긴다.</p>
             </div>
             <div class="component-card">
-              <h3>Star Doors</h3>
-              <div class="tab-row" aria-label="star room tabs">
+              <h3>별의 문</h3>
+              <div class="tab-row" aria-label="만년필별 입구">
                 <span class="tab active">글</span>
                 <span class="tab">사진</span>
                 <span class="tab">지도</span>
+                <span class="tab">다른 별</span>
               </div>
-              <p style="margin-top:16px;">첫 화면 뒤는 긴 피드가 아니라 별 안으로 들어가는 문이어야 합니다.</p>
+              <p style="margin-top:16px;">첫 화면 뒤는 긴 피드가 아니라 글, 사진, 지도, 다른 별로 들어가는 문이다.</p>
             </div>
           </div>
         </section>
@@ -1580,14 +1587,14 @@
 
         <section class="section" id="star-image">
           <div class="section-head">
-            <p class="section-kicker">05 · Hero / Image Treatment</p>
+            <p class="section-kicker">05 · 사진 방향</p>
             <h2>사진은 실제이고, 잘리지 않아야 한다</h2>
           </div>
           <div class="dark-demo">
             <div>
-              <p class="mono">LPH-B613-01 · first screen sample</p>
+              <p class="mono">LPH-B613-01 · 첫 화면의 기억</p>
               <h3>정보 이미지가 아니라, 한 점의 기억처럼 보이게</h3>
-              <p>스톡, AI 이미지, 과한 제품컷은 금지입니다. 햄PD의 실제 만년필·노트·손글씨만 사용하고, 중요한 손글씨를 숨기는 크롭은 피합니다.</p>
+              <p>낯선 제품컷보다 햄PD가 실제로 남긴 만년필, 노트, 손글씨를 먼저 본다. 중요한 손글씨를 숨기는 자르기는 피한다.</p>
             </div>
             <figure class="mini-photo">
               <img src="../assets/images/fountain-pens/essay-handwriting-pens.jpg" alt="만년필과 손글씨가 함께 놓인 실제 사진" />
@@ -1597,35 +1604,35 @@
 
         <section class="section">
           <div class="section-head">
-            <p class="section-kicker">06 · Do / Don't</p>
+            <p class="section-kicker">06 · 마지막 기준</p>
             <h2>장비 자랑이 아니라, 시간을 보관하는 사람의 방</h2>
           </div>
           <div class="do-grid">
             <div class="rule-card">
-              <h3>Do</h3>
+              <h3>남겨둘 말</h3>
               <ul>
-                <li>실제 사진과 실제 손글씨를 사용한다.</li>
-                <li>잉크색은 역할이 있을 때만 쓴다.</li>
-                <li>긴 글은 Paper Ivory 위에서 읽히게 한다.</li>
-                <li>박물관 라벨처럼 조용한 설명을 둔다.</li>
+                <li>실제 사진과 실제 손글씨를 남긴다.</li>
+                <li>잉크색은 마음이 머무는 곳에만 쓴다.</li>
+                <li>긴 글은 페이퍼 아이보리 위에서 읽히게 한다.</li>
+                <li>전시 라벨처럼 조용한 설명을 둔다.</li>
               </ul>
             </div>
             <div class="rule-card">
-              <h3>Don't</h3>
+              <h3>이게 아닌 것</h3>
               <ul>
-                <li>쇼핑몰, 장비 자랑, 구매 유도 톤으로 만들지 않는다.</li>
-                <li>네온 우주, 과한 금색, 무지개 팔레트를 쓰지 않는다.</li>
-                <li>AI/스톡 만년필 이미지를 쓰지 않는다.</li>
-                <li>두꺼운 액자나 장식 프레임을 만들지 않는다.</li>
+                <li>쇼핑몰 같은 말은 하지 않는다.</li>
+                <li>네온 우주와 과한 금빛은 이 방에 들이지 않는다.</li>
+                <li>남의 만년필 사진으로 기억을 대신하지 않는다.</li>
+                <li>두꺼운 액자로 사진을 눌러버리지 않는다.</li>
               </ul>
             </div>
             <div class="rule-card">
-              <h3>Risk Guard</h3>
+              <h3>마지막 기준</h3>
               <ul>
-                <li>사진과 글에 없는 이야기를 만들지 않는다.</li>
-                <li>제품 성능을 단정하지 않는다.</li>
-                <li>브랜드명은 사용 기록의 맥락 안에서만 다룬다.</li>
-                <li>손글씨 폰트는 긴 본문에 쓰지 않는다.</li>
+                <li>사진과 글에 없는 이야기는 만들지 않는다.</li>
+                <li>제품 성능보다 남긴 시간을 먼저 본다.</li>
+                <li>브랜드 이름은 사용한 기억 안에서만 다룬다.</li>
+                <li>손글씨 느낌은 짧은 한 줄에만 둔다.</li>
               </ul>
             </div>
           </div>
@@ -1633,12 +1640,12 @@
 
         <section class="section star-list" id="star-list">
           <div class="section-head">
-            <p class="section-kicker">07 · Stars</p>
+            <p class="section-kicker">07 · 다른 별 보기</p>
             <h2>다른 별 보기</h2>
-            <p class="section-desc">이 별은 HAM MEDIA Design MD 방식으로 정리한 첫 번째 별입니다. 좋아하는 것의 감각을 브랜드의 기준으로 바꾸는 실험이기도 합니다.</p>
+            <p class="section-desc">이 별은 HAM MEDIA Design MD 방식으로 정리한 별입니다. 좋아하는 것의 감각을 브랜드의 기준으로 바꾸는 실험이기도 합니다.</p>
           </div>
           <div class="star-list-grid" aria-label="별 목록">
-            <a class="star-pill is-current" href="fountain-pens.html">만년필별</a>
+            <a class="star-pill is-current" href="fountain-pens.html" aria-current="page">만년필별 <span class="star-signal" aria-hidden="true"></span></a>
             <a class="star-pill" href="music-audio.html">음악·오디오별</a>
             <a class="star-pill" href="cameras.html">카메라별</a>
             <a class="star-pill" href="travel.html">여행별</a>
@@ -1658,7 +1665,7 @@
     </div>
 
     <footer class="footer">
-      <p>Source: 05_HAM_DesignStudio/reference/clients/fountain_pens_star/DESIGN.md · Status: proposal visual style sheet · HAM MEDIA x Codex · Real display images copied with metadata stripped.</p>
+      <p>만년필별 · LPH-B613-01 · HAM MEDIA · Design MD로 만든 별 페이지</p>
     </footer>
   </main>
   <script src="../assets/js/fountain-pens-main.js?v=article-detail-v3"></script>
