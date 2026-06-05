@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>자전거별 | HAM MEDIA</title>
+  <title>자전거별 | HAM MEDIA 별자리</title>
   <link rel="preconnect" href="https://cdn.jsdelivr.net" />
   <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
   <style>
@@ -297,20 +297,20 @@
     h2 {
       margin: 0;
       color: var(--ink);
-      font-family: var(--font-star);
+      font-family: var(--font-sans);
       font-size: var(--h1);
       line-height: 1.03;
-      font-weight: 700;
+      font-weight: 950;
       text-wrap: balance;
     }
 
     h3 {
       margin: 0;
       color: inherit;
-      font-family: var(--font-star);
+      font-family: var(--font-sans);
       font-size: var(--h2);
       line-height: 1.1;
-      font-weight: 700;
+      font-weight: 900;
       text-wrap: balance;
     }
 
@@ -372,11 +372,45 @@
       text-transform: uppercase;
     }
 
+    .point-caption {
+      position: relative;
+      z-index: 1;
+      display: block;
+      width: fit-content;
+      max-width: 100%;
+      margin: 0 0 var(--space-4);
+      color: var(--yellow);
+      font-family: var(--font-star);
+      font-size: 19px;
+      font-weight: 700;
+      line-height: 1.05;
+    }
+
+    .point-caption::after {
+      content: "";
+      display: block;
+      width: 38px;
+      height: 2px;
+      margin-top: 8px;
+      border-radius: 999px;
+      background: currentColor;
+      opacity: 0.68;
+    }
+
+    .panel.ivory .point-caption {
+      color: var(--climb);
+    }
+
+    .panel h3 + p {
+      margin-top: var(--space-4);
+    }
+
     .quote-panel {
       position: relative;
       min-height: 360px;
-      display: grid;
-      align-content: end;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
       background:
         linear-gradient(135deg, rgba(79, 111, 82, 0.74), rgba(63, 67, 71, 0.92)),
         var(--climb);
@@ -466,9 +500,10 @@
       display: block;
       margin-bottom: var(--space-3);
       color: var(--ink);
-      font-family: var(--font-star);
+      font-family: var(--font-sans);
       font-size: 24px;
       line-height: 1.08;
+      font-weight: 900;
     }
 
     .photo-card span {
@@ -520,10 +555,10 @@
       left: var(--space-5);
       bottom: var(--space-5);
       color: var(--ink);
-      font-family: var(--font-star);
+      font-family: var(--font-sans);
       font-size: 40px;
       line-height: 1;
-      font-weight: 700;
+      font-weight: 900;
     }
 
     .entry-hub {
@@ -589,16 +624,30 @@
     .not-card {
       min-height: 150px;
       display: flex;
-      align-items: end;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: var(--space-4);
       border-radius: var(--radius);
       border: 1px solid var(--line);
       background: color-mix(in srgb, var(--dark) 82%, black);
       padding: var(--space-5);
       color: var(--ink);
-      font-family: var(--font-star);
+      font-family: var(--font-sans);
       font-size: 23px;
       line-height: 1.12;
-      font-weight: 700;
+      font-weight: 900;
+    }
+
+    .not-card .point-caption {
+      margin: 0;
+      font-size: 17px;
+      color: var(--yellow);
+    }
+
+    .not-card strong {
+      display: block;
+      font: inherit;
     }
 
     .star-exit {
@@ -628,7 +677,8 @@
       background: color-mix(in srgb, var(--dark) 84%, black);
       color: var(--ink);
       padding: 0 var(--space-4);
-      font-weight: 900;
+      font-family: var(--font-star);
+      font-weight: 700;
     }
 
     .star-button.active {
@@ -841,9 +891,19 @@
     }
 
     body.variant-mobile .not-card {
-      min-height: 108px;
+      min-height: 126px;
       padding: var(--space-4);
-      font-size: 18px;
+      font-size: 16px;
+    }
+
+    body.variant-mobile .point-caption {
+      margin-bottom: var(--space-3);
+      font-size: 15px;
+    }
+
+    body.variant-mobile .not-card .point-caption {
+      margin-bottom: 0;
+      font-size: 13px;
     }
 
     body.variant-mobile .star-buttons {
@@ -867,60 +927,55 @@
       font-size: 13px;
     }
 
-    /* Homepage hidden rooms: writing / photo / map */
-    .room-house-panel[hidden],
-    .room-article-panel[hidden],
-    .room-article-list[hidden],
-    .room-house-photo-grid[hidden],
-    .room-house-photo-detail[hidden] {
+    body.variant-mobile .section[aria-labelledby="body-title"],
+    body.variant-mobile #bicycle-writing,
+    body.variant-mobile #bicycle-photos,
+    body.variant-mobile #bicycle-map,
+    body.variant-mobile .section[aria-labelledby="not-title"] {
       display: none;
     }
 
-    .room-house-panel:not([hidden]) {
-      display: block;
+    body.variant-mobile .section[aria-labelledby="entry-title"] {
+      padding: var(--space-6) 0;
+    }
+
+    .room-house-panel[hidden],
+    .room-article-panel[hidden],
+    .room-house-photo-detail[hidden] {
+      display: none !important;
     }
 
     .room-house-panel {
-      background: var(--ivory);
-      color: var(--dark);
-      margin-left: calc(var(--space-6) * -1);
-      margin-right: calc(var(--space-6) * -1);
-      padding: var(--space-8) var(--space-6);
-    }
-
-    .room-house-panel > * {
-      margin-left: auto;
-      margin-right: auto;
-      max-width: 1120px;
-    }
-
-    .room-house-panel > * + * {
-      margin-top: var(--space-6);
+      padding: var(--space-8) 0;
+      border-bottom: 1px solid var(--line);
+      color: var(--ink);
     }
 
     .room-house-panel-header {
-      align-items: end;
-      border-bottom: 1px solid rgba(32, 35, 38, 0.2);
       display: grid;
-      gap: var(--space-5);
       grid-template-columns: minmax(0, 1fr) auto;
+      gap: var(--space-5);
+      align-items: end;
+      margin-bottom: var(--space-6);
       padding-bottom: var(--space-5);
+      border-bottom: 1px solid var(--line);
     }
 
     .room-house-panel-header h2 {
-      color: var(--dark);
-      font-family: var(--font-star);
-      font-size: clamp(36px, 5vw, 68px);
       margin: 0;
+      color: var(--ink);
+      font-family: var(--font-star);
+      font-size: clamp(38px, 5vw, 72px);
+      line-height: 1.05;
     }
 
     .room-section-label,
     .room-card-meta {
-      color: var(--climb);
+      margin: 0 0 var(--space-2);
+      color: var(--yellow);
       font-size: var(--small);
       font-weight: 950;
-      letter-spacing: 0.12em;
-      margin: 0 0 var(--space-2);
+      letter-spacing: 0.13em;
       text-transform: uppercase;
     }
 
@@ -930,68 +985,54 @@
     .room-article-bottom-nav button,
     .room-list-pager button {
       appearance: none;
-      background: transparent;
-      border: 1px solid rgba(32, 35, 38, 0.18);
+      min-height: 42px;
+      border: 1px solid var(--line);
       border-radius: var(--radius);
-      color: var(--dark);
+      background: transparent;
+      color: var(--ink);
       cursor: pointer;
       font-family: var(--font-sans);
       font-size: 14px;
       font-weight: 850;
-      min-height: 42px;
       padding: 0 var(--space-4);
     }
 
-    .room-list-pager {
-      align-items: center;
-      color: rgba(32, 35, 38, 0.55);
-      display: flex;
-      flex-wrap: wrap;
-      font-size: 13px;
-      gap: var(--space-3);
-    }
-
-    .room-list-pager button:disabled {
-      cursor: default;
-      opacity: 0.45;
-    }
-
     .room-article-list {
-      border-top: 1px solid rgba(32, 35, 38, 0.18);
+      border-top: 1px solid var(--line);
       display: grid;
       gap: 0;
+      max-width: 880px;
     }
 
     .room-article-link {
-      align-items: center;
       appearance: none;
-      background: transparent;
-      border: 0;
-      border-bottom: 1px solid rgba(32, 35, 38, 0.18);
-      color: var(--dark);
-      cursor: pointer;
       display: grid;
-      font-family: var(--font-sans);
-      gap: var(--space-4);
       grid-template-columns: minmax(0, 1fr) auto;
-      min-height: 62px;
-      padding: var(--space-4) 0;
-      text-align: left;
+      align-items: center;
+      min-height: 64px;
       width: 100%;
+      padding: var(--space-4) 0;
+      border: 0;
+      border-bottom: 1px solid var(--line);
+      background: transparent;
+      color: var(--ink);
+      cursor: pointer;
+      font-family: var(--font-sans);
+      text-align: left;
     }
 
     .room-article-link strong {
       display: block;
-      font-size: 20px;
-      font-weight: 850;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
+      font-size: 21px;
+      font-weight: 850;
     }
 
     .room-article-link::after {
-      color: var(--climb);
       content: "읽기";
+      color: var(--yellow);
       font-size: 11px;
       font-weight: 950;
       letter-spacing: 0.12em;
@@ -1006,24 +1047,23 @@
     }
 
     .room-article-panel:not([hidden]) {
-      color: var(--dark);
-      border-left: 3px solid var(--yellow);
+      border-left: 4px solid var(--yellow);
       padding-left: var(--space-5);
     }
 
     .bicycle-essay-header h3 {
-      color: var(--dark);
-      font-family: var(--font-star);
-      font-size: clamp(32px, 4vw, 54px);
-      line-height: 1.12;
       margin: var(--space-2) 0;
+      color: var(--ink);
+      font-family: var(--font-star);
+      font-size: clamp(34px, 4vw, 58px);
+      line-height: 1.08;
     }
 
     .bicycle-essay-header p:last-child,
     .bicycle-copy p,
     .room-gallery-detail-copy,
     .room-map-placeholder p {
-      color: rgba(32, 35, 38, 0.68);
+      color: var(--muted);
     }
 
     .bicycle-copy {
@@ -1042,98 +1082,92 @@
       display: grid;
       gap: var(--space-3);
       margin: var(--space-6) 0;
-      max-width: 860px;
+      max-width: 920px;
     }
 
     .bicycle-essay-figure img,
     .room-gallery-detail-photo {
-      border-radius: var(--radius);
-      height: auto;
       width: 100%;
+      height: auto;
+      border-radius: var(--radius);
     }
 
     .bicycle-essay-figure figcaption,
     .room-house-photo figcaption {
-      color: rgba(32, 35, 38, 0.58);
+      color: var(--muted);
       font-size: 13px;
       line-height: 1.6;
     }
 
     .room-house-photo-grid {
       display: grid;
-      gap: var(--space-4);
       grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: var(--space-4);
     }
 
     .room-house-photo {
-      cursor: pointer;
       display: grid;
       gap: var(--space-2);
+      cursor: pointer;
     }
 
     .room-house-photo img,
     .room-house-photo-thumb {
+      width: 100%;
       aspect-ratio: 1 / 1;
       border-radius: var(--radius);
       object-fit: cover;
-      width: 100%;
     }
 
     .room-gallery-detail-actions,
     .room-gallery-detail-nav,
     .room-article-bottom-nav {
-      align-items: center;
       display: flex;
       flex-wrap: wrap;
       gap: var(--space-3);
+      align-items: center;
       justify-content: space-between;
       margin-top: var(--space-5);
     }
 
     .room-gallery-detail-index {
-      color: var(--climb);
+      color: var(--yellow);
       font-size: 14px;
       font-weight: 900;
     }
 
     .room-gallery-detail-copy {
+      max-width: 760px;
       font-size: var(--body);
       line-height: 1.8;
-      max-width: 760px;
     }
 
     .room-map-placeholder {
-      background: color-mix(in srgb, var(--ivory) 82%, white);
-      border: 1px dashed rgba(32, 35, 38, 0.26);
-      border-radius: var(--radius);
       display: grid;
       gap: var(--space-3);
       min-height: 220px;
       padding: var(--space-6);
+      border: 1px dashed var(--line-strong);
+      border-radius: var(--radius);
+      background: color-mix(in srgb, var(--dark) 84%, black);
     }
 
     .room-map-placeholder strong {
-      color: var(--dark);
+      color: var(--ink);
       font-family: var(--font-star);
       font-size: var(--h2);
       line-height: 1.18;
     }
 
     @media (max-width: 760px) {
-      .room-house-panel {
-        margin-left: calc(var(--sheet-pad) * -1);
-        margin-right: calc(var(--sheet-pad) * -1);
-        padding: var(--space-7) var(--sheet-pad);
-      }
-
       .room-house-panel-header {
-        align-items: start;
         grid-template-columns: 1fr;
+        align-items: start;
       }
 
       .room-house-photo-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: var(--space-2);
+        gap: var(--space-3);
       }
 
       .room-article-link strong {
@@ -1180,15 +1214,16 @@
       </div>
       <div class="route-grid">
         <article class="panel quote-panel">
+          <span class="point-caption">비움의 순간</span>
           <p>힘든데<br />이상하게<br />조용해지는 느낌.</p>
         </article>
         <article class="panel ivory">
-          <p class="mini">몸의 방식</p>
+          <span class="point-caption">몸의 방식</span>
           <h3>밟은 만큼 가고,<br />멈추면 멈춘다.</h3>
           <p>자전거는 정직했다. 그래서 머리가 복잡한 날에는 말보다 페달이 먼저였다.</p>
         </article>
         <article class="panel">
-          <p class="mini">일의 방식</p>
+          <span class="point-caption">일의 방식</span>
           <h3>막히면 일단<br />한 컷, 한 문장.</h3>
           <p>콘텐츠도 그렇다. 생각이 복잡할 때 결국 한 컷을 찍고 한 문장을 쓰면서 앞으로 간다.</p>
         </article>
@@ -1265,98 +1300,6 @@
       </div>
     </section>
 
-
-    <section class="room-house-panel" id="bicycle-writing-room" aria-label="자전거별 글 목록" hidden>
-      <div class="room-house-panel-header">
-        <div>
-          <p class="room-section-label">글</p>
-          <h2>글 목록</h2>
-        </div>
-        <button class="room-house-back" type="button">자전거별로 돌아가기</button>
-      </div>
-
-      <div class="room-article-list" aria-label="자전거별 글 목록">
-        <button class="room-article-link" type="button" data-article-target="bicycle-moving-forward-note" aria-label="다리를 믿는 시간 읽기"><strong>다리를 믿는 시간</strong></button>
-        <button class="room-article-link" type="button" data-article-target="bicycle-number-memory-note" aria-label="몸이 기억한 번호 읽기"><strong>몸이 기억한 번호</strong></button>
-      </div>
-      <div class="room-list-pager" aria-label="자전거별 글 페이지">
-        <span>1-2 / 2</span>
-        <button type="button" disabled>다음 5개</button>
-      </div>
-
-      <div class="room-article-panels">
-        <article class="room-post room-article-panel" id="bicycle-moving-forward-note" hidden>
-          <button class="room-article-back" type="button">글 목록</button>
-          <header class="bicycle-essay-header">
-            <p class="room-card-meta">글</p>
-            <h3>다리를 믿는 시간</h3>
-            <p>자전거 / 전진 / 비움</p>
-          </header>
-          <figure class="bicycle-essay-figure">
-            <img class="room-photo-image" src="../assets/images/bicycles/essay-before-ride.jpg" alt="자전거 옆에서 라이딩을 준비하는 모습">
-            <figcaption>복잡한 생각보다 먼저 움직이는 몸이 있다.</figcaption>
-          </figure>
-          <div class="bicycle-copy">
-            <p>두 발로 가는 건 딴생각하면 큰일 난다.</p>
-            <p>머리가 복잡한 날엔 다리를 믿고 그냥 전진했다.</p>
-            <p>그렇게 몸을 비우는 법이, 지금도 나를 재운다.</p>
-          </div>
-        </article>
-
-        <article class="room-post room-article-panel" id="bicycle-number-memory-note" hidden>
-          <button class="room-article-back" type="button">글 목록</button>
-          <header class="bicycle-essay-header">
-            <p class="room-card-meta">글</p>
-            <h3>몸이 기억한 번호</h3>
-            <p>라이딩 / 기록 / 집중</p>
-          </header>
-          <figure class="bicycle-essay-figure">
-            <img class="room-photo-image" src="../assets/images/bicycles/photo-bib-detail.jpg" alt="자전거 프레임과 번호표가 가까이 보이는 사진">
-            <figcaption>번호와 프레임 사이에 남은 몸의 기록.</figcaption>
-          </figure>
-          <div class="bicycle-copy">
-            <p>속도보다 집중이 먼저다.</p>
-            <p><span lang="en">Being defeated is often a temporary condition, giving up is what makes it permanent.</span></p>
-            <p>패배는 단지 일시적인 것에 불과하지만, 포기해버리면 그걸로 모든 건 끝이다.</p>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="room-house-panel bicycle-gallery" id="bicycle-photo-room" aria-label="자전거별 사진" hidden>
-      <div class="room-house-panel-header">
-        <div>
-          <p class="room-section-label">사진</p>
-          <h2>사진 목록</h2>
-        </div>
-        <button class="room-house-back" type="button">자전거별로 돌아가기</button>
-      </div>
-
-      <div class="room-house-photo-grid bicycle-gallery-grid">
-        <figure class="room-house-photo" data-memory="미시령을 넘어가며 내가 알고 있던 욕을 다 했다. 그리고 내려오며 천국을 맛봤다."><img class="room-photo-image room-house-photo-thumb" src="../assets/images/bicycles/gallery-img-4187.jpg" alt="미시령 길을 오르는 자전거 라이더"><figcaption>미시령</figcaption></figure>
-        <figure class="room-house-photo" data-memory="여러분, 헬멧 쓰세요. 두 번 쓰세요."><img class="room-photo-image room-house-photo-thumb" src="../assets/images/bicycles/hero-city-ride.jpg" alt="도심 도로를 달리는 자전거 라이더"><figcaption>헬멧</figcaption></figure>
-        <figure class="room-house-photo" data-memory="패배는 단지 일시적인 것에 불과하지만, 포기해버리면 그걸로 모든 건 끝이다."><img class="room-photo-image room-house-photo-thumb" src="../assets/images/bicycles/photo-bib-detail.jpg" alt="자전거 탑튜브와 번호표"><figcaption>탑튜브</figcaption></figure>
-        <figure class="room-house-photo" data-memory="스웨덴산 사브와 대만산 자이언트(GIANT), 그리고 한국산 햄."><img class="room-photo-image room-house-photo-thumb" src="../assets/images/bicycles/gallery-img-5752.jpg" alt="자동차에 실린 자이언트 자전거"><figcaption>사브와 자이언트</figcaption></figure>
-        <figure class="room-house-photo" data-memory="복잡한 생각보다 먼저 움직이는 몸이 있다."><img class="room-photo-image room-house-photo-thumb" src="../assets/images/bicycles/essay-before-ride.jpg" alt="라이딩 전 카페 앞 자전거와 사람"><figcaption>출발 전</figcaption></figure>
-      </div>
-      <aside class="room-gallery-detail room-house-photo-detail" aria-live="polite" hidden></aside>
-    </section>
-
-    <section class="room-house-panel" id="bicycle-map-room" aria-label="자전거별 지도" hidden>
-      <div class="room-house-panel-header">
-        <div>
-          <p class="room-section-label">지도</p>
-          <h2>지도는 아직 완성되지 않아도 된다</h2>
-        </div>
-        <button class="room-house-back" type="button">자전거별로 돌아가기</button>
-      </div>
-      <div class="room-map-placeholder">
-        <strong>몸으로 지나온 길을 모으는 중입니다.</strong>
-        <p>미시령과 오래 남은 길의 기억이 더 정리되면, 이곳에 자전거별 지도가 놓입니다. 지금은 몸이 먼저 기억한 길의 감각만 남겨둡니다.</p>
-      </div>
-    </section>
-
-
     <section class="section" aria-labelledby="entry-title">
       <div class="section-head">
         <p class="num">05 / 별 안으로</p>
@@ -1379,11 +1322,11 @@
         <h2 id="not-title">자전거별이<br />하지 않으려는 말.</h2>
       </div>
       <div class="not-grid">
-        <div class="not-card">장비 자랑이 아니다.</div>
-        <div class="not-card">코스 정복이 아니다.</div>
-        <div class="not-card">국토종주 인증이 아니다.</div>
-        <div class="not-card">건강한 취미 홍보가 아니다.</div>
-        <div class="not-card">라이더의 로망이 아니다.</div>
+        <div class="not-card"><span class="point-caption">장비보다 몸</span><strong>장비 자랑이 아니다.</strong></div>
+        <div class="not-card"><span class="point-caption">정복보다 통과</span><strong>코스 정복이 아니다.</strong></div>
+        <div class="not-card"><span class="point-caption">인증보다 기억</span><strong>국토종주 인증이 아니다.</strong></div>
+        <div class="not-card"><span class="point-caption">홍보보다 호흡</span><strong>건강한 취미 홍보가 아니다.</strong></div>
+        <div class="not-card"><span class="point-caption">로망보다 현실</span><strong>라이더의 로망이 아니다.</strong></div>
       </div>
     </section>
 
@@ -1412,8 +1355,121 @@
       </div>
     </section>
 
+
+    <section class="room-house-panel" id="bicycle-writing-room" aria-label="자전거별 글 목록" hidden>
+      <div class="room-house-panel-header">
+        <div>
+          <p class="room-section-label">글</p>
+          <h2>글 목록</h2>
+        </div>
+        <button class="room-house-back" type="button">자전거별로 돌아가기</button>
+      </div>
+
+      <div class="room-article-list" aria-label="자전거별 글 목록">
+        <button class="room-article-link" type="button" data-article-target="bicycle-trust-legs-note" aria-label="다리를 믿는 시간 읽기">
+          <strong>다리를 믿는 시간</strong>
+        </button>
+        <button class="room-article-link" type="button" data-article-target="bicycle-top-tube-note" aria-label="몸이 기억한 번호 읽기">
+          <strong>몸이 기억한 번호</strong>
+        </button>
+      </div>
+
+      <article class="room-article-panel" id="bicycle-trust-legs-note" hidden>
+        <button class="room-article-back" type="button">글 목록</button>
+        <header class="bicycle-essay-header">
+          <p class="room-card-meta">글</p>
+          <h3>다리를 믿는 시간</h3>
+          <p>비움 / 라이딩 / 전진</p>
+        </header>
+        <div class="bicycle-copy">
+          <p>미시령을 넘어가며 내가 알고 있던 욕을 다 했다. 그리고 내려오며 천국을 맛봤다. 그렇게 추월하던 바이크를 보며 꼭 나도 바이크로 미시령을 오기로 했다.</p>
+          <p>자전거는 묘하게 정직했다. 밟은 만큼 가고, 멈추면 멈춘다. 그래서 머리가 복잡한 날엔 말보다 다리가 먼저였다.</p>
+        </div>
+        <figure class="bicycle-essay-figure">
+          <img src="../assets/images/bicycles/gallery-img-4187.jpg" alt="미시령 길을 오르는 자전거 라이더" />
+          <figcaption>미시령을 넘어가며 내가 알고 있던 욕을 다 했다. 그리고 내려오며 천국을 맛봤다.</figcaption>
+        </figure>
+      </article>
+
+      <article class="room-article-panel" id="bicycle-top-tube-note" hidden>
+        <button class="room-article-back" type="button">글 목록</button>
+        <header class="bicycle-essay-header">
+          <p class="room-card-meta">글</p>
+          <h3>몸이 기억한 번호</h3>
+          <p>탑튜브 / 문구 / 포기하지 않기</p>
+        </header>
+        <div class="bicycle-copy">
+          <p>로또팀의 리더 반덴브록의 자전거 탑튜브에는 인상적인 문구가 새겨져 있었다.</p>
+          <p><strong>Being defeated is often a temporary condition, giving up is what makes it permanent.</strong></p>
+          <p>패배는 단지 일시적인 것에 불과하지만, 포기해버리면 그걸로 모든 건 끝이다.</p>
+        </div>
+        <figure class="bicycle-essay-figure">
+          <img src="../assets/images/bicycles/photo-bib-detail.jpg" alt="자전거 탑튜브와 번호표" />
+          <figcaption>패배는 일시적이지만 포기하면 끝이라는 문장. 몸으로 읽는 문장에 가까웠다.</figcaption>
+        </figure>
+      </article>
+    </section>
+
+    <section class="room-house-panel" id="bicycle-photo-room" aria-label="자전거별 사진 목록" hidden>
+      <div class="room-house-panel-header">
+        <div>
+          <p class="room-section-label">사진</p>
+          <h2>사진 목록</h2>
+        </div>
+        <button class="room-house-back" type="button">자전거별로 돌아가기</button>
+      </div>
+
+      <div class="room-house-photo-grid">
+        <figure class="room-house-photo" data-memory="미시령을 넘어가며 내가 알고 있던 욕을 다 했다. 그리고 내려오며 천국을 맛봤다.">
+          <img class="room-house-photo-thumb" src="../assets/images/bicycles/gallery-img-4187.jpg" alt="미시령 길을 오르는 자전거 라이더" />
+          <figcaption>미시령</figcaption>
+        </figure>
+        <figure class="room-house-photo" data-memory="여러분, 헬멧 쓰세요. 두 번 쓰세요.">
+          <img class="room-house-photo-thumb" src="../assets/images/bicycles/hero-city-ride.jpg" alt="도심 도로를 달리는 자전거 라이더" />
+          <figcaption>헬멧</figcaption>
+        </figure>
+        <figure class="room-house-photo" data-memory="패배는 일시적이지만, 포기하면 끝이다.">
+          <img class="room-house-photo-thumb" src="../assets/images/bicycles/photo-bib-detail.jpg" alt="자전거 탑튜브와 번호표" />
+          <figcaption>탑튜브</figcaption>
+        </figure>
+        <figure class="room-house-photo" data-memory="스웨덴산 사브와 대만산 자이언트, 그리고 한국산 햄.">
+          <img class="room-house-photo-thumb" src="../assets/images/bicycles/gallery-img-5752.jpg" alt="자동차에 실린 자이언트 자전거" />
+          <figcaption>사브와 자이언트</figcaption>
+        </figure>
+        <figure class="room-house-photo" data-memory="복잡한 생각보다 먼저 움직이는 몸이 있다.">
+          <img class="room-house-photo-thumb" src="../assets/images/bicycles/essay-before-ride.jpg" alt="라이딩 전 카페 앞 자전거와 사람" />
+          <figcaption>출발 전</figcaption>
+        </figure>
+      </div>
+
+      <aside class="room-gallery-detail room-house-photo-detail" aria-live="polite" hidden></aside>
+    </section>
+
+    <section class="room-house-panel" id="bicycle-map-room" aria-label="자전거별 지도" hidden>
+      <div class="room-house-panel-header">
+        <div>
+          <p class="room-section-label">지도</p>
+          <h2>지도</h2>
+        </div>
+        <button class="room-house-back" type="button">자전거별로 돌아가기</button>
+      </div>
+      <div class="room-map-placeholder">
+        <strong>지도는 아직 완성되지 않아도 된다.</strong>
+        <p>추천 코스가 아니라 몸이 지나온 길을 천천히 모읍니다. 미시령 외의 실제 장소 목록은 아직 확정 전입니다.</p>
+      </div>
+    </section>
+
     <footer>자전거별 · LPH-B613-04 · HAM MEDIA · Design MD로 만든 별 페이지</footer>
   </main>
-  <script src="../assets/js/main.js?v=bicycle-star-sheet-v1"></script>
+  <script>
+    function syncStarVariant() {
+      const width = window.innerWidth || document.documentElement.clientWidth;
+      document.body.classList.remove("variant-desktop", "variant-tablet", "variant-mobile");
+      document.body.classList.add(width <= 620 ? "variant-mobile" : width <= 1100 ? "variant-tablet" : "variant-desktop");
+    }
+    syncStarVariant();
+    window.addEventListener("resize", syncStarVariant);
+  </script>
+  <script src="../assets/js/main.js?v=bicycle-star-sheet-v2"></script>
 </body>
 </html>
