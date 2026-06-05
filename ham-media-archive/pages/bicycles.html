@@ -783,8 +783,8 @@
     body.variant-mobile .hero {
       min-height: 0;
       grid-template-columns: 1fr;
-      gap: var(--space-5);
-      padding-bottom: var(--space-7);
+      gap: var(--space-4);
+      padding-bottom: var(--space-5);
     }
 
     body.variant-mobile .hero .core {
@@ -792,18 +792,18 @@
     }
 
     body.variant-mobile .hero .lead {
-      font-size: 15px;
-      line-height: 1.72;
+      font-size: 14px;
+      line-height: 1.64;
     }
 
     body.variant-mobile .stamp-wrap {
-      width: 142px;
-      margin-top: var(--space-5);
+      width: 112px;
+      margin-top: var(--space-4);
     }
 
     body.variant-mobile .hero-photo,
     body.variant-mobile .hero-photo img {
-      min-height: 330px;
+      min-height: 260px;
     }
 
     body.variant-mobile .hero-photo figcaption {
@@ -813,13 +813,18 @@
     }
 
     body.variant-mobile .section {
-      padding: var(--space-7) 0;
+      padding: var(--space-5) 0;
     }
 
     body.variant-mobile .section-head {
       grid-template-columns: 1fr;
-      gap: var(--space-3);
-      margin-bottom: var(--space-5);
+      gap: var(--space-2);
+      margin-bottom: var(--space-3);
+    }
+
+    body.variant-mobile .section-head h2 {
+      font-size: 29px;
+      line-height: 1.08;
     }
 
     body.variant-mobile .route-grid,
@@ -827,58 +832,91 @@
     body.variant-mobile .map-panel,
     body.variant-mobile .entry-hub {
       grid-template-columns: 1fr;
-      gap: var(--space-4);
+      gap: var(--space-3);
     }
 
     body.variant-mobile .panel {
-      padding: var(--space-5);
+      padding: var(--space-4);
+    }
+
+    body.variant-mobile .quote-panel {
+      min-height: 210px;
+    }
+
+    body.variant-mobile .quote-panel p {
+      font-size: 31px;
+    }
+
+    body.variant-mobile .panel h3 {
+      font-size: 22px;
+      line-height: 1.12;
+    }
+
+    body.variant-mobile .panel p {
+      font-size: 13px;
+      line-height: 1.62;
     }
 
     body.variant-mobile .photo-grid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px;
+      gap: 8px;
     }
 
     body.variant-mobile .photo-card img {
-      height: 128px;
+      height: 104px;
     }
 
     body.variant-mobile .photo-card figcaption {
-      min-height: 122px;
-      padding: 13px;
+      min-height: 98px;
+      padding: 11px;
     }
 
     body.variant-mobile .photo-card strong {
-      font-size: 18px;
+      font-size: 16px;
+      margin-bottom: 8px;
     }
 
     body.variant-mobile .photo-card span {
-      font-size: 12px;
-      line-height: 1.48;
+      font-size: 11px;
+      line-height: 1.42;
     }
 
     body.variant-mobile .writing-image,
     body.variant-mobile .writing-image img,
     body.variant-mobile .map-visual {
-      min-height: 260px;
+      min-height: 190px;
+    }
+
+    body.variant-mobile .engraving {
+      margin-top: var(--space-3);
+      padding-top: var(--space-3);
+      font-size: 12px;
+      line-height: 1.55;
+    }
+
+    body.variant-mobile .map-visual::after {
+      left: var(--space-4);
+      bottom: var(--space-4);
+      font-size: 26px;
     }
 
     body.variant-mobile .entry-hub .large-copy {
-      min-height: 190px;
-      padding: var(--space-5);
+      min-height: 132px;
+      padding: var(--space-4);
+      font-size: 31px;
     }
 
     body.variant-mobile .entry-grid {
-      gap: 10px;
+      gap: 8px;
     }
 
     body.variant-mobile .entry-card {
-      min-height: 112px;
-      padding: 14px;
+      min-height: 92px;
+      padding: 12px;
     }
 
     body.variant-mobile .entry-card strong {
-      font-size: 23px;
+      font-size: 20px;
     }
 
     body.variant-mobile .entry-card span {
@@ -887,23 +925,23 @@
 
     body.variant-mobile .not-grid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px;
+      gap: 8px;
     }
 
     body.variant-mobile .not-card {
-      min-height: 126px;
-      padding: var(--space-4);
-      font-size: 16px;
+      min-height: 104px;
+      padding: var(--space-3);
+      font-size: 14px;
     }
 
     body.variant-mobile .point-caption {
-      margin-bottom: var(--space-3);
-      font-size: 15px;
+      margin-bottom: var(--space-2);
+      font-size: 13px;
     }
 
     body.variant-mobile .not-card .point-caption {
       margin-bottom: 0;
-      font-size: 13px;
+      font-size: 11px;
     }
 
     body.variant-mobile .star-buttons {
@@ -925,18 +963,6 @@
       flex-basis: 100%;
       padding: 13px;
       font-size: 13px;
-    }
-
-    body.variant-mobile .section[aria-labelledby="body-title"],
-    body.variant-mobile #bicycle-writing,
-    body.variant-mobile #bicycle-photos,
-    body.variant-mobile #bicycle-map,
-    body.variant-mobile .section[aria-labelledby="not-title"] {
-      display: none;
-    }
-
-    body.variant-mobile .section[aria-labelledby="entry-title"] {
-      padding: var(--space-6) 0;
     }
 
     .room-house-panel[hidden],
