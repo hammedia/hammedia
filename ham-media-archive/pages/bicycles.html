@@ -1,162 +1,1419 @@
 <!doctype html>
 <html lang="ko">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>자전거별 | HAM MEDIA</title>
-    <link rel="stylesheet" href="../assets/css/styles.css?v=bicycle-room-v4">
-  </head>
-  <body class="world-body">
-    <main class="world-page room-page room-house-page bicycle-room">
-      <header class="room-header">
-        <div class="room-stamp-row" aria-label="자전거별 도착 스탬프">
-          <p class="room-star-code">LPH-B613-04</p>
-          <img class="room-arrival-stamp is-wide-stamp" src="../assets/images/bicycles/stamps/lph-b613-04-bicycle-stamp.png" alt="LPH-B613-04 자전거별 도착 스탬프">
-        </div>
-        <h1>자전거별</h1>
-      </header>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>자전거별 | HAM MEDIA</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
+  <style>
+    @font-face {
+      font-family: "Dunggeunmiso";
+      src: url("../assets/fonts/Hakgyoansim-Dunggeunmiso-TTF-R.ttf") format("truetype");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
 
-      <section class="room-welcome" aria-label="자전거별 첫 문장">
-        <span class="room-welcome-mark" aria-hidden="true"></span>
-        <div class="room-welcome-copy">
-          <p class="room-welcome-label">방의 첫 문장</p>
-          <blockquote>
-            <p>두 발로 가는 건 딴생각하면 큰일 난다. 머리가 복잡한 날엔 다리를 믿고 그냥 전진했다. 그렇게 몸을 비우는 법이, 지금도 나를 재운다.</p>
-            <p>비워야 채워진다는 걸 아는 사람이라면.</p>
-          </blockquote>
-        </div>
-      </section>
-      <section class="room-hero" aria-label="자전거 대표 사진">
-        <figure class="bicycle-featured">
-          <img class="room-photo-image bicycle-photo-slot" src="../assets/images/bicycles/gallery-img-4187.jpg" alt="미시령 산길을 오르는 자전거 라이더">
-          <figcaption>미시령을 넘어가며 내가 알고 있던 욕을 다 했다. 그리고 내려오며 천국을 맛봤다. 그렇게 추월하던 바이크를 보며, 꼭 나도 바이크로 미시령을 오르기로 했다.</figcaption>
+    @font-face {
+      font-family: "Dunggeunmiso";
+      src: url("../assets/fonts/Hakgyoansim-Dunggeunmiso-TTF-B.ttf") format("truetype");
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    :root {
+      --asphalt: #3f4347;
+      --climb: #4f6f52;
+      --silver: #b8b8b2;
+      --yellow: #f2c94c;
+      --breath: #8fb7c9;
+      --sweat: #b5483a;
+      --ivory: #f3ead8;
+      --ink: #f9f7ef;
+      --muted: color-mix(in srgb, var(--ink) 66%, transparent);
+      --dark: #202326;
+      --line: color-mix(in srgb, var(--silver) 28%, transparent);
+      --line-strong: color-mix(in srgb, var(--yellow) 48%, transparent);
+      --font-sans: "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --font-star: "Dunggeunmiso", "Pretendard", sans-serif;
+      --radius: 7px;
+      --space-1: 4px;
+      --space-2: 8px;
+      --space-3: 12px;
+      --space-4: 16px;
+      --space-5: 24px;
+      --space-6: 32px;
+      --space-7: 48px;
+      --space-8: 64px;
+      --space-9: 96px;
+      --sheet-width: 1440px;
+      --sheet-pad: 64px;
+      --hero-title: 122px;
+      --h1: 66px;
+      --h2: 34px;
+      --body: 18px;
+      --small: 13px;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      margin: 0;
+      background: var(--asphalt);
+      color: var(--ink);
+      font-family: var(--font-sans);
+      overflow-x: hidden;
+    }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      background:
+        radial-gradient(circle at 78% 8%, rgba(143, 183, 201, 0.17), transparent 22%),
+        radial-gradient(circle at 16% 16%, rgba(242, 201, 76, 0.14), transparent 20%),
+        linear-gradient(180deg, #34383c 0%, var(--asphalt) 36%, #2b302d 70%, #222527 100%);
+      color: var(--ink);
+      letter-spacing: 0;
+      word-break: keep-all;
+      overflow-wrap: break-word;
+      overflow-x: hidden;
+    }
+
+    body.variant-tablet {
+      --sheet-width: 1024px;
+      --sheet-pad: 44px;
+      --hero-title: 92px;
+      --h1: 50px;
+      --h2: 30px;
+      --body: 17px;
+    }
+
+    body.variant-mobile {
+      --sheet-width: 430px;
+      --sheet-pad: 18px;
+      --hero-title: 57px;
+      --h1: 36px;
+      --h2: 23px;
+      --body: 15px;
+      --small: 12px;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .sheet {
+      width: min(100%, var(--sheet-width));
+      margin: 0 auto;
+      padding: var(--sheet-pad);
+      overflow: hidden;
+    }
+
+    .top-doors {
+      position: relative;
+      z-index: 4;
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-4);
+      margin-bottom: var(--space-8);
+    }
+
+    .top-doors button,
+    .top-doors a {
+      min-height: 44px;
+      border: 0;
+      border-bottom: 4px solid var(--yellow);
+      background: transparent;
+      color: var(--ink);
+      cursor: pointer;
+      font-family: var(--font-star);
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 1;
+      padding: 0 0 8px;
+      text-align: left;
+    }
+
+    .top-doors button:nth-child(1) { border-color: var(--breath); }
+    .top-doors button:nth-child(2) { border-color: var(--sweat); }
+    .top-doors button:nth-child(3) { border-color: var(--yellow); }
+    .top-doors a { border-color: var(--climb); }
+
+    .hero {
+      position: relative;
+      min-height: 760px;
+      display: grid;
+      grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
+      gap: var(--space-8);
+      align-items: center;
+      padding-bottom: var(--space-9);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 11% -10% auto auto;
+      width: 52%;
+      height: 52%;
+      border: 1px solid color-mix(in srgb, var(--breath) 28%, transparent);
+      border-radius: 50%;
+      box-shadow: inset 0 0 0 46px rgba(184, 184, 178, 0.035), 0 0 54px rgba(143, 183, 201, 0.18);
+      pointer-events: none;
+    }
+
+    .hero-text {
+      position: relative;
+      z-index: 2;
+    }
+
+    .eyebrow {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 var(--space-5);
+      color: var(--muted);
+      font-size: var(--small);
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .star-signal {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      border-radius: 999px;
+      background: var(--yellow);
+      box-shadow: 0 0 0 5px rgba(242, 201, 76, 0.15), 0 0 22px rgba(242, 201, 76, 0.66);
+      vertical-align: middle;
+      flex: 0 0 auto;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-family: var(--font-star);
+      font-size: var(--hero-title);
+      line-height: 0.9;
+      font-weight: 700;
+      color: var(--ink);
+      text-wrap: balance;
+    }
+
+    .hero .core {
+      margin: var(--space-5) 0 0;
+      color: var(--yellow);
+      font-family: var(--font-star);
+      font-size: clamp(34px, 3.8vw, 64px);
+      line-height: 1.04;
+      font-weight: 700;
+      text-wrap: balance;
+    }
+
+    .hero .lead {
+      max-width: 650px;
+      margin: var(--space-6) 0 0;
+      color: var(--muted);
+      font-size: calc(var(--body) + 1px);
+      line-height: 1.84;
+      font-weight: 650;
+    }
+
+    .stamp-wrap {
+      width: min(240px, 50vw);
+      margin-top: var(--space-6);
+      opacity: 0.78;
+      filter: drop-shadow(0 18px 30px rgba(0, 0, 0, 0.28));
+    }
+
+    .stamp-wrap img {
+      display: block;
+      width: 100%;
+    }
+
+    .hero-photo {
+      position: relative;
+      min-height: 610px;
+      overflow: hidden;
+      border-radius: var(--radius);
+      background: var(--dark);
+      box-shadow: 0 34px 82px rgba(0, 0, 0, 0.34);
+    }
+
+    .hero-photo img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      min-height: 610px;
+      object-fit: cover;
+      filter: saturate(0.84) contrast(1.05) brightness(0.92);
+    }
+
+    .hero-photo figcaption {
+      position: absolute;
+      left: var(--space-5);
+      right: var(--space-5);
+      bottom: var(--space-5);
+      color: var(--ivory);
+      font-size: var(--small);
+      font-weight: 850;
+      line-height: 1.5;
+      text-shadow: 0 2px 16px rgba(0, 0, 0, 0.54);
+    }
+
+    .section {
+      padding: var(--space-9) 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: 120px minmax(0, 1fr);
+      gap: var(--space-6);
+      align-items: start;
+      margin-bottom: var(--space-7);
+    }
+
+    .num {
+      color: var(--yellow);
+      font-size: var(--small);
+      font-weight: 950;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin: 0;
+      color: var(--ink);
+      font-family: var(--font-star);
+      font-size: var(--h1);
+      line-height: 1.03;
+      font-weight: 700;
+      text-wrap: balance;
+    }
+
+    h3 {
+      margin: 0;
+      color: inherit;
+      font-family: var(--font-star);
+      font-size: var(--h2);
+      line-height: 1.1;
+      font-weight: 700;
+      text-wrap: balance;
+    }
+
+    p {
+      margin: 0;
+      color: var(--muted);
+      font-size: var(--body);
+      line-height: 1.78;
+      font-weight: 560;
+    }
+
+    .large-copy {
+      color: var(--ink);
+      font-family: var(--font-star);
+      font-size: clamp(36px, 5.2vw, 82px);
+      line-height: 1.04;
+      font-weight: 700;
+      text-wrap: balance;
+    }
+
+    .yellow {
+      color: var(--yellow);
+    }
+
+    .route-grid,
+    .photo-grid,
+    .not-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--space-5);
+    }
+
+    .panel {
+      min-width: 0;
+      border-radius: var(--radius);
+      background: color-mix(in srgb, var(--dark) 84%, var(--climb));
+      border: 1px solid var(--line);
+      padding: var(--space-6);
+      overflow: hidden;
+    }
+
+    .panel.ivory {
+      background: var(--ivory);
+      color: #252729;
+      border-color: color-mix(in srgb, var(--yellow) 50%, transparent);
+    }
+
+    .panel.ivory p,
+    .panel.ivory .mini {
+      color: color-mix(in srgb, #252729 72%, transparent);
+    }
+
+    .mini {
+      margin: 0 0 var(--space-3);
+      color: var(--yellow);
+      font-size: var(--small);
+      font-weight: 950;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .quote-panel {
+      position: relative;
+      min-height: 360px;
+      display: grid;
+      align-content: end;
+      background:
+        linear-gradient(135deg, rgba(79, 111, 82, 0.74), rgba(63, 67, 71, 0.92)),
+        var(--climb);
+      overflow: hidden;
+    }
+
+    .quote-panel::before {
+      content: "";
+      position: absolute;
+      inset: 46px auto auto 0;
+      width: 86%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--breath), transparent);
+      opacity: 0.72;
+      box-shadow: 0 0 24px rgba(143, 183, 201, 0.58);
+    }
+
+    .quote-panel p {
+      position: relative;
+      color: var(--ink);
+      font-family: var(--font-star);
+      font-size: clamp(32px, 3.6vw, 58px);
+      line-height: 1.08;
+      font-weight: 700;
+    }
+
+    .writing-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.02fr) minmax(0, 0.98fr);
+      gap: var(--space-6);
+      align-items: stretch;
+    }
+
+    .writing-image {
+      min-height: 470px;
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--dark);
+    }
+
+    .writing-image img {
+      width: 100%;
+      height: 100%;
+      min-height: 470px;
+      display: block;
+      object-fit: cover;
+      filter: saturate(0.88) contrast(1.03);
+    }
+
+    .engraving {
+      margin-top: var(--space-5);
+      padding-top: var(--space-5);
+      border-top: 1px solid color-mix(in srgb, #252729 18%, transparent);
+      color: color-mix(in srgb, #252729 78%, transparent);
+      font-size: 15px;
+      line-height: 1.7;
+      font-weight: 800;
+    }
+
+    .photo-grid {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: var(--space-4);
+    }
+
+    .photo-card {
+      min-width: 0;
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: color-mix(in srgb, var(--dark) 84%, black);
+      border: 1px solid var(--line);
+    }
+
+    .photo-card img {
+      display: block;
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      filter: saturate(0.88) contrast(1.03);
+    }
+
+    .photo-card figcaption {
+      min-height: 150px;
+      padding: var(--space-4);
+    }
+
+    .photo-card strong {
+      display: block;
+      margin-bottom: var(--space-3);
+      color: var(--ink);
+      font-family: var(--font-star);
+      font-size: 24px;
+      line-height: 1.08;
+    }
+
+    .photo-card span {
+      display: block;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.56;
+      font-weight: 650;
+    }
+
+    .map-panel {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: var(--space-6);
+      align-items: stretch;
+    }
+
+    .map-visual {
+      position: relative;
+      min-height: 420px;
+      border-radius: var(--radius);
+      overflow: hidden;
+      background:
+        linear-gradient(90deg, rgba(184, 184, 178, 0.08) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(184, 184, 178, 0.08) 1px, transparent 1px),
+        radial-gradient(circle at 22% 68%, rgba(242, 201, 76, 0.34), transparent 3%),
+        radial-gradient(circle at 62% 36%, rgba(143, 183, 201, 0.34), transparent 3%),
+        radial-gradient(circle at 84% 62%, rgba(181, 72, 58, 0.28), transparent 3%),
+        var(--dark);
+      background-size: 72px 72px, 72px 72px, auto, auto, auto, auto;
+      border: 1px solid var(--line);
+    }
+
+    .map-visual::before {
+      content: "";
+      position: absolute;
+      left: 13%;
+      right: 12%;
+      top: 52%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--breath), var(--yellow), transparent);
+      transform: rotate(-13deg);
+      box-shadow: 0 0 24px rgba(143, 183, 201, 0.5);
+    }
+
+    .map-visual::after {
+      content: "몸으로 지나온 길";
+      position: absolute;
+      left: var(--space-5);
+      bottom: var(--space-5);
+      color: var(--ink);
+      font-family: var(--font-star);
+      font-size: 40px;
+      line-height: 1;
+      font-weight: 700;
+    }
+
+    .entry-hub {
+      display: grid;
+      grid-template-columns: minmax(0, 0.86fr) minmax(0, 1.14fr);
+      gap: var(--space-6);
+      align-items: stretch;
+    }
+
+    .entry-hub .large-copy {
+      display: flex;
+      align-items: center;
+      min-height: 360px;
+      color: var(--yellow);
+      border: 1px solid var(--line-strong);
+      border-radius: var(--radius);
+      padding: var(--space-6);
+      background:
+        linear-gradient(135deg, rgba(242, 201, 76, 0.16), transparent 52%),
+        color-mix(in srgb, var(--dark) 82%, var(--climb));
+    }
+
+    .entry-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-4);
+    }
+
+    .entry-card {
+      min-height: 158px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border: 1px solid var(--line);
+      border-left: 5px solid var(--yellow);
+      border-radius: var(--radius);
+      background: color-mix(in srgb, var(--dark) 84%, black);
+      padding: var(--space-5);
+      color: inherit;
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .entry-card strong {
+      color: var(--ink);
+      font-family: var(--font-star);
+      font-size: 30px;
+      line-height: 1;
+      font-weight: 700;
+    }
+
+    .entry-card span {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.5;
+      font-weight: 700;
+    }
+
+    .not-grid {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+
+    .not-card {
+      min-height: 150px;
+      display: flex;
+      align-items: end;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: color-mix(in srgb, var(--dark) 82%, black);
+      padding: var(--space-5);
+      color: var(--ink);
+      font-family: var(--font-star);
+      font-size: 23px;
+      line-height: 1.12;
+      font-weight: 700;
+    }
+
+    .star-exit {
+      padding-top: var(--space-9);
+    }
+
+    .star-exit .intro {
+      max-width: 760px;
+      margin: var(--space-5) 0 var(--space-6);
+    }
+
+    .star-buttons {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--space-3);
+      margin-bottom: var(--space-6);
+    }
+
+    .star-button {
+      min-height: 62px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: color-mix(in srgb, var(--dark) 84%, black);
+      color: var(--ink);
+      padding: 0 var(--space-4);
+      font-weight: 900;
+    }
+
+    .star-button.active {
+      background: var(--yellow);
+      border-color: var(--yellow);
+      color: #252729;
+    }
+
+    .star-button.active .star-signal {
+      width: 10px;
+      height: 10px;
+      background: #252729;
+      box-shadow: 0 0 0 5px rgba(37, 39, 41, 0.16), 0 0 18px rgba(37, 39, 41, 0.55);
+    }
+
+    .bottom-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-4);
+      padding-top: var(--space-5);
+      border-top: 1px solid var(--line);
+    }
+
+    .bottom-link {
+      flex: 1 1 240px;
+      min-height: 50px;
+      border: 1px solid var(--line);
+      border-left: 5px solid var(--breath);
+      border-radius: var(--radius);
+      background: color-mix(in srgb, var(--dark) 82%, black);
+      padding: var(--space-4);
+      font-size: 15px;
+      font-weight: 900;
+    }
+
+    footer {
+      padding: var(--space-7) 0 0;
+      color: var(--muted);
+      font-size: var(--small);
+      font-weight: 800;
+      letter-spacing: 0.04em;
+    }
+
+    button:focus-visible,
+    a:focus-visible {
+      outline: 3px solid var(--yellow);
+      outline-offset: 4px;
+    }
+
+    body.variant-tablet .hero {
+      min-height: 680px;
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+      gap: var(--space-6);
+    }
+
+    body.variant-tablet .hero-photo,
+    body.variant-tablet .hero-photo img {
+      min-height: 520px;
+    }
+
+    body.variant-tablet .route-grid,
+    body.variant-tablet .photo-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    body.variant-tablet .not-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    body.variant-tablet .entry-hub,
+    body.variant-tablet .map-panel {
+      grid-template-columns: 1fr;
+    }
+
+    body.variant-tablet .section {
+      padding: 76px 0;
+    }
+
+    body.variant-mobile .sheet {
+      padding-top: 20px;
+    }
+
+    body.variant-mobile .top-doors {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 8px;
+      padding: 10px;
+      margin-bottom: var(--space-5);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: color-mix(in srgb, var(--dark) 82%, black);
+    }
+
+    body.variant-mobile .top-doors button,
+    body.variant-mobile .top-doors a {
+      min-height: 44px;
+      font-size: 18px;
+      padding: 0 0 6px;
+      white-space: nowrap;
+    }
+
+    body.variant-mobile .hero {
+      min-height: 0;
+      grid-template-columns: 1fr;
+      gap: var(--space-5);
+      padding-bottom: var(--space-7);
+    }
+
+    body.variant-mobile .hero .core {
+      font-size: 32px;
+    }
+
+    body.variant-mobile .hero .lead {
+      font-size: 15px;
+      line-height: 1.72;
+    }
+
+    body.variant-mobile .stamp-wrap {
+      width: 142px;
+      margin-top: var(--space-5);
+    }
+
+    body.variant-mobile .hero-photo,
+    body.variant-mobile .hero-photo img {
+      min-height: 330px;
+    }
+
+    body.variant-mobile .hero-photo figcaption {
+      left: var(--space-4);
+      right: var(--space-4);
+      bottom: var(--space-4);
+    }
+
+    body.variant-mobile .section {
+      padding: var(--space-7) 0;
+    }
+
+    body.variant-mobile .section-head {
+      grid-template-columns: 1fr;
+      gap: var(--space-3);
+      margin-bottom: var(--space-5);
+    }
+
+    body.variant-mobile .route-grid,
+    body.variant-mobile .writing-grid,
+    body.variant-mobile .map-panel,
+    body.variant-mobile .entry-hub {
+      grid-template-columns: 1fr;
+      gap: var(--space-4);
+    }
+
+    body.variant-mobile .panel {
+      padding: var(--space-5);
+    }
+
+    body.variant-mobile .photo-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    body.variant-mobile .photo-card img {
+      height: 128px;
+    }
+
+    body.variant-mobile .photo-card figcaption {
+      min-height: 122px;
+      padding: 13px;
+    }
+
+    body.variant-mobile .photo-card strong {
+      font-size: 18px;
+    }
+
+    body.variant-mobile .photo-card span {
+      font-size: 12px;
+      line-height: 1.48;
+    }
+
+    body.variant-mobile .writing-image,
+    body.variant-mobile .writing-image img,
+    body.variant-mobile .map-visual {
+      min-height: 260px;
+    }
+
+    body.variant-mobile .entry-hub .large-copy {
+      min-height: 190px;
+      padding: var(--space-5);
+    }
+
+    body.variant-mobile .entry-grid {
+      gap: 10px;
+    }
+
+    body.variant-mobile .entry-card {
+      min-height: 112px;
+      padding: 14px;
+    }
+
+    body.variant-mobile .entry-card strong {
+      font-size: 23px;
+    }
+
+    body.variant-mobile .entry-card span {
+      font-size: 12px;
+    }
+
+    body.variant-mobile .not-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    body.variant-mobile .not-card {
+      min-height: 108px;
+      padding: var(--space-4);
+      font-size: 18px;
+    }
+
+    body.variant-mobile .star-buttons {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    body.variant-mobile .star-button {
+      min-height: 48px;
+      padding: 0 9px;
+      font-size: 12px;
+    }
+
+    body.variant-mobile .bottom-links {
+      gap: 8px;
+    }
+
+    body.variant-mobile .bottom-link {
+      flex-basis: 100%;
+      padding: 13px;
+      font-size: 13px;
+    }
+
+    /* Homepage hidden rooms: writing / photo / map */
+    .room-house-panel[hidden],
+    .room-article-panel[hidden],
+    .room-article-list[hidden],
+    .room-house-photo-grid[hidden],
+    .room-house-photo-detail[hidden] {
+      display: none;
+    }
+
+    .room-house-panel:not([hidden]) {
+      display: block;
+    }
+
+    .room-house-panel {
+      background: var(--ivory);
+      color: var(--dark);
+      margin-left: calc(var(--space-6) * -1);
+      margin-right: calc(var(--space-6) * -1);
+      padding: var(--space-8) var(--space-6);
+    }
+
+    .room-house-panel > * {
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 1120px;
+    }
+
+    .room-house-panel > * + * {
+      margin-top: var(--space-6);
+    }
+
+    .room-house-panel-header {
+      align-items: end;
+      border-bottom: 1px solid rgba(32, 35, 38, 0.2);
+      display: grid;
+      gap: var(--space-5);
+      grid-template-columns: minmax(0, 1fr) auto;
+      padding-bottom: var(--space-5);
+    }
+
+    .room-house-panel-header h2 {
+      color: var(--dark);
+      font-family: var(--font-star);
+      font-size: clamp(36px, 5vw, 68px);
+      margin: 0;
+    }
+
+    .room-section-label,
+    .room-card-meta {
+      color: var(--climb);
+      font-size: var(--small);
+      font-weight: 950;
+      letter-spacing: 0.12em;
+      margin: 0 0 var(--space-2);
+      text-transform: uppercase;
+    }
+
+    .room-house-back,
+    .room-article-back,
+    .room-gallery-detail-button,
+    .room-article-bottom-nav button,
+    .room-list-pager button {
+      appearance: none;
+      background: transparent;
+      border: 1px solid rgba(32, 35, 38, 0.18);
+      border-radius: var(--radius);
+      color: var(--dark);
+      cursor: pointer;
+      font-family: var(--font-sans);
+      font-size: 14px;
+      font-weight: 850;
+      min-height: 42px;
+      padding: 0 var(--space-4);
+    }
+
+    .room-list-pager {
+      align-items: center;
+      color: rgba(32, 35, 38, 0.55);
+      display: flex;
+      flex-wrap: wrap;
+      font-size: 13px;
+      gap: var(--space-3);
+    }
+
+    .room-list-pager button:disabled {
+      cursor: default;
+      opacity: 0.45;
+    }
+
+    .room-article-list {
+      border-top: 1px solid rgba(32, 35, 38, 0.18);
+      display: grid;
+      gap: 0;
+    }
+
+    .room-article-link {
+      align-items: center;
+      appearance: none;
+      background: transparent;
+      border: 0;
+      border-bottom: 1px solid rgba(32, 35, 38, 0.18);
+      color: var(--dark);
+      cursor: pointer;
+      display: grid;
+      font-family: var(--font-sans);
+      gap: var(--space-4);
+      grid-template-columns: minmax(0, 1fr) auto;
+      min-height: 62px;
+      padding: var(--space-4) 0;
+      text-align: left;
+      width: 100%;
+    }
+
+    .room-article-link strong {
+      display: block;
+      font-size: 20px;
+      font-weight: 850;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .room-article-link::after {
+      color: var(--climb);
+      content: "읽기";
+      font-size: 11px;
+      font-weight: 950;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .room-house-panel.is-detail-mode > .room-house-panel-header,
+    .room-house-panel.is-detail-mode > .room-article-list,
+    .room-house-panel.is-detail-mode > .room-list-pager,
+    .room-house-panel.is-photo-detail-mode > .room-house-panel-header {
+      display: none;
+    }
+
+    .room-article-panel:not([hidden]) {
+      color: var(--dark);
+      border-left: 3px solid var(--yellow);
+      padding-left: var(--space-5);
+    }
+
+    .bicycle-essay-header h3 {
+      color: var(--dark);
+      font-family: var(--font-star);
+      font-size: clamp(32px, 4vw, 54px);
+      line-height: 1.12;
+      margin: var(--space-2) 0;
+    }
+
+    .bicycle-essay-header p:last-child,
+    .bicycle-copy p,
+    .room-gallery-detail-copy,
+    .room-map-placeholder p {
+      color: rgba(32, 35, 38, 0.68);
+    }
+
+    .bicycle-copy {
+      display: grid;
+      gap: var(--space-4);
+      max-width: 780px;
+    }
+
+    .bicycle-essay-figure,
+    .room-house-photo,
+    .room-gallery-detail-photo {
+      margin: 0;
+    }
+
+    .bicycle-essay-figure {
+      display: grid;
+      gap: var(--space-3);
+      margin: var(--space-6) 0;
+      max-width: 860px;
+    }
+
+    .bicycle-essay-figure img,
+    .room-gallery-detail-photo {
+      border-radius: var(--radius);
+      height: auto;
+      width: 100%;
+    }
+
+    .bicycle-essay-figure figcaption,
+    .room-house-photo figcaption {
+      color: rgba(32, 35, 38, 0.58);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .room-house-photo-grid {
+      display: grid;
+      gap: var(--space-4);
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+
+    .room-house-photo {
+      cursor: pointer;
+      display: grid;
+      gap: var(--space-2);
+    }
+
+    .room-house-photo img,
+    .room-house-photo-thumb {
+      aspect-ratio: 1 / 1;
+      border-radius: var(--radius);
+      object-fit: cover;
+      width: 100%;
+    }
+
+    .room-gallery-detail-actions,
+    .room-gallery-detail-nav,
+    .room-article-bottom-nav {
+      align-items: center;
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+      justify-content: space-between;
+      margin-top: var(--space-5);
+    }
+
+    .room-gallery-detail-index {
+      color: var(--climb);
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    .room-gallery-detail-copy {
+      font-size: var(--body);
+      line-height: 1.8;
+      max-width: 760px;
+    }
+
+    .room-map-placeholder {
+      background: color-mix(in srgb, var(--ivory) 82%, white);
+      border: 1px dashed rgba(32, 35, 38, 0.26);
+      border-radius: var(--radius);
+      display: grid;
+      gap: var(--space-3);
+      min-height: 220px;
+      padding: var(--space-6);
+    }
+
+    .room-map-placeholder strong {
+      color: var(--dark);
+      font-family: var(--font-star);
+      font-size: var(--h2);
+      line-height: 1.18;
+    }
+
+    @media (max-width: 760px) {
+      .room-house-panel {
+        margin-left: calc(var(--sheet-pad) * -1);
+        margin-right: calc(var(--sheet-pad) * -1);
+        padding: var(--space-7) var(--sheet-pad);
+      }
+
+      .room-house-panel-header {
+        align-items: start;
+        grid-template-columns: 1fr;
+      }
+
+      .room-house-photo-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: var(--space-2);
+      }
+
+      .room-article-link strong {
+        font-size: 16px;
+      }
+    }
+
+  </style>
+</head>
+<body class="variant-desktop">
+  <main class="sheet room-house-page bicycle-star-page">
+    <nav class="top-doors room-house-nav" aria-label="자전거별 입구">
+      <button class="room-house-door" type="button" data-target="#bicycle-writing" data-house-target="bicycle-writing-room">글</button>
+      <button class="room-house-door" type="button" data-target="#bicycle-photos" data-house-target="bicycle-photo-room">사진</button>
+      <button class="room-house-door" type="button" data-target="#bicycle-map" data-house-target="bicycle-map-room">지도</button>
+      <a href="#star-list">다른 별</a>
+    </nav>
+
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-text">
+        <p class="eyebrow">자전거별 · LPH-B613-04 <span class="star-signal" aria-label="자전거별 점등"></span> · HAM MEDIA 별자리</p>
+        <h1 id="hero-title">자전거별</h1>
+        <p class="core">몸을 비우는 별.</p>
+        <p class="lead">
+          두 발로 가는 건 딴생각하면 큰일 난다.<br />
+          머리가 복잡한 날엔 다리를 믿고 그냥 전진했다.<br />
+          그렇게 몸을 비우는 법이, 지금도 나를 재운다.<br /><br />
+          비워야 채워진다는 걸 아는 사람이라면.
+        </p>
+        <figure class="stamp-wrap">
+          <img src="../assets/images/bicycles/stamps/lph-b613-04-bicycle-stamp.png" alt="LPH-B613-04 자전거별 스탬프" />
         </figure>
-      </section>
+      </div>
+      <figure class="hero-photo">
+        <img src="../assets/images/bicycles/gallery-img-4187.jpg" alt="미시령 길을 오르는 자전거 라이더" />
+        <figcaption>미시령을 넘어가며 내가 알고 있던 욕을 다 했다. 그리고 내려오며 천국을 맛봤다.</figcaption>
+      </figure>
+    </section>
 
-      <section class="room-house" aria-label="자전거별">
-        <div class="room-section-heading">
-          <p class="room-section-label">자전거별</p>
-        </div>
+    <section class="section" aria-labelledby="body-title">
+      <div class="section-head">
+        <p class="num">01 / 비움</p>
+        <h2 id="body-title">생각보다 먼저,<br />몸이 앞으로 갔다.</h2>
+      </div>
+      <div class="route-grid">
+        <article class="panel quote-panel">
+          <p>힘든데<br />이상하게<br />조용해지는 느낌.</p>
+        </article>
+        <article class="panel ivory">
+          <p class="mini">몸의 방식</p>
+          <h3>밟은 만큼 가고,<br />멈추면 멈춘다.</h3>
+          <p>자전거는 정직했다. 그래서 머리가 복잡한 날에는 말보다 페달이 먼저였다.</p>
+        </article>
+        <article class="panel">
+          <p class="mini">일의 방식</p>
+          <h3>막히면 일단<br />한 컷, 한 문장.</h3>
+          <p>콘텐츠도 그렇다. 생각이 복잡할 때 결국 한 컷을 찍고 한 문장을 쓰면서 앞으로 간다.</p>
+        </article>
+      </div>
+    </section>
 
-        <nav class="room-house-nav" aria-label="자전거별 메뉴">
-          <button class="room-house-door" type="button" data-house-target="bicycle-writing-room">
-            <strong>글</strong>
-            <span>2개 기록 보기</span>
-          </button>
-          <button class="room-house-door" type="button" data-house-target="bicycle-photo-room">
-            <strong>사진</strong>
-            <span>7장 보기</span>
-          </button>
-          <button class="room-house-door" type="button" disabled>
-            <strong>자료</strong>
-            <span>나중에 열 방</span>
-          </button>
-        </nav>
-      </section>
+    <section class="section" id="bicycle-writing" aria-labelledby="writing-title">
+      <div class="section-head">
+        <p class="num">02 / 글</p>
+        <h2 id="writing-title">다리를 믿는 시간.<br />기록보다 통과.</h2>
+      </div>
+      <div class="writing-grid">
+        <article class="panel ivory">
+          <p class="mini">글방으로</p>
+          <h3>부평에서 부천은 껌이지. 하하.</h3>
+          <p>
+            출발 전에는 늘 가볍게 말할 수 있다.
+            하지만 길 위에 올라서면 농담보다 호흡이 먼저 오고,
+            몸은 내가 어디까지 갈 수 있는지 조용히 확인한다.
+          </p>
+          <p class="engraving">패배는 단지 일시적인 것에 불과하지만, 포기해버리면 그걸로 모든 건 끝이다.</p>
+        </article>
+        <figure class="writing-image">
+          <img src="../assets/images/bicycles/essay-before-ride.jpg" alt="라이딩 전 자전거 옆에 선 모습" />
+        </figure>
+      </div>
+    </section>
 
-      <section class="room-house-panel" id="bicycle-writing-room" aria-label="자전거 글 목록" hidden>
-        <div class="room-house-panel-header">
+    <section class="section" id="bicycle-photos" aria-labelledby="photos-title">
+      <div class="section-head">
+        <p class="num">03 / 사진</p>
+        <h2 id="photos-title">길 위에서<br />몸이 기억한 장면.</h2>
+      </div>
+      <div class="photo-grid">
+        <figure class="photo-card">
+          <img src="../assets/images/bicycles/gallery-img-4187.jpg" alt="미시령 길을 오르는 자전거 라이더" />
+          <figcaption><strong>미시령</strong><span>욕을 다 하고 내려오며 천국을 맛봤던 길.</span></figcaption>
+        </figure>
+        <figure class="photo-card">
+          <img src="../assets/images/bicycles/hero-city-ride.jpg" alt="도심 도로를 달리는 자전거 라이더" />
+          <figcaption><strong>헬멧</strong><span>여러분, 헬멧 쓰세요. 두 번 쓰세요.</span></figcaption>
+        </figure>
+        <figure class="photo-card">
+          <img src="../assets/images/bicycles/photo-bib-detail.jpg" alt="자전거 탑튜브와 번호표" />
+          <figcaption><strong>탑튜브</strong><span>패배는 일시적이지만, 포기하면 끝이다.</span></figcaption>
+        </figure>
+        <figure class="photo-card">
+          <img src="../assets/images/bicycles/gallery-img-5752.jpg" alt="자동차에 실린 자이언트 자전거" />
+          <figcaption><strong>사브와 자이언트</strong><span>스웨덴산 사브와 대만산 자이언트, 그리고 한국산 햄.</span></figcaption>
+        </figure>
+        <figure class="photo-card">
+          <img src="../assets/images/bicycles/essay-before-ride.jpg" alt="라이딩 전 카페 앞 자전거와 사람" />
+          <figcaption><strong>출발 전</strong><span>복잡한 생각보다 먼저 움직이는 몸이 있다.</span></figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section" id="bicycle-map" aria-labelledby="map-title">
+      <div class="section-head">
+        <p class="num">04 / 지도</p>
+        <h2 id="map-title">완성된 코스가 아니라,<br />몸으로 지나온 길.</h2>
+      </div>
+      <div class="map-panel">
+        <div class="map-visual" role="img" aria-label="자전거별 길 지도"></div>
+        <article class="panel">
+          <p class="mini">지도방으로</p>
+          <h3>햄PD가 몸으로 지나온 길</h3>
+          <p>
+            이 지도는 추천 코스가 아니다.
+            아직 장소 목록은 천천히 모으는 중이고,
+            지금은 몸이 먼저 기억한 길의 감각만 남겨둔다.
+          </p>
+        </article>
+      </div>
+    </section>
+
+
+    <section class="room-house-panel" id="bicycle-writing-room" aria-label="자전거별 글 목록" hidden>
+      <div class="room-house-panel-header">
+        <div>
           <p class="room-section-label">글</p>
           <h2>글 목록</h2>
-          <button class="room-house-back" type="button">자전거별로 돌아가기</button>
         </div>
+        <button class="room-house-back" type="button">자전거별로 돌아가기</button>
+      </div>
 
-        <div class="room-article-list" aria-label="자전거 글 목록">
-          <button class="room-article-link" type="button" data-article-target="bicycle-moving-forward-note" aria-label="다리를 믿는 시간 읽기">
-            <strong>다리를 믿는 시간</strong>
-          </button>
-          <button class="room-article-link" type="button" data-article-target="bicycle-number-memory-note" aria-label="몸이 기억한 번호 읽기">
-            <strong>몸이 기억한 번호</strong>
-          </button>
-        </div>
+      <div class="room-article-list" aria-label="자전거별 글 목록">
+        <button class="room-article-link" type="button" data-article-target="bicycle-moving-forward-note" aria-label="다리를 믿는 시간 읽기"><strong>다리를 믿는 시간</strong></button>
+        <button class="room-article-link" type="button" data-article-target="bicycle-number-memory-note" aria-label="몸이 기억한 번호 읽기"><strong>몸이 기억한 번호</strong></button>
+      </div>
+      <div class="room-list-pager" aria-label="자전거별 글 페이지">
+        <span>1-2 / 2</span>
+        <button type="button" disabled>다음 5개</button>
+      </div>
 
-        <div class="room-card-list room-article-panels">
-          <article class="room-post fountain-essay room-article-panel" id="bicycle-moving-forward-note" hidden>
-            <button class="room-article-back" type="button">글 목록</button>
-            <header class="fountain-essay-header">
-              <p class="room-card-meta">글</p>
-              <h3>다리를 믿는 시간</h3>
-              <p>자전거 / 전진 / 비움</p>
-            </header>
-
-            <div class="fountain-essay-body">
-              <figure class="fountain-essay-figure">
-                <img class="room-photo-image fountain-essay-photo" src="../assets/images/bicycles/essay-before-ride.jpg" alt="자전거 옆에서 라이딩을 준비하는 모습">
-                <figcaption>복잡한 생각보다 먼저 움직이는 몸이 있다.</figcaption>
-              </figure>
-              <p>두 발로 가는 건 딴생각하면 큰일 난다.</p>
-              <p>머리가 복잡한 날엔 다리를 믿고 그냥 전진했다.</p>
-              <p>그렇게 몸을 비우는 법이, 지금도 나를 재운다.</p>
-            </div>
-          </article>
-
-          <article class="room-post fountain-essay room-article-panel" id="bicycle-number-memory-note" hidden>
-            <button class="room-article-back" type="button">글 목록</button>
-            <header class="fountain-essay-header">
-              <p class="room-card-meta">글</p>
-              <h3>몸이 기억한 번호</h3>
-              <p>라이딩 / 기록 / 집중</p>
-            </header>
-
-            <div class="fountain-essay-body">
-              <figure class="fountain-essay-figure">
-                <img class="room-photo-image fountain-essay-photo" src="../assets/images/bicycles/photo-bib-detail.jpg" alt="자전거 프레임과 번호표가 가까이 보이는 사진">
-                <figcaption>번호와 프레임 사이에 남은 몸의 기록.</figcaption>
-              </figure>
-              <p>속도보다 집중이 먼저다.</p>
-              <p>패배는 일시적인 상태일 수 있지만, 포기하면 그것은 영구적인 것이 된다.</p>
-              <p><span lang="en">Being defeated is often a temporary condition, giving up is what makes it permanent.</span></p>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <section class="room-house-panel bicycle-gallery" id="bicycle-photo-room" aria-label="자전거 갤러리" hidden>
-        <div class="room-house-panel-header">
-          <p class="room-section-label">사진</p>
-          <h2>길 위에서 몸이 기억한 장면</h2>
-          <button class="room-house-back" type="button">자전거별로 돌아가기</button>
-        </div>
-
-        <div class="room-section-heading">
-          <p class="room-section-label">몸을 비우며 지나온 길</p>
-        </div>
-        <div class="room-house-photo-grid bicycle-gallery-grid">
-          <figure class="room-house-photo" data-memory="벽에 걸어둔 자전거. 쉬는 날에도 몸은 길을 기억한다."><img class="room-photo-image bicycle-gallery-photo" src="../assets/images/bicycles/gallery-img-7462.jpg" alt="벽에 걸린 자전거"></figure>
-          <figure class="room-house-photo" data-memory="도심을 지나는 자전거. 길 위에서는 몸이 먼저 균형을 잡는다."><img class="room-photo-image bicycle-gallery-photo" src="../assets/images/bicycles/hero-city-ride.jpg" alt="도심에서 자전거를 타는 모습"></figure>
-          <figure class="room-house-photo" data-memory="잠시 세워둔 자전거. 달린 시간은 프레임에 남는다."><img class="room-photo-image bicycle-gallery-photo" src="../assets/images/bicycles/gallery-img-6681.jpg" alt="거리 데크 위에 세워둔 자전거"></figure>
-          <figure class="room-house-photo" data-memory="문 앞에 세워둔 자전거. 다시 나갈 시간을 기다리는 물건."><img class="room-photo-image bicycle-gallery-photo" src="../assets/images/bicycles/gallery-img-7636.jpg" alt="가게 앞에 세워둔 자전거"></figure>
-          <figure class="room-house-photo" data-memory="강가에서 멈춘 자전거. 속도보다 오래 남는 장면이 있다."><img class="room-photo-image bicycle-gallery-photo" src="../assets/images/bicycles/gallery-img-5757.jpg" alt="강가에서 자전거와 함께 선 모습"></figure>
-          <figure class="room-house-photo" data-memory="스웨덴산 사브와 대만산 자이언트(GIANT), 그리고 한국산 햄.">
-            <img class="room-photo-image bicycle-gallery-photo" src="../assets/images/bicycles/gallery-img-5752.jpg" alt="차에 실린 자전거 사진">
-            <figcaption>스웨덴산 사브와 대만산 자이언트(GIANT), 그리고 한국산 햄.</figcaption>
+      <div class="room-article-panels">
+        <article class="room-post room-article-panel" id="bicycle-moving-forward-note" hidden>
+          <button class="room-article-back" type="button">글 목록</button>
+          <header class="bicycle-essay-header">
+            <p class="room-card-meta">글</p>
+            <h3>다리를 믿는 시간</h3>
+            <p>자전거 / 전진 / 비움</p>
+          </header>
+          <figure class="bicycle-essay-figure">
+            <img class="room-photo-image" src="../assets/images/bicycles/essay-before-ride.jpg" alt="자전거 옆에서 라이딩을 준비하는 모습">
+            <figcaption>복잡한 생각보다 먼저 움직이는 몸이 있다.</figcaption>
           </figure>
-          <figure class="room-house-photo" data-memory="작은 자전거도 결국 균형을 배우는 물건이다."><img class="room-photo-image bicycle-gallery-photo" src="../assets/images/bicycles/gallery-1f9a31a9.jpg" alt="작은 분홍색 자전거"></figure>
-        </div>
+          <div class="bicycle-copy">
+            <p>두 발로 가는 건 딴생각하면 큰일 난다.</p>
+            <p>머리가 복잡한 날엔 다리를 믿고 그냥 전진했다.</p>
+            <p>그렇게 몸을 비우는 법이, 지금도 나를 재운다.</p>
+          </div>
+        </article>
 
-        <aside class="room-gallery-detail room-house-photo-detail" aria-live="polite" hidden></aside>
-      </section>
+        <article class="room-post room-article-panel" id="bicycle-number-memory-note" hidden>
+          <button class="room-article-back" type="button">글 목록</button>
+          <header class="bicycle-essay-header">
+            <p class="room-card-meta">글</p>
+            <h3>몸이 기억한 번호</h3>
+            <p>라이딩 / 기록 / 집중</p>
+          </header>
+          <figure class="bicycle-essay-figure">
+            <img class="room-photo-image" src="../assets/images/bicycles/photo-bib-detail.jpg" alt="자전거 프레임과 번호표가 가까이 보이는 사진">
+            <figcaption>번호와 프레임 사이에 남은 몸의 기록.</figcaption>
+          </figure>
+          <div class="bicycle-copy">
+            <p>속도보다 집중이 먼저다.</p>
+            <p><span lang="en">Being defeated is often a temporary condition, giving up is what makes it permanent.</span></p>
+            <p>패배는 단지 일시적인 것에 불과하지만, 포기해버리면 그걸로 모든 건 끝이다.</p>
+          </div>
+        </article>
+      </div>
+    </section>
 
-      <nav class="room-star-list" aria-label="전체 별 목록">
-        <p>별 목록</p>
+    <section class="room-house-panel bicycle-gallery" id="bicycle-photo-room" aria-label="자전거별 사진" hidden>
+      <div class="room-house-panel-header">
         <div>
-          <a href="fountain-pens.html">만년필별</a>
-          <a href="music-audio.html">음악·오디오별</a>
-          <a href="cameras.html">카메라별</a>
-          <a href="travel.html">여행별</a>
-          <a href="food.html">음식별</a>
-          <span class="is-current">자전거별</span>
-          <a href="cars.html">자동차별</a>
-          <a href="motorcycles.html">바이크별</a>
-          <a href="spaces.html">공간별</a>
+          <p class="room-section-label">사진</p>
+          <h2>사진 목록</h2>
         </div>
-      </nav>
+        <button class="room-house-back" type="button">자전거별로 돌아가기</button>
+      </div>
 
-      <nav class="room-related" aria-label="별 이동">
-        <a class="room-soft-link" href="../index.html#about-constellation">별자리로 돌아가기</a>
-        <a class="room-soft-link room-work-link" href="ham-media-work.html">그래서, 지금은 이런 일을 합니다</a>
-      </nav>
-    </main>
-    <script src="../assets/js/main.js?v=bicycle-room-v4"></script>
-  </body>
+      <div class="room-house-photo-grid bicycle-gallery-grid">
+        <figure class="room-house-photo" data-memory="미시령을 넘어가며 내가 알고 있던 욕을 다 했다. 그리고 내려오며 천국을 맛봤다."><img class="room-photo-image room-house-photo-thumb" src="../assets/images/bicycles/gallery-img-4187.jpg" alt="미시령 길을 오르는 자전거 라이더"><figcaption>미시령</figcaption></figure>
+        <figure class="room-house-photo" data-memory="여러분, 헬멧 쓰세요. 두 번 쓰세요."><img class="room-photo-image room-house-photo-thumb" src="../assets/images/bicycles/hero-city-ride.jpg" alt="도심 도로를 달리는 자전거 라이더"><figcaption>헬멧</figcaption></figure>
+        <figure class="room-house-photo" data-memory="패배는 단지 일시적인 것에 불과하지만, 포기해버리면 그걸로 모든 건 끝이다."><img class="room-photo-image room-house-photo-thumb" src="../assets/images/bicycles/photo-bib-detail.jpg" alt="자전거 탑튜브와 번호표"><figcaption>탑튜브</figcaption></figure>
+        <figure class="room-house-photo" data-memory="스웨덴산 사브와 대만산 자이언트(GIANT), 그리고 한국산 햄."><img class="room-photo-image room-house-photo-thumb" src="../assets/images/bicycles/gallery-img-5752.jpg" alt="자동차에 실린 자이언트 자전거"><figcaption>사브와 자이언트</figcaption></figure>
+        <figure class="room-house-photo" data-memory="복잡한 생각보다 먼저 움직이는 몸이 있다."><img class="room-photo-image room-house-photo-thumb" src="../assets/images/bicycles/essay-before-ride.jpg" alt="라이딩 전 카페 앞 자전거와 사람"><figcaption>출발 전</figcaption></figure>
+      </div>
+      <aside class="room-gallery-detail room-house-photo-detail" aria-live="polite" hidden></aside>
+    </section>
+
+    <section class="room-house-panel" id="bicycle-map-room" aria-label="자전거별 지도" hidden>
+      <div class="room-house-panel-header">
+        <div>
+          <p class="room-section-label">지도</p>
+          <h2>지도는 아직 완성되지 않아도 된다</h2>
+        </div>
+        <button class="room-house-back" type="button">자전거별로 돌아가기</button>
+      </div>
+      <div class="room-map-placeholder">
+        <strong>몸으로 지나온 길을 모으는 중입니다.</strong>
+        <p>미시령과 오래 남은 길의 기억이 더 정리되면, 이곳에 자전거별 지도가 놓입니다. 지금은 몸이 먼저 기억한 길의 감각만 남겨둡니다.</p>
+      </div>
+    </section>
+
+
+    <section class="section" aria-labelledby="entry-title">
+      <div class="section-head">
+        <p class="num">05 / 별 안으로</p>
+        <h2 id="entry-title">이 별의 문은<br />몸의 방향으로 열린다.</h2>
+      </div>
+      <div class="entry-hub">
+        <p class="large-copy">복잡한 날엔<br />다리를 믿고<br />앞으로.</p>
+        <div class="entry-grid">
+          <button class="entry-card room-house-door" type="button" data-target="#bicycle-writing" data-house-target="bicycle-writing-room"><strong>글</strong><span>다리를 믿는 시간과 탑튜브 문구로</span></button>
+          <button class="entry-card room-house-door" type="button" data-target="#bicycle-photos" data-house-target="bicycle-photo-room"><strong>사진</strong><span>몸이 기억한 다섯 장면으로</span></button>
+          <button class="entry-card room-house-door" type="button" data-target="#bicycle-map" data-house-target="bicycle-map-room"><strong>지도</strong><span>언젠가 모일 길의 기록으로</span></button>
+          <a class="entry-card" href="#star-list"><strong>다른 별</strong><span>다른 좋아하는 것의 별자리로</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="not-title">
+      <div class="section-head">
+        <p class="num">06 / 마지막 기준</p>
+        <h2 id="not-title">자전거별이<br />하지 않으려는 말.</h2>
+      </div>
+      <div class="not-grid">
+        <div class="not-card">장비 자랑이 아니다.</div>
+        <div class="not-card">코스 정복이 아니다.</div>
+        <div class="not-card">국토종주 인증이 아니다.</div>
+        <div class="not-card">건강한 취미 홍보가 아니다.</div>
+        <div class="not-card">라이더의 로망이 아니다.</div>
+      </div>
+    </section>
+
+    <section class="star-exit" id="star-list" aria-labelledby="star-list-title">
+      <p class="num">07 / 다른 별 보기</p>
+      <h2 id="star-list-title">다른 별 보기</h2>
+      <p class="intro">
+        이 별은 HAM MEDIA Design MD 방식으로 정리한 별입니다.
+        좋아하는 것의 감각을 브랜드의 기준으로 바꾸는 실험이기도 합니다.
+      </p>
+      <div class="star-buttons" aria-label="별 목록">
+        <a class="star-button" href="fountain-pens.html">만년필별</a>
+        <a class="star-button" href="music-audio.html">음악·오디오별</a>
+        <a class="star-button" href="cameras.html">카메라별</a>
+        <a class="star-button" href="travel.html">여행별</a>
+        <a class="star-button" href="food.html">음식별</a>
+        <a class="star-button active" href="bicycles.html" aria-current="page">자전거별 <span class="star-signal" aria-label="현재 별 점등"></span></a>
+        <a class="star-button" href="cars.html">자동차별</a>
+        <a class="star-button" href="motorcycles.html">바이크별</a>
+        <a class="star-button" href="spaces.html">공간별</a>
+      </div>
+      <div class="bottom-links" aria-label="하단 링크">
+        <a class="bottom-link" href="../index.html#about-constellation">별자리로 돌아가기</a>
+        <a class="bottom-link" href="ham-media-work.html">그래서, 지금은 이런 일을 합니다</a>
+        <a class="bottom-link" href="https://hammedia.github.io/design-brief/">Design MD 만드는 도구</a>
+      </div>
+    </section>
+
+    <footer>자전거별 · LPH-B613-04 · HAM MEDIA · Design MD로 만든 별 페이지</footer>
+  </main>
+  <script src="../assets/js/main.js?v=bicycle-star-sheet-v1"></script>
+</body>
 </html>
