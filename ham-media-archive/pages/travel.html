@@ -761,6 +761,76 @@
       }
     }
 
+    @media (min-width: 641px) and (max-width: 1120px) {
+      :root {
+        --sheet-width: 1024px;
+        --sheet-pad: 44px;
+        --hero-title: 86px;
+        --h1: 48px;
+        --h2: 29px;
+        --body: 17px;
+      }
+
+      .hero {
+        min-height: 660px;
+        grid-template-columns: minmax(0, 0.94fr) minmax(0, 1.06fr);
+        gap: var(--space-6);
+        padding-bottom: var(--space-8);
+      }
+
+      .hero-photo {
+        min-height: 560px;
+      }
+
+      .hero .meta-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-3);
+      }
+
+      .hero .meta-item {
+        min-height: auto;
+      }
+
+      .section-head {
+        grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+        gap: var(--space-6);
+      }
+
+      section {
+        padding-top: var(--space-7);
+        padding-bottom: var(--space-7);
+      }
+
+      .grid-6 {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: var(--space-3);
+      }
+
+      .swatch {
+        min-height: 178px;
+        padding: var(--space-4);
+      }
+
+      .component-grid,
+      .image-grid,
+      .type-grid,
+      .do-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .door-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .star-room-nav {
+        gap: 24px;
+      }
+
+      .room-house-photo-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
     body.variant-mobile .sheet {
       padding-left: var(--sheet-pad);
       padding-right: var(--sheet-pad);
