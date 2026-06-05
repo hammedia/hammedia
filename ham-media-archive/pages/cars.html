@@ -1,57 +1,1189 @@
 <!doctype html>
 <html lang="ko">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>자동차별 | HAM MEDIA</title>
-    <link rel="stylesheet" href="../assets/css/styles.css?v=room-panel-clean-v3">
-  </head>
-  <body class="world-body">
-    <main class="world-page room-page room-house-page car-room">
-      <header class="room-header">
-        <p class="eyebrow">Cars</p>
-        <h1>자동차별</h1>
-        <p class="room-star-code">LPH B-613-06</p>
-        <p class="room-intro">길을 찾는 별</p>
-      </header>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>자동차별 | HAM MEDIA 별자리</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
+  <style>
+    @font-face {
+      font-family: "BlackGothic";
+      src: url("../assets/fonts/BlackGothic.otf") format("opentype");
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
 
-      <section class="room-welcome" aria-label="자동차별 첫 문장">
-        <span class="room-welcome-mark" aria-hidden="true"></span>
-        <div class="room-welcome-copy">
-          <p class="room-welcome-label">방의 첫 문장</p>
-          <blockquote>
-            <p>차를 좋아해 멀리 다녔고, 많은 사람을 만났다. 그러다 알았다. 나는 길을 잘 찾는 사람이라는 걸. 길 찾던 그 버릇이, 일이 되어 돌아왔다.</p>
-            <p>막막한 사람에게 방향을 찾아주는 일. 지금 내가 하는 게 그거다.</p>
-          </blockquote>
-        </div>
-      </section>
-      <section class="room-hero" aria-label="자동차 대표 사진">
-        <figure class="car-featured">
-          <img class="room-photo-image car-photo-slot" src="../assets/images/cars/hero-night-direction.jpg" alt="밤에 세워진 검은 자동차">
-          <figcaption>차를 세워둔 자리마다, 다음 길을 생각했다.</figcaption>
+    :root {
+      --night: #0d0e10;
+      --gold: #c9a050;
+      --asphalt: #3a3d42;
+      --ivory: #f9f7f3;
+      --headlight: #e8e8e6;
+      --ink: var(--headlight);
+      --muted: color-mix(in srgb, var(--headlight) 68%, transparent);
+      --soft: color-mix(in srgb, var(--headlight) 12%, transparent);
+      --line: color-mix(in srgb, var(--headlight) 22%, transparent);
+      --line-strong: color-mix(in srgb, var(--gold) 48%, transparent);
+      --font-sans: "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --font-star: "BlackGothic", "Pretendard", sans-serif;
+      --radius: 7px;
+      --space-1: 4px;
+      --space-2: 8px;
+      --space-3: 12px;
+      --space-4: 16px;
+      --space-5: 24px;
+      --space-6: 32px;
+      --space-7: 48px;
+      --space-8: 64px;
+      --space-9: 96px;
+      --sheet-width: 1440px;
+      --sheet-pad: 64px;
+      --hero-title: 126px;
+      --h1: 68px;
+      --h2: 38px;
+      --body: 18px;
+      --small: 13px;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      margin: 0;
+      background: var(--night);
+      color: var(--ink);
+      font-family: var(--font-sans);
+      overflow-x: hidden;
+    }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      background:
+        radial-gradient(circle at 82% 8%, rgba(232, 232, 230, 0.11), transparent 18%),
+        radial-gradient(circle at 18% 18%, rgba(201, 160, 80, 0.16), transparent 22%),
+        linear-gradient(180deg, var(--night) 0%, #15171b 40%, #111214 100%);
+      color: var(--ink);
+      letter-spacing: 0;
+      word-break: keep-all;
+      overflow-wrap: break-word;
+      overflow-x: hidden;
+    }
+
+    body.variant-tablet {
+      --sheet-width: 1024px;
+      --sheet-pad: 44px;
+      --hero-title: 94px;
+      --h1: 52px;
+      --h2: 31px;
+      --body: 17px;
+    }
+
+    body.variant-mobile {
+      --sheet-width: 430px;
+      --sheet-pad: 18px;
+      --hero-title: 56px;
+      --h1: 35px;
+      --h2: 24px;
+      --body: 15px;
+      --small: 12px;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .sheet {
+      width: min(100%, var(--sheet-width));
+      margin: 0 auto;
+      padding: var(--sheet-pad);
+      overflow: hidden;
+    }
+
+    .top-doors {
+      position: relative;
+      z-index: 4;
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-4);
+      margin-bottom: var(--space-8);
+    }
+
+    .top-doors button,
+    .top-doors a,
+    .entry-card,
+    .bottom-link {
+      min-height: 44px;
+      border: 0;
+      border-bottom: 4px solid var(--gold);
+      background: transparent;
+      color: var(--ivory);
+      cursor: pointer;
+      font-family: var(--font-sans);
+      font-size: 24px;
+      line-height: 1;
+      letter-spacing: 0.01em;
+      padding: 0 0 8px;
+      text-align: left;
+    }
+
+    .top-doors button:nth-child(1) { border-color: #7ea0c8; }
+    .top-doors button:nth-child(2) { border-color: #d9a6a6; }
+    .top-doors button:nth-child(3) { border-color: #d8dc91; }
+    .top-doors a { border-color: #a4b09b; }
+
+    .hero {
+      position: relative;
+      min-height: 770px;
+      display: grid;
+      grid-template-columns: minmax(0, 0.78fr) minmax(0, 1.22fr);
+      gap: var(--space-8);
+      align-items: end;
+      padding-bottom: var(--space-9);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 17% auto auto -12%;
+      width: 58%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--headlight), transparent);
+      box-shadow: 0 0 28px rgba(232, 232, 230, 0.48);
+      transform: rotate(-8deg);
+      pointer-events: none;
+    }
+
+    .hero-text {
+      position: relative;
+      z-index: 2;
+      padding-bottom: var(--space-5);
+    }
+
+    .eyebrow {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 var(--space-5);
+      color: var(--muted);
+      font-size: var(--small);
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .star-signal {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      border-radius: 999px;
+      background: var(--gold);
+      box-shadow: 0 0 0 5px rgba(201, 160, 80, 0.13), 0 0 22px rgba(201, 160, 80, 0.72);
+      vertical-align: middle;
+      flex: 0 0 auto;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-family: var(--font-star);
+      font-size: var(--hero-title);
+      line-height: 0.88;
+      font-weight: 700;
+      color: var(--ivory);
+      text-wrap: balance;
+      white-space: nowrap;
+    }
+
+    .hero .core {
+      margin: var(--space-5) 0 0;
+      color: var(--gold);
+      font-family: var(--font-star);
+      font-size: clamp(30px, 3.4vw, 56px);
+      line-height: 1.05;
+      text-wrap: balance;
+    }
+
+    .hero .lead {
+      max-width: 580px;
+      margin: var(--space-6) 0 0;
+      color: var(--muted);
+      font-size: calc(var(--body) + 2px);
+      line-height: 1.88;
+      font-weight: 650;
+    }
+
+    .stamp-wrap {
+      width: min(220px, 48vw);
+      margin-top: var(--space-6);
+      transform: rotate(-3deg);
+      filter: drop-shadow(0 18px 34px rgba(0, 0, 0, 0.32));
+    }
+
+    .stamp-wrap img {
+      display: block;
+      width: 100%;
+      border-radius: var(--radius);
+      background: var(--ivory);
+    }
+
+    .hero-photo {
+      position: relative;
+      min-height: 600px;
+      overflow: hidden;
+      border-radius: var(--radius);
+      background: var(--asphalt);
+      box-shadow: 0 34px 82px rgba(0, 0, 0, 0.4);
+    }
+
+    .hero-photo img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      min-height: 600px;
+      object-fit: cover;
+      filter: saturate(0.9) contrast(1.04) brightness(0.82);
+    }
+
+    .hero-photo figcaption {
+      position: absolute;
+      left: var(--space-5);
+      right: var(--space-5);
+      bottom: var(--space-5);
+      color: var(--ivory);
+      font-size: var(--small);
+      font-weight: 800;
+      letter-spacing: 0.02em;
+    }
+
+    .section {
+      padding: var(--space-9) 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: 120px minmax(0, 1fr);
+      gap: var(--space-6);
+      align-items: start;
+      margin-bottom: var(--space-7);
+    }
+
+    .num {
+      color: var(--gold);
+      font-size: var(--small);
+      font-weight: 950;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin: 0;
+      color: var(--ivory);
+      font-family: var(--font-star);
+      font-size: var(--h1);
+      line-height: 1.02;
+      font-weight: 700;
+      text-wrap: balance;
+    }
+
+    h3 {
+      margin: 0;
+      color: inherit;
+      font-family: var(--font-star);
+      font-size: var(--h2);
+      line-height: 1.08;
+      font-weight: 700;
+      text-wrap: balance;
+    }
+
+    p {
+      margin: 0;
+      color: var(--muted);
+      font-size: var(--body);
+      line-height: 1.78;
+      font-weight: 560;
+    }
+
+    .large-copy {
+      color: var(--ivory);
+      font-family: var(--font-star);
+      font-size: clamp(34px, 5vw, 76px);
+      line-height: 1.04;
+      text-wrap: balance;
+    }
+
+    .gold {
+      color: var(--gold);
+    }
+
+    .route-grid,
+    .writing-grid,
+    .photo-grid,
+    .not-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--space-5);
+    }
+
+    .panel {
+      min-width: 0;
+      border-radius: var(--radius);
+      background: color-mix(in srgb, var(--asphalt) 72%, black);
+      border: 1px solid var(--line);
+      padding: var(--space-6);
+      overflow: hidden;
+    }
+
+    .panel.ivory {
+      background: var(--ivory);
+      color: var(--night);
+      border-color: color-mix(in srgb, var(--gold) 54%, transparent);
+    }
+
+    .panel.ivory p,
+    .panel.ivory .mini {
+      color: color-mix(in srgb, var(--night) 72%, transparent);
+    }
+
+    .mini {
+      margin: 0 0 var(--space-3);
+      color: var(--gold);
+      font-size: var(--small);
+      font-weight: 950;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .quote-panel {
+      position: relative;
+      min-height: 360px;
+      display: grid;
+      align-content: end;
+      background:
+        linear-gradient(135deg, rgba(13, 14, 16, 0.72), rgba(13, 14, 16, 0.08)),
+        var(--asphalt);
+      overflow: hidden;
+    }
+
+    .quote-panel::before {
+      content: "";
+      position: absolute;
+      inset: 44px auto auto 0;
+      width: 88%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--headlight), transparent);
+      opacity: 0.7;
+      box-shadow: 0 0 22px rgba(232, 232, 230, 0.55);
+    }
+
+    .quote-panel p {
+      position: relative;
+      color: var(--ivory);
+      font-family: var(--font-star);
+      font-size: clamp(31px, 3.4vw, 54px);
+      line-height: 1.08;
+    }
+
+    .photo-card {
+      min-width: 0;
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: color-mix(in srgb, var(--asphalt) 70%, black);
+      border: 1px solid var(--line);
+    }
+
+    .photo-card img {
+      display: block;
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      filter: saturate(0.94) contrast(1.04);
+    }
+
+    .photo-card figcaption {
+      min-height: 134px;
+      padding: var(--space-5);
+    }
+
+    .photo-card strong {
+      display: block;
+      margin-bottom: var(--space-3);
+      color: var(--ivory);
+      font-family: var(--font-star);
+      font-size: 24px;
+      line-height: 1.1;
+    }
+
+    .photo-card span {
+      display: block;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.64;
+      font-weight: 650;
+    }
+
+    .writing-grid {
+      grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+    }
+
+    .writing-image {
+      min-height: 450px;
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--asphalt);
+    }
+
+    .writing-image img {
+      width: 100%;
+      height: 100%;
+      min-height: 450px;
+      display: block;
+      object-fit: cover;
+      filter: saturate(0.93) contrast(1.03);
+    }
+
+    .entry-hub {
+      display: grid;
+      grid-template-columns: minmax(0, 0.86fr) minmax(0, 1.14fr);
+      gap: var(--space-6);
+      align-items: stretch;
+    }
+
+    .entry-hub .large-copy {
+      display: flex;
+      align-items: center;
+      min-height: 360px;
+      color: var(--gold);
+      border: 1px solid var(--line-strong);
+      border-radius: var(--radius);
+      padding: var(--space-6);
+      background:
+        linear-gradient(135deg, rgba(201, 160, 80, 0.15), transparent 52%),
+        color-mix(in srgb, var(--night) 82%, var(--asphalt));
+    }
+
+    .entry-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-4);
+    }
+
+    .entry-card {
+      min-height: 158px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border: 1px solid var(--line);
+      border-left: 5px solid var(--gold);
+      border-bottom: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: color-mix(in srgb, var(--asphalt) 74%, black);
+      padding: var(--space-5);
+      font-family: var(--font-sans);
+    }
+
+    .entry-card strong {
+      color: var(--ivory);
+      font-family: var(--font-sans);
+      font-size: 30px;
+      line-height: 1;
+    }
+
+    .entry-card span {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.5;
+      font-weight: 700;
+    }
+
+    .map-panel {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: var(--space-6);
+      align-items: stretch;
+    }
+
+    .map-visual {
+      position: relative;
+      min-height: 420px;
+      border-radius: var(--radius);
+      overflow: hidden;
+      background:
+        linear-gradient(90deg, rgba(232, 232, 230, 0.08) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(232, 232, 230, 0.08) 1px, transparent 1px),
+        radial-gradient(circle at 18% 64%, rgba(201, 160, 80, 0.38), transparent 3%),
+        radial-gradient(circle at 63% 38%, rgba(232, 232, 230, 0.32), transparent 3%),
+        radial-gradient(circle at 82% 70%, rgba(201, 160, 80, 0.34), transparent 3%),
+        var(--asphalt);
+      background-size: 72px 72px, 72px 72px, auto, auto, auto, auto;
+      border: 1px solid var(--line);
+    }
+
+    .map-visual::before {
+      content: "";
+      position: absolute;
+      left: 14%;
+      right: 10%;
+      top: 52%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--headlight), var(--gold), transparent);
+      transform: rotate(-16deg);
+      box-shadow: 0 0 26px rgba(232, 232, 230, 0.54);
+    }
+
+    .map-visual::after {
+      content: "내가 달렸던 길들";
+      position: absolute;
+      left: var(--space-5);
+      bottom: var(--space-5);
+      color: var(--ivory);
+      font-family: var(--font-star);
+      font-size: 38px;
+      line-height: 1;
+    }
+
+    .not-grid {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+
+    .not-card {
+      min-height: 150px;
+      display: flex;
+      align-items: end;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: color-mix(in srgb, var(--night) 72%, var(--asphalt));
+      padding: var(--space-5);
+      color: var(--ivory);
+      font-family: var(--font-star);
+      font-size: 24px;
+      line-height: 1.12;
+    }
+
+    .star-exit {
+      padding-top: var(--space-9);
+    }
+
+    .star-exit .intro {
+      max-width: 760px;
+      margin: var(--space-5) 0 var(--space-6);
+    }
+
+    .star-buttons {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--space-3);
+      margin-bottom: var(--space-6);
+    }
+
+    .star-button {
+      min-height: 62px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: color-mix(in srgb, var(--asphalt) 62%, black);
+      color: var(--ivory);
+      padding: 0 var(--space-4);
+      font-weight: 900;
+    }
+
+    .star-button.active {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: var(--night);
+    }
+
+    .star-button.active .star-signal {
+      width: 10px;
+      height: 10px;
+      background: var(--night);
+      box-shadow: 0 0 0 5px rgba(13, 14, 16, 0.16), 0 0 18px rgba(13, 14, 16, 0.55);
+    }
+
+    .bottom-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-4);
+      padding-top: var(--space-5);
+      border-top: 1px solid var(--line);
+    }
+
+    .bottom-link {
+      flex: 1 1 240px;
+      border: 1px solid var(--line);
+      border-left: 5px solid var(--headlight);
+      border-bottom: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: color-mix(in srgb, var(--asphalt) 64%, black);
+      padding: var(--space-4);
+      font-family: var(--font-sans);
+      font-size: 15px;
+      font-weight: 900;
+    }
+
+    footer {
+      padding: var(--space-7) 0 0;
+      color: var(--muted);
+      font-size: var(--small);
+      font-weight: 800;
+      letter-spacing: 0.04em;
+    }
+
+    .focusable:focus-visible,
+    button:focus-visible,
+    a:focus-visible {
+      outline: 3px solid var(--gold);
+      outline-offset: 4px;
+    }
+
+    body.variant-tablet .hero {
+      min-height: 680px;
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+      gap: var(--space-6);
+    }
+
+    body.variant-tablet .hero-photo,
+    body.variant-tablet .hero-photo img {
+      min-height: 520px;
+    }
+
+    body.variant-tablet .route-grid,
+    body.variant-tablet .photo-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    body.variant-tablet .not-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    body.variant-tablet .entry-hub,
+    body.variant-tablet .map-panel {
+      grid-template-columns: 1fr;
+    }
+
+    body.variant-tablet .section {
+      padding: 76px 0;
+    }
+
+    body.variant-mobile .sheet {
+      padding-top: 20px;
+    }
+
+    body.variant-mobile .top-doors {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 8px;
+      padding: 10px;
+      margin-bottom: var(--space-5);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: color-mix(in srgb, var(--asphalt) 64%, black);
+    }
+
+    body.variant-mobile .top-doors button,
+    body.variant-mobile .top-doors a {
+      min-height: 44px;
+      font-size: 18px;
+      padding: 0 0 6px;
+      white-space: nowrap;
+    }
+
+    body.variant-mobile .hero {
+      min-height: 0;
+      grid-template-columns: 1fr;
+      gap: var(--space-5);
+      padding-bottom: var(--space-7);
+    }
+
+    body.variant-mobile .hero h1 {
+      line-height: 0.93;
+    }
+
+    body.variant-mobile .hero .core {
+      font-size: 31px;
+    }
+
+    body.variant-mobile .hero .lead {
+      font-size: 15px;
+      line-height: 1.72;
+    }
+
+    body.variant-mobile .stamp-wrap {
+      width: 128px;
+      margin-top: var(--space-5);
+    }
+
+    body.variant-mobile .hero-photo,
+    body.variant-mobile .hero-photo img {
+      min-height: 330px;
+    }
+
+    body.variant-mobile .hero-photo figcaption {
+      left: var(--space-4);
+      right: var(--space-4);
+      bottom: var(--space-4);
+    }
+
+    body.variant-mobile .section {
+      padding: var(--space-7) 0;
+    }
+
+    body.variant-mobile .section-head {
+      grid-template-columns: 1fr;
+      gap: var(--space-3);
+      margin-bottom: var(--space-5);
+    }
+
+    body.variant-mobile .route-grid,
+    body.variant-mobile .writing-grid,
+    body.variant-mobile .photo-grid,
+    body.variant-mobile .map-panel,
+    body.variant-mobile .entry-hub,
+    body.variant-mobile .not-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-4);
+    }
+
+    body.variant-mobile .panel {
+      padding: var(--space-5);
+    }
+
+    body.variant-mobile .photo-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    body.variant-mobile .photo-card img {
+      height: 130px;
+    }
+
+    body.variant-mobile .photo-card figcaption {
+      min-height: 118px;
+      padding: 14px;
+    }
+
+    body.variant-mobile .photo-card strong {
+      font-size: 18px;
+    }
+
+    body.variant-mobile .photo-card span {
+      font-size: 12px;
+      line-height: 1.48;
+    }
+
+    body.variant-mobile .writing-image,
+    body.variant-mobile .writing-image img,
+    body.variant-mobile .map-visual {
+      min-height: 260px;
+    }
+
+    body.variant-mobile .entry-hub .large-copy {
+      min-height: 190px;
+      padding: var(--space-5);
+    }
+
+    body.variant-mobile .entry-grid {
+      gap: 10px;
+    }
+
+    body.variant-mobile .entry-card {
+      min-height: 112px;
+      padding: 14px;
+    }
+
+    body.variant-mobile .entry-card strong {
+      font-size: 23px;
+    }
+
+    body.variant-mobile .entry-card span {
+      font-size: 12px;
+    }
+
+    body.variant-mobile .not-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    body.variant-mobile .not-card {
+      min-height: 108px;
+      padding: var(--space-4);
+      font-size: 18px;
+    }
+
+    body.variant-mobile .star-buttons {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    body.variant-mobile .star-button {
+      min-height: 48px;
+      padding: 0 9px;
+      font-size: 12px;
+    }
+
+    body.variant-mobile .bottom-links {
+      gap: 8px;
+    }
+
+    body.variant-mobile .bottom-link {
+      flex-basis: 100%;
+      padding: 13px;
+      font-size: 13px;
+    }
+
+/* Homepage hidden rooms: writing / photo / map */
+.room-house-panel[hidden],
+.room-article-panel[hidden],
+.room-house-photo-grid[hidden],
+.room-house-photo-detail[hidden] {
+  display: none !important;
+}
+
+.room-house-panel {
+  margin: var(--space-8) 0 0;
+  padding: var(--space-7);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: color-mix(in srgb, var(--night) 78%, var(--asphalt));
+}
+
+.room-house-panel-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-5);
+  margin-bottom: var(--space-6);
+  border-bottom: 1px solid var(--line);
+  padding-bottom: var(--space-5);
+}
+
+.room-section-label,
+.room-card-meta,
+.room-card-note {
+  display: block;
+  margin: 0 0 var(--space-2);
+  color: var(--gold);
+  font-size: var(--small);
+  font-weight: 950;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.room-house-back,
+.room-article-back,
+.room-article-bottom-nav button,
+.room-gallery-detail-button {
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  background: transparent;
+  color: var(--ivory);
+  cursor: pointer;
+  font-weight: 900;
+  padding: 10px 14px;
+}
+
+.room-article-list {
+  display: grid;
+  gap: 0;
+  border-top: 1px solid var(--line);
+}
+
+.room-article-list[hidden] {
+  display: none !important;
+}
+
+.room-article-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 58px;
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  background: transparent;
+  color: var(--ivory);
+  cursor: pointer;
+  padding: 0;
+  text-align: left;
+}
+
+.room-article-link strong {
+  font-size: 20px;
+  line-height: 1.3;
+}
+
+.room-article-panel {
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+.room-house-panel.is-detail-mode > .room-house-panel-header,
+.room-house-panel.is-detail-mode > .room-article-list,
+.room-house-panel.is-photo-detail-mode > .room-house-panel-header,
+.room-house-panel.is-photo-detail-mode > .room-house-photo-grid {
+  display: none !important;
+}
+
+.room-article-panel h3,
+.room-card-title {
+  display: block;
+  margin: 0 0 var(--space-4);
+  color: var(--ivory);
+  font-family: var(--font-star);
+  font-size: clamp(30px, 4vw, 54px);
+  line-height: 1.08;
+}
+
+.room-record-figure,
+.room-house-photo-grid figure,
+.room-gallery-detail-photo {
+  margin: 0;
+}
+
+.room-record-photo,
+.room-house-photo-grid img,
+.room-gallery-detail-photo {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+}
+
+.room-record-caption,
+.room-house-photo-grid figcaption,
+.room-gallery-detail-copy {
+  margin-top: var(--space-4);
+  color: var(--muted);
+}
+
+.room-house-photo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-4);
+}
+
+.room-house-photo-grid figure {
+  cursor: pointer;
+}
+
+.room-house-photo-grid img {
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.room-house-photo-detail {
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+.room-gallery-detail-actions,
+.room-gallery-detail-nav,
+.room-article-bottom-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin: var(--space-5) 0;
+}
+
+body.variant-mobile .room-house-panel {
+  margin-top: var(--space-6);
+  padding: var(--space-5);
+}
+
+body.variant-mobile .room-house-panel-header,
+body.variant-mobile .room-gallery-detail-actions,
+body.variant-mobile .room-gallery-detail-nav,
+body.variant-mobile .room-article-bottom-nav {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+body.variant-mobile .room-house-photo-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+  </style>
+</head>
+<body class="variant-desktop">
+  <script>
+    (() => {
+      const setCarVariant = () => {
+        document.body.classList.remove("variant-desktop", "variant-tablet", "variant-mobile");
+        const width = window.innerWidth;
+        document.body.classList.add(width <= 600 ? "variant-mobile" : width <= 1100 ? "variant-tablet" : "variant-desktop");
+      };
+      setCarVariant();
+      window.addEventListener("resize", setCarVariant);
+    })();
+  </script>
+  <main class="sheet room-house-page car-style-page" id="car-star">
+    <nav class="top-doors room-house-nav" aria-label="자동차별 입구">
+      <button class="room-house-door" type="button" data-target="#car-writing" data-house-target="car-writing-room">글</button>
+      <button class="room-house-door" type="button" data-target="#car-photos" data-house-target="car-photo-room">사진</button>
+      <button class="room-house-door" type="button" data-target="#car-map" data-house-target="car-map-room">지도</button>
+      <a href="#star-list">다른 별</a>
+    </nav>
+
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-text">
+        <p class="eyebrow">자동차별 · LPH-B613-06 <span class="star-signal" aria-label="자동차별 점등"></span> · HAM MEDIA 별자리</p>
+        <h1 id="hero-title">자동차별</h1>
+        <p class="core">한 번 간 길은<br />잊지 않는 사람의 별.</p>
+        <p class="lead">
+          차를 좋아해 멀리 다녔고, 많은 사람을 만났다.<br />
+          그러다 알았다. 나는 길을 잘 찾는 사람이라는 걸.<br />
+          길 찾던 그 버릇이, 일이 되어 돌아왔다.<br />
+          막막한 사람에게 방향을 찾아주는 일. 지금 내가 하는 게 그거다.
+        </p>
+        <figure class="stamp-wrap">
+          <img src="../assets/images/cars/stamps/lph-b613-06-car-stamp.png" alt="LPH-B613-06 사브 자동차 스탬프" />
         </figure>
-      </section>
+      </div>
+      <figure class="hero-photo">
+        <img src="../assets/images/cars/hero-night-direction.jpg" alt="밤 주차장에 선 검은 차" />
+        <figcaption>밤 주차장, 켜진 불빛, 그리고 어디로 갈지 아는 차.</figcaption>
+      </figure>
+    </section>
 
-      <section class="room-house" aria-label="자동차별">
-        <div class="room-section-heading">
-          <p class="room-section-label">자동차별</p>
+    <section class="section" aria-labelledby="route-title">
+      <div class="section-head">
+        <p class="num">01 / 방향</p>
+        <h2 id="route-title">길을 외우는 건<br />지도보다 먼저 몸에 남는다.</h2>
+      </div>
+      <div class="route-grid">
+        <article class="panel quote-panel">
+          <p>나이트 패널처럼.<br />꼭 필요한 것만 남기고 달린다.</p>
+        </article>
+        <article class="panel ivory">
+          <p class="mini">기억</p>
+          <h3>없어진 회사지만,<br />기억은 남는다.</h3>
+          <p>사브 9-3은 자동차를 넘어, 나를 알아주는 느낌으로 남았다. 그래서 이 별의 스탬프도 사브다.</p>
+        </article>
+        <article class="panel">
+          <p class="mini">일</p>
+          <h3>길 찾던 버릇이<br />일이 되어 돌아왔다.</h3>
+          <p>멀리 다니고, 사람을 만나고, 한 번 간 길을 기억하던 감각은 이제 막막한 사람에게 방향을 찾아주는 일로 이어졌다.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="car-writing" aria-labelledby="writing-title">
+      <div class="section-head">
+        <p class="num">02 / 글</p>
+        <h2 id="writing-title">차 이야기는 결국<br />타고 살아본 시간의 이야기다.</h2>
+      </div>
+      <div class="writing-grid">
+        <article class="panel ivory">
+          <p class="mini">글방으로</p>
+          <h3>초창기 모델 Y를 오래 타려면, 피로감도 중요했다.</h3>
+          <p>
+            단단한 승차감을 참고 타다가, 더 나은 방법을 찾고 직접 바꿔본 기록이 있다.
+            그래서 이 글은 장비 자랑보다 매일 타는 사람의 피로와 만족에 가깝다.
+          </p>
+          <p class="large-copy gold">"이제야 차 같네"</p>
+        </article>
+        <figure class="writing-image">
+          <img src="../assets/images/cars/suspension-01.jpeg" alt="충전소에 세워진 흰색 테슬라 모델 Y" />
+        </figure>
+      </div>
+    </section>
+
+    <section class="section" id="car-photos" aria-labelledby="photos-title">
+      <div class="section-head">
+        <p class="num">03 / 사진</p>
+        <h2 id="photos-title">소유보다 사용의 흔적.<br />사진은 길의 증거로 남는다.</h2>
+      </div>
+      <div class="photo-grid">
+        <figure class="photo-card">
+          <img src="../assets/images/cars/hero-night-direction.jpg" alt="밤 주차장에 선 검은 차" />
+          <figcaption><strong>밤 주차장</strong><span>불빛 아래에서 차는 자랑보다 이동의 준비처럼 보인다.</span></figcaption>
+        </figure>
+        <figure class="photo-card">
+          <img src="../assets/images/cars/essay-open-parking-direction.jpg" alt="세차장 충전소에 선 흰색 테슬라" />
+          <figcaption><strong>충전하는 시간</strong><span>기다리는 동안에도 다음 길은 조금씩 정해진다.</span></figcaption>
+        </figure>
+        <figure class="photo-card">
+          <img src="../assets/images/cars/photo-white-car-line.jpg" alt="주차장 조명 아래 흰색 차량의 옆선" />
+          <figcaption><strong>헤드라이트 선</strong><span>밝은 선은 멋보다 방향을 먼저 만든다.</span></figcaption>
+        </figure>
+        <figure class="photo-card">
+          <img src="../assets/images/cars/gallery-img-0215.jpg" alt="주차장에 옆으로 선 검은 차량" />
+          <figcaption><strong>해치백의 자리</strong><span>짐도 싣고, 기억도 싣고, 멀리 가게 해준 형태.</span></figcaption>
+        </figure>
+        <figure class="photo-card">
+          <img src="../assets/images/cars/gallery-img-3233.jpg" alt="밤 세차장에 선 작은 흰색 차량" />
+          <figcaption><strong>작은 차의 길</strong><span>크기보다 중요한 건 어디든 갈 수 있다는 감각이었다.</span></figcaption>
+        </figure>
+        <figure class="photo-card">
+          <img src="../assets/images/cars/gallery-output-1883912203.jpg" alt="해질녘 주차장에 선 흰색 차량" />
+          <figcaption><strong>해질녘 방향</strong><span>돌아오는 길에도 다음 목적지는 늘 생겼다.</span></figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section" id="car-map" aria-labelledby="map-title">
+      <div class="section-head">
+        <p class="num">04 / 지도</p>
+        <h2 id="map-title">아직 완성된 지도보다,<br />몸이 먼저 기억한 길들.</h2>
+      </div>
+      <div class="map-panel">
+        <div class="map-visual" role="img" aria-label="자동차별의 길 지도"></div>
+        <article class="panel">
+          <p class="mini">지도방으로</p>
+          <h3>내가 달렸던 길들</h3>
+          <p>
+            이 방은 나중에 실제 길과 장소가 더해질 자리다.
+            지금은 한 번 간 길을 잊지 않는 사람의 감각을 먼저 세운다.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="entry-title">
+      <div class="section-head">
+        <p class="num">05 / 별 안으로</p>
+        <h2 id="entry-title">들어가는 문은 네 개.<br />이 별은 방향으로 연결된다.</h2>
+      </div>
+      <div class="entry-hub">
+        <p class="large-copy">막막한 사람에게<br />방향을 찾아주는 일.</p>
+        <div class="entry-grid">
+          <button class="entry-card room-house-door" type="button" data-target="#car-writing" data-house-target="car-writing-room"><strong>글</strong><span>사브, 해치백, 모델 Y의 기록으로</span></button>
+          <button class="entry-card room-house-door" type="button" data-target="#car-photos" data-house-target="car-photo-room"><strong>사진</strong><span>차와 함께 움직였던 장면으로</span></button>
+          <button class="entry-card room-house-door" type="button" data-target="#car-map" data-house-target="car-map-room"><strong>지도</strong><span>언젠가 달렸던 길의 목록으로</span></button>
+          <a class="entry-card" href="#star-list"><strong>다른 별</strong><span>다른 좋아하는 것의 별자리로</span></a>
         </div>
+      </div>
+    </section>
 
-        <nav class="room-house-nav" aria-label="자동차별 메뉴">
-          <button class="room-house-door" type="button" data-house-target="car-writing-room">
-            <strong>글</strong>
-            <span>2개 기록 보기</span>
-          </button>
-          <button class="room-house-door" type="button" data-house-target="car-photo-room">
-            <strong>사진</strong>
-            <span>17장 보기</span>
-          </button>
-          <button class="room-house-door" type="button" disabled>
-            <strong>자료</strong>
-            <span>나중에 열 방</span>
-          </button>
-        </nav>
-      </section>
+    <section class="section" aria-labelledby="not-title">
+      <div class="section-head">
+        <p class="num">06 / 마지막 기준</p>
+        <h2 id="not-title">자동차별이<br />하지 않으려는 말.</h2>
+      </div>
+      <div class="not-grid">
+        <div class="not-card">차 리뷰가 아니다.</div>
+        <div class="not-card">스펙 비교가 아니다.</div>
+        <div class="not-card">빠른 차 자랑이 아니다.</div>
+        <div class="not-card">비싼 차 전시가 아니다.</div>
+        <div class="not-card">내 차가 최고라는 말이 아니다.</div>
+      </div>
+    </section>
 
       <section class="room-house-panel" id="car-writing-room" aria-label="자동차 글 목록" hidden>
         <div class="room-house-panel-header">
@@ -131,26 +1263,47 @@
         <aside class="room-gallery-detail room-house-photo-detail" aria-live="polite" hidden></aside>
       </section>
 
-      <nav class="room-star-list" aria-label="전체 별 목록">
-        <p>별 목록</p>
-        <div>
-          <a href="fountain-pens.html">만년필별</a>
-          <a href="music-audio.html">음악·오디오별</a>
-          <a href="cameras.html">카메라별</a>
-          <a href="travel.html">여행별</a>
-          <a href="food.html">음식별</a>
-          <a href="bicycles.html">자전거별</a>
-          <span class="is-current">자동차별</span>
-          <a href="motorcycles.html">바이크별</a>
-          <a href="spaces.html">공간별</a>
-        </div>
-      </nav>
+<section class="room-house-panel" id="car-map-room" aria-label="자동차별 지도" hidden>
+  <div class="room-house-panel-header">
+    <p class="room-section-label">지도</p>
+    <h2>내가 달렸던 길들</h2>
+    <button class="room-house-back" type="button">자동차별로 돌아가기</button>
+  </div>
+  <article class="room-post room-card room-record-unit car-record-card">
+    <p class="room-card-meta">준비중 지도</p>
+    <h3>지도는 아직 완성되지 않아도 된다.</h3>
+    <p>한 번 간 길을 몸으로 기억하는 사람의 지도. 실제 길과 장소는 천천히 더해질 예정이다.</p>
+  </article>
+</section>
 
-      <nav class="room-related" aria-label="별 이동">
-        <a class="room-soft-link" href="../index.html#about-constellation">별자리로 돌아가기</a>
-        <a class="room-soft-link room-work-link" href="ham-media-work.html">그래서, 지금은 이런 일을 합니다</a>
-      </nav>
-    </main>
-    <script src="../assets/js/main.js"></script>
-  </body>
+
+    <section class="star-exit" id="star-list" aria-labelledby="star-list-title">
+      <p class="num">07 / 다른 별 보기</p>
+      <h2 id="star-list-title">다른 별 보기</h2>
+      <p class="intro">
+        이 별은 HAM MEDIA Design MD 방식으로 정리한 별입니다.
+        좋아하는 것의 감각을 브랜드의 기준으로 바꾸는 실험이기도 합니다.
+      </p>
+      <div class="star-buttons" aria-label="별 목록">
+        <a class="star-button" href="fountain-pens.html">만년필별</a>
+        <a class="star-button" href="music-audio.html">음악·오디오별</a>
+        <a class="star-button" href="cameras.html">카메라별</a>
+        <a class="star-button" href="travel.html">여행별</a>
+        <a class="star-button" href="food.html">음식별</a>
+        <a class="star-button" href="bicycles.html">자전거별</a>
+        <a class="star-button active" href="cars.html" aria-current="page">자동차별 <span class="star-signal" aria-label="현재 별 점등"></span></a>
+        <a class="star-button" href="motorcycles.html">바이크별</a>
+        <a class="star-button" href="spaces.html">공간별</a>
+      </div>
+      <div class="bottom-links" aria-label="하단 링크">
+        <a class="bottom-link" href="../index.html#about-constellation">별자리로 돌아가기</a>
+        <a class="bottom-link" href="ham-media-work.html">그래서, 지금은 이런 일을 합니다</a>
+        <a class="bottom-link" href="https://hammedia.github.io/design-brief/">Design MD 만드는 도구</a>
+      </div>
+    </section>
+
+    <footer>자동차별 · LPH-B613-06 · HAM MEDIA · Design MD로 만든 별 페이지</footer>
+  </main>
+  <script src="../assets/js/main.js?v=car-star-sheet-v1"></script>
+</body>
 </html>
