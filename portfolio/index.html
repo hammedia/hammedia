@@ -67,6 +67,7 @@
       font-size: 13px; font-weight: 800;
       letter-spacing: 0.08em; color: var(--warm);
       text-decoration: none;
+      flex-shrink: 0;
     }
     .nav-links { display: flex; gap: 2rem; list-style: none; }
     .nav-links a {
@@ -76,6 +77,34 @@
       transition: color .2s;
     }
     .nav-links a:hover { color: var(--accent); }
+    .nav-toggle {
+      display: none;
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--ivory);
+      color: var(--warm);
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .nav-toggle span {
+      width: 17px;
+      height: 2px;
+      border-radius: 999px;
+      background: currentColor;
+      transition: transform .2s, opacity .2s;
+    }
+    .nav-toggle[aria-expanded="true"] span:nth-child(1) {
+      transform: translateY(6px) rotate(45deg);
+    }
+    .nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+    .nav-toggle[aria-expanded="true"] span:nth-child(3) {
+      transform: translateY(-6px) rotate(-45deg);
+    }
     .nav-lang { display: flex; gap: .6rem; }
     .lang-btn {
       font-size: 11px; font-weight: 600;
@@ -254,6 +283,8 @@
       letter-spacing: -.01em;
       color: var(--warm); margin-bottom: 2.5rem;
       line-height: 1.3;
+      word-break: keep-all;
+      overflow-wrap: normal;
     }
 
     /* ── WHAT I DO ── */
@@ -329,6 +360,7 @@
     .service-grid {
       display: grid;
       grid-template-columns: repeat(5, minmax(0, 1fr));
+      align-items: stretch;
       gap: 1px;
       width: min(1040px, calc(100vw - 6rem));
       margin-left: 50%;
@@ -344,6 +376,8 @@
       position: relative;
       display: flex;
       flex-direction: column;
+      height: auto;
+      min-height: 0;
       transition: background .2s;
     }
     .service-item.is-primary {
@@ -375,6 +409,8 @@
       color: var(--warm);
       margin-bottom: .8rem;
       line-height: 1.35;
+      word-break: keep-all;
+      overflow-wrap: normal;
     }
     .svc-for,
     .svc-do,
@@ -724,6 +760,8 @@
       font-size: clamp(1.5rem, 3vw, 2rem);
       font-weight: 700; line-height: 1.35;
       letter-spacing: -.01em; margin-bottom: .75rem;
+      word-break: keep-all;
+      overflow-wrap: normal;
     }
     .cta-heading .sky { color: var(--sky); }
     .cta-sub {
@@ -825,8 +863,33 @@
       }
     }
     @media (max-width: 760px) {
-      nav { padding: 0 1.25rem; }
-      .nav-links { display: none; }
+      nav { padding: 0 1.25rem; position: sticky; gap: .65rem; }
+      .nav-toggle { display: flex; order: 3; flex-shrink: 0; }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 58px;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        gap: 0;
+        padding: .45rem 1.25rem .8rem;
+        background: var(--pearl);
+        border-bottom: 1px solid var(--line);
+        box-shadow: 0 18px 34px rgba(44,34,26,0.08);
+      }
+      .nav-links.is-open { display: flex; }
+      .nav-links a {
+        display: block;
+        padding: .76rem 0;
+        color: var(--warm);
+        font-size: 14px;
+        letter-spacing: 0;
+        border-bottom: 1px solid var(--line);
+      }
+      .nav-links li:last-child a { border-bottom: none; }
+      .nav-lang { gap: .35rem; margin-left: auto; order: 2; }
+      .lang-btn { padding: 5px 9px; font-size: 10px; }
       .hero { grid-template-columns: 1fr; padding: 3.5rem 1.5rem 3rem; gap: 2.5rem; min-height: auto; }
       .hero-photo { order: -1; margin-top: 0; }
       .hero-photo img { width: 160px; height: 200px; }
@@ -836,7 +899,30 @@
       .what-grid { grid-template-columns: 1fr; }
       .positioning-wrap, .service-grid, .eq-grid, .cred-grid { grid-template-columns: 1fr; }
       .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-      .hero-title { font-size: 2rem; line-height: 1.17; }
+      .hero-title {
+        font-size: 1.85rem;
+        line-height: 1.22;
+        word-break: keep-all;
+        overflow-wrap: normal;
+      }
+      .sec-title {
+        font-size: 1.62rem;
+        line-height: 1.34;
+        word-break: keep-all;
+        overflow-wrap: normal;
+      }
+      .svc-name {
+        font-size: 1rem;
+        line-height: 1.4;
+        word-break: keep-all;
+        overflow-wrap: normal;
+      }
+      .cta-heading {
+        font-size: 1.5rem;
+        line-height: 1.38;
+        word-break: keep-all;
+        overflow-wrap: normal;
+      }
       .hero-bridge { font-size: 1.02rem; line-height: 1.6; }
       .hero-sub { font-size: .96rem; line-height: 1.8; margin-bottom: 1.6rem; }
       .service-name { font-size: 1.12rem; }
@@ -849,7 +935,12 @@
 <!-- NAV -->
 <nav>
   <a class="nav-logo" href="#">HAM MEDIA</a>
-  <ul class="nav-links">
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="메뉴 열기">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+  <ul class="nav-links" id="primary-nav">
     <li><a href="#about">소개</a></li>
     <li><a href="#what">역량</a></li>
     <li><a href="#services">작업 범위</a></li>
@@ -1381,6 +1472,31 @@
 </footer>
 
 <script>
+  // Mobile navigation
+  const navToggle = document.querySelector('.nav-toggle');
+  const primaryNav = document.querySelector('#primary-nav');
+  if (navToggle && primaryNav) {
+    const closeNav = () => {
+      primaryNav.classList.remove('is-open');
+      navToggle.setAttribute('aria-expanded', 'false');
+      navToggle.setAttribute('aria-label', '메뉴 열기');
+    };
+
+    navToggle.addEventListener('click', () => {
+      const isOpen = primaryNav.classList.toggle('is-open');
+      navToggle.setAttribute('aria-expanded', String(isOpen));
+      navToggle.setAttribute('aria-label', isOpen ? '메뉴 닫기' : '메뉴 열기');
+    });
+
+    primaryNav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', closeNav);
+    });
+
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') closeNav();
+    });
+  }
+
   // Fade-up observer
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(el => { if (el.isIntersecting) el.target.classList.add('visible'); });
