@@ -749,6 +749,13 @@ function buildRoomHouse() {
 
     const detailImage = image.cloneNode(false);
     detailImage.className = "room-gallery-detail-photo";
+    const displayMode = figure.dataset.displayMode || "";
+    const isArchiveLow = displayMode === "archive-low";
+    const archiveMaxWidth = figure.dataset.archiveMaxWidth;
+    if (isArchiveLow && archiveMaxWidth) {
+      detailImage.style.setProperty("--archive-max-width", archiveMaxWidth);
+    }
+    photoDetail.classList.toggle("is-archive-low", isArchiveLow);
 
     const detailCopy = document.createElement("p");
     detailCopy.className = "room-gallery-detail-copy";
