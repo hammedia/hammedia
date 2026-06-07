@@ -1305,15 +1305,49 @@
     }
 
     /* Photo room sizing: desktop 4, tablet 3, mobile 2. */
+    #camera-photo-room {
+      background: var(--color-film);
+      border: 0;
+      border-radius: 0;
+      color: var(--ink-on-dark);
+      inset: 0;
+      margin: 0;
+      overflow: auto;
+      padding: clamp(34px, 5vw, 76px);
+      position: fixed;
+      z-index: 80;
+    }
+
+    #camera-photo-room > * {
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 1120px;
+      width: 100%;
+    }
+
     .room-house-photo-grid {
       grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: clamp(10px, 1.5vw, 18px);
       max-width: none;
     }
 
+    #camera-photo-room .room-house-photo-grid {
+      max-width: none;
+      width: 100%;
+    }
+
     .room-house-photo-grid figure,
     .room-house-photo {
       margin: 0;
+    }
+
+    #camera-photo-room .room-house-photo {
+      background: transparent;
+      border: 0;
+      border-radius: 0;
+      display: grid;
+      gap: var(--space-2);
+      overflow: visible;
     }
 
     .room-house-photo-grid img,
@@ -1322,6 +1356,15 @@
       aspect-ratio: 4 / 3;
       object-fit: cover;
       width: 100%;
+    }
+
+    #camera-photo-room .room-house-photo img {
+      border-radius: var(--radius);
+    }
+
+    #camera-photo-room .room-house-photo figcaption {
+      margin-top: var(--space-2);
+      padding: 0;
     }
 
     @media (min-width: 641px) and (max-width: 1024px) {
