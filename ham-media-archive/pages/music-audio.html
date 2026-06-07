@@ -1323,6 +1323,37 @@
       }
     }
 
+    /* Photo room sizing: desktop 4, tablet 3, mobile 2. */
+    .room-house-photo-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: clamp(10px, 1.5vw, 18px);
+      max-width: none;
+    }
+
+    .room-house-photo-grid figure,
+    .room-house-photo {
+      margin: 0;
+    }
+
+    .room-house-photo-grid img,
+    .room-house-photo img,
+    .room-house-photo-thumb {
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      width: 100%;
+    }
+
+    @media (min-width: 641px) and (max-width: 1024px) {
+      .room-house-photo-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .room-house-photo-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
   </style>
 </head>
 <body>
