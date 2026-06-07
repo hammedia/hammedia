@@ -209,6 +209,7 @@ const constellationDetail = document.querySelector(".constellation-detail");
 const constellationWindow = document.querySelector(".constellation-window");
 const constellationGuide = document.querySelector(".constellation-guide");
 const fineHoverQuery = window.matchMedia("(hover: hover) and (pointer: fine)");
+const coarsePointerQuery = window.matchMedia("(pointer: coarse)");
 const visitedStars = [];
 let activeStar = null;
 
@@ -218,12 +219,23 @@ function getAssetImageUrl(path) {
   return new URL(path, scriptAssetRoot).href;
 }
 
+function shouldUseTouchGuide() {
+  return coarsePointerQuery.matches || navigator.maxTouchPoints > 0 || window.innerWidth <= 620;
+}
+
 function syncConstellationGuide() {
   if (!constellationGuide) return;
 
-  constellationGuide.textContent = fineHoverQuery.matches
+  constellationGuide.textContent = fineHoverQuery.matches && !shouldUseTouchGuide()
     ? "별에 마우스를 올리면 입장권이 열립니다. 입장은 입장권 버튼으로 합니다."
     : "별을 누르면 입장권이 열립니다. 입장권 버튼으로 들어갑니다.";
+}
+
+function handleConstellationInputModeChange() {
+  syncConstellationGuide();
+  if (activeStar) {
+    positionConstellationTicket(activeStar);
+  }
 }
 
 function createBackgroundStars() {
@@ -399,18 +411,9 @@ function enterStarRoom(href) {
 }
 
 syncConstellationGuide();
-fineHoverQuery.addEventListener?.("change", () => {
-  syncConstellationGuide();
-  if (activeStar) {
-    positionConstellationTicket(activeStar);
-  }
-});
-
-window.addEventListener("resize", () => {
-  if (activeStar) {
-    positionConstellationTicket(activeStar);
-  }
-});
+fineHoverQuery.addEventListener?.("change", handleConstellationInputModeChange);
+coarsePointerQuery.addEventListener?.("change", handleConstellationInputModeChange);
+window.addEventListener("resize", handleConstellationInputModeChange);
 
 if (constellationStars.length) {
   createBackgroundStars();
