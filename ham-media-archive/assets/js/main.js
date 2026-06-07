@@ -122,7 +122,7 @@ const constellationData = {
   car: {
     code: "LPH B-613-06",
     kind: "일",
-    name: "길을 찾는 별",
+    name: "길을 찾는 이야기",
     teaser: "길을 잘 찾는 사람이라는 발견",
     result: "차를 좋아해 멀리 다녔고, 많은 사람을 만났다. 그러다 알았다. 나는 길을 잘 찾는 사람이라는 걸. 길 찾던 그 버릇이, 일이 되어 돌아왔다.",
     invite: "막막한 사람에게 방향을 찾아주는 일. 지금 내가 하는 게 그거다.",
@@ -132,7 +132,7 @@ const constellationData = {
     previewCaption: "자동차별 대표 이미지",
     previewFit: "cover",
     roomHref: "pages/cars.html",
-    roomLabel: "자동차별로 들어가기"
+    roomLabel: "입장권 발권"
   },
   food: {
     code: "LPH-B613-07",
