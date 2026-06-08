@@ -911,6 +911,36 @@
       letter-spacing: 0.12em;
     }
 
+    .room-sort-control {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      margin: 0 0 var(--space-5);
+      padding-bottom: var(--space-4);
+      border-bottom: 1px solid var(--line-dark);
+      color: var(--muted-on-dark);
+      font-size: var(--small);
+      font-weight: 850;
+    }
+
+    .room-sort-control button {
+      border: 0;
+      border-bottom: 2px solid transparent;
+      border-radius: 0;
+      background: transparent;
+      color: var(--muted-on-dark);
+      font-size: var(--small);
+      font-weight: 900;
+      line-height: 1.4;
+      padding: 0 0 4px;
+      cursor: pointer;
+    }
+
+    .room-sort-control button[aria-pressed="true"] {
+      border-color: var(--color-glass);
+      color: var(--ink-on-dark);
+    }
+
     .room-house-back,
     .room-article-back,
     .room-gallery-detail-button {
@@ -957,6 +987,15 @@
 
     .room-article-panel {
       padding: var(--space-5) 0 0;
+    }
+
+    .room-house-panel.is-detail-mode > .room-house-panel-header,
+    .room-house-panel.is-detail-mode > .room-sort-control,
+    .room-house-panel.is-detail-mode > .room-article-list,
+    .room-house-panel.is-photo-detail-mode > .room-house-panel-header,
+    .room-house-panel.is-photo-detail-mode > .room-sort-control,
+    .room-house-panel.is-photo-detail-mode > .room-section-heading {
+      display: none;
     }
 
     .room-record-figure,
@@ -1381,7 +1420,7 @@
   </style>
 </head>
 <body>
-  <main class="sheet room-house-page camera-room camera-style-page" id="camera-star">
+  <main class="sheet room-house-page camera-room camera-style-page" id="camera-star" data-article-nav-label="문장 이동" data-article-list-label="문장으로" data-article-prev-label="이전 문장" data-article-next-label="다음 문장" data-photo-list-label="장면으로">
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-text">
         <p class="eyebrow">카메라별 · LPH-B613-09 · HAM MEDIA 별자리</p>
@@ -1392,8 +1431,8 @@
           고르는 순간이 중요했다.
         </p>
         <nav class="entry-nav room-house-nav" aria-label="카메라별 입구">
-          <button class="entry-link room-house-door" type="button" data-scroll-target="#camera-writing" data-house-target="camera-writing-room">글</button>
-          <button class="entry-link room-house-door" type="button" data-scroll-target="#camera-photos" data-house-target="camera-photo-room">사진</button>
+          <button class="entry-link room-house-door" type="button" data-scroll-target="#camera-writing" data-house-target="camera-writing-room">문장</button>
+          <button class="entry-link room-house-door" type="button" data-scroll-target="#camera-photos" data-house-target="camera-photo-room">장면</button>
           <button class="entry-link room-house-door" type="button" data-scroll-target="#camera-map" data-house-target="camera-map-room">지도</button>
           <a class="entry-link" href="#star-list">다른 별</a>
         </nav>
@@ -1453,26 +1492,26 @@
       <div class="section-head">
         <div class="section-number">03 / 별 안으로</div>
         <div>
-          <h2>이 별의 문은 전시장보다 작업실에 가깝다.</h2>
-          <p class="section-intro">들어가는 곳은 네 개다. 글은 두려움에서 시작하고, 사진은 많이 찍은 뒤 남긴 것만 보이고, 지도는 아직 진행 중인 선으로 남는다.</p>
+          <h2>이 별은 전시장보다 작업실에 가깝다.</h2>
+          <p class="section-intro">문장은 두려움에서 시작하고, 장면은 많이 찍은 뒤 남긴 것만 보인다. 지도는 아직 메뉴가 아니라 찍고 고르고 다시 보는 좌표를 천천히 모으는 일이다.</p>
         </div>
       </div>
       <div class="doors">
         <button class="door-panel room-house-door" type="button" data-scroll-target="#camera-writing" data-house-target="camera-writing-room">
-          <div><h3>글</h3><p>카메라 앞에 서기 전, 판단을 흐리던 두려움에 관한 기록.</p></div>
-          <span>글방으로</span>
+          <div><h3>문장</h3><p>카메라 앞에 서기 전, 판단을 흐리던 두려움에 관한 기록.</p></div>
+          <span>문장으로</span>
         </button>
         <button class="door-panel room-house-door" type="button" data-scroll-target="#camera-photos" data-house-target="camera-photo-room">
-          <div><h3>사진</h3><p>많이 찍은 것 중에서, 왜 남겼는지 말할 수 있는 컷만.</p></div>
-          <span>사진방으로</span>
+          <div><h3>장면</h3><p>많이 찍은 것 중에서, 왜 남겼는지 말할 수 있는 컷만.</p></div>
+          <span>장면으로</span>
         </button>
         <button class="door-panel room-house-door" type="button" data-scroll-target="#camera-map" data-house-target="camera-map-room">
           <div><h3>지도</h3><p>완성된 길보다, 찍고 고르고 다시 보는 동선.</p></div>
-          <span>지도 보기</span>
+          <span>좌표 보기</span>
         </button>
         <a class="door-panel" href="#star-list">
           <div><h3>다른 별</h3><p>카메라가 다른 별의 이야기를 어떻게 남기는지 이어 본다.</p></div>
-          <span>별 목록으로</span>
+          <span>다른 별로</span>
         </a>
       </div>
     </section>
@@ -1573,42 +1612,48 @@
       <footer class="footer">카메라별 · LPH-B613-09 · HAM MEDIA · Design MD로 만든 별 페이지</footer>
     </section>
 
-    <section class="room-house-panel" id="camera-writing-room" aria-label="카메라 글" hidden>
+    <section class="room-house-panel" id="camera-writing-room" aria-label="카메라별 문장" hidden>
         <div class="room-house-panel-header">
-          <p class="room-section-label">글</p>
-          <h2>글 목록</h2>
+          <p class="room-section-label">카메라별 · 문장</p>
+          <h2>프레임으로 남은 사람들</h2>
           <button class="room-house-back" type="button">카메라별로 돌아가기</button>
         </div>
 
-        <div class="room-article-list" aria-label="카메라 글 목록">
-          <button class="room-article-link" type="button" data-article-target="camera-shooting-setup-note" aria-label="무엇을 담을지 고르는 현장 읽기">
+        <div class="room-sort-control" data-sort-target="articles" aria-label="카메라별 문장 정렬">
+          <span>순서</span>
+          <button type="button" data-sort-mode="latest" aria-pressed="true">최신순</button>
+          <button type="button" data-sort-mode="registered" aria-pressed="false">등록순</button>
+        </div>
+
+        <div class="room-article-list" aria-label="카메라별 문장">
+          <button class="room-article-link" type="button" data-article-target="camera-shooting-setup-note" data-homepage-date="2026-06-07" data-sort-order="1" aria-label="무엇을 담을지 고르는 현장 읽기">
             <strong>담을지 고르기</strong>
           </button>
-          <button class="room-article-link" type="button" data-article-target="camera-fear-starting-note" aria-label="두려움 읽기">
+          <button class="room-article-link" type="button" data-article-target="camera-fear-starting-note" data-homepage-date="2026-06-02" data-sort-order="2" aria-label="두려움 읽기">
             <strong>두려움</strong>
           </button>
         </div>
 
         <div class="room-card-list room-article-panels">
           <article class="room-post room-card room-record-unit camera-record-card room-article-panel" id="camera-shooting-setup-note" hidden>
-            <button class="room-article-back" type="button">글 목록</button>
+            <button class="room-article-back" type="button">문장으로</button>
             <figure class="room-record-figure">
               <img class="room-photo-image room-record-photo" src="../assets/images/cameras/essay-shooting-setup.jpg" alt="촬영 조명과 삼각대를 세팅하는 현장">
               <figcaption class="room-record-caption">
-                <span class="room-card-meta">글</span>
+                <span class="room-card-meta">문장</span>
                 <strong class="room-card-title">무엇을 담을지 고르는 현장</strong>
-                <span class="room-card-note">촬영 준비 / 프레임 / 현장</span>
+                <span class="room-card-note">촬영 준비 · 프레임 · 현장</span>
                 <span>무엇을 담을지 먼저 정하고 나면, 셔터는 그다음이다.</span>
               </figcaption>
             </figure>
           </article>
 
           <article class="room-post shared-memory-card room-article-panel" id="camera-fear-starting-note" hidden>
-            <button class="room-article-back" type="button">글 목록</button>
+            <button class="room-article-back" type="button">문장으로</button>
             <header class="fountain-essay-header">
-              <p class="room-card-meta">글</p>
+              <p class="room-card-meta">문장</p>
               <h3>두려움</h3>
-              <p>카메라 / 시작 / 유튜브</p>
+              <p>카메라 · 시작 · 유튜브</p>
             </header>
 
             <div class="shared-memory-layout">
@@ -1642,15 +1687,21 @@
         </div>
       </section>
 
-    <section class="room-house-panel camera-gallery" id="camera-photo-room" aria-label="카메라 갤러리" hidden>
+    <section class="room-house-panel camera-gallery" id="camera-photo-room" aria-label="카메라별 장면" hidden>
         <div class="room-house-panel-header">
-          <p class="room-section-label">사진</p>
-          <h2>카메라와 시선이 남긴 사진들</h2>
+          <p class="room-section-label">카메라별 · 장면</p>
+          <h2>장면으로 남은 사람들</h2>
           <button class="room-house-back" type="button">카메라별로 돌아가기</button>
         </div>
 
+        <div class="room-sort-control" data-sort-target="photos" aria-label="카메라별 장면 정렬">
+          <span>순서</span>
+          <button type="button" data-sort-mode="latest" aria-pressed="true">최신순</button>
+          <button type="button" data-sort-mode="registered" aria-pressed="false">등록순</button>
+        </div>
+
         <div class="room-section-heading">
-          <p class="room-section-label">카메라와 현장의 흔적</p>
+          <p class="room-section-label">카메라와 시선의 좌표</p>
         </div>
         <div class="room-house-photo-grid camera-gallery-grid">
           <figure class="room-house-photo" data-memory="거울 앞에서 카메라를 들었다. 보는 사람과 찍는 사람이 같은 프레임 안에 있다.">
@@ -1764,17 +1815,17 @@
 
     <section class="room-house-panel" id="camera-map-room" aria-label="카메라별 지도" hidden>
       <div class="room-house-panel-header">
-        <p class="room-section-label">지도</p>
-        <h2>지도 준비중</h2>
+        <p class="room-section-label">관계의 지도</p>
+        <h2>시선의 좌표가 쌓이면 지도가 됩니다</h2>
         <button class="room-house-back" type="button">카메라별로 돌아가기</button>
       </div>
       <article class="room-map-placeholder">
-        <strong>진행 중인 지도</strong>
-        <p>카메라별의 지도는 아직 완성하지 않습니다. 찍고, 고르고, 다시 보는 동선이 쌓이면 이 자리에 열겠습니다.</p>
+        <strong>태그는 관계의 좌표입니다.</strong>
+        <p>같은 프레임, 같은 카메라, 같은 장소, 같은 두려움이 쌓이면 이 별의 지형이 드러납니다.</p>
       </article>
     </section>
   </main>
 
-  <script src="../assets/js/main.js?v=camera-star-style-v1"></script>
+  <script src="../assets/js/main.js?v=camera-world-language-v1"></script>
 </body>
 </html>
