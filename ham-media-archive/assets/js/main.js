@@ -473,7 +473,7 @@ function buildRoomEntryNavigation() {
 
   const nav = document.createElement("nav");
   nav.className = "room-entry-nav";
-  nav.setAttribute("aria-label", "방 안 보기");
+  nav.setAttribute("aria-label", "별 안 보기");
 
   if (roomPosts) {
     roomPosts.id = roomPosts.id || "room-writing";
@@ -565,6 +565,41 @@ function buildRoomGalleryDetails() {
 buildRoomEntryNavigation();
 buildRoomGalleryDetails();
 
+function getRoomSortOrder(element) {
+  return Number(element.dataset.sortOrder || 0);
+}
+
+function sortRoomElements(container, selector, mode) {
+  const elements = Array.from(container.querySelectorAll(selector));
+
+  elements.forEach((element, index) => {
+    if (!element.dataset.sortOrder) {
+      element.dataset.sortOrder = String(index + 1);
+    }
+  });
+
+  const sortedElements = elements.sort((a, b) => {
+    if (mode === "latest") {
+      const dateCompare = (b.dataset.homepageDate || "").localeCompare(a.dataset.homepageDate || "");
+      if (dateCompare !== 0) return dateCompare;
+    }
+
+    return getRoomSortOrder(a) - getRoomSortOrder(b);
+  });
+
+  sortedElements.forEach((element) => {
+    container.append(element);
+  });
+
+  return sortedElements;
+}
+
+function updateRoomSortButtons(sortControl, mode) {
+  sortControl.querySelectorAll("[data-sort-mode]").forEach((button) => {
+    button.setAttribute("aria-pressed", String(button.dataset.sortMode === mode));
+  });
+}
+
 function buildRoomHouse() {
   const housePage = document.querySelector(".room-house-page");
   if (!housePage) return;
@@ -573,13 +608,29 @@ function buildRoomHouse() {
   const panels = Array.from(housePage.querySelectorAll(".room-house-panel"));
   const houseNav = housePage.querySelector(".room-house-nav");
   const articleList = housePage.querySelector(".room-article-list");
-  const articleLinks = Array.from(housePage.querySelectorAll(".room-article-link[data-article-target]"));
-  const articlePanels = Array.from(housePage.querySelectorAll(".room-article-panel"));
+  const articlePanelsContainer = housePage.querySelector(".room-article-panels");
+  let articleLinks = Array.from(housePage.querySelectorAll(".room-article-link[data-article-target]"));
+  let articlePanels = Array.from(housePage.querySelectorAll(".room-article-panel"));
   const articleBackButtons = Array.from(housePage.querySelectorAll(".room-article-back"));
   const photoDetail = housePage.querySelector(".room-house-photo-detail");
   const photoPanel = housePage.querySelector("[id$='photo-room']");
   const photoGrid = photoPanel?.querySelector(".room-house-photo-grid");
-  const photoFigures = Array.from(photoGrid?.querySelectorAll("figure") || housePage.querySelectorAll(".room-house-photo"));
+  let photoFigures = Array.from(photoGrid?.querySelectorAll("figure") || housePage.querySelectorAll(".room-house-photo"));
+
+  const articleNavLabel = housePage.dataset.articleNavLabel || "글 이동";
+  const articleListLabel = housePage.dataset.articleListLabel || "글 목록";
+  const articlePrevLabel = housePage.dataset.articlePrevLabel || "이전 글";
+  const articleNextLabel = housePage.dataset.articleNextLabel || "다음 글";
+  const photoListLabel = housePage.dataset.photoListLabel || "사진 목록";
+
+  function syncArticleCollections() {
+    articleLinks = Array.from(housePage.querySelectorAll(".room-article-link[data-article-target]"));
+    articlePanels = Array.from(housePage.querySelectorAll(".room-article-panel"));
+  }
+
+  function syncPhotoFigures() {
+    photoFigures = Array.from(photoGrid?.querySelectorAll("figure") || housePage.querySelectorAll(".room-house-photo"));
+  }
 
   function closeArticles() {
     articlePanels.forEach((panel) => {
@@ -618,6 +669,61 @@ function buildRoomHouse() {
     doors.forEach((door) => {
       door.classList.remove("is-active");
       door.setAttribute("aria-expanded", "false");
+    });
+  }
+
+  function sortArticles(mode) {
+    if (!articleList || !articlePanelsContainer) return;
+
+    const sortedLinks = sortRoomElements(articleList, ".room-article-link[data-article-target]", mode);
+
+    sortedLinks.forEach((link) => {
+      const panel = housePage.querySelector(`#${link.dataset.articleTarget}`);
+      if (panel) {
+        articlePanelsContainer.append(panel);
+      }
+    });
+
+    syncArticleCollections();
+    rebuildArticleBottomNav();
+  }
+
+  function sortPhotos(mode) {
+    if (!photoGrid) return;
+
+    closePhotoDetail();
+    sortRoomElements(photoGrid, "figure", mode);
+    syncPhotoFigures();
+  }
+
+  function setupSortControls() {
+    const sortControls = Array.from(housePage.querySelectorAll(".room-sort-control[data-sort-target]"));
+
+    sortControls.forEach((sortControl) => {
+      const target = sortControl.dataset.sortTarget;
+      const defaultButton = sortControl.querySelector('[data-sort-mode][aria-pressed="true"]') || sortControl.querySelector("[data-sort-mode]");
+      const defaultMode = defaultButton?.dataset.sortMode || "latest";
+
+      const applySortMode = (mode) => {
+        updateRoomSortButtons(sortControl, mode);
+
+        if (target === "articles") {
+          closeArticles();
+          sortArticles(mode);
+        }
+
+        if (target === "photos") {
+          sortPhotos(mode);
+        }
+      };
+
+      sortControl.querySelectorAll("[data-sort-mode]").forEach((button) => {
+        button.addEventListener("click", () => {
+          applySortMode(button.dataset.sortMode || "latest");
+        });
+      });
+
+      applySortMode(defaultMode);
     });
   }
 
@@ -679,40 +785,49 @@ function buildRoomHouse() {
     });
   }
 
-  articlePanels.forEach((panel, index) => {
-    if (panel.querySelector(":scope > .room-article-bottom-nav")) return;
+  function rebuildArticleBottomNav() {
+    articlePanels.forEach((panel) => {
+      panel.querySelector(":scope > .room-article-bottom-nav")?.remove();
+    });
 
-    const nav = document.createElement("nav");
-    nav.className = "room-article-bottom-nav";
-    nav.setAttribute("aria-label", "글 이동");
+    articlePanels.forEach((panel, index) => {
+      const nav = document.createElement("nav");
+      nav.className = "room-article-bottom-nav";
+      nav.setAttribute("aria-label", articleNavLabel);
 
-    const listButton = document.createElement("button");
-    listButton.type = "button";
-    listButton.textContent = "글 목록";
-    listButton.addEventListener("click", returnToArticleList);
+      const listButton = document.createElement("button");
+      listButton.type = "button";
+      listButton.textContent = articleListLabel;
+      listButton.addEventListener("click", returnToArticleList);
 
-    const previousButton = document.createElement("button");
-    previousButton.type = "button";
-    previousButton.textContent = "이전 글";
-    previousButton.disabled = index === 0;
-    previousButton.addEventListener("click", () => openArticleAt(index - 1));
+      const previousButton = document.createElement("button");
+      previousButton.type = "button";
+      previousButton.textContent = articlePrevLabel;
+      previousButton.disabled = index === 0;
+      previousButton.addEventListener("click", () => openArticleAt(index - 1));
 
-    const nextButton = document.createElement("button");
-    nextButton.type = "button";
-    nextButton.textContent = "다음 글";
-    nextButton.disabled = index === articlePanels.length - 1;
-    nextButton.addEventListener("click", () => openArticleAt(index + 1));
+      const nextButton = document.createElement("button");
+      nextButton.type = "button";
+      nextButton.textContent = articleNextLabel;
+      nextButton.disabled = index === articlePanels.length - 1;
+      nextButton.addEventListener("click", () => openArticleAt(index + 1));
 
-    nav.append(listButton, previousButton, nextButton);
-    panel.append(nav);
-  });
+      nav.append(listButton, previousButton, nextButton);
+      panel.append(nav);
+    });
+  }
 
-  articleLinks.forEach((link, index) => {
+  setupSortControls();
+  rebuildArticleBottomNav();
+
+  articleLinks.forEach((link) => {
     const target = housePage.querySelector(`#${link.dataset.articleTarget}`);
     if (!target) return;
 
     link.setAttribute("aria-expanded", "false");
     link.addEventListener("click", () => {
+      syncArticleCollections();
+      const index = articleLinks.indexOf(link);
       openArticleAt(index);
     });
   });
@@ -736,7 +851,7 @@ function buildRoomHouse() {
     const backButton = document.createElement("button");
     backButton.className = "room-gallery-detail-button";
     backButton.type = "button";
-    backButton.textContent = "사진 목록";
+    backButton.textContent = photoListLabel;
     backButton.addEventListener("click", () => {
       closePhotoDetail();
       photoGrid?.scrollIntoView({
@@ -797,16 +912,19 @@ function buildRoomHouse() {
     });
   }
 
-  photoFigures.forEach((figure, index) => {
+  photoFigures.forEach((figure) => {
     const image = figure.querySelector("img");
     if (!image || !photoDetail) return;
 
     figure.classList.add("room-house-photo", "room-memory-clickable");
     figure.tabIndex = 0;
     figure.setAttribute("role", "button");
-    figure.setAttribute("aria-label", `${image.alt || `사진 ${index + 1}`} 크게 보기`);
+    figure.setAttribute("aria-label", `${image.alt || "사진"} 크게 보기`);
 
-    const open = () => openHousePhoto(index);
+    const open = () => {
+      syncPhotoFigures();
+      openHousePhoto(photoFigures.indexOf(figure));
+    };
 
     figure.addEventListener("click", open);
     figure.addEventListener("keydown", (event) => {
