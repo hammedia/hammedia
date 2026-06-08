@@ -688,6 +688,19 @@
 
     .room-house-panel-header h2 {
       grid-column: 1 / -1;
+      color: var(--color-aurora-black);
+      font-size: clamp(34px, 5vw, 64px);
+      font-weight: 600;
+      line-height: 1.05;
+    }
+
+    .room-panel-intro {
+      color: #68645c;
+      font-size: var(--type-body);
+      grid-column: 1 / -1;
+      line-height: 1.68;
+      margin: 0;
+      max-width: 640px;
     }
 
     .room-house-panel.is-detail-mode > .room-house-panel-header,
@@ -722,14 +735,86 @@
       padding: var(--space-8) var(--space-16);
     }
 
+    .room-house-back,
+    .room-article-back,
+    .room-article-bottom-nav button,
+    .room-gallery-detail-button {
+      border: 0;
+      border-bottom: 1px solid var(--color-paper-line);
+      border-radius: 0;
+      background: transparent;
+      color: #68645c;
+      min-height: 30px;
+      padding: 0 0 4px;
+    }
+
+    .room-house-back {
+      align-self: start;
+      justify-self: end;
+    }
+
+    .room-house-back:hover,
+    .room-article-back:hover,
+    .room-article-bottom-nav button:hover,
+    .room-gallery-detail-button:hover {
+      border-bottom-color: var(--color-ink-studio-143);
+      color: var(--color-aurora-black);
+    }
+
+    .room-sort-control {
+      align-items: center;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: flex-end;
+      margin: 0 0 18px;
+    }
+
+    .room-sort-control span {
+      color: #8c8579;
+      font-size: var(--type-caption);
+      font-weight: 600;
+      line-height: var(--leading-caption);
+    }
+
+    .room-sort-control button {
+      border: 0;
+      border-bottom: 1px solid transparent;
+      border-radius: 0;
+      background: transparent;
+      color: #8c8579;
+      cursor: pointer;
+      font: inherit;
+      font-size: var(--type-caption);
+      font-weight: 600;
+      line-height: 1.2;
+      min-height: 26px;
+      padding: 0 0 4px;
+    }
+
+    .room-sort-control button[aria-pressed="true"] {
+      border-bottom-color: var(--color-ink-studio-143);
+      color: var(--color-aurora-black);
+    }
+
+    .room-sort-control button:hover {
+      color: var(--color-aurora-black);
+    }
+
+    .room-house-panel.is-detail-mode > .room-sort-control,
+    .room-house-panel.is-photo-detail-mode > .room-sort-control {
+      display: none;
+    }
+
     .room-article-list {
       border-top: 1px solid var(--color-paper-line);
+      counter-reset: room-article;
       display: grid;
       gap: 0;
     }
 
     .room-article-link {
-      align-items: center;
+      align-items: start;
       background: transparent;
       border: 0;
       border-bottom: 1px solid var(--color-paper-line);
@@ -738,29 +823,62 @@
       cursor: pointer;
       display: grid;
       font: inherit;
-      gap: var(--space-16);
-      grid-template-columns: minmax(0, 1fr) auto;
-      min-height: 64px;
-      padding: var(--space-16) 0;
+      gap: 6px var(--space-24);
+      grid-template-columns: minmax(32px, auto) minmax(0, 1fr) auto;
+      grid-template-rows: auto auto;
+      min-height: 86px;
+      padding: var(--space-24) 0;
       text-align: left;
       width: 100%;
     }
 
+    .room-article-link::before {
+      color: #a79f93;
+      content: counter(room-article, decimal-leading-zero);
+      counter-increment: room-article;
+      font-family: var(--font-code);
+      font-size: var(--type-caption);
+      font-weight: 600;
+      grid-column: 1;
+      grid-row: 1 / span 2;
+      letter-spacing: 0.06em;
+      line-height: 1.45;
+      padding-top: 0.2em;
+    }
+
     .room-article-link strong {
       display: block;
-      font-size: var(--type-body-lg);
-      font-weight: 700;
+      font-size: clamp(20px, 2.2vw, 30px);
+      font-weight: 600;
+      grid-column: 2;
+      grid-row: 1;
       line-height: 1.35;
     }
 
+    .room-article-note {
+      color: #756e63;
+      display: block;
+      font-size: var(--type-caption);
+      grid-column: 2;
+      grid-row: 2;
+      line-height: var(--leading-caption);
+    }
+
     .room-article-link::after {
-      color: var(--color-platinum-blue-black);
-      content: "읽기";
+      align-self: center;
+      color: #8c8579;
+      content: "→";
       font-family: var(--font-code);
-      font-size: var(--type-micro);
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
+      font-size: var(--type-body-lg);
+      font-weight: 600;
+      grid-column: 3;
+      grid-row: 1 / span 2;
+      line-height: 1;
+    }
+
+    .room-article-link:hover strong,
+    .room-article-link:hover::after {
+      color: var(--color-platinum-blue-black);
     }
 
     .room-list-pager {
@@ -876,14 +994,15 @@
     }
 
     .room-house-photo {
-      border: 1px solid var(--color-paper-line);
-      background: rgba(255, 255, 255, 0.5);
+      border: 0;
+      background: transparent;
       cursor: pointer;
-      padding: var(--space-12);
+      padding: 0;
     }
 
     .room-house-photo-thumb {
       aspect-ratio: 4 / 3;
+      border-radius: 4px;
       object-fit: cover;
     }
 
@@ -912,11 +1031,12 @@
     }
 
     .room-gallery-detail-photo {
-      background: rgba(255, 255, 255, 0.62);
-      border: 1px solid var(--color-paper-line);
-      box-shadow: 0 18px 44px rgba(8, 8, 8, 0.14);
+      background: transparent;
+      border: 0;
+      border-radius: 4px;
+      box-shadow: none;
       height: auto;
-      padding: var(--space-8);
+      padding: 0;
       width: 100%;
     }
 
@@ -1215,13 +1335,21 @@
       .room-house-photo-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
+
+      .room-sort-control {
+        justify-content: flex-start;
+      }
+
+      .room-sort-control button {
+        flex: 0 0 auto;
+      }
     }
   </style>
 </head>
 <body>
   <main class="page room-house-page">
     <nav class="star-room-nav room-house-nav" aria-label="만년필별 이동">
-      <button class="room-house-door" type="button" data-house-target="fountain-writing-room">글</button>
+      <button class="room-house-door" type="button" data-house-target="fountain-writing-room">문장</button>
       <button class="room-house-door" type="button" data-house-target="fountain-photo-room">사진</button>
       <button class="room-house-door" type="button" data-house-target="fountain-map-room">지도</button>
       <a href="#star-list">다른 별</a>
@@ -1231,7 +1359,7 @@
       <div>
         <p class="eyebrow">만년필별 · LPH-B613-01 · HAM MEDIA 별자리</p>
         <h1>검은 전시 벽 위에 걸린 만년필의 기억</h1>
-        <p class="hero-lead">만년필별은 취미를 자랑하는 방이 아니라, 잉크와 손글씨로 안에 있던 것을 밖으로 꺼내는 조용한 기록실입니다.</p>
+        <p class="hero-lead">만년필별에는 잉크로 꺼낸 생각과, 그때의 공기를 품은 장면들이 조용히 남아 있습니다.</p>
         <div class="hand-line" aria-label="handwritten phrase">
           <span class="teal">잉크는 처음 펜에서 나왔을 때와</span>
           <span class="fade">마른 뒤의 색이 다르다.</span>
@@ -1318,7 +1446,7 @@
         <section class="section" id="star-doors">
           <div class="section-head">
             <p class="section-kicker">04 · 별 안으로</p>
-            <h2>두꺼운 액자가 아니라, 조용한 전시 장치</h2>
+            <h2>별 안의 사람들을 만나는 조용한 길</h2>
           </div>
           <div class="component-grid">
             <div class="component-card">
@@ -1330,63 +1458,74 @@
               <p>사진은 장식이 아니라 전시 벽에 걸린 기억이다. 얇은 가장자리와 낮은 그림자만 남긴다.</p>
             </div>
             <div class="component-card">
-              <h3>별의 문</h3>
+              <h3>별 안의 길</h3>
               <div class="tab-row" aria-label="만년필별 입구">
-                <button class="tab active room-house-door" type="button" data-house-target="fountain-writing-room">글</button>
+                <button class="tab active room-house-door" type="button" data-house-target="fountain-writing-room">문장</button>
                 <button class="tab room-house-door" type="button" data-house-target="fountain-photo-room">사진</button>
                 <button class="tab room-house-door" type="button" data-house-target="fountain-map-room">지도</button>
                 <a class="tab" href="#star-list">다른 별</a>
               </div>
-              <p style="margin-top:16px;">첫 화면 뒤는 긴 피드가 아니라 글, 사진, 지도, 다른 별로 들어가는 문이다.</p>
+              <p style="margin-top:16px;">문장으로 들어가면 장면을 만나고, 사진으로 들어가면 생각을 만난다.</p>
             </div>
           </div>
         </section>
 
-      <section class="room-house-panel" id="fountain-writing-room" aria-label="만년필 글" hidden>
+      <section class="room-house-panel" id="fountain-writing-room" aria-label="만년필별 문장 기록" hidden>
         <div class="room-house-panel-header">
-          <p class="room-section-label">글</p>
-          <h2>글 목록</h2>
+          <p class="room-section-label">만년필별 · 문장</p>
+          <h2>문장으로 남은 사람들</h2>
+          <p class="room-panel-intro">오래 생각하다 말을 꺼낸 사람들처럼, 문장들이 이 별 안에 남아 있습니다.</p>
           <button class="room-house-back" type="button">만년필별로 돌아가기</button>
         </div>
 
-        <div class="room-article-list" aria-label="만년필 글 목록">
-          <button class="room-article-link" type="button" data-article-target="fountain-hobby-essay" aria-label="취미라는 것에 대하여 읽기">
-            <strong>취미란 뭘까</strong>
-          </button>
-          <button class="room-article-link" type="button" data-article-target="fountain-beethoven-emperor-note" aria-label="베토벤 황제 2악장, 열 가지 잉크로 쓴 밤 읽기">
-            <strong>황제의 밤</strong>
-          </button>
-          <button class="room-article-link" type="button" data-article-target="fountain-still-walking-note" aria-label="아직 걷는 중 읽기">
-            <strong>아직 걷는 중</strong>
-          </button>
-          <button class="room-article-link" type="button" data-article-target="fountain-well-depth-note" aria-label="우물과 마음의 깊이 읽기">
-            <strong>우물과 마음</strong>
-          </button>
-          <button class="room-article-link" type="button" data-article-target="fountain-happiness-note" aria-label="행복에 관한 짧은 글 중 1 읽기">
-            <strong>행복 짧은 글</strong>
-          </button>
-          <button class="room-article-link" type="button" data-article-target="fountain-honest-person-note" aria-label="정직한 사람 읽기">
-            <strong>정직한 사람</strong>
-          </button>
-          <button class="room-article-link" type="button" data-article-target="fountain-birthday-copying-room-note" aria-label="오늘은 기분 좋은 날 읽기">
-            <strong>오늘은 기분 좋은 날</strong>
-          </button>
-          <button class="room-article-link" type="button" data-article-target="fountain-handmade-gift-letter-note" aria-label="사람은 사람이 만든 것에 약하다 읽기">
-            <strong>사람은 사람이 만든 것에 약하다</strong>
-          </button>
+        <div class="room-sort-control" data-sort-target="articles" aria-label="문장 기록 정렬">
+          <span>순서</span>
+          <button type="button" data-sort-mode="latest" aria-pressed="true">최신순</button>
+          <button type="button" data-sort-mode="registered" aria-pressed="false">등록순</button>
         </div>
-        <div class="room-list-pager" aria-label="만년필 글 페이지">
-          <span>1-8 / 8</span>
-          <button type="button" disabled>다음 없음</button>
+
+        <div class="room-article-list" aria-label="만년필별 문장 기록">
+          <button class="room-article-link" type="button" data-article-target="fountain-hobby-essay" data-homepage-date="2026-06-02" data-sort-order="1" aria-label="취미라는 것에 대하여 읽기">
+            <strong>취미란 뭘까</strong>
+            <span class="room-article-note">만년필 · 취미 · 기록</span>
+          </button>
+          <button class="room-article-link" type="button" data-article-target="fountain-beethoven-emperor-note" data-homepage-date="2026-06-02" data-sort-order="2" aria-label="베토벤 황제 2악장, 열 가지 잉크로 쓴 밤 읽기">
+            <strong>황제의 밤</strong>
+            <span class="room-article-note">만년필 · 자필 · 음악</span>
+          </button>
+          <button class="room-article-link" type="button" data-article-target="fountain-still-walking-note" data-homepage-date="2026-06-02" data-sort-order="3" aria-label="아직 걷는 중 읽기">
+            <strong>아직 걷는 중</strong>
+            <span class="room-article-note">만년필 · 손글씨 · 실패</span>
+          </button>
+          <button class="room-article-link" type="button" data-article-target="fountain-well-depth-note" data-homepage-date="2026-06-02" data-sort-order="4" aria-label="우물과 마음의 깊이 읽기">
+            <strong>우물과 마음</strong>
+            <span class="room-article-note">만년필 · 마음 · 위안</span>
+          </button>
+          <button class="room-article-link" type="button" data-article-target="fountain-happiness-note" data-homepage-date="2026-06-02" data-sort-order="5" aria-label="행복에 관한 짧은 글 중 1 읽기">
+            <strong>행복 짧은 글</strong>
+            <span class="room-article-note">만년필 · 행복 · 필사</span>
+          </button>
+          <button class="room-article-link" type="button" data-article-target="fountain-honest-person-note" data-homepage-date="2026-06-09" data-sort-order="6" aria-label="정직한 사람 읽기">
+            <strong>정직한 사람</strong>
+            <span class="room-article-note">만년필 · 손글씨 · 사람</span>
+          </button>
+          <button class="room-article-link" type="button" data-article-target="fountain-birthday-copying-room-note" data-homepage-date="2026-06-09" data-sort-order="7" aria-label="오늘은 기분 좋은 날 읽기">
+            <strong>오늘은 기분 좋은 날</strong>
+            <span class="room-article-note">만년필 · 필사 · 생일</span>
+          </button>
+          <button class="room-article-link" type="button" data-article-target="fountain-handmade-gift-letter-note" data-homepage-date="2026-06-09" data-sort-order="8" aria-label="사람은 사람이 만든 것에 약하다 읽기">
+            <strong>사람은 사람이 만든 것에 약하다</strong>
+            <span class="room-article-note">만년필 · 필사 · 메모</span>
+          </button>
         </div>
 
         <div class="room-card-list room-article-panels">
           <article class="room-post fountain-essay room-article-panel" id="fountain-hobby-essay" hidden>
-            <button class="room-article-back" type="button">글 목록</button>
+            <button class="room-article-back" type="button">문장으로</button>
             <header class="fountain-essay-header">
-              <p class="room-card-meta">글</p>
+              <p class="room-card-meta">문장</p>
               <h3>취미라는 것에 대하여.</h3>
-              <p>만년필 / 취미 / 기록</p>
+              <p>만년필 · 취미 · 기록</p>
             </header>
 
             <div class="fountain-essay-body">
@@ -1446,11 +1585,11 @@
           </article>
 
           <article class="room-post shared-memory-card room-article-panel" id="fountain-beethoven-emperor-note" hidden>
-            <button class="room-article-back" type="button">글 목록</button>
+            <button class="room-article-back" type="button">문장으로</button>
             <header class="fountain-essay-header">
-              <p class="room-card-meta">글</p>
+              <p class="room-card-meta">문장</p>
               <h3>베토벤 황제 2악장, 열 가지 잉크로 쓴 밤</h3>
-              <p>만년필 / 자필 / 음악</p>
+              <p>만년필 · 자필 · 음악</p>
             </header>
 
             <div class="shared-memory-layout">
@@ -1477,11 +1616,11 @@
           </article>
 
           <article class="room-post shared-memory-card room-article-panel" id="fountain-still-walking-note" hidden>
-            <button class="room-article-back" type="button">글 목록</button>
+            <button class="room-article-back" type="button">문장으로</button>
             <header class="fountain-essay-header">
-              <p class="room-card-meta">글</p>
+              <p class="room-card-meta">문장</p>
               <h3>아직 걷는 중</h3>
-              <p>만년필 / 손글씨 / 실패</p>
+              <p>만년필 · 손글씨 · 실패</p>
             </header>
 
             <div class="shared-memory-layout">
@@ -1508,11 +1647,11 @@
           </article>
 
           <article class="room-post shared-memory-card room-article-panel" id="fountain-well-depth-note" hidden>
-            <button class="room-article-back" type="button">글 목록</button>
+            <button class="room-article-back" type="button">문장으로</button>
             <header class="fountain-essay-header">
-              <p class="room-card-meta">글</p>
+              <p class="room-card-meta">문장</p>
               <h3>우물과 마음의 깊이</h3>
-              <p>만년필 / 마음 / 위안</p>
+              <p>만년필 · 마음 · 위안</p>
             </header>
 
             <div class="shared-memory-layout">
@@ -1542,11 +1681,11 @@
           </article>
 
           <article class="room-post shared-memory-card room-article-panel" id="fountain-happiness-note" hidden>
-            <button class="room-article-back" type="button">글 목록</button>
+            <button class="room-article-back" type="button">문장으로</button>
             <header class="fountain-essay-header">
-              <p class="room-card-meta">글</p>
+              <p class="room-card-meta">문장</p>
               <h3>행복에 관한 짧은 글 중 1</h3>
-              <p>만년필 / 행복 / 필사</p>
+              <p>만년필 · 행복 · 필사</p>
             </header>
 
             <div class="shared-memory-layout">
@@ -1593,11 +1732,11 @@
           </article>
 
           <article class="room-post shared-memory-card room-article-panel" id="fountain-honest-person-note" hidden>
-            <button class="room-article-back" type="button">글 목록</button>
+            <button class="room-article-back" type="button">문장으로</button>
             <header class="fountain-essay-header">
-              <p class="room-card-meta">글</p>
+              <p class="room-card-meta">문장</p>
               <h3>정직한 사람</h3>
-              <p>만년필 / 손글씨 / 사람</p>
+              <p>만년필 · 손글씨 · 사람</p>
             </header>
 
             <div class="shared-memory-layout">
@@ -1622,11 +1761,11 @@
           </article>
 
           <article class="room-post shared-memory-card room-article-panel" id="fountain-birthday-copying-room-note" hidden>
-            <button class="room-article-back" type="button">글 목록</button>
+            <button class="room-article-back" type="button">문장으로</button>
             <header class="fountain-essay-header">
-              <p class="room-card-meta">글</p>
+              <p class="room-card-meta">문장</p>
               <h3>오늘은 기분 좋은 날</h3>
-              <p>만년필 / 필사방 / 생일</p>
+              <p>만년필 · 필사 · 생일</p>
             </header>
 
             <div class="shared-memory-layout">
@@ -1649,11 +1788,11 @@
           </article>
 
           <article class="room-post shared-memory-card room-article-panel" id="fountain-handmade-gift-letter-note" hidden>
-            <button class="room-article-back" type="button">글 목록</button>
+            <button class="room-article-back" type="button">문장으로</button>
             <header class="fountain-essay-header">
-              <p class="room-card-meta">글</p>
+              <p class="room-card-meta">문장</p>
               <h3>사람은 사람이 만든 것에 약하다</h3>
-              <p>만년필 / 필사 / 메모</p>
+              <p>만년필 · 필사 · 메모</p>
             </header>
 
             <div class="shared-memory-layout">
@@ -1679,23 +1818,30 @@
         </div>
       </section>
 
-      <section class="room-house-panel" id="fountain-photo-room" aria-label="만년필 사진" hidden>
+      <section class="room-house-panel" id="fountain-photo-room" aria-label="만년필별 사진 기록" hidden>
         <div class="room-house-panel-header">
-          <p class="room-section-label">사진</p>
-          <h2>사진 목록</h2>
+          <p class="room-section-label">만년필별 · 장면</p>
+          <h2>장면으로 남은 사람들</h2>
+          <p class="room-panel-intro">사진에는 그때의 공기와 시간이 있습니다. 장면을 열면 문장과 태그가 따라옵니다.</p>
           <button class="room-house-back" type="button">만년필별로 돌아가기</button>
         </div>
 
+        <div class="room-sort-control" data-sort-target="photos" aria-label="사진 기록 정렬">
+          <span>순서</span>
+          <button type="button" data-sort-mode="latest" aria-pressed="true">최신순</button>
+          <button type="button" data-sort-mode="registered" aria-pressed="false">등록순</button>
+        </div>
+
         <div class="room-house-photo-grid">
-          <figure class="room-house-photo" data-memory="손으로 적어야 남는 문장들이 있다.">
+          <figure class="room-house-photo" data-homepage-date="2026-06-02" data-sort-order="1" data-memory="손으로 적어야 남는 문장들이 있다.">
             <img class="room-photo-image room-house-photo-thumb" src="../assets/images/fountain-pens/essay-handwriting-pens.jpg" alt="손글씨와 만년필 두 자루">
             <figcaption>손글씨</figcaption>
           </figure>
-          <figure class="room-house-photo" data-memory="펜촉 끝에 남는 감각.">
+          <figure class="room-house-photo" data-homepage-date="2026-06-02" data-sort-order="2" data-memory="펜촉 끝에 남는 감각.">
             <img class="room-photo-image room-house-photo-thumb" src="../assets/images/fountain-pens/photo-nib-closeup.jpg" alt="잉크가 묻은 만년필 펜촉 클로즈업">
             <figcaption>펜촉</figcaption>
           </figure>
-          <figure class="room-house-photo" data-memory="잉크와 종이, 그리고 써본 흔적.">
+          <figure class="room-house-photo" data-homepage-date="2026-06-02" data-sort-order="3" data-memory="잉크와 종이, 그리고 써본 흔적.">
             <img class="room-photo-image room-house-photo-thumb" src="../assets/images/fountain-pens/archive-ink-test.jpg" alt="잉크병, 컬러 테스트, 펜, 종이, 티슈">
             <figcaption>잉크 테스트</figcaption>
           </figure>
@@ -1706,12 +1852,12 @@
 
       <section class="room-house-panel" id="fountain-map-room" aria-label="만년필별 지도" hidden>
         <div class="room-house-panel-header">
-          <p class="room-section-label">지도</p>
-          <h2>만년필별 지도는 아직 그리는 중입니다</h2>
+          <p class="room-section-label">관계의 지도</p>
+          <h2>관계가 쌓이면 지도가 됩니다</h2>
           <button class="room-house-back" type="button">만년필별로 돌아가기</button>
         </div>
         <div class="star-map-panel">
-          <p class="section-desc">별 안의 글, 사진, 자료가 쌓이면 이곳에 만년필별의 지도가 놓입니다. 지금은 준비중 스탬프만 남겨둡니다.</p>
+          <p class="section-desc">태그는 관계의 좌표입니다. 같은 잉크, 같은 마음, 같은 장면이 쌓이면 이 별의 지형이 드러납니다.</p>
           <img src="../assets/images/fountain-pens/map-in-progress-stamp.png" alt="MAP IN PROGRESS 준비중 스탬프" />
         </div>
       </section>
@@ -1736,7 +1882,7 @@
         <section class="section">
           <div class="section-head">
             <p class="section-kicker">06 · 마지막 기준</p>
-            <h2>장비 자랑이 아니라, 시간을 보관하는 사람의 방</h2>
+            <h2>장비 자랑이 아니라, 시간을 보관하는 사람의 별</h2>
           </div>
           <div class="do-grid">
             <div class="rule-card">
@@ -1752,7 +1898,7 @@
               <h3>이게 아닌 것</h3>
               <ul>
                 <li>쇼핑몰 같은 말은 하지 않는다.</li>
-                <li>네온 우주와 과한 금빛은 이 방에 들이지 않는다.</li>
+                <li>네온 우주와 과한 금빛은 이 별에 들이지 않는다.</li>
                 <li>남의 만년필 사진으로 기억을 대신하지 않는다.</li>
                 <li>두꺼운 액자로 사진을 눌러버리지 않는다.</li>
               </ul>
@@ -1799,6 +1945,6 @@
       <p>만년필별 · LPH-B613-01 · HAM MEDIA · Design MD로 만든 별 페이지</p>
     </footer>
   </main>
-  <script src="../assets/js/fountain-pens-main.js?v=article-detail-v3"></script>
+  <script src="../assets/js/fountain-pens-main.js?v=world-language-v1"></script>
 </body>
 </html>
