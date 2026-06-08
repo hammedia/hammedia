@@ -1185,7 +1185,6 @@
         padding: 22px 20px;
       }
     }
-
     /* Photo room sizing: desktop 4, tablet 3, mobile 2. */
     .room-house-photo-grid {
       grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -1366,10 +1365,19 @@
           <button class="room-article-link" type="button" data-article-target="fountain-happiness-note" aria-label="행복에 관한 짧은 글 중 1 읽기">
             <strong>행복 짧은 글</strong>
           </button>
+          <button class="room-article-link" type="button" data-article-target="fountain-honest-person-note" aria-label="정직한 사람 읽기">
+            <strong>정직한 사람</strong>
+          </button>
+          <button class="room-article-link" type="button" data-article-target="fountain-birthday-copying-room-note" aria-label="오늘은 기분 좋은 날 읽기">
+            <strong>오늘은 기분 좋은 날</strong>
+          </button>
+          <button class="room-article-link" type="button" data-article-target="fountain-handmade-gift-letter-note" aria-label="사람은 사람이 만든 것에 약하다 읽기">
+            <strong>사람은 사람이 만든 것에 약하다</strong>
+          </button>
         </div>
         <div class="room-list-pager" aria-label="만년필 글 페이지">
-          <span>1-5 / 5</span>
-          <button type="button" disabled>다음 5개</button>
+          <span>1-8 / 8</span>
+          <button type="button" disabled>다음 없음</button>
         </div>
 
         <div class="room-card-list room-article-panels">
@@ -1580,6 +1588,91 @@
                 <p>올바른 마음가짐을 가진 사람은 반드시 목표를 이루게 됩니다.</p>
                 <p>친절한 말은 큰 비용이 들지 않습니다.</p>
                 <p>하지만 많은 것을 해내는 힘이 있습니다.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="room-post shared-memory-card room-article-panel" id="fountain-honest-person-note" hidden>
+            <button class="room-article-back" type="button">글 목록</button>
+            <header class="fountain-essay-header">
+              <p class="room-card-meta">글</p>
+              <h3>정직한 사람</h3>
+              <p>만년필 / 손글씨 / 사람</p>
+            </header>
+
+            <div class="shared-memory-layout">
+              <figure class="shared-memory-figure">
+                <img class="room-photo-image shared-memory-photo" src="../assets/images/fountain-pens/honest-person.jpg" alt="정직한 사람에 관한 손글씨와 하늘색 몽블랑 만년필">
+                <figcaption>정직한 사람을 손으로 적어 남긴 기록.</figcaption>
+              </figure>
+
+              <div class="shared-memory-copy">
+                <p>정직한 사람에게서만 느껴지는 온화함이 있다.</p>
+                <p>분위기 자체가 편안한.</p>
+                <p>부드러운 말과 행동 속에서 느껴지는 명확한 기준과 강단.</p>
+                <p>이들은 꾸밈이 없이 바르고 곧다.</p>
+                <p>어디서도 잘 녹아들지만 이리저리 쓸려 다니지 않고,</p>
+                <p>본인이 가야 할 길을 알고 나아간다.</p>
+                <p>이들이 가진 소신은 부담스럽거나 강압적이지 않으며,</p>
+                <p>누가 뭐라고 할 수 없을 만큼 정직한 기준을 품고 있다.</p>
+                <p>보고 있노라면 마음이 편안해지는,</p>
+                <p>든든하고 믿음이 가는 이들이 참 좋다.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="room-post shared-memory-card room-article-panel" id="fountain-birthday-copying-room-note" hidden>
+            <button class="room-article-back" type="button">글 목록</button>
+            <header class="fountain-essay-header">
+              <p class="room-card-meta">글</p>
+              <h3>오늘은 기분 좋은 날</h3>
+              <p>만년필 / 필사방 / 생일</p>
+            </header>
+
+            <div class="shared-memory-layout">
+              <figure class="shared-memory-figure">
+                <img class="room-photo-image shared-memory-photo" src="../assets/images/fountain-pens/birthday-copying-room.jpg" alt="플래티넘 센츄리 10주년 데케이드 만년필과 생일 전날 손글씨">
+                <figcaption>2025. 3. 26, 온라인 필사방의 생일 전날 기록.</figcaption>
+              </figure>
+
+              <div class="shared-memory-copy">
+                <p>오늘은 기분 좋은 날.</p>
+                <p>문방에 기분 좋은 것을 가득 안고서 온라인 필사방 오픈합니다.</p>
+                <p>지금부터 2시간 후면 저의 생일입니다.</p>
+                <p>이번 생일은 많은 분들에게 각자의 만년필로 쓰신 생일 축하 필사를 받을 수 있지 않을까 기대해 봅니다.</p>
+                <p>지금 쓰는 펜은 플래티넘 센츄리 10주년 데케이드이고..</p>
+                <p>와이프에게 받은 생일 선물입니다.</p>
+                <p>작년엔 몽블랑 동계올림픽이었고, 이번엔 센츄리 10주년.</p>
+                <p>너무 행복합니다.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="room-post shared-memory-card room-article-panel" id="fountain-handmade-gift-letter-note" hidden>
+            <button class="room-article-back" type="button">글 목록</button>
+            <header class="fountain-essay-header">
+              <p class="room-card-meta">글</p>
+              <h3>사람은 사람이 만든 것에 약하다</h3>
+              <p>만년필 / 필사 / 메모</p>
+            </header>
+
+            <div class="shared-memory-layout">
+              <figure class="shared-memory-figure">
+                <img class="room-photo-image shared-memory-photo" src="../assets/images/fountain-pens/handmade-gift-letter.jpeg" alt="사람은 사람이 만든 것에 약하다는 문장과 펜, 잉크 정보를 적은 손글씨">
+                <figcaption>도큐핸즈 발렌타인데이 캠페인 문장과 펜, 잉크 정보를 함께 남긴 손글씨 기록.</figcaption>
+              </figure>
+
+              <div class="shared-memory-copy">
+                <p>사람은 사람이 만든 것에 약하다.</p>
+                <p>직접 만든 선물은 마음이 따뜻해진다.</p>
+                <p>나를 소중히 여기는 느낌이 들어서<br>나도 상대를 소중히 여기고 싶어진다.</p>
+                <p>만들어준 이의 마음이<br>그대로 전해지는 것 같아서<br>나도 더 솔직해지고 싶다.</p>
+                <p>도큐핸즈 발렌타인데이 캠페인</p>
+                <p>누군가에게 상처를 주는 1분이 아니라<br>누군가와 웃는 1분이었으면 좋겠다.</p>
+                <p>편지라면 어설픔 무기가 된다.</p>
+                <p>동네 서점에서 일본광고 카피 도감이라는 책을 덜컥 구입했다.</p>
+                <p>유튜브를 하고, 편집을 하고, 기획을 하면서 뭐든 아이디어가 더 있으면 좋겠다고 생각했다.</p>
+                <p>여긴 내가 훔칠 것이 많이 있었다.</p>
               </div>
             </div>
           </article>
