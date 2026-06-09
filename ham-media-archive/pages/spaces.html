@@ -802,6 +802,39 @@
       text-transform: uppercase;
     }
 
+    .room-sort-control {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+      margin-bottom: var(--space-5);
+      padding-bottom: var(--space-4);
+      border-bottom: 1px solid var(--line);
+      color: var(--muted);
+      font-size: var(--small);
+      font-weight: 850;
+    }
+
+    .room-sort-control button {
+      appearance: none;
+      border: 0;
+      border-bottom: 2px solid transparent;
+      border-radius: 0;
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      font-family: var(--font-sans);
+      font-size: var(--small);
+      font-weight: 900;
+      line-height: 1.4;
+      padding: 0 0 4px;
+    }
+
+    .room-sort-control button[aria-pressed="true"] {
+      border-color: var(--lamp);
+      color: var(--paper);
+    }
+
     .room-house-back,
     .room-article-back,
     .room-gallery-detail-button,
@@ -863,9 +896,11 @@
     }
 
     .room-house-panel.is-detail-mode > .room-house-panel-header,
+    .room-house-panel.is-detail-mode > .room-sort-control,
     .room-house-panel.is-detail-mode > .room-article-list,
     .room-house-panel.is-detail-mode > .room-list-pager,
-    .room-house-panel.is-photo-detail-mode > .room-house-panel-header {
+    .room-house-panel.is-photo-detail-mode > .room-house-panel-header,
+    .room-house-panel.is-photo-detail-mode > .room-sort-control {
       display: none;
     }
 
@@ -1033,10 +1068,10 @@
   </style>
 </head>
 <body class="variant-desktop">
-  <main class="sheet room-house-page space-star-page">
+  <main class="sheet room-house-page space-star-page" data-article-nav-label="문장 이동" data-article-list-label="문장으로" data-article-prev-label="이전 문장" data-article-next-label="다음 문장" data-photo-list-label="장면으로">
     <nav class="top-doors room-house-nav" aria-label="공간별 입구">
-      <button class="room-house-door" type="button" data-target="#space-writing" data-house-target="space-writing-room">글</button>
-      <button class="room-house-door" type="button" data-target="#space-photos" data-house-target="space-photo-room">사진</button>
+      <button class="room-house-door" type="button" data-target="#space-writing" data-house-target="space-writing-room">문장</button>
+      <button class="room-house-door" type="button" data-target="#space-photos" data-house-target="space-photo-room">장면</button>
       <button class="room-house-door" type="button" data-target="#space-map" data-house-target="space-map-room">지도</button>
       <a href="#star-list">다른 별</a>
     </nav>
@@ -1136,11 +1171,11 @@
       </div>
       <div class="entry-grid">
         <button class="entry-card room-house-door" type="button" data-target="#space-writing" data-house-target="space-writing-room">
-          <strong>글</strong>
+          <strong>문장</strong>
           <span>일하는 자리, 디테일, 전체 방향에 대한 기록.</span>
         </button>
         <button class="entry-card room-house-door" type="button" data-target="#space-photos" data-house-target="space-photo-room">
-          <strong>사진</strong>
+          <strong>장면</strong>
           <span>공간에서 생각이 바뀐 장면들.</span>
         </button>
         <button class="entry-card room-house-door" type="button" data-target="#space-map" data-house-target="space-map-room">
@@ -1220,53 +1255,67 @@
     </section>
 
 
-    <section class="room-house-panel" id="space-writing-room" aria-label="공간별 글 목록" hidden>
+    <section class="room-house-panel" id="space-writing-room" aria-label="공간별 문장" hidden>
       <div class="room-house-panel-header">
         <div>
-          <p class="room-section-label">글</p>
-          <h2>글 목록</h2>
+          <p class="room-section-label">공간별 · 문장</p>
+          <h2>머문 자리로 남은 사람들</h2>
         </div>
         <button class="room-house-back" type="button">공간별로 돌아가기</button>
       </div>
 
-      <div class="room-article-list" aria-label="공간별 글 목록">
-        <button class="room-article-link" type="button" data-article-target="space-everyday-desk-note" aria-label="내가 요즘 가장 많이 사용하는 공간 읽기">
+      <div class="room-sort-control" data-sort-target="articles" aria-label="공간별 문장 정렬">
+        <span>정렬</span>
+        <button type="button" data-sort-mode="latest" aria-pressed="true">최신순</button>
+        <button type="button" data-sort-mode="registered" aria-pressed="false">등록순</button>
+      </div>
+
+      <div class="room-article-list" aria-label="공간별 문장">
+        <button class="room-article-link" type="button" data-article-target="space-everyday-desk-note" data-homepage-date="2026-06-07" data-sort-order="1" aria-label="내가 요즘 가장 많이 사용하는 공간 읽기">
           <strong>내가 요즘 가장 많이 사용하는 공간</strong>
         </button>
       </div>
 
-      <article class="room-article-panel" id="space-everyday-desk-note" hidden>
-        <button class="room-article-back" type="button">글 목록</button>
-        <header class="space-essay-header">
-          <p class="room-card-meta">글</p>
-          <h3>내가 요즘 가장 많이 사용하는 공간</h3>
-          <p>책상 / 작업 / 생각</p>
-        </header>
-        <div class="space-copy">
-          <p>내가 요즘 가장 많이 사용하는 공간.</p>
-        </div>
-        <figure class="space-essay-figure">
-          <img src="../assets/images/spaces/hero-working-desk.jpg" alt="영상 편집 화면과 원고 화면이 함께 놓인 작업 책상" />
-          <figcaption>영상 편집과 원고가 함께 놓인 자리. 내가 요즘 가장 많이 사용하는 공간.</figcaption>
-        </figure>
-      </article>
+      <div class="room-article-panels">
+        <article class="room-article-panel" id="space-everyday-desk-note" hidden>
+          <button class="room-article-back" type="button">문장으로</button>
+          <header class="space-essay-header">
+            <p class="room-card-meta">문장</p>
+            <h3>내가 요즘 가장 많이 사용하는 공간</h3>
+            <p>책상 · 작업 · 생각</p>
+          </header>
+          <div class="space-copy">
+            <p>내가 요즘 가장 많이 사용하는 공간.</p>
+          </div>
+          <figure class="space-essay-figure">
+            <img src="../assets/images/spaces/hero-working-desk.jpg" alt="영상 편집 화면과 원고 화면이 함께 놓인 작업 책상" />
+            <figcaption>영상 편집과 원고가 함께 놓인 자리. 내가 요즘 가장 많이 사용하는 공간.</figcaption>
+          </figure>
+        </article>
+      </div>
     </section>
 
-    <section class="room-house-panel" id="space-photo-room" aria-label="공간별 사진 목록" hidden>
+    <section class="room-house-panel" id="space-photo-room" aria-label="공간별 장면" hidden>
       <div class="room-house-panel-header">
         <div>
-          <p class="room-section-label">사진</p>
-          <h2>사진 목록</h2>
+          <p class="room-section-label">공간별 · 장면</p>
+          <h2>장면으로 남은 사람들</h2>
         </div>
         <button class="room-house-back" type="button">공간별로 돌아가기</button>
       </div>
 
+      <div class="room-sort-control" data-sort-target="photos" aria-label="공간별 장면 정렬">
+        <span>정렬</span>
+        <button type="button" data-sort-mode="latest" aria-pressed="true">최신순</button>
+        <button type="button" data-sort-mode="registered" aria-pressed="false">등록순</button>
+      </div>
+
       <div class="room-house-photo-grid">
-        <figure class="room-house-photo" data-memory="언제나 새로운 곳에서는 새로운 생각을 하게 된다.">
+        <figure class="room-house-photo" data-homepage-date="2026-06-07" data-sort-order="1" data-memory="언제나 새로운 곳에서는 새로운 생각을 하게 된다.">
           <img class="room-house-photo-thumb" src="../assets/images/spaces/photo-screen-golf.jpg" alt="스크린골프장 공간" />
           <figcaption>언제나 새로운 곳에서는 새로운 생각을 하게 된다.</figcaption>
         </figure>
-        <figure class="room-house-photo" data-memory="영상 편집과 원고가 함께 놓인 자리. 내가 요즘 가장 많이 사용하는 공간.">
+        <figure class="room-house-photo" data-homepage-date="2026-06-07" data-sort-order="2" data-memory="영상 편집과 원고가 함께 놓인 자리. 내가 요즘 가장 많이 사용하는 공간.">
           <img class="room-house-photo-thumb" src="../assets/images/spaces/hero-working-desk.jpg" alt="영상 편집 화면과 원고 화면이 함께 놓인 작업 책상" />
           <figcaption>내가 요즘 가장 많이 사용하는 공간.</figcaption>
         </figure>
@@ -1278,19 +1327,19 @@
     <section class="room-house-panel" id="space-map-room" aria-label="공간별 지도" hidden>
       <div class="room-house-panel-header">
         <div>
-          <p class="room-section-label">지도</p>
-          <h2>지도</h2>
+          <p class="room-section-label">관계의 지도</p>
+          <h2>공간의 좌표가 쌓이면 지도가 됩니다</h2>
         </div>
         <button class="room-house-back" type="button">공간별로 돌아가기</button>
       </div>
       <div class="room-map-placeholder">
-        <strong>지도는 아직 완성되지 않아도 된다.</strong>
-        <p>지금은 어디까지 왔고, 다음에는 어디로 갈지 작은 점과 선이면 충분하다. 공간별의 지도는 머물렀고 일했고 생각이 바뀐 장소를 천천히 모읍니다.</p>
+        <strong>태그는 관계의 좌표입니다.</strong>
+        <p>공간별의 지도는 머물렀고 일했고 생각이 바뀐 자리를 천천히 모읍니다. 책상, 작업, 빛, 화면 같은 태그가 쌓이면 이 별의 지형이 드러납니다.</p>
       </div>
     </section>
 
     <footer>공간별 · LPH-B613-05 · HAM MEDIA · Design MD로 만든 별 페이지</footer>
   </main>
-  <script src="../assets/js/main.js?v=space-star-sheet-v1"></script>
+  <script src="../assets/js/main.js?v=space-world-language-v1"></script>
 </body>
 </html>
