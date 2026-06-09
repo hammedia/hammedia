@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>HAM MEDIA Admin</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
+  <style>
+    :root {
+      --pearl: #f9f7f3;
+      --paper: #fffdf8;
+      --ink: #1c1814;
+      --muted: #766f66;
+      --line: #ddd5ca;
+      --blue: #7eb5e8;
+      --blue-strong: #4c8fca;
+      --danger: #b65342;
+      --shadow: 0 18px 50px rgba(28, 24, 20, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--pearl);
+      color: var(--ink);
+      font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      letter-spacing: 0;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    .login-shell {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 32px 18px;
+    }
+
+    .login-panel {
+      width: min(440px, 100%);
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      padding: 34px;
+    }
+
+    .eyebrow {
+      margin: 0 0 12px;
+      color: var(--blue-strong);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: clamp(28px, 5vw, 38px);
+      line-height: 1.12;
+    }
+
+    .lede {
+      margin: 0 0 28px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .field {
+      display: grid;
+      gap: 8px;
+      margin: 0 0 16px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    input {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      color: var(--ink);
+      padding: 13px 14px;
+      outline: none;
+    }
+
+    input:focus {
+      border-color: var(--blue-strong);
+      box-shadow: 0 0 0 3px rgba(126, 181, 232, 0.28);
+    }
+
+    .primary-button {
+      width: 100%;
+      border: 0;
+      border-radius: 8px;
+      background: var(--blue);
+      color: var(--ink);
+      cursor: pointer;
+      font-weight: 900;
+      padding: 14px 18px;
+      transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
+    }
+
+    .primary-button:hover {
+      background: #8fc2ef;
+      box-shadow: 0 10px 24px rgba(76, 143, 202, 0.18);
+      transform: translateY(-1px);
+    }
+
+    .primary-button:disabled {
+      cursor: not-allowed;
+      opacity: 0.55;
+      transform: none;
+      box-shadow: none;
+    }
+
+    .status {
+      min-height: 22px;
+      margin: 18px 0 0;
+      color: var(--muted);
+      line-height: 1.55;
+      font-size: 14px;
+    }
+
+    .status.is-error {
+      color: var(--danger);
+    }
+
+    .status.is-ok {
+      color: #356f56;
+    }
+
+    .config-note {
+      margin: 0 0 18px;
+      border: 1px solid rgba(182, 83, 66, 0.32);
+      border-radius: 8px;
+      background: rgba(182, 83, 66, 0.07);
+      color: var(--danger);
+      padding: 12px 14px;
+      line-height: 1.55;
+      font-size: 14px;
+    }
+
+    .config-note[hidden] {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <main class="login-shell">
+    <section class="login-panel" aria-labelledby="login-title">
+      <p class="eyebrow">HAM MEDIA ADMIN</p>
+      <h1 id="login-title">별자리 관리자</h1>
+      <p class="lede">햄PD 계정으로 로그인합니다.</p>
+
+      <p class="config-note" id="config-note" hidden></p>
+
+      <form id="login-form">
+        <label class="field">
+          이메일
+          <input id="email" type="email" autocomplete="email" value="tomyham327@gmail.com" required />
+        </label>
+        <label class="field">
+          비밀번호
+          <input id="password" type="password" autocomplete="current-password" required />
+        </label>
+        <button class="primary-button" id="login-button" type="submit">로그인</button>
+      </form>
+
+      <p class="status" id="status" aria-live="polite"></p>
+    </section>
+  </main>
+
+  <script type="module">
+    import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
+
+    const SUPABASE_URL = "https://jhdcznxbebekgninpdnt.supabase.co";
+    const SUPABASE_ANON_KEY = "sb_publishable_5bNIQB2iil31WejPIJhftQ_i0FgMr7k";
+    const CONFIG_READY = Boolean(SUPABASE_ANON_KEY);
+
+    const statusEl = document.querySelector("#status");
+    const configNote = document.querySelector("#config-note");
+    const form = document.querySelector("#login-form");
+    const loginButton = document.querySelector("#login-button");
+
+    const supabase = CONFIG_READY
+      ? createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+          auth: { persistSession: true, autoRefreshToken: true }
+        })
+      : null;
+
+    function setStatus(message, type = "") {
+      statusEl.textContent = message;
+      statusEl.className = `status${type ? ` is-${type}` : ""}`;
+    }
+
+    function showConfigWarning() {
+      configNote.hidden = false;
+      configNote.textContent = "Supabase publishable 또는 anon key를 admin/index.html, dashboard.html, editor.html에 입력해야 로그인이 가능합니다.";
+      loginButton.disabled = true;
+    }
+
+    async function isActiveAdmin(userId) {
+      const { data, error } = await supabase
+        .from("admin_profiles")
+        .select("user_id,is_active")
+        .eq("user_id", userId)
+        .eq("is_active", true)
+        .maybeSingle();
+
+      if (error) throw error;
+      return Boolean(data);
+    }
+
+    async function redirectIfSignedIn() {
+      const { data, error } = await supabase.auth.getUser();
+      if (error || !data.user) return;
+
+      try {
+        if (await isActiveAdmin(data.user.id)) {
+          window.location.replace("dashboard.html");
+        }
+      } catch (error) {
+        setStatus("관리자 확인 중 오류가 발생했습니다. DB 스키마와 admin_profiles 등록을 확인해 주세요.", "error");
+      }
+    }
+
+    if (!CONFIG_READY) {
+      showConfigWarning();
+    } else {
+      redirectIfSignedIn();
+    }
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      if (!CONFIG_READY) return;
+
+      loginButton.disabled = true;
+      setStatus("로그인 확인 중입니다.");
+
+      const email = document.querySelector("#email").value.trim();
+      const password = document.querySelector("#password").value;
+
+      try {
+        const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+        if (error) throw error;
+
+        const user = data.user;
+        if (!user || !(await isActiveAdmin(user.id))) {
+          await supabase.auth.signOut();
+          setStatus("관리자 등록이 필요합니다. admin_profiles에 햄PD 계정을 먼저 등록해 주세요.", "error");
+          return;
+        }
+
+        setStatus("로그인 완료. 별 목록으로 이동합니다.", "ok");
+        window.location.href = "dashboard.html";
+      } catch (error) {
+        setStatus(error.message || "로그인에 실패했습니다.", "error");
+      } finally {
+        loginButton.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>

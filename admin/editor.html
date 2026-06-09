@@ -1,0 +1,1498 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>HAM MEDIA Admin · Editor</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
+  <style>
+    :root {
+      --pearl: #f9f7f3;
+      --paper: #fffdf8;
+      --ink: #1c1814;
+      --muted: #766f66;
+      --line: #ddd5ca;
+      --blue: #7eb5e8;
+      --blue-strong: #4c8fca;
+      --danger: #b65342;
+      --ok: #356f56;
+      --gold: #b78a27;
+      --soft-blue: #e8f3fc;
+      --soft-gold: #fff4d7;
+      --soft-green: #e8f4ee;
+      --soft-gray: #eee8de;
+      --shadow: 0 18px 50px rgba(28, 24, 20, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--pearl);
+      color: var(--ink);
+      font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      letter-spacing: 0;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+    }
+
+    .shell {
+      width: min(1280px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 24px 0 64px;
+    }
+
+    .topbar,
+    .section-head,
+    .form-actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .topbar {
+      margin-bottom: 32px;
+    }
+
+    .brand {
+      display: grid;
+      gap: 4px;
+    }
+
+    .brand strong {
+      font-size: 18px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .nav-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .is-hidden {
+      display: none !important;
+    }
+
+    a,
+    .ghost-button,
+    .primary-button,
+    .list-button {
+      border-radius: 8px;
+    }
+
+    .ghost-button,
+    .primary-button,
+    .list-button {
+      border: 1px solid var(--line);
+      cursor: pointer;
+      color: var(--ink);
+    }
+
+    .ghost-button {
+      background: var(--paper);
+      padding: 10px 14px;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .primary-button {
+      border-color: transparent;
+      background: var(--blue);
+      padding: 11px 16px;
+      font-weight: 900;
+    }
+
+    .primary-button:disabled,
+    .ghost-button:disabled {
+      cursor: not-allowed;
+      opacity: 0.55;
+    }
+
+    .hero {
+      margin-bottom: 24px;
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      color: var(--blue-strong);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      font-size: clamp(30px, 5vw, 48px);
+      line-height: 1.12;
+    }
+
+    h2,
+    h3 {
+      margin: 0;
+      line-height: 1.25;
+    }
+
+    .status {
+      min-height: 24px;
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.55;
+      font-size: 14px;
+    }
+
+    .status.is-error {
+      color: var(--danger);
+    }
+
+    .status.is-ok {
+      color: var(--ok);
+    }
+
+    .workspace {
+      display: grid;
+      gap: 18px;
+    }
+
+    .module {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--paper);
+      box-shadow: var(--shadow);
+      padding: 20px;
+    }
+
+    .module-grid {
+      display: grid;
+      grid-template-columns: minmax(240px, 0.34fr) minmax(0, 0.66fr);
+      gap: 18px;
+      margin-top: 16px;
+    }
+
+    .side-panel {
+      display: grid;
+      gap: 12px;
+      align-content: start;
+    }
+
+    .filter-row,
+    .workflow-actions,
+    .check-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .filter-row {
+      padding-bottom: 4px;
+    }
+
+    .filter-button {
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      padding: 6px 0;
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .filter-button + .filter-button {
+      margin-left: 10px;
+    }
+
+    .filter-button.is-active {
+      color: var(--ink);
+      box-shadow: inset 0 -2px 0 var(--blue-strong);
+    }
+
+    .list {
+      display: grid;
+      gap: 8px;
+      align-content: start;
+      max-height: 560px;
+      overflow: auto;
+      padding-right: 4px;
+    }
+
+    .list-button {
+      width: 100%;
+      background: #fff;
+      padding: 12px;
+      text-align: left;
+      line-height: 1.45;
+    }
+
+    .list-button.is-active {
+      border-color: var(--blue-strong);
+      box-shadow: 0 0 0 3px rgba(126, 181, 232, 0.22);
+    }
+
+    .list-button strong,
+    .list-button span {
+      display: block;
+    }
+
+    .list-button span {
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 24px;
+      border-radius: 999px;
+      padding: 3px 9px;
+      background: var(--soft-gray);
+      color: var(--ink);
+      font-size: 12px;
+      font-weight: 900;
+      vertical-align: middle;
+    }
+
+    .status-pill[data-tone="review"] {
+      background: var(--soft-blue);
+      color: #2c6694;
+    }
+
+    .status-pill[data-tone="candidate"] {
+      background: var(--soft-gold);
+      color: #856010;
+    }
+
+    .status-pill[data-tone="published"] {
+      background: var(--soft-green);
+      color: var(--ok);
+    }
+
+    .field-hint {
+      margin: -2px 0 0;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 1.5;
+    }
+
+    .editor-panel {
+      display: grid;
+      gap: 14px;
+      align-content: start;
+    }
+
+    .editor-panel.is-mobile-review .markdown-grid {
+      grid-template-columns: minmax(0, 390px);
+    }
+
+    .editor-panel.is-mobile-review textarea,
+    .editor-panel.is-mobile-review .preview,
+    .editor-panel.is-mobile-review .post-image-workbench,
+    .editor-panel.is-mobile-review .photo-preview {
+      max-width: 390px;
+    }
+
+    .review-note {
+      min-height: 20px;
+      margin: 0;
+      color: var(--blue-strong);
+      font-size: 13px;
+      font-weight: 800;
+      line-height: 1.5;
+    }
+
+    .field {
+      display: grid;
+      gap: 7px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      color: var(--ink);
+      padding: 11px 12px;
+      outline: none;
+    }
+
+    textarea {
+      min-height: 220px;
+      resize: vertical;
+      line-height: 1.65;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--blue-strong);
+      box-shadow: 0 0 0 3px rgba(126, 181, 232, 0.24);
+    }
+
+    .markdown-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 12px;
+    }
+
+    .preview {
+      min-height: 220px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      padding: 14px;
+      color: var(--ink);
+      line-height: 1.72;
+      overflow: auto;
+    }
+
+    .preview h1,
+    .preview h2,
+    .preview h3 {
+      margin: 0 0 12px;
+      font-size: 1.25rem;
+    }
+
+    .preview p {
+      margin: 0 0 12px;
+    }
+
+    .preview ul,
+    .preview ol {
+      margin: 0 0 12px 20px;
+      padding: 0;
+    }
+
+    .photo-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      max-height: 680px;
+      overflow: auto;
+      padding-right: 4px;
+    }
+
+    .photo-button {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      cursor: pointer;
+      padding: 8px;
+      text-align: left;
+    }
+
+    .photo-button.is-active {
+      border-color: var(--blue-strong);
+      box-shadow: 0 0 0 3px rgba(126, 181, 232, 0.22);
+    }
+
+    .photo-button img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      border-radius: 6px;
+      background: #efe8df;
+    }
+
+    .photo-button span {
+      display: block;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .list-button .status-pill,
+    .photo-button .status-pill {
+      display: inline-flex;
+      margin: 0;
+      color: inherit;
+      font-size: 12px;
+      line-height: 1.3;
+    }
+
+    .post-image-workbench {
+      display: grid;
+      gap: 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      padding: 14px;
+    }
+
+    .post-image-list {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .post-image-card {
+      display: grid;
+      gap: 8px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--paper);
+      padding: 8px;
+    }
+
+    .post-image-card img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      border-radius: 6px;
+      background: #efe8df;
+    }
+
+    .post-image-card span {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .compact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 10px;
+    }
+
+    .photo-preview {
+      width: min(420px, 100%);
+      margin: 0;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      padding: 8px;
+    }
+
+    .photo-preview img {
+      display: block;
+      width: 100%;
+      max-height: 360px;
+      object-fit: contain;
+      border-radius: 6px;
+      background: #efe8df;
+    }
+
+    .upload-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 8px;
+      align-items: end;
+    }
+
+    .empty {
+      border: 1px dashed var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    @media (max-width: 960px) {
+      .module-grid,
+      .markdown-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .photo-list {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .post-image-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 620px) {
+      .shell {
+        width: min(100% - 24px, 1280px);
+        padding-top: 18px;
+      }
+
+      .topbar,
+      .section-head,
+      .form-actions {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .photo-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .filter-button + .filter-button {
+        margin-left: 4px;
+      }
+
+      .upload-row {
+        grid-template-columns: 1fr;
+      }
+
+      .compact-grid,
+      .post-image-list {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <div class="brand">
+        <strong>HAM MEDIA Admin</strong>
+        <span id="star-subtitle">별 데이터 확인 중</span>
+      </div>
+      <nav class="nav-actions" aria-label="관리자 이동">
+        <a class="ghost-button" href="dashboard.html">별 목록</a>
+        <a class="ghost-button is-hidden" id="public-page-link" href="#" target="_blank" rel="noopener">공개 페이지 확인</a>
+        <button class="ghost-button" id="logout-button" type="button">로그아웃</button>
+      </nav>
+    </header>
+
+    <section class="hero" aria-labelledby="editor-title">
+      <p class="eyebrow">EDITOR</p>
+      <h1 id="editor-title">별 편집</h1>
+      <p class="status" id="status" aria-live="polite"></p>
+    </section>
+
+    <div class="workspace">
+      <section class="module" aria-labelledby="post-section-title">
+        <div class="section-head">
+          <h2 id="post-section-title">글</h2>
+          <button class="primary-button" id="new-post-button" type="button">새 글 추가</button>
+        </div>
+
+        <div class="module-grid">
+          <div class="side-panel">
+            <div class="filter-row" id="post-filter-row" aria-label="글 상태 필터">
+              <button class="filter-button is-active" type="button" data-post-filter="all">전체</button>
+              <button class="filter-button" type="button" data-post-filter="draft">임시</button>
+              <button class="filter-button" type="button" data-post-filter="review">검토</button>
+              <button class="filter-button" type="button" data-post-filter="candidate">후보</button>
+              <button class="filter-button" type="button" data-post-filter="published">완료</button>
+            </div>
+            <div class="list" id="post-list" aria-label="글 목록"></div>
+          </div>
+
+          <form class="editor-panel" id="post-form">
+            <h3 id="post-form-title">글 선택</h3>
+            <label class="field">
+              제목
+              <input id="post-title" type="text" required />
+            </label>
+            <div class="markdown-grid">
+              <label class="field">
+                본문
+                <textarea id="post-body" spellcheck="true"></textarea>
+              </label>
+              <label class="field">
+                HTML 미리보기
+                <div class="preview" id="post-preview"></div>
+              </label>
+            </div>
+            <section class="post-image-workbench" aria-labelledby="post-image-title">
+              <h3 id="post-image-title">글에 붙는 사진</h3>
+              <p class="field-hint">글을 먼저 저장한 뒤 이미지를 연결합니다. 연결된 이미지는 본문 위치에 마크다운으로 넣을 수 있습니다.</p>
+              <div class="post-image-list" id="post-image-list" aria-label="글 연결 이미지"></div>
+              <div class="upload-row">
+                <label class="field">
+                  새 글 사진
+                  <input id="post-image-file" type="file" accept="image/jpeg,image/png,image/webp" />
+                </label>
+                <button class="ghost-button" id="post-image-upload-button" type="button">업로드</button>
+              </div>
+              <label class="field">
+                이미지 경로
+                <input id="post-image-path" type="text" />
+              </label>
+              <div class="compact-grid">
+                <label class="field">
+                  alt 텍스트
+                  <input id="post-image-alt" type="text" />
+                </label>
+                <label class="field">
+                  캡션
+                  <input id="post-image-caption" type="text" />
+                </label>
+              </div>
+              <div class="form-actions">
+                <p class="status" id="post-image-status-line" aria-live="polite"></p>
+                <button class="ghost-button" id="post-image-save-button" type="button">글에 이미지 연결</button>
+              </div>
+            </section>
+            <label class="field">
+              작업 상태
+              <select id="post-status">
+                <option value="draft">임시 저장</option>
+                <option value="review">검토 중</option>
+                <option value="candidate">공개 후보</option>
+                <option value="published">공개 완료</option>
+              </select>
+              <span class="field-hint">공개 완료만 실제 공개 대상으로 봅니다. 후보까지는 검토용으로 남겨 둡니다.</span>
+            </label>
+            <div class="workflow-actions" aria-label="글 빠른 저장">
+              <button class="ghost-button" type="button" data-post-workflow="draft">임시 저장</button>
+              <button class="ghost-button" type="button" data-post-workflow="review">검토 중 저장</button>
+              <button class="ghost-button" type="button" data-post-workflow="candidate">공개 후보 저장</button>
+            </div>
+            <div class="check-actions">
+              <button class="ghost-button" id="post-mobile-check" type="button" aria-pressed="false">모바일 폭 검토</button>
+              <p class="review-note" id="post-review-note" aria-live="polite"></p>
+            </div>
+            <div class="form-actions">
+              <p class="status" id="post-status-line" aria-live="polite"></p>
+              <button class="primary-button" type="submit">현재 상태로 저장</button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <section class="module" aria-labelledby="photo-section-title">
+        <div class="section-head">
+          <h2 id="photo-section-title">사진</h2>
+          <button class="primary-button" id="new-photo-button" type="button">새 사진 추가</button>
+        </div>
+
+        <div class="module-grid">
+          <div class="side-panel">
+            <div class="filter-row" id="photo-filter-row" aria-label="사진 상태 필터">
+              <button class="filter-button is-active" type="button" data-photo-filter="all">전체</button>
+              <button class="filter-button" type="button" data-photo-filter="draft">임시</button>
+              <button class="filter-button" type="button" data-photo-filter="review">검토</button>
+              <button class="filter-button" type="button" data-photo-filter="candidate">후보</button>
+              <button class="filter-button" type="button" data-photo-filter="published">완료</button>
+            </div>
+            <div class="photo-list" id="photo-list" aria-label="사진 목록"></div>
+          </div>
+
+          <form class="editor-panel" id="photo-form">
+            <h3 id="photo-form-title">사진 선택</h3>
+            <figure class="photo-preview">
+              <img id="photo-preview" src="" alt="" />
+            </figure>
+            <div class="upload-row">
+              <label class="field">
+                새 사진
+                <input id="photo-file" type="file" accept="image/jpeg,image/png,image/webp" />
+              </label>
+              <button class="ghost-button" id="upload-button" type="button">업로드</button>
+            </div>
+            <label class="field">
+              이미지 경로
+              <input id="photo-path" type="text" required />
+            </label>
+            <label class="field">
+              alt 텍스트
+              <input id="photo-alt" type="text" />
+            </label>
+            <label class="field">
+              코멘트
+              <textarea id="photo-memory"></textarea>
+            </label>
+            <label class="field">
+              figcaption
+              <textarea id="photo-figcaption"></textarea>
+            </label>
+            <label class="field">
+              작업 상태
+              <select id="photo-status">
+                <option value="draft">임시 저장</option>
+                <option value="review">검토 중</option>
+                <option value="candidate">공개 후보</option>
+                <option value="published">공개 완료</option>
+              </select>
+              <span class="field-hint">새 사진은 먼저 임시 저장 또는 검토 중으로 두고, 화면 확인 뒤 공개 후보로 보냅니다.</span>
+            </label>
+            <div class="workflow-actions" aria-label="사진 빠른 저장">
+              <button class="ghost-button" type="button" data-photo-workflow="draft">임시 저장</button>
+              <button class="ghost-button" type="button" data-photo-workflow="review">검토 중 저장</button>
+              <button class="ghost-button" type="button" data-photo-workflow="candidate">공개 후보 저장</button>
+            </div>
+            <div class="check-actions">
+              <button class="ghost-button" id="photo-mobile-check" type="button" aria-pressed="false">모바일 폭 검토</button>
+              <p class="review-note" id="photo-review-note" aria-live="polite"></p>
+            </div>
+            <div class="form-actions">
+              <p class="status" id="photo-status-line" aria-live="polite"></p>
+              <button class="primary-button" type="submit">현재 상태로 저장</button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script type="module">
+    import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
+    import { marked } from "https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js";
+
+    const SUPABASE_URL = "https://jhdcznxbebekgninpdnt.supabase.co";
+    const SUPABASE_ANON_KEY = "sb_publishable_5bNIQB2iil31WejPIJhftQ_i0FgMr7k";
+    const STORAGE_BUCKET = "ham-media-uploads";
+    const MAX_UPLOAD_SIZE = 10 * 1024 * 1024;
+    const ALLOWED_TYPES = new Set(["image/jpeg", "image/png", "image/webp"]);
+    const CONFIG_READY = Boolean(SUPABASE_ANON_KEY);
+
+    const params = new URLSearchParams(window.location.search);
+    const starSlug = params.get("star");
+    const state = {
+      user: null,
+      star: null,
+      posts: [],
+      postImages: [],
+      photos: [],
+      activePost: null,
+      activePhoto: null,
+      postFilter: "all",
+      photoFilter: "all"
+    };
+
+    const statusEl = document.querySelector("#status");
+    const starSubtitle = document.querySelector("#star-subtitle");
+    const editorTitle = document.querySelector("#editor-title");
+    const publicPageLink = document.querySelector("#public-page-link");
+    const postList = document.querySelector("#post-list");
+    const photoList = document.querySelector("#photo-list");
+    const postFilterRow = document.querySelector("#post-filter-row");
+    const photoFilterRow = document.querySelector("#photo-filter-row");
+    const postForm = document.querySelector("#post-form");
+    const postFormTitle = document.querySelector("#post-form-title");
+    const postTitle = document.querySelector("#post-title");
+    const postBody = document.querySelector("#post-body");
+    const postPreview = document.querySelector("#post-preview");
+    const postImageList = document.querySelector("#post-image-list");
+    const postImageFile = document.querySelector("#post-image-file");
+    const postImagePath = document.querySelector("#post-image-path");
+    const postImageAlt = document.querySelector("#post-image-alt");
+    const postImageCaption = document.querySelector("#post-image-caption");
+    const postImageStatusLine = document.querySelector("#post-image-status-line");
+    const postStatus = document.querySelector("#post-status");
+    const postStatusLine = document.querySelector("#post-status-line");
+    const postMobileCheck = document.querySelector("#post-mobile-check");
+    const postReviewNote = document.querySelector("#post-review-note");
+    const photoForm = document.querySelector("#photo-form");
+    const photoFormTitle = document.querySelector("#photo-form-title");
+    const photoPreview = document.querySelector("#photo-preview");
+    const photoFile = document.querySelector("#photo-file");
+    const photoPath = document.querySelector("#photo-path");
+    const photoAlt = document.querySelector("#photo-alt");
+    const photoMemory = document.querySelector("#photo-memory");
+    const photoFigcaption = document.querySelector("#photo-figcaption");
+    const photoStatus = document.querySelector("#photo-status");
+    const photoStatusLine = document.querySelector("#photo-status-line");
+    const photoMobileCheck = document.querySelector("#photo-mobile-check");
+    const photoReviewNote = document.querySelector("#photo-review-note");
+
+    const supabase = CONFIG_READY
+      ? createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+          auth: { persistSession: true, autoRefreshToken: true }
+        })
+      : null;
+
+    marked.use({ gfm: true, breaks: true });
+
+    const WORKFLOW_STATUSES = [
+      { value: "draft", label: "임시 저장", tone: "draft" },
+      { value: "review", label: "검토 중", tone: "review" },
+      { value: "candidate", label: "공개 후보", tone: "candidate" },
+      { value: "published", label: "공개 완료", tone: "published" },
+      { value: "archived", label: "보관됨", tone: "draft" }
+    ];
+    const STATUS_MAP = Object.fromEntries(WORKFLOW_STATUSES.map((status) => [status.value, status]));
+
+    function setStatus(message, type = "") {
+      statusEl.textContent = message;
+      statusEl.className = `status${type ? ` is-${type}` : ""}`;
+    }
+
+    function setInlineStatus(element, message, type = "") {
+      element.textContent = message;
+      element.className = `status${type ? ` is-${type}` : ""}`;
+    }
+
+    function sanitizeHtml(html) {
+      const template = document.createElement("template");
+      template.innerHTML = html;
+      template.content.querySelectorAll("script, iframe, object, embed, link, style").forEach((node) => node.remove());
+      template.content.querySelectorAll("*").forEach((node) => {
+        [...node.attributes].forEach((attribute) => {
+          const name = attribute.name.toLowerCase();
+          const value = attribute.value.trim().toLowerCase();
+          if (name.startsWith("on") || ((name === "href" || name === "src") && value.startsWith("javascript:"))) {
+            node.removeAttribute(attribute.name);
+          }
+        });
+      });
+      return template.innerHTML;
+    }
+
+    function escapeHtml(value) {
+      return String(value ?? "").replace(/[&<>"']/g, (character) => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#039;"
+      })[character]);
+    }
+
+    function renderMarkdown(markdown) {
+      return sanitizeHtml(marked.parse(markdown || ""));
+    }
+
+    function normalizeImageSrc(path) {
+      if (!path) return "";
+      if (/^(https?:|data:|blob:)/i.test(path)) return path;
+      if (path.startsWith("../")) return path;
+      if (path.startsWith("/")) return `..${path}`;
+      return `../${path}`;
+    }
+
+    function normalizePublicHref(href) {
+      if (!href) return "";
+      if (/^(https?:|data:|blob:)/i.test(href)) return href;
+      if (href.startsWith("../")) return href;
+      if (href.startsWith("/")) return `..${href}`;
+      return `../${href}`;
+    }
+
+    function statusLabel(value) {
+      return STATUS_MAP[value]?.label || "상태 미확인";
+    }
+
+    function statusTone(value) {
+      return STATUS_MAP[value]?.tone || "draft";
+    }
+
+    function applySelectStatus(select, value) {
+      select.value = ["draft", "review", "candidate", "published"].includes(value) ? value : "draft";
+    }
+
+    function filterByStatus(items, filter) {
+      if (filter === "all") return items;
+      return items.filter((item) => item.status === filter);
+    }
+
+    function updateFilterButtons(container, activeFilter, attribute) {
+      container.querySelectorAll(`[${attribute}]`).forEach((button) => {
+        button.classList.toggle("is-active", button.getAttribute(attribute) === activeFilter);
+      });
+    }
+
+    function formatSaveError(error) {
+      const message = error?.message || "";
+      if (message.includes("status") && message.includes("check")) {
+        return "DB 상태값 패치가 필요합니다. SQL 패치 적용 후 다시 저장해 주세요.";
+      }
+      return message || "저장에 실패했습니다.";
+    }
+
+    function toggleMobileReview(form, button, note) {
+      const isActive = !form.classList.contains("is-mobile-review");
+      form.classList.toggle("is-mobile-review", isActive);
+      button.setAttribute("aria-pressed", String(isActive));
+      note.textContent = isActive ? "390px 모바일 폭으로 검토 중입니다." : "";
+    }
+
+    function makeSafeUploadPath(file, folder) {
+      const extension = file.name.split(".").pop().toLowerCase().replace(/[^a-z0-9]/g, "") || "jpg";
+      const safeName = `${Date.now()}-${Math.random().toString(36).slice(2, 9)}.${extension}`;
+      return `${folder}/${safeName}`;
+    }
+
+    function validateImageFile(file, statusTarget) {
+      if (!file) {
+        setInlineStatus(statusTarget, "업로드할 파일을 선택해 주세요.", "error");
+        return false;
+      }
+
+      if (!ALLOWED_TYPES.has(file.type)) {
+        setInlineStatus(statusTarget, "jpg, png, webp 파일만 업로드할 수 있습니다.", "error");
+        return false;
+      }
+
+      if (file.size > MAX_UPLOAD_SIZE) {
+        setInlineStatus(statusTarget, "10MB 이하 파일만 업로드할 수 있습니다.", "error");
+        return false;
+      }
+
+      return true;
+    }
+
+    function insertAtCursor(textarea, text) {
+      const start = textarea.selectionStart ?? textarea.value.length;
+      const end = textarea.selectionEnd ?? textarea.value.length;
+      const before = textarea.value.slice(0, start);
+      const after = textarea.value.slice(end);
+      const prefix = before && !before.endsWith("\n") ? "\n\n" : "";
+      const suffix = after && !after.startsWith("\n") ? "\n\n" : "";
+      textarea.value = `${before}${prefix}${text}${suffix}${after}`;
+      const cursor = before.length + prefix.length + text.length;
+      textarea.focus();
+      textarea.setSelectionRange(cursor, cursor);
+      postPreview.innerHTML = renderMarkdown(textarea.value);
+    }
+
+    function getNextOrder(items) {
+      const max = items.reduce((highest, item) => Math.max(highest, Number(item.sort_order || 0)), 0);
+      return max + 10;
+    }
+
+    async function isActiveAdmin(userId) {
+      const { data, error } = await supabase
+        .from("admin_profiles")
+        .select("user_id,is_active")
+        .eq("user_id", userId)
+        .eq("is_active", true)
+        .maybeSingle();
+
+      if (error) throw error;
+      return Boolean(data);
+    }
+
+    async function requireAdmin() {
+      if (!CONFIG_READY) {
+        setStatus("Supabase publishable 또는 anon key를 먼저 입력해 주세요.", "error");
+        return false;
+      }
+
+      const { data, error } = await supabase.auth.getUser();
+      if (error || !data.user) {
+        window.location.replace("index.html");
+        return false;
+      }
+
+      if (!(await isActiveAdmin(data.user.id))) {
+        await supabase.auth.signOut();
+        window.location.replace("index.html");
+        return false;
+      }
+
+      state.user = data.user;
+      return true;
+    }
+
+    async function writeAudit(action, tableName, rowId, beforeData, afterData) {
+      if (!state.user) return;
+      const { error } = await supabase.from("audit_logs").insert({
+        actor_id: state.user.id,
+        action,
+        table_name: tableName,
+        row_id: rowId ? String(rowId) : null,
+        before_data: beforeData || null,
+        after_data: afterData || null
+      });
+
+      if (error) {
+        console.warn("Audit log skipped:", error.message);
+      }
+    }
+
+    async function loadStar() {
+      const { data, error } = await supabase
+        .from("stars")
+        .select("slug,star_key,code,name_ko,title,subtitle,room_href")
+        .eq("slug", starSlug)
+        .single();
+
+      if (error) throw error;
+      state.star = data;
+      editorTitle.textContent = `${data.name_ko} 편집`;
+      starSubtitle.textContent = data.code || data.star_key || data.slug;
+
+      const publicHref = normalizePublicHref(data.room_href);
+      if (publicHref) {
+        publicPageLink.href = publicHref;
+        publicPageLink.classList.remove("is-hidden");
+      }
+    }
+
+    async function loadPosts() {
+      const { data, error } = await supabase
+        .from("star_posts")
+        .select("id,star_slug,source_html_id,title,summary,body_markdown,body_html_snapshot,status,sort_order,published_at,created_at,updated_at")
+        .eq("star_slug", starSlug)
+        .order("sort_order", { ascending: true })
+        .order("created_at", { ascending: true });
+
+      if (error) throw error;
+      state.posts = data || [];
+      renderPosts();
+      if (state.posts.length) selectPost(state.posts[0]);
+      else newPost();
+    }
+
+    async function loadPostImages(postId) {
+      if (!postId) {
+        state.postImages = [];
+        renderPostImages();
+        return;
+      }
+
+      const { data, error } = await supabase
+        .from("post_images")
+        .select("id,post_id,image_path,alt_text,caption,sort_order,created_at,updated_at")
+        .eq("post_id", postId)
+        .order("sort_order", { ascending: true })
+        .order("created_at", { ascending: true });
+
+      if (error) throw error;
+      if (!state.activePost || state.activePost.id !== postId) return;
+      state.postImages = data || [];
+      renderPostImages();
+    }
+
+    async function loadPhotos() {
+      const { data, error } = await supabase
+        .from("star_photos")
+        .select("id,star_slug,image_path,alt_text,memory_text,figcaption,source_batch,display_class,status,sort_order,created_at,updated_at")
+        .eq("star_slug", starSlug)
+        .order("sort_order", { ascending: true })
+        .order("created_at", { ascending: true });
+
+      if (error) throw error;
+      state.photos = data || [];
+      renderPhotos();
+      if (state.photos.length) selectPhoto(state.photos[0]);
+      else newPhoto();
+    }
+
+    function renderPosts() {
+      updateFilterButtons(postFilterRow, state.postFilter, "data-post-filter");
+      const visiblePosts = filterByStatus(state.posts, state.postFilter);
+
+      if (!visiblePosts.length) {
+        postList.innerHTML = `<p class="empty">${state.posts.length ? "이 상태의 글이 없습니다." : "등록된 글이 없습니다."}</p>`;
+        return;
+      }
+
+      postList.innerHTML = visiblePosts.map((post) => `
+        <button class="list-button" type="button" data-id="${escapeHtml(post.id)}">
+          <strong>${escapeHtml(post.title || "제목 없음")}</strong>
+          <span><span class="status-pill" data-tone="${escapeHtml(statusTone(post.status))}">${escapeHtml(statusLabel(post.status))}</span> · ${escapeHtml(post.source_html_id || post.id)}</span>
+        </button>
+      `).join("");
+
+      postList.querySelectorAll("[data-id]").forEach((button) => {
+        button.addEventListener("click", () => {
+          const post = state.posts.find((item) => item.id === button.dataset.id);
+          if (post) selectPost(post);
+        });
+      });
+      if (state.activePost) markActive(postList, state.activePost.id);
+    }
+
+    function renderPostImages() {
+      if (!state.activePost) {
+        postImageList.innerHTML = `<p class="empty">글을 먼저 저장하면 이미지를 연결할 수 있습니다.</p>`;
+        return;
+      }
+
+      if (!state.postImages.length) {
+        postImageList.innerHTML = `<p class="empty">이 글에 연결된 이미지가 없습니다.</p>`;
+        return;
+      }
+
+      postImageList.innerHTML = state.postImages.map((image) => `
+        <article class="post-image-card">
+          <img src="${escapeHtml(normalizeImageSrc(image.image_path))}" alt="${escapeHtml(image.alt_text || "")}" loading="lazy" />
+          <span>${escapeHtml(image.caption || image.alt_text || "캡션 없음")}</span>
+          <button class="ghost-button" type="button" data-insert-post-image="${escapeHtml(image.id)}">본문에 넣기</button>
+        </article>
+      `).join("");
+
+      postImageList.querySelectorAll("[data-insert-post-image]").forEach((button) => {
+        button.addEventListener("click", () => {
+          const image = state.postImages.find((item) => item.id === button.dataset.insertPostImage);
+          if (!image) return;
+          const alt = image.alt_text || image.caption || "글 이미지";
+          const caption = image.caption ? `\n\n${image.caption}` : "";
+          insertAtCursor(postBody, `![${alt}](${image.image_path})${caption}`);
+        });
+      });
+    }
+
+    function renderPhotos() {
+      updateFilterButtons(photoFilterRow, state.photoFilter, "data-photo-filter");
+      const visiblePhotos = filterByStatus(state.photos, state.photoFilter);
+
+      if (!visiblePhotos.length) {
+        photoList.innerHTML = `<p class="empty">${state.photos.length ? "이 상태의 사진이 없습니다." : "등록된 사진이 없습니다."}</p>`;
+        return;
+      }
+
+      photoList.innerHTML = visiblePhotos.map((photo) => `
+        <button class="photo-button" type="button" data-id="${escapeHtml(photo.id)}">
+          <img src="${escapeHtml(normalizeImageSrc(photo.image_path))}" alt="${escapeHtml(photo.alt_text || "")}" loading="lazy" />
+          <span><span class="status-pill" data-tone="${escapeHtml(statusTone(photo.status))}">${escapeHtml(statusLabel(photo.status))}</span> · ${escapeHtml(photo.memory_text || photo.figcaption || photo.alt_text || "코멘트 없음")}</span>
+        </button>
+      `).join("");
+
+      photoList.querySelectorAll("[data-id]").forEach((button) => {
+        button.addEventListener("click", () => {
+          const photo = state.photos.find((item) => item.id === button.dataset.id);
+          if (photo) selectPhoto(photo);
+        });
+      });
+      if (state.activePhoto) markActive(photoList, state.activePhoto.id);
+    }
+
+    function markActive(container, id) {
+      container.querySelectorAll("button").forEach((button) => {
+        button.classList.toggle("is-active", button.dataset.id === id);
+      });
+    }
+
+    function selectPost(post) {
+      state.activePost = post;
+      postFormTitle.textContent = "글 수정";
+      postTitle.value = post.title || "";
+      postBody.value = post.body_markdown || "";
+      applySelectStatus(postStatus, post.status || "draft");
+      postPreview.innerHTML = renderMarkdown(postBody.value);
+      setInlineStatus(postStatusLine, "");
+      setInlineStatus(postImageStatusLine, "");
+      postImageFile.value = "";
+      postImagePath.value = "";
+      postImageAlt.value = "";
+      postImageCaption.value = "";
+      markActive(postList, post.id);
+      loadPostImages(post.id).catch((error) => {
+        setInlineStatus(postImageStatusLine, error.message || "글 이미지를 불러오지 못했습니다.", "error");
+      });
+    }
+
+    function newPost() {
+      state.activePost = null;
+      postFormTitle.textContent = "새 글";
+      postTitle.value = "";
+      postBody.value = "";
+      postStatus.value = "draft";
+      postPreview.innerHTML = "";
+      setInlineStatus(postStatusLine, "");
+      setInlineStatus(postImageStatusLine, "");
+      postImageFile.value = "";
+      postImagePath.value = "";
+      postImageAlt.value = "";
+      postImageCaption.value = "";
+      state.postImages = [];
+      renderPostImages();
+      markActive(postList, "");
+    }
+
+    function selectPhoto(photo) {
+      state.activePhoto = photo;
+      photoFormTitle.textContent = "사진 수정";
+      photoPath.value = photo.image_path || "";
+      photoAlt.value = photo.alt_text || "";
+      photoMemory.value = photo.memory_text || "";
+      photoFigcaption.value = photo.figcaption || "";
+      applySelectStatus(photoStatus, photo.status || "draft");
+      photoPreview.src = normalizeImageSrc(photo.image_path);
+      photoPreview.alt = photo.alt_text || "";
+      photoFile.value = "";
+      setInlineStatus(photoStatusLine, "");
+      markActive(photoList, photo.id);
+    }
+
+    function newPhoto() {
+      state.activePhoto = null;
+      photoFormTitle.textContent = "새 사진";
+      photoPath.value = "";
+      photoAlt.value = "";
+      photoMemory.value = "";
+      photoFigcaption.value = "";
+      photoStatus.value = "draft";
+      photoPreview.removeAttribute("src");
+      photoPreview.alt = "";
+      photoFile.value = "";
+      setInlineStatus(photoStatusLine, "");
+      markActive(photoList, "");
+    }
+
+    async function savePost(event) {
+      event.preventDefault();
+      setInlineStatus(postStatusLine, "저장 중입니다.");
+
+      const selectedStatus = postStatus.value || "draft";
+      const htmlSnapshot = renderMarkdown(postBody.value);
+      const payload = {
+        star_slug: starSlug,
+        title: postTitle.value.trim(),
+        body_markdown: postBody.value,
+        body_html_snapshot: htmlSnapshot,
+        status: selectedStatus,
+        sort_order: state.activePost?.sort_order || getNextOrder(state.posts),
+        published_at: selectedStatus === "published" ? (state.activePost?.published_at || new Date().toISOString()) : null
+      };
+
+      try {
+        let result;
+        if (state.activePost) {
+          result = await supabase
+            .from("star_posts")
+            .update(payload)
+            .eq("id", state.activePost.id)
+            .select()
+            .single();
+        } else {
+          result = await supabase
+            .from("star_posts")
+            .insert(payload)
+            .select()
+            .single();
+        }
+
+        if (result.error) throw result.error;
+        await writeAudit(state.activePost ? "update" : "insert", "star_posts", result.data.id, state.activePost, result.data);
+        await loadPosts();
+        selectPost(result.data);
+        setInlineStatus(postStatusLine, "저장했습니다.", "ok");
+      } catch (error) {
+        setInlineStatus(postStatusLine, formatSaveError(error), "error");
+      }
+    }
+
+    async function uploadPostImage() {
+      if (!state.activePost) {
+        setInlineStatus(postImageStatusLine, "글을 먼저 저장한 뒤 이미지를 업로드해 주세요.", "error");
+        return;
+      }
+
+      const file = postImageFile.files?.[0];
+      if (!validateImageFile(file, postImageStatusLine)) return;
+
+      setInlineStatus(postImageStatusLine, "글 사진 업로드 중입니다.");
+
+      try {
+        const storagePath = makeSafeUploadPath(file, `${starSlug}/posts/${state.activePost.id}`);
+        const { data, error } = await supabase.storage
+          .from(STORAGE_BUCKET)
+          .upload(storagePath, file, {
+            cacheControl: "3600",
+            contentType: file.type,
+            upsert: false
+          });
+
+        if (error) throw error;
+
+        const { data: publicUrlData } = supabase.storage
+          .from(STORAGE_BUCKET)
+          .getPublicUrl(data.path);
+
+        postImagePath.value = publicUrlData.publicUrl;
+        if (!postImageAlt.value.trim()) postImageAlt.value = file.name.replace(/\.[^.]+$/, "");
+        setInlineStatus(postImageStatusLine, "업로드했습니다. 글에 이미지 연결을 눌러 반영합니다.", "ok");
+      } catch (error) {
+        setInlineStatus(postImageStatusLine, error.message || "글 사진 업로드에 실패했습니다.", "error");
+      }
+    }
+
+    async function savePostImage() {
+      if (!state.activePost) {
+        setInlineStatus(postImageStatusLine, "글을 먼저 저장한 뒤 이미지를 연결해 주세요.", "error");
+        return;
+      }
+
+      const imagePath = postImagePath.value.trim();
+      if (!imagePath) {
+        setInlineStatus(postImageStatusLine, "이미지 경로가 필요합니다.", "error");
+        return;
+      }
+
+      setInlineStatus(postImageStatusLine, "글에 이미지 연결 중입니다.");
+
+      const payload = {
+        post_id: state.activePost.id,
+        image_path: imagePath,
+        alt_text: postImageAlt.value.trim() || null,
+        caption: postImageCaption.value.trim() || null,
+        sort_order: getNextOrder(state.postImages)
+      };
+
+      try {
+        const result = await supabase
+          .from("post_images")
+          .insert(payload)
+          .select()
+          .single();
+
+        if (result.error) throw result.error;
+
+        await writeAudit("insert", "post_images", result.data.id, null, result.data);
+        await loadPostImages(state.activePost.id);
+        postImageFile.value = "";
+        postImagePath.value = "";
+        postImageAlt.value = "";
+        postImageCaption.value = "";
+        setInlineStatus(postImageStatusLine, "글에 이미지를 연결했습니다.", "ok");
+      } catch (error) {
+        setInlineStatus(postImageStatusLine, error.message || "글 이미지 연결에 실패했습니다.", "error");
+      }
+    }
+
+    async function uploadPhoto() {
+      const file = photoFile.files?.[0];
+      if (!validateImageFile(file, photoStatusLine)) return;
+
+      setInlineStatus(photoStatusLine, "사진 업로드 중입니다.");
+
+      const storagePath = makeSafeUploadPath(file, `${starSlug}/photos`);
+
+      try {
+        const { data, error } = await supabase.storage
+          .from(STORAGE_BUCKET)
+          .upload(storagePath, file, {
+            cacheControl: "3600",
+            contentType: file.type,
+            upsert: false
+          });
+
+        if (error) throw error;
+
+        const { data: publicUrlData } = supabase.storage
+          .from(STORAGE_BUCKET)
+          .getPublicUrl(data.path);
+
+        photoPath.value = publicUrlData.publicUrl;
+        photoPreview.src = publicUrlData.publicUrl;
+        photoPreview.alt = photoAlt.value || file.name;
+        setInlineStatus(photoStatusLine, "업로드했습니다. 사진 저장을 눌러 반영합니다.", "ok");
+      } catch (error) {
+        setInlineStatus(photoStatusLine, error.message || "사진 업로드에 실패했습니다.", "error");
+      }
+    }
+
+    async function savePhoto(event) {
+      event.preventDefault();
+      setInlineStatus(photoStatusLine, "저장 중입니다.");
+
+      const selectedStatus = photoStatus.value || "draft";
+      const payload = {
+        star_slug: starSlug,
+        image_path: photoPath.value.trim(),
+        alt_text: photoAlt.value.trim() || null,
+        memory_text: photoMemory.value.trim() || null,
+        figcaption: photoFigcaption.value.trim() || null,
+        status: selectedStatus,
+        sort_order: state.activePhoto?.sort_order || getNextOrder(state.photos)
+      };
+
+      try {
+        let result;
+        if (state.activePhoto) {
+          result = await supabase
+            .from("star_photos")
+            .update(payload)
+            .eq("id", state.activePhoto.id)
+            .select()
+            .single();
+        } else {
+          result = await supabase
+            .from("star_photos")
+            .insert(payload)
+            .select()
+            .single();
+        }
+
+        if (result.error) throw result.error;
+        await writeAudit(state.activePhoto ? "update" : "insert", "star_photos", result.data.id, state.activePhoto, result.data);
+        await loadPhotos();
+        selectPhoto(result.data);
+        setInlineStatus(photoStatusLine, "저장했습니다.", "ok");
+      } catch (error) {
+        setInlineStatus(photoStatusLine, formatSaveError(error), "error");
+      }
+    }
+
+    document.querySelector("#logout-button").addEventListener("click", async () => {
+      if (supabase) await supabase.auth.signOut();
+      window.location.href = "index.html";
+    });
+
+    document.querySelector("#new-post-button").addEventListener("click", newPost);
+    document.querySelector("#new-photo-button").addEventListener("click", newPhoto);
+    document.querySelector("#upload-button").addEventListener("click", uploadPhoto);
+    document.querySelector("#post-image-upload-button").addEventListener("click", uploadPostImage);
+    document.querySelector("#post-image-save-button").addEventListener("click", savePostImage);
+    postFilterRow.querySelectorAll("[data-post-filter]").forEach((button) => {
+      button.addEventListener("click", () => {
+        state.postFilter = button.dataset.postFilter;
+        renderPosts();
+      });
+    });
+    photoFilterRow.querySelectorAll("[data-photo-filter]").forEach((button) => {
+      button.addEventListener("click", () => {
+        state.photoFilter = button.dataset.photoFilter;
+        renderPhotos();
+      });
+    });
+    document.querySelectorAll("[data-post-workflow]").forEach((button) => {
+      button.addEventListener("click", () => {
+        postStatus.value = button.dataset.postWorkflow;
+        postForm.requestSubmit();
+      });
+    });
+    document.querySelectorAll("[data-photo-workflow]").forEach((button) => {
+      button.addEventListener("click", () => {
+        photoStatus.value = button.dataset.photoWorkflow;
+        photoForm.requestSubmit();
+      });
+    });
+    postMobileCheck.addEventListener("click", () => toggleMobileReview(postForm, postMobileCheck, postReviewNote));
+    photoMobileCheck.addEventListener("click", () => toggleMobileReview(photoForm, photoMobileCheck, photoReviewNote));
+    postBody.addEventListener("input", () => {
+      postPreview.innerHTML = renderMarkdown(postBody.value);
+    });
+    photoPath.addEventListener("input", () => {
+      photoPreview.src = normalizeImageSrc(photoPath.value);
+    });
+    photoAlt.addEventListener("input", () => {
+      photoPreview.alt = photoAlt.value;
+    });
+    postForm.addEventListener("submit", savePost);
+    photoForm.addEventListener("submit", savePhoto);
+
+    async function start() {
+      if (!starSlug) {
+        window.location.replace("dashboard.html");
+        return;
+      }
+
+      if (!(await requireAdmin())) return;
+
+      setStatus("데이터를 불러오는 중입니다.");
+      await loadStar();
+      await Promise.all([loadPosts(), loadPhotos()]);
+      setStatus("");
+    }
+
+    start().catch((error) => {
+      setStatus(error.message || "편집 데이터를 불러오지 못했습니다.", "error");
+    });
+  </script>
+</body>
+</html>
