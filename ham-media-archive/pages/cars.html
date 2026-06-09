@@ -884,6 +884,36 @@
   text-transform: uppercase;
 }
 
+.room-sort-control {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin: 0 0 var(--space-5);
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--line);
+  color: var(--muted);
+  font-size: var(--small);
+  font-weight: 850;
+}
+
+.room-sort-control button {
+  border: 0;
+  border-bottom: 2px solid transparent;
+  border-radius: 0;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: var(--small);
+  font-weight: 900;
+  line-height: 1.4;
+  padding: 0 0 4px;
+}
+
+.room-sort-control button[aria-pressed="true"] {
+  border-color: var(--gold);
+  color: var(--ivory);
+}
+
 .room-house-back,
 .room-article-back,
 .room-article-bottom-nav button,
@@ -934,7 +964,10 @@
 
 .room-house-panel.is-detail-mode > .room-house-panel-header,
 .room-house-panel.is-detail-mode > .room-article-list,
+.room-house-panel.is-detail-mode > .room-sort-control,
 .room-house-panel.is-photo-detail-mode > .room-house-panel-header,
+.room-house-panel.is-photo-detail-mode > .room-sort-control,
+.room-house-panel.is-photo-detail-mode > .room-section-heading,
 .room-house-panel.is-photo-detail-mode > .room-house-photo-grid {
   display: none !important;
 }
@@ -1115,38 +1148,37 @@ body.variant-mobile .room-house-photo-grid {
 body.variant-mobile .car-essay-gallery {
   grid-template-columns: 1fr;
 }
+/* Photo room sizing: desktop 4, tablet 3, mobile 2. */
+.room-house-photo-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(10px, 1.5vw, 18px);
+  max-width: none;
+}
 
-    /* Photo room sizing: desktop 4, tablet 3, mobile 2. */
-    .room-house-photo-grid {
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: clamp(10px, 1.5vw, 18px);
-      max-width: none;
-    }
+.room-house-photo-grid figure,
+.room-house-photo {
+  margin: 0;
+}
 
-    .room-house-photo-grid figure,
-    .room-house-photo {
-      margin: 0;
-    }
+.room-house-photo-grid img,
+.room-house-photo img,
+.room-house-photo-thumb {
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  width: 100%;
+}
 
-    .room-house-photo-grid img,
-    .room-house-photo img,
-    .room-house-photo-thumb {
-      aspect-ratio: 4 / 3;
-      object-fit: cover;
-      width: 100%;
-    }
+@media (min-width: 641px) and (max-width: 1024px) {
+  .room-house-photo-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
 
-    @media (min-width: 641px) and (max-width: 1024px) {
-      .room-house-photo-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-      }
-    }
-
-    @media (max-width: 640px) {
-      .room-house-photo-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
+@media (max-width: 640px) {
+  .room-house-photo-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
   </style>
 </head>
 <body class="variant-desktop">
@@ -1161,10 +1193,10 @@ body.variant-mobile .car-essay-gallery {
       window.addEventListener("resize", setCarVariant);
     })();
   </script>
-  <main class="sheet room-house-page car-style-page" id="car-star">
+  <main class="sheet room-house-page car-style-page" id="car-star" data-article-nav-label="문장 이동" data-article-list-label="문장으로" data-article-prev-label="이전 문장" data-article-next-label="다음 문장" data-photo-list-label="장면으로">
     <nav class="top-doors room-house-nav" aria-label="자동차별 입구">
-      <button class="room-house-door" type="button" data-target="#car-writing" data-house-target="car-writing-room">글</button>
-      <button class="room-house-door" type="button" data-target="#car-photos" data-house-target="car-photo-room">사진</button>
+      <button class="room-house-door" type="button" data-target="#car-writing" data-house-target="car-writing-room">문장</button>
+      <button class="room-house-door" type="button" data-target="#car-photos" data-house-target="car-photo-room">장면</button>
       <button class="room-house-door" type="button" data-target="#car-map" data-house-target="car-map-room">지도</button>
       <a href="#star-list">다른 별</a>
     </nav>
@@ -1219,7 +1251,7 @@ body.variant-mobile .car-essay-gallery {
       </div>
       <div class="writing-grid">
         <article class="panel ivory">
-          <p class="mini">글방으로</p>
+          <p class="mini">문장으로</p>
           <h3>초창기 모델 Y를 오래 타려면, 피로감도 중요했다.</h3>
           <p>
             단단한 승차감을 참고 타다가, 더 나은 방법을 찾고 직접 바꿔본 기록이 있다.
@@ -1274,7 +1306,7 @@ body.variant-mobile .car-essay-gallery {
       <div class="map-panel">
         <div class="map-visual" role="img" aria-label="자동차별의 길 지도"></div>
         <article class="panel">
-          <p class="mini">지도방으로</p>
+          <p class="mini">좌표로</p>
           <h3>내가 달렸던 길들</h3>
           <p>
             이 방은 나중에 실제 길과 장소가 더해질 자리다.
@@ -1292,9 +1324,9 @@ body.variant-mobile .car-essay-gallery {
       <div class="entry-hub">
         <p class="large-copy">막막한 사람에게<br />방향을 찾아주는 일.</p>
         <div class="entry-grid">
-          <button class="entry-card room-house-door" type="button" data-target="#car-writing" data-house-target="car-writing-room"><strong>글</strong><span>사브, 해치백, 모델 Y의 기록으로</span></button>
-          <button class="entry-card room-house-door" type="button" data-target="#car-photos" data-house-target="car-photo-room"><strong>사진</strong><span>차와 함께 움직였던 장면으로</span></button>
-          <button class="entry-card room-house-door" type="button" data-target="#car-map" data-house-target="car-map-room"><strong>지도</strong><span>언젠가 달렸던 길의 목록으로</span></button>
+          <button class="entry-card room-house-door" type="button" data-target="#car-writing" data-house-target="car-writing-room"><strong>문장</strong><span>사브, 해치백, 모델 Y에 남은 문장으로</span></button>
+          <button class="entry-card room-house-door" type="button" data-target="#car-photos" data-house-target="car-photo-room"><strong>장면</strong><span>차와 함께 움직였던 장면으로</span></button>
+          <button class="entry-card room-house-door" type="button" data-target="#car-map" data-house-target="car-map-room"><strong>지도</strong><span>언젠가 달렸던 길의 좌표로</span></button>
           <a class="entry-card" href="#star-list"><strong>다른 별</strong><span>다른 좋아하는 것의 별자리로</span></a>
         </div>
       </div>
@@ -1314,32 +1346,38 @@ body.variant-mobile .car-essay-gallery {
       </div>
     </section>
 
-      <section class="room-house-panel" id="car-writing-room" aria-label="자동차 글 목록" hidden>
+      <section class="room-house-panel" id="car-writing-room" aria-label="자동차별 문장" hidden>
         <div class="room-house-panel-header">
-          <p class="room-section-label">글</p>
-          <h2>글 목록</h2>
+          <p class="room-section-label">자동차별 · 문장</p>
+          <h2>길 위에 남은 사람들</h2>
           <button class="room-house-back" type="button">자동차별로 돌아가기</button>
         </div>
 
-        <div class="room-article-list" aria-label="자동차 글 목록">
-          <button class="room-article-link" type="button" data-article-target="car-tesla-koni-note">
+        <div class="room-sort-control" data-sort-target="articles" aria-label="자동차별 문장 정렬">
+          <span>정렬</span>
+          <button type="button" data-sort-mode="latest" aria-pressed="true">최신순</button>
+          <button type="button" data-sort-mode="registered" aria-pressed="false">등록순</button>
+        </div>
+
+        <div class="room-article-list" aria-label="자동차별 문장">
+          <button class="room-article-link" type="button" data-article-target="car-tesla-koni-note" data-homepage-date="2026-06-02" data-sort-order="1">
             <strong>테슬라 모델 Y 코니 서스펜션</strong>
           </button>
-          <button class="room-article-link" type="button" data-article-target="car-direction-note">
+          <button class="room-article-link" type="button" data-article-target="car-direction-note" data-homepage-date="2026-06-07" data-sort-order="2">
             <strong>방향 찾기</strong>
           </button>
-          <button class="room-article-link" type="button" data-article-target="car-line-note">
+          <button class="room-article-link" type="button" data-article-target="car-line-note" data-homepage-date="2026-06-07" data-sort-order="3">
             <strong>선과 거리</strong>
           </button>
         </div>
 
         <div class="room-card-list room-article-panels">
           <article class="room-post room-card car-essay-card room-article-panel" id="car-tesla-koni-note" hidden>
-            <button class="room-article-back" type="button">글 목록</button>
+            <button class="room-article-back" type="button">문장으로</button>
             <header>
-              <p class="room-card-meta">글</p>
+              <p class="room-card-meta">문장</p>
               <h3>테슬라 모델 Y 롱레인지 코니 서스펜션</h3>
-              <p class="room-card-note">모델 Y / 코니 서스펜션 / 승차감</p>
+              <p class="room-card-note">모델 Y · 코니 서스펜션 · 승차감</p>
             </header>
 
             <figure class="car-essay-figure">
@@ -1396,26 +1434,26 @@ body.variant-mobile .car-essay-gallery {
           </article>
 
           <article class="room-post room-card room-record-unit car-record-card room-article-panel" id="car-direction-note" hidden>
-            <button class="room-article-back" type="button">글 목록</button>
+            <button class="room-article-back" type="button">문장으로</button>
             <figure class="room-record-figure">
               <img class="room-photo-image room-record-photo" src="../assets/images/cars/essay-open-parking-direction.jpg" alt="하늘 아래 주차된 흰 자동차">
               <figcaption class="room-record-caption">
-                <span class="room-card-meta">글</span>
+                <span class="room-card-meta">문장</span>
                 <strong class="room-card-title">막막한 곳에서 방향을 찾는 일</strong>
-                <span class="room-card-note">자동차 / 길 / 방향</span>
+                <span class="room-card-note">자동차 · 길 · 방향</span>
                 <span>어디로 갈지 정하는 순간, 길은 조금씩 선명해진다.</span>
               </figcaption>
             </figure>
           </article>
 
           <article class="room-post room-card room-record-unit car-record-card room-article-panel" id="car-line-note" hidden>
-            <button class="room-article-back" type="button">글 목록</button>
+            <button class="room-article-back" type="button">문장으로</button>
             <figure class="room-record-figure">
               <img class="room-photo-image room-record-photo" src="../assets/images/cars/photo-white-car-line.jpg" alt="주차장에 세워진 흰 자동차의 선">
               <figcaption class="room-record-caption">
-                <span class="room-card-meta">사진</span>
+                <span class="room-card-meta">장면</span>
                 <strong class="room-card-title">차가 남긴 선과 거리</strong>
-                <span class="room-card-note">차 / 주차장 / 시선</span>
+                <span class="room-card-note">차 · 주차장 · 시선</span>
                 <span>차를 보는 일은 결국 선과 거리, 그리고 방향을 읽는 일이다.</span>
               </figcaption>
             </figure>
@@ -1423,15 +1461,21 @@ body.variant-mobile .car-essay-gallery {
         </div>
       </section>
 
-      <section class="room-house-panel car-gallery" id="car-photo-room" aria-label="자동차 갤러리" hidden>
+      <section class="room-house-panel car-gallery" id="car-photo-room" aria-label="자동차별 장면" hidden>
         <div class="room-house-panel-header">
-          <p class="room-section-label">사진</p>
-          <h2>차와 길, 움직임의 사진들</h2>
+          <p class="room-section-label">자동차별 · 장면</p>
+          <h2>장면으로 남은 사람들</h2>
           <button class="room-house-back" type="button">자동차별로 돌아가기</button>
         </div>
 
+        <div class="room-sort-control" data-sort-target="photos" aria-label="자동차별 장면 정렬">
+          <span>정렬</span>
+          <button type="button" data-sort-mode="latest" aria-pressed="true">최신순</button>
+          <button type="button" data-sort-mode="registered" aria-pressed="false">등록순</button>
+        </div>
+
         <div class="room-section-heading">
-          <p class="room-section-label">길을 찾던 자리의 흔적</p>
+          <p class="room-section-label">차와 길의 좌표</p>
         </div>
         <div class="room-house-photo-grid car-gallery-grid">
           <figure class="room-house-photo" data-memory="다시는 블랙 차를 사나 봐라 했는데, 우리 와이프 차가 블랙이 되었네. ㅜㅜ"><img class="room-photo-image car-gallery-photo" src="../assets/images/cars/gallery-img-9289.jpg" alt="자동차 사진 1"><figcaption>다시는 블랙 차를 사나 봐라 했는데.</figcaption></figure>
@@ -1459,14 +1503,14 @@ body.variant-mobile .car-essay-gallery {
 
 <section class="room-house-panel" id="car-map-room" aria-label="자동차별 지도" hidden>
   <div class="room-house-panel-header">
-    <p class="room-section-label">지도</p>
-    <h2>내가 달렸던 길들</h2>
+    <p class="room-section-label">관계의 지도</p>
+    <h2>길의 좌표가 쌓이면 지도가 됩니다</h2>
     <button class="room-house-back" type="button">자동차별로 돌아가기</button>
   </div>
   <article class="room-post room-card room-record-unit car-record-card">
-    <p class="room-card-meta">준비중 지도</p>
-    <h3>지도는 아직 완성되지 않아도 된다.</h3>
-    <p>한 번 간 길을 몸으로 기억하는 사람의 지도. 실제 길과 장소는 천천히 더해질 예정이다.</p>
+    <p class="room-card-meta">관계의 좌표</p>
+    <h3>태그는 관계의 좌표입니다.</h3>
+    <p>같은 길, 같은 차, 같은 세차장, 같은 방향이 쌓이면 이 별의 지형이 드러납니다.</p>
   </article>
 </section>
 
@@ -1498,6 +1542,6 @@ body.variant-mobile .car-essay-gallery {
 
     <footer>자동차별 · LPH-B613-06 · HAM MEDIA · Design MD로 만든 별 페이지</footer>
   </main>
-  <script src="../assets/js/main.js?v=car-star-sheet-v1"></script>
+  <script src="../assets/js/main.js?v=car-world-language-v1"></script>
 </body>
 </html>
