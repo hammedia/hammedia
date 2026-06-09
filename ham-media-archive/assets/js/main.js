@@ -785,6 +785,35 @@ function buildRoomHouse() {
     });
   }
 
+  function openArticleById(articleId) {
+    syncArticleCollections();
+    const index = articleLinks.findIndex((link) => link.dataset.articleTarget === articleId);
+    if (index < 0) return false;
+
+    const link = articleLinks[index];
+    const target = housePage.querySelector(`#${link.dataset.articleTarget}`);
+    const parentPanel = target?.closest(".room-house-panel");
+    if (!target || !parentPanel) return false;
+
+    closePanels();
+    parentPanel.hidden = false;
+
+    const door = doors.find((button) => button.dataset.houseTarget === parentPanel.id);
+    if (door) {
+      door.classList.add("is-active");
+      door.setAttribute("aria-expanded", "true");
+    }
+
+    openArticleAt(index);
+    return true;
+  }
+
+  function openArticleFromHash() {
+    const articleId = decodeURIComponent(window.location.hash.replace(/^#/, ""));
+    if (!articleId) return;
+    openArticleById(articleId);
+  }
+
   function rebuildArticleBottomNav() {
     articlePanels.forEach((panel) => {
       panel.querySelector(":scope > .room-article-bottom-nav")?.remove();
@@ -934,6 +963,9 @@ function buildRoomHouse() {
       }
     });
   });
+
+  openArticleFromHash();
+  window.addEventListener("hashchange", openArticleFromHash);
 }
 
 buildRoomHouse();
