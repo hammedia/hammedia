@@ -842,7 +842,7 @@ function buildRoomHouse() {
     const backButton = document.createElement("button");
     backButton.className = "room-gallery-detail-button";
     backButton.type = "button";
-    backButton.textContent = "사진으로";
+    backButton.textContent = "장면으로";
     backButton.addEventListener("click", () => {
       closePhotoDetail();
       photoGrid?.scrollIntoView({

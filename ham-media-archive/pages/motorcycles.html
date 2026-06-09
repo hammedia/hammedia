@@ -827,7 +827,10 @@
     }
 
     .room-house-panel.is-detail-mode > .room-house-panel-header,
-    .room-house-panel.is-detail-mode > .room-list-pager {
+    .room-house-panel.is-detail-mode > .room-sort-control,
+    .room-house-panel.is-detail-mode > .room-list-pager,
+    .room-house-panel.is-photo-detail-mode > .room-house-panel-header,
+    .room-house-panel.is-photo-detail-mode > .room-sort-control {
       display: none;
     }
 
@@ -839,6 +842,36 @@
       letter-spacing: 0.12em;
       line-height: 1.5;
       text-transform: uppercase;
+    }
+
+    .room-sort-control {
+      align-items: center;
+      border-bottom: 1px solid rgba(15, 12, 11, 0.14);
+      color: rgba(15, 12, 11, 0.58);
+      display: flex;
+      flex-wrap: wrap;
+      font-size: 13px;
+      font-weight: 850;
+      gap: var(--space-3);
+      padding-bottom: var(--space-4);
+    }
+
+    .room-sort-control button {
+      background: transparent;
+      border: 0;
+      border-bottom: 2px solid transparent;
+      border-radius: 0;
+      color: rgba(15, 12, 11, 0.46);
+      cursor: pointer;
+      font: inherit;
+      font-weight: 900;
+      line-height: 1.4;
+      padding: 0 0 4px;
+    }
+
+    .room-sort-control button[aria-pressed="true"] {
+      border-color: var(--color-red);
+      color: var(--color-wall);
     }
 
     .room-house-back,
@@ -1247,10 +1280,10 @@
   </style>
 </head>
 <body class="variant-desktop">
-<main class="sheet room-house-page">
+<main class="sheet room-house-page" data-photo-list-label="장면으로">
     <nav class="star-room-nav room-house-nav" aria-label="바이크별 이동">
-      <button class="room-house-door" type="button" data-house-target="motorcycle-writing-room">글</button>
-      <button class="room-house-door" type="button" data-house-target="motorcycle-photo-room">사진</button>
+      <button class="room-house-door" type="button" data-house-target="motorcycle-writing-room">문장</button>
+      <button class="room-house-door" type="button" data-house-target="motorcycle-photo-room">장면</button>
       <button class="room-house-door" type="button" data-house-target="motorcycle-map-room">지도</button>
       <a href="#star-list">다른 별</a>
     </nav>
@@ -1366,23 +1399,23 @@
           <span class="label">들어가는 버튼</span>
           <div class="button-row">
             <span class="button primary">아직 달리는 중</span>
-            <span class="button silver">사진 보기</span>
-            <span class="button">글 읽기</span>
+            <span class="button silver">장면 보기</span>
+            <span class="button">문장 읽기</span>
           </div>
           <div class="quote">콘텐츠도 바이크도 같다. 완벽한 준비를 기다리지 않는다.</div>
         </div>
         <div class="panel">
-          <span class="label">별의 문</span>
+          <span class="label">별 안으로</span>
           <div class="door-row">
-            <button class="door room-house-door" type="button" data-house-target="motorcycle-writing-room"><strong>글</strong><span>결심과 이후의 기록</span></button>
-            <button class="door room-house-door" type="button" data-house-target="motorcycle-photo-room"><strong>사진</strong><span>그 시절의 실제 사진</span></button>
-            <button class="door room-house-door" type="button" data-house-target="motorcycle-map-room"><strong>지도</strong><span>아직 준비 중인 길</span></button>
+            <button class="door room-house-door" type="button" data-house-target="motorcycle-writing-room"><strong>문장</strong><span>결심과 이후의 기록</span></button>
+            <button class="door room-house-door" type="button" data-house-target="motorcycle-photo-room"><strong>장면</strong><span>그 시절의 실제 장면</span></button>
+            <button class="door room-house-door" type="button" data-house-target="motorcycle-map-room"><strong>지도</strong><span>아직 준비 중인 좌표</span></button>
             <a class="door" href="#star-list"><strong>다른 별</strong><span>별자리 목록</span></a>
           </div>
         </div>
         <div class="panel light">
-          <span class="label">긴 글</span>
-          <h3>긴 글은 밝은 지면 위에 둡니다.</h3>
+          <span class="label">긴 문장</span>
+          <h3>긴 문장은 밝은 지면 위에 둡니다.</h3>
           <p>어두운 화면에서 모든 이야기를 밀어붙이지 않습니다. 오래 읽어야 하는 문장은 한 번 밝은 곳으로 옮깁니다.</p>
         </div>
         <div class="panel">
@@ -1396,33 +1429,35 @@
     </section>
 
 
-    <section class="room-house-panel" id="motorcycle-writing-room" aria-label="바이크 글" hidden>
+    <section class="room-house-panel" id="motorcycle-writing-room" aria-label="바이크별 문장" hidden>
       <div class="room-house-panel-header">
-        <p class="room-section-label">글</p>
-        <h2>글 목록</h2>
+        <p class="room-section-label">바이크별 · 문장</p>
+        <h2>결심으로 남은 사람들</h2>
         <button class="room-house-back" type="button">바이크별로 돌아가기</button>
       </div>
 
-      <div class="room-article-list" aria-label="바이크 글 목록">
-        <button class="room-article-link" type="button" data-article-target="motorcycle-alive-note" aria-label="살아 있음을 확인하던 순간 읽기">
+      <div class="room-sort-control" data-sort-target="articles" aria-label="바이크별 문장 정렬">
+        <span>정렬</span>
+        <button type="button" data-sort-mode="latest" aria-pressed="true">최신순</button>
+        <button type="button" data-sort-mode="registered" aria-pressed="false">등록순</button>
+      </div>
+
+      <div class="room-article-list" aria-label="바이크별 문장">
+        <button class="room-article-link" type="button" data-article-target="motorcycle-alive-note" data-homepage-date="2026-06-07" data-sort-order="1" aria-label="살아 있음을 확인하던 순간 읽기">
           <strong>살아 있음</strong>
         </button>
-        <button class="room-article-link" type="button" data-article-target="motorcycle-road-note" aria-label="길 위에서 확인한 감각 읽기">
+        <button class="room-article-link" type="button" data-article-target="motorcycle-road-note" data-homepage-date="2026-06-07" data-sort-order="2" aria-label="길 위에서 확인한 감각 읽기">
           <strong>길 위 감각</strong>
         </button>
-      </div>
-      <div class="room-list-pager" aria-label="바이크 글 페이지">
-        <span>1-2 / 2</span>
-        <button type="button" disabled>다음 5개</button>
       </div>
 
       <div class="room-article-panels">
         <article class="room-post room-article-panel" id="motorcycle-alive-note" hidden>
-          <button class="room-article-back" type="button">글 목록</button>
+          <button class="room-article-back" type="button">문장으로</button>
           <header class="motorcycle-essay-header">
-            <p class="room-card-meta">글</p>
+            <p class="room-card-meta">문장</p>
             <h3>살아 있음을 확인하던 순간</h3>
-            <p>바이크 / 결심 / 감각</p>
+            <p>바이크 · 결심 · 감각</p>
           </header>
           <figure class="motorcycle-essay-figure">
             <img class="room-photo-image" src="../assets/images/motorcycles/essay-rider-ducati-red.jpg" alt="붉은 두카티 바이크 위에 앉아 있는 모습">
@@ -1436,11 +1471,11 @@
         </article>
 
         <article class="room-post room-article-panel" id="motorcycle-road-note" hidden>
-          <button class="room-article-back" type="button">글 목록</button>
+          <button class="room-article-back" type="button">문장으로</button>
           <header class="motorcycle-essay-header">
-            <p class="room-card-meta">글</p>
+            <p class="room-card-meta">문장</p>
             <h3>길 위에서 확인한 감각</h3>
-            <p>바이크 / 길 / 속도</p>
+            <p>바이크 · 길 · 속도</p>
           </header>
           <figure class="motorcycle-essay-figure">
             <img class="room-photo-image" src="../assets/images/motorcycles/photo-road-ride.jpg" alt="산길 위의 바이크 라이딩 장면">
@@ -1454,11 +1489,17 @@
       </div>
     </section>
 
-    <section class="room-house-panel motorcycle-gallery" id="motorcycle-photo-room" aria-label="바이크 사진" hidden>
+    <section class="room-house-panel motorcycle-gallery" id="motorcycle-photo-room" aria-label="바이크별 장면" hidden>
       <div class="room-house-panel-header">
-        <p class="room-section-label">사진</p>
-        <h2>사진 목록</h2>
+        <p class="room-section-label">바이크별 · 장면</p>
+        <h2>장면으로 남은 사람들</h2>
         <button class="room-house-back" type="button">바이크별로 돌아가기</button>
+      </div>
+
+      <div class="room-sort-control" data-sort-target="photos" aria-label="바이크별 장면 정렬">
+        <span>정렬</span>
+        <button type="button" data-sort-mode="latest" aria-pressed="true">최신순</button>
+        <button type="button" data-sort-mode="registered" aria-pressed="false">등록순</button>
       </div>
 
       <div class="room-house-photo-grid motorcycle-gallery-grid">
@@ -1479,12 +1520,12 @@
 
     <section class="room-house-panel" id="motorcycle-map-room" aria-label="바이크별 지도" hidden>
       <div class="room-house-panel-header">
-        <p class="room-section-label">지도</p>
-        <h2>바이크별 지도는 아직 그리는 중입니다</h2>
+        <p class="room-section-label">관계의 지도</p>
+        <h2>움직임의 좌표가 쌓이면 지도가 됩니다</h2>
         <button class="room-house-back" type="button">바이크별로 돌아가기</button>
       </div>
       <div class="star-map-panel">
-        <p>바이크별의 글, 사진, 이동의 흔적이 더 쌓이면 이곳에 지도가 놓입니다. 지금은 준비중 스탬프만 남겨둡니다.</p>
+        <p>바이크별에 남은 문장, 장면, 이동의 흔적이 더 쌓이면 이곳에 지도가 놓입니다. 지금은 준비중 스탬프만 남겨둡니다.</p>
         <img src="../assets/images/fountain-pens/map-in-progress-stamp.png" alt="MAP IN PROGRESS 준비중 스탬프" />
       </div>
     </section>
@@ -1565,7 +1606,7 @@
           <h3>읽히는 방식</h3>
           <ul>
             <li>빨간 말은 크게, 드물게 남깁니다.</li>
-            <li>긴 글은 밝은 지면으로 옮깁니다.</li>
+            <li>긴 문장은 밝은 지면으로 옮깁니다.</li>
             <li>장비보다 기억을 먼저 둡니다.</li>
             <li>속도보다 결심이 보이게 합니다.</li>
           </ul>
@@ -1603,6 +1644,6 @@
       바이크별 · LPH-B613-02 · HAM MEDIA · Design MD로 만든 별 페이지
     </footer>
   </main>
-  <script src="../assets/js/fountain-pens-main.js?v=motorcycle-star-v1"></script>
+  <script src="../assets/js/fountain-pens-main.js?v=motorcycle-world-language-v1"></script>
 </body>
 </html>
