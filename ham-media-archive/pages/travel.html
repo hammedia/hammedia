@@ -1028,6 +1028,39 @@
       text-transform: uppercase;
     }
 
+    .room-sort-control {
+      align-items: center;
+      border-bottom: 1px solid var(--line-light);
+      color: var(--muted-on-light);
+      display: flex;
+      flex-wrap: wrap;
+      font-size: var(--small);
+      font-weight: 850;
+      gap: var(--space-3);
+      margin-bottom: var(--space-5);
+      padding-bottom: var(--space-4);
+    }
+
+    .room-sort-control button {
+      appearance: none;
+      background: transparent;
+      border: 0;
+      border-bottom: 2px solid transparent;
+      border-radius: 0;
+      color: var(--muted-on-light);
+      cursor: pointer;
+      font-family: var(--font-sans);
+      font-size: var(--small);
+      font-weight: 900;
+      line-height: 1.4;
+      padding: 0 0 4px;
+    }
+
+    .room-sort-control button[aria-pressed="true"] {
+      border-color: var(--color-amber);
+      color: var(--ink-on-light);
+    }
+
     .room-house-back,
     .room-article-back,
     .room-gallery-detail-button {
@@ -1097,7 +1130,10 @@
 
     .room-article-panel[hidden],
     .room-house-panel.is-detail-mode > .room-house-panel-header,
-    .room-house-panel.is-detail-mode > .room-article-list {
+    .room-house-panel.is-detail-mode > .room-sort-control,
+    .room-house-panel.is-detail-mode > .room-article-list,
+    .room-house-panel.is-photo-detail-mode > .room-house-panel-header,
+    .room-house-panel.is-photo-detail-mode > .room-sort-control {
       display: none;
     }
 
@@ -1471,10 +1507,10 @@
   </style>
 </head>
 <body class="variant-desktop">
-  <main class="sheet room-house-page travel-star-page">
+  <main class="sheet room-house-page travel-star-page" data-article-nav-label="문장 이동" data-article-list-label="문장으로" data-article-prev-label="이전 문장" data-article-next-label="다음 문장" data-photo-list-label="장면으로">
     <nav class="star-room-nav room-house-nav" aria-label="여행별 이동">
-      <button class="room-house-door" type="button" data-house-target="travel-writing-room">글</button>
-      <button class="room-house-door" type="button" data-house-target="travel-photo-room">사진</button>
+      <button class="room-house-door" type="button" data-house-target="travel-writing-room">문장</button>
+      <button class="room-house-door" type="button" data-house-target="travel-photo-room">장면</button>
       <button class="room-house-door" type="button" data-house-target="travel-map-room">지도</button>
       <a href="#star-list">다른 별</a>
     </nav>
@@ -1601,9 +1637,9 @@
           <h3>서 있는 곳이 바뀌면<br />보이는 것도 달라진다.</h3>
           <p style="margin-top: var(--space-5);">이 표는 목적지를 증명하지 않는다. 한 자리를 떠나 다른 생각으로 넘어간 시간을 남긴다.</p>
           <div class="button-row">
-            <button class="button primary room-house-door" type="button" data-house-target="travel-photo-room">계속 움직이기</button>
-            <button class="button secondary room-house-door" type="button" data-house-target="travel-writing-room">기록 읽기</button>
-            <button class="button light room-house-door" type="button" data-house-target="travel-map-room">지도 보기</button>
+            <button class="button primary room-house-door" type="button" data-house-target="travel-photo-room">장면 보기</button>
+            <button class="button secondary room-house-door" type="button" data-house-target="travel-writing-room">문장 읽기</button>
+            <button class="button light room-house-door" type="button" data-house-target="travel-map-room">좌표 보기</button>
           </div>
         </div>
         <article class="movement-photo">
@@ -1616,15 +1652,15 @@
         </article>
       </div>
       <div class="door-grid" style="margin-top: var(--space-5);">
-        <button class="door room-house-door" type="button" data-house-target="travel-writing-room"><strong>글</strong><p>떠난 이유, 바뀐 생각, 돌아와서도 남은 것.</p></button>
-        <button class="door room-house-door" type="button" data-house-target="travel-photo-room"><strong>사진</strong><p>관광 인증보다 움직임의 흔적. 역, 길, 창문, 기다림.</p></button>
+        <button class="door room-house-door" type="button" data-house-target="travel-writing-room"><strong>문장</strong><p>떠난 이유, 바뀐 생각, 돌아와서도 남은 것.</p></button>
+        <button class="door room-house-door" type="button" data-house-target="travel-photo-room"><strong>장면</strong><p>관광 인증보다 움직임의 흔적. 역, 길, 창문, 기다림.</p></button>
         <button class="door room-house-door" type="button" data-house-target="travel-map-room"><strong>지도</strong><p>완성된 길보다 아직 가는 중인 선.</p></button>
         <a class="door" href="#star-list"><strong>다른 별</strong><p>여행이 다른 별의 생각을 건드리는 곳.</p></a>
       </div>
       <div class="panel" style="margin-top: var(--space-5);">
-        <span class="label">진행 중인 지도</span>
-        <h3>지도는 아직 완성되지 않아도 된다.</h3>
-        <p>모든 길을 다 설명하지 않아도 된다. 지금은 어디까지 왔고, 다음에는 어디로 갈지 작은 점과 선이면 충분하다.</p>
+        <span class="label">진행 중인 좌표</span>
+        <h3>이동의 좌표가 쌓이면 지도가 됩니다.</h3>
+        <p>모든 길을 다 설명하지 않아도 된다. 어디에 서 있었고, 누구와 움직였고, 무엇이 달라 보였는지가 쌓이면 여행별의 지형이 드러난다.</p>
         <div class="map-strip" aria-hidden="true">
           <span class="map-line"></span><span class="map-dot"></span><span class="map-line"></span><span class="map-dot"></span><span class="map-line"></span>
         </div>
@@ -1633,27 +1669,33 @@
 
 
 
-    <section class="room-house-panel" id="travel-writing-room" aria-label="여행별 글 목록" hidden>
+    <section class="room-house-panel" id="travel-writing-room" aria-label="여행별 문장" hidden>
       <div class="room-house-panel-header">
         <div>
-          <p class="room-section-label">글</p>
-          <h2>글 목록</h2>
+          <p class="room-section-label">여행별 · 문장</p>
+          <h2>이동으로 남은 사람들</h2>
         </div>
         <button class="room-house-back" type="button">여행별로 돌아가기</button>
       </div>
 
-      <div class="room-article-list" aria-label="여행별 글 목록">
-        <button class="room-article-link" type="button" data-article-target="travel-place-note" aria-label="춘천 독채 펜션 읽기"><span>01</span><strong>춘천 독채 펜션</strong></button>
-        <button class="room-article-link" type="button" data-article-target="travel-seaside-note" aria-label="서해 바다의 추억 읽기"><span>02</span><strong>서해 바다의 추억</strong></button>
+      <div class="room-sort-control" data-sort-target="articles" aria-label="여행별 문장 정렬">
+        <span>정렬</span>
+        <button type="button" data-sort-mode="latest" aria-pressed="true">최신순</button>
+        <button type="button" data-sort-mode="registered" aria-pressed="false">등록순</button>
+      </div>
+
+      <div class="room-article-list" aria-label="여행별 문장">
+        <button class="room-article-link" type="button" data-article-target="travel-place-note" data-homepage-date="2026-06-07" data-sort-order="1" aria-label="춘천 독채 펜션 읽기"><span>강</span><strong>춘천 독채 펜션</strong></button>
+        <button class="room-article-link" type="button" data-article-target="travel-seaside-note" data-homepage-date="2026-06-07" data-sort-order="2" aria-label="서해 바다의 추억 읽기"><span>바다</span><strong>서해 바다의 추억</strong></button>
       </div>
 
       <div class="room-article-panels">
         <article class="room-article-panel" id="travel-place-note" hidden>
-          <button class="room-article-back" type="button">글 목록</button>
+          <button class="room-article-back" type="button">문장으로</button>
           <header class="travel-essay-header">
-            <p class="room-section-label">글</p>
+            <p class="room-section-label">문장</p>
             <h3>춘천의 강이 보이는 독채 펜션</h3>
-            <p>춘천 / 펜션 / 강</p>
+            <p>춘천 · 펜션 · 강</p>
           </header>
           <div class="travel-essay-body">
             <figure class="travel-essay-figure">
@@ -1666,11 +1708,11 @@
         </article>
 
         <article class="room-article-panel" id="travel-seaside-note" hidden>
-          <button class="room-article-back" type="button">글 목록</button>
+          <button class="room-article-back" type="button">문장으로</button>
           <header class="travel-essay-header">
-            <p class="room-section-label">글</p>
+            <p class="room-section-label">문장</p>
             <h3>서해 바다의 추억</h3>
-            <p>서해 / 바다 / 팬데믹</p>
+            <p>서해 · 바다 · 팬데믹</p>
           </header>
           <div class="travel-essay-body">
             <figure class="travel-essay-figure">
@@ -1684,21 +1726,27 @@
       </div>
     </section>
 
-    <section class="room-house-panel" id="travel-photo-room" aria-label="여행별 사진" hidden>
+    <section class="room-house-panel" id="travel-photo-room" aria-label="여행별 장면" hidden>
       <div class="room-house-panel-header">
         <div>
-          <p class="room-section-label">사진</p>
-          <h2>길과 장소, 이동의 사진들</h2>
+          <p class="room-section-label">여행별 · 장면</p>
+          <h2>장면으로 남은 사람들</h2>
         </div>
         <button class="room-house-back" type="button">여행별로 돌아가기</button>
       </div>
 
+      <div class="room-sort-control" data-sort-target="photos" aria-label="여행별 장면 정렬">
+        <span>정렬</span>
+        <button type="button" data-sort-mode="latest" aria-pressed="true">최신순</button>
+        <button type="button" data-sort-mode="registered" aria-pressed="false">등록순</button>
+      </div>
+
       <div class="room-house-photo-grid travel-gallery-grid">
-        <figure class="room-house-photo" data-memory="부산은 인천과 다르더라. 또 가자, 부산."><img src="../assets/images/travel/gallery-img-5134.jpg" alt="길과 장소의 여행 사진 1" /><figcaption>부산은 인천과 다르더라. 또 가자, 부산.</figcaption></figure>
-        <figure class="room-house-photo" data-memory="워싱턴 D.C.에서 여동생네 가족과 함께한 여행."><img src="../assets/images/travel/gallery-img-3233.jpg" alt="길과 장소의 여행 사진 2" /><figcaption>워싱턴 D.C.에서 여동생네 가족과 함께한 여행.</figcaption></figure>
-        <figure class="room-house-photo" data-memory="속리산 법주사. 정말 거대한 불상."><img src="../assets/images/travel/gallery-img-1104.jpg" alt="길과 장소의 여행 사진 3" /><figcaption>속리산 법주사. 정말 거대한 불상.</figcaption></figure>
-        <figure class="room-house-photo" data-memory="동해 바다. 너무 더운 날은 풍경도 필요 없다. 실내로 가자."><img src="../assets/images/travel/gallery-img-0182.jpg" alt="여행 중 가족 또는 동행과 함께한 작은 기록" /><figcaption>동해 바다. 너무 더운 날은 풍경도 필요 없다. 실내로 가자.</figcaption></figure>
-        <figure class="room-house-photo" data-memory="우리 가족. 나, 와이프, 소율이, 코코. ㅋㅋ"><img src="../assets/images/travel/gallery-img-3526.jpg" alt="여행 기록 말미에 둔 일러스트 느낌의 이미지" /><figcaption>우리 가족. 나, 와이프, 소율이, 코코. ㅋㅋ</figcaption></figure>
+        <figure class="room-house-photo" data-homepage-date="2026-06-07" data-sort-order="1" data-memory="부산은 인천과 다르더라. 또 가자, 부산."><img src="../assets/images/travel/gallery-img-5134.jpg" alt="길과 장소의 여행 사진 1" /><figcaption>부산은 인천과 다르더라. 또 가자, 부산.</figcaption></figure>
+        <figure class="room-house-photo" data-homepage-date="2026-06-07" data-sort-order="2" data-memory="워싱턴 D.C.에서 여동생네 가족과 함께한 여행."><img src="../assets/images/travel/gallery-img-3233.jpg" alt="길과 장소의 여행 사진 2" /><figcaption>워싱턴 D.C.에서 여동생네 가족과 함께한 여행.</figcaption></figure>
+        <figure class="room-house-photo" data-homepage-date="2026-06-07" data-sort-order="3" data-memory="속리산 법주사. 정말 거대한 불상."><img src="../assets/images/travel/gallery-img-1104.jpg" alt="길과 장소의 여행 사진 3" /><figcaption>속리산 법주사. 정말 거대한 불상.</figcaption></figure>
+        <figure class="room-house-photo" data-homepage-date="2026-06-07" data-sort-order="4" data-memory="동해 바다. 너무 더운 날은 풍경도 필요 없다. 실내로 가자."><img src="../assets/images/travel/gallery-img-0182.jpg" alt="여행 중 가족 또는 동행과 함께한 작은 기록" /><figcaption>동해 바다. 너무 더운 날은 풍경도 필요 없다. 실내로 가자.</figcaption></figure>
+        <figure class="room-house-photo" data-homepage-date="2026-06-07" data-sort-order="5" data-memory="우리 가족. 나, 와이프, 소율이, 코코. ㅋㅋ"><img src="../assets/images/travel/gallery-img-3526.jpg" alt="여행 기록 말미에 둔 일러스트 느낌의 이미지" /><figcaption>우리 가족. 나, 와이프, 소율이, 코코. ㅋㅋ</figcaption></figure>
       </div>
       <aside class="room-gallery-detail room-house-photo-detail" aria-live="polite" hidden></aside>
     </section>
@@ -1706,15 +1754,15 @@
     <section class="room-house-panel" id="travel-map-room" aria-label="여행별 지도" hidden>
       <div class="room-house-panel-header">
         <div>
-          <p class="room-section-label">지도</p>
-          <h2>지도는 아직 완성되지 않아도 된다.</h2>
+          <p class="room-section-label">관계의 지도</p>
+          <h2>이동의 좌표가 쌓이면 지도가 됩니다</h2>
         </div>
         <button class="room-house-back" type="button">여행별로 돌아가기</button>
       </div>
       <div class="star-map-panel">
-        <span class="label">진행 중인 지도</span>
-        <h3>완성된 관광 지도 대신, 움직임이 진행 중인 선</h3>
-        <p>자세한 루트맵을 꾸며내지 않습니다. 지금은 어디까지 왔고, 다음에는 어디로 갈지 작은 점과 선으로만 남깁니다.</p>
+        <span class="label">진행 중인 좌표</span>
+        <h3>태그는 관계의 좌표입니다.</h3>
+        <p>자세한 루트맵을 꾸며내지 않습니다. 어디에 서 있었고, 누구와 움직였고, 무엇이 달라 보였는지가 쌓이면 여행별의 지형이 드러납니다.</p>
         <div class="map-strip" aria-hidden="true">
           <span class="map-line"></span><span class="map-dot"></span><span class="map-line"></span><span class="map-dot"></span><span class="map-line"></span>
         </div>
@@ -1815,6 +1863,6 @@
       여행별 · LPH-B613-03 · HAM MEDIA · Design MD로 만든 별 페이지
     </footer>
   </main>
-  <script src="../assets/js/main.js?v=travel-star-desktop-v2"></script>
+  <script src="../assets/js/main.js?v=travel-world-language-v1"></script>
 </body>
 </html>
