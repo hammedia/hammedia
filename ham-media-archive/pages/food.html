@@ -742,6 +742,38 @@
       text-transform: uppercase;
     }
 
+    .room-sort-control {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+      margin-bottom: var(--space-5);
+      padding-bottom: var(--space-4);
+      border-bottom: 1px solid var(--line);
+      color: var(--muted);
+      font-size: var(--small);
+      font-weight: 850;
+    }
+
+    .room-sort-control button {
+      border: 0;
+      border-bottom: 2px solid transparent;
+      border-radius: 0;
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      font-family: var(--font-sans);
+      font-size: var(--small);
+      font-weight: 900;
+      line-height: 1.4;
+      padding: 0 0 4px;
+    }
+
+    .room-sort-control button[aria-pressed="true"] {
+      border-color: var(--color-green);
+      color: var(--ink);
+    }
+
     .room-house-back,
     .room-article-back,
     .room-gallery-detail-button,
@@ -802,7 +834,10 @@
     }
 
     .room-house-panel.is-detail-mode > .room-house-panel-header,
-    .room-house-panel.is-detail-mode > .room-article-list {
+    .room-house-panel.is-detail-mode > .room-article-list,
+    .room-house-panel.is-detail-mode > .room-sort-control,
+    .room-house-panel.is-photo-detail-mode > .room-house-panel-header,
+    .room-house-panel.is-photo-detail-mode > .room-sort-control {
       display: none;
     }
 
@@ -1400,7 +1435,7 @@
   </style>
 </head>
 <body>
-  <main class="sheet room-house-page food-style-page" id="food-star">
+  <main class="sheet room-house-page food-style-page" id="food-star" data-article-nav-label="문장 이동" data-article-list-label="문장으로" data-article-prev-label="이전 문장" data-article-next-label="다음 문장" data-photo-list-label="장면으로">
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-text">
         <p class="eyebrow">음식별 · LPH-B613-07 · HAM MEDIA 별자리</p>
@@ -1413,8 +1448,8 @@
           콘텐츠를 보는 눈으로 이어졌다.
         </p>
         <nav class="entry-nav room-house-nav" aria-label="음식별 입구">
-          <button class="entry-link room-house-door" type="button" data-scroll-target="#food-writing" data-house-target="food-writing-room">글</button>
-          <button class="entry-link room-house-door" type="button" data-scroll-target="#food-photos" data-house-target="food-photo-room">사진</button>
+          <button class="entry-link room-house-door" type="button" data-scroll-target="#food-writing" data-house-target="food-writing-room">문장</button>
+          <button class="entry-link room-house-door" type="button" data-scroll-target="#food-photos" data-house-target="food-photo-room">장면</button>
           <button class="entry-link room-house-door" type="button" data-scroll-target="#food-map" data-house-target="food-map-room">지도</button>
           <a class="entry-link" href="#star-list">다른 별</a>
         </nav>
@@ -1436,11 +1471,11 @@
       </div>
       <div class="color-grid" aria-label="음식별 색">
         <div class="color-card" style="background: var(--color-table);"><div><strong>테이블클로스 아이보리</strong><code>#f5f0e8</code></div><p>따뜻한 식탁, 첫 화면의 공기.</p></div>
-        <div class="color-card" style="background: var(--color-cream);"><div><strong>크림 화이트</strong><code>#faf7f2</code></div><p>긴 글과 음식 기억을 읽는 표면.</p></div>
+        <div class="color-card" style="background: var(--color-cream);"><div><strong>크림 화이트</strong><code>#faf7f2</code></div><p>긴 문장과 음식 기억을 읽는 표면.</p></div>
         <div class="color-card dark-ink" style="background: var(--color-green);"><div><strong>스타벅스 그린</strong><code>#00704a</code></div><p>오래 일하며 훈련한 커피의 조용한 신호.</p></div>
         <div class="color-card" style="background: var(--color-door);"><div><strong>델라카사 도어 옐로</strong><code>#f5c518</code></div><p>처음 기억나는 문 색, 작은 강조.</p></div>
         <div class="color-card" style="background: var(--color-aged);"><div><strong>오래된 문 옐로</strong><code>#e8a020</code></div><p>시간이 지난 문, 스탬프의 온기.</p></div>
-        <div class="color-card dark-ink" style="background: var(--color-espresso);"><div><strong>에스프레소 브라운</strong><code>#3d2b1f</code></div><p>커피 원두와 단단한 글의 깊이.</p></div>
+        <div class="color-card dark-ink" style="background: var(--color-espresso);"><div><strong>에스프레소 브라운</strong><code>#3d2b1f</code></div><p>커피 원두와 단단한 문장의 깊이.</p></div>
         <div class="color-card" style="background: var(--color-plate);"><div><strong>웜 플레이트 그레이</strong><code>#b8afa3</code></div><p>접시, 선, 오래된 테이블 그림자.</p></div>
       </div>
     </section>
@@ -1461,7 +1496,7 @@
           </article>
           <article class="type-panel">
             <h3>사람 입으로 들어가<br />마음에 담기는 일을 했다.</h3>
-            <p>긴 글은 읽히는 것이 먼저다. 커피, 서비스, 접시, 기억은 차분하게 이어질 때 힘이 난다.</p>
+            <p>긴 문장은 읽히는 것이 먼저다. 커피, 서비스, 접시, 기억은 차분하게 이어질 때 힘이 난다.</p>
           </article>
         </div>
         <article class="quote-panel">
@@ -1474,22 +1509,22 @@
       <div class="section-head">
         <div class="section-number">03 / 별 안으로</div>
         <div>
-          <h2>이 별의 문은 추천이 아니라, 기억으로 열린다.</h2>
-          <p class="section-intro">글은 음식이 일이었던 시간으로 들어가고, 사진은 테이블과 접시와 커피의 흔적을 보여준다. 지도는 아직 완성된 코스가 아니라, 나중에 다시 짚어볼 자리들이다.</p>
+          <h2>이 별 안쪽은 추천이 아니라, 기억으로 열린다.</h2>
+          <p class="section-intro">문장은 음식이 일이었던 시간으로 들어가고, 장면은 테이블과 접시와 커피의 흔적을 보여준다. 지도는 아직 완성된 코스가 아니라, 나중에 다시 짚어볼 자리들이다.</p>
         </div>
       </div>
       <div class="doors">
         <button class="door-panel room-house-door" type="button" data-scroll-target="#food-writing" data-house-target="food-writing-room">
-          <div><h3>글</h3><p>음식, 커피, 서비스, 그리고 감각이 어떻게 훈련됐는지 적는 곳.</p></div>
-          <span>글방으로</span>
+          <div><h3>문장</h3><p>음식, 커피, 서비스, 그리고 감각이 어떻게 훈련됐는지 적는 곳.</p></div>
+          <span>문장으로</span>
         </button>
         <button class="door-panel room-house-door" type="button" data-scroll-target="#food-photos" data-house-target="food-photo-room">
-          <div><h3>사진</h3><p>많이 먹은 기록이 아니라, 왜 기억나는지 남기는 사진들.</p></div>
-          <span>사진방으로</span>
+          <div><h3>장면</h3><p>많이 먹은 기록이 아니라, 왜 기억나는지 남기는 장면들.</p></div>
+          <span>장면으로</span>
         </button>
         <button class="door-panel room-house-door" type="button" data-scroll-target="#food-map" data-house-target="food-map-room">
           <div><h3>지도</h3><p>신포시장, 델라카사, 커피를 배운 자리들이 천천히 이어질 길.</p></div>
-          <span>지도 보기</span>
+          <span>좌표 보기</span>
         </button>
         <a class="door-panel" href="#star-list">
           <div><h3>다른 별</h3><p>음식에서 훈련한 감각이 다른 별의 눈과 귀로 이어진다.</p></div>
@@ -1500,28 +1535,35 @@
 
 
 
-      <section class="room-house-panel" id="food-writing-room" aria-label="음식 글 목록" hidden>
+      <section class="room-house-panel" id="food-writing-room" aria-label="음식별 문장" hidden>
         <div class="room-house-panel-header">
-          <p class="room-section-label">글</p>
-          <h2>글 목록</h2>
+          <p class="room-section-label">음식별 · 문장</p>
+          <h2>감각으로 남은 사람들</h2>
           <button class="room-house-back" type="button">음식별로 돌아가기</button>
         </div>
 
-        <div class="room-article-list" aria-label="음식별 글 목록">
-          <button class="room-article-link" type="button" data-article-target="food-article-delacasa">
+        <div class="room-sort-control" data-sort-target="articles" aria-label="음식별 문장 정렬">
+          <span>정렬</span>
+          <button type="button" data-sort-mode="latest" aria-pressed="true">최신순</button>
+          <button type="button" data-sort-mode="registered" aria-pressed="false">등록순</button>
+        </div>
+
+        <div class="room-article-list" aria-label="음식별 문장">
+          <button class="room-article-link" type="button" data-article-target="food-article-delacasa" data-homepage-date="2026-06-07" data-sort-order="1">
             <span>첫 매장</span>
             <strong>델라카사 신포점</strong>
           </button>
-          <button class="room-article-link" type="button" data-article-target="food-article-plate">
+          <button class="room-article-link" type="button" data-article-target="food-article-plate" data-homepage-date="2026-06-07" data-sort-order="2">
             <span>철판</span>
             <strong>철판 앞의 기억</strong>
           </button>
         </div>
 
+        <div class="room-article-panels">
         <article class="room-article-panel" id="food-article-delacasa" hidden>
-          <button class="room-article-back" type="button">글 목록</button>
+          <button class="room-article-back" type="button">문장으로</button>
           <h2>델라카사 신포점</h2>
-          <p class="room-card-note">첫 매장 / 기획 / 기억</p>
+          <p class="room-card-note">첫 매장 · 기획 · 기억</p>
           <figure class="room-article-figure">
             <img class="room-photo-image room-record-photo" src="../assets/images/food/essay-delacasa-trace.jpg" alt="델라카사의 흔적이 보이는 음식 공간 사진">
             <figcaption>나의 첫 매장. 내가 기획하고, 내가 만들고, 내가 문 닫은, 정말 나의 모든 것이 들어가 있는 곳.</figcaption>
@@ -1529,21 +1571,28 @@
         </article>
 
         <article class="room-article-panel" id="food-article-plate" hidden>
-          <button class="room-article-back" type="button">글 목록</button>
+          <button class="room-article-back" type="button">문장으로</button>
           <h2>철판 앞의 기억</h2>
-          <p class="room-card-note">송도 / 오코노미야키 / 철판</p>
+          <p class="room-card-note">송도 · 오코노미야키 · 철판</p>
           <figure class="room-article-figure">
             <img class="room-photo-image room-record-photo" src="../assets/images/food/photo-plate-texture.jpg" alt="음식의 질감과 접시가 보이는 사진">
             <figcaption>송도에서 오코노미야키를 잠시 만들었던 때가 있었다. 정말 철판 앞이 너무 더웠다.</figcaption>
           </figure>
         </article>
+        </div>
       </section>
 
-      <section class="room-house-panel" id="food-photo-room" aria-label="음식 사진 목록" hidden>
+      <section class="room-house-panel" id="food-photo-room" aria-label="음식별 장면" hidden>
         <div class="room-house-panel-header">
-          <p class="room-section-label">사진</p>
-          <h2>사진 목록</h2>
+          <p class="room-section-label">음식별 · 장면</p>
+          <h2>장면으로 남은 사람들</h2>
           <button class="room-house-back" type="button">음식별로 돌아가기</button>
+        </div>
+
+        <div class="room-sort-control" data-sort-target="photos" aria-label="음식별 장면 정렬">
+          <span>정렬</span>
+          <button type="button" data-sort-mode="latest" aria-pressed="true">최신순</button>
+          <button type="button" data-sort-mode="registered" aria-pressed="false">등록순</button>
         </div>
 
         <div class="room-house-photo-grid">
@@ -1637,12 +1686,12 @@
       </section>
       <section class="room-house-panel" id="food-map-room" aria-label="음식별 지도" hidden>
         <div class="room-house-panel-header">
-          <p class="room-section-label">지도</p>
-          <h2>내가 기억하는 자리들</h2>
+          <p class="room-section-label">관계의 지도</p>
+          <h2>감각의 좌표가 쌓이면 지도가 됩니다</h2>
           <button class="room-house-back" type="button">음식별로 돌아가기</button>
         </div>
         <article class="room-map-placeholder">
-          <strong>지도는 아직 완성되지 않아도 된다.</strong>
+          <strong>태그는 관계의 좌표입니다.</strong>
           <p>신포시장, 델라카사 신포점, 스타벅스 리저브처럼 감각이 남은 자리들을 천천히 모읍니다. 완성된 코스보다, 왜 그 자리가 아직 기억나는지가 먼저입니다.</p>
         </article>
       </section>
@@ -1759,6 +1808,6 @@
       <footer class="footer">음식별 · LPH-B613-07 · HAM MEDIA · Design MD로 만든 별 페이지</footer>
     </section>
   </main>
-  <script src="../assets/js/main.js?v=food-star-sheet-v1"></script>
+  <script src="../assets/js/main.js?v=food-world-language-v1"></script>
 </body>
 </html>
