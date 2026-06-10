@@ -3626,14 +3626,40 @@ h1 {
   position: fixed;
   inset: 0;
   z-index: 999;
-  background: #000;
+  overflow: hidden;
+  background: rgba(1, 4, 10, 0.96);
   opacity: 0;
   pointer-events: none;
-  transition: opacity 440ms ease;
+  transition: opacity 560ms ease;
+}
+
+.star-enter-veil::before {
+  content: "";
+  position: absolute;
+  left: var(--star-enter-x, 50vw);
+  top: var(--star-enter-y, 50vh);
+  width: 18vmax;
+  height: 18vmax;
+  border-radius: 999px;
+  background:
+    radial-gradient(circle, rgba(255, 252, 224, 0.98) 0 10%, rgba(255, 207, 111, 0.76) 22%, rgba(255, 207, 111, 0.28) 48%, transparent 72%);
+  box-shadow:
+    0 0 38px rgba(255, 207, 111, 0.58),
+    0 0 120px rgba(255, 207, 111, 0.32);
+  opacity: 0.58;
+  transform: translate(-50%, -50%) scale(0.16);
+  transition:
+    opacity 620ms ease,
+    transform 720ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .star-enter-veil.is-active {
   opacity: 1;
+}
+
+.star-enter-veil.is-active::before {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(13);
 }
 
 @keyframes skyFieldBreath {
@@ -4245,6 +4271,10 @@ h1 {
   }
 
   .star-enter-veil {
+    transition: none;
+  }
+
+  .star-enter-veil::before {
     transition: none;
   }
 

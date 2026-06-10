@@ -212,6 +212,7 @@ const fineHoverQuery = window.matchMedia("(hover: hover) and (pointer: fine)");
 const coarsePointerQuery = window.matchMedia("(pointer: coarse)");
 const visitedStars = [];
 let activeStar = null;
+let isEnteringStar = false;
 
 const scriptAssetRoot = new URL("../images/", document.currentScript?.src || window.location.href);
 
@@ -392,13 +393,25 @@ function selectConstellationStar(star) {
 }
 
 function enterStarRoom(href) {
+  if (isEnteringStar) return;
+
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
     window.location.href = href;
     return;
   }
 
+  isEnteringStar = true;
   const veil = document.createElement("div");
   veil.className = "star-enter-veil";
+  veil.setAttribute("aria-hidden", "true");
+
+  const source = activeStar?.querySelector(".star-light") || activeStar || detailRoomLink;
+  const rect = source?.getBoundingClientRect();
+  const x = rect ? rect.left + rect.width / 2 : window.innerWidth / 2;
+  const y = rect ? rect.top + rect.height / 2 : window.innerHeight / 2;
+
+  veil.style.setProperty("--star-enter-x", `${x}px`);
+  veil.style.setProperty("--star-enter-y", `${y}px`);
   document.body.appendChild(veil);
 
   requestAnimationFrame(() => {
@@ -407,7 +420,7 @@ function enterStarRoom(href) {
 
   setTimeout(() => {
     window.location.href = href;
-  }, 460);
+  }, 720);
 }
 
 syncConstellationGuide();
