@@ -743,6 +743,7 @@ function buildRoomHouse() {
 
     closePanels();
     target.hidden = false;
+    syncPanelContextNav(target);
     doors.forEach((door) => {
       const isActive = door.dataset.houseTarget === panelId;
       door.classList.toggle("is-active", isActive);
@@ -795,6 +796,10 @@ function buildRoomHouse() {
         openHousePanel(contextTargets.photo);
       }),
       createButton("지도", "map", () => {
+        if (currentSection === "map") {
+          scrollToElement(document.getElementById(contextTargets.map));
+          return;
+        }
         openHousePanel(contextTargets.map);
       })
     );
@@ -808,6 +813,34 @@ function buildRoomHouse() {
     nav.append(starLink);
 
     return nav;
+  }
+
+  function getPanelContextSection(panel) {
+    if (panel.id === contextTargets.article) return "article";
+    if (panel.id === contextTargets.photo) return "photo";
+    if (panel.id === contextTargets.map) return "map";
+    return "";
+  }
+
+  function syncPanelContextNav(panel) {
+    if (!hasContextNav || !panel) return;
+
+    const header = panel.querySelector(":scope > .room-house-panel-header");
+    const currentSection = getPanelContextSection(panel);
+    if (!header || !currentSection) return;
+
+    header.querySelector(":scope > .room-context-nav")?.remove();
+
+    const contextNav = createContextNav(currentSection);
+    if (!contextNav) return;
+
+    const backButton = header.querySelector(":scope > .room-house-back");
+    if (backButton) {
+      header.insertBefore(contextNav, backButton);
+      return;
+    }
+
+    header.append(contextNav);
   }
 
   function sortArticles(mode) {
