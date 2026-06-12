@@ -516,7 +516,7 @@ function openGalleryDetail(detail, figure, image, captionText) {
 
   const detailImage = image.cloneNode(false);
   detailImage.className = "room-gallery-detail-photo";
-  limitDetailImageToNaturalWidth(detailImage, image);
+  limitDetailImageToAvailableSpace(detailImage, image);
 
   const detailCopy = document.createElement("p");
   detailCopy.className = "room-gallery-detail-copy";
@@ -536,11 +536,19 @@ function openGalleryDetail(detail, figure, image, captionText) {
   });
 }
 
-function limitDetailImageToNaturalWidth(detailImage, sourceImage) {
+function limitDetailImageToAvailableSpace(detailImage, sourceImage, maxWidthLimit = "") {
   const applyLimit = () => {
     const naturalWidth = sourceImage.naturalWidth || detailImage.naturalWidth;
-    if (!naturalWidth) return;
-    detailImage.style.maxWidth = `${naturalWidth}px`;
+    const naturalHeight = sourceImage.naturalHeight || detailImage.naturalHeight;
+    if (!naturalWidth || !naturalHeight) return;
+    detailImage.style.display = "block";
+    detailImage.style.width = "auto";
+    detailImage.style.height = "auto";
+    detailImage.style.maxWidth = maxWidthLimit
+      ? `min(100%, ${maxWidthLimit}, ${naturalWidth}px)`
+      : `min(100%, ${naturalWidth}px)`;
+    detailImage.style.maxHeight = `min(72vh, ${naturalHeight}px)`;
+    detailImage.style.objectFit = "contain";
     detailImage.style.marginLeft = "auto";
     detailImage.style.marginRight = "auto";
   };
@@ -929,9 +937,7 @@ function buildRoomHouse() {
     if (isArchiveLow && archiveMaxWidth) {
       detailImage.style.setProperty("--archive-max-width", archiveMaxWidth);
     }
-    if (!isArchiveLow) {
-      limitDetailImageToNaturalWidth(detailImage, image);
-    }
+    limitDetailImageToAvailableSpace(detailImage, image, isArchiveLow ? archiveMaxWidth : "");
     photoDetail.classList.toggle("is-archive-low", isArchiveLow);
 
     const detailCopy = document.createElement("p");

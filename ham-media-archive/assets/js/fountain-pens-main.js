@@ -500,6 +500,7 @@ function openGalleryDetail(detail, figure, image, captionText) {
 
   const detailImage = image.cloneNode(false);
   detailImage.className = "room-gallery-detail-photo";
+  limitDetailImageToAvailableSpace(detailImage, image);
 
   const detailCopy = document.createElement("p");
   detailCopy.className = "room-gallery-detail-copy";
@@ -517,6 +518,27 @@ function openGalleryDetail(detail, figure, image, captionText) {
     behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
     block: "nearest"
   });
+}
+
+function limitDetailImageToAvailableSpace(detailImage, sourceImage, maxWidthLimit = "") {
+  const applyLimit = () => {
+    const naturalWidth = sourceImage.naturalWidth || detailImage.naturalWidth;
+    const naturalHeight = sourceImage.naturalHeight || detailImage.naturalHeight;
+    if (!naturalWidth || !naturalHeight) return;
+    detailImage.style.display = "block";
+    detailImage.style.width = "auto";
+    detailImage.style.height = "auto";
+    detailImage.style.maxWidth = maxWidthLimit
+      ? `min(100%, ${maxWidthLimit}, ${naturalWidth}px)`
+      : `min(100%, ${naturalWidth}px)`;
+    detailImage.style.maxHeight = `min(72vh, ${naturalHeight}px)`;
+    detailImage.style.objectFit = "contain";
+    detailImage.style.marginLeft = "auto";
+    detailImage.style.marginRight = "auto";
+  };
+
+  applyLimit();
+  detailImage.addEventListener("load", applyLimit, { once: true });
 }
 
 function buildRoomGalleryDetails() {
@@ -858,6 +880,7 @@ function buildRoomHouse() {
 
     const detailImage = image.cloneNode(false);
     detailImage.className = "room-gallery-detail-photo";
+    limitDetailImageToAvailableSpace(detailImage, image);
 
     const detailCopy = document.createElement("p");
     detailCopy.className = "room-gallery-detail-copy";
