@@ -213,6 +213,7 @@ const coarsePointerQuery = window.matchMedia("(pointer: coarse)");
 const visitedStars = [];
 let activeStar = null;
 let isEnteringStar = false;
+let starEnterTimer = null;
 
 const scriptAssetRoot = new URL("../images/", document.currentScript?.src || window.location.href);
 
@@ -418,10 +419,24 @@ function enterStarRoom(href) {
     veil.classList.add("is-active");
   });
 
-  setTimeout(() => {
+  starEnterTimer = setTimeout(() => {
+    starEnterTimer = null;
     window.location.href = href;
   }, 720);
 }
+
+function resetStarEnterTransition() {
+  isEnteringStar = false;
+  if (starEnterTimer) {
+    window.clearTimeout(starEnterTimer);
+    starEnterTimer = null;
+  }
+  document.querySelectorAll(".star-enter-veil").forEach((veil) => veil.remove());
+}
+
+window.addEventListener("pagehide", resetStarEnterTransition);
+window.addEventListener("pageshow", resetStarEnterTransition);
+window.addEventListener("popstate", resetStarEnterTransition);
 
 syncConstellationGuide();
 fineHoverQuery.addEventListener?.("change", handleConstellationInputModeChange);
@@ -657,6 +672,13 @@ function buildRoomHouse() {
   const articlePrevLabel = housePage.dataset.articlePrevLabel || "이전 글";
   const articleNextLabel = housePage.dataset.articleNextLabel || "다음 글";
   const photoListLabel = housePage.dataset.photoListLabel || "사진 목록";
+  const hasContextNav = housePage.dataset.roomContextNav === "true";
+  const contextTargets = {
+    article: housePage.dataset.articleHouseTarget || housePage.querySelector("[id$='writing-room']")?.id || "",
+    photo: housePage.dataset.photoHouseTarget || photoPanel?.id || "",
+    map: housePage.dataset.mapHouseTarget || housePage.querySelector("[id$='map-room']")?.id || "",
+    stars: housePage.dataset.starListTarget || "star-list"
+  };
 
   function syncArticleCollections() {
     articleLinks = Array.from(housePage.querySelectorAll(".room-article-link[data-article-target]"));
@@ -705,6 +727,87 @@ function buildRoomHouse() {
       door.classList.remove("is-active");
       door.setAttribute("aria-expanded", "false");
     });
+  }
+
+  function scrollToElement(element, block = "start") {
+    element?.scrollIntoView({
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+      block
+    });
+  }
+
+  function openHousePanel(panelId) {
+    if (!panelId) return false;
+    const target = document.getElementById(panelId);
+    if (!target || !housePage.contains(target)) return false;
+
+    closePanels();
+    target.hidden = false;
+    doors.forEach((door) => {
+      const isActive = door.dataset.houseTarget === panelId;
+      door.classList.toggle("is-active", isActive);
+      door.setAttribute("aria-expanded", String(isActive));
+    });
+    scrollToElement(target);
+    return true;
+  }
+
+  function scrollToStarList() {
+    const starList = document.getElementById(contextTargets.stars);
+    closePanels();
+    scrollToElement(starList);
+  }
+
+  function createContextNav(currentSection) {
+    if (!hasContextNav) return null;
+
+    const nav = document.createElement("nav");
+    nav.className = "room-context-nav";
+    nav.setAttribute("aria-label", "별 안의 입구");
+
+    const createButton = (label, section, action) => {
+      const button = document.createElement("button");
+      button.className = "room-gallery-detail-button";
+      button.type = "button";
+      button.dataset.roomSection = section;
+      button.textContent = label;
+      if (section === currentSection) {
+        button.setAttribute("aria-current", "page");
+      }
+      button.addEventListener("click", action);
+      return button;
+    };
+
+    nav.append(
+      createButton("문장", "article", () => {
+        if (currentSection === "article") {
+          returnToArticleList();
+          return;
+        }
+        openHousePanel(contextTargets.article);
+      }),
+      createButton("장면", "photo", () => {
+        if (currentSection === "photo") {
+          closePhotoDetail();
+          scrollToElement(photoGrid);
+          return;
+        }
+        openHousePanel(contextTargets.photo);
+      }),
+      createButton("지도", "map", () => {
+        openHousePanel(contextTargets.map);
+      })
+    );
+
+    const starLink = document.createElement("button");
+    starLink.className = "room-gallery-detail-button";
+    starLink.type = "button";
+    starLink.dataset.roomSection = "stars";
+    starLink.textContent = "별자리";
+    starLink.addEventListener("click", scrollToStarList);
+    nav.append(starLink);
+
+    return nav;
   }
 
   function sortArticles(mode) {
@@ -769,17 +872,11 @@ function buildRoomHouse() {
     door.setAttribute("aria-expanded", "false");
     door.addEventListener("click", () => {
       const isOpen = !target.hidden;
-      closePanels();
-
-      if (!isOpen) {
-        target.hidden = false;
-        door.classList.add("is-active");
-        door.setAttribute("aria-expanded", "true");
-        target.scrollIntoView({
-          behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
-          block: "start"
-        });
+      if (isOpen) {
+        closePanels();
+        return;
       }
+      openHousePanel(door.dataset.houseTarget);
     });
   });
 
@@ -852,9 +949,18 @@ function buildRoomHouse() {
   function rebuildArticleBottomNav() {
     articlePanels.forEach((panel) => {
       panel.querySelector(":scope > .room-article-bottom-nav")?.remove();
+      panel.querySelector(":scope > .room-context-nav")?.remove();
+      if (hasContextNav) {
+        panel.querySelector(":scope > .room-article-back")?.remove();
+      }
     });
 
     articlePanels.forEach((panel, index) => {
+      const contextNav = createContextNav("article");
+      if (contextNav) {
+        panel.prepend(contextNav);
+      }
+
       const nav = document.createElement("nav");
       nav.className = "room-article-bottom-nav";
       nav.setAttribute("aria-label", articleNavLabel);
@@ -927,7 +1033,13 @@ function buildRoomHouse() {
     const indexLabel = document.createElement("span");
     indexLabel.className = "room-gallery-detail-index";
     indexLabel.textContent = `${index + 1} / ${photoFigures.length}`;
-    actions.append(backButton, indexLabel);
+    const contextNav = createContextNav("photo");
+    if (contextNav) {
+      actions.classList.add("is-index-only");
+      actions.append(indexLabel);
+    } else {
+      actions.append(backButton, indexLabel);
+    }
 
     const detailImage = image.cloneNode(false);
     detailImage.className = "room-gallery-detail-photo";
@@ -962,7 +1074,7 @@ function buildRoomHouse() {
     nextButton.addEventListener("click", () => openHousePhoto(index + 1));
 
     nav.append(previousButton, nextButton);
-    photoDetail.append(actions, detailImage, detailCopy, nav);
+    photoDetail.append(...[contextNav, actions, detailImage, detailCopy, nav].filter(Boolean));
     photoDetail.hidden = false;
     photoPanel?.classList.add("is-photo-detail-mode");
     housePage.classList.add("is-reading-mode");

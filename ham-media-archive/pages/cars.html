@@ -1179,6 +1179,25 @@ body.variant-mobile .car-essay-gallery {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
+
+    .room-context-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2, 10px);
+      align-items: center;
+      margin-bottom: var(--space-4, 18px);
+    }
+
+    .room-context-nav .room-gallery-detail-button[aria-current="page"] {
+      border-color: currentColor;
+      box-shadow: inset 0 0 0 1px currentColor;
+    }
+
+    .room-gallery-detail-actions.is-index-only {
+      justify-content: flex-end;
+      margin-top: var(--space-2, 10px);
+    }
+
   </style>
 </head>
 <body class="variant-desktop">
@@ -1193,12 +1212,12 @@ body.variant-mobile .car-essay-gallery {
       window.addEventListener("resize", setCarVariant);
     })();
   </script>
-  <main class="sheet room-house-page car-style-page" id="car-star" data-article-nav-label="문장 이동" data-article-list-label="문장으로" data-article-prev-label="이전 문장" data-article-next-label="다음 문장" data-photo-list-label="장면으로">
+  <main class="sheet room-house-page car-style-page" id="car-star" data-article-nav-label="문장 이동" data-article-list-label="문장" data-article-prev-label="이전 문장" data-article-next-label="다음 문장" data-photo-list-label="장면" data-room-context-nav="true" data-article-house-target="car-writing-room" data-photo-house-target="car-photo-room" data-map-house-target="car-map-room" data-star-list-target="star-list">
     <nav class="top-doors room-house-nav" aria-label="자동차별 입구">
       <button class="room-house-door" type="button" data-target="#car-writing" data-house-target="car-writing-room">문장</button>
       <button class="room-house-door" type="button" data-target="#car-photos" data-house-target="car-photo-room">장면</button>
       <button class="room-house-door" type="button" data-target="#car-map" data-house-target="car-map-room">지도</button>
-      <a href="#star-list">다른 별</a>
+      <a href="#star-list">별자리</a>
     </nav>
 
     <section class="hero" aria-labelledby="hero-title">
@@ -1251,7 +1270,7 @@ body.variant-mobile .car-essay-gallery {
       </div>
       <div class="writing-grid">
         <article class="panel ivory">
-          <p class="mini">문장으로</p>
+          <p class="mini">문장</p>
           <h3>초창기 모델 Y를 오래 타려면, 피로감도 중요했다.</h3>
           <p>
             단단한 승차감을 참고 타다가, 더 나은 방법을 찾고 직접 바꿔본 기록이 있다.
@@ -1324,10 +1343,10 @@ body.variant-mobile .car-essay-gallery {
       <div class="entry-hub">
         <p class="large-copy">막막한 사람에게<br />방향을 찾아주는 일.</p>
         <div class="entry-grid">
-          <button class="entry-card room-house-door" type="button" data-target="#car-writing" data-house-target="car-writing-room"><strong>문장</strong><span>사브, 해치백, 모델 Y에 남은 문장으로</span></button>
-          <button class="entry-card room-house-door" type="button" data-target="#car-photos" data-house-target="car-photo-room"><strong>장면</strong><span>차와 함께 움직였던 장면으로</span></button>
+          <button class="entry-card room-house-door" type="button" data-target="#car-writing" data-house-target="car-writing-room"><strong>문장</strong><span>사브, 해치백, 모델 Y에 남은 문장</span></button>
+          <button class="entry-card room-house-door" type="button" data-target="#car-photos" data-house-target="car-photo-room"><strong>장면</strong><span>차와 함께 움직였던 장면</span></button>
           <button class="entry-card room-house-door" type="button" data-target="#car-map" data-house-target="car-map-room"><strong>지도</strong><span>언젠가 달렸던 길의 좌표로</span></button>
-          <a class="entry-card" href="#star-list"><strong>다른 별</strong><span>다른 좋아하는 것의 별자리로</span></a>
+          <a class="entry-card" href="#star-list"><strong>별자리</strong></a>
         </div>
       </div>
     </section>
@@ -1373,7 +1392,7 @@ body.variant-mobile .car-essay-gallery {
 
         <div class="room-card-list room-article-panels">
           <article class="room-post room-card car-essay-card room-article-panel" id="car-tesla-koni-note" hidden>
-            <button class="room-article-back" type="button">문장으로</button>
+            <button class="room-article-back" type="button">문장</button>
             <header>
               <p class="room-card-meta">문장</p>
               <h3>테슬라 모델 Y 롱레인지 코니 서스펜션</h3>
@@ -1434,7 +1453,7 @@ body.variant-mobile .car-essay-gallery {
           </article>
 
           <article class="room-post room-card room-record-unit car-record-card room-article-panel" id="car-direction-note" hidden>
-            <button class="room-article-back" type="button">문장으로</button>
+            <button class="room-article-back" type="button">문장</button>
             <figure class="room-record-figure" data-tags="자동차별, 세차, 셀프 세차, 깨끗함, 마음 정리, 현실 농담, 일상 루틴">
               <img class="room-photo-image room-record-photo" src="../assets/images/cars/essay-open-parking-direction.jpg" alt="하늘 아래 주차된 흰 자동차">
               <figcaption class="room-record-caption">
@@ -1447,7 +1466,7 @@ body.variant-mobile .car-essay-gallery {
           </article>
 
           <article class="room-post room-card room-record-unit car-record-card room-article-panel" id="car-line-note" hidden>
-            <button class="room-article-back" type="button">문장으로</button>
+            <button class="room-article-back" type="button">문장</button>
             <figure class="room-record-figure" data-tags="자동차별, 셀프 세차, 실내 세차장, 겨울 세차, 밤, 혼자 쓰는 공간, 넓은 공간감">
               <img class="room-photo-image room-record-photo" src="../assets/images/cars/photo-white-car-line.jpg" alt="주차장에 세워진 흰 자동차의 선">
               <figcaption class="room-record-caption">
@@ -1464,7 +1483,7 @@ body.variant-mobile .car-essay-gallery {
       <section class="room-house-panel car-gallery" id="car-photo-room" aria-label="자동차별 장면" hidden>
         <div class="room-house-panel-header">
           <p class="room-section-label">자동차별 · 장면</p>
-          <h2>장면으로 남은 사람들</h2>
+          <h2>장면</h2>
           <button class="room-house-back" type="button">자동차별로 돌아가기</button>
         </div>
 
@@ -1516,8 +1535,8 @@ body.variant-mobile .car-essay-gallery {
 
 
     <section class="star-exit" id="star-list" aria-labelledby="star-list-title">
-      <p class="num">07 / 다른 별 보기</p>
-      <h2 id="star-list-title">다른 별 보기</h2>
+      <p class="num">07 / 별자리</p>
+      <h2 id="star-list-title">별자리</h2>
       <p class="intro">
         이 별은 HAM MEDIA Design MD 방식으로 정리한 별입니다.
         좋아하는 것의 감각을 브랜드의 기준으로 바꾸는 실험이기도 합니다.
@@ -1542,6 +1561,6 @@ body.variant-mobile .car-essay-gallery {
 
     <footer>자동차별 · LPH-B613-06 · HAM MEDIA · Design MD로 만든 별 페이지</footer>
   </main>
-  <script src="../assets/js/main.js?v=photo-detail-fit-v1"></script>
+  <script src="../assets/js/main.js?v=room-context-nav-v2"></script>
 </body>
 </html>

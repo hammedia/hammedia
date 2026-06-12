@@ -1273,15 +1273,34 @@
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
+
+    .room-context-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2, 10px);
+      align-items: center;
+      margin-bottom: var(--space-4, 18px);
+    }
+
+    .room-context-nav .room-gallery-detail-button[aria-current="page"] {
+      border-color: currentColor;
+      box-shadow: inset 0 0 0 1px currentColor;
+    }
+
+    .room-gallery-detail-actions.is-index-only {
+      justify-content: flex-end;
+      margin-top: var(--space-2, 10px);
+    }
+
   </style>
 </head>
 <body class="variant-desktop">
-  <main class="sheet room-house-page bicycle-star-page" data-article-nav-label="문장 이동" data-article-list-label="문장으로" data-article-prev-label="이전 문장" data-article-next-label="다음 문장" data-photo-list-label="장면으로">
+  <main class="sheet room-house-page bicycle-star-page" data-article-nav-label="문장 이동" data-article-list-label="문장" data-article-prev-label="이전 문장" data-article-next-label="다음 문장" data-photo-list-label="장면" data-room-context-nav="true" data-article-house-target="bicycle-writing-room" data-photo-house-target="bicycle-photo-room" data-map-house-target="bicycle-map-room" data-star-list-target="star-list">
     <nav class="top-doors room-house-nav" aria-label="자전거별 입구">
       <button class="room-house-door" type="button" data-target="#bicycle-writing" data-house-target="bicycle-writing-room">문장</button>
       <button class="room-house-door" type="button" data-target="#bicycle-photos" data-house-target="bicycle-photo-room">장면</button>
       <button class="room-house-door" type="button" data-target="#bicycle-map" data-house-target="bicycle-map-room">지도</button>
-      <a href="#star-list">다른 별</a>
+      <a href="#star-list">별자리</a>
     </nav>
 
     <section class="hero" aria-labelledby="hero-title">
@@ -1335,7 +1354,7 @@
       </div>
       <div class="writing-grid">
         <article class="panel ivory">
-          <p class="mini">문장으로</p>
+          <p class="mini">문장</p>
           <h3>부평에서 부천은 껌이지. 하하.</h3>
           <p>
             출발 전에는 늘 가볍게 말할 수 있다.
@@ -1407,9 +1426,9 @@
         <p class="large-copy">복잡한 날엔<br />다리를 믿고<br />앞으로.</p>
         <div class="entry-grid">
           <button class="entry-card room-house-door" type="button" data-target="#bicycle-writing" data-house-target="bicycle-writing-room"><strong>문장</strong><span>다리를 믿는 시간과 탑튜브 문구로</span></button>
-          <button class="entry-card room-house-door" type="button" data-target="#bicycle-photos" data-house-target="bicycle-photo-room"><strong>장면</strong><span>몸이 기억한 장면으로</span></button>
+          <button class="entry-card room-house-door" type="button" data-target="#bicycle-photos" data-house-target="bicycle-photo-room"><strong>장면</strong><span>몸이 기억한 장면</span></button>
           <button class="entry-card room-house-door" type="button" data-target="#bicycle-map" data-house-target="bicycle-map-room"><strong>지도</strong><span>언젠가 모일 길의 좌표로</span></button>
-          <a class="entry-card" href="#star-list"><strong>다른 별</strong><span>다른 좋아하는 것의 별자리로</span></a>
+          <a class="entry-card" href="#star-list"><strong>별자리</strong></a>
         </div>
       </div>
     </section>
@@ -1429,8 +1448,8 @@
     </section>
 
     <section class="star-exit" id="star-list" aria-labelledby="star-list-title">
-      <p class="num">07 / 다른 별 보기</p>
-      <h2 id="star-list-title">다른 별 보기</h2>
+      <p class="num">07 / 별자리</p>
+      <h2 id="star-list-title">별자리</h2>
       <p class="intro">
         이 별은 HAM MEDIA Design MD 방식으로 정리한 별입니다.
         좋아하는 것의 감각을 브랜드의 기준으로 바꾸는 실험이기도 합니다.
@@ -1480,7 +1499,7 @@
 
       <div class="room-article-panels">
       <article class="room-article-panel" id="bicycle-trust-legs-note" hidden>
-        <button class="room-article-back" type="button">문장으로</button>
+        <button class="room-article-back" type="button">문장</button>
         <header class="bicycle-essay-header">
           <p class="room-card-meta">문장</p>
           <h3>다리를 믿는 시간</h3>
@@ -1497,7 +1516,7 @@
       </article>
 
       <article class="room-article-panel" id="bicycle-top-tube-note" hidden>
-        <button class="room-article-back" type="button">문장으로</button>
+        <button class="room-article-back" type="button">문장</button>
         <header class="bicycle-essay-header">
           <p class="room-card-meta">문장</p>
           <h3>몸이 기억한 번호</h3>
@@ -1520,7 +1539,7 @@
       <div class="room-house-panel-header">
         <div>
           <p class="room-section-label">자전거별 · 장면</p>
-          <h2>장면으로 남은 사람들</h2>
+          <h2>장면</h2>
         </div>
         <button class="room-house-back" type="button">자전거별로 돌아가기</button>
       </div>
@@ -1606,6 +1625,6 @@
     syncStarVariant();
     window.addEventListener("resize", syncStarVariant);
   </script>
-  <script src="../assets/js/main.js?v=photo-detail-fit-v1"></script>
+  <script src="../assets/js/main.js?v=room-context-nav-v2"></script>
 </body>
 </html>

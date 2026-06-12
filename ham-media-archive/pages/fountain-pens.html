@@ -1344,15 +1344,34 @@
         flex: 0 0 auto;
       }
     }
+
+    .room-context-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2, 10px);
+      align-items: center;
+      margin-bottom: var(--space-4, 18px);
+    }
+
+    .room-context-nav .room-gallery-detail-button[aria-current="page"] {
+      border-color: currentColor;
+      box-shadow: inset 0 0 0 1px currentColor;
+    }
+
+    .room-gallery-detail-actions.is-index-only {
+      justify-content: flex-end;
+      margin-top: var(--space-2, 10px);
+    }
+
   </style>
 </head>
 <body>
-  <main class="page room-house-page">
+  <main class="page room-house-page" data-room-context-nav="true" data-article-house-target="fountain-writing-room" data-photo-house-target="fountain-photo-room" data-map-house-target="fountain-map-room" data-star-list-target="star-list" data-article-nav-label="문장 이동" data-article-list-label="문장" data-article-prev-label="이전 문장" data-article-next-label="다음 문장" data-photo-list-label="장면">
     <nav class="star-room-nav room-house-nav" aria-label="만년필별 이동">
       <button class="room-house-door" type="button" data-house-target="fountain-writing-room">문장</button>
-      <button class="room-house-door" type="button" data-house-target="fountain-photo-room">사진</button>
+      <button class="room-house-door" type="button" data-house-target="fountain-photo-room">장면</button>
       <button class="room-house-door" type="button" data-house-target="fountain-map-room">지도</button>
-      <a href="#star-list">다른 별</a>
+      <a href="#star-list">별자리</a>
     </nav>
 
     <section class="hero" aria-label="Fountain Pens Star hero">
@@ -1461,11 +1480,10 @@
               <h3>별 안의 길</h3>
               <div class="tab-row" aria-label="만년필별 입구">
                 <button class="tab active room-house-door" type="button" data-house-target="fountain-writing-room">문장</button>
-                <button class="tab room-house-door" type="button" data-house-target="fountain-photo-room">사진</button>
+                <button class="tab room-house-door" type="button" data-house-target="fountain-photo-room">장면</button>
                 <button class="tab room-house-door" type="button" data-house-target="fountain-map-room">지도</button>
-                <a class="tab" href="#star-list">다른 별</a>
+                <a class="tab" href="#star-list">별자리</a>
               </div>
-              <p style="margin-top:16px;">문장으로 들어가면 장면을 만나고, 사진으로 들어가면 생각을 만난다.</p>
             </div>
           </div>
         </section>
@@ -1473,7 +1491,7 @@
       <section class="room-house-panel" id="fountain-writing-room" aria-label="만년필별 문장 기록" hidden>
         <div class="room-house-panel-header">
           <p class="room-section-label">만년필별 · 문장</p>
-          <h2>문장으로 남은 사람들</h2>
+          <h2>문장</h2>
           <p class="room-panel-intro">오래 생각하다 말을 꺼낸 사람들처럼, 문장들이 이 별 안에 남아 있습니다.</p>
           <button class="room-house-back" type="button">만년필별로 돌아가기</button>
         </div>
@@ -1521,7 +1539,7 @@
 
         <div class="room-card-list room-article-panels">
           <article class="room-post fountain-essay room-article-panel" id="fountain-hobby-essay" hidden>
-            <button class="room-article-back" type="button">문장으로</button>
+            <button class="room-article-back" type="button">문장</button>
             <header class="fountain-essay-header">
               <p class="room-card-meta">문장</p>
               <h3>취미라는 것에 대하여.</h3>
@@ -1585,7 +1603,7 @@
           </article>
 
           <article class="room-post shared-memory-card room-article-panel" id="fountain-beethoven-emperor-note" hidden>
-            <button class="room-article-back" type="button">문장으로</button>
+            <button class="room-article-back" type="button">문장</button>
             <header class="fountain-essay-header">
               <p class="room-card-meta">문장</p>
               <h3>베토벤 황제 2악장, 열 가지 잉크로 쓴 밤</h3>
@@ -1616,7 +1634,7 @@
           </article>
 
           <article class="room-post shared-memory-card room-article-panel" id="fountain-still-walking-note" hidden>
-            <button class="room-article-back" type="button">문장으로</button>
+            <button class="room-article-back" type="button">문장</button>
             <header class="fountain-essay-header">
               <p class="room-card-meta">문장</p>
               <h3>아직 걷는 중</h3>
@@ -1647,7 +1665,7 @@
           </article>
 
           <article class="room-post shared-memory-card room-article-panel" id="fountain-well-depth-note" hidden>
-            <button class="room-article-back" type="button">문장으로</button>
+            <button class="room-article-back" type="button">문장</button>
             <header class="fountain-essay-header">
               <p class="room-card-meta">문장</p>
               <h3>우물과 마음의 깊이</h3>
@@ -1681,7 +1699,7 @@
           </article>
 
           <article class="room-post shared-memory-card room-article-panel" id="fountain-happiness-note" hidden>
-            <button class="room-article-back" type="button">문장으로</button>
+            <button class="room-article-back" type="button">문장</button>
             <header class="fountain-essay-header">
               <p class="room-card-meta">문장</p>
               <h3>행복에 관한 짧은 글 중 1</h3>
@@ -1732,7 +1750,7 @@
           </article>
 
           <article class="room-post shared-memory-card room-article-panel" id="fountain-honest-person-note" hidden>
-            <button class="room-article-back" type="button">문장으로</button>
+            <button class="room-article-back" type="button">문장</button>
             <header class="fountain-essay-header">
               <p class="room-card-meta">문장</p>
               <h3>정직한 사람</h3>
@@ -1761,7 +1779,7 @@
           </article>
 
           <article class="room-post shared-memory-card room-article-panel" id="fountain-birthday-copying-room-note" hidden>
-            <button class="room-article-back" type="button">문장으로</button>
+            <button class="room-article-back" type="button">문장</button>
             <header class="fountain-essay-header">
               <p class="room-card-meta">문장</p>
               <h3>오늘은 기분 좋은 날</h3>
@@ -1788,7 +1806,7 @@
           </article>
 
           <article class="room-post shared-memory-card room-article-panel" id="fountain-handmade-gift-letter-note" hidden>
-            <button class="room-article-back" type="button">문장으로</button>
+            <button class="room-article-back" type="button">문장</button>
             <header class="fountain-essay-header">
               <p class="room-card-meta">문장</p>
               <h3>사람은 사람이 만든 것에 약하다</h3>
@@ -1818,15 +1836,15 @@
         </div>
       </section>
 
-      <section class="room-house-panel" id="fountain-photo-room" aria-label="만년필별 사진 기록" hidden>
+      <section class="room-house-panel" id="fountain-photo-room" aria-label="만년필별 장면" hidden>
         <div class="room-house-panel-header">
           <p class="room-section-label">만년필별 · 장면</p>
-          <h2>장면으로 남은 사람들</h2>
+          <h2>장면</h2>
           <p class="room-panel-intro">사진에는 그때의 공기와 시간이 있습니다. 장면을 열면 문장과 태그가 따라옵니다.</p>
           <button class="room-house-back" type="button">만년필별로 돌아가기</button>
         </div>
 
-        <div class="room-sort-control" data-sort-target="photos" aria-label="사진 기록 정렬">
+        <div class="room-sort-control" data-sort-target="photos" aria-label="장면 정렬">
           <span>순서</span>
           <button type="button" data-sort-mode="latest" aria-pressed="true">최신순</button>
           <button type="button" data-sort-mode="registered" aria-pressed="false">등록순</button>
@@ -1917,8 +1935,8 @@
 
         <section class="section star-list" id="star-list">
           <div class="section-head">
-            <p class="section-kicker">07 · 다른 별 보기</p>
-            <h2>다른 별 보기</h2>
+            <p class="section-kicker">07 · 별자리</p>
+            <h2>별자리</h2>
             <p class="section-desc">이 별은 HAM MEDIA Design MD 방식으로 정리한 별입니다. 좋아하는 것의 감각을 브랜드의 기준으로 바꾸는 실험이기도 합니다.</p>
           </div>
           <div class="star-list-grid" aria-label="별 목록">
@@ -1945,6 +1963,6 @@
       <p>만년필별 · LPH-B613-01 · HAM MEDIA · Design MD로 만든 별 페이지</p>
     </footer>
   </main>
-  <script src="../assets/js/fountain-pens-main.js?v=photo-detail-fit-v1"></script>
+  <script src="../assets/js/fountain-pens-main.js?v=room-context-nav-v2"></script>
 </body>
 </html>

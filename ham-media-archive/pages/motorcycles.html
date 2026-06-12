@@ -1277,15 +1277,34 @@
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
+
+    .room-context-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2, 10px);
+      align-items: center;
+      margin-bottom: var(--space-4, 18px);
+    }
+
+    .room-context-nav .room-gallery-detail-button[aria-current="page"] {
+      border-color: currentColor;
+      box-shadow: inset 0 0 0 1px currentColor;
+    }
+
+    .room-gallery-detail-actions.is-index-only {
+      justify-content: flex-end;
+      margin-top: var(--space-2, 10px);
+    }
+
   </style>
 </head>
 <body class="variant-desktop">
-<main class="sheet room-house-page" data-photo-list-label="장면으로">
+<main class="sheet room-house-page" data-room-context-nav="true" data-article-house-target="motorcycle-writing-room" data-photo-house-target="motorcycle-photo-room" data-map-house-target="motorcycle-map-room" data-star-list-target="star-list" data-article-nav-label="문장 이동" data-article-list-label="문장" data-article-prev-label="이전 문장" data-article-next-label="다음 문장" data-photo-list-label="장면">
     <nav class="star-room-nav room-house-nav" aria-label="바이크별 이동">
       <button class="room-house-door" type="button" data-house-target="motorcycle-writing-room">문장</button>
       <button class="room-house-door" type="button" data-house-target="motorcycle-photo-room">장면</button>
       <button class="room-house-door" type="button" data-house-target="motorcycle-map-room">지도</button>
-      <a href="#star-list">다른 별</a>
+      <a href="#star-list">별자리</a>
     </nav>
 
     <header class="hero">
@@ -1410,7 +1429,7 @@
             <button class="door room-house-door" type="button" data-house-target="motorcycle-writing-room"><strong>문장</strong><span>결심과 이후의 기록</span></button>
             <button class="door room-house-door" type="button" data-house-target="motorcycle-photo-room"><strong>장면</strong><span>그 시절의 실제 장면</span></button>
             <button class="door room-house-door" type="button" data-house-target="motorcycle-map-room"><strong>지도</strong><span>아직 준비 중인 좌표</span></button>
-            <a class="door" href="#star-list"><strong>다른 별</strong><span>별자리 목록</span></a>
+            <a class="door" href="#star-list"><strong>별자리</strong></a>
           </div>
         </div>
         <div class="panel light">
@@ -1453,7 +1472,7 @@
 
       <div class="room-article-panels">
         <article class="room-post room-article-panel" id="motorcycle-alive-note" hidden>
-          <button class="room-article-back" type="button">문장으로</button>
+          <button class="room-article-back" type="button">문장</button>
           <header class="motorcycle-essay-header">
             <p class="room-card-meta">문장</p>
             <h3>살아 있음을 확인하던 순간</h3>
@@ -1471,7 +1490,7 @@
         </article>
 
         <article class="room-post room-article-panel" id="motorcycle-road-note" hidden>
-          <button class="room-article-back" type="button">문장으로</button>
+          <button class="room-article-back" type="button">문장</button>
           <header class="motorcycle-essay-header">
             <p class="room-card-meta">문장</p>
             <h3>길 위에서 확인한 감각</h3>
@@ -1492,7 +1511,7 @@
     <section class="room-house-panel motorcycle-gallery" id="motorcycle-photo-room" aria-label="바이크별 장면" hidden>
       <div class="room-house-panel-header">
         <p class="room-section-label">바이크별 · 장면</p>
-        <h2>장면으로 남은 사람들</h2>
+        <h2>장면 남은 사람들</h2>
         <button class="room-house-back" type="button">바이크별로 돌아가기</button>
       </div>
 
@@ -1617,8 +1636,8 @@
     <section class="section star-list" id="star-list">
       <div class="section-head">
         <div>
-          <p class="section-kicker">07 · 다른 별 보기</p>
-          <h2>다른 별 보기</h2>
+          <p class="section-kicker">07 · 별자리</p>
+          <h2>별자리</h2>
         </div>
         <p>이 별은 HAM MEDIA Design MD 방식으로 정리한 별입니다.<br />좋아하는 것의 감각을 브랜드의 기준으로 바꾸는 실험이기도 합니다.</p>
       </div>
@@ -1644,6 +1663,6 @@
       바이크별 · LPH-B613-02 · HAM MEDIA · Design MD로 만든 별 페이지
     </footer>
   </main>
-  <script src="../assets/js/fountain-pens-main.js?v=photo-detail-fit-v1"></script>
+  <script src="../assets/js/fountain-pens-main.js?v=room-context-nav-v2"></script>
 </body>
 </html>

@@ -839,7 +839,9 @@
     .room-article-back,
     .room-gallery-detail-button,
     .room-article-bottom-nav button,
-    .room-list-pager button {
+    .room-list-pager button,
+    .room-context-nav a,
+    .room-context-nav button {
       appearance: none;
       min-height: 42px;
       border: 1px solid var(--line);
@@ -851,6 +853,26 @@
       font-size: 14px;
       font-weight: 850;
       padding: 0 var(--space-4);
+    }
+
+    .room-context-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      margin-bottom: var(--space-4);
+    }
+
+    .room-context-nav a,
+    .room-context-nav button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+    }
+
+    .room-context-nav .room-gallery-detail-button[aria-current="page"] {
+      border-color: var(--lamp);
+      color: var(--lamp);
     }
 
     .room-article-list {
@@ -1001,6 +1023,11 @@
       line-height: 1.8;
     }
 
+    .room-gallery-detail-actions.is-index-only {
+      justify-content: flex-end;
+      margin-top: var(--space-2);
+    }
+
     .room-map-placeholder {
       display: grid;
       gap: var(--space-3);
@@ -1068,12 +1095,12 @@
   </style>
 </head>
 <body class="variant-desktop">
-  <main class="sheet room-house-page space-star-page" data-article-nav-label="문장 이동" data-article-list-label="문장으로" data-article-prev-label="이전 문장" data-article-next-label="다음 문장" data-photo-list-label="장면으로">
+  <main class="sheet room-house-page space-star-page" data-room-context-nav="true" data-article-house-target="space-writing-room" data-photo-house-target="space-photo-room" data-map-house-target="space-map-room" data-star-list-target="star-list" data-article-nav-label="문장 이동" data-article-list-label="문장" data-article-prev-label="이전 문장" data-article-next-label="다음 문장" data-photo-list-label="장면">
     <nav class="top-doors room-house-nav" aria-label="공간별 입구">
       <button class="room-house-door" type="button" data-target="#space-writing" data-house-target="space-writing-room">문장</button>
       <button class="room-house-door" type="button" data-target="#space-photos" data-house-target="space-photo-room">장면</button>
       <button class="room-house-door" type="button" data-target="#space-map" data-house-target="space-map-room">지도</button>
-      <a href="#star-list">다른 별</a>
+      <a href="#star-list">별자리</a>
     </nav>
 
     <section class="hero" aria-label="공간별 대문">
@@ -1166,25 +1193,20 @@
         <p class="section-label">03 / 별 안으로</p>
         <div>
           <h2 class="section-title">이 별의 문은<br />공간 자랑으로 열리지 않습니다.</h2>
-          <p class="section-copy">글은 공간이 생각을 바꾸는 순간으로, 사진은 머문 흔적으로, 지도는 아직 모으는 장소로 이어집니다. 다른 별은 다시 햄PD가 좋아하는 것들의 별자리로 돌아가는 문입니다.</p>
         </div>
       </div>
       <div class="entry-grid">
         <button class="entry-card room-house-door" type="button" data-target="#space-writing" data-house-target="space-writing-room">
           <strong>문장</strong>
-          <span>일하는 자리, 디테일, 전체 방향에 대한 기록.</span>
         </button>
         <button class="entry-card room-house-door" type="button" data-target="#space-photos" data-house-target="space-photo-room">
           <strong>장면</strong>
-          <span>공간에서 생각이 바뀐 장면들.</span>
         </button>
         <button class="entry-card room-house-door" type="button" data-target="#space-map" data-house-target="space-map-room">
           <strong>지도</strong>
-          <span>머물렀고 일했고 생각이 바뀐 장소.</span>
         </button>
         <a class="entry-card" href="#star-list">
-          <strong>다른 별</strong>
-          <span>좋아하는 것들이 서로 이어지는 목록.</span>
+          <strong>별자리</strong>
         </a>
       </div>
     </section>
@@ -1232,9 +1254,9 @@
       </div>
     </section>
 
-    <section class="section exit-section" id="star-list" aria-label="다른 별 보기">
+    <section class="section exit-section" id="star-list" aria-label="별자리">
       <p class="section-label">06 / 별자리</p>
-      <h2 class="section-title">다른 별 보기</h2>
+      <h2 class="section-title">별자리</h2>
       <p class="section-copy">이 별은 HAM MEDIA Design MD 방식으로 정리한 별입니다. 좋아하는 것의 감각을 브랜드의 기준으로 바꾸는 실험이기도 합니다.</p>
       <nav class="star-grid" aria-label="9개 별 목록">
         <a class="star-chip" href="fountain-pens.html">만년필별</a>
@@ -1259,7 +1281,7 @@
       <div class="room-house-panel-header">
         <div>
           <p class="room-section-label">공간별 · 문장</p>
-          <h2>머문 자리로 남은 사람들</h2>
+          <h2>문장</h2>
         </div>
         <button class="room-house-back" type="button">공간별로 돌아가기</button>
       </div>
@@ -1281,7 +1303,6 @@
 
       <div class="room-article-panels">
         <article class="room-article-panel" id="space-detail-power-note" hidden>
-          <button class="room-article-back" type="button">문장으로</button>
           <header class="space-essay-header">
             <p class="room-card-meta">문장</p>
             <h3>디테일의 힘</h3>
@@ -1346,7 +1367,6 @@
         </article>
 
         <article class="room-article-panel" id="space-everyday-desk-note" hidden>
-          <button class="room-article-back" type="button">문장으로</button>
           <header class="space-essay-header">
             <p class="room-card-meta">문장</p>
             <h3>내가 요즘 가장 많이 사용하는 공간</h3>
@@ -1367,7 +1387,7 @@
       <div class="room-house-panel-header">
         <div>
           <p class="room-section-label">공간별 · 장면</p>
-          <h2>장면으로 남은 사람들</h2>
+          <h2>장면</h2>
         </div>
         <button class="room-house-back" type="button">공간별로 돌아가기</button>
       </div>
@@ -1395,8 +1415,8 @@
     <section class="room-house-panel" id="space-map-room" aria-label="공간별 지도" hidden>
       <div class="room-house-panel-header">
         <div>
-          <p class="room-section-label">관계의 지도</p>
-          <h2>공간의 좌표가 쌓이면 지도가 됩니다</h2>
+          <p class="room-section-label">공간별 · 지도</p>
+          <h2>지도</h2>
         </div>
         <button class="room-house-back" type="button">공간별로 돌아가기</button>
       </div>
@@ -1408,6 +1428,6 @@
 
     <footer>공간별 · LPH-B613-05 · HAM MEDIA · Design MD로 만든 별 페이지</footer>
   </main>
-  <script src="../assets/js/main.js?v=photo-detail-fit-v1"></script>
+  <script src="../assets/js/main.js?v=room-context-nav-v2"></script>
 </body>
 </html>

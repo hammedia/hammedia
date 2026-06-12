@@ -1412,10 +1412,29 @@
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
+
+    .room-context-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2, 10px);
+      align-items: center;
+      margin-bottom: var(--space-4, 18px);
+    }
+
+    .room-context-nav .room-gallery-detail-button[aria-current="page"] {
+      border-color: currentColor;
+      box-shadow: inset 0 0 0 1px currentColor;
+    }
+
+    .room-gallery-detail-actions.is-index-only {
+      justify-content: flex-end;
+      margin-top: var(--space-2, 10px);
+    }
+
   </style>
 </head>
 <body>
-  <main class="sheet room-house-page audio-style-page" id="music-audio-star" data-article-nav-label="문장 이동" data-article-list-label="문장으로" data-article-prev-label="이전 문장" data-article-next-label="다음 문장" data-photo-list-label="장면으로">
+  <main class="sheet room-house-page audio-style-page" id="music-audio-star" data-article-nav-label="문장 이동" data-article-list-label="문장" data-article-prev-label="이전 문장" data-article-next-label="다음 문장" data-photo-list-label="장면" data-room-context-nav="true" data-article-house-target="music-audio-writing-room" data-photo-house-target="music-audio-photo-room" data-map-house-target="music-audio-map-room" data-star-list-target="star-list">
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-text">
         <p class="eyebrow">음악·오디오별 · LPH-B613-08 · HAM MEDIA 별자리</p>
@@ -1431,7 +1450,7 @@
           <button class="entry-link room-house-door" type="button" data-scroll-target="#audio-writing" data-house-target="music-audio-writing-room">문장</button>
           <button class="entry-link room-house-door" type="button" data-scroll-target="#audio-photos" data-house-target="music-audio-photo-room">장면</button>
           <button class="entry-link room-house-door" type="button" data-scroll-target="#audio-map" data-house-target="music-audio-map-room">지도</button>
-          <a class="entry-link" href="#star-list">다른 별</a>
+          <a class="entry-link" href="#star-list">별자리</a>
         </nav>
         <div class="stamp-wrap" aria-label="음악·오디오별 스탬프">
           <img src="../assets/images/music-audio/stamps/lph-b613-08-audio-stamp.png" alt="LPH-B613-08 음악·오디오별 스탬프" />
@@ -1496,19 +1515,18 @@
       <div class="doors">
         <button class="door-panel room-house-door" type="button" data-scroll-target="#audio-writing" data-house-target="music-audio-writing-room">
           <div><h3>문장</h3><p>오디오 매칭, 선곡, 앨범 기억, 왜 그 소리가 필요했는지.</p></div>
-          <span>문장으로</span>
+          <span>문장</span>
         </button>
         <button class="door-panel room-house-door" type="button" data-scroll-target="#audio-photos" data-house-target="music-audio-photo-room">
           <div><h3>장면</h3><p>장비 목록이 아니라, 소리가 머물렀던 시간과 자리의 흔적.</p></div>
-          <span>장면으로</span>
+          <span>장면</span>
         </button>
         <button class="door-panel room-house-door" type="button" data-scroll-target="#audio-map" data-house-target="music-audio-map-room">
           <div><h3>지도</h3><p>청음회, 공연장, 기억에 남는 소리의 장소를 나중에 잇는다.</p></div>
           <span>좌표 보기</span>
         </button>
         <a class="door-panel" href="#star-list">
-          <div><h3>다른 별</h3><p>듣는 태도는 사진, 영상, 편집의 태도와도 연결된다.</p></div>
-          <span>다른 별로</span>
+          <div><h3>별자리</h3></div>
         </a>
       </div>
     </section>
@@ -1643,7 +1661,7 @@
 
         <div class="room-card-list room-article-panels">
           <article class="room-post shared-memory-card room-article-panel" id="audio-beethoven-emperor-note" hidden>
-            <button class="room-article-back" type="button">문장으로</button>
+            <button class="room-article-back" type="button">문장</button>
             <header class="audio-entry-header">
               <p class="room-card-meta">문장</p>
               <h3>베토벤 황제 2악장, 열 가지 잉크로 쓴 밤</h3>
@@ -1674,7 +1692,7 @@
           </article>
 
           <article class="room-post shared-memory-card room-article-panel" id="audio-brahms-piano-trios-note" hidden>
-            <button class="room-article-back" type="button">문장으로</button>
+            <button class="room-article-back" type="button">문장</button>
             <header class="audio-entry-header">
               <p class="room-card-meta">문장</p>
               <h3>누군가의 다독거림이 듣고 싶을 때</h3>
@@ -1703,7 +1721,7 @@
           </article>
 
           <article class="room-post shared-memory-card room-article-panel" id="audio-keith-jarrett-career-note" hidden>
-            <button class="room-article-back" type="button">문장으로</button>
+            <button class="room-article-back" type="button">문장</button>
             <header class="audio-entry-header">
               <p class="room-card-meta">문장</p>
               <h3>Keith Jarrett의 경력과 음악</h3>
@@ -1748,7 +1766,7 @@
           </article>
 
           <article class="room-post shared-memory-card room-article-panel" id="audio-matching-note" hidden>
-            <button class="room-article-back" type="button">문장으로</button>
+            <button class="room-article-back" type="button">문장</button>
             <header class="audio-entry-header">
               <p class="room-card-meta">문장</p>
               <h3>오디오 매칭</h3>
@@ -1792,7 +1810,7 @@
           </article>
 
           <article class="room-post room-card room-record-unit audio-record-card room-article-panel" id="audio-rack-books-note" hidden>
-            <button class="room-article-back" type="button">문장으로</button>
+            <button class="room-article-back" type="button">문장</button>
             <figure class="room-record-figure" data-tags="음악·오디오별, 오디오 랙, 책과 앰프, 글 이미지, 청음 공간">
               <img class="room-photo-image room-record-photo" src="../assets/images/music-audio/essay-audio-rack-books-amp.jpg" alt="오디오랙, 책, 앰프가 함께 놓인 공간">
               <figcaption class="room-record-caption">
@@ -1805,7 +1823,7 @@
           </article>
 
           <article class="room-post room-card room-record-unit audio-record-card room-article-panel" id="audio-family-hifi-note" hidden>
-            <button class="room-article-back" type="button">문장으로</button>
+            <button class="room-article-back" type="button">문장</button>
             <figure class="room-record-figure" data-tags="음악·오디오별, 앰프, 음악 화면, 사진방, 음악 듣는 장면">
               <img class="room-photo-image room-record-photo" src="../assets/images/music-audio/photo-amp-music-screen.jpg" alt="앰프와 음악 화면이 함께 보이는 책상">
               <figcaption class="room-record-caption">
@@ -1822,7 +1840,7 @@
       <section class="room-house-panel audio-gallery" id="music-audio-photo-room" aria-label="음악·오디오별 장면" hidden>
         <div class="room-house-panel-header">
           <p class="room-section-label">음악·오디오별 · 장면</p>
-          <h2>장면으로 남은 사람들</h2>
+          <h2>장면</h2>
           <button class="room-house-back" type="button">음악·오디오별로 돌아가기</button>
         </div>
 
@@ -1914,9 +1932,9 @@
       </section>
 
     <section class="star-exit" id="star-list" aria-labelledby="star-list-title">
-      <h2 id="star-list-title">다른 별 보기</h2>
+      <h2 id="star-list-title">별자리</h2>
       <p class="intro">이 별은 HAM MEDIA Design MD 방식으로 정리한 별입니다. 좋아하는 것의 감각을 브랜드의 기준으로 바꾸는 실험이기도 합니다.</p>
-      <div class="star-grid" aria-label="다른 별 목록">
+      <div class="star-grid" aria-label="별자리 목록">
         <a class="star-button" href="fountain-pens.html">만년필별</a>
         <a class="star-button active" href="music-audio.html" aria-current="page">음악·오디오별 <span class="star-signal" aria-label="현재 별"></span></a>
         <a class="star-button" href="cameras.html">카메라별</a>
@@ -1936,6 +1954,6 @@
     </section>
   </main>
 
-  <script src="../assets/js/main.js?v=photo-detail-fit-v1"></script>
+  <script src="../assets/js/main.js?v=room-context-nav-v2"></script>
 </body>
 </html>
