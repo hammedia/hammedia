@@ -1294,7 +1294,15 @@
     }
 
   </style>
-</head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TEBKMGWPQS"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-TEBKMGWPQS');
+    </script>
+  </head>
 <body class="variant-desktop">
   <main class="sheet room-house-page bicycle-star-page" data-article-nav-label="문장 이동" data-article-list-label="문장" data-article-prev-label="이전 문장" data-article-next-label="다음 문장" data-photo-list-label="장면" data-room-context-nav="true" data-article-house-target="bicycle-writing-room" data-photo-house-target="bicycle-photo-room" data-map-house-target="bicycle-map-room" data-star-list-target="star-list">
     <nav class="top-doors room-house-nav" aria-label="자전거별 입구">
@@ -1626,6 +1634,6 @@
     syncStarVariant();
     window.addEventListener("resize", syncStarVariant);
   </script>
-  <script src="../assets/js/main.js?v=room-context-nav-v2"></script>
+  <script src="../assets/js/main.js?v=room-context-nav-v2-ga4-events-v1"></script>
 </body>
 </html>

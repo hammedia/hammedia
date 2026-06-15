@@ -16,6 +16,14 @@
     <meta name="twitter:description" content="다시 물어볼 수 있는 자신감을 배우는 HAM MEDIA의 AI 입문 실습 강의.">
     <meta name="twitter:image" content="https://hammedia.co.kr/assets/academy/academy_anchor_question.png">
     <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TEBKMGWPQS"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-TEBKMGWPQS');
+    </script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
     <link rel="stylesheet" href="../assets/css/academy.css">
   </head>
@@ -265,6 +273,48 @@
           trigger.disabled = true;
           video.focus();
           video.play().catch(() => {});
+        });
+      })();
+    </script>
+    <script>
+      (() => {
+        const track = (eventName, params = {}) => {
+          if (typeof window.gtag !== "function") return;
+
+          window.gtag("event", eventName, {
+            transport_type: "beacon",
+            source_page: window.location.pathname || "/academy/",
+            ...params
+          });
+        };
+
+        const cleanText = (text = "") => text.replace(/\s+/g, " ").trim();
+
+        document.addEventListener("click", (event) => {
+          const link = event.target.closest("a[href]");
+          if (!link) return;
+
+          const href = link.getAttribute("href") || "";
+          const targetUrl = link.href || href;
+          const label = cleanText(link.textContent || link.getAttribute("aria-label") || "");
+
+          if (targetUrl.includes("tally.so/")) {
+            const inquiryType = targetUrl.includes("academy_org") ? "organization" : "personal";
+            track("academy_inquiry_click", {
+              inquiry_type: inquiryType,
+              cta_label: label,
+              target_url: targetUrl
+            });
+            return;
+          }
+
+          if (targetUrl.includes("/portfolio/")) {
+            track("business_cta_click", {
+              cta_id: "portfolio",
+              cta_label: label,
+              target_url: targetUrl
+            });
+          }
         });
       })();
     </script>

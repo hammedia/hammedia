@@ -15,6 +15,153 @@ if (navToggle && siteNav) {
   });
 }
 
+const starTrackingLabels = {
+  fountain: "만년필별",
+  motorcycle: "바이크별",
+  travel: "여행별",
+  bike: "자전거별",
+  space: "공간별",
+  car: "자동차별",
+  food: "음식별",
+  audio: "음악·오디오별",
+  camera: "카메라별"
+};
+
+const starIdAliases = {
+  bicycle: "bike",
+  "music-audio": "audio"
+};
+
+function trackHamEvent(eventName, params = {}) {
+  if (typeof window.gtag !== "function") return;
+
+  window.gtag("event", eventName, {
+    transport_type: "beacon",
+    source_page: window.location.pathname || "/",
+    ...params
+  });
+}
+
+function cleanTrackingText(text = "") {
+  return text.replace(/\s+/g, " ").trim();
+}
+
+function normalizeStarId(rawStarId = "") {
+  return starIdAliases[rawStarId] || rawStarId;
+}
+
+function getHomeStarTrackingData(star) {
+  const starId = normalizeStarId(star?.dataset.star || "");
+  const starLabel = cleanTrackingText(star?.querySelector(".star-label")?.textContent || starTrackingLabels[starId] || starId);
+
+  return {
+    star_id: starId,
+    star_label: starLabel
+  };
+}
+
+function getHousePageStarTrackingData(housePage) {
+  const articleTarget = housePage?.dataset.articleHouseTarget || "";
+  const rawStarId = articleTarget.replace(/-writing-room$/, "");
+  const starId = normalizeStarId(rawStarId);
+
+  return {
+    star_id: starId,
+    star_label: starTrackingLabels[starId] || cleanTrackingText(document.title.replace(/\|.*$/, "")) || starId
+  };
+}
+
+function getEntryTrackingData(targetId = "", fallbackLabel = "") {
+  if (targetId.includes("writing")) {
+    return { entry_type: "sentence", entry_label: "문장" };
+  }
+
+  if (targetId.includes("photo")) {
+    return { entry_type: "scene", entry_label: "장면" };
+  }
+
+  if (targetId.includes("map")) {
+    return { entry_type: "map", entry_label: "지도" };
+  }
+
+  return {
+    entry_type: "constellation",
+    entry_label: cleanTrackingText(fallbackLabel) || "별자리"
+  };
+}
+
+function trackStarEntryClick(housePage, targetId, fallbackLabel = "") {
+  if (!housePage || !targetId) return;
+
+  trackHamEvent("star_entry_click", {
+    ...getHousePageStarTrackingData(housePage),
+    ...getEntryTrackingData(targetId, fallbackLabel),
+    target_id: targetId
+  });
+}
+
+function getBusinessCtaData(link) {
+  const href = link?.getAttribute("href") || "";
+  const targetUrl = link?.href || href;
+  const label = cleanTrackingText(link?.textContent || link?.getAttribute("aria-label") || "");
+
+  if (!href || href.startsWith("#")) return null;
+
+  if (href.startsWith("mailto:")) {
+    return {
+      eventName: "contact_click",
+      params: {
+        contact_type: "email",
+        cta_label: label,
+        target_url: targetUrl
+      }
+    };
+  }
+
+  if (targetUrl.includes("tally.so/")) {
+    return {
+      eventName: "contact_click",
+      params: {
+        contact_type: "form",
+        cta_label: label,
+        target_url: targetUrl
+      }
+    };
+  }
+
+  const ctaMap = [
+    { id: "academy", test: (url) => url.includes("/academy/") },
+    { id: "portfolio", test: (url) => url.includes("/portfolio/") },
+    { id: "work", test: (url) => url.includes("ham-media-work.html") },
+    { id: "contact", test: (url) => url.includes("contact.html") }
+  ];
+  const match = ctaMap.find((item) => item.test(targetUrl));
+  if (!match) return null;
+
+  return {
+    eventName: "business_cta_click",
+    params: {
+      cta_id: match.id,
+      cta_label: label,
+      target_url: targetUrl
+    }
+  };
+}
+
+document.addEventListener("click", (event) => {
+  const starListLink = event.target.closest(".room-house-page a[href='#star-list']");
+  if (starListLink) {
+    trackStarEntryClick(starListLink.closest(".room-house-page"), "star-list", starListLink.textContent);
+    return;
+  }
+
+  const ctaLink = event.target.closest("a[href]");
+  const ctaData = getBusinessCtaData(ctaLink);
+  if (!ctaData) return;
+
+  trackHamEvent(ctaData.eventName, ctaData.params);
+});
+
 document.querySelectorAll(".world-door, .contact-link, .back-link").forEach((target) => {
   target.addEventListener("pointerdown", () => {
     target.classList.remove("is-rippling");
@@ -454,6 +601,7 @@ if (constellationStars.length) {
 
     star.addEventListener("click", (event) => {
       event.preventDefault();
+      trackHamEvent("home_star_select", getHomeStarTrackingData(star));
       selectConstellationStar(star);
       if (!fineHoverQuery.matches) {
         detailName?.closest(".constellation-detail")?.scrollIntoView({
@@ -473,6 +621,10 @@ if (detailRoomLink) {
     if (detailRoomLink.hidden || !detailRoomLink.href) return;
 
     event.preventDefault();
+    trackHamEvent("home_star_enter", {
+      ...getHomeStarTrackingData(activeStar),
+      target_url: detailRoomLink.href
+    });
     enterStarRoom(detailRoomLink.href);
   });
 }
@@ -775,7 +927,16 @@ function buildRoomHouse() {
       if (section === currentSection) {
         button.setAttribute("aria-current", "page");
       }
-      button.addEventListener("click", action);
+      button.addEventListener("click", () => {
+        const targetMap = {
+          article: contextTargets.article,
+          photo: contextTargets.photo,
+          map: contextTargets.map,
+          stars: contextTargets.stars
+        };
+        trackStarEntryClick(housePage, targetMap[section] || section, label);
+        action();
+      });
       return button;
     };
 
@@ -809,7 +970,10 @@ function buildRoomHouse() {
     starLink.type = "button";
     starLink.dataset.roomSection = "stars";
     starLink.textContent = "별자리";
-    starLink.addEventListener("click", scrollToStarList);
+    starLink.addEventListener("click", () => {
+      trackStarEntryClick(housePage, contextTargets.stars, "별자리");
+      scrollToStarList();
+    });
     nav.append(starLink);
 
     return nav;
@@ -909,6 +1073,7 @@ function buildRoomHouse() {
         closePanels();
         return;
       }
+      trackStarEntryClick(housePage, door.dataset.houseTarget, door.textContent);
       openHousePanel(door.dataset.houseTarget);
     });
   });
