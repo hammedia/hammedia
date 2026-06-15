@@ -457,21 +457,23 @@ section {
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
   padding: clamp(74px, 10vw, 124px) max(24px, calc((100vw - 1120px) / 2));
-  border-bottom: 1px solid var(--line);
+  background: var(--ink);
+  border-bottom: 0;
 }
 
 .quote-label {
   max-width: 1040px;
   margin: 0 auto 18px;
-  color: var(--muted);
-  font-size: 13px;
-  font-weight: 600;
+  color: var(--brand);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
 }
 
 .quote-text {
   max-width: 1040px;
   margin: 0 auto;
-  color: var(--ink);
+  color: var(--paper);
   font-size: clamp(40px, 5vw, 72px);
   line-height: 1.2;
   font-weight: 300;
@@ -479,15 +481,38 @@ section {
   text-wrap: balance;
 }
 
+.quote-accent {
+  color: var(--brand);
+  font-weight: 500;
+}
+
 .quote-note {
-  max-width: 740px;
+  max-width: 680px;
   margin: 26px auto 0;
-  color: var(--muted);
-  font-size: 19px;
+  color: rgba(249, 247, 243, 0.66);
+  font-size: 18px;
   line-height: 1.64;
   font-weight: 600;
   text-align: center;
   word-break: keep-all;
+  text-wrap: balance;
+}
+
+.instructor-portfolio-link {
+  justify-self: start;
+  margin-top: 2px;
+  color: var(--ink);
+  font-size: 18px;
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 2px solid var(--brand);
+  padding-bottom: 2px;
+  transition: color 0.15s ease;
+}
+
+.instructor-portfolio-link:hover,
+.instructor-portfolio-link:focus-visible {
+  color: var(--brand);
 }
 
 .journey-list {
