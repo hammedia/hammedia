@@ -138,16 +138,19 @@ a {
 }
 
 .progress-shell strong {
-  min-width: 52px;
-  color: var(--muted);
+  min-width: 132px;
+  color: var(--ink);
   font-size: 12px;
+  font-weight: 800;
   text-align: center;
+  white-space: nowrap;
 }
 
 .progress-button,
 .primary-button,
 .secondary-button,
-.copy-button {
+.copy-button,
+.ai-open-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -173,6 +176,12 @@ a {
 .copy-button {
   background: var(--panel);
   color: var(--ink);
+}
+
+.ai-open-button {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--paper);
 }
 
 .progress-button:disabled {
@@ -311,6 +320,60 @@ a {
   font-size: 17px;
   line-height: 1.25;
   word-break: keep-all;
+}
+
+.practice-guide {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 0.48fr);
+  gap: 28px;
+  align-items: start;
+  margin-bottom: 24px;
+  padding: 24px;
+  background: rgba(255, 255, 255, 0.68);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--brand-2);
+}
+
+.practice-guide h3 {
+  margin: 8px 0 0;
+  color: var(--ink);
+  font-size: clamp(23px, 2.5vw, 30px);
+  line-height: 1.3;
+  word-break: keep-all;
+}
+
+.practice-guide ol {
+  margin: 18px 0 0;
+  padding-left: 22px;
+  color: var(--muted);
+  font-size: 17px;
+  font-weight: 600;
+  word-break: keep-all;
+}
+
+.practice-guide li + li {
+  margin-top: 7px;
+}
+
+.ai-button-panel {
+  display: grid;
+  gap: 14px;
+  padding-top: 2px;
+}
+
+.ai-button-panel p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 650;
+  word-break: keep-all;
+}
+
+.ai-link-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(128px, 1fr));
+  gap: 10px;
 }
 
 .practice-layout {
@@ -532,6 +595,7 @@ a {
 
 @media (max-width: 980px) {
   .class-hero,
+  .practice-guide,
   .practice-layout,
   .resource-grid,
   .video-panel,
@@ -569,7 +633,8 @@ a {
   .progress-button,
   .primary-button,
   .secondary-button,
-  .copy-button {
+  .copy-button,
+  .ai-open-button {
     min-height: 38px;
     padding: 8px 12px;
     font-size: 12px;
@@ -606,10 +671,24 @@ a {
   }
 
   .prompt-panel,
+  .practice-guide,
   .practice-note,
   .resource-card,
   .preview-card {
     padding: 18px;
+  }
+
+  .practice-guide h3 {
+    font-size: 23px;
+  }
+
+  .practice-guide ol,
+  .ai-button-panel p {
+    font-size: 15px;
+  }
+
+  .ai-link-grid {
+    grid-template-columns: 1fr 1fr;
   }
 
   .prompt-panel pre {
