@@ -86,16 +86,12 @@
         text-decoration: none;
       }
 
-      .brand-mark {
-        display: grid;
-        place-items: center;
-        width: 34px;
-        height: 34px;
-        border-radius: 50%;
+      .brand img {
+        width: 40px;
+        height: 40px;
+        border-radius: 6px;
         background: var(--warm-black);
-        color: var(--academy-paper);
-        font-size: 12px;
-        font-weight: 800;
+        object-fit: contain;
       }
 
       .header-note {
@@ -465,7 +461,7 @@
     <header class="note-header">
       <div class="header-inner">
         <a class="brand" href="../" aria-label="HAM MEDIA Academy로 이동">
-          <span class="brand-mark">HAM</span>
+          <img src="../../assets/images/brand/hammedia_mark_white.png" alt="" aria-hidden="true">
           <span>HAM MEDIA Academy</span>
         </a>
         <p class="header-note">수강생 맞춤 복습 노트</p>
