@@ -12,7 +12,7 @@
   <meta property="og:url" content="https://hammedia.co.kr/portfolio/">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="咸東旼 — ハムPD | HAM MEDIA">
-  <meta name="twitter:description" content="現場の言葉を、伝わるコンテンツへ。HAM MEDIA 咸東旼。">
+  <meta name="twitter:description" content="現場の経験を、コンテンツと運用の流れに変えます。HAM MEDIA 咸東旼。">
   <meta name="twitter:image" content="https://hammedia.co.kr/profile.JPG">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
@@ -357,6 +357,47 @@
       line-height: 1.65;
       margin: -.25rem 0 1rem;
     }
+    .target-fit {
+      width: min(1040px, calc(100vw - 6rem));
+      margin: 2rem 0 0 50%;
+      transform: translateX(-50%);
+      background: var(--ivory);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 1.6rem;
+      box-shadow: var(--shadow);
+    }
+    .target-fit-title {
+      font-size: 1.35rem;
+      margin: 0 0 1rem;
+      color: var(--warm);
+      line-height: 1.35;
+    }
+    .target-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--line);
+    }
+    .target-card {
+      background: var(--pearl);
+      padding: 1.2rem;
+    }
+    .target-name {
+      margin: 0 0 .55rem;
+      color: var(--warm);
+      font-size: 1.05rem;
+      line-height: 1.35;
+    }
+    .target-desc {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13.5px;
+      line-height: 1.75;
+    }
     .svc-cta {
       width: 100%;
       min-height: 40px;
@@ -597,6 +638,24 @@
       line-height: 1.9; max-width: 560px;
       margin-bottom: 2rem;
     }
+    .flow-steps {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .45rem;
+      margin: -1rem 0 2rem;
+    }
+    .flow-step {
+      display: inline-flex;
+      align-items: center;
+      min-height: 2rem;
+      padding: .35rem .7rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--white);
+      color: var(--warm);
+      font-size: .9rem;
+      font-weight: 700;
+    }
     .eq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
     .eq-block {
       background: var(--ivory);
@@ -784,6 +843,14 @@
         transform: none;
         grid-template-columns: 1fr;
       }
+      .target-fit {
+        width: 100%;
+        margin-left: 0;
+        transform: none;
+      }
+      .target-grid {
+        grid-template-columns: 1fr;
+      }
     }
     @media (max-width: 760px) {
       nav { padding: 0 1.25rem; }
@@ -793,7 +860,7 @@
       .hero-photo img { width: 160px; height: 200px; }
       .section { padding: 3.5rem 1.5rem; }
       .what-grid { grid-template-columns: 1fr; }
-      .positioning-wrap, .service-grid, .eq-grid, .cred-grid { grid-template-columns: 1fr; }
+      .positioning-wrap, .service-grid, .target-grid, .eq-grid, .cred-grid { grid-template-columns: 1fr; }
       .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
       .hero-title { font-size: 2rem; line-height: 1.17; }
       .hero-bridge { font-size: 1.02rem; line-height: 1.6; }
@@ -836,10 +903,10 @@
       まだ十分に<br>
       <span class="sky">伝わっていないなら。</span>
     </h1>
-    <p class="hero-bridge">現場の言葉を、伝わるコンテンツへ。</p>
+    <p class="hero-bridge">現場の経験を、コンテンツと運用の流れに変えます。</p>
     <p class="hero-sub">
       28年間、店舗を運営し、人を育て、空間をつくってきました。<br>
-      今はその経験を、映像、資料、講義、AIを活用した制作フローへと形にしています。
+      今はその経験を映像・資料・講義に変え、AIが提案し、人が判断する流れとして整えています。
     </p>
     <div class="hero-quote">
       よい経験も、伝わらなければ存在しないのと同じです。<br>
@@ -860,11 +927,11 @@
   <div class="positioning-wrap">
     <div class="positioning-copy">
       <p>スターバックスでは店舗運営と教育資料の現場展開に関わり、サービスと人の動きを学びました。</p>
-      <p>今、HAM MEDIAでしていることは、その経験の延長線上にあります。映像、資料、プレゼンテーション、講義、AIを活用した制作フローを通じて、複雑な経験やビジネスを、人に伝わる形へと整えています。</p>
+      <p>28年間、店舗を運営し、人を育て、空間をつくってきました。今はその経験を映像・資料・講義に変え、AIが提案し、人が判断する流れとして整えています。</p>
     </div>
     <div class="positioning-card">
       <div class="positioning-card-title">仕事の基準</div>
-      <p>現場運営、教育、資料整理、コンテンツ制作、AIを活用した制作フローをつなぎ、人が見て、使って、共有できる成果物へと変えていきます。</p>
+      <p>現場運営、教育、資料整理、コンテンツ制作、AIが提案し人が判断する流れをつなぎ、人が見て、使って、共有できる成果物へと変えていきます。</p>
     </div>
   </div>
 </section>
@@ -896,8 +963,8 @@
     </div>
     <div class="what-item">
       <div class="what-icon"><i data-lucide="bot"></i></div>
-      <div class="what-name">制作の流れを構造化します</div>
-      <div class="what-desc">資料分析、企画、原稿整理、カードニュース制作、Webページ制作など、繰り返される作業をAIを活用して整理します。</div>
+      <div class="what-name">AIと働く流れを設計します</div>
+      <div class="what-desc">資料・企画・制作・確認・公開・次の実行まで、散らばった仕事をひとつの流れに整えます。</div>
     </div>
     <div class="what-item">
       <div class="what-icon"><i data-lucide="message-circle"></i></div>
@@ -909,8 +976,8 @@
 
 <!-- WORK CATEGORIES -->
 <section class="section fade-up" id="services">
-  <p class="sec-label">依頼できること</p>
-  <h2 class="sec-title">形にできる仕事</h2>
+  <p class="sec-label">お任せいただけること</p>
+  <h2 class="sec-title">HAM MEDIAが形にできること</h2>
   <div class="service-grid">
     <div class="service-item">
       <h3 class="svc-name">専門家向けYouTube・映像コンテンツ</h3>
@@ -939,14 +1006,32 @@
       <p class="svc-for">こんな方へ — AIを仕事に取り入れたい個人事業主・中高年・実務担当者</p>
       <p class="svc-do">実習中心の講義・業務フロー整理</p>
       <p class="svc-out">成果物 — すぐ使えるAI業務ルーティン</p>
+      <p class="svc-proof">実習型AI入門講座を実際に進行中で、第1講は無料公開講座として開放しています。</p>
       <a class="svc-cta btn-primary" href="#contact">相談する</a>
     </div>
     <div class="service-item">
-      <h3 class="svc-name">1人制作システム構築</h3>
+      <h3 class="svc-name">AI運用フローの設計</h3>
       <p class="svc-for">こんな方へ — 1人で全部やらなければならない個人事業主・クリエイター</p>
-      <p class="svc-do">企画から公開までのパイプライン設計</p>
-      <p class="svc-out">成果物 — 1人でも回る制作システム</p>
+      <p class="svc-do">一人で抱えていた広報文、資料、コンテンツ、顧客対応の流れをAIと分担し、人が確認して判断する構造に整えます。</p>
+      <p class="svc-out">成果物 — 繰り返し使える運用フロー</p>
       <a class="svc-cta btn-primary" href="#contact">相談する</a>
+    </div>
+  </div>
+  <div class="target-fit" aria-labelledby="target-fit-title-jp">
+    <h3 class="target-fit-title" id="target-fit-title-jp">こんな方と相性が良いです</h3>
+    <div class="target-grid">
+      <div class="target-card">
+        <h4 class="target-name">機関・団体向けAI教育</h4>
+        <p class="target-desc">AIに不慣れな50・60代の受講者も最後までついて来られるよう、機能よりも姿勢と実習の流れを先に設計します。</p>
+      </div>
+      <div class="target-card">
+        <h4 class="target-name">小規模事業者・個人事業主のAI運用</h4>
+        <p class="target-desc">広報文・顧客対応・コンテンツ計画など、一人では大変な仕事をAIと分担し、最後の判断は人が行う流れをつくります。</p>
+      </div>
+      <div class="target-card">
+        <h4 class="target-name">専門家・企業の運用設計</h4>
+        <p class="target-desc">専門性と経験をAIが活用できる資料構造に整理し、コンテンツ・広報・対応・実行計画として繰り返し生産できるようにします。</p>
+      </div>
     </div>
   </div>
   <div class="workflow-proof">
@@ -1090,7 +1175,14 @@
 <section class="section fade-up" id="equipment">
   <p class="sec-label">制作フロー</p>
   <h2 class="sec-title">速く、安定して形にするための制作フロー</h2>
-  <p class="eq-intro">1人で制作していますが、感覚だけに頼っているわけではありません。資料分析、企画、原稿整理、撮影・編集、Webページ制作などを、AIと制作機材を組み合わせて整理しています。</p>
+  <p class="eq-intro">一人で働きますが、勘だけで働きません。資料を整理し、AIと下書きをつくり、人が確認してから公開し、反応を次の実行に反映する流れで運用します。</p>
+  <div class="flow-steps" aria-label="制作フロー5段階">
+    <span class="flow-step">整理</span>
+    <span class="flow-step">制作</span>
+    <span class="flow-step">確認</span>
+    <span class="flow-step">公開</span>
+    <span class="flow-step">振り返り</span>
+  </div>
   <div class="eq-grid">
     <div class="eq-block">
       <div class="eq-block-title"><i data-lucide="camera" style="width:13px;height:13px;stroke:var(--sky);vertical-align:middle;margin-right:4px;"></i> カメラ</div>
