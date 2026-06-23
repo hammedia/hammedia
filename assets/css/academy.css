@@ -208,6 +208,37 @@ main,
   word-break: keep-all;
 }
 
+.student-voices {
+  display: grid;
+  gap: 12px;
+  max-width: 620px;
+  margin-top: 22px;
+  padding-left: 18px;
+  border-left: 3px solid var(--brand);
+  color: var(--ink);
+}
+
+.student-voices blockquote {
+  margin: 0;
+}
+
+.student-voices p {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.58;
+  font-weight: 500;
+  word-break: keep-all;
+}
+
+.student-voices cite {
+  display: block;
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 13px;
+  font-style: normal;
+  line-height: 1.45;
+}
+
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
@@ -814,6 +845,15 @@ section {
   .hero-lead,
   .section-lead {
     font-size: 17px;
+  }
+
+  .student-voices {
+    margin-top: 18px;
+    padding-left: 14px;
+  }
+
+  .student-voices p {
+    font-size: 15px;
   }
 
   .hero-anchor {
