@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>이름을 알아야 AI에게 시킬 수 있다 — HAM MEDIA UI 용어</title>
+<link rel="canonical" href="https://hammedia.co.kr/tools/ui-terms/">
+<meta name="description" content="비개발자가 쓰던 AI에게 화면을 정확히 설명할 수 있도록 UI 용어와 복사용 문장을 모아둔 HAM MEDIA 무료 도구입니다.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://hammedia.co.kr/tools/ui-terms/">
+<meta property="og:title" content="UI 용어 대시보드 | HAM MEDIA 무료 도구">
+<meta property="og:description" content="찾고, 복사하고, 쓰던 AI에 붙여넣는 UI 용어 대시보드입니다.">
+<meta property="og:image" content="https://hammedia.co.kr/assets/tools/free-tools-og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="HAM MEDIA 무료 도구 카드뉴스 톤의 OG 이미지">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="UI 용어 대시보드 | HAM MEDIA 무료 도구">
+<meta name="twitter:description" content="화면 요소 이름을 찾아 복사하고, 쓰던 AI에게 붙여넣는 무료 도구입니다.">
+<meta name="twitter:image" content="https://hammedia.co.kr/assets/tools/free-tools-og.png">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+<link rel="stylesheet" href="../../assets/css/tools.css">
+<style>
+  :root{
+    color-scheme: light;
+    --bg:#F9F7F3; --surface:#F5F3EE; --card:#FFFEFB;
+    --ink:#1C1814; --sub:#4A423C;
+    --blue:#7EB5E8; --blue-soft:rgba(126,181,232,.16);
+    --yellow:#F4DC59; --green:#00704A; --green-d:#005a3b; --red:#CC0000;
+    --line:#E8E2D8;
+    --shadow:0 1px 2px rgba(28,24,20,.04),0 4px 14px rgba(28,24,20,.05);
+    --shadow-lift:0 4px 10px rgba(28,24,20,.06),0 12px 30px rgba(28,24,20,.08);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);position:relative;
+    font-family:'Pretendard','Pretendard Variable',-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+    line-height:1.55;-webkit-font-smoothing:antialiased;}
+  button,input{font-family:inherit}
+  .atmos{position:fixed;inset:0;z-index:-1;pointer-events:none;
+    background:
+      radial-gradient(circle at 12% 6%, rgba(126,181,232,.10), transparent 42%),
+      radial-gradient(circle at 90% 10%, rgba(244,220,89,.085), transparent 40%),
+      radial-gradient(circle at 72% 92%, rgba(0,112,74,.06), transparent 42%);}
+  .wrap{max-width:1080px;margin:0 auto;padding:14px 18px 56px;}
+
+  .brand{display:flex;align-items:center;justify-content:space-between;gap:10px 12px;flex-wrap:wrap;margin-bottom:12px;}
+  .brand-lockup{display:flex;align-items:center;gap:12px;min-width:0;}
+  .brand img{width:40px;height:40px;border-radius:10px;display:block;}
+  .wordmark{font-weight:700;font-size:15px;letter-spacing:.07em;color:var(--ink);}
+  .brand .sub{font-size:11.5px;color:var(--sub);margin-top:2px;}
+  .brand-back{margin-left:auto;border:1px solid var(--line);background:var(--card);color:var(--sub);
+    border-radius:999px;padding:6px 10px;font-size:12px;font-weight:700;text-decoration:none;white-space:nowrap;box-shadow:var(--shadow);}
+  .brand-back:hover{color:var(--ink);border-color:var(--blue);}
+  .brand-back:focus-visible{outline:3px solid var(--blue);outline-offset:3px;}
+
+  .hlabel{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.04em;color:var(--blue);
+    background:var(--blue-soft);border-radius:20px;padding:4px 12px;margin-bottom:8px;}
+  header h1{font-size:clamp(24px,3.4vw,32px);font-weight:800;margin:0 0 5px;letter-spacing:-.025em;line-height:1.15;}
+  header p{margin:0;color:var(--sub);font-size:clamp(13.5px,1.9vw,15.5px);max-width:640px;}
+
+  .toolbar{position:sticky;top:0;z-index:5;background:linear-gradient(var(--bg) 76%,rgba(249,247,243,0));
+    padding:10px 0 10px;margin-top:10px;}
+  .search{display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--line);
+    border-radius:14px;padding:13px 16px;box-shadow:var(--shadow);}
+  .search input{border:0;outline:0;font-size:15px;width:100%;background:transparent;color:var(--ink);font-family:inherit;}
+  .search input::placeholder{color:#9a9186}
+  .search svg{flex:0 0 auto;color:var(--sub)}
+  .segwrap{display:flex;gap:5px;margin-top:11px;background:var(--surface);border:1px solid var(--line);
+    border-radius:13px;padding:5px;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+  .seg-b{border:0;background:transparent;padding:8px 13px;border-radius:9px;font-size:13px;color:var(--sub);
+    font-weight:600;white-space:nowrap;cursor:pointer;font-family:inherit;transition:all .12s;}
+  .seg-b:hover{color:var(--ink)}
+  .seg-b.on{background:var(--card);color:var(--ink);box-shadow:var(--shadow);}
+
+  .group{margin-top:30px;}
+  .group h2{display:flex;align-items:center;gap:10px;font-size:16px;font-weight:700;margin:0 0 14px;color:var(--ink);}
+  .pic{width:31px;height:31px;border-radius:9px;display:flex;align-items:center;justify-content:center;flex:0 0 auto;
+    background:var(--surface);border:1px solid var(--line);}
+  .pic svg{width:18px;height:18px}
+  .cnt{font-size:11px;font-weight:700;color:var(--blue);background:var(--blue-soft);
+    border-radius:20px;padding:1px 9px;}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:11px;}
+  .card{appearance:none;width:100%;text-align:left;color:inherit;font:inherit;background:var(--card);border:1px solid var(--line);border-radius:15px;padding:13px;
+    cursor:pointer;transition:transform .09s ease,border-color .12s,box-shadow .12s;
+    display:flex;flex-direction:column;gap:11px;}
+  .card:hover{transform:translateY(-2px);border-color:var(--blue);box-shadow:var(--shadow-lift);}
+  .card:focus-visible,.seg-b:focus-visible,.copybtn:focus-visible,.close:focus-visible{outline:3px solid var(--blue);outline-offset:3px;}
+  .cardpv{height:62px;display:flex;align-items:center;justify-content:center;overflow:hidden;
+    background:var(--surface);border-radius:10px;}
+  .pvscale{transform:scale(.78);display:flex;align-items:center;justify-content:center;gap:8px;}
+  .cardname b{font-size:14.5px;font-weight:700;display:block;}
+  .cardname span{font-size:11px;color:var(--sub);}
+  .empty{color:var(--sub);font-size:14px;padding:34px 4px;text-align:center;}
+
+  .overlay{position:fixed;inset:0;background:rgba(28,24,20,.36);display:none;
+    align-items:center;justify-content:center;padding:18px;z-index:20;}
+  .overlay.on{display:flex;}
+  .modal{background:var(--card);border-radius:18px;max-width:460px;width:100%;
+    box-shadow:0 20px 56px rgba(28,24,20,.26);padding:24px 24px 20px;animation:pop .13s ease;
+    max-height:88vh;overflow:auto;border:1px solid var(--line);}
+  @keyframes pop{from{transform:scale(.97);opacity:.5}to{transform:scale(1);opacity:1}}
+  .modal .tag{font-size:11px;font-weight:700;color:var(--ink);background:var(--blue-soft);
+    padding:3px 10px;border-radius:20px;display:inline-block;}
+  .modal h3{margin:13px 0 2px;font-size:22px;font-weight:800;letter-spacing:-.01em;}
+  .modal .en{color:var(--sub);font-size:13px;margin:0 0 14px;}
+  .modal .what{font-size:14.5px;margin:0 0 15px;color:var(--ink);}
+  .preview{background:var(--surface);border:1px solid var(--line);border-radius:14px;min-height:80px;
+    display:flex;align-items:center;justify-content:center;gap:10px;padding:18px;margin:0 0 17px;}
+  .blk{margin:0 0 13px;}
+  .blk .lbl{font-size:11px;font-weight:700;margin:0 0 6px;letter-spacing:.02em;color:var(--blue);}
+  .ex{font-size:14px;margin:0;color:var(--sub);background:var(--surface);border-radius:11px;padding:11px 13px;}
+  .copyrow{display:flex;align-items:stretch;gap:8px;}
+  .copytext{flex:1;background:var(--surface);border:1px solid var(--line);border-radius:11px;padding:11px 13px;font-size:14.5px;color:var(--ink);}
+  .copytext mark{background:var(--yellow);color:var(--ink);font-weight:700;border-radius:4px;padding:0 4px;}
+  .copybtn{flex:0 0 auto;border:0;background:var(--green);color:#fff;font-size:13px;font-weight:700;
+    padding:0 17px;border-radius:11px;cursor:pointer;white-space:nowrap;transition:background .12s;font-family:inherit;}
+  .copybtn:hover{background:var(--green-d)}
+  .copyhint{font-size:11.5px;color:var(--sub);margin:8px 2px 0;}
+  .copyhint mark{background:var(--yellow);border-radius:3px;padding:0 3px;}
+  .close{margin-top:14px;width:100%;border:0;background:var(--ink);color:#fff;font-size:14px;
+    font-weight:600;padding:12px;border-radius:11px;cursor:pointer;font-family:inherit;}
+  .close:hover{opacity:.92}
+
+  .toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(20px);
+    background:var(--ink);color:#fff;font-size:14px;font-weight:600;padding:12px 18px;border-radius:12px;
+    box-shadow:0 10px 28px rgba(28,24,20,.28);display:flex;align-items:center;gap:9px;
+    opacity:0;pointer-events:none;transition:all .22s ease;z-index:40;}
+  .toast.on{opacity:1;transform:translateX(-50%) translateY(0);}
+  .toast .ok{color:#5fd0a3;font-weight:800;}
+
+  .foot{margin-top:40px;text-align:center;color:var(--sub);font-size:12.5px;line-height:1.85}
+  .foot .wm{font-weight:700;letter-spacing:.08em;color:var(--ink);}
+  .foot .self{display:inline-block;margin-top:8px;font-size:11.5px;color:var(--sub);background:var(--surface);
+    border:1px solid var(--line);border-radius:20px;padding:5px 13px;}
+
+  /* ---- mini mockups (brand-themed) ---- */
+  .m-field{width:140px;background:#fff;border:1px solid #d9d3c8;border-radius:8px;padding:8px 10px;font-size:12px;color:#9a9186;display:flex;align-items:center;gap:6px;}
+  .m-caret{display:inline-block;width:1px;height:14px;background:var(--ink);animation:bl 1s steps(1) infinite}
+  @keyframes bl{50%{opacity:0}}
+  .m-check{width:18px;height:18px;border-radius:5px;border:1.5px solid #c9c2b5;display:inline-flex;align-items:center;justify-content:center;color:#fff;font-size:12px;background:#fff;}
+  .m-check.on{background:var(--blue);border-color:var(--blue);}
+  .m-radio{width:18px;height:18px;border-radius:50%;border:1.5px solid #c9c2b5;display:inline-flex;align-items:center;justify-content:center;background:#fff;}
+  .m-radio.on{border-color:var(--blue);} .m-radio.on::after{content:"";width:9px;height:9px;border-radius:50%;background:var(--blue);}
+  .m-toggle{width:44px;height:24px;border-radius:20px;background:var(--green);position:relative;display:inline-block;}
+  .m-toggle::after{content:"";position:absolute;top:2px;right:2px;width:20px;height:20px;border-radius:50%;background:#fff;}
+  .m-slider{width:120px;height:18px;position:relative;display:flex;align-items:center;}
+  .m-slider .tk{height:4px;width:100%;background:#ddd6ca;border-radius:4px;} .m-slider .tk i{display:block;height:4px;width:62%;background:var(--blue);border-radius:4px;}
+  .m-slider .th{position:absolute;left:58%;width:16px;height:16px;border-radius:50%;background:var(--blue);border:2px solid #fff;box-shadow:0 1px 3px rgba(0,0,0,.18);}
+  .m-tabs,.m-seg{display:flex;font-size:12px;}
+  .m-tabs b{padding:5px 10px;color:#9a9186;font-weight:600;border-bottom:2px solid transparent;} .m-tabs b.on{color:var(--ink);border-color:var(--blue);}
+  .m-seg{border:1px solid #d9d3c8;border-radius:8px;overflow:hidden;} .m-seg b{padding:6px 11px;color:var(--sub);font-weight:600;} .m-seg b.on{background:var(--blue);color:var(--ink);}
+  .m-btn{font-size:12.5px;font-weight:700;border-radius:8px;padding:8px 15px;border:1px solid transparent;cursor:default;font-family:inherit;}
+  .m-btn.pri{background:var(--green);color:#fff;} .m-btn.out{background:#fff;color:var(--ink);border-color:#d9d3c8;}
+  .m-iconbtn{width:38px;height:38px;border-radius:8px;border:1px solid #d9d3c8;background:#fff;display:flex;align-items:center;justify-content:center;color:var(--ink);}
+  .m-fab{width:42px;height:42px;border-radius:50%;background:var(--green);color:#fff;border:0;font-size:22px;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 14px rgba(0,112,74,.32);}
+  .m-link{color:var(--blue);font-weight:700;font-size:13.5px;}
+  .m-card{width:108px;background:#fff;border:1px solid var(--line);border-radius:11px;padding:8px;box-shadow:var(--shadow);}
+  .m-card-img{height:30px;border-radius:6px;background:linear-gradient(135deg,#e6ddcf,#f1ece1);margin-bottom:7px;}
+  .m-l{height:7px;border-radius:4px;background:#e4ddd0;margin:5px 0;} .m-l.s{width:60%}
+  .m-modalmini{width:120px;background:#fff;border-radius:11px;padding:10px;box-shadow:0 10px 22px rgba(28,24,20,.18);position:relative;}
+  .m-modalmini .x{position:absolute;top:6px;right:8px;color:#9a9186;font-size:11px;}
+  .m-layout{width:124px;height:58px;border:1px solid #d9d3c8;border-radius:9px;overflow:hidden;display:flex;background:#fff;}
+  .m-layout .sd{width:32px;background:var(--surface);border-right:1px solid var(--line);} .m-layout .mn{flex:1;padding:7px}
+  .m-frame{width:124px;height:60px;border:1px solid #d9d3c8;border-radius:9px;background:#fff;display:flex;flex-direction:column;overflow:hidden;}
+  .m-frame .hd{height:17px;background:var(--blue);} .m-frame .bd{flex:1} .m-frame .ft{height:15px;background:var(--surface);border-top:1px solid var(--line);margin-top:auto;}
+  .m-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;width:104px;} .m-grid i{height:22px;border-radius:6px;background:#e6ddcf;}
+  .m-toast{background:var(--ink);color:#fff;font-size:11.5px;border-radius:10px;padding:8px 11px;display:flex;align-items:center;gap:6px;box-shadow:0 6px 14px rgba(28,24,20,.2);} .m-toast .ok{color:#5fd0a3;font-weight:800}
+  .m-bell{position:relative;color:var(--ink)}
+  .m-badge{position:absolute;top:-4px;right:-6px;background:var(--red);color:#fff;font-size:10px;font-weight:800;border-radius:20px;min-width:16px;height:16px;display:flex;align-items:center;justify-content:center;padding:0 3px;}
+  .m-spin{width:26px;height:26px;border-radius:50%;border:3px solid #ddd6ca;border-top-color:var(--blue);animation:sp .8s linear infinite;}
+  @keyframes sp{to{transform:rotate(360deg)}}
+  .m-prog{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--sub);} .m-prog .tk{width:96px;height:8px;border-radius:8px;background:#ddd6ca;overflow:hidden;} .m-prog .tk i{display:block;height:8px;width:65%;background:var(--blue);}
+  .m-tip{position:relative;background:var(--ink);color:#fff;font-size:12px;padding:6px 10px;border-radius:8px;} .m-tip::after{content:"";position:absolute;bottom:-5px;left:18px;border:5px solid transparent;border-top-color:var(--ink);border-bottom:0;}
+  .m-empty{display:flex;flex-direction:column;align-items:center;gap:5px;color:#9a9186;font-size:11px;}
+  .m-list{width:112px;} .m-list div{display:flex;align-items:center;gap:7px;margin:6px 0;} .m-list i{width:6px;height:6px;border-radius:50%;background:var(--blue);flex:0 0 auto;} .m-list b{height:7px;border-radius:4px;background:#e4ddd0;flex:1;}
+  .m-table{width:120px;border:1px solid var(--line);border-radius:8px;overflow:hidden;font-size:0;} .m-table .r{display:grid;grid-template-columns:1fr 1fr 1fr;} .m-table .r.h span{background:var(--surface);} .m-table span{height:14px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .m-acc{width:122px;}
+  .m-car{display:flex;align-items:center;gap:7px;color:#9a9186;font-size:17px;}
+  .m-bc{font-size:12px;color:var(--sub);display:flex;gap:5px;align-items:center;} .m-bc b{color:var(--ink);font-weight:700} .m-bc span{color:#c9c2b5}
+  .m-ava{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#a9cbef,#cfe0f5);display:flex;align-items:flex-end;justify-content:center;overflow:hidden;color:#fff;}
+  .howto{margin-top:10px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:11px 14px;}
+  .howto .ht{font-size:13px;font-weight:800;color:var(--ink);margin:0 0 6px;}
+  .howto .steps{display:flex;flex-wrap:wrap;gap:8px 10px;align-items:center;}
+  .howto .s{display:flex;align-items:center;gap:8px;font-size:13.5px;color:var(--ink);}
+  .howto .s .num{width:22px;height:22px;border-radius:50%;background:var(--blue-soft);color:var(--blue);font-weight:800;font-size:12px;display:flex;align-items:center;justify-content:center;flex:0 0 auto;}
+  .howto .arr{color:#c9c2b5;font-weight:700;}
+  .howto .ex{margin:8px 0 0;font-size:12.5px;color:var(--sub);line-height:1.6;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:9px 11px;}
+  .howto .ex b{color:var(--ink);}
+</style>
+</head>
+<body>
+<div class="atmos"></div>
+<div class="wrap">
+  <div class="brand">
+    <div class="brand-lockup">
+      <img src="../../assets/tools/logo_10.png" alt="HAM MEDIA 로고">
+      <div><div class="wordmark">HAM MEDIA</div><div class="sub">AI 협업 도구</div></div>
+    </div>
+    <a class="brand-back" href="/tools/">← 무료 도구 목록</a>
+  </div>
+
+  <header>
+    <span class="hlabel">UI 용어 모음</span>
+    <h1>이름을 알아야<br>AI에게 시킬 수 있다</h1>
+    <p>화면 요소를 이름으로 부르면 AI가 정확히 만들어요. 카드를 누르면 진짜 모양 · 예시 · 복사용 문장이 떠요.</p>
+  </header>
+
+  <div class="howto">
+    <p class="ht">이렇게 쓰세요</p>
+    <div class="steps">
+      <span class="s"><span class="num">1</span>찾아서 눌러요</span><span class="arr">→</span>
+      <span class="s"><span class="num">2</span>‘복사’ 눌러요</span><span class="arr">→</span>
+      <span class="s"><span class="num">3</span>쓰던 AI(챗GPT·코덱스)에 붙여넣어요</span>
+    </div>
+    <p class="ex">예) <b>‘카드’</b>를 눌러 복사 → 챗GPT에 붙여넣고 (무엇)만 “상품”으로 바꾸면 → 상품을 카드로 보여주는 화면을 만들어줘요.</p>
+  </div>
+
+  <div class="toolbar">
+    <div class="search">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <label class="sr-only" for="q">UI 용어 검색</label>
+      <input id="q" type="text" placeholder="이름·뜻으로 검색 (예: 카드, 토글, 위에 뜨는 창…)" autocomplete="off" aria-label="UI 용어 검색">
+    </div>
+    <div class="segwrap" id="segwrap"></div>
+  </div>
+
+  <div id="board"></div>
+  <div id="empty" class="empty" style="display:none">찾는 단어가 없어요. 다른 말로 검색하거나 ‘전체’를 눌러보세요.</div>
+
+  <div class="foot">
+    <span class="wm">HAM MEDIA</span> · 화면 부르는 말 사전 (시제품)<br>
+    이름이 기억 안 나면 ‘동작’으로 말해도 돼요 — “눌렀을 때 위에 창이 떠” → AI가 “모달이에요” 하고 붙여줍니다.<br>
+    <span class="self">이 화면도 검색창 · 세그먼트 버튼 · 카드 · 배지 · 모달 · 토스트로 만들었어요.</span>
+  </div>
+</div>
+
+<div class="overlay" id="ov" aria-hidden="true"><div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" tabindex="-1"></div></div>
+<div class="toast" id="toast"><span class="ok">✓</span><span id="toastmsg">복사됐어요</span></div>
+
+<script>
+const GMETA={
+ 1:{name:'입력 요소',short:'입력',icon:'<path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/>'},
+ 2:{name:'선택·전환 요소',short:'선택·전환',icon:'<line x1="4" y1="8" x2="20" y2="8"/><circle cx="9" cy="8" r="2.4" fill="#F5F3EE"/><line x1="4" y1="16" x2="20" y2="16"/><circle cx="15" cy="16" r="2.4" fill="#F5F3EE"/>'},
+ 3:{name:'버튼·행동 요소',short:'버튼·행동',icon:'<path d="M5 3l13 7-5.5 1.7L10 18z"/>'},
+ 4:{name:'화면 구조 요소',short:'화면 구조',icon:'<rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="9" x2="9" y2="21"/>'},
+ 5:{name:'안내·상태 요소',short:'안내·상태',icon:'<path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/>'},
+ 6:{name:'목록·정보 요소',short:'목록·정보',icon:'<line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><circle cx="3.6" cy="6" r="1.3" fill="currentColor" stroke="none"/><circle cx="3.6" cy="12" r="1.3" fill="currentColor" stroke="none"/><circle cx="3.6" cy="18" r="1.3" fill="currentColor" stroke="none"/>'}
+};
+
+const DATA=[
+ {g:1,ko:'입력창',en:'Input',w:'글자를 입력하는 칸',say:'이메일 입력창 하나 넣어줘',copy:'(무엇) 입력창 넣어줘'},
+ {g:1,ko:'검색창',en:'Search Bar',w:'검색어를 넣는 칸',say:'상단에 검색창 넣어서 제목으로 찾게 해줘',copy:'(무엇)으로 찾는 검색창 넣어줘'},
+ {g:1,ko:'텍스트영역',en:'Textarea',w:'긴 글을 쓰는 칸',say:'후기는 여러 줄 쓰는 텍스트영역으로 해줘',copy:'(무엇) 쓰는 텍스트영역 넣어줘'},
+ {g:1,ko:'드롭다운',en:'Dropdown',w:'목록에서 하나 고르기',say:'지역을 드롭다운으로 고르게 해줘',copy:'(무엇)을 드롭다운으로 고르게 해줘'},
+ {g:1,ko:'체크박스',en:'Checkbox',w:'여러 개 선택 가능',say:'관심분야를 체크박스로 여러 개 고르게 해줘',copy:'(무엇)을 체크박스로 여러 개 고르게 해줘'},
+ {g:1,ko:'라디오버튼',en:'Radio Button',w:'하나만 선택 가능',say:'성별을 라디오버튼으로 하나만 고르게 해줘',copy:'(무엇)을 라디오버튼으로 하나만 고르게 해줘'},
+ {g:2,ko:'토글',en:'Toggle',w:'켜기/끄기 스위치',say:'알림 켜기/끄기 토글 넣어줘',copy:'(무엇) 켜기/끄기 토글 넣어줘'},
+ {g:2,ko:'슬라이더',en:'Slider',w:'값을 밀어서 조절',say:'가격 범위를 슬라이더로 조절하게 해줘',copy:'(무엇)을 슬라이더로 조절하게 해줘'},
+ {g:2,ko:'탭',en:'Tab',w:'화면 안의 메뉴 전환',say:'소개·후기·문의를 탭으로 나눠줘',copy:'(무엇·무엇·무엇)을 탭으로 나눠줘'},
+ {g:2,ko:'세그먼트 버튼',en:'Segmented Button',w:'선택지를 버튼처럼 전환',say:'월간/연간을 세그먼트 버튼으로 전환하게 해줘',copy:'(무엇/무엇)을 세그먼트 버튼으로 전환하게 해줘'},
+ {g:2,ko:'날짜 선택',en:'Date Picker',w:'날짜 고르기',say:'예약 날짜를 날짜 선택으로 고르게 해줘',copy:'(무엇) 날짜를 날짜 선택으로 고르게 해줘'},
+ {g:2,ko:'파일 업로드',en:'File Upload',w:'파일 첨부하기',say:'사진을 파일 업로드로 첨부하게 해줘',copy:'(무엇)을 파일 업로드로 첨부하게 해줘'},
+ {g:3,ko:'버튼',en:'Button',w:'눌러서 실행',say:'맨 아래 ‘신청하기’ 버튼 넣어줘',copy:'(무엇) 버튼 넣어줘'},
+ {g:3,ko:'아이콘 버튼',en:'Icon Button',w:'아이콘만 있는 버튼',say:'하트 아이콘 버튼으로 찜하기 만들어줘',copy:'(무엇) 아이콘 버튼 만들어줘'},
+ {g:3,ko:'주요 버튼',en:'Primary Button',w:'가장 중요한 행동',say:'‘결제하기’를 가장 눈에 띄는 주요 버튼으로 해줘',copy:'(무엇)을 주요 버튼으로 가장 눈에 띄게 해줘'},
+ {g:3,ko:'보조 버튼',en:'Secondary Button',w:'덜 중요한 행동',say:'‘취소’는 보조 버튼으로 옆에 둬줘',copy:'(무엇)을 보조 버튼으로 옆에 둬줘'},
+ {g:3,ko:'플로팅 버튼',en:'FAB',w:'화면 위에 떠 있는 버튼',say:'오른쪽 아래에 글쓰기 플로팅 버튼 띄워줘',copy:'오른쪽 아래에 (무엇) 플로팅 버튼 띄워줘'},
+ {g:3,ko:'링크',en:'Link',w:'다른 화면으로 이동',say:'‘자세히 보기’ 링크로 상세 페이지 연결해줘',copy:'(무엇) 링크로 (어디) 연결해줘'},
+ {g:4,ko:'카드',en:'Card',w:'내용을 묶어 보여주는 박스',say:'상품 하나하나를 카드로 묶어서 보여줘',copy:'(무엇)을 카드로 묶어서 보여줘'},
+ {g:4,ko:'모달',en:'Modal',w:'화면 위에 뜨는 창',say:'삭제 누르면 확인 모달 띄워줘 (지금 보는 이 창이 모달이에요)',copy:'(무엇) 누르면 (무엇) 모달 띄워줘'},
+ {g:4,ko:'사이드바',en:'Sidebar',w:'옆에 있는 메뉴',say:'왼쪽에 메뉴 사이드바 만들어줘',copy:'왼쪽에 (무엇) 사이드바 만들어줘'},
+ {g:4,ko:'헤더',en:'Header',w:'화면 맨 위 영역',say:'맨 위에 로고랑 메뉴 들어가는 헤더 넣어줘',copy:'맨 위에 (무엇) 들어가는 헤더 넣어줘'},
+ {g:4,ko:'푸터',en:'Footer',w:'화면 맨 아래 영역',say:'맨 아래 회사 정보 푸터 넣어줘',copy:'맨 아래 (무엇) 푸터 넣어줘'},
+ {g:4,ko:'그리드',en:'Grid',w:'여러 항목을 격자로 배치',say:'상품을 3열 그리드로 깔아줘',copy:'(무엇)을 (몇)열 그리드로 깔아줘'},
+ {g:5,ko:'알림',en:'Toast',w:'잠깐 뜨는 안내',say:'저장되면 ‘저장됐어요’ 토스트 잠깐 띄워줘',copy:'(무엇) 되면 (무엇) 토스트 잠깐 띄워줘'},
+ {g:5,ko:'배지',en:'Badge',w:'숫자나 상태 표시',say:'장바구니에 숫자 배지 붙여줘',copy:'(무엇)에 (숫자/상태) 배지 붙여줘'},
+ {g:5,ko:'로딩',en:'Spinner',w:'처리 중 표시',say:'불러오는 동안 로딩 스피너 보여줘',copy:'(무엇) 불러오는 동안 로딩 스피너 보여줘'},
+ {g:5,ko:'진행바',en:'Progress Bar',w:'진행 정도 표시',say:'업로드 진행바로 몇 % 됐는지 보여줘',copy:'(무엇) 진행바로 몇 % 됐는지 보여줘'},
+ {g:5,ko:'툴팁',en:'Tooltip',w:'마우스를 올리면 나오는 설명',say:'물음표에 마우스 올리면 툴팁 설명 나오게 해줘',copy:'(무엇)에 마우스 올리면 툴팁 설명 나오게 해줘'},
+ {g:5,ko:'빈 상태',en:'Empty State',w:'데이터가 없을 때 화면',say:'목록 비었을 때 빈 상태 안내 보여줘',copy:'(무엇) 비었을 때 빈 상태 안내 보여줘'},
+ {g:6,ko:'리스트',en:'List',w:'항목을 세로로 나열',say:'할 일을 리스트로 세로로 나열해줘',copy:'(무엇)을 리스트로 세로로 나열해줘'},
+ {g:6,ko:'테이블',en:'Table',w:'행과 열로 정리',say:'주문 내역을 테이블로 행과 열로 정리해줘',copy:'(무엇)을 테이블로 행과 열로 정리해줘'},
+ {g:6,ko:'아코디언',en:'Accordion',w:'접었다 펼치는 목록',say:'자주 묻는 질문을 아코디언으로 접었다 펼치게 해줘',copy:'(무엇)을 아코디언으로 접었다 펼치게 해줘'},
+ {g:6,ko:'캐러셀',en:'Carousel',w:'옆으로 넘기는 카드',say:'후기 사진을 캐러셀로 옆으로 넘기게 해줘',copy:'(무엇)을 캐러셀로 옆으로 넘기게 해줘'},
+ {g:6,ko:'브레드크럼',en:'Breadcrumb',w:'현재 위치 경로',say:'지금 위치를 브레드크럼으로 ‘홈 > 상세’ 표시해줘',copy:'지금 위치를 브레드크럼으로 (홈 > 무엇) 표시해줘'},
+ {g:6,ko:'아바타',en:'Avatar',w:'사용자 프로필 이미지',say:'댓글 옆에 프로필 아바타 둥글게 넣어줘',copy:'(무엇) 옆에 프로필 아바타 둥글게 넣어줘'},
+];
+
+function preview(en){
+  switch(en){
+    case 'Input': return '<span class="m-field"><span class="m-caret"></span></span>';
+    case 'Search Bar': return '<span class="m-field"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#9a9186" stroke-width="2.5"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>검색</span>';
+    case 'Textarea': return '<span class="m-field" style="height:44px;align-items:flex-start">긴 글…</span>';
+    case 'Dropdown': return '<span class="m-field" style="justify-content:space-between;color:#1C1814">목록 <span style="color:#9a9186">▾</span></span>';
+    case 'Checkbox': return '<span class="m-check on">✓</span><span class="m-check"></span>';
+    case 'Radio Button': return '<span class="m-radio on"></span><span class="m-radio"></span>';
+    case 'Toggle': return '<span class="m-toggle"></span>';
+    case 'Slider': return '<span class="m-slider"><span class="tk"><i></i></span><span class="th"></span></span>';
+    case 'Tab': return '<span class="m-tabs"><b class="on">탭1</b><b>탭2</b><b>탭3</b></span>';
+    case 'Segmented Button': return '<span class="m-seg"><b class="on">월간</b><b>연간</b></span>';
+    case 'Date Picker': return '<span class="m-field" style="justify-content:space-between;color:#1C1814">2026-05-20 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#9a9186" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/></svg></span>';
+    case 'File Upload': return '<button class="m-btn out">⤒ 파일 선택</button>';
+    case 'Button': return '<button class="m-btn pri">버튼</button>';
+    case 'Icon Button': return '<button class="m-iconbtn">♡</button>';
+    case 'Primary Button': return '<button class="m-btn pri">주요 버튼</button>';
+    case 'Secondary Button': return '<button class="m-btn out">보조 버튼</button>';
+    case 'FAB': return '<button class="m-fab">+</button>';
+    case 'Link': return '<span class="m-link">자세히 보기 →</span>';
+    case 'Card': return '<span class="m-card"><span class="m-card-img" style="display:block"></span><span class="m-l" style="display:block"></span><span class="m-l s" style="display:block"></span></span>';
+    case 'Modal': return '<span class="m-modalmini"><span class="x">✕</span><span class="m-l" style="display:block"></span><span class="m-l s" style="display:block"></span></span>';
+    case 'Sidebar': return '<span class="m-layout"><span class="sd"></span><span class="mn"><span class="m-l" style="display:block"></span><span class="m-l s" style="display:block"></span></span></span>';
+    case 'Header': return '<span class="m-frame"><span class="hd"></span><span class="bd"></span></span>';
+    case 'Footer': return '<span class="m-frame"><span class="bd"></span><span class="ft"></span></span>';
+    case 'Grid': return '<span class="m-grid"><i></i><i></i><i></i><i></i><i></i><i></i></span>';
+    case 'Toast': return '<span class="m-toast"><span class="ok">✓</span> 저장됐어요</span>';
+    case 'Badge': return '<span class="m-bell"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1C1814" stroke-width="1.8"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg><span class="m-badge">3</span></span>';
+    case 'Spinner': return '<span class="m-spin"></span>';
+    case 'Progress Bar': return '<span class="m-prog"><span class="tk"><i></i></span>65%</span>';
+    case 'Tooltip': return '<span class="m-tip">도움말 내용</span>';
+    case 'Empty State': return '<span class="m-empty"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#c9c2b5" stroke-width="1.6"><path d="M3 13l3-8h12l3 8"/><path d="M3 13v6h18v-6"/><path d="M3 13h5l1.5 2.5h5L16 13h5"/></svg>없음</span>';
+    case 'List': return '<span class="m-list"><span><i></i><b></b></span><span><i></i><b></b></span><span><i></i><b></b></span></span>';
+    case 'Table': return '<span class="m-table"><span class="r h"><span></span><span></span><span></span></span><span class="r"><span></span><span></span><span></span></span><span class="r"><span></span><span></span><span></span></span></span>';
+    case 'Accordion': return '<span class="m-acc"><span style="display:flex;justify-content:space-between;border:1px solid #E8E2D8;border-radius:8px;padding:6px 8px;font-size:11px;color:#4A423C">질문 1 <b style="color:#9a9186">▾</b></span><span style="display:flex;justify-content:space-between;border:1px solid #E8E2D8;border-radius:8px;padding:6px 8px;margin-top:4px;font-size:11px;color:#4A423C">질문 2 <b style="color:#9a9186">▾</b></span></span>';
+    case 'Carousel': return '<span class="m-car">‹ <span class="m-card" style="width:66px"><span class="m-card-img" style="display:block;height:24px"></span></span> ›</span>';
+    case 'Breadcrumb': return '<span class="m-bc"><b>홈</b><span>›</span>상세<span>›</span>설정</span>';
+    case 'Avatar': return '<span class="m-ava"><svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><circle cx="12" cy="9" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></span>';
+    default: return '';
+  }
+}
+
+const board=document.getElementById('board');
+const empty=document.getElementById('empty');
+const ov=document.getElementById('ov');
+const modal=document.getElementById('modal');
+const segwrap=document.getElementById('segwrap');
+let curG=0;
+let lastFocus=null;
+
+(function(){
+  let html='<button class="seg-b on" data-g="0">전체</button>';
+  for(const g of [1,2,3,4,5,6]) html+='<button class="seg-b" data-g="'+g+'">'+GMETA[g].short+'</button>';
+  segwrap.innerHTML=html;
+  segwrap.querySelectorAll('.seg-b').forEach(b=>{
+    b.addEventListener('click',()=>{curG=+b.dataset.g;
+      segwrap.querySelectorAll('.seg-b').forEach(x=>x.classList.toggle('on',x===b));
+      render(document.getElementById('q').value);});
+  });
+})();
+
+function render(filter=''){
+  const f=filter.trim().toLowerCase();
+  board.innerHTML=''; let shown=0;
+  for(const g of [1,2,3,4,5,6]){
+    if(curG && g!==curG) continue;
+    const items=DATA.filter(d=>d.g===g && (!f ||
+      d.ko.toLowerCase().includes(f)||d.en.toLowerCase().includes(f)||d.w.toLowerCase().includes(f)));
+    if(!items.length) continue;
+    shown+=items.length;
+    const m=GMETA[g];
+    const sec=document.createElement('div'); sec.className='group';
+    sec.innerHTML='<h2><span class="pic">'+
+      '<svg viewBox="0 0 24 24" fill="none" stroke="#7EB5E8" style="color:#7EB5E8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'+m.icon+'</svg>'+
+      '</span>'+m.name+'<span class="cnt">'+items.length+'</span></h2>';
+    const grid=document.createElement('div'); grid.className='grid';
+    items.forEach(d=>{
+      const c=document.createElement('button'); c.type='button'; c.className='card';
+      c.innerHTML='<div class="cardpv"><div class="pvscale">'+preview(d.en)+'</div></div>'+
+                  '<div class="cardname"><b>'+d.ko+'</b><span>'+d.en+'</span></div>';
+      c.addEventListener('click',()=>open(d));
+      grid.appendChild(c);
+    });
+    sec.appendChild(grid); board.appendChild(sec);
+  }
+  empty.style.display = shown? 'none':'block';
+}
+
+function open(d){
+  const m=GMETA[d.g];
+  lastFocus=document.activeElement;
+  const copyHtml=d.copy.replace(/\(([^)]+)\)/g,'<mark>($1)</mark>');
+  modal.innerHTML=
+    '<span class="tag">'+m.name+'</span>'+
+    '<h3 id="modal-title">'+d.ko+'</h3>'+
+    '<p class="en">'+d.en+'</p>'+
+    '<div class="preview">'+preview(d.en)+'</div>'+
+    '<p class="what">'+d.w+'</p>'+
+    '<div class="blk"><p class="lbl">예시 (이렇게 자연스럽게 말해요)</p><p class="ex">“'+d.say+'”</p></div>'+
+    '<div class="blk"><p class="lbl">복사해서 쓰기</p>'+
+      '<div class="copyrow"><div class="copytext">'+copyHtml+'</div>'+
+      '<button class="copybtn" id="cbtn">복사</button></div>'+
+      '<p class="copyhint">복사한 뒤 <mark>(무엇)</mark>만 네 것으로 바꿔서 AI에게 붙여넣으세요.</p></div>'+
+    '<button class="close" id="closebtn">닫기</button>';
+  document.getElementById('cbtn').addEventListener('click',function(){copyText(d.copy);});
+  document.getElementById('closebtn').addEventListener('click',closeM);
+  ov.classList.add('on');
+  ov.setAttribute('aria-hidden','false');
+  modal.focus();
+}
+function closeM(){
+  ov.classList.remove('on');
+  ov.setAttribute('aria-hidden','true');
+  if(lastFocus&&typeof lastFocus.focus==='function') lastFocus.focus();
+}
+ov.addEventListener('click',e=>{if(e.target===ov)closeM();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeM();});
+
+let toastT=null;
+function toast(msg){
+  const t=document.getElementById('toast');
+  document.getElementById('toastmsg').textContent=msg;
+  t.classList.add('on'); clearTimeout(toastT);
+  toastT=setTimeout(()=>t.classList.remove('on'),1700);
+}
+function copyText(t){
+  const done=()=>toast('복사됐어요 — (무엇)만 바꿔서 붙여넣으세요');
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+    navigator.clipboard.writeText(t).then(done).catch(()=>fb(t,done));
+  } else fb(t,done);
+}
+function fb(t,done){
+  const ta=document.createElement('textarea'); ta.value=t;
+  ta.style.position='fixed'; ta.style.opacity='0'; document.body.appendChild(ta);
+  ta.focus(); ta.select();
+  try{document.execCommand('copy');}catch(e){}
+  document.body.removeChild(ta); done();
+}
+
+document.getElementById('q').addEventListener('input',e=>render(e.target.value));
+render();
+</script>
+</body>
+</html>
