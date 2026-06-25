@@ -29,6 +29,9 @@
   </head>
   <body>
     <a class="skip-link" href="#main">본문으로 이동</a>
+    <button class="teaching-toggle" type="button" aria-pressed="false" aria-controls="teaching-panel">
+      이 화면, 어떻게 만들었게요?
+    </button>
 
     <header class="site-header">
       <a class="brand-link" href="../" aria-label="HAM MEDIA 홈으로 이동">
@@ -51,7 +54,7 @@
             <p class="program-label hero-label">HAM MEDIA Academy</p>
             <h1 id="academy-title">AI는 몇 번을 물어봐도 화내지 않습니다.</h1>
             <p class="hero-lead">처음 배우는 사람이 부끄러워하지 않고 다시 물어볼 수 있는 조용한 강의실. 여기서 배우는 건 'AI 잘 쓰는 법'이 아니라, 당신이 살아온 경험이 아직 쓸모 있다는 걸 다시 꺼내 쓰는 법입니다.</p>
-            <div class="student-voices" aria-label="수강생 후기">
+            <div class="student-voices" aria-label="수강생 후기" data-ui-name="후기 인용" data-ui-say="수강생 후기를 인용 카드로 보여줘.">
               <blockquote>
                 <p>"제가 알던 방법이랑 달라요."</p>
                 <cite>방송국 음향감독 출신 수강생</cite>
@@ -61,7 +64,7 @@
                 <cite>음향박사 출신 수강생</cite>
               </blockquote>
             </div>
-            <div class="hero-actions">
+            <div class="hero-actions" data-ui-name="버튼" data-ui-say="신청 버튼과 보조 버튼을 눈에 잘 보이게 넣어줘.">
               <a class="primary-button" href="https://tally.so/r/pbzaoV?source=academy_personal" target="_blank" rel="noopener noreferrer">신청/문의 남기기</a>
               <a class="secondary-button" href="classroom/">1강 공개 강의장 열기</a>
             </div>
@@ -114,7 +117,7 @@
         </div>
 
         <div class="practice-map" aria-label="1강 실습 흐름">
-          <div class="flow-block">
+          <div class="flow-block" data-ui-name="흐름표" data-ui-say="수업 흐름을 시간대별 목록으로 보여줘.">
             <h3>이 날의 흐름</h3>
             <ol class="timed-list">
               <li><time>0:00~0:10</time><span>AI는 몇 번을 물어봐도 화내지 않습니다</span></li>
@@ -124,7 +127,7 @@
               <li><time>1:00~1:20</time><span>캡처해서 다시 묻는 법을 연습합니다</span></li>
             </ol>
           </div>
-          <figure class="prompt-sheet">
+          <figure class="prompt-sheet" data-ui-name="예시 상자" data-ui-say="복사해 쓸 예시 문장을 상자에 넣어줘.">
             <figcaption>수업에서 실제로 쓰는 기본 문장</figcaption>
             <blockquote>
               <p>저는 [나이/상황/수준]입니다.</p>
@@ -155,7 +158,7 @@
         <p class="section-lead">결과물 하나하나도 좋지만, 진짜로 남는 건 '나도 할 수 있네'라는 마음입니다. 1강에서 말문을 열었다면, 2강부터는 결과물을 하나씩 남깁니다. 링크, 30초 기록, AI 작업실 첫 세팅으로 AI가 내 일 안에 들어오는 길을 만듭니다.</p>
         <p class="journey-price-note">실습반 수강료는 문의 주시면 안내해 드립니다.</p>
 
-        <div class="journey-list">
+        <div class="journey-list" data-ui-name="카드" data-ui-say="강의 목록을 카드로 나눠 보여줘.">
           <article class="journey-item">
             <figure>
               <img src="../assets/academy/academy_anchor_link.png" alt="소개 카드와 링크를 나타내는 선 그림">
@@ -247,7 +250,7 @@
           <h2 id="contact-title">처음 배우는 사람도 다시 물어볼 수 있게.</h2>
         </div>
         <p class="section-lead">따라가는 게 아니라, 남은 인생을 다시 재미있게.</p>
-        <div class="contact-grid">
+        <div class="contact-grid" data-ui-name="신청 묶음" data-ui-say="문의 두 종류를 나란한 카드로 만들어줘.">
           <div>
             <h3>개인 수강·소수 실습반</h3>
             <p>1강 수강, 2~4강 소수 실습반, 개인 문의를 받습니다.</p>
@@ -270,6 +273,74 @@
         <a href="../tools/">무료 도구</a>
       </nav>
     </footer>
+    <aside class="teaching-panel" id="teaching-panel" hidden aria-live="polite">
+      <p class="teaching-panel-kicker">교보재 모드</p>
+      <h2 id="teaching-panel-title">화면 요소 이름</h2>
+      <p class="teaching-panel-say" id="teaching-panel-say">AI에게 이렇게 말해요.</p>
+      <a class="teaching-panel-link" href="../tools/ui-terms/">무료 도구에서 이름 더 보기</a>
+      <button class="teaching-panel-close" type="button">닫기</button>
+    </aside>
+    <script>
+      (() => {
+        const body = document.body;
+        const toggle = document.querySelector(".teaching-toggle");
+        const panel = document.querySelector("#teaching-panel");
+        const panelTitle = document.querySelector("#teaching-panel-title");
+        const panelSay = document.querySelector("#teaching-panel-say");
+        const panelClose = document.querySelector(".teaching-panel-close");
+        const items = Array.from(document.querySelectorAll("[data-ui-name]"));
+
+        if (!toggle || !panel || !panelTitle || !panelSay || !panelClose || items.length === 0) return;
+
+        items.forEach((item) => {
+          const chip = document.createElement("button");
+          chip.type = "button";
+          chip.className = "ui-chip";
+          chip.textContent = item.dataset.uiName || "화면 요소";
+          chip.setAttribute("aria-label", `${chip.textContent} 설명 보기`);
+          item.append(chip);
+        });
+
+        const setMode = (enabled) => {
+          body.classList.toggle("teaching-mode", enabled);
+          toggle.setAttribute("aria-pressed", String(enabled));
+          toggle.textContent = enabled ? "끄기 · 이름표 보는 중" : "이 화면, 어떻게 만들었게요?";
+          if (!enabled) panel.hidden = true;
+        };
+
+        const openPanel = (item) => {
+          panelTitle.textContent = item.dataset.uiName || "화면 요소";
+          panelSay.textContent = item.dataset.uiSay || "AI에게 이렇게 말해요.";
+          panel.hidden = false;
+        };
+
+        toggle.addEventListener("click", () => {
+          setMode(!body.classList.contains("teaching-mode"));
+        });
+
+        panelClose.addEventListener("click", () => {
+          panel.hidden = true;
+          toggle.focus();
+        });
+
+        document.addEventListener("click", (event) => {
+          if (!body.classList.contains("teaching-mode")) return;
+          const chip = event.target.closest(".ui-chip");
+          if (!chip) return;
+
+          const item = chip.closest("[data-ui-name]");
+          if (!item) return;
+
+          event.preventDefault();
+          event.stopPropagation();
+          openPanel(item);
+        });
+
+        document.addEventListener("keydown", (event) => {
+          if (event.key === "Escape") panel.hidden = true;
+        });
+      })();
+    </script>
     <script>
       (() => {
         const trigger = document.querySelector(".preview-trigger");
