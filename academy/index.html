@@ -30,7 +30,7 @@
   <body>
     <a class="skip-link" href="#main">본문으로 이동</a>
     <button class="teaching-toggle" type="button" aria-pressed="false" aria-controls="teaching-panel">
-      이 화면, 어떻게 만들었게요?
+      이 화면 요소 확인하기
     </button>
 
     <header class="site-header">
@@ -374,7 +374,7 @@
         const setMode = (enabled) => {
           body.classList.toggle("teaching-mode", enabled);
           toggle.setAttribute("aria-pressed", String(enabled));
-          toggle.textContent = enabled ? "끄기 · 이름표 보는 중" : "이 화면, 어떻게 만들었게요?";
+          toggle.textContent = enabled ? "끄기 · 요소 확인 중" : "이 화면 요소 확인하기";
           if (!enabled) panel.hidden = true;
         };
 
