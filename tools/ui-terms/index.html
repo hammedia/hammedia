@@ -21,6 +21,13 @@
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
 <link rel="stylesheet" href="../../assets/css/tools.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TEBKMGWPQS"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-TEBKMGWPQS');
+</script>
 <style>
   :root{
     color-scheme: light;
@@ -240,6 +247,27 @@
 <div class="toast" id="toast"><span class="ok">✓</span><span id="toastmsg">복사됐어요</span></div>
 
 <script>
+const TOOL_TRACKING={
+  name:'ui_terms',
+  title:'UI 용어 대시보드',
+  path:'/tools/ui-terms/'
+};
+const TOOL_DEBUG=new URLSearchParams(window.location.search).get('ga_debug')==='1';
+function trackToolEvent(eventName,params={}){
+  if(typeof window.gtag!=='function') return;
+  const baseParams={
+    tool_name:TOOL_TRACKING.name,
+    tool_title:TOOL_TRACKING.title,
+    tool_path:TOOL_TRACKING.path
+  };
+  if(TOOL_DEBUG) baseParams.debug_mode=true;
+  window.gtag('event',eventName,Object.assign(baseParams,params));
+}
+trackToolEvent('tool_visit',{
+  page_location:window.location.href,
+  page_path:window.location.pathname
+});
+
 const GMETA={
  1:{name:'입력 요소',short:'입력',icon:'<path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/>'},
  2:{name:'선택·전환 요소',short:'선택·전환',icon:'<line x1="4" y1="8" x2="20" y2="8"/><circle cx="9" cy="8" r="2.4" fill="#F5F3EE"/><line x1="4" y1="16" x2="20" y2="16"/><circle cx="15" cy="16" r="2.4" fill="#F5F3EE"/>'},
@@ -337,6 +365,8 @@ const modal=document.getElementById('modal');
 const segwrap=document.getElementById('segwrap');
 let curG=0;
 let lastFocus=null;
+let searchUseTimer=null;
+let lastTrackedSearchKey='';
 
 (function(){
   let html='<button class="seg-b on" data-g="0">전체</button>';
@@ -374,6 +404,25 @@ function render(filter=''){
     sec.appendChild(grid); board.appendChild(sec);
   }
   empty.style.display = shown? 'none':'block';
+  scheduleSearchUse(filter,shown);
+}
+
+function trackSearchUse(filter,resultCount){
+  const q=filter.trim();
+  if(q.length<2) return;
+  const key=curG+'|'+q.toLowerCase();
+  if(key===lastTrackedSearchKey) return;
+  lastTrackedSearchKey=key;
+  trackToolEvent('tool_use',{
+    tool_action:'search',
+    search_length:q.length,
+    result_count:resultCount,
+    category:curG ? GMETA[curG].short : '전체'
+  });
+}
+function scheduleSearchUse(filter,resultCount){
+  clearTimeout(searchUseTimer);
+  searchUseTimer=setTimeout(()=>trackSearchUse(filter,resultCount),600);
 }
 
 function open(d){
@@ -392,7 +441,7 @@ function open(d){
       '<button class="copybtn" id="cbtn">복사</button></div>'+
       '<p class="copyhint">복사한 뒤 <mark>(무엇)</mark>만 네 것으로 바꿔서 AI에게 붙여넣으세요.</p></div>'+
     '<button class="close" id="closebtn">닫기</button>';
-  document.getElementById('cbtn').addEventListener('click',function(){copyText(d.copy);});
+  document.getElementById('cbtn').addEventListener('click',function(){copyText(d.copy,d);});
   document.getElementById('closebtn').addEventListener('click',closeM);
   ov.classList.add('on');
   ov.setAttribute('aria-hidden','false');
@@ -413,8 +462,16 @@ function toast(msg){
   t.classList.add('on'); clearTimeout(toastT);
   toastT=setTimeout(()=>t.classList.remove('on'),1700);
 }
-function copyText(t){
-  const done=()=>toast('복사됐어요 — (무엇)만 바꿔서 붙여넣으세요');
+function copyText(t,d){
+  const done=()=>{
+    trackToolEvent('tool_use',{
+      tool_action:'copy',
+      term_ko:d.ko,
+      term_en:d.en,
+      category:GMETA[d.g].short
+    });
+    toast('복사됐어요 — (무엇)만 바꿔서 붙여넣으세요');
+  };
   if(navigator.clipboard&&navigator.clipboard.writeText){
     navigator.clipboard.writeText(t).then(done).catch(()=>fb(t,done));
   } else fb(t,done);
