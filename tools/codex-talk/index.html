@@ -121,6 +121,8 @@
   .wa.when .ic{background:var(--green-soft);color:var(--green-d);}
   .wa.avoid .ic{background:var(--yellow-soft);color:#8a6d00;}
   .wa b{color:var(--ink);} .wa span{color:var(--sub);}
+  .modal-note{margin:2px 0 13px;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:var(--yellow-soft);color:var(--sub);font-size:12.5px;line-height:1.55;}
+  .modal-note b{color:#8a6d00;}
   .pbox-lbl{font-size:11px;font-weight:700;color:var(--blue);letter-spacing:.02em;margin:16px 0 6px;}
   .pwrap{position:relative;}
   pre.pbox{margin:0;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 14px 14px;
@@ -231,12 +233,16 @@ stage, commit, push 하지 마라.
 해야 한다면 무엇을 해야 하는지 나에게 제안하고 설명해라.
 
 먼저 내가 결정해야 할 것과 내가 직접 해야 할 일을 알려줘.`},
-  {id:'decision-first', g:'start', type:'judge', risk:'low', title:'내가 결정할 것 먼저',
-    desc:'Codex가 바로 작업하지 않고 햄PD 의사결정 항목을 먼저 뽑게 합니다.',
-    when:'여러 선택지가 있고, 작업 전에 방향을 정해야 할 때.',
-    avoid:'결정이 이미 끝났고 실행만 남았을 때.',
-    prompt:`이번 채팅에서도 내가 결정해야 할 것과 내가 직접 해야 할 일을 근거를 설명하고 제안하며 항상 제일 먼저 알려줘.
-결정되지 않은 항목은 내가 결정할 때까지 계속 상기시켜줘.`},
+  {id:'decision-first', g:'start', type:'judge', risk:'low', title:'결정 먼저, 승인 후 실행',
+    desc:'AI가 바로 수정하지 않고, 선택지와 근거를 먼저 보고한 뒤 승인받고 실행하게 합니다.',
+    when:'여러 선택지가 있고, 작업 전에 방향과 승인 범위를 먼저 정해야 할 때.',
+    avoid:'이미 최종 결정과 실행 범위를 명확히 승인했고, 바로 실행만 남았을 때.',
+    note:'커밋해줘, 푸시해줘, 실행해줘라고 쓰면 AI가 이번 작업을 승인받은 것으로 이해할 수 있어요.',
+    prompt:`작업 전에 내가 결정해야 할 것부터 정리해줘.
+선택지별 근거와 쉬운 설명을 붙여 제안해줘.
+최종 결정은 내가 할게.
+내 승인 전에는 수정·이동·삭제·커밋·push를 하지 마.
+미결정 항목은 결정될 때까지 계속 알려줘.`},
   {id:'read-only', g:'start', type:'read', risk:'mid', title:'읽기 전용으로만 검토',
     desc:'수정 없이 상태와 위험만 보고받는 안전 모드입니다.',
     when:'삭제·이동·커밋이 섞일 수 있거나, 아직 결정 전인 상태.',
@@ -604,6 +610,7 @@ function open(p){
     '<p class="what">'+p.desc+'</p>'+
     '<div class="wa when"><span class="ic">✓</span><span><b>언제 쓰나</b> — '+p.when+'</span></div>'+
     '<div class="wa avoid"><span class="ic">!</span><span><b>이럴 땐 과해요</b> — '+p.avoid+'</span></div>'+
+    (p.note ? '<p class="modal-note"><b>주의</b> — '+p.note+'</p>' : '')+
     '<p class="pbox-lbl">복사해서 코딩 AI에 붙여넣기</p>'+
     '<div class="pwrap"><pre class="pbox" id="pbox"></pre></div>'+
     '<button class="copybtn" id="cbtn">복사</button>'+
