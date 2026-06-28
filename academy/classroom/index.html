@@ -292,5 +292,35 @@
         });
       })();
     </script>
+    <script>
+      (() => {
+        const track = (eventName, params = {}) => {
+          if (typeof window.gtag !== "function") return;
+
+          window.gtag("event", eventName, {
+            transport_type: "beacon",
+            source_page: window.location.pathname || "/academy/classroom/",
+            ...params
+          });
+        };
+
+        const cleanText = (text = "") => text.replace(/\s+/g, " ").trim();
+
+        document.addEventListener("click", (event) => {
+          const link = event.target.closest("a[href]");
+          if (!link) return;
+
+          const href = link.getAttribute("href") || "";
+          const targetUrl = link.href || href;
+          if (!targetUrl.includes("tally.so/r/pbzaoV") || !targetUrl.includes("source=academy_classroom")) return;
+
+          track("academy_inquiry_click", {
+            inquiry_type: "classroom",
+            cta_label: cleanText(link.textContent || link.getAttribute("aria-label") || ""),
+            target_url: targetUrl
+          });
+        });
+      })();
+    </script>
   </body>
 </html>
