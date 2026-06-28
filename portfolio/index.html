@@ -265,6 +265,80 @@
       box-shadow: var(--shadow);
     }
 
+    /* ── ENTRY STRIP ── */
+    .entry-strip {
+      width: min(1040px, calc(100vw - 6rem));
+      margin: 0 auto;
+      padding: 2.25rem 0 0;
+    }
+    .entry-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 18px 42px rgba(44,34,26,0.055);
+    }
+    .entry-card {
+      background: var(--ivory);
+      padding: 1.45rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      min-height: 260px;
+    }
+    .entry-kicker {
+      font-size: 10.5px;
+      font-weight: 800;
+      color: var(--sky);
+      margin-bottom: .55rem;
+    }
+    .entry-title {
+      font-size: 1.05rem;
+      font-weight: 850;
+      color: var(--warm);
+      line-height: 1.35;
+      margin-bottom: .75rem;
+      word-break: keep-all;
+    }
+    .entry-copy {
+      font-size: 13.3px;
+      color: var(--muted);
+      line-height: 1.72;
+      margin-bottom: .65rem;
+    }
+    .entry-result {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--warm);
+      line-height: 1.65;
+      margin-bottom: 1.05rem;
+    }
+    .entry-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40px;
+      padding: .62rem .85rem;
+      border-radius: 999px;
+      border: 1px solid rgba(122,92,71,.38);
+      background: rgba(249,247,243,.72);
+      color: var(--accent);
+      font-size: .82rem;
+      font-weight: 800;
+      line-height: 1.25;
+      text-decoration: none;
+      margin-top: auto;
+      transition: transform .2s, border-color .2s, background .2s, color .2s;
+    }
+    .entry-cta:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+      background: var(--pearl);
+      color: var(--warm);
+    }
+
     /* ── 공통 섹션 ── */
     .section {
       max-width: 900px; margin: 0 auto;
@@ -925,6 +999,15 @@
 
     /* ── RESPONSIVE ── */
     @media (max-width: 980px) {
+      .entry-strip {
+        width: calc(100vw - 3rem);
+      }
+      .entry-grid {
+        grid-template-columns: 1fr;
+      }
+      .entry-card {
+        min-height: auto;
+      }
       .service-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
         width: 100%;
@@ -979,6 +1062,9 @@
       .hero-photo img { width: 160px; height: 200px; }
       .hero-points { grid-template-columns: 1fr; }
       .hero-point + .hero-point { border-left: none; border-top: 1px solid var(--line); padding-left: 0; padding-top: 1.2rem; }
+      .entry-strip { width: auto; padding: 1.35rem 1.5rem 0; }
+      .entry-card { padding: 1.25rem 1.1rem; }
+      .entry-cta { width: 100%; }
       .section { padding: 3.5rem 1.5rem; }
       .what-grid { grid-template-columns: 1fr; }
       .positioning-wrap, .service-grid, .target-grid, .eq-grid, .cred-grid { grid-template-columns: 1fr; }
@@ -1061,12 +1147,39 @@
       좋은 경험도 전달되지 않으면 없는 것과 같습니다.<br>
       <strong>HAM MEDIA는 그 간격을 줄이는 일을 합니다.</strong>
     </div>
-    <a class="btn-primary" href="#contact">상담 신청하기</a>
+    <a class="btn-primary" href="#contact">작업 의뢰하기</a>
   </div>
   <div class="hero-photo">
     <img src="/profile.JPG" alt="함동민 햄PD">
   </div>
 </div>
+
+<!-- ENTRY STRIP -->
+<section class="entry-strip fade-up" aria-label="주요 의뢰 진입점">
+  <div class="entry-grid">
+    <article class="entry-card">
+      <p class="entry-kicker">제안서·발표자료</p>
+      <h2 class="entry-title">자료는 있는데 설득 흐름이 약할 때</h2>
+      <p class="entry-copy">핵심을 추출하고, 심사위원이나 고객이 따라올 수 있는 순서로 재배치합니다.</p>
+      <p class="entry-result">결과물 — 흐름이 잡힌 제안서·발표자료</p>
+      <a class="entry-cta" href="#contact">제안서 상담하기</a>
+    </article>
+    <article class="entry-card">
+      <p class="entry-kicker">AI 강의·실습</p>
+      <h2 class="entry-title">AI를 업무나 교육에 붙이고 싶을 때</h2>
+      <p class="entry-copy">처음 쓰는 사람이 자기 일을 AI에게 설명하고, 결과를 판단하고, 다시 지시하는 법을 실습합니다.</p>
+      <p class="entry-result">결과물 — 다시 물어볼 수 있는 AI 사용 루틴</p>
+      <a class="entry-cta" href="https://hammedia.co.kr/academy/">AI 강의 문의하기</a>
+    </article>
+    <article class="entry-card">
+      <p class="entry-kicker">전문가 영상·유튜브 운영</p>
+      <h2 class="entry-title">전문성은 있는데 채널이 정체됐을 때</h2>
+      <p class="entry-copy">기획·촬영·편집·업로드·쇼츠 분해까지 콘텐츠 운영 흐름으로 정리합니다.</p>
+      <p class="entry-result">결과물 — 월 단위 롱폼 + 쇼츠 패키지</p>
+      <a class="entry-cta" href="#contact">영상 운영 문의하기</a>
+    </article>
+  </div>
+</section>
 
 <!-- POSITIONING -->
 <section class="section fade-up" id="about">
@@ -1133,7 +1246,7 @@
       <p class="svc-for">이런 분께 — 전문성은 깊은데 채널이 없거나 정체된 병원장·강사·컨설턴트·자영업자</p>
       <p class="svc-do">기획·촬영·편집·업로드·쇼츠 분해</p>
       <p class="svc-out">결과물 — 월 단위 롱폼 + 쇼츠 패키지</p>
-      <a class="svc-cta btn-primary" href="#contact">상담 신청하기</a>
+      <a class="svc-cta btn-primary" href="#contact">영상 운영 문의하기</a>
     </div>
     <div class="service-item">
       <h3 class="svc-name">홈페이지·상세페이지 제작</h3>
@@ -1141,14 +1254,14 @@
       <p class="svc-do">설득 구조 설계·카피·제작 (AI 활용 고속 제작)</p>
       <p class="svc-out">결과물 — 전환되는 홈페이지/상세페이지 + 문의 폼·분석 연동</p>
       <p class="svc-proof">예시 — 지금 보고 계신 이 사이트도 직접 제작했습니다.</p>
-      <a class="svc-cta btn-primary" href="#contact">상담 신청하기</a>
+      <a class="svc-cta btn-primary" href="#contact">작업 의뢰하기</a>
     </div>
     <div class="service-item">
       <h3 class="svc-name">제안서·발표자료 구조화</h3>
       <p class="svc-for">이런 분께 — 자료는 있는데 심사위원·고객에게 안 꽂히는 분</p>
       <p class="svc-do">핵심 추출·설득 구조 재배치</p>
       <p class="svc-out">결과물 — 흐름이 잡힌 제안서·발표자료</p>
-      <a class="svc-cta btn-primary" href="#contact">상담 신청하기</a>
+      <a class="svc-cta btn-primary" href="#contact">제안서 상담하기</a>
     </div>
     <div class="service-item">
       <h3 class="svc-name">AI 강의·실습 교육</h3>
@@ -1158,14 +1271,14 @@
       <p class="svc-proof">실습형 AI 입문 강의를 실제로 진행 중이며, 1강은 무료 공개 강의장으로 열어두고 있습니다.</p>
       <a class="academy-inline-link" href="https://hammedia.co.kr/academy/">강의 안내 — HAM MEDIA Academy</a>
       <a class="tools-inline-link" href="/tools/">비개발자를 위한 무료 AI 협업 도구 보기</a>
-      <a class="svc-cta btn-primary" href="#contact">상담 신청하기</a>
+      <a class="svc-cta btn-primary" href="https://tally.so/r/pbzaoV?source=academy_personal">AI 강의 문의하기</a>
     </div>
     <div class="service-item">
       <h3 class="svc-name">AI 운영 흐름 설계</h3>
       <p class="svc-for">이런 분께 — 혼자 다 해야 하는 1인 사업자·창작자</p>
       <p class="svc-do">혼자 감당하던 홍보·문서·콘텐츠·고객응대 흐름을 AI와 나누되, 사람이 검수하고 결정하는 구조로 정리합니다.</p>
       <p class="svc-out">결과물 — 반복해서 쓸 수 있는 운영 흐름</p>
-      <a class="svc-cta btn-primary" href="#contact">상담 신청하기</a>
+      <a class="svc-cta btn-primary" href="#contact">작업 의뢰하기</a>
     </div>
   </div>
   <div class="target-fit" aria-labelledby="target-fit-title">
@@ -1195,7 +1308,7 @@
         <span>AI 강의</span>
         <span>제작 시스템</span>
       </div>
-      <a class="btn-primary" href="#contact">상담 신청하기</a>
+      <a class="btn-primary" href="#contact">제안서 상담하기</a>
     </div>
     <div class="workflow-proof-media">
       <video controls autoplay muted loop playsinline preload="metadata" poster="assets/media/ai-ppt-workflow-guide-poster.png" aria-label="AI 발표자료 제작 워크플로 미리보기 영상">
@@ -1214,7 +1327,7 @@
         <span>AI 강의</span>
         <span>중장년 교육</span>
       </div>
-      <a class="btn-primary" href="#contact">상담 신청하기</a>
+      <a class="btn-primary" href="https://tally.so/r/pbzaoV?source=academy_personal">AI 강의 문의하기</a>
     </div>
     <div class="workflow-proof-media is-square">
       <video controls autoplay muted loop playsinline preload="metadata" poster="assets/media/50s-ai-life-cardnews-poster.png" aria-label="50대 AI 카드뉴스 미리보기 영상">
@@ -1517,7 +1630,7 @@
   <div class="contact-form-block">
     <p class="contact-form-note">아래 폼에 지금 상태만 남겨주세요.</p>
     <div class="tally-embed">
-      <iframe data-tally-src="https://tally.so/embed/vGK44d?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="520" frameborder="0" marginheight="0" marginwidth="0" title="상담 신청하기"></iframe>
+      <iframe data-tally-src="https://tally.so/embed/vGK44d?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="520" frameborder="0" marginheight="0" marginwidth="0" title="작업 의뢰하기"></iframe>
       <script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach(function(e){e.src=e.dataset.tallySrc})};if("undefined"!=typeof Tally)v();else if(null==d.querySelector('script[src="'+w+'"]')){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
     </div>
     <p class="contact-form-note is-after">인천 부평구 베이스 · 보통 1~2일 내 답변</p>

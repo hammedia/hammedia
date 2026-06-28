@@ -224,6 +224,80 @@
       box-shadow: var(--shadow);
     }
 
+    /* ── ENTRY STRIP ── */
+    .entry-strip {
+      width: min(1040px, calc(100vw - 6rem));
+      margin: 0 auto;
+      padding: 2.25rem 0 0;
+    }
+    .entry-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 18px 42px rgba(44,34,26,0.055);
+    }
+    .entry-card {
+      background: var(--ivory);
+      padding: 1.45rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      min-height: 260px;
+    }
+    .entry-kicker {
+      font-size: 10.5px;
+      font-weight: 800;
+      color: var(--sky);
+      margin-bottom: .55rem;
+    }
+    .entry-title {
+      font-size: 1.05rem;
+      font-weight: 850;
+      color: var(--warm);
+      line-height: 1.35;
+      margin-bottom: .75rem;
+      word-break: keep-all;
+    }
+    .entry-copy {
+      font-size: 13.3px;
+      color: var(--muted);
+      line-height: 1.72;
+      margin-bottom: .65rem;
+    }
+    .entry-result {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--warm);
+      line-height: 1.65;
+      margin-bottom: 1.05rem;
+    }
+    .entry-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40px;
+      padding: .62rem .85rem;
+      border-radius: 999px;
+      border: 1px solid rgba(122,92,71,.38);
+      background: rgba(249,247,243,.72);
+      color: var(--accent);
+      font-size: .82rem;
+      font-weight: 800;
+      line-height: 1.25;
+      text-decoration: none;
+      margin-top: auto;
+      transition: transform .2s, border-color .2s, background .2s, color .2s;
+    }
+    .entry-cta:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+      background: var(--pearl);
+      color: var(--warm);
+    }
+
     /* ── COMMON SECTIONS ── */
     .section {
       max-width: 900px; margin: 0 auto;
@@ -382,6 +456,17 @@
       color: var(--muted);
       line-height: 1.65;
       margin: -.25rem 0 1rem;
+    }
+    .academy-inline-link,
+    .tools-inline-link {
+      display: inline-block;
+      color: var(--sky);
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1.5;
+      margin-bottom: 1rem;
+      text-decoration: underline;
+      text-underline-offset: 4px;
     }
     .target-fit {
       width: min(1040px, calc(100vw - 6rem));
@@ -857,6 +942,15 @@
 
     /* ── RESPONSIVE ── */
     @media (max-width: 980px) {
+      .entry-strip {
+        width: calc(100vw - 3rem);
+      }
+      .entry-grid {
+        grid-template-columns: 1fr;
+      }
+      .entry-card {
+        min-height: auto;
+      }
       .service-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
         width: 100%;
@@ -886,6 +980,9 @@
       .hero-photo img { width: 160px; height: 200px; }
       .hero-stats { flex-direction: column; }
       .hero-stat + .hero-stat { border-left: none; border-top: 1px solid var(--line); padding-left: 0; padding-top: 1.2rem; }
+      .entry-strip { width: auto; padding: 1.35rem 1.5rem 0; }
+      .entry-card { padding: 1.25rem 1.1rem; }
+      .entry-cta { width: 100%; }
       .section { padding: 3.5rem 1.5rem; }
       .what-grid { grid-template-columns: 1fr; }
       .positioning-wrap, .service-grid, .target-grid, .eq-grid, .cred-grid { grid-template-columns: 1fr; }
@@ -938,12 +1035,39 @@
       Great experience means little if people cannot see it.<br>
       <strong>HAM MEDIA closes that gap.</strong>
     </div>
-    <a class="btn-primary" href="#contact">Request a Consultation</a>
+    <a class="btn-primary" href="#contact">Request Work</a>
   </div>
   <div class="hero-photo">
     <img src="/profile.JPG" alt="Dongmin Ham, Ham PD">
   </div>
 </div>
+
+<!-- ENTRY STRIP -->
+<section class="entry-strip fade-up" aria-label="Primary request paths">
+  <div class="entry-grid">
+    <article class="entry-card">
+      <p class="entry-kicker">Proposal & Presentation</p>
+      <h2 class="entry-title">When you have materials, but the persuasion flow is weak</h2>
+      <p class="entry-copy">I extract the core message and rebuild the order so judges or clients can follow the point.</p>
+      <p class="entry-result">Deliverable — A proposal or presentation with a clear flow</p>
+      <a class="entry-cta" href="#contact">Discuss a Proposal</a>
+    </article>
+    <article class="entry-card">
+      <p class="entry-kicker">AI Lectures & Hands-on Training</p>
+      <h2 class="entry-title">When you want to bring AI into work or education</h2>
+      <p class="entry-copy">People new to AI practice how to explain their own work, judge the result, and ask again.</p>
+      <p class="entry-result">Deliverable — An AI routine you can keep using</p>
+      <a class="entry-cta" href="https://hammedia.co.kr/academy/">Ask About AI Training</a>
+    </article>
+    <article class="entry-card">
+      <p class="entry-kicker">Expert Video & YouTube Operation</p>
+      <h2 class="entry-title">When your expertise is strong, but the channel is stalled</h2>
+      <p class="entry-copy">Planning, filming, editing, uploading, and Shorts repurposing are organized into one content operation flow.</p>
+      <p class="entry-result">Deliverable — Monthly long-form videos + Shorts package</p>
+      <a class="entry-cta" href="#contact">Ask About Video Operations</a>
+    </article>
+  </div>
+</section>
 
 <!-- POSITIONING -->
 <section class="section fade-up" id="about">
@@ -1010,7 +1134,7 @@
       <p class="svc-for">For — Doctors, lecturers, consultants, and small business owners with deep expertise but no channel, or a stalled one</p>
       <p class="svc-do">Planning, filming, editing, uploading, and repurposing into Shorts</p>
       <p class="svc-out">Deliverable — Monthly long-form videos + Shorts package</p>
-      <a class="svc-cta btn-primary" href="#contact">Request a Consultation</a>
+      <a class="svc-cta btn-primary" href="#contact">Ask About Video Operations</a>
     </div>
     <div class="service-item">
       <h3 class="svc-name">Website & Product Page Production</h3>
@@ -1018,14 +1142,14 @@
       <p class="svc-do">Persuasion structure, copy, and production with AI-assisted fast build</p>
       <p class="svc-out">Deliverable — Conversion-focused website/product page + inquiry form and analytics setup</p>
       <p class="svc-proof">Example — this site you are viewing was also built directly.</p>
-      <a class="svc-cta btn-primary" href="#contact">Request a Consultation</a>
+      <a class="svc-cta btn-primary" href="#contact">Request Work</a>
     </div>
     <div class="service-item">
       <h3 class="svc-name">Proposal & Presentation Structuring</h3>
       <p class="svc-for">For — People with materials that are not yet landing with judges or clients</p>
       <p class="svc-do">Extracting the core message and rebuilding the persuasion flow</p>
       <p class="svc-out">Deliverable — Proposal/presentation with a clear flow</p>
-      <a class="svc-cta btn-primary" href="#contact">Request a Consultation</a>
+      <a class="svc-cta btn-primary" href="#contact">Discuss a Proposal</a>
     </div>
     <div class="service-item">
       <h3 class="svc-name">AI Lectures & Hands-on Training</h3>
@@ -1033,14 +1157,16 @@
       <p class="svc-do">Hands-on training and workflow organization</p>
       <p class="svc-out">Deliverable — AI work routine you can use right away</p>
       <p class="svc-proof">The hands-on AI basics course is currently running, and Lesson 1 is open as a free classroom.</p>
-      <a class="svc-cta btn-primary" href="#contact">Request a Consultation</a>
+      <a class="academy-inline-link" href="https://hammedia.co.kr/academy/">Course Guide — HAM MEDIA Academy</a>
+      <a class="tools-inline-link" href="/tools/">Free AI collaboration tools for non-developers</a>
+      <a class="svc-cta btn-primary" href="https://tally.so/r/pbzaoV?source=academy_personal">Ask About AI Training</a>
     </div>
     <div class="service-item">
       <h3 class="svc-name">AI Operations Workflow Design</h3>
       <p class="svc-for">For — Solo business owners and creators doing everything themselves</p>
       <p class="svc-do">I help you share promotion, documents, content, and customer replies with AI, while keeping review and final decisions in human hands.</p>
       <p class="svc-out">Deliverable — A repeatable operations workflow</p>
-      <a class="svc-cta btn-primary" href="#contact">Request a Consultation</a>
+      <a class="svc-cta btn-primary" href="#contact">Request Work</a>
     </div>
   </div>
   <div class="target-fit" aria-labelledby="target-fit-title-en">
@@ -1070,7 +1196,7 @@
         <span>AI Lecture</span>
         <span>Production System</span>
       </div>
-      <a class="btn-primary" href="#contact">Request a Consultation</a>
+      <a class="btn-primary" href="#contact">Discuss a Proposal</a>
     </div>
     <div class="workflow-proof-media">
       <video controls autoplay muted loop playsinline preload="metadata" poster="assets/media/ai-ppt-workflow-guide-poster.png" aria-label="AI presentation workflow preview video">
@@ -1089,7 +1215,7 @@
         <span>AI Lecture</span>
         <span>Mid-career Education</span>
       </div>
-      <a class="btn-primary" href="#contact">Request a Consultation</a>
+      <a class="btn-primary" href="https://tally.so/r/pbzaoV?source=academy_personal">Ask About AI Training</a>
     </div>
     <div class="workflow-proof-media is-square">
       <video controls autoplay muted loop playsinline preload="metadata" poster="assets/media/50s-ai-life-cardnews-poster.png" aria-label="50s AI card-news preview video">
@@ -1392,7 +1518,7 @@
     <p class="contact-form-note">Use the form below to tell me where things stand now.</p>
     <p class="contact-form-help">If the form fields appear in Korean, English is fine. A name or brand, contact method, request type, reference links, schedule or budget, and one-line concern are enough.</p>
     <div class="tally-embed">
-      <iframe data-tally-src="https://tally.so/embed/vGK44d?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="520" frameborder="0" marginheight="0" marginwidth="0" title="Request a Consultation"></iframe>
+      <iframe data-tally-src="https://tally.so/embed/vGK44d?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="520" frameborder="0" marginheight="0" marginwidth="0" title="Request Work"></iframe>
       <script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach(function(e){e.src=e.dataset.tallySrc})};if("undefined"!=typeof Tally)v();else if(null==d.querySelector('script[src="'+w+'"]')){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
     </div>
     <p class="contact-form-note is-after">Based in Bupyeong-gu, Incheon, Korea · Usually replies within 1–2 days</p>

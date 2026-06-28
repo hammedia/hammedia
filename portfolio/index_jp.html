@@ -198,6 +198,80 @@
       box-shadow: var(--shadow);
     }
 
+    /* ── ENTRY STRIP ── */
+    .entry-strip {
+      width: min(1040px, calc(100vw - 6rem));
+      margin: 0 auto;
+      padding: 2.25rem 0 0;
+    }
+    .entry-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 18px 42px rgba(44,34,26,0.055);
+    }
+    .entry-card {
+      background: var(--ivory);
+      padding: 1.45rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      min-height: 260px;
+    }
+    .entry-kicker {
+      font-size: 10.5px;
+      font-weight: 800;
+      color: var(--sky);
+      margin-bottom: .55rem;
+    }
+    .entry-title {
+      font-size: 1.05rem;
+      font-weight: 850;
+      color: var(--warm);
+      line-height: 1.35;
+      margin-bottom: .75rem;
+      word-break: keep-all;
+    }
+    .entry-copy {
+      font-size: 13.3px;
+      color: var(--muted);
+      line-height: 1.72;
+      margin-bottom: .65rem;
+    }
+    .entry-result {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--warm);
+      line-height: 1.65;
+      margin-bottom: 1.05rem;
+    }
+    .entry-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40px;
+      padding: .62rem .85rem;
+      border-radius: 999px;
+      border: 1px solid rgba(122,92,71,.38);
+      background: rgba(249,247,243,.72);
+      color: var(--accent);
+      font-size: .82rem;
+      font-weight: 800;
+      line-height: 1.25;
+      text-decoration: none;
+      margin-top: auto;
+      transition: transform .2s, border-color .2s, background .2s, color .2s;
+    }
+    .entry-cta:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+      background: var(--pearl);
+      color: var(--warm);
+    }
+
     /* ── COMMON SECTIONS ── */
     .section {
       max-width: 900px; margin: 0 auto;
@@ -356,6 +430,17 @@
       color: var(--muted);
       line-height: 1.65;
       margin: -.25rem 0 1rem;
+    }
+    .academy-inline-link,
+    .tools-inline-link {
+      display: inline-block;
+      color: var(--sky);
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1.5;
+      margin-bottom: 1rem;
+      text-decoration: underline;
+      text-underline-offset: 4px;
     }
     .target-fit {
       width: min(1040px, calc(100vw - 6rem));
@@ -831,6 +916,15 @@
 
     /* ── RESPONSIVE ── */
     @media (max-width: 980px) {
+      .entry-strip {
+        width: calc(100vw - 3rem);
+      }
+      .entry-grid {
+        grid-template-columns: 1fr;
+      }
+      .entry-card {
+        min-height: auto;
+      }
       .service-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
         width: 100%;
@@ -858,6 +952,9 @@
       .hero { grid-template-columns: 1fr; padding: 3.5rem 1.5rem 3rem; gap: 2.5rem; min-height: auto; }
       .hero-photo { order: -1; margin-top: 0; }
       .hero-photo img { width: 160px; height: 200px; }
+      .entry-strip { width: auto; padding: 1.35rem 1.5rem 0; }
+      .entry-card { padding: 1.25rem 1.1rem; }
+      .entry-cta { width: 100%; }
       .section { padding: 3.5rem 1.5rem; }
       .what-grid { grid-template-columns: 1fr; }
       .positioning-wrap, .service-grid, .target-grid, .eq-grid, .cred-grid { grid-template-columns: 1fr; }
@@ -912,12 +1009,39 @@
       よい経験も、伝わらなければ存在しないのと同じです。<br>
       <strong>HAM MEDIAは、その距離を縮める仕事をしています。</strong>
     </div>
-    <a class="btn-primary" href="#contact">相談する</a>
+    <a class="btn-primary" href="#contact">仕事を依頼する</a>
   </div>
   <div class="hero-photo">
     <img src="/profile.JPG" alt="咸東旼 ハムPD">
   </div>
 </div>
+
+<!-- ENTRY STRIP -->
+<section class="entry-strip fade-up" aria-label="主な依頼の入口">
+  <div class="entry-grid">
+    <article class="entry-card">
+      <p class="entry-kicker">提案書・プレゼン資料</p>
+      <h2 class="entry-title">資料はあるのに、説得の流れが弱いとき</h2>
+      <p class="entry-copy">核心を抽出し、審査員や顧客が追いやすい順序に整えます。</p>
+      <p class="entry-result">成果物 — 流れが整った提案書・プレゼン資料</p>
+      <a class="entry-cta" href="#contact">提案書を相談する</a>
+    </article>
+    <article class="entry-card">
+      <p class="entry-kicker">AI講義・実習</p>
+      <h2 class="entry-title">AIを仕事や教育に取り入れたいとき</h2>
+      <p class="entry-copy">初めて使う人が自分の仕事をAIに説明し、結果を判断し、もう一度指示する方法を実習します。</p>
+      <p class="entry-result">成果物 — 自分で問い直せるAI活用ルーティン</p>
+      <a class="entry-cta" href="https://hammedia.co.kr/academy/">AI講義を相談する</a>
+    </article>
+    <article class="entry-card">
+      <p class="entry-kicker">専門家映像・YouTube運営</p>
+      <h2 class="entry-title">専門性はあるのに、チャンネルが伸び悩んでいるとき</h2>
+      <p class="entry-copy">企画・撮影・編集・アップロード・ショート動画展開まで、コンテンツ運営の流れとして整えます。</p>
+      <p class="entry-result">成果物 — 月単位のロング動画 + ショート動画パッケージ</p>
+      <a class="entry-cta" href="#contact">映像運営を相談する</a>
+    </article>
+  </div>
+</section>
 
 <!-- POSITIONING -->
 <section class="section fade-up" id="about">
@@ -984,7 +1108,7 @@
       <p class="svc-for">こんな方へ — 専門性は深いのにチャンネルがない、または伸び悩んでいる医師・講師・コンサルタント・個人事業主</p>
       <p class="svc-do">企画・撮影・編集・アップロード・ショート動画への展開</p>
       <p class="svc-out">成果物 — 月単位のロング動画 + ショート動画パッケージ</p>
-      <a class="svc-cta btn-primary" href="#contact">相談する</a>
+      <a class="svc-cta btn-primary" href="#contact">映像運営を相談する</a>
     </div>
     <div class="service-item">
       <h3 class="svc-name">ホームページ・詳細ページ制作</h3>
@@ -992,14 +1116,14 @@
       <p class="svc-do">説得構造の設計・コピー・制作（AI活用による高速制作）</p>
       <p class="svc-out">成果物 — 問い合わせにつながるホームページ/詳細ページ + 問い合わせフォーム・分析連携</p>
       <p class="svc-proof">例 — 今ご覧のこのサイトも直接制作しました。</p>
-      <a class="svc-cta btn-primary" href="#contact">相談する</a>
+      <a class="svc-cta btn-primary" href="#contact">仕事を依頼する</a>
     </div>
     <div class="service-item">
       <h3 class="svc-name">提案書・プレゼン資料の構造化</h3>
       <p class="svc-for">こんな方へ — 資料はあるのに審査員・顧客に伝わりきらない方</p>
       <p class="svc-do">核心の抽出・説得構造の再配置</p>
       <p class="svc-out">成果物 — 流れが整った提案書・プレゼン資料</p>
-      <a class="svc-cta btn-primary" href="#contact">相談する</a>
+      <a class="svc-cta btn-primary" href="#contact">提案書を相談する</a>
     </div>
     <div class="service-item">
       <h3 class="svc-name">AI講義・実習型トレーニング</h3>
@@ -1007,14 +1131,16 @@
       <p class="svc-do">実習中心の講義・業務フロー整理</p>
       <p class="svc-out">成果物 — すぐ使えるAI業務ルーティン</p>
       <p class="svc-proof">実習型AI入門講座を実際に進行中で、第1講は無料公開講座として開放しています。</p>
-      <a class="svc-cta btn-primary" href="#contact">相談する</a>
+      <a class="academy-inline-link" href="https://hammedia.co.kr/academy/">講義案内 — HAM MEDIA Academy</a>
+      <a class="tools-inline-link" href="/tools/">非開発者向け無料AI協業ツールを見る</a>
+      <a class="svc-cta btn-primary" href="https://tally.so/r/pbzaoV?source=academy_personal">AI講義を相談する</a>
     </div>
     <div class="service-item">
       <h3 class="svc-name">AI運用フローの設計</h3>
       <p class="svc-for">こんな方へ — 1人で全部やらなければならない個人事業主・クリエイター</p>
       <p class="svc-do">一人で抱えていた広報文、資料、コンテンツ、顧客対応の流れをAIと分担し、人が確認して判断する構造に整えます。</p>
       <p class="svc-out">成果物 — 繰り返し使える運用フロー</p>
-      <a class="svc-cta btn-primary" href="#contact">相談する</a>
+      <a class="svc-cta btn-primary" href="#contact">仕事を依頼する</a>
     </div>
   </div>
   <div class="target-fit" aria-labelledby="target-fit-title-jp">
@@ -1044,7 +1170,7 @@
         <span>AI講義</span>
         <span>制作システム</span>
       </div>
-      <a class="btn-primary" href="#contact">相談する</a>
+      <a class="btn-primary" href="#contact">提案書を相談する</a>
     </div>
     <div class="workflow-proof-media">
       <video controls autoplay muted loop playsinline preload="metadata" poster="assets/media/ai-ppt-workflow-guide-poster.png" aria-label="AIプレゼン資料制作ワークフローのプレビュー動画">
@@ -1063,7 +1189,7 @@
         <span>AI講義</span>
         <span>中高年向け教育</span>
       </div>
-      <a class="btn-primary" href="#contact">相談する</a>
+      <a class="btn-primary" href="https://tally.so/r/pbzaoV?source=academy_personal">AI講義を相談する</a>
     </div>
     <div class="workflow-proof-media is-square">
       <video controls autoplay muted loop playsinline preload="metadata" poster="assets/media/50s-ai-life-cardnews-poster.png" aria-label="50代AIカードニュースのプレビュー動画">
@@ -1366,7 +1492,7 @@
     <p class="contact-form-note">下のフォームに、今の状況だけお書きください。</p>
     <p class="contact-form-help">フォーム内の項目が韓国語で表示される場合があります。日本語または英語で大丈夫です。お名前/ブランド名、連絡方法、相談内容、参考リンク、希望時期・予算、今の悩みを簡単に書いてください。</p>
     <div class="tally-embed">
-      <iframe data-tally-src="https://tally.so/embed/vGK44d?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="520" frameborder="0" marginheight="0" marginwidth="0" title="相談する"></iframe>
+      <iframe data-tally-src="https://tally.so/embed/vGK44d?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="520" frameborder="0" marginheight="0" marginwidth="0" title="仕事を依頼する"></iframe>
       <script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach(function(e){e.src=e.dataset.tallySrc})};if("undefined"!=typeof Tally)v();else if(null==d.querySelector('script[src="'+w+'"]')){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
     </div>
     <p class="contact-form-note is-after">韓国・仁川富平区ベース · 通常1〜2日以内に返信します</p>
