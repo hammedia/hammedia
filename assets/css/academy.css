@@ -136,6 +136,10 @@ main,
   background: var(--brand);
   border-color: var(--brand);
   color: var(--ink);
+  min-height: 46px;
+  padding: 11px 19px;
+  font-weight: 800;
+  box-shadow: 0 8px 22px rgba(126, 181, 232, 0.26);
 }
 
 .secondary-button,
@@ -250,6 +254,20 @@ main,
   margin-top: 30px;
 }
 
+.hero-actions .secondary-button {
+  color: var(--muted);
+}
+
+.hero-action-helper {
+  flex: 1 0 100%;
+  margin: -2px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.45;
+  font-weight: 600;
+  word-break: keep-all;
+}
+
 .hero-anchor {
   margin: 0;
   padding: 28px 0 0;
@@ -349,13 +367,13 @@ section {
   min-height: 24px;
   margin-left: 8px;
   padding: 3px 9px;
-  border: 1px solid var(--brand);
+  border: 1px solid var(--line);
   border-radius: 999px;
-  background: var(--paper);
-  color: var(--ink);
+  background: rgba(249, 247, 243, 0.74);
+  color: var(--muted);
   font-size: 12px;
   line-height: 1.2;
-  font-weight: 800;
+  font-weight: 700;
   vertical-align: middle;
   white-space: nowrap;
 }
@@ -494,9 +512,13 @@ section {
 }
 
 .copy-prompt-button {
-  border-color: var(--brand);
-  background: var(--brand);
-  color: var(--ink);
+  min-height: 38px;
+  padding: 8px 13px;
+  border-color: var(--line);
+  background: var(--paper);
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
 }
 
 .lecture-preview {
@@ -862,6 +884,7 @@ section {
   color: var(--muted);
 }
 
+.contact-grid .primary-button,
 .contact-grid .secondary-button {
   justify-self: start;
   margin-top: 4px;
@@ -899,9 +922,9 @@ section {
 }
 
 .contact-tab.is-active {
-  border-color: var(--ink);
-  background: var(--ink);
-  color: var(--paper);
+  border-color: var(--brand);
+  background: rgba(126, 181, 232, 0.18);
+  color: var(--ink);
 }
 
 .contact-tab-panels {
@@ -1206,15 +1229,27 @@ section {
   max-width: min(320px, calc(100vw - 32px));
   min-height: 44px;
   padding: 11px 16px;
-  border: 1px solid var(--ink);
+  border: 1px solid var(--line);
   border-radius: 999px;
-  background: var(--brand);
-  color: var(--ink);
+  background: rgba(249, 247, 243, 0.94);
+  color: var(--muted);
   font: inherit;
   font-size: 13px;
   font-weight: 700;
   cursor: pointer;
-  box-shadow: 0 8px 28px rgba(28, 24, 20, 0.16);
+  box-shadow: 0 8px 22px rgba(28, 24, 20, 0.1);
+}
+
+.teaching-toggle:hover,
+.teaching-toggle:focus-visible {
+  border-color: var(--brand);
+  color: var(--ink);
+}
+
+.teaching-toggle[aria-pressed="true"] {
+  border-color: rgba(126, 181, 232, 0.62);
+  background: var(--paper);
+  color: var(--ink);
 }
 
 .teaching-toggle:focus-visible,
@@ -1227,7 +1262,7 @@ section {
 
 .teaching-mode [data-ui-name] {
   position: relative;
-  outline: 2px solid var(--brand);
+  outline: 1px solid rgba(126, 181, 232, 0.58);
   outline-offset: 7px;
 }
 
@@ -1241,21 +1276,27 @@ section {
   align-items: center;
   min-height: 28px;
   padding: 4px 10px;
-  border: 1px solid var(--ink);
+  border: 1px solid var(--line);
   border-radius: 999px;
   background: var(--paper);
-  color: var(--ink);
+  color: var(--muted);
   font: inherit;
   font-size: 12px;
   line-height: 1.2;
-  font-weight: 800;
+  font-weight: 700;
   white-space: nowrap;
   cursor: pointer;
-  box-shadow: 0 8px 24px rgba(28, 24, 20, 0.12);
+  box-shadow: 0 6px 18px rgba(28, 24, 20, 0.08);
 }
 
 .teaching-mode .ui-chip {
   display: inline-flex;
+}
+
+.ui-chip:hover,
+.ui-chip:focus-visible {
+  border-color: var(--brand);
+  color: var(--ink);
 }
 
 .teaching-panel {
@@ -1265,11 +1306,11 @@ section {
   z-index: 61;
   width: min(360px, calc(100vw - 32px));
   padding: 18px;
-  border: 1px solid var(--ink);
+  border: 1px solid var(--line);
   border-radius: 18px;
   background: var(--paper);
   color: var(--ink);
-  box-shadow: 0 20px 54px rgba(28, 24, 20, 0.2);
+  box-shadow: 0 16px 42px rgba(28, 24, 20, 0.14);
 }
 
 .teaching-panel[hidden] {
