@@ -1,0 +1,567 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>InkTrio 개인정보처리방침 | HAM MEDIA</title>
+    <link rel="canonical" href="https://hammedia.co.kr/inktrio/privacy.html">
+    <meta name="description" content="InkTrio 앱의 개인정보 수집, 이용, 보관, 권한 사용 기준을 안내하는 앱 전용 공개 문서입니다.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hammedia.co.kr/inktrio/privacy.html">
+    <meta property="og:title" content="InkTrio 개인정보처리방침">
+    <meta property="og:description" content="HAM MEDIA가 운영하는 InkTrio 앱 전용 개인정보처리방침입니다.">
+    <meta property="og:image" content="https://hammedia.co.kr/assets/tools/free-tools-og.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="InkTrio 개인정보처리방침">
+    <meta name="twitter:description" content="InkTrio 앱의 개인정보 처리 기준을 안내합니다.">
+    <meta name="twitter:image" content="https://hammedia.co.kr/assets/tools/free-tools-og.png">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+    <style>
+      :root {
+        color-scheme: light;
+        --paper: #f9f7f3;
+        --paper-deep: #f5f3ee;
+        --surface: #fffefb;
+        --ink: #1c1814;
+        --muted: #4a423c;
+        --line: rgba(28, 24, 20, .14);
+        --line-soft: rgba(28, 24, 20, .08);
+        --blue: #7eb5e8;
+        --blue-soft: rgba(126, 181, 232, .16);
+        --green: #00704a;
+        --green-soft: rgba(0, 112, 74, .11);
+        --yellow: #f4dc59;
+        --yellow-soft: rgba(244, 220, 89, .24);
+        --shadow: 0 1px 2px rgba(28, 24, 20, .04), 0 14px 36px rgba(28, 24, 20, .06);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        background:
+          radial-gradient(circle at 12% 0%, rgba(126, 181, 232, .12), transparent 34%),
+          radial-gradient(circle at 88% 6%, rgba(244, 220, 89, .09), transparent 32%),
+          linear-gradient(180deg, var(--paper), var(--paper-deep));
+        color: var(--ink);
+        font-family: "Pretendard", "Pretendard Variable", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
+        line-height: 1.7;
+        word-break: keep-all;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      a {
+        color: var(--green);
+        text-decoration-thickness: 1px;
+        text-underline-offset: 3px;
+      }
+
+      a:hover {
+        color: var(--ink);
+      }
+
+      a:focus-visible {
+        outline: 3px solid var(--blue);
+        outline-offset: 3px;
+        border-radius: 8px;
+      }
+
+      h1,
+      h2,
+      h3,
+      p,
+      ul {
+        margin: 0;
+      }
+
+      ul {
+        padding-left: 1.1em;
+      }
+
+      li + li {
+        margin-top: 7px;
+      }
+
+      .skip-link {
+        position: absolute;
+        left: 16px;
+        top: 12px;
+        z-index: 10;
+        transform: translateY(-160%);
+        background: var(--ink);
+        color: #fff;
+        border-radius: 10px;
+        padding: 10px 14px;
+        font-weight: 700;
+        text-decoration: none;
+      }
+
+      .skip-link:focus {
+        transform: translateY(0);
+      }
+
+      .shell {
+        width: calc(100% - 36px);
+        max-width: 1040px;
+        margin: 0 auto;
+        padding: 18px 0 72px;
+      }
+
+      .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        margin-bottom: 42px;
+      }
+
+      .top-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 8px;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .brand img {
+        display: block;
+        width: 46px;
+        height: 46px;
+        border-radius: 10px;
+      }
+
+      .brand span {
+        display: block;
+        font-size: 15px;
+        font-weight: 800;
+        letter-spacing: .07em;
+      }
+
+      .home-link {
+        display: inline-flex;
+        align-items: center;
+        min-height: 42px;
+        border: 1px solid var(--line);
+        background: var(--surface);
+        color: var(--ink);
+        border-radius: 14px;
+        padding: 8px 13px;
+        font-size: 13px;
+        font-weight: 800;
+        text-decoration: none;
+        box-shadow: 0 1px 2px rgba(28, 24, 20, .04);
+      }
+
+      .home-link:hover {
+        border-color: var(--blue);
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(260px, 340px);
+        gap: 42px;
+        align-items: end;
+        margin-bottom: 38px;
+      }
+
+      .kicker {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        width: fit-content;
+        margin-bottom: 14px;
+        border-radius: 999px;
+        background: var(--blue-soft);
+        color: #28618e;
+        padding: 5px 12px;
+        font-size: 12px;
+        font-weight: 800;
+      }
+
+      h1 {
+        max-width: 720px;
+        font-size: clamp(32px, 5vw, 58px);
+        font-weight: 800;
+        letter-spacing: 0;
+        line-height: 1.12;
+      }
+
+      .lead {
+        max-width: 720px;
+        margin-top: 18px;
+        color: var(--muted);
+        font-size: clamp(16px, 2vw, 19px);
+        line-height: 1.72;
+        overflow-wrap: break-word;
+      }
+
+      .meta-panel {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        padding: 18px;
+        box-shadow: var(--shadow);
+      }
+
+      .meta-panel h2 {
+        font-size: 16px;
+        line-height: 1.35;
+        margin-bottom: 12px;
+      }
+
+      .meta-list {
+        display: grid;
+        gap: 10px;
+      }
+
+      .meta-item {
+        display: grid;
+        gap: 2px;
+        border-top: 1px solid var(--line-soft);
+        padding-top: 10px;
+      }
+
+      .meta-item:first-child {
+        border-top: 0;
+        padding-top: 0;
+      }
+
+      .meta-item span {
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 700;
+      }
+
+      .meta-item strong {
+        color: var(--ink);
+        font-size: 14px;
+      }
+
+      .summary {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 12px;
+        margin-bottom: 40px;
+      }
+
+      .summary-item {
+        min-height: 112px;
+        background: rgba(255, 254, 251, .72);
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        padding: 15px;
+      }
+
+      .summary-item b {
+        display: block;
+        color: var(--green);
+        font-size: 12px;
+        margin-bottom: 7px;
+      }
+
+      .summary-item span {
+        display: block;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.55;
+        overflow-wrap: break-word;
+      }
+
+      .document {
+        background: rgba(255, 254, 251, .78);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        box-shadow: var(--shadow);
+        padding: clamp(24px, 5vw, 52px);
+      }
+
+      .policy-section {
+        padding-top: 32px;
+        margin-top: 32px;
+        border-top: 1px solid var(--line-soft);
+      }
+
+      .policy-section:first-child {
+        padding-top: 0;
+        margin-top: 0;
+        border-top: 0;
+      }
+
+      .policy-section h2 {
+        font-size: clamp(21px, 2.6vw, 28px);
+        line-height: 1.24;
+        margin-bottom: 12px;
+      }
+
+      .policy-section p,
+      .policy-section li {
+        color: var(--muted);
+        font-size: 16px;
+        overflow-wrap: break-word;
+      }
+
+      .policy-section p + p,
+      .policy-section p + ul,
+      .policy-section ul + p {
+        margin-top: 12px;
+      }
+
+      .note {
+        margin-top: 14px;
+        background: var(--paper-deep);
+        border-left: 3px solid var(--blue);
+        border-radius: 12px;
+        padding: 14px 16px;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .contact-box {
+        display: grid;
+        gap: 10px;
+        margin-top: 14px;
+        background: var(--paper-deep);
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        padding: 16px;
+      }
+
+      .contact-row {
+        display: grid;
+        grid-template-columns: 120px minmax(0, 1fr);
+        gap: 12px;
+      }
+
+      .contact-row span {
+        color: var(--muted);
+        font-size: 13px;
+        font-weight: 700;
+      }
+
+      .contact-row strong {
+        color: var(--ink);
+        font-size: 15px;
+        overflow-wrap: anywhere;
+      }
+
+      .footer {
+        margin-top: 26px;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.7;
+        text-align: center;
+      }
+
+      .footer strong {
+        color: var(--ink);
+        letter-spacing: .06em;
+      }
+
+      @media (max-width: 860px) {
+        .hero {
+          grid-template-columns: 1fr;
+          gap: 22px;
+        }
+
+        .summary {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 620px) {
+        .shell {
+          width: calc(100% - 28px);
+          padding-top: 14px;
+        }
+
+        .topbar {
+          align-items: flex-start;
+          flex-direction: column;
+          margin-bottom: 32px;
+        }
+
+        .top-links {
+          justify-content: flex-start;
+        }
+
+        .summary {
+          grid-template-columns: 1fr;
+        }
+
+        .lead,
+        .summary-item span,
+        .policy-section p,
+        .policy-section li {
+          word-break: normal;
+          overflow-wrap: anywhere;
+        }
+
+        .document {
+          padding: 22px 18px;
+        }
+
+        .policy-section {
+          margin-top: 26px;
+          padding-top: 26px;
+        }
+
+        .contact-row {
+          grid-template-columns: 1fr;
+          gap: 2px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">본문으로 이동</a>
+    <main class="shell" id="main">
+      <header class="topbar">
+        <a class="brand" href="../" aria-label="HAM MEDIA 홈으로 이동">
+          <img src="../assets/tools/logo_10.png" alt="" aria-hidden="true">
+          <span>HAM MEDIA</span>
+        </a>
+        <div class="top-links" aria-label="관련 페이지">
+          <a class="home-link" href="../">HAM MEDIA 홈</a>
+          <a class="home-link" href="/ham-media-archive/pages/fountain-pens.html">만년필별</a>
+        </div>
+      </header>
+
+      <section class="hero" aria-labelledby="page-title">
+        <div>
+          <span class="kicker">InkTrio 앱 전용 공개 문서</span>
+          <h1 id="page-title">InkTrio 개인정보처리방침</h1>
+          <p class="lead">InkTrio는 만년필, 잉크, 종이 조합을 사진과 함께 기록하는 개인 필기 아카이브 앱입니다. 이 문서는 InkTrio가 어떤 정보를 다루고, 어디에 보관하며, 어떤 권한을 요청할 수 있는지 설명합니다.</p>
+        </div>
+
+        <aside class="meta-panel" aria-label="문서 기본 정보">
+          <h2>문서 정보</h2>
+          <div class="meta-list">
+            <div class="meta-item">
+              <span>시행일</span>
+              <strong>2026년 6월 30일</strong>
+            </div>
+            <div class="meta-item">
+              <span>운영 주체</span>
+              <strong>HAM MEDIA</strong>
+            </div>
+            <div class="meta-item">
+              <span>문의</span>
+              <strong><a href="mailto:hammedia002@gmail.com">hammedia002@gmail.com</a></strong>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <section class="summary" aria-label="핵심 요약">
+        <div class="summary-item">
+          <b>계정 생성 없음</b>
+          <span>현재 버전은 별도 회원가입이나 앱 계정을 제공하지 않습니다.</span>
+        </div>
+        <div class="summary-item">
+          <b>기기 안에 저장</b>
+          <span>사용자가 입력한 기록과 선택한 사진은 사용자의 기기 안에 보관됩니다.</span>
+        </div>
+        <div class="summary-item">
+          <b>서버 전송 없음</b>
+          <span>현재 버전은 기록 데이터를 외부 서버로 전송하지 않습니다.</span>
+        </div>
+        <div class="summary-item">
+          <b>광고 추적 없음</b>
+          <span>광고 추적이나 제3자 판매를 위해 데이터를 사용하지 않습니다.</span>
+        </div>
+      </section>
+
+      <article class="document" aria-label="개인정보처리방침 본문">
+        <section class="policy-section">
+          <h2>1. 수집하는 정보</h2>
+          <p>현재 버전의 InkTrio는 별도의 회원가입을 제공하지 않으며, 앱 서버로 계정 정보를 전송하지 않습니다.</p>
+          <p>앱 안에서 사용자가 직접 입력하거나 선택할 수 있는 정보는 다음과 같습니다.</p>
+          <ul>
+            <li>만년필 정보</li>
+            <li>잉크 정보</li>
+            <li>종이 또는 노트 정보</li>
+            <li>만년필, 잉크, 종이의 조합 기록</li>
+            <li>사용감 메모</li>
+            <li>사용자가 선택하거나 촬영한 조합 사진</li>
+          </ul>
+          <p class="note">이 정보는 현재 버전 기준으로 사용자의 기기 안에 저장됩니다.</p>
+        </section>
+
+        <section class="policy-section">
+          <h2>2. 사진과 카메라 권한</h2>
+          <p>InkTrio는 사용자가 조합 기록에 사진을 첨부할 수 있도록 사진 라이브러리 접근 권한을 요청할 수 있습니다.</p>
+          <p>사용자가 선택한 사진은 앱 내부 저장소에 복사되어 조합 기록과 연결됩니다. 사진은 데이터베이스에 직접 BLOB 형태로 저장하지 않고, 앱 내부 파일 경로와 연결해 관리합니다.</p>
+          <p>앱은 향후 촬영 기능 또는 사진 첨부 흐름을 위해 카메라 접근 권한을 요청할 수 있습니다.</p>
+        </section>
+
+        <section class="policy-section">
+          <h2>3. 정보 사용 목적</h2>
+          <p>앱에 저장된 정보는 다음 목적에만 사용됩니다.</p>
+          <ul>
+            <li>사용자가 자신의 만년필, 잉크, 종이 조합을 기록하기 위해</li>
+            <li>저장한 조합을 목록과 상세 화면에서 다시 확인하기 위해</li>
+            <li>사진이 포함된 기록을 나중에 다시 찾기 위해</li>
+          </ul>
+        </section>
+
+        <section class="policy-section">
+          <h2>4. 외부 공유와 제3자 제공</h2>
+          <p>현재 버전의 InkTrio는 사용자의 기록 데이터를 외부 서버로 전송하거나 제3자에게 판매하지 않습니다.</p>
+          <p>향후 백업, 동기화, 내보내기, 공유 기능이 추가될 경우 개인정보처리방침을 업데이트하고 필요한 안내를 제공합니다.</p>
+        </section>
+
+        <section class="policy-section">
+          <h2>5. 데이터 보관과 삭제</h2>
+          <p>사용자가 앱에 입력한 정보와 사진은 사용자의 기기 안에 보관됩니다.</p>
+          <p>사용자가 앱 안에서 기록이나 사진을 삭제하면 해당 앱 데이터가 삭제될 수 있습니다. 앱을 기기에서 삭제하면 기기 안의 앱 데이터도 함께 삭제될 수 있습니다.</p>
+        </section>
+
+        <section class="policy-section">
+          <h2>6. 어린이 개인정보</h2>
+          <p>InkTrio는 어린이를 대상으로 한 앱이 아닙니다.</p>
+        </section>
+
+        <section class="policy-section">
+          <h2>7. 개인정보처리방침 변경</h2>
+          <p>앱 기능이나 데이터 처리 방식이 변경되면 이 개인정보처리방침을 업데이트할 수 있습니다. 변경된 내용은 이 페이지에 게시됩니다.</p>
+        </section>
+
+        <section class="policy-section">
+          <h2>8. 문의</h2>
+          <p>InkTrio 개인정보와 앱 사용에 대한 문의는 아래 연락처로 보내 주세요.</p>
+          <div class="contact-box">
+            <div class="contact-row">
+              <span>운영 주체</span>
+              <strong>HAM MEDIA</strong>
+            </div>
+            <div class="contact-row">
+              <span>이메일</span>
+              <strong><a href="mailto:hammedia002@gmail.com">hammedia002@gmail.com</a></strong>
+            </div>
+            <div class="contact-row">
+              <span>공개 URL</span>
+              <strong><a href="https://hammedia.co.kr/inktrio/privacy.html">https://hammedia.co.kr/inktrio/privacy.html</a></strong>
+            </div>
+          </div>
+        </section>
+      </article>
+
+      <p class="footer"><strong>HAM MEDIA</strong><br>이 페이지는 HAM MEDIA 홈페이지 안에 둔 InkTrio 앱 전용 공개 문서이며, 별자리 아카이브·무료 도구·아카데미 흐름과 분리해 운영합니다.</p>
+    </main>
+  </body>
+</html>
