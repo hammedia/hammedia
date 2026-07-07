@@ -1154,6 +1154,92 @@
       margin-top: var(--space-5);
     }
 
+    .audio-essay-panel {
+      display: grid;
+      gap: var(--space-5);
+    }
+
+    .audio-essay-hero,
+    .audio-essay-image-grid figure,
+    .audio-essay-track-grid figure {
+      margin: 0;
+    }
+
+    .audio-essay-hero img,
+    .audio-essay-image-grid img,
+    .audio-essay-track-grid img {
+      display: block;
+      width: 100%;
+      border-radius: var(--radius);
+      object-fit: cover;
+      background: var(--color-room);
+    }
+
+    .audio-essay-hero img {
+      aspect-ratio: 16 / 9;
+    }
+
+    .audio-essay-image-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-3);
+    }
+
+    .audio-essay-image-grid img {
+      aspect-ratio: 4 / 3;
+    }
+
+    .audio-essay-track-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: var(--space-3);
+    }
+
+    .audio-essay-track-grid img {
+      aspect-ratio: 4 / 5;
+    }
+
+    .audio-essay-hero figcaption,
+    .audio-essay-image-grid figcaption,
+    .audio-essay-track-grid figcaption {
+      margin-top: var(--space-2);
+      color: var(--muted-on-light);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .audio-essay-copy {
+      max-width: 840px;
+    }
+
+    .audio-essay-copy p {
+      margin: 0;
+    }
+
+    .audio-essay-copy p + p {
+      margin-top: var(--space-4);
+    }
+
+    .audio-essay-pull {
+      margin: var(--space-5) 0;
+      padding-left: var(--space-4);
+      border-left: 4px solid var(--color-gold);
+      color: var(--color-room);
+      font-family: var(--font-star);
+      font-size: clamp(28px, 3vw, 42px);
+      line-height: 1.24;
+    }
+
+    .audio-essay-final {
+      display: grid;
+      gap: var(--space-2);
+      margin-top: var(--space-5);
+      color: var(--color-room);
+      font-family: var(--font-star);
+      font-size: clamp(30px, 3.2vw, 48px);
+      line-height: 1.2;
+    }
+
     .shared-memory-link a {
       color: var(--color-wood);
       font-weight: 850;
@@ -1309,8 +1395,13 @@
       .memory-grid,
       .room-house-photo-grid,
       .shared-memory-layout,
-      .shared-memory-gallery {
+      .shared-memory-gallery,
+      .audio-essay-image-grid {
         grid-template-columns: 1fr;
+      }
+
+      .audio-essay-track-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
       .memory-card,
@@ -1648,6 +1739,9 @@
         </div>
 
         <div class="room-article-list" aria-label="음악·오디오별 문장">
+          <button class="room-article-link" type="button" data-article-target="audio-hexa-ie8-memory-today-note" data-homepage-date="2026-07-07" data-sort-order="7" aria-label="기억의 소리와 오늘의 소리 읽기">
+            <strong>기억의 소리와 오늘의 소리</strong>
+          </button>
           <button class="room-article-link" type="button" data-article-target="audio-beethoven-emperor-note" data-homepage-date="2026-06-02" data-sort-order="1" aria-label="황제의 밤 읽기">
             <strong>황제의 밤</strong>
           </button>
@@ -1669,6 +1763,82 @@
         </div>
 
         <div class="room-card-list room-article-panels">
+          <article class="room-post shared-memory-card room-article-panel audio-essay-panel" id="audio-hexa-ie8-memory-today-note" hidden>
+            <button class="room-article-back" type="button">문장</button>
+            <header class="audio-entry-header">
+              <p class="room-card-meta">문장 · 인이어 이어폰 리뷰</p>
+              <h3>기억의 소리와 오늘의 소리</h3>
+              <p>HEXA와 IE8을 번갈아 들으며</p>
+            </header>
+
+            <figure class="audio-essay-hero">
+              <img src="../assets/images/music-audio/hexa-ie8-listening/hexa-ie8-hero.jpg" alt="TRUTHEAR HEXA와 Sennheiser IE8을 함께 놓고 비교 청음한 인이어 이어폰 사진" />
+              <figcaption>새 이어폰을 듣는 일은, 오래된 이어폰을 다시 꺼내는 일이기도 했다.</figcaption>
+            </figure>
+
+            <div class="shared-memory-copy audio-essay-copy">
+              <p>TRUTHEAR HEXA를 들으면서 Sennheiser IE8을 다시 꺼냈다. 둘을 같은 자리에 놓고, 같은 곡을 번갈아 들었다. iPhone 15 Pro와 iPad Pro M2, FiiO KA11, TIDAL FLAC. 조건을 크게 벌리지 않고, 이어폰이 음악을 어떻게 보여주는지만 보려고 했다.</p>
+              <p>처음부터 승패를 정하려던 비교는 아니었다.</p>
+              <p>IE8은 오래된 이어폰이다. 하지만 오래됐다는 말이 곧 낡았다는 뜻은 아니다. IE8에는 2000년대 후반의 젠하이저식 소리가 아직 남아 있다. 싱글 다이내믹 드라이버 하나로 공간을 넓게 열고, 음악을 부드럽게 앞으로 흘려보낸다. 요즘 이어폰처럼 정보를 촘촘히 정리해주지는 않지만, 오래 듣게 만드는 편안함이 있다.</p>
+              <p>HEXA는 전혀 다른 세대의 소리다. 소리가 화려하게 튀어나오기보다 아래로 단정하게 깔린다. 배경은 조용하고, 작은 정보가 더 잘 보인다. 피아노 타건, 콘트라베이스의 바닥감, 입소리, 객석의 기침소리, 오케스트라의 레이어 같은 것들이 IE8보다 더 가까운 자리에서 잡힌다.</p>
+              <p>IE8이 음악을 편하게 풀어준다면, HEXA는 음악 안의 정보를 정돈해서 보여준다.</p>
+            </div>
+
+            <div class="audio-essay-image-grid" aria-label="HEXA와 IE8 비교 사진">
+              <figure>
+                <img src="../assets/images/music-audio/hexa-ie8-listening/hexa-box.jpg" alt="TRUTHEAR HEXA 패키지와 이어폰" loading="lazy" />
+                <figcaption>HEXA. 조용한 배경 위에 정보를 단정하게 올려놓는 오늘의 소리.</figcaption>
+              </figure>
+              <figure>
+                <img src="../assets/images/music-audio/hexa-ie8-listening/ie8-open.jpg" alt="Sennheiser IE8 이어폰과 케이스" loading="lazy" />
+                <figcaption>IE8. 넓은 공간과 부드러운 질감으로 오래 듣게 만드는 기억의 소리.</figcaption>
+              </figure>
+            </div>
+
+            <div class="audio-essay-track-grid" aria-label="청음곡 이미지">
+              <figure>
+                <img src="../assets/images/music-audio/hexa-ie8-listening/i-love-contrabass.jpg" alt="Min Je Sung의 I Love Contrabass 앨범 화면" loading="lazy" />
+                <figcaption>콘트라베이스와 피아노의 바닥감.</figcaption>
+              </figure>
+              <figure>
+                <img src="../assets/images/music-audio/hexa-ie8-listening/goodbye-yesterday.jpg" alt="Miki Imai의 Goodbye Yesterday 앨범 화면" loading="lazy" />
+                <figcaption>보컬과 오케스트라의 거리.</figcaption>
+              </figure>
+              <figure>
+                <img src="../assets/images/music-audio/hexa-ie8-listening/diana-krall-a-case-of-you.jpg" alt="Diana Krall의 A Case Of You 라이브 앨범 화면" loading="lazy" />
+                <figcaption>숨, 입소리, 객석의 작은 움직임.</figcaption>
+              </figure>
+              <figure>
+                <img src="../assets/images/music-audio/hexa-ie8-listening/fourplay-chant.jpg" alt="Fourplay의 Chant 앨범 화면" loading="lazy" />
+                <figcaption>타격, 리듬, 분리도의 차이.</figcaption>
+              </figure>
+            </div>
+
+            <div class="shared-memory-copy audio-essay-copy">
+              <p>첫 곡은 Min Je Sung의 <cite>Suite bergamasque</cite>였다. 콘트라베이스와 피아노가 있는 곡이라 저역의 바닥감, 피아노 해머, 잔향의 끝을 보기 좋았다. HEXA는 손끝과 해머를 더 잘 보여줬다. 소리는 조용했고, 피아노와 베이스의 경계도 더 분명했다.</p>
+              <p>IE8은 다른 방식으로 좋았다. 피아노가 놓인 공간을 더 편하게 열어줬다. 소리의 입자는 HEXA보다 조금 더 크고, 선은 더 가늘게 느껴졌지만, 그 대신 음악이 딱딱하게 분석되지 않았다. 그냥 틀어놓고 오래 듣기 좋은 쪽이었다.</p>
+              <p>Miki Imai의 <cite>Goodbye Yesterday</cite>에서는 보컬과 오케스트라의 관계가 다르게 들렸다. IE8은 목소리를 앞으로 꺼냈다. 보컬이 중심에 서고, 오케스트라는 그 뒤에 배경처럼 깔렸다. 익숙하고 편안한 배치다. 노래를 듣는다는 느낌이 먼저 온다.</p>
+              <p>HEXA는 보컬과 오케스트라를 같은 무대 위에 세웠다. 목소리가 앞으로 튀어나오기보다 악기들과 함께 자리를 잡았다. 오케스트라의 층이 더 정돈되어 들렸고, 악기들이 서로 밀리지 않았다. 노래만 듣는 것이 아니라, 무대 전체를 보는 느낌에 가까웠다.</p>
+              <p>Diana Krall의 <cite>A Case Of You (Live)</cite>에서는 차이가 더 선명했다. 이 곡은 목소리만 중요한 곡이 아니다. 숨, 입소리, 피아노의 여백, 객석의 작은 움직임까지 같이 들어야 살아난다. HEXA는 그 작은 소리들을 조용한 배경 위에 올려놓았다. 기침소리나 객석의 움직임도 더 또렷했고, 라이브 녹음 안의 공기가 더 세밀하게 보였다.</p>
+              <p>IE8에서도 그런 정보가 들리지 않는 것은 아니다. 다만 조금 더 멀고 부드럽게 느껴졌다. 대신 IE8은 보컬의 감정을 앞으로 데려오는 힘이 있었다. 다이애나 크롤의 목소리가 더 둥글고, 더 사람 쪽으로 가까웠다.</p>
+              <p>Fourplay의 <cite>Chant</cite>에서는 세대 차이가 가장 크게 느껴졌다. 타격음, 리듬, 분리도, 밀도감에서는 HEXA가 확실히 앞섰다. 리듬이 무너지지 않고, 악기들이 서로 겹치지 않았다. 퓨전 재즈처럼 타격과 분리가 중요한 음악에서는 HEXA의 현대적인 정리감이 잘 드러났다.</p>
+              <p>IE8은 편안하고 둥글었다. 하지만 이런 곡에서는 그 편안함이 조금 느슨함으로 바뀌었다. 리듬의 모서리가 둥글어지고, 소리가 한 번 더 풀려서 나온다. 나쁘다는 뜻은 아니다. 다만 이 곡에서는 HEXA가 더 잘 맞았다.</p>
+
+              <p class="audio-essay-pull">둘은 같은 길의 위아래가 아니다. 서로 다른 청취 철학이다.</p>
+
+              <p>그렇다고 IE8이 의미를 잃은 것은 아니다. 오래된 명기는 수치로만 남지 않는다. 어떤 장비는 당시의 음악 듣는 방식을 같이 데리고 온다. IE8을 들으면 그 시절의 이어폰들이 추구하던 넓은 공간, 부드러운 질감, 오래 들어도 피곤하지 않은 흐름이 떠오른다. 지금 기준으로 보면 부족한 부분이 있지만, 그 부족함까지 포함해서 하나의 성격이 된다.</p>
+              <p>HEXA는 오늘의 소리다. 더 조용하고, 더 정돈되어 있고, 더 많은 정보를 보여준다. 작은 DAC 하나에 물려도 무대의 구조와 녹음 안의 디테일을 꽤 또렷하게 꺼내준다. 예전에는 큰 시스템에서 기대하던 정리감의 일부가 이제는 작은 인이어 안으로 들어와 있다.</p>
+              <p>물론 대형 하이파이 시스템이 만드는 물리적인 스케일과 공기 이동을 인이어가 그대로 대신하기는 어렵다. 스피커가 방을 움직이는 느낌, 저역이 몸으로 들어오는 느낌은 여전히 다른 영역이다. 하지만 룸 세팅이 부족한 애매한 시스템보다, 잘 만든 IEM과 작은 DAC 조합이 더 정돈된 정보를 줄 때가 있다.</p>
+              <p>이 점이 지금의 IEM이 가진 재미다. 큰 장비가 아니어도 음악의 구조를 볼 수 있다. 작은 이어폰 하나로 녹음의 결, 무대의 위치, 악기 사이의 간격을 따라갈 수 있다. 동시에 오래된 이어폰을 다시 들으면, 정보량만으로는 설명되지 않는 감정의 자리가 있다는 것도 알게 된다.</p>
+              <p>그래서 이 비교는 승패로 끝나지 않았다. IE8은 음악을 편하게 풀어주는 노장이다. 보컬을 앞으로 데려오고, 공간을 넓게 열어주며, 오래 듣기 좋은 정서를 남긴다. HEXA는 소리를 정밀하게 정돈하는 신세대다. 조용한 배경 위에 작은 정보를 올려놓고, 무대의 구조를 더 분명하게 보여준다.</p>
+
+              <div class="audio-essay-final" aria-label="글의 결론">
+                <span>IE8은 기억의 소리.</span>
+                <span>HEXA는 오늘의 소리.</span>
+              </div>
+            </div>
+          </article>
+
           <article class="room-post shared-memory-card room-article-panel" id="audio-beethoven-emperor-note" hidden>
             <button class="room-article-back" type="button">문장</button>
             <header class="audio-entry-header">
