@@ -32,3 +32,17 @@ Files that do not belong here:
 - temporary files
 
 When in doubt, stop and ask before adding a file.
+
+## Shared Shelf (`share/`)
+
+- `share/` is a temporary link-only shelf for polished HTML documents that HamPD wants to send to a specific person or small group. It is not permanent site content.
+- Never put sensitive information, customer information, internal paths, contracts, pricing documents, account details, or private working notes on this shelf.
+- Every `share/` page must include `<meta name="robots" content="noindex, nofollow, noarchive">`.
+- `share/` pages must never be added to `sitemap.xml`, and public pages must not link to `share/`.
+- Do not add a `robots.txt` `Disallow` rule for `share/`: it can expose the path as a hidden area. Use page-level noindex, sitemap exclusion, and no internal links instead.
+- The default shelf life is 10 days from the publish date. Use `YYYYMMDD-slug.html` filenames so the deletion window is visible.
+- Codex should remind HamPD before deletion, ideally 2 days before expiry and again on the expiry day.
+- Deletion is never automatic. Publishing, extending, and deleting each shared document requires a separate HamPD instruction.
+- If a document should stay up longer than the short shelf window, move it to a proper public path such as the homepage, academy, portfolio, tools, or another permanent section instead of extending `share/` by habit.
+- Remove finished shared documents instead of letting the shelf accumulate; check that the shelf can be emptied during quarterly maintenance.
+- HamPD order phrase: "이 문서, 예쁜 HTML로 만들어서 매장 공유 선반(share)에 올려줘. 검색 안 걸리게 하고, 링크만 줘."
