@@ -880,18 +880,6 @@
       outline: 0;
     }
 
-    .design-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      align-items: center;
-    }
-
-    .design-toggle {
-      border: 0;
-      cursor: pointer;
-    }
-
     .room-house-panel[hidden],
     .room-article-panel[hidden],
     .room-article-list[hidden],
@@ -1541,7 +1529,7 @@
 	    <a href="#inside" aria-label="별 안으로"></a>
 	  </nav>
 
-  <main class="room-house-page" id="food-star" data-article-nav-label="문장 이동" data-article-list-label="문장" data-article-prev-label="이전 문장" data-article-next-label="다음 문장" data-photo-list-label="장면" data-room-context-nav="true" data-article-house-target="food-writing-room" data-photo-house-target="food-photo-room" data-map-house-target="food-map-room" data-star-list-target="star-list">
+  <main class="room-house-page" id="food-star" data-article-nav-label="문장 이동" data-article-list-label="문장" data-article-prev-label="이전 문장" data-article-next-label="다음 문장" data-photo-list-label="장면" data-room-context-nav="false" data-article-house-target="food-writing-room" data-photo-house-target="food-photo-room" data-star-list-target="star-list">
     <section class="scene scene-entry" id="entry" data-scene>
       <div class="entry-photo-page reveal" style="--delay: 40ms;" aria-hidden="true">
         <img src="../assets/images/food/hero-cafe-table-coffee.jpg" width="1350" height="1800" alt="">
@@ -1560,7 +1548,7 @@
           <nav class="entry-nav room-house-nav reveal" style="--delay: 820ms;" aria-label="음식별 입구">
             <button class="entry-link room-house-door" type="button" data-house-target="food-writing-room">문장</button>
             <button class="entry-link room-house-door" type="button" data-house-target="food-photo-room">장면</button>
-            <button class="entry-link room-house-door" type="button" data-house-target="food-map-room">지도</button>
+            <button class="entry-link" type="button" data-design-sheet-trigger aria-expanded="false" aria-controls="designSheet">디자인</button>
             <a class="entry-link" href="#star-list">별자리</a>
           </nav>
         </div>
@@ -1736,7 +1724,7 @@
       <div class="scene-inner">
         <div class="section-head">
           <p class="kicker reveal" style="--delay: 80ms;">별 안으로</p>
-          <h2 data-split>문장 · 장면 · 지도 · 별자리</h2>
+          <h2 data-split>문장 · 장면 · 디자인 · 별자리</h2>
         </div>
         <div class="doors reveal" style="--delay: 500ms;">
           <button class="door room-house-door" type="button" data-house-target="food-writing-room">
@@ -1747,17 +1735,14 @@
             <strong>장면</strong>
             <span>음식별에 남은 장면 21장 보기</span>
           </button>
-          <button class="door room-house-door" type="button" data-house-target="food-map-room">
-            <strong>지도</strong>
-            <span>감각이 남은 자리들의 좌표 보기</span>
+          <button class="door" id="designDoor" type="button" data-design-sheet-trigger aria-expanded="false" aria-controls="designSheet">
+            <strong>디자인</strong>
+            <span>이 별을 지은 스타일 시트 펼치기</span>
           </button>
           <a class="door" href="#star-list">
             <strong>별자리</strong>
             <span>다른 별이 놓인 입구로 가기</span>
           </a>
-        </div>
-        <div class="design-actions reveal" style="--delay: 560ms;">
-          <button class="tool-link design-toggle" id="designDoor" type="button" aria-expanded="false" aria-controls="designSheet">음식별 디자인 시트 펼치기</button>
         </div>
         <section class="design-sheet reveal" id="designSheet" hidden style="--delay: 80ms;" aria-label="음식별 스타일 시트">
           <div class="sheet-block">
@@ -2056,18 +2041,6 @@
       <aside class="room-gallery-detail room-house-photo-detail" aria-live="polite" hidden></aside>
     </section>
 
-    <section class="room-house-panel" id="food-map-room" aria-label="음식별 지도" hidden>
-      <div class="room-house-panel-header">
-        <p class="room-section-label">관계의 지도</p>
-        <h2>감각의 좌표가 쌓이면 지도가 됩니다</h2>
-        <button class="room-house-back" type="button">음식별로 돌아가기</button>
-      </div>
-      <article class="room-map-placeholder">
-        <strong>태그는 관계의 좌표입니다.</strong>
-        <p>신포시장, 델라카사 신포점, 스타벅스 리저브처럼 감각이 남은 자리들을 천천히 모읍니다. 완성된 코스보다, 왜 그 자리가 아직 기억나는지가 먼저입니다.</p>
-      </article>
-    </section>
-
     <section class="star-exit" id="star-list" aria-labelledby="star-list-title">
       <div class="star-exit-inner">
         <h2 id="star-list-title">별자리</h2>
@@ -2167,25 +2140,31 @@
       requestActiveUpdate();
     }
 
-    const designDoor = document.querySelector("#designDoor");
     const designSheet = document.querySelector("#designSheet");
+    const designTriggers = Array.from(document.querySelectorAll("[data-design-sheet-trigger]"));
 
-    if (designDoor && designSheet) {
-      designDoor.addEventListener("click", () => {
+    if (designTriggers.length && designSheet) {
+      designTriggers.forEach((designDoor) => {
+        designDoor.addEventListener("click", () => {
         const willOpen = designSheet.hasAttribute("hidden");
         if (willOpen) {
           designSheet.removeAttribute("hidden");
-          designDoor.setAttribute("aria-expanded", "true");
+          designTriggers.forEach((trigger) => {
+            trigger.setAttribute("aria-expanded", "true");
+          });
           requestAnimationFrame(() => {
             designSheet.scrollIntoView({
               behavior: reduceMotion ? "auto" : "smooth",
-              block: "nearest"
+              block: "start"
             });
           });
         } else {
           designSheet.setAttribute("hidden", "");
-          designDoor.setAttribute("aria-expanded", "false");
+          designTriggers.forEach((trigger) => {
+            trigger.setAttribute("aria-expanded", "false");
+          });
         }
+      });
       });
     }
   </script>
