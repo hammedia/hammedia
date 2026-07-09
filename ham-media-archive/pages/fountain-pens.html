@@ -1,1661 +1,1789 @@
 <!doctype html>
 <html lang="ko">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Fountain Pens / 만년필별 | HAM MEDIA</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>만년필별 | HAM MEDIA 별자리</title>
   <link rel="canonical" href="https://hammedia.co.kr/ham-media-archive/pages/fountain-pens.html">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+  <script>
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      document.documentElement.classList.add("motion-ready");
+    }
+  </script>
   <style>
-    @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
-    @import url("https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap");
-
-    :root {
-      --color-fountain-wall-black: #0b0f14;
-      --color-yonaga-blue-black: #141b2d;
-      --color-paper-ivory: #f3ead8;
-      --color-graphite-gray: #8b8a84;
-      --color-syo-ro-teal: #5a7974;
-      --color-platinum-blue-black: #2f4652;
-      --color-kiri-same-gray: #9a9b96;
-      --color-ink-studio-143: #5491dd;
-      --color-yu-yake-orange: #c6936f;
-      --color-hana-ikada-pink: #e392a0;
-      --color-rose-quartz: #c687a8;
-      --color-hotarubi-yellow: #cede85;
-      --color-aurora-black: #080808;
-      --color-sterling-silver: #9cadc2;
-      --color-paper-shadow: rgba(8, 8, 8, 0.28);
-      --color-wall-line: rgba(243, 234, 216, 0.16);
-      --color-paper-line: rgba(11, 15, 20, 0.12);
-
-      --font-structure: Pretendard, "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
-      --font-hand: "Nanum Pen Script", cursive;
-      --font-code: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-
-      --type-display: 76px;
-      --type-hero: 48px;
-      --type-section: 34px;
-      --type-card: 24px;
-      --type-body-lg: 19px;
-      --type-body: 16px;
-      --type-caption: 13px;
-      --type-micro: 11px;
-      --type-hand: 38px;
-      --type-hand-lg: 48px;
-
-      --leading-tight: 1.08;
-      --leading-title: 1.18;
-      --leading-body: 1.7;
-      --leading-caption: 1.45;
-
-      --space-4: 4px;
-      --space-8: 8px;
-      --space-12: 12px;
-      --space-16: 16px;
-      --space-24: 24px;
-      --space-32: 32px;
-      --space-48: 48px;
-      --space-64: 64px;
-      --space-96: 96px;
-
-      --radius-none: 0;
-      --radius-soft: 10px;
-      --radius-paper: 18px;
-      --radius-pill: 999px;
-
-      --shadow-wall-photo: 0 26px 70px rgba(0, 0, 0, 0.45);
-      --shadow-paper: 0 18px 48px var(--color-paper-shadow);
+    @font-face {
+      font-family: "NanumPenLocal";
+      src: url("../assets/fonts/NanumPen.otf") format("opentype");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
     }
 
-    * {
+    :root {
+      --wall: #0b0f14;
+      --yonaga: #141b2d;
+      --paper: #f3ead8;
+      --paper-soft: #f8f2e8;
+      --aurora: #080808;
+      --graphite: #8b8a84;
+      --syo-ro: #5a7974;
+      --platinum: #2f4652;
+      --kiri: #9a9b96;
+      --studio: #5491dd;
+      --yu-yake: #c6936f;
+      --hana: #e392a0;
+      --hotarubi: #cede85;
+      --line-dark: rgba(243, 234, 216, 0.16);
+      --line-paper: rgba(11, 15, 20, 0.13);
+      --ink-muted: rgba(8, 8, 8, 0.64);
+      --light-muted: rgba(243, 234, 216, 0.72);
+      --font-sans: "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --font-hand: "NanumPenLocal", "Pretendard", cursive;
+      --max: 1220px;
+      --pad: clamp(22px, 4.4vw, 64px);
+      --radius: 7px;
+    }
+
+    *,
+    *::before,
+    *::after {
       box-sizing: border-box;
     }
 
-    html,
-    body {
+    html {
       margin: 0;
-      background:
-        radial-gradient(circle at 20% 0%, rgba(47, 70, 82, 0.18), transparent 34%),
-        linear-gradient(180deg, var(--color-fountain-wall-black), #090b0f 42%, var(--color-paper-ivory) 42%);
-      color: var(--color-paper-ivory);
-      font-family: var(--font-structure);
-      font-size: var(--type-body);
-      line-height: var(--leading-body);
-      word-break: keep-all;
+      background: var(--wall);
+      color: var(--paper);
+      font-family: var(--font-sans);
+      scroll-behavior: smooth;
+      scroll-snap-type: y mandatory;
+      overflow-x: hidden;
     }
 
     body {
-      min-height: 100vh;
+      margin: 0;
+      min-width: 320px;
+      background: var(--wall);
+      color: var(--paper);
+      font-family: var(--font-sans);
+      letter-spacing: 0;
+      word-break: keep-all;
+      overflow-wrap: break-word;
+      overflow-x: hidden;
     }
 
     img {
       display: block;
-      max-width: 100%;
+      width: 100%;
+      height: auto;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .scene-dots {
+      position: fixed;
+      z-index: 30;
+      top: 50%;
+      right: 18px;
+      display: grid;
+      gap: 10px;
+      transform: translateY(-50%);
+    }
+
+    .scene-dots a {
+      width: 9px;
+      height: 9px;
+      border: 1px solid rgba(243, 234, 216, 0.48);
+      border-radius: 999px;
+      background: rgba(243, 234, 216, 0.2);
+      transition: transform 180ms ease, background-color 180ms ease, border-color 180ms ease;
+    }
+
+    .scene-dots a.is-active {
+      border-color: var(--hotarubi);
+      background: var(--hotarubi);
+      transform: scale(1.35);
+      box-shadow: 0 0 18px rgba(206, 222, 133, 0.46);
+    }
+
+    .scene {
+      block-size: 100svh;
+      min-block-size: 640px;
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+      display: grid;
+      align-items: center;
+      padding: clamp(34px, 6vh, 72px) var(--pad);
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .hero-scene {
+      position: relative;
+      padding: 0;
+      background: #07090d;
+    }
+
+    .hero-photo-wash,
+    .hero-photo-full,
+    .hero-scrim,
+    .hero-grain,
+    .hero-copy {
+      position: absolute;
+      inset: 0;
+    }
+
+    .hero-photo-wash img,
+    .hero-photo-full img {
+      width: 100%;
+      height: 100%;
+    }
+
+    .hero-photo-wash {
+      opacity: 0.36;
+      transform: scale(1.08);
+      filter: blur(12px) saturate(0.96) brightness(1.05);
+    }
+
+    .hero-photo-wash img {
+      object-fit: cover;
+    }
+
+    .hero-photo-full {
+      display: grid;
+      place-items: center end;
+      padding: clamp(24px, 5vh, 52px) clamp(36px, 7vw, 108px) clamp(24px, 5vh, 52px) clamp(420px, 38vw, 620px);
+    }
+
+    .hero-photo-full img {
+      width: auto;
+      max-width: min(50vw, 760px);
+      max-height: min(92svh, 980px);
+      object-fit: contain;
+      filter: brightness(1.1) contrast(1.03) drop-shadow(0 30px 90px rgba(0, 0, 0, 0.34));
+    }
+
+    .hero-scrim {
+      background:
+        radial-gradient(circle at 72% 46%, rgba(243, 234, 216, 0.06), transparent 34%),
+        linear-gradient(90deg, rgba(7, 9, 13, 0.84) 0%, rgba(7, 9, 13, 0.62) 34%, rgba(7, 9, 13, 0.18) 58%, rgba(7, 9, 13, 0.2) 100%),
+        linear-gradient(0deg, rgba(7, 9, 13, 0.44), transparent 42%, rgba(7, 9, 13, 0.18));
+    }
+
+    .hero-grain {
+      opacity: 0.38;
+      background:
+        linear-gradient(115deg, transparent 0 40%, rgba(206, 222, 133, 0.12) 46%, transparent 52%),
+        repeating-linear-gradient(0deg, rgba(243, 234, 216, 0.045) 0 1px, transparent 1px 9px);
+      mix-blend-mode: soft-light;
+      pointer-events: none;
+    }
+
+    .hero-copy {
+      z-index: 2;
+      display: grid;
+      align-content: end;
+      justify-items: start;
+      gap: clamp(14px, 2vh, 20px);
+      width: min(100%, var(--max));
+      margin: 0 auto;
+      padding: clamp(70px, 11vh, 132px) var(--pad);
+      color: var(--paper);
+      text-shadow: 0 3px 28px rgba(0, 0, 0, 0.58);
+    }
+
+    .hero-copy .lead {
+      max-width: 680px;
+    }
+
+    .hero-copy .body-copy {
+      max-width: 560px;
+      color: rgba(243, 234, 216, 0.76);
+    }
+
+    .hero-code-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .hero-code {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 38px;
+      padding: 0 14px;
+      border: 1px solid rgba(243, 234, 216, 0.56);
+      border-radius: 999px;
+      color: rgba(243, 234, 216, 0.86);
+      font-size: 12px;
+      font-weight: 850;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .hero-stamp {
+      width: clamp(86px, 9vw, 132px);
+      filter: sepia(0.12) saturate(0.8) drop-shadow(0 14px 32px rgba(0, 0, 0, 0.36));
+      opacity: 0.92;
+      transform: rotate(-6deg);
+    }
+
+    .ink-line {
+      display: block;
+      width: min(420px, 68vw);
+      height: 2px;
+      margin-top: 2px;
+      transform-origin: left center;
+      background: linear-gradient(90deg, var(--syo-ro), var(--hotarubi), transparent);
+      opacity: 0.78;
+    }
+
+    .scene-inner {
+      width: min(100%, var(--max));
+      margin: 0 auto;
+      display: grid;
+      gap: clamp(24px, 4vw, 54px);
+      align-items: center;
+    }
+
+    .scene-two .scene-inner {
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    }
+
+    .scene-reverse .scene-inner {
+      grid-template-columns: minmax(0, 1.06fr) minmax(0, 0.94fr);
+    }
+
+    #walking .scene-inner {
+      width: min(100%, 1600px);
+    }
+
+    .scene-dark {
+      background:
+        radial-gradient(circle at 82% 18%, rgba(206, 222, 133, 0.12), transparent 15%),
+        radial-gradient(circle at 12% 88%, rgba(90, 121, 116, 0.18), transparent 24%),
+        linear-gradient(145deg, var(--wall), var(--yonaga) 62%, #090b0f);
+      color: var(--paper);
+    }
+
+    .scene-paper {
+      background:
+        radial-gradient(circle at 84% 16%, rgba(198, 147, 111, 0.15), transparent 22%),
+        linear-gradient(180deg, var(--paper), var(--paper-soft));
+      color: var(--aurora);
+    }
+
+    .scene-warm {
+      background:
+        radial-gradient(circle at 16% 20%, rgba(206, 222, 133, 0.3), transparent 24%),
+        linear-gradient(130deg, #f7efd9, #eef0df 52%, #dfe8e3);
+      color: var(--aurora);
+    }
+
+    .scene-ink {
+      background:
+        radial-gradient(circle at 72% 24%, rgba(84, 145, 221, 0.16), transparent 24%),
+        linear-gradient(145deg, #101722, #172536 56%, #0b0f14);
+      color: var(--paper);
+    }
+
+    .scene-copy {
+      display: grid;
+      gap: clamp(13px, 2vh, 20px);
+      align-content: center;
+      min-width: 0;
+    }
+
+    .kicker,
+    .meta-line,
+    .museum-label,
+    .star-code {
+      font-size: 12px;
+      font-weight: 850;
+      line-height: 1.42;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .kicker {
+      color: var(--syo-ro);
+    }
+
+    .scene-dark .kicker,
+    .scene-ink .kicker {
+      color: color-mix(in srgb, var(--hotarubi) 78%, var(--paper));
     }
 
     h1,
     h2,
-    h3,
     p,
     figure {
       margin: 0;
     }
 
-    .page {
-      margin: 0 auto;
-      max-width: 1480px;
-      padding: var(--space-48);
-    }
-
-    .hero {
-      display: grid;
-      gap: var(--space-64);
-      grid-template-columns: minmax(0, 0.9fr) minmax(420px, 0.74fr);
-      min-height: 820px;
-      padding: var(--space-64) 0 var(--space-96);
-    }
-
-    .eyebrow,
-    .section-kicker,
-    .mono,
-    .museum-label {
-      font-family: var(--font-code);
-      font-size: var(--type-micro);
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      line-height: 1.5;
-      text-transform: uppercase;
-    }
-
-    .eyebrow {
-      color: var(--color-kiri-same-gray);
+    h1,
+    h2 {
+      color: currentColor;
+      font-weight: 800;
+      letter-spacing: 0;
+      line-height: 0.98;
+      text-wrap: balance;
     }
 
     h1 {
-      color: var(--color-paper-ivory);
-      font-size: var(--type-display);
-      font-weight: 600;
-      letter-spacing: 0;
-      line-height: var(--leading-tight);
-      margin-top: var(--space-24);
-      max-width: 780px;
-    }
-
-    .hero-lead {
-      color: rgba(243, 234, 216, 0.78);
-      font-size: var(--type-body-lg);
-      line-height: 1.75;
-      margin-top: var(--space-32);
-      max-width: 680px;
-    }
-
-    .hand-line {
-      font-family: var(--font-hand);
-      font-size: var(--type-hand-lg);
-      line-height: 1.05;
-      margin-top: var(--space-48);
-      max-width: 620px;
-    }
-
-    .hand-line span {
-      display: block;
-    }
-
-    .hand-line .teal {
-      color: var(--color-syo-ro-teal);
-    }
-
-    .hand-line .fade {
-      color: var(--color-ink-studio-143);
-      margin-top: var(--space-8);
-    }
-
-    .stamp-row {
-      align-items: center;
-      display: flex;
-      gap: var(--space-16);
-      margin-top: var(--space-32);
-    }
-
-    .stamp-row img {
-      filter: sepia(0.18) saturate(0.82);
-      height: 82px;
-      opacity: 0.88;
-      transform: rotate(-4deg);
-      width: auto;
-    }
-
-    .code-pill {
-      border: 1px solid var(--color-wall-line);
-      border-radius: var(--radius-pill);
-      color: var(--color-platinum-blue-black);
-      padding: var(--space-8) var(--space-16);
-    }
-
-    .star-signal {
-      --signal-color: var(--color-hotarubi-yellow);
-      background: var(--signal-color);
-      border-radius: 50%;
-      box-shadow: 0 0 18px color-mix(in srgb, var(--signal-color) 56%, transparent);
-      display: inline-block;
-      height: 8px;
-      margin-left: var(--space-8);
-      width: 8px;
-    }
-
-    .star-pill .star-signal {
-      flex: 0 0 auto;
-      margin-left: var(--space-8);
-    }
-
-    .photo-wall {
-      align-self: center;
-      justify-self: end;
-      max-width: 520px;
-      width: 100%;
-    }
-
-    .museum-frame {
-      background: #0f141d;
-      border: 1px solid var(--color-wall-line);
-      box-shadow: var(--shadow-wall-photo);
-      padding: var(--space-12);
-    }
-
-    .museum-frame img {
-      aspect-ratio: 3 / 4;
-      object-fit: cover;
-      width: 100%;
-    }
-
-    .museum-label {
-      border-left: 2px solid var(--color-syo-ro-teal);
-      color: var(--color-kiri-same-gray);
-      margin-top: var(--space-16);
-      padding-left: var(--space-12);
-    }
-
-    .paper-wrap {
-      background: var(--color-paper-ivory);
-      color: var(--color-aurora-black);
-      margin: 0 calc(var(--space-48) * -1);
-      padding: var(--space-96) var(--space-48);
-    }
-
-    .paper-inner {
-      display: grid;
-      gap: var(--space-96);
-      margin: 0 auto;
-      max-width: 1480px;
-    }
-
-    .section {
-      display: grid;
-      gap: var(--space-32);
-    }
-
-    .section-head {
-      max-width: 860px;
-    }
-
-    .section-kicker {
-      color: var(--color-platinum-blue-black);
-      margin-bottom: var(--space-12);
+      font-size: clamp(58px, 7vw, 104px);
     }
 
     h2 {
-      color: var(--color-aurora-black);
-      font-size: var(--type-section);
-      font-weight: 600;
-      letter-spacing: 0;
-      line-height: var(--leading-title);
+      font-size: clamp(48px, 5.4vw, 82px);
     }
 
-    .section-desc {
-      color: #4c4942;
-      font-size: var(--type-body-lg);
-      line-height: 1.75;
-      margin-top: var(--space-16);
-      max-width: 820px;
+    .lead {
+      max-width: 760px;
+      color: currentColor;
+      font-size: clamp(24px, 3.1vw, 42px);
+      font-weight: 850;
+      line-height: 1.28;
+      text-wrap: balance;
     }
 
-    .notice {
-      background: rgba(80, 106, 130, 0.1);
-      border: 1px solid rgba(80, 106, 130, 0.18);
-      border-radius: var(--radius-paper);
-      color: #4d5961;
-      padding: var(--space-24);
+    .body-copy {
+      max-width: 680px;
+      color: var(--ink-muted);
+      font-size: clamp(15px, 1.35vw, 18px);
+      font-weight: 650;
+      line-height: 1.72;
     }
 
-    .swatch-grid {
-      display: grid;
-      gap: var(--space-16);
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+    .scene-dark .body-copy,
+    .scene-ink .body-copy {
+      color: var(--light-muted);
     }
 
-    .swatch {
-      background: rgba(255, 255, 255, 0.48);
-      border: 1px solid var(--color-paper-line);
-      border-radius: var(--radius-paper);
-      display: grid;
-      gap: var(--space-16);
-      min-height: 210px;
-      padding: var(--space-24);
-    }
-
-    .ink-chip {
-      border: 1px solid var(--color-paper-line);
-      border-radius: var(--radius-soft);
-      height: 72px;
-    }
-
-    .swatch strong {
-      color: var(--color-aurora-black);
-      display: block;
-      font-size: var(--type-body);
-      font-weight: 600;
-      line-height: 1.3;
-    }
-
-    .swatch span {
-      color: #68645c;
-      display: block;
-      font-family: var(--font-code);
-      font-size: var(--type-micro);
-      line-height: 1.5;
-      margin-top: var(--space-4);
-      text-transform: uppercase;
-    }
-
-    .evidence-note {
-      background: rgba(11, 15, 20, 0.04);
-      border-left: 3px solid var(--color-syo-ro-teal);
-      color: #5f5a50;
-      font-size: var(--type-caption);
-      line-height: 1.65;
-      padding: var(--space-16) var(--space-24);
-    }
-
-    .evidence-note strong {
-      color: var(--color-aurora-black);
-      font-family: var(--font-code);
-      font-size: var(--type-micro);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .role-grid,
-    .component-grid,
-    .do-grid {
-      display: grid;
-      gap: var(--space-24);
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-
-    .role-card,
-    .component-card,
-    .rule-card {
-      background: rgba(255, 255, 255, 0.58);
-      border: 1px solid var(--color-paper-line);
-      border-radius: var(--radius-paper);
-      padding: var(--space-32);
-    }
-
-    .role-card h3,
-    .component-card h3,
-    .rule-card h3 {
-      color: var(--color-aurora-black);
-      font-size: var(--type-card);
-      font-weight: 600;
-      letter-spacing: 0;
-      line-height: 1.25;
-      margin-bottom: var(--space-12);
-    }
-
-    .role-card p,
-    .component-card p,
-    .rule-card p,
-    .rule-card li {
-      color: #504d47;
-      line-height: 1.65;
-    }
-
-    .type-board {
-      background: rgba(255, 255, 255, 0.62);
-      border: 1px solid var(--color-paper-line);
-      display: grid;
-    }
-
-    .type-row {
-      align-items: center;
-      border-bottom: 1px solid var(--color-paper-line);
-      display: grid;
-      gap: var(--space-24);
-      grid-template-columns: 210px minmax(0, 1fr) 300px;
-      padding: var(--space-24);
-    }
-
-    .type-row:last-child {
-      border-bottom: 0;
-    }
-
-    .type-display-line {
-      color: var(--color-aurora-black);
-      font-size: var(--type-hero);
-      font-weight: 600;
-      letter-spacing: 0;
-      line-height: 1.12;
-    }
-
-    .type-body-line {
-      color: #2d2a25;
-      font-size: var(--type-body-lg);
-      line-height: 1.7;
-    }
-
-    .type-hand-line {
-      color: var(--color-syo-ro-teal);
+    .hand {
       font-family: var(--font-hand);
-      font-size: var(--type-hand);
+      font-size: clamp(34px, 4.4vw, 58px);
+      font-weight: 400;
+      line-height: 1.02;
+      color: var(--syo-ro);
+    }
+
+    .hand.small {
+      max-width: 620px;
+      font-size: clamp(28px, 3.2vw, 43px);
       line-height: 1.1;
     }
 
-    .type-label-line {
-      color: var(--color-graphite-gray);
-      font-size: var(--type-caption);
-      line-height: var(--leading-caption);
+    .hand.hana {
+      color: var(--hana);
     }
 
-    .meta {
-      color: #716d65;
-      font-family: var(--font-code);
-      font-size: var(--type-micro);
-      line-height: 1.55;
-      text-transform: uppercase;
+    .hand.gray {
+      color: var(--kiri);
     }
 
-    .dark-demo {
-      background:
-        radial-gradient(circle at 84% 18%, rgba(217, 198, 101, 0.14), transparent 12%),
-        linear-gradient(145deg, var(--color-fountain-wall-black), var(--color-yonaga-blue-black));
-      border: 1px solid var(--color-wall-line);
-      color: var(--color-paper-ivory);
-      display: grid;
-      gap: var(--space-24);
-      grid-template-columns: minmax(0, 1fr) minmax(280px, 0.66fr);
-      min-height: 380px;
-      padding: var(--space-48);
+    .hand.blue {
+      color: color-mix(in srgb, var(--studio) 82%, var(--paper));
     }
 
-    .dark-demo h3 {
-      color: var(--color-paper-ivory);
-      font-size: var(--type-section);
-      letter-spacing: 0;
-      line-height: 1.16;
+    .star-code-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .stamp {
+      width: clamp(76px, 8vw, 118px);
+      filter: sepia(0.12) saturate(0.8) drop-shadow(0 14px 28px rgba(0, 0, 0, 0.26));
+      opacity: 0.9;
+      transform: rotate(-5deg);
+    }
+
+    .star-code {
+      display: inline-flex;
+      align-items: center;
+      min-height: 38px;
+      padding: 0 14px;
+      border: 1px solid currentColor;
+      border-radius: 999px;
+      color: currentColor;
+      opacity: 0.74;
+    }
+
+    .museum-photo {
+      align-self: center;
+      justify-self: center;
+      width: min(100%, 560px);
+    }
+
+    .scene-photo {
+      align-self: center;
+      justify-self: center;
+      width: min(52vw, 760px);
       margin: 0;
     }
 
-    .dark-demo p {
-      color: rgba(243, 234, 216, 0.76);
-      margin-top: var(--space-16);
+    .scene-photo img {
+      display: block;
+      width: 100%;
+      max-height: min(78svh, 760px);
+      object-fit: contain;
+      background: transparent;
+      border: 0;
+      box-shadow: none;
     }
 
-    .mini-photo {
+    .ink-grid .scene-photo {
+      width: min(46vw, 720px);
+    }
+
+    .ink-bottle-photo img {
+      aspect-ratio: 4 / 3;
+      max-height: min(62svh, 620px);
+      object-fit: cover;
+      object-position: 50% 52%;
+    }
+
+    .reading-photo img {
+      object-position: center;
+    }
+
+    .feature-reading-photo {
+      width: min(56vw, 940px);
+    }
+
+    .feature-reading-photo img {
+      width: auto;
+      max-width: 100%;
+      height: min(92svh, 980px);
+      max-height: none;
+      margin-inline: auto;
+      filter: none;
+      opacity: 1;
+    }
+
+    .museum-frame {
+      position: relative;
+      border: 1px solid var(--line-dark);
+      background: rgba(15, 20, 29, 0.82);
+      padding: clamp(8px, 1vw, 12px);
+      box-shadow: 0 28px 80px rgba(0, 0, 0, 0.42);
+    }
+
+    .scene-paper .museum-frame,
+    .scene-warm .museum-frame {
+      border-color: var(--line-paper);
+      background: rgba(255, 255, 255, 0.42);
+      box-shadow: 0 22px 62px rgba(8, 8, 8, 0.16);
+    }
+
+    .museum-frame img {
+      max-height: min(66svh, 620px);
+      object-fit: contain;
+      background: rgba(243, 234, 216, 0.08);
+    }
+
+    .wide-frame img {
+      aspect-ratio: 4 / 3;
+      max-height: min(58svh, 560px);
+      object-fit: cover;
+    }
+
+    .tall-frame {
+      width: min(100%, 470px);
+      margin-inline: auto;
+    }
+
+    .tall-frame img {
+      max-height: min(68svh, 610px);
+    }
+
+    .museum-label {
+      margin-top: 13px;
+      padding-left: 12px;
+      border-left: 2px solid var(--syo-ro);
+      color: var(--light-muted);
+    }
+
+    .scene-paper .museum-label,
+    .scene-warm .museum-label {
+      color: rgba(8, 8, 8, 0.58);
+    }
+
+    .entry-wall {
+      position: relative;
+    }
+
+    .entry-wall::before {
+      content: "";
+      position: absolute;
+      inset: -12% -8%;
+      z-index: -1;
+      background:
+        linear-gradient(90deg, transparent 0 48%, rgba(243, 234, 216, 0.08) 48% 49%, transparent 49%),
+        linear-gradient(0deg, transparent 0 58%, rgba(243, 234, 216, 0.05) 58% 59%, transparent 59%);
+      opacity: 0.55;
+    }
+
+    .morning-photo {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(11, 15, 20, 0.12);
+      border-radius: var(--radius);
+      box-shadow: 0 24px 68px rgba(47, 70, 82, 0.18);
+    }
+
+    .morning-photo img {
+      aspect-ratio: 16 / 10;
+      max-height: min(58svh, 520px);
+      object-fit: cover;
+    }
+
+    .ink-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      align-items: center;
+      justify-self: center;
+      width: min(52vw, 760px);
+    }
+
+    .ink-grid .museum-frame:first-child img {
+      max-height: min(65svh, 600px);
+    }
+
+    .ink-grid .scene-photo {
+      width: 100%;
+    }
+
+    .ink-note {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      color: var(--light-muted);
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 1.7;
+    }
+
+    .ink-note span {
+      display: block;
+      padding: 13px 14px;
+      border-left: 3px solid var(--syo-ro);
+      background: rgba(243, 234, 216, 0.06);
+    }
+
+    .hobby-constellation {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      align-items: center;
+      justify-self: center;
+      width: min(50vw, 720px);
+    }
+
+    .hobby-note {
       align-self: center;
-      border: 1px solid var(--color-wall-line);
-      box-shadow: var(--shadow-wall-photo);
-      padding: var(--space-8);
+      justify-self: center;
+      width: 100%;
+      margin: 0;
     }
 
-    .mini-photo img {
+    .hobby-note img {
+      display: block;
+      width: 100%;
+      max-height: min(52svh, 500px);
+      object-fit: contain;
+      object-position: center;
+    }
+
+    .hobby-tiles {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .hobby-tile {
+      display: block;
+      border: 1px solid var(--line-dark);
+      background: rgba(243, 234, 216, 0.06);
+      color: inherit;
+      text-decoration: none;
+      overflow: hidden;
+      transition: transform 260ms ease, border-color 260ms ease, background 260ms ease;
+    }
+
+    .hobby-tile:hover,
+    .hobby-tile:focus-visible {
+      transform: translateY(-3px);
+      border-color: rgba(206, 222, 133, 0.62);
+      background: rgba(243, 234, 216, 0.1);
+      outline: none;
+    }
+
+    .hobby-tile img {
       aspect-ratio: 4 / 3;
       object-fit: cover;
-      width: 100%;
     }
 
-    .tab-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--space-12);
+    .hobby-tile span {
+      display: block;
+      padding: 9px 11px 10px;
+      color: var(--light-muted);
+      font-size: 12px;
+      font-weight: 850;
+      line-height: 1.35;
     }
 
-    .tab {
-      appearance: none;
-      background: transparent;
-      border: 1px solid rgba(80, 106, 130, 0.28);
-      border-radius: 6px;
-      color: var(--color-platinum-blue-black);
-      cursor: pointer;
-      display: inline-flex;
-      font: inherit;
-      padding: var(--space-8) var(--space-16);
-      text-decoration: none;
-    }
-
-    .tab.active {
-      background: var(--color-platinum-blue-black);
-      color: var(--color-paper-ivory);
-    }
-
-    ul {
-      margin: 0;
-      padding-left: 1.1em;
-    }
-
-    li + li {
-      margin-top: var(--space-8);
-    }
-
-    .footer {
-      color: rgba(243, 234, 216, 0.52);
-      font-size: var(--type-caption);
-      line-height: var(--leading-caption);
-      padding: var(--space-48) 0 0;
-    }
-
-    .star-room-nav {
-      align-items: center;
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--space-16);
-      justify-content: flex-end;
-      margin-bottom: var(--space-48);
-    }
-
-    .star-room-nav > :nth-child(1) {
-      --nav-ink: var(--color-ink-studio-143);
-    }
-
-    .star-room-nav > :nth-child(2) {
-      --nav-ink: var(--color-hana-ikada-pink);
-    }
-
-    .star-room-nav > :nth-child(3) {
-      --nav-ink: var(--color-hotarubi-yellow);
-    }
-
-    .star-room-nav > :nth-child(4) {
-      --nav-ink: var(--color-syo-ro-teal);
-    }
-
-    .star-room-nav a {
-      border-bottom: 2px solid var(--nav-ink, rgba(243, 234, 216, 0.24));
-      color: rgba(243, 234, 216, 0.74);
-      font-size: var(--type-caption);
-      font-weight: 600;
-      line-height: 1.4;
-      padding-bottom: var(--space-4);
-      text-decoration: none;
-    }
-
-    .star-room-nav a:hover {
-      border-color: var(--color-syo-ro-teal);
-      color: var(--color-paper-ivory);
-    }
-
-    .star-map-panel {
-      align-items: center;
-      background: rgba(255, 255, 255, 0.46);
-      border: 1px solid var(--color-paper-line);
-      display: grid;
-      gap: var(--space-32);
-      grid-template-columns: minmax(0, 1fr) minmax(220px, 340px);
-      padding: var(--space-32);
-    }
-
-    .star-map-panel img {
+    .inktrio-shot {
+      width: min(100%, 380px);
       justify-self: center;
-      max-width: 320px;
-      opacity: 0.86;
-      transform: rotate(-5deg);
-      width: 100%;
     }
 
-    .star-list {
-      border-top: 1px solid var(--color-paper-line);
-      padding-top: var(--space-48);
+    .inktrio-shot img {
+      max-height: min(68svh, 640px);
+      border-radius: 20px;
+      object-fit: contain;
+      box-shadow: 0 34px 82px rgba(8, 8, 8, 0.38);
     }
 
-    .star-list-grid,
-    .page-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--space-12);
-    }
-
-    .star-pill,
-    .action-pill {
-      align-items: center;
-      border: 1px solid var(--color-paper-line);
-      border-radius: 6px;
-      color: var(--color-aurora-black);
-      display: inline-flex;
-      font-weight: 700;
-      line-height: 1.2;
-      min-height: 46px;
-      padding: var(--space-12) var(--space-24);
-      text-decoration: none;
-    }
-
-    .star-pill.is-current {
-      border-color: rgba(84, 145, 221, 0.46);
-      box-shadow: inset 0 0 0 1px rgba(84, 145, 221, 0.18);
-    }
-
-    .action-pill.is-work {
-      color: var(--color-platinum-blue-black);
-    }
-
-    .action-pill.is-tool {
-      color: var(--color-syo-ro-teal);
-    }
-
-    .page-actions {
-      margin-top: var(--space-32);
-    }
-
-
-    .star-room-nav button {
-      border: 0;
-      border-bottom: 2px solid var(--nav-ink, rgba(243, 234, 216, 0.24));
-      background: transparent;
-      color: rgba(243, 234, 216, 0.74);
-      cursor: pointer;
-      font: inherit;
-      font-size: var(--type-caption);
-      font-weight: 600;
-      line-height: 1.4;
-      padding: 0 0 var(--space-4);
-      text-decoration: none;
-    }
-
-    .star-room-nav button:hover {
-      border-color: var(--color-syo-ro-teal);
-      color: var(--color-paper-ivory);
-    }
-
-    .room-house-panel,
-    .room-article-panel {
+    .constellation {
       display: grid;
-      gap: var(--space-32);
+      gap: 20px;
+      align-self: stretch;
+      align-content: center;
     }
 
-    .room-house-panel[hidden],
+    .star-nav {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      max-width: 650px;
+    }
+
+    .star-link,
+    .exit-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 8px 10px;
+      border: 1px solid var(--line-paper);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.52);
+      color: var(--aurora);
+      font-size: clamp(13px, 1.1vw, 15px);
+      font-weight: 900;
+      line-height: 1.2;
+      text-align: center;
+      text-decoration: none;
+    }
+
+    .star-link.active {
+      background: color-mix(in srgb, var(--platinum) 88%, var(--syo-ro));
+      color: var(--paper);
+      border-color: color-mix(in srgb, var(--platinum) 70%, var(--paper));
+    }
+
+    .star-signal {
+      width: 9px;
+      height: 9px;
+      margin-left: 8px;
+      border-radius: 999px;
+      background: var(--hotarubi);
+      box-shadow: 0 0 18px rgba(206, 222, 133, 0.55);
+      flex: 0 0 auto;
+    }
+
+    .motion-ready .star-signal {
+      animation: star-signal-breathe 5.8s ease-in-out infinite;
+    }
+
+    .exit-row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .footer-line {
+      color: rgba(8, 8, 8, 0.52);
+      font-size: 15px;
+      font-weight: 850;
+      line-height: 1.5;
+    }
+
+    .doors {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .door-panel {
+      min-height: 132px;
+      padding: 18px;
+      border: 1px solid rgba(243, 234, 216, 0.18);
+      border-radius: var(--radius);
+      background: rgba(243, 234, 216, 0.07);
+      color: var(--paper);
+      text-align: left;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 180ms ease, background-color 180ms ease, border-color 180ms ease;
+    }
+
+    .door-panel:hover,
+    .door-panel:focus-visible {
+      transform: translateY(-2px);
+      border-color: rgba(206, 222, 133, 0.52);
+      background: rgba(243, 234, 216, 0.12);
+      outline: none;
+    }
+
+    .door-panel strong {
+      display: block;
+      color: var(--hotarubi);
+      font-size: clamp(22px, 2.2vw, 30px);
+      line-height: 1.1;
+    }
+
+    .door-panel span {
+      display: block;
+      margin-top: 12px;
+      color: var(--light-muted);
+      font-size: 14px;
+      font-weight: 720;
+      line-height: 1.5;
+    }
+
+    .ink-panel {
+      min-height: 100svh;
+      padding: clamp(54px, 8vh, 92px) var(--pad);
+      background:
+        radial-gradient(circle at 80% 12%, rgba(90, 121, 116, 0.13), transparent 24%),
+        linear-gradient(180deg, var(--paper), var(--paper-soft));
+      color: var(--aurora);
+      scroll-snap-align: start;
+    }
+
+    .ink-panel[hidden],
     .room-article-panel[hidden],
-    .room-article-list[hidden],
-    .room-house-photo-grid[hidden],
     .room-house-photo-detail[hidden] {
       display: none !important;
     }
 
-    .room-house-panel {
-      background:
-        radial-gradient(circle at 88% 0%, rgba(84, 145, 221, 0.08), transparent 24%),
-        var(--color-paper-ivory);
-      color: var(--color-aurora-black);
-      display: block;
-      inset: 0;
-      overflow: auto;
-      padding: clamp(32px, 5vw, 72px);
-      position: fixed;
-      z-index: 80;
-    }
-
-    .room-house-panel > * {
-      margin-left: auto;
-      margin-right: auto;
-      max-width: 1120px;
-      width: 100%;
-    }
-
-    .room-house-panel > * + * {
-      margin-top: var(--space-32);
-    }
-
-    .room-article-panel:not([hidden]) {
-      border-left: 3px solid var(--color-syo-ro-teal);
-      padding-left: var(--space-24);
-    }
-
-    .room-house-panel-header {
-      align-items: start;
-      border-bottom: 1px solid var(--color-paper-line);
+    .ink-panel-inner {
+      width: min(100%, var(--max));
+      margin: 0 auto;
       display: grid;
-      gap: var(--space-16);
-      grid-template-columns: minmax(0, 1fr) auto;
-      margin-bottom: var(--space-24);
-      padding-bottom: var(--space-24);
+      gap: 24px;
     }
 
-    .room-house-panel-header h2 {
-      grid-column: 1 / -1;
-      color: var(--color-aurora-black);
-      font-size: clamp(34px, 5vw, 64px);
-      font-weight: 600;
-      line-height: 1.05;
-    }
-
-    .room-panel-intro {
-      color: #68645c;
-      font-size: var(--type-body);
-      grid-column: 1 / -1;
-      line-height: 1.68;
-      margin: 0;
-      max-width: 640px;
-    }
-
-    .room-house-panel.is-detail-mode > .room-house-panel-header,
-    .room-house-panel.is-detail-mode > .room-list-pager {
-      display: none;
+    .room-house-panel-header,
+    .room-post header {
+      display: grid;
+      gap: 10px;
     }
 
     .room-section-label,
-    .room-card-meta {
-      color: var(--color-platinum-blue-black);
-      font-family: var(--font-code);
-      font-size: var(--type-micro);
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      line-height: 1.5;
+    .room-card-meta,
+    .room-gallery-detail-index {
+      color: var(--platinum);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      line-height: 1.35;
       text-transform: uppercase;
     }
 
-    .room-house-back,
-    .room-article-back,
-    .room-article-bottom-nav button,
-    .room-gallery-detail-button {
-      border: 1px solid var(--color-paper-line);
-      border-radius: 6px;
-      background: rgba(255, 255, 255, 0.44);
-      color: var(--color-aurora-black);
-      cursor: pointer;
-      font: inherit;
-      font-weight: 700;
-      line-height: 1.2;
-      min-height: 42px;
-      padding: var(--space-8) var(--space-16);
+    .room-house-panel-header h2,
+    .room-post h3 {
+      color: var(--aurora);
+      line-height: 1.05;
     }
 
     .room-house-back,
     .room-article-back,
-    .room-article-bottom-nav button,
-    .room-gallery-detail-button {
-      border: 0;
-      border-bottom: 1px solid var(--color-paper-line);
-      border-radius: 0;
-      background: transparent;
-      color: #68645c;
-      min-height: 30px;
-      padding: 0 0 4px;
-    }
-
-    .room-house-back {
-      align-self: start;
-      justify-self: end;
-    }
-
-    .room-house-back:hover,
-    .room-article-back:hover,
-    .room-article-bottom-nav button:hover,
-    .room-gallery-detail-button:hover {
-      border-bottom-color: var(--color-ink-studio-143);
-      color: var(--color-aurora-black);
-    }
-
-    .room-sort-control {
-      align-items: center;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      justify-content: flex-end;
-      margin: 0 0 18px;
-    }
-
-    .room-sort-control span {
-      color: #8c8579;
-      font-size: var(--type-caption);
-      font-weight: 600;
-      line-height: var(--leading-caption);
-    }
-
-    .room-sort-control button {
-      border: 0;
-      border-bottom: 1px solid transparent;
-      border-radius: 0;
-      background: transparent;
-      color: #8c8579;
+    .room-gallery-detail-button,
+    .room-article-link {
+      min-height: 44px;
+      border: 1px solid rgba(8, 8, 8, 0.14);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.48);
+      color: var(--aurora);
+      font-weight: 900;
       cursor: pointer;
-      font: inherit;
-      font-size: var(--type-caption);
-      font-weight: 600;
-      line-height: 1.2;
-      min-height: 26px;
-      padding: 0 0 4px;
     }
 
-    .room-sort-control button[aria-pressed="true"] {
-      border-bottom-color: var(--color-ink-studio-143);
-      color: var(--color-aurora-black);
-    }
-
-    .room-sort-control button:hover {
-      color: var(--color-aurora-black);
-    }
-
-    .room-house-panel.is-detail-mode > .room-sort-control,
-    .room-house-panel.is-photo-detail-mode > .room-sort-control {
-      display: none;
+    .room-house-back,
+    .room-article-back,
+    .room-gallery-detail-button {
+      width: fit-content;
+      padding: 0 14px;
     }
 
     .room-article-list {
-      border-top: 1px solid var(--color-paper-line);
-      counter-reset: room-article;
       display: grid;
-      gap: 0;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 10px;
     }
 
     .room-article-link {
-      align-items: start;
-      background: transparent;
-      border: 0;
-      border-bottom: 1px solid var(--color-paper-line);
-      border-radius: 0;
-      color: var(--color-aurora-black);
-      cursor: pointer;
-      display: grid;
-      font: inherit;
-      gap: 6px var(--space-24);
-      grid-template-columns: minmax(32px, auto) minmax(0, 1fr) auto;
-      grid-template-rows: auto auto;
-      min-height: 86px;
-      padding: var(--space-24) 0;
+      padding: 14px;
       text-align: left;
-      width: 100%;
-    }
-
-    .room-article-link::before {
-      color: #a79f93;
-      content: counter(room-article, decimal-leading-zero);
-      counter-increment: room-article;
-      font-family: var(--font-code);
-      font-size: var(--type-caption);
-      font-weight: 600;
-      grid-column: 1;
-      grid-row: 1 / span 2;
-      letter-spacing: 0.06em;
-      line-height: 1.45;
-      padding-top: 0.2em;
     }
 
     .room-article-link strong {
       display: block;
-      font-size: clamp(20px, 2.2vw, 30px);
-      font-weight: 600;
-      grid-column: 2;
-      grid-row: 1;
       line-height: 1.35;
     }
 
-    .room-article-note {
-      color: #756e63;
-      display: block;
-      font-size: var(--type-caption);
-      grid-column: 2;
-      grid-row: 2;
-      line-height: var(--leading-caption);
-    }
-
-    .room-article-link::after {
-      align-self: center;
-      color: #8c8579;
-      content: "→";
-      font-family: var(--font-code);
-      font-size: var(--type-body-lg);
-      font-weight: 600;
-      grid-column: 3;
-      grid-row: 1 / span 2;
-      line-height: 1;
-    }
-
-    .room-article-link:hover strong,
-    .room-article-link:hover::after {
-      color: var(--color-platinum-blue-black);
-    }
-
-    .room-list-pager {
-      align-items: center;
-      color: #68645c;
-      display: flex;
-      flex-wrap: wrap;
-      font-size: var(--type-caption);
-      gap: var(--space-12);
-      justify-content: flex-end;
-      margin-top: var(--space-16);
-    }
-
-    .room-list-pager button {
-      border: 1px solid var(--color-paper-line);
-      border-radius: 6px;
-      background: rgba(255, 255, 255, 0.44);
-      color: #68645c;
-      font: inherit;
-      min-height: 36px;
-      padding: var(--space-8) var(--space-12);
-    }
-
-    .room-list-pager button:disabled {
-      cursor: not-allowed;
-      opacity: 0.48;
-    }
-
-    .room-article-link.is-active,
-    .room-house-photo.is-active {
-      color: var(--color-platinum-blue-black);
-    }
-
-    .fountain-essay-header,
-    .shared-memory-copy,
-    .fountain-essay-body {
-      display: grid;
-      gap: var(--space-16);
-    }
-
-    .fountain-essay-header h3,
-    .room-article-panel h3 {
-      color: var(--color-aurora-black);
-      font-size: var(--type-section);
-      font-weight: 600;
-      line-height: var(--leading-title);
-    }
-
+    .room-card-list,
+    .room-article-panel,
     .fountain-essay-body,
     .shared-memory-copy {
-      color: #2d2a25;
-      font-size: var(--type-body-lg);
-      line-height: 1.78;
+      display: grid;
+      gap: 18px;
+    }
+
+    .room-article-panel {
       max-width: 980px;
+      padding: clamp(22px, 4vw, 42px);
+      border: 1px solid rgba(8, 8, 8, 0.1);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.42);
     }
 
-    .shared-memory-ink {
-      border-left: 2px solid var(--color-ink-studio-143);
-      color: var(--color-platinum-blue-black);
-      font-size: var(--type-caption);
-      line-height: 1.65;
-      padding-left: var(--space-16);
+    .room-article-panel p,
+    .room-gallery-detail-copy {
+      color: rgba(8, 8, 8, 0.74);
+      font-size: clamp(15px, 1.25vw, 18px);
+      font-weight: 650;
+      line-height: 1.78;
     }
 
-    .fountain-essay-sign {
-      color: var(--color-syo-ro-teal);
-      font-family: var(--font-hand);
-      font-size: var(--type-hand);
-      line-height: 1.1;
+    .shared-memory-layout,
+    .fountain-essay-split {
+      display: grid;
+      grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+      gap: 22px;
+      align-items: start;
+    }
+
+    .fountain-essay-split {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     .fountain-essay-figure,
     .shared-memory-figure,
-    .room-house-photo {
-      display: grid;
-      gap: var(--space-12);
-      margin: var(--space-16) 0;
+    .room-house-photo,
+    .room-gallery-detail-photo {
+      margin: 0;
+    }
+
+    .fountain-essay-figure img,
+    .shared-memory-figure img,
+    .room-gallery-detail-photo {
+      max-height: 72svh;
+      object-fit: contain;
+      border-radius: var(--radius);
+      background: rgba(8, 8, 8, 0.04);
     }
 
     .fountain-essay-figure figcaption,
     .shared-memory-figure figcaption,
     .room-house-photo figcaption {
-      color: #68645c;
-      font-size: var(--type-caption);
-      line-height: var(--leading-caption);
+      margin-top: 9px;
+      color: rgba(8, 8, 8, 0.56);
+      font-size: 13px;
+      font-weight: 740;
+      line-height: 1.55;
     }
 
-    .room-photo-image,
-    .shared-memory-photo,
-    .fountain-essay-photo {
-      height: auto;
-      width: 100%;
-    }
-
-    .fountain-essay-split,
-    .shared-memory-layout,
-    .shared-memory-gallery,
-    .shared-memory-sequence,
     .room-house-photo-grid {
       display: grid;
-      gap: var(--space-24);
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .shared-memory-layout {
-      align-items: start;
-    }
-
-    .room-video iframe {
-      aspect-ratio: 16 / 9;
-      display: block;
-      width: 100%;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
     }
 
     .room-house-photo {
-      border: 0;
-      background: transparent;
+      padding: 10px;
+      border: 1px solid rgba(8, 8, 8, 0.1);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.44);
       cursor: pointer;
-      padding: 0;
     }
 
     .room-house-photo-thumb {
       aspect-ratio: 4 / 3;
-      border-radius: 4px;
       object-fit: cover;
+      border-radius: calc(var(--radius) - 2px);
     }
 
     .room-house-photo-detail {
-      border-left: 3px solid var(--color-ink-studio-143);
       display: grid;
-      gap: var(--space-16);
-      margin-top: var(--space-24);
-      max-width: 980px;
-      padding-left: var(--space-24);
+      grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+      gap: 22px;
+      align-items: start;
+      padding: clamp(20px, 3vw, 32px);
+      border: 1px solid rgba(8, 8, 8, 0.1);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.46);
     }
 
     .room-gallery-detail-actions,
-    .room-gallery-detail-nav,
-    .room-article-bottom-nav {
+    .room-gallery-detail-nav {
       display: flex;
       flex-wrap: wrap;
-      gap: var(--space-12);
+      gap: 10px;
     }
 
-    .room-gallery-detail-index,
-    .room-gallery-detail-copy {
-      color: #4c4942;
-      font-size: var(--type-body-lg);
-      line-height: 1.7;
+    .room-gallery-detail-actions {
+      grid-column: 1 / -1;
     }
 
-    .room-gallery-detail-photo {
-      background: transparent;
-      border: 0;
-      border-radius: 4px;
-      box-shadow: none;
-      height: auto;
-      padding: 0;
-      width: 100%;
+    .room-gallery-detail-nav {
+      grid-column: 1 / -1;
+      justify-content: space-between;
     }
 
-    @media (max-width: 760px) {
-      html,
-      body {
-        background: var(--color-fountain-wall-black);
+    .design-principles {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .design-principles p {
+      margin: 0;
+      padding: 18px;
+      border: 1px solid rgba(243, 234, 216, 0.16);
+      background: rgba(243, 234, 216, 0.06);
+      color: var(--light-muted);
+      font-size: 15px;
+      font-weight: 750;
+      line-height: 1.65;
+    }
+
+    .design-principles strong {
+      display: block;
+      margin-bottom: 7px;
+      color: var(--hotarubi);
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .design-archive {
+      display: grid;
+      gap: clamp(28px, 5vw, 58px);
+      margin-top: 8px;
+    }
+
+    .design-archive-section {
+      display: grid;
+      gap: 18px;
+      padding: clamp(20px, 4vw, 38px);
+      border: 1px solid rgba(8, 8, 8, 0.1);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.42);
+    }
+
+    .design-archive-section .section-desc,
+    .design-archive-section .notice,
+    .design-archive-section li,
+    .design-archive-section p {
+      color: rgba(8, 8, 8, 0.68);
+      font-size: clamp(14px, 1.1vw, 17px);
+      font-weight: 660;
+      line-height: 1.68;
+    }
+
+    .design-archive-section h3 {
+      color: var(--aurora);
+      font-size: clamp(18px, 1.8vw, 24px);
+      line-height: 1.2;
+    }
+
+    .design-archive-section .section-kicker,
+    .design-archive-section .mono,
+    .design-archive-section .meta {
+      color: var(--platinum);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      line-height: 1.4;
+      text-transform: uppercase;
+    }
+
+    .swatch-grid,
+    .component-grid,
+    .do-grid,
+    .star-list-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .swatch,
+    .component-card,
+    .rule-card,
+    .star-pill,
+    .action-pill {
+      border: 1px solid rgba(8, 8, 8, 0.1);
+      border-radius: var(--radius);
+      background: rgba(248, 242, 232, 0.68);
+    }
+
+    .swatch {
+      display: grid;
+      grid-template-columns: 42px minmax(0, 1fr);
+      gap: 12px;
+      align-items: center;
+      padding: 12px;
+    }
+
+    .ink-chip {
+      width: 42px;
+      aspect-ratio: 1;
+      border: 1px solid rgba(8, 8, 8, 0.18);
+      border-radius: 50%;
+    }
+
+    .swatch strong,
+    .swatch span,
+    .star-pill,
+    .action-pill {
+      display: block;
+      color: rgba(8, 8, 8, 0.76);
+      font-size: 13px;
+      font-weight: 860;
+      line-height: 1.45;
+      text-decoration: none;
+    }
+
+    .type-board,
+    .tab-row,
+    .page-actions {
+      display: grid;
+      gap: 10px;
+    }
+
+    .type-row {
+      display: grid;
+      grid-template-columns: 120px minmax(0, 1fr) 150px;
+      gap: 14px;
+      align-items: center;
+      padding: 14px 0;
+      border-top: 1px solid rgba(8, 8, 8, 0.1);
+    }
+
+    .type-display-line {
+      color: var(--aurora);
+      font-size: clamp(38px, 4vw, 62px);
+      font-weight: 920;
+      line-height: 1.05;
+    }
+
+    .type-body-line,
+    .type-label-line {
+      color: rgba(8, 8, 8, 0.68);
+      font-weight: 700;
+    }
+
+    .type-hand-line {
+      color: var(--studio);
+      font-family: var(--font-hand);
+      font-size: clamp(32px, 4vw, 58px);
+      line-height: 1.12;
+    }
+
+    .component-card,
+    .rule-card {
+      padding: 18px;
+    }
+
+    .tab-row {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      margin-top: 12px;
+    }
+
+    .tab,
+    .star-pill,
+    .action-pill {
+      min-height: 44px;
+      padding: 12px 14px;
+      text-align: center;
+    }
+
+    .tab {
+      border: 1px solid rgba(8, 8, 8, 0.14);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.5);
+      color: rgba(8, 8, 8, 0.76);
+      font-weight: 900;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .tab.active,
+    .star-pill.is-current {
+      background: rgba(206, 222, 133, 0.38);
+    }
+
+    .dark-demo {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(220px, 0.55fr);
+      gap: 18px;
+      align-items: center;
+      padding: 18px;
+      border-radius: var(--radius);
+      background: var(--wall);
+    }
+
+    .dark-demo h3,
+    .dark-demo p {
+      color: var(--paper);
+    }
+
+    .mini-photo img {
+      max-height: 360px;
+      object-fit: contain;
+      border-radius: var(--radius);
+    }
+
+    .rule-card ul {
+      margin: 12px 0 0;
+      padding-left: 18px;
+    }
+
+    .page-actions {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .motion-ready .hero-photo-wash {
+      animation: ink-wash-arrive 1400ms ease-out both;
+    }
+
+    .motion-ready .hero-photo-full img {
+      animation: paper-arrive 1500ms cubic-bezier(0.19, 1, 0.22, 1) both;
+    }
+
+    .motion-ready .hero-copy > * {
+      opacity: 0;
+      transform: translateY(18px);
+      animation: ink-copy-arrive 820ms ease-out both;
+    }
+
+    .motion-ready .hero-copy > :nth-child(1) {
+      animation-delay: 180ms;
+    }
+
+    .motion-ready .hero-copy > :nth-child(2) {
+      animation-delay: 300ms;
+    }
+
+    .motion-ready .hero-copy > :nth-child(3) {
+      animation-delay: 470ms;
+    }
+
+    .motion-ready .hero-copy > :nth-child(4) {
+      animation-delay: 640ms;
+    }
+
+    .motion-ready .hero-copy > :nth-child(5) {
+      animation-delay: 780ms;
+    }
+
+    .motion-ready .ink-line {
+      transform: scaleX(0);
+      animation: ink-line-draw 1200ms 520ms ease-out both;
+    }
+
+    .motion-ready .hero-stamp {
+      opacity: 0;
+      transform: rotate(-12deg) scale(1.18);
+      animation: stamp-settle 720ms 920ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+    }
+
+    .motion-ready .scene:not(.hero-scene) .scene-copy,
+    .motion-ready .scene:not(.hero-scene) figure,
+    .motion-ready .ink-grid,
+    .motion-ready .hobby-constellation,
+    .motion-ready .doors,
+    .motion-ready .inktrio-shot {
+      opacity: 0;
+      transform: translateY(22px);
+      filter: blur(5px);
+      transition:
+        opacity 780ms ease,
+        transform 780ms cubic-bezier(0.19, 1, 0.22, 1),
+        filter 780ms ease;
+    }
+
+    .motion-ready .scene.is-ink-live .scene-copy,
+    .motion-ready .scene.is-ink-live figure,
+    .motion-ready .scene.is-ink-live .ink-grid,
+    .motion-ready .scene.is-ink-live .hobby-constellation,
+    .motion-ready .scene.is-ink-live .doors,
+    .motion-ready .scene.is-ink-live .inktrio-shot {
+      opacity: 1;
+      transform: none;
+      filter: none;
+    }
+
+    .motion-ready .scene.is-ink-live .ink-note span {
+      animation: dry-chip 2100ms ease both;
+    }
+
+    .motion-ready .scene.is-ink-live .ink-note span:nth-child(2) {
+      animation-delay: 180ms;
+    }
+
+    .motion-ready .scene.is-ink-live .ink-note span:nth-child(3) {
+      animation-delay: 360ms;
+    }
+
+    html[data-transition="ink-panel"]::view-transition-old(root) {
+      animation: panel-fade-out 260ms ease both;
+    }
+
+    html[data-transition="ink-panel"]::view-transition-new(root) {
+      animation: panel-ink-in 520ms cubic-bezier(0.19, 1, 0.22, 1) both;
+    }
+
+    @keyframes star-signal-breathe {
+      0%,
+      100% {
+        opacity: 0.55;
+        transform: scale(0.92);
+        box-shadow: 0 0 10px rgba(206, 222, 133, 0.25);
       }
 
-      .page {
-        background: var(--color-paper-ivory);
-        max-width: 100%;
-        padding: 0;
+      48% {
+        opacity: 1;
+        transform: scale(1.18);
+        box-shadow: 0 0 22px rgba(206, 222, 133, 0.78);
+      }
+    }
+
+    @keyframes ink-wash-arrive {
+      from {
+        opacity: 0;
+        filter: blur(30px) saturate(0.4) brightness(0.46);
+        transform: scale(1.18);
+      }
+    }
+
+    @keyframes paper-arrive {
+      from {
+        opacity: 0;
+        filter: blur(10px) brightness(0.78);
+        transform: scale(0.965);
+      }
+    }
+
+    @keyframes ink-copy-arrive {
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    @keyframes ink-line-draw {
+      to {
+        transform: scaleX(1);
+      }
+    }
+
+    @keyframes stamp-settle {
+      68% {
+        opacity: 1;
+        transform: rotate(-4deg) scale(0.96);
+      }
+
+      100% {
+        opacity: 0.92;
+        transform: rotate(-6deg) scale(1);
+      }
+    }
+
+    @keyframes dry-chip {
+      0% {
+        color: rgba(243, 234, 216, 0.44);
+        border-color: rgba(206, 222, 133, 0.18);
+      }
+
+      55% {
+        color: var(--hotarubi);
+        border-color: rgba(206, 222, 133, 0.72);
+      }
+    }
+
+    @keyframes panel-fade-out {
+      to {
+        opacity: 0.62;
+        filter: blur(3px);
+      }
+    }
+
+    @keyframes panel-ink-in {
+      from {
+        opacity: 0;
+        clip-path: inset(0 0 100% 0);
+        filter: blur(8px);
+      }
+    }
+
+    @media (max-width: 940px) {
+      html {
+        scroll-snap-type: none;
+      }
+
+      .scene {
+        block-size: auto;
+        min-block-size: 100svh;
+        padding: 58px 22px;
+        overflow: visible;
+      }
+
+      .scene-two .scene-inner,
+      .scene-reverse .scene-inner,
+      .ink-grid,
+      .hobby-constellation,
+      .shared-memory-layout,
+      .fountain-essay-split,
+      .room-house-photo-detail {
+        grid-template-columns: 1fr;
+      }
+
+      .scene-reverse .scene-copy {
+        order: -1;
+      }
+
+      .scene-dots {
+        display: none;
+      }
+
+      .museum-frame img,
+      .tall-frame img,
+      .ink-grid .museum-frame:first-child img,
+      .ink-grid,
+      .scene-photo,
+      .scene-photo img,
+      .ink-grid .scene-photo,
+      .hobby-constellation,
+      .hobby-note,
+      .hobby-note img,
+      .inktrio-shot img {
+        max-height: none;
         width: 100%;
       }
 
-      .star-room-nav {
-        background:
-          radial-gradient(circle at 88% 0%, rgba(84, 145, 221, 0.18), transparent 26%),
-          linear-gradient(145deg, var(--color-fountain-wall-black), var(--color-yonaga-blue-black));
-        gap: 16px;
-        justify-content: flex-start;
-        margin: 0;
-        padding: 16px 20px 8px;
+      .feature-reading-photo img {
+        height: auto;
       }
 
-      .star-room-nav a,
-      .star-room-nav button {
-        font-size: 12px;
-        min-height: 28px;
-      }
-
-      .hero,
-      .dark-demo {
+      .hobby-tiles,
+      .star-nav,
+      .exit-row,
+      .doors,
+      .design-principles,
+      .swatch-grid,
+      .component-grid,
+      .do-grid,
+      .star-list-grid,
+      .page-actions,
+      .type-row,
+      .dark-demo,
+      .room-article-list,
+      .room-house-photo-grid {
         grid-template-columns: 1fr;
       }
 
-      .hero {
-        background:
-          radial-gradient(circle at 84% 12%, rgba(84, 145, 221, 0.16), transparent 18%),
-          linear-gradient(145deg, var(--color-fountain-wall-black), var(--color-yonaga-blue-black));
-        color: var(--color-paper-ivory);
-        gap: 24px;
-        min-height: 0;
-        padding: 30px 22px 32px;
+      .hobby-tiles {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
-      .eyebrow {
-        font-size: 9px;
+      .hero-photo-full {
+        place-items: start center;
+        padding: 22px 14px 34svh;
+      }
+
+      .hero-photo-full img {
+        max-width: 96vw;
+        max-height: 72svh;
+      }
+
+      .hero-scrim {
+        background:
+          linear-gradient(180deg, rgba(7, 9, 13, 0.06) 0%, rgba(7, 9, 13, 0.28) 48%, rgba(7, 9, 13, 0.9) 100%),
+          linear-gradient(90deg, rgba(7, 9, 13, 0.36), rgba(7, 9, 13, 0.08), rgba(7, 9, 13, 0.32));
+      }
+
+      .hero-copy {
+        align-content: end;
+        padding: 64px 22px 42px;
+      }
+
+      .door-panel {
+        min-height: 92px;
+      }
+
+    }
+
+    @media (min-width: 941px) and (max-height: 780px) {
+      .scene {
+        padding-top: 42px;
+        padding-bottom: 42px;
       }
 
       h1 {
-        font-size: clamp(30px, 8vw, 38px);
-        margin-top: 14px;
-      }
-
-      .hero-lead {
-        font-size: 13px;
-        line-height: 1.55;
-        margin-top: 16px;
-      }
-
-      .hand-line {
-        font-size: 26px;
-        margin-top: 20px;
-      }
-
-      .stamp-row {
-        gap: 10px;
-        margin-top: 16px;
-      }
-
-      .stamp-row img {
-        height: 42px;
-      }
-
-      .code-pill {
-        font-size: 8px;
-        padding: 5px 9px;
-      }
-
-      .photo-wall {
-        justify-self: start;
-        max-width: 210px;
-      }
-
-      .museum-frame {
-        padding: 7px;
-      }
-
-      .museum-label {
-        font-size: 7px;
-        margin-top: 7px;
-        padding-left: 7px;
-      }
-
-      .paper-wrap {
-        margin: 0;
-        padding: 34px 20px 38px;
-      }
-
-      .paper-inner {
-        gap: 38px;
-      }
-
-      .section {
-        gap: 16px;
-      }
-
-      .section-kicker {
-        font-size: 9px;
-        margin-bottom: 6px;
+        font-size: clamp(52px, 6vw, 82px);
       }
 
       h2 {
-        font-size: 23px;
+        font-size: clamp(42px, 4.7vw, 66px);
       }
 
-      .section-desc,
-      .notice,
-      .evidence-note,
-      .role-card p,
-      .component-card p,
-      .rule-card p,
-      .rule-card li,
-      .dark-demo p {
-        font-size: 13px;
-        line-height: 1.55;
+      .lead {
+        font-size: clamp(22px, 2.5vw, 34px);
       }
 
-      .notice,
-      .evidence-note {
-        padding: 12px 14px;
-      }
-
-      .swatch-grid,
-      .room-house-photo-grid,
-      .fountain-essay-split,
-      .shared-memory-layout,
-      .shared-memory-gallery,
-      .shared-memory-sequence,
-      .star-map-panel {
-        grid-template-columns: 1fr;
-      }
-
-      .swatch-grid {
-        gap: 10px;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .swatch {
-        border-radius: 8px;
-        gap: 8px;
-        min-height: 70px;
-        padding: 10px;
-      }
-
-      .ink-chip {
-        height: 32px;
-      }
-
-      .swatch strong {
-        font-size: 11px;
-      }
-
-      .swatch span {
-        font-size: 7px;
-      }
-
-      .type-row {
-        gap: 8px;
-        grid-template-columns: 1fr;
-        padding: 12px;
-      }
-
-      .type-display-line {
-        font-size: 28px;
-      }
-
-      .type-body-line {
-        font-size: 13px;
-      }
-
-      .type-hand-line {
-        font-size: 28px;
-      }
-
-      .component-grid,
-      .do-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .role-card,
-      .component-card,
-      .rule-card {
-        padding: 18px;
-      }
-
-      .role-card h3,
-      .component-card h3,
-      .rule-card h3 {
-        font-size: 18px;
-      }
-
-      .dark-demo {
-        min-height: 0;
-        padding: 20px;
-      }
-
-      .dark-demo h3 {
-        font-size: 22px;
-      }
-
-      .room-house-panel {
-        padding: 22px 18px;
-      }
-
-      .room-house-panel-header {
-        grid-template-columns: 1fr;
-      }
-
-      .room-article-panel:not([hidden]),
-      .room-house-photo-detail {
-        padding-left: 14px;
-      }
-
-      .fountain-essay-header h3,
-      .room-article-panel h3 {
-        font-size: 24px;
-      }
-
-      .fountain-essay-body,
-      .shared-memory-copy,
-      .room-gallery-detail-copy {
+      .body-copy {
         font-size: 15px;
-        line-height: 1.72;
+        line-height: 1.62;
       }
 
-      .room-gallery-detail-photo {
-        padding: 6px;
+      .museum-frame img,
+      .tall-frame img {
+        max-height: 58svh;
       }
 
-      .star-map-panel {
-        padding: 20px;
+      .hobby-note img,
+      .scene-photo img,
+      .inktrio-shot img,
+      .fountain-essay-figure img,
+      .shared-memory-figure img {
+        max-height: 62svh;
       }
 
-      .star-map-panel img {
-        max-width: 220px;
+      .feature-reading-photo img {
+        height: min(88svh, 900px);
+        max-height: none;
       }
 
-      .star-list-grid,
-      .page-actions {
-        gap: 8px;
-      }
-
-      .star-pill,
-      .action-pill {
-        font-size: 12px;
-        min-height: 38px;
-        padding: 8px 12px;
-      }
-
-      .footer {
-        background: var(--color-fountain-wall-black);
-        margin: 0;
-        padding: 22px 20px;
-      }
-    }
-    /* Photo room sizing: desktop 4, tablet 3, mobile 2. */
-    .room-house-photo-grid {
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: clamp(10px, 1.5vw, 18px);
-      max-width: none;
-    }
-
-    .room-house-photo-grid figure,
-    .room-house-photo {
-      margin: 0;
-    }
-
-    .room-house-photo-grid img,
-    .room-house-photo img,
-    .room-house-photo-thumb {
-      aspect-ratio: 4 / 3;
-      object-fit: cover;
-      width: 100%;
-    }
-
-    @media (min-width: 641px) and (max-width: 1024px) {
-      .room-house-photo-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+      .star-link,
+      .exit-link {
+        min-height: 52px;
       }
     }
 
-    @media (max-width: 640px) {
-      .room-house-photo-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+        scroll-snap-type: none;
       }
 
-      .room-sort-control {
-        justify-content: flex-start;
+      *,
+      *::before,
+      *::after {
+        transition-duration: 0.001ms !important;
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
       }
-
-      .room-sort-control button {
-        flex: 0 0 auto;
-      }
     }
-
-    .room-context-nav {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--space-2, 10px);
-      align-items: center;
-      margin-bottom: var(--space-4, 18px);
-    }
-
-    .room-context-nav .room-gallery-detail-button[aria-current="page"] {
-      border-color: currentColor;
-      box-shadow: inset 0 0 0 1px currentColor;
-    }
-
-    .room-gallery-detail-actions.is-index-only {
-      justify-content: flex-end;
-      margin-top: var(--space-2, 10px);
-    }
-
   </style>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TEBKMGWPQS"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-TEBKMGWPQS');
-    </script>
-  </head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TEBKMGWPQS"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-TEBKMGWPQS");
+  </script>
+</head>
 <body>
-  <main class="page room-house-page" data-room-context-nav="true" data-article-house-target="fountain-writing-room" data-photo-house-target="fountain-photo-room" data-map-house-target="fountain-map-room" data-star-list-target="star-list" data-article-nav-label="문장 이동" data-article-list-label="문장" data-article-prev-label="이전 문장" data-article-next-label="다음 문장" data-photo-list-label="장면">
-    <nav class="star-room-nav room-house-nav" aria-label="만년필별 이동">
-      <button class="room-house-door" type="button" data-house-target="fountain-writing-room">문장</button>
-      <button class="room-house-door" type="button" data-house-target="fountain-photo-room">장면</button>
-      <button class="room-house-door" type="button" data-house-target="fountain-map-room">지도</button>
-      <a href="#star-list">별자리</a>
-    </nav>
+  <nav class="scene-dots" aria-label="만년필별 장면 이동">
+    <a href="#ink" class="is-active" aria-label="한 장의 잉크"></a>
+    <a href="#morning" aria-label="아침의 문"></a>
+    <a href="#dry" aria-label="마른 뒤의 색"></a>
+    <a href="#walking" aria-label="아직 걷는 중"></a>
+    <a href="#human" aria-label="사람이 만든 것"></a>
+    <a href="#hobby" aria-label="취미라는 것"></a>
+    <a href="#inside" aria-label="별 안으로"></a>
+    <a href="#inktrio" aria-label="InkTrio 테스트 중"></a>
+  </nav>
 
-    <section class="hero" aria-label="Fountain Pens Star hero">
-      <div>
-        <p class="eyebrow">만년필별 · LPH-B613-01 · HAM MEDIA 별자리</p>
-        <h1>검은 전시 벽 위에 걸린 만년필의 기억</h1>
-        <p class="hero-lead">만년필별에는 잉크로 꺼낸 생각과, 그때의 공기를 품은 장면들이 조용히 남아 있습니다.</p>
-        <div class="hand-line" aria-label="handwritten phrase">
-          <span class="teal">잉크는 처음 펜에서 나왔을 때와</span>
-          <span class="fade">마른 뒤의 색이 다르다.</span>
-        </div>
-        <div class="stamp-row">
-          <img src="../assets/images/fountain-pens/stamps/lph-b613-01-fountain-pen-stamp.png" alt="LPH-B613-01 fountain pen arrival stamp" />
-          <span class="code-pill mono">LPH-B613-01 <span class="star-signal" aria-hidden="true"></span></span>
+  <main class="room-house-page" data-room-context-nav="false" data-article-house-target="fountain-writing-room" data-photo-house-target="fountain-photo-room" data-star-list-target="inktrio">
+    <section class="scene hero-scene" id="ink" data-dot="0" aria-labelledby="ink-title">
+      <div class="hero-photo-wash" aria-hidden="true">
+        <img src="../assets/images/fountain-pens/ink-five-pens-five-inks.jpg" alt="">
+      </div>
+      <figure class="hero-photo-full">
+        <img src="../assets/images/fountain-pens/ink-five-pens-five-inks.jpg" alt="5개의 펜과 5개의 잉크 조합을 한 종이에 적은 손글씨 기록">
+      </figure>
+      <div class="hero-scrim" aria-hidden="true"></div>
+      <div class="hero-grain" aria-hidden="true"></div>
+      <div class="hero-copy">
+        <p class="kicker">LPH-B613-01 · Fountain Pens Star</p>
+        <h1 id="ink-title">한 장의 잉크</h1>
+        <span class="ink-line" aria-hidden="true"></span>
+        <p class="lead">5개의 펜에 5개의 잉크를 한 종이에 담았다.</p>
+        <p class="body-copy">만년필별은 잉크와 펜과 손글씨를 통해 마음에 쌓인 것을 밖으로 꺼내고, 시간이 지나 달라지는 색을 바라보는 별이다.</p>
+        <div class="hero-code-row">
+          <img class="hero-stamp" src="../assets/images/fountain-pens/stamps/lph-b613-01-fountain-pen-stamp.png" alt="LPH-B613-01 만년필별 도착 스탬프">
+          <span class="hero-code">만년필별 <span class="star-signal" aria-hidden="true"></span></span>
         </div>
       </div>
-      <figure class="photo-wall" data-tags="만년필별, 아침 햇살, 티, 필사, 행복한 하루, 대표 사진">
-        <div class="museum-frame">
-          <img src="../assets/images/fountain-pens/hero-window-table.jpg" alt="아침 햇살과 차, 필사 노트가 놓인 테이블" />
-        </div>
-        <figcaption class="museum-label">아침 햇살, 티, 그리고 필사.</figcaption>
-      </figure>
     </section>
 
-    <div class="paper-wrap">
-      <div class="paper-inner">
-        <section class="section">
-          <div class="section-head">
-            <p class="section-kicker">01 · 색의 방향</p>
-            <h2>색은 장식이 아니라, 시간이 지난 잉크의 상태다</h2>
-            <p class="section-desc">잉크색은 많아도 된다. 다만 색마다 머무는 자리가 있어야 한다. 제목, 코드, 스탬프, 손글씨, 캡션처럼 각자의 역할이 있을 때만 오래 남는다.</p>
-          </div>
-          <div class="notice">
-            병에 담긴 색보다 종이에 남은 색을 먼저 봤습니다. 처음보다 마른 뒤의 색, 선명함보다 시간이 지난 농도가 이 별에 더 오래 어울립니다.
-          </div>
-        </section>
+    <section class="scene scene-warm scene-reverse" id="morning" data-dot="1" aria-labelledby="morning-title">
+      <div class="scene-inner">
+        <figure class="morning-photo">
+          <img src="../assets/images/fountain-pens/hero-window-table.jpg" alt="아침 햇살이 비치는 테이블 위 차와 필사 노트, 만년필">
+        </figure>
+        <div class="scene-copy">
+          <p class="kicker">Scene 02</p>
+          <h2 id="morning-title">아침의 문</h2>
+          <p class="lead">아침 햇살과 티, 그리고 필사. 오늘 하루는 행복할 것이다.</p>
+          <p class="body-copy">아침 햇살, 티, 그리고 필사.</p>
+        </div>
+      </div>
+    </section>
 
-        <section class="section">
-          <div class="section-head">
-            <p class="section-kicker">02 · 잉크의 색</p>
-            <h2>검은 벽, 종이색, 그리고 역할이 있는 잉크색</h2>
+    <section class="scene scene-ink scene-two" id="dry" data-dot="2" aria-labelledby="dry-title">
+      <div class="scene-inner">
+        <div class="scene-copy">
+          <p class="kicker">Scene 03</p>
+          <h2 id="dry-title">마른 뒤의 색</h2>
+          <p class="lead">처음 나왔을 때의 색과, 마르고 난 뒤의 색.</p>
+          <p class="hand small blue">시간이 지나 다시 보면 또 달라진다.</p>
+          <p class="body-copy">잉크는 처음 펜에서 나왔을 때와 마른 뒤의 색이 다르다.</p>
+        </div>
+        <div class="ink-grid">
+          <figure class="scene-photo ink-bottle-photo">
+            <img src="../assets/images/fountain-pens/archive-ink-test.jpg" alt="잉크병과 만년필, 파란 잉크 테스트 카드가 놓인 장면">
+            <figcaption class="museum-label">Ink color and time.</figcaption>
+          </figure>
+          <div class="ink-note" aria-label="잉크 색의 시간 기록">
+            <span>펜에서 막 나온 색.</span>
+            <span>종이 위에서 마른 색.</span>
+            <span>시간이 지나 다시 보이는 색.</span>
           </div>
-          <div class="swatch-grid">
-            <div class="swatch"><div class="ink-chip" style="background:var(--color-fountain-wall-black);"></div><p><strong>검은 전시 벽</strong><span>대문 벽 · #0b0f14</span></p></div>
-            <div class="swatch"><div class="ink-chip" style="background:var(--color-yonaga-blue-black);"></div><p><strong>요나가 블루 블랙</strong><span>깊이 · #141b2d</span></p></div>
-            <div class="swatch"><div class="ink-chip" style="background:var(--color-paper-ivory);"></div><p><strong>페이퍼 아이보리</strong><span>읽는 지면 · #f3ead8</span></p></div>
-            <div class="swatch"><div class="ink-chip" style="background:var(--color-graphite-gray);"></div><p><strong>그래파이트 그레이</strong><span>작은 설명 · #8b8a84</span></p></div>
-            <div class="swatch"><div class="ink-chip" style="background:var(--color-syo-ro-teal);"></div><p><strong>소로 마른 틸</strong><span>마른 필기감 · #5a7974</span></p></div>
-            <div class="swatch"><div class="ink-chip" style="background:var(--color-platinum-blue-black);"></div><p><strong>플래티넘 블루 블랙</strong><span>어두운 잉크감 · #2f4652</span></p></div>
-            <div class="swatch"><div class="ink-chip" style="background:var(--color-kiri-same-gray);"></div><p><strong>키리사메 드라이 그레이</strong><span>마른 회색감 · #9a9b96</span></p></div>
-            <div class="swatch"><div class="ink-chip" style="background:var(--color-ink-studio-143);"></div><p><strong>잉크 스튜디오 143 블루</strong><span>맑은 파란 기록 · #5491dd</span></p></div>
-            <div class="swatch"><div class="ink-chip" style="background:var(--color-yu-yake-orange);"></div><p><strong>유야케 마른 오렌지</strong><span>마른 노을감 · #c6936f</span></p></div>
-            <div class="swatch"><div class="ink-chip" style="background:var(--color-hana-ikada-pink);"></div><p><strong>하나이카다 소프트 핑크</strong><span>부드러운 분홍감 · #e392a0</span></p></div>
-            <div class="swatch"><div class="ink-chip" style="background:var(--color-rose-quartz);"></div><p><strong>로즈 쿼츠 소프트 로즈</strong><span>은은한 장밋빛 · #c687a8</span></p></div>
-            <div class="swatch"><div class="ink-chip" style="background:var(--color-hotarubi-yellow);"></div><p><strong>호타루비 작은 빛</strong><span>작은 노란빛 · #cede85</span></p></div>
-            <div class="swatch"><div class="ink-chip" style="background:var(--color-aurora-black);"></div><p><strong>오로라 블랙 앵커</strong><span>검은 기준점 · #080808</span></p></div>
-            <div class="swatch"><div class="ink-chip" style="background:var(--color-sterling-silver);"></div><p><strong>스털링 실버 쿨 그레이</strong><span>차가운 은빛 · #9cadc2</span></p></div>
-          </div>
-          <p class="evidence-note"><strong>색을 고른 근거</strong><br />병 색이 아니라 종이에 남은 필기 상태를 우선으로 봤습니다. 확인 가능한 필기 이미지는 마른 뒤의 온도와 농도를 먼저 보았고, 자료가 부족한 색은 이름과 색면이 주는 인상만 조심스럽게 참고했습니다.</p>
-        </section>
+        </div>
+      </div>
+    </section>
 
-        <section class="section">
-          <div class="section-head">
-            <p class="section-kicker">03 · 말의 리듬</p>
-            <h2>Pretendard가 구조를 잡고, NanumPen은 한두 줄만 남긴다</h2>
-          </div>
-          <div class="type-board">
-            <div class="type-row">
-              <p class="meta">별 이름<br>또렷한 구조</p>
-              <p class="type-display-line">만년필별</p>
-              <p class="meta">크지만 소리치지 않는다.</p>
-            </div>
-            <div class="type-row">
-              <p class="meta">긴 기록<br>읽히는 본문</p>
-              <p class="type-body-line">잉크는 처음 펜에서 나왔을 때와 마른 뒤의 색이 다르다. 시간이 지나 다시 보면 또 달라진다.</p>
-              <p class="meta">긴 글은 밝은 종이 위에 둔다.</p>
-            </div>
-            <div class="type-row">
-              <p class="meta">손글씨의 기분<br>짧은 문장만</p>
-              <p class="type-hand-line">조용히 잉크를 채우던 시간들.</p>
-              <p class="meta">분위기만 남기고, 본문은 맡기지 않는다.</p>
-            </div>
-            <div class="type-row">
-              <p class="meta">전시 캡션<br>작은 회색 글</p>
-              <p class="type-label-line">LPH-B613-01 · 만년필 도착 기록 · 마른 뒤에 달라지는 잉크</p>
-              <p class="meta">작지만 읽혀야 한다.</p>
-            </div>
-          </div>
-        </section>
+    <section class="scene scene-paper scene-reverse" id="walking" data-dot="3" aria-labelledby="walking-title">
+      <div class="scene-inner">
+        <figure class="scene-photo reading-photo feature-reading-photo">
+          <img src="../assets/images/fountain-pens/still-walking.jpeg" alt="플래티넘 프레피 만년필과 이로시주쿠 코스모스로 쓴 아직 걷는 중 손글씨">
+          <figcaption class="museum-label">아직 걷는 중.</figcaption>
+        </figure>
+        <div class="scene-copy">
+          <p class="kicker">Scene 04</p>
+          <h2 id="walking-title">아직 걷는 중</h2>
+          <p class="hand hana">오늘 실패했다면,<br>그건 아직 걷는 중이라는 뜻이다.</p>
+          <p class="body-copy">완벽은 인간의 몫이 아니다.</p>
+        </div>
+      </div>
+    </section>
 
-        <section class="section" id="star-doors">
-          <div class="section-head">
-            <p class="section-kicker">04 · 별 안으로</p>
-            <h2>별 안의 사람들을 만나는 조용한 길</h2>
-          </div>
-          <div class="component-grid">
-            <div class="component-card">
-              <h3>도착 스탬프</h3>
-              <p>별 코드 근처에 둔다. 로고보다 도착 표시처럼 보이면 충분하다. 약하게 기울어진 종이 느낌은 남긴다.</p>
-            </div>
-            <div class="component-card">
-              <h3>전시 사진</h3>
-              <p>사진은 장식이 아니라 전시 벽에 걸린 기억이다. 얇은 가장자리와 낮은 그림자만 남긴다.</p>
-            </div>
-            <div class="component-card">
-              <h3>별 안의 길</h3>
-              <div class="tab-row" aria-label="만년필별 입구">
-                <button class="tab active room-house-door" type="button" data-house-target="fountain-writing-room">문장</button>
-                <button class="tab room-house-door" type="button" data-house-target="fountain-photo-room">장면</button>
-                <button class="tab room-house-door" type="button" data-house-target="fountain-map-room">지도</button>
-                <a class="tab" href="#star-list">별자리</a>
-              </div>
-            </div>
-          </div>
-        </section>
+    <section class="scene scene-paper scene-two" id="human" data-dot="4" aria-labelledby="human-title">
+      <div class="scene-inner">
+        <div class="scene-copy">
+          <p class="kicker">Scene 05</p>
+          <h2 id="human-title">사람이 만든 것</h2>
+          <p class="lead">사람은 사람이 만든 것에 약하다.</p>
+          <p class="body-copy">편지라면 어설픔 무기가 된다.</p>
+        </div>
+        <figure class="scene-photo reading-photo feature-reading-photo">
+          <img src="../assets/images/fountain-pens/handmade-gift-letter.jpeg" alt="사람은 사람이 만든 것에 약하다는 문장과 펜, 잉크 정보를 적은 손글씨">
+          <figcaption class="museum-label">사람은 사람이 만든 것에 약하다.</figcaption>
+        </figure>
+      </div>
+    </section>
 
-      <section class="room-house-panel" id="fountain-writing-room" aria-label="만년필별 문장 기록" hidden>
+    <section class="scene scene-dark scene-two" id="hobby" data-dot="5" aria-labelledby="hobby-title">
+      <div class="scene-inner">
+        <div class="scene-copy">
+          <p class="kicker">Scene 06</p>
+          <h2 id="hobby-title">취미라는 것</h2>
+          <p class="lead">만년필이 취미가 됐네요.</p>
+          <p class="body-copy">카메라, 바이크, 오디오.</p>
+        </div>
+        <div class="hobby-constellation">
+          <figure class="hobby-note">
+            <img src="../assets/images/fountain-pens/essay-hobby-note-original.jpg" alt="취미라는 것에 대해 적은 손글씨 노트">
+          </figure>
+          <div class="hobby-tiles" aria-label="다른 별로 가는 사진">
+            <a class="hobby-tile" href="cameras.html" aria-label="카메라별로 이동">
+              <img src="../assets/images/fountain-pens/essay-hobby-camera-self.jpg" alt="카메라를 들고 거울을 보는 흑백 사진">
+              <span>카메라</span>
+            </a>
+            <a class="hobby-tile" href="motorcycles.html" aria-label="바이크별로 이동">
+              <img src="../assets/images/fountain-pens/essay-hobby-ducati.jpg" alt="빨간 두카티 바이크 위에 앉아 있는 모습">
+              <span>바이크</span>
+            </a>
+            <a class="hobby-tile" href="music-audio.html" aria-label="음악 오디오별로 이동">
+              <img src="../assets/images/fountain-pens/essay-hobby-audio-room.jpg" alt="큰 스피커와 오디오 장비가 놓인 청음 공간">
+              <span>오디오</span>
+            </a>
+            <a class="hobby-tile" href="bicycles.html" aria-label="자전거별로 이동">
+              <img src="../assets/images/fountain-pens/essay-hobby-giant-bike.jpg" alt="자전거를 타고 있는 모습">
+              <span>자전거</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="scene scene-dark" id="inside" data-dot="6" aria-labelledby="inside-title">
+      <div class="scene-inner">
+        <div class="scene-copy">
+          <p class="kicker">별 안으로</p>
+          <h2 id="inside-title">문장 · 장면 · 디자인 · 별자리</h2>
+          <p class="lead">긴 글은 종이 위에서, 사진은 장면으로, 디자인은 잉크가 마르는 시간으로.</p>
+          <p class="body-copy">새 장면형 구조를 유지하면서, 예전 만년필별에 있던 문장과 장면은 별 안의 기록으로 다시 살린다.</p>
+        </div>
+        <nav class="doors" aria-label="만년필별 내부 문">
+          <button class="door-panel" type="button" data-house-target="fountain-writing-room">
+            <strong>문장</strong>
+            <span>취미, 실패, 마음, 행복에 관한 손글씨와 글.</span>
+          </button>
+          <button class="door-panel" type="button" data-house-target="fountain-photo-room">
+            <strong>장면</strong>
+            <span>펜촉, 손글씨, 잉크 테스트로 남은 실제 장면.</span>
+          </button>
+          <button class="door-panel" type="button" data-house-target="fountain-design-room">
+            <strong>디자인</strong>
+            <span>사진, 글, 잉크색을 다루는 이 별의 기준.</span>
+          </button>
+          <a class="door-panel" href="#inktrio">
+            <strong>별자리</strong>
+            <span>다른 별과 마지막 출구로 이동.</span>
+          </a>
+        </nav>
+      </div>
+    </section>
+
+    <section class="ink-panel" id="fountain-writing-room" aria-label="만년필별 문장" hidden>
+      <div class="ink-panel-inner">
         <div class="room-house-panel-header">
           <p class="room-section-label">만년필별 · 문장</p>
           <h2>문장</h2>
-          <p class="room-panel-intro">오래 생각하다 말을 꺼낸 사람들처럼, 문장들이 이 별 안에 남아 있습니다.</p>
           <button class="room-house-back" type="button">만년필별로 돌아가기</button>
         </div>
 
-        <div class="room-sort-control" data-sort-target="articles" aria-label="문장 기록 정렬">
-          <span>순서</span>
-          <button type="button" data-sort-mode="latest" aria-pressed="true">최신순</button>
-          <button type="button" data-sort-mode="registered" aria-pressed="false">등록순</button>
-        </div>
-
-        <div class="room-article-list" aria-label="만년필별 문장 기록">
-          <button class="room-article-link" type="button" data-article-target="fountain-hobby-essay" data-homepage-date="2026-06-02" data-sort-order="1" aria-label="취미라는 것에 대하여 읽기">
-            <strong>취미란 뭘까</strong>
-            <span class="room-article-note">만년필 · 취미 · 기록</span>
-          </button>
-          <button class="room-article-link" type="button" data-article-target="fountain-beethoven-emperor-note" data-homepage-date="2026-06-02" data-sort-order="2" aria-label="베토벤 황제 2악장, 열 가지 잉크로 쓴 밤 읽기">
-            <strong>황제의 밤</strong>
-            <span class="room-article-note">만년필 · 자필 · 음악</span>
-          </button>
-          <button class="room-article-link" type="button" data-article-target="fountain-still-walking-note" data-homepage-date="2026-06-02" data-sort-order="3" aria-label="아직 걷는 중 읽기">
-            <strong>아직 걷는 중</strong>
-            <span class="room-article-note">만년필 · 손글씨 · 실패</span>
-          </button>
-          <button class="room-article-link" type="button" data-article-target="fountain-well-depth-note" data-homepage-date="2026-06-02" data-sort-order="4" aria-label="우물과 마음의 깊이 읽기">
-            <strong>우물과 마음</strong>
-            <span class="room-article-note">만년필 · 마음 · 위안</span>
-          </button>
-          <button class="room-article-link" type="button" data-article-target="fountain-happiness-note" data-homepage-date="2026-06-02" data-sort-order="5" aria-label="행복에 관한 짧은 글 중 1 읽기">
-            <strong>행복 짧은 글</strong>
-            <span class="room-article-note">만년필 · 행복 · 필사</span>
-          </button>
-          <button class="room-article-link" type="button" data-article-target="fountain-honest-person-note" data-homepage-date="2026-06-09" data-sort-order="6" aria-label="정직한 사람 읽기">
-            <strong>정직한 사람</strong>
-            <span class="room-article-note">만년필 · 손글씨 · 사람</span>
-          </button>
-          <button class="room-article-link" type="button" data-article-target="fountain-birthday-copying-room-note" data-homepage-date="2026-06-09" data-sort-order="7" aria-label="오늘은 기분 좋은 날 읽기">
-            <strong>오늘은 기분 좋은 날</strong>
-            <span class="room-article-note">만년필 · 필사 · 생일</span>
-          </button>
-          <button class="room-article-link" type="button" data-article-target="fountain-handmade-gift-letter-note" data-homepage-date="2026-06-09" data-sort-order="8" aria-label="사람은 사람이 만든 것에 약하다 읽기">
-            <strong>사람은 사람이 만든 것에 약하다</strong>
-            <span class="room-article-note">만년필 · 필사 · 메모</span>
-          </button>
+        <div class="room-article-list" aria-label="만년필별 문장 목록">
+          <button class="room-article-link" type="button" data-article-target="fountain-hobby-essay"><strong>취미란 뭘까</strong></button>
+          <button class="room-article-link" type="button" data-article-target="fountain-beethoven-emperor-note"><strong>황제의 밤</strong></button>
+          <button class="room-article-link" type="button" data-article-target="fountain-still-walking-note"><strong>아직 걷는 중</strong></button>
+          <button class="room-article-link" type="button" data-article-target="fountain-well-depth-note"><strong>우물과 마음</strong></button>
+          <button class="room-article-link" type="button" data-article-target="fountain-happiness-note"><strong>행복 짧은 글</strong></button>
         </div>
 
         <div class="room-card-list room-article-panels">
           <article class="room-post fountain-essay room-article-panel" id="fountain-hobby-essay" hidden>
-            <button class="room-article-back" type="button">문장</button>
-            <header class="fountain-essay-header">
+            <button class="room-article-back" type="button">문장 목록</button>
+            <header>
               <p class="room-card-meta">문장</p>
               <h3>취미라는 것에 대하여.</h3>
-              <p>만년필 · 취미 · 기록</p>
+              <p>만년필 / 취미 / 기록</p>
             </header>
-
             <div class="fountain-essay-body">
               <p>만년필이 취미가 됐네요.</p>
               <p>그런데 만년필이 취미라는 건, 정확히 뭘까요. 만년필을 사용하는 건지. 모으는 건지. 문득 그 질문이 생기면서, 취미가 뭔지 다시 생각해보게 됐어요.</p>
-
-              <figure class="fountain-essay-figure fountain-essay-figure-tall" data-tags="만년필별, 취미라는 것에 대하여, 첫 만년필 글, 어색한 기록, 글 이미지">
+              <figure class="fountain-essay-figure fountain-essay-figure-tall">
                 <img class="room-photo-image fountain-essay-photo" src="../assets/images/fountain-pens/essay-hobby-note-original.jpg" alt="취미라는 것에 대하여 적은 손글씨 원문">
                 <figcaption>이 글은 손으로 먼저 시작됐다. 질문도, 결론도, 종이 위에서 조금씩 정리됐다.</figcaption>
               </figure>
-
               <p>취미란 개인이 여가 시간에 즐겁게 참여하는 활동이나 관심사. 취미의 특징을 찾아보면 이렇습니다.</p>
               <p>즐거움. 자발성. 시간 활용. 스트레스 해소. 자기계발. 사회적 상호작용. 이라고 하는데.</p>
               <p>돌아보면, 내가 취미라고 생각했던 것들이 과연 그랬을까요.</p>
-
-              <figure class="fountain-essay-figure fountain-essay-figure-portrait" data-tags="만년필별, 취미라는 것에 대하여, 캐논 5D, 풀프레임, 카메라 취미, 글 이미지">
+              <figure class="fountain-essay-figure fountain-essay-figure-portrait">
                 <img class="room-photo-image fountain-essay-photo" src="../assets/images/fountain-pens/essay-hobby-camera-self.jpg" alt="카메라를 들고 거울을 보는 흑백 사진">
                 <figcaption>카메라 — 사진 찍는 것보다 카메라와 렌즈를 모으는 게 더 좋았던 것 같고.</figcaption>
               </figure>
-
               <div class="fountain-essay-split">
-                <figure class="fountain-essay-figure" data-tags="만년필별, 취미라는 것에 대하여, 두카티, 홍대 함박스테이크집, 바이크 취미, 글 이미지">
+                <figure class="fountain-essay-figure">
                   <img class="room-photo-image fountain-essay-photo" src="../assets/images/fountain-pens/essay-hobby-ducati.jpg" alt="빨간 두카티 바이크 위에 앉아 있는 모습">
                   <figcaption>바이크 — 바람을 맞으며 달리는 게 좋았고.</figcaption>
                 </figure>
-                <figure class="fountain-essay-figure" data-tags="만년필별, 취미라는 것에 대하여, 로드자전거, 자전거 취미, 글 이미지">
+                <figure class="fountain-essay-figure">
                   <img class="room-photo-image fountain-essay-photo" src="../assets/images/fountain-pens/essay-hobby-giant-bike.jpg" alt="방 안에 세워진 자이언트 자전거">
                   <figcaption>자전거 — 이건 너무 힘들었어요. 그래도 아직 있고, 가끔 탑니다.</figcaption>
                 </figure>
               </div>
-
               <p>자동차 — 이건 원래 좋아했고.</p>
-
               <div class="fountain-essay-split">
-                <figure class="fountain-essay-figure" data-tags="만년필별, 취미라는 것에 대하여, PMC, 영국 오디오, 까탈스러운 스피커, 음악 취미, 글 이미지">
+                <figure class="fountain-essay-figure">
                   <img class="room-photo-image fountain-essay-photo" src="../assets/images/fountain-pens/essay-hobby-pmc-radio.jpg" alt="클래식 FM 화면과 PMC 스피커가 보이는 오디오 공간">
                   <figcaption>오디오 — 지금도 클래식 FM을 PMC로 듣고 있어요.</figcaption>
                 </figure>
-                <figure class="fountain-essay-figure" data-tags="만년필별, 취미라는 것에 대하여, 청라의 추억, 골드문트, 포칼, 하이파이로즈, SPL, 오디오 취미, 글 이미지">
+                <figure class="fountain-essay-figure">
                   <img class="room-photo-image fountain-essay-photo" src="../assets/images/fountain-pens/essay-hobby-audio-room.jpg" alt="큰 스피커와 오디오 장비가 놓인 청음 공간">
                   <figcaption>좋아하는 것을 듣는 일도, 고르고 빼는 일로 남았다.</figcaption>
                 </figure>
               </div>
-
               <p>만년필은 나도 모르게 그냥 쓰게 됐어요.</p>
               <p>한 페이지 쓰고 나면, 다른 만년필을 뭘 살까 검색하고 있더라고요. 이유가 명확하지 않을 수도 있는데. 그냥 그 과정이 작은 기쁨이라고 생각해요.</p>
-
               <figure class="fountain-essay-figure fountain-essay-figure-tall">
                 <img class="room-photo-image fountain-essay-photo" src="../assets/images/fountain-pens/essay-hobby-hand-note.jpg" alt="만년필로 적은 여러 문장의 손글씨 메모">
                 <figcaption>만년필은 결국 다시 손으로 돌아오게 한다. 한 문장씩, 오늘을 적게 한다.</figcaption>
               </figure>
-
               <p>오디오 케이블보다는 저렴하지만, 그보다 큰 만족을 주는 취미입니다.</p>
               <p>아 커피 마시고 싶네요.</p>
               <p class="fountain-essay-sign">델라카사</p>
             </div>
           </article>
 
-          <article class="room-post shared-memory-card room-article-panel" id="fountain-beethoven-emperor-note" hidden>
-            <button class="room-article-back" type="button">문장</button>
-            <header class="fountain-essay-header">
+          <article class="room-post room-article-panel" id="fountain-beethoven-emperor-note" hidden>
+            <button class="room-article-back" type="button">문장 목록</button>
+            <header>
               <p class="room-card-meta">문장</p>
               <h3>베토벤 황제 2악장, 열 가지 잉크로 쓴 밤</h3>
-              <p>만년필 · 자필 · 음악</p>
+              <p>만년필 / 자필 / 음악</p>
             </header>
-
             <div class="shared-memory-layout">
               <figure class="shared-memory-figure">
                 <img class="room-photo-image shared-memory-photo" src="../assets/images/shared/beethoven-emperor-handwriting.jpg" alt="베토벤 피아노 협주곡 황제 2악장에 대해 여러 색 잉크로 쓴 자필 메모">
                 <figcaption>진하오 82 10자루로 써본 자필. 음악을 듣고, 잉크를 바꿔가며 문장을 남겼다.</figcaption>
               </figure>
-
               <div class="shared-memory-copy">
-                <div class="room-video">
-                  <iframe src="https://www.youtube.com/embed/bMd2qdJ-Os0?si=Ni9IQ2JHXCFbuiFd" title="Krystian Zimerman plays Beethoven Piano Concerto No. 5, second movement" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                </div>
                 <p>이 공연은 베토벤 피아노 협주곡 5번 E-flat 장조, Op.73 “황제” 중 2악장 Adagio un poco mosso의 라이브 연주입니다.</p>
                 <p>연주자는 크리스티안 지메르만(Krystian Zimerman), 런던 심포니 오케스트라와 사이먼 래틀 경(Sir Simon Rattle)이 지휘를 맡았습니다.</p>
                 <p>지메르만은 탁월한 테크닉과 예술적 깊이로 잘 알려진 피아니스트로, 이 공연에서는 베토벤의 감성적이고 시적인 면을 부드럽게 풀어냅니다.</p>
                 <p>사이먼 래틀의 지휘 아래 오케스트라와 피아노가 유기적으로 조화를 이루며, 특히 2악장의 부드러운 선율과 조용한 긴장감이 절묘하게 전달됩니다.</p>
-                <p>지메르만의 피아노가 만들어내는 깊은 울림과 래틀의 오케스트라가 이끄는 고요한 긴장감에 주목하면 좋습니다.</p>
-                <p class="shared-memory-ink">진하오 82M, 이로시주쿠 커덕 / 이로시주쿠 동장군 / 이로시주쿠 코스모스 / 이로시주쿠 안개비 / 버밍햄 킹 피셔 / 몽블랑 올림픽 100주년 블루 / 버밍햄 민터스펠라 / 이로시주쿠 반딧불이 / 이로시주쿠 죽림 / 이로시주쿠 저녁노을</p>
+                <p>진하오 82M, 이로시주쿠 커덕 / 이로시주쿠 동장군 / 이로시주쿠 코스모스 / 이로시주쿠 안개비 / 버밍햄 킹 피셔 / 몽블랑 올림픽 100주년 블루 / 버밍햄 민터스펠라 / 이로시주쿠 반딧불이 / 이로시주쿠 죽림 / 이로시주쿠 저녁노을</p>
                 <p>너무 아름다운 연주입니다. 눈물을 삼키려 맥주를 찾고 있습니다. 저와 함께 건배.</p>
                 <p class="fountain-essay-sign">델라카사</p>
-                <p class="shared-memory-link"><a href="music-audio.html#audio-beethoven-emperor-note">음악·오디오별에도 걸린 기록</a></p>
               </div>
             </div>
           </article>
 
-          <article class="room-post shared-memory-card room-article-panel" id="fountain-still-walking-note" hidden>
-            <button class="room-article-back" type="button">문장</button>
-            <header class="fountain-essay-header">
+          <article class="room-post room-article-panel" id="fountain-still-walking-note" hidden>
+            <button class="room-article-back" type="button">문장 목록</button>
+            <header>
               <p class="room-card-meta">문장</p>
               <h3>아직 걷는 중</h3>
-              <p>만년필 · 손글씨 · 실패</p>
+              <p>만년필 / 손글씨 / 실패</p>
             </header>
-
             <div class="shared-memory-layout">
               <figure class="shared-memory-figure">
                 <img class="room-photo-image shared-memory-photo" src="../assets/images/fountain-pens/still-walking.jpeg" alt="플래티넘 프레피 만년필과 이로시주쿠 코스모스로 쓴 아직 걷는 중 손글씨">
                 <figcaption>플래티넘 프레피 M, 이로시주쿠 코스모스로 다시 적은 아직 걷는 중.</figcaption>
               </figure>
-
               <div class="shared-memory-copy">
                 <p>걷는 법을 한 번에 터득한 사람은 없다.</p>
                 <p>아이는 수없이 넘어진다.</p>
@@ -1673,20 +1801,18 @@
             </div>
           </article>
 
-          <article class="room-post shared-memory-card room-article-panel" id="fountain-well-depth-note" hidden>
-            <button class="room-article-back" type="button">문장</button>
-            <header class="fountain-essay-header">
+          <article class="room-post room-article-panel" id="fountain-well-depth-note" hidden>
+            <button class="room-article-back" type="button">문장 목록</button>
+            <header>
               <p class="room-card-meta">문장</p>
               <h3>우물과 마음의 깊이</h3>
-              <p>만년필 · 마음 · 위안</p>
+              <p>만년필 / 마음 / 위안</p>
             </header>
-
             <div class="shared-memory-layout">
               <figure class="shared-memory-figure">
                 <img class="room-photo-image shared-memory-photo" src="../assets/images/fountain-pens/well-depth-03.jpeg" alt="차와 노트, 오로라 88 만년필이 놓인 책상">
                 <figcaption>신사노트에 오로라 88 데몬 블랙 EF와 이로시주쿠 송로로 적은 우물과 마음의 깊이.</figcaption>
               </figure>
-
               <div class="shared-memory-copy">
                 <p>네이버 카페 문방삼우 물총고기님의 글을 읽고, 큰 위안과 격려를 받았습니다.</p>
                 <p>그 따스한 마음에 닿아, 저도 조심스레 제 마음을 꺼내 봅니다.</p>
@@ -1696,57 +1822,20 @@
                 <p>이로시주쿠 송로</p>
               </div>
             </div>
-
-            <div class="shared-memory-gallery" aria-label="우물과 마음의 깊이 연결 사진">
-              <figure>
-                <img class="room-photo-image shared-memory-photo" src="../assets/images/fountain-pens/well-depth-01.jpeg" alt="우물과 마음의 깊이 글과 차가 놓인 책상">
-              </figure>
-              <figure>
-                <img class="room-photo-image shared-memory-photo" src="../assets/images/fountain-pens/well-depth-02.jpeg" alt="우물과 마음의 깊이 손글씨 본문">
-              </figure>
-            </div>
           </article>
 
-          <article class="room-post shared-memory-card room-article-panel" id="fountain-happiness-note" hidden>
-            <button class="room-article-back" type="button">문장</button>
-            <header class="fountain-essay-header">
+          <article class="room-post room-article-panel" id="fountain-happiness-note" hidden>
+            <button class="room-article-back" type="button">문장 목록</button>
+            <header>
               <p class="room-card-meta">문장</p>
               <h3>행복에 관한 짧은 글 중 1</h3>
-              <p>만년필 · 행복 · 필사</p>
+              <p>만년필 / 행복 / 필사</p>
             </header>
-
             <div class="shared-memory-layout">
-              <div class="shared-memory-sequence" aria-label="행복에 관한 짧은 글 이미지 7장">
-                <figure class="shared-memory-figure">
-                  <img class="room-photo-image shared-memory-photo" src="../assets/images/fountain-pens/happiness-01.jpeg" alt="행복에 관한 짧은 글 손글씨 이미지 1">
-                  <figcaption>행복에 관한 짧은 글 1 / 7</figcaption>
-                </figure>
-                <figure class="shared-memory-figure">
-                  <img class="room-photo-image shared-memory-photo" src="../assets/images/fountain-pens/happiness-02.jpeg" alt="행복에 관한 짧은 글 손글씨 이미지 2">
-                  <figcaption>행복에 관한 짧은 글 2 / 7</figcaption>
-                </figure>
-                <figure class="shared-memory-figure">
-                  <img class="room-photo-image shared-memory-photo" src="../assets/images/fountain-pens/happiness-03.jpeg" alt="행복에 관한 짧은 글 손글씨 이미지 3">
-                  <figcaption>행복에 관한 짧은 글 3 / 7</figcaption>
-                </figure>
-                <figure class="shared-memory-figure">
-                  <img class="room-photo-image shared-memory-photo" src="../assets/images/fountain-pens/happiness-04.jpeg" alt="행복에 관한 짧은 글 손글씨 이미지 4">
-                  <figcaption>행복에 관한 짧은 글 4 / 7</figcaption>
-                </figure>
-                <figure class="shared-memory-figure">
-                  <img class="room-photo-image shared-memory-photo" src="../assets/images/fountain-pens/happiness-05.jpeg" alt="행복에 관한 짧은 글 손글씨 이미지 5">
-                  <figcaption>행복에 관한 짧은 글 5 / 7</figcaption>
-                </figure>
-                <figure class="shared-memory-figure">
-                  <img class="room-photo-image shared-memory-photo" src="../assets/images/fountain-pens/happiness-06.jpeg" alt="행복에 관한 짧은 글 손글씨 이미지 6">
-                  <figcaption>행복에 관한 짧은 글 6 / 7</figcaption>
-                </figure>
-                <figure class="shared-memory-figure">
-                  <img class="room-photo-image shared-memory-photo" src="../assets/images/fountain-pens/happiness-07.jpeg" alt="행복에 관한 짧은 글 손글씨 이미지 7">
-                  <figcaption>행복에 관한 짧은 글을 만년필과 잉크로 다시 적은 기록.</figcaption>
-                </figure>
-              </div>
-
+              <figure class="shared-memory-figure">
+                <img class="room-photo-image shared-memory-photo" src="../assets/images/fountain-pens/happiness-01.jpeg" alt="행복에 관한 짧은 글 손글씨 이미지 1">
+                <figcaption>행복에 관한 짧은 글을 만년필과 잉크로 다시 적은 기록.</figcaption>
+              </figure>
               <div class="shared-memory-copy">
                 <p>행복은 겉으로 드러나는 것이 아니라 우리의 마음에 달려 있어요.</p>
                 <p>우리의 소유물에 있지 않고, 우리의 본연의 모습 그 안에 있습니다.</p>
@@ -1757,221 +1846,385 @@
               </div>
             </div>
           </article>
-
-          <article class="room-post shared-memory-card room-article-panel" id="fountain-honest-person-note" hidden>
-            <button class="room-article-back" type="button">문장</button>
-            <header class="fountain-essay-header">
-              <p class="room-card-meta">문장</p>
-              <h3>정직한 사람</h3>
-              <p>만년필 · 손글씨 · 사람</p>
-            </header>
-
-            <div class="shared-memory-layout">
-              <figure class="shared-memory-figure">
-                <img class="room-photo-image shared-memory-photo" src="../assets/images/fountain-pens/honest-person.jpg" alt="정직한 사람에 관한 손글씨와 하늘색 몽블랑 만년필">
-                <figcaption>정직한 사람을 손으로 적어 남긴 기록.</figcaption>
-              </figure>
-
-              <div class="shared-memory-copy">
-                <p>정직한 사람에게서만 느껴지는 온화함이 있다.</p>
-                <p>분위기 자체가 편안한.</p>
-                <p>부드러운 말과 행동 속에서 느껴지는 명확한 기준과 강단.</p>
-                <p>이들은 꾸밈이 없이 바르고 곧다.</p>
-                <p>어디서도 잘 녹아들지만 이리저리 쓸려 다니지 않고,</p>
-                <p>본인이 가야 할 길을 알고 나아간다.</p>
-                <p>이들이 가진 소신은 부담스럽거나 강압적이지 않으며,</p>
-                <p>누가 뭐라고 할 수 없을 만큼 정직한 기준을 품고 있다.</p>
-                <p>보고 있노라면 마음이 편안해지는,</p>
-                <p>든든하고 믿음이 가는 이들이 참 좋다.</p>
-              </div>
-            </div>
-          </article>
-
-          <article class="room-post shared-memory-card room-article-panel" id="fountain-birthday-copying-room-note" hidden>
-            <button class="room-article-back" type="button">문장</button>
-            <header class="fountain-essay-header">
-              <p class="room-card-meta">문장</p>
-              <h3>오늘은 기분 좋은 날</h3>
-              <p>만년필 · 필사 · 생일</p>
-            </header>
-
-            <div class="shared-memory-layout">
-              <figure class="shared-memory-figure">
-                <img class="room-photo-image shared-memory-photo" src="../assets/images/fountain-pens/birthday-copying-room.jpg" alt="플래티넘 센츄리 10주년 데케이드 만년필과 생일 전날 손글씨">
-                <figcaption>2025. 3. 26, 온라인 필사방의 생일 전날 기록.</figcaption>
-              </figure>
-
-              <div class="shared-memory-copy">
-                <p>오늘은 기분 좋은 날.</p>
-                <p>문방에 기분 좋은 것을 가득 안고서 온라인 필사방 오픈합니다.</p>
-                <p>지금부터 2시간 후면 저의 생일입니다.</p>
-                <p>이번 생일은 많은 분들에게 각자의 만년필로 쓰신 생일 축하 필사를 받을 수 있지 않을까 기대해 봅니다.</p>
-                <p>지금 쓰는 펜은 플래티넘 센츄리 10주년 데케이드이고..</p>
-                <p>와이프에게 받은 생일 선물입니다.</p>
-                <p>작년엔 몽블랑 동계올림픽이었고, 이번엔 센츄리 10주년.</p>
-                <p>너무 행복합니다.</p>
-              </div>
-            </div>
-          </article>
-
-          <article class="room-post shared-memory-card room-article-panel" id="fountain-handmade-gift-letter-note" hidden>
-            <button class="room-article-back" type="button">문장</button>
-            <header class="fountain-essay-header">
-              <p class="room-card-meta">문장</p>
-              <h3>사람은 사람이 만든 것에 약하다</h3>
-              <p>만년필 · 필사 · 메모</p>
-            </header>
-
-            <div class="shared-memory-layout">
-              <figure class="shared-memory-figure">
-                <img class="room-photo-image shared-memory-photo" src="../assets/images/fountain-pens/handmade-gift-letter.jpeg" alt="사람은 사람이 만든 것에 약하다는 문장과 펜, 잉크 정보를 적은 손글씨">
-                <figcaption>도큐핸즈 발렌타인데이 캠페인 문장과 펜, 잉크 정보를 함께 남긴 손글씨 기록.</figcaption>
-              </figure>
-
-              <div class="shared-memory-copy">
-                <p>사람은 사람이 만든 것에 약하다.</p>
-                <p>직접 만든 선물은 마음이 따뜻해진다.</p>
-                <p>나를 소중히 여기는 느낌이 들어서<br>나도 상대를 소중히 여기고 싶어진다.</p>
-                <p>만들어준 이의 마음이<br>그대로 전해지는 것 같아서<br>나도 더 솔직해지고 싶다.</p>
-                <p>도큐핸즈 발렌타인데이 캠페인</p>
-                <p>누군가에게 상처를 주는 1분이 아니라<br>누군가와 웃는 1분이었으면 좋겠다.</p>
-                <p>편지라면 어설픔 무기가 된다.</p>
-                <p>동네 서점에서 일본광고 카피 도감이라는 책을 덜컥 구입했다.</p>
-                <p>유튜브를 하고, 편집을 하고, 기획을 하면서 뭐든 아이디어가 더 있으면 좋겠다고 생각했다.</p>
-                <p>여긴 내가 훔칠 것이 많이 있었다.</p>
-              </div>
-            </div>
-          </article>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section class="room-house-panel" id="fountain-photo-room" aria-label="만년필별 장면" hidden>
+    <section class="ink-panel" id="fountain-photo-room" aria-label="만년필별 장면" hidden>
+      <div class="ink-panel-inner">
         <div class="room-house-panel-header">
           <p class="room-section-label">만년필별 · 장면</p>
           <h2>장면</h2>
-          <p class="room-panel-intro">사진에는 그때의 공기와 시간이 있습니다. 장면을 열면 문장과 태그가 따라옵니다.</p>
           <button class="room-house-back" type="button">만년필별로 돌아가기</button>
         </div>
-
-        <div class="room-sort-control" data-sort-target="photos" aria-label="장면 정렬">
-          <span>순서</span>
-          <button type="button" data-sort-mode="latest" aria-pressed="true">최신순</button>
-          <button type="button" data-sort-mode="registered" aria-pressed="false">등록순</button>
-        </div>
-
         <div class="room-house-photo-grid">
-          <figure class="room-house-photo" data-homepage-date="2026-06-02" data-sort-order="1" data-memory="손으로 적어야 남는 문장들이 있다." data-tags="만년필별, 예의와 공감, 필사, 글 이미지, 손글씨">
+          <figure class="room-house-photo" data-memory="손으로 적어야 남는 문장들이 있다.">
             <img class="room-photo-image room-house-photo-thumb" src="../assets/images/fountain-pens/essay-handwriting-pens.jpg" alt="손글씨와 만년필 두 자루">
             <figcaption>손글씨</figcaption>
           </figure>
-          <figure class="room-house-photo" data-homepage-date="2026-06-02" data-sort-order="2" data-memory="펜촉 끝에 남는 감각." data-tags="만년필별, 파일럿 743 SFM, 닙 클로즈업, 사진방, 제품 표기 확인 가능">
+          <figure class="room-house-photo" data-memory="펜촉 끝에 남는 감각.">
             <img class="room-photo-image room-house-photo-thumb" src="../assets/images/fountain-pens/photo-nib-closeup.jpg" alt="잉크가 묻은 만년필 펜촉 클로즈업">
             <figcaption>펜촉</figcaption>
           </figure>
-          <figure class="room-house-photo" data-homepage-date="2026-06-02" data-sort-order="3" data-memory="잉크와 종이, 그리고 써본 흔적." data-tags="만년필별, 세일러 잉크 공방, 잉크 테스트, 가격이 사악한 잉크, 사진방">
+          <figure class="room-house-photo" data-memory="잉크와 종이, 그리고 써본 흔적.">
             <img class="room-photo-image room-house-photo-thumb" src="../assets/images/fountain-pens/archive-ink-test.jpg" alt="잉크병, 컬러 테스트, 펜, 종이, 티슈">
             <figcaption>잉크 테스트</figcaption>
           </figure>
         </div>
-
         <aside class="room-gallery-detail room-house-photo-detail" aria-live="polite" hidden></aside>
-      </section>
+      </div>
+    </section>
 
-      <section class="room-house-panel" id="fountain-map-room" aria-label="만년필별 지도" hidden>
+    <section class="ink-panel" id="fountain-design-room" aria-label="만년필별 디자인" hidden>
+      <div class="ink-panel-inner">
         <div class="room-house-panel-header">
-          <p class="room-section-label">관계의 지도</p>
-          <h2>관계가 쌓이면 지도가 됩니다</h2>
+          <p class="room-section-label">만년필별 · 디자인</p>
+          <h2>만년필별 디자인은 잉크가 마르는 시간을 따른다</h2>
           <button class="room-house-back" type="button">만년필별로 돌아가기</button>
         </div>
-        <div class="star-map-panel">
-          <p class="section-desc">태그는 관계의 좌표입니다. 같은 잉크, 같은 마음, 같은 장면이 쌓이면 이 별의 지형이 드러납니다.</p>
-          <img src="../assets/images/fountain-pens/map-in-progress-stamp.png" alt="MAP IN PROGRESS 준비중 스탬프" />
-        </div>
-      </section>
+        <p class="body-copy">기존 만년필별 01~07 스타일 시트의 기준을 별 안의 디자인 문으로 옮겼다. 사진, 글, 잉크색, 마지막 출구까지 이 기준을 따른다.</p>
+        <div class="design-archive" aria-label="만년필별 01부터 07까지 디자인 기준">
+          <section class="design-archive-section">
+            <p class="section-kicker">01 · 색의 방향</p>
+            <h3>색은 장식이 아니라, 시간이 지난 잉크의 상태다</h3>
+            <p class="section-desc">잉크색은 많아도 된다. 다만 색마다 머무는 자리가 있어야 한다. 제목, 코드, 스탬프, 손글씨, 캡션처럼 각자의 역할이 있을 때만 오래 남는다.</p>
+            <p class="notice">병에 담긴 색보다 종이에 남은 색을 먼저 봤습니다. 처음보다 마른 뒤의 색, 선명함보다 시간이 지난 농도가 이 별에 더 오래 어울립니다.</p>
+          </section>
 
-        <section class="section" id="star-image">
-          <div class="section-head">
+          <section class="design-archive-section">
+            <p class="section-kicker">02 · 잉크의 색</p>
+            <h3>검은 벽, 종이색, 그리고 역할이 있는 잉크색</h3>
+            <div class="swatch-grid">
+              <div class="swatch"><div class="ink-chip" style="background:#0b0f14;"></div><p><strong>검은 전시 벽</strong><span>대문 벽 · #0b0f14</span></p></div>
+              <div class="swatch"><div class="ink-chip" style="background:#141b2d;"></div><p><strong>요나가 블루 블랙</strong><span>깊이 · #141b2d</span></p></div>
+              <div class="swatch"><div class="ink-chip" style="background:#f3ead8;"></div><p><strong>페이퍼 아이보리</strong><span>읽는 지면 · #f3ead8</span></p></div>
+              <div class="swatch"><div class="ink-chip" style="background:#8b8a84;"></div><p><strong>그래파이트 그레이</strong><span>작은 설명 · #8b8a84</span></p></div>
+              <div class="swatch"><div class="ink-chip" style="background:#5a7974;"></div><p><strong>소로 마른 틸</strong><span>마른 필기감 · #5a7974</span></p></div>
+              <div class="swatch"><div class="ink-chip" style="background:#2f4652;"></div><p><strong>플래티넘 블루 블랙</strong><span>어두운 잉크감 · #2f4652</span></p></div>
+              <div class="swatch"><div class="ink-chip" style="background:#9a9b96;"></div><p><strong>키리사메 드라이 그레이</strong><span>마른 회색감 · #9a9b96</span></p></div>
+              <div class="swatch"><div class="ink-chip" style="background:#5491dd;"></div><p><strong>잉크 스튜디오 143 블루</strong><span>맑은 파란 기록 · #5491dd</span></p></div>
+              <div class="swatch"><div class="ink-chip" style="background:#c6936f;"></div><p><strong>유야케 마른 오렌지</strong><span>마른 노을감 · #c6936f</span></p></div>
+              <div class="swatch"><div class="ink-chip" style="background:#e392a0;"></div><p><strong>하나이카다 소프트 핑크</strong><span>부드러운 분홍감 · #e392a0</span></p></div>
+              <div class="swatch"><div class="ink-chip" style="background:#c687a8;"></div><p><strong>로즈 쿼츠 소프트 로즈</strong><span>은은한 장밋빛 · #c687a8</span></p></div>
+              <div class="swatch"><div class="ink-chip" style="background:#cede85;"></div><p><strong>호타루비 작은 빛</strong><span>작은 노란빛 · #cede85</span></p></div>
+              <div class="swatch"><div class="ink-chip" style="background:#080808;"></div><p><strong>오로라 블랙 앵커</strong><span>검은 기준점 · #080808</span></p></div>
+              <div class="swatch"><div class="ink-chip" style="background:#9cadc2;"></div><p><strong>스털링 실버 쿨 그레이</strong><span>차가운 은빛 · #9cadc2</span></p></div>
+            </div>
+            <p class="section-desc"><strong>색을 고른 근거</strong><br>병 색이 아니라 종이에 남은 필기 상태를 우선으로 봤습니다. 확인 가능한 필기 이미지는 마른 뒤의 온도와 농도를 먼저 보았고, 자료가 부족한 색은 이름과 색면이 주는 인상만 조심스럽게 참고했습니다.</p>
+          </section>
+
+          <section class="design-archive-section">
+            <p class="section-kicker">03 · 말의 리듬</p>
+            <h3>Pretendard가 구조를 잡고, NanumPen은 한두 줄만 남긴다</h3>
+            <div class="type-board">
+              <div class="type-row"><p class="meta">별 이름<br>또렷한 구조</p><p class="type-display-line">만년필별</p><p class="meta">크지만 소리치지 않는다.</p></div>
+              <div class="type-row"><p class="meta">긴 기록<br>읽히는 본문</p><p class="type-body-line">잉크는 처음 펜에서 나왔을 때와 마른 뒤의 색이 다르다. 시간이 지나 다시 보면 또 달라진다.</p><p class="meta">긴 글은 밝은 종이 위에 둔다.</p></div>
+              <div class="type-row"><p class="meta">손글씨의 기분<br>짧은 문장만</p><p class="type-hand-line">조용히 잉크를 채우던 시간들.</p><p class="meta">분위기만 남기고, 본문은 맡기지 않는다.</p></div>
+              <div class="type-row"><p class="meta">전시 캡션<br>작은 회색 글</p><p class="type-label-line">LPH-B613-01 · 만년필 도착 기록 · 마른 뒤에 달라지는 잉크</p><p class="meta">작지만 읽혀야 한다.</p></div>
+            </div>
+          </section>
+
+          <section class="design-archive-section">
+            <p class="section-kicker">04 · 별 안으로</p>
+            <h3>별 안의 사람들을 만나는 조용한 길</h3>
+            <div class="component-grid">
+              <div class="component-card"><h3>도착 스탬프</h3><p>별 코드 근처에 둔다. 로고보다 도착 표시처럼 보이면 충분하다. 약하게 기울어진 종이 느낌은 남긴다.</p></div>
+              <div class="component-card"><h3>전시 사진</h3><p>사진은 장식이 아니라 전시 벽에 걸린 기억이다. 얇은 가장자리와 낮은 그림자만 남긴다.</p></div>
+              <div class="component-card"><h3>별 안의 길</h3><div class="tab-row" aria-label="만년필별 입구"><button class="tab active" type="button" data-house-target="fountain-writing-room">문장</button><button class="tab" type="button" data-house-target="fountain-photo-room">장면</button><button class="tab" type="button" data-house-target="fountain-design-room">디자인</button><a class="tab" href="#inktrio">별자리</a></div></div>
+            </div>
+          </section>
+
+          <section class="design-archive-section">
             <p class="section-kicker">05 · 사진 방향</p>
-            <h2>사진은 실제이고, 잘리지 않아야 한다</h2>
-          </div>
-          <div class="dark-demo">
-            <div>
-              <p class="mono">LPH-B613-01 · 첫 화면의 기억</p>
-              <h3>정보 이미지가 아니라, 한 점의 기억처럼 보이게</h3>
-              <p>낯선 제품컷보다 햄PD가 실제로 남긴 만년필, 노트, 손글씨를 먼저 본다. 중요한 손글씨를 숨기는 자르기는 피한다.</p>
+            <h3>사진은 실제이고, 잘리지 않아야 한다</h3>
+            <div class="dark-demo">
+              <div>
+                <p class="mono">LPH-B613-01 · 첫 화면의 기억</p>
+                <h3>정보 이미지가 아니라, 한 점의 기억처럼 보이게</h3>
+                <p>낯선 제품컷보다 햄PD가 실제로 남긴 만년필, 노트, 손글씨를 먼저 본다. 중요한 손글씨를 숨기는 자르기는 피한다.</p>
+              </div>
+              <figure class="mini-photo">
+                <img src="../assets/images/fountain-pens/essay-handwriting-pens.jpg" alt="만년필과 손글씨가 함께 놓인 실제 사진">
+              </figure>
             </div>
-            <figure class="mini-photo" data-tags="만년필별, 예의와 공감, 필사, 글 이미지, 손글씨">
-              <img src="../assets/images/fountain-pens/essay-handwriting-pens.jpg" alt="만년필과 손글씨가 함께 놓인 실제 사진" />
-            </figure>
-          </div>
-        </section>
+          </section>
 
-        <section class="section">
-          <div class="section-head">
+          <section class="design-archive-section">
             <p class="section-kicker">06 · 마지막 기준</p>
-            <h2>장비 자랑이 아니라, 시간을 보관하는 사람의 별</h2>
-          </div>
-          <div class="do-grid">
-            <div class="rule-card">
-              <h3>남겨둘 말</h3>
-              <ul>
-                <li>실제 사진과 실제 손글씨를 남긴다.</li>
-                <li>잉크색은 마음이 머무는 곳에만 쓴다.</li>
-                <li>긴 글은 페이퍼 아이보리 위에서 읽히게 한다.</li>
-                <li>전시 라벨처럼 조용한 설명을 둔다.</li>
-              </ul>
+            <h3>장비 자랑이 아니라, 시간을 보관하는 사람의 별</h3>
+            <div class="do-grid">
+              <div class="rule-card"><h3>남겨둘 말</h3><ul><li>실제 사진과 실제 손글씨를 남긴다.</li><li>잉크색은 마음이 머무는 곳에만 쓴다.</li><li>긴 글은 페이퍼 아이보리 위에서 읽히게 한다.</li><li>전시 라벨처럼 조용한 설명을 둔다.</li></ul></div>
+              <div class="rule-card"><h3>이게 아닌 것</h3><ul><li>쇼핑몰 같은 말은 하지 않는다.</li><li>네온 우주와 과한 금빛은 이 별에 들이지 않는다.</li><li>남의 만년필 사진으로 기억을 대신하지 않는다.</li><li>두꺼운 액자로 사진을 눌러버리지 않는다.</li></ul></div>
+              <div class="rule-card"><h3>마지막 기준</h3><ul><li>사진과 글에 없는 이야기는 만들지 않는다.</li><li>제품 성능보다 남긴 시간을 먼저 본다.</li><li>브랜드 이름은 사용한 기억 안에서만 다룬다.</li><li>손글씨 느낌은 짧은 한 줄에만 둔다.</li></ul></div>
             </div>
-            <div class="rule-card">
-              <h3>이게 아닌 것</h3>
-              <ul>
-                <li>쇼핑몰 같은 말은 하지 않는다.</li>
-                <li>네온 우주와 과한 금빛은 이 별에 들이지 않는다.</li>
-                <li>남의 만년필 사진으로 기억을 대신하지 않는다.</li>
-                <li>두꺼운 액자로 사진을 눌러버리지 않는다.</li>
-              </ul>
-            </div>
-            <div class="rule-card">
-              <h3>마지막 기준</h3>
-              <ul>
-                <li>사진과 글에 없는 이야기는 만들지 않는다.</li>
-                <li>제품 성능보다 남긴 시간을 먼저 본다.</li>
-                <li>브랜드 이름은 사용한 기억 안에서만 다룬다.</li>
-                <li>손글씨 느낌은 짧은 한 줄에만 둔다.</li>
-              </ul>
-            </div>
-          </div>
-        </section>
+          </section>
 
-        <section class="section star-list" id="star-list">
-          <div class="section-head">
+          <section class="design-archive-section">
             <p class="section-kicker">07 · 별자리</p>
-            <h2>별자리</h2>
+            <h3>별자리</h3>
             <p class="section-desc">이 별은 HAM MEDIA Design MD 방식으로 정리한 별입니다. 좋아하는 것의 감각을 브랜드의 기준으로 바꾸는 실험이기도 합니다.</p>
-          </div>
-          <div class="star-list-grid" aria-label="별 목록">
-            <a class="star-pill is-current" href="fountain-pens.html" aria-current="page">만년필별 <span class="star-signal" aria-hidden="true"></span></a>
-            <a class="star-pill" href="music-audio.html">음악·오디오별</a>
-            <a class="star-pill" href="cameras.html">카메라별</a>
-            <a class="star-pill" href="travel.html">여행별</a>
-            <a class="star-pill" href="food.html">음식별</a>
-            <a class="star-pill" href="bicycles.html">자전거별</a>
-            <a class="star-pill" href="cars.html">자동차별</a>
-            <a class="star-pill" href="motorcycles.html">바이크별</a>
-            <a class="star-pill" href="spaces.html">공간별</a>
-          </div>
-          <div class="page-actions" aria-label="만년필별 하단 링크">
-            <a class="action-pill" href="../index.html#about-constellation">별자리로 돌아가기</a>
-            <a class="action-pill is-work" href="ham-media-work.html">그래서, 지금은 이런 일을 합니다</a>
-            <a class="action-pill is-tool" href="https://hammedia.github.io/design-brief/">Design MD 만드는 도구</a>
-          </div>
-        </section>
+            <div class="star-list-grid" aria-label="별 목록">
+              <a class="star-pill is-current" href="fountain-pens.html" aria-current="page">만년필별 <span class="star-signal" aria-hidden="true"></span></a>
+              <a class="star-pill" href="music-audio.html">음악·오디오별</a>
+              <a class="star-pill" href="cameras.html">카메라별</a>
+              <a class="star-pill" href="travel.html">여행별</a>
+              <a class="star-pill" href="food.html">음식별</a>
+              <a class="star-pill" href="bicycles.html">자전거별</a>
+              <a class="star-pill" href="cars.html">자동차별</a>
+              <a class="star-pill" href="motorcycles.html">바이크별</a>
+              <a class="star-pill" href="spaces.html">공간별</a>
+            </div>
+            <div class="page-actions" aria-label="만년필별 하단 링크">
+              <a class="action-pill" href="../index.html#about-constellation">별자리로 돌아가기</a>
+              <a class="action-pill" href="ham-media-work.html">그래서, 지금은 이런 일을 합니다</a>
+              <a class="action-pill" href="https://hammedia.github.io/design-brief/">Design MD 만드는 도구</a>
+            </div>
+          </section>
+        </div>
       </div>
-    </div>
+    </section>
 
-    <footer class="footer">
-      <p>만년필별 · LPH-B613-01 · HAM MEDIA · Design MD로 만든 별 페이지</p>
-    </footer>
+    <section class="scene scene-paper scene-two" id="inktrio" data-dot="7" aria-labelledby="inktrio-title">
+      <div class="scene-inner">
+        <div class="scene-copy">
+          <p class="kicker">Finale</p>
+          <h2 id="inktrio-title">InkTrio 테스트 중</h2>
+          <p class="lead">만년필, 잉크, 종이.</p>
+          <p class="body-copy">이 조합의 베스트를 찾는 것. 그게 잉크트리오의 목표입니다.</p>
+          <div class="constellation">
+            <nav class="star-nav" aria-label="HAM MEDIA 별자리">
+              <a class="star-link active" href="fountain-pens.html">만년필별 <span class="star-signal" aria-hidden="true"></span></a>
+              <a class="star-link" href="music-audio.html">음악·오디오별</a>
+              <a class="star-link" href="cameras.html">카메라별</a>
+              <a class="star-link" href="travel.html">여행별</a>
+              <a class="star-link" href="food.html">음식별</a>
+              <a class="star-link" href="bicycles.html">자전거별</a>
+              <a class="star-link" href="cars.html">자동차별</a>
+              <a class="star-link" href="motorcycles.html">바이크별</a>
+              <a class="star-link" href="spaces.html">공간별</a>
+            </nav>
+            <nav class="exit-row" aria-label="만년필별 밖으로 이동">
+              <a class="exit-link" href="../index.html#about-constellation">별자리로 돌아가기</a>
+              <a class="exit-link" href="ham-media-work.html">그래서, 지금은 이런 일을 합니다</a>
+              <a class="exit-link" href="https://hammedia.github.io/design-brief/">Design MD 만드는 도구</a>
+            </nav>
+            <p class="footer-line">만년필별 · LPH-B613-01 · HAM MEDIA · Design MD로 만든 별 페이지</p>
+          </div>
+        </div>
+        <figure class="inktrio-shot" aria-label="InkTrio 앱 홈 화면">
+          <img src="../assets/images/fountain-pens/inktrio-screen-home.png" alt="InkTrio 앱 홈 화면 캡처">
+        </figure>
+      </div>
+    </section>
   </main>
-  <script src="../assets/js/main.js?v=room-context-nav-v2-ga4-events-v1"></script>
+
+  <script>
+    const dots = Array.from(document.querySelectorAll(".scene-dots a"));
+    const scenes = Array.from(document.querySelectorAll("[data-dot]"));
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    function setActiveScene(scene) {
+      const index = Number(scene.dataset.dot);
+      scenes.forEach((item) => {
+        item.classList.toggle("is-ink-live", item === scene);
+      });
+      dots.forEach((dot, dotIndex) => {
+        dot.classList.toggle("is-active", dotIndex === index);
+      });
+    }
+
+    if ("IntersectionObserver" in window && dots.length && scenes.length) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          setActiveScene(entry.target);
+        });
+      }, { threshold: 0.28 });
+
+      scenes.forEach((scene) => observer.observe(scene));
+      setActiveScene(scenes[0]);
+    } else {
+      scenes.forEach((scene) => scene.classList.add("is-ink-live"));
+    }
+
+    const panels = Array.from(document.querySelectorAll(".ink-panel"));
+    const panelButtons = Array.from(document.querySelectorAll("[data-house-target]"));
+    const insideScene = document.querySelector("#inside");
+
+    function runInkTransition(change) {
+      if (reduceMotion || typeof document.startViewTransition !== "function") {
+        change();
+        return;
+      }
+
+      document.documentElement.dataset.transition = "ink-panel";
+      const transition = document.startViewTransition(change);
+      transition.finished.finally(() => {
+        delete document.documentElement.dataset.transition;
+      });
+    }
+
+    function showPanel(panelId) {
+      const target = document.getElementById(panelId);
+      if (!target) return;
+
+      runInkTransition(() => {
+        panels.forEach((panel) => {
+          const isTarget = panel === target;
+          panel.hidden = !isTarget;
+          panel.classList.toggle("is-open", isTarget);
+        });
+      });
+
+      window.setTimeout(() => {
+        target.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
+      }, reduceMotion ? 0 : 120);
+    }
+
+    function hidePanels() {
+      runInkTransition(() => {
+        panels.forEach((panel) => {
+          panel.hidden = true;
+          panel.classList.remove("is-open", "is-detail-mode", "is-photo-detail-mode");
+        });
+        document.querySelectorAll(".room-article-panel").forEach((panel) => {
+          panel.hidden = true;
+        });
+        document.querySelectorAll(".room-article-list").forEach((list) => {
+          list.hidden = false;
+        });
+        document.querySelectorAll(".room-house-photo-detail").forEach((detail) => {
+          detail.hidden = true;
+          detail.replaceChildren();
+        });
+      });
+
+      window.setTimeout(() => {
+        insideScene?.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
+      }, reduceMotion ? 0 : 120);
+    }
+
+    panelButtons.forEach((button) => {
+      button.addEventListener("click", () => showPanel(button.dataset.houseTarget));
+    });
+
+    document.querySelectorAll(".room-house-back").forEach((button) => {
+      button.addEventListener("click", hidePanels);
+    });
+
+    document.querySelectorAll(".room-article-link[data-article-target]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const parentPanel = button.closest(".ink-panel");
+        const list = parentPanel?.querySelector(".room-article-list");
+        const target = parentPanel?.querySelector(`#${button.dataset.articleTarget}`);
+        if (!target) return;
+
+        runInkTransition(() => {
+          parentPanel?.classList.add("is-detail-mode");
+          if (list) list.hidden = true;
+          parentPanel?.querySelectorAll(".room-article-panel").forEach((panel) => {
+            panel.hidden = panel !== target;
+          });
+        });
+
+        window.setTimeout(() => {
+          target.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
+        }, reduceMotion ? 0 : 120);
+      });
+    });
+
+    document.querySelectorAll(".room-article-back").forEach((button) => {
+      button.addEventListener("click", () => {
+        const parentPanel = button.closest(".ink-panel");
+        const list = parentPanel?.querySelector(".room-article-list");
+
+        runInkTransition(() => {
+          parentPanel?.classList.remove("is-detail-mode");
+          parentPanel?.querySelectorAll(".room-article-panel").forEach((panel) => {
+            panel.hidden = true;
+          });
+          if (list) list.hidden = false;
+        });
+
+        window.setTimeout(() => {
+          list?.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "nearest" });
+        }, reduceMotion ? 0 : 120);
+      });
+    });
+
+    const photoFigures = Array.from(document.querySelectorAll(".room-house-photo"));
+    let activePhotoIndex = 0;
+
+    function renderPhotoDetail(index) {
+      const figure = photoFigures[index];
+      const panel = figure?.closest(".ink-panel");
+      const detail = panel?.querySelector(".room-house-photo-detail");
+      const image = figure?.querySelector("img");
+      const caption = figure?.querySelector("figcaption")?.textContent || "";
+      if (!figure || !detail || !image) return;
+
+      activePhotoIndex = index;
+      const memory = figure.dataset.memory || caption;
+      const photo = document.createElement("img");
+      photo.className = "room-gallery-detail-photo";
+      photo.src = image.currentSrc || image.src;
+      photo.alt = image.alt;
+
+      const copy = document.createElement("div");
+      copy.className = "room-gallery-detail-copy";
+      copy.innerHTML = `<p class="room-gallery-detail-index">${index + 1} / ${photoFigures.length}</p><p><strong>${caption}</strong></p><p>${memory}</p>`;
+
+      const actions = document.createElement("div");
+      actions.className = "room-gallery-detail-actions";
+      const back = document.createElement("button");
+      back.className = "room-gallery-detail-button";
+      back.type = "button";
+      back.textContent = "장면 목록";
+      back.addEventListener("click", () => {
+        runInkTransition(() => {
+          detail.hidden = true;
+          detail.replaceChildren();
+          panel.classList.remove("is-photo-detail-mode");
+        });
+      });
+      actions.append(back);
+
+      const nav = document.createElement("div");
+      nav.className = "room-gallery-detail-nav";
+      const prev = document.createElement("button");
+      prev.className = "room-gallery-detail-button";
+      prev.type = "button";
+      prev.textContent = "이전 장면";
+      prev.disabled = index === 0;
+      prev.addEventListener("click", () => renderPhotoDetail(activePhotoIndex - 1));
+      const next = document.createElement("button");
+      next.className = "room-gallery-detail-button";
+      next.type = "button";
+      next.textContent = "다음 장면";
+      next.disabled = index === photoFigures.length - 1;
+      next.addEventListener("click", () => renderPhotoDetail(activePhotoIndex + 1));
+      nav.append(prev, next);
+
+      runInkTransition(() => {
+        panel.classList.add("is-photo-detail-mode");
+        detail.hidden = false;
+        detail.replaceChildren(actions, photo, copy, nav);
+      });
+
+      window.setTimeout(() => {
+        detail.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
+      }, reduceMotion ? 0 : 120);
+    }
+
+    photoFigures.forEach((figure, index) => {
+      figure.tabIndex = 0;
+      figure.addEventListener("click", () => renderPhotoDetail(index));
+      figure.addEventListener("keydown", (event) => {
+        if (event.key !== "Enter" && event.key !== " ") return;
+        event.preventDefault();
+        renderPhotoDetail(index);
+      });
+    });
+  </script>
 </body>
 </html>
