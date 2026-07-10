@@ -1231,27 +1231,115 @@
         filter 780ms ease;
     }
 
-    .motion-ready .scene.is-ink-live .scene-copy,
-    .motion-ready .scene.is-ink-live figure,
-    .motion-ready .scene.is-ink-live .ink-grid,
-    .motion-ready .scene.is-ink-live .hobby-constellation,
-    .motion-ready .scene.is-ink-live .doors,
-    .motion-ready .scene.is-ink-live .inktrio-shot {
+    .motion-ready .scene.is-arrived .scene-copy,
+    .motion-ready .scene.is-arrived figure,
+    .motion-ready .scene.is-arrived .ink-grid,
+    .motion-ready .scene.is-arrived .hobby-constellation,
+    .motion-ready .scene.is-arrived .doors,
+    .motion-ready .scene.is-arrived .inktrio-shot {
       opacity: 1;
       transform: none;
       filter: none;
     }
 
-    .motion-ready .scene.is-ink-live .ink-note span {
+    /* 지나친 장면 — 애니메이션 없이 즉시 완성 상태. 어떤 경우에도 빈 화면 금지. */
+    .motion-ready .scene.is-passed .scene-copy,
+    .motion-ready .scene.is-passed figure,
+    .motion-ready .scene.is-passed .ink-grid,
+    .motion-ready .scene.is-passed .hobby-constellation,
+    .motion-ready .scene.is-passed .doors,
+    .motion-ready .scene.is-passed .inktrio-shot {
+      opacity: 1;
+      transform: none;
+      filter: none;
+      transition: none;
+    }
+
+    .motion-ready .scene.is-passed .write {
+      clip-path: none;
+      animation: none;
+    }
+
+    .motion-ready .scene.is-arrived .ink-note span {
       animation: dry-chip 2100ms ease both;
     }
 
-    .motion-ready .scene.is-ink-live .ink-note span:nth-child(2) {
+    .motion-ready .scene.is-arrived .ink-note span:nth-child(2) {
       animation-delay: 180ms;
     }
 
-    .motion-ready .scene.is-ink-live .ink-note span:nth-child(3) {
+    .motion-ready .scene.is-arrived .ink-note span:nth-child(3) {
       animation-delay: 360ms;
+    }
+
+    /* ② 필기 — 짧은 제목·핵심 문장이 손으로 써지듯 등장 (느낌데모 기준, 긴 본문 제외) */
+    .penline {
+      position: relative;
+      display: inline-block;
+      max-width: 100%;
+      --write-delay: 480ms;
+    }
+
+    .penline.w2 {
+      --write-delay: 1500ms;
+    }
+
+    .penline.w3 {
+      --write-delay: 2600ms;
+    }
+
+    .nib {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 12px;
+      height: 12px;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .nib::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: -2px;
+      width: 2px;
+      height: 16px;
+      background: currentColor;
+      transform: rotate(24deg);
+      transform-origin: bottom;
+      border-radius: 2px;
+    }
+
+    .nib::after {
+      content: "";
+      position: absolute;
+      left: -1px;
+      top: 12px;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: currentColor;
+      filter: blur(0.4px);
+    }
+
+    .motion-ready .write {
+      display: inline-block;
+      clip-path: inset(0 100% -12% 0);
+    }
+
+    .motion-ready .hero-scene .penline {
+      --write-delay: 560ms;
+    }
+
+    .motion-ready .hero-scene .write,
+    .motion-ready .scene.is-arrived .write {
+      animation: write-in 2100ms cubic-bezier(0.45, 0.05, 0.35, 0.95) var(--write-delay) both;
+    }
+
+    .motion-ready .hero-scene .nib,
+    .motion-ready .scene.is-arrived .nib {
+      animation: nib-ride 2100ms cubic-bezier(0.45, 0.05, 0.35, 0.95) var(--write-delay) both;
     }
 
     html[data-transition="ink-panel"]::view-transition-old(root) {
@@ -1327,6 +1415,36 @@
       55% {
         color: var(--hotarubi);
         border-color: rgba(206, 222, 133, 0.72);
+      }
+    }
+
+    @keyframes write-in {
+      from {
+        clip-path: inset(0 100% -12% 0);
+      }
+
+      to {
+        clip-path: inset(0 0 -12% 0);
+      }
+    }
+
+    @keyframes nib-ride {
+      0% {
+        left: 0;
+        opacity: 0;
+      }
+
+      8% {
+        opacity: 1;
+      }
+
+      92% {
+        opacity: 1;
+      }
+
+      100% {
+        left: 100%;
+        opacity: 0;
       }
     }
 
@@ -1502,6 +1620,15 @@
         animation-duration: 0.001ms !important;
         animation-iteration-count: 1 !important;
       }
+
+      .write {
+        clip-path: none !important;
+        animation: none !important;
+      }
+
+      .nib {
+        display: none !important;
+      }
     }
   </style>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-TEBKMGWPQS"></script>
@@ -1536,7 +1663,7 @@
       <div class="hero-grain" aria-hidden="true"></div>
       <div class="hero-copy">
         <p class="kicker">LPH-B613-01 · Fountain Pens Star</p>
-        <h1 id="ink-title">한 장의 잉크</h1>
+        <h1 id="ink-title"><span class="penline"><span class="write">한 장의 잉크</span><i class="nib" aria-hidden="true"></i></span></h1>
         <span class="ink-line" aria-hidden="true"></span>
         <p class="lead">5개의 펜에 5개의 잉크를 한 종이에 담았다.</p>
         <p class="body-copy">만년필별은 잉크와 펜과 손글씨를 통해 마음에 쌓인 것을 밖으로 꺼내고, 시간이 지나 달라지는 색을 바라보는 별이다.</p>
@@ -1554,7 +1681,7 @@
         </figure>
         <div class="scene-copy">
           <p class="kicker">Scene 02</p>
-          <h2 id="morning-title">아침의 문</h2>
+          <h2 id="morning-title"><span class="penline"><span class="write">아침의 문</span><i class="nib" aria-hidden="true"></i></span></h2>
           <p class="lead">아침 햇살과 티, 그리고 필사. 오늘 하루는 행복할 것이다.</p>
           <p class="body-copy">아침 햇살, 티, 그리고 필사.</p>
         </div>
@@ -1565,9 +1692,9 @@
       <div class="scene-inner">
         <div class="scene-copy">
           <p class="kicker">Scene 03</p>
-          <h2 id="dry-title">마른 뒤의 색</h2>
+          <h2 id="dry-title"><span class="penline"><span class="write">마른 뒤의 색</span><i class="nib" aria-hidden="true"></i></span></h2>
           <p class="lead">처음 나왔을 때의 색과, 마르고 난 뒤의 색.</p>
-          <p class="hand small blue">시간이 지나 다시 보면 또 달라진다.</p>
+          <p class="hand small blue"><span class="penline w2"><span class="write">시간이 지나 다시 보면 또 달라진다.</span><i class="nib" aria-hidden="true"></i></span></p>
           <p class="body-copy">잉크는 처음 펜에서 나왔을 때와 마른 뒤의 색이 다르다.</p>
         </div>
         <div class="ink-grid">
@@ -1592,8 +1719,8 @@
         </figure>
         <div class="scene-copy">
           <p class="kicker">Scene 04</p>
-          <h2 id="walking-title">아직 걷는 중</h2>
-          <p class="hand hana">오늘 실패했다면,<br>그건 아직 걷는 중이라는 뜻이다.</p>
+          <h2 id="walking-title"><span class="penline"><span class="write">아직 걷는 중</span><i class="nib" aria-hidden="true"></i></span></h2>
+          <p class="hand hana"><span class="penline w2"><span class="write">오늘 실패했다면,</span><i class="nib" aria-hidden="true"></i></span><br><span class="penline w3"><span class="write">그건 아직 걷는 중이라는 뜻이다.</span><i class="nib" aria-hidden="true"></i></span></p>
           <p class="body-copy">완벽은 인간의 몫이 아니다.</p>
         </div>
       </div>
@@ -1603,7 +1730,7 @@
       <div class="scene-inner">
         <div class="scene-copy">
           <p class="kicker">Scene 05</p>
-          <h2 id="human-title">사람이 만든 것</h2>
+          <h2 id="human-title"><span class="penline"><span class="write">사람이 만든 것</span><i class="nib" aria-hidden="true"></i></span></h2>
           <p class="lead">사람은 사람이 만든 것에 약하다.</p>
           <p class="body-copy">편지라면 어설픔 무기가 된다.</p>
         </div>
@@ -1618,7 +1745,7 @@
       <div class="scene-inner">
         <div class="scene-copy">
           <p class="kicker">Scene 06</p>
-          <h2 id="hobby-title">취미라는 것</h2>
+          <h2 id="hobby-title"><span class="penline"><span class="write">취미라는 것</span><i class="nib" aria-hidden="true"></i></span></h2>
           <p class="lead">만년필이 취미가 됐네요.</p>
           <p class="body-copy">카메라, 바이크, 오디오.</p>
         </div>
@@ -1652,7 +1779,7 @@
       <div class="scene-inner">
         <div class="scene-copy">
           <p class="kicker">별 안으로</p>
-          <h2 id="inside-title">문장 · 장면 · 디자인 · 별자리</h2>
+          <h2 id="inside-title"><span class="penline"><span class="write">문장 · 장면 · 디자인 · 별자리</span><i class="nib" aria-hidden="true"></i></span></h2>
           <p class="lead">긴 글은 종이 위에서, 사진은 장면으로, 디자인은 잉크가 마르는 시간으로.</p>
           <p class="body-copy">새 장면형 구조를 유지하면서, 예전 만년필별에 있던 문장과 장면은 별 안의 기록으로 다시 살린다.</p>
         </div>
@@ -1988,7 +2115,7 @@
       <div class="scene-inner">
         <div class="scene-copy">
           <p class="kicker">Finale</p>
-          <h2 id="inktrio-title">InkTrio 테스트 중</h2>
+          <h2 id="inktrio-title"><span class="penline"><span class="write">InkTrio 테스트 중</span><i class="nib" aria-hidden="true"></i></span></h2>
           <p class="lead">만년필, 잉크, 종이.</p>
           <p class="body-copy">이 조합의 베스트를 찾는 것. 그게 잉크트리오의 목표입니다.</p>
           <div class="constellation">
@@ -2025,9 +2152,6 @@
 
     function setActiveScene(scene) {
       const index = Number(scene.dataset.dot);
-      scenes.forEach((item) => {
-        item.classList.toggle("is-ink-live", item === scene);
-      });
       dots.forEach((dot, dotIndex) => {
         dot.classList.toggle("is-active", dotIndex === index);
       });
@@ -2043,8 +2167,60 @@
 
       scenes.forEach((scene) => observer.observe(scene));
       setActiveScene(scenes[0]);
+    }
+
+    // 도착과 지나침을 가른다. 도착한 장면은 눈앞에서 써지고(is-arrived),
+    // 놓친 장면은 애니메이션 없이 완성 상태로 남는다(is-passed). 두 상태 모두 되돌리지 않는다.
+    const revealScenes = Array.from(document.querySelectorAll(".scene"));
+
+    function markPassedAbove(scene) {
+      const limit = revealScenes.indexOf(scene);
+      revealScenes.forEach((item, index) => {
+        if (index < limit && !item.classList.contains("is-arrived")) {
+          item.classList.add("is-passed");
+        }
+      });
+    }
+
+    function arriveScene(scene) {
+      if (scene.classList.contains("is-arrived") || scene.classList.contains("is-passed")) return;
+      scene.classList.add("is-arrived");
+      markPassedAbove(scene);
+    }
+
+    if ("IntersectionObserver" in window && revealScenes.length) {
+      // 도착 = 장면이 '짠' 하고 정착하는 순간(윗변이 화면 위 28% 안으로 들어올 때). 그때만 써진다.
+      const arriveObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          arriveScene(entry.target);
+          arriveObserver.unobserve(entry.target);
+        });
+      }, { threshold: 0, rootMargin: "0px 0px -72% 0px" });
+
+      revealScenes.forEach((scene) => arriveObserver.observe(scene));
+
+      // 걸림 폴백(햄PD 확정): 스크롤이 멎었는데 장면이 반쯤 걸쳐 있으면(뷰포트의 30% 이상)
+      // 모션 없이 즉시 완성 상태로 보인다. 빈 화면도, 반쪽 재생도 없다.
+      // 살짝 삐져나온 정도(30% 미만)는 대기 상태로 남겨 정착 때 모션을 지킨다.
+      function completeStuckScenes() {
+        revealScenes.forEach((scene) => {
+          if (scene.classList.contains("is-arrived") || scene.classList.contains("is-passed")) return;
+          const rect = scene.getBoundingClientRect();
+          const visible = Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0);
+          if (visible >= window.innerHeight * 0.3) scene.classList.add("is-passed");
+        });
+      }
+
+      let settleTimer = 0;
+      window.addEventListener("scroll", () => {
+        window.clearTimeout(settleTimer);
+        settleTimer = window.setTimeout(completeStuckScenes, 520);
+      }, { passive: true });
+
+      window.setTimeout(completeStuckScenes, 600);
     } else {
-      scenes.forEach((scene) => scene.classList.add("is-ink-live"));
+      revealScenes.forEach((scene) => scene.classList.add("is-passed"));
     }
 
     const panels = Array.from(document.querySelectorAll(".ink-panel"));
