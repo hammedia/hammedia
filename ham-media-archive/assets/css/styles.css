@@ -963,8 +963,7 @@ h1 {
   pointer-events: none;
 }
 
-.room-arrival-stamp.is-wide-stamp,
-.detail-arrival-stamp.is-wide-stamp {
+.room-arrival-stamp.is-wide-stamp {
   width: clamp(4.8rem, 8vw, 7.4rem);
   height: clamp(1.35rem, 2.2vw, 2rem);
   transform: rotate(-5deg);
@@ -3327,7 +3326,6 @@ h1 {
   }
 }
 
-.constellation-soft-link,
 .constellation-work-link {
   display: inline-flex;
   align-items: center;
@@ -3340,36 +3338,6 @@ h1 {
   box-shadow: var(--inner);
   text-decoration: none;
   font-weight: 780;
-}
-
-.constellation-soft-link {
-  padding: 0.58rem 0.86rem;
-  border-radius: 999px;
-  font-size: 0.86rem;
-}
-
-.constellation-entry .constellation-soft-link {
-  border-color: rgba(255, 230, 181, 0.18);
-  color: rgba(255, 252, 244, 0.94);
-  background: rgba(255, 198, 81, 0.08);
-  box-shadow: none;
-}
-
-.constellation-entry .constellation-soft-link:hover {
-  border-color: rgba(255, 207, 111, 0.52);
-  background: rgba(255, 198, 81, 0.14);
-}
-
-.constellation-room-status {
-  width: fit-content;
-  margin: 0;
-  padding: 0.5rem 0.78rem;
-  border: 1px solid rgba(38, 33, 28, 0.1);
-  border-radius: 999px;
-  color: var(--muted);
-  background: rgba(255, 252, 244, 0.36);
-  font-size: 0.84rem;
-  font-weight: 760;
 }
 
 .constellation-bridge {
@@ -3631,7 +3599,6 @@ h1 {
   border-radius: 999px;
 }
 
-.constellation-soft-link:focus-visible,
 .constellation-work-link:focus-visible {
   outline: 3px solid rgba(38, 33, 28, 0.32);
   outline-offset: 4px;
@@ -4043,7 +4010,6 @@ h1 {
     display: none;
   }
 
-  .constellation-detail,
   .constellation-bridge {
     border-radius: 22px;
   }
@@ -4071,7 +4037,6 @@ h1 {
   .universe-ink-canvas {
     display: none;
   }
-  .constellation-entry .constellation-detail.is-opening,
   .world-page,
   .room-page {
     animation: none;
