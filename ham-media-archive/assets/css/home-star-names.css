@@ -1,0 +1,148 @@
+/* Homepage star-name layer — approved 2026-07-12. */
+.hidden-star-name {
+  position: absolute;
+  z-index: 1;
+  color: rgba(240, 232, 210, 0.9);
+  font-size: 0.55rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  opacity: 0;
+  pointer-events: none;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.hidden-star-trigger {
+  position: absolute;
+  z-index: 1;
+  width: 14px;
+  height: 14px;
+  transform: translate(-50%, -50%);
+  cursor: default;
+}
+
+.hidden-star-trigger .hidden-star {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.hidden-trigger-editor {
+  left: 98.5%;
+  top: 3.5%;
+}
+
+.hidden-trigger-build {
+  left: 1.5%;
+  top: 97.5%;
+}
+
+.hidden-trigger-workshop {
+  left: 97.5%;
+  top: 98%;
+}
+
+.hidden-trigger-editor .hidden-star {
+  animation-delay: 0s;
+}
+
+.hidden-trigger-build .hidden-star {
+  animation-delay: -5s;
+}
+
+.hidden-trigger-workshop .hidden-star {
+  animation-delay: -9s;
+}
+
+.hidden-trigger-editor .hidden-star-name {
+  right: calc(100% + 2px);
+  top: -0.25rem;
+}
+
+.hidden-trigger-build .hidden-star-name {
+  left: calc(100% + 2px);
+  bottom: 0.15rem;
+}
+
+.hidden-trigger-workshop .hidden-star-name {
+  right: calc(100% + 2px);
+  bottom: 0.15rem;
+}
+
+@keyframes hidden-name-breath {
+  0%,
+  100% {
+    opacity: 0.09;
+  }
+
+  50% {
+    opacity: 0.2;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .hidden-star-trigger:hover .hidden-star-name {
+    animation: hidden-name-breath 14s ease-in-out infinite;
+  }
+
+  .hidden-trigger-build:hover .hidden-star-name {
+    animation-delay: -5s;
+  }
+
+  .hidden-trigger-workshop:hover .hidden-star-name {
+    animation-delay: -9s;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: reduce) {
+  .hidden-star-trigger:hover .hidden-star-name {
+    animation: none;
+    opacity: 0.13;
+  }
+}
+
+@media (max-width: 620px) {
+  .constellation-entry .star-label {
+    display: block;
+    right: auto;
+    bottom: auto;
+    left: 50%;
+    top: calc(100% - 0.15rem);
+    max-width: 7rem;
+    padding: 0.16rem 0.42rem;
+    transform: translate(-50%, 0);
+    border-color: rgba(248, 245, 237, 0.14);
+    background: rgba(16, 24, 36, 0.55);
+    box-shadow: none;
+    font-size: 0.6rem;
+    font-weight: 640;
+    opacity: 0.8;
+    pointer-events: none;
+    white-space: nowrap;
+  }
+
+  .star-fountain .star-label,
+  .star-audio .star-label {
+    left: 0;
+    transform: translate(0, 0);
+  }
+
+  .star-motorcycle .star-label,
+  .star-space .star-label,
+  .star-camera .star-label {
+    right: 0;
+    left: auto;
+    transform: translate(0, 0);
+  }
+
+  .star-audio .star-label,
+  .star-food .star-label,
+  .star-camera .star-label {
+    top: auto;
+    bottom: calc(100% - 0.15rem);
+  }
+
+  .hidden-star-name {
+    font-size: 0.5rem;
+  }
+}
