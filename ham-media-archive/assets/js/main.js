@@ -177,215 +177,23 @@ document.querySelectorAll(".world-door, .contact-link, .back-link").forEach((tar
   });
 });
 
-const constellationData = {
-  fountain: {
-    code: "LPH-B613-01",
-    kind: "사람",
-    name: "살아남은 이야기",
-    teaser: "마음에 쌓인 걸 몸 밖으로 꺼내던 도구",
-    result: "글이 좋아서가 아니었다. 마음에 쌓인 걸 몸 밖으로 빼내려 펜을 잡았고, 그렇게 겨우 살아났다. 무거운 날이면, 손이 결국 펜으로 간다.",
-    invite: "손으로 뭔가를 꺼내며 버텨본 사람이라면, 우린 말이 통한다.",
-    asset: "실제 사진 준비 중: 실제 만년필, 손글씨, 노트, 잉크 흔적 사진",
-    previewImage: "fountain-pens/hero-window-table.jpg",
-    previewAlt: "창가 테이블 위의 만년필과 노트",
-    previewCaption: "만년필별 대표 이미지",
-    previewFit: "cover",
-    stampImage: "fountain-pens/stamps/lph-b613-01-fountain-pen-stamp.png",
-    stampAlt: "LPH-B613-01 만년필별 도착 스탬프",
-    roomHref: "pages/fountain-pens.html",
-    roomLabel: "입장권 발권"
-  },
-  motorcycle: {
-    code: "LPH-B613-02",
-    kind: "사람",
-    name: "살아 있음을 확인한 이야기",
-    teaser: "살아 있다는 감각을 확인한 일",
-    result: "더 빨리, 더 멀리, 그리고 더 위험하게. 마흔, 병상에서 정했다. 죽기 전에 하고 싶은 건 하자. 면허도 없이 두카티를 계약했다. 그때 살아 있다는 감각은 아직 내 안에 남았다.",
-    invite: "미루지 않는 사람들끼리는 안다. (HAM MEDIA의 빨강이 두카티에서 온 건, 그래서다.)",
-    asset: "실제 사진 준비 중: 실제 바이크, 두카티 관련 사진, 장비, 라이딩 흔적 사진",
-    previewImage: "motorcycles/hero-ducati-red-front.jpg",
-    previewAlt: "붉은 두카티 바이크",
-    previewCaption: "바이크별 대표 이미지",
-    previewFit: "cover",
-    stampImage: "motorcycles/stamps/lph-b613-02-motorcycle-stamp.png",
-    stampAlt: "LPH-B613-02 바이크별 도착 스탬프",
-    stampVariant: "wide",
-    roomHref: "pages/motorcycles.html",
-    roomLabel: "입장권 발권"
-  },
-  travel: {
-    code: "LPH-B613-03",
-    kind: "일",
-    name: "자리를 옮기는 이야기",
-    teaser: "자리를 바꾸면 생각도 바뀐다는 믿음",
-    result: "서 있는 자리가 바뀌면 보이는 게 달라진다. 모르는 곳에서 다른 생각을 하면, 거기서 뜻이 생긴다. 자리를 옮겨 보는 그 버릇이, 내 번역의 방식이 됐다.",
-    invite: "전문가의 자리에서 보던 걸 청중의 자리로 옮겨 보는 일. 그게 내가 하는 번역이다.",
-    asset: "실제 사진 준비 중: 실제 여행 사진, 이동 중 메모, 장소 디테일 사진",
-    previewImage: "travel/hero-station-suitcase-waiting.jpg",
-    previewAlt: "기차역에서 캐리어와 함께 기다리는 순간",
-    previewCaption: "여행별 대표 이미지",
-    previewFit: "cover",
-    stampImage: "travel/stamps/lph-b613-03-travel-stamp.jpg",
-    stampAlt: "LPH-B613-03 여행별 도착 스탬프",
-    roomHref: "pages/travel.html",
-    roomLabel: "입장권 발권"
-  },
-  bike: {
-    code: "LPH-B613-04",
-    kind: "사람",
-    name: "비워낸 이야기",
-    teaser: "몸을 비워 머리를 비운 일",
-    result: "두 발로 가는 건 딴생각하면 큰일 난다. 머리가 복잡한 날엔 다리를 믿고 그냥 전진했다. 그렇게 몸을 비우는 법이, 지금도 나를 재운다.",
-    invite: "비워야 채워진다는 걸 아는 사람이라면.",
-    asset: "실제 사진 준비 중: 실제 자전거, 라이딩 장비, 길 위의 흔적 사진",
-    previewImage: "bicycles/gallery-img-4187.jpg",
-    previewAlt: "미시령 산길을 오르는 자전거 라이더",
-    previewCaption: "자전거별 대표 이미지",
-    previewFit: "cover",
-    stampImage: "bicycles/stamps/lph-b613-04-bicycle-stamp.png",
-    stampAlt: "LPH-B613-04 자전거별 도착 스탬프",
-    stampVariant: "wide",
-    roomHref: "pages/bicycles.html",
-    roomLabel: "입장권 발권"
-  },
-  space: {
-    code: "LPH-B613-05",
-    kind: "사람",
-    name: "머무는 방식을 배운 이야기",
-    teaser: "머무는 곳을 그냥 두지 못하는 마음",
-    result: "책상이건 차 안이건 공원 벤치건, 나는 내가 머무는 곳을 그냥 두지 못했다. 작은 물건 하나, 빛의 방향 하나가 사람의 기분을 바꾼다는 걸 아니까.",
-    invite: "나만의 공간과, 함께 하는 공간. 그 디테일을 아는 사람이라면.",
-    asset: "작업 화면과 원고가 함께 놓인 실제 작업 공간 사진",
-    previewImage: "spaces/hero-working-desk.jpg",
-    previewAlt: "영상 편집 화면과 원고 화면이 함께 놓인 작업 책상",
-    previewCaption: "공간별 대표 이미지",
-    previewFit: "cover",
-    stampImage: "spaces/stamps/lph-b613-05-spaces-stamp.jpg",
-    stampAlt: "LPH-B613-05 공간별 도착 스탬프",
-    stampVariant: "wide",
-    roomHref: "pages/spaces.html",
-    roomLabel: "입장권 발권"
-  },
-  car: {
-    code: "LPH B-613-06",
-    kind: "일",
-    name: "길을 찾는 이야기",
-    teaser: "길을 잘 찾는 사람이라는 발견",
-    result: "차를 좋아해 멀리 다녔고, 많은 사람을 만났다. 그러다 알았다. 나는 길을 잘 찾는 사람이라는 걸. 길 찾던 그 버릇이, 일이 되어 돌아왔다.",
-    invite: "막막한 사람에게 방향을 찾아주는 일. 지금 내가 하는 게 그거다.",
-    asset: "실제 사진 준비 중: 실제 자동차, 운전석, 길, 지도, 이동 기록 사진",
-    previewImage: "cars/hero-night-direction.jpg",
-    previewAlt: "밤길 위 자동차의 방향",
-    previewCaption: "자동차별 대표 이미지",
-    previewFit: "cover",
-    roomHref: "pages/cars.html",
-    roomLabel: "입장권 발권"
-  },
-  food: {
-    code: "LPH-B613-07",
-    kind: "일",
-    name: "감각을 익힌 이야기",
-    teaser: "입으로 들어가 마음에 담기는 일",
-    result: "일본에서, 미국에서, 한국에서. 평생 사람 입으로 들어가 마음에 담기는 일을 했다. 커피로 맛과 향을 훈련하며 세상의 맛을 익혔다. 혀로 익힌 그 감각이, 콘텐츠를 보는 눈으로 이어졌다.",
-    invite: "감각은 타고나는 게 아니라 훈련된다. 보는 눈도 그렇게 길렀다.",
-    asset: "실제 사진 준비 중: 실제 커피, 음식, 매장 운영 시절, 메뉴와 도구 사진",
-    previewImage: "food/hero-cafe-table-coffee.jpg",
-    previewAlt: "카페 테이블 위 커피",
-    previewCaption: "음식별 대표 이미지",
-    previewFit: "cover",
-    stampImage: "food/stamps/lph-b613-07-food-stamp.jpg",
-    stampAlt: "LPH-B613-07 음식별 도착 스탬프",
-    roomHref: "pages/food.html",
-    roomLabel: "입장권 발권"
-  },
-  audio: {
-    code: "LPH-B613-08",
-    kind: "일",
-    name: "고르고 빼는 이야기",
-    teaser: "무엇을 틀고 뺄지 고르는 감각",
-    result: "나는 늘 내 인생의 OST를 생각한다. 좋은 오디오일수록 더 깊이 빠져든다. 그래서 오디오 유튜브를 했고, 오디오 업체에서 일했다. 무엇을 틀고 무엇을 뺄지 고르던 그 귀가, 지금 내 편집의 본질이다.",
-    invite: "음악은 결국 선곡이다. 내 콘텐츠도 똑같다.",
-    asset: "실제 사진 준비 중: 실제 오디오 기기, 음반, 작업 장면, 오디오 콘텐츠 관련 사진",
-    previewImage: "music-audio/hero-listening-space.jpg",
-    previewAlt: "스피커와 청취 공간",
-    previewCaption: "음악·오디오별 대표 이미지",
-    previewFit: "cover",
-    stampImage: "music-audio/stamps/lph-b613-08-audio-stamp.png",
-    stampAlt: "LPH-B613-08 음악·오디오별 도착 스탬프",
-    stampVariant: "wide",
-    roomHref: "pages/music-audio.html",
-    roomLabel: "입장권 발권"
-  },
-  camera: {
-    code: "LPH-B613-09",
-    kind: "일",
-    name: "무엇을 담을지 보는 이야기",
-    teaser: "찍기보다 무엇을 담을지 고르는 눈",
-    result: "찍는 것보다, 무엇을 찍을지 고르는 순간이 좋았다. 그 눈이 카메라를 들게 했고, 지금도 그 눈으로 화면을 고른다.",
-    invite: "무엇을 담을지 아는 게 먼저다. 영상은 거기서 시작된다.",
-    asset: "실제 사진 준비 중: 실제 카메라, 렌즈, 촬영 현장, 프레임 선택 장면 사진",
-    previewImage: "cameras/hero-camera-notebook.jpg",
-    previewAlt: "노트와 함께 놓인 카메라",
-    previewCaption: "카메라별 대표 이미지",
-    previewFit: "cover",
-    stampImage: "cameras/stamps/lph-b613-09-cameras-stamp.jpg",
-    stampAlt: "LPH-B613-09 카메라별 도착 스탬프",
-    roomHref: "pages/cameras.html",
-    roomLabel: "입장권 발권"
-  }
+const constellationInkColors = {
+  fountain: "#0B0F14",
+  motorcycle: "#0F0C0B",
+  travel: "#4F6472",
+  bike: "#3F4347",
+  space: "#2B2B2A",
+  car: "#0D0E10",
+  food: "#F5F0E8",
+  audio: "#111318",
+  camera: "#0B0D0F"
 };
 
 const constellationStars = Array.from(document.querySelectorAll(".constellation-star"));
-const constellationPath = document.querySelector(".constellation-path-line");
-const detailKind = document.querySelector("#constellation-kind");
-const detailCode = document.querySelector("#constellation-code");
-const detailArrivalStamp = document.querySelector("#constellation-arrival-stamp");
-const detailName = document.querySelector("#constellation-name");
-const detailTeaser = document.querySelector("#constellation-teaser");
-const detailResult = document.querySelector("#constellation-result");
-const detailInvite = document.querySelector("#constellation-invite");
-const detailPreview = document.querySelector("#constellation-preview");
-const detailPreviewImage = document.querySelector("#constellation-preview-image");
-const detailPreviewCaption = document.querySelector("#constellation-preview-caption");
-const detailTicketHint = document.querySelector("#constellation-ticket-hint");
-const detailAsset = document.querySelector("#constellation-asset");
-const detailRoomLink = document.querySelector("#constellation-room-link");
-const detailRoomStatus = document.querySelector("#constellation-room-status");
-const constellationEntry = document.querySelector(".constellation-entry");
-const constellationDetail = document.querySelector(".constellation-detail");
 const constellationWindow = document.querySelector(".constellation-window");
-const constellationGuide = document.querySelector("#constellation-guide");
-const fineHoverQuery = window.matchMedia("(hover: hover) and (pointer: fine)");
-const coarsePointerQuery = window.matchMedia("(pointer: coarse)");
-const visitedStars = [];
 let activeStar = null;
 let isEnteringStar = false;
 let starEnterTimer = null;
-
-const scriptAssetRoot = new URL("../images/", document.currentScript?.src || window.location.href);
-
-function getAssetImageUrl(path) {
-  return new URL(path, scriptAssetRoot).href;
-}
-
-function shouldUseTouchGuide() {
-  return coarsePointerQuery.matches || navigator.maxTouchPoints > 0 || window.innerWidth <= 620;
-}
-
-function syncConstellationGuide() {
-  if (!constellationGuide) return;
-
-  constellationGuide.textContent = fineHoverQuery.matches && !shouldUseTouchGuide()
-    ? "별에 마우스를 올리면 입장권이 열립니다. 입장은 입장권 버튼으로 합니다."
-    : "별을 누르면 입장권이 열립니다. 입장권 버튼으로 들어갑니다.";
-}
-
-function handleConstellationInputModeChange() {
-  syncConstellationGuide();
-  if (activeStar) {
-    positionConstellationTicket(activeStar);
-  }
-}
 
 function createBackgroundStars() {
   if (!constellationWindow || constellationWindow.querySelector(".bg-star")) return;
@@ -420,125 +228,400 @@ function createBackgroundStars() {
   }
 }
 
-function updateConstellationPath() {
-  if (!constellationPath) return;
+function createUniverseExperience() {
+  const spaceCanvas = document.querySelector("#universe-space");
+  const inkCanvas = document.querySelector("#universe-ink");
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
-  const pathStars = visitedStars.length > 1 ? visitedStars : [];
-  const points = pathStars
-    .map((star) => `${star.dataset.x},${star.dataset.y}`)
-    .join(" ");
-
-  constellationPath.setAttribute("points", points);
-  constellationPath.setAttribute("pathLength", "100");
-}
-
-function updateDetailPreview(starData) {
-  if (!detailPreview || !detailPreviewImage || !detailPreviewCaption) return;
-
-  if (!starData.previewImage) {
-    detailPreview.hidden = true;
-    detailPreview.classList.remove("is-cover-preview");
-    detailPreviewImage.removeAttribute("src");
-    detailPreviewImage.alt = "";
-    detailPreviewCaption.textContent = "";
-    return;
+  if (!spaceCanvas || !inkCanvas) {
+    return { enter: (_source, _color, done) => done(), reset: () => {} };
   }
 
-  detailPreview.hidden = false;
-  detailPreviewImage.src = getAssetImageUrl(starData.previewImage);
-  detailPreviewImage.alt = starData.previewAlt || `${starData.name} 대표 이미지`;
-  detailPreviewCaption.textContent = starData.previewCaption || "대표 이미지";
-  detailPreview.classList.toggle("is-cover-preview", starData.previewFit === "cover");
-}
-
-function updateArrivalStamp(starData) {
-  if (!detailArrivalStamp) return;
-
-  if (!starData.stampImage) {
-    detailArrivalStamp.hidden = true;
-    detailArrivalStamp.removeAttribute("src");
-    detailArrivalStamp.alt = "";
-    detailArrivalStamp.classList.remove("is-wide-stamp");
-    return;
-  }
-
-  detailArrivalStamp.hidden = false;
-  detailArrivalStamp.src = getAssetImageUrl(starData.stampImage);
-  detailArrivalStamp.alt = starData.stampAlt || `${starData.name} 도착 스탬프`;
-  detailArrivalStamp.classList.toggle("is-wide-stamp", starData.stampVariant === "wide");
-}
-
-function positionConstellationTicket(star) {
-  if (!constellationDetail) return;
-
-  constellationDetail.classList.remove("is-floating-ticket");
-  constellationDetail.style.removeProperty("--ticket-left");
-  constellationDetail.style.removeProperty("--ticket-top");
-}
-
-function selectConstellationStar(star) {
-  const starData = constellationData[star.dataset.star];
-  if (!starData) return;
-
-  activeStar = star;
-  if (constellationEntry) {
-    constellationEntry.classList.add("is-invitation-open");
-  }
-  if (detailName && detailName.closest("[hidden]")) {
-    detailName.closest("[hidden]").hidden = false;
-  }
-
-  constellationStars.forEach((item) => {
-    const isSelected = item === star;
-    item.classList.toggle("is-selected", isSelected);
-    if (isSelected) {
-      item.setAttribute("aria-current", "true");
-    } else {
-      item.removeAttribute("aria-current");
-    }
+  const spaceContext = spaceCanvas.getContext("2d");
+  const starLayers = [
+    { count: 420, size: [0.4, 1.1], parallax: 10, drift: 0.0022, twinkle: 0.7 },
+    { count: 220, size: [0.7, 1.7], parallax: 22, drift: 0.0042, twinkle: 1 },
+    { count: 90, size: [1, 2.5], parallax: 40, drift: 0.0075, twinkle: 1.4 }
+  ];
+  const starFields = starLayers.map((layer) => Array.from({ length: layer.count }, () => ({
+    x: Math.random(),
+    y: Math.random(),
+    radius: layer.size[0] + Math.random() * (layer.size[1] - layer.size[0]),
+    phase: Math.random() * Math.PI * 2,
+    speed: 0.5 + Math.random() * 1.5,
+    color: Math.random() < 0.08 ? "#ffd9b0" : (Math.random() < 0.12 ? "#bcd2ff" : "#eef2ff")
+  })));
+  const nebulaCanvas = document.createElement("canvas");
+  nebulaCanvas.width = 512;
+  nebulaCanvas.height = 512;
+  const nebulaContext = nebulaCanvas.getContext("2d");
+  const nebulaBlobs = [
+    [180, 170, 150, "38,52,120", 0.55], [330, 140, 120, "70,40,110", 0.42],
+    [140, 330, 140, "22,78,105", 0.4], [360, 330, 150, "88,34,86", 0.32],
+    [255, 250, 210, "30,40,88", 0.35], [90, 120, 90, "18,60,80", 0.3]
+  ];
+  nebulaBlobs.forEach(([x, y, radius, rgb, alpha]) => {
+    const gradient = nebulaContext.createRadialGradient(x, y, 0, x, y, radius);
+    gradient.addColorStop(0, `rgba(${rgb},${alpha})`);
+    gradient.addColorStop(1, `rgba(${rgb},0)`);
+    nebulaContext.fillStyle = gradient;
+    nebulaContext.fillRect(0, 0, 512, 512);
   });
 
-  if (!visitedStars.includes(star)) {
-    visitedStars.push(star);
+  let width = 0;
+  let height = 0;
+  let pointerX = 0.5;
+  let pointerY = 0.5;
+  let lastFrame = performance.now();
+  let universeTime = 0;
+  let meteor = null;
+  let meteorWait = 3;
+  let transitionFrame = 0;
+  let transitionDone = null;
+  let transitionStart = 0;
+  let transitionOrigin = [0.5, 0.5];
+  let inkLight = [0.75, 0.82, 1];
+  let inkDeep = [0.32, 0.57, 0.87];
+  let swirlDirection = 1;
+
+  function resizeSpace() {
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    width = window.innerWidth;
+    height = window.innerHeight;
+    spaceCanvas.width = Math.round(width * dpr);
+    spaceCanvas.height = Math.round(height * dpr);
+    spaceContext.setTransform(dpr, 0, 0, dpr, 0, 0);
+    resizeFluid();
   }
 
-  star.classList.add("is-visited");
-  detailKind.textContent = starData.kind;
-  if (detailCode) {
-    detailCode.textContent = starData.code || "LPH-B613";
-  }
-  detailName.textContent = starData.name;
-  detailTeaser.textContent = starData.teaser;
-  detailResult.textContent = starData.result;
-  detailInvite.textContent = starData.invite;
-  updateDetailPreview(starData);
-  updateArrivalStamp(starData);
-  if (detailTicketHint) {
-    detailTicketHint.hidden = !starData.ticketHint;
-    detailTicketHint.textContent = starData.ticketHint || "";
-  }
-  detailAsset.textContent = starData.asset;
+  function drawSpace(now) {
+    const dt = Math.min((now - lastFrame) / 1000, 0.05);
+    lastFrame = now;
+    universeTime += dt;
+    if (!document.hidden && !reducedMotion.matches) {
+      spaceContext.fillStyle = "#05070f";
+      spaceContext.fillRect(0, 0, width, height);
+      const px = pointerX - 0.5;
+      const py = pointerY - 0.5;
+      const nebulaSize = Math.max(width, height) * 1.4;
+      spaceContext.save();
+      spaceContext.globalCompositeOperation = "screen";
+      spaceContext.globalAlpha = 0.88;
+      spaceContext.translate(width / 2 - px * 26, height / 2 - py * 26);
+      spaceContext.rotate(universeTime * 0.004);
+      spaceContext.drawImage(nebulaCanvas, -nebulaSize / 2, -nebulaSize / 2, nebulaSize, nebulaSize);
+      spaceContext.restore();
 
-  if (starData.roomHref) {
-    detailRoomLink.hidden = false;
-    detailRoomLink.href = star.href || starData.roomHref;
-    detailRoomLink.textContent = starData.roomLabel;
-    detailRoomStatus.hidden = true;
-  } else {
-    detailRoomLink.hidden = true;
-    detailRoomStatus.hidden = false;
-    detailRoomStatus.textContent = starData.roomStatus;
+      starLayers.forEach((layer, layerIndex) => {
+        starFields[layerIndex].forEach((star) => {
+          star.x = (star.x + layer.drift * dt) % 1;
+          const x = star.x * width - px * layer.parallax;
+          const y = star.y * height - py * layer.parallax;
+          spaceContext.globalAlpha = 0.55 + 0.45 * Math.sin(universeTime * star.speed * layer.twinkle + star.phase);
+          spaceContext.fillStyle = star.color;
+          spaceContext.beginPath();
+          spaceContext.arc(x, y, star.radius, 0, Math.PI * 2);
+          spaceContext.fill();
+        });
+      });
+      spaceContext.globalAlpha = 1;
+      meteorWait -= dt;
+      if (!meteor && meteorWait <= 0) {
+        meteorWait = 6 + Math.random() * 9;
+        const angle = Math.PI * (0.15 + Math.random() * 0.2);
+        meteor = { x: Math.random() * width * 0.8, y: Math.random() * height * 0.3, vx: Math.cos(angle) * 900, vy: Math.sin(angle) * 900, life: 0.8 };
+      }
+      if (meteor) {
+        meteor.x += meteor.vx * dt;
+        meteor.y += meteor.vy * dt;
+        meteor.life -= dt;
+        const gradient = spaceContext.createLinearGradient(meteor.x, meteor.y, meteor.x - meteor.vx * 0.09, meteor.y - meteor.vy * 0.09);
+        gradient.addColorStop(0, "rgba(255,255,255,.95)");
+        gradient.addColorStop(1, "rgba(255,255,255,0)");
+        spaceContext.strokeStyle = gradient;
+        spaceContext.lineWidth = 1.6;
+        spaceContext.beginPath();
+        spaceContext.moveTo(meteor.x, meteor.y);
+        spaceContext.lineTo(meteor.x - meteor.vx * 0.09, meteor.y - meteor.vy * 0.09);
+        spaceContext.stroke();
+        if (meteor.life <= 0) meteor = null;
+      }
+    }
+    requestAnimationFrame(drawSpace);
   }
 
-  updateConstellationPath();
+  window.addEventListener("pointermove", (event) => {
+    pointerX = event.clientX / Math.max(width, 1);
+    pointerY = event.clientY / Math.max(height, 1);
+  }, { passive: true });
 
-  if (constellationDetail) {
-    constellationDetail.classList.remove("is-opening");
-    void constellationDetail.offsetWidth;
-    constellationDetail.classList.add("is-opening");
-    positionConstellationTicket(star);
+  const gl = inkCanvas.getContext("webgl2", { alpha: true, premultipliedAlpha: true, depth: false, stencil: false, antialias: false });
+  let fluidReady = Boolean(gl && gl.getExtension("EXT_color_buffer_float"));
+  let quad;
+  let vertexShader;
+  let programs = {};
+  let simWidth = 0;
+  let simHeight = 0;
+  let dyeWidth = 0;
+  let dyeHeight = 0;
+  let velocity;
+  let dye;
+  let pressure;
+  let divergence;
+  let curl;
+
+  function compileShader(type, source) {
+    const shader = gl.createShader(type);
+    gl.shaderSource(shader, source);
+    gl.compileShader(shader);
+    if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) throw new Error(gl.getShaderInfoLog(shader));
+    return shader;
   }
+
+  function createProgram(fragmentSource) {
+    const program = gl.createProgram();
+    gl.attachShader(program, vertexShader);
+    gl.attachShader(program, compileShader(gl.FRAGMENT_SHADER, fragmentSource));
+    gl.bindAttribLocation(program, 0, "aPos");
+    gl.linkProgram(program);
+    if (!gl.getProgramParameter(program, gl.LINK_STATUS)) throw new Error(gl.getProgramInfoLog(program));
+    const uniforms = {};
+    for (let index = 0; index < gl.getProgramParameter(program, gl.ACTIVE_UNIFORMS); index += 1) {
+      const info = gl.getActiveUniform(program, index);
+      uniforms[info.name] = gl.getUniformLocation(program, info.name);
+    }
+    return { program, uniforms };
+  }
+
+  function initPrograms() {
+    vertexShader = compileShader(gl.VERTEX_SHADER, `#version 300 es
+      precision highp float; in vec2 aPos; out vec2 vUv; out vec2 vL; out vec2 vR; out vec2 vT; out vec2 vB; uniform vec2 texel;
+      void main(){ vUv=aPos*.5+.5; vL=vUv-vec2(texel.x,0.); vR=vUv+vec2(texel.x,0.); vT=vUv+vec2(0.,texel.y); vB=vUv-vec2(0.,texel.y); gl_Position=vec4(aPos,0.,1.); }`);
+    const head = `#version 300 es
+      precision highp float; precision highp sampler2D; in vec2 vUv; in vec2 vL; in vec2 vR; in vec2 vT; in vec2 vB; out vec4 frag;`;
+    programs.splat = createProgram(head + `uniform sampler2D uTarget; uniform float aspect; uniform vec2 point; uniform vec3 color; uniform float radius;
+      void main(){ vec2 d=vUv-point; d.x*=aspect; float a=exp(-dot(d,d)/radius); frag=vec4(texture(uTarget,vUv).xyz+color*a,1.); }`);
+    programs.advect = createProgram(head + `uniform sampler2D uVel; uniform sampler2D uSrc; uniform float dt; uniform float diss; uniform vec2 texel;
+      void main(){ vec2 coord=vUv-dt*texture(uVel,vUv).xy*texel; frag=texture(uSrc,coord)*(1./(1.+diss*dt)); }`);
+    programs.divergence = createProgram(head + `uniform sampler2D uVel; void main(){ float l=texture(uVel,vL).x,r=texture(uVel,vR).x,t=texture(uVel,vT).y,b=texture(uVel,vB).y; frag=vec4(.5*(r-l+t-b),0.,0.,1.); }`);
+    programs.curl = createProgram(head + `uniform sampler2D uVel; void main(){ float l=texture(uVel,vL).y,r=texture(uVel,vR).y,t=texture(uVel,vT).x,b=texture(uVel,vB).x; frag=vec4(r-l-t+b,0.,0.,1.); }`);
+    programs.vorticity = createProgram(head + `uniform sampler2D uVel; uniform sampler2D uCurl; uniform float amount; uniform float dt;
+      void main(){ float l=texture(uCurl,vL).x,r=texture(uCurl,vR).x,t=texture(uCurl,vT).x,b=texture(uCurl,vB).x,c=texture(uCurl,vUv).x; vec2 f=.5*vec2(abs(t)-abs(b),abs(r)-abs(l)); f/=(length(f)+1e-4); f*=amount*c; f.y*=-1.; frag=vec4(texture(uVel,vUv).xy+f*dt,0.,1.); }`);
+    programs.pressure = createProgram(head + `uniform sampler2D uPressure; uniform sampler2D uDivergence;
+      void main(){ float l=texture(uPressure,vL).x,r=texture(uPressure,vR).x,t=texture(uPressure,vT).x,b=texture(uPressure,vB).x; frag=vec4((l+r+t+b-texture(uDivergence,vUv).x)*.25,0.,0.,1.); }`);
+    programs.gradient = createProgram(head + `uniform sampler2D uPressure; uniform sampler2D uVel;
+      void main(){ float l=texture(uPressure,vL).x,r=texture(uPressure,vR).x,t=texture(uPressure,vT).x,b=texture(uPressure,vB).x; frag=vec4(texture(uVel,vUv).xy-vec2(r-l,t-b),0.,1.); }`);
+    programs.show = createProgram(head + `uniform sampler2D uDye; uniform vec3 inkA; uniform vec3 inkB; uniform float fill;
+      void main(){ float d=texture(uDye,vUv).x; float a=max(1.-exp(-d*1.5),fill); a=clamp(a,0.,1.); vec3 col=mix(inkA,inkB,smoothstep(.12,.92,a)); frag=vec4(col*a,a); }`);
+    quad = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, quad);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]), gl.STATIC_DRAW);
+  }
+
+  function createFbo(w, h, internal, format, filter) {
+    const texture = gl.createTexture();
+    gl.bindTexture(gl.TEXTURE_2D, texture);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, filter);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, filter);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+    gl.texImage2D(gl.TEXTURE_2D, 0, internal, w, h, 0, format, gl.HALF_FLOAT, null);
+    const framebuffer = gl.createFramebuffer();
+    gl.bindFramebuffer(gl.FRAMEBUFFER, framebuffer);
+    gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, texture, 0);
+    return { texture, framebuffer, w, h, attach(unit) { gl.activeTexture(gl.TEXTURE0 + unit); gl.bindTexture(gl.TEXTURE_2D, texture); return unit; } };
+  }
+
+  function createDoubleFbo(w, h, internal, format, filter) {
+    let read = createFbo(w, h, internal, format, filter);
+    let write = createFbo(w, h, internal, format, filter);
+    return { get read() { return read; }, get write() { return write; }, swap() { [read, write] = [write, read]; } };
+  }
+
+  function blit(target) {
+    gl.bindFramebuffer(gl.FRAMEBUFFER, target ? target.framebuffer : null);
+    gl.viewport(0, 0, target ? target.w : gl.drawingBufferWidth, target ? target.h : gl.drawingBufferHeight);
+    gl.bindBuffer(gl.ARRAY_BUFFER, quad);
+    gl.enableVertexAttribArray(0);
+    gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 0, 0);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+  }
+
+  function initFluid() {
+    const aspect = gl.drawingBufferWidth / Math.max(gl.drawingBufferHeight, 1);
+    const sim = 120;
+    const dyeSize = Math.min(1024, Math.max(gl.drawingBufferWidth, gl.drawingBufferHeight));
+    simWidth = aspect >= 1 ? Math.round(sim * aspect) : sim;
+    simHeight = aspect >= 1 ? sim : Math.round(sim / aspect);
+    dyeWidth = aspect >= 1 ? dyeSize : Math.round(dyeSize * aspect);
+    dyeHeight = aspect >= 1 ? Math.round(dyeSize / aspect) : dyeSize;
+    velocity = createDoubleFbo(simWidth, simHeight, gl.RG16F, gl.RG, gl.LINEAR);
+    dye = createDoubleFbo(dyeWidth, dyeHeight, gl.R16F, gl.RED, gl.LINEAR);
+    pressure = createDoubleFbo(simWidth, simHeight, gl.R16F, gl.RED, gl.NEAREST);
+    divergence = createFbo(simWidth, simHeight, gl.R16F, gl.RED, gl.NEAREST);
+    curl = createFbo(simWidth, simHeight, gl.R16F, gl.RED, gl.NEAREST);
+  }
+
+  function resizeFluid() {
+    if (!fluidReady) return;
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    inkCanvas.width = Math.round(window.innerWidth * dpr);
+    inkCanvas.height = Math.round(window.innerHeight * dpr);
+    try {
+      if (!vertexShader) initPrograms();
+      initFluid();
+    } catch (_error) {
+      fluidReady = false;
+      inkCanvas.classList.remove("is-active");
+    }
+  }
+
+  function use(program, texelWidth, texelHeight) {
+    gl.useProgram(program.program);
+    if (program.uniforms.texel) gl.uniform2f(program.uniforms.texel, texelWidth, texelHeight);
+  }
+
+  function splat(x, y, forceX, forceY, radius, amount) {
+    const program = programs.splat;
+    use(program, 1 / simWidth, 1 / simHeight);
+    gl.uniform1f(program.uniforms.aspect, inkCanvas.width / Math.max(inkCanvas.height, 1));
+    gl.uniform2f(program.uniforms.point, x, y);
+    gl.uniform1f(program.uniforms.radius, radius / 100);
+    gl.uniform3f(program.uniforms.color, forceX, forceY, 0);
+    gl.uniform1i(program.uniforms.uTarget, velocity.read.attach(0));
+    blit(velocity.write);
+    velocity.swap();
+    gl.uniform3f(program.uniforms.color, amount, 0, 0);
+    gl.uniform1i(program.uniforms.uTarget, dye.read.attach(0));
+    blit(dye.write);
+    dye.swap();
+  }
+
+  function stepFluid(dt) {
+    gl.disable(gl.BLEND);
+    use(programs.curl, 1 / simWidth, 1 / simHeight);
+    gl.uniform1i(programs.curl.uniforms.uVel, velocity.read.attach(0));
+    blit(curl);
+    use(programs.vorticity, 1 / simWidth, 1 / simHeight);
+    gl.uniform1i(programs.vorticity.uniforms.uVel, velocity.read.attach(0));
+    gl.uniform1i(programs.vorticity.uniforms.uCurl, curl.attach(1));
+    gl.uniform1f(programs.vorticity.uniforms.amount, 22);
+    gl.uniform1f(programs.vorticity.uniforms.dt, dt);
+    blit(velocity.write);
+    velocity.swap();
+    use(programs.divergence, 1 / simWidth, 1 / simHeight);
+    gl.uniform1i(programs.divergence.uniforms.uVel, velocity.read.attach(0));
+    blit(divergence);
+    use(programs.pressure, 1 / simWidth, 1 / simHeight);
+    gl.uniform1i(programs.pressure.uniforms.uDivergence, divergence.attach(1));
+    for (let index = 0; index < 20; index += 1) {
+      gl.uniform1i(programs.pressure.uniforms.uPressure, pressure.read.attach(0));
+      blit(pressure.write);
+      pressure.swap();
+    }
+    use(programs.gradient, 1 / simWidth, 1 / simHeight);
+    gl.uniform1i(programs.gradient.uniforms.uPressure, pressure.read.attach(0));
+    gl.uniform1i(programs.gradient.uniforms.uVel, velocity.read.attach(1));
+    blit(velocity.write);
+    velocity.swap();
+    use(programs.advect, 1 / simWidth, 1 / simHeight);
+    gl.uniform1f(programs.advect.uniforms.dt, dt);
+    gl.uniform1f(programs.advect.uniforms.diss, 0.15);
+    gl.uniform1i(programs.advect.uniforms.uVel, velocity.read.attach(0));
+    gl.uniform1i(programs.advect.uniforms.uSrc, velocity.read.attach(0));
+    blit(velocity.write);
+    velocity.swap();
+    gl.uniform1f(programs.advect.uniforms.diss, 0);
+    gl.uniform1i(programs.advect.uniforms.uVel, velocity.read.attach(0));
+    gl.uniform1i(programs.advect.uniforms.uSrc, dye.read.attach(1));
+    blit(dye.write);
+    dye.swap();
+  }
+
+  function showFluid(fill) {
+    gl.bindFramebuffer(gl.FRAMEBUFFER, null);
+    gl.viewport(0, 0, gl.drawingBufferWidth, gl.drawingBufferHeight);
+    gl.enable(gl.BLEND);
+    gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
+    gl.clearColor(0, 0, 0, 0);
+    gl.clear(gl.COLOR_BUFFER_BIT);
+    use(programs.show, 1 / dyeWidth, 1 / dyeHeight);
+    gl.uniform3f(programs.show.uniforms.inkA, ...inkLight);
+    gl.uniform3f(programs.show.uniforms.inkB, ...inkDeep);
+    gl.uniform1f(programs.show.uniforms.fill, fill);
+    gl.uniform1i(programs.show.uniforms.uDye, dye.read.attach(0));
+    blit(null);
+  }
+
+  function hexToInk(hex) {
+    const value = Number.parseInt(hex.slice(1), 16);
+    const base = [(value >> 16) & 255, (value >> 8) & 255, value & 255].map((channel) => channel / 255);
+    const waterEdge = base.map((channel) => channel + (1 - channel) * 0.38);
+    return { deep: base, light: waterEdge };
+  }
+
+  function animateTransition(now) {
+    const elapsed = (now - transitionStart) / 1000;
+    const progress = Math.min(elapsed / 2.6, 1);
+    const [originX, originY] = transitionOrigin;
+    splat(originX, originY, 0, 0, 0.25 + progress * 1.1, 0.9 * 0.016 * 22);
+    for (let arm = 0; arm < 3; arm += 1) {
+      const angle = universeTime * 1.9 * swirlDirection + arm * (Math.PI * 2 / 3);
+      const reach = 0.06 + progress * 0.42;
+      const x = originX + Math.cos(angle) * reach;
+      const y = originY + Math.sin(angle) * reach * 0.9;
+      const tangent = angle + Math.PI / 2 * swirlDirection;
+      splat(x, y, Math.cos(tangent) * 130 + Math.cos(angle) * 80, Math.sin(tangent) * 130 + Math.sin(angle) * 80, 0.3, 0.5 * 0.016 * 14);
+    }
+    stepFluid(0.016);
+    const fill = progress < 0.72 ? 0 : Math.min(1, (progress - 0.72) / 0.28);
+    showFluid(fill);
+    if (progress < 1) {
+      transitionFrame = requestAnimationFrame(animateTransition);
+    } else if (transitionDone) {
+      transitionDone();
+    }
+  }
+
+  function enter(source, color, done) {
+    if (!fluidReady || reducedMotion.matches) {
+      done();
+      return;
+    }
+    const rect = source?.getBoundingClientRect();
+    transitionOrigin = rect
+      ? [(rect.left + rect.width / 2) / window.innerWidth, 1 - (rect.top + rect.height / 2) / window.innerHeight]
+      : [0.5, 0.5];
+    const ink = hexToInk(color);
+    inkDeep = ink.deep;
+    inkLight = ink.light;
+    swirlDirection = Math.random() < 0.5 ? -1 : 1;
+    initFluid();
+    transitionDone = done;
+    transitionStart = performance.now();
+    inkCanvas.classList.add("is-active");
+    transitionFrame = requestAnimationFrame(animateTransition);
+  }
+
+  function reset() {
+    cancelAnimationFrame(transitionFrame);
+    transitionDone = null;
+    inkCanvas.classList.remove("is-active");
+    if (fluidReady) {
+      gl.bindFramebuffer(gl.FRAMEBUFFER, null);
+      gl.clearColor(0, 0, 0, 0);
+      gl.clear(gl.COLOR_BUFFER_BIT);
+    }
+  }
+
+  window.addEventListener("resize", resizeSpace);
+  window.addEventListener("pageshow", reset);
+  resizeSpace();
+  requestAnimationFrame(drawSpace);
+  return { enter, reset };
 }
+
+const universeExperience = createUniverseExperience();
 
 function enterStarRoom(href) {
   if (isEnteringStar) return;
@@ -549,27 +632,11 @@ function enterStarRoom(href) {
   }
 
   isEnteringStar = true;
-  const veil = document.createElement("div");
-  veil.className = "star-enter-veil";
-  veil.setAttribute("aria-hidden", "true");
-
-  const source = activeStar?.querySelector(".star-light") || activeStar || detailRoomLink;
-  const rect = source?.getBoundingClientRect();
-  const x = rect ? rect.left + rect.width / 2 : window.innerWidth / 2;
-  const y = rect ? rect.top + rect.height / 2 : window.innerHeight / 2;
-
-  veil.style.setProperty("--star-enter-x", `${x}px`);
-  veil.style.setProperty("--star-enter-y", `${y}px`);
-  document.body.appendChild(veil);
-
-  requestAnimationFrame(() => {
-    veil.classList.add("is-active");
-  });
-
-  starEnterTimer = setTimeout(() => {
-    starEnterTimer = null;
+  const source = activeStar?.querySelector(".star-light") || activeStar;
+  const color = constellationInkColors[activeStar?.dataset.star] || "#7EB5E8";
+  universeExperience.enter(source, color, () => {
     window.location.href = href;
-  }, 720);
+  });
 }
 
 function resetStarEnterTransition() {
@@ -579,53 +646,29 @@ function resetStarEnterTransition() {
     starEnterTimer = null;
   }
   document.querySelectorAll(".star-enter-veil").forEach((veil) => veil.remove());
+  universeExperience.reset?.();
 }
 
 window.addEventListener("pagehide", resetStarEnterTransition);
 window.addEventListener("pageshow", resetStarEnterTransition);
 window.addEventListener("popstate", resetStarEnterTransition);
 
-syncConstellationGuide();
-fineHoverQuery.addEventListener?.("change", handleConstellationInputModeChange);
-coarsePointerQuery.addEventListener?.("change", handleConstellationInputModeChange);
-window.addEventListener("resize", handleConstellationInputModeChange);
 
 if (constellationStars.length) {
   createBackgroundStars();
 
   constellationStars.forEach((star) => {
-    star.addEventListener("pointerenter", () => {
-      if (!fineHoverQuery.matches) return;
-      selectConstellationStar(star);
-    });
-
     star.addEventListener("click", (event) => {
+      if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
       event.preventDefault();
+      activeStar = star;
       trackHamEvent("home_star_select", getHomeStarTrackingData(star));
-      selectConstellationStar(star);
-      if (!fineHoverQuery.matches) {
-        detailName?.closest(".constellation-detail")?.scrollIntoView({
-          behavior: "smooth",
-          block: "nearest"
-        });
-      }
+      trackHamEvent("home_star_enter", {
+        ...getHomeStarTrackingData(star),
+        target_url: star.href
+      });
+      enterStarRoom(star.href);
     });
-
-    star.addEventListener("focus", () => selectConstellationStar(star));
-  });
-  updateConstellationPath();
-}
-
-if (detailRoomLink) {
-  detailRoomLink.addEventListener("click", (event) => {
-    if (detailRoomLink.hidden || !detailRoomLink.href) return;
-
-    event.preventDefault();
-    trackHamEvent("home_star_enter", {
-      ...getHomeStarTrackingData(activeStar),
-      target_url: detailRoomLink.href
-    });
-    enterStarRoom(detailRoomLink.href);
   });
 }
 

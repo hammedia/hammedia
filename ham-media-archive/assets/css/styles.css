@@ -89,6 +89,30 @@ h2 {
   overflow-x: hidden;
 }
 
+.universe-space-canvas,
+.universe-ink-canvas {
+  position: fixed;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.universe-space-canvas {
+  z-index: 0;
+}
+
+.universe-ink-canvas {
+  z-index: 998;
+  opacity: 0;
+  transition: opacity 180ms ease;
+}
+
+.universe-ink-canvas.is-active {
+  opacity: 1;
+}
+
 .home-body {
   color: rgba(255, 252, 244, 0.94);
   background:
@@ -102,6 +126,8 @@ h2 {
 }
 
 .home-hub {
+  position: relative;
+  z-index: 1;
   min-height: 100svh;
   padding: clamp(0.85rem, 2.2vw, 1.8rem);
 }
@@ -2867,22 +2893,16 @@ h1 {
 }
 
 .constellation-entry .constellation-scene {
-  grid-template-columns: minmax(0, 1.3fr) minmax(18rem, 0.7fr);
-}
-
-.constellation-entry:not(.is-invitation-open) .constellation-scene {
   grid-template-columns: 1fr;
 }
 
-.constellation-window,
-.constellation-detail {
+.constellation-window {
   min-width: 0;
   border: 1px solid rgba(38, 33, 28, 0.12);
   box-shadow: var(--shadow);
 }
 
-.constellation-entry .constellation-window,
-.constellation-entry .constellation-detail {
+.constellation-entry .constellation-window {
   border-color: rgba(255, 230, 181, 0.16);
   box-shadow: 0 32px 90px rgba(0, 0, 0, 0.25);
 }
@@ -3117,14 +3137,6 @@ h1 {
     0 0 34px rgba(255, 140, 40, 0.4);
 }
 
-.constellation-entry.is-invitation-open .constellation-star:not(.is-selected) .star-light {
-  opacity: 0.4 !important;
-  transition: opacity 300ms ease;
-}
-
-.constellation-entry.is-invitation-open .constellation-star.is-selected .star-light {
-  opacity: 1 !important;
-}
 
 .constellation-star:hover .star-light::before,
 .constellation-star:focus-visible .star-light::before,
@@ -3272,230 +3284,47 @@ h1 {
   top: 83%;
 }
 
-.constellation-detail {
-  display: grid;
-  align-content: start;
-  gap: 0.86rem;
-  padding: clamp(1.15rem, 2.5vw, 1.75rem);
-  border-radius: 26px;
-  background:
-    radial-gradient(circle at 18% 12%, rgba(255,255,255,0.62), transparent 10rem),
-    linear-gradient(145deg, rgba(255, 252, 244, 0.9), rgba(238, 232, 220, 0.52));
-}
-
-.constellation-entry .constellation-detail {
-  color: rgba(255, 252, 244, 0.91);
-  background:
-    radial-gradient(circle at 18% 12%, rgba(255, 210, 128, 0.13), transparent 10rem),
-    linear-gradient(145deg, rgba(8, 14, 24, 0.88), rgba(4, 8, 15, 0.72));
-  backdrop-filter: blur(14px);
-  transform-origin: top center;
-}
-
-.constellation-detail[hidden] {
-  display: none;
-}
-
-.constellation-entry .constellation-detail {
-  position: relative;
-}
-
-.constellation-entry .constellation-detail.is-opening {
-  animation: invitationOpen 360ms cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.detail-meta-row {
-  display: flex;
-  flex-wrap: nowrap;
-  gap: 0.34rem;
-  align-items: center;
-  min-width: 0;
-}
-
-.detail-ticket-label,
-.detail-kicker,
-.detail-code,
-.detail-arrival-stamp,
-.detail-teaser,
-.detail-ticket-hint,
-.detail-copy p,
-.asset-note {
-  margin: 0;
-}
-
-.detail-ticket-label,
-.detail-kicker {
-  width: fit-content;
-  padding: 0.18rem 0.5rem;
-  border: 1px solid rgba(38, 33, 28, 0.11);
-  border-radius: 999px;
-  color: var(--muted);
-  background: rgba(255, 252, 244, 0.58);
-  font-size: 0.73rem;
-  font-weight: 800;
-  flex: 0 0 auto;
-  white-space: nowrap;
-  word-break: keep-all;
-}
-
-.constellation-entry .detail-ticket-label,
-.constellation-entry .detail-kicker {
-  border-color: rgba(255, 230, 181, 0.18);
-  color: rgba(255, 207, 111, 0.84);
-  background: rgba(255, 198, 81, 0.08);
-}
-
-.detail-code {
-  min-width: 0;
-  width: fit-content;
-  padding: 0.14rem 0.48rem;
-  border: 1px solid rgba(255, 230, 181, 0.16);
-  border-radius: 999px;
-  color: rgba(255, 252, 244, 0.58);
-  background: rgba(255, 252, 244, 0.04);
-  font-size: 0.7rem;
-  font-weight: 850;
-  letter-spacing: 0.08em;
-  flex: 0 0 auto;
-  white-space: nowrap;
-  word-break: keep-all;
-}
-
-.detail-arrival-stamp {
-  display: inline-block;
-  width: clamp(1.55rem, 2.4vw, 2.05rem);
-  height: clamp(1.55rem, 2.4vw, 2.05rem);
-  object-fit: contain;
-  opacity: 0.88;
-  transform: rotate(-6deg);
-  filter: saturate(0.95) contrast(1.08);
-  pointer-events: none;
-}
-
-.detail-arrival-stamp[hidden] {
-  display: none;
-}
-
-.constellation-detail h3 {
-  margin: 0;
-  font-size: clamp(1.34rem, 2.2vw, 1.74rem);
-  line-height: 1.22;
-  letter-spacing: 0;
-  word-break: keep-all;
-}
-
-.detail-preview {
-  display: grid;
-  gap: 0.38rem;
-  margin: 0;
-}
-
-.detail-preview[hidden] {
-  display: none;
-}
-
-.detail-preview img {
-  display: block;
-  width: 100%;
-  height: clamp(4.2rem, 7.2vw, 6.2rem);
-  object-fit: contain;
-  border: 1px solid rgba(255, 230, 181, 0.16);
-  border-radius: 16px;
-  background:
-    radial-gradient(circle at 50% 30%, rgba(255, 214, 128, 0.1), transparent 55%),
-    rgba(0, 0, 0, 0.28);
-  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.18);
-}
-
-.detail-preview.is-cover-preview img {
-  height: clamp(7.7rem, 16.6vw, 11.2rem);
-  object-fit: cover;
-  background: rgba(0, 0, 0, 0.34);
-}
-
-.detail-preview.is-cover-preview {
-  position: relative;
-  overflow: hidden;
-  border-radius: 16px;
-  isolation: isolate;
-}
-
-.detail-preview.is-cover-preview::after {
-  content: "";
+.hidden-star {
   position: absolute;
-  inset: 0;
   z-index: 1;
-  border-radius: 16px;
-  background:
-    linear-gradient(180deg, rgba(1, 4, 10, 0.04) 0%, rgba(1, 4, 10, 0.1) 54%, rgba(0, 0, 0, 0.28) 100%),
-    rgba(0, 0, 0, 0.04);
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: rgba(240, 232, 210, 0.34);
+  box-shadow: 0 0 4px rgba(224, 232, 244, 0.16);
+  opacity: 0.12;
   pointer-events: none;
+  animation: hiddenStarBreath 14s ease-in-out infinite;
 }
 
-.detail-preview figcaption {
-  display: none;
+.hidden-star-editor {
+  left: 98.5%;
+  top: 3.5%;
 }
 
-.detail-teaser {
-  color: var(--muted);
-  font-weight: 760;
+.hidden-star-build {
+  left: 1.5%;
+  top: 97.5%;
+  animation-delay: -5s;
 }
 
-.constellation-entry .detail-teaser,
-.constellation-entry .detail-copy,
-.constellation-entry .detail-ticket-hint,
-.constellation-entry .asset-note {
-  color: rgba(255, 252, 244, 0.68);
+.hidden-star-workshop {
+  left: 97.5%;
+  top: 98%;
+  animation-delay: -9s;
 }
 
-.constellation-entry .detail-teaser {
-  display: none;
-}
+@keyframes hiddenStarBreath {
+  0%,
+  100% {
+    opacity: 0.08;
+    transform: scale(0.8);
+  }
 
-.detail-copy {
-  display: grid;
-  gap: 0.76rem;
-  color: var(--ink);
-  font-size: clamp(0.98rem, 1.3vw, 1.06rem);
-}
-
-.detail-copy[hidden] {
-  display: none;
-}
-
-.asset-note {
-  padding: 0.78rem 0.88rem;
-  border: 1px dashed rgba(38, 33, 28, 0.18);
-  border-radius: 16px;
-  color: var(--muted);
-  background: rgba(255, 252, 244, 0.48);
-  font-size: 0.88rem;
-}
-
-.constellation-entry .asset-note {
-  display: none;
-}
-
-.detail-ticket-hint {
-  width: fit-content;
-  padding: 0.52rem 0.72rem;
-  border: 1px solid rgba(255, 230, 181, 0.16);
-  border-radius: 14px;
-  background: rgba(255, 198, 81, 0.06);
-  font-size: 0.82rem;
-  font-weight: 760;
-  line-height: 1.55;
-}
-
-.detail-ticket-hint[hidden] {
-  display: none;
-}
-
-.detail-ticket-actions {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.58rem;
+  48% {
+    opacity: 0.22;
+    transform: scale(1.05);
+  }
 }
 
 .constellation-soft-link,
@@ -3601,30 +3430,6 @@ h1 {
   text-decoration-color: rgba(255, 224, 153, 0.62);
 }
 
-@media (hover: hover) and (pointer: fine) {
-  .constellation-entry:not(.is-invitation-open) .constellation-scene {
-    grid-template-columns: 1fr;
-  }
-
-  .constellation-entry.is-invitation-open .constellation-scene {
-    grid-template-columns: minmax(0, 1.28fr) minmax(15rem, 0.48fr);
-    align-items: center;
-  }
-
-  .constellation-entry .constellation-detail {
-    gap: 0.62rem;
-    max-height: min(72vh, 24rem);
-    padding: clamp(0.9rem, 1.45vw, 1.12rem);
-    overflow: auto;
-  }
-
-  .constellation-entry .constellation-detail .constellation-soft-link {
-    min-height: 38px;
-    padding: 0.48rem 0.72rem;
-    font-size: 0.78rem;
-  }
-}
-
 .star-enter-veil {
   position: fixed;
   inset: 0;
@@ -3691,20 +3496,6 @@ h1 {
   to {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-@keyframes invitationOpen {
-  from {
-    opacity: 0;
-    transform: translateY(10px) scale(0.94);
-    filter: blur(2px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-    filter: blur(0);
   }
 }
 
@@ -4276,6 +4067,10 @@ h1 {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .universe-space-canvas,
+  .universe-ink-canvas {
+    display: none;
+  }
   .constellation-entry .constellation-detail.is-opening,
   .world-page,
   .room-page {

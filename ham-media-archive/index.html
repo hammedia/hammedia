@@ -26,10 +26,12 @@
 
       gtag('config', 'G-TEBKMGWPQS');
     </script>
-    <link rel="stylesheet" href="assets/css/styles.css?v=ticket-transition-v1">
+    <link rel="stylesheet" href="assets/css/styles.css?v=universe-v3-20260712">
   </head>
   <body class="home-body">
     <a class="skip-link" href="#main">본문으로 이동</a>
+    <canvas class="universe-space-canvas" id="universe-space" aria-hidden="true"></canvas>
+    <canvas class="universe-ink-canvas" id="universe-ink" aria-hidden="true"></canvas>
 
     <main class="home-hub constellation-home" id="main">
       <header class="hub-header">
@@ -43,7 +45,6 @@
         <div class="constellation-intro">
           <h2 id="constellation-title">좋아하는 것들이 나를 여기까지 데려왔다.</h2>
           <p class="constellation-guide">HAM MEDIA는 콘텐츠 제작·유튜브 운영·AI 강의 스튜디오입니다.</p>
-          <p class="constellation-guide" id="constellation-guide">별을 누르면 입장권이 열립니다. 입장권 버튼으로 들어갑니다.</p>
         </div>
 
         <div class="constellation-scene">
@@ -52,76 +53,56 @@
               <polyline class="constellation-path-line" points=""></polyline>
             </svg>
 
-            <a class="constellation-star star-fountain" href="pages/fountain-pens.html" data-star="fountain" data-x="18" data-y="28" aria-controls="constellation-detail">
+            <a class="constellation-star star-fountain" href="pages/fountain-pens.html" data-star="fountain" data-x="18" data-y="28">
               <span class="star-light" aria-hidden="true"></span>
               <span class="star-label">만년필별</span>
             </a>
 
-            <a class="constellation-star star-motorcycle" href="pages/motorcycles.html" data-star="motorcycle" data-x="75" data-y="20" aria-controls="constellation-detail">
+            <a class="constellation-star star-motorcycle" href="pages/motorcycles.html" data-star="motorcycle" data-x="75" data-y="20">
               <span class="star-light" aria-hidden="true"></span>
               <span class="star-label">바이크별</span>
             </a>
 
-            <a class="constellation-star star-travel" href="pages/travel.html" data-star="travel" data-x="54" data-y="33" aria-controls="constellation-detail">
+            <a class="constellation-star star-travel" href="pages/travel.html" data-star="travel" data-x="54" data-y="33">
               <span class="star-light" aria-hidden="true"></span>
               <span class="star-label">여행별</span>
             </a>
 
-            <a class="constellation-star star-bike" href="pages/bicycles.html" data-star="bike" data-x="31" data-y="47" aria-controls="constellation-detail">
+            <a class="constellation-star star-bike" href="pages/bicycles.html" data-star="bike" data-x="31" data-y="47">
               <span class="star-light" aria-hidden="true"></span>
               <span class="star-label">자전거별</span>
             </a>
 
-            <a class="constellation-star star-space" href="pages/spaces.html" data-star="space" data-x="84" data-y="52" aria-controls="constellation-detail">
+            <a class="constellation-star star-space" href="pages/spaces.html" data-star="space" data-x="84" data-y="52">
               <span class="star-light" aria-hidden="true"></span>
               <span class="star-label">공간별</span>
             </a>
 
-            <a class="constellation-star star-car" href="pages/cars.html" data-star="car" data-x="43" data-y="66" aria-controls="constellation-detail">
+            <a class="constellation-star star-car" href="pages/cars.html" data-star="car" data-x="43" data-y="66">
               <span class="star-light" aria-hidden="true"></span>
               <span class="star-label">자동차별</span>
             </a>
 
-            <a class="constellation-star star-food" href="pages/food.html" data-star="food" data-x="67" data-y="75" aria-controls="constellation-detail">
+            <a class="constellation-star star-food" href="pages/food.html" data-star="food" data-x="67" data-y="75">
               <span class="star-light" aria-hidden="true"></span>
               <span class="star-label">음식별</span>
             </a>
 
-            <a class="constellation-star star-audio" href="pages/music-audio.html" data-star="audio" data-x="21" data-y="78" aria-controls="constellation-detail">
+            <a class="constellation-star star-audio" href="pages/music-audio.html" data-star="audio" data-x="21" data-y="78">
               <span class="star-light" aria-hidden="true"></span>
               <span class="star-label">음악·오디오별</span>
             </a>
 
-            <a class="constellation-star star-camera" href="pages/cameras.html" data-star="camera" data-x="89" data-y="83" aria-controls="constellation-detail">
+            <a class="constellation-star star-camera" href="pages/cameras.html" data-star="camera" data-x="89" data-y="83">
               <span class="star-light" aria-hidden="true"></span>
               <span class="star-label">카메라별</span>
             </a>
+
+            <span class="hidden-star hidden-star-editor" aria-hidden="true"></span>
+            <span class="hidden-star hidden-star-build" aria-hidden="true"></span>
+            <span class="hidden-star hidden-star-workshop" aria-hidden="true"></span>
           </nav>
 
-          <aside class="constellation-detail" id="constellation-detail" aria-live="polite" hidden>
-            <div class="detail-meta-row">
-              <p class="detail-ticket-label">입장권</p>
-              <p class="detail-kicker" id="constellation-kind">사람</p>
-              <p class="detail-code" id="constellation-code">LPH-B613-01</p>
-              <img class="detail-arrival-stamp" id="constellation-arrival-stamp" alt="" hidden>
-            </div>
-            <h3 id="constellation-name">살아남은 이야기</h3>
-            <figure class="detail-preview" id="constellation-preview" hidden>
-              <img id="constellation-preview-image" alt="">
-              <figcaption id="constellation-preview-caption">대표 이미지</figcaption>
-            </figure>
-            <p class="detail-teaser" id="constellation-teaser" hidden>마음에 쌓인 걸 몸 밖으로 꺼내던 도구</p>
-            <div class="detail-copy" hidden>
-              <p id="constellation-result">글이 좋아서가 아니었다. 마음에 쌓인 걸 몸 밖으로 빼내려 펜을 잡았고, 그렇게 겨우 살아났다. 무거운 날이면, 손이 결국 펜으로 간다.</p>
-              <p id="constellation-invite">손으로 뭔가를 꺼내며 버텨본 사람이라면, 우린 말이 통한다.</p>
-            </div>
-            <p class="detail-ticket-hint" id="constellation-ticket-hint" hidden>만년필별로 들어가려면 입장권 발권 버튼을 누르세요.</p>
-            <p class="asset-note" id="constellation-asset" hidden>실제 사진 준비 중: 실제 만년필, 손글씨, 노트, 잉크 흔적 사진</p>
-            <div class="detail-ticket-actions">
-              <a class="constellation-soft-link" id="constellation-room-link" href="pages/fountain-pens.html">입장권 발권</a>
-            </div>
-            <p class="constellation-room-status" id="constellation-room-status" hidden>방 정리 중</p>
-          </aside>
         </div>
 
         <footer class="constellation-bridge">
@@ -131,6 +112,6 @@
       </section>
     </main>
 
-    <script src="assets/js/main.js?v=ga4-events-v1"></script>
+    <script src="assets/js/main.js?v=universe-v3-20260712"></script>
   </body>
 </html>
