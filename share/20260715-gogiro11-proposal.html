@@ -6,6 +6,23 @@
     <meta name="robots" content="noindex, nofollow, noarchive">
     <title>고기로 1-1 인스타그램 재시동 제안 | HAM MEDIA</title>
     <meta name="description" content="고기로 1-1의 인스타그램을 3개월 동안 다시 움직이는 HAM MEDIA 릴스 운영 파일럿 제안입니다.">
+    <link rel="canonical" href="https://hammedia.co.kr/share/20260715-gogiro11-proposal.html">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="ko_KR">
+    <meta property="og:site_name" content="HAM MEDIA">
+    <meta property="og:title" content="고기로 1-1 · 90일 인스타그램 재시동 제안">
+    <meta property="og:description" content="원주 고기로 1-1의 실제 고기와 상차림, 위치를 90일 동안 꾸준한 콘텐츠로 연결하는 운영 제안입니다.">
+    <meta property="og:url" content="https://hammedia.co.kr/share/20260715-gogiro11-proposal.html">
+    <meta property="og:image" content="https://hammedia.co.kr/assets/images/proposals/gogiro11/og-gogiro11-1200x630.jpg">
+    <meta property="og:image:secure_url" content="https://hammedia.co.kr/assets/images/proposals/gogiro11/og-gogiro11-1200x630.jpg">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="고기로 1-1 공식 인스타그램에 공개된 고기 사진">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="고기로 1-1 · 90일 인스타그램 재시동 제안">
+    <meta name="twitter:description" content="실제 고기와 상차림, 위치를 90일 동안 꾸준한 콘텐츠로 연결합니다.">
+    <meta name="twitter:image" content="https://hammedia.co.kr/assets/images/proposals/gogiro11/og-gogiro11-1200x630.jpg">
     <style>
       :root {
         --night: #10100f;
@@ -58,71 +75,35 @@
 
       .hero {
         position: relative;
-        min-height: 560px;
+        min-height: 680px;
         display: grid;
         align-items: end;
         padding: clamp(32px, 7vw, 72px);
         overflow: hidden;
         color: #fffaf2;
         background:
-          radial-gradient(circle at 78% 22%, rgba(217, 172, 89, .35), transparent 19rem),
-          linear-gradient(145deg, rgba(123, 40, 27, .84), rgba(16, 16, 15, .96) 70%),
+          linear-gradient(180deg, rgba(15, 10, 8, .12) 0%, rgba(15, 10, 8, .34) 45%, rgba(15, 10, 8, .96) 100%),
+          linear-gradient(90deg, rgba(15, 10, 8, .42), transparent 72%),
+          url("/assets/images/proposals/gogiro11/beef-ribeye.jpg") center 48% / cover no-repeat,
           #181513;
-      }
-
-      .hero::before,
-      .hero::after {
-        content: "";
-        position: absolute;
-        border-radius: 50%;
-        pointer-events: none;
-      }
-
-      .hero::before {
-        width: 420px;
-        height: 420px;
-        top: -170px;
-        right: -120px;
-        border: 1px solid rgba(255, 250, 242, .16);
-        box-shadow: 0 0 0 48px rgba(255, 250, 242, .025), 0 0 0 110px rgba(255, 250, 242, .018);
-      }
-
-      .hero::after {
-        width: 160px;
-        height: 160px;
-        left: -60px;
-        bottom: 48px;
-        background: rgba(217, 172, 89, .1);
-        filter: blur(2px);
       }
 
       .hero-inner { position: relative; z-index: 1; }
 
-      .brand-row {
+      .proposal-date {
         position: absolute;
         top: clamp(26px, 5vw, 48px);
-        left: clamp(32px, 7vw, 72px);
         right: clamp(32px, 7vw, 72px);
-        display: flex;
-        justify-content: space-between;
-        gap: 16px;
-        align-items: center;
-        color: rgba(255, 250, 242, .72);
+        z-index: 1;
+        padding: 7px 11px;
+        border: 1px solid rgba(255, 250, 242, .32);
+        border-radius: 999px;
+        color: rgba(255, 250, 242, .86);
         font-size: 12px;
         font-weight: 800;
         letter-spacing: .12em;
-      }
-
-      .brand-logo {
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-      }
-
-      .brand-logo img {
-        width: 42px;
-        height: 42px;
-        object-fit: contain;
+        backdrop-filter: blur(10px);
+        background: rgba(15, 10, 8, .18);
       }
 
       .eyebrow {
@@ -165,6 +146,53 @@
         font-size: 13px;
         font-weight: 750;
         backdrop-filter: blur(8px);
+      }
+
+      .photo-story {
+        display: grid;
+        grid-template-columns: 1.35fr .65fr;
+        grid-template-rows: repeat(2, minmax(210px, 1fr));
+        gap: 14px;
+        margin-top: 30px;
+      }
+
+      .photo-card {
+        position: relative;
+        min-height: 210px;
+        overflow: hidden;
+        border-radius: 22px;
+        background: var(--night);
+      }
+
+      .photo-card:first-child { grid-row: 1 / 3; }
+
+      .photo-card img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .photo-card:first-child img { object-position: 52% 58%; }
+      .photo-card:nth-child(2) img { object-position: 50% 72%; }
+      .photo-card:nth-child(3) img { object-position: 50% 58%; }
+
+      .photo-card figcaption {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        padding: 42px 18px 16px;
+        color: #fffaf2;
+        font-size: 13px;
+        font-weight: 800;
+        background: linear-gradient(transparent, rgba(15, 10, 8, .9));
+      }
+
+      .photo-source {
+        margin: 12px 0 0;
+        color: var(--muted);
+        font-size: 12px;
       }
 
       .content { padding: clamp(30px, 7vw, 72px); }
@@ -358,6 +386,23 @@
         font-weight: 900;
       }
 
+      .monthly-equiv {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+        gap: 8px;
+        margin-top: 14px;
+        color: #f4ce86;
+        font-size: 20px;
+        font-weight: 900;
+      }
+
+      .monthly-equiv small {
+        color: rgba(255, 250, 242, .6);
+        font-size: 12px;
+        font-weight: 750;
+      }
+
       .option ul { margin: 0; padding-left: 1.2em; }
       .option li { margin: 7px 0; color: var(--muted); font-size: 15px; }
       .featured li { color: rgba(255, 250, 242, .74); }
@@ -489,6 +534,18 @@
       .audit-card li,
       .kpi-card li { margin: 8px 0; color: var(--muted); font-size: 15px; }
 
+      .measurement-callout {
+        margin-top: 28px;
+        padding: clamp(22px, 4vw, 32px);
+        border: 1px solid rgba(182, 67, 45, .2);
+        border-radius: 20px;
+        color: var(--red-deep);
+        background: #fff5ed;
+        font-size: clamp(20px, 3.5vw, 28px);
+        font-weight: 900;
+        line-height: 1.4;
+      }
+
       .strategy-thesis {
         margin-top: 30px;
         padding: clamp(28px, 5vw, 42px);
@@ -516,6 +573,85 @@
         margin: 18px 0 0;
         color: rgba(255, 250, 242, .7);
       }
+
+      .location-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.45fr) minmax(250px, .55fr);
+        gap: 18px;
+        margin-top: 30px;
+        padding: 14px;
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        background: #fff;
+      }
+
+      .map-visual {
+        position: relative;
+        min-height: 360px;
+        overflow: hidden;
+        border-radius: 17px;
+        background: #e7ede7;
+      }
+
+      .map-visual img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: 45% 50%;
+      }
+
+      .map-note {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: clamp(14px, 3vw, 26px);
+      }
+
+      .map-note small {
+        color: var(--red);
+        font-weight: 900;
+        letter-spacing: .1em;
+      }
+
+      .map-note h3 {
+        margin: 10px 0 0;
+        font-size: clamp(23px, 3.3vw, 32px);
+        line-height: 1.25;
+        letter-spacing: -.035em;
+      }
+
+      .map-note p { margin: 16px 0 0; color: var(--muted); font-size: 15px; }
+
+      .map-link {
+        display: inline-flex;
+        width: fit-content;
+        margin-top: 20px;
+        padding: 11px 15px;
+        border-radius: 999px;
+        color: #fff;
+        background: var(--green);
+        font-size: 14px;
+        font-weight: 900;
+        text-decoration: none;
+      }
+
+      .map-link:hover,
+      .map-link:focus-visible { background: #234535; }
+
+      .map-link:focus-visible { outline: 3px solid rgba(49, 91, 72, .28); outline-offset: 3px; }
+
+      .english-pilot {
+        margin-top: 18px;
+        padding: 22px 24px;
+        border: 1px solid rgba(49, 91, 72, .24);
+        border-radius: 20px;
+        background: rgba(49, 91, 72, .06);
+      }
+
+      .english-pilot strong { display: block; color: var(--green); font-size: 18px; }
+      .english-pilot p { margin: 8px 0 0; color: var(--muted); font-size: 14px; }
 
       .roadmap-grid {
         display: grid;
@@ -570,6 +706,25 @@
       .close h2 { margin: 0; font-size: clamp(30px, 5vw, 46px); line-height: 1.22; letter-spacing: -.04em; }
       .close small { display: block; margin-top: 18px; color: rgba(255, 250, 242, .62); font-size: 14px; }
 
+      .signature-mark {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        margin-top: 30px;
+        padding-top: 24px;
+        border-top: 1px solid rgba(255, 250, 242, .16);
+        color: #fffaf2;
+        font-size: 13px;
+        font-weight: 900;
+        letter-spacing: .12em;
+      }
+
+      .signature-mark img {
+        width: 48px;
+        height: 48px;
+        object-fit: contain;
+      }
+
       .footer {
         padding: 26px clamp(30px, 7vw, 72px) 32px;
         border-top: 1px solid var(--line);
@@ -587,6 +742,8 @@
         .audit-grid,
         .kpi-grid { grid-template-columns: 1fr; }
         .roadmap-grid { grid-template-columns: 1fr; }
+        .location-grid { grid-template-columns: 1fr; }
+        .map-note { padding: 18px 12px 10px; }
         .process { grid-template-columns: repeat(2, 1fr); }
         .step:nth-child(2) { border-right: 0; }
         .step:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
@@ -595,14 +752,18 @@
       @media (max-width: 620px) {
         .shell { padding: 10px 8px 40px; }
         .document { border-radius: 20px; }
-        .hero { min-height: 560px; padding: 96px 26px 34px; }
-        .brand-row { left: 26px; right: 26px; }
+        .hero { min-height: 620px; padding: 92px 26px 34px; background-position: 58% 50%; }
+        .proposal-date { right: 26px; }
         .content { padding: 36px 22px 48px; }
         .options,
         .theme-grid,
         .metric-grid { grid-template-columns: 1fr; }
         .theme { min-height: 0; }
         .theme-num { margin-bottom: 14px; }
+        .photo-story { grid-template-columns: 1fr; grid-template-rows: none; }
+        .photo-card,
+        .photo-card:first-child { grid-row: auto; min-height: 300px; }
+        .map-visual { min-height: 300px; }
         .process { grid-template-columns: 1fr; }
         .step,
         .step:nth-child(2) { border-right: 0; border-bottom: 1px solid var(--line); }
@@ -615,15 +776,9 @@
     <main class="shell">
       <article class="document">
         <header class="hero">
-          <div class="brand-row">
-            <span class="brand-logo">
-              <img src="/assets/images/brand/hammedia_mark_white.png" alt="HAM MEDIA 로고">
-              <span>HAM MEDIA</span>
-            </span>
-            <span>2026. 07. 15</span>
-          </div>
+          <span class="proposal-date">2026. 07. 15</span>
           <div class="hero-inner">
-            <p class="eyebrow">GOGIRO 1-1 · 90-DAY SOCIAL RESTART</p>
+            <p class="eyebrow">고기로 1-1 · 90일 인스타그램 재시동</p>
             <h1>가게는 멈춘 적 없습니다.<br>다만 인스타그램은 275일 멈춰 있습니다.</h1>
             <p class="hero-lead">이미 쌓인 리뷰와 메뉴, 실제 매장과 대표님의 목소리를 다시 연결해 손님이 고기로 1-1을 발견하게 만드는 3개월 제안입니다.</p>
             <div class="hero-facts" aria-label="제안 핵심">
@@ -644,6 +799,27 @@
               <p>고기로 1-1은 온라인에 아무것도 없는 매장이 아닙니다. 네이버에는 리뷰·메뉴·예약이 있고, 인스타그램에는 199개의 게시물과 촬영 자산이 남아 있습니다. 문제는 좋은 가게가 아니라, 좋은 가게의 최신 이야기가 멈춰 있다는 것입니다.</p>
             </div>
             <blockquote class="quote">“새로 꾸며낼 필요가 없습니다. 이미 잘하고 있는 일을 손님이 다시 보게 만들면 됩니다.”</blockquote>
+          </section>
+
+          <section class="section" aria-labelledby="owned-assets-title">
+            <p class="section-kicker">THE STORE ALREADY HAS A STORY</p>
+            <h2 class="section-title" id="owned-assets-title">고기와 상차림이 이미 첫 번째 콘텐츠입니다.</h2>
+            <p class="section-desc">새 이미지를 꾸며내기 전에 매장이 공식 채널에 남긴 실제 사진부터 씁니다. 원육의 결, 한 상의 분위기, 메뉴가 준비되는 장면을 목적에 맞게 나눠 보여줍니다.</p>
+            <div class="photo-story">
+              <figure class="photo-card">
+                <img src="/assets/images/proposals/gogiro11/beef-hotpot.jpg" alt="고기로 1-1 매장의 고기 전골과 반찬 상차림" loading="lazy">
+                <figcaption>메뉴와 계절 소재로 이어지는 실제 한 상</figcaption>
+              </figure>
+              <figure class="photo-card">
+                <img src="/assets/images/proposals/gogiro11/beef-ribeye.jpg" alt="고기로 1-1 공식 채널에 공개된 마블링이 보이는 원육" loading="lazy">
+                <figcaption>고기의 결을 먼저 보여주는 원육 사진</figcaption>
+              </figure>
+              <figure class="photo-card">
+                <img src="/assets/images/proposals/gogiro11/table-beer-pork.jpg" alt="고기로 1-1 매장의 돼지고기 상차림" loading="lazy">
+                <figcaption>방문을 상상하게 하는 상차림의 분위기</figcaption>
+              </figure>
+            </div>
+            <p class="photo-source">제안서에 사용한 사진은 <a href="https://www.instagram.com/gogiro1_1/" target="_blank" rel="noopener noreferrer">고기로 1-1 공식 인스타그램</a> 공개 사진입니다.</p>
           </section>
 
           <section class="section" aria-labelledby="baseline-title">
@@ -705,6 +881,18 @@
               <p>제목과 자막에는 `원주 반곡동·버들만이길 1-1`을 고정하고, 최신 메뉴와 실제 상차림을 보여주며, AI 광고처럼 들리지 않는 대표님의 목소리를 남깁니다.</p>
             </div>
 
+            <div class="location-grid" aria-labelledby="location-title">
+              <div class="map-visual">
+                <img src="/assets/images/proposals/gogiro11/naver-map-pin-clean.png" alt="네이버 지도에서 본 강원 원주시 버들만이길 1-1 고기로 1-1의 위치와 원주 혁신도시 주변 생활권">
+              </div>
+              <div class="map-note">
+                <small>LOCATION IS CONTENT</small>
+                <h3 id="location-title">위치를 한 번 보여주고 끝내지 않습니다.</h3>
+                <p>검색에서 다른 지역의 비슷한 주소와 섞이지 않도록 상호와 `원주·버들만이길 1-1`을 제목·자막·설명에 함께 씁니다. 실제 방문으로 이어지는 매장이기에 위치도 반복해서 확인할 콘텐츠입니다.</p>
+                <a class="map-link" href="https://map.naver.com/p/entry/place/1546436714" target="_blank" rel="noopener noreferrer" aria-label="네이버 지도에서 고기로 1-1 위치 열기">네이버 지도에서 위치 보기 →</a>
+              </div>
+            </div>
+
             <div class="theme-grid">
               <article class="theme">
                 <span class="theme-num">01</span>
@@ -727,6 +915,11 @@
                 <p>왜 이 고기를 골랐는지, 어떻게 먹으면 좋은지 실제 목소리로 짧게 설명합니다.</p>
               </article>
             </div>
+
+            <aside class="english-pilot">
+              <strong>작은 개인화 시험 · 영문 친화 게시물 월 1건</strong>
+              <p>대표님의 영어 소통 경험을 살려 기존 월 25~26건 사진 글 안에서 월 1건만 먼저 시험합니다. 반응을 확인한 뒤 확대 여부를 결정하며, 별도 수량이나 효과를 미리 약속하지 않습니다.</p>
+            </aside>
           </section>
 
           <section class="section">
@@ -793,6 +986,7 @@
             <p class="section-kicker">05 · MEASUREMENT</p>
             <h2 class="section-title">조회수 하나로 성공을 말하지 않겠습니다.</h2>
             <p class="section-desc">시작 전 기준값을 남기고, 3개월 동안 무엇이 실제로 나아졌는지 함께 봅니다. 매출 보장이나 바이럴을 약속하지 않으며, 확인 가능한 숫자만 결과보고에 적습니다.</p>
+            <div class="measurement-callout">바로 매출을 보장하는 상품이 아닙니다. 90일 동안 운영 리듬과 확인 가능한 반응을 검증합니다.</div>
             <div class="kpi-grid">
               <article class="kpi-card">
                 <h3>운영이 다시 굴러갔는가</h3>
@@ -825,6 +1019,7 @@
                   <div class="regular">공급가액 909,091원 + 부가세 90,909원</div>
                   <div class="price"><strong>1,000,000</strong><span>원</span></div>
                   <div class="total-line">3개월 총액 · 부가세 포함 · 선납</div>
+                  <div class="monthly-equiv">월 환산 약 33.3만 원 <small>3개월 선납 총액을 3으로 나눈 비교용 표기</small></div>
                   <p class="price-context">3개월 종료 후 결과보고서를 함께 확인하고, 재계약 시 실제 운영량·촬영·게시 운영·후속 시스템 범위에 따라 가격을 다시 정합니다.</p>
                 </div>
                 <ul>
@@ -879,9 +1074,13 @@
           </section>
 
           <section class="close">
-            <p>HAM MEDIA PROPOSAL</p>
+            <p>고기로 1-1 · 90일 운영 제안</p>
             <h2>가게를 새로 꾸며내지 않습니다.<br>이미 있는 좋은 것을 손님이 다시 보게 만듭니다.</h2>
             <small>계약·일정·자료 접수는 HAM MEDIA 비서실장이 담당합니다. 확정 전에는 제작과 게시가 시작되지 않습니다.</small>
+            <span class="signature-mark">
+              <img src="/assets/images/brand/hammedia_mark_white.png" alt="HAM MEDIA 로고">
+              <span>HAM MEDIA</span>
+            </span>
           </section>
         </div>
 
