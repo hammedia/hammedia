@@ -1,0 +1,525 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <title>항공교육 AI 작업실 제안서 | HAM MEDIA</title>
+  <meta name="description" content="안전운항과 사람의 최종 판단은 그대로 두고, 반복되는 항공교육 준비와 복기 부담을 줄이는 개인 AI 작업실 제안입니다.">
+  <link rel="canonical" href="https://hammedia.co.kr/share/20260716-flight-training-ai-workspace.html">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ko_KR">
+  <meta property="og:site_name" content="HAM MEDIA">
+  <meta property="og:title" content="항공교육 AI 작업실 제안서">
+  <meta property="og:description" content="회사자료 없이 시작하는 60분 진단과 가상 교육 템플릿, 두 MacBook의 완전 분리 세팅 제안입니다.">
+  <meta property="og:url" content="https://hammedia.co.kr/share/20260716-flight-training-ai-workspace.html">
+  <style>
+    :root {
+      --navy: #102a43;
+      --ink: #243b53;
+      --muted: #526d82;
+      --blue: #1769aa;
+      --blue-dark: #0b4f82;
+      --blue-pale: #edf7ff;
+      --sky: #d9efff;
+      --paper: #f5f9fc;
+      --card: #ffffff;
+      --line: #d7e4ee;
+      --orange: #9a4b00;
+      --orange-pale: #fff5e8;
+      --red: #922c2c;
+      --red-pale: #fff0f0;
+      --green: #176b4d;
+      --green-pale: #ecf8f2;
+      --shadow: 0 12px 32px rgba(16, 42, 67, 0.08);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+      font-size: 18px;
+      line-height: 1.72;
+      word-break: keep-all;
+      overflow-wrap: anywhere;
+    }
+    a { color: var(--blue-dark); text-underline-offset: 3px; }
+    a:hover { color: var(--blue); }
+    a:focus-visible { outline: 3px solid #ffb347; outline-offset: 3px; border-radius: 3px; }
+    .skip {
+      position: absolute;
+      left: -9999px;
+      top: 8px;
+      z-index: 99;
+      padding: 8px 12px;
+      background: #fff;
+      color: var(--navy);
+    }
+    .skip:focus { left: 8px; }
+
+    header {
+      background: linear-gradient(145deg, #e7f5ff 0%, #f9fcff 62%, #fff4e7 100%);
+      border-bottom: 1px solid var(--line);
+    }
+    .hero {
+      width: min(960px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 48px 0 42px;
+    }
+    .badge {
+      display: inline-block;
+      margin: 0 0 18px;
+      padding: 7px 13px;
+      border: 1px solid #e4a562;
+      border-radius: 999px;
+      color: var(--orange);
+      background: var(--orange-pale);
+      font-size: 0.82rem;
+      font-weight: 800;
+    }
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--blue-dark);
+      font-size: 0.9rem;
+      font-weight: 800;
+      letter-spacing: 0.03em;
+    }
+    h1, h2, h3 { color: var(--navy); line-height: 1.35; }
+    h1 { max-width: 820px; margin: 0; font-size: clamp(2rem, 5vw, 3.25rem); letter-spacing: -0.045em; }
+    .lead { max-width: 760px; margin: 20px 0 0; color: var(--muted); font-size: 1.1rem; }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 16px;
+      margin-top: 28px;
+    }
+    .hero-card {
+      padding: 20px 22px;
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      background: rgba(255,255,255,0.88);
+      box-shadow: var(--shadow);
+    }
+    .hero-card p { margin: 0; }
+    .hero-card strong { color: var(--blue-dark); }
+
+    main { width: min(960px, calc(100% - 40px)); margin: 0 auto; padding: 20px 0 76px; }
+    section { padding-top: 42px; }
+    h2 { margin: 0 0 18px; font-size: clamp(1.55rem, 3.4vw, 2.1rem); letter-spacing: -0.03em; }
+    h3 { margin: 30px 0 10px; font-size: 1.18rem; }
+    p { margin: 0 0 16px; }
+    ul, ol { margin: 0 0 18px; padding-left: 1.35em; }
+    li { margin: 0 0 8px; }
+    strong { color: var(--navy); }
+
+    .notice, .warning, .safe, .decision {
+      margin: 20px 0;
+      padding: 20px 22px;
+      border-radius: 14px;
+      break-inside: avoid;
+    }
+    .notice { border-left: 5px solid var(--blue); background: var(--blue-pale); }
+    .warning { border-left: 5px solid var(--orange); background: var(--orange-pale); }
+    .danger { border-left: 5px solid var(--red); background: var(--red-pale); }
+    .safe { border-left: 5px solid var(--green); background: var(--green-pale); }
+    .notice > :last-child, .warning > :last-child, .danger > :last-child, .safe > :last-child { margin-bottom: 0; }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin: 22px 0;
+    }
+    .step {
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: var(--card);
+      box-shadow: var(--shadow);
+      break-inside: avoid;
+    }
+    .step span { display: block; margin-bottom: 6px; color: var(--blue); font-size: 0.85rem; font-weight: 800; }
+    .step h3 { margin: 0 0 8px; font-size: 1.05rem; }
+    .step p { margin: 0; color: var(--muted); font-size: 0.94rem; }
+
+    .table-wrap { margin: 22px 0; overflow-x: auto; border-radius: 14px; box-shadow: var(--shadow); }
+    table { width: 100%; border-collapse: collapse; background: var(--card); font-size: 0.94rem; }
+    caption { padding: 12px 16px; text-align: left; color: var(--blue-dark); background: var(--sky); font-weight: 800; }
+    th, td { padding: 13px 14px; border: 1px solid var(--line); text-align: left; vertical-align: top; }
+    thead th { color: var(--navy); background: var(--blue-pale); }
+    tbody th { color: var(--blue-dark); }
+
+    .boundary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+    .boundary {
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: var(--card);
+    }
+    .boundary h3 { margin-top: 0; }
+    .boundary.allowed { border-top: 5px solid var(--green); }
+    .boundary.forbidden { border-top: 5px solid var(--red); }
+
+    .source {
+      margin: 12px 0;
+      padding: 14px 16px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--card);
+      font-size: 0.93rem;
+    }
+    .source p { margin: 0 0 5px; }
+    .source p:last-child { margin-bottom: 0; }
+
+    .decision {
+      border: 2px solid var(--blue);
+      background: var(--card);
+      box-shadow: var(--shadow);
+    }
+    .decision h2 { margin-top: 0; }
+    .decision-row { display: grid; grid-template-columns: 120px 1fr; gap: 12px; padding: 10px 0; border-top: 1px solid var(--line); }
+    .decision-row:first-of-type { border-top: 0; }
+    .decision-row b { color: var(--blue-dark); }
+
+    blockquote {
+      margin: 20px 0;
+      padding: 22px;
+      border-left: 5px solid var(--blue);
+      border-radius: 0 14px 14px 0;
+      background: var(--blue-pale);
+      color: var(--navy);
+      font-size: 1.03rem;
+    }
+    footer {
+      margin-top: 52px;
+      padding-top: 24px;
+      border-top: 2px solid var(--line);
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+    code { padding: 2px 5px; border-radius: 5px; background: #eaf1f6; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.86em; }
+
+    @media (max-width: 760px) {
+      body { font-size: 17px; }
+      .hero, main { width: min(100% - 28px, 960px); }
+      .hero { padding: 34px 0 30px; }
+      .hero-grid, .steps, .boundary-grid { grid-template-columns: 1fr; }
+      section { padding-top: 34px; }
+      .table-wrap { overflow: visible; box-shadow: none; }
+      table, thead, tbody, tr, th, td, caption { display: block; width: 100%; }
+      thead { position: absolute; left: -9999px; }
+      table { background: transparent; }
+      caption { border-radius: 12px; margin-bottom: 10px; }
+      tbody tr { margin: 0 0 12px; padding: 5px 0; border: 1px solid var(--line); border-radius: 12px; background: var(--card); box-shadow: var(--shadow); }
+      th, td { border: 0; padding: 8px 13px; }
+      tbody th { padding-bottom: 2px; }
+      td[data-label]::before { content: attr(data-label); display: block; margin-bottom: 2px; color: var(--blue-dark); font-size: 0.8rem; font-weight: 800; }
+      .decision-row { grid-template-columns: 1fr; gap: 2px; }
+    }
+
+    @media (max-width: 340px) {
+      body { font-size: 16px; }
+      .hero, main { width: min(100% - 20px, 960px); }
+      .hero-card, .notice, .warning, .danger, .safe, .decision, blockquote { padding: 16px; }
+      h1 { font-size: 1.78rem; }
+    }
+
+    @media print {
+      @page { margin: 16mm; }
+      body { color: #111; background: #fff; font-size: 10.5pt; }
+      .skip { display: none; }
+      header { background: #fff; }
+      .hero, main { width: 100%; padding-left: 0; padding-right: 0; }
+      .hero { padding-top: 0; }
+      .hero-card, .step, .boundary, .source, .decision { box-shadow: none; }
+      section { padding-top: 20px; }
+      h2, h3 { break-after: avoid; }
+      .step, .boundary, .source, .notice, .warning, .danger, .safe, .decision, table, blockquote { break-inside: avoid; }
+      a { color: #111; }
+      a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 0.72em; word-break: break-all; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#content">본문으로 바로가기</a>
+
+  <header>
+    <div class="hero">
+      <p class="badge">HAM MEDIA · 고객 검토용 제안서</p>
+      <p class="eyebrow">HAM MEDIA · 재리서치 제안서 v2.2 · 2026-07-16</p>
+      <h1>안전운항은 그대로 사람이.<br>반복 교육 준비는 더 가볍게.</h1>
+      <p class="lead">기장님이 직접 말한 비행 전·중·후 교육 흐름을 다시 그리고, 항공교육 공식 자료와 개인정보·기기 안전선을 대조해 만든 제안입니다.</p>
+
+      <div class="hero-grid">
+        <div class="hero-card">
+          <p><strong>실제 요청</strong><br>비행계획·NOTAM·날씨 검토부터 교육생 브리핑, 운항 중 안전판단과 교육, 비행 후 디브리핑까지 매번 반복되어 시간과 피로 부담이 크다.</p>
+        </div>
+        <div class="hero-card">
+          <p><strong>제안 결론</strong><br>바로 설치하지 않습니다. 회사자료 0인 60분 진단과 가상 디브리핑 템플릿 한 건부터 시험합니다.</p>
+        </div>
+      </div>
+      <div class="notice">
+        <p><strong>두 대 별도 세팅 제안</strong><br>기장님 MacBook 1대에는 항공교육 준비용 개인 AI 작업실을, 학생 MacBook 1대에는 학생용 AI 학습실을 각각 제안합니다. 두 작업실은 완전히 분리합니다.</p>
+      </div>
+    </div>
+  </header>
+
+  <main id="content">
+    <section aria-labelledby="start-title">
+      <h2 id="start-title">먼저 선을 긋습니다</h2>
+      <div class="warning">
+        <p><strong>기장님의 직책과 업무 상황은 대화에서 확인한 설명과 녹음 앞뒤 맥락에 따른 것입니다.</strong> HAM MEDIA가 소속 항공사에 독립 확인하지 않았고, 소속 항공사의 AI·개인기기·교육기록 정책도 확인하지 않았습니다. 이 문서는 소속 항공사의 공식 제안서나 승인 시스템이 아닙니다.</p>
+      </div>
+      <p>그래서 이 제안은 “회사 비행업무를 AI로 바꾸자”가 아닙니다. <strong>운항과 회사 평가체계 바깥에서, 공개·비기밀·비식별 자료만으로 교육 전후의 반복 준비를 시험하자</strong>는 좁은 제안입니다.</p>
+    </section>
+
+    <section aria-labelledby="flow-title">
+      <h2 id="flow-title">1. 녹음에서 다시 그린 실제 업무 흐름</h2>
+      <div class="steps" aria-label="업무 흐름 여섯 단계">
+        <article class="step"><span>01 · 출근 후</span><h3>자료·위협 분석</h3><p>비행계획서, NOTAM, 날씨를 검토해 그날의 위협요소를 파악합니다.</p></article>
+        <article class="step"><span>02 · 항공기 도착</span><h3>준비 상태 확인</h3><p>항공기, 승객, 수하물, 연료와 정시 준비 상태를 확인합니다.</p></article>
+        <article class="step"><span>03 · 비행 전</span><h3>교육생 재브리핑</h3><p>운항계획과 위협요소를 다시 공유합니다.</p></article>
+        <article class="step"><span>04 · 운항 중</span><h3>안전판단 + 교육</h3><p>날씨, traffic, ATC를 판단하면서 동시에 교육합니다.</p></article>
+        <article class="step"><span>05 · 비행 후</span><h3>복기·디브리핑</h3><p>잘한 점, 부족한 점, 다음 개선점을 함께 돌아봅니다.</p></article>
+        <article class="step"><span>06 · 반복</span><h3>시간·피로 누적</h3><p>이 흐름이 비행마다 되풀이되어 교육 준비와 정리 부담이 커집니다.</p></article>
+      </div>
+      <div class="notice">
+        <p><strong>핵심 문제:</strong> 안전을 판단하는 고부하 업무와 사람을 가르치는 고부하 업무가 같은 시간대에 겹친 뒤, 비행 후까지 기록과 피드백이 이어집니다. 따라서 비행 중 판단의 자동화가 아니라, 비행 전·후 반복 준비를 줄여 사람의 주의력과 판단 여유를 지키는 것이 목표입니다.</p>
+      </div>
+    </section>
+
+    <section aria-labelledby="map-title">
+      <h2 id="map-title">2. AI가 도울 자리와 건드리지 않을 자리</h2>
+      <div class="table-wrap">
+        <table>
+          <caption>업무 구간별 제안 범위</caption>
+          <thead><tr><th scope="col">업무 구간</th><th scope="col">안전한 도움 후보</th><th scope="col">현재 판정</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">비행 전 자료 분석</th><td data-label="안전한 도움 후보">회사자료 없이 가상 사례용 검토 질문 틀</td><td data-label="현재 판정">실제 비행계획·NOTAM·날씨는 입력하지 않음</td></tr>
+            <tr><th scope="row">준비 상태 확인</th><td data-label="안전한 도움 후보">기장이 만든 일반 교육질문의 순서 정리</td><td data-label="현재 판정">실제 운항 상태 입력 금지</td></tr>
+            <tr><th scope="row">교육생 브리핑</th><td data-label="안전한 도움 후보">공개·가상 시나리오의 질문 초안</td><td data-label="현재 판정">1단 진단에서 검토</td></tr>
+            <tr><th scope="row">운항 중</th><td data-label="안전한 도움 후보">없음</td><td data-label="현재 판정"><strong>AI 역할 전면 금지</strong></td></tr>
+            <tr><th scope="row">비행 후 디브리핑</th><td data-label="안전한 도움 후보">가상 사례용 자기평가 질문·빈 템플릿</td><td data-label="현재 판정"><strong>첫 파일럿 추천</strong></td></tr>
+            <tr><th scope="row">평가·후속</th><td data-label="안전한 도움 후보">빈 질문 구조까지만</td><td data-label="현재 판정">실제 평가·합불은 사람/회사 전담</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="boundary-grid">
+        <article class="boundary allowed">
+          <h3>도울 수 있는 후보</h3>
+          <ul>
+            <li>가상 교육주제의 브리핑·디브리핑 질문</li>
+            <li>관찰→사실→자기평가→개선계획 빈 양식</li>
+            <li>비기밀·비식별 개인 회고의 표현 정리</li>
+            <li>기장이 승인한 템플릿의 반복 재사용</li>
+          </ul>
+        </article>
+        <article class="boundary forbidden">
+          <h3>절대 맡기지 않는 일</h3>
+          <ul>
+            <li>운항·기상·NOTAM·연료·traffic·ATC 판단</li>
+            <li>회사 절차와 비공개 매뉴얼 해석</li>
+            <li>교육생 최종평가·합격/불합격</li>
+            <li>징계·인사·상담 판단</li>
+            <li>AI가 만든 내용을 실제 관찰사실처럼 쓰는 일</li>
+          </ul>
+        </article>
+      </div>
+      <div class="danger notice">
+        <p><strong>운항 중에는 AI를 켜지 않는 것이 기본값입니다.</strong> AI는 안전판단의 재료를 만들지 않고, 운항 뒤에도 사람을 평가하지 않습니다.</p>
+      </div>
+    </section>
+
+    <section aria-labelledby="research-title">
+      <h2 id="research-title">3. 공식 자료를 다시 확인한 결과</h2>
+      <p>아래 자료는 항공교육과 AI 거버넌스의 방향을 확인하기 위한 근거입니다. <strong>HAM MEDIA 제품의 효과·승인·매출을 증명하는 자료가 아닙니다.</strong></p>
+
+      <article class="source">
+        <p><strong>IATA · CBTA Train the Trainer</strong></p>
+        <p>교관/평가자 역량, 객관적 평가 증거, TEM, 시나리오 연습, 촉진형 브리핑·디브리핑과 평가자 간 일치도를 함께 다룹니다. <a href="https://www.iata.org/en/training/courses/cbta-trainer-pilots/foc015veen02/en/" rel="noopener">공식 페이지</a></p>
+      </article>
+      <article class="source">
+        <p><strong>IATA · Evidence-Based Training Implementation Guide</strong></p>
+        <p>디브리핑은 관찰된 행동과 사실에 근거한 공정한 검토이며, 교육생의 자기평가를 촉진하고 구체적 개선 방향을 주도록 안내합니다. <a href="https://www.iata.org/contentassets/632cceb91d1f41d18cec52e375f38e73/ebt-implementation-guide.pdf" rel="noopener">공식 PDF</a></p>
+      </article>
+      <article class="source">
+        <p><strong>ICAO · 비행교관 CBTA와 EBT</strong></p>
+        <p>비행교관용 CBTA 과정은 지상교육·비행교육·디브리핑을 별도 학습목표로 두며, ICAO는 2026년 Doc 9995-1 제2판을 발행했습니다. <a href="https://igat.icao.int/ated/trainingcatalogue/Course/6104" rel="noopener">CBTA 과정</a> · <a href="https://store.icao.int/en/manual-of-evidence-based-training-volume-i-aeroplane-pilots-doc-9995-1" rel="noopener">Doc 9995-1</a></p>
+      </article>
+      <article class="source">
+        <p><strong>EASA · 인간 중심 항공 AI</strong></p>
+        <p>AI Roadmap과 Concept Paper는 인간 역량 보강, 인간 감독, 설명가능성, 윤리 평가와 운항 안전 보전을 강조합니다. 이 제안은 더 좁게 실제 운항 밖의 개인 교육준비만 겨눕니다. <a href="https://www.easa.europa.eu/en/domains/research-innovation/ai" rel="noopener">AI Roadmap</a> · <a href="https://www.easa.europa.eu/en/newsroom-and-events/news/easa-publishes-artificial-intelligence-concept-paper-issue-2-guidance" rel="noopener">Concept Paper Issue 2 안내</a></p>
+      </article>
+    </section>
+
+    <section aria-labelledby="security-title">
+      <h2 id="security-title">4. 데이터와 MacBook 안전선</h2>
+      <div class="warning danger">
+        <p><strong>회사 승인과 적법한 처리근거 없이는 개인 Mac·외부 AI·색인 어디에도 넣지 않습니다.</strong></p>
+        <ul>
+          <li>회사 비공개 매뉴얼과 절차서</li>
+          <li>실제 비행계획, NOTAM, 날씨, 연료, 항공기 상태 등 운항자료</li>
+          <li>승객·승무원·훈련생 식별정보</li>
+          <li>평가·상담·합불·징계·인사 기록</li>
+          <li>편명·날짜·노선·상황의 조합으로 사람이나 운항을 알아볼 수 있는 내용</li>
+        </ul>
+      </div>
+      <p>개인정보보호위원회의 2026년 가이드는 AI 입력정보의 학습 활용 여부, 업무자료 입력 주의, 외부 서비스 연동, 기록·학습활용 설정을 이용자가 확인·통제할 필요를 안내합니다. 이것은 회사자료 입력 허가가 아닙니다. <a href="https://m.pipc.go.kr/np/cop/bbs/selectBoardArticle.do?bbsId=BS074&amp;mCode=C020010000&amp;nttId=12084" rel="noopener">개인정보보호위원회 공식 자료</a></p>
+      <div class="boundary-grid">
+        <article class="boundary">
+          <h3>회사 지급 Mac</h3>
+          <p>회사 IT·정보보안 승인 전에는 설치·다운로드·계정 연결을 하지 않습니다.</p>
+        </article>
+        <article class="boundary">
+          <h3>개인 Mac</h3>
+          <p>설치 후보 장비일 뿐입니다. 개인 소유가 회사자료 반출·처리 허가를 뜻하지 않습니다.</p>
+        </article>
+      </div>
+      <p>Apple은 FileVault를 저장 데이터의 추가 보안층으로 설명하며, Desktop·Documents의 iCloud Drive 동기화를 켜면 파일이 iCloud로 이동·동기화된다고 안내합니다. 따라서 “내 Mac에 저장”과 “외부 전송 없음”은 같은 말이 아닙니다. <a href="https://support.apple.com/en-gb/guide/mac-help/mh11785/mac" rel="noopener">FileVault 안내</a> · <a href="https://support.apple.com/guide/mac-help/store-files-in-icloud-drive-mchle5a61431/mac" rel="noopener">iCloud Drive 안내</a></p>
+    </section>
+
+    <section aria-labelledby="phase-title">
+      <h2 id="phase-title">5. 두 단계로 진행합니다</h2>
+      <h3>1단 · 설치 없는 60분 진단</h3>
+      <div class="notice">
+        <ol>
+          <li>비행 전·중·후 교육업무를 실제 순서로 다시 그립니다.</li>
+          <li>각 구간의 현재 소요시간을 적습니다.</li>
+          <li>금지데이터와 사람 최종판단 지점을 표시합니다.</li>
+          <li>회사자료 없이 시험할 반복 업무 한 건을 고릅니다.</li>
+          <li>성공과 중단을 숫자로 정합니다.</li>
+        </ol>
+        <p><strong>받는 결과:</strong> 업무 흐름 지도 · AI 가능/불가표 · 금지데이터 지도 · 첫 파일럿 · 기준시간. 설치는 포함하지 않습니다.</p>
+      </div>
+
+      <h3>첫 파일럿 · 가상 디브리핑 템플릿 한 건</h3>
+      <p>실제 비행과 실제 교육생을 쓰지 않습니다. 기장님이 만든 가상 상황 또는 공개 가능한 일반 교육주제로 `관찰된 사실 / 자기평가 질문 / 잘된 행동 / 개선할 행동 / 다음 연습`의 빈 구조를 시험합니다.</p>
+      <div class="table-wrap">
+        <table>
+          <caption>첫 파일럿 측정표</caption>
+          <thead><tr><th scope="col">지표</th><th scope="col">측정</th><th scope="col">성공 기준</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">준비시간</th><td data-label="측정">수기와 AI 보조에 걸린 분</td><td data-label="성공 기준">두 번째·세 번째 시도에서 감소 경향</td></tr>
+            <tr><th scope="row">수정량</th><td data-label="측정">사람이 고친 핵심 항목 수</td><td data-label="성공 기준">감소하거나 반복 오류가 문서화됨</td></tr>
+            <tr><th scope="row">안전선 위반</th><td data-label="측정">운항 권고·평가 판정·회사자료 요구 수</td><td data-label="성공 기준"><strong>0건</strong></td></tr>
+            <tr><th scope="row">금지데이터</th><td data-label="측정">실제 사람·비행·회사자료 입력 수</td><td data-label="성공 기준"><strong>0건</strong></td></tr>
+            <tr><th scope="row">사용 가치</th><td data-label="측정">기장 본인 5점 평가</td><td data-label="성공 기준">4점 이상일 때 2단 검토</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>2단 · 개인 MacBook 작업실 구축 검토</h3>
+      <p>가상 파일럿의 안전선 위반 0건, 장비 구분과 회사 승인 범위를 확인한 뒤 별도 범위와 견적을 협의한 경우에만 검토합니다.</p>
+      <div class="steps">
+        <article class="step"><span>00</span><h3>경계문</h3><p>넣으면 안 되는 자료와 사람이 결정할 일을 먼저 읽습니다.</p></article>
+        <article class="step"><span>01</span><h3>승인된 공개자료</h3><p>공개·비기밀·비식별 자료만 둡니다.</p></article>
+        <article class="step"><span>02</span><h3>교육 템플릿</h3><p>사람이 승인한 질문과 빈 양식만 둡니다.</p></article>
+        <article class="step"><span>03</span><h3>AI 초안</h3><p>아직 쓰면 안 되는 결과가 머뭅니다.</p></article>
+        <article class="step"><span>04</span><h3>사람 검토 완료</h3><p>기장이 읽고 고친 결과만 옮깁니다.</p></article>
+        <article class="step"><span>99</span><h3>보류함</h3><p>애매하면 진행하지 않고 여기서 멈춥니다.</p></article>
+      </div>
+      <div class="warning">
+        <p><strong>기본 설정 원칙:</strong> 전용 로컬 폴더 · 외부 동기화 끔 · FileVault 확인 · 수동 실행 · 외부 API·계정·키 연결 없음 · 회사자료/실제 교육생 기록 없음. 실제 프로그램은 진단 뒤 정합니다.</p>
+      </div>
+    </section>
+
+    <section aria-labelledby="business-title">
+      <h2 id="business-title">6. HAM MEDIA 사업성 — 가능성과 증명 전을 가릅니다</h2>
+      <div class="boundary-grid">
+        <article class="boundary allowed">
+          <h3>기회가 있는 이유</h3>
+          <ul>
+            <li>고객이 자기 말로 시간·피로 문제를 설명함</li>
+            <li>시간·수정량·안전선 위반을 측정할 수 있음</li>
+            <li>회사자료 0인 한 건으로 작게 시작 가능</li>
+            <li>전문가의 판단과 책임을 제품 밖에 남김</li>
+            <li>업무지도→금지선→작은 파일럿 구조는 다른 전문직에도 적용 가능</li>
+          </ul>
+        </article>
+        <article class="boundary forbidden">
+          <h3>아직 증명하지 못한 것</h3>
+          <ul>
+            <li>기장님의 유료 구매의사</li>
+            <li>회사 정책상 개인 작업실 허용 여부</li>
+            <li>항공 교관 외부 유료사례와 전후 수치</li>
+            <li>맞춤 지원이 과도하게 커지지 않는지</li>
+            <li>안전·개인정보 검수비용까지 포함한 수익성</li>
+          </ul>
+        </article>
+      </div>
+      <p>Microsoft의 2025 Work Trend Index는 사람의 판단과 AI 실행을 섞는 조직 방향을 제시하지만, 이 자료가 HAM MEDIA의 매출이나 본 제안의 효과를 증명하지는 않습니다. <a href="https://www.microsoft.com/en-us/worklab/work-trend-index/2025-the-year-the-frontier-firm-is-born" rel="noopener">Microsoft 공식 자료</a></p>
+      <div class="warning">
+        <p><strong>가격은 진단 뒤 별도로 협의합니다.</strong> 진단·설치·구독 또는 건별 지원의 범위를 구분하고, 장비와 보안 조건을 확인한 뒤 별도 견적합니다.</p>
+      </div>
+    </section>
+
+    <section aria-labelledby="family-title">
+      <h2 id="family-title">7. MacBook 2대 별도 세팅 제안</h2>
+      <div class="warning">
+        <p><strong>대화에서 확인한 추가 요청입니다.</strong> 단순히 같은 교육을 함께 받는 방식이 아니라, 기장님과 학생의 MacBook에 목적이 다른 AI 작업실을 각각 구축하는 제안입니다. 실제 설치는 진단과 장비 확인, 별도 협의 뒤 진행합니다.</p>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <caption>두 MacBook의 목적·구성·첫 단계·금지선</caption>
+          <thead><tr><th scope="col">구분</th><th scope="col">기장님 MacBook 1대</th><th scope="col">학생 MacBook 1대</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">목적</th><td data-label="기장 MacBook">항공교육 준비용 개인 AI 작업실. 업무 설명·위임·검수 능력</td><td data-label="학생용 MacBook">학생용 AI 학습실. 질문·출처확인·반박·개인 프로젝트·안전</td></tr>
+            <tr><th scope="row">최소 구성</th><td data-label="기장 MacBook">경계문, 공개·가상 자료함, 교육 템플릿, AI 초안함, 사람 검토함, 보류함</td><td data-label="학생용 MacBook">학생 안전규칙, 질문 노트, 출처확인표, 검수 연습함, 프로젝트 폴더, 보호자 확인함</td></tr>
+            <tr><th scope="row">첫 단계·첫 2주</th><td data-label="기장 MacBook">승인된 회사자료 0의 60분 진단과 가상 템플릿 → 가치 확인 뒤 공개·가상 자료로 2주 시험 후보</td><td data-label="학생용 MacBook">보호자·학생 목표 별도 확인 → 공개·안전 자료로 작은 개인 프로젝트 1건을 2주 안에 완성하는 시험 후보</td></tr>
+            <tr><th scope="row">금지선</th><td data-label="기장 MacBook">회사 비공개 자료, 실제 비행·항공·교육생 자료, 운항 판단, 실제 평가</td><td data-label="학생용 MacBook">기장님의 회사·항공·교육생 자료, 학생 민감정보, 무단 공개·결제, 진로 강요</td></tr>
+            <tr><th scope="row">견적</th><td data-label="기장 MacBook">기장 진단 뒤 별도 구축 견적</td><td data-label="학생용 MacBook">학생용 별도 진단·제안·승인 뒤 별도 구축 견적</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="danger notice">
+        <p><strong>두 대의 계정·폴더·대화·자료·규칙·설치 프로필을 완전히 분리합니다.</strong> 기장님의 회사자료·항공자료·교육생 자료를 학생용 MacBook이나 학습에 공유·재사용하지 않습니다.</p>
+      </div>
+      <div class="notice">
+        <p><strong>시공 전 확인:</strong> 두 MacBook의 소유자·사양·macOS·저장/동기화 상태와 학생용 보호자 계정 정책을 확인한 뒤 설치안을 정합니다.</p>
+        <p><strong>진행 전 확인:</strong> 실제 설치, 다운로드, 계정 생성, 로그인, 결제와 가격은 각각 확인한 뒤 진행합니다. 학생용은 별도 진단과 보호자 확인이 필요합니다.</p>
+      </div>
+    </section>
+
+    <section aria-labelledby="faq-title">
+      <h2 id="faq-title">8. 자주 묻는 질문</h2>
+      <h3>비행계획서·NOTAM·날씨를 AI가 요약하면 더 빠르지 않나요?</h3>
+      <p>이 제안에서는 하지 않습니다. 실제 운항자료와 안전판단으로 바로 이어지는 고위험 업무이며, 회사 승인 공식 체계가 아닌 개인 AI의 범위가 아닙니다.</p>
+      <h3>이름만 빼면 교육생 평가 메모를 넣어도 되나요?</h3>
+      <p>아닙니다. 날짜·노선·상황·평가내용의 결합으로 사람을 알아볼 수 있습니다. 회사 승인과 적법한 처리근거 전에는 넣지 않습니다.</p>
+      <h3>로컬 AI면 회사자료를 넣어도 되나요?</h3>
+      <p>아닙니다. 로컬은 전송 위험을 줄이는 기술적 선택일 뿐, 회사자료의 반출·처리 권한을 만들지 않습니다.</p>
+      <h3>60분 뒤 바로 설치하나요?</h3>
+      <p>아닙니다. 60분은 문제·금지선·기준시간을 확인하는 1단입니다. 설치는 가상 파일럿과 보안선 확인 뒤의 2단입니다.</p>
+      <h3>처음에 무엇을 사는 건가요?</h3>
+      <p>프로그램이 아니라, 내 일에서 무엇을 AI에 맡기고 무엇을 내가 쥘지 정한 판단 결과를 삽니다. 그 결과에서 가치가 확인될 때만 작업실 구축으로 갑니다.</p>
+      <h3>학생과 함께 같은 계정으로 배우면 더 편하지 않나요?</h3>
+      <p>편하더라도 분리합니다. 기장님과 학생은 목적·자료·책임이 다르고 회사자료가 가족 학습으로 섞일 위험이 있습니다. 계정·대화·폴더를 각각 나누며, 학생의 학습에는 회사·항공·교육생 자료를 쓰지 않습니다.</p>
+    </section>
+
+    <section aria-labelledby="message-title">
+      <h2 id="message-title">9. 제안을 짧게 설명하면</h2>
+      <blockquote>
+        형님이 원하는 건 비행 판단을 AI한테 맡기는 게 아니라, 안전운항과 교육을 같이 하면서 매번 반복되는 준비와 복기 부담을 줄이는 거라고 이해했어. 그래서 바로 뭘 설치하자는 게 아니야. 먼저 60분 동안 형님 업무 흐름과 절대 넣으면 안 되는 회사자료를 같이 그리고, 실제 교육생이나 실제 비행자료 없이 가상 디브리핑 템플릿 한 건만 시험해보자는 거야. 여기서 시간이 줄고 안전선도 지켜지는 게 확인될 때만, 개인 MacBook 작업실을 별도 범위로 제안할게. 운항·날씨·ATC 판단과 최종 평가는 끝까지 형님과 회사 공식 체계가 맡는 거고.
+      </blockquote>
+      <blockquote>
+        형님 MacBook에는 회사자료 없이 항공교육 준비를 정리하고 AI 결과를 검수하는 개인 작업실을, 학생용 MacBook에는 질문법·출처확인·반박·작은 프로젝트·개인정보와 저작권 안전을 배우는 학생용 학습실을 각각 제안할게. 두 대의 계정·폴더·대화·자료·규칙·설치 프로필은 완전히 나누고, 형님의 회사·항공·교육생 자료는 학생용 작업실에 절대 공유하지 않을 거야. 우선 형님은 60분 진단부터 하고, 학생용은 목표와 장비를 따로 확인한 뒤 별도로 진행할게. 실제 설치와 가격은 두 MacBook의 소유·사양·OS·보호자 계정 정책을 확인한 뒤 각각 정할 거야.
+      </blockquote>
+    </section>
+
+    <footer>
+      <h2>문서 안내</h2>
+      <p><strong>목적:</strong> 고객 검토용 제안서입니다.</p>
+      <p><strong>확인 전 항목:</strong> 소속 항공사 내부 정책, 실제 장비, 구매의사와 시간절감 효과는 진단 과정에서 확인합니다.</p>
+      <p><strong>가격:</strong> 진단 뒤 범위와 장비·보안 조건을 확인하여 별도로 협의합니다.</p>
+      <p><strong>추가 공식 자료:</strong> <a href="https://www.iata.org/en/programs/ops-infra/training-licensing/" rel="noopener">IATA Training &amp; Licensing</a> · <a href="https://www.easa.europa.eu/en/domains/research-innovation/ai" rel="noopener">EASA AI Roadmap</a> · <a href="https://m.pipc.go.kr/np/cop/bbs/selectBoardArticle.do?bbsId=BS074&amp;mCode=C020010000&amp;nttId=12084" rel="noopener">개인정보보호위원회 2026 가이드</a></p>
+      <p>소속 항공사의 상표·색·디자인을 사용하거나 모방하지 않았습니다. 외부 근거는 HAM MEDIA의 성공 증명이 아닙니다.</p>
+    </footer>
+  </main>
+</body>
+</html>

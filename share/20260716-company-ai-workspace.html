@@ -1,0 +1,1189 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="color-scheme" content="light">
+  <title>회사 AI 운영체계 설치 제안서 | HAM MEDIA</title>
+  <meta name="description" content="중요문서, 프로젝트 방, 도서관과 색인, 역할별 AI와 총괄 비서를 노트북에 연결하는 회사 AI 운영체계 제안입니다.">
+  <link rel="canonical" href="https://hammedia.co.kr/share/20260716-company-ai-workspace.html">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ko_KR">
+  <meta property="og:site_name" content="HAM MEDIA">
+  <meta property="og:title" content="회사 AI 운영체계 설치 제안서">
+  <meta property="og:description" content="대표 한 명, 노트북 한 대, 반복업무 한 가지부터 안전하게 진단하고 구축하는 제안입니다.">
+  <meta property="og:url" content="https://hammedia.co.kr/share/20260716-company-ai-workspace.html">
+  <style>
+    :root {
+      --navy: #102f4c;
+      --blue: #1f6fa8;
+      --blue-deep: #174f79;
+      --sky: #edf7ff;
+      --sky-soft: #f7fbff;
+      --mint: #eaf8f2;
+      --green: #22654a;
+      --orange: #c7651c;
+      --orange-soft: #fff3e8;
+      --red: #a33d38;
+      --red-soft: #fff0ef;
+      --yellow: #795d18;
+      --yellow-soft: #fff8df;
+      --ink: #24384b;
+      --muted: #617286;
+      --line: #d6e4ef;
+      --paper: #ffffff;
+      --bg: #edf3f8;
+      --shadow: 0 18px 48px rgba(16, 47, 76, 0.11);
+      --radius: 20px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--bg);
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 8% 0%, rgba(72, 165, 226, 0.18), transparent 31rem),
+        linear-gradient(180deg, #f9fcff 0, var(--bg) 34rem);
+      font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+        "Noto Sans KR", "Malgun Gothic", "Segoe UI", sans-serif;
+      font-size: 17px;
+      line-height: 1.72;
+      word-break: keep-all;
+      overflow-wrap: anywhere;
+    }
+
+    a {
+      color: var(--blue-deep);
+      text-underline-offset: 0.18em;
+    }
+
+    a:hover {
+      color: var(--orange);
+    }
+
+    .skip-link {
+      position: fixed;
+      left: 1rem;
+      top: -6rem;
+      z-index: 100;
+      padding: 0.7rem 1rem;
+      color: #fff;
+      background: var(--navy);
+      border-radius: 0.55rem;
+    }
+
+    .skip-link:focus {
+      top: 1rem;
+    }
+
+    .page {
+      width: min(100% - 28px, 960px);
+      margin: 24px auto 72px;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(30px, 6vw, 62px);
+      color: #fff;
+      background:
+        linear-gradient(135deg, rgba(16, 47, 76, 0.99), rgba(28, 100, 153, 0.95)),
+        var(--navy);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      right: -7rem;
+      bottom: -9rem;
+      width: 23rem;
+      height: 23rem;
+      border: 3rem solid rgba(255, 255, 255, 0.055);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      position: relative;
+      z-index: 1;
+      margin: 0 0 1rem;
+      padding: 0.38rem 0.75rem;
+      color: #e2f1ff;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 780;
+      letter-spacing: 0.03em;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      color: var(--navy);
+      line-height: 1.3;
+      letter-spacing: -0.025em;
+    }
+
+    h1 {
+      position: relative;
+      z-index: 1;
+      max-width: 790px;
+      margin: 0;
+      color: #fff;
+      font-size: clamp(2.1rem, 7vw, 4rem);
+    }
+
+    .hero .subtitle {
+      position: relative;
+      z-index: 1;
+      max-width: 720px;
+      margin: 1rem 0 0;
+      color: #dcedff;
+      font-size: clamp(1.02rem, 2.5vw, 1.3rem);
+    }
+
+    .hero .promise {
+      position: relative;
+      z-index: 1;
+      margin: 1.75rem 0 0;
+      padding: 1rem 1.1rem;
+      color: #fff;
+      background: rgba(255, 255, 255, 0.09);
+      border-left: 4px solid #ffae6d;
+      border-radius: 0 13px 13px 0;
+      font-weight: 750;
+    }
+
+    .human-rule {
+      margin: 16px 0 0;
+      padding: 1rem 1.1rem;
+      color: var(--navy);
+      background: #fff;
+      border: 2px solid #9ec9ea;
+      border-radius: 15px;
+      text-align: center;
+      font-size: 1.05rem;
+      font-weight: 850;
+      box-shadow: 0 8px 24px rgba(16, 47, 76, 0.06);
+    }
+
+    .status {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin: 14px 0 0;
+    }
+
+    .status div {
+      min-width: 0;
+      padding: 0.95rem 1rem;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+    }
+
+    .status strong {
+      display: block;
+      color: var(--navy);
+      font-size: 0.92rem;
+    }
+
+    .status span {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    nav {
+      margin: 18px 0;
+      padding: 1rem;
+      background: rgba(255, 255, 255, 0.93);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+    }
+
+    nav strong {
+      display: block;
+      margin-bottom: 0.55rem;
+      color: var(--navy);
+    }
+
+    nav ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem 0.9rem;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    nav a {
+      font-size: 0.9rem;
+      font-weight: 740;
+      text-decoration: none;
+    }
+
+    main {
+      display: grid;
+      gap: 18px;
+    }
+
+    section {
+      min-width: 0;
+      padding: clamp(23px, 4.7vw, 40px);
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: 0 8px 25px rgba(16, 47, 76, 0.045);
+    }
+
+    h2 {
+      margin: 0 0 1rem;
+      font-size: clamp(1.45rem, 4vw, 2.05rem);
+    }
+
+    h3 {
+      margin: 1.7rem 0 0.65rem;
+      font-size: 1.17rem;
+    }
+
+    h4 {
+      margin: 1.1rem 0 0.45rem;
+      font-size: 1rem;
+    }
+
+    p {
+      margin: 0.65rem 0;
+    }
+
+    ul,
+    ol {
+      padding-left: 1.35rem;
+    }
+
+    li + li {
+      margin-top: 0.36rem;
+    }
+
+    .lead {
+      color: var(--navy);
+      font-size: 1.08rem;
+      font-weight: 690;
+    }
+
+    .callout {
+      margin: 1.2rem 0;
+      padding: 1rem 1.1rem;
+      background: var(--sky-soft);
+      border: 1px solid #c8e0f3;
+      border-left: 5px solid var(--blue);
+      border-radius: 13px;
+    }
+
+    .callout.warn {
+      background: var(--orange-soft);
+      border-color: #f0c69f;
+      border-left-color: var(--orange);
+    }
+
+    .callout.danger {
+      background: var(--red-soft);
+      border-color: #efc4c1;
+      border-left-color: var(--red);
+    }
+
+    .callout.good {
+      background: var(--mint);
+      border-color: #b8dfce;
+      border-left-color: var(--green);
+    }
+
+    .scope-grid,
+    .system-grid,
+    .two-col,
+    .data-grid,
+    .decision-grid {
+      display: grid;
+      gap: 12px;
+      margin-top: 1rem;
+    }
+
+    .scope-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .system-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .two-col,
+    .decision-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .data-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .card {
+      min-width: 0;
+      padding: 1.05rem;
+      background: var(--sky-soft);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+    }
+
+    .card h3,
+    .card h4 {
+      margin: 0 0 0.5rem;
+    }
+
+    .card p {
+      margin: 0;
+      font-size: 0.94rem;
+    }
+
+    .scope-card {
+      text-align: center;
+      background: #fbfdff;
+    }
+
+    .scope-card strong {
+      display: block;
+      margin-bottom: 0.25rem;
+      color: var(--blue-deep);
+      font-size: 1.05rem;
+    }
+
+    .table-wrap {
+      width: 100%;
+      overflow-x: auto;
+      overscroll-behavior-inline: contain;
+      border: 1px solid var(--line);
+      border-radius: 13px;
+    }
+
+    table {
+      width: 100%;
+      min-width: 650px;
+      border-collapse: collapse;
+      background: #fff;
+      font-size: 0.94rem;
+    }
+
+    th,
+    td {
+      padding: 0.82rem 0.88rem;
+      text-align: left;
+      vertical-align: top;
+      border-bottom: 1px solid var(--line);
+    }
+
+    th {
+      color: var(--navy);
+      background: var(--sky-soft);
+      font-weight: 800;
+    }
+
+    tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .example-box {
+      margin-top: 1rem;
+      padding: 1.15rem;
+      background: var(--orange-soft);
+      border: 1px solid #efc79f;
+      border-radius: 15px;
+    }
+
+    .example-box h3 {
+      margin: 0 0 0.7rem;
+    }
+
+    .steps {
+      display: grid;
+      gap: 14px;
+      counter-reset: step;
+      margin-top: 1rem;
+    }
+
+    .step {
+      position: relative;
+      padding: 1.25rem 1.25rem 1.25rem 3.75rem;
+      background: var(--sky-soft);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+    }
+
+    .step::before {
+      counter-increment: step;
+      content: counter(step);
+      position: absolute;
+      top: 1.2rem;
+      left: 1.1rem;
+      display: grid;
+      width: 2rem;
+      height: 2rem;
+      place-items: center;
+      color: #fff;
+      background: var(--blue);
+      border-radius: 50%;
+      font-weight: 850;
+    }
+
+    .step h3 {
+      margin: 0 0 0.55rem;
+    }
+
+    .stage-meta {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 0.9rem;
+    }
+
+    .stage-meta div {
+      min-width: 0;
+      padding: 0.85rem;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      font-size: 0.92rem;
+    }
+
+    .stage-meta strong {
+      display: block;
+      margin-bottom: 0.25rem;
+      color: var(--navy);
+    }
+
+    .stage-meta .stop {
+      background: var(--red-soft);
+      border-color: #efc6c3;
+    }
+
+    .data-card {
+      min-width: 0;
+      padding: 1rem;
+      border: 1px solid;
+      border-radius: 14px;
+    }
+
+    .data-card strong {
+      display: block;
+      margin-bottom: 0.45rem;
+      color: var(--navy);
+    }
+
+    .data-card.red {
+      background: var(--red-soft);
+      border-color: #efc5c1;
+    }
+
+    .data-card.yellow {
+      background: var(--yellow-soft);
+      border-color: #e8d28d;
+    }
+
+    .data-card.green {
+      background: var(--mint);
+      border-color: #b9deca;
+    }
+
+    .decision {
+      min-width: 0;
+      padding: 1.15rem;
+      background: var(--sky-soft);
+      border: 2px solid #bedbf1;
+      border-radius: 16px;
+    }
+
+    .decision h3 {
+      margin: 0 0 0.65rem;
+    }
+
+    .recommend {
+      color: var(--green);
+      font-weight: 850;
+    }
+
+    pre {
+      width: 100%;
+      margin: 1rem 0 0;
+      padding: 1.1rem;
+      overflow-x: auto;
+      color: #eaf4ff;
+      background: #142d44;
+      border-radius: 13px;
+      font: 0.88rem/1.68 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .sources {
+      font-size: 0.94rem;
+    }
+
+    .gate-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+      margin: 1rem 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .gate-list li {
+      margin: 0;
+      padding: 0.72rem 0.82rem;
+      color: var(--red);
+      background: var(--red-soft);
+      border: 1px solid #efc5c1;
+      border-radius: 11px;
+      font-size: 0.91rem;
+      font-weight: 730;
+    }
+
+    footer {
+      padding: 1.6rem 0 0;
+      color: var(--muted);
+      text-align: center;
+      font-size: 0.86rem;
+    }
+
+    @media (max-width: 820px) {
+      .scope-grid,
+      .system-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 720px) {
+      body {
+        font-size: 16px;
+        word-break: normal;
+      }
+
+      .page {
+        width: min(100% - 20px, 960px);
+        margin-top: 10px;
+      }
+
+      .hero {
+        border-radius: 20px;
+      }
+
+      .status,
+      .scope-grid,
+      .system-grid,
+      .two-col,
+      .data-grid,
+      .decision-grid,
+      .gate-list,
+      .stage-meta {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        border-radius: 16px;
+      }
+
+      nav ul {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 380px) {
+      .page {
+        width: min(100% - 14px, 960px);
+      }
+
+      .hero,
+      section {
+        padding: 20px 17px;
+      }
+
+      nav ul {
+        grid-template-columns: 1fr;
+      }
+
+      .step {
+        padding: 1.1rem;
+      }
+
+      .step::before {
+        position: static;
+        margin-bottom: 0.7rem;
+      }
+    }
+
+    @media print {
+      @page {
+        size: A4;
+        margin: 14mm;
+      }
+
+      html,
+      body {
+        background: #fff;
+      }
+
+      body {
+        color: #111827;
+        font-size: 10.5pt;
+      }
+
+      .page {
+        width: 100%;
+        margin: 0;
+      }
+
+      .hero,
+      section,
+      nav,
+      .status div,
+      .human-rule {
+        box-shadow: none;
+      }
+
+      .hero {
+        color: #111827;
+        background: #fff;
+        border: 2px solid #102f4c;
+      }
+
+      .hero h1,
+      .hero .subtitle,
+      .hero .promise,
+      .eyebrow {
+        color: #111827;
+      }
+
+      .eyebrow,
+      .hero .promise {
+        background: #fff;
+        border-color: #9ca3af;
+      }
+
+      nav,
+      .skip-link {
+        display: none;
+      }
+
+      main {
+        gap: 8mm;
+      }
+
+      section,
+      .step {
+        break-inside: avoid;
+      }
+
+      .table-wrap,
+      pre {
+        overflow: visible;
+      }
+
+      table {
+        min-width: 0;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      a::after {
+        content: " (" attr(href) ")";
+        font-size: 8pt;
+        overflow-wrap: anywhere;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#content">본문으로 바로가기</a>
+  <div class="page">
+    <header class="hero">
+      <p class="eyebrow">HAM MEDIA · 고객 검토용 제안서 · 2026-07-16</p>
+      <h1>내 노트북 안에,<br>나를 위해 일하는 작은 AI 회사</h1>
+      <p class="subtitle">대표님 개인·회사 AI 운영체계 설치 제안</p>
+      <p class="promise">
+        중요한 문서와 프로젝트가 자기 자리를 갖고, 역할별 AI와 총괄 비서가 일을 나누며,
+        대표가 원하는 새 업무를 계속 추가할 수 있는 운영체계를 만듭니다.
+      </p>
+    </header>
+
+    <p class="human-rule">AI가 결정하지 않습니다. 최종 결정은 항상 대표님이 합니다.</p>
+
+    <div class="status" aria-label="현재 제안 상태">
+      <div>
+        <strong>상품의 본체</strong>
+        <span>이메일 프로그램이 아니라 개인·회사 전용 AI 운영체계</span>
+      </div>
+      <div>
+        <strong>현재 상태</strong>
+        <span>회사자료·메일 연결·설치·가격 확정 전의 진단 제안</span>
+      </div>
+    </div>
+
+    <nav aria-label="문서 목차">
+      <strong>빠르게 보기</strong>
+      <ul>
+        <li><a href="#start">첫 제안</a></li>
+        <li><a href="#system">설치 구성</a></li>
+        <li><a href="#example">첫 업무 예시</a></li>
+        <li><a href="#decision-rule">사람의 결정</a></li>
+        <li><a href="#stages">도입 4단계</a></li>
+        <li><a href="#security">보안 원칙</a></li>
+        <li><a href="#measure">진단·측정</a></li>
+        <li><a href="#price">가격 원칙</a></li>
+        <li><a href="#now">지금 결정</a></li>
+      </ul>
+    </nav>
+
+    <main id="content">
+      <section aria-labelledby="product-title">
+        <h2 id="product-title">제안의 본체</h2>
+        <p class="lead">
+          이 제안은 이메일 자동화 프로그램 하나가 아닙니다. 대표님의 노트북 안에
+          중요문서, 프로젝트 방, 도서관과 색인, 역할별 AI, 총괄 비서,
+          회사 전용 규칙과 보안 게이트를 연결해 작게 시작하고 계속 확장할 수 있는
+          <strong>AI 작업회사</strong>를 만드는 것입니다.
+        </p>
+        <div class="callout warn">
+          현재는 회사자료를 받거나 메일함에 연결하지 않은 제안 단계입니다.
+          가격·계약·설치 장비·모델·유지관리 범위는 아직 확정하지 않았습니다.
+        </div>
+      </section>
+
+      <section id="start" aria-labelledby="start-title">
+        <h2 id="start-title">1. 첫 제안은 작고 안전하게 시작합니다</h2>
+        <p>처음부터 회사 전체를 자동화하거나 메일을 연결하지 않습니다.</p>
+        <div class="scope-grid" aria-label="첫 제안 범위">
+          <article class="card scope-card">
+            <strong>1인</strong>
+            <p>대표님 한 명</p>
+          </article>
+          <article class="card scope-card">
+            <strong>1대</strong>
+            <p>대표가 지정한 노트북 한 대</p>
+          </article>
+          <article class="card scope-card">
+            <strong>1업무</strong>
+            <p>결과를 확인할 수 있는 업무 한 가지</p>
+          </article>
+          <article class="card scope-card">
+            <strong>첫 결과</strong>
+            <p>설치 약속이 아닌 진단과 설계</p>
+          </article>
+        </div>
+        <p>
+          기기 성능과 회사 보안정책, 실제 업무와 데이터의 경계,
+          무엇을 완료로 볼지와 이후 유지관리 기준을 먼저 확인합니다.
+        </p>
+        <div class="callout danger">
+          기기·보안, 업무·데이터 경계, 완료·유지관리 기준이 확인되기 전에는
+          고객 실자료 설치와 메일 연결을 진행하지 않습니다.
+        </div>
+      </section>
+
+      <section id="system" aria-labelledby="system-title">
+        <h2 id="system-title">2. 노트북 안에 만드는 아홉 가지</h2>
+        <div class="system-grid">
+          <article class="card">
+            <h3>중요문서·정본</h3>
+            <p>회사 목표, 결정, 계약 기준처럼 항상 같은 내용을 봐야 하는 문서의 자리</p>
+          </article>
+          <article class="card">
+            <h3>프로젝트별 폴더</h3>
+            <p>고객·사업·업무를 섞지 않고 각자의 방에서 관리하는 구조</p>
+          </article>
+          <article class="card">
+            <h3>도서관·색인</h3>
+            <p>무엇이 어디 있고 어떤 문서가 최신인지 다시 찾는 보관 지도</p>
+          </article>
+          <article class="card">
+            <h3>역할별 AI</h3>
+            <p>조사, 문서, 일정, 이메일, 계산, 보안처럼 맡은 일에 집중하는 담당자</p>
+          </article>
+          <article class="card">
+            <h3>총괄 비서</h3>
+            <p>담당 AI의 결과를 모아 충돌·누락을 확인하고 대표에게 결정만 올리는 자리</p>
+          </article>
+          <article class="card">
+            <h3>회사 전용 규칙</h3>
+            <p>역할, 업무순서, 금지선, 승인조건과 잘 끝난 사례를 적은 설명서</p>
+          </article>
+          <article class="card">
+            <h3>로컬 보안 게이트</h3>
+            <p>회사 장비에서 원본을 우선 처리하고 외부 전송 가능 여부를 점검하는 구조</p>
+          </article>
+          <article class="card">
+            <h3>선택적 외부 AI</h3>
+            <p>꼭 필요하고 허용된 경우에만 최소 익명 정보로 문장·조사를 보조</p>
+          </article>
+          <article class="card">
+            <h3>확장 구조</h3>
+            <p>첫 업무가 통과하면 일정, 회의, 제안서, 고객관리 등 다음 업무를 추가</p>
+          </article>
+        </div>
+        <div class="callout good">
+          사용자는 여러 AI와 프로그램을 직접 지휘할 필요가 없습니다.
+          채팅창에서 총괄 비서에게 요청하면 총괄 비서가 담당 AI에게 일을 나누고,
+          결과와 근거를 모아 대표에게 보고하는 방식이 목표입니다.
+        </div>
+
+        <h3>회사 일을 가르치는 방법</h3>
+        <p>
+          AI 두뇌를 처음부터 다시 훈련시키기보다 회사 전용 설명서와
+          사람이 끝낸 완료 사례를 작업 때마다 읽게 합니다.
+        </p>
+        <ul>
+          <li>역할과 보고 순서</li>
+          <li>회사 밖으로 나가면 안 되는 정보</li>
+          <li>업무의 시작부터 완료까지의 순서</li>
+          <li>반드시 확인할 항목</li>
+          <li>외부 AI에 보낼 수 있는 익명 항목</li>
+          <li>사람이 승인해야 하는 조건</li>
+          <li>잘 끝난 과거 사례</li>
+        </ul>
+        <p>
+          쉽게 말하면 새 직원에게 업무 매뉴얼과 정답 사례를 주고,
+          매번 그 기준을 보며 일하게 하는 방식입니다.
+        </p>
+      </section>
+
+      <section id="example" aria-labelledby="example-title">
+        <h2 id="example-title">3. 첫 업무 예시</h2>
+        <div class="example-box">
+          <h3>해외 공장 발주·반월 정산</h3>
+          <p>
+            아래 업무는 전체 상품이 아니라, AI 운영체계 안에 처음 넣어볼 수 있는
+            <strong>한 가지 업무 예시</strong>입니다.
+          </p>
+          <ol>
+            <li>고객사의 PO와 발주표를 한 건으로 묶습니다.</li>
+            <li>해외 공장의 생산 가능 여부와 납기 회신을 같은 건에 연결합니다.</li>
+            <li>원본과 수정본의 수량·금액·납기 차이와 변경 근거를 정리합니다.</li>
+            <li>최종 확정본과 1~15일·16일~말일 합계 초안을 준비합니다.</li>
+            <li>원문 위치, 변경 전후, 계산 결과와 회신 초안을 대표에게 한 묶음으로 올립니다.</li>
+          </ol>
+        </div>
+        <p>
+          숫자·날짜·금액 합계는 말 잘하는 AI가 추측하게 두지 않습니다.
+          가능한 범위에서 정해진 계산 규칙으로 다시 확인하고,
+          정상·수정·불일치 건 모두 대표가 승인해야 다음 단계로 이동합니다.
+        </p>
+        <p>
+          이 예시가 통과하면 일정 변경 요약, 중요 첨부 분석, 회의 정리,
+          제안서 준비 같은 다음 업무를 같은 운영체계에 추가할 수 있습니다.
+        </p>
+      </section>
+
+      <section id="decision-rule" aria-labelledby="decision-rule-title">
+        <h2 id="decision-rule-title">4. AI가 준비하고, 대표가 결정합니다</h2>
+        <div class="two-col">
+          <article class="card">
+            <h3>시스템이 준비할 수 있는 것</h3>
+            <ul>
+              <li>원문과 관련 문서를 한 건으로 묶기</li>
+              <li>변경 전후와 빠진 항목 표시</li>
+              <li>계산 결과와 AI 설명을 분리해 제시</li>
+              <li>근거가 있는 회신·보고 초안 만들기</li>
+              <li>승인·반려·추가 확인 지점 표시</li>
+              <li>최종본의 위치와 파일명 제안</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>대표님만 결정하는 것</h3>
+            <ul>
+              <li>정상·예외 업무의 최종 진행</li>
+              <li>고객사에 보낼 내용과 실제 발송</li>
+              <li>계약·가격·결제·송금·거래조건</li>
+              <li>세금계산서와 회계·세무 처리</li>
+              <li>문서 삭제와 보존기간</li>
+              <li>법률·세무·인사 등 전문가 판단</li>
+            </ul>
+          </article>
+        </div>
+        <div class="callout danger">
+          자동 발송, 자동 계약, 자동 결제, 자동 송금, 자동 삭제는 하지 않습니다.
+          AI는 판단 근거와 초안을 준비하고, 실제 행동은 대표의 확인 뒤 승인된 방식으로만 진행합니다.
+        </div>
+      </section>
+
+      <section id="stages" aria-labelledby="stages-title">
+        <h2 id="stages-title">5. 네 단계로 도입합니다</h2>
+        <div class="steps">
+          <article class="step">
+            <h3>진단과 설계</h3>
+            <p>
+              대표 한 명, 노트북 한 대, 업무 한 가지를 정하고
+              기기·보안, 중요문서·프로젝트, 업무 흐름, 데이터 경계와 완료 기준을 확인합니다.
+            </p>
+            <div class="stage-meta">
+              <div>
+                <strong>완료 조건</strong>
+                AI가 할 일·사람이 할 일·하면 안 되는 일과 운영체계 지도가 한 장으로 정리됩니다.
+              </div>
+              <div class="stop">
+                <strong>멈춤선</strong>
+                실자료를 넣거나 메일을 연결하지 않습니다. 세 가지 경계가 불명확하면 설치로 넘어가지 않습니다.
+              </div>
+            </div>
+          </article>
+
+          <article class="step">
+            <h3>설치와 구축</h3>
+            <p>
+              승인된 노트북에 로컬 환경, 중요문서 자리, 프로젝트 폴더,
+              도서관·색인, 역할별 AI, 총괄 비서, 운영규칙과 보안 게이트를 구성합니다.
+              외부 AI 전송은 기본 OFF로 둡니다.
+            </p>
+            <div class="stage-meta">
+              <div>
+                <strong>완료 조건</strong>
+                채팅으로 첫 업무를 요청하고 결과·근거·승인 지점·최종본 위치를 다시 찾을 수 있습니다.
+              </div>
+              <div class="stop">
+                <strong>멈춤선</strong>
+                회사 정책·권한이 확인되지 않으면 중단합니다. 메일 실시간 연결과 자동 발송은 기본 범위가 아닙니다.
+              </div>
+            </div>
+          </article>
+
+          <article class="step">
+            <h3>정해진 기간 길들이기</h3>
+            <p>
+              대표가 쓰는 방법을 함께 익히고 승인된 과거 사례 또는 시험자료로 결과를 비교합니다.
+              틀린 분류, 어려운 화면과 빠진 규칙을 기록해 문서·AI·화면을 고칩니다.
+            </p>
+            <div class="stage-meta">
+              <div>
+                <strong>완료 조건</strong>
+                대표가 첫 업무를 혼자 요청·확인하고, 합의한 정확도·누락·시간·승인 기준을 측정합니다.
+              </div>
+              <div class="stop">
+                <strong>멈춤선</strong>
+                오류가 반복되거나 정보 경계가 불확실하면 멈춥니다. 첫 업무 전 여러 업무를 넓히지 않습니다.
+              </div>
+            </div>
+          </article>
+
+          <article class="step">
+            <h3>구독 유지관리 또는 건별 유상 AS</h3>
+            <p>
+              구독형은 정해진 주기로 규칙·모델·문서 구조를 점검하고,
+              건별형은 요청받은 오류 수정·구조 보정·업무 추가를 별도 범위로 처리합니다.
+            </p>
+            <div class="stage-meta">
+              <div>
+                <strong>완료 조건</strong>
+                지원 범위·요청 방법·응답 기준·점검 주기·기록 방식이 합의되고 구축과 유지관리가 구분됩니다.
+              </div>
+              <div class="stop">
+                <strong>멈춤선</strong>
+                합의하지 않은 업무·계정·외부 서비스·가격 변경을 자동으로 추가하지 않습니다.
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="security" aria-labelledby="security-title">
+        <h2 id="security-title">6. 회사 원본은 로컬 우선, 외부 AI는 기본 OFF</h2>
+        <p class="lead">
+          로컬 AI는 회사 노트북 안에 실행 프로그램과 모델을 두고,
+          가능한 업무를 그 장비 안에서 처리하는 방식입니다.
+        </p>
+        <div class="data-grid" aria-label="데이터 처리 원칙">
+          <article class="data-card red">
+            <strong>회사 원본</strong>
+            실제 고객명, 가격, 계좌, 연락처와 원본 문서는 로컬에서 우선 처리합니다.
+          </article>
+          <article class="data-card yellow">
+            <strong>익명 최소정보</strong>
+            외부 AI가 꼭 필요할 때만 허용목록에 있는 최소 정보로 가립니다.
+          </article>
+          <article class="data-card green">
+            <strong>기록과 사람 승인</strong>
+            무엇을 보냈는지 기록하고, 불확실하거나 고위험이면 전송 없이 멈춥니다.
+          </article>
+        </div>
+        <p>
+          외부 AI가 입력을 학습에 쓰지 않는 정책을 제공하더라도,
+          답을 만들려면 정보가 외부 사업자의 처리 환경으로 전송될 수 있습니다.
+          `학습에 쓰지 않음`, `외부 전송`, `저장 기간`은 서로 다른 문제입니다.
+        </p>
+        <h3>로컬이라고 자동으로 안전한 것은 아닙니다</h3>
+        <ul>
+          <li>모델 다운로드와 업데이트 확인에는 인터넷이 필요할 수 있습니다.</li>
+          <li>클라우드 모델, 원격 접속, 네트워크 공개, 로그와 동기화 설정을 잘못 켜면 정보가 나갈 수 있습니다.</li>
+          <li>로컬 AI도 문서를 잘못 분류하거나 마스킹을 놓칠 수 있습니다.</li>
+          <li>선택한 모델과 프로그램의 라이선스·상업 이용 조건을 확인해야 합니다.</li>
+        </ul>
+        <div class="callout danger">
+          로컬 AI 혼자 “보안 통과”를 자동 판정하지 않습니다.
+          기술 설정, 회사 정책, 허용목록, 기록과 사람 승인을 함께 확인합니다.
+        </div>
+      </section>
+
+      <section id="measure" aria-labelledby="measure-title">
+        <h2 id="measure-title">7. 설치 전에 반드시 확인할 세 가지</h2>
+        <div class="table-wrap" role="region" aria-label="설치 전 확인표" tabindex="0">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">확인할 것</th>
+                <th scope="col">쉬운 뜻</th>
+                <th scope="col">확인 전 상태</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>기기·보안</strong></td>
+                <td>노트북이 로컬 AI를 돌릴 수 있고 회사 정책상 설치 가능한가</td>
+                <td>확인 전 진행하지 않음</td>
+              </tr>
+              <tr>
+                <td><strong>업무·데이터 경계</strong></td>
+                <td>어떤 자료를 읽고 어디에 저장하며 무엇을 외부로 보내면 안 되는가</td>
+                <td>확인 전 실자료를 받지 않음</td>
+              </tr>
+              <tr>
+                <td><strong>완료·유지관리 기준</strong></td>
+                <td>어디까지 되면 구축 완료이고 이후 무엇을 유료 지원하는가</td>
+                <td>확인 뒤 별도 협의</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          이 세 가지를 실제 환경에서 확인하기 전에는 특정 장비 구매,
+          메일 연결 방식, 모델 종류와 구축 범위를 확정하지 않습니다.
+        </p>
+
+        <h3>기대효과는 측정으로 확인합니다</h3>
+        <ul>
+          <li>최종본과 근거를 찾는 시간</li>
+          <li>필수 항목 누락 수와 숫자·금액 일치 여부</li>
+          <li>변경사항 탐지 정확도</li>
+          <li>대표가 원문을 다시 열어본 횟수</li>
+          <li>승인 뒤 다시 되돌린 건수</li>
+          <li>금지 정보의 외부 전송 건수</li>
+        </ul>
+        <div class="callout warn">
+          직원 완전 대체, 확정 인건비 절감, 100% 자동화,
+          법률·세무·회계 전문가 대체를 약속하지 않습니다.
+          특정 컴퓨터가 모든 회사에 항상 더 좋다고 단정하지도 않습니다.
+        </div>
+      </section>
+
+      <section id="price" aria-labelledby="price-title">
+        <h2 id="price-title">8. 가격과 계약 원칙</h2>
+        <ul>
+          <li>진단·설계, 설치·구축, 정해진 기간 길들이기, 유지관리·건별 AS는 서로 다른 범위입니다.</li>
+          <li>구축 완료와 이후 유지관리를 한 가격과 한 약속으로 섞지 않습니다.</li>
+          <li>이 문서에는 확정 가격, 구축비, 할인 조건을 넣지 않습니다.</li>
+          <li>장비·보안정책·데이터 경계·사용자·첫 업무·완료 기준 확인 뒤 별도 견적합니다.</li>
+          <li>계약·가격·결제·설치·외부 서비스 연결은 양쪽의 명확한 확인 뒤에만 진행합니다.</li>
+        </ul>
+      </section>
+
+      <section id="now" aria-labelledby="now-title">
+        <h2 id="now-title">9. 지금 결정할 것</h2>
+        <div class="decision-grid">
+          <article class="decision">
+            <h3>대표님의 첫 결정</h3>
+            <p><strong>실제 설치나 메일 연결 없이, 1인·1대·1업무 진단과 설계부터 진행할까요?</strong></p>
+            <p>
+              실제 노트북·회사 보안정책·데이터 경계·완료 기준은 아직 확인하지 않았습니다.
+              프로그램부터 사거나 회사자료를 넣지 않고 설계도부터 그리는 단계입니다.
+            </p>
+            <p class="recommend">추천: 진단과 설계부터 승인</p>
+          </article>
+          <article class="decision">
+            <h3>HAM MEDIA가 지킬 약속</h3>
+            <ul>
+              <li>진단 승인만으로 설치·메일 연결·계정 생성·결제가 승인되지 않습니다.</li>
+              <li>회사 원본과 개인정보를 먼저 요구하지 않습니다.</li>
+              <li>대표 확인 없이 발송·계약·결제·송금·삭제·세금계산서를 처리하지 않습니다.</li>
+              <li>모르는 장비·보안·업무 조건을 추측해 가격과 범위를 확정하지 않습니다.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section aria-labelledby="say-title">
+        <h2 id="say-title">10. 짧게 설명하면</h2>
+        <pre>형님께 제안드리는 것은 이메일 프로그램 하나가 아닙니다.
+형님 노트북 안에 중요한 문서와 프로젝트 방을 만들고,
+업무별 AI 담당자와 그 결과를 모으는 총괄 비서를 두는
+형님 전용의 작은 AI 회사를 만드는 일입니다.
+
+해외 공장 발주와 반월 정산은 그 회사에 처음 맡겨볼 업무 예시입니다.
+AI는 원문과 변경사항, 계산 결과와 근거를 준비하지만
+진행·발송·계약·결제의 최종 결정은 항상 형님이 합니다.
+
+처음부터 설치하거나 메일을 연결하지 않습니다.
+대표 한 명, 노트북 한 대, 업무 한 가지를 먼저 진단하고 설계한 뒤
+기기와 보안, 데이터 경계, 완료 기준이 확인되면 구축 여부를 결정합니다.
+
+회사 원본은 노트북 안에서 우선 처리하고 외부 AI 전송은 기본으로 끕니다.
+필요한 경우에도 허용된 최소 정보만 가리고 기록한 뒤
+형님의 승인을 받아 선택적으로 사용합니다.</pre>
+      </section>
+
+      <section class="sources" aria-labelledby="sources-title">
+        <h2 id="sources-title">11. 확인한 공식 자료</h2>
+        <p>확인일: 2026-07-16</p>
+        <ul>
+          <li><a href="https://lmstudio.ai/docs/app/offline">LM Studio · Offline Operation</a></li>
+          <li><a href="https://lmstudio.ai/docs/developer/core/server/serve-on-network">LM Studio · Serve on Local Network</a></li>
+          <li><a href="https://ollama.com/privacy">Ollama · Privacy Policy</a></li>
+          <li><a href="https://openai.com/business-data/">OpenAI · Business data privacy, security, and compliance</a></li>
+          <li><a href="https://privacy.anthropic.com/en/articles/7996868-is-my-data-used-for-model-training">Anthropic · Commercial products training policy</a></li>
+          <li><a href="https://privacy.anthropic.com/en/articles/7996866-how-long-do-you-store-my-organization-s-data">Anthropic · Organization data retention</a></li>
+          <li><a href="https://pipc.go.kr/np/cop/bbs/selectBoardArticle.do?bbsId=BS217&amp;mCode=G010030020&amp;nttId=11439">개인정보보호위원회 · 생성형 AI 개인정보 처리 안내서</a></li>
+          <li><a href="https://huggingface.co/docs/hub/en/model-cards">Hugging Face · Model Cards</a></li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="gate-title">
+        <h2 id="gate-title">12. 현재 제안 범위</h2>
+        <ul class="gate-list">
+          <li>현재 제안은 1인·1대·1업무 진단과 설계입니다.</li>
+          <li>진단 전에는 고객 실자료를 받거나 설치·다운로드·로그인을 진행하지 않습니다.</li>
+          <li>메일·계정·외부 AI 연결은 기본 범위에 포함하지 않습니다.</li>
+          <li>자동 발송·계약·결제·송금·삭제와 세금계산서 자동 처리는 하지 않습니다.</li>
+          <li>가격·구축비·할인 조건은 진단 뒤 별도로 협의합니다.</li>
+        </ul>
+        <p>
+          이 문서는 고객 검토용 제안서이며,
+          회사 보안정책 검토와 법률·세무·회계 전문가의 판단을 대신하지 않습니다.
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      HAM MEDIA · 대표님 개인·회사 AI 운영체계 설치 제안서 v2 · 고객 검토용 제안서
+    </footer>
+  </div>
+</body>
+</html>
