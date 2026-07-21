@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noindex, nofollow, noarchive">
-    <title>태양계와 별 — 개념 정리와 확인 문제 | HAM MEDIA</title>
-    <meta name="description" content="초등 5학년 1학기 태양계와 별 단원. 개념 정리와 확인 문제.">
+    <title>태양계와 별 — 개념 정리와 확인 문제 (초안) | HAM MEDIA</title>
+    <meta name="description" content="초등 5학년 1학기 태양계와 별 단원. 개념 정리와 확인 문제 초안.">
     <style>
       :root {
         --paper-deep: #f5f3ee;
@@ -38,6 +38,11 @@
       .share-header { padding: clamp(24px,6vw,44px); border-bottom: 1px solid var(--line); }
       .share-brand { margin: 0 0 18px; color: var(--action); font-size: 12px; font-weight: 900; letter-spacing: .08em; }
       .share-header h1 { margin: 0; font-size: clamp(28px,7vw,44px); line-height: 1.1; }
+      .draft-badge {
+        display: inline-block; margin: 0 0 14px; padding: 5px 12px;
+        background: rgba(181,80,47,.12); color: var(--warn);
+        border-radius: 999px; font-size: 13px; font-weight: 800;
+      }
       .share-for { margin: 14px 0 0; color: var(--action); font-size: 15px; font-weight: 800; }
       .share-date { margin: 6px 0 0; color: var(--muted); font-size: 14px; font-weight: 700; }
       .share-content { padding: clamp(24px,6vw,44px); }
@@ -51,6 +56,15 @@
       .share-content p { margin: 0 0 16px; }
       .share-content ul, .share-content ol { margin: 0 0 18px; padding-left: 1.2em; }
       .lead { font-size: 18px; color: var(--muted); }
+
+      .draft-note {
+        margin: 0 0 30px; padding: 20px 22px;
+        background: rgba(181,80,47,.06); border: 1px dashed var(--warn);
+        border-radius: 16px;
+      }
+      .draft-note h3 { margin: 0 0 10px; font-size: 18px; color: var(--warn); }
+      .draft-note p { margin: 0 0 10px; font-size: 16px; }
+      .draft-note p:last-child { margin-bottom: 0; }
 
       .table-wrap { margin: 0 0 18px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
       table { width: 100%; border-collapse: collapse; font-size: 16px; min-width: 360px; }
@@ -70,6 +84,13 @@
         background: rgba(181,80,47,.05);
       }
       .trap::before { content: "여기 조심 · "; color: var(--warn); font-weight: 900; }
+
+      .star-map {
+        margin: 0 0 20px; padding: 18px; background: var(--paper-deep);
+        border: 1px solid var(--line); border-radius: 14px; text-align: center;
+      }
+      .star-map svg { max-width: 100%; height: auto; }
+      .star-map figcaption { margin-top: 10px; font-size: 14px; color: var(--muted); font-weight: 700; }
 
       .quiz-intro {
         margin: 40px 0 28px; padding: 22px; background: rgba(0,112,74,.06); border-radius: 18px;
@@ -92,6 +113,7 @@
       .opt:disabled { cursor: default; opacity: .95; }
       .opt.correct { border-color: var(--action); background: rgba(0,112,74,.12); font-weight: 700; }
       .opt.wrong { border-color: var(--warn); background: rgba(181,80,47,.09); }
+      .opt.tried { opacity: .55; text-decoration: line-through; }
       .fb {
         margin: 14px 0 0; padding: 15px 17px; border-radius: 12px; font-size: 16px; line-height: 1.6;
         display: none;
@@ -99,8 +121,10 @@
       .fb.show { display: block; }
       .fb.ok { background: rgba(0,112,74,.1); border-left: 4px solid var(--action); }
       .fb.no { background: rgba(181,80,47,.08); border-left: 4px solid var(--warn); }
+      .fb.hint { background: rgba(126,181,232,.14); border-left: 4px solid var(--accent); }
       .fb b { display: block; margin-bottom: 6px; }
       .fb .ask { display: block; margin-top: 10px; font-weight: 700; color: var(--action); }
+      .fb .again { display: block; margin-top: 12px; font-size: 15px; font-weight: 800; color: var(--accent); }
 
       #result {
         margin: 34px 0 0; padding: 26px; border: 2px solid var(--action);
@@ -108,7 +132,7 @@
       }
       #result.show { display: block; }
       #result h2 { margin-top: 0; border-bottom: none; padding-bottom: 0; color: var(--action); }
-      .score { font-size: 30px; font-weight: 900; margin: 0 0 6px; }
+      .score { font-size: 26px; font-weight: 900; margin: 0 0 10px; line-height: 1.35; }
       #weak-list { margin: 14px 0 0; padding-left: 1.2em; }
       #weak-list li { margin-bottom: 8px; }
       .restart {
@@ -128,6 +152,7 @@
         th, td { padding: 9px 10px; }
         .q-text { font-size: 17px; }
         .opt { font-size: 15px; }
+        .score { font-size: 22px; }
       }
     </style>
   </head>
@@ -136,6 +161,7 @@
       <article class="share-document">
         <header class="share-header">
           <p class="share-brand">HAM MEDIA SHARE</p>
+          <p class="draft-badge">초안 v1 · 함께 고쳐갈 자료입니다</p>
           <h1>태양계와 별<br>개념 정리와 확인 문제</h1>
           <p class="share-for">지욱이에게</p>
           <p class="share-date">초등 5학년 1학기 · 2026년 7월 21일</p>
@@ -143,7 +169,14 @@
 
         <section class="share-content">
 
-          <p class="lead">먼저 아래 개념을 한 번 읽고, 문제를 풀어보자. 틀려도 괜찮아 — 오히려 틀린 문제가 <strong>지금 뭘 더 봐야 하는지</strong> 알려주거든.</p>
+          <div class="draft-note">
+            <h3>어머님께 — 이건 완성본이 아닙니다</h3>
+            <p>오늘 나눈 이야기만으로 만든 <strong>첫 초안</strong>입니다. 지욱이가 실제로 어디서 막히는지는 아직 모릅니다.</p>
+            <p>이 자료를 지욱이와 함께 써보시고 <strong>알려주십시오.</strong> 어느 문제가 너무 쉬웠는지, 어떤 설명이 안 와닿았는지, 지욱이가 어떤 말을 했는지 — 그걸 듣고 <strong>지욱이에게 맞게 계속 고쳐 나가겠습니다.</strong></p>
+            <p>시험지를 보내주시면 훨씬 정확해집니다. 그때는 지욱이가 <strong>실제로 반복해서 틀린 것</strong>으로 다시 만들 수 있습니다.</p>
+          </div>
+
+          <p class="lead">먼저 아래 개념을 한 번 읽고, 문제를 풀어보자. 틀려도 괜찮아 — 한 번 더 생각할 기회를 줄 거야.</p>
 
           <h2>1. 별과 행성</h2>
 
@@ -153,12 +186,13 @@
               <tbody>
                 <tr><td><strong>스스로 빛을 냄</strong></td><td>스스로 빛을 <strong>못 냄</strong> (태양 빛을 반사)</td></tr>
                 <tr><td>지구에서 <strong>아주 멀다</strong></td><td>별보다 <strong>훨씬 가깝다</strong></td></tr>
-                <tr><td>여러 날 봐도 <strong>위치가 그대로</strong></td><td>여러 날 보면 <strong>위치가 조금씩 변함</strong></td></tr>
+                <tr><td>여러 날 봐도 <strong>다른 별들 사이에서 자리가 그대로</strong></td><td>여러 날 보면 <strong>별들 사이에서 자리가 조금씩 옮겨감</strong></td></tr>
                 <tr><td>태양, 북극성</td><td>수성·금성·지구·화성·목성·토성·천왕성·해왕성</td></tr>
               </tbody>
             </table>
           </div>
           <p class="key-line">스스로 빛나면 별, 빌려서 빛나면 행성</p>
+          <p class="trap">밤하늘 전체는 시간이 지나면 다 같이 돌아가는 것처럼 보여. 그래서 그냥 "움직인다"가 아니라, <strong>주변 별들 사이에서 자리가 바뀌는지</strong>를 봐야 해.</p>
           <p class="trap">금성·화성·목성·토성은 <strong>행성인데도 웬만한 별보다 밝게</strong> 보여. 그래서 밝기로는 구분할 수 없어.</p>
 
           <h2>2. 태양계 구성원</h2>
@@ -176,7 +210,7 @@
           <p style="font-weight:700;">수성 → 금성 → 지구 → 화성 → 목성 → 토성 → 천왕성 → 해왕성</p>
           <p class="key-line">수금지화목토천해</p>
 
-          <h3>크기 순서 (큰 것부터)</h3>
+          <h3>크기 순서 (지름 기준, 큰 것부터)</h3>
           <p style="font-weight:700;">목성 → 토성 → 천왕성 → 해왕성 → 지구 → 금성 → 화성 → 수성</p>
           <div class="table-wrap">
             <table>
@@ -190,11 +224,13 @@
           <p class="trap">거리 순서와 크기 순서는 <strong>서로 다른 두 개</strong>야. 예를 들어 화성은 지구보다 태양에서 멀지만, 크기는 지구보다 작아.</p>
 
           <h2>4. 태양계 그림 읽기</h2>
-          <p>교과서나 책에 나오는 태양계 그림은 <strong>실제 비율이 아니야.</strong> 실제로는 행성 사이 거리가 너무 멀어서, 크기와 거리를 동시에 정확하게 그리는 게 불가능하거든.</p>
+          <p>교과서나 책에 나오는 태양계 그림은 <strong>실제 비율이 아니야.</strong> 크기와 거리를 같은 비율로 그리면 종이나 화면 한 장에 <strong>한눈에 담기 어려울 만큼 커지거든.</strong></p>
           <p class="trap">그림에서 행성들이 옹기종기 모여 있다고 해서 <strong>실제로 가까운 게 아니야.</strong></p>
 
           <h2>5. 별자리와 북극성</h2>
-          <p><strong>별자리</strong> = 무리 지어 있는 별들을 선으로 이어 이름을 붙인 것</p>
+          <p><strong>별자리</strong> = 지구에서 볼 때 일정한 모양으로 보이는 별들을 이어 이름을 붙인 것</p>
+          <p class="trap">한 별자리 안의 별들이 <strong>우주에서도 서로 가까이 있는 건 아니야.</strong> 지구에서 볼 때 그렇게 보일 뿐이야.</p>
+
           <div class="table-wrap">
             <table>
               <thead><tr><th>북두칠성</th><th>카시오페이아자리</th></tr></thead>
@@ -206,16 +242,69 @@
           </div>
 
           <h3>북극성 찾는 법</h3>
-          <ul>
-            <li><strong>북두칠성으로</strong>: 국자 끝의 두 별 사이 거리를 <strong>5배</strong> 연장</li>
-            <li><strong>카시오페이아로</strong>: 바깥쪽 두 선을 연장해 만나는 점에서 가운데 별 방향으로 <strong>5배</strong> 연장</li>
-          </ul>
-          <p class="key-line">둘 다 5배 — 북극성은 항상 북쪽, 움직이지 않음</p>
-          <p class="trap">북극성은 밤하늘에서 가장 밝은 별이 아니야. 중요한 건 밝기가 아니라 <strong>움직이지 않는다</strong>는 점이야.</p>
+
+          <figure class="star-map">
+            <svg viewBox="0 0 340 180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="북두칠성으로 북극성 찾는 그림">
+              <rect width="340" height="180" fill="#1c2333" rx="10"/>
+              <!-- 북두칠성 국자 -->
+              <circle cx="60" cy="120" r="3.5" fill="#fff"/>
+              <circle cx="85" cy="132" r="3.5" fill="#fff"/>
+              <circle cx="112" cy="130" r="3.5" fill="#fff"/>
+              <circle cx="128" cy="112" r="3.5" fill="#fff"/>
+              <circle cx="150" cy="103" r="4.5" fill="#ffe9a8"/>
+              <circle cx="150" cy="70" r="4.5" fill="#ffe9a8"/>
+              <circle cx="128" cy="82" r="3.5" fill="#fff"/>
+              <polyline points="60,120 85,132 112,130 128,112 150,103 150,70 128,82" fill="none" stroke="#8fa4c8" stroke-width="1.4"/>
+              <!-- 연장선 -->
+              <line x1="150" y1="103" x2="150" y2="70" stroke="#7eb5e8" stroke-width="2"/>
+              <line x1="150" y1="70" x2="150" y2="32" stroke="#7eb5e8" stroke-width="1.6" stroke-dasharray="5 4"/>
+              <line x1="150" y1="32" x2="262" y2="32" stroke="#7eb5e8" stroke-width="1.6" stroke-dasharray="5 4"/>
+              <!-- 북극성 -->
+              <circle cx="272" cy="32" r="6" fill="#fff"/>
+              <circle cx="272" cy="32" r="11" fill="none" stroke="#ffe9a8" stroke-width="1.4"/>
+              <text x="272" y="58" fill="#ffe9a8" font-size="12" font-weight="700" text-anchor="middle" font-family="sans-serif">북극성</text>
+              <text x="105" y="158" fill="#8fa4c8" font-size="11" text-anchor="middle" font-family="sans-serif">북두칠성 (국자 모양)</text>
+              <text x="196" y="24" fill="#7eb5e8" font-size="11" font-weight="700" text-anchor="middle" font-family="sans-serif">두 별 사이 거리의 5배</text>
+            </svg>
+            <figcaption>국자 끝의 두 별(노란 별)을 이은 뒤, 그 사이 거리의 약 5배만큼 연장</figcaption>
+          </figure>
+
+          <figure class="star-map">
+            <svg viewBox="0 0 340 180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="카시오페이아자리로 북극성 찾는 그림">
+              <rect width="340" height="180" fill="#1c2333" rx="10"/>
+              <!-- 카시오페이아 W -->
+              <circle cx="52" cy="110" r="3.5" fill="#fff"/>
+              <circle cx="76" cy="140" r="3.5" fill="#fff"/>
+              <circle cx="100" cy="112" r="4.5" fill="#ffe9a8"/>
+              <circle cx="124" cy="140" r="3.5" fill="#fff"/>
+              <circle cx="148" cy="110" r="3.5" fill="#fff"/>
+              <polyline points="52,110 76,140 100,112 124,140 148,110" fill="none" stroke="#8fa4c8" stroke-width="1.4"/>
+              <!-- 바깥쪽 두 선 연장 -->
+              <line x1="52" y1="110" x2="76" y2="140" stroke="#8fa4c8" stroke-width="1.2"/>
+              <line x1="148" y1="110" x2="124" y2="140" stroke="#8fa4c8" stroke-width="1.2"/>
+              <line x1="52" y1="110" x2="100" y2="152" stroke="#7eb5e8" stroke-width="1.2" stroke-dasharray="4 3"/>
+              <line x1="148" y1="110" x2="100" y2="152" stroke="#7eb5e8" stroke-width="1.2" stroke-dasharray="4 3"/>
+              <circle cx="100" cy="152" r="3" fill="#7eb5e8"/>
+              <text x="100" y="171" fill="#7eb5e8" font-size="10" text-anchor="middle" font-family="sans-serif">두 선이 만나는 점</text>
+              <!-- 가운데 별 방향으로 5배 -->
+              <line x1="100" y1="152" x2="100" y2="112" stroke="#7eb5e8" stroke-width="2"/>
+              <line x1="100" y1="112" x2="100" y2="36" stroke="#7eb5e8" stroke-width="1.6" stroke-dasharray="5 4"/>
+              <line x1="100" y1="36" x2="252" y2="36" stroke="#7eb5e8" stroke-width="1.6" stroke-dasharray="5 4"/>
+              <circle cx="262" cy="36" r="6" fill="#fff"/>
+              <circle cx="262" cy="36" r="11" fill="none" stroke="#ffe9a8" stroke-width="1.4"/>
+              <text x="262" y="62" fill="#ffe9a8" font-size="12" font-weight="700" text-anchor="middle" font-family="sans-serif">북극성</text>
+              <text x="176" y="28" fill="#7eb5e8" font-size="11" font-weight="700" text-anchor="middle" font-family="sans-serif">그 거리의 5배</text>
+              <text x="30" y="95" fill="#8fa4c8" font-size="11" font-family="sans-serif">W 모양</text>
+            </svg>
+            <figcaption>바깥쪽 두 선을 연장해 만나는 점과 가운데 별(노란 별) 사이 거리의 약 5배</figcaption>
+          </figure>
+
+          <p class="key-line">둘 다 5배 — 북극성은 우리나라에서 북쪽 하늘에 보이고, 거의 움직이지 않는 것처럼 보임</p>
+          <p class="trap">북극성은 밤하늘에서 가장 밝은 별이 아니야. 중요한 건 밝기가 아니라 <strong>자리가 거의 변하지 않는다</strong>는 점이야.</p>
 
           <div class="quiz-intro">
             <h2 style="margin-top:0;border-bottom:none;padding-bottom:0;">확인 문제 10개</h2>
-            <p>답을 고르면 바로 이야기가 나와. 맞았으면 왜 맞았는지, 틀렸으면 <strong>어떻게 생각했던 것 같은지</strong> 같이 짚어볼 거야.</p>
+            <p>답을 고르면 바로 이야기가 나와. <strong>처음에 틀려도 정답을 바로 알려주지 않아.</strong> 대신 힌트 질문을 하나 줄 테니, 위 개념을 다시 보고 <strong>한 번 더 골라볼 수 있어.</strong></p>
             <p>다 풀면 <strong>다시 볼 부분</strong>을 정리해서 보여줄게.</p>
           </div>
 
@@ -229,11 +318,10 @@
               <p style="font-weight:800;margin-bottom:6px;">다시 볼 부분</p>
               <ul id="weak-list"></ul>
             </div>
-            <p id="perfect-msg" style="display:none;font-weight:700;"></p>
             <button class="restart" onclick="location.reload()">다시 풀기</button>
           </div>
 
-          <p class="share-note">이 자료는 HAM MEDIA가 지욱이를 위해 만든 것입니다. 시험지를 보내주시면 지욱이가 실제로 반복해서 틀리는 부분을 정리하고, 10월 18일까지의 주차별 계획을 만들어 드리겠습니다.</p>
+          <p class="share-note"><strong>이 자료는 초안입니다.</strong> HAM MEDIA가 지욱이를 위해 만들었고, 어머님과 이야기하면서 계속 고쳐 나갈 예정입니다. 지욱이가 풀어본 소감이나 막힌 부분을 알려주시면 다음 판에 반영하겠습니다. 시험지를 보내주시면 실제로 반복해서 틀리는 부분으로 다시 만들어 드립니다.</p>
         </section>
       </article>
     </main>
@@ -245,17 +333,20 @@ const QUIZ = [
     concept: "별과 행성 구분하기",
     opts: [
       { t: "가장 밝은 것을 찾으면 별이다",
-        fb: "밝기를 기준으로 골랐구나. 그런데 위 표에서 금성·목성 줄을 다시 보자. 행성인데도 별보다 밝게 보인다고 되어 있지?",
-        ask: "그럼 밝기 말고 뭘 봐야 구분할 수 있을까?" },
-      { t: "여러 날 동안 같은 시각에 관찰해서 위치가 변하는지 본다", ok: true,
-        fb: "맞았어. 별은 너무 멀어서 위치가 그대로인 것처럼 보이고, 행성은 훨씬 가까워서 여러 날 보면 위치가 조금씩 움직여.",
-        ask: "그럼 반대로, 며칠을 봐도 위치가 안 변하면 그건 뭘까?" },
+        hint: "밝기를 기준으로 골랐구나. 위 1번 표에서 금성·목성 줄을 다시 보자.",
+        ask: "행성인데도 별보다 밝게 보이는 게 있다면, 밝기로 구분할 수 있을까?",
+        fb: "밝기로는 구분할 수 없어. 금성·목성 같은 행성이 웬만한 별보다 밝게 보이거든." },
+      { t: "여러 날 동안 같은 시각에 관찰해서, 주변 별들 사이에서 자리가 옮겨가는지 본다", ok: true,
+        fb: "맞았어. 밤하늘 전체는 시간이 지나면 다 같이 돌아가 보여. 그래서 그냥 움직임이 아니라 <b>주변 별들 사이에서 자리가 바뀌는지</b>를 봐야 해. 행성은 지구에 훨씬 가까워서 며칠만 봐도 그 자리가 옮겨가.",
+        ask: "그럼 반대로, 며칠을 봐도 별들 사이 자리가 그대로면 그건 뭘까?" },
       { t: "색깔이 붉으면 행성이다",
-        fb: "색으로 나누려고 했구나. 그런데 별도 붉게 보이는 게 있고, 행성도 색이 여러 가지야.",
-        ask: "하루만 봐서는 알 수 없다면, 며칠에 걸쳐 뭘 확인해봐야 할까?" },
+        hint: "색으로 나누려고 했구나. 그런데 별도 붉게 보이는 게 있고, 행성도 색이 여러 가지야.",
+        ask: "하루만 봐서는 알 수 없다면, 며칠에 걸쳐 뭘 확인해야 할까?",
+        fb: "색으로는 구분할 수 없어. 며칠에 걸쳐 별들 사이에서 자리가 옮겨가는지 봐야 해." },
       { t: "깜빡거리면 행성이다",
-        fb: "반짝임으로 나누려고 했구나. 그런데 오히려 별이 더 반짝여 보이는 경우가 많아. 그리고 이건 날씨에 따라서도 달라져.",
-        ask: "날씨에 안 흔들리는 확실한 기준은 뭘까? 위 표 세 번째 줄을 보자." }
+        hint: "반짝임으로 나누려고 했구나. 그런데 반짝임은 날씨(공기)에 따라서도 달라져.",
+        ask: "날씨에 안 흔들리는 확실한 기준은 뭘까? 위 1번 표 세 번째 줄을 보자.",
+        fb: "반짝임으로는 구분할 수 없어. 며칠에 걸쳐 별들 사이에서 자리가 옮겨가는지 봐야 해." }
     ]
   },
   {
@@ -266,14 +357,17 @@ const QUIZ = [
         fb: "맞았어. 태양계 안에서 스스로 빛나는 건 태양 하나뿐이야. 나머지는 전부 태양 빛을 반사해서 빛나 보이는 거야.",
         ask: "그럼 밤하늘의 다른 별들은 어디에 있는 걸까?" },
       { t: "2개 (태양과 북극성)",
-        fb: "북극성을 넣었구나. 북극성이 별인 건 맞아. 그런데 위 2번 설명의 마지막 줄을 다시 보자 — 밤하늘의 별들이 어디에 있다고 했지?",
-        ask: "북극성은 태양계 안일까, 바깥일까?" },
+        hint: "북극성을 넣었구나. 북극성이 별인 건 맞아. 그런데 위 2번 마지막 줄을 다시 보자.",
+        ask: "북극성은 태양계 안일까, 바깥일까?",
+        fb: "북극성은 별이 맞지만 태양계 <b>바깥</b>에 있어. 태양계 안에서 스스로 빛나는 건 태양 하나야." },
       { t: "9개 (태양과 행성들)",
-        fb: "행성도 빛난다고 봤구나. 밤하늘에서 행성이 밝게 보이는 건 맞아. 그런데 위 1번 표 첫 줄을 보자 — 행성은 그 빛을 어디서 얻는다고 했지?",
-        ask: "빌린 빛도 '스스로 내는 빛'이라고 할 수 있을까?" },
+        hint: "행성도 빛난다고 봤구나. 밤하늘에서 행성이 밝게 보이는 건 맞아. 위 1번 표 첫 줄을 보자.",
+        ask: "행성은 그 빛을 어디서 얻는다고 했지? 빌린 빛도 스스로 내는 빛일까?",
+        fb: "행성은 태양 빛을 반사할 뿐 스스로 빛을 못 내. 그래서 답은 태양 하나야." },
       { t: "밤하늘의 별만큼 많다",
-        fb: "밤하늘에 별이 많으니 그렇게 생각했구나. 그런데 그 별들이 전부 태양계 안에 있는 건 아니야.",
-        ask: "태양계는 어디까지를 말하는 걸까? 위 2번 첫 줄을 다시 보자." }
+        hint: "밤하늘에 별이 많으니 그렇게 생각했구나. 그런데 그 별들이 다 태양계 안에 있는 건 아니야.",
+        ask: "태양계는 어디까지를 말하는 걸까? 위 2번 첫 줄을 다시 보자.",
+        fb: "밤하늘의 별들은 전부 태양계 바깥이야. 태양계 안에서 스스로 빛나는 건 태양 하나야." }
     ]
   },
   {
@@ -284,32 +378,38 @@ const QUIZ = [
         fb: "맞았어. \"수금지화목토천해\"로 외우면 돼.",
         ask: "그럼 이 순서가 크기 순서이기도 할까?" },
       { t: "수성 - 지구 - 금성 - 화성 - 목성 - 토성 - 해왕성 - 천왕성",
-        fb: "거의 맞았는데 두 군데가 바뀌었어. 앞쪽에서 하나, 뒤쪽에서 하나야.",
-        ask: "\"수금지화\"와 \"목토천해\"를 소리 내어 읽어보면 어디가 다른지 보일까?" },
+        hint: "거의 맞았는데 두 군데가 바뀌었어. 앞쪽에서 하나, 뒤쪽에서 하나야.",
+        ask: "\"수금지화\"와 \"목토천해\"를 소리 내어 읽어보면 어디가 다를까?",
+        fb: "금성이 지구보다 태양에 가깝고, 천왕성이 해왕성보다 가까워. 순서는 수금지화목토천해." },
       { t: "목성 - 토성 - 천왕성 - 해왕성 - 지구 - 금성 - 화성 - 수성",
-        fb: "이건 위 3번에 나온 <b>다른 순서</b>야. 두 순서를 헷갈린 것 같아 — 이게 이 단원에서 제일 많이 나오는 실수야.",
-        ask: "위 3번을 다시 보면 순서가 두 개 있지? 문제가 물은 건 어느 쪽일까?" },
+        hint: "이건 위 3번에 나온 <b>다른 순서</b>야. 두 순서를 헷갈린 것 같아.",
+        ask: "위 3번을 보면 순서가 두 개 있지? 문제가 물은 건 어느 쪽일까?",
+        fb: "이건 크기 순서야. 거리 순서는 수금지화목토천해." },
       { t: "수성 - 금성 - 지구 - 목성 - 화성 - 토성 - 천왕성 - 해왕성",
-        fb: "가운데 두 개가 바뀌었어. 지구 다음에 오는 게 뭔지 다시 보자.",
-        ask: "\"수금지화목토천해\"를 천천히 읽으면 네 번째가 뭐지?" }
+        hint: "가운데 두 개가 바뀌었어.",
+        ask: "\"수금지화목토천해\"를 천천히 읽으면 네 번째가 뭐지?",
+        fb: "지구 다음은 화성이야. 순서는 수금지화목토천해." }
     ]
   },
   {
-    q: "태양계 행성 중 가장 큰 행성과 가장 작은 행성은?",
+    q: "태양계 행성 중 지름이 가장 큰 행성과 가장 작은 행성은?",
     concept: "행성 크기 순서",
     opts: [
       { t: "가장 큰 것: 목성 / 가장 작은 것: 수성", ok: true,
-        fb: "맞았어. 목성이 가장 크고 수성이 가장 작아.",
+        fb: "맞았어. 지름 기준으로 목성이 가장 크고 수성이 가장 작아.",
         ask: "수성은 태양에서도 가장 가깝지? 그럼 가까울수록 작은 걸까?" },
       { t: "가장 큰 것: 태양 / 가장 작은 것: 수성",
-        fb: "태양을 넣었구나. 태양이 제일 큰 건 맞아. 그런데 문제를 다시 읽어보자 — 뭐 중에서 고르라고 했지?",
-        ask: "태양은 행성일까, 별일까? 위 1번 표를 보자." },
+        hint: "태양을 넣었구나. 태양이 제일 큰 건 맞아. 그런데 문제를 다시 읽어보자.",
+        ask: "문제가 물은 건 뭐 중에서지? 태양은 행성일까, 별일까?",
+        fb: "태양은 별이지 행성이 아니야. 행성 중에서는 목성이 가장 크고 수성이 가장 작아." },
       { t: "가장 큰 것: 해왕성 / 가장 작은 것: 지구",
-        fb: "해왕성이 제일 바깥에 있어서 크다고 봤을 수 있겠다. 그런데 위 3번의 크기 순서를 다시 보자.",
-        ask: "크기 순서 맨 앞에 있는 건 뭐지? 그리고 지구보다 작은 행성이 몇 개나 있을까?" },
+        hint: "해왕성이 제일 바깥에 있어서 크다고 봤을 수 있겠다. 위 3번 크기 순서를 다시 보자.",
+        ask: "크기 순서 맨 앞은 뭐지? 그리고 지구보다 작은 행성이 몇 개나 있을까?",
+        fb: "가장 큰 건 목성이고, 지구보다 작은 행성은 금성·화성·수성 셋이야. 가장 작은 건 수성." },
       { t: "가장 큰 것: 토성 / 가장 작은 것: 화성",
-        fb: "토성은 두 번째로 커. 아주 가까웠어.",
-        ask: "크기 순서 첫 번째와 마지막을 다시 확인해볼까?" }
+        hint: "토성은 두 번째로 커. 아주 가까웠어.",
+        ask: "크기 순서의 첫 번째와 마지막을 다시 확인해볼까?",
+        fb: "가장 큰 건 목성, 가장 작은 건 수성이야." }
     ]
   },
   {
@@ -320,14 +420,17 @@ const QUIZ = [
         fb: "맞았어. 거리와 크기를 따로 판단했구나. 이게 제일 중요한 부분이야.",
         ask: "그럼 태양에서 멀다고 해서 꼭 크거나 작은 건 아니라는 뜻이지?" },
       { t: "화성이 지구보다 태양에서 멀기 때문에 크기도 더 크다",
-        fb: "거리와 크기를 연결해서 생각했구나. 거리가 멀면 크다고 본 것 같아.",
-        ask: "위 3번의 두 순서를 나란히 놓고 보자. 두 순서가 같을까, 다를까?" },
+        hint: "거리와 크기를 연결해서 생각했구나. 거리가 멀면 크다고 본 것 같아.",
+        ask: "위 3번의 두 순서를 나란히 놓고 보자. 두 순서가 같을까, 다를까?",
+        fb: "거리와 크기는 관계가 없어. 화성은 지구보다 멀지만 더 작아." },
       { t: "화성이 지구보다 태양에 가깝고, 크기는 더 크다",
-        fb: "두 가지 다 다시 봐야 할 것 같아.",
-        ask: "\"수금지화\"에서 지구와 화성 중 어느 쪽이 먼저지? 먼저 나오면 태양에 더 가까운 걸까 먼 걸까?" },
+        hint: "두 가지 다 다시 봐야 할 것 같아.",
+        ask: "\"수금지화\"에서 지구와 화성 중 어느 쪽이 먼저지? 먼저 나오면 더 가까운 걸까?",
+        fb: "화성은 지구보다 <b>멀고</b>, 크기도 <b>더 작아</b>." },
       { t: "화성과 지구는 크기가 거의 같다",
-        fb: "둘 다 안쪽 작은 행성 무리라 비슷하다고 봤을 수 있겠다. 그런데 크기 순서에서는 자리가 꽤 떨어져 있어.",
-        ask: "위 3번 크기 순서에서 지구와 화성이 각각 몇 번째인지 세어볼까?" }
+        hint: "둘 다 안쪽 작은 행성 무리라 비슷하다고 봤을 수 있겠다. 그런데 크기 순서에서는 자리가 꽤 떨어져 있어.",
+        ask: "위 3번 크기 순서에서 지구와 화성이 각각 몇 번째인지 세어볼까?",
+        fb: "화성은 지구보다 꽤 작아. 크기 순서에서 지구가 다섯 번째, 화성이 일곱 번째야." }
     ]
   },
   {
@@ -335,95 +438,110 @@ const QUIZ = [
     concept: "태양계 그림 읽기",
     opts: [
       { t: "그림에서 행성들이 가까이 붙어 있으니, 실제로도 가까운 거구나", ok: true,
-        fb: "잘 골랐어. 이게 바로 잘못된 생각이야. 태양계 그림은 실제 비율이 아니거든.",
-        ask: "왜 실제 비율대로 못 그릴까? 위 4번을 다시 보자." },
+        fb: "잘 골랐어. 이게 잘못된 생각이야. 크기와 거리를 같은 비율로 그리면 한 화면에 담기 어려워서, 그림은 실제 비율이 아니야.",
+        ask: "그럼 그림에서 믿어도 되는 건 뭐고, 믿으면 안 되는 건 뭘까?" },
       { t: "목성이 지구보다 훨씬 크구나",
-        fb: "이건 맞는 생각이야. 목성은 실제로 지구보다 훨씬 커.",
-        ask: "문제는 <b>잘못된</b> 생각을 고르는 거였어. 그림에서만 그렇게 보이고 실제로는 다른 게 뭐가 있을까?" },
+        hint: "이건 실제로 맞는 생각이야. 목성은 지구보다 훨씬 커.",
+        ask: "문제는 <b>잘못된</b> 생각을 고르는 거였어. 그림에서만 그렇게 보이고 실제로는 다른 게 뭘까?",
+        fb: "잘못된 생각은 \"그림에서 가까워 보이니 실제로도 가깝다\"야. 그림은 실제 비율이 아니거든." },
       { t: "수성이 태양에 가장 가깝구나",
-        fb: "이건 맞는 생각이야. 수성이 실제로 태양에 가장 가까워.",
-        ask: "그림이 정확히 보여주는 것과, 그림으로는 알 수 없는 것을 나눠보면 어떨까?" },
+        hint: "이건 맞는 생각이야. 수성이 실제로 태양에 가장 가까워.",
+        ask: "그림이 정확히 보여주는 것과, 그림으로는 알 수 없는 것을 나눠보면 어떨까?",
+        fb: "잘못된 생각은 \"그림에서 가까워 보이니 실제로도 가깝다\"야. 순서는 맞지만 <b>간격</b>은 실제와 달라." },
       { t: "행성은 8개구나",
-        fb: "이것도 맞는 생각이야. 태양계 행성은 8개야.",
-        ask: "그림에서 <b>개수</b>는 맞게 알 수 있어. 그럼 그림에서 <b>믿으면 안 되는 것</b>은 뭘까?" }
+        hint: "이것도 맞는 생각이야. 태양계 행성은 8개야.",
+        ask: "그림에서 <b>개수</b>는 맞게 알 수 있어. 그럼 믿으면 안 되는 건 뭘까?",
+        fb: "잘못된 생각은 \"그림에서 가까워 보이니 실제로도 가깝다\"야. 개수·순서는 맞지만 간격과 크기 비율은 달라." }
     ]
   },
   {
     q: "북극성을 찾는 방법으로 옳은 것은?",
     concept: "북극성 찾는 법",
     opts: [
-      { t: "북두칠성 국자 끝 두 별 사이 거리의 5배를 연장한다", ok: true,
-        fb: "맞았어. 카시오페이아자리로 찾을 때도 5배야.",
+      { t: "북두칠성 국자 끝 두 별 사이 거리의 약 5배를 연장한다", ok: true,
+        fb: "맞았어. 카시오페이아자리로 찾을 때도 5배야 — 두 선이 만나는 점과 가운데 별 사이 거리의 5배.",
         ask: "두 방법의 배수가 같다는 걸 기억하면 헷갈릴 일이 없겠지?" },
       { t: "밤하늘에서 가장 밝은 별을 찾는다",
-        fb: "밝기로 찾으려고 했구나. 그런데 북극성은 특별히 밝은 별이 아니야.",
-        ask: "위 5번 마지막 줄을 보자. 북극성이 중요한 진짜 이유가 뭐라고 되어 있지?" },
-      { t: "북두칠성 국자 끝 두 별 사이 거리의 2배를 연장한다",
-        fb: "방법은 정확히 알고 있는데 숫자 하나가 달라. 아주 가까웠어.",
-        ask: "위 5번에서 북두칠성과 카시오페이아 둘 다 몇 배라고 했는지 확인해볼까?" },
+        hint: "밝기로 찾으려고 했구나. 그런데 북극성은 특별히 밝은 별이 아니야.",
+        ask: "위 5번 마지막 줄을 보자. 북극성이 중요한 진짜 이유가 뭐라고 되어 있지?",
+        fb: "북극성은 가장 밝은 별이 아니야. 북두칠성 국자 끝 두 별 사이 거리의 약 5배를 연장해서 찾아." },
+      { t: "북두칠성 국자 끝 두 별 사이 거리의 약 2배를 연장한다",
+        hint: "방법은 정확히 알고 있는데 숫자 하나가 달라. 아주 가까웠어.",
+        ask: "위 그림에서 북두칠성과 카시오페이아 둘 다 몇 배라고 했지?",
+        fb: "2배가 아니라 약 5배야. 두 방법 모두 5배." },
       { t: "카시오페이아자리 가운데 별이 북극성이다",
-        fb: "카시오페이아를 쓰는 건 맞아. 그런데 그 별자리 안에 북극성이 있는 건 아니야.",
-        ask: "카시오페이아에서 선을 연장한다고 했지? 어디에서 어디로 연장하는 걸까?" }
+        hint: "카시오페이아를 쓰는 건 맞아. 그런데 그 별자리 안에 북극성이 있는 건 아니야.",
+        ask: "위 그림을 보자. 어디에서 어디로 연장하는 걸까?",
+        fb: "카시오페이아 바깥쪽 두 선이 만나는 점에서 가운데 별 방향으로, 그 사이 거리의 약 5배 연장한 곳이야." }
     ]
   },
   {
-    q: "북극성이 옛날부터 나침반 역할을 해온 이유는?",
+    q: "북극성이 옛날부터 방향을 알려주는 별로 쓰인 이유는?",
     concept: "북극성이 특별한 이유",
     opts: [
-      { t: "1년 내내 북쪽 하늘에서 거의 움직이지 않기 때문", ok: true,
-        fb: "맞았어. 다른 별들은 시간에 따라 위치가 변하는데 북극성만 거의 그대로 있어.",
-        ask: "만약 북극성도 움직였다면 방향을 알려줄 수 있었을까?" },
+      { t: "우리나라에서 북쪽 하늘에 보이고, 자리가 거의 변하지 않아서", ok: true,
+        fb: "맞았어. 다른 별들은 시간에 따라 자리가 크게 변하는데 북극성은 거의 그대로야.",
+        ask: "만약 북극성도 크게 움직였다면 방향을 알려줄 수 있었을까?" },
       { t: "가장 밝아서 눈에 잘 띄기 때문",
-        fb: "밝기 때문이라고 봤구나. 그런데 북두칠성 별들이 오히려 더 밝게 보여.",
-        ask: "밝은 별은 많은데 왜 하필 북극성이 기준이 됐을까? 다른 별들과 북극성의 차이가 뭘까?" },
+        hint: "밝기 때문이라고 봤구나. 그런데 북두칠성에는 북극성보다 밝게 보이는 별도 있어.",
+        ask: "밝은 별은 많은데 왜 하필 북극성이 기준이 됐을까? 다른 별들과 뭐가 다를까?",
+        fb: "밝기가 아니라 <b>자리가 거의 변하지 않는다</b>는 점 때문이야." },
       { t: "지구에서 가장 가까운 별이기 때문",
-        fb: "가까워서라고 봤구나. 그런데 지구에서 가장 가까운 별은 따로 있어 — 우리가 매일 보는 거야.",
-        ask: "위 1번 표에서 별의 예로 뭐가 나왔지? 그중 지구에 제일 가까운 건?" },
-      { t: "여러 날 관찰하면 위치가 변해서 방향을 알 수 있기 때문",
-        fb: "위치 변화를 이유로 봤구나. 그런데 방향의 기준이 되려면 오히려 반대여야 하지 않을까?",
-        ask: "매일 자리를 옮기는 것과 늘 같은 자리에 있는 것 중, 뭐가 기준이 되기 좋을까?" }
+        hint: "가까워서라고 봤구나. 그런데 지구에서 가장 가까운 별은 우리가 매일 보는 거야.",
+        ask: "위 1번 표에서 별의 예로 뭐가 나왔지? 그중 지구에 제일 가까운 건?",
+        fb: "가장 가까운 별은 태양이야. 북극성이 기준이 되는 이유는 자리가 거의 변하지 않아서야." },
+      { t: "여러 날 관찰하면 자리가 변해서 방향을 알 수 있기 때문",
+        hint: "자리 변화를 이유로 봤구나. 그런데 기준이 되려면 오히려 반대여야 하지 않을까?",
+        ask: "매일 자리를 옮기는 것과 늘 같은 자리에 있는 것 중, 뭐가 기준이 되기 좋을까?",
+        fb: "반대야. <b>자리가 거의 변하지 않기 때문에</b> 기준이 되는 거야." }
     ]
   },
   {
     q: "별자리에 대한 설명으로 옳은 것은?",
     concept: "별자리란 무엇인가",
     opts: [
-      { t: "무리 지어 보이는 별들을 선으로 이어 이름 붙인 것", ok: true,
-        fb: "맞았어. 중요한 건 '보이는' 대로 사람들이 이름을 붙였다는 점이야.",
+      { t: "지구에서 볼 때 일정한 모양으로 보이는 별들을 이어 이름 붙인 것", ok: true,
+        fb: "맞았어. 중요한 건 <b>지구에서 볼 때</b> 그렇게 보인다는 점이야.",
         ask: "그럼 그 별들이 우주에서도 실제로 가까이 있을까?" },
       { t: "실제로 서로 가까이 붙어 있는 별들의 모임",
-        fb: "지구에서 볼 때 모여 보이니까 그렇게 생각했구나. 그런데 각 별은 지구에서 서로 다른 거리에 있어.",
-        ask: "옆에서 보면 멀리 떨어진 두 물건도 앞에서 보면 붙어 보일 때가 있지? 별도 그런 게 아닐까?" },
+        hint: "지구에서 볼 때 모여 보이니까 그렇게 생각했구나. 그런데 각 별은 지구에서 서로 다른 거리에 있어.",
+        ask: "멀리 떨어진 두 물건도 한 방향에서 보면 붙어 보일 때가 있지? 별도 그런 게 아닐까?",
+        fb: "지구에서 볼 때 그렇게 보일 뿐이야. 실제로는 서로 아주 다른 거리에 있어." },
       { t: "밝기가 같은 별들을 묶은 것",
-        fb: "밝기 기준으로 봤구나. 그런데 하나의 별자리 안에서도 별마다 밝기가 달라.",
-        ask: "위 5번 첫 줄을 보자. 별자리는 무엇을 보고 이름 붙인 거라고 했지?" },
+        hint: "밝기 기준으로 봤구나. 그런데 하나의 별자리 안에서도 별마다 밝기가 달라.",
+        ask: "위 5번 첫 줄을 보자. 별자리는 무엇을 보고 이름 붙인 거라고 했지?",
+        fb: "밝기가 아니라 <b>지구에서 볼 때 보이는 모양</b>을 보고 이름 붙인 거야." },
       { t: "태양계 안에 있는 행성들의 모임",
-        fb: "태양계와 별자리를 연결해서 봤구나. 그런데 이 둘은 완전히 다른 이야기야.",
-        ask: "위 2번에서 밤하늘의 별들이 어디에 있다고 했지? 태양계 안일까 바깥일까?" }
+        hint: "태양계와 별자리를 연결해서 봤구나. 그런데 이 둘은 다른 이야기야.",
+        ask: "위 2번에서 밤하늘의 별들이 어디에 있다고 했지? 태양계 안일까 바깥일까?",
+        fb: "별자리는 태양계 <b>바깥</b>의 별들이야. 태양계 행성과는 다른 이야기야." }
     ]
   },
   {
-    q: "여러 날 동안 같은 시각에 밤하늘을 봤더니, 어떤 천체는 위치가 그대로였고 어떤 천체는 조금씩 움직였어. 움직인 천체는 무엇이고 왜 그럴까?",
+    q: "여러 날 동안 같은 시각에 밤하늘을 봤더니, 어떤 천체는 주변 별들 사이에서 자리가 그대로였고 어떤 천체는 조금씩 옮겨갔어. 옮겨간 천체는 무엇이고 왜 그럴까?",
     concept: "별과 행성 구분하기",
     opts: [
       { t: "행성 — 별보다 지구에 훨씬 가까이 있어서", ok: true,
-        fb: "맞았어. 별도 실제로는 움직이지만 너무 멀어서 안 보이는 거야. 행성은 훨씬 가까워서 며칠만 봐도 위치 변화가 보여.",
+        fb: "맞았어. 별들도 실제로는 움직이지만 너무 멀어서 자리 변화가 안 보여. 행성은 훨씬 가까워서 며칠만 봐도 별들 사이에서 자리가 옮겨가.",
         ask: "멀리 가는 비행기와 가까이 지나가는 자동차, 어느 쪽이 빨리 지나가 보일까? 같은 이치야." },
       { t: "별 — 스스로 빛을 내며 돌아다니기 때문에",
-        fb: "스스로 빛을 내니까 움직이기도 한다고 봤구나. 그런데 빛을 내는 것과 움직여 보이는 건 다른 이야기야.",
-        ask: "위 1번 표 세 번째 줄을 보자. 여러 날 봤을 때 위치가 변하는 건 어느 쪽이지?" },
+        hint: "스스로 빛을 내니까 움직이기도 한다고 봤구나. 그런데 빛을 내는 것과 자리가 옮겨 보이는 건 다른 이야기야.",
+        ask: "위 1번 표 세 번째 줄을 보자. 별들 사이에서 자리가 옮겨가는 건 어느 쪽이지?",
+        fb: "별은 자리가 그대로인 쪽이야. 옮겨 보이는 건 지구에 훨씬 가까운 행성이야." },
       { t: "행성 — 스스로 빛을 내기 때문에",
-        fb: "행성이라는 답은 맞았어. 그런데 이유가 달라 — 행성은 스스로 빛을 못 내거든.",
-        ask: "위 1번 표에서 별과 행성의 <b>거리</b>가 어떻게 다르다고 했지? 그게 답이 될 수 있을까?" },
+        hint: "행성이라는 답은 맞았어. 그런데 이유가 달라 — 행성은 스스로 빛을 못 내거든.",
+        ask: "위 1번 표에서 별과 행성의 <b>거리</b>가 어떻게 다르다고 했지?",
+        fb: "행성이 맞고, 이유는 <b>지구에 훨씬 가깝기 때문</b>이야." },
       { t: "별 — 별자리가 계속 바뀌기 때문에",
-        fb: "별자리가 변한다고 봤구나. 그런데 별자리 모양은 바뀌지 않아. 그래서 옛날 사람들도 같은 이름을 쓸 수 있었던 거야.",
-        ask: "며칠 사이에 위치가 변해 보이는 건 그럼 뭘까? 지구에 더 가까운 쪽일까 먼 쪽일까?" }
+        hint: "별자리가 변한다고 봤구나. 그런데 별자리 모양은 바뀌지 않아. 그래서 옛날 사람들도 같은 이름을 쓸 수 있었어.",
+        ask: "며칠 사이에 자리가 옮겨 보이는 건 그럼 뭘까? 지구에 더 가까운 쪽일까?",
+        fb: "행성이야. 지구에 훨씬 가까워서 별들 사이에서 자리가 옮겨 보이는 거야." }
     ]
   }
 ];
 
-let answered = 0;
-const wrongConcepts = [];
+const state = QUIZ.map(() => ({ tries: 0, done: false, firstOk: false }));
+let doneCount = 0;
 
 function render() {
   const box = document.getElementById('quiz');
@@ -449,56 +567,107 @@ function render() {
   });
 }
 
+function lockAll(card, item, chosenIdx) {
+  card.querySelectorAll('.opt').forEach((b, i) => {
+    b.disabled = true;
+    if (item.opts[i].ok) b.classList.add('correct');
+    if (i === chosenIdx && !item.opts[i].ok) b.classList.add('wrong');
+  });
+}
+
 function pick(qi, oi, card) {
   const item = QUIZ[qi];
   const chosen = item.opts[oi];
-  const btns = card.querySelectorAll('.opt');
-  btns.forEach((b, i) => {
-    b.disabled = true;
-    if (item.opts[i].ok) b.classList.add('correct');
-    if (i === oi && !chosen.ok) b.classList.add('wrong');
-  });
+  const st = state[qi];
   const fb = document.getElementById('fb-' + qi);
-  fb.className = 'fb show ' + (chosen.ok ? 'ok' : 'no');
-  fb.innerHTML =
-    '<b>' + (chosen.ok ? '맞았어' : '같이 짚어보자') + '</b>' +
-    chosen.fb +
-    (chosen.ask ? '<span class="ask">' + chosen.ask + '</span>' : '');
+  if (st.done) return;
 
-  if (!chosen.ok && wrongConcepts.indexOf(item.concept) === -1) {
-    wrongConcepts.push(item.concept);
+  st.tries++;
+
+  // 첫 시도에 정답
+  if (chosen.ok && st.tries === 1) {
+    st.firstOk = true;
+    st.done = true;
+    doneCount++;
+    lockAll(card, item, oi);
+    fb.className = 'fb show ok';
+    fb.innerHTML = '<b>맞았어</b>' + chosen.fb +
+      (chosen.ask ? '<span class="ask">' + chosen.ask + '</span>' : '');
+    if (doneCount === QUIZ.length) showResult();
+    return;
   }
-  answered++;
-  if (answered === QUIZ.length) showResult();
+
+  // 첫 오답 — 정답을 알려주지 않고 힌트 질문만, 다시 고를 수 있음
+  if (!chosen.ok && st.tries === 1) {
+    card.querySelectorAll('.opt')[oi].classList.add('tried');
+    card.querySelectorAll('.opt')[oi].disabled = true;
+    fb.className = 'fb show hint';
+    fb.innerHTML = '<b>잠깐, 같이 생각해보자</b>' + chosen.hint +
+      '<span class="ask">' + chosen.ask + '</span>' +
+      '<span class="again">위를 다시 보고 한 번 더 골라봐</span>';
+    return;
+  }
+
+  // 두 번째 시도 — 결과 공개
+  st.done = true;
+  doneCount++;
+  lockAll(card, item, oi);
+  if (chosen.ok) {
+    fb.className = 'fb show ok';
+    fb.innerHTML = '<b>이번엔 맞았어</b>' + chosen.fb +
+      '<span class="ask">다시 보고 찾아낸 거니까 더 오래 기억에 남을 거야.</span>';
+  } else {
+    fb.className = 'fb show no';
+    fb.innerHTML = '<b>여기는 다시 보자</b>' + chosen.fb;
+  }
+  if (doneCount === QUIZ.length) showResult();
 }
 
 function showResult() {
-  const wrongCount = QUIZ.filter((it, i) =>
-    document.getElementById('fb-' + i).classList.contains('no')
-  ).length;
-  const correct = QUIZ.length - wrongCount;
+  const first = state.filter(s => s.firstOk).length;
+  const retried = state.filter(s => !s.firstOk && s.done &&
+    document.querySelector('#fb-' + state.indexOf(s))).length;
 
-  document.getElementById('score-line').textContent = QUIZ.length + '개 중 ' + correct + '개 맞았어';
+  // 재시도로 맞힌 것 / 끝내 못 맞힌 것 구분
+  let second = 0, missed = 0;
+  state.forEach((s, i) => {
+    if (s.firstOk) return;
+    const fb = document.getElementById('fb-' + i);
+    if (fb.classList.contains('ok')) second++;
+    else missed++;
+  });
+
+  let line = QUIZ.length + '개 중 처음에 ' + first + '개 맞았어';
+  if (second) line += '. 다시 보고 ' + second + '개를 더 맞혔고';
+  if (missed) line += (second ? ', ' : '. ') + missed + '개는 더 봐야 해';
+  document.getElementById('score-line').textContent = line + '.';
 
   let msg = '';
-  if (correct === QUIZ.length) msg = '전부 맞았네. 이 단원은 확실히 잡혔어.';
-  else if (correct >= 8) msg = '거의 다 잡혔어. 아래 한두 개만 다시 보면 돼.';
-  else if (correct >= 5) msg = '절반 이상 맞았어. 아래 것들을 다시 보고 한 번 더 풀어보자.';
-  else msg = '위 개념을 한 번 더 읽고 풀면 훨씬 나아질 거야. 지금 틀린 게 어디를 봐야 하는지 알려준 거니까 잘된 거야.';
+  if (first === QUIZ.length) {
+    msg = '오늘 10문제는 모두 처음에 맞았어. 며칠 뒤 다른 문제로 한 번 더 확인하면 이 단원이 정말 잡혔는지 알 수 있어.';
+  } else if (missed === 0) {
+    msg = '틀린 것도 다시 보고 다 찾아냈어. 아래 부분은 며칠 뒤 한 번 더 확인해보자.';
+  } else if (first + second >= 7) {
+    msg = '대부분 잡혔어. 아래 부분만 다시 보고 며칠 뒤 한 번 더 풀어보자.';
+  } else {
+    msg = '위 개념을 한 번 더 읽고 풀면 훨씬 나아질 거야. 지금 틀린 게 어디를 봐야 하는지 알려준 거니까 잘된 거야.';
+  }
   document.getElementById('score-msg').textContent = msg;
 
-  if (wrongConcepts.length) {
+  const weak = [];
+  state.forEach((s, i) => {
+    if (s.firstOk) return;
+    const c = QUIZ[i].concept;
+    if (weak.indexOf(c) === -1) weak.push(c);
+  });
+  if (weak.length) {
     document.getElementById('weak-wrap').style.display = 'block';
     const ul = document.getElementById('weak-list');
-    wrongConcepts.forEach(c => {
+    weak.forEach(c => {
       const li = document.createElement('li');
       li.innerHTML = '<strong>' + c + '</strong>';
       ul.appendChild(li);
     });
-  } else {
-    const p = document.getElementById('perfect-msg');
-    p.style.display = 'block';
-    p.textContent = '다시 볼 부분이 하나도 없어. 다음 단원으로 넘어가도 좋아.';
   }
 
   const r = document.getElementById('result');
