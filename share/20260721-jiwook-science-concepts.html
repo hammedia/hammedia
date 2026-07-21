@@ -1,0 +1,541 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow, noarchive">
+    <title>초등 과학 헷갈리는 개념 비교표 | HAM MEDIA 공유 선반</title>
+    <meta name="description" content="초3-1 ~ 초6-1 과학에서 아이들이 짝으로 헷갈리는 개념을 정리한 비교표입니다.">
+    <style>
+      :root {
+        --paper-deep: #f5f3ee;
+        --paper: #fffefb;
+        --ink: #1c1814;
+        --muted: #4a423c;
+        --line: rgba(28, 24, 20, .14);
+        --accent: #7eb5e8;
+        --action: #00704a;
+        --shadow: 0 1px 2px rgba(28, 24, 20, .05), 0 18px 48px rgba(28, 24, 20, .08);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        background: var(--paper-deep);
+        color: var(--ink);
+        font-family: "Pretendard", "Pretendard Variable", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
+        line-height: 1.65;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background:
+          radial-gradient(circle at top left, rgba(126, 181, 232, .18), transparent 34rem),
+          var(--paper-deep);
+      }
+
+      .share-shell {
+        width: min(100%, 820px);
+        margin: 0 auto;
+        padding: 20px 16px 56px;
+      }
+
+      .share-document {
+        background: var(--paper);
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        box-shadow: var(--shadow);
+        overflow: hidden;
+      }
+
+      .share-header {
+        padding: clamp(24px, 6vw, 44px);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .share-brand {
+        margin: 0 0 18px;
+        color: var(--action);
+        font-size: 12px;
+        font-weight: 900;
+        letter-spacing: .08em;
+      }
+
+      .share-header h1 {
+        margin: 0;
+        font-size: clamp(28px, 7vw, 46px);
+        line-height: 1.08;
+        letter-spacing: 0;
+      }
+
+      .share-for {
+        margin: 14px 0 0;
+        color: var(--action);
+        font-size: 15px;
+        font-weight: 800;
+      }
+
+      .share-date {
+        margin: 6px 0 0;
+        color: var(--muted);
+        font-size: 14px;
+        font-weight: 700;
+      }
+
+      .share-content {
+        padding: clamp(24px, 6vw, 44px);
+      }
+
+      .share-content h2 {
+        margin: 44px 0 14px;
+        font-size: clamp(21px, 5vw, 28px);
+        line-height: 1.18;
+        letter-spacing: 0;
+        padding-bottom: 10px;
+        border-bottom: 2px solid var(--line);
+      }
+
+      .share-content h2:first-child {
+        margin-top: 0;
+      }
+
+      .share-content h3 {
+        margin: 30px 0 10px;
+        font-size: clamp(18px, 4.4vw, 22px);
+        line-height: 1.3;
+        color: var(--ink);
+      }
+
+      .share-content p,
+      .share-content li {
+        font-size: 17px;
+      }
+
+      .share-content p {
+        margin: 0 0 16px;
+      }
+
+      .share-content ul,
+      .share-content ol {
+        margin: 0 0 18px;
+        padding-left: 1.2em;
+      }
+
+      .lead {
+        font-size: 18px;
+        color: var(--muted);
+      }
+
+      .quote-box {
+        margin: 22px 0;
+        padding: 20px 22px;
+        background: rgba(0, 112, 74, .07);
+        border-left: 4px solid var(--action);
+        border-radius: 14px;
+      }
+
+      .quote-box p {
+        margin: 0;
+        font-size: 18px;
+        font-weight: 700;
+        color: var(--ink);
+      }
+
+      .quote-box .who {
+        margin-top: 8px;
+        font-size: 14px;
+        font-weight: 700;
+        color: var(--muted);
+      }
+
+      .table-wrap {
+        margin: 0 0 14px;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 16px;
+        min-width: 380px;
+      }
+
+      th, td {
+        padding: 12px 14px;
+        text-align: left;
+        border: 1px solid var(--line);
+        vertical-align: top;
+      }
+
+      thead th {
+        background: rgba(126, 181, 232, .18);
+        font-weight: 800;
+        font-size: 16px;
+      }
+
+      td strong {
+        color: var(--action);
+      }
+
+      .key-line {
+        margin: 0 0 26px;
+        padding: 12px 16px;
+        background: rgba(126, 181, 232, .12);
+        border-radius: 12px;
+        font-size: 16px;
+        font-weight: 700;
+      }
+
+      .key-line::before {
+        content: "한 줄 구분 · ";
+        color: var(--action);
+        font-weight: 900;
+      }
+
+      .trap {
+        margin: 0 0 26px;
+        padding: 12px 16px;
+        border: 1px dashed var(--line);
+        border-radius: 12px;
+        font-size: 15px;
+        color: var(--muted);
+      }
+
+      .trap::before {
+        content: "자주 나오는 함정 · ";
+        color: #b5502f;
+        font-weight: 900;
+      }
+
+      .howto {
+        margin: 40px 0 0;
+        padding: 24px;
+        background: rgba(0, 112, 74, .06);
+        border-radius: 18px;
+      }
+
+      .howto h2 {
+        margin-top: 0;
+        border-bottom: none;
+        padding-bottom: 0;
+      }
+
+      .howto ol {
+        margin: 0;
+        padding-left: 1.3em;
+      }
+
+      .howto li {
+        margin-bottom: 10px;
+      }
+
+      .next-box {
+        margin: 32px 0 0;
+        padding: 24px;
+        border: 2px solid var(--action);
+        border-radius: 18px;
+      }
+
+      .next-box h2 {
+        margin-top: 0;
+        border-bottom: none;
+        padding-bottom: 0;
+        color: var(--action);
+      }
+
+      .share-note {
+        margin-top: 36px;
+        padding: 16px;
+        border-left: 4px solid var(--accent);
+        background: rgba(126, 181, 232, .12);
+        border-radius: 14px;
+        color: var(--muted);
+        font-size: 15px;
+      }
+
+      @media (max-width: 560px) {
+        .share-shell {
+          padding: 12px 10px 36px;
+        }
+
+        .share-document {
+          border-radius: 18px;
+        }
+
+        .share-content p,
+        .share-content li {
+          font-size: 16px;
+        }
+
+        table {
+          font-size: 15px;
+        }
+
+        th, td {
+          padding: 10px 11px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="share-shell">
+      <article class="share-document">
+        <header class="share-header">
+          <p class="share-brand">HAM MEDIA SHARE</p>
+          <h1>초등 과학<br>헷갈리는 개념 비교표</h1>
+          <p class="share-for">지욱이 어머님께</p>
+          <p class="share-date">2026년 7월 21일 · 초3-1 ~ 초6-1 범위</p>
+        </header>
+
+        <section class="share-content">
+          <h2>이 표를 왜 만들었나</h2>
+
+          <p class="lead">어머님이 하신 말씀 중에 이 문장이 제일 중요했습니다.</p>
+
+          <div class="quote-box">
+            <p>“오답풀이를 해봐도 같은 개념을 계속 틀린다.”</p>
+            <p class="who">— 2026년 7월 21일, 어머님</p>
+          </div>
+
+          <p>같은 개념을 반복해서 틀리는 건 대개 <strong>“몰라서”가 아니라 “옆에 있는 비슷한 개념과 섞여서”</strong>입니다. 아이 머릿속에 두 개가 붙어 있으면, 문제에서 하나를 물어도 다른 게 딸려 나옵니다.</p>
+
+          <p>그래서 <strong>짝으로 헷갈리는 것들만</strong> 모았습니다. 아래는 초등 과학에서 아이들이 가장 자주 섞는 짝들입니다.</p>
+
+          <h2>1. 물질 영역</h2>
+
+          <h3>용해 vs 용융</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>용해 (녹아 섞임)</th><th>용융 (녹아 액체됨)</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>설탕이 물에 <strong>녹아 섞이는</strong> 것</td><td>얼음이 <strong>액체로 변하는</strong> 것</td></tr>
+                <tr><td>두 물질이 섞임 (설탕물)</td><td>한 물질의 상태만 바뀜</td></tr>
+                <tr><td><strong>다른 물질이 필요함</strong></td><td><strong>열만 있으면 됨</strong></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="key-line">섞이면 용해, 녹아서 형태만 바뀌면 용융</p>
+
+          <h3>용액 vs 혼합물</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>용액</th><th>혼합물</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>골고루 섞여 <strong>눈에 안 보임</strong></td><td>섞였지만 <strong>구분이 보임</strong></td></tr>
+                <tr><td>설탕물, 소금물</td><td>모래+자갈, 콩+쌀</td></tr>
+                <tr><td>시간이 지나도 안 가라앉음</td><td>가라앉거나 분리됨</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>질량 vs 무게</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>질량</th><th>무게</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>물질의 <strong>양</strong> 자체</td><td>그 물질을 <strong>당기는 힘</strong></td></tr>
+                <tr><td>달에 가도 <strong>안 변함</strong></td><td>달에 가면 <strong>줄어듦</strong> (1/6)</td></tr>
+                <tr><td>단위: g, kg</td><td>단위: N(뉴턴)</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="trap">“달에서도 질량은 같다” — 이게 답인 문제가 많습니다.</p>
+
+          <h3>증발 vs 끓음</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>증발</th><th>끓음</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><strong>표면에서만</strong> 천천히</td><td><strong>속에서도</strong> 기포가 생기며</td></tr>
+                <tr><td>아무 온도에서나</td><td><strong>정해진 온도</strong>(물은 100℃)에서</td></tr>
+                <tr><td>빨래 마르는 것</td><td>주전자 물 끓는 것</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h2>2. 에너지 · 빛 영역</h2>
+
+          <h3>반사 vs 굴절</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>반사</th><th>굴절</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>부딪혀 <strong>되돌아옴</strong></td><td>통과하면서 <strong>꺾임</strong></td></tr>
+                <tr><td>거울</td><td>물속의 젓가락이 꺾여 보임</td></tr>
+                <tr><td>매질이 안 바뀜</td><td><strong>매질이 바뀔 때</strong> 생김</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>전도 vs 대류 vs 복사 (열의 이동)</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>전도</th><th>대류</th><th>복사</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><strong>붙어서</strong> 전달</td><td><strong>움직이며</strong> 전달</td><td><strong>떨어져서</strong> 전달</td></tr>
+                <tr><td>쇠젓가락이 뜨거워짐</td><td>주전자 물이 돌면서 데워짐</td><td>햇빛, 난로 앞이 따뜻함</td></tr>
+                <tr><td>고체</td><td>액체 · 기체</td><td>중간 물질 없어도 됨</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="key-line">닿으면 전도, 돌면 대류, 안 닿아도 오면 복사</p>
+
+          <h3>직렬 vs 병렬 (전기)</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>직렬</th><th>병렬</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>한 줄로 연결</td><td>갈라져서 연결</td></tr>
+                <tr><td>하나 빼면 <strong>다 꺼짐</strong></td><td>하나 빼도 <strong>나머지 켜짐</strong></td></tr>
+                <tr><td>전구가 어두움</td><td>전구가 밝음</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h2>3. 생명 영역</h2>
+
+          <h3>광합성 vs 호흡</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>광합성</th><th>호흡</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><strong>빛이 있어야</strong> 함</td><td>빛과 상관없이 <strong>항상</strong></td></tr>
+                <tr><td>이산화탄소 <strong>흡수</strong>, 산소 <strong>방출</strong></td><td>산소 <strong>흡수</strong>, 이산화탄소 <strong>방출</strong></td></tr>
+                <tr><td>양분을 <strong>만듦</strong></td><td>양분을 <strong>씀</strong></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="trap">식물도 호흡을 합니다. “식물은 광합성만 한다”는 틀립니다.</p>
+
+          <h3>배출 vs 배설</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>배출</th><th>배설</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>몸 밖으로 내보내는 것 <strong>전부</strong></td><td><strong>노폐물</strong>을 내보내는 것</td></tr>
+                <tr><td>대변 포함</td><td>오줌, 땀</td></tr>
+                <tr><td>소화 안 된 찌꺼기</td><td>몸속에서 생긴 노폐물</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>생산자 vs 소비자 vs 분해자</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>생산자</th><th>소비자</th><th>분해자</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>스스로 양분을 만듦</td><td>다른 걸 먹음</td><td>죽은 것을 분해</td></tr>
+                <tr><td>식물</td><td>동물</td><td>곰팡이, 세균</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h2>4. 지구 · 우주 영역</h2>
+
+          <h3>자전 vs 공전</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>자전</th><th>공전</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>스스로 <strong>돎</strong></td><td>다른 것 <strong>주위를 돎</strong></td></tr>
+                <tr><td>하루(24시간)</td><td>일 년(365일)</td></tr>
+                <tr><td><strong>낮과 밤</strong>이 생김</td><td><strong>계절</strong>이 생김</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="key-line">자전은 하루, 공전은 일 년</p>
+
+          <h3>일식 vs 월식</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>일식</th><th>월식</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><strong>해</strong>가 가려짐</td><td><strong>달</strong>이 가려짐</td></tr>
+                <tr><td>달이 해를 가림</td><td>지구 그림자가 달을 가림</td></tr>
+                <tr><td>순서: 해 - 달 - 지구</td><td>순서: 해 - 지구 - 달</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>풍화 vs 침식 vs 퇴적</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>풍화</th><th>침식</th><th>퇴적</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>바위가 <strong>부서짐</strong></td><td>부서진 게 <strong>깎여 옮겨짐</strong></td><td>옮겨진 게 <strong>쌓임</strong></td></tr>
+                <tr><td>그 자리에서</td><td>이동 시작</td><td>이동 끝</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>응결 vs 응고</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>응결</th><th>응고</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>기체 → <strong>액체</strong></td><td>액체 → <strong>고체</strong></td></tr>
+                <tr><td>컵 표면에 물방울</td><td>물이 얼음 됨</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="howto">
+            <h2>어머님께 드리는 사용법</h2>
+            <ol>
+              <li><strong>한 표씩만</strong> 보여주십시오. 다 주면 안 봅니다.</li>
+              <li>지욱이한테 <strong>왼쪽 · 오른쪽 차이를 말로 설명</strong>시켜 보십시오.</li>
+              <li>설명 못 하는 짝이 나오면 <strong>그게 반복 오답의 원인</strong>입니다. 그 짝에 표시해 두십시오.</li>
+              <li>표시된 것만 다시 보면 됩니다. 나머지는 이미 아는 겁니다.</li>
+            </ol>
+          </div>
+
+          <div class="next-box">
+            <h2>다음 단계 — 시험지가 필요합니다</h2>
+            <p>이 표는 <strong>일반적으로 아이들이 헷갈리는 것들</strong>입니다. 그런데 <strong>지욱이가 실제로 어디서 틀리는지</strong>는 아직 모릅니다.</p>
+            <p>보관하고 계신 <strong>학원 시험지 · 모의고사 사진</strong>을 보내주시면, 다음 두 가지를 만들어 드리겠습니다.</p>
+            <ul>
+              <li><strong>지욱이 반복 오답 개념 순위표</strong> — 실제로 몇 번씩 틀렸는지 순서대로</li>
+              <li><strong>10월 18일까지 주차별 계획</strong> — 그 순위대로 배치한 실제 일정</li>
+            </ul>
+            <p style="margin-bottom:0;">시험지가 많으면 <strong>최근 것부터 5~10장</strong>만 먼저 주셔도 시작할 수 있습니다.</p>
+          </div>
+
+          <p class="share-note">이 자료는 HAM MEDIA가 지욱이를 위해 따로 만든 것입니다. 링크로만 전달하는 문서입니다.</p>
+        </section>
+      </article>
+    </main>
+  </body>
+</html>
