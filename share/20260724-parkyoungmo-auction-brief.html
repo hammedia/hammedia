@@ -315,66 +315,78 @@
   <div class="block reveal">
     <h2>나오는 결과물은 이렇습니다</h2>
     <p class="sub">
-      사건번호 하나를 주시면 이 모양으로 채워드립니다. 아직 실제 사건번호를 안 주셔서,
-      먼저 형식만 보여드립니다.
+      대표님이 보내주신 사건번호(2025타경513108)로 방금 실제 조회한 결과입니다.
+      가짜 예시가 아니라 오늘 이 순간 법원 전산에 있는 그대로입니다.
     </p>
 
     <div class="frame">
-      <div class="frame-tag">자동으로 만들어지는 사건 브리핑</div>
+      <div class="frame-tag">자동으로 만들어진 사건 브리핑 · 실측</div>
 
       <div class="doc">
         <div class="doc-head">
           <p class="to">노른자부동산 경매 · 사건 브리핑</p>
-          <h3>사건번호를 넣으시면 여기 채워집니다</h3>
-          <p class="addr">예: 수원지방법원 2026타경1234</p>
+          <h3>인천지방법원 2025타경513108(1)</h3>
+          <p class="addr">인천광역시 서구 청라동 168-1 호반베르디움 155동 29층2902호 · 아파트 · 일괄매각(토지/건물)</p>
         </div>
 
-        <div class="placeholder">
-          <b>실제 사건번호를 하나 주시면</b>, 방문 전에 그 사건으로 미리 채워서 보여드리겠습니다.
-          지어낸 물건으로 미리 보여드리지 않습니다.
+        <div class="verdict">
+          <span class="score">오늘 10:00 매각기일</span>
+          <span class="say">219호 법정 · 1회 유찰(2026.06.24) 후 두 번째 기일 · 매각결정기일 2026.07.31(408호 법정)</span>
         </div>
 
         <h4>경매 정보</h4>
         <ul class="checks">
           <li>
             <span class="mark ok">✓</span>
-            <span><span class="req">감정가 · 최저매각가 · 기일</span>
-            <span class="found">법원경매정보 — 사건번호로 조회, 지금 됩니다</span></span>
-            <span class="tail">연결됨</span>
+            <span><span class="req">감정가</span>
+            <span class="found">6억 3,000만 원</span></span>
+            <span class="tail">확인됨</span>
           </li>
           <li>
             <span class="mark ok">✓</span>
-            <span><span class="req">물건내역 · 유찰 이력</span>
-            <span class="found">같은 조회에서 함께 나옵니다</span></span>
-            <span class="tail">연결됨</span>
+            <span><span class="req">최저매각가(70%)</span>
+            <span class="found">4억 4,100만 원 · 보증금 4,410만 원</span></span>
+            <span class="tail">확인됨</span>
+          </li>
+          <li>
+            <span class="mark ok">✓</span>
+            <span><span class="req">청구금액</span>
+            <span class="found">4억 2,049만 4,894원</span></span>
+            <span class="tail">확인됨</span>
+          </li>
+          <li>
+            <span class="mark ok">✓</span>
+            <span><span class="req">면적</span>
+            <span class="found">대지권 18.94평 · 건물 25.68평</span></span>
+            <span class="tail">확인됨</span>
           </li>
         </ul>
 
-        <h4>권리관계</h4>
+        <h4>이해관계인 — 법원 전산이 이미 마스킹한 상태 그대로</h4>
+        <ul class="checks">
+          <li>
+            <span class="mark ok">✓</span>
+            <span><span class="req">채권자 · 채무자겸소유자</span>
+            <span class="found">한OOOOOOO(채권자) · 임OO(채무자겸소유자)</span></span>
+            <span class="tail">확인됨</span>
+          </li>
+          <li>
+            <span class="mark ok">✓</span>
+            <span><span class="req">가압류·압류·교부권자</span>
+            <span class="found">총 9곳(주OOO·경OOOOOOO·국OOOOOOO 등) — 이해관계인이 많은 사건</span></span>
+            <span class="tail">확인됨</span>
+          </li>
+        </ul>
+
+        <h4>권리관계 — 등기부 확인은 여전히 별도</h4>
         <ul class="checks">
           <li>
             <span class="mark ask">?</span>
-            <span><span class="req">소유자 · 근저당 · 권리순위</span>
-            <span class="found">등기부등본 — 준비 중(실비 결제 절차 진행 중)</span></span>
+            <span><span class="req">근저당·권리순위 상세</span>
+            <span class="found">경매기록의 이해관계인 목록까지는 나오지만, 등기부등본 원문 대조는 준비 중(실비 결제 절차 진행 중)</span></span>
             <span class="tail">준비 중</span>
           </li>
         </ul>
-
-        <h4>시세 비교 — 참고 실측(경기 남부 실거래, 2026.7.24 조회)</h4>
-        <div class="tradewrap">
-          <table class="trades">
-            <thead><tr><th>구분</th><th>규모</th><th>거래가</th><th>거래일</th></tr></thead>
-            <tbody>
-              <tr><td>공장(창고) · 준공업</td><td>건물 약 75평</td><td class="n">9억 2,000만</td><td class="d">2026.06.25</td></tr>
-              <tr><td>공장(집합 6층)</td><td>건물 약 80평</td><td class="n">7억 5,000만</td><td class="d">2026.06.23</td></tr>
-              <tr><td>공장 · 준공업</td><td>건물 약 223평</td><td class="n">21억 2,500만</td><td class="d">2026.05.27</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <p class="note" style="margin-top:10px; font-size:14.5px;">
-          이 표는 오늘 실제로 조회한 시흥·안산 지역 실거래입니다(수원지방법원 안산지원 관할 권역 예시).
-          실제 사건이 들어오면 그 사건 소재지 기준으로 다시 조회해서 채웁니다.
-        </p>
 
         <h4>물건 상태</h4>
         <ul class="checks">
@@ -387,9 +399,10 @@
         </ul>
 
         <p class="doc-foot">
-          경매 정보는 사건번호를 이미 알아야 조회됩니다 — "이 지역 경매 물건 찾아줘"는 되지 않습니다.
-          법원이 그런 검색을 열어두지 않았기 때문입니다. 되는 것처럼 말씀드리지 않겠습니다.<br>
-          시세 비교는 국토교통부 실거래가 공개자료, 조회일과 함께 기록됩니다.
+          이 사건의 매각기일이 오늘(2026.07.24)이라, 이 브리핑이 실제 입찰 시각에 맞출 수 있었는지는
+          받은 시각에 따라 다를 수 있습니다 — 정직하게 남깁니다.<br>
+          경매 정보는 사건번호를 이미 알아야 조회됩니다 — "이 지역 경매 물건 찾아줘"는 되지 않습니다. 되는 것처럼 말씀드리지 않겠습니다.<br>
+          청라동 인근 실거래 시세 비교는 다음 단계에서 붙입니다(오늘은 사건 브리핑 자체의 실측에 집중).
         </p>
       </div>
     </div>
