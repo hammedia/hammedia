@@ -28,7 +28,8 @@ else
     'warning: HAM Drive bundle 공통 스크립트를 찾지 못했습니다. 로컬 커밋만 완료됐습니다.' >&2
 fi
 
-if [ -d "$hook_dir/post-commit.d" ]; then
+if [ "${HAM_SKIP_POST_COMMIT_EXTENSIONS:-0}" != "1" ] &&
+  [ -d "$hook_dir/post-commit.d" ]; then
   for extension in "$hook_dir"/post-commit.d/*; do
     [ -x "$extension" ] || continue
     "$extension" || true
