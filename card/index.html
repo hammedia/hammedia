@@ -329,17 +329,24 @@
         outline-offset: 4px;
       }
 
+      /* 뒷면은 내용이 늘었다. 어떤 화면에서도 잘려서 사라지지 않도록
+         넘칠 때만 뒷면 안에서 스크롤된다 (앞면은 그대로다). */
       .back-content {
         display: grid;
         grid-template-columns: minmax(380px, 0.93fr) minmax(460px, 1.07fr);
+        grid-template-rows: minmax(0, 1fr) auto;
         gap: 7%;
         padding: clamp(46px, 5.4vw, 76px);
+        overflow-y: auto;
+        overscroll-behavior: contain;
       }
 
       .identity {
         display: flex;
         min-width: 0;
         flex-direction: column;
+        grid-column: 1;
+        grid-row: 1;
       }
 
       .back-brand {
@@ -393,12 +400,14 @@
         min-width: 0;
         flex-direction: column;
         justify-content: center;
+        grid-column: 2;
+        grid-row: 1 / span 2;
         padding-left: clamp(22px, 3vw, 42px);
         border-left: 1px solid rgba(255, 235, 190, 0.12);
       }
 
       .contact-label {
-        margin: 0 0 15px;
+        margin: 0 0 11px;
         color: rgba(255, 255, 255, 0.58);
         font-size: 12px;
         letter-spacing: 0.1em;
@@ -413,37 +422,18 @@
         list-style: none;
       }
 
+      /* 기본은 "보임". 자바스크립트가 죽어도 명함 내용은 반드시 보여야 한다.
+         순차 등장 애니메이션은 빈 카드 사고(2026-07-25 실측) 이후 켜지 않는다.
+         되살리려면 어떤 환경에서도 마지막에 반드시 보이는 것을 실측으로 증명한 뒤에만 켠다. */
       .contact-item {
-        opacity: 0;
-        transform: translateY(16px);
-        transition:
-          opacity 420ms ease,
-          transform 520ms cubic-bezier(0.2, 0.72, 0.18, 1);
-      }
-
-      .digital-card.is-flipped .contact-item {
+        min-width: 0;
         opacity: 1;
-        transform: translateY(0);
+        transform: none;
       }
 
-      .digital-card.is-flipped .contact-item:nth-child(1) {
-        transition-delay: 410ms;
-      }
-
-      .digital-card.is-flipped .contact-item:nth-child(2) {
-        transition-delay: 500ms;
-      }
-
-      .digital-card.is-flipped .contact-item:nth-child(3) {
-        transition-delay: 590ms;
-      }
-
-      .digital-card.is-flipped .contact-item:nth-child(4) {
-        transition-delay: 680ms;
-      }
-
-      .digital-card.is-flipped .contact-item:nth-child(5) {
-        transition-delay: 770ms;
+      .tile {
+        display: grid;
+        min-width: 0;
       }
 
       .contact-link {
@@ -465,10 +455,14 @@
         box-shadow:
           inset 0 0 22px rgba(126, 181, 232, 0.035),
           0 8px 22px rgba(0, 0, 0, 0.18);
+        text-align: left;
         text-decoration: none;
+        cursor: pointer;
         transition:
-          border-color 180ms ease,
-          background 180ms ease,
+          border-color 400ms ease,
+          color 400ms ease,
+          background 400ms ease,
+          box-shadow 400ms ease,
           transform 180ms ease;
       }
 
@@ -490,6 +484,10 @@
         border-radius: 11px;
         color: var(--card-blue);
         background: rgba(126, 181, 232, 0.08);
+        transition:
+          border-color 400ms ease,
+          color 400ms ease,
+          background 400ms ease;
       }
 
       .contact-icon svg {
@@ -508,8 +506,10 @@
         color: rgba(238, 242, 255, 0.48);
         font-size: 10px;
         line-height: 1.25;
+        transition: color 400ms ease;
       }
 
+      /* 전화번호·이메일은 눈으로 읽고 손으로 복사할 수 있게 유지한다 */
       .contact-copy strong {
         overflow: hidden;
         color: rgba(255, 253, 248, 0.94);
@@ -518,6 +518,9 @@
         line-height: 1.35;
         text-overflow: ellipsis;
         white-space: nowrap;
+        transition: color 400ms ease;
+        -webkit-user-select: text;
+        user-select: text;
       }
 
       .contact-action {
@@ -529,13 +532,367 @@
         color: rgba(255, 255, 255, 0.72);
         background: rgba(255, 255, 255, 0.08);
         font-size: 13px;
-        transition: color 180ms ease, background 180ms ease, transform 180ms ease;
+        transition: color 400ms ease, background 400ms ease, transform 260ms ease;
       }
 
       .contact-link:hover .contact-action {
+        transform: translate(2px, -2px);
+      }
+
+      /* ── 켜짐 (파랑) ─────────────────────────────── */
+
+      .contact-link.is-on {
+        border-color: rgba(126, 181, 232, 0.5);
+        background: rgba(126, 181, 232, 0.1);
+        box-shadow:
+          inset 0 0 22px rgba(126, 181, 232, 0.09),
+          0 0 16px rgba(126, 181, 232, 0.18),
+          0 8px 22px rgba(0, 0, 0, 0.18);
+      }
+
+      .contact-link.is-on .contact-action {
+        color: var(--card-night);
+        background: var(--card-blue);
+      }
+
+      /* ── 꺼짐 ───────────────────────────────────── */
+
+      .contact-link.is-off .contact-icon {
+        border-color: rgba(255, 255, 255, 0.14);
+        color: rgba(238, 242, 255, 0.42);
+        background: rgba(255, 255, 255, 0.05);
+      }
+
+      .contact-link.is-off .contact-copy strong {
+        color: rgba(255, 253, 248, 0.52);
+      }
+
+      .contact-link.is-off .contact-copy small {
+        color: rgba(238, 242, 255, 0.3);
+      }
+
+      .contact-link.is-off .contact-action {
+        color: rgba(255, 255, 255, 0.4);
+        background: rgba(255, 255, 255, 0.06);
+      }
+
+      /* ── 완주 (노랑) ────────────────────────────── */
+
+      .contact-link.is-complete {
+        border-color: rgba(244, 220, 89, 0.58);
+        background: rgba(244, 220, 89, 0.1);
+        box-shadow:
+          inset 0 0 22px rgba(244, 220, 89, 0.09),
+          0 0 20px rgba(244, 220, 89, 0.2),
+          0 8px 22px rgba(0, 0, 0, 0.18);
+      }
+
+      .contact-link.is-complete .contact-icon {
+        border-color: rgba(244, 220, 89, 0.42);
+        color: var(--card-yellow);
+        background: rgba(244, 220, 89, 0.1);
+      }
+
+      .contact-link.is-complete .contact-copy strong {
+        color: rgba(255, 253, 248, 0.96);
+      }
+
+      .contact-link.is-complete .contact-copy small {
+        color: rgba(244, 220, 89, 0.78);
+      }
+
+      .contact-link.is-complete .contact-action {
         color: var(--card-night);
         background: var(--card-yellow);
-        transform: translate(2px, -2px);
+      }
+
+      /* ── 2단 확인 (전화·이메일 두 칸에만) ───────────── */
+
+      .tile.is-armed .contact-link {
+        border-color: rgba(244, 220, 89, 0.5);
+        background: rgba(244, 220, 89, 0.055);
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+
+      .tile.is-armed .contact-action {
+        color: var(--card-night);
+        background: var(--card-yellow);
+      }
+
+      .confirm {
+        display: grid;
+        grid-template-rows: 0fr;
+        opacity: 0;
+        transition:
+          grid-template-rows 380ms cubic-bezier(0.2, 0.72, 0.18, 1),
+          opacity 280ms ease;
+      }
+
+      .tile.is-armed .confirm {
+        grid-template-rows: 1fr;
+        opacity: 1;
+      }
+
+      .confirm-inner {
+        overflow: hidden;
+      }
+
+      .confirm-inner p {
+        margin: 0;
+        padding: 9px 12px 10px 60px;
+        border: 1px solid rgba(244, 220, 89, 0.34);
+        border-top: 0;
+        border-bottom-left-radius: 14px;
+        border-bottom-right-radius: 14px;
+        color: rgba(244, 220, 89, 0.9);
+        background: rgba(244, 220, 89, 0.045);
+        font-size: 12px;
+        line-height: 1.45;
+        word-break: keep-all;
+      }
+
+      /* ── 아카데미 칸 (폭 전체 · 항상 켜짐) ──────────── */
+
+      .academy-item {
+        padding-top: 11px;
+        border-top: 1px solid var(--card-line);
+      }
+
+      .academy-link {
+        min-height: 60px;
+        padding: 10px;
+        border-radius: 16px;
+      }
+
+      .academy-link .contact-copy small {
+        color: rgba(126, 181, 232, 0.82);
+        font-size: 11px;
+        letter-spacing: 0.06em;
+      }
+
+      .academy-link .contact-copy strong {
+        overflow: visible;
+        font-size: clamp(14px, 1.3vw, 16px);
+        white-space: normal;
+      }
+
+      /* ── 카드 아래 도구 한 줄 (저장 · 넘기기 · QR) ───── */
+
+      .tool-bar {
+        display: block;
+        min-width: 0;
+        grid-column: 1;
+        grid-row: 2;
+        margin-top: clamp(14px, 1.8vw, 24px);
+      }
+
+      .tools {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 8px;
+        margin: 0;
+        opacity: 1;
+        transform: none;
+      }
+
+      .tool-btn {
+        display: grid;
+        min-width: 0;
+        min-height: 56px;
+        grid-template-rows: 20px auto;
+        gap: 4px;
+        place-items: center;
+        padding: 8px 6px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        border-radius: 14px;
+        color: rgba(255, 253, 248, 0.88);
+        background: rgba(255, 255, 255, 0.045);
+        cursor: pointer;
+        transition:
+          border-color 220ms ease,
+          color 220ms ease,
+          background 220ms ease;
+      }
+
+      .tool-btn svg {
+        width: 20px;
+        height: 20px;
+        fill: none;
+        stroke: currentColor;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 1.6;
+      }
+
+      .tool-btn span {
+        color: rgba(238, 242, 255, 0.72);
+        font-size: 11px;
+        letter-spacing: -0.02em;
+        line-height: 1.2;
+        white-space: nowrap;
+      }
+
+      .tool-btn:active {
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      .tool-btn:hover {
+        border-color: rgba(126, 181, 232, 0.5);
+        background: rgba(255, 255, 255, 0.09);
+      }
+
+      .tool-btn.is-primary {
+        border-color: rgba(126, 181, 232, 0.42);
+        background: rgba(126, 181, 232, 0.1);
+      }
+
+      .tool-btn.is-primary svg {
+        color: var(--card-blue);
+      }
+
+      .tool-btn[aria-expanded="true"] {
+        border-color: rgba(244, 220, 89, 0.5);
+        background: rgba(244, 220, 89, 0.09);
+      }
+
+      /* 버튼 바로 아래 안내 한 줄 — iOS 저장 성공률을 좌우한다 */
+      .tool-note {
+        display: flex;
+        gap: 7px;
+        align-items: flex-start;
+        margin: 9px 0 0;
+        padding: 9px 12px;
+        border: 1px solid rgba(244, 220, 89, 0.3);
+        border-radius: 13px;
+        color: rgba(244, 220, 89, 0.9);
+        background: rgba(244, 220, 89, 0.05);
+        font-size: 12px;
+        line-height: 1.45;
+        word-break: keep-all;
+      }
+
+      .tool-note[hidden] {
+        display: none;
+      }
+
+      .tool-note b {
+        flex: none;
+        color: var(--card-yellow);
+        font-weight: 500;
+      }
+
+      /* ── QR (링크 QR · 인라인 SVG · 뒷면 위에 펼친다) ─── */
+
+      .qr-panel {
+        position: absolute;
+        z-index: 6;
+        inset: 0;
+        display: grid;
+        padding: clamp(20px, 4vw, 40px);
+        place-items: center;
+        background: rgba(5, 7, 15, 0.94);
+        animation: qr-in 280ms cubic-bezier(0.2, 0.72, 0.18, 1) both;
+      }
+
+      .qr-panel[hidden] {
+        display: none;
+      }
+
+      @keyframes qr-in {
+        from {
+          opacity: 0;
+          transform: translateY(-8px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .qr-inner {
+        display: grid;
+        width: min(100%, 260px);
+        gap: 12px;
+        justify-items: center;
+      }
+
+      .qr-frame {
+        width: 100%;
+        max-width: min(216px, 34svh);
+        padding: 10px;
+        border-radius: 12px;
+        background: #fffdf8;
+      }
+
+      .qr-frame svg {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+
+      .qr-cap {
+        margin: 0;
+        color: rgba(238, 242, 255, 0.62);
+        font-size: 12px;
+        line-height: 1.5;
+        text-align: center;
+      }
+
+      .qr-cap code {
+        color: rgba(255, 253, 248, 0.88);
+        font-family: inherit;
+        letter-spacing: -0.01em;
+      }
+
+      .qr-close {
+        min-height: 44px;
+        padding: 9px 22px;
+        border: 1px solid rgba(255, 255, 255, 0.24);
+        border-radius: 14px;
+        color: rgba(255, 255, 255, 0.9);
+        background: rgba(255, 255, 255, 0.07);
+        cursor: pointer;
+        transition: border-color 180ms ease, background 180ms ease;
+      }
+
+      .qr-close:hover {
+        border-color: rgba(244, 220, 89, 0.72);
+        background: rgba(255, 255, 255, 0.12);
+      }
+
+      /* ── 넘기기 알림 ────────────────────────────── */
+
+      .toast {
+        position: absolute;
+        z-index: 7;
+        bottom: 16px;
+        left: 50%;
+        max-width: calc(100% - 32px);
+        padding: 11px 18px;
+        border: 1px solid rgba(126, 181, 232, 0.42);
+        border-radius: 999px;
+        color: rgba(255, 253, 248, 0.96);
+        background: rgba(11, 16, 32, 0.94);
+        box-shadow: 0 18px 44px rgba(0, 0, 0, 0.5);
+        font-size: 13px;
+        white-space: nowrap;
+        opacity: 0;
+        transform: translate(-50%, 14px);
+        pointer-events: none;
+        transition: opacity 220ms ease, transform 260ms ease;
+      }
+
+      .toast.is-up {
+        opacity: 1;
+        transform: translate(-50%, 0);
+      }
+
+      .tool-btn:focus-visible,
+      .qr-close:focus-visible {
+        outline: 3px solid var(--card-yellow);
+        outline-offset: 3px;
       }
 
       .card-back .flip-control {
@@ -608,12 +965,24 @@
 
         .back-content {
           grid-template-columns: 1fr;
-          gap: 22px;
-          padding: 32px 28px 26px;
+          grid-template-rows: auto;
+          gap: 12px;
+          padding: 28px 26px 20px;
+        }
+
+        .identity,
+        .contact-panel,
+        .tool-bar {
+          grid-column: auto;
+          grid-row: auto;
+        }
+
+        .tool-bar {
+          margin-top: 0;
         }
 
         .back-brand {
-          margin-bottom: 16px;
+          margin-bottom: 10px;
         }
 
         .name {
@@ -626,7 +995,7 @@
 
         .statement {
           max-width: 100%;
-          margin-top: 20px;
+          margin-top: 16px;
           font-size: clamp(21px, 6.6vw, 27px);
           line-height: 1.38;
         }
@@ -637,17 +1006,17 @@
 
         .contact-panel {
           justify-content: flex-start;
-          padding: 22px 0 0;
+          padding: 14px 0 0;
           border-top: 1px solid rgba(255, 235, 190, 0.12);
           border-left: 0;
         }
 
         .contact-list {
-          gap: 8px;
+          gap: 6px;
         }
 
         .contact-link {
-          min-height: 50px;
+          min-height: 46px;
           grid-template-columns: 34px minmax(0, 1fr) 26px;
           gap: 10px;
           padding: 7px 9px;
@@ -669,9 +1038,31 @@
           font-size: 13px;
         }
 
+        .academy-item {
+          padding-top: 9px;
+        }
+
+        .academy-link {
+          min-height: 50px;
+        }
+
+        .academy-link .contact-copy strong {
+          font-size: 15px;
+        }
+
+        .confirm-inner p {
+          padding-left: 53px;
+        }
+
+        .tool-btn {
+          min-height: 48px;
+          gap: 3px;
+          padding: 6px 6px 7px;
+        }
+
         .card-back .flip-control {
           min-height: 44px;
-          margin-top: 18px;
+          margin-top: 10px;
         }
       }
 
@@ -727,20 +1118,50 @@
           min-height: 47px;
         }
 
+        .academy-link {
+          min-height: 50px;
+        }
+
+        .tools {
+          gap: 6px;
+        }
+
+        .tool-btn {
+          min-height: 48px;
+        }
+
+        .tool-btn span {
+          font-size: 10px;
+        }
+
         .card-back .flip-control {
-          margin-top: 14px;
+          margin-top: 12px;
         }
       }
 
       @media (prefers-reduced-motion: reduce) {
         .digital-card,
-        .contact-item {
+        .contact-item,
+        .contact-link,
+        .contact-icon,
+        .contact-action,
+        .contact-copy small,
+        .contact-copy strong,
+        .confirm,
+        .tool-btn,
+        .toast {
           transition-duration: 0.01ms !important;
+          transition-delay: 0ms !important;
         }
 
-        .contact-item {
+        .contact-item,
+        .tools {
           opacity: 1;
           transform: none;
+        }
+
+        .qr-panel {
+          animation: none;
         }
       }
     </style>
@@ -833,49 +1254,90 @@
 
             <div class="contact-panel">
               <p class="contact-label">Contact &amp; Links</p>
-              <ul class="contact-list">
+              <ul class="contact-list" id="contact-list">
                 <li class="contact-item">
-                  <a class="contact-link" href="tel:+821039363571">
-                    <span class="contact-icon" aria-hidden="true">
-                      <svg viewBox="0 0 24 24"><path d="M7.2 3.8 10 8.4 7.8 10a15.7 15.7 0 0 0 6.2 6.2l1.6-2.2 4.6 2.8-.7 3a2 2 0 0 1-2 1.5C9.4 20.5 3.5 14.6 2.7 6.5a2 2 0 0 1 1.5-2l3-.7Z"></path></svg>
-                    </span>
-                    <span class="contact-copy"><small>전화</small><strong>010-3936-3571</strong></span>
-                    <span class="contact-action" aria-hidden="true">↗</span>
-                  </a>
+                  <div class="tile" data-tile="phone">
+                    <a
+                      class="contact-link is-on"
+                      href="tel:+821039363571"
+                      data-key="phone"
+                      data-guard="true"
+                      aria-describedby="confirm-phone"
+                    >
+                      <span class="contact-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24"><path d="M7.2 3.8 10 8.4 7.8 10a15.7 15.7 0 0 0 6.2 6.2l1.6-2.2 4.6 2.8-.7 3a2 2 0 0 1-2 1.5C9.4 20.5 3.5 14.6 2.7 6.5a2 2 0 0 1 1.5-2l3-.7Z"></path></svg>
+                      </span>
+                      <span class="contact-copy"><small>전화</small><strong>010-3936-3571</strong></span>
+                      <span class="contact-action" aria-hidden="true">↗</span>
+                    </a>
+                    <div class="confirm">
+                      <div class="confirm-inner">
+                        <p id="confirm-phone">한 번 더 누르면 전화가 걸립니다</p>
+                      </div>
+                    </div>
+                  </div>
                 </li>
                 <li class="contact-item">
-                  <a class="contact-link" href="mailto:hammedia002@gmail.com">
-                    <span class="contact-icon" aria-hidden="true">
-                      <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m4 7 8 6 8-6"></path></svg>
-                    </span>
-                    <span class="contact-copy"><small>이메일</small><strong>hammedia002@gmail.com</strong></span>
-                    <span class="contact-action" aria-hidden="true">↗</span>
-                  </a>
+                  <div class="tile" data-tile="mail">
+                    <a
+                      class="contact-link is-on"
+                      href="mailto:hammedia002@gmail.com"
+                      data-key="mail"
+                      data-guard="true"
+                      aria-describedby="confirm-mail"
+                    >
+                      <span class="contact-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m4 7 8 6 8-6"></path></svg>
+                      </span>
+                      <span class="contact-copy"><small>이메일</small><strong>hammedia002@gmail.com</strong></span>
+                      <span class="contact-action" aria-hidden="true">↗</span>
+                    </a>
+                    <div class="confirm">
+                      <div class="confirm-inner">
+                        <p id="confirm-mail">한 번 더 누르면 메일 앱이 열립니다</p>
+                      </div>
+                    </div>
+                  </div>
                 </li>
                 <li class="contact-item">
-                  <a class="contact-link" href="https://hammedia.co.kr/" target="_blank" rel="noopener noreferrer">
-                    <span class="contact-icon" aria-hidden="true">
-                      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"></path></svg>
-                    </span>
-                    <span class="contact-copy"><small>홈페이지</small><strong>hammedia.co.kr</strong></span>
-                    <span class="contact-action" aria-hidden="true">↗</span>
-                  </a>
+                  <div class="tile" data-tile="site">
+                    <a class="contact-link is-on" href="https://hammedia.co.kr/" data-key="site" target="_blank" rel="noopener noreferrer">
+                      <span class="contact-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"></path></svg>
+                      </span>
+                      <span class="contact-copy"><small>홈페이지</small><strong>hammedia.co.kr</strong></span>
+                      <span class="contact-action" aria-hidden="true">↗</span>
+                    </a>
+                  </div>
                 </li>
                 <li class="contact-item">
-                  <a class="contact-link" href="https://hammedia.co.kr/portfolio/" target="_blank" rel="noopener noreferrer">
-                    <span class="contact-icon" aria-hidden="true">
-                      <svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"></rect><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 12h18"></path></svg>
-                    </span>
-                    <span class="contact-copy"><small>작업 보기</small><strong>hammedia.co.kr/portfolio/</strong></span>
-                    <span class="contact-action" aria-hidden="true">↗</span>
-                  </a>
+                  <div class="tile" data-tile="portfolio">
+                    <a class="contact-link is-on" href="https://hammedia.co.kr/portfolio/" data-key="portfolio" target="_blank" rel="noopener noreferrer">
+                      <span class="contact-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"></rect><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 12h18"></path></svg>
+                      </span>
+                      <span class="contact-copy"><small>작업 보기</small><strong>hammedia.co.kr/portfolio/</strong></span>
+                      <span class="contact-action" aria-hidden="true">↗</span>
+                    </a>
+                  </div>
                 </li>
                 <li class="contact-item">
-                  <a class="contact-link" href="https://www.threads.net/@dellacasa_2" target="_blank" rel="noopener noreferrer">
+                  <div class="tile" data-tile="threads">
+                    <a class="contact-link is-on" href="https://www.threads.net/@dellacasa_2" data-key="threads" target="_blank" rel="noopener noreferrer">
+                      <span class="contact-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24"><path d="M16.8 8.7c-.8-2.3-2.5-3.4-4.8-3.4-3.8 0-6.2 2.7-6.2 6.7 0 4.1 2.5 6.7 6.4 6.7 3.4 0 5.8-1.8 5.8-4.6 0-2.4-1.8-3.9-4.7-3.9-2.5 0-4.2 1.2-4.2 3.1 0 1.5 1.2 2.5 2.9 2.5 2.8 0 4.8-2.5 4.8-6 0-3.8-1.9-6.3-5.1-6.3"></path></svg>
+                      </span>
+                      <span class="contact-copy"><small>Threads · Instagram</small><strong>햄(Ham)</strong></span>
+                      <span class="contact-action" aria-hidden="true">↗</span>
+                    </a>
+                  </div>
+                </li>
+                <li class="contact-item academy-item">
+                  <a class="contact-link academy-link is-on" href="https://hammedia.co.kr/academy/" target="_blank" rel="noopener noreferrer">
                     <span class="contact-icon" aria-hidden="true">
-                      <svg viewBox="0 0 24 24"><path d="M16.8 8.7c-.8-2.3-2.5-3.4-4.8-3.4-3.8 0-6.2 2.7-6.2 6.7 0 4.1 2.5 6.7 6.4 6.7 3.4 0 5.8-1.8 5.8-4.6 0-2.4-1.8-3.9-4.7-3.9-2.5 0-4.2 1.2-4.2 3.1 0 1.5 1.2 2.5 2.9 2.5 2.8 0 4.8-2.5 4.8-6 0-3.8-1.9-6.3-5.1-6.3"></path></svg>
+                      <svg viewBox="0 0 24 24"><path d="M12 4 2.5 8.5 12 13l9.5-4.5L12 4Z"></path><path d="M6.5 11v4.4c0 1.6 2.5 2.9 5.5 2.9s5.5-1.3 5.5-2.9V11"></path></svg>
                     </span>
-                    <span class="contact-copy"><small>Threads</small><strong>@dellacasa_2</strong></span>
+                    <span class="contact-copy"><small>아카데미</small><strong>AI로 일하는 법을 배웁니다</strong></span>
                     <span class="contact-action" aria-hidden="true">↗</span>
                   </a>
                 </li>
@@ -888,7 +1350,40 @@
                 <span>다시 별자리 보기</span>
               </button>
             </div>
+
+            <!-- 칸이 아니라 아이콘 한 줄로 묶는다 (정보 과다 방지) -->
+            <div class="tool-bar">
+              <div class="tools" role="group" aria-label="명함 도구">
+                <button class="tool-btn is-primary" type="button" id="tool-save">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v11m0 0 4-4m-4 4-4-4"></path><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"></path></svg>
+                  <span>연락처 저장</span>
+                </button>
+                <button class="tool-btn" type="button" id="tool-share">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4m0 0 4 4m-4-4-4 4"></path><path d="M5 13v5a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-5"></path></svg>
+                  <span>명함 넘기기</span>
+                </button>
+                <button class="tool-btn" type="button" id="tool-qr" aria-expanded="false" aria-controls="qr-panel">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"></rect><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"></rect><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"></rect><path d="M14 14h2m4 0v2m0 4h-2m-4 0v-2m4-2h.01"></path></svg>
+                  <span>QR 코드</span>
+                </button>
+              </div>
+
+              <p class="tool-note" id="tool-note" hidden></p>
+            </div>
           </div>
+
+          <div class="qr-panel" id="qr-panel" role="group" aria-label="명함 QR 코드" hidden>
+            <div class="qr-inner">
+              <div class="qr-frame" id="qr-frame"></div>
+              <p class="qr-cap">
+                카메라로 이 QR을 비추면 명함이 열립니다<br>
+                <code>hammedia.co.kr/card/</code>
+              </p>
+              <button class="qr-close" type="button" id="qr-close">닫기</button>
+            </div>
+          </div>
+
+          <p class="toast" id="card-toast" aria-hidden="true"></p>
         </section>
       </article>
     </main>
@@ -903,8 +1398,10 @@
       const backFace = document.querySelector(".card-back");
       const flipButtons = Array.from(document.querySelectorAll("[data-flip]"));
       const screenState = document.querySelector("#screen-state");
+      let onFlipToFront = null;
 
       function setCardSide(showBack) {
+        if (!showBack && typeof onFlipToFront === "function") onFlipToFront();
         card.classList.toggle("is-flipped", showBack);
         frontFace.inert = showBack;
         backFace.inert = !showBack;
@@ -931,11 +1428,653 @@
       });
 
       card.addEventListener("click", (event) => {
-        if (event.target.closest("a, button")) return;
+        if (event.target.closest("a, button, .tool-bar, .qr-panel, .confirm, .toast")) return;
         setCardSide(!card.classList.contains("is-flipped"));
       });
 
       setCardSide(false);
+    </script>
+    <script>
+      /* 뒷면 도구 — 켜짐/꺼짐 · 2단 확인 · 주소록 저장 · 명함 넘기기 · 링크 QR */
+      (function () {
+        "use strict";
+
+        var CARD_URL = "https://hammedia.co.kr/card/";
+        var CARD_TITLE = "HAM MEDIA | 함동민 디지털 명함";
+        var STORE_KEY = "hammedia-card-v3-off";
+        var KEYS = ["phone", "mail", "site", "portfolio", "threads"];
+
+        var list = document.getElementById("contact-list");
+        var screenState = document.getElementById("screen-state");
+        var toastEl = document.getElementById("card-toast");
+        var noteEl = document.getElementById("tool-note");
+        var qrPanel = document.getElementById("qr-panel");
+        var qrFrame = document.getElementById("qr-frame");
+        var qrClose = document.getElementById("qr-close");
+        var btnSave = document.getElementById("tool-save");
+        var btnShare = document.getElementById("tool-share");
+        var btnQr = document.getElementById("tool-qr");
+
+        if (!list || !btnSave || !btnShare || !btnQr) return;
+
+        /* ── 1. UTF-8 유틸 (서로게이트 쌍까지 처리) ───────────── */
+
+        function utf8Bytes(str) {
+          var out = [];
+          for (var i = 0; i < str.length; i++) {
+            var c = str.codePointAt(i);
+            if (c > 0xffff) i++;
+            if (c < 0x80) {
+              out.push(c);
+            } else if (c < 0x800) {
+              out.push(0xc0 | (c >> 6), 0x80 | (c & 63));
+            } else if (c < 0x10000) {
+              out.push(0xe0 | (c >> 12), 0x80 | ((c >> 6) & 63), 0x80 | (c & 63));
+            } else {
+              out.push(
+                0xf0 | (c >> 18),
+                0x80 | ((c >> 12) & 63),
+                0x80 | ((c >> 6) & 63),
+                0x80 | (c & 63)
+              );
+            }
+          }
+          return out;
+        }
+
+        /* ── 2. 켜짐 / 꺼짐 (localStorage) ─────────────────── */
+
+        function readOff() {
+          try {
+            var raw = window.localStorage.getItem(STORE_KEY);
+            if (!raw) return [];
+            var parsed = JSON.parse(raw);
+            if (!Array.isArray(parsed)) return [];
+            return parsed.filter(function (k) { return KEYS.indexOf(k) !== -1; });
+          } catch (e) {
+            return [];
+          }
+        }
+
+        function writeOff(next) {
+          try {
+            window.localStorage.setItem(STORE_KEY, JSON.stringify(next));
+          } catch (e) {
+            /* 저장을 못 해도 명함은 그대로 돈다 */
+          }
+        }
+
+        var offList = readOff();
+        var armed = {};
+
+        function announce(text) {
+          if (screenState) screenState.textContent = text;
+        }
+
+        function render(withAnnounce) {
+          var done = offList.length === KEYS.length;
+
+          KEYS.forEach(function (key) {
+            var link = list.querySelector('[data-key="' + key + '"]');
+            if (!link) return;
+            var isOff = offList.indexOf(key) !== -1;
+            var isComplete = done && key === "phone";
+
+            link.classList.toggle("is-off", isOff && !isComplete);
+            link.classList.toggle("is-on", !isOff);
+            link.classList.toggle("is-complete", isComplete);
+          });
+
+          if (withAnnounce) {
+            announce(
+              done
+                ? "다섯 칸이 모두 꺼졌습니다. 전화 칸이 다시 켜졌습니다."
+                : "켜진 칸이 " + (KEYS.length - offList.length) + "개 남았습니다."
+            );
+          }
+        }
+
+        function turnOff(key) {
+          if (offList.indexOf(key) === -1) {
+            offList.push(key);
+            writeOff(offList);
+          }
+        }
+
+        /* ── 3. 2단 확인 — 전화·이메일 두 칸에만 걸린다 ─────────
+           홈페이지·작업 보기·SNS·아카데미는 한 번에 열린다 */
+
+        function disarmAll() {
+          armed = {};
+          Array.prototype.forEach.call(list.querySelectorAll(".tile"), function (tile) {
+            tile.classList.remove("is-armed");
+          });
+        }
+
+        function handleActivate(event) {
+          var link = event.target.closest(".contact-link");
+          if (!link) return;
+
+          var key = link.getAttribute("data-key");
+          if (!key) return;
+          var tile = link.closest(".tile");
+
+          if (link.getAttribute("data-guard") === "true" && !armed[key]) {
+            /* 1차 탭 — 실행을 막고 칸을 끄고 안내를 펼친다 */
+            event.preventDefault();
+            armed[key] = true;
+            if (tile) tile.classList.add("is-armed");
+            turnOff(key);
+            render(false);
+            announce(
+              key === "phone"
+                ? "한 번 더 누르면 전화가 걸립니다."
+                : "한 번 더 누르면 메일 앱이 열립니다."
+            );
+            return;
+          }
+
+          /* 2차 탭이거나 2단이 없는 링크 — 그대로 실행된다 */
+          turnOff(key);
+          render(true);
+        }
+
+        function handleKey(event) {
+          if (event.key !== " " && event.key !== "Spacebar") return;
+          var link = event.target.closest(".contact-link");
+          if (!link) return;
+          event.preventDefault();
+          link.click();
+        }
+
+        list.addEventListener("click", handleActivate);
+        list.addEventListener("keydown", handleKey);
+
+        /* ── 4. 주소록 저장 — vCard 3.0 을 여기서 만든다 ────────
+           PHOTO 없음 / CRLF / 75옥텟 줄접기 / GitHub Pages 의 Content-Type 을 타지 않는다 */
+
+        function vEsc(value) {
+          return String(value)
+            .replace(/\\/g, "\\\\")
+            .replace(/;/g, "\\;")
+            .replace(/,/g, "\\,")
+            .replace(/\r?\n/g, "\\n");
+        }
+
+        function foldLine(line) {
+          if (utf8Bytes(line).length <= 75) return line;
+          var parts = [];
+          var cur = "";
+          var curLen = 0;
+          for (var i = 0; i < line.length; i++) {
+            var ch = line.charAt(i);
+            var code = line.charCodeAt(i);
+            if (code >= 0xd800 && code <= 0xdbff && i + 1 < line.length) {
+              ch += line.charAt(i + 1);
+              i++;
+            }
+            var n = utf8Bytes(ch).length;
+            if (curLen + n > 75) {
+              parts.push(cur);
+              cur = " ";
+              curLen = 1;
+            }
+            cur += ch;
+            curLen += n;
+          }
+          parts.push(cur);
+          return parts.join("\r\n");
+        }
+
+        function vcardText() {
+          var lines = [
+            "BEGIN:VCARD",
+            "VERSION:3.0",
+            "N:" + vEsc("함") + ";" + vEsc("동민") + ";;;",
+            "FN:" + vEsc("함동민"),
+            "ORG:" + vEsc("HAM MEDIA"),
+            "TITLE:" + vEsc("대표 · 콘텐츠 프로듀서"),
+            "TEL;TYPE=CELL:+821039363571",
+            "EMAIL:hammedia002@gmail.com",
+            "URL:https://hammedia.co.kr/",
+            "END:VCARD"
+          ];
+          return lines.map(foldLine).join("\r\n") + "\r\n";
+        }
+
+        function showNote(html) {
+          if (!noteEl) return;
+          noteEl.innerHTML = html;
+          noteEl.hidden = false;
+          try {
+            noteEl.scrollIntoView({ block: "nearest" });
+          } catch (e) {
+            /* 스크롤을 못 해도 안내는 남는다 */
+          }
+        }
+
+        btnSave.addEventListener("click", function () {
+          var url = "";
+          try {
+            var blob = new Blob([vcardText()], { type: "text/vcard;charset=utf-8" });
+            url = URL.createObjectURL(blob);
+            var a = document.createElement("a");
+            a.href = url;
+            a.download = "hamdongmin.vcf";
+            a.rel = "noopener";
+            document.body.appendChild(a);
+            a.click();
+            a.parentNode.removeChild(a);
+          } catch (e) {
+            showNote("<b>안내</b>이 브라우저에서는 저장 파일을 만들 수 없습니다. 번호를 직접 복사해 주세요.");
+            announce("연락처 파일을 만들 수 없습니다.");
+            return;
+          }
+
+          /* 이 한 줄이 iOS 저장 성공률을 좌우한다 */
+          showNote(
+            "<b>안내</b>아이폰이면 열린 화면을 맨 아래로 내려 ‘새로운 연락처 만들기’를 눌러 주세요."
+          );
+          announce(
+            "연락처 파일을 내려받았습니다. 아이폰이면 열린 화면을 맨 아래로 내려 새로운 연락처 만들기를 눌러 주세요."
+          );
+
+          if (url) {
+            window.setTimeout(function () { URL.revokeObjectURL(url); }, 30000);
+          }
+        });
+
+        /* ── 5. 명함 넘기기 — { title, url } 만 넘긴다 ────────── */
+
+        var toastTimer = null;
+
+        function toast(text) {
+          if (!toastEl) return;
+          toastEl.textContent = text;
+          toastEl.classList.add("is-up");
+          if (toastTimer) window.clearTimeout(toastTimer);
+          toastTimer = window.setTimeout(function () {
+            toastEl.classList.remove("is-up");
+          }, 2600);
+        }
+
+        function copyFallback() {
+          function done() {
+            toast("링크를 복사했습니다");
+            announce("명함 링크를 복사했습니다.");
+          }
+
+          function legacyCopy() {
+            var box = document.createElement("textarea");
+            box.value = CARD_URL;
+            box.setAttribute("readonly", "readonly");
+            box.style.position = "fixed";
+            box.style.top = "-1000px";
+            document.body.appendChild(box);
+            box.select();
+            var ok = false;
+            try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+            document.body.removeChild(box);
+            if (ok) {
+              done();
+            } else {
+              showNote("<b>안내</b>복사가 막혔습니다. 주소창의 링크를 직접 복사해 주세요.");
+              announce("복사가 막혔습니다.");
+            }
+          }
+
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(CARD_URL).then(done, legacyCopy);
+            return;
+          }
+          legacyCopy();
+        }
+
+        btnShare.addEventListener("click", function () {
+          var payload = { title: CARD_TITLE, url: CARD_URL };
+          if (navigator.share && navigator.canShare && navigator.canShare(payload)) {
+            navigator.share(payload).then(
+              function () { announce("명함을 넘겼습니다."); },
+              function (err) {
+                if (err && err.name === "AbortError") return;
+                copyFallback();
+              }
+            );
+            return;
+          }
+          copyFallback();
+        });
+
+        /* ── 6. 링크 QR — version 3 / EC level M / byte 모드
+               외부 라이브러리 없이 직접 인코딩한다. vCard QR 은 만들지 않는다 ── */
+
+        var QR_SIZE = 29;   /* version 3 */
+        var QR_ECC = 26;    /* EC 코드워드 (level M · 1 블록) */
+        var QR_DATA = 44;   /* 데이터 코드워드 */
+        var QR_CAP = 42;    /* byte 모드 최대 바이트 */
+
+        var GF_EXP = new Array(255);
+        var GF_LOG = new Array(256);
+        (function () {
+          var x = 1;
+          for (var i = 0; i < 255; i++) {
+            GF_EXP[i] = x;
+            GF_LOG[x] = i;
+            x <<= 1;
+            if (x & 0x100) x ^= 0x11d;
+          }
+        })();
+
+        function gfMul(a, b) {
+          if (a === 0 || b === 0) return 0;
+          return GF_EXP[(GF_LOG[a] + GF_LOG[b]) % 255];
+        }
+
+        function gfGenPoly(n) {
+          var g = [1];
+          for (var i = 0; i < n; i++) {
+            var next = [];
+            for (var k = 0; k <= g.length; k++) next.push(0);
+            for (var j = 0; j < g.length; j++) {
+              next[j] ^= g[j];
+              next[j + 1] ^= gfMul(g[j], GF_EXP[i]);
+            }
+            g = next;
+          }
+          return g;
+        }
+
+        function rsRemainder(data, ecLen) {
+          var gen = gfGenPoly(ecLen);
+          var res = data.slice();
+          for (var p = 0; p < ecLen; p++) res.push(0);
+          for (var i = 0; i < data.length; i++) {
+            var coef = res[i];
+            if (coef === 0) continue;
+            for (var j = 0; j < gen.length; j++) res[i + j] ^= gfMul(gen[j], coef);
+          }
+          return res.slice(data.length);
+        }
+
+        function qrDataCodewords(text) {
+          var bytes = utf8Bytes(text);
+          if (bytes.length > QR_CAP) throw new Error("QR 용량 초과");
+          var bits = [];
+          function push(value, len) {
+            for (var i = len - 1; i >= 0; i--) bits.push((value >>> i) & 1);
+          }
+          push(4, 4);                /* byte 모드 */
+          push(bytes.length, 8);     /* version 1~9 → 길이 8비트 */
+          for (var b = 0; b < bytes.length; b++) push(bytes[b], 8);
+          var cap = QR_DATA * 8;
+          var term = Math.min(4, cap - bits.length);
+          for (var t = 0; t < term; t++) bits.push(0);
+          while (bits.length % 8 !== 0) bits.push(0);
+          var words = [];
+          for (var i2 = 0; i2 < bits.length; i2 += 8) {
+            var v = 0;
+            for (var k = 0; k < 8; k++) v = (v << 1) | bits[i2 + k];
+            words.push(v);
+          }
+          var pad = [0xec, 0x11];
+          var pi = 0;
+          while (words.length < QR_DATA) words.push(pad[pi++ % 2]);
+          return words;
+        }
+
+        function qrMaskBit(pattern, i, j) {
+          switch (pattern) {
+            case 0: return (i + j) % 2 === 0;
+            case 1: return i % 2 === 0;
+            case 2: return j % 3 === 0;
+            case 3: return (i + j) % 3 === 0;
+            case 4: return (Math.floor(i / 2) + Math.floor(j / 3)) % 2 === 0;
+            case 5: return ((i * j) % 2) + ((i * j) % 3) === 0;
+            case 6: return (((i * j) % 2) + ((i * j) % 3)) % 2 === 0;
+            default: return (((i + j) % 2) + ((i * j) % 3)) % 2 === 0;
+          }
+        }
+
+        function bchDigit(v) {
+          var d = 0;
+          while (v !== 0) { d++; v >>>= 1; }
+          return d;
+        }
+
+        function formatBits(mask) {
+          var G15 = 0x537;
+          var G15_MASK = 0x5412;
+          var data = (0 << 3) | mask;   /* EC level M = 00 */
+          var d = data << 10;
+          while (bchDigit(d) - bchDigit(G15) >= 0) {
+            d ^= G15 << (bchDigit(d) - bchDigit(G15));
+          }
+          return ((data << 10) | d) ^ G15_MASK;
+        }
+
+        function blankMatrix() {
+          var m = [];
+          for (var r = 0; r < QR_SIZE; r++) {
+            var row = [];
+            for (var c = 0; c < QR_SIZE; c++) row.push(null);
+            m.push(row);
+          }
+          return m;
+        }
+
+        function placeFunctionPatterns(m) {
+          var i, j;
+          var origins = [[0, 0], [0, QR_SIZE - 7], [QR_SIZE - 7, 0]];
+          for (var o = 0; o < origins.length; o++) {
+            var r0 = origins[o][0];
+            var c0 = origins[o][1];
+            for (i = -1; i <= 7; i++) {
+              for (j = -1; j <= 7; j++) {
+                var rr = r0 + i, cc = c0 + j;
+                if (rr < 0 || rr >= QR_SIZE || cc < 0 || cc >= QR_SIZE) continue;
+                m[rr][cc] =
+                  (i >= 0 && i <= 6 && (j === 0 || j === 6)) ||
+                  (j >= 0 && j <= 6 && (i === 0 || i === 6)) ||
+                  (i >= 2 && i <= 4 && j >= 2 && j <= 4);
+              }
+            }
+          }
+          for (i = 8; i < QR_SIZE - 8; i++) {
+            if (m[6][i] === null) m[6][i] = i % 2 === 0;
+            if (m[i][6] === null) m[i][6] = i % 2 === 0;
+          }
+          /* version 3 → 정렬 패턴 1개 */
+          var ac = QR_SIZE - 7;
+          for (i = -2; i <= 2; i++) {
+            for (j = -2; j <= 2; j++) {
+              m[ac + i][ac + j] = Math.max(Math.abs(i), Math.abs(j)) !== 1;
+            }
+          }
+          /* 포맷 정보 영역 예약 + 고정 다크 모듈 */
+          for (i = 0; i < 15; i++) {
+            var vr = i < 6 ? i : (i < 8 ? i + 1 : QR_SIZE - 15 + i);
+            var hc = i < 8 ? QR_SIZE - 1 - i : (i === 8 ? 7 : 15 - i - 1);
+            if (m[vr][8] === null) m[vr][8] = false;
+            if (m[8][hc] === null) m[8][hc] = false;
+          }
+          m[QR_SIZE - 8][8] = true;
+          return m;
+        }
+
+        function writeFormat(m, mask) {
+          var bits = formatBits(mask);
+          for (var i = 0; i < 15; i++) {
+            var on = ((bits >> i) & 1) === 1;
+            var vr = i < 6 ? i : (i < 8 ? i + 1 : QR_SIZE - 15 + i);
+            var hc = i < 8 ? QR_SIZE - 1 - i : (i === 8 ? 7 : 15 - i - 1);
+            m[vr][8] = on;
+            m[8][hc] = on;
+          }
+          m[QR_SIZE - 8][8] = true;
+        }
+
+        function dataPositions(m) {
+          var order = [];
+          var row = QR_SIZE - 1;
+          var inc = -1;
+          for (var col = QR_SIZE - 1; col > 0; col -= 2) {
+            if (col === 6) col--;
+            for (;;) {
+              for (var c = 0; c < 2; c++) {
+                if (m[row][col - c] === null) order.push([row, col - c]);
+              }
+              row += inc;
+              if (row < 0 || row >= QR_SIZE) { row -= inc; inc = -inc; break; }
+            }
+          }
+          return order;
+        }
+
+        function qrPenalty(m) {
+          var n = QR_SIZE, i, j, total = 0;
+          function runs(get) {
+            var p = 0;
+            for (i = 0; i < n; i++) {
+              var run = 1;
+              for (j = 1; j < n; j++) {
+                if (get(i, j) === get(i, j - 1)) {
+                  run++;
+                } else {
+                  if (run >= 5) p += 3 + (run - 5);
+                  run = 1;
+                }
+              }
+              if (run >= 5) p += 3 + (run - 5);
+            }
+            return p;
+          }
+          total += runs(function (a, b) { return m[a][b]; });
+          total += runs(function (a, b) { return m[b][a]; });
+
+          for (i = 0; i < n - 1; i++) {
+            for (j = 0; j < n - 1; j++) {
+              var v = m[i][j];
+              if (v === m[i][j + 1] && v === m[i + 1][j] && v === m[i + 1][j + 1]) total += 3;
+            }
+          }
+
+          var pat1 = [true, false, true, true, true, false, true, false, false, false, false];
+          var pat2 = [false, false, false, false, true, false, true, true, true, false, true];
+          function seqMatch(get, a, b, pat) {
+            for (var k = 0; k < 11; k++) if (get(a, b + k) !== pat[k]) return false;
+            return true;
+          }
+          for (i = 0; i < n; i++) {
+            for (j = 0; j + 11 <= n; j++) {
+              if (seqMatch(function (a, b) { return m[a][b]; }, i, j, pat1)) total += 40;
+              if (seqMatch(function (a, b) { return m[a][b]; }, i, j, pat2)) total += 40;
+              if (seqMatch(function (a, b) { return m[b][a]; }, i, j, pat1)) total += 40;
+              if (seqMatch(function (a, b) { return m[b][a]; }, i, j, pat2)) total += 40;
+            }
+          }
+
+          var dark = 0;
+          for (i = 0; i < n; i++) for (j = 0; j < n; j++) if (m[i][j]) dark++;
+          total += 10 * Math.floor(Math.abs((dark * 100) / (n * n) - 50) / 5);
+          return total;
+        }
+
+        function qrMatrix(text) {
+          var data = qrDataCodewords(text);
+          var all = data.concat(rsRemainder(data, QR_ECC));
+          var base = placeFunctionPatterns(blankMatrix());
+          var order = dataPositions(base);
+          var best = null;
+
+          for (var mask = 0; mask < 8; mask++) {
+            var m = base.map(function (row) { return row.slice(); });
+            for (var k = 0; k < order.length; k++) {
+              var r = order[k][0], c = order[k][1];
+              var bit = k < all.length * 8 ? (all[k >> 3] >>> (7 - (k & 7))) & 1 : 0;
+              var on = bit === 1;
+              if (qrMaskBit(mask, r, c)) on = !on;
+              m[r][c] = on;
+            }
+            writeFormat(m, mask);
+            var score = qrPenalty(m);
+            if (best === null || score < best.score) best = { score: score, m: m };
+          }
+          return best.m;
+        }
+
+        var qrDrawn = false;
+
+        function drawQr() {
+          if (qrDrawn) return;
+          var m;
+          try {
+            m = qrMatrix(CARD_URL);
+          } catch (e) {
+            qrFrame.textContent = "QR을 만들 수 없습니다.";
+            return;
+          }
+          var qz = 4;                     /* 정지 영역 4모듈 — 규격 최소치 */
+          var dim = QR_SIZE + qz * 2;
+          var d = "";
+          for (var r = 0; r < QR_SIZE; r++) {
+            for (var c = 0; c < QR_SIZE; c++) {
+              if (m[r][c]) d += "M" + (c + qz) + " " + (r + qz) + "h1v1h-1z";
+            }
+          }
+          var svg =
+            '<svg viewBox="0 0 ' + dim + " " + dim + '" xmlns="http://www.w3.org/2000/svg" ' +
+            'shape-rendering="crispEdges" role="img" ' +
+            'aria-label="hammedia.co.kr/card/ 로 이동하는 QR 코드">' +
+            '<rect width="' + dim + '" height="' + dim + '" fill="#fffdf8"></rect>' +
+            '<path d="' + d + '" fill="#05070f"></path></svg>';
+          qrFrame.innerHTML = svg;
+          qrDrawn = true;
+        }
+
+        function setQr(open) {
+          if (open) drawQr();
+          btnQr.setAttribute("aria-expanded", String(open));
+          qrPanel.hidden = !open;
+          if (open) {
+            if (qrClose) qrClose.focus();
+            announce("QR 코드를 펼쳤습니다.");
+          } else {
+            announce("QR 코드를 접었습니다.");
+          }
+        }
+
+        btnQr.addEventListener("click", function () {
+          setQr(btnQr.getAttribute("aria-expanded") !== "true");
+        });
+
+        if (qrClose) {
+          qrClose.addEventListener("click", function () {
+            setQr(false);
+            btnQr.focus();
+          });
+        }
+
+        document.addEventListener("keydown", function (event) {
+          if (event.key !== "Escape" && event.key !== "Esc") return;
+          if (qrPanel.hidden) return;
+          setQr(false);
+          btnQr.focus();
+        });
+
+        /* ── 7. 앞면으로 돌아가면 열어 둔 것을 정리한다 ────────── */
+
+        onFlipToFront = function () {
+          disarmAll();
+          if (noteEl) noteEl.hidden = true;
+          if (!qrPanel.hidden) {
+            qrPanel.hidden = true;
+            btnQr.setAttribute("aria-expanded", "false");
+          }
+          render(false);
+        };
+
+        render(false);
+      })();
     </script>
   </body>
 </html>
