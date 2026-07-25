@@ -1,0 +1,38 @@
+#!/bin/sh
+set -u
+
+repo_root="$(git rev-parse --show-toplevel 2>/dev/null || true)"
+hook_dir="$(CDPATH= cd -- "$(dirname "$0")" && pwd)"
+backup_script=""
+cursor="$repo_root"
+
+while [ -n "$cursor" ] && [ "$cursor" != "/" ]; do
+  if [ -x "$cursor/scripts/drive_git_bundle/backup.sh" ]; then
+    backup_script="$cursor/scripts/drive_git_bundle/backup.sh"
+    break
+  fi
+  if [ -x "$cursor/00_HAM_MEDIA_AI_STUDIO/scripts/drive_git_bundle/backup.sh" ]; then
+    backup_script="$cursor/00_HAM_MEDIA_AI_STUDIO/scripts/drive_git_bundle/backup.sh"
+    break
+  fi
+  cursor="$(dirname "$cursor")"
+done
+
+if [ -n "$backup_script" ]; then
+  if ! "$backup_script" post-commit; then
+    printf '%s\n' \
+      'warning: Drive bundle 백업 실패. 로컬 커밋은 성공했으며 bundle 상태는 전진하지 않았습니다.' >&2
+  fi
+else
+  printf '%s\n' \
+    'warning: HAM Drive bundle 공통 스크립트를 찾지 못했습니다. 로컬 커밋만 완료됐습니다.' >&2
+fi
+
+if [ -d "$hook_dir/post-commit.d" ]; then
+  for extension in "$hook_dir"/post-commit.d/*; do
+    [ -x "$extension" ] || continue
+    "$extension" || true
+  done
+fi
+
+exit 0
