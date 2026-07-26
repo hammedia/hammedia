@@ -16,19 +16,23 @@
     <meta property="og:title" content="HAM MEDIA | 함동민 디지털 명함">
     <meta
       property="og:description"
-      content="AI 강의 · 콘텐츠 제작 · 유튜브 운영. 화면을 누르면 연락처와 작업 보기가 나타납니다."
+      content="별자리 앞면을 보고 링크를 누르면 함동민의 연락처 명함이 바로 열립니다."
     >
     <meta property="og:url" content="https://hammedia.co.kr/card/">
-    <meta property="og:image" content="https://hammedia.co.kr/og-image-digital-card-20260601.jpg">
+    <meta property="og:image" content="https://hammedia.co.kr/og-image-digital-card-20260726.jpg">
+    <meta property="og:image:secure_url" content="https://hammedia.co.kr/og-image-digital-card-20260726.jpg">
+    <meta property="og:image:type" content="image/jpeg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="별자리와 좋아하는 것들이 나를 여기까지 데려왔다는 문장이 담긴 HAM MEDIA 명함 앞면">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="HAM MEDIA | 함동민 디지털 명함">
     <meta
       name="twitter:description"
-      content="AI 강의 · 콘텐츠 제작 · 유튜브 운영. 화면을 누르면 연락처와 작업 보기가 나타납니다."
+      content="별자리 앞면을 보고 링크를 누르면 함동민의 연락처 명함이 바로 열립니다."
     >
-    <meta name="twitter:image" content="https://hammedia.co.kr/og-image-digital-card-20260601.jpg">
+    <meta name="twitter:image" content="https://hammedia.co.kr/og-image-digital-card-20260726.jpg">
+    <meta name="twitter:image:alt" content="별자리와 좋아하는 것들이 나를 여기까지 데려왔다는 문장이 담긴 HAM MEDIA 명함 앞면">
     <!-- 홈페이지 첫 화면의 검증된 우주·별자리 애니메이션을 그대로 사용한다. -->
     <link rel="stylesheet" href="../ham-media-archive/assets/css/styles.css?v=universe-v3-20260712">
     <style>
@@ -1173,8 +1177,8 @@
     <canvas class="universe-ink-canvas" id="universe-ink" aria-hidden="true"></canvas>
 
     <main class="stage" aria-label="HAM MEDIA 클릭형 디지털 명함">
-      <article class="digital-card" id="digital-card" data-testid="business-card-v2">
-        <section class="card-face card-front" aria-label="HAM MEDIA 별자리 홈페이지 앞면">
+      <article class="digital-card is-flipped" id="digital-card" data-testid="business-card-v2">
+        <section class="card-face card-front" aria-label="HAM MEDIA 별자리 홈페이지 앞면" aria-hidden="true" inert>
           <div class="front-content">
             <div class="front-copy">
               <div class="brand">
@@ -1234,7 +1238,7 @@
             </div>
           </div>
 
-          <button class="flip-control" type="button" data-flip aria-controls="digital-card" aria-pressed="false">
+          <button class="flip-control" type="button" data-flip aria-controls="digital-card" aria-pressed="true">
             <svg class="flip-icon" viewBox="0 0 24 24" aria-hidden="true">
               <path d="M20 11a8 8 0 1 0-2.34 5.66M20 5v6h-6"></path>
             </svg>
@@ -1242,7 +1246,7 @@
           </button>
         </section>
 
-        <section class="card-face card-back" aria-label="함동민 명함 뒷면" aria-hidden="true" inert>
+        <section class="card-face card-back" aria-label="함동민 명함 뒷면" aria-hidden="false">
           <div class="back-content">
             <div class="identity">
               <p class="back-brand">HAM MEDIA</p>
@@ -1347,7 +1351,7 @@
                 <svg class="flip-icon" viewBox="0 0 24 24" aria-hidden="true">
                   <path d="M4 11a8 8 0 1 1 2.34 5.66M4 5v6h6"></path>
                 </svg>
-                <span>다시 별자리 보기</span>
+                <span>눌러서 별자리 보기</span>
               </button>
             </div>
 
@@ -1356,11 +1360,11 @@
               <div class="tools" role="group" aria-label="명함 도구">
                 <button class="tool-btn is-primary" type="button" id="tool-save">
                   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v11m0 0 4-4m-4 4-4-4"></path><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"></path></svg>
-                  <span>연락처 저장</span>
+                  <span>내 명함 저장하기</span>
                 </button>
                 <button class="tool-btn" type="button" id="tool-share">
                   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4m0 0 4 4m-4-4-4 4"></path><path d="M5 13v5a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-5"></path></svg>
-                  <span>명함 넘기기</span>
+                  <span>내 명함 전달하기</span>
                 </button>
                 <button class="tool-btn" type="button" id="tool-qr" aria-expanded="false" aria-controls="qr-panel">
                   <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"></rect><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"></rect><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"></rect><path d="M14 14h2m4 0v2m0 4h-2m-4 0v-2m4-2h.01"></path></svg>
@@ -1388,7 +1392,7 @@
       </article>
     </main>
 
-    <p class="screen-state" id="screen-state" role="status" aria-live="polite">별자리 앞면이 보입니다.</p>
+    <p class="screen-state" id="screen-state" role="status" aria-live="polite">함동민 명함 뒷면이 보입니다.</p>
 
     <!-- 홈페이지 첫 화면과 같은 3층 별밭·후광·유성 엔진을 직접 사용한다. -->
     <script src="../ham-media-archive/assets/js/main.js?v=universe-v3-20260712"></script>
@@ -1432,7 +1436,7 @@
         setCardSide(!card.classList.contains("is-flipped"));
       });
 
-      setCardSide(false);
+      setCardSide(true);
     </script>
     <script>
       /* 뒷면 도구 — 켜짐/꺼짐 · 2단 확인 · 주소록 저장 · 명함 넘기기 · 링크 QR */
