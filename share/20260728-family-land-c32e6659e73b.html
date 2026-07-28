@@ -3,13 +3,25 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="color-scheme" content="light">
+  <meta name="color-scheme" content="light dark">
   <meta name="robots" content="noindex, nofollow, noarchive">
-  <meta name="ham-design-source" content="05_HAM_DesignStudio/reference/clients/ham_media/DESIGN.md v3.4">
-  <meta name="description" content="작은아버지와 백령도 땅의 가격, 소유 방법, 농지연금 가능성을 함께 보기 위한 제안입니다.">
-  <title>작은아버지, 백령도 땅 이야기 같이 보시죠</title>
+  <meta name="description" content="백령도 진촌리 1530 전의 공동매각 준비와 1531 임야 보유, 지적도 확인, 1박 2일 현장답사 계획입니다.">
+  <title>작은아버지, 전은 같이 팔고 현장은 함께 확인해요</title>
+  <script>
+    (() => {
+      const key = "family-land-visit-theme";
+      let saved = null;
+      try { saved = localStorage.getItem(key); } catch (_) {}
+      const preferred = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      document.documentElement.dataset.theme = saved === "light" || saved === "dark" ? saved : preferred;
+    })();
+  </script>
   <style>
     :root {
+      --font: "Pretendard", "Pretendard Variable", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", system-ui, sans-serif;
+      --max: 940px;
+      --radius: 26px;
+      --radius-small: 17px;
       --paper: #F9F7F3;
       --paper-deep: #F5F3EE;
       --ink: #1C1814;
@@ -18,672 +30,908 @@
       --action: #00704A;
       --highlight: #F4DC59;
       --warn: #CC0000;
-      --line: rgba(28, 24, 20, 0.14);
-      --accent-soft: rgba(126, 181, 232, 0.16);
-      --action-soft: rgba(0, 112, 74, 0.09);
-      --warn-soft: rgba(204, 0, 0, 0.07);
-      --shadow-soft: 0 18px 45px rgba(28, 24, 20, 0.08);
-      --radius: 16px;
-      --max: 1120px;
-      --font: "Pretendard", -apple-system, BlinkMacSystemFont, "Noto Sans KR", "Segoe UI", sans-serif;
+      --blue: var(--accent);
+      --blue-soft: rgba(126, 181, 232, .18);
+      --green: var(--action);
+      --yellow: var(--highlight);
+      --red: var(--warn);
+      --bg: var(--paper);
+      --bg-deep: var(--paper-deep);
+      --text: var(--ink);
+      --line: rgba(63, 54, 46, .15);
+      --glass: rgba(249, 247, 243, .66);
+      --glass-strong: rgba(249, 247, 243, .82);
+      --glass-edge: rgba(255, 255, 255, .88);
+      --glass-shadow: 0 22px 60px rgba(70, 54, 39, .10);
+      --hero-glow: rgba(126, 181, 232, .28);
+      --yellow-glow: rgba(237, 194, 83, .24);
     }
 
-    * { box-sizing: border-box; }
+    html[data-theme="dark"] {
+      --blue: rgb(143, 200, 255);
+      --blue-soft: rgba(104, 184, 255, .15);
+      --green: rgb(115, 214, 165);
+      --yellow: rgb(255, 211, 108);
+      --red: rgb(255, 138, 128);
+      --bg: rgb(12, 13, 17);
+      --bg-deep: rgb(21, 22, 28);
+      --text: rgb(246, 241, 232);
+      --muted: rgb(185, 178, 168);
+      --line: rgba(255, 255, 255, .13);
+      --glass: rgba(26, 27, 34, .60);
+      --glass-strong: rgba(30, 31, 39, .78);
+      --glass-edge: rgba(255, 255, 255, .16);
+      --glass-shadow: 0 24px 70px rgba(0, 0, 0, .34);
+      --hero-glow: rgba(79, 118, 255, .25);
+      --yellow-glow: rgba(219, 88, 113, .16);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
 
     html {
-      background: var(--paper-deep);
-      color: var(--ink);
+      min-width: 0;
+      background: var(--bg);
+      color: var(--text);
       scroll-behavior: smooth;
     }
 
     body {
-      margin: 0;
       min-width: 0;
+      margin: 0;
       background:
-        radial-gradient(circle at 92% 5%, rgba(126, 181, 232, 0.10), transparent 28rem),
-        var(--paper-deep);
-      color: var(--ink);
+        radial-gradient(circle at 88% 3%, var(--hero-glow), transparent 32rem),
+        radial-gradient(circle at 2% 30%, var(--yellow-glow), transparent 28rem),
+        linear-gradient(160deg, var(--bg) 0%, var(--bg-deep) 100%);
+      color: var(--text);
       font-family: var(--font);
-      font-size: 16px;
-      line-height: 1.65;
-      overflow-wrap: anywhere;
+      line-height: 1.68;
       word-break: keep-all;
+      overflow-wrap: break-word;
+      -webkit-font-smoothing: antialiased;
     }
 
     a {
-      color: var(--ink);
-      text-decoration-color: var(--accent);
-      text-decoration-thickness: 3px;
+      color: inherit;
+      text-decoration-color: var(--blue);
       text-underline-offset: 4px;
     }
 
-    a:focus-visible,
-    summary:focus-visible {
-      outline: 3px solid var(--accent);
-      outline-offset: 4px;
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
     }
 
-    h1, h2, h3, p { margin-top: 0; }
-    h1, h2, h3 { line-height: 1.2; letter-spacing: -0.035em; }
-    h1 { max-width: 900px; margin-bottom: 24px; font-size: clamp(2.35rem, 6vw, 4rem); }
-    h2 { margin-bottom: 20px; font-size: clamp(1.65rem, 3.4vw, 2.35rem); }
-    h3 { margin-bottom: 12px; font-size: 1.15rem; }
-    ul { margin: 0; padding-left: 1.25rem; }
-    li + li { margin-top: 8px; }
-    code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; overflow-wrap: anywhere; }
-
-    .wrap {
-      width: min(calc(100% - 40px), var(--max));
+    .page {
+      width: min(100%, var(--max));
       margin: 0 auto;
+      padding: 24px 20px 80px;
+    }
+
+    .theme-switcher {
+      position: sticky;
+      z-index: 10;
+      top: 12px;
+      display: flex;
+      justify-content: flex-end;
+      gap: 5px;
+      width: fit-content;
+      margin: 0 0 18px auto;
+      padding: 5px;
+      border: 1px solid var(--glass-edge);
+      border-radius: 999px;
+      background: var(--glass-strong);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, .08);
+      backdrop-filter: blur(18px) saturate(140%);
+      -webkit-backdrop-filter: blur(18px) saturate(140%);
+    }
+
+    .theme-button {
+      min-width: 64px;
+      min-height: 40px;
+      border: 0;
+      border-radius: 999px;
+      background: transparent;
+      color: var(--muted);
+      font: inherit;
+      font-size: 13px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .theme-button[aria-pressed="true"] {
+      background: var(--blue-soft);
+      color: var(--text);
+      box-shadow: inset 0 0 0 1px rgba(126, 181, 232, .36);
+    }
+
+    .glass {
+      border: 1px solid var(--glass-edge);
+      background:
+        linear-gradient(145deg, rgba(255, 255, 255, .10), transparent 46%),
+        var(--glass);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, .17), var(--glass-shadow);
+      backdrop-filter: blur(22px) saturate(145%);
+      -webkit-backdrop-filter: blur(22px) saturate(145%);
     }
 
     .hero {
-      padding: 68px 0 0;
-      border-bottom: 1px solid var(--line);
+      padding: clamp(26px, 6vw, 54px);
+      border-radius: 34px;
+      overflow: hidden;
     }
 
-    .brand-row {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px 24px;
-      margin-bottom: 42px;
-    }
-
-    .brand {
-      margin: 0;
-      font-size: 0.9rem;
-      font-weight: 800;
-      letter-spacing: 0.12em;
-    }
-
-    .kind {
-      margin: 0;
-      color: var(--muted);
-      font-size: 0.8rem;
-      font-weight: 600;
+    .eyebrow,
+    .section-kicker,
+    .tag {
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: .09em;
     }
 
     .eyebrow {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 14px;
-      color: var(--muted);
-      font-size: 0.78rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
+      margin: 0 0 18px;
     }
 
-    .eyebrow::before {
-      width: 32px;
-      height: 4px;
-      border-radius: 999px;
-      background: var(--accent);
-      content: "";
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      max-width: 760px;
+      margin-bottom: 22px;
+      font-size: clamp(38px, 8vw, 72px);
+      line-height: 1.08;
+      letter-spacing: -.055em;
+      text-wrap: balance;
+    }
+
+    h2 {
+      margin-bottom: 12px;
+      font-size: clamp(28px, 5vw, 46px);
+      line-height: 1.18;
+      letter-spacing: -.04em;
+      text-wrap: balance;
+    }
+
+    h3 {
+      margin-bottom: 8px;
+      font-size: 20px;
+      line-height: 1.35;
+      letter-spacing: -.02em;
     }
 
     .lead {
-      max-width: 800px;
-      margin-bottom: 44px;
-      color: var(--muted);
-      font-size: clamp(1.05rem, 2.1vw, 1.28rem);
-    }
-
-    .status-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      border-top: 1px solid var(--line);
-    }
-
-    .status-item {
-      min-width: 0;
-      padding: 22px 20px 24px 0;
-      border-right: 1px solid var(--line);
-    }
-
-    .status-item + .status-item { padding-left: 20px; }
-    .status-item:last-child { border-right: 0; }
-
-    .status-item span {
-      display: block;
-      margin-bottom: 7px;
-      color: var(--muted);
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-    }
-
-    .status-item strong { display: block; font-size: 1rem; line-height: 1.4; }
-
-    main section {
-      padding: 58px 0;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .section-intro {
       max-width: 760px;
       margin-bottom: 28px;
       color: var(--muted);
+      font-size: clamp(18px, 3.2vw, 24px);
+      line-height: 1.7;
+      letter-spacing: -.018em;
     }
 
-    .verdict {
-      margin-bottom: 24px;
-      padding: 28px 30px;
-      border-left: 6px solid var(--accent);
-      border-radius: 0 var(--radius) var(--radius) 0;
-      background: var(--paper);
-      box-shadow: var(--shadow-soft);
+    .lead strong,
+    .closing strong {
+      color: var(--text);
     }
 
-    .verdict strong {
+    .status-grid,
+    .two-grid,
+    .map-grid,
+    .contact-grid,
+    .check-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .status-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .status-card,
+    .card,
+    .map-card,
+    .contact-card,
+    .check-card {
+      min-width: 0;
+      padding: 21px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--glass);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, .13);
+    }
+
+    .status-card span {
       display: block;
       margin-bottom: 8px;
-      font-size: 1.3rem;
-      line-height: 1.35;
-    }
-
-    .verdict p { margin: 0; color: var(--muted); }
-
-    .boundary {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px 18px;
-      align-items: center;
-      padding: 18px 0;
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-    }
-
-    .boundary .mark {
-      padding: 3px 8px;
-      border-radius: 6px;
-      background: var(--highlight);
-      color: var(--ink);
-      font-size: 0.82rem;
+      color: var(--muted);
+      font-size: 12px;
       font-weight: 800;
     }
 
-    .coverage-grid,
-    .evidence-grid,
-    .honest-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .coverage-item,
-    .evidence-item,
-    .honest-item {
-      min-width: 0;
-      padding: 24px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: var(--paper);
-    }
-
-    .coverage-item span,
-    .evidence-item .source {
+    .status-card strong {
       display: block;
+      font-size: clamp(20px, 3.4vw, 28px);
+      line-height: 1.28;
+      letter-spacing: -.025em;
+    }
+
+    .status-card.sell {
+      border-color: rgba(47, 125, 89, .36);
+    }
+
+    .status-card.keep {
+      border-color: rgba(126, 181, 232, .48);
+    }
+
+    .status-card.next {
+      border-color: rgba(216, 156, 28, .44);
+    }
+
+    .section {
+      margin-top: 30px;
+      padding: clamp(24px, 5vw, 42px);
+      border-radius: 30px;
+    }
+
+    .section-kicker {
       margin-bottom: 9px;
+    }
+
+    .intro {
+      max-width: 760px;
+      margin-bottom: 22px;
       color: var(--muted);
-      font-size: 0.76rem;
-      font-weight: 700;
-      letter-spacing: 0.05em;
+      font-size: 16px;
     }
 
-    .coverage-item p,
-    .evidence-item p,
-    .honest-item p { margin-bottom: 0; }
-
-    .evidence-item h3 { padding-right: 20px; }
-
-    .decision-stack { display: grid; gap: 24px; }
-
-    .decision-card {
-      min-width: 0;
-      padding: 30px;
-      border-top: 6px solid var(--accent);
-      border-radius: 0 0 var(--radius) var(--radius);
-      background: var(--paper);
-      box-shadow: var(--shadow-soft);
-    }
-
-    .decision-card h3 { margin-bottom: 22px; font-size: 1.35rem; }
-
-    .decision-card dl {
-      display: grid;
-      grid-template-columns: minmax(110px, 0.24fr) minmax(0, 1fr);
-      margin: 0;
-      border-top: 1px solid var(--line);
-    }
-
-    .decision-card dt,
-    .decision-card dd {
-      margin: 0;
-      padding: 16px 0;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .decision-card dt {
-      padding-right: 18px;
+    .card p,
+    .map-card p,
+    .contact-card p,
+    .check-card p {
+      margin-bottom: 0;
       color: var(--muted);
-      font-size: 0.84rem;
-      font-weight: 700;
     }
 
-    .recommendation {
-      min-width: 0;
-      margin-top: 22px;
-      padding: 20px 22px;
-      border-left: 5px solid var(--action);
-      background: var(--action-soft);
-    }
-
-    .recommendation-content { min-width: 0; }
-    .recommendation strong { color: var(--action); }
-
-    .approval {
+    .step-list {
       display: grid;
-      gap: 8px;
+      gap: 10px;
       margin-top: 18px;
-      padding-top: 18px;
-      border-top: 1px solid var(--line);
     }
 
-    .approval span { color: var(--muted); font-size: 0.8rem; font-weight: 700; }
-    .approval code { font-size: 1rem; font-weight: 700; }
-
-    .honest-item.strong { border-top: 5px solid var(--accent); }
-    .honest-item.limit { border-top: 5px solid var(--warn); background: var(--warn-soft); }
-    .honest-item.limit h3 { color: var(--warn); }
-
-    .next-action {
+    .step {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(220px, 0.38fr);
-      gap: 28px;
+      grid-template-columns: 42px 1fr;
+      gap: 13px;
       align-items: start;
-      padding: 30px;
+      padding: 15px;
       border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: var(--paper);
+      border-radius: var(--radius-small);
+      background: rgba(126, 181, 232, .07);
     }
 
-    .next-action .owner {
-      padding-left: 24px;
-      border-left: 1px solid var(--line);
-    }
-
-    .next-action p:last-child { margin-bottom: 0; }
-
-    details {
-      border-top: 1px solid var(--line);
-    }
-
-    details:last-child { border-bottom: 1px solid var(--line); }
-
-    summary {
-      padding: 18px 0;
-      cursor: pointer;
-      font-weight: 700;
-    }
-
-    details div { padding: 0 0 22px; color: var(--muted); }
-    .path { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; word-break: break-all; }
-
-    footer {
-      padding: 36px 0 58px;
-      color: var(--muted);
-      font-size: 0.82rem;
-    }
-
-    .footer-grid {
+    .step b {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px 28px;
-      padding-top: 22px;
-      border-top: 1px solid var(--line);
+      width: 36px;
+      height: 36px;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--blue-soft);
+      color: var(--blue);
+      font-size: 13px;
     }
 
-    .footer-grid strong { color: var(--ink); }
-
-    @media (max-width: 760px) {
-      .hero { padding-top: 42px; }
-      .brand-row { margin-bottom: 32px; }
-      .status-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .status-item:nth-child(2) { border-right: 0; }
-      .status-item:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
-      .coverage-grid,
-      .evidence-grid,
-      .honest-grid,
-      .next-action,
-      .footer-grid { grid-template-columns: 1fr; }
-      .next-action .owner { padding: 22px 0 0; border-top: 1px solid var(--line); border-left: 0; }
+    .step span {
+      padding-top: 4px;
     }
 
-    @media (max-width: 480px) {
-      body { font-size: 15px; }
-      .wrap { width: min(calc(100% - 28px), var(--max)); }
-      .status-grid { grid-template-columns: 1fr; }
-      .status-item,
-      .status-item + .status-item {
-        padding: 17px 0;
-        border-right: 0;
-        border-bottom: 1px solid var(--line);
-      }
-      .status-item:last-child { border-bottom: 0; }
-      main section { padding: 44px 0; }
-      .verdict,
-      .coverage-item,
-      .evidence-item,
-      .honest-item,
-      .decision-card,
-      .next-action { padding: 22px 20px; }
-      .decision-card dl { grid-template-columns: 1fr; }
-      .decision-card dt { padding: 14px 0 4px; border-bottom: 0; }
-      .decision-card dd { padding: 0 0 14px; }
+    .map-grid,
+    .contact-grid,
+    .check-grid,
+    .two-grid {
+      margin-top: 18px;
     }
 
-    @media print {
-      body { background: var(--paper); }
-      .wrap { width: 100%; max-width: none; }
-      .verdict,
-      .decision-card,
-      .coverage-item,
-      .evidence-item,
-      .honest-item,
-      .next-action { box-shadow: none; break-inside: avoid; }
-      details { display: block; }
-      details > * { display: block; }
+    .map-card img {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 14px 0;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: var(--paper-deep);
+    }
+
+    .map-card.warning {
+      border-color: rgba(189, 63, 53, .48);
+    }
+
+    .warning-text {
+      color: var(--red) !important;
+      font-weight: 850;
+    }
+
+    .notice {
+      margin: 18px 0 0;
+      padding: 14px 16px;
+      border-left: 4px solid var(--yellow);
+      border-radius: 11px;
+      background: rgba(216, 156, 28, .10);
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .notice strong {
+      color: var(--text);
     }
 
     .table-wrap {
-      max-width: 100%;
       margin-top: 18px;
       overflow-x: auto;
       border: 1px solid var(--line);
-      border-radius: 12px;
-      background: var(--paper);
+      border-radius: 18px;
+      background: var(--glass);
+      -webkit-overflow-scrolling: touch;
     }
-    .compact-table {
+
+    table {
       width: 100%;
-      min-width: 560px;
+      min-width: 680px;
       border-collapse: collapse;
-      font-size: 0.92rem;
+      font-size: 14px;
     }
-    .compact-table th,
-    .compact-table td {
+
+    th,
+    td {
       padding: 13px 14px;
       border-bottom: 1px solid var(--line);
       text-align: left;
       vertical-align: top;
     }
-    .compact-table th {
-      background: var(--accent-soft);
-      font-size: 0.78rem;
-      letter-spacing: 0.02em;
+
+    th {
+      background: var(--blue-soft);
+      color: var(--text);
+      font-weight: 850;
     }
-    .compact-table tr:last-child td { border-bottom: 0; }
-    .plain-note {
-      margin: 16px 0 0;
+
+    tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .price {
+      color: var(--yellow);
+      font-weight: 900;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      margin-bottom: 10px;
+      padding: 5px 10px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+    }
+
+    .phone-list,
+    .plain-list,
+    .source-list {
+      margin: 12px 0 0;
+      padding-left: 20px;
+    }
+
+    .phone-list li,
+    .plain-list li,
+    .source-list li {
+      margin: 8px 0;
+    }
+
+    .phone-list a {
+      font-weight: 850;
+      text-decoration: none;
+    }
+
+    .action-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      margin-top: 15px;
+      padding: 11px 17px;
+      border: 1px solid rgba(126, 181, 232, .45);
+      border-radius: 14px;
+      background: var(--blue-soft);
+      color: var(--text);
+      font-weight: 850;
+      text-decoration: none;
+    }
+
+    .action-link:hover {
+      filter: brightness(1.04);
+    }
+
+    .day {
+      position: relative;
+    }
+
+    .time-list {
+      margin: 14px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .time-list li {
+      display: grid;
+      grid-template-columns: 92px 1fr;
+      gap: 12px;
+      padding: 11px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .time-list li:last-child {
+      border-bottom: 0;
+    }
+
+    .time-list b {
+      color: var(--blue);
+      font-size: 13px;
+    }
+
+    .check-card ul {
+      margin-bottom: 0;
+    }
+
+    .closing {
+      margin-top: 30px;
+      padding: clamp(25px, 5vw, 44px);
+      border: 1px solid rgba(126, 181, 232, .44);
+      border-radius: 30px;
+      background:
+        radial-gradient(circle at 90% 0%, var(--hero-glow), transparent 50%),
+        var(--glass-strong);
+      box-shadow: var(--glass-shadow);
+      font-size: clamp(19px, 3.2vw, 25px);
+      line-height: 1.72;
+      backdrop-filter: blur(24px) saturate(145%);
+      -webkit-backdrop-filter: blur(24px) saturate(145%);
+    }
+
+    details {
+      margin-top: 12px;
+      padding: 17px 18px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-small);
+      background: var(--glass);
+    }
+
+    summary {
+      cursor: pointer;
+      font-weight: 850;
+    }
+
+    footer {
+      padding: 28px 6px 0;
       color: var(--muted);
-      font-size: 0.9rem;
+      font-size: 12px;
+      text-align: center;
     }
-    .option-list { padding-left: 1.3rem; }
-    .closing-line {
-      display: block;
-      padding: 18px 20px;
-      border-radius: 12px;
-      background: var(--paper-deep);
-      font-size: 1.04rem;
-      font-weight: 750;
-      line-height: 1.65;
+
+    @media (max-width: 720px) {
+      .status-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .two-grid,
+      .map-grid,
+      .contact-grid,
+      .check-grid {
+        grid-template-columns: 1fr;
+      }
     }
+
     @media (max-width: 480px) {
-      h1 { font-size: 2.2rem; }
-      .compact-table { min-width: 510px; font-size: 0.86rem; }
-      .compact-table th,
-      .compact-table td { padding: 11px 12px; }
+      .page {
+        padding: 14px 12px 56px;
+      }
+
+      .theme-switcher {
+        top: 8px;
+        margin-bottom: 10px;
+      }
+
+      .hero,
+      .section {
+        padding: 22px 18px;
+        border-radius: 24px;
+      }
+
+      h1 {
+        font-size: clamp(36px, 12vw, 52px);
+      }
+
+      .status-card,
+      .card,
+      .map-card,
+      .contact-card,
+      .check-card {
+        padding: 17px;
+        border-radius: 19px;
+      }
+
+      .time-list li {
+        grid-template-columns: 74px 1fr;
+      }
+
+      .table-wrap {
+        margin-right: -4px;
+        margin-left: -4px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+    }
+
+    @media print {
+      .theme-switcher {
+        display: none;
+      }
+
+      .glass,
+      .closing {
+        box-shadow: none;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+      }
     }
   </style>
 </head>
 <body>
-  <header class="hero">
-    <div class="wrap">
-      <div class="brand-row">
-        <p class="brand">함께 보는 가족 문서</p>
-        <p class="kind">백령도 진촌리 1530 · 1531 · HTML 보기본</p>
-      </div>
-      <p class="eyebrow">가족 대화용 토지 제안 · 2026-07-28</p>
-      <h1>작은아버지, 백령도 땅 이야기 같이 보시죠</h1>
-      <p class="lead"><strong>제가 먼저 말씀드릴 차액은 7,500만 원입니다.</strong> 제 1530 전 지분은 8,000만 원, 작은아버지의 1531 임야 지분은 500만 원으로 계산했습니다. 작은아버지는 전 단독소유와 농지연금 가능성을 얻고, 저는 사업자금과 임야를 남기는 방법입니다.</p>
-
-      <div class="status-grid" aria-label="보고 상태 요약">
-        <div class="status-item"><span>판정</span><strong>서로 얻는 안부터 검토</strong></div>
-        <div class="status-item"><span>확인 범위</span><strong>공적장부 · 실거래 · 농지연금</strong></div>
-        <div class="status-item"><span>추천금액</span><strong>차액 7,500만 원</strong></div>
-        <div class="status-item"><span>다음 문</span><strong>둘이 백령도 현장 확인</strong></div>
-      </div>
+  <main class="page">
+    <div class="theme-switcher" role="group" aria-label="화면 테마">
+      <button class="theme-button" type="button" data-theme-value="light" aria-pressed="false">라이트</button>
+      <button class="theme-button" type="button" data-theme-value="dark" aria-pressed="false">다크</button>
     </div>
-  </header>
 
-  <main>
-    <section id="conclusion">
-      <div class="wrap">
-        <p class="eyebrow">01 · 먼저 결론</p>
-        <h2>제가 먼저 말씀드릴 금액은 차액 7,500만 원입니다.</h2>
-        <div class="verdict">
-          <strong>전 지분 8,000만 원 - 임야 지분 500만 원 = 작은아버지가 제게 지급할 차액 7,500만 원</strong>
-          <p>작은아버지는 1530 전을 온전히 갖고 농지연금을 받을 길을 열며, 저는 사업자금과 1531 임야를 남깁니다. 금액이 높다고 느끼시면 어떤 근거가 다른지 같이 놓고 다시 이야기하되, 첫 대화는 이 한 금액으로 시작합니다.</p>
-        </div>
-        <div class="boundary">
-          <span class="mark">상태 경계</span>
-          <!-- 완료 ≠ PASS --><strong>조사값 ≠ 확정가격</strong>
-          <span>아래 금액은 비교 실거래를 면적에 곱한 값입니다. 현장과 감정, 세금 확인을 마치기 전에는 계약가격이 아닙니다.</span>
-        </div>
+    <header class="hero glass">
+      <p class="eyebrow">HAM MEDIA · 함께 보는 가족 문서 · 2026-07-29</p>
+      <h1>작은아버지,<br>전은 같이 팔고<br>현장은 함께 확인해요.</h1>
+      <p class="lead">이제 방향은 정해졌습니다. <strong>진촌리 1530 전은 우리 지분을 합쳐 한 필지 전체로 매각하고, 1531 임야는 그대로 남깁니다.</strong> 외부 매수자를 찾기 전에 백령도에 가서 길과 경계, 실제 상태부터 제대로 확인하려고 합니다.</p>
+
+      <div class="status-grid">
+        <article class="status-card sell">
+          <span>1530 전</span>
+          <strong>두 사람 지분을 합쳐 전체 매각</strong>
+        </article>
+        <article class="status-card keep">
+          <span>1531 임야</span>
+          <strong>이번에는 팔지 않고 공동 보유</strong>
+        </article>
+        <article class="status-card next">
+          <span>다음 행동</span>
+          <strong>현장 확인 뒤 외부 매수자 찾기</strong>
+        </article>
+      </div>
+      <p class="notice"><strong>아직 예약하거나 매물을 내놓은 것은 아닙니다.</strong> 여행 날짜와 현지 이동수단을 정한 뒤 왕복 배표·숙소·차량 순서로 예약하면 됩니다.</p>
+    </header>
+
+    <section class="section glass" id="direction">
+      <p class="section-kicker">01 · 함께 정한 방향</p>
+      <h2>전은 한 덩어리로 팔고,<br>임야는 남깁니다.</h2>
+      <p class="intro">백령도 지인은 매수 여력이 없다고 했습니다. 이제 지분만 따로 파는 것이 아니라 1530 전 전체를 외부 매수자에게 보여주는 준비를 해야 합니다.</p>
+      <div class="step-list">
+        <div class="step"><b>01</b><span>백령도에서 1530 전의 진입로·경계·경작 상태·배수를 직접 확인합니다.</span></div>
+        <div class="step"><b>02</b><span>사진, 영상, 공식 지적도 등본을 모아 매수자가 이해할 자료를 만듭니다.</span></div>
+        <div class="step"><b>03</b><span>백령도·옹진군과 인천권 중개업소에 전체 매각 조건으로 문의합니다.</span></div>
+        <div class="step"><b>04</b><span>매수 문의가 들어오면 두 사람이 함께 가격과 계약 조건을 정합니다.</span></div>
       </div>
     </section>
 
-    <section id="coverage">
-      <div class="wrap">
-        <p class="eyebrow">02 · 무엇을 확인했나</p>
-        <h2>왜 이 이야기를 드리는지부터 말씀드릴게요.</h2>
-        <p class="section-intro">숫자를 보기 전에, 제가 왜 이 이야기를 드리는지부터 짧게 말씀드리고 싶습니다.</p>
-        <div class="coverage-grid">
-          <article class="coverage-item">
-            <span>제가 하는 일</span>
-            <p>작은 회사 대표의 노트북 안에 그 회사에 맞는 AI 업무 체계를 설치하고, 대표가 혼자 쓸 수 있을 때까지 함께 다듬고 관리하는 일을 합니다.</p>
-          </article>
-          <article class="coverage-item">
-            <span>자금이 쓰일 곳</span>
-            <p>고객 업무 진단부터 설치·시험·사용 정착·사후관리까지 실제 사례를 만들고, 외부 고객에게 같은 품질로 반복할 기반을 마련하는 데 씁니다.</p>
-          </article>
-          <article class="coverage-item">
-            <span>땅의 의미</span>
-            <p>땅은 함씨 집안에서 돈 이상의 의미가 있습니다. 작은아버지 댁은 전을 이어가고, 저는 임야를 조금 남기는 방법을 생각했습니다.</p>
-          </article>
-          <article class="coverage-item">
-            <span>지키고 싶은 선</span>
-            <p>급하게 정하지 않습니다. 가족의 마음을 먼저 보고, 현장·가격·세금·농지연금 조건을 확인한 다음 계약 여부를 정합니다.</p>
-          </article>
-        </div>
+    <section class="section glass" id="map">
+      <p class="section-kicker">02 · 지적도 확인</p>
+      <h2>두 필지의 위치는 확인했지만,<br>경계는 공식 등본이 필요합니다.</h2>
+      <p class="intro">토지이음 화면에는 1530 전과 1531 임야가 함께 보입니다. 다만 V-World API 경계는 두 필지가 크게 겹쳐 나와 실제 경계로 쓸 수 없었습니다.</p>
+      <div class="map-grid">
+        <article class="map-card">
+          <span class="tag">위치 참고</span>
+          <h3>토지이음 확인도면</h3>
+          <img src="assets/jinchonri-1530-1531-eum-reference.png" alt="토지이음에서 확인한 진촌리 1530 전과 1531 임야 위치">
+          <p>가운데의 1530 전과 위쪽의 1531 임야를 함께 볼 수 있습니다. 위치 확인용 참고자료이며 법적 증명용 도면은 아닙니다.</p>
+        </article>
+        <article class="map-card warning">
+          <span class="tag">API 점검 기록</span>
+          <h3>V-World API 진단도</h3>
+          <img src="assets/jinchonri-1530-1531-vworld-api-diagnostic.png" alt="V-World API에서 두 필지 경계가 겹쳐 나타난 진단 그림">
+          <p class="warning-text">두 경계가 겹친 것은 실제 토지 모양이 아니라 API 결과의 충돌입니다. 매수자에게 경계도라고 제시하면 안 됩니다.</p>
+        </article>
+      </div>
+      <p class="notice"><strong>현장에 가져갈 것:</strong> 정부24 또는 관할 행정기관에서 발급한 지적도·임야도 등본. 정확한 경계 확정이 필요하면 지적측량을 따로 진행합니다.</p>
+    </section>
+
+    <section class="section glass" id="ferry">
+      <p class="section-kicker">03 · 배편과 출발 준비</p>
+      <h2>08:30 인천 출발,<br>다음 날 13:30 백령 출발이 좋습니다.</h2>
+      <div class="two-grid">
+        <article class="card">
+          <span class="tag">인천에서 탈 곳</span>
+          <h3>인천항 연안여객터미널(옹진행)</h3>
+          <p>인천광역시 제물포구 연안부두로 70. 08:30 배라면 늦어도 07:20까지 도착하는 일정으로 잡습니다.</p>
+        </article>
+        <article class="card">
+          <span class="tag">백령도에서 탈 곳</span>
+          <h3>백령용기포항 여객터미널</h3>
+          <p>인천광역시 옹진군 백령면 백령로 68-85. 돌아오는 날 12:20까지 도착해 차량을 반납하고 발권합니다.</p>
+        </article>
+      </div>
+
+      <div class="table-wrap" role="region" aria-label="백령도 배편 시간표" tabindex="0">
+        <table>
+          <thead>
+            <tr>
+              <th>배</th>
+              <th>인천 출발</th>
+              <th>백령 출발</th>
+              <th>편도 시간</th>
+              <th>추천</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>코리아프라이드</td>
+              <td>08:30</td>
+              <td>13:30</td>
+              <td>약 3시간 40분</td>
+              <td><strong>1박 2일 현장답사에 가장 좋음</strong></td>
+            </tr>
+            <tr>
+              <td>코리아프린세스</td>
+              <td>12:30</td>
+              <td>07:00</td>
+              <td>약 4시간</td>
+              <td>대체편으로 확인</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="two-grid">
+        <article class="card">
+          <span class="tag">주말에도 가나요?</span>
+          <h3>토요일·일요일에도 정기편이 있습니다.</h3>
+          <p>다만 날씨·파도·선박 사정으로 실제 시각과 운항 여부가 바뀔 수 있습니다. 여행 날짜의 예매 화면과 출발 당일 운항정보를 다시 봐야 합니다.</p>
+        </article>
+        <article class="card">
+          <span class="tag">예약해야 하나요?</span>
+          <h3>왕복 사전예약을 사실상 필수로 봅니다.</h3>
+          <p>빈 좌석이 있으면 현장 발권도 가능하지만 주말·성수기에 돌아오는 배가 없으면 일정 전체가 무너집니다. ‘가보고 싶은 섬’에서 왕복을 함께 예약합니다.</p>
+          <a class="action-link" href="https://island.theksa.co.kr/" target="_blank" rel="noopener">공식 승선권 예매 열기</a>
+        </article>
+      </div>
+
+      <div class="table-wrap" role="region" aria-label="코리아프라이드 성인 일반석 요금" tabindex="0">
+        <table>
+          <thead>
+            <tr>
+              <th>2026년 7월 기준</th>
+              <th>기본운임</th>
+              <th>유류할증료</th>
+              <th>편도 합계</th>
+              <th>왕복 합계</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>평일 정상가</td>
+              <td>71,700원</td>
+              <td>12,600원</td>
+              <td class="price">84,300원</td>
+              <td class="price">168,600원</td>
+            </tr>
+            <tr>
+              <td>토·일·공휴일</td>
+              <td>78,700원</td>
+              <td>12,600원</td>
+              <td class="price">91,300원</td>
+              <td class="price">182,600원</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="notice"><strong>할인:</strong> 인천시민 일반석은 증빙 시 편도 1,500원으로 안내됩니다. 타시도민은 평일 1박 이상 체류 등 조건을 충족하면 70% 지원 대상이 될 수 있지만 여름 특별수송기간·토요일 입출도·일요일 출도 등 제외 조건이 있습니다. 토지 소유만으로 도서주민 할인이 되지는 않습니다. 할인 후에도 유류할증료는 별도이므로 예매 화면의 최종금액을 확인합니다.</p>
+
+      <div class="two-grid">
+        <article class="card">
+          <span class="tag">승선 순서</span>
+          <ul class="plain-list">
+            <li>사진이 붙은 실물 신분증과 할인 증빙 준비</li>
+            <li>출항 1시간 전 터미널 도착</li>
+            <li>예약 승선권은 30분 전까지 수령</li>
+            <li>최소 10분 전 개찰구 통과</li>
+          </ul>
+        </article>
+        <article class="card">
+          <span class="tag">인천항 주차</span>
+          <ul class="plain-list">
+            <li>기본 30분 1,000원</li>
+            <li>이후 15분마다 500원</li>
+            <li>24시간마다 최대 10,000원</li>
+            <li>약 34시간 주차 시 약 20,000원 예상</li>
+          </ul>
+        </article>
       </div>
     </section>
 
-    <section id="evidence">
-      <div class="wrap">
-        <p class="eyebrow">03 · 근거가 말하는 것</p>
-        <h2>전이 훨씬 큰 자산이고, 임야는 상대적으로 적은 금액으로 남길 수 있는 땅입니다.</h2>
-        <p class="section-intro">공시지가는 행정 기준이고, 실거래 환산은 시세를 가늠하는 참고선입니다. 둘을 섞지 않고 보겠습니다.</p>
-        <div class="evidence-grid">
-          <article class="evidence-item">
-            <span class="source">두 필지 기본값 · 2026-07-28 확인</span>
-            <h3>1530 전의 전체 공시지가가 1531 임야보다 약 15.4배 큽니다.</h3>
-            <div class="evidence-content">
-    <div class="table-wrap" role="region" aria-label="두 필지 비교표" tabindex="0">
-      <table class="compact-table">
-        <thead><tr><th>구분</th><th>1530 전</th><th>1531 임야</th></tr></thead>
-        <tbody>
-          <tr><td>전체 면적</td><td>2,992㎡ · 약 905.1평</td><td>1,788㎡ · 약 540.9평</td></tr>
-          <tr><td>현재 소유</td><td>각 1/2 공동소유</td><td>각 1/2 공동소유</td></tr>
-          <tr><td>공시지가</td><td>11,100원/㎡</td><td>1,210원/㎡</td></tr>
-          <tr><td>전체 환산</td><td><strong>3,321만 원</strong></td><td><strong>216만 원</strong></td></tr>
-          <tr><td>각자 1/2</td><td>1,661만 원</td><td>108만 원</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="plain-note">공시지가는 세금·행정 기준이지 실제 매매가격은 아닙니다.</p></div>
-          </article>
-          <article class="evidence-item">
-            <span class="source">국토부 비교 실거래 · 2024-07-24~2026-07-23</span>
-            <h3>1530 제 지분은 보수선부터 대형 평균까지 약 4,254만~8,825만 원으로 환산됩니다.</h3>
-            <div class="evidence-content">
-    <div class="table-wrap" role="region" aria-label="1530 실거래 환산표" tabindex="0">
-      <table class="compact-table">
-        <thead><tr><th>계산 기준</th><th>1530 전체</th><th>제 지분 1/2</th></tr></thead>
-        <tbody>
-          <tr><td>9건 중앙값 · 9.4만/평</td><td>약 8,508만</td><td>약 4,254만</td></tr>
-          <tr><td>같은 번지대 대형 하단 · 12만/평</td><td>약 1억 861만</td><td>약 5,430만</td></tr>
-          <tr><td>같은 번지대 대형 평균 · 19.5만/평</td><td>약 1억 7,649만</td><td>약 8,825만</td></tr>
-          <tr><td>같은 번지대 대형 상단 · 27만/평</td><td>약 2억 4,437만</td><td>약 1억 2,219만</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="plain-note"><strong>제가 협상에서 먼저 볼 선은 12만~19.5만 원/평입니다.</strong> 27만 원은 상단 참고이고, 도로·경사·경작 상태를 보기 전에는 그대로 요구할 값이 아닙니다. 기존 문서의 906.6평은 계산 오류여서 약 905.1평으로 바로잡았습니다.</p></div>
-          </article>
-          <!-- Duplicate or delete evidence articles to match the real source. -->
-        </div>
+    <section class="section glass" id="transport">
+      <p class="section-kicker">04 · 백령도 안에서 이동하기</p>
+      <h2>렌터카를 먼저 잡고,<br>없으면 택시를 예약합니다.</h2>
+      <p class="intro">백령도행 여객선에는 개인 승용차를 실을 수 없습니다. 현장답사는 대기와 재방문이 생길 수 있어 렌터카가 편하고, 운전을 쉬고 싶다면 택시 기사와 시간·총액을 미리 합의하는 편이 안전합니다.</p>
+
+      <div class="contact-grid">
+        <article class="contact-card">
+          <span class="tag">렌터카 1순위</span>
+          <h3>배표를 정한 뒤 바로 전화</h3>
+          <ul class="phone-list">
+            <li>나나렌터카 <a href="tel:0328366699">032-836-6699</a></li>
+            <li>경인렌터카 <a href="tel:0328368400">032-836-8400</a></li>
+            <li>차놀자 백령도지점 <a href="tel:01035059306">010-3505-9306</a></li>
+            <li>한솔네트웍스 <span class="warning-text">공개번호 재확인 필요</span></li>
+          </ul>
+          <p>현재 차종과 1박 2일 가격은 공식 공개자료에서 확인되지 않았습니다. 전화로 용기포항 인수·반납, 전체요금, 자차보험·면책금, 연료, 운전자 조건, 결항 연장료를 한 번에 확인합니다.</p>
+        </article>
+        <article class="contact-card">
+          <span class="tag">택시 2순위</span>
+          <h3>이동경로와 총액을 먼저 합의</h3>
+          <ul class="phone-list">
+            <li>영암택시 <a href="tel:01063291779">010-6329-1779</a></li>
+            <li>충열택시 <a href="tel:0328361302">032-836-1302</a></li>
+            <li>길택시 <a href="tel:01063437080">010-6343-7080</a></li>
+            <li>황금택시 <a href="tel:0328360065">032-836-0065</a></li>
+            <li>김인택 택시 <a href="tel:01072784888">010-7278-4888</a></li>
+            <li>일갑택시 <a href="tel:01071010155">010-7101-0155</a></li>
+          </ul>
+          <p>공개 정찰요금과 온라인 예약 창구는 확인하지 못했습니다. 용기포항 → 진촌리 1530·1531 → 진촌 숙소, 대기시간, 다음 날 항구 이동까지 말하고 총액을 물어봅니다.</p>
+        </article>
       </div>
     </section>
 
-    <!-- Delete this section when there is genuinely no decision, then renumber the following section labels. -->
-    <section id="decisions">
-      <div class="wrap">
-        <p class="eyebrow">04 · 결정과 제안</p>
-        <h2>네 가지 방법 중, 저는 두 번째 방법을 말씀드리고 싶습니다.</h2>
-        <p class="section-intro">전부 팔거나 그대로 두는 방법도 있지만, 두 번째 방법은 작은아버지께 전 단독소유와 농지연금 가능성을 드리고 제게는 사업자금과 임야를 남깁니다.</p>
-        <div class="decision-stack">
-          <article class="decision-card">
-            <h3>제가 원하는 안: 전은 작은아버지께, 임야는 제게</h3>
-            <dl>
-              <dt>지금 결정할 것</dt>
-              <dd>작은아버지가 제 1530 전 지분 1/2을 사고, 제가 작은아버지의 1531 임야 지분 1/2을 사는 방향을 함께 검토할지 정합니다.</dd>
-              <dt>확인된 근거</dt>
-              <dd>1530 전이 두 필지 가치의 대부분을 차지합니다. 그리고 현재 1530은 부부가 아닌 두 사람이 공동소유하고 있어 현재 등기 상태로는 농지연금 담보로 제공할 수 없지만, 작은아버지 단독소유로 정리되면 가입 가능성을 검토할 문이 열립니다.</dd>
-              <dt>쉬운 뜻</dt>
-              <dd>거래 뒤 작은아버지는 1530 전을 100% 갖고, 저는 1531 임야를 100% 갖습니다. 제 전 지분은 8,000만 원, 작은아버지의 임야 지분은 500만 원으로 계산해 차액 7,500만 원을 먼저 말씀드립니다.</dd>
-              <dt>대안·트레이드오프</dt>
-              <dd>
-    <ol class="option-list">
-      <li><strong>제 지분을 전부 판다</strong> — 현금은 가장 크지만 저는 백령도 땅을 남기지 못합니다.</li>
-      <li><strong>전은 팔고 임야는 산다</strong> — 작은아버지는 전 단독소유와 농지연금 가능성을 얻고, 저는 사업자금과 임야를 남깁니다.</li>
-      <li><strong>임야만 판다</strong> — 현금은 작고 전의 공동소유와 농지연금 제약이 남습니다.</li>
-      <li><strong>둘 다 그대로 둔다</strong> — 지금 상태는 유지되지만 사업자금이 생기지 않습니다.</li>
-    </ol></dd>
-            </dl>
-            <div class="recommendation">
-              <strong>추천</strong>
-              <div class="recommendation-content">
-    <p><strong>추천금액은 하나입니다. 작은아버지가 제게 지급할 차액 7,500만 원입니다.</strong></p>
-    <div class="table-wrap" role="region" aria-label="확정 추천금액 계산" tabindex="0">
-      <table class="compact-table">
-        <thead><tr><th>제 전 지분 매도가</th><th>작은아버지 임야 지분 매입가</th><th>최종 차액</th></tr></thead>
-        <tbody>
-          <tr><td><strong>8,000만 원</strong></td><td><strong>500만 원</strong></td><td><strong>7,500만 원</strong></td></tr>
-        </tbody>
-      </table>
-    </div>
-    <h3>왜 전 지분은 8,000만 원인가</h3>
-    <ol class="option-list">
-      <li>제 지분은 약 452.5평이며, 8,000만 원은 평당 약 17.7만 원입니다.</li>
-      <li>같은 진촌리 1000번대 대형 전 두 건의 평균은 평당 19.5만 원이고, 이를 제 지분에 적용하면 약 8,825만 원입니다.</li>
-      <li>그 비교값보다 825만 원 낮추고, 공항 기대가격과 평당 27만 원 상단을 넣지 않아 8,000만 원으로 정했습니다.</li>
-      <li>작은아버지가 사면 공유지분만 얻는 것이 아니라 1530 전을 100% 단독소유하므로 제3자 지분매각처럼 헐값으로 계산하지 않았습니다.</li>
-    </ol>
-    <h3>왜 임야 지분은 500만 원인가</h3>
-    <ol class="option-list">
-      <li>작은아버지 지분은 약 270.4평이며, 공시지가 환산은 약 108만 원입니다.</li>
-      <li>기존 임시 시가범위 250만~900만 원 가운데, 중간값 575만 원보다 조금 낮고 계산하기 쉬운 500만 원으로 정했습니다.</li>
-      <li>임야 비교거래가 부족하므로 이 금액은 현장과 시가 확인 때 다시 검증합니다.</li>
-    </ol>
-    <p class="plain-note">세금·법무비·감정비와 기타 거래비용은 7,500만 원에 포함하지 않았습니다.</p></div>
-              <div class="approval">
-                <!-- 승인 문구 --><span>작은아버지께 드리는 말</span>
-                <span class="closing-line">작은아버지, 제가 먼저 생각한 차액은 7,500만 원입니다. 제 전 지분은 8,000만 원, 작은아버지의 임야 지분은 500만 원으로 계산했습니다. 비싸다고 느끼시면 어떤 근거가 다른지 같이 놓고 다시 이야기하고 싶습니다. 전을 온전히 가지시면 조건이 맞을 때 농지연금을 받아 생활에 보태실 수도 있습니다. 서류만 보고 정하지 말고 저와 함께 백령도 한번 가시죠.</span>
-              </div>
-            </div>
-          </article>
-          <!-- Duplicate or delete decision cards to match the real decisions. -->
-        </div>
+    <section class="section glass" id="plan">
+      <p class="section-kicker">05 · 1박 2일 현장답사</p>
+      <h2>관광보다 땅 확인을 먼저 합니다.</h2>
+      <div class="two-grid">
+        <article class="card day">
+          <span class="tag">첫째 날</span>
+          <h3>1530 전의 매각자료를 만드는 날</h3>
+          <ul class="time-list">
+            <li><b>07:20</b><span>인천항 연안여객터미널 도착</span></li>
+            <li><b>08:30</b><span>코리아프라이드 출항</span></li>
+            <li><b>12:10 전후</b><span>용기포항 도착, 렌터카 또는 택시 인수</span></li>
+            <li><b>13:20~16:30</b><span>1530·1531 경계, 진입로, 경작·배수·경사 확인</span></li>
+            <li><b>16:30~17:10</b><span>공도에서 필지까지 끊기지 않는 영상 촬영</span></li>
+            <li><b>저녁</b><span>진촌권 숙박, 다음 날 운항 재확인</span></li>
+          </ul>
+        </article>
+        <article class="card day">
+          <span class="tag">둘째 날</span>
+          <h3>빠진 증거를 채우고 돌아오는 날</h3>
+          <ul class="time-list">
+            <li><b>07:30</b><span>인천행 운항상태 확인</span></li>
+            <li><b>08:00~09:30</b><span>누락 사진, 도로 폭, 회차와 배수 재확인</span></li>
+            <li><b>09:40~11:20</b><span>시간이 남으면 사곶해변 또는 두무진 한 곳</span></li>
+            <li><b>11:30</b><span>점심·짐 정리</span></li>
+            <li><b>12:20</b><span>용기포항 도착, 차량 반납·발권</span></li>
+            <li><b>13:30</b><span>인천행 출항, 17:10 전후 도착 예상</span></li>
+          </ul>
+        </article>
       </div>
+      <p class="notice"><strong>결항 대비:</strong> 실제 운영은 ‘1박 2일 + 비상용 1박’으로 생각합니다. 귀경 다음 날 오전은 중요한 약속을 비우고, 약과 속옷·충전기는 하루 더 머물 수 있는 분량을 챙깁니다.</p>
     </section>
 
-    <section id="honest-assessment">
-      <div class="wrap">
-        <p class="eyebrow">05 · 정직 평가</p>
-        <h2>좋은 점과 아직 함께 확인해야 할 점</h2>
-        <div class="honest-grid">
-          <article class="honest-item strong">
-            <h3>지금 강한 점</h3>
-            <ul>
-              <li>작은아버지는 가치가 큰 전을 단독소유하고 농지연금을 받을 가능성을 만들며, 저는 사업자금을 마련하면서 임야를 남길 수 있습니다.</li>
-              <li>공동소유를 끝내므로 앞으로의 관리와 의사결정이 서로 더 분명해집니다.</li>
-            </ul>
-          </article>
-          <article class="honest-item limit">
-            <h3>아직 증명하지 않은 점</h3>
-            <ul>
-              <li>1530·1531의 정확한 시가, 도로·경사·경작 상태, 세금과 거래비용은 아직 확정하지 못했습니다.</li>
-              <li>농지연금은 단독소유가 되면 자동 가입되는 것이 아닙니다. 나이 60세·영농경력 5년·실제 영농 등 기본요건을 따로 심사받아야 하며, 작은아버지가 2026년에 새로 취득하는 1/2 지분에 2년 보유·거리 요건을 어떻게 적용할지는 한국농어촌공사 지사 확인 전까지 확정할 수 없습니다.</li>
-            </ul>
-          </article>
-        </div>
+    <section class="section glass" id="checklist">
+      <p class="section-kicker">06 · 챙겨야 할 것</p>
+      <h2>배를 타는 준비와<br>땅을 보는 준비를 나눠 챙깁니다.</h2>
+      <div class="check-grid">
+        <article class="check-card">
+          <span class="tag">승선·숙박</span>
+          <ul class="plain-list">
+            <li>실물 신분증과 할인 증빙</li>
+            <li>왕복 승선권 예약내역</li>
+            <li>운전면허증과 렌터카 확인 문자</li>
+            <li>숙소 연락처와 결항 연장 규정</li>
+            <li>멀미약·개인 상비약</li>
+            <li>우의·바람막이·여벌옷</li>
+          </ul>
+        </article>
+        <article class="check-card">
+          <span class="tag">현장 확인</span>
+          <ul class="plain-list">
+            <li>공식 지적도·임야도 등본</li>
+            <li>휴대전화 오프라인 지도</li>
+            <li>보조배터리와 충전선</li>
+            <li>줄자 또는 레이저 거리측정기</li>
+            <li>장화나 미끄럽지 않은 신발</li>
+            <li>물·간식·메모도구</li>
+          </ul>
+        </article>
       </div>
+      <p class="notice"><strong>촬영 주의:</strong> 사람 얼굴·차량번호와 군부대·초소·철책·통제표지는 찍지 않습니다. 드론은 가져가지 않는 편이 안전합니다.</p>
     </section>
 
-    <section id="next-action">
-      <div class="wrap">
-        <p class="eyebrow">06 · 다음 행동</p>
-        <div class="next-action">
-          <div>
-            <h2>저와 함께 백령도 한번 가시죠.</h2>
-            <p>두 필지의 경계와 길, 전의 실제 경작 상태를 같이 보고, 돌아와서 작은아버지의 농지연금 사전 적격상담과 시가·세금·농취증을 차례로 확인한 뒤에 계약 여부와 가격을 정하면 좋겠습니다.</p>
-          </div>
-          <div class="owner">
-            <h3>담당과 남은 문</h3>
-            <p><strong>담당:</strong> 작은아버지와 저, 둘이 함께</p>
-            <p><strong>남은 게이트:</strong> 현장 → 시가 확인 → 농취증·농지연금·세무 상담 → 그 뒤 계약</p>
-          </div>
-        </div>
-      </div>
+    <section class="closing" aria-label="작은아버지께 드리는 말">
+      작은아버지, 이제 <strong>1530 전은 둘이 같이 팔고 1531 임야는 남기는 방향</strong>으로 정했으니, 먼저 백령도에서 땅의 실제 모습을 제대로 보고 오면 좋겠습니다. 가능하시면 저와 함께 가시죠. 현장을 보고 자료를 갖춘 다음 외부 매수자를 찾아 가격과 조건을 함께 정해요.
     </section>
 
-    <section id="sources">
-      <div class="wrap">
-        <p class="eyebrow">07 · 원전과 기술 상세</p>
-        <h2>필요하실 때만 펼쳐보세요.</h2>
-        <details>
-          <summary>토지와 가격 자료</summary>
-          <div><span class="path"><a href="https://imap.incheon.go.kr/sgp/por/main/map.do">인천시 부동산가격지도</a> · <a href="https://rt.molit.go.kr/pt/xls/xls.do?mobileAt=">국토교통부 실거래가 공개시스템</a></span><br>면적·지목·공시지가와 2024-07-24~2026-07-23 진촌리 비교 실거래를 확인했습니다. 1530 자체의 정확한 거래가격은 공개자료에서 특정하지 못했습니다.</div>
-        </details>
-        <details>
-          <summary>농지연금 공식 원문</summary>
-          <div><span class="path"><a href="https://law.go.kr/lsLinkCommonInfo.do?lspttninfSeq=122042">한국농어촌공사법 시행령</a> · <a href="https://www.law.go.kr/LSW/admRulLsInfoP.do?admRulSeq=2100000248452">담보농지 기준 고시</a> · <a href="https://www.fbo.or.kr/data/pensionDc_2024.pdf">농지연금사업 설명확인서</a></span><br>임야는 농지연금 담보가 아니지만 따로 보유하는 것 자체는 가입 장애가 아닙니다. 비배우자 공동소유 농지는 담보로 제공할 수 없고, 단독소유로 정리한 뒤에도 기본 가입요건과 새로 취득하는 1/2 지분의 2년 보유·거리 요건 적용을 별도로 확인해야 합니다. 상담 1577-7770.</div>
-        </details>
-        <!-- Duplicate or delete source details to match the checked material. -->
-      </div>
+    <section class="section glass" id="sources">
+      <p class="section-kicker">07 · 공식 확인처</p>
+      <h2>예약 전 다시 볼 곳</h2>
+      <details>
+        <summary>배편·요금·주차</summary>
+        <ul class="source-list">
+          <li><a href="https://www.kefship.com/schedule/content2.php" target="_blank" rel="noopener">고려고속훼리 백령항로 시간표</a></li>
+          <li><a href="https://www.kefship.com/schedule/content7.php" target="_blank" rel="noopener">고려고속훼리 백령항로 요금표</a></li>
+          <li><a href="https://www.kefship.com/m/schedule/content12.php" target="_blank" rel="noopener">2026년 7월 유류할증료</a></li>
+          <li><a href="https://www.icpa.or.kr/icferry/content/view.do?menuKey=1284&contentKey=70" target="_blank" rel="noopener">인천항 연안여객터미널 주차요금</a></li>
+          <li><a href="https://www.komsa.or.kr/prog/pssgCurState/kor/sub03_0202/list.do" target="_blank" rel="noopener">한국해양교통안전공단 실시간 운항정보</a></li>
+        </ul>
+      </details>
+      <details>
+        <summary>토지·현지교통</summary>
+        <ul class="source-list">
+          <li><a href="https://www.eum.go.kr/web/ar/lu/luLandDet.jsp?add=land&amp;isNoScr=script&amp;mode=search&amp;pnu=2872033021115300000&amp;s_type=1&amp;selGbn=umd" target="_blank" rel="noopener">토지이음 진촌리 1530 확인 화면</a></li>
+          <li><a href="https://isum.incheon.go.kr/theme/view.do?key=2407020012&amp;themeSn=2411040001&amp;themeType=101" target="_blank" rel="noopener">인천 섬포털 백령도 택시·렌터카 안내</a></li>
+        </ul>
+      </details>
+      <details>
+        <summary>이 문서의 범위</summary>
+        <ul class="source-list">
+          <li><strong>문서 상태:</strong> HTML 보기본 · 정본 아님</li>
+          <li><strong>확인 범위:</strong> 2026년 7월 29일 공개된 공식 시간표·요금·터미널·현지교통 연락처와 두 필지 참고도면</li>
+          <li><strong>다음 문:</strong> 실제 여행 날짜를 정하고 왕복 배표·렌터카·숙소 순서로 예약하기</li>
+          <li><strong>완료 ≠ PASS:</strong> 조사와 화면 작성은 마쳤지만 예약·매물 등록·외부 발송은 아직 하지 않음</li>
+        </ul>
+      </details>
     </section>
+
+    <footer>
+      2026년 7월 29일 공식 공개자료 기준 · 실제 여행 날짜의 운항·요금·차량·숙소는 예약 직전에 다시 확인합니다.<br>
+      HAM MEDIA DESIGN v3.4 · 가족 대화용 보기본<br>
+      디자인 기준: 05_HAM_DesignStudio/reference/clients/ham_media/DESIGN.md
+    </footer>
   </main>
 
-  <footer>
-    <div class="wrap footer-grid">
-      <div><strong>보고 목적</strong><br>작은아버지와 땅을 돈만이 아니라 가족의 의미까지 함께 보고 이야기하기</div>
-      <div><strong>정본</strong><br>20260728_작은아버지_백령도_토지_함께_볼_제안.md · 이 HTML은 보기본이며 정본 아님</div>
-      <div><strong>적용 디자인</strong><br>05_HAM_DesignStudio/reference/clients/ham_media/DESIGN.md v3.4</div>
-      <div><strong>현재 상태</strong><br>만듦 · 가족과 함께 보기 전 · 개인 문서 · 계약 아님</div>
-    </div>
-  </footer>
+  <script>
+    (() => {
+      const key = "family-land-visit-theme";
+      const root = document.documentElement;
+      const buttons = Array.from(document.querySelectorAll("[data-theme-value]"));
+
+      const applyTheme = (theme, persist = false) => {
+        const value = theme === "dark" ? "dark" : "light";
+        root.dataset.theme = value;
+        root.style.colorScheme = value;
+        buttons.forEach((button) => {
+          button.setAttribute("aria-pressed", String(button.dataset.themeValue === value));
+        });
+        if (persist) {
+          try { localStorage.setItem(key, value); } catch (_) {}
+        }
+      };
+
+      applyTheme(root.dataset.theme);
+
+      buttons.forEach((button) => {
+        button.addEventListener("click", () => applyTheme(button.dataset.themeValue, true));
+      });
+    })();
+  </script>
 </body>
 </html>
