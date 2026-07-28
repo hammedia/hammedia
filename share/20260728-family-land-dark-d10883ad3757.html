@@ -1,0 +1,749 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="description" content="작은아버지와 백령도 땅의 가격, 소유 방법, 농지연금 가능성을 함께 보기 위한 제안입니다.">
+  <title>작은아버지, 백령도 땅 이야기 같이 보시죠</title>
+  <style>
+    :root {
+      --bg: #09090b;
+      --surface: #121216;
+      --surface-2: #19191f;
+      --text: #f5f2ec;
+      --muted: #aaa8b2;
+      --line: rgba(255, 255, 255, .11);
+      --green: #63d8a4;
+      --yellow: #ffd75e;
+      --blue: #68b8ff;
+      --red: #ff7b73;
+      --max: 760px;
+      --radius: 24px;
+      --font: "Pretendard", "Pretendard Variable", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", system-ui, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      background: var(--bg);
+      color: var(--text);
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-width: 0;
+      background:
+        radial-gradient(circle at 84% 3%, rgba(83, 75, 255, .18), transparent 28rem),
+        radial-gradient(circle at 4% 28%, rgba(214, 63, 128, .10), transparent 26rem),
+        var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      line-height: 1.72;
+      overflow-wrap: anywhere;
+      word-break: keep-all;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration-color: rgba(104, 184, 255, .8);
+      text-underline-offset: 4px;
+    }
+
+    .feed {
+      width: min(100%, var(--max));
+      margin: 0 auto;
+      padding: 28px 20px 72px;
+    }
+
+    .profile {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      margin-bottom: 28px;
+    }
+
+    .avatar {
+      display: grid;
+      flex: 0 0 48px;
+      width: 48px;
+      height: 48px;
+      place-items: center;
+      border: 1px solid rgba(255, 255, 255, .32);
+      border-radius: 50%;
+      background: linear-gradient(145deg, #f4efe6, #b8c9ff);
+      color: #121216;
+      font-size: 18px;
+      font-weight: 900;
+    }
+
+    .profile strong {
+      display: block;
+      font-size: 17px;
+      letter-spacing: -.02em;
+    }
+
+    .profile span {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .post-copy {
+      margin: 0 0 30px;
+      font-size: clamp(18px, 4.6vw, 23px);
+      line-height: 1.75;
+      letter-spacing: -.018em;
+    }
+
+    .post-copy p { margin: 0 0 18px; }
+    .post-copy strong { color: #fff; }
+
+    .visual {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin: 32px 0 18px;
+    }
+
+    .money-card,
+    .story-card,
+    .fact-card,
+    .option-card,
+    .pension-card,
+    .next-card {
+      min-width: 0;
+      border: 1px solid rgba(255, 255, 255, .13);
+      border-radius: var(--radius);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, .08), 0 22px 58px rgba(0, 0, 0, .22);
+    }
+
+    .money-card {
+      min-height: 168px;
+      padding: 22px;
+    }
+
+    .money-card.total {
+      grid-column: 1 / -1;
+      min-height: 220px;
+      padding: 28px;
+      background:
+        radial-gradient(circle at 88% 8%, rgba(255, 215, 94, .52), transparent 36%),
+        linear-gradient(135deg, #662fbb 0%, #294ba7 52%, #15365e 100%);
+    }
+
+    .money-card.field {
+      background: linear-gradient(145deg, #3f248d 0%, #613bce 44%, #234f9a 100%);
+    }
+
+    .money-card.forest {
+      background: linear-gradient(145deg, #8b294f 0%, #9b5228 48%, #324e73 100%);
+    }
+
+    .card-label {
+      display: block;
+      margin-bottom: 9px;
+      color: rgba(255, 255, 255, .72);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .08em;
+    }
+
+    .money-card strong {
+      display: block;
+      margin-bottom: 10px;
+      font-size: clamp(28px, 8vw, 52px);
+      line-height: 1.05;
+      letter-spacing: -.045em;
+    }
+
+    .money-card.total strong {
+      font-size: clamp(44px, 13vw, 76px);
+    }
+
+    .money-card p {
+      margin: 0;
+      color: rgba(255, 255, 255, .82);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    .boundary {
+      margin: 0 0 52px;
+      padding: 14px 16px;
+      border-left: 4px solid var(--yellow);
+      border-radius: 12px;
+      background: rgba(255, 215, 94, .08);
+      color: #d7d3ca;
+      font-size: 14px;
+    }
+
+    .section {
+      margin-top: 62px;
+    }
+
+    .section-kicker {
+      margin: 0 0 10px;
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: .11em;
+    }
+
+    h1,
+    h2,
+    h3,
+    p { margin-top: 0; }
+
+    h1 {
+      margin-bottom: 18px;
+      font-size: clamp(36px, 10vw, 62px);
+      line-height: 1.12;
+      letter-spacing: -.048em;
+    }
+
+    h2 {
+      margin-bottom: 18px;
+      font-size: clamp(27px, 7vw, 40px);
+      line-height: 1.2;
+      letter-spacing: -.04em;
+    }
+
+    h3 {
+      margin-bottom: 10px;
+      font-size: 20px;
+      line-height: 1.3;
+      letter-spacing: -.025em;
+    }
+
+    .intro {
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .story-grid,
+    .fact-grid,
+    .option-grid,
+    .pension-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .story-card,
+    .fact-card,
+    .option-card,
+    .pension-card {
+      padding: 24px;
+      background: var(--surface);
+    }
+
+    .story-card.business {
+      background:
+        radial-gradient(circle at 92% 2%, rgba(104, 184, 255, .25), transparent 45%),
+        linear-gradient(145deg, #162139, #17171d);
+    }
+
+    .story-card.family {
+      background:
+        radial-gradient(circle at 92% 5%, rgba(207, 77, 158, .24), transparent 45%),
+        linear-gradient(145deg, #2a1830, #17171d);
+    }
+
+    .story-card p,
+    .fact-card p,
+    .option-card p,
+    .pension-card p {
+      margin: 0;
+      color: #c5c2ca;
+      font-size: 15px;
+    }
+
+    .gain-card {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1px;
+      overflow: hidden;
+      margin-top: 12px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--line);
+    }
+
+    .gain {
+      min-width: 0;
+      padding: 25px;
+      background: var(--surface);
+    }
+
+    .gain:first-child {
+      background: linear-gradient(145deg, rgba(47, 147, 112, .25), var(--surface));
+    }
+
+    .gain:last-child {
+      background: linear-gradient(145deg, rgba(95, 88, 218, .24), var(--surface));
+    }
+
+    .gain span {
+      display: block;
+      margin-bottom: 7px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .gain strong {
+      display: block;
+      font-size: 20px;
+      line-height: 1.45;
+    }
+
+    .asset-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .asset-title em {
+      color: var(--muted);
+      font-size: 12px;
+      font-style: normal;
+    }
+
+    .fact-card {
+      background: linear-gradient(145deg, #17171d, #111115);
+    }
+
+    .fact-card strong {
+      display: block;
+      margin: 14px 0 5px;
+      font-size: 25px;
+      letter-spacing: -.035em;
+    }
+
+    .fact-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .fact-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding-top: 10px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .fact-row b {
+      color: var(--text);
+      text-align: right;
+    }
+
+    .ratio {
+      margin-top: 12px;
+      padding: 22px;
+      border: 1px solid rgba(104, 184, 255, .24);
+      border-radius: var(--radius);
+      background: linear-gradient(120deg, rgba(73, 85, 196, .27), rgba(32, 133, 143, .15));
+    }
+
+    .ratio strong {
+      color: var(--blue);
+      font-size: 22px;
+    }
+
+    .ratio p {
+      margin: 8px 0 0;
+      color: #c7c4cc;
+      font-size: 14px;
+    }
+
+    .option-card {
+      position: relative;
+      min-height: 175px;
+    }
+
+    .option-card.pick {
+      border-color: rgba(99, 216, 164, .48);
+      background:
+        radial-gradient(circle at 88% 2%, rgba(99, 216, 164, .28), transparent 42%),
+        linear-gradient(145deg, #153027, #15161a);
+    }
+
+    .option-no {
+      display: inline-grid;
+      width: 29px;
+      height: 29px;
+      margin-bottom: 18px;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .option-card.pick .option-no {
+      border-color: var(--green);
+      background: var(--green);
+      color: #0b241b;
+    }
+
+    .pension-card {
+      min-height: 190px;
+    }
+
+    .pension-card.possible {
+      background: linear-gradient(145deg, #12382d, #12171a);
+    }
+
+    .pension-card.limit {
+      border-color: rgba(255, 123, 115, .32);
+      background: linear-gradient(145deg, #3a1d22, #171417);
+    }
+
+    .pension-card.check {
+      grid-column: 1 / -1;
+      min-height: auto;
+      background: linear-gradient(145deg, #302713, #181712);
+    }
+
+    .pension-card .signal {
+      display: inline-block;
+      margin-bottom: 14px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .09);
+      color: #e5e1d8;
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    .next-card {
+      padding: 30px;
+      background:
+        radial-gradient(circle at 84% 10%, rgba(104, 184, 255, .34), transparent 38%),
+        linear-gradient(140deg, #352083 0%, #17386d 56%, #12212f 100%);
+    }
+
+    .next-steps {
+      display: grid;
+      gap: 10px;
+      margin: 24px 0 0;
+    }
+
+    .next-step {
+      display: grid;
+      grid-template-columns: 28px 1fr;
+      gap: 12px;
+      align-items: start;
+      padding-top: 12px;
+      border-top: 1px solid rgba(255, 255, 255, .16);
+      color: rgba(255, 255, 255, .86);
+      font-size: 14px;
+    }
+
+    .next-step b {
+      color: var(--yellow);
+      font-size: 12px;
+    }
+
+    .final-message {
+      margin-top: 62px;
+      padding: 32px 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      font-size: clamp(20px, 5.4vw, 28px);
+      line-height: 1.75;
+      letter-spacing: -.025em;
+    }
+
+    details {
+      margin-top: 14px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: var(--surface);
+    }
+
+    summary {
+      padding: 18px 20px;
+      cursor: pointer;
+      font-weight: 800;
+      list-style-position: inside;
+    }
+
+    details .details-body {
+      padding: 0 20px 20px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    details ul {
+      margin: 0;
+      padding-left: 1.2em;
+    }
+
+    details li + li { margin-top: 8px; }
+
+    footer {
+      margin-top: 48px;
+      color: #7f7d86;
+      font-size: 12px;
+      line-height: 1.65;
+    }
+
+    @media (max-width: 560px) {
+      .feed { padding: 22px 14px 56px; }
+      .visual,
+      .story-grid,
+      .fact-grid,
+      .option-grid,
+      .pension-grid,
+      .gain-card { grid-template-columns: 1fr; }
+      .money-card.total,
+      .pension-card.check { grid-column: auto; }
+      .money-card { min-height: 150px; }
+      .money-card.total { min-height: 205px; }
+      .story-card,
+      .fact-card,
+      .option-card,
+      .pension-card { padding: 21px; }
+      .gain { padding: 22px; }
+    }
+
+    @media print {
+      :root { color-scheme: light; }
+      body { background: #fff; color: #111; }
+      .feed { width: 100%; max-width: none; }
+      .money-card,
+      .story-card,
+      .fact-card,
+      .option-card,
+      .pension-card,
+      .next-card,
+      details { break-inside: avoid; box-shadow: none; }
+    }
+  </style>
+</head>
+<body>
+  <main class="feed">
+    <header>
+      <div class="profile">
+        <div class="avatar" aria-hidden="true">함</div>
+        <div>
+          <strong>함께 보는 가족 문서</strong>
+          <span>백령도 진촌리 1530 · 1531 · 2026-07-28</span>
+        </div>
+      </div>
+
+      <h1>작은아버지,<br>백령도 땅 이야기<br>같이 보시죠</h1>
+
+      <div class="post-copy">
+        <p>제가 사업을 하는데 자금이 필요합니다. 그렇다고 백령도 땅을 돈만 보고 모두 놓고 싶지는 않았습니다.</p>
+        <p>그래서 <strong>1530 전은 작은아버지께, 1531 임야는 제가 갖는 방법</strong>을 먼저 말씀드리고 싶습니다.</p>
+      </div>
+
+      <section class="visual" aria-label="첫 제안금액">
+        <article class="money-card total">
+          <span class="card-label">제가 먼저 말씀드릴 차액</span>
+          <strong>7,500만 원</strong>
+          <p>전 지분 8,000만 원에서 임야 지분 500만 원을 뺀 금액입니다.</p>
+        </article>
+        <article class="money-card field">
+          <span class="card-label">제 1530 전 지분</span>
+          <strong>8,000만</strong>
+          <p>약 452.5평 · 평당 약 17.7만 원</p>
+        </article>
+        <article class="money-card forest">
+          <span class="card-label">작은아버지 1531 임야 지분</span>
+          <strong>500만</strong>
+          <p>약 270.4평 · 현장 확인 전 제안값</p>
+        </article>
+      </section>
+
+      <p class="boundary"><strong>오늘 계약하자는 이야기는 아닙니다.</strong> 7,500만 원은 확정가격이나 감정가가 아니라, 근거를 함께 보고 조정하기 위한 첫 제안금액입니다.</p>
+    </header>
+
+    <section class="section" id="background">
+      <p class="section-kicker">01 · 왜 이 이야기를 드리는지</p>
+      <h2>사업도 살리고,<br>땅도 조금 남기고 싶습니다.</h2>
+      <div class="story-grid">
+        <article class="story-card business">
+          <h3>제가 하는 일</h3>
+          <p>작은 회사 대표의 노트북 안에 그 회사에 맞는 AI 업무 체계를 만들고, 대표가 직접 쓸 수 있을 때까지 함께 다듬는 일을 합니다. 지금은 실제 고객 사례를 만들어갈 사업자금이 필요합니다.</p>
+        </article>
+        <article class="story-card family">
+          <h3>땅이 가진 의미</h3>
+          <p>딸은 제게 가장 큰 행복입니다. 다만 땅을 이어가는 조건은 우리 두 집이 조금 다릅니다. 작은아버지 댁은 전을 이어가고, 저는 임야라도 남기는 방법을 생각했습니다.</p>
+        </article>
+      </div>
+      <div class="gain-card">
+        <div class="gain">
+          <span>작은아버지께 남는 것</span>
+          <strong>가치가 큰 전의 단독소유와 농지연금 가능성을 개별 검토할 문</strong>
+        </div>
+        <div class="gain">
+          <span>제게 남는 것</span>
+          <strong>사업자금과 백령도 임야의 단독소유</strong>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="land">
+      <p class="section-kicker">02 · 두 땅은 얼마나 다른가</p>
+      <h2>공시지가 기준으로<br>전이 더 큰 자산입니다.</h2>
+      <p class="intro">아래 공시지가는 시세나 매매가가 아닙니다. 두 땅의 기본적인 차이를 보는 참고선입니다.</p>
+
+      <div class="fact-grid">
+        <article class="fact-card">
+          <div class="asset-title">
+            <h3>1530 전</h3>
+            <em>현재 각 1/2 공동소유</em>
+          </div>
+          <strong>2,992㎡ · 약 905.1평</strong>
+          <div class="fact-list">
+            <div class="fact-row"><span>2026 공시지가</span><b>11,100원/㎡</b></div>
+            <div class="fact-row"><span>전체 환산</span><b>약 3,321만 원</b></div>
+            <div class="fact-row"><span>제 지분 1/2</span><b>약 1,661만 원</b></div>
+          </div>
+        </article>
+        <article class="fact-card">
+          <div class="asset-title">
+            <h3>1531 임야</h3>
+            <em>현재 각 1/2 공동소유</em>
+          </div>
+          <strong>1,788㎡ · 약 540.9평</strong>
+          <div class="fact-list">
+            <div class="fact-row"><span>2026 공시지가</span><b>1,210원/㎡</b></div>
+            <div class="fact-row"><span>전체 환산</span><b>약 216만 원</b></div>
+            <div class="fact-row"><span>작은아버지 지분 1/2</span><b>약 108만 원</b></div>
+          </div>
+        </article>
+      </div>
+
+      <div class="ratio">
+        <strong>전체 공시지가 환산 기준 약 15.4배</strong>
+        <p>1530 전과 1531 임야의 제안금액 차이가 크게 나는 구조 자체는 임의적이지 않습니다. 다만 실제 시가도 15.4배라는 뜻은 아닙니다.</p>
+      </div>
+    </section>
+
+    <section class="section" id="price">
+      <p class="section-kicker">03 · 왜 8천과 5백인가</p>
+      <h2>확정시세가 아니라<br>비교자료에서 잡은 첫 금액입니다.</h2>
+      <div class="story-grid">
+        <article class="story-card business">
+          <h3>전 지분 8,000만 원</h3>
+          <p>2024-07-24~2026-07-23 진촌리 계획관리 전 200평 이상 9건의 중앙값은 평당 9.4만 원으로, 제 지분 환산 약 4,254만 원입니다. 같은 1000번대 대형 전 두 건은 평당 12만·27만 원, 평균 19.5만 원으로 제 지분 환산 약 8,825만 원입니다. 저는 그보다 825만 원 낮게 8,000만 원을 먼저 말씀드립니다.</p>
+        </article>
+        <article class="story-card family">
+          <h3>임야 지분 500만 원</h3>
+          <p>작은아버지 지분은 약 270.4평입니다. 비교거래가 부족해 기존 임시 범위는 250만~900만 원이며, 500만 원은 그 안에서 정한 제안값입니다. 현장과 시가 확인 전에는 확정가가 아닙니다.</p>
+        </article>
+      </div>
+      <p class="boundary"><strong>가장 약한 근거도 함께 봐야 합니다.</strong> 같은 1000번대 두 거래가 평당 12만 원과 27만 원으로 크게 벌어져 있고, 1530 자체의 정확한 거래가격은 공개자료에서 특정하지 못했습니다. 도로·경사·경작 상태도 아직 확인 전입니다.</p>
+    </section>
+
+    <section class="section" id="options">
+      <p class="section-kicker">04 · 네 가지 길</p>
+      <h2>저는 두 번째 방법을<br>함께 검토하고 싶습니다.</h2>
+      <div class="option-grid">
+        <article class="option-card">
+          <span class="option-no">1</span>
+          <h3>제 지분을 전부 판다</h3>
+          <p>현금은 가장 크지만 저는 백령도 땅을 남기지 못합니다.</p>
+        </article>
+        <article class="option-card pick">
+          <span class="option-no">2</span>
+          <h3>전은 팔고 임야는 산다</h3>
+          <p>작은아버지는 전을 단독소유하고, 저는 사업자금과 임야를 남깁니다.</p>
+        </article>
+        <article class="option-card">
+          <span class="option-no">3</span>
+          <h3>임야만 판다</h3>
+          <p>현금은 작고 전의 공동소유와 농지연금 제약이 남습니다.</p>
+        </article>
+        <article class="option-card">
+          <span class="option-no">4</span>
+          <h3>둘 다 그대로 둔다</h3>
+          <p>땅은 유지되지만 사업자금이 생기지 않고 공동소유도 계속됩니다.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="pension">
+      <p class="section-kicker">05 · 농지연금</p>
+      <h2>가능성은 생기지만,<br>자동 가입은 아닙니다.</h2>
+      <div class="pension-grid">
+        <article class="pension-card possible">
+          <span class="signal">지금 상태</span>
+          <h3>현재 등기로는 담보 제공 불가</h3>
+          <p>현재 1530 전은 부부가 아닌 두 사람의 공동소유라, 지금 등기 상태로는 농지연금 담보로 넣을 수 없습니다.</p>
+        </article>
+        <article class="pension-card limit">
+          <span class="signal">단독소유 뒤</span>
+          <h3>심사할 문만 열립니다</h3>
+          <p>작은아버지 단독소유가 되어도 자동 가입되는 것은 아니며, 나이·5년 영농경력·실제 영농 등 기본조건을 따로 심사받아야 합니다.</p>
+        </article>
+        <article class="pension-card check">
+          <span class="signal">반드시 확인</span>
+          <h3>새로 취득하는 지분의 조건은 아직 미확정</h3>
+          <p>2026년에 새로 취득하는 1/2 지분에 2년 보유·거리 요건을 어떻게 적용할지는 농어촌공사 지사 확인 전까지 미확정입니다. 임야를 따로 보유하는 것 자체는 가입 장애가 아니며, 임야는 연금 담보 대상이 아닐 뿐입니다.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="next">
+      <p class="section-kicker">06 · 다음 행동 하나</p>
+      <article class="next-card">
+        <h2>저와 함께<br>백령도 한번 가시죠.</h2>
+        <p>서류만 보고 정하지 말고, 두 필지의 경계와 길, 전의 실제 경작 상태를 같이 본 뒤 가격과 조건을 다시 이야기하고 싶습니다.</p>
+        <div class="next-steps">
+          <div class="next-step"><b>01</b><span>백령도에서 경계·진입로·경사·경작 상태 확인</span></div>
+          <div class="next-step"><b>02</b><span>돌아와서 시가·세금·농지취득자격증명 확인</span></div>
+          <div class="next-step"><b>03</b><span>농지은행에 연금 적격성과 새 지분 조건 사전상담</span></div>
+          <div class="next-step"><b>04</b><span>그 뒤에 계약 여부와 최종가격 결정</span></div>
+        </div>
+      </article>
+    </section>
+
+    <section class="final-message" aria-label="작은아버지께 드리는 말">
+      작은아버지, 제가 먼저 생각한 차액은 <strong>7,500만 원</strong>입니다. 제 전 지분은 8,000만 원, 작은아버지의 임야 지분은 500만 원으로 계산했습니다. 비싸다고 느끼시면 어떤 근거가 다른지 같이 놓고 다시 이야기하고 싶습니다. 저와 함께 백령도 한번 가시죠.
+    </section>
+
+    <section class="section" id="sources">
+      <p class="section-kicker">07 · 필요할 때만 펼쳐보기</p>
+      <h2>근거와 아직 모르는 것</h2>
+      <details>
+        <summary>가격자료와 계산 경계</summary>
+        <div class="details-body">
+          <ul>
+            <li>공시지가와 비교 실거래 환산값은 감정가·확정시가·매수보장가가 아닙니다.</li>
+            <li>세금·법무비·감정비와 기타 거래비용은 차액 7,500만 원에 포함하지 않았습니다.</li>
+            <li>1530·1531의 정확한 시가, 도로·경사·경작 상태는 현장과 전문가 확인 전입니다.</li>
+          </ul>
+        </div>
+      </details>
+      <details>
+        <summary>확인한 공식 자료</summary>
+        <div class="details-body">
+          <p><a href="https://imap.incheon.go.kr/sgp/por/main/map.do">인천시 부동산가격지도</a> · <a href="https://rt.molit.go.kr/pt/xls/xls.do?mobileAt=">국토교통부 실거래가 공개시스템</a></p>
+          <p><a href="https://law.go.kr/lsLinkCommonInfo.do?lspttninfSeq=122042">한국농어촌공사법 시행령</a> · <a href="https://www.law.go.kr/LSW/admRulLsInfoP.do?admRulSeq=2100000248452">담보농지 기준 고시</a> · <a href="https://www.fbo.or.kr/data/pensionDc_2024.pdf">농지연금사업 설명확인서</a></p>
+          <p>농지연금 상담: 한국농어촌공사 농지은행 1577-7770</p>
+        </div>
+      </details>
+    </section>
+
+    <footer>
+      가족 대화용 초안입니다. 감정평가서, 매매계약서, 법률·세무 의견서, 농지연금 가입 보증서가 아닙니다.
+    </footer>
+  </main>
+</body>
+</html>
