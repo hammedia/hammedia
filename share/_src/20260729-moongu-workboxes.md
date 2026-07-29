@@ -16,6 +16,8 @@ date_line: 2026-07-29 · 함동민 드림
 
 ## 받는 법
 
+**맥북에서 이 링크에 접속해주세요.** 폰으로 받으면 상자가 폰에 떨어집니다.
+
 1. 아래 상자를 내려받아 압축을 풉니다.
 
    [업무 상자 내려받기 (moongu-workboxes-v01.zip)](assets/moongu-workboxes-v01.zip)
