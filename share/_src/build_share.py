@@ -28,6 +28,12 @@ TEMPLATE_PATH = "../_template.html"
 def inline(s: str) -> str:
     s = html_mod.escape(s, quote=False)
     s = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", s)
+    # [보이는 글](주소) → 링크. 주소는 따옴표만 막고 그대로 쓴다
+    s = re.sub(
+        r"\[([^\]]+)\]\(([^)\s]+)\)",
+        lambda m: f'<a href="{html_mod.escape(m.group(2), quote=True)}">{m.group(1)}</a>',
+        s,
+    )
     return s
 
 
