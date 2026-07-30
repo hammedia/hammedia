@@ -1,0 +1,566 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>자석 개념 탐험대 · 초등 과학 3-1 3단원</title>
+  <style>
+    :root{
+      --ivory:#F7F4EE; --paper:#FFFFFF; --ink:#171717; --muted:#6B6862; --line:#E7E1D7;
+      --sky:#3B82F6; --sky-soft:#EAF3FF; --green:#4ADE80; --green-soft:#EAFBF0;
+      --yellow:#FACC15; --yellow-soft:#FFF8D6; --red:#EF4444; --red-soft:#FFF0F0;
+      --shadow:0 14px 34px rgba(23,23,23,.08);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--ivory);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;line-height:1.65;word-break:keep-all}
+    button{font:inherit}
+    .topbar{height:8px;background:linear-gradient(90deg,var(--red) 0 42%,var(--sky) 42% 74%,var(--yellow) 74%)}
+    .wrap{width:min(1080px,calc(100% - 32px));margin:0 auto}
+    header{padding:54px 0 34px}
+    .eyebrow{font-size:13px;font-weight:900;letter-spacing:.12em;color:var(--sky);text-transform:uppercase}
+    h1{font-size:clamp(34px,6vw,64px);line-height:1.08;margin:12px 0 18px;letter-spacing:-.045em}
+    .lead{font-size:clamp(18px,2.4vw,23px);max-width:800px;margin:0;color:#383633}
+    .chips{display:flex;gap:9px;flex-wrap:wrap;margin-top:24px}
+    .chip{padding:8px 12px;border:1px solid var(--line);border-radius:999px;background:var(--paper);font-size:14px;font-weight:800}
+    .notice{margin:6px 0 30px;padding:18px 20px;background:var(--yellow-soft);border:1px solid rgba(250,204,21,.55);border-radius:18px;font-size:15px}
+    .notice strong{display:block;margin-bottom:2px}
+    section{margin:28px 0 54px}
+    .section-head{display:flex;align-items:end;justify-content:space-between;gap:16px;margin-bottom:18px}
+    h2{font-size:clamp(27px,4vw,40px);line-height:1.18;letter-spacing:-.035em;margin:0}
+    .step{display:inline-flex;align-items:center;justify-content:center;min-width:38px;height:30px;padding:0 11px;border-radius:999px;background:var(--ink);color:white;font-size:13px;font-weight:900;margin-bottom:8px}
+    .small{font-size:14px;color:var(--muted)}
+    .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+    .card{background:var(--paper);border:1px solid var(--line);border-radius:24px;padding:24px;box-shadow:var(--shadow)}
+    .card h3{font-size:21px;line-height:1.25;margin:0 0 10px;letter-spacing:-.025em}
+    .card p{margin:7px 0;font-size:15.5px}
+    .c1{border-top:7px solid var(--red)}
+    .c2{border-top:7px solid var(--sky)}
+    .c3{border-top:7px solid var(--yellow)}
+    .badge{display:inline-block;padding:5px 9px;border-radius:999px;background:var(--red-soft);font-size:12px;font-weight:900;color:#a32020;margin-bottom:12px}
+    .c2 .badge{background:var(--sky-soft);color:#1d5eb8}
+    .c3 .badge{background:var(--yellow-soft);color:#8a6300}
+    .keyline{margin-top:14px;padding:13px 15px;border-radius:14px;background:var(--ivory);font-weight:800;font-size:15px}
+    .trapbox{margin-top:18px;padding:18px 20px;border-left:6px solid var(--red);background:var(--red-soft);border-radius:0 18px 18px 0}
+    .trapbox b{display:block;margin-bottom:6px;font-size:17px}
+    .trapbox ul{margin:6px 0 0;padding-left:20px}
+    .trapbox li{margin:5px 0}
+
+    .quiz-intro{padding:25px;border-radius:24px;background:var(--ink);color:#fff;margin-bottom:18px}
+    .quiz-intro h2{color:#fff;margin-bottom:10px}
+    .quiz-intro p{margin:5px 0;color:#eee}
+    .quiz-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+    .q-card{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:22px;box-shadow:var(--shadow)}
+    .q-num{font-size:12px;font-weight:900;letter-spacing:.08em;color:var(--sky);margin-bottom:8px}
+    .q-text{font-size:18.5px;font-weight:900;line-height:1.45;margin-bottom:12px}
+    .q-scene{font-size:15px;font-weight:600;background:var(--ivory);border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin-bottom:13px;line-height:1.55}
+    .opt{width:100%;text-align:left;border:1.5px solid var(--line);background:#fff;color:var(--ink);padding:12px 14px;border-radius:14px;margin:6px 0;cursor:pointer;font-weight:700;transition:.15s ease;font-size:15.5px;line-height:1.5}
+    .opt:hover:not(:disabled){border-color:var(--sky);background:var(--sky-soft);transform:translateY(-1px)}
+    .opt:focus-visible{outline:4px solid rgba(59,130,246,.25);outline-offset:2px}
+    .opt:disabled{cursor:default}
+    .opt.tried{border-color:var(--red);background:var(--red-soft);opacity:.7;text-decoration:line-through}
+    .opt.correct{border-color:#1f9d55;background:var(--green-soft)}
+    .opt.wrong{border-color:var(--red);background:var(--red-soft)}
+    .fb{display:none;margin-top:13px;padding:14px 15px;border-radius:14px;font-size:14.5px}
+    .fb.show{display:block}
+    .fb b{display:block;font-size:16px;margin-bottom:4px}
+    .fb.ok{background:var(--green-soft);border:1px solid rgba(74,222,128,.7)}
+    .fb.hint{background:var(--yellow-soft);border:1px solid rgba(250,204,21,.65)}
+    .fb.no{background:var(--red-soft);border:1px solid rgba(239,68,68,.4)}
+    .ask,.again{display:block;margin-top:7px;font-weight:800}
+    .again{color:#9b6200}
+    .progress{position:sticky;top:0;z-index:5;background:var(--ivory);padding:10px 0 12px;margin-bottom:6px}
+    .pbar{height:10px;background:var(--line);border-radius:999px;overflow:hidden}
+    .pfill{height:100%;width:0;background:var(--sky);transition:width .3s ease}
+    .ptext{font-size:13.5px;font-weight:800;color:var(--muted);margin-top:6px}
+    #result{display:none;margin-top:22px;padding:28px;background:var(--paper);border:2px solid var(--sky);border-radius:24px;box-shadow:var(--shadow)}
+    #result.show{display:block}
+    .score{font-size:22px;font-weight:950}
+    #review-list{padding-left:20px}
+    .restart{border:0;border-radius:14px;background:var(--green);color:var(--ink);font-weight:950;padding:13px 18px;cursor:pointer;margin-top:10px}
+    details{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:18px 20px;margin-top:18px}
+    summary{cursor:pointer;font-weight:900;font-size:18px}
+    footer{border-top:1px solid var(--line);padding:28px 0 55px;color:var(--muted);font-size:14px}
+    .human-check{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:14px}
+    .human-check div{padding:12px;border-radius:13px;background:var(--ivory)}
+    @media(max-width:900px){ .grid{grid-template-columns:1fr} }
+    @media(max-width:760px){
+      .quiz-grid{grid-template-columns:1fr}
+      .section-head{display:block}
+      .human-check{grid-template-columns:1fr}
+    }
+    @media(max-width:420px){
+      .wrap{width:min(100% - 20px,1080px)}
+      header{padding-top:38px}
+      .card,.q-card{padding:19px}
+    }
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.opt{transition:none}}
+  </style>
+</head>
+<body>
+  <div class="topbar"></div>
+  <header class="wrap">
+    <div class="eyebrow">HAM MEDIA ACADEMY · 초등 과학 3-1</div>
+    <h1>자석 개념 탐험대</h1>
+    <p class="lead">3단원 「자석의 이용」 전체를 25문제로 확인해요. 처음에 틀려도 괜찮아요. 답을 바로 보여주지 않고 힌트를 먼저 줄 테니, 한 번 더 골라보세요.</p>
+    <div class="chips">
+      <span class="chip">13일차 ~ 18일차 전 범위</span>
+      <span class="chip">25문제 · 다섯 개 중 고르기</span>
+      <span class="chip">두 번 생각하는 문제</span>
+      <span class="chip">혼자 풀고 스스로 채점</span>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="notice">
+      <strong>먼저 읽어요.</strong>
+      한 번에 다 풀지 않아도 돼요. 열 문제쯤 풀고 쉬어도 좋아요.
+      틀린 문제는 실패가 아니라, 다음에 다시 볼 곳을 알려주는 표시예요.
+    </div>
+
+    <section aria-labelledby="review-title">
+      <div class="section-head">
+        <div><span class="step">1 · 먼저 떠올리기</span><h2 id="review-title">문제 풀기 전, 세 가지만</h2></div>
+        <p class="small">이 셋만 잡으면 25문제 중 스무 문제가 풀려요.</p>
+      </div>
+      <div class="grid">
+        <article class="card c1">
+          <span class="badge">붙느냐 안 붙느냐</span>
+          <h3>자석은 철만 끌어당겨요</h3>
+          <p>철 클립, 철 못, 철사, 철 집게 — 자석에 붙어요.</p>
+          <p>종이, 고무, 나무, 유리, 플라스틱 — 붙지 않아요.</p>
+          <div class="keyline">사이에 종이가 있어도, 조금 떨어져 있어도 자석은 철을 끌어당겨요.</div>
+        </article>
+        <article class="card c2">
+          <span class="badge">극은 언제나 둘</span>
+          <h3>끝부분이 가장 세요</h3>
+          <p>철이 가장 많이 붙는 부분이 <b>극</b>이에요. 어떤 모양의 자석이든 극은 <b>양쪽 끝부분</b>에 <b>두 개</b>예요.</p>
+          <div class="keyline">같은 극끼리는 밀어 내고, 다른 극끼리는 끌어당겨요.</div>
+        </article>
+        <article class="card c3">
+          <span class="badge">나침반도 자석</span>
+          <h3>빨간색은 N극, 북쪽</h3>
+          <p>나침반 바늘도 작은 자석이에요. 그래서 자석을 가까이 하면 밀고 당기며 움직여요.</p>
+          <div class="keyline">빨간색 부분 = N극 = 북쪽 / 빨간색 반대쪽 = S극 = 남쪽</div>
+        </article>
+      </div>
+
+      <div class="trapbox">
+        <b>여기서 자주 넘어져요</b>
+        <ul>
+          <li><b>금속이면 다 붙는다?</b> 아니에요. 금속 중에서 <b>철</b>만 붙어요.</li>
+          <li><b>N극에 나침반을 대면</b> 빨간색 부분이 아니라 <b>빨간색 반대쪽</b>이 자석을 향해요.</li>
+          <li><b>고리 자석 탑을 높게</b> 쌓으려면 같은 극끼리 마주 보게 — 서로 밀어 내야 사이가 벌어져요.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section aria-labelledby="quiz-title">
+      <div class="quiz-intro">
+        <span class="step" style="background:white;color:var(--ink)">2 · 직접 해보기</span>
+        <h2 id="quiz-title">확인 문제 25개</h2>
+        <p>처음에 틀리면 정답을 바로 보여주지 않아요. 고른 답 하나만 닫히고, <strong>힌트를 본 뒤 다시 한 번 고를 수 있어요.</strong></p>
+        <p>답을 고르기 전에 <strong>"왜 그렇게 생각했는지"</strong>를 마음속으로 한 문장 만들어 보세요.</p>
+      </div>
+
+      <div class="progress">
+        <div class="pbar"><div class="pfill" id="pfill"></div></div>
+        <div class="ptext" id="ptext">0 / 25 문제 풀었어요</div>
+      </div>
+
+      <div id="quiz" class="quiz-grid"></div>
+
+      <div id="result" aria-live="polite">
+        <span class="step">3 · 함께 짚기</span>
+        <h2>오늘 확인한 것</h2>
+        <p class="score" id="score-line"></p>
+        <p id="score-msg"></p>
+        <div id="review-wrap" hidden>
+          <p style="font-weight:900;margin-bottom:5px">한 번 더 이야기해 볼 것</p>
+          <ul id="review-list"></ul>
+        </div>
+        <button class="restart" type="button" onclick="restartQuiz()">처음부터 다시 풀기</button>
+      </div>
+    </section>
+
+    <section aria-labelledby="adult-title">
+      <details>
+        <summary id="adult-title">보호자·선생님 확인 안내</summary>
+        <p>이 자료는 오투 초등 과학 3-1 3단원 「자석의 이용」(13~18일차)의 <b>범위</b>를 참고해, 문항과 해설을 새로 작성한 것입니다.</p>
+        <div class="human-check">
+          <div><b>한 번에 맞힌 문제</b><br>개념이 자리 잡았습니다. 넘어가도 좋습니다.</div>
+          <div><b>힌트 뒤에 맞힌 문제</b><br>알고는 있으나 조건을 놓칩니다. 문제를 소리 내어 다시 읽게 해보세요.</div>
+          <div><b>두 번 다 틀린 문제</b><br>개념이 없는 것입니다. 위 카드로 돌아가 함께 읽으세요.</div>
+        </div>
+        <p style="margin-top:14px">채점 뒤에는 점수보다 <b>"왜 그 답을 골랐어?"</b>를 한 번 물어봐 주세요. 맞힌 문제에도 물어보면, 우연히 맞힌 것과 알고 맞힌 것이 구분됩니다.</p>
+      </details>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    HAM MEDIA · 초등 과학 3-1 3단원 자석의 이용 · 25문항 · 2026-07-30<br>
+    문항과 해설은 교육과정 내용을 바탕으로 새로 작성했습니다.
+  </footer>
+
+  <script>
+    const QUIZ = [
+      { q:'자석에 <b>붙는</b> 물체끼리 옳게 짝 지은 것은?', concept:'자석에 붙는 물체와 붙지 않는 물체',
+        opts:[
+          {t:'철 못 — 유리구슬', hint:'둘 중 하나는 자석에 붙지 않아요.', ask:'유리로 된 물체가 자석에 붙던가?', fb:'철 못은 붙지만 유리구슬은 붙지 않아요.'},
+          {t:'철 클립 — 철사', ok:true, fb:'맞아요. 둘 다 철로 되어 있어서 자석에 붙어요.'},
+          {t:'고무지우개 — 철 집게', hint:'고무로 된 것을 자석에 대 보면 어떻게 될까요?', ask:'지우개가 자석에 딱 붙었던 적이 있었나?', fb:'철 집게는 붙지만 고무지우개는 붙지 않아요.'},
+          {t:'플라스틱 단추 — 연필', hint:'플라스틱과 나무는 자석과 사이가 좋지 않아요.', ask:'이 둘 중에 철로 된 것이 하나라도 있을까?', fb:'둘 다 자석에 붙지 않아요.'},
+          {t:'종이 빨대 — 철 못', hint:'하나는 철이지만 다른 하나는 아니에요.', ask:'종이는 자석에 붙는 재료였나?', fb:'철 못은 붙지만 종이 빨대는 붙지 않아요.'}
+        ]},
+
+      { q:'자석에 <b>붙지 않는</b> 물체끼리 옳게 짝 지은 것은?', concept:'자석에 붙는 물체와 붙지 않는 물체',
+        opts:[
+          {t:'철사 — 유리컵', hint:'철사는 이름에 답이 있어요.', ask:'철사는 무엇으로 만들었지?', fb:'철사는 철이라 자석에 붙어요.'},
+          {t:'철 못 — 종이 빨대', hint:'하나가 철이면 "붙지 않는 짝"이 될 수 없어요.', ask:'철 못은 자석에 붙을까 안 붙을까?', fb:'철 못은 자석에 붙습니다.'},
+          {t:'철 클립 — 플라스틱 단추', hint:'클립은 무엇으로 만들었는지 떠올려 보세요.', ask:'철 클립의 "철"은 무슨 뜻일까?', fb:'철 클립은 자석에 붙습니다.'},
+          {t:'고무지우개 — 나무젓가락', ok:true, fb:'맞아요. 고무와 나무는 모두 자석에 붙지 않아요.'},
+          {t:'철 집게 — 고무풍선', hint:'둘 중 하나만 안 붙어요.', ask:'철 집게를 자석에 대면 어떻게 될까?', fb:'고무풍선은 안 붙지만 철 집게는 붙어요.'}
+        ]},
+
+      { q:'자석에 붙는 물체에 대한 설명으로 <b>옳지 않은</b> 것은?', concept:'철만 자석에 붙는다',
+        opts:[
+          {t:'철로 된 물체는 자석에 붙는다.', hint:'이건 맞는 설명이에요. 틀린 것을 찾아야 해요.', ask:'철 클립, 철 못은 자석에 붙었지?', fb:'이 설명은 옳아요.'},
+          {t:'유리로 된 물체는 자석에 붙지 않는다.', hint:'이것도 맞는 설명이에요.', ask:'유리구슬이 자석에 붙던가?', fb:'이 설명은 옳아요.'},
+          {t:'고무로 된 물체는 자석에 붙지 않는다.', hint:'이것도 맞는 설명이에요.', ask:'고무풍선이 자석에 붙던가?', fb:'이 설명은 옳아요.'},
+          {t:'한 물체 안에 자석에 붙는 부분과 붙지 않는 부분이 함께 있을 수 있다.', hint:'가위를 떠올려 보세요.', ask:'가위의 날과 손잡이는 같은 재료일까?', fb:'가위나 종이찍개처럼 실제로 그런 물체가 있어요. 옳은 설명이에요.'},
+          {t:'금속으로 된 물체는 모두 자석에 붙는다.', ok:true, fb:'맞아요, 이게 틀린 설명이에요. 금속 중에서도 <b>철</b>로 된 것만 붙어요. 알루미늄이나 구리는 금속이지만 붙지 않아요.'}
+        ]},
+
+      { q:'자석에 붙는 부분과 붙지 않는 부분이 <b>한 물체에 모두</b> 있는 것은?', concept:'일부만 철로 된 물체',
+        opts:[
+          {t:'유리컵', hint:'이 물건은 처음부터 끝까지 한 가지 재료예요.', ask:'유리컵에 철로 된 부분이 있을까?', fb:'유리컵은 전체가 유리라 어디에도 붙지 않아요.'},
+          {t:'나무젓가락', hint:'이 물건도 한 가지 재료로만 되어 있어요.', ask:'나무젓가락에 철이 들어 있을까?', fb:'전체가 나무라 자석에 붙지 않아요.'},
+          {t:'종이찍개', ok:true, fb:'맞아요. 종이찍개는 철로 된 부분과 플라스틱으로 된 부분이 함께 있어요. 가위와 탬버린도 그래요.'},
+          {t:'고무풍선', hint:'풍선을 만져 보면 재료가 하나예요.', ask:'풍선에 딱딱한 철 부분이 있었나?', fb:'전체가 고무라 자석에 붙지 않아요.'},
+          {t:'플라스틱 빨대', hint:'이름에 재료가 적혀 있어요.', ask:'플라스틱은 자석에 붙는 재료였나?', fb:'전체가 플라스틱이라 자석에 붙지 않아요.'}
+        ]},
+
+      { q:'다음과 같이 실험했을 때의 결과와 그 까닭으로 옳은 것은?', concept:'떨어져 있어도 끌어당기는 힘',
+        scene:'실로 책상에 고정한 철 클립을 막대자석으로 끌어당겨 공중에 띄웠어요. 그다음 공중에 뜬 철 클립과 자석 사이에 <b>색종이</b>를 넣었어요.',
+        opts:[
+          {t:'철 클립이 바로 떨어진다 — 종이가 자석의 힘을 막기 때문이다.', hint:'종이 한 장이 자석의 힘을 막을 수 있을까요?', ask:'냉장고에 종이를 대고 자석을 붙이면 떨어지던가?', fb:'종이가 있어도 자석은 철을 계속 끌어당겨요.'},
+          {t:'철 클립이 색종이에 달라붙는다 — 색종이도 자석에 붙기 때문이다.', hint:'색종이는 자석에 붙는 재료가 아니에요.', ask:'종이는 자석에 붙는 물체였나?', fb:'색종이는 자석에 붙지 않아요.'},
+          {t:'철 클립이 색종이를 밀어 낸다 — 같은 극끼리 밀어 내기 때문이다.', hint:'색종이에는 극이 없어요.', ask:'극은 무엇에 있는 것이었지?', fb:'극은 자석에만 있어요. 종이에는 없어요.'},
+          {t:'철 클립이 반대 방향으로 움직인다 — 자석의 극이 바뀌기 때문이다.', hint:'종이를 넣는다고 자석의 극이 바뀌지는 않아요.', ask:'자석의 N극이 갑자기 S극이 될 수 있을까?', fb:'종이를 넣어도 자석의 극은 그대로예요.'},
+          {t:'철 클립이 계속 떠 있다 — 사이에 다른 물질이 있어도 자석은 철을 끌어당기기 때문이다.', ok:true, fb:'맞아요. 종이·플라스틱·알루미늄이 사이에 있어도, 조금 떨어져 있어도 자석은 철을 끌어당겨요.'}
+        ]},
+
+      { q:'자석의 극에 대한 설명으로 옳은 것은?', concept:'자석의 극',
+        opts:[
+          {t:'자석의 극은 자석의 한가운데에 있다.', hint:'막대자석에 클립을 붙여 보면 어디에 많이 붙던가요?', ask:'클립이 가운데에 많이 붙었나, 끝에 많이 붙었나?', fb:'극은 가운데가 아니라 양쪽 끝부분에 있어요.'},
+          {t:'자석의 극은 철로 된 물체가 많이 붙는 부분이다.', ok:true, fb:'맞아요. 철이 가장 많이 붙는 곳이 바로 극이에요.'},
+          {t:'자석의 극의 개수는 자석의 종류에 따라 다르다.', hint:'막대자석, 말굽자석, 고리 자석 모두 세어 보세요.', ask:'어떤 자석이든 극이 몇 개였지?', fb:'모양이 달라도 극은 항상 두 개예요.'},
+          {t:'고리 자석은 자석의 극이 하나뿐이다.', hint:'고리 자석에도 위와 아래가 있어요.', ask:'고리 자석의 윗면과 아랫면은 같은 극일까?', fb:'고리 자석도 극이 두 개예요.'},
+          {t:'말굽자석은 자석의 극이 세 개이다.', hint:'말굽자석의 끝을 세어 보세요.', ask:'말굽자석에서 클립이 많이 붙는 곳이 몇 군데였지?', fb:'말굽자석도 양쪽 끝부분에 두 개예요.'}
+        ]},
+
+      { q:'여러 가지 자석에서 극이 있는 위치를 옳게 설명한 것은?', concept:'여러 가지 자석의 극',
+        opts:[
+          {t:'막대자석 — 가운데 부분', hint:'막대자석에 클립을 붙여 보면 가운데는 거의 비어 있어요.', ask:'클립이 어디에 몰려 붙었지?', fb:'막대자석의 극은 양쪽 끝부분이에요.'},
+          {t:'말굽자석 — 굽어 있는 부분', hint:'말굽자석에서 클립이 붙는 곳은 굽은 곳이 아니에요.', ask:'말굽자석의 두 끝은 어디를 향하고 있지?', fb:'말굽자석의 극도 양쪽 끝부분이에요.'},
+          {t:'동전 모양 자석 — 옆면 전체', hint:'동전 모양 자석에도 위와 아래가 있어요.', ask:'동전을 세워 보면 넓은 면이 몇 개지?', fb:'동전 모양 자석의 극은 양쪽 둥근 면, 곧 양쪽 끝부분이에요.'},
+          {t:'둥근 기둥 모양 자석 — 양쪽 끝부분', ok:true, fb:'맞아요. 모양이 달라져도 극은 언제나 양쪽 끝부분에 두 개예요.'},
+          {t:'고리 자석 — 가운데 구멍 안쪽', hint:'구멍은 뚫려 있을 뿐, 클립이 몰리는 곳은 아니에요.', ask:'고리 자석을 쌓을 때 서로 맞닿는 면은 어디지?', fb:'고리 자석의 극도 양쪽 끝부분(윗면과 아랫면)이에요.'}
+        ]},
+
+      { q:'막대자석의 <b>양쪽 끝부분</b>에 철 클립이 특히 많이 붙는 까닭은?', concept:'극이 가장 세게 끌어당긴다',
+        opts:[
+          {t:'양쪽 끝부분이 다른 부분보다 철을 더 세게 끌어당기기 때문이다.', ok:true, fb:'맞아요. 극은 다른 부분보다 힘이 세요. 그래서 클립이 그쪽에 몰려요.'},
+          {t:'양쪽 끝부분이 가장 무겁기 때문이다.', hint:'무게와 자석의 힘은 관계가 없어요.', ask:'무거우면 클립이 붙던가?', fb:'무게가 아니라 끌어당기는 힘이 세기 때문이에요.'},
+          {t:'양쪽 끝부분에만 색이 칠해져 있기 때문이다.', hint:'색은 사람이 보기 쉬우라고 칠한 표시일 뿐이에요.', ask:'색을 지우면 자석의 힘도 사라질까?', fb:'색은 표시일 뿐, 힘과는 상관없어요.'},
+          {t:'양쪽 끝부분이 가장 차갑기 때문이다.', hint:'온도와 자석의 힘은 관계가 없어요.', ask:'자석을 만졌을 때 끝만 차가웠나?', fb:'온도 때문이 아니에요.'},
+          {t:'양쪽 끝부분이 뾰족하기 때문이다.', hint:'끝이 둥근 자석에도 극이 있어요.', ask:'동전 모양 자석은 뾰족한가?', fb:'모양과 상관없이 극이라서 힘이 센 거예요.'}
+        ]},
+
+      { q:'N극을 나타낼 때 주로 쓰는 색깔과, 한 자석이 가지는 극의 개수를 옳게 짝 지은 것은?', concept:'극의 표시와 개수',
+        opts:[
+          {t:'빨간색 — 두 개', ok:true, fb:'맞아요. N극은 주로 빨간색, S극은 주로 파란색이고 극은 항상 두 개예요.'},
+          {t:'파란색 — 두 개', hint:'개수는 맞았어요. 색깔을 다시 보세요.', ask:'나침반 바늘의 빨간 쪽은 무슨 극이었지?', fb:'파란색은 보통 S극을 나타내요.'},
+          {t:'빨간색 — 한 개', hint:'색깔은 맞았어요. 개수를 다시 보세요.', ask:'자석에 N극만 있고 S극은 없을 수 있을까?', fb:'극은 항상 두 개예요.'},
+          {t:'파란색 — 네 개', hint:'색깔과 개수가 둘 다 달라요.', ask:'막대자석에서 클립이 몰리는 곳이 몇 군데였지?', fb:'N극은 빨간색이고, 극은 두 개예요.'},
+          {t:'노란색 — 두 개', hint:'개수는 맞았어요. 색깔을 다시 보세요.', ask:'나침반 바늘에 노란색이 있었나?', fb:'N극은 주로 빨간색으로 나타내요.'}
+        ]},
+
+      { q:'막대자석 두 개를 나란히 놓고 가까이 했을 때 <b>서로 밀어 내는</b> 경우는?', concept:'같은 극과 다른 극',
+        opts:[
+          {t:'N극과 S극을 마주 보게 놓았을 때', hint:'이 둘은 서로 다른 극이에요.', ask:'다른 극끼리는 밀까, 당길까?', fb:'다른 극끼리는 서로 끌어당겨요.'},
+          {t:'S극과 N극을 마주 보게 놓았을 때', hint:'순서만 바뀌었을 뿐 역시 다른 극이에요.', ask:'S와 N은 같은 극일까 다른 극일까?', fb:'다른 극끼리는 서로 끌어당겨요.'},
+          {t:'N극과 N극을 마주 보게 놓았을 때', ok:true, fb:'맞아요. 같은 극끼리는 서로 밀어 내요. S극과 S극도 마찬가지예요.'},
+          {t:'N극과 자석의 가운데를 마주 보게 놓았을 때', hint:'가운데는 극이 아니에요.', ask:'밀거나 당기는 힘은 어디에서 가장 셌지?', fb:'가운데는 극이 아니라서 뚜렷하게 밀어 내지 않아요.'},
+          {t:'S극과 자석의 가운데를 마주 보게 놓았을 때', hint:'가운데는 극이 아니에요.', ask:'극은 자석의 어디에 있었지?', fb:'가운데는 극이 아니라서 뚜렷하게 밀어 내지 않아요.'}
+        ]},
+
+      { q:'자석과 자석을 가까이 할 때에 대한 설명으로 <b>옳지 않은</b> 것은?', concept:'같은 극과 다른 극',
+        opts:[
+          {t:'같은 극끼리 가까이 하면 서로 밀어 낸다.', hint:'이건 맞는 설명이에요.', ask:'N극과 N극을 붙이려 하면 어땠지?', fb:'옳은 설명이에요.'},
+          {t:'다른 극끼리 가까이 하면 서로 끌어당긴다.', hint:'이것도 맞는 설명이에요.', ask:'N극과 S극은 서로 붙던가?', fb:'옳은 설명이에요.'},
+          {t:'N극과 N극을 가까이 하면 서로 끌어당긴다.', ok:true, fb:'맞아요, 이게 틀린 설명이에요. N극과 N극은 <b>같은 극</b>이라 끌어당기지 않고 밀어 내요.'},
+          {t:'S극과 S극을 가까이 하면 서로 밀어 낸다.', hint:'S극과 S극은 같은 극이에요.', ask:'같은 극끼리는 어떻게 되었지?', fb:'같은 극이라 밀어 내는 것이 맞아요.'},
+          {t:'자석 사이에서 밀어 내고 끌어당기는 힘을 자기력이라고 한다.', hint:'이 힘에는 이름이 있어요.', ask:'자석끼리 작용하는 힘을 뭐라고 불렀지?', fb:'그 힘의 이름이 자기력이 맞아요.'}
+        ]},
+
+      { q:'다음 실험 결과로 보아 ㉠은 어떤 극일까요?', concept:'극 표시가 없는 자석의 극 추리하기',
+        scene:'극 표시가 지워진 막대자석의 한쪽 끝 ㉠을 다른 막대자석의 <b>N극</b>에 가까이 했더니 두 자석이 <b>서로 끌어당겼어요.</b>',
+        opts:[
+          {t:'N극', hint:'N극과 N극이 만나면 어떻게 되었지요?', ask:'같은 극끼리는 밀까, 당길까?', fb:'N극끼리라면 밀어 냈을 거예요. 끌어당겼으니 다른 극이에요.'},
+          {t:'극이 없는 부분', hint:'자석의 끝부분은 언제나 극이에요.', ask:'극이 없는 자석이 있을까?', fb:'자석의 양쪽 끝은 반드시 극이에요.'},
+          {t:'N극과 S극이 함께 있는 부분', hint:'한 끝에 두 극이 같이 있을 수는 없어요.', ask:'막대자석의 한쪽 끝은 몇 개의 극일까?', fb:'한쪽 끝에는 한 가지 극만 있어요.'},
+          {t:'S극', ok:true, fb:'맞아요. 끌어당겼다는 건 서로 <b>다른 극</b>이라는 뜻이에요. 상대가 N극이었으니 ㉠은 S극이에요.'},
+          {t:'이 실험만으로는 알 수 없다', hint:'끌어당겼다는 사실 하나로 알아낼 수 있어요.', ask:'끌어당기는 건 같은 극일 때였나, 다른 극일 때였나?', fb:'끌어당겼으니 다른 극, 곧 S극이라고 알 수 있어요.'}
+        ]},
+
+      { q:'고리 자석을 막대에 끼워 탑을 <b>가장 높게</b> 쌓는 방법은?', concept:'고리 자석 탑 쌓기',
+        opts:[
+          {t:'고리 자석의 다른 극끼리 마주 보게 놓는다.', hint:'다른 극끼리는 서로 끌어당겨요. 그러면 딱 붙겠지요?', ask:'붙으면 탑이 높아질까, 낮아질까?', fb:'다른 극끼리 놓으면 딱 붙어서 탑이 가장 낮아져요.'},
+          {t:'고리 자석을 옆으로 눕혀 놓는다.', hint:'막대에 끼우는 방향은 정해져 있어요.', ask:'눕히면 막대에 끼울 수 있을까?', fb:'눕히는 것과 탑 높이는 관계가 없어요.'},
+          {t:'고리 자석 사이마다 종이를 끼워 놓는다.', hint:'종이는 얇고, 자석의 힘을 막지도 못해요.', ask:'종이가 있어도 자석끼리는 서로 힘을 주고받았지?', fb:'종이를 끼워도 자석끼리 붙는 것은 막지 못해요.'},
+          {t:'고리 자석을 하나씩 떨어뜨려 놓는다.', hint:'손을 떼면 자석은 저절로 움직여요.', ask:'손을 놓으면 자석들이 그 자리에 그대로 있을까?', fb:'떨어뜨려 놓아도 손을 놓으면 서로 붙거나 밀려서 자리를 잡아요.'},
+          {t:'고리 자석의 같은 극끼리 마주 보게 놓는다.', ok:true, fb:'맞아요. 같은 극끼리 마주 보면 서로 밀어 내서 사이가 벌어져요. 그래서 탑이 가장 높아져요.'}
+        ]},
+
+      { q:'막대자석의 <b>N극</b>을 나침반에 가까이 가져갔을 때 나침반 바늘은?', concept:'자석 주변에 놓인 나침반',
+        opts:[
+          {t:'빨간색 부분 <b>반대쪽</b>이 자석의 N극을 가리킨다.', ok:true, fb:'맞아요. 빨간색 부분은 N극이라 자석의 N극과 밀어 내요. 그래서 반대쪽(S극)이 자석을 향해요.'},
+          {t:'빨간색 부분이 자석의 N극을 가리킨다.', hint:'나침반 바늘의 빨간색 부분이 무슨 극인지 떠올려 보세요.', ask:'N극과 N극이 만나면 밀까, 당길까?', fb:'빨간색은 N극이라 자석의 N극과는 밀어 내요. 반대쪽이 자석을 향해요.'},
+          {t:'나침반 바늘이 움직이지 않는다.', hint:'나침반 바늘도 자석이라 반드시 반응해요.', ask:'자석을 가까이 했을 때 바늘이 가만히 있던가?', fb:'바늘은 자석의 극을 향해 움직여요.'},
+          {t:'나침반 바늘이 멈추지 않고 계속 돈다.', hint:'바늘은 곧 방향을 잡고 멈춰요.', ask:'실제로 해보면 바늘이 계속 돌던가?', fb:'잠시 흔들리다가 자석의 극을 가리키며 멈춰요.'},
+          {t:'바늘의 양쪽 끝이 모두 자석 쪽을 가리킨다.', hint:'바늘은 하나라서 한쪽만 자석을 향할 수 있어요.', ask:'바늘의 두 끝이 동시에 같은 곳을 볼 수 있을까?', fb:'한쪽 끝만 자석을 향해요.'}
+        ]},
+
+      { q:'막대자석의 <b>S극</b>을 나침반에 가까이 가져갔을 때 나침반 바늘은?', concept:'자석 주변에 놓인 나침반',
+        opts:[
+          {t:'빨간색 부분이 자석의 S극을 가리킨다.', ok:true, fb:'맞아요. 빨간색 부분은 N극이고, 자석의 S극과는 다른 극이라 서로 끌어당겨요. 바로 앞 문제와 정반대예요.'},
+          {t:'빨간색 부분 반대쪽이 자석의 S극을 가리킨다.', hint:'빨간색 반대쪽은 S극이에요. S극과 S극이 만나면?', ask:'같은 극끼리는 밀까, 당길까?', fb:'S극끼리는 밀어 내요. 끌려오는 쪽은 빨간색 부분(N극)이에요.'},
+          {t:'나침반 바늘이 움직이지 않는다.', hint:'나침반 바늘도 자석이에요.', ask:'자석을 대면 바늘이 반응했지?', fb:'바늘은 자석의 극을 향해 움직여요.'},
+          {t:'나침반 바늘이 멈추지 않고 계속 돈다.', hint:'바늘은 방향을 잡고 멈춰요.', ask:'실제로 바늘이 계속 돌던가?', fb:'잠시 흔들리다 멈춰요.'},
+          {t:'나침반 바늘이 자석에서 가장 먼 쪽을 가리킨다.', hint:'자석과 바늘은 서로 밀거나 당겨요.', ask:'다른 극끼리는 어떻게 되었지?', fb:'S극에는 바늘의 N극(빨간색)이 끌려와요.'}
+        ]},
+
+      { q:'자석 주변에서 나침반 바늘이 움직이는 까닭은?', concept:'나침반 바늘도 자석이다',
+        opts:[
+          {t:'나침반 바늘이 가벼워 바람에 흔들리기 때문이다.', hint:'바람이 없는 곳에서도 바늘은 움직여요.', ask:'유리로 덮인 나침반에도 바람이 들어갈까?', fb:'바람 때문이 아니에요.'},
+          {t:'나침반의 유리가 자석을 끌어당기기 때문이다.', hint:'유리는 자석에 붙지 않아요.', ask:'유리로 된 물체가 자석에 붙던가?', fb:'유리는 자석과 아무 상관이 없어요.'},
+          {t:'나침반 바늘에는 자석의 극이 없기 때문이다.', hint:'거꾸로예요. 바늘에는 극이 있어요.', ask:'바늘의 빨간 쪽은 무슨 극이었지?', fb:'바늘에는 N극과 S극이 있어요.'},
+          {t:'나침반 바늘도 자석이기 때문이다.', ok:true, fb:'맞아요. 바늘 자체가 작은 자석이라서, 자석과 밀고 당기며 극을 가리켜요.'},
+          {t:'나침반 바늘이 플라스틱으로 되어 있기 때문이다.', hint:'플라스틱은 자석과 상관이 없어요.', ask:'플라스틱이 자석에 붙던가?', fb:'바늘은 플라스틱이 아니라 자석이에요.'}
+        ]},
+
+      { q:'나침반에 가까이 가져갔던 막대자석을 <b>멀리 치웠을 때</b> 나침반 바늘은?', concept:'자석을 치웠을 때의 나침반',
+        opts:[
+          {t:'자석을 치운 자리에 그대로 멈춰 있다.', hint:'나침반은 원래 하던 일이 있었어요.', ask:'자석이 없을 때 나침반은 어디를 가리켰지?', fb:'자석이 사라지면 바늘은 원래 방향으로 돌아가요.'},
+          {t:'원래 가리키던 방향의 반대쪽을 가리킨다.', hint:'방향이 뒤집힐 이유가 없어요.', ask:'북쪽이 갑자기 남쪽이 될까?', fb:'반대쪽이 아니라 원래 방향으로 돌아가요.'},
+          {t:'멈추지 않고 계속 돈다.', hint:'바늘은 곧 자리를 잡아요.', ask:'가만히 두면 바늘이 멈추던가?', fb:'잠시 흔들리다 원래 방향에서 멈춰요.'},
+          {t:'치운 자석을 따라 계속 움직인다.', hint:'자석이 멀어지면 힘도 약해져요.', ask:'자석이 아주 멀어져도 바늘이 따라갈까?', fb:'멀어지면 더 이상 따라가지 않아요.'},
+          {t:'원래 가리키던 방향으로 되돌아간다.', ok:true, fb:'맞아요. 자석을 치우면 바늘은 다시 북쪽과 남쪽을 가리켜요.'}
+        ]},
+
+      { q:'나침반에 대한 설명으로 옳은 것은?', concept:'나침반의 극과 방향',
+        opts:[
+          {t:'빨간색 부분은 S극이고 남쪽을 가리킨다.', hint:'극과 방향이 둘 다 바뀌었어요.', ask:'빨간색은 무슨 극이었지?', fb:'빨간색 부분은 N극이고 북쪽을 가리켜요.'},
+          {t:'빨간색 부분은 N극이고 북쪽을 가리킨다.', ok:true, fb:'맞아요. 빨간색 = N극 = 북쪽, 빨간색 반대쪽 = S극 = 남쪽이에요.'},
+          {t:'나침반은 자석이 아무 방향이나 가리키는 성질을 이용한 도구이다.', hint:'아무 방향이나 가리키면 길을 찾을 수 없겠지요.', ask:'나침반이 매번 다른 곳을 가리키면 쓸모가 있을까?', fb:'나침반은 자석이 <b>일정한</b> 방향을 가리키는 성질을 이용해요.'},
+          {t:'나침반 바늘에는 자석의 극이 없다.', hint:'바늘 자체가 작은 자석이에요.', ask:'자석에 극이 없을 수 있을까?', fb:'바늘에도 N극과 S극이 있어요.'},
+          {t:'빨간색 부분 반대쪽이 N극이다.', hint:'앞뒤가 바뀌었어요.', ask:'빨간색으로 칠하는 극이 무엇이었지?', fb:'빨간색 부분이 N극이고, 반대쪽이 S극이에요.'}
+        ]},
+
+      { q:'막대자석을 물에 띄워 자유롭게 움직이게 했어요. 멈추었을 때의 모습으로 옳은 것은?', concept:'자유롭게 움직이는 자석의 방향',
+        opts:[
+          {t:'N극은 동쪽, S극은 서쪽을 가리킨다.', hint:'자석이 가리키는 방향은 정해져 있어요.', ask:'나침반 바늘은 어느 쪽을 가리켰지?', fb:'동서가 아니라 북쪽과 남쪽이에요.'},
+          {t:'N극은 남쪽, S극은 북쪽을 가리킨다.', hint:'방향이 서로 바뀌었어요.', ask:'나침반의 빨간색(N극)은 어느 쪽을 가리켰지?', fb:'N극이 북쪽, S극이 남쪽이에요.'},
+          {t:'N극은 북쪽, S극은 남쪽을 가리킨다.', ok:true, fb:'맞아요. 그래서 자석으로 나침반을 만들 수 있어요.'},
+          {t:'띄울 때마다 다른 방향을 가리킨다.', hint:'매번 같은 방향을 가리켜야 나침반으로 쓸 수 있어요.', ask:'여러 번 해봐도 같은 쪽을 가리켰지?', fb:'항상 북쪽과 남쪽을 가리켜요.'},
+          {t:'멈추지 않고 계속 회전한다.', hint:'물 위에서도 자석은 곧 자리를 잡아요.', ask:'가만히 기다리면 멈추던가?', fb:'흔들리다가 북쪽과 남쪽을 향해 멈춰요.'}
+        ]},
+
+      { q:'다음 실험의 결과와 그 까닭으로 옳은 것은?', concept:'철이 자석의 성질을 띠게 되는 것',
+        scene:'철 머리핀을 클립에 대었더니 클립이 붙지 않았어요. 이 머리핀을 막대자석의 한쪽 극에 <b>1분 동안 붙여 두었다가</b> 떼어 낸 뒤, 다시 클립에 대어 보았어요.',
+        opts:[
+          {t:'클립이 붙지 않는다 — 철 머리핀은 자석의 성질을 띨 수 없기 때문이다.', hint:'철은 자석에 붙여 두면 달라져요.', ask:'자석에 오래 붙여 둔 철은 어떻게 되었지?', fb:'철은 자석에 붙여 두면 자석의 성질을 띠게 돼요.'},
+          {t:'클립이 밀려난다 — 철 머리핀과 클립이 같은 극이 되었기 때문이다.', hint:'클립은 자석이 아니라 그냥 철이에요.', ask:'클립에 N극과 S극이 있을까?', fb:'클립은 자석이 아니라서 밀려나지 않고 붙어요.'},
+          {t:'클립의 색깔이 변한다 — 자석의 색이 옮았기 때문이다.', hint:'자석은 색을 옮기지 않아요.', ask:'자석에 닿았다고 물건 색이 변한 적이 있나?', fb:'색과는 아무 관계가 없어요.'},
+          {t:'클립이 붙는다 — 철 머리핀이 자석의 성질을 띠게 되었기 때문이다.', ok:true, fb:'맞아요. 철로 된 물체를 자석에 붙여 두면 그 물체도 자석의 성질을 띠게 돼요. 이걸로 나침반을 만들 수 있어요.'},
+          {t:'철 머리핀이 휘어진다 — 자석이 철을 구부리기 때문이다.', hint:'자석은 철을 구부리지 못해요.', ask:'자석에 붙였던 클립이 휘어져 있던가?', fb:'모양은 그대로예요. 달라지는 건 자석의 성질이에요.'}
+        ]},
+
+      { q:'철 머리핀으로 만든 나침반이 잘 만들어졌는지 확인하는 방법은?', concept:'나침반 만들기와 확인',
+        opts:[
+          {t:'물에 가라앉는지 확인한다.', hint:'가라앉으면 방향을 볼 수가 없어요.', ask:'나침반은 무엇을 알려 주는 도구였지?', fb:'뜨고 가라앉는 것과 나침반의 성능은 관계가 없어요.'},
+          {t:'색깔이 변하는지 확인한다.', hint:'자석이 되어도 색은 그대로예요.', ask:'자석에 붙였던 머리핀 색이 변했나?', fb:'색으로는 알 수 없어요.'},
+          {t:'소리가 나는지 확인한다.', hint:'자석은 소리를 내지 않아요.', ask:'자석에서 소리가 났었나?', fb:'소리로는 알 수 없어요.'},
+          {t:'물에 띄웠을 때 항상 일정한 방향을 가리키는지 확인한다.', ok:true, fb:'맞아요. 몇 번을 해도 같은 방향(북쪽과 남쪽)을 가리켜야 제대로 만든 나침반이에요.'},
+          {t:'무게가 늘었는지 확인한다.', hint:'자석의 성질을 띠어도 무게는 그대로예요.', ask:'머리핀이 무거워졌을까?', fb:'무게로는 알 수 없어요.'}
+        ]},
+
+      { q:'자석을 이용한 생활용품과, 자석이 들어 있는 위치를 옳게 짝 지은 것은?', concept:'생활용품 속 자석의 위치',
+        opts:[
+          {t:'자석 필통 — 필통의 바닥', hint:'필통에서 자석이 필요한 곳은 어디일까요?', ask:'필통을 쓸 때 딸깍 닫히는 곳이 어디지?', fb:'자석은 필통을 열고 닫는 부분에 있어요.'},
+          {t:'자석 전단지 — 전단지의 앞면', hint:'앞면은 글씨가 보여야 하는 쪽이에요.', ask:'냉장고에 붙일 때 어느 면이 냉장고에 닿지?', fb:'자석은 뒷면에 있어요.'},
+          {t:'자석 필통 — 필통을 열고 닫는 부분', ok:true, fb:'맞아요. 뚜껑이 딸깍 닫히도록 그 부분에 자석을 넣어요.'},
+          {t:'자석 걸고리 — 걸고리의 앞면', hint:'걸고리는 벽이나 철판에 붙여서 써요.', ask:'걸고리에서 벽에 닿는 면은 어느 쪽이지?', fb:'자석은 뒷면에 있어요.'},
+          {t:'자석 블록 — 블록의 한가운데', hint:'블록끼리 이어 붙이는 곳을 생각해 보세요.', ask:'블록은 어디끼리 서로 붙지?', fb:'자석은 블록의 끝부분에 있어요.'}
+        ]},
+
+      { q:'다음 물건들에 <b>공통으로</b> 이용된 자석의 성질은?', concept:'생활 속 자석 · 철을 끌어당기는 성질',
+        scene:'자석 클립 통　·　자석 공구 걸이　·　자석 칠판',
+        opts:[
+          {t:'철로 된 물체를 끌어당기는 성질', ok:true, fb:'맞아요. 셋 다 클립·공구·자석 글자처럼 철로 된 것을 붙여 두는 물건이에요.'},
+          {t:'같은 극끼리 밀어 내는 성질', hint:'클립이나 공구에 극이 있을까요?', ask:'클립도 자석일까?', fb:'붙는 쪽은 그냥 철이라 극이 없어요.'},
+          {t:'다른 극끼리 끌어당기는 성질', hint:'양쪽이 다 자석이어야 극끼리 당길 수 있어요.', ask:'공구도 자석인가?', fb:'한쪽만 자석이므로 철을 끌어당기는 성질이에요.'},
+          {t:'일정한 방향을 가리키는 성질', hint:'이 물건들이 방향을 알려 주지는 않아요.', ask:'자석 칠판이 북쪽을 알려 주던가?', fb:'방향을 가리키는 성질은 나침반 쪽이에요.'},
+          {t:'물에 뜨는 성질', hint:'물과는 관계가 없는 물건들이에요.', ask:'자석 칠판을 물에 띄우나?', fb:'물에 뜨는 것과는 상관없어요.'}
+        ]},
+
+      { q:'다음 물건들에 <b>공통으로</b> 이용된 자석의 성질은?', concept:'생활 속 자석 · 극끼리 밀고 당기는 성질',
+        scene:'자석 신발끈 매듭기　·　자석 커튼 집게　·　가방 자석 단추',
+        opts:[
+          {t:'철로 된 물체를 끌어당기는 성질', hint:'이 물건들은 양쪽에 모두 자석이 붙어 있어요.', ask:'단추의 두 짝은 각각 무엇일까?', fb:'양쪽이 다 자석이라 극끼리 작용하는 성질을 써요.'},
+          {t:'같은 극끼리 밀어 내고 다른 극끼리 끌어당기는 성질', ok:true, fb:'맞아요. 자석 두 개를 서로 맞물려 채우는 물건들이에요.'},
+          {t:'일정한 방향을 가리키는 성질', hint:'이 물건들이 북쪽을 알려 주지는 않아요.', ask:'가방 단추가 방향을 가리키던가?', fb:'방향과는 관계가 없어요.'},
+          {t:'물에 뜨는 성질', hint:'물과는 관계가 없어요.', ask:'커튼 집게를 물에 띄우나?', fb:'물에 뜨는 것과는 상관없어요.'},
+          {t:'열을 잘 전달하는 성질', hint:'자석과 열은 관계가 없어요.', ask:'자석 단추가 뜨거워지던가?', fb:'열과는 상관없어요.'}
+        ]},
+
+      { q:'자석이 <b>일정한 방향을 가리키는 성질</b>을 이용한 물건은?', concept:'생활 속 자석 · 방향을 가리키는 성질',
+        opts:[
+          {t:'자석 클립 통', hint:'이건 무언가를 붙여 두는 물건이에요.', ask:'클립 통이 북쪽을 알려 주던가?', fb:'철을 끌어당기는 성질을 이용한 물건이에요.'},
+          {t:'자석 신발끈 매듭기', hint:'이건 두 짝을 맞물려 채우는 물건이에요.', ask:'신발끈이 방향을 알려 줄까?', fb:'극끼리 밀고 당기는 성질을 이용한 물건이에요.'},
+          {t:'자석 커튼 집게', hint:'이것도 두 짝을 맞물려 채우는 물건이에요.', ask:'커튼 집게가 북쪽을 알려 주나?', fb:'극끼리 밀고 당기는 성질을 이용한 물건이에요.'},
+          {t:'자석 칠판', hint:'이건 철로 된 글자를 붙이는 물건이에요.', ask:'칠판이 방향을 알려 주던가?', fb:'철을 끌어당기는 성질을 이용한 물건이에요.'},
+          {t:'나침반이 있는 등산용 시계', ok:true, fb:'맞아요. 나침반은 자석이 항상 북쪽과 남쪽을 가리키는 성질을 이용한 것이에요.'}
+        ]}
+    ];
+
+    let state = [], doneCount = 0;
+
+    function resetState(){
+      state = QUIZ.map(()=>({tries:0,done:false,firstOk:false,secondOk:false}));
+      doneCount = 0;
+      updateProgress();
+    }
+
+    function updateProgress(){
+      const pct = Math.round(doneCount / QUIZ.length * 100);
+      document.getElementById('pfill').style.width = pct + '%';
+      document.getElementById('ptext').textContent = doneCount + ' / ' + QUIZ.length + ' 문제 풀었어요';
+    }
+
+    function renderQuiz(){
+      const box = document.getElementById('quiz');
+      box.innerHTML = '';
+      QUIZ.forEach((item,qi)=>{
+        const card = document.createElement('article');
+        card.className = 'q-card';
+        let head = '<div class="q-num">'+(qi+1)+' / '+QUIZ.length+'</div><div class="q-text">'+item.q+'</div>';
+        if(item.scene) head += '<div class="q-scene">'+item.scene+'</div>';
+        card.innerHTML = head;
+        item.opts.forEach((opt,oi)=>{
+          const button = document.createElement('button');
+          button.type = 'button';
+          button.className = 'opt';
+          button.innerHTML = '<b style="color:#6B6862">'+(oi+1)+'.</b> '+opt.t;
+          button.addEventListener('click',()=>pick(qi,oi,card));
+          card.appendChild(button);
+        });
+        const fb = document.createElement('div');
+        fb.className = 'fb'; fb.id = 'fb-'+qi;
+        fb.setAttribute('aria-live','polite');
+        card.appendChild(fb);
+        box.appendChild(card);
+      });
+    }
+
+    function lockAndReveal(card,item,chosenIndex){
+      card.querySelectorAll('.opt').forEach((button,index)=>{
+        button.disabled = true;
+        if(item.opts[index].ok) button.classList.add('correct');
+        if(index===chosenIndex && !item.opts[index].ok) button.classList.add('wrong');
+      });
+    }
+
+    function pick(qi,oi,card){
+      const item = QUIZ[qi];
+      const chosen = item.opts[oi];
+      const current = state[qi];
+      const fb = document.getElementById('fb-'+qi);
+      if(current.done) return;
+      current.tries += 1;
+
+      if(chosen.ok && current.tries===1){
+        current.firstOk = true; current.done = true; doneCount += 1;
+        lockAndReveal(card,item,oi);
+        fb.className = 'fb show ok';
+        fb.innerHTML = '<b>맞았어요!</b>'+chosen.fb+'<span class="ask">이유를 한 문장으로 말해보면 더 오래 기억나요.</span>';
+      }else if(!chosen.ok && current.tries===1){
+        const buttons = card.querySelectorAll('.opt');
+        buttons[oi].classList.add('tried');
+        buttons[oi].disabled = true;
+        fb.className = 'fb show hint';
+        fb.innerHTML = '<b>잠깐, 아직 답은 보여주지 않을게요.</b>'+chosen.hint+'<span class="ask">'+chosen.ask+'</span><span class="again">힌트를 보고 남은 답에서 한 번 더 골라봐요.</span>';
+        return;
+      }else{
+        current.done = true;
+        current.secondOk = Boolean(chosen.ok);
+        doneCount += 1;
+        lockAndReveal(card,item,oi);
+        if(chosen.ok){
+          fb.className = 'fb show ok';
+          fb.innerHTML = '<b>다시 보고 찾았어요!</b>'+chosen.fb+'<span class="ask">고쳐 찾은 것도 중요한 배움이에요.</span>';
+        }else{
+          fb.className = 'fb show no';
+          fb.innerHTML = '<b>여기는 함께 한 번 더 봐요.</b>'+chosen.fb+'<span class="ask">위쪽 카드로 돌아가 그 부분을 다시 읽어보세요.</span>';
+        }
+      }
+      updateProgress();
+      if(doneCount===QUIZ.length) showResult();
+    }
+
+    function showResult(){
+      const first = state.filter(s=>s.firstOk).length;
+      const second = state.filter(s=>s.secondOk).length;
+      const review = state.filter(s=>s.done && !s.firstOk && !s.secondOk).length;
+      let line = QUIZ.length+'개 중 처음에 '+first+'개를 찾았어요.';
+      if(second) line += ' 힌트 뒤에 '+second+'개를 더 찾았어요.';
+      if(review) line += ' '+review+'개는 함께 다시 볼 거예요.';
+      document.getElementById('score-line').textContent = line;
+      document.getElementById('score-msg').textContent = review===0
+        ? '한 번에 맞힌 것과 다시 찾아낸 것을 모두 잘 해냈어요. 며칠 뒤에 한 번 더 풀어보면 오래 남아요.'
+        : '틀린 문제는 실패가 아니라 다음에 볼 곳을 알려준 표시예요. 아래 개념부터 다시 이야기해보세요.';
+
+      const concepts = [];
+      state.forEach((s,index)=>{
+        if(!s.firstOk && concepts.indexOf(QUIZ[index].concept)===-1) concepts.push(QUIZ[index].concept);
+      });
+      const wrap = document.getElementById('review-wrap');
+      const list = document.getElementById('review-list');
+      list.innerHTML = '';
+      if(concepts.length){
+        concepts.forEach(concept=>{
+          const li = document.createElement('li');
+          li.textContent = concept;
+          list.appendChild(li);
+        });
+        wrap.hidden = false;
+      }else{ wrap.hidden = true; }
+      const result = document.getElementById('result');
+      result.classList.add('show');
+      result.scrollIntoView({behavior:'smooth',block:'start'});
+    }
+
+    function restartQuiz(){
+      document.getElementById('result').classList.remove('show');
+      resetState();
+      renderQuiz();
+      document.getElementById('quiz').scrollIntoView({behavior:'smooth',block:'start'});
+    }
+
+    resetState();
+    renderQuiz();
+  </script>
+</body>
+</html>
