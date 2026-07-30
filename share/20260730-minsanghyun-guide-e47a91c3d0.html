@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>오늘 함께 한 것 정리 | HAM MEDIA</title>
+  <style>
+    :root{
+      --ivory:#F7F4EE; --paper:#FFFFFF; --ink:#171717; --muted:#6B6862; --line:#E7E1D7;
+      --sky:#3B82F6; --sky-soft:#EAF3FF; --green:#4ADE80; --green-soft:#EAFBF0;
+      --yellow:#FACC15; --yellow-soft:#FFF8D6;
+      --shadow:0 14px 34px rgba(23,23,23,.08);
+      --glass:rgba(249,247,243,.66); --glass-edge:rgba(255,255,255,.88);
+      --glow-a:rgba(59,130,246,.16); --glow-b:rgba(250,204,21,.20); --glow-c:rgba(74,222,128,.14);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;line-height:1.78;word-break:keep-all;
+      background:
+        radial-gradient(circle at 88% 0%, var(--glow-b), transparent 30rem),
+        radial-gradient(circle at 4% 20%, var(--glow-a), transparent 26rem),
+        radial-gradient(circle at 70% 70%, var(--glow-c), transparent 32rem),
+        var(--ivory);
+    }
+    .topbar{height:8px;background:linear-gradient(90deg,var(--sky) 0 42%,var(--green) 42% 74%,var(--yellow) 74%)}
+    .wrap{width:min(760px,calc(100% - 32px));margin:0 auto}
+    header{padding:48px 0 24px}
+    .glass{
+      border:1px solid var(--glass-edge);
+      background:linear-gradient(145deg, rgba(255,255,255,.14), transparent 46%), var(--glass);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 14px 34px rgba(23,23,23,.08);
+      backdrop-filter: blur(20px) saturate(145%);
+      -webkit-backdrop-filter: blur(20px) saturate(145%);
+      border-radius:26px; padding:26px 26px 22px;
+    }
+    @media(prefers-reduced-transparency: reduce){
+      .glass{ backdrop-filter:none; -webkit-backdrop-filter:none; background:var(--paper) }
+    }
+    .eyebrow{font-size:13px;font-weight:900;letter-spacing:.12em;color:var(--sky);text-transform:uppercase}
+    h1{font-size:clamp(28px,5vw,42px);line-height:1.22;margin:12px 0 14px;letter-spacing:-.03em}
+    .lead{font-size:18px;color:#383633;margin:0}
+    section{margin:36px 0}
+    h2{font-size:21px;margin:0 0 12px;letter-spacing:-.02em}
+    .quote{
+      background:var(--ink);color:#fff;border-radius:22px;padding:24px 26px;margin:14px 0;
+      font-size:19px;font-weight:800;line-height:1.55;
+    }
+    .quote span{display:block;margin-top:8px;font-size:14px;font-weight:600;color:#ccc}
+    .step-card{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:22px 24px;margin-bottom:14px;box-shadow:var(--shadow)}
+    .step-card h3{font-size:18px;margin:0 0 8px}
+    .step-card p{margin:5px 0;font-size:16px;color:#2c2a27}
+    .callout{background:var(--yellow-soft);border-left:5px solid var(--yellow);border-radius:0 16px 16px 0;padding:16px 18px;margin:16px 0;font-size:15.5px}
+    .callout b{display:block;margin-bottom:4px}
+    .promptbox{
+      background:#0d1117;color:#d7e0ea;border-radius:16px;padding:18px 20px;margin:14px 0;
+      font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:14.5px;line-height:1.7;white-space:pre-wrap;
+    }
+    .closing{
+      background:var(--sky-soft);border:1px solid rgba(59,130,246,.3);border-radius:20px;padding:22px 24px;margin:18px 0;
+    }
+    footer{border-top:1px solid var(--line);padding:24px 0 50px;color:var(--muted);font-size:13.5px}
+  </style>
+</head>
+<body>
+  <div class="topbar"></div>
+  <header class="wrap">
+    <div class="glass" style="margin-top:22px">
+      <div class="eyebrow">HAM MEDIA · 오늘 정리</div>
+      <h1>민상현 대표님, 오늘 함께 한 것 정리</h1>
+      <p class="lead">파는 얘기가 아니라, 오늘 옆에서 직접 보여드린 것만 다시 정리했어요.</p>
+    </div>
+  </header>
+
+  <main class="wrap">
+
+    <section>
+      <h2>오늘 눈으로 본 것</h2>
+      <p>같은 질문을 네이버 검색과 GPT에 각각 시켰습니다. 낯선 GPT는 검색과 다를 게 없었지만,
+      지금까지 대화해 온 GPT는 대표님 상황을 알고 있어서 더 맞는 답을 줬습니다.</p>
+      <div class="quote">
+        "너를 다 보여주면 AI도 너한테 다 보여줄 거야."
+        <span>오늘 대표님이 직접 하신 말씀입니다.</span>
+      </div>
+      <p>이 차이는 실력이 아니라 <b>시간과 구조</b>에서 옵니다. 오래 대화해서 나를 아는 AI가 됐고,
+      일도 나눠서 여러 자리에 맡겼기 때문입니다. 처음 쓰는 사람의 GPT는 태어난 지 하루도 안 된 것과 같습니다.</p>
+    </section>
+
+    <section>
+      <h2>노션은 메모장입니다</h2>
+      <p>노션에 사진을 잔뜩 넣고 예쁘게 꾸미려 하지 않아도 됩니다. 노션의 목적은 하나 —
+      <b>GPT와 나눈 대화를 정리해서 담아두는 것</b>입니다.</p>
+      <div class="step-card">
+        <h3>직접 채우지 말고, GPT한테 정리시키세요</h3>
+        <p>오늘 하신 것처럼 "고기로 1-1"과 배우자분 사업 페이지를 <b>따로</b> 만들어두는 게 맞습니다.
+        섞이면 나중에 찾기 힘듭니다.</p>
+      </div>
+      <div class="callout">
+        <b>오늘 처음 겪으신 것</b>
+        계정 로그인(Apple ID·구글·Notion), 파일 경로 찾기, 스크린샷, 복사·붙여넣기 —
+        여기서 막히는 건 대표님만 그런 게 아닙니다. 비개발자면 다 겪는 첫 계단입니다.
+      </div>
+    </section>
+
+    <section>
+      <h2>혼자 대화로 정리해보고 싶으실 때</h2>
+      <p>아래 문장을 그대로 복사해서 GPT에 붙여넣고 대화를 시작해보세요.
+      가게 상황을 대표님이 직접 타이핑으로 정리하지 않아도, 말하듯 대화하면 GPT가 정리해줍니다.</p>
+      <div class="promptbox">나는 원주에서 고기 전문점(고기로 1-1)을 운영하고 있어요.
+지금 상황을 대화로 정리하고 싶어요.
+
+먼저 나한테 하나씩 물어봐줘:
+- 지금 제일 힘든 것부터
+- 요즘 잘 되고 있는 것
+- 앞으로 하고 싶은 것
+
+내가 대답하면, 대화가 끝난 뒤에 이걸 노션에 붙여넣을 수 있게
+짧은 문단으로 정리해줘. 꾸며내지 말고 내가 말한 것만 바탕으로.</div>
+      <p style="font-size:14.5px;color:var(--muted)">말로 주절주절 얘기하듯 답하시면 됩니다. 한 번에 정리된 문장을 만들려고 하지 마세요 —
+      그건 GPT가 할 일입니다.</p>
+    </section>
+
+    <section>
+      <div class="closing">
+        <h2 style="margin-bottom:8px">막히면, 그때 말씀하세요</h2>
+        <p style="margin:0">시간을 두고 혼자 고민하시면 시간이 부족해집니다. 하다 보면 또 막힐 거예요 — 저희도 비개발자라
+        똑같이 겪습니다. 그런데 넘어갈 수 있습니다. <b>지름길이 필요하시면 그때 알려주세요.</b></p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="wrap">
+    HAM MEDIA · 2026-07-30 · 이 문서는 안내입니다. 편하게 다시 물어보셔도 됩니다.
+  </footer>
+</body>
+</html>
