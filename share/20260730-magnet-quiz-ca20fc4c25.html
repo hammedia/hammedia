@@ -11,11 +11,39 @@
       --sky:#3B82F6; --sky-soft:#EAF3FF; --green:#4ADE80; --green-soft:#EAFBF0;
       --yellow:#FACC15; --yellow-soft:#FFF8D6; --red:#EF4444; --red-soft:#FFF0F0;
       --shadow:0 14px 34px rgba(23,23,23,.08);
+      --glass:rgba(249,247,243,.66); --glass-strong:rgba(249,247,243,.82); --glass-edge:rgba(255,255,255,.88);
+      --glass-dark:rgba(26,27,34,.66); --glass-dark-edge:rgba(255,255,255,.14);
+      --glow-a:rgba(59,130,246,.16); --glow-b:rgba(250,204,21,.20); --glow-c:rgba(239,68,68,.10);
     }
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
-    body{margin:0;background:var(--ivory);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;line-height:1.65;word-break:keep-all}
+    body{
+      margin:0;color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;line-height:1.65;word-break:keep-all;
+      background:
+        radial-gradient(circle at 86% 2%, var(--glow-b), transparent 34rem),
+        radial-gradient(circle at 4% 22%, var(--glow-a), transparent 30rem),
+        radial-gradient(circle at 60% 60%, var(--glow-c), transparent 40rem),
+        var(--ivory);
+    }
     button{font:inherit}
+    .glass{
+      border:1px solid var(--glass-edge);
+      background:linear-gradient(145deg, rgba(255,255,255,.14), transparent 46%), var(--glass);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 14px 34px rgba(23,23,23,.08);
+      backdrop-filter: blur(20px) saturate(145%);
+      -webkit-backdrop-filter: blur(20px) saturate(145%);
+    }
+    .glass-dark{
+      border:1px solid var(--glass-dark-edge);
+      background:linear-gradient(145deg, rgba(255,255,255,.08), transparent 46%), var(--glass-dark);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 14px 34px rgba(0,0,0,.24);
+      backdrop-filter: blur(22px) saturate(140%);
+      -webkit-backdrop-filter: blur(22px) saturate(140%);
+    }
+    @media(prefers-reduced-transparency: reduce){
+      .glass,.glass-dark{ backdrop-filter:none; -webkit-backdrop-filter:none; background:var(--paper) }
+      .glass-dark{ background:var(--ink) }
+    }
     .topbar{height:8px;background:linear-gradient(90deg,var(--red) 0 42%,var(--sky) 42% 74%,var(--yellow) 74%)}
     .wrap{width:min(1080px,calc(100% - 32px));margin:0 auto}
     header{padding:54px 0 34px}
@@ -84,6 +112,19 @@
     footer{border-top:1px solid var(--line);padding:28px 0 55px;color:var(--muted);font-size:14px}
     .human-check{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:14px}
     .human-check div{padding:12px;border-radius:13px;background:var(--ivory)}
+
+    .hero{padding:30px 30px 28px;border-radius:30px;margin-top:26px}
+    header.wrap{padding:0 0 34px}
+    .hero.glass,.notice.glass,.card.glass{
+      background:linear-gradient(145deg, rgba(255,255,255,.14), transparent 46%), var(--glass);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 14px 34px rgba(23,23,23,.08);
+    }
+    .quiz-intro.glass-dark{
+      background:linear-gradient(145deg, rgba(255,255,255,.08), transparent 46%), var(--glass-dark);
+      color:#fff;
+    }
+    .quiz-intro.glass-dark h2{color:#fff}
+    .quiz-intro.glass-dark p{color:#eee}
     @media(max-width:900px){ .grid{grid-template-columns:1fr} }
     @media(max-width:760px){
       .quiz-grid{grid-template-columns:1fr}
@@ -101,19 +142,21 @@
 <body>
   <div class="topbar"></div>
   <header class="wrap">
-    <div class="eyebrow">HAM MEDIA ACADEMY · 초등 과학 3-1</div>
-    <h1>자석 개념 탐험대</h1>
-    <p class="lead">3단원 「자석의 이용」 전체를 25문제로 확인해요. 처음에 틀려도 괜찮아요. 답을 바로 보여주지 않고 힌트를 먼저 줄 테니, 한 번 더 골라보세요.</p>
-    <div class="chips">
-      <span class="chip">13일차 ~ 18일차 전 범위</span>
-      <span class="chip">25문제 · 다섯 개 중 고르기</span>
-      <span class="chip">두 번 생각하는 문제</span>
-      <span class="chip">혼자 풀고 스스로 채점</span>
+    <div class="hero glass">
+      <div class="eyebrow">HAM MEDIA ACADEMY · 초등 과학 3-1</div>
+      <h1>자석 개념 탐험대</h1>
+      <p class="lead">3단원 「자석의 이용」 전체를 25문제로 확인해요. 처음에 틀려도 괜찮아요. 답을 바로 보여주지 않고 힌트를 먼저 줄 테니, 한 번 더 골라보세요.</p>
+      <div class="chips">
+        <span class="chip">13일차 ~ 18일차 전 범위</span>
+        <span class="chip">25문제 · 다섯 개 중 고르기</span>
+        <span class="chip">두 번 생각하는 문제</span>
+        <span class="chip">혼자 풀고 스스로 채점</span>
+      </div>
     </div>
   </header>
 
   <main class="wrap">
-    <div class="notice">
+    <div class="notice glass">
       <strong>먼저 읽어요.</strong>
       한 번에 다 풀지 않아도 돼요. 열 문제쯤 풀고 쉬어도 좋아요.
       틀린 문제는 실패가 아니라, 다음에 다시 볼 곳을 알려주는 표시예요.
@@ -125,20 +168,20 @@
         <p class="small">이 셋만 잡으면 25문제 중 스무 문제가 풀려요.</p>
       </div>
       <div class="grid">
-        <article class="card c1">
+        <article class="card c1 glass">
           <span class="badge">붙느냐 안 붙느냐</span>
           <h3>자석은 철만 끌어당겨요</h3>
           <p>철 클립, 철 못, 철사, 철 집게 — 자석에 붙어요.</p>
           <p>종이, 고무, 나무, 유리, 플라스틱 — 붙지 않아요.</p>
           <div class="keyline">사이에 종이가 있어도, 조금 떨어져 있어도 자석은 철을 끌어당겨요.</div>
         </article>
-        <article class="card c2">
+        <article class="card c2 glass">
           <span class="badge">극은 언제나 둘</span>
           <h3>끝부분이 가장 세요</h3>
           <p>철이 가장 많이 붙는 부분이 <b>극</b>이에요. 어떤 모양의 자석이든 극은 <b>양쪽 끝부분</b>에 <b>두 개</b>예요.</p>
           <div class="keyline">같은 극끼리는 밀어 내고, 다른 극끼리는 끌어당겨요.</div>
         </article>
-        <article class="card c3">
+        <article class="card c3 glass">
           <span class="badge">나침반도 자석</span>
           <h3>빨간색은 N극, 북쪽</h3>
           <p>나침반 바늘도 작은 자석이에요. 그래서 자석을 가까이 하면 밀고 당기며 움직여요.</p>
@@ -157,7 +200,7 @@
     </section>
 
     <section aria-labelledby="quiz-title">
-      <div class="quiz-intro">
+      <div class="quiz-intro glass-dark">
         <span class="step" style="background:white;color:var(--ink)">2 · 직접 해보기</span>
         <h2 id="quiz-title">확인 문제 25개</h2>
         <p>처음에 틀리면 정답을 바로 보여주지 않아요. 고른 답 하나만 닫히고, <strong>힌트를 본 뒤 다시 한 번 고를 수 있어요.</strong></p>

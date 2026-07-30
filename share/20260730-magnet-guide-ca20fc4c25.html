@@ -11,12 +11,33 @@
       --sky:#3B82F6; --sky-soft:#EAF3FF; --green:#4ADE80; --green-soft:#EAFBF0;
       --yellow:#FACC15; --yellow-soft:#FFF8D6;
       --shadow:0 14px 34px rgba(23,23,23,.08);
+      --glass:rgba(249,247,243,.66); --glass-edge:rgba(255,255,255,.88);
+      --glow-a:rgba(59,130,246,.16); --glow-b:rgba(250,204,21,.20); --glow-c:rgba(74,222,128,.14);
     }
     *{box-sizing:border-box}
-    body{margin:0;background:var(--ivory);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;line-height:1.75;word-break:keep-all}
+    body{
+      margin:0;color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;line-height:1.75;word-break:keep-all;
+      background:
+        radial-gradient(circle at 88% 0%, var(--glow-b), transparent 30rem),
+        radial-gradient(circle at 4% 20%, var(--glow-a), transparent 26rem),
+        radial-gradient(circle at 70% 70%, var(--glow-c), transparent 32rem),
+        var(--ivory);
+    }
     .topbar{height:8px;background:linear-gradient(90deg,var(--sky) 0 42%,var(--green) 42% 74%,var(--yellow) 74%)}
     .wrap{width:min(760px,calc(100% - 32px));margin:0 auto}
     header{padding:48px 0 24px}
+    .glass{
+      border:1px solid var(--glass-edge);
+      background:linear-gradient(145deg, rgba(255,255,255,.14), transparent 46%), var(--glass);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 14px 34px rgba(23,23,23,.08);
+      backdrop-filter: blur(20px) saturate(145%);
+      -webkit-backdrop-filter: blur(20px) saturate(145%);
+      border-radius:26px; padding:26px 26px 22px;
+    }
+    @media(prefers-reduced-transparency: reduce){
+      .glass{ backdrop-filter:none; -webkit-backdrop-filter:none; background:var(--paper) }
+    }
+    .linkbox.glass, .callout.glass{ padding:18px 20px; border-radius:18px }
     .eyebrow{font-size:13px;font-weight:900;letter-spacing:.12em;color:var(--sky);text-transform:uppercase}
     h1{font-size:clamp(28px,5vw,44px);line-height:1.2;margin:12px 0 14px;letter-spacing:-.03em}
     .lead{font-size:18px;color:#383633;margin:0}
@@ -37,14 +58,16 @@
 <body>
   <div class="topbar"></div>
   <header class="wrap">
-    <div class="eyebrow">HAM MEDIA · 사용 안내</div>
-    <h1>지욱이 과학 학습지, 이렇게 쓰면 돼요</h1>
-    <p class="lead">따로 설치할 것 없이 링크 하나로 바로 풀 수 있어요. 사용법만 짧게 담았어요.</p>
+    <div class="glass" style="margin-top:22px">
+      <div class="eyebrow">HAM MEDIA · 사용 안내</div>
+      <h1>지욱이 과학 학습지, 이렇게 쓰면 돼요</h1>
+      <p class="lead">따로 설치할 것 없이 링크 하나로 바로 풀 수 있어요. 사용법만 짧게 담았어요.</p>
+    </div>
   </header>
 
   <main class="wrap">
     <section>
-      <div class="linkbox">
+      <div class="linkbox glass">
         지금 만든 것 — <b>자석 개념 탐험대</b> (초등 과학 3-1, 3단원 자석의 이용, 25문제)<br>
         <a href="./20260730-magnet-quiz-ca20fc4c25.html">여기를 눌러 열어요 →</a>
       </div>
@@ -70,7 +93,7 @@
         <p>처음부터 다시 풀기 버튼으로 며칠 뒤 다시 풀어볼 수도 있어요.</p>
       </div>
 
-      <div class="callout">
+      <div class="callout glass">
         <b>지욱이 옆에서 봐주실 때</b>
         점수보다 "왜 그렇게 생각했어?"를 한 번 물어봐 주세요. 맞힌 문제에도 물어보면, 우연히 맞은 것과 알고 맞은 것이 구분돼요.
         한 번에 맞았으면 넘어가도 좋고, 힌트 보고 맞았으면 알지만 조건을 놓친 것이니 문제를 소리 내어 다시 읽게 해 주세요.
@@ -96,7 +119,6 @@
       <p>그리고 오투 문제집에서는 <b>범위</b>(어떤 개념까지 나오는지)만 참고했어요. 설명하는 문장과 문제는 전부 새로 썼어요.
       그래서 이 학습지는 온전히 지욱이·어머님 것이고, 나중에 공부방을 여실 때도 그대로 쓰실 수 있어요.</p>
     </section>
-  </main>
 
     <section>
       <h3 style="font-size:20px;margin-bottom:10px">직접 만들어보고 싶으시면</h3>
@@ -106,6 +128,7 @@
         <a href="./20260730-make-your-own-quiz-ca20fc4c25.md" download style="color:#19653a">아이 학습지, 직접 만드는 법 (다운로드) →</a>
       </div>
     </section>
+  </main>
 
   <footer class="wrap">
     HAM MEDIA · 2026-07-30 · 궁금한 점은 언제든 편하게 말씀해 주세요.
