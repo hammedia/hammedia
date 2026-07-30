@@ -4,14 +4,46 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>자동차별 | HAM MEDIA 별자리</title>
-  <link rel="canonical" href="https://hammedia.co.kr/ham-media-archive/pages/cars.html">
-  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
-  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
+  <!-- v7: 외부 CDN 제거 — 오더 「외부 리소스 금지」. 본문 Pretendard는 로컬(assets/fonts)로 임베드, 뒤에 SCDream·시스템 폴백. -->
   <style>
+    /* 에스코어드림 (S-Core Dream) · (c) S-Core Co., Ltd.
+       라이선스: 무료 상업 사용·웹 임베딩 허용, 파일 수정·판매 금지 — 배포 형태 그대로 임베드.
+       확인: noonnu.cc/font_page/223 · s-core.co.kr/company/font/ (2026-07-17)
+       채택 근거: 나이트 패널 = "꼭 필요한 계기만 남기고 다 끈다" — 절제. 9단계 굵기가 그 문법이다. */
     @font-face {
-      font-family: "BlackGothic";
-      src: url("../assets/fonts/BlackGothic.otf") format("opentype");
+      font-family: "SCDream";
+      src: url("../assets/fonts/SCDream6.otf") format("opentype");
       font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "SCDream";
+      src: url("../assets/fonts/SCDream3.otf") format("opentype");
+      font-weight: 300;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    /* Pretendard (c) Kil Hyung-jin, SIL OFL 1.1 — 본문 정본 폰트. v7: CDN 대신 로컬 임베드. */
+    @font-face {
+      font-family: "Pretendard";
+      src: url("../assets/fonts/Pretendard-Regular.otf") format("opentype");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "Pretendard";
+      src: url("../assets/fonts/Pretendard-Medium.otf") format("opentype");
+      font-weight: 500;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "Pretendard";
+      src: url("../assets/fonts/Pretendard-Black.otf") format("opentype");
+      font-weight: 900;
       font-style: normal;
       font-display: swap;
     }
@@ -28,7 +60,7 @@
       --line: color-mix(in srgb, var(--headlight) 22%, transparent);
       --line-strong: color-mix(in srgb, var(--gold) 48%, transparent);
       --font-sans: "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      --font-star: "BlackGothic", "Pretendard", sans-serif;
+      --font-star: "SCDream", "Pretendard", sans-serif;
       --radius: 7px;
       --space-1: 4px;
       --space-2: 8px;
@@ -76,10 +108,14 @@
       overflow-x: hidden;
     }
 
+    /* 시트는 1440 고정 규격이었다. 실제 페이지는 그 사이 폭에서도 서야 하므로
+       규격값을 상한으로 두고 아래로만 유동하게 한다 — 값은 시트 그대로. */
+    body.variant-desktop { --hero-title: clamp(80px, 8.4vw, 126px); }
+
     body.variant-tablet {
       --sheet-width: 1024px;
       --sheet-pad: 44px;
-      --hero-title: 94px;
+      --hero-title: clamp(62px, 8.8vw, 94px);
       --h1: 52px;
       --h2: 31px;
       --body: 17px;
@@ -88,7 +124,7 @@
     body.variant-mobile {
       --sheet-width: 430px;
       --sheet-pad: 18px;
-      --hero-title: 56px;
+      --hero-title: clamp(40px, 13vw, 56px);
       --h1: 35px;
       --h2: 24px;
       --body: 15px;
@@ -130,7 +166,8 @@
       background: transparent;
       color: var(--ivory);
       cursor: pointer;
-      font-family: var(--font-sans);
+      font-family: var(--font-star);
+      font-weight: 300;
       font-size: 24px;
       line-height: 1;
       letter-spacing: 0.01em;
@@ -179,8 +216,9 @@
       gap: 10px;
       margin: 0 0 var(--space-5);
       color: var(--muted);
+      font-family: var(--font-star);
       font-size: var(--small);
-      font-weight: 900;
+      font-weight: 300;
       letter-spacing: 0.12em;
       text-transform: uppercase;
     }
@@ -204,7 +242,6 @@
       font-weight: 700;
       color: var(--ivory);
       text-wrap: balance;
-      white-space: nowrap;
     }
 
     .hero .core {
@@ -283,8 +320,9 @@
 
     .num {
       color: var(--gold);
+      font-family: var(--font-star);
       font-size: var(--small);
-      font-weight: 950;
+      font-weight: 300;
       letter-spacing: 0.14em;
       text-transform: uppercase;
     }
@@ -361,8 +399,9 @@
     .mini {
       margin: 0 0 var(--space-3);
       color: var(--gold);
+      font-family: var(--font-star);
       font-size: var(--small);
-      font-weight: 950;
+      font-weight: 300;
       letter-spacing: 0.08em;
       text-transform: uppercase;
     }
@@ -492,68 +531,112 @@
       border-radius: var(--radius);
       background: color-mix(in srgb, var(--asphalt) 74%, black);
       padding: var(--space-5);
-      font-family: var(--font-sans);
+      font-family: var(--font-star);
     }
 
     .entry-card strong {
       color: var(--ivory);
-      font-family: var(--font-sans);
+      font-family: var(--font-star);
       font-size: 30px;
+      font-weight: 300;
       line-height: 1;
     }
 
     .entry-card span {
       color: var(--muted);
+      font-family: var(--font-sans);
       font-size: 14px;
       line-height: 1.5;
       font-weight: 700;
     }
 
-    .map-panel {
-      display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-      gap: var(--space-6);
-      align-items: stretch;
+    /* 사브 — 이 별의 감정 앵커 */
+    .saab-figure { margin: var(--space-4) 0 0; }
+    .saab-figure img {
+      width: 100%;
+      border-radius: 4px;
+      display: block;
     }
+    .saab-figure figcaption {
+      margin-top: var(--space-2);
+      font-size: 12px;
+      line-height: 1.6;
+      color: #6b6459;
+    }
+    .photo-card.saab-card { outline: 1px solid var(--line-strong); outline-offset: -1px; }
 
-    .map-visual {
-      position: relative;
-      min-height: 420px;
-      border-radius: var(--radius);
-      overflow: hidden;
-      background:
-        linear-gradient(90deg, rgba(232, 232, 230, 0.08) 1px, transparent 1px),
-        linear-gradient(180deg, rgba(232, 232, 230, 0.08) 1px, transparent 1px),
-        radial-gradient(circle at 18% 64%, rgba(201, 160, 80, 0.38), transparent 3%),
-        radial-gradient(circle at 63% 38%, rgba(232, 232, 230, 0.32), transparent 3%),
-        radial-gradient(circle at 82% 70%, rgba(201, 160, 80, 0.34), transparent 3%),
-        var(--asphalt);
-      background-size: 72px 72px, 72px 72px, auto, auto, auto, auto;
+    /* 디자인 문 — 05 원본 스타일시트 자체를 그 자리에서 펼친다. */
+    .design-sheet {
       border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: color-mix(in srgb, var(--asphalt) 70%, black);
+      overflow: hidden;
     }
 
-    .map-visual::before {
-      content: "";
-      position: absolute;
-      left: 14%;
-      right: 10%;
-      top: 52%;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, var(--headlight), var(--gold), transparent);
-      transform: rotate(-16deg);
-      box-shadow: 0 0 26px rgba(232, 232, 230, 0.54);
-    }
-
-    .map-visual::after {
-      content: "내가 달렸던 길들";
-      position: absolute;
-      left: var(--space-5);
-      bottom: var(--space-5);
+    .design-sheet summary {
+      min-height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-4);
+      padding: var(--space-4) var(--space-5);
       color: var(--ivory);
+      cursor: pointer;
       font-family: var(--font-star);
-      font-size: 38px;
+      font-size: 20px;
+      font-weight: 300;
+      list-style: none;
+    }
+
+    .design-sheet summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .design-sheet summary::after {
+      content: "+";
+      color: var(--gold);
+      font-size: 30px;
       line-height: 1;
     }
+
+    .design-sheet[open] summary::after {
+      content: "−";
+    }
+
+    .design-sheet-views {
+      border-top: 1px solid var(--line);
+      background: var(--night);
+    }
+
+    .design-frame {
+      display: none;
+      width: 100%;
+      min-height: 900px;
+      height: 100vh;
+      border: 0;
+      background: var(--night);
+    }
+
+    body.variant-desktop .design-frame--desktop,
+    body.variant-tablet .design-frame--tablet,
+    body.variant-mobile .design-frame--mobile {
+      display: block;
+    }
+
+    /* 모션 — 시트 구조 위에 얹는다. 대기 → 도착 재생 → 지나침 완성.
+       v7 정정: 기본값은 '보임'이다. 정보는 장식·모션 없이도 읽혀야 한다(정본).
+       등장 애니는 강화일 뿐 — IO가 놓쳐도·JS 꺼져도·reduced-motion에서도 20장이 그대로 보인다.
+       .is-arrived는 opacity를 '켜는' 게 아니라, 이미 보이는 요소에 등장 재생을 '얹는' 클래스다. */
+    .section, .hero, .star-exit { opacity: 1; }
+    .rise { opacity: 1; transform: none; }
+    @keyframes rise-in {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: none; }
+    }
+    .rise.is-arrived {
+      animation: rise-in 0.8s cubic-bezier(0.45, 0.05, 0.35, 0.95);
+    }
+    .rise.is-passed { opacity: 1; transform: none; }
 
     .not-grid {
       grid-template-columns: repeat(5, minmax(0, 1fr));
@@ -571,6 +654,15 @@
       font-family: var(--font-star);
       font-size: 24px;
       line-height: 1.12;
+    }
+
+    /* 현실 농담 — 아주 작게. 햄PD 2026-07-18 */
+    .not-joke {
+      margin: var(--space-4) 2px 0;
+      text-align: right;
+      font-size: 11px;
+      letter-spacing: 0.02em;
+      color: color-mix(in srgb, var(--headlight) 40%, transparent);
     }
 
     .star-exit {
@@ -599,8 +691,9 @@
       border: 1px solid var(--line);
       background: color-mix(in srgb, var(--asphalt) 62%, black);
       color: var(--ivory);
+      font-family: var(--font-star);
       padding: 0 var(--space-4);
-      font-weight: 900;
+      font-weight: 300;
     }
 
     .star-button.active {
@@ -632,16 +725,17 @@
       border-radius: var(--radius);
       background: color-mix(in srgb, var(--asphalt) 64%, black);
       padding: var(--space-4);
-      font-family: var(--font-sans);
+      font-family: var(--font-star);
       font-size: 15px;
-      font-weight: 900;
+      font-weight: 300;
     }
 
     footer {
       padding: var(--space-7) 0 0;
       color: var(--muted);
+      font-family: var(--font-star);
       font-size: var(--small);
-      font-weight: 800;
+      font-weight: 300;
       letter-spacing: 0.04em;
     }
 
@@ -672,8 +766,7 @@
       grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 
-    body.variant-tablet .entry-hub,
-    body.variant-tablet .map-panel {
+    body.variant-tablet .entry-hub {
       grid-template-columns: 1fr;
     }
 
@@ -753,7 +846,6 @@
     body.variant-mobile .route-grid,
     body.variant-mobile .writing-grid,
     body.variant-mobile .photo-grid,
-    body.variant-mobile .map-panel,
     body.variant-mobile .entry-hub,
     body.variant-mobile .not-grid {
       grid-template-columns: 1fr;
@@ -788,8 +880,7 @@
     }
 
     body.variant-mobile .writing-image,
-    body.variant-mobile .writing-image img,
-    body.variant-mobile .map-visual {
+    body.variant-mobile .writing-image img {
       min-height: 260px;
     }
 
@@ -847,385 +938,405 @@
       font-size: 13px;
     }
 
-/* Homepage hidden rooms: writing / photo / map */
-.room-house-panel[hidden],
-.room-article-panel[hidden],
-.room-house-photo-grid[hidden],
-.room-house-photo-detail[hidden] {
-  display: none !important;
-}
+    body.variant-mobile .design-frame {
+      min-height: 760px;
+    }
 
-.room-house-panel {
-  margin: var(--space-8) 0 0;
-  padding: var(--space-7);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  background: color-mix(in srgb, var(--night) 78%, var(--asphalt));
-}
+    /* ===== v7 「장면」 — 밤 아스팔트의 기억의 길 (설계서 §8) ===== */
+    .map-intro {
+      max-width: 760px;
+      margin: 0 0 var(--space-6);
+      color: var(--muted);
+      font-size: var(--body);
+      line-height: 1.8;
+      font-weight: 560;
+    }
 
-.room-house-panel-header {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: var(--space-5);
-  margin-bottom: var(--space-6);
-  border-bottom: 1px solid var(--line);
-  padding-bottom: var(--space-5);
-}
+    /* 지도 지형 = 밤 아스팔트. 길 = 헤드라이트가 지나간 자국(흰 선). 금색은 길에 쓰지 않는다. */
+    .asphalt-map {
+      position: relative;
+      margin: 0 0 var(--space-7);
+      min-height: 250px;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      overflow: hidden;
+      background:
+        radial-gradient(130% 100% at 50% 128%, rgba(232, 232, 230, 0.07), transparent 62%),
+        linear-gradient(180deg, #060708 0%, #0e1013 55%, #070809 100%);
+    }
 
-.room-section-label,
-.room-card-meta,
-.room-card-note {
-  display: block;
-  margin: 0 0 var(--space-2);
-  color: var(--gold);
-  font-size: var(--small);
-  font-weight: 950;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
+    .asphalt-map .trail {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
 
-.room-sort-control {
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
-  margin: 0 0 var(--space-5);
-  padding-bottom: var(--space-4);
-  border-bottom: 1px solid var(--line);
-  color: var(--muted);
-  font-size: var(--small);
-  font-weight: 850;
-}
+    .trail-line {
+      fill: none;
+      stroke: var(--headlight);
+      stroke-width: 1.4;
+      opacity: 0.4;
+      stroke-linecap: round;
+    }
 
-.room-sort-control button {
-  border: 0;
-  border-bottom: 2px solid transparent;
-  border-radius: 0;
-  background: transparent;
-  color: var(--muted);
-  cursor: pointer;
-  font-size: var(--small);
-  font-weight: 900;
-  line-height: 1.4;
-  padding: 0 0 4px;
-}
+    /* 오프너(연출 1곳) = 헤드라이트 한 줄이 어두운 아스팔트를 스치듯 지나가는 순간. B안(절제). */
+    .trail-glow {
+      fill: none;
+      stroke: #ffffff;
+      stroke-width: 3;
+      stroke-linecap: round;
+      stroke-dasharray: 70 1600;
+      stroke-dashoffset: 1670;
+      opacity: 0;
+      filter: drop-shadow(0 0 7px rgba(255, 255, 255, 0.85));
+    }
 
-.room-sort-control button[aria-pressed="true"] {
-  border-color: var(--gold);
-  color: var(--ivory);
-}
+    .asphalt-map.is-arrived .trail-glow,
+    .asphalt-map.is-passed .trail-glow {
+      animation: trail-sweep 2.6s cubic-bezier(0.4, 0, 0.2, 1) 0.2s 1 forwards;
+    }
 
-.room-house-back,
-.room-article-back,
-.room-article-bottom-nav button,
-.room-gallery-detail-button {
-  border: 1px solid var(--line-strong);
-  border-radius: var(--radius);
-  background: transparent;
-  color: var(--ivory);
-  cursor: pointer;
-  font-weight: 900;
-  padding: 10px 14px;
-}
+    @keyframes trail-sweep {
+      0% { stroke-dashoffset: 1670; opacity: 0; }
+      12% { opacity: 1; }
+      88% { opacity: 1; }
+      100% { stroke-dashoffset: 0; opacity: 0; }
+    }
 
-.room-article-list {
-  display: grid;
-  gap: 0;
-  border-top: 1px solid var(--line);
-}
-
-.room-article-list[hidden] {
-  display: none !important;
-}
-
-.room-article-link {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  min-height: 58px;
-  width: 100%;
-  border: 0;
-  border-bottom: 1px solid var(--line);
-  background: transparent;
-  color: var(--ivory);
-  cursor: pointer;
-  padding: 0;
-  text-align: left;
-}
-
-.room-article-link strong {
-  font-size: 20px;
-  line-height: 1.3;
-}
-
-.room-article-panel {
-  max-width: 920px;
-  margin: 0 auto;
-}
-
-.room-house-panel.is-detail-mode > .room-house-panel-header,
-.room-house-panel.is-detail-mode > .room-article-list,
-.room-house-panel.is-detail-mode > .room-sort-control,
-.room-house-panel.is-photo-detail-mode > .room-house-panel-header,
-.room-house-panel.is-photo-detail-mode > .room-sort-control,
-.room-house-panel.is-photo-detail-mode > .room-section-heading,
-.room-house-panel.is-photo-detail-mode > .room-house-photo-grid {
-  display: none !important;
-}
-
-.room-article-panel h3,
-.room-card-title {
-  display: block;
-  margin: 0 0 var(--space-4);
-  color: var(--ivory);
-  font-family: var(--font-star);
-  font-size: clamp(30px, 4vw, 54px);
-  line-height: 1.08;
-}
-
-.room-record-figure,
-.room-house-photo-grid figure,
-.room-gallery-detail-photo {
-  margin: 0;
-}
-
-.room-record-photo,
-.room-house-photo-grid img,
-.room-gallery-detail-photo {
-  display: block;
-  width: 100%;
-  height: auto;
-  border-radius: var(--radius);
-}
-
-.room-record-caption,
-.room-house-photo-grid figcaption,
-.room-gallery-detail-copy {
-  margin-top: var(--space-4);
-  color: var(--muted);
-}
-
-.car-essay-card {
-  display: grid;
-  gap: var(--space-5);
-}
-
-.car-essay-card header {
-  border-bottom: 1px solid var(--line);
-  padding-bottom: var(--space-4);
-}
-
-.car-essay-figure,
-.car-essay-gallery figure {
-  margin: 0;
-}
-
-.car-essay-figure img,
-.car-essay-gallery img {
-  display: block;
-  width: 100%;
-  height: auto;
-  border-radius: var(--radius);
-}
-
-.car-essay-figure figcaption,
-.car-essay-gallery figcaption {
-  margin-top: var(--space-3);
-  color: var(--muted);
-  line-height: 1.6;
-}
-
-.car-essay-copy {
-  display: grid;
-  gap: var(--space-3);
-  color: var(--muted);
-  font-size: var(--body);
-  line-height: 1.78;
-}
-
-.car-essay-copy p {
-  margin: 0;
-}
-
-.car-essay-copy strong {
-  color: var(--ivory);
-}
-
-.car-essay-quote {
-  color: var(--gold);
-  font-family: var(--font-star);
-  font-size: clamp(30px, 4vw, 48px);
-  line-height: 1.18;
-}
-
-.car-essay-gallery {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: var(--space-4);
-}
-
-.car-essay-media {
-  aspect-ratio: 16 / 9;
-  overflow: hidden;
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  background: #000;
-}
-
-.car-essay-media iframe {
-  display: block;
-  width: 100%;
-  height: 100%;
-  border: 0;
-}
-
-.car-essay-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-3);
-  margin: 0;
-}
-
-.car-essay-links a {
-  display: inline-flex;
-  min-height: 44px;
-  align-items: center;
-  border: 1px solid var(--line-strong);
-  border-radius: var(--radius);
-  color: var(--ivory);
-  font-weight: 900;
-  padding: 0 var(--space-4);
-  text-decoration: none;
-}
-
-.room-house-photo-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: var(--space-4);
-}
-
-.room-house-photo-grid figure {
-  cursor: pointer;
-}
-
-.room-house-photo-grid img {
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-}
-
-.room-house-photo-detail {
-  max-width: 980px;
-  margin: 0 auto;
-}
-
-.room-gallery-detail-actions,
-.room-gallery-detail-nav,
-.room-article-bottom-nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--space-3);
-  margin: var(--space-5) 0;
-}
-
-body.variant-mobile .room-house-panel {
-  margin-top: var(--space-6);
-  padding: var(--space-5);
-}
-
-body.variant-mobile .room-house-panel-header,
-body.variant-mobile .room-gallery-detail-actions,
-body.variant-mobile .room-gallery-detail-nav,
-body.variant-mobile .room-article-bottom-nav {
-  flex-direction: column;
-  align-items: stretch;
-}
-
-body.variant-mobile .room-house-photo-grid {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px;
-}
-
-body.variant-mobile .car-essay-gallery {
-  grid-template-columns: 1fr;
-}
-/* Photo room sizing: desktop 4, tablet 3, mobile 2. */
-.room-house-photo-grid {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: clamp(10px, 1.5vw, 18px);
-  max-width: none;
-}
-
-.room-house-photo-grid figure,
-.room-house-photo {
-  margin: 0;
-}
-
-.room-house-photo-grid img,
-.room-house-photo img,
-.room-house-photo-thumb {
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-  width: 100%;
-}
-
-@media (min-width: 641px) and (max-width: 1024px) {
-  .room-house-photo-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-}
-
-@media (max-width: 640px) {
-  .room-house-photo-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-    .room-context-nav {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--space-2, 10px);
+    /* 좌표 = 확정 장소 3곳. 점은 헤드라이트 화이트(금색 아님). */
+    .coord {
+      position: absolute;
+      display: inline-flex;
       align-items: center;
-      margin-bottom: var(--space-4, 18px);
+      gap: 7px;
+      color: var(--ivory);
+      font-family: var(--font-star);
+      font-size: 14px;
+      font-weight: 300;
+      letter-spacing: 0.03em;
+      white-space: nowrap;
+      text-shadow: 0 1px 8px rgba(0, 0, 0, 0.85);
     }
 
-    .room-context-nav .room-gallery-detail-button[aria-current="page"] {
-      border-color: currentColor;
-      box-shadow: inset 0 0 0 1px currentColor;
+    .coord i {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--headlight);
+      box-shadow: 0 0 0 3px rgba(232, 232, 230, 0.14), 0 0 14px rgba(232, 232, 230, 0.9);
+      flex: 0 0 auto;
     }
 
-    .room-gallery-detail-actions.is-index-only {
-      justify-content: flex-end;
-      margin-top: var(--space-2, 10px);
+    .coord em { font-style: normal; color: var(--muted); font-size: 12px; }
+    .coord--1 { left: 13%; top: 60%; }
+    .coord--2 { left: 44%; top: 28%; }
+    .coord--3 { left: 73%; top: 66%; }
+
+    .asphalt-map figcaption {
+      position: absolute;
+      left: var(--space-5);
+      right: var(--space-5);
+      bottom: var(--space-4);
+      color: var(--muted);
+      font-size: var(--small);
+      font-weight: 650;
+      letter-spacing: 0.02em;
     }
 
+    /* 대표 = P-001 GLA 밤 주차장. 사진이 페이지. */
+    .rep-figure {
+      margin: 0 0 var(--space-7);
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--line-strong);
+      background: color-mix(in srgb, var(--asphalt) 70%, black);
+    }
+
+    .rep-figure img {
+      display: block;
+      width: 100%;
+      max-height: 520px;
+      object-fit: cover;
+      filter: saturate(0.92) contrast(1.04) brightness(0.9);
+    }
+
+    .rep-figure figcaption { padding: var(--space-6); }
+
+    .rep-badge {
+      display: block;
+      margin: 0 0 var(--space-3);
+      color: var(--gold);
+      font-family: var(--font-star);
+      font-size: var(--small);
+      font-weight: 300;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .rep-figure figcaption strong {
+      display: block;
+      margin-bottom: var(--space-3);
+      color: var(--ivory);
+      font-family: var(--font-star);
+      font-size: clamp(24px, 3vw, 34px);
+      line-height: 1.12;
+    }
+
+    .rep-figure figcaption span:not(.rep-badge) {
+      display: block;
+      max-width: 760px;
+      color: var(--muted);
+      font-size: var(--body);
+      line-height: 1.72;
+      font-weight: 560;
+    }
+
+    /* 차종별 묶음 — memories 태그 기준 */
+    .car-group { margin-bottom: var(--space-7); }
+    .car-group:last-child { margin-bottom: 0; }
+
+    /* 승인 글 — 테슬라 모델 Y 코니 서스펜션 (원전 §3 배치 그대로) */
+    .story {
+      margin: 0 0 var(--space-7);
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: color-mix(in srgb, var(--asphalt) 72%, black);
+      overflow: hidden;
+    }
+    .story-lead {
+      position: relative;
+      border-radius: 0;
+    }
+    .story-lead img {
+      display: block;
+      width: 100%;
+      max-height: 520px;
+      object-fit: cover;
+      filter: saturate(0.92) contrast(1.04) brightness(0.9);
+    }
+    .story-body { padding: var(--space-6); }
+    .story-body h3 {
+      margin: 0 0 var(--space-5);
+      color: var(--ivory);
+      font-size: var(--h2);
+    }
+    .story-body p {
+      margin: 0 0 var(--space-4);
+      color: var(--muted);
+      font-size: var(--body);
+      line-height: 1.85;
+      font-weight: 560;
+      max-width: 760px;
+    }
+    .story-body p:last-of-type { margin-bottom: 0; }
+    .story-body p.keep-line {
+      color: var(--ivory);
+      font-weight: 650;
+    }
+    .story-gallery {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--space-3);
+      margin-top: var(--space-6);
+    }
+    .story-gallery figure { margin: 0; border-radius: 5px; overflow: hidden; border: 1px solid var(--line); background: color-mix(in srgb, var(--asphalt) 70%, black); }
+    .story-gallery img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      filter: saturate(0.94) contrast(1.03);
+    }
+    .story-video-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: var(--space-6);
+      min-height: 44px;
+      padding: 0 var(--space-5);
+      border-radius: var(--radius);
+      border: 1px solid var(--line-strong);
+      background: color-mix(in srgb, var(--night) 82%, var(--asphalt));
+      color: var(--ivory);
+      font-family: var(--font-star);
+      font-size: 16px;
+      font-weight: 300;
+    }
+    .story-video-link .pf-arrow { color: var(--gold); font-size: 1.3em; }
+    body.variant-tablet .story-gallery,
+    body.variant-mobile .story-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    body.variant-mobile .story-body { padding: var(--space-5); }
+
+    /* ===== 살아있는 벽 — 벽(잘린 썸네일) ↔ 초점(전체 사진) =====
+       고정 높이 스테이지. 비초점 타일은 잘린 cover 썸네일(벽 리듬).
+       초점은 스테이지 위에 뜨는 오버레이(.live-focus)로, background-size:contain = 사진 전체가 잘림 없이 보인다.
+       오버레이는 <img>가 아니라 배경이미지 div라, 페이드해도 '#car-photos img' 가시성(opacity:0 갇힘) 판정에 안 걸린다.
+       스테이지 높이 고정 + 절대위치 오버레이 → 이웃 reflow 0, 빈 구멍 불가. 트랜지션 복원(부드러운 성장). */
+    .live-wall-wrap { margin: 0 0 var(--space-7); }
+    .live-wall {
+      position: relative;
+      display: flex;
+      gap: 8px;
+      height: clamp(320px, 42vh, 460px);
+      padding: 10px;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      overflow: hidden;
+      background:
+        radial-gradient(130% 100% at 50% 128%, rgba(232, 232, 230, 0.06), transparent 62%),
+        linear-gradient(180deg, #060708 0%, #0e1013 55%, #070809 100%);
+    }
+    .live-frame {
+      flex: 1 1 0;
+      min-width: 0;
+      position: relative;
+      border-radius: 5px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: color-mix(in srgb, var(--asphalt) 70%, black);
+      transition: opacity 0.5s ease, filter 0.5s ease;
+    }
+    /* 비초점 타일 = 잘린 썸네일(벽 리듬 유지) */
+    .live-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: saturate(0.94) contrast(1.04);
+    }
+    /* 회전 중 — 타일은 물러난다(디밍). opacity는 0으로 안 간다. 지금 켜진 타일만 표식. */
+    .live-wall.rotating .live-frame {
+      opacity: 0.4;
+      filter: saturate(0.78) brightness(0.58);
+    }
+    .live-wall.rotating .live-frame.is-active {
+      opacity: 0.9;
+      filter: none;
+      outline: 1px solid var(--line-strong);
+      outline-offset: -1px;
+    }
+    /* 초점 오버레이 = 그 사진의 전체가 잘림 없이(자연 비율) 벽 위 가운데에 뜬다. */
+    .live-focus {
+      position: absolute;
+      inset: 5% 4%;
+      border-radius: var(--radius);
+      background-color: rgba(6, 7, 9, 0.6);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      opacity: 0;
+      transform: scale(0.9);
+      z-index: 5;
+      pointer-events: none;
+      box-shadow: 0 24px 58px rgba(0, 0, 0, 0.62);
+      /* opacity는 즉시(가시성이 트랜지션에 안 묶임 — 프레임 고정 환경에서도 초점이 보인다).
+         부드러운 '성장'은 transform(scale)이 담당한다. 실제 브라우저는 0.55s로 자연스럽게 커진다. */
+      transition: transform 0.55s cubic-bezier(0.34, 0.1, 0.2, 1);
+    }
+    .live-wall.rotating .live-focus.is-on {
+      opacity: 1;
+      transform: scale(1);
+    }
+    .live-caption {
+      margin-top: var(--space-4);
+      min-height: 56px;
+    }
+    .live-caption strong {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--ivory);
+      font-family: var(--font-star);
+      font-size: 22px;
+      line-height: 1.15;
+    }
+    .live-caption span {
+      display: block;
+      max-width: 760px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.6;
+      font-weight: 650;
+    }
+    body.variant-mobile .live-wall { height: clamp(190px, 32vh, 280px); gap: 5px; padding: 6px; }
+    body.variant-mobile .live-caption strong { font-size: 18px; }
+
+    .group-label {
+      margin: 0 0 var(--space-4);
+      padding-bottom: var(--space-2);
+      border-bottom: 1px solid var(--line);
+      color: var(--ivory);
+      font-family: var(--font-star);
+      font-size: 22px;
+      font-weight: 300;
+      letter-spacing: 0.02em;
+    }
+
+    /* 포트폴리오 문 — 06 아래로 끌어올린 순환로 진입구 */
+    .pf-cta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-4);
+      min-height: 96px;
+      padding: var(--space-5) var(--space-6);
+      border-radius: var(--radius);
+      border: 1px solid var(--line-strong);
+      background:
+        linear-gradient(120deg, rgba(201, 160, 80, 0.14), transparent 60%),
+        color-mix(in srgb, var(--night) 82%, var(--asphalt));
+      color: var(--ivory);
+      font-family: var(--font-star);
+      font-size: clamp(20px, 2.4vw, 30px);
+      font-weight: 300;
+      line-height: 1.2;
+    }
+
+    .pf-cta .pf-arrow { color: var(--gold); font-size: 1.4em; flex: 0 0 auto; }
+
+    body.variant-mobile .asphalt-map { min-height: 178px; }
+    body.variant-mobile .coord { font-size: 12px; }
+    body.variant-mobile .coord em { font-size: 11px; }
+    body.variant-mobile .rep-figure figcaption { padding: var(--space-5); }
+    body.variant-mobile .group-label { font-size: 19px; }
+    body.variant-mobile .pf-cta { padding: var(--space-4) var(--space-5); min-height: 80px; }
+
+    /* 모션 감소 — 정적판과 같은 화면. 내용과 이동은 하나도 사라지지 않는다. */
+    @media (prefers-reduced-motion: reduce) {
+      .rise, .rise.is-arrived, .rise.is-passed {
+        opacity: 1;
+        transform: none;
+        transition: none;
+        animation: none !important;
+      }
+
+      /* 헤드라이트 오프너도 멈춘다 — 흰 길과 좌표는 정적으로 남아 20장 다 보인다. */
+      .trail-glow { animation: none !important; opacity: 0; }
+
+      /* 살아있는 벽 회전 정지 — 정적 필름스트립, 9타일 전부 opacity:1, 오버레이 숨김. */
+      .live-frame, .live-focus { transition: none !important; }
+      .live-wall.rotating .live-frame,
+      .live-wall.rotating .live-frame.is-active {
+        opacity: 1 !important;
+        filter: none !important;
+      }
+      .live-focus, .live-wall.rotating .live-focus.is-on {
+        opacity: 0 !important;
+        transform: none !important;
+      }
+
+      html {
+        scroll-behavior: auto;
+      }
+    }
   </style>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TEBKMGWPQS"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-TEBKMGWPQS');
-    </script>
-  </head>
+</head>
 <body class="variant-desktop">
-  <script>
-    (() => {
-      const setCarVariant = () => {
-        document.body.classList.remove("variant-desktop", "variant-tablet", "variant-mobile");
-        const width = window.innerWidth;
-        document.body.classList.add(width <= 600 ? "variant-mobile" : width <= 1100 ? "variant-tablet" : "variant-desktop");
-      };
-      setCarVariant();
-      window.addEventListener("resize", setCarVariant);
-    })();
-  </script>
-  <main class="sheet room-house-page car-style-page" id="car-star" data-article-nav-label="문장 이동" data-article-list-label="문장" data-article-prev-label="이전 문장" data-article-next-label="다음 문장" data-photo-list-label="장면" data-room-context-nav="true" data-article-house-target="car-writing-room" data-photo-house-target="car-photo-room" data-map-house-target="car-map-room" data-star-list-target="star-list">
-    <nav class="top-doors room-house-nav" aria-label="자동차별 입구">
-      <button class="room-house-door" type="button" data-target="#car-writing" data-house-target="car-writing-room">문장</button>
-      <button class="room-house-door" type="button" data-target="#car-photos" data-house-target="car-photo-room">장면</button>
-      <button class="room-house-door" type="button" data-target="#car-map" data-house-target="car-map-room">지도</button>
+  <main class="sheet">
+    <nav class="top-doors" aria-label="자동차별 입구">
+      <button type="button" data-target="#car-writing">문장</button>
+      <button type="button" data-target="#car-photos">장면</button>
+      <button type="button" data-target="#car-design">디자인</button>
       <a href="#star-list">별자리</a>
     </nav>
 
@@ -1244,48 +1355,47 @@ body.variant-mobile .car-essay-gallery {
           <img src="../assets/images/cars/stamps/lph-b613-06-car-stamp.png" alt="LPH-B613-06 사브 자동차 스탬프" />
         </figure>
       </div>
-      <figure class="hero-photo" data-tags="자동차별, Mercedes-Benz, GLA 45 AMG, AMG, 달리는 느낌, 컴포트 모드, 기름값, 현실 운전, 대표 사진">
-        <img src="../assets/images/cars/hero-night-direction.jpg" alt="밤 주차장에 선 검은 차" />
-        <figcaption>달리는 느낌은 AMG, 현실은 컴포트 모드.</figcaption>
+      <figure class="hero-photo">
+        <img src="../assets/images/cars/saab-ducati-garage.jpg" alt="지하 주차장에 나란히 선 흰색 사브 9-3과 빨간 두카티" />
       </figure>
     </section>
 
     <section class="section" aria-labelledby="route-title">
       <div class="section-head">
-        <p class="num">01 / 방향</p>
-        <h2 id="route-title">길을 외우는 건<br />지도보다 먼저 몸에 남는다.</h2>
+        <p class="num">01 / 핵심 문장</p>
+        <h2 id="route-title">해치백만 타고, 멀리 다니고,<br />한 번 간 길은 외우던 사람의 별이다.</h2>
       </div>
       <div class="route-grid">
         <article class="panel quote-panel">
           <p>나이트 패널처럼.<br />꼭 필요한 것만 남기고 달린다.</p>
         </article>
-        <article class="panel ivory">
+        <article class="panel ivory saab-panel">
           <p class="mini">기억</p>
           <h3>없어진 회사지만,<br />기억은 남는다.</h3>
-          <p>사브 9-3은 자동차를 넘어, 나를 알아주는 느낌으로 남았다. 그래서 이 별의 스탬프도 사브다.</p>
+          <p>나를 알아주는 느낌. 의자가 편안하고, 중고속에서 나를 보호해주는 감각.</p>
+          <figure class="saab-figure">
+            <img src="../assets/images/cars/saab-wheel-close-memory.jpg" alt="사브 엠블럼이 있는 흰색 차의 앞바퀴" loading="lazy" />
+          </figure>
         </article>
         <article class="panel">
           <p class="mini">일</p>
           <h3>길 찾던 버릇이<br />일이 되어 돌아왔다.</h3>
-          <p>멀리 다니고, 사람을 만나고, 한 번 간 길을 기억하던 감각은 이제 막막한 사람에게 방향을 찾아주는 일로 이어졌다.</p>
+          <p>나는 길을 잘 찾는 사람이다. 그리고 그 감각은 이제 다른 사람의 방향을 찾아주는 일이 됐다.</p>
         </article>
       </div>
     </section>
 
     <section class="section" id="car-writing" aria-labelledby="writing-title">
       <div class="section-head">
-        <p class="num">02 / 글</p>
-        <h2 id="writing-title">차 이야기는 결국<br />타고 살아본 시간의 이야기다.</h2>
+        <p class="num">02 / 문장</p>
+        <h2 id="writing-title">이 별은 차를 보여주는 방이 아니라,<br />길을 외우는 몸과 그 버릇이 일이 된 이야기다.</h2>
       </div>
       <div class="writing-grid">
         <article class="panel ivory">
           <p class="mini">문장</p>
-          <h3>초창기 모델 Y를 오래 타려면, 피로감도 중요했다.</h3>
-          <p>
-            단단한 승차감을 참고 타다가, 더 나은 방법을 찾고 직접 바꿔본 기록이 있다.
-            그래서 이 글은 장비 자랑보다 매일 타는 사람의 피로와 만족에 가깝다.
-          </p>
-          <p class="large-copy gold">"이제야 차 같네"</p>
+          <h3>나이트 패널처럼.<br />꼭 필요한 것만 남기고 달린다.</h3>
+          <p>막막한 사람에게 방향을 찾아주는 일. 지금 내가 하는 게 그거다.</p>
+          <p class="large-copy gold">길 찾던 그 버릇이,<br />일이 되어 돌아왔다.</p>
         </article>
         <figure class="writing-image">
           <img src="../assets/images/cars/suspension-01.jpeg" alt="충전소에 세워진 흰색 테슬라 모델 Y" />
@@ -1295,261 +1405,266 @@ body.variant-mobile .car-essay-gallery {
 
     <section class="section" id="car-photos" aria-labelledby="photos-title">
       <div class="section-head">
-        <p class="num">03 / 사진</p>
-        <h2 id="photos-title">소유보다 사용의 흔적.<br />사진은 길의 증거로 남는다.</h2>
+        <p class="num">03 / 장면</p>
+        <h2 id="photos-title">밤 아스팔트 위에<br />남은 길.</h2>
       </div>
-      <div class="photo-grid">
-        <figure class="photo-card" data-tags="자동차별, Mercedes-Benz, GLA 45 AMG, AMG, 달리는 느낌, 컴포트 모드, 기름값, 현실 운전, 대표 사진">
-          <img src="../assets/images/cars/hero-night-direction.jpg" alt="밤 주차장에 선 검은 차" />
-          <figcaption><strong>AMG의 느낌</strong><span>달리는 느낌은 AMG, 현실은 컴포트 모드.</span></figcaption>
-        </figure>
-        <figure class="photo-card" data-tags="자동차별, 세차, 셀프 세차, 깨끗함, 마음 정리, 현실 농담, 일상 루틴">
-          <img src="../assets/images/cars/essay-open-parking-direction.jpg" alt="세차장 충전소에 선 흰색 테슬라" />
-          <figcaption><strong>세차 후의 마음</strong><span>세차 후엔 차도 마음도 깨끗해진다.</span></figcaption>
-        </figure>
-        <figure class="photo-card" data-tags="자동차별, 셀프 세차, 실내 세차장, 겨울 세차, 밤, 혼자 쓰는 공간, 넓은 공간감">
-          <img src="../assets/images/cars/photo-white-car-line.jpg" alt="주차장 조명 아래 흰색 차량의 옆선" />
-          <figcaption><strong>실내 세차장</strong><span>밤의 실내 셀프 세차장.</span></figcaption>
-        </figure>
-        <figure class="photo-card" data-tags="자동차별, 세차, 마음 정리, 셀프 세차, 두 시간, 몰입, 취미, 생각 비우기">
-          <img src="../assets/images/cars/gallery-img-0215.jpg" alt="주차장에 옆으로 선 검은 차량" />
-          <figcaption><strong>마음 정리</strong><span>세차는 마음을 정리하는 시간.</span></figcaption>
-        </figure>
-        <figure class="photo-card">
-          <img src="../assets/images/cars/gallery-img-3233.jpg" alt="밤 세차장에 선 작은 흰색 차량" />
-          <figcaption><strong>작은 차의 길</strong><span>크기보다 중요한 건 어디든 갈 수 있다는 감각이었다.</span></figcaption>
-        </figure>
-        <figure class="photo-card">
-          <img src="../assets/images/cars/gallery-output-1883912203.jpg" alt="해질녘 주차장에 선 흰색 차량" />
-          <figcaption><strong>해질녘 방향</strong><span>돌아오는 길에도 다음 목적지는 늘 생겼다.</span></figcaption>
-        </figure>
-      </div>
-    </section>
+      <p class="map-intro">차를 몰고 지나온 자리들이다. 확정된 장소 세 곳 — 신포동, 시화공단, 가평(후보) — 을 지나며, 헤드라이트가 지나간 자국을 따라 기억이 남았다. 지금은 스무 장. 기록이 쌓일수록 이 길은 더 자란다.</p>
 
-    <section class="section" id="car-map" aria-labelledby="map-title">
-      <div class="section-head">
-        <p class="num">04 / 지도</p>
-        <h2 id="map-title">아직 완성된 지도보다,<br />몸이 먼저 기억한 길들.</h2>
+      <figure class="asphalt-map" aria-label="밤 아스팔트의 기억의 길 — 신포동, 시화공단, 가평(후보)을 지나온 길">
+        <svg class="trail" viewBox="0 0 1000 240" preserveAspectRatio="none" aria-hidden="true">
+          <path class="trail-line" d="M15,190 C210,128 350,74 520,116 S805,178 985,64" />
+          <path class="trail-glow" d="M15,190 C210,128 350,74 520,116 S805,178 985,64" />
+        </svg>
+        <span class="coord coord--1"><i></i>신포동</span>
+        <span class="coord coord--2"><i></i>시화공단</span>
+        <span class="coord coord--3"><i></i>가평 <em>(후보)</em></span>
+        <figcaption>확정 장소 세 곳을 지나온 길. 헤드라이트가 지나간 자국.</figcaption>
+      </figure>
+
+      <figure class="live-wall-wrap">
+        <div class="live-wall" aria-label="자동차별 순간들 — 한 장씩 초점이 도는 사진 벽">
+          <div class="live-focus" aria-hidden="true"></div>
+          <div class="live-frame" data-s="달리는 느낌은 AMG, 현실은 컴포트 모드." data-f="Mercedes-Benz GLA 45 AMG. 달리는 느낌을 주게 만드는 차. 실제로는 기름값 때문에 마음껏 밟지는 못하고, 언제나 컴포트 모드로 달렸다.">
+            <img src="../assets/images/cars/hero-night-direction.jpg" alt="달리는 느낌은 AMG, 현실은 컴포트 모드." loading="lazy" />
+          </div>
+          <div class="live-frame" data-s="잘 빠진 Tesla, 현실은 와이퍼 소리." data-f="Tesla. 공기저항계수가 낮다고 했는데, 정말 잘 빠졌다. 그런데 와이퍼야, 삐걱거리는 소리 좀 안 나게 해라.">
+            <img src="../assets/images/cars/gallery-ec438dff.jpg" alt="잘 빠진 Tesla, 현실은 와이퍼 소리." loading="lazy" />
+          </div>
+          <div class="live-frame" data-s="잠시 쉬어가는 생명 쉼터." data-f="고속도로를 달리다 잠시 쉴 수 있는 졸음쉼터. 생명 쉼터. 역광 사진빨.">
+            <img src="../assets/images/cars/gallery-output-1883912203.jpg" alt="잠시 쉬어가는 생명 쉼터." loading="lazy" />
+          </div>
+          <div class="live-frame" data-s="가장 잘생겨 보이던 A3 Sportback의 구도." data-f="Audi A3 Sportback. 이 구도가 제일 잘생겨 보인다. 정말 매력적이었던 차. 디젤이라 시끄럽긴 했지만, 그래도 추억이 많은 차다.">
+            <img src="../assets/images/cars/gallery-1510842055.jpg" alt="가장 잘생겨 보이던 A3 Sportback의 구도." loading="lazy" />
+          </div>
+          <div class="live-frame" data-s="실용적이고 귀여웠던 와이프의 첫차." data-f="와이프의 첫차. 이것도 내가 많이 예뻐해 줬는데, 참 실용적이고 귀여운 차였다. 엔진 힘은 너무 없었다. ㅋㅋㅋ">
+            <img src="../assets/images/cars/gallery-img-0943.jpg" alt="실용적이고 귀여웠던 와이프의 첫차." loading="lazy" />
+          </div>
+          <div class="live-frame" data-s="신포동 점심 브레이크에 본 예쁜 하늘." data-f="신포동 점심 브레이크 때, 하늘이 예뻐서 남긴 사진. 인천여관, 루비살롱, 크라운볼링장이 함께 보이던 동네 풍경.">
+            <img src="../assets/images/cars/gallery-img-2958.jpg" alt="신포동 점심 브레이크에 본 예쁜 하늘." loading="lazy" />
+          </div>
+          <div class="live-frame" data-s="안개 속 휴게소에서 탄생한 작품." data-f="안개가 많던 날, 앞이 보이지 않아 고속도로 휴게소로 대피했다. 그리고 작품 탄생. ㅋ">
+            <img src="../assets/images/cars/gallery-img-1886.jpg" alt="안개 속 휴게소에서 탄생한 작품." loading="lazy" />
+          </div>
+          <div class="live-frame" data-s="밤늦게 나를 데려다준 차." data-f="밤늦게 나를 데려다준 차, 고마워. 너무 늦어서 이런 자리밖에 남지 않았다. 어떻게 내렸지? ㅋㅋ">
+            <img src="../assets/images/cars/gallery-img-3567.jpg" alt="밤늦게 나를 데려다준 차." loading="lazy" />
+          </div>
+          <div class="live-frame" data-s="다시는 블랙 차를 사나 봐라 했는데." data-f="다시는 블랙 차를 사나 봐라 했는데, 우리 와이프 차가 블랙이 되었네. ㅜㅜ">
+            <img src="../assets/images/cars/gallery-img-9289.jpg" alt="다시는 블랙 차를 사나 봐라 했는데." loading="lazy" />
+          </div>
+        </div>
+        <figcaption class="live-caption">
+          <strong>달리는 느낌은 AMG, 현실은 컴포트 모드.</strong>
+          <span>Mercedes-Benz GLA 45 AMG. 달리는 느낌을 주게 만드는 차. 실제로는 기름값 때문에 마음껏 밟지는 못하고, 언제나 컴포트 모드로 달렸다.</span>
+        </figcaption>
+      </figure>
+
+      <figure class="rep-figure curate">
+        <img src="../assets/images/cars/hero-night-direction.jpg" alt="달리는 느낌은 AMG, 현실은 컴포트 모드." loading="lazy" />
+        <figcaption>
+          <span class="rep-badge">대표 · Mercedes-Benz GLA 45 AMG</span>
+          <strong>달리는 느낌은 AMG, 현실은 컴포트 모드.</strong>
+          <span>Mercedes-Benz GLA 45 AMG. 달리는 느낌을 주게 만드는 차. 실제로는 기름값 때문에 마음껏 밟지는 못하고, 언제나 컴포트 모드로 달렸다.</span>
+        </figcaption>
+      </figure>
+
+      <div class="car-group">
+        <p class="group-label">테슬라 모델 Y</p>
+        <div class="photo-grid">
+          <figure class="photo-card curate">
+            <img src="../assets/images/cars/gallery-ec438dff.jpg" alt="잘 빠진 Tesla, 현실은 와이퍼 소리." loading="lazy" />
+            <figcaption><strong>잘 빠진 Tesla, 현실은 와이퍼 소리.</strong><span>Tesla. 공기저항계수가 낮다고 했는데, 정말 잘 빠졌다. 그런데 와이퍼야, 삐걱거리는 소리 좀 안 나게 해라.</span></figcaption>
+          </figure>
+          <figure class="photo-card">
+            <img src="../assets/images/cars/gallery-img-2526.jpg" alt="Tesla를 타면 숙소 선택 기준도 달라진다." loading="lazy" />
+            <figcaption><strong>Tesla를 타면 숙소 선택 기준도 달라진다.</strong><span>가평이었을 거야. Tesla를 타고 나서는 숙소도 전기차 충전이 되는 곳을 찾게 된다. 저 위에 보이는 전기차 충전기.</span></figcaption>
+          </figure>
+          <figure class="photo-card curate">
+            <img src="../assets/images/cars/gallery-output-1883912203.jpg" alt="잠시 쉬어가는 생명 쉼터." loading="lazy" />
+            <figcaption><strong>잠시 쉬어가는 생명 쉼터.</strong><span>고속도로를 달리다 잠시 쉴 수 있는 졸음쉼터. 생명 쉼터. 역광 사진빨.</span></figcaption>
+          </figure>
+        </div>
       </div>
-      <div class="map-panel">
-        <div class="map-visual" role="img" aria-label="자동차별의 길 지도"></div>
-        <article class="panel">
-          <p class="mini">좌표로</p>
-          <h3>내가 달렸던 길들</h3>
-          <p>
-            이 방은 나중에 실제 길과 장소가 더해질 자리다.
-            지금은 한 번 간 길을 잊지 않는 사람의 감각을 먼저 세운다.
-          </p>
+
+      <div class="car-group">
+        <p class="group-label">테슬라 모델 Y · 코니 서스펜션 이야기</p>
+        <article class="story">
+          <figure class="story-lead">
+            <img src="../assets/images/cars/suspension-01.jpeg" alt="테슬라 모델 Y가 전기차 충전소에 주차된 모습" loading="lazy" />
+          </figure>
+          <div class="story-body">
+            <h3>테슬라 모델 Y 롱레인지 코니 서스펜션</h3>
+            <p>2021년식 테슬라 모델 Y 롱레인지를 타면서 순정 서스펜션의 단단함은 그냥 그러려니 하고 지냈습니다.</p>
+            <p>6만 킬로를 달리는 동안에도 덩치가 크고 빠른 차를 잘 잡아주려면 이 정도 단단함은 감수해야 한다고 생각했습니다.</p>
+            <p>그런데 최근에 모델 3 하이랜드를 시승해보고 깜짝 놀랐습니다.</p>
+            <p>같은 회사에서 만든 차가 맞나 싶을 정도로 승차감이 훨씬 좋았습니다. 그래서 검색해보니 하이랜드에 장착된 서스펜션이 코니 FSD를 기반으로 만들어졌다는 것을 알게 되었습니다.</p>
+            <p>후기를 더 찾아보니 대부분 이 서스펜션에 대해 칭찬이 많았습니다. 그래서 직접 장착점을 찾아가 보기로 했습니다.</p>
+            <p>그곳에서 마침 모델 Y에 코니 서스펜션 작업을 하고 있는 차주를 만났고, 작업이 완료되면 한 번 시승해볼 수 있는지 요청드렸습니다.</p>
+            <p>다행히 흔쾌히 승낙해주셔서 함께 한 바퀴 시승을 하게 되었습니다.</p>
+            <p>시승 후 바로 업체에 서스펜션 교체를 요청했습니다.</p>
+            <p>금액은 재작년 기준 135만 원이었습니다. 지금은 어떨지 모르겠습니다. 작은 돈은 아니었지만, 그 이상의 가치가 있다고 판단했습니다.</p>
+            <p>교체를 완료한 후, 차를 잘 아는 지인에게 가장 먼저 시승을 시켜봤습니다.</p>
+            <p class="keep-line">그의 첫마디는 "이제야 차 같네"였습니다.</p>
+            <p>그리고 "이제는 더 깔 데 없이 좋다"는 말도 해주었습니다.</p>
+            <p>가족들의 반응은 워낙 무던한 성격들이라서인지 "조금 좋아졌네" 정도였지만, 제 개인적인 만족도는 매우 높습니다.</p>
+            <p class="keep-line">특히 초창기 버전의 모델 Y를 타고 계신 분이라면 강력히 추천드리고 싶습니다.</p>
+            <p>단단함을 참고 타는 것도 방법이지만, 차를 오래 타려면 내가 매일 느끼는 피로감도 중요하니까요.</p>
+
+            <div class="story-gallery">
+              <figure><img src="../assets/images/cars/suspension-02.jpeg" alt="벤츠 GLA 45A의 후면과 휠" loading="lazy" /></figure>
+              <figure><img src="../assets/images/cars/suspension-03.jpeg" alt="KONI Special Active 서스펜션 설명 이미지" loading="lazy" /></figure>
+              <figure><img src="../assets/images/cars/suspension-04.jpeg" alt="빨간색 KONI 쇼바 단품" loading="lazy" /></figure>
+              <figure><img src="../assets/images/cars/suspension-05.jpeg" alt="스프링과 함께 조립된 빨간색 KONI 서스펜션" loading="lazy" /></figure>
+              <figure><img src="../assets/images/cars/suspension-06.jpg" alt="작업장에 함께 주차된 벤츠와 테슬라 모델 Y" loading="lazy" /></figure>
+            </div>
+
+            <a class="story-video-link focusable" href="https://youtu.be/4x4S6cLl6ik" target="_blank" rel="noopener noreferrer">코니 서스펜션 비교 영상 보기 <span class="pf-arrow" aria-hidden="true">↗</span></a>
+          </div>
         </article>
+      </div>
+
+      <div class="car-group">
+        <p class="group-label">아우디 A3 스포트백</p>
+        <div class="photo-grid">
+          <figure class="photo-card curate">
+            <img src="../assets/images/cars/gallery-1510842055.jpg" alt="가장 잘생겨 보이던 A3 Sportback의 구도." loading="lazy" />
+            <figcaption><strong>가장 잘생겨 보이던 A3 Sportback의 구도.</strong><span>Audi A3 Sportback. 이 구도가 제일 잘생겨 보인다. 정말 매력적이었던 차. 디젤이라 시끄럽긴 했지만, 그래도 추억이 많은 차다.</span></figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <div class="car-group">
+        <p class="group-label">쉐보레 스파크 · 와이프의 첫차</p>
+        <div class="photo-grid">
+          <figure class="photo-card curate">
+            <img src="../assets/images/cars/gallery-img-0943.jpg" alt="실용적이고 귀여웠던 와이프의 첫차." loading="lazy" />
+            <figcaption><strong>실용적이고 귀여웠던 와이프의 첫차.</strong><span>와이프의 첫차. 이것도 내가 많이 예뻐해 줬는데, 참 실용적이고 귀여운 차였다. 엔진 힘은 너무 없었다. ㅋㅋㅋ</span></figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <div class="car-group">
+        <p class="group-label">길 위의 기억</p>
+        <div class="photo-grid">
+          <figure class="photo-card">
+            <img src="../assets/images/cars/gallery-1510842067.jpg" alt="하루 종일 나를 기다려준 차." loading="lazy" />
+            <figcaption><strong>하루 종일 나를 기다려준 차.</strong><span>신포동 델라카사에서 퇴근하려다 찍은 한 컷. 나를 집에 데려다주려고 하루 종일 기다려줘서 고마워.</span></figcaption>
+          </figure>
+          <figure class="photo-card curate">
+            <img src="../assets/images/cars/gallery-img-2958.jpg" alt="신포동 점심 브레이크에 본 예쁜 하늘." loading="lazy" />
+            <figcaption><strong>신포동 점심 브레이크에 본 예쁜 하늘.</strong><span>신포동 점심 브레이크 때, 하늘이 예뻐서 남긴 사진. 인천여관, 루비살롱, 크라운볼링장이 함께 보이던 동네 풍경.</span></figcaption>
+          </figure>
+          <figure class="photo-card">
+            <img src="../assets/images/cars/gallery-img-0260.jpg" alt="하늘도 예쁘고 내 차도 예뻤던 시화공단." loading="lazy" />
+            <figcaption><strong>하늘도 예쁘고 내 차도 예뻤던 시화공단.</strong><span>부동산에서 근무할 때, 시화공단의 하늘이 예뻤고 내 차도 예뻤다.</span></figcaption>
+          </figure>
+          <figure class="photo-card">
+            <img src="../assets/images/cars/gallery-img-0268.jpg" alt="시화공단의 하늘과 내 차, 다른 각도." loading="lazy" />
+            <figcaption><strong>시화공단의 하늘과 내 차, 다른 각도.</strong><span>부동산에서 근무할 때, 시화공단의 하늘이 예뻤고 내 차도 예뻤다. 다른 각도에서 남긴 한 장.</span></figcaption>
+          </figure>
+          <figure class="photo-card">
+            <img src="../assets/images/cars/essay-open-parking-direction.jpg" alt="세차 후엔 차도 마음도 깨끗해진다." loading="lazy" />
+            <figcaption><strong>세차 후엔 차도 마음도 깨끗해진다.</strong><span>항상 세차 후엔 차도, 마음도, 내 머리도 깨끗해진다. 아직도 셀프 세차를 하는 이유. 그러고 보니 요즘 세차 안 한 지 3개월째인가?</span></figcaption>
+          </figure>
+          <figure class="photo-card">
+            <img src="../assets/images/cars/photo-white-car-line.jpg" alt="밤의 실내 셀프 세차장." loading="lazy" />
+            <figcaption><strong>밤의 실내 셀프 세차장.</strong><span>요즘은 겨울에도 실내 셀프 세차장에서 세차가 가능하다. 그리고 밤에 가면 혼자 이 큰 공간을 차지할 수 있다.</span></figcaption>
+          </figure>
+          <figure class="photo-card">
+            <img src="../assets/images/cars/gallery-img-0215.jpg" alt="세차는 마음을 정리하는 시간." loading="lazy" />
+            <figcaption><strong>세차는 마음을 정리하는 시간.</strong><span>세차를 한다는 것은 마음을 정리한다는 것이다. 이것만큼 다른 생각 안 하고 신나게 두 시간을 재미있게 보낼 방법이 별로 없지 않나?</span></figcaption>
+          </figure>
+          <figure class="photo-card">
+            <img src="../assets/images/cars/gallery-img-0496.jpg" alt="5년째 깨끗한 이유." loading="lazy" />
+            <figcaption><strong>5년째 깨끗한 이유.</strong><span>맨날 세차장이다. 그래서 5년째 타도 깨끗한 이유겠지.</span></figcaption>
+          </figure>
+          <figure class="photo-card">
+            <img src="../assets/images/cars/gallery-img-3233.jpg" alt="야간의 고요함 속에서 스트레스도 씻어냈다." loading="lazy" />
+            <figcaption><strong>야간의 고요함 속에서 스트레스도 씻어냈다.</strong><span>야간의 고요함이 깨끗함과 만나고, 나는 그렇게 스트레스도 씻어냈다.</span></figcaption>
+          </figure>
+          <figure class="photo-card">
+            <img src="../assets/images/cars/gallery-img-7499.jpg" alt="검은 차의 관리 지옥." loading="lazy" />
+            <figcaption><strong>검은 차의 관리 지옥.</strong><span>또 세차장이다. 검은 차를 사면 정말 관리 지옥이 펼쳐진다.</span></figcaption>
+          </figure>
+          <figure class="photo-card curate">
+            <img src="../assets/images/cars/gallery-img-9289.jpg" alt="다시는 블랙 차를 사나 봐라 했는데." loading="lazy" />
+            <figcaption><strong>다시는 블랙 차를 사나 봐라 했는데.</strong><span>다시는 블랙 차를 사나 봐라 했는데, 우리 와이프 차가 블랙이 되었네. ㅜㅜ</span></figcaption>
+          </figure>
+          <figure class="photo-card">
+            <img src="../assets/images/cars/gallery-img-0216.jpg" alt="운전 중 가장 만나기 싫은 순간, 펑크." loading="lazy" />
+            <figcaption><strong>운전 중 가장 만나기 싫은 순간, 펑크.</strong><span>차를 운전하면서 가장 만나기 싫은 순간, 펑크. ㅠㅠ 어떻게 할지 고민된다. 너무 멀리 가면 휠까지 망가질 수 있고, 기다리자니 급하다. 결국 가까운 타이어 가게를 찾아가서 만 원에 해결했다. 보험사를 기다리는 시간이 너무 길 때가 있다.</span></figcaption>
+          </figure>
+          <figure class="photo-card curate">
+            <img src="../assets/images/cars/gallery-img-1886.jpg" alt="안개 속 휴게소에서 탄생한 작품." loading="lazy" />
+            <figcaption><strong>안개 속 휴게소에서 탄생한 작품.</strong><span>안개가 많던 날, 앞이 보이지 않아 고속도로 휴게소로 대피했다. 그리고 작품 탄생. ㅋ</span></figcaption>
+          </figure>
+          <figure class="photo-card curate">
+            <img src="../assets/images/cars/gallery-img-3567.jpg" alt="밤늦게 나를 데려다준 차." loading="lazy" />
+            <figcaption><strong>밤늦게 나를 데려다준 차.</strong><span>밤늦게 나를 데려다준 차, 고마워. 너무 늦어서 이런 자리밖에 남지 않았다. 어떻게 내렸지? ㅋㅋ</span></figcaption>
+          </figure>
+        </div>
       </div>
     </section>
 
     <section class="section" aria-labelledby="entry-title">
       <div class="section-head">
-        <p class="num">05 / 별 안으로</p>
-        <h2 id="entry-title">들어가는 문은 네 개.<br />이 별은 방향으로 연결된다.</h2>
+        <p class="num">04 / 별 안으로</p>
+        <h2 id="entry-title">문장 / 장면 / 디자인 / 별자리</h2>
       </div>
       <div class="entry-hub">
         <p class="large-copy">막막한 사람에게<br />방향을 찾아주는 일.</p>
         <div class="entry-grid">
-          <button class="entry-card room-house-door" type="button" data-target="#car-writing" data-house-target="car-writing-room"><strong>문장</strong><span>사브, 해치백, 모델 Y에 남은 문장</span></button>
-          <button class="entry-card room-house-door" type="button" data-target="#car-photos" data-house-target="car-photo-room"><strong>장면</strong><span>차와 함께 움직였던 장면</span></button>
-          <button class="entry-card room-house-door" type="button" data-target="#car-map" data-house-target="car-map-room"><strong>지도</strong><span>언젠가 달렸던 길의 좌표로</span></button>
-          <a class="entry-card" href="#star-list"><strong>별자리</strong></a>
+          <button class="entry-card" type="button" data-target="#car-writing"><strong>문장</strong><span>각 차의 기억, 사브 이야기, 해치백 예찬, 길 찾는 버릇</span></button>
+          <button class="entry-card" type="button" data-target="#car-photos"><strong>장면</strong><span>대표 사진 장면 + 사진 묶음 장면</span></button>
+          <button class="entry-card" type="button" data-target="#car-design"><strong>디자인</strong><span>이 페이지를 어떤 설계로 지었는지, 그 화면 그대로</span></button>
+          <a class="entry-card" href="#star-list"><strong>별자리</strong><span>다른 별로</span></a>
         </div>
       </div>
+    </section>
+
+    <section class="section" id="car-design" aria-labelledby="design-title">
+      <div class="section-head">
+        <p class="num">05 / 디자인</p>
+        <h2 id="design-title">창작은 설계도와<br />스타일 단계에서 끝났다.</h2>
+      </div>
+      <details class="design-sheet">
+        <summary>이 페이지를 지은 설계 화면 열어 보기</summary>
+        <div class="design-sheet-views">
+          <iframe class="design-frame design-frame--desktop" src="../assets/design-sheets/car_star/index.html" title="자동차별 데스크톱 디자인 스타일시트" loading="lazy"></iframe>
+          <iframe class="design-frame design-frame--tablet" src="../assets/design-sheets/car_star/tablet.html" title="자동차별 태블릿 디자인 스타일시트" loading="lazy"></iframe>
+          <iframe class="design-frame design-frame--mobile" src="../assets/design-sheets/car_star/mobile-compact.html" title="자동차별 모바일 디자인 스타일시트" loading="lazy"></iframe>
+        </div>
+      </details>
     </section>
 
     <section class="section" aria-labelledby="not-title">
       <div class="section-head">
         <p class="num">06 / 마지막 기준</p>
-        <h2 id="not-title">자동차별이<br />하지 않으려는 말.</h2>
+        <h2 id="not-title">자동차별은 카 리뷰 페이지가 아니다.</h2>
       </div>
       <div class="not-grid">
-        <div class="not-card">차 리뷰가 아니다.</div>
-        <div class="not-card">스펙 비교가 아니다.</div>
-        <div class="not-card">빠른 차 자랑이 아니다.</div>
-        <div class="not-card">비싼 차 전시가 아니다.</div>
-        <div class="not-card">내 차가 최고라는 말이 아니다.</div>
+        <div class="not-card">카 매거진.</div>
+        <div class="not-card">스펙 비교표.</div>
+        <div class="not-card">딜러 브로슈어.</div>
+        <div class="not-card">속도 과시.</div>
+        <div class="not-card">럭셔리카 자랑.</div>
       </div>
+      <p class="not-joke">…그래도 돈 주면 한다.</p>
     </section>
 
-      <section class="room-house-panel" id="car-writing-room" aria-label="자동차별 문장" hidden>
-        <div class="room-house-panel-header">
-          <p class="room-section-label">자동차별 · 문장</p>
-          <h2>길 위에 남은 사람들</h2>
-          <button class="room-house-back" type="button">자동차별로 돌아가기</button>
-        </div>
-
-        <div class="room-sort-control" data-sort-target="articles" aria-label="자동차별 문장 정렬">
-          <span>정렬</span>
-          <button type="button" data-sort-mode="latest" aria-pressed="true">최신순</button>
-          <button type="button" data-sort-mode="registered" aria-pressed="false">등록순</button>
-        </div>
-
-        <div class="room-article-list" aria-label="자동차별 문장">
-          <button class="room-article-link" type="button" data-article-target="car-tesla-koni-note" data-homepage-date="2026-06-02" data-sort-order="1">
-            <strong>테슬라 모델 Y 코니 서스펜션</strong>
-          </button>
-          <button class="room-article-link" type="button" data-article-target="car-direction-note" data-homepage-date="2026-06-07" data-sort-order="2">
-            <strong>방향 찾기</strong>
-          </button>
-          <button class="room-article-link" type="button" data-article-target="car-line-note" data-homepage-date="2026-06-07" data-sort-order="3">
-            <strong>선과 거리</strong>
-          </button>
-        </div>
-
-        <div class="room-card-list room-article-panels">
-          <article class="room-post room-card car-essay-card room-article-panel" id="car-tesla-koni-note" hidden>
-            <button class="room-article-back" type="button">문장</button>
-            <header>
-              <p class="room-card-meta">문장</p>
-              <h3>테슬라 모델 Y 롱레인지 코니 서스펜션</h3>
-              <p class="room-card-note">모델 Y · 코니 서스펜션 · 승차감</p>
-            </header>
-
-            <figure class="car-essay-figure">
-              <img src="../assets/images/cars/suspension-01.jpeg" alt="테슬라 모델 Y가 전기차 충전소에 주차된 모습">
-              <figcaption>초창기 테슬라 모델 Y의 단단한 승차감을 코니 서스펜션으로 바꿔 본 기록.</figcaption>
-            </figure>
-
-            <div class="car-essay-copy">
-              <p>2021년식 테슬라 모델 Y 롱레인지를 타면서 순정 서스펜션의 단단함은 그냥 그러려니 하고 지냈습니다.</p>
-              <p>6만 킬로를 달리는 동안에도 덩치가 크고 빠른 차를 잘 잡아주려면 이 정도 단단함은 감수해야 한다고 생각했습니다.</p>
-              <p>그런데 최근에 모델 3 하이랜드를 시승해보고 깜짝 놀랐습니다.</p>
-              <p>같은 회사에서 만든 차가 맞나 싶을 정도로 승차감이 훨씬 좋았습니다. 그래서 검색해보니 하이랜드에 장착된 서스펜션이 코니 FSD를 기반으로 만들어졌다는 것을 알게 되었습니다.</p>
-              <p>후기를 더 찾아보니 대부분 이 서스펜션에 대해 칭찬이 많았습니다. 그래서 직접 장착점을 찾아가 보기로 했습니다.</p>
-              <p>그곳에서 마침 모델 Y에 코니 서스펜션 작업을 하고 있는 차주를 만났고, 작업이 완료되면 한 번 시승해볼 수 있는지 요청드렸습니다.</p>
-              <p>다행히 흔쾌히 승낙해주셔서 함께 한 바퀴 시승을 하게 되었습니다.</p>
-              <p>시승 후 바로 업체에 서스펜션 교체를 요청했습니다.</p>
-              <p>금액은 제작년 기준 135만 원이었습니다. 지금은 어떨지 모르겠습니다. 작은 돈은 아니었지만, 그 이상의 가치가 있다고 판단했습니다.</p>
-              <p>교체를 완료한 후, 차를 잘 아는 지인에게 가장 먼저 시승을 시켜봤습니다.</p>
-              <p class="car-essay-quote">"이제야 차 같네"</p>
-              <p>그의 첫마디는 "이제야 차 같네"였습니다.</p>
-              <p>그리고 "이제는 더 깔 데 없이 좋다"는 말도 해주었습니다.</p>
-              <p>가족들의 반응은 워낙 무던한 성격들이라서인지 "조금 좋아졌네" 정도였지만, 제 개인적인 만족도는 매우 높습니다.</p>
-              <p><strong>특히 초창기 버전의 모델 Y를 타고 계신 분이라면 강력히 추천드리고 싶습니다.</strong></p>
-              <p>단단함을 참고 타는 것도 방법이지만,<br>차를 오래 타려면 내가 매일 느끼는 피로감도 중요하니까요.</p>
-            </div>
-
-            <div class="car-essay-gallery" aria-label="테슬라 모델 Y 코니 서스펜션 연결 사진">
-              <figure>
-                <img src="../assets/images/cars/suspension-02.jpeg" alt="벤츠 GLA 45A의 후면과 휠">
-                <figcaption>2 / 6</figcaption>
-              </figure>
-              <figure>
-                <img src="../assets/images/cars/suspension-03.jpeg" alt="KONI Special Active 서스펜션 설명 이미지">
-                <figcaption>3 / 6</figcaption>
-              </figure>
-              <figure>
-                <img src="../assets/images/cars/suspension-04.jpeg" alt="빨간색 KONI 쇼바 단품">
-                <figcaption>4 / 6</figcaption>
-              </figure>
-              <figure>
-                <img src="../assets/images/cars/suspension-05.jpeg" alt="스프링과 함께 조립된 빨간색 KONI 서스펜션">
-                <figcaption>5 / 6</figcaption>
-              </figure>
-              <figure>
-                <img src="../assets/images/cars/suspension-06.jpg" alt="작업장에 함께 주차된 벤츠와 테슬라 모델 Y">
-                <figcaption>6 / 6</figcaption>
-              </figure>
-            </div>
-
-            <div class="car-essay-media">
-              <iframe src="https://www.youtube.com/embed/4x4S6cLl6ik" title="Shock absorber comparison | Fitting a Tesla Model 3 with KONI shocks" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-            </div>
-            <p class="car-essay-links"><a href="https://youtu.be/4x4S6cLl6ik" target="_blank" rel="noopener">YouTube에서 보기</a></p>
-          </article>
-
-          <article class="room-post room-card room-record-unit car-record-card room-article-panel" id="car-direction-note" hidden>
-            <button class="room-article-back" type="button">문장</button>
-            <figure class="room-record-figure" data-tags="자동차별, 세차, 셀프 세차, 깨끗함, 마음 정리, 현실 농담, 일상 루틴">
-              <img class="room-photo-image room-record-photo" src="../assets/images/cars/essay-open-parking-direction.jpg" alt="하늘 아래 주차된 흰 자동차">
-              <figcaption class="room-record-caption">
-                <span class="room-card-meta">문장</span>
-                <strong class="room-card-title">막막한 곳에서 방향을 찾는 일</strong>
-                <span class="room-card-note">자동차 · 길 · 방향</span>
-                <span>어디로 갈지 정하는 순간, 길은 조금씩 선명해진다.</span>
-              </figcaption>
-            </figure>
-          </article>
-
-          <article class="room-post room-card room-record-unit car-record-card room-article-panel" id="car-line-note" hidden>
-            <button class="room-article-back" type="button">문장</button>
-            <figure class="room-record-figure" data-tags="자동차별, 셀프 세차, 실내 세차장, 겨울 세차, 밤, 혼자 쓰는 공간, 넓은 공간감">
-              <img class="room-photo-image room-record-photo" src="../assets/images/cars/photo-white-car-line.jpg" alt="주차장에 세워진 흰 자동차의 선">
-              <figcaption class="room-record-caption">
-                <span class="room-card-meta">장면</span>
-                <strong class="room-card-title">차가 남긴 선과 거리</strong>
-                <span class="room-card-note">차 · 주차장 · 시선</span>
-                <span>차를 보는 일은 결국 선과 거리, 그리고 방향을 읽는 일이다.</span>
-              </figcaption>
-            </figure>
-          </article>
-        </div>
-      </section>
-
-      <section class="room-house-panel car-gallery" id="car-photo-room" aria-label="자동차별 장면" hidden>
-        <div class="room-house-panel-header">
-          <p class="room-section-label">자동차별 · 장면</p>
-          <h2>장면</h2>
-          <button class="room-house-back" type="button">자동차별로 돌아가기</button>
-        </div>
-
-        <div class="room-sort-control" data-sort-target="photos" aria-label="자동차별 장면 정렬">
-          <span>정렬</span>
-          <button type="button" data-sort-mode="latest" aria-pressed="true">최신순</button>
-          <button type="button" data-sort-mode="registered" aria-pressed="false">등록순</button>
-        </div>
-
-        <div class="room-section-heading">
-          <p class="room-section-label">차와 길의 좌표</p>
-        </div>
-        <div class="room-house-photo-grid car-gallery-grid">
-          <figure class="room-house-photo" data-tags="자동차별, 블랙 차, 와이프 차, 검은 차, 차량 관리, 세차 걱정, 현실 농담, 가족의 차, display-large" data-memory="다시는 블랙 차를 사나 봐라 했는데, 우리 와이프 차가 블랙이 되었네. ㅜㅜ"><img class="room-photo-image car-gallery-photo" src="../assets/images/cars/gallery-img-9289.jpg" alt="자동차 사진 1"><figcaption>다시는 블랙 차를 사나 봐라 했는데.</figcaption></figure>
-          <figure class="room-house-photo" data-tags="자동차별, 세차장, 검은 차, 차량 관리, 세차 루틴, 관리 지옥, 현실 농담, display-large" data-memory="또 세차장이다. 검은 차를 사면 정말 관리 지옥이 펼쳐진다."><img class="room-photo-image car-gallery-photo" src="../assets/images/cars/gallery-img-7499.jpg" alt="자동차 사진 2"><figcaption>검은 차의 관리 지옥.</figcaption></figure>
-          <figure class="room-house-photo" data-tags="자동차별, 와이프의 첫차, 가족의 차, 실용적인 차, 귀여운 차, 엔진 힘 부족, 많이 아껴준 차" data-memory="와이프의 첫차. 이것도 내가 많이 예뻐해 줬는데, 참 실용적이고 귀여운 차였다. 엔진 힘은 너무 없었다. ㅋㅋㅋ"><img class="room-photo-image car-gallery-photo" src="../assets/images/cars/gallery-img-0943.jpg" alt="자동차 사진 3"><figcaption>실용적이고 귀여웠던 와이프의 첫차.</figcaption></figure>
-          <figure class="room-house-photo" data-tags="자동차별, 늦은 밤, 주차, 좁은 주차 자리, 집으로 데려다준 차, 고마움, 현실 농담" data-memory="밤늦게 나를 데려다준 차, 고마워. 너무 늦어서 이런 자리밖에 남지 않았다. 어떻게 내렸지? ㅋㅋ"><img class="room-photo-image car-gallery-photo" src="../assets/images/cars/gallery-img-3567.jpg" alt="자동차 사진 4"><figcaption>밤늦게 나를 데려다준 차.</figcaption></figure>
-          <figure class="room-house-photo" data-tags="자동차별, 야간 세차, 고요함, 깨끗함, 스트레스 해소, 셀프 세차, 마음 정리" data-memory="야간의 고요함이 깨끗함과 만나고, 나는 그렇게 스트레스도 씻어냈다."><img class="room-photo-image car-gallery-photo" src="../assets/images/cars/gallery-img-3233.jpg" alt="자동차 사진 5"><figcaption>야간의 고요함 속에서 스트레스도 씻어냈다.</figcaption></figure>
-          <figure class="room-house-photo" data-tags="자동차별, 신포동, 점심 브레이크, 하늘, 인천여관, 루비살롱, 크라운볼링장, 동네 풍경, 장소의 기억" data-memory="신포동 점심 브레이크 때, 하늘이 예뻐서 남긴 사진. 인천여관, 루비살롱, 크라운볼링장이 함께 보이던 동네 풍경."><img class="room-photo-image car-gallery-photo" src="../assets/images/cars/gallery-img-2958.jpg" alt="자동차 사진 6"><figcaption>신포동 점심 브레이크에 본 예쁜 하늘.</figcaption></figure>
-          <figure class="room-house-photo" data-tags="자동차별, 안개, 고속도로 휴게소, 대피, 안전 운전, 우연한 작품, 여행 중 순간" data-memory="안개가 많던 날, 앞이 보이지 않아 고속도로 휴게소로 대피했다. 그리고 작품 탄생. ㅋ"><img class="room-photo-image car-gallery-photo" src="../assets/images/cars/gallery-img-1886.jpg" alt="자동차 사진 7"><figcaption>안개 속 휴게소에서 탄생한 작품.</figcaption></figure>
-          <figure class="room-house-photo" data-tags="자동차별, Tesla, 전기차, 전기차 충전기, 숙소 선택, 가평 후보, 여행, 충전 가능한 숙소" data-memory="가평이었을 거야. Tesla를 타고 나서는 숙소도 전기차 충전이 되는 곳을 찾게 된다. 저 위에 보이는 전기차 충전기."><img class="room-photo-image car-gallery-photo" src="../assets/images/cars/gallery-img-2526.jpg" alt="자동차 사진 8"><figcaption>Tesla를 타면 숙소 선택 기준도 달라진다.</figcaption></figure>
-          <figure class="room-house-photo" data-tags="자동차별, 세차장, 셀프 세차, 5년째 깨끗한 차, 관리 루틴, 반복되는 습관" data-memory="맨날 세차장이다. 그래서 5년째 타도 깨끗한 이유겠지."><img class="room-photo-image car-gallery-photo" src="../assets/images/cars/gallery-img-0496.jpg" alt="자동차 사진 9"><figcaption>5년째 깨끗한 이유.</figcaption></figure>
-          <figure class="room-house-photo" data-memory="요즘은 겨울에도 실내 셀프 세차장에서 세차가 가능하다. 그리고 밤에 가면 혼자 이 큰 공간을 차지할 수 있다." data-tags="자동차별, 셀프 세차, 실내 세차장, 겨울 세차, 밤, 혼자 쓰는 공간, 넓은 공간감"><img class="room-photo-image car-gallery-photo" src="../assets/images/cars/photo-white-car-line.jpg" alt="밤의 실내 셀프 세차장"><figcaption>밤의 실내 셀프 세차장.</figcaption></figure>
-          <figure class="room-house-photo" data-memory="차를 운전하면서 가장 만나기 싫은 순간, 펑크. ㅠㅠ 어떻게 할지 고민된다. 너무 멀리 가면 휠까지 망가질 수 있고, 기다리자니 급하다. 결국 가까운 타이어 가게를 찾아가서 만 원에 해결했다. 보험사를 기다리는 시간이 너무 길 때가 있다." data-tags="자동차별, 펑크, 타이어, 운전 중 위기, 보험사 대기, 가까운 정비, 현실 운전, 만 원 수리"><img class="room-photo-image car-gallery-photo" src="../assets/images/cars/gallery-img-0216.jpg" alt="펑크가 난 자동차 타이어"><figcaption>운전 중 가장 만나기 싫은 순간, 펑크.</figcaption></figure>
-          <figure class="room-house-photo" data-memory="Audi A3 Sportback. 이 구도가 제일 잘생겨 보인다. 정말 매력적이었던 차. 디젤이라 시끄럽긴 했지만, 그래도 추억이 많은 차다." data-tags="자동차별, Audi, A3 Sportback, 디젤, 매력적인 차, 잘생겨 보이는 구도, 추억 많은 차"><img class="room-photo-image car-gallery-photo" src="../assets/images/cars/gallery-1510842055.jpg" alt="Audi A3 Sportback이 잘생겨 보이는 구도"><figcaption>가장 잘생겨 보이던 A3 Sportback의 구도.</figcaption></figure>
-          <figure class="room-house-photo" data-memory="신포동 델라카사에서 퇴근하려다 찍은 한 컷. 나를 집에 데려다주려고 하루 종일 기다려줘서 고마워." data-tags="자동차별, 신포동, 델라카사, 퇴근길, 하루 끝, 기다려준 차, 고마움, 일상 동행"><img class="room-photo-image car-gallery-photo" src="../assets/images/cars/gallery-1510842067.jpg" alt="신포동 델라카사 앞에서 퇴근 전 찍은 차"><figcaption>하루 종일 나를 기다려준 차.</figcaption></figure>
-          <figure class="room-house-photo" data-memory="Tesla. 공기저항계수가 낮다고 했는데, 정말 잘 빠졌다. 그런데 와이퍼야, 삐걱거리는 소리 좀 안 나게 해라." data-tags="자동차별, Tesla, 공기저항계수, 잘 빠진 디자인, 와이퍼, 삐걱거림, 현실 사용감"><img class="room-photo-image car-gallery-photo" src="../assets/images/cars/gallery-ec438dff.jpg" alt="잘 빠진 Tesla의 옆모습"><figcaption>잘 빠진 Tesla, 현실은 와이퍼 소리.</figcaption></figure>
-          <figure class="room-house-photo" data-memory="세차를 한다는 것은 마음을 정리한다는 것이다. 이것만큼 다른 생각 안 하고 신나게 두 시간을 재미있게 보낼 방법이 별로 없지 않나?" data-tags="자동차별, 세차, 마음 정리, 셀프 세차, 두 시간, 몰입, 취미, 생각 비우기"><img class="room-photo-image car-gallery-photo" src="../assets/images/cars/gallery-img-0215.jpg" alt="세차 후 정리된 차의 모습"><figcaption>세차는 마음을 정리하는 시간.</figcaption></figure>
-          <figure class="room-house-photo" data-memory="부동산에서 근무할 때, 시화공단의 하늘이 예뻤고 내 차도 예뻤다. 다른 각도에서 남긴 한 장." data-tags="자동차별, 부동산 근무 시절, 시화공단, 하늘, 예뻤던 내 차, 다른 각도, 일터의 기억"><img class="room-photo-image car-gallery-photo" src="../assets/images/cars/gallery-img-0268.jpg" alt="시화공단의 하늘과 차를 다른 각도에서 담은 사진"><figcaption>시화공단의 하늘과 내 차, 다른 각도.</figcaption></figure>
-          <figure class="room-house-photo" data-tags="자동차별, 고속도로, 졸음쉼터, 생명 쉼터, 잠시 쉬어가기, 역광, 사진빨, Tesla, 주차, 안전 운전, 기존 공개 사진, display-large" data-memory="고속도로를 달리다 잠시 쉴 수 있는 졸음쉼터. 생명 쉼터. 역광 사진빨."><img class="room-photo-image car-gallery-photo" src="../assets/images/cars/gallery-output-1883912203.jpg" alt="자동차 사진 16"><figcaption>잠시 쉬어가는 생명 쉼터.</figcaption></figure>
-          <figure class="room-house-photo" data-memory="부동산에서 근무할 때, 시화공단의 하늘이 예뻤고 내 차도 예뻤다." data-tags="자동차별, 부동산 근무 시절, 시화공단, 하늘, 예뻤던 내 차, 일터의 기억"><img class="room-photo-image car-gallery-photo" src="../assets/images/cars/gallery-img-0260.jpg" alt="시화공단의 예쁜 하늘과 차"><figcaption>하늘도 예쁘고 내 차도 예뻤던 시화공단.</figcaption></figure>
-        </div>
-
-        <aside class="room-gallery-detail room-house-photo-detail" aria-live="polite" hidden></aside>
-      </section>
-
-<section class="room-house-panel" id="car-map-room" aria-label="자동차별 지도" hidden>
-  <div class="room-house-panel-header">
-    <p class="room-section-label">관계의 지도</p>
-    <h2>길의 좌표가 쌓이면 지도가 됩니다</h2>
-    <button class="room-house-back" type="button">자동차별로 돌아가기</button>
-  </div>
-  <article class="room-post room-card room-record-unit car-record-card">
-    <p class="room-card-meta">관계의 좌표</p>
-    <h3>태그는 관계의 좌표입니다.</h3>
-    <p>같은 길, 같은 차, 같은 세차장, 같은 방향이 쌓이면 이 별의 지형이 드러납니다.</p>
-  </article>
-</section>
-
+    <section class="section portfolio-door" aria-labelledby="pf-title">
+      <div class="section-head">
+        <p class="num">↳ 다음으로</p>
+        <h2 id="pf-title">그래서, 지금은<br />이런 일을 합니다.</h2>
+      </div>
+      <a class="pf-cta focusable" href="ham-media-work.html">
+        <span>HAM MEDIA가 실제로 만든 것들 보러 가기</span>
+        <span class="pf-arrow" aria-hidden="true">→</span>
+      </a>
+    </section>
 
     <section class="star-exit" id="star-list" aria-labelledby="star-list-title">
       <p class="num">07 / 별자리</p>
-      <h2 id="star-list-title">별자리</h2>
-      <p class="intro">
-        이 별은 HAM MEDIA Design MD 방식으로 정리한 별입니다.
-        좋아하는 것의 감각을 브랜드의 기준으로 바꾸는 실험이기도 합니다.
-      </p>
+      <h2 id="star-list-title">다른 별 보기</h2>
       <div class="star-buttons" aria-label="별 목록">
         <a class="star-button" href="fountain-pens.html">만년필별</a>
         <a class="star-button" href="music-audio.html">음악·오디오별</a>
@@ -1557,19 +1672,177 @@ body.variant-mobile .car-essay-gallery {
         <a class="star-button" href="travel.html">여행별</a>
         <a class="star-button" href="food.html">음식별</a>
         <a class="star-button" href="bicycles.html">자전거별</a>
-        <a class="star-button active" href="cars.html" aria-current="page">자동차별 <span class="star-signal" aria-label="현재 별 점등"></span></a>
+        <a class="star-button active" href="#hero-title" aria-current="page">자동차별 <span class="star-signal" aria-label="현재 별 점등"></span></a>
         <a class="star-button" href="motorcycles.html">바이크별</a>
         <a class="star-button" href="spaces.html">공간별</a>
       </div>
       <div class="bottom-links" aria-label="하단 링크">
         <a class="bottom-link" href="../index.html#about-constellation">별자리로 돌아가기</a>
         <a class="bottom-link" href="ham-media-work.html">그래서, 지금은 이런 일을 합니다</a>
-        <a class="bottom-link" href="https://hammedia.github.io/design-brief/">Design MD 만드는 도구</a>
+        <a class="bottom-link" href="https://hammedia.github.io/design-brief/">나도 이렇게 만들어 보기</a>
       </div>
     </section>
 
-    <footer>자동차별 · LPH-B613-06 · HAM MEDIA · Design MD로 만든 별 페이지</footer>
+    <footer>자동차별 · LPH-B613-06 · HAM MEDIA</footer>
   </main>
-  <script src="../assets/js/main.js?v=room-context-nav-v2-ga4-events-v1"></script>
+  <script>
+    // 시트의 3규격(desktop 1440 / tablet 1024 / mobile 430)을 실제 화면 폭에 물린다.
+    (function () {
+      function variant() {
+        var w = window.innerWidth;
+        var c = w >= 1200 ? "variant-desktop" : w >= 760 ? "variant-tablet" : "variant-mobile";
+        document.body.classList.remove("variant-desktop", "variant-tablet", "variant-mobile");
+        document.body.classList.add(c);
+      }
+      variant();
+      window.addEventListener("resize", variant);
+    })();
+
+    // 시트 원본 동작 — 문을 누르면 그 장면으로
+    var reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    document.querySelectorAll("[data-target]").forEach((item) => {
+      item.addEventListener("click", () => {
+        const target = document.querySelector(item.dataset.target);
+        if (!target) return;
+        if (item.dataset.target === "#car-design") {
+          const designSheet = target.querySelector(".design-sheet");
+          if (designSheet) designSheet.open = true;
+        }
+        target.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth", block: "start" });
+      });
+    });
+
+    // 모션 — 대기 / 도착 재생 / 지나침 완성. 한 번 붙은 상태는 떼지 않는다.
+    (function () {
+      var risers = Array.prototype.slice.call(
+        document.querySelectorAll(".section-head, .route-grid, .writing-grid, .asphalt-map, .rep-figure, .car-group, .design-sheet, .not-grid, .pf-cta")
+      );
+      risers.forEach(function (el) { el.classList.add("rise"); });
+
+      if (reducedMotion || !("IntersectionObserver" in window)) {
+        risers.forEach(function (el) { el.classList.add("is-passed"); });
+        return;
+      }
+
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) {
+            e.target.classList.add("is-arrived");
+            io.unobserve(e.target);
+          }
+        });
+      }, { rootMargin: "0px 0px -14% 0px" });
+      risers.forEach(function (el) { io.observe(el); });
+
+      // 걸림 폴백 — 이미 화면에 있는데 못 붙었으면 완성 상태로
+      window.addEventListener("load", function () {
+        setTimeout(function () {
+          risers.forEach(function (el) {
+            var r = el.getBoundingClientRect();
+            if (r.top < window.innerHeight && r.bottom > 0 && !el.classList.contains("is-arrived")) {
+              el.classList.add("is-passed");
+            }
+          });
+        }, 520);
+      });
+    })();
+
+    // 살아있는 벽 — 벽(잘린 썸네일) ↔ 초점(전체 사진 오버레이). 가시성은 이 로직과 무관하게 항상 1.
+    // 초점은 .live-focus 오버레이(background:contain)로 전체 사진이 잘림 없이 뜬다. 트랜지션으로 부드럽게 성장.
+    (function () {
+      var wall = document.querySelector(".live-wall");
+      if (!wall) return;
+      var wrap = wall.closest(".live-wall-wrap");
+      var capEl = wrap ? wrap.querySelector(".live-caption") : null;
+      var focusEl = wall.querySelector(".live-focus");
+      var frames = Array.prototype.slice.call(wall.querySelectorAll(".live-frame"));
+      if (!frames.length) return;
+
+      function setCaption(f) {
+        if (!capEl) return;
+        var s = capEl.querySelector("strong");
+        var d = capEl.querySelector("span");
+        if (s) s.textContent = f.getAttribute("data-s") || "";
+        if (d) d.textContent = f.getAttribute("data-f") || "";
+      }
+
+      // 정적/축소모션 상태: 첫 사진 캡션 표시, 회전·오버레이 없음(9타일 전부 opacity:1).
+      setCaption(frames[0]);
+
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        return; // 정적 벽 — 오버레이/디밍 안 얹음
+      }
+
+      var idx = 0;
+      var timer = null;
+      var running = false;
+
+      function clearActive() {
+        frames.forEach(function (f) { f.classList.remove("is-active"); });
+      }
+
+      function tick() {
+        if (idx >= frames.length) {
+          // 한 바퀴 끝 — 전체 벽으로 ~3s 쉼(오버레이/디밍 해제) 후 루프
+          idx = 0;
+          clearActive();
+          if (focusEl) focusEl.classList.remove("is-on");
+          wall.classList.remove("rotating");
+          timer = setTimeout(function () {
+            if (running) { wall.classList.add("rotating"); tick(); }
+          }, 3000);
+          return;
+        }
+        wall.classList.add("rotating");
+        var f = frames[idx];
+        clearActive();
+        f.classList.add("is-active");
+        // 초점 오버레이에 이 사진의 전체를 잘림 없이 띄운다(background:contain).
+        // 매 사진마다 scale을 리셋→재적용해 '작아졌다 다시 커지는' 성장을 새로 재생한다.
+        if (focusEl) {
+          var img = f.querySelector("img");
+          focusEl.classList.remove("is-on");
+          if (img) focusEl.style.backgroundImage = 'url("' + img.getAttribute("src") + '")';
+          void focusEl.offsetWidth; // reflow — transform 트랜지션 재시작
+          focusEl.classList.add("is-on");
+        }
+        setCaption(f);
+        idx += 1;
+        timer = setTimeout(tick, 2400);
+      }
+
+      function start() {
+        if (running) return;
+        running = true;
+        wall.classList.add("rotating");
+        tick();
+      }
+
+      function stop() {
+        running = false;
+        if (timer) { clearTimeout(timer); timer = null; }
+        clearActive();
+        if (focusEl) focusEl.classList.remove("is-on");
+        wall.classList.remove("rotating"); // 뷰 이탈 = 정적 벽, 9타일 opacity:1 복귀
+      }
+
+      // 뷰 판정 = 스크롤/타이머 기반(IO/rAF가 안 도는 환경에서도 확실히 동작).
+      function viewportH() {
+        return window.innerHeight || document.documentElement.clientHeight || 800;
+      }
+      function inView() {
+        var r = wall.getBoundingClientRect();
+        return r.top < viewportH() && r.bottom > 0;
+      }
+      function sync() {
+        if (inView()) { start(); } else { stop(); }
+      }
+      window.addEventListener("scroll", sync, { passive: true });
+      window.addEventListener("resize", sync);
+      window.addEventListener("load", sync);
+      setInterval(sync, 500);
+      sync();
+    })();
+  </script>
 </body>
 </html>
