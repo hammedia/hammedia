@@ -965,6 +965,145 @@
       .service-name { font-size: 1.12rem; }
       .what-name { font-size: 1.05rem; }
     }
+    .site-proof {
+      width: min(1040px, calc(100vw - 6rem));
+      margin: 2rem 0 0 50%;
+      transform: translateX(-50%);
+    }
+    .site-proof-head { max-width: 720px; margin-bottom: 1.4rem; }
+    .site-proof-kicker {
+      font-size: 10.5px; font-weight: 800; letter-spacing: .14em;
+      text-transform: uppercase; color: var(--green); margin-bottom: .5rem;
+    }
+    .site-proof-title {
+      font-family: var(--serif);
+      font-size: clamp(1.45rem, 3vw, 2rem);
+      line-height: 1.35; color: var(--warm); margin-bottom: .65rem;
+    }
+    .site-proof-intro { color: var(--muted); font-size: 14px; line-height: 1.8; }
+    .site-proof-worlds { display: grid; gap: 12px; }
+    .site-world {
+      position: relative; min-height: 290px; overflow: hidden; isolation: isolate;
+      color: #fff; text-decoration: none; box-shadow: var(--shadow);
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+    .site-world:hover { transform: translateY(-3px); box-shadow: 0 24px 56px rgba(28,24,20,.16); }
+    .site-world:focus-visible { outline: 3px solid var(--sky); outline-offset: 4px; }
+    .site-world-photo {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; z-index: -2; transition: transform .6s ease;
+    }
+    .site-world:hover .site-world-photo { transform: scale(1.025); }
+    .site-world-copy { position: relative; z-index: 1; }
+    .site-world-no {
+      display: block; font-size: 10px; font-weight: 800; letter-spacing: .16em;
+      text-transform: uppercase; margin-bottom: .75rem;
+    }
+    .site-world-name {
+      font-size: clamp(1.55rem, 4vw, 2.65rem);
+      line-height: 1.1; margin-bottom: .7rem;
+    }
+    .site-world-desc { max-width: 470px; font-size: 14px; line-height: 1.75; }
+    .site-world-link {
+      display: inline-flex; align-items: center; min-height: 44px;
+      margin-top: 1.2rem; font-size: 12.5px; font-weight: 800;
+    }
+    .site-world-car {
+      border-radius: 2px 28px 2px 2px; padding: 2.2rem 2.35rem;
+      display: flex; align-items: flex-end; background: #0d0e10;
+    }
+    .site-world-car::before {
+      content: ''; position: absolute; inset: 0; z-index: -1;
+      background: linear-gradient(90deg, rgba(13,14,16,.97) 0%, rgba(13,14,16,.87) 45%, rgba(13,14,16,.18) 100%);
+    }
+    .site-world-car::after {
+      content: ''; position: absolute; width: 56%; height: 2px;
+      right: -4%; bottom: 30%;
+      background: linear-gradient(90deg, transparent, #c9a050 35%, rgba(232,232,230,.85));
+      transform: rotate(-8deg); box-shadow: 0 -46px 0 rgba(201,160,80,.26);
+    }
+    .site-world-car .site-world-no,
+    .site-world-car .site-world-link { color: #c9a050; }
+    .site-world-food {
+      min-height: 350px; margin-left: 8%;
+      border-radius: 48% 3px 3px 3px / 28% 3px 3px 3px;
+      padding: 2.4rem 2.5rem; display: flex; align-items: center;
+      justify-content: flex-end; color: #3d2b1f; background: #f5f0e8;
+    }
+    .site-world-food .site-world-photo {
+      width: 54%; right: auto; filter: saturate(.78) contrast(.92);
+    }
+    .site-world-food::before {
+      content: ''; position: absolute; inset: 0; z-index: -1;
+      background: linear-gradient(90deg, rgba(245,240,232,.05) 0 35%, rgba(245,240,232,.88) 56%, #f5f0e8 76%);
+    }
+    .site-world-food::after {
+      content: ''; position: absolute; left: 42%; top: 16%;
+      width: 54px; height: 54px; border: 7px solid #F5C518;
+      border-radius: 50%;
+      box-shadow: 34px 150px 0 -15px #00704A, -42px 92px 0 -21px #E8A020;
+    }
+    .site-world-food .site-world-copy { width: 48%; }
+    .site-world-food .site-world-no,
+    .site-world-food .site-world-link { color: #00704A; }
+    .site-world-ink {
+      min-height: 410px; width: 88%; border-radius: 3px 3px 42px 3px;
+      padding: 2.5rem; display: flex; align-items: flex-start;
+      justify-content: flex-end; background: #0b1115;
+    }
+    .site-world-ink .site-world-photo {
+      width: 66%; filter: saturate(.72) brightness(.66);
+    }
+    .site-world-ink::before {
+      content: ''; position: absolute; inset: 0; z-index: -1;
+      background:
+        radial-gradient(circle at 70% 40%, rgba(35,104,108,.42), transparent 30%),
+        linear-gradient(90deg, #0b1115 0 42%, rgba(11,17,21,.82) 62%, rgba(11,17,21,.2));
+    }
+    .site-world-ink::after {
+      content: ''; position: absolute; left: 9%; bottom: 14%;
+      width: 180px; height: 110px; border-radius: 52% 48% 62% 38%;
+      background: radial-gradient(ellipse, rgba(38,117,120,.44), rgba(35,78,108,.12) 58%, transparent 72%);
+      filter: blur(12px); transform: rotate(-11deg);
+    }
+    .site-world-ink .site-world-copy {
+      width: 48%; margin-right: auto; padding-top: 1rem;
+    }
+    .site-world-ink .site-world-name { font-family: var(--serif); }
+    .site-world-ink .site-world-no,
+    .site-world-ink .site-world-link { color: #79b8bb; }
+    .site-proof-method {
+      display: flex; align-items: center; gap: .75rem; margin-top: 1.1rem;
+      padding: 1rem 1.1rem; border-left: 4px solid var(--yellow);
+      background: var(--ivory); color: var(--muted);
+      font-size: 12.5px; line-height: 1.7;
+    }
+    @media (max-width: 980px) {
+      .site-proof { width: 100%; margin-left: 0; transform: none; }
+    }
+    @media (max-width: 760px) {
+      .site-proof-title { font-size: 1.55rem; }
+      .site-world,
+      .site-world-food,
+      .site-world-ink {
+        width: 100%; min-height: 360px; margin-left: 0;
+        padding: 1.6rem 1.35rem; border-radius: 14px;
+        align-items: flex-end; justify-content: flex-start;
+      }
+      .site-world-food .site-world-photo,
+      .site-world-ink .site-world-photo { width: 100%; }
+      .site-world-food::before {
+        background: linear-gradient(0deg, rgba(245,240,232,.98) 0%, rgba(245,240,232,.8) 46%, rgba(245,240,232,.08) 82%);
+      }
+      .site-world-ink::before {
+        background: linear-gradient(0deg, rgba(11,17,21,.98) 0%, rgba(11,17,21,.82) 50%, rgba(11,17,21,.12) 90%);
+      }
+      .site-world-food .site-world-copy,
+      .site-world-ink .site-world-copy { width: 100%; padding-top: 0; }
+      .site-world-food::after { left: auto; right: 12%; top: 12%; }
+      .site-world-name { font-size: 1.75rem; }
+      .site-world-desc { font-size: 13.5px; }
+    }
   </style>
 </head>
 <body>
@@ -1143,6 +1282,43 @@
       <a class="svc-cta btn-primary" href="#contact">仕事を依頼する</a>
     </div>
   </div>
+  <section class="site-proof" aria-labelledby="site-proof-title-jp">
+    <header class="site-proof-head">
+      <p class="site-proof-kicker">Live website portfolio · 3 worlds</p>
+      <h3 class="site-proof-title" id="site-proof-title-jp">同じつくり手から、ここまで違う三つの世界。</h3>
+      <p class="site-proof-intro">インタビューでその人らしさを引き出し、同じ型の色替えではなく、固有のビジュアルシステムを設計します。完成した三つのホームページを実際にご覧ください。</p>
+    </header>
+    <div class="site-proof-worlds">
+      <a class="site-world site-world-car" href="/ham-media-archive/pages/cars.html" target="_blank" rel="noopener noreferrer">
+        <img class="site-world-photo" src="/ham-media-archive/assets/images/cars/hero-night-direction.jpg" alt="夜道と車を背景にした自動車星のホームページ">
+        <div class="site-world-copy">
+          <span class="site-world-no">01 · Night asphalt map</span>
+          <h4 class="site-world-name">自動車星</h4>
+          <p class="site-world-desc">夜のアスファルトに記憶の道を描きました。暗い道路、金色の合図、方向を見つける人のためのホームページ。</p>
+          <span class="site-world-link">自動車星のホームページを見る →</span>
+        </div>
+      </a>
+      <a class="site-world site-world-food" href="/ham-media-archive/pages/food.html" target="_blank" rel="noopener noreferrer">
+        <img class="site-world-photo" src="/ham-media-archive/assets/images/food/hero-cafe-table-coffee.jpg" alt="温かなテーブルとコーヒーを背景にした食の星のホームページ">
+        <div class="site-world-copy">
+          <span class="site-world-no">02 · Scene map</span>
+          <h4 class="site-world-name">食の星</h4>
+          <p class="site-world-desc">テーブル、場所、長く磨いてきた感覚がシーンの地図へつながります。記憶が残る場所をたどるホームページ。</p>
+          <span class="site-world-link">食の星のホームページを見る →</span>
+        </div>
+      </a>
+      <a class="site-world site-world-ink" href="/ham-media-archive/pages/fountain-pens.html" target="_blank" rel="noopener noreferrer">
+        <img class="site-world-photo" src="/ham-media-archive/assets/images/fountain-pens/hero-window-table.jpg" alt="窓辺の万年筆とノートを背景にした万年筆星のホームページ">
+        <div class="site-world-copy">
+          <span class="site-world-no">03 · Ink in time</span>
+          <h4 class="site-world-name">万年筆星</h4>
+          <p class="site-world-desc">インクがにじみ、乾き、時間とともに変わる。その静かな変化を画面のリズムにした、記録の中へ入っていくホームページ。</p>
+          <span class="site-world-link">万年筆星のホームページを見る →</span>
+        </div>
+      </a>
+    </div>
+    <p class="site-proof-method"><strong>制作方法</strong> ハムPDのインタビューから生まれた固有の魅力をDESIGN.mdに整理し、星ごとに異なる画面システムとして実装しました。</p>
+  </section>
   <div class="target-fit" aria-labelledby="target-fit-title-jp">
     <h3 class="target-fit-title" id="target-fit-title-jp">こんな方と相性が良いです</h3>
     <div class="target-grid">
