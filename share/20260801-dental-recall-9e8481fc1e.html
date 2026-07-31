@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>오래 안 오신 환자 찾기</title>
+<style>
+  :root{
+    --paper:#F9F7F3; --paper2:#F5F3EE; --ink:#1C1814; --ink2:#4A423C;
+    --green:#00704A; --red:#CC0000; --blue:#7EB5E8; --yellow:#F4DC59;
+    --line:#E2DDD4;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:Pretendard,-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    font-size:17px; line-height:1.7;
+  }
+  .wrap{max-width:1080px;margin:0 auto;padding:32px 20px 80px}
+  header{border-bottom:2px solid var(--ink);padding-bottom:20px;margin-bottom:8px}
+  h1{font-size:30px;margin:0 0 8px;letter-spacing:-.02em}
+  .sub{color:var(--ink2);margin:0}
+  .safe{
+    display:inline-flex;align-items:center;gap:8px;margin-top:16px;
+    background:#fff;border:2px solid var(--green);color:var(--green);
+    padding:10px 16px;border-radius:999px;font-weight:700;font-size:15px;
+  }
+  .safe b{font-weight:800}
+  section{margin-top:40px}
+  .step{
+    display:inline-block;background:var(--ink);color:var(--paper);
+    font-size:14px;font-weight:700;padding:4px 12px;border-radius:999px;margin-bottom:12px;
+  }
+  h2{font-size:22px;margin:0 0 10px}
+  .hint{color:var(--ink2);font-size:15px;margin:0 0 16px}
+  .drop{
+    border:3px dashed var(--line);border-radius:16px;background:#fff;
+    padding:44px 24px;text-align:center;cursor:pointer;transition:.15s;
+  }
+  .drop:hover,.drop.on{border-color:var(--green);background:#F3F9F6}
+  .drop .big{font-size:19px;font-weight:700;margin-bottom:6px}
+  .drop .small{color:var(--ink2);font-size:15px}
+  button{
+    font-family:inherit;font-size:16px;font-weight:700;cursor:pointer;
+    border-radius:10px;padding:12px 22px;border:2px solid var(--ink);
+    background:#fff;color:var(--ink);
+  }
+  button.go{background:var(--green);border-color:var(--green);color:#fff}
+  button.ghost{border-color:var(--line);color:var(--ink2);font-weight:600}
+  button:disabled{opacity:.4;cursor:not-allowed}
+  .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:20px 0}
+  .card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px}
+  .card .n{font-size:34px;font-weight:800;line-height:1.1}
+  .card .l{color:var(--ink2);font-size:14px;margin-top:4px}
+  .card.hot{border-color:var(--red)} .card.hot .n{color:var(--red)}
+  .card.warm{border-color:#D8A200} .card.warm .n{color:#B88700}
+  .maps{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+  .map{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px}
+  .map label{display:block;font-weight:700;font-size:15px;margin-bottom:6px}
+  .map select{width:100%;font-family:inherit;font-size:15px;padding:9px;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--ink)}
+  .map .ex{color:var(--ink2);font-size:13px;margin-top:6px;min-height:18px;word-break:break-all}
+  .tabs{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0 0;border-bottom:2px solid var(--line)}
+  .tab{
+    border:none;border-radius:10px 10px 0 0;background:transparent;color:var(--ink2);
+    padding:11px 18px;font-weight:700;font-size:16px;border:2px solid transparent;border-bottom:none;
+  }
+  .tab.sel{background:#fff;color:var(--ink);border-color:var(--line);margin-bottom:-2px}
+  .tab .cnt{color:var(--green)}
+  .scroller{overflow-x:auto;background:#fff;border:1px solid var(--line);border-top:none;border-radius:0 0 12px 12px}
+  table{border-collapse:collapse;width:100%;font-size:15px;min-width:720px}
+  th,td{padding:11px 12px;text-align:left;border-bottom:1px solid var(--line);white-space:nowrap}
+  th{background:var(--paper2);font-size:14px;color:var(--ink2);position:sticky;top:0}
+  tr.done{opacity:.45;text-decoration:line-through}
+  .pill{display:inline-block;padding:3px 10px;border-radius:999px;font-size:13px;font-weight:700}
+  .p-call{background:#FDECEC;color:var(--red)}
+  .p-sms{background:#EAF3FB;color:#2A6BA0}
+  .y3{color:var(--red);font-weight:800}
+  .y2{color:#B88700;font-weight:700}
+  .y1{color:var(--ink2)}
+  .law{background:#FFF9E6;border:2px solid var(--yellow);border-radius:14px;padding:18px 20px;margin-top:24px}
+  .law h3{margin:0 0 8px;font-size:17px}
+  .law ul{margin:8px 0 0;padding-left:20px} .law li{margin:4px 0}
+  .tmpl{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px;margin-top:16px}
+  .tmpl h3{margin:0 0 4px;font-size:17px}
+  .tmpl .why{color:var(--ink2);font-size:14px;margin:0 0 12px}
+  .tmpl textarea{
+    width:100%;font-family:inherit;font-size:15px;line-height:1.7;padding:14px;
+    border:1px solid var(--line);border-radius:10px;background:var(--paper2);color:var(--ink);resize:vertical;
+  }
+  .err{background:#FDECEC;border:2px solid var(--red);color:var(--red);padding:14px 18px;border-radius:12px;margin-top:16px;font-weight:700}
+  .hide{display:none}
+  footer{margin-top:60px;padding-top:20px;border-top:1px solid var(--line);color:var(--ink2);font-size:14px}
+  @media (max-width:640px){ body{font-size:16px} h1{font-size:24px} .wrap{padding:20px 14px 60px} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>오래 안 오신 환자 찾기</h1>
+  <p class="sub">차트에서 뽑은 엑셀을 넣으면, 오늘 연락할 분들을 순서대로 정리해 드립니다.</p>
+  <div class="safe">
+    <span>자물쇠</span>
+    <span><b>이 화면은 인터넷으로 아무것도 보내지 않습니다.</b> 환자 이름·전화번호는 이 컴퓨터 밖으로 나가지 않습니다.</span>
+  </div>
+  <div class="row" style="margin-top:14px">
+    <button class="ghost" id="dl">이 도구를 내 컴퓨터에 저장하기</button>
+    <span class="hint" style="margin:0">저장해두면 인터넷을 끊고도 씁니다. 환자 파일을 다룰 땐 이 쪽을 권합니다.</span>
+  </div>
+</header>
+
+<section>
+  <span class="step">1단계</span>
+  <h2>차트에서 뽑은 파일을 넣어주세요</h2>
+  <p class="hint">덴트웹 등 전자차트에서 «접수·수납 목록»이나 «환자 목록»을 엑셀로 저장한 파일이면 됩니다. 엑셀(.xlsx)과 CSV 둘 다 됩니다.</p>
+  <div class="drop" id="drop">
+    <div class="big">여기에 파일을 끌어다 놓으세요</div>
+    <div class="small">또는 눌러서 파일 고르기</div>
+  </div>
+  <input type="file" id="file" accept=".xlsx,.csv,.txt" class="hide">
+  <div class="row" style="margin-top:14px">
+    <button class="ghost" id="demo">파일 없이 먼저 구경하기 (가짜 환자 300명)</button>
+  </div>
+  <div id="loadErr" class="err hide"></div>
+</section>
+
+<section id="mapSec" class="hide">
+  <span class="step">2단계</span>
+  <h2>어느 칸이 무엇인지 확인해주세요</h2>
+  <p class="hint">자동으로 짚어 봤습니다. 틀렸으면 바꿔주세요.</p>
+  <div class="maps" id="maps"></div>
+  <div class="row" style="margin-top:18px">
+    <button class="go" id="run">이 기준으로 목록 만들기</button>
+    <span id="rowinfo" class="hint" style="margin:0"></span>
+  </div>
+  <div id="mapErr" class="err hide"></div>
+</section>
+
+<section id="outSec" class="hide">
+  <span class="step">3단계</span>
+  <h2>오늘 연락할 분들</h2>
+  <p class="hint" id="outHint"></p>
+
+  <div class="cards" id="cards"></div>
+
+  <div class="tabs" id="tabs"></div>
+  <div class="scroller"><table id="tbl"><thead></thead><tbody></tbody></table></div>
+
+  <div class="row" style="margin-top:16px">
+    <button id="save">연락 기록 내보내기 (엑셀에서 열림)</button>
+    <span class="hint" style="margin:0">체크한 분은 «연락함»으로 저장됩니다.</span>
+  </div>
+
+  <div class="law">
+    <h3>보내기 전에 — 의료법에서 막는 것</h3>
+    <p style="margin:0">환자를 부르려고 <b>무료·할인·사은품</b>을 내걸면 호객행위가 됩니다. 아래 문구는 그것을 피해서, «정보를 알려드리는 연락»으로 씁니다.</p>
+    <ul>
+      <li>쓰지 않는 말: 무료, 공짜, 할인, 이벤트, 사은품, 특가</li>
+      <li>쓰는 말: 점검 시기가 되었습니다, 이런 정보가 있습니다, 확인해 보세요</li>
+      <li>최종 문구는 원장님이 직접 확인하고 보내세요. 이 도구는 초안까지만 만듭니다.</li>
+    </ul>
+  </div>
+
+  <div class="tmpl">
+    <h3>병원 이름을 넣어주세요</h3>
+    <p class="why">아래 두 문구에 자동으로 들어갑니다.</p>
+    <input id="clinic" type="text" placeholder="○○치과"
+      style="width:100%;max-width:340px;font-family:inherit;font-size:16px;padding:11px 13px;border:1px solid var(--line);border-radius:10px;background:var(--paper2);color:var(--ink)">
+  </div>
+  <div class="tmpl">
+    <h3>전화로 연락할 분들께 (임플란트·틀니)</h3>
+    <p class="why">오래 관리해온 분들입니다. 문자보다 안부 전화가 맞습니다.</p>
+    <textarea rows="5" id="tCall"></textarea>
+  </div>
+  <div class="tmpl">
+    <h3>문자로 연락할 분들께 (스케일링·일반)</h3>
+    <p class="why">전화는 부담스러워합니다. 먼저 «정보»로 문을 두드립니다.</p>
+    <textarea rows="6" id="tSms"></textarea>
+  </div>
+</section>
+
+<footer>
+  HAM MEDIA — 이 도구는 서버가 없습니다. 넣으신 파일은 이 브라우저 안에서만 열리고, 어디로도 전송되지 않습니다.
+</footer>
+
+</div>
+
+<script>
+"use strict";
+
+/* ---------- 상태 ---------- */
+var RAW = null;      // {headers:[], rows:[[]]}
+var MAP = {};        // 역할 -> 컬럼 index
+var RESULT = [];     // 분류 결과
+var TAB = "all";
+var DONE = {};       // 행 id -> true
+
+var ROLES = [
+  {k:"name",  label:"환자 이름",     need:true,  hints:["환자명","성명","이름","name","환자"]},
+  {k:"phone", label:"전화번호",      need:false, hints:["전화","휴대","연락처","핸드폰","hp","tel","phone","번호"]},
+  {k:"chart", label:"차트번호",      need:false, hints:["차트","등록번호","chart","환자번호","id"]},
+  {k:"date",  label:"마지막 내원일",  need:true,  hints:["최종","마지막","내원","진료일","방문","일자","날짜","date"]},
+  {k:"treat", label:"치료 종류",     need:false, hints:["치료","진료","처치","시술","항목","내역","treat","진단"]}
+];
+
+/* 전화로 연락할 치료 — 오래 관리해온 분들이라 문자보다 전화가 맞다 */
+var CALL_KEYS = ["임플란트","틀니","보철","크라운","교정","브릿지","임플"];
+
+/* ---------- 유틸 ---------- */
+function $(id){ return document.getElementById(id); }
+function esc(s){ return String(s==null?"":s).replace(/[&<>"]/g,function(c){
+  return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); }
+function show(el){ el.classList.remove("hide"); }
+function hide(el){ el.classList.add("hide"); }
+function fail(el,msg){ el.textContent = msg; show(el); }
+
+/* ---------- 파일 읽기: 인코딩 ---------- */
+function decodeText(buf){
+  var utf8 = new TextDecoder("utf-8").decode(buf);
+  var bad = (utf8.match(/�/g) || []).length;
+  if (bad > 3){
+    try {
+      var k = new TextDecoder("euc-kr").decode(buf);
+      if ((k.match(/�/g) || []).length < bad) return k;
+    } catch(e){}
+  }
+  return utf8.replace(/^﻿/, "");
+}
+
+/* ---------- CSV ---------- */
+function parseCSV(text){
+  var rows=[], row=[], cur="", q=false, i=0;
+  // 구분자 추정: 첫 줄에서 콤마 vs 탭
+  var head = text.slice(0, text.indexOf("\n") < 0 ? text.length : text.indexOf("\n"));
+  var sep = (head.split("\t").length > head.split(",").length) ? "\t" : ",";
+  for(; i<text.length; i++){
+    var c = text[i];
+    if(q){
+      if(c === '"'){ if(text[i+1] === '"'){ cur+='"'; i++; } else q=false; }
+      else cur += c;
+    } else {
+      if(c === '"') q = true;
+      else if(c === sep){ row.push(cur); cur=""; }
+      else if(c === "\n"){ row.push(cur); rows.push(row); row=[]; cur=""; }
+      else if(c === "\r"){ /* skip */ }
+      else cur += c;
+    }
+  }
+  if(cur !== "" || row.length){ row.push(cur); rows.push(row); }
+  return rows.filter(function(r){ return r.some(function(v){ return String(v).trim() !== ""; }); });
+}
+
+/* ---------- XLSX (브라우저 안에서 직접 품) ---------- */
+function u16(d,o){ return d[o] | (d[o+1]<<8); }
+function u32(d,o){ return (d[o] | (d[o+1]<<8) | (d[o+2]<<16) | (d[o+3]<<24)) >>> 0; }
+
+async function unzip(buf){
+  var d = new Uint8Array(buf), files = {};
+  // EOCD 찾기
+  var eo = -1;
+  for(var i = d.length - 22; i >= 0 && i > d.length - 70000; i--){
+    if(u32(d,i) === 0x06054b50){ eo = i; break; }
+  }
+  if(eo < 0) throw new Error("엑셀 파일 구조를 읽지 못했습니다.");
+  var n = u16(d, eo+10), cd = u32(d, eo+16), p = cd;
+  for(var k=0; k<n; k++){
+    if(u32(d,p) !== 0x02014b50) break;
+    var method = u16(d, p+10);
+    var csize  = u32(d, p+20);
+    var fnlen  = u16(d, p+28), exlen = u16(d, p+30), cmlen = u16(d, p+32);
+    var lho    = u32(d, p+42);
+    var name   = new TextDecoder("utf-8").decode(d.subarray(p+46, p+46+fnlen));
+    // 로컬 헤더에서 실제 데이터 시작 위치
+    var lfn = u16(d, lho+26), lex = u16(d, lho+28);
+    var start = lho + 30 + lfn + lex;
+    var raw = d.subarray(start, start + csize);
+    if(/(sheet1\.xml|sharedStrings\.xml|workbook\.xml|styles\.xml)$/i.test(name)){
+      var out;
+      if(method === 0) out = raw;
+      else {
+        var ds = new DecompressionStream("deflate-raw");
+        var ab = await new Response(new Blob([raw]).stream().pipeThrough(ds)).arrayBuffer();
+        out = new Uint8Array(ab);
+      }
+      files[name] = new TextDecoder("utf-8").decode(out);
+    }
+    p += 46 + fnlen + exlen + cmlen;
+  }
+  return files;
+}
+
+function colToNum(ref){
+  var m = /^([A-Z]+)/.exec(ref); if(!m) return 0;
+  var s = m[1], n = 0;
+  for(var i=0;i<s.length;i++) n = n*26 + (s.charCodeAt(i) - 64);
+  return n - 1;
+}
+
+async function parseXLSX(buf){
+  var f = await unzip(buf);
+  var sheetKey = Object.keys(f).find(function(k){ return /sheet1\.xml$/i.test(k); });
+  if(!sheetKey) throw new Error("엑셀 안에서 첫 번째 시트를 찾지 못했습니다.");
+  // 공유 문자열
+  var shared = [];
+  var ssKey = Object.keys(f).find(function(k){ return /sharedStrings\.xml$/i.test(k); });
+  if(ssKey){
+    var si = f[ssKey].split(/<si[ >]/).slice(1);
+    shared = si.map(function(chunk){
+      var out = "", re = /<t[^>]*>([\s\S]*?)<\/t>/g, m;
+      while((m = re.exec(chunk))) out += m[1];
+      return out.replace(/&lt;/g,"<").replace(/&gt;/g,">").replace(/&amp;/g,"&").replace(/&quot;/g,'"');
+    });
+  }
+  // 날짜 서식을 쓰는 style index 모으기
+  var dateStyles = {};
+  var stKey = Object.keys(f).find(function(k){ return /styles\.xml$/i.test(k); });
+  if(stKey){
+    var custom = {};
+    var reFmt = /<numFmt[^>]*numFmtId="(\d+)"[^>]*formatCode="([^"]*)"/g, mf;
+    while((mf = reFmt.exec(f[stKey]))) if(/[yYdDmM]/.test(mf[2]) && !/[hHsS]/.test(mf[2].replace(/[^hHsS]/g,""))) custom[mf[1]] = true;
+    var xf = /<cellXfs[\s\S]*?<\/cellXfs>/.exec(f[stKey]);
+    if(xf){
+      var idx = 0, reXf = /<xf[^>]*numFmtId="(\d+)"[^>]*>/g, mx;
+      while((mx = reXf.exec(xf[0]))){
+        var id = mx[1];
+        if(custom[id] || (id>=14 && id<=22) || (id>=45 && id<=47)) dateStyles[idx] = true;
+        idx++;
+      }
+    }
+  }
+  var rows = [], sheet = f[sheetKey];
+  var reRow = /<row[^>]*>([\s\S]*?)<\/row>/g, mr;
+  while((mr = reRow.exec(sheet))){
+    var cells = [], reC = /<c([^>]*)>([\s\S]*?)<\/c>|<c([^>]*)\/>/g, mc;
+    while((mc = reC.exec(mr[1]))){
+      var attr = mc[1] || mc[3] || "", body = mc[2] || "";
+      var refM = /r="([A-Z]+\d+)"/.exec(attr);
+      var ci = refM ? colToNum(refM[1]) : cells.length;
+      var t = (/t="([^"]*)"/.exec(attr) || [])[1];
+      var s = (/s="(\d+)"/.exec(attr) || [])[1];
+      var v = "";
+      if(t === "inlineStr"){
+        var im = /<t[^>]*>([\s\S]*?)<\/t>/.exec(body); v = im ? im[1] : "";
+      } else {
+        var vm = /<v>([\s\S]*?)<\/v>/.exec(body); v = vm ? vm[1] : "";
+        if(t === "s") v = shared[parseInt(v,10)] || "";
+      }
+      v = String(v).replace(/&lt;/g,"<").replace(/&gt;/g,">").replace(/&amp;/g,"&").replace(/&quot;/g,'"');
+      // 날짜 서식이면 엑셀 일련번호를 날짜 글자로
+      if(!t && s !== undefined && dateStyles[parseInt(s,10)] && v !== "" && !isNaN(+v)){
+        v = serialToDateStr(+v);
+      }
+      while(cells.length < ci) cells.push("");
+      cells[ci] = v;
+    }
+    rows.push(cells);
+  }
+  return rows.filter(function(r){ return r.some(function(v){ return String(v).trim() !== ""; }); });
+}
+
+function serialToDateStr(n){
+  // 엑셀 1900 체계 (1900년 윤년 버그 포함)
+  var ms = Math.round((n - 25569) * 86400000);
+  var d = new Date(ms);
+  if(isNaN(d.getTime())) return String(n);
+  return d.getFullYear() + "-" + String(d.getMonth()+1).padStart(2,"0") + "-" + String(d.getDate()).padStart(2,"0");
+}
+
+/* ---------- 날짜 해석 ---------- */
+function toDate(v){
+  if(v == null) return null;
+  var s = String(v).trim();
+  if(!s) return null;
+  // 엑셀 일련번호
+  if(/^\d+(\.\d+)?$/.test(s)){
+    var n = +s;
+    if(n > 20000 && n < 60000) { var ds = serialToDateStr(n); s = ds; }
+    else if(/^\d{8}$/.test(s)) s = s.slice(0,4)+"-"+s.slice(4,6)+"-"+s.slice(6,8);
+    else return null;
+  }
+  s = s.replace(/[.\/]/g, "-").replace(/\s+.*$/, "");
+  var m = /^(\d{4})-(\d{1,2})-(\d{1,2})$/.exec(s);
+  if(m){
+    var d = new Date(+m[1], +m[2]-1, +m[3]);
+    return isNaN(d.getTime()) ? null : d;
+  }
+  var d2 = new Date(s);
+  return isNaN(d2.getTime()) ? null : d2;
+}
+
+/* ---------- 컬럼 자동 추정 ---------- */
+function guessMap(headers, rows){
+  var used = {}, map = {};
+  ROLES.forEach(function(role){
+    var best = -1, bestScore = 0;
+    headers.forEach(function(h, i){
+      if(used[i]) return;
+      var name = String(h).toLowerCase().replace(/\s/g,"");
+      var score = 0;
+      role.hints.forEach(function(hint){
+        if(name.indexOf(hint.toLowerCase()) >= 0) score += 10;
+      });
+      // 내용으로도 본다
+      var sample = rows.slice(0,40).map(function(r){ return r[i]; }).filter(function(v){ return String(v||"").trim(); });
+      if(role.k === "date"){
+        var ok = sample.filter(function(v){ return toDate(v); }).length;
+        if(sample.length && ok/sample.length > .7) score += 8;
+      }
+      if(role.k === "phone"){
+        var ph = sample.filter(function(v){ return /^0\d{1,2}[- ]?\d{3,4}[- ]?\d{4}$/.test(String(v).trim()); }).length;
+        if(sample.length && ph/sample.length > .6) score += 9;
+      }
+      if(score > bestScore){ bestScore = score; best = i; }
+    });
+    if(best >= 0 && bestScore > 0){ map[role.k] = best; used[best] = true; }
+  });
+  return map;
+}
+
+/* ---------- 화면: 컬럼 확인 ---------- */
+function renderMaps(){
+  var box = $("maps"); box.innerHTML = "";
+  ROLES.forEach(function(role){
+    var div = document.createElement("div");
+    div.className = "map";
+    var opts = '<option value="">— 없음 —</option>' + RAW.headers.map(function(h,i){
+      return '<option value="'+i+'"'+(MAP[role.k]===i?" selected":"")+'>'+esc(h||("칸 "+(i+1)))+'</option>';
+    }).join("");
+    div.innerHTML = '<label>'+esc(role.label)+(role.need?' <span style="color:var(--red)">*</span>':'')+'</label>'
+      + '<select data-k="'+role.k+'">'+opts+'</select>'
+      + '<div class="ex"></div>';
+    box.appendChild(div);
+    var sel = div.querySelector("select");
+    sel.addEventListener("change", function(){
+      var v = sel.value;
+      if(v === "") delete MAP[role.k]; else MAP[role.k] = +v;
+      showExample(div, role.k);
+    });
+    showExample(div, role.k);
+  });
+  $("rowinfo").textContent = RAW.rows.length.toLocaleString() + "줄을 읽었습니다.";
+}
+function showExample(div, k){
+  var ex = div.querySelector(".ex");
+  if(MAP[k] === undefined){ ex.textContent = ""; return; }
+  var vals = RAW.rows.slice(0,3).map(function(r){ return String(r[MAP[k]]||"").trim(); }).filter(Boolean);
+  ex.textContent = vals.length ? "예: " + vals.join(" / ") : "";
+}
+
+/* ---------- 계산 ---------- */
+function build(){
+  var today = new Date(); today.setHours(0,0,0,0);
+  var out = [], noDate = 0;
+  RAW.rows.forEach(function(r, i){
+    var d = toDate(r[MAP.date]);
+    if(!d){ noDate++; return; }
+    var days = Math.floor((today - d) / 86400000);
+    if(days < 365) return;                 // 1년 안 된 분은 대상 아님
+    var years = days >= 1095 ? 3 : (days >= 730 ? 2 : 1);
+    var treat = MAP.treat !== undefined ? String(r[MAP.treat]||"").trim() : "";
+    var isCall = CALL_KEYS.some(function(k){ return treat.indexOf(k) >= 0; });
+    out.push({
+      id: "r"+i,
+      name: String(r[MAP.name]||"").trim() || "(이름 없음)",
+      phone: MAP.phone !== undefined ? String(r[MAP.phone]||"").trim() : "",
+      chart: MAP.chart !== undefined ? String(r[MAP.chart]||"").trim() : "",
+      date: d, days: days, years: years,
+      treat: treat || "(구분 없음)",
+      how: isCall ? "call" : "sms"
+    });
+  });
+  // 오래된 순
+  out.sort(function(a,b){ return b.days - a.days; });
+  RESULT = out;
+  return noDate;
+}
+
+/* ---------- 화면: 결과 ---------- */
+function renderOut(noDate){
+  var n3 = RESULT.filter(function(x){ return x.years===3; }).length;
+  var n2 = RESULT.filter(function(x){ return x.years===2; }).length;
+  var n1 = RESULT.filter(function(x){ return x.years===1; }).length;
+  var nc = RESULT.filter(function(x){ return x.how==="call"; }).length;
+  var ns = RESULT.length - nc;
+
+  $("cards").innerHTML =
+    card(RESULT.length, "연락할 분 모두", "") +
+    card(n3, "3년 넘게 안 오심", "hot") +
+    card(n2, "2년 넘게", "warm") +
+    card(n1, "1년 넘게", "") +
+    card(nc, "전화 드릴 분", "") +
+    card(ns, "문자 보낼 분", "");
+
+  $("outHint").textContent = "마지막 내원일에서 1년이 지난 분만 골랐습니다. 오래 안 오신 분이 위로 옵니다."
+    + (noDate ? "  ·  날짜를 못 읽은 " + noDate.toLocaleString() + "줄은 뺐습니다." : "");
+
+  var tabs = [
+    {k:"all",  t:"전체",      n:RESULT.length},
+    {k:"call", t:"전화 드릴 분", n:nc},
+    {k:"sms",  t:"문자 보낼 분", n:ns},
+    {k:"y3",   t:"3년 넘음",   n:n3}
+  ];
+  $("tabs").innerHTML = tabs.map(function(x){
+    return '<button class="tab'+(TAB===x.k?" sel":"")+'" data-k="'+x.k+'">'+x.t+' <span class="cnt">'+x.n+'</span></button>';
+  }).join("");
+  Array.prototype.forEach.call($("tabs").children, function(b){
+    b.addEventListener("click", function(){ TAB = b.dataset.k; renderOut(noDate); });
+  });
+
+  var list = RESULT.filter(function(x){
+    if(TAB === "all") return true;
+    if(TAB === "y3") return x.years === 3;
+    return x.how === TAB;
+  });
+
+  var t = $("tbl");
+  t.tHead.innerHTML = '<tr><th>연락함</th><th>순서</th><th>이름</th><th>차트번호</th><th>전화번호</th>'
+    + '<th>마지막 내원</th><th>안 오신 기간</th><th>치료</th><th>어떻게</th></tr>';
+  t.tBodies[0].innerHTML = list.map(function(x, i){
+    var yc = x.years===3?"y3":(x.years===2?"y2":"y1");
+    var yl = Math.floor(x.days/365) + "년 " + Math.floor((x.days%365)/30) + "개월";
+    return '<tr class="'+(DONE[x.id]?"done":"")+'">'
+      + '<td><input type="checkbox" data-id="'+x.id+'"'+(DONE[x.id]?" checked":"")+'></td>'
+      + '<td>'+(i+1)+'</td>'
+      + '<td><b>'+esc(x.name)+'</b></td>'
+      + '<td>'+esc(x.chart)+'</td>'
+      + '<td>'+esc(x.phone)+'</td>'
+      + '<td>'+x.date.getFullYear()+"-"+String(x.date.getMonth()+1).padStart(2,"0")+"-"+String(x.date.getDate()).padStart(2,"0")+'</td>'
+      + '<td class="'+yc+'">'+yl+'</td>'
+      + '<td>'+esc(x.treat)+'</td>'
+      + '<td><span class="pill '+(x.how==="call"?"p-call":"p-sms")+'">'+(x.how==="call"?"전화":"문자")+'</span></td>'
+      + '</tr>';
+  }).join("");
+  Array.prototype.forEach.call(t.querySelectorAll("input[type=checkbox]"), function(cb){
+    cb.addEventListener("change", function(){
+      DONE[cb.dataset.id] = cb.checked;
+      cb.closest("tr").classList.toggle("done", cb.checked);
+    });
+  });
+
+  show($("outSec"));
+  $("outSec").scrollIntoView({behavior:"smooth", block:"start"});
+}
+function card(n, label, cls){
+  return '<div class="card '+(cls||"")+'"><div class="n">'+n.toLocaleString()+'</div><div class="l">'+label+'</div></div>';
+}
+
+/* ---------- 문구 초안 ---------- */
+function tmplCall(clinic){
+  return "○○○ 님, 안녕하세요. " + clinic + "입니다.\n" +
+  "예전에 임플란트 치료 받으신 뒤로 시간이 좀 지나서, 잘 지내시는지 안부 여쭙고 싶어 연락드렸습니다.\n" +
+  "임플란트는 심고 나서가 더 중요해서, 보통 6개월에서 1년에 한 번은 상태를 보시는 게 좋습니다.\n" +
+  "저희 병원이 아니어도 괜찮으니, 가까운 곳에서라도 한 번 확인해 보시면 좋겠습니다.\n" +
+  "혹시 불편한 데가 있으시면 편하게 말씀 주세요.";
+}
+function tmplSms(clinic){
+  return "[" + clinic + "] ○○○ 님, 안녕하세요.\n" +
+  "치석은 눈에 보이는 것보다 잇몸 아래에 더 쌓입니다. 스케일링을 오래 미루면 잇몸뼈가 내려앉는데, 한 번 내려간 뼈는 되돌리기 어렵습니다.\n" +
+  "마지막으로 보신 지 시간이 좀 지나셨습니다. 지금 상태가 어떤지 아래 글에서 먼저 확인해 보세요.\n" +
+  "→ (병원 블로그/홈페이지 글 주소)\n" +
+  "꼭 저희 병원이 아니어도 괜찮습니다. 가까운 곳에서 한 번 보시길 권합니다.\n" +
+  "수신거부: 080-000-0000";
+}
+function paintTmpl(){
+  var c = ($("clinic").value || "").trim() || "○○치과";
+  $("tCall").value = tmplCall(c);
+  $("tSms").value  = tmplSms(c);
+}
+$("clinic").addEventListener("input", paintTmpl);
+paintTmpl();
+
+/* ---------- 이 도구를 내 컴퓨터에 저장 ---------- */
+$("dl").addEventListener("click", async function(){
+  var html;
+  try{
+    var r = await fetch(location.href);
+    if(!r.ok) throw new Error("no");
+    html = await r.text();
+  }catch(e){
+    html = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
+  }
+  var blob = new Blob([html], {type:"text/html;charset=utf-8"});
+  var a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "오래안오신환자찾기.html";
+  a.click();
+  URL.revokeObjectURL(a.href);
+});
+
+/* ---------- 내보내기 ---------- */
+$("save").addEventListener("click", function(){
+  var head = ["순서","이름","차트번호","전화번호","마지막내원일","안온기간(일)","치료","연락방법","연락함"];
+  var lines = [head.join(",")];
+  RESULT.forEach(function(x, i){
+    var d = x.date.getFullYear()+"-"+String(x.date.getMonth()+1).padStart(2,"0")+"-"+String(x.date.getDate()).padStart(2,"0");
+    lines.push([i+1, q(x.name), q(x.chart), q(x.phone), d, x.days, q(x.treat),
+                x.how==="call"?"전화":"문자", DONE[x.id]?"연락함":""].join(","));
+  });
+  var blob = new Blob(["﻿" + lines.join("\r\n")], {type:"text/csv;charset=utf-8"});
+  var a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  var t = new Date();
+  a.download = "연락목록_" + t.getFullYear() + String(t.getMonth()+1).padStart(2,"0") + String(t.getDate()).padStart(2,"0") + ".csv";
+  a.click();
+  URL.revokeObjectURL(a.href);
+  function q(s){ s = String(s==null?"":s); return /[",\n]/.test(s) ? '"'+s.replace(/"/g,'""')+'"' : s; }
+});
+
+/* ---------- 파일 받기 ---------- */
+async function take(file){
+  hide($("loadErr"));
+  try{
+    var buf = await file.arrayBuffer();
+    var rows;
+    if(/\.xlsx$/i.test(file.name)) rows = await parseXLSX(buf);
+    else rows = parseCSV(decodeText(buf));
+    if(!rows || rows.length < 2) throw new Error("줄이 너무 적습니다. 첫 줄에 «환자명, 최종내원일» 같은 제목이 있는 파일인지 확인해주세요.");
+    setData(rows);
+  }catch(e){
+    fail($("loadErr"), "파일을 읽지 못했습니다 — " + e.message
+      + "  ·  엑셀이 안 되면, 엑셀에서 «다른 이름으로 저장 → CSV»로 저장한 뒤 다시 넣어보세요.");
+  }
+}
+function setData(rows){
+  var width = Math.max.apply(null, rows.map(function(r){ return r.length; }));
+  RAW = {
+    headers: (function(){ var h = rows[0].slice(); while(h.length < width) h.push(""); return h; })(),
+    rows: rows.slice(1).map(function(r){ var x = r.slice(); while(x.length < width) x.push(""); return x; })
+  };
+  MAP = guessMap(RAW.headers, RAW.rows);
+  DONE = {}; TAB = "all";
+  hide($("outSec"));
+  renderMaps();
+  show($("mapSec"));
+  $("mapSec").scrollIntoView({behavior:"smooth", block:"start"});
+}
+
+$("drop").addEventListener("click", function(){ $("file").click(); });
+$("file").addEventListener("change", function(e){ if(e.target.files[0]) take(e.target.files[0]); });
+["dragenter","dragover"].forEach(function(ev){
+  $("drop").addEventListener(ev, function(e){ e.preventDefault(); $("drop").classList.add("on"); });
+});
+["dragleave","drop"].forEach(function(ev){
+  $("drop").addEventListener(ev, function(e){ e.preventDefault(); $("drop").classList.remove("on"); });
+});
+$("drop").addEventListener("drop", function(e){
+  if(e.dataTransfer.files[0]) take(e.dataTransfer.files[0]);
+});
+
+$("run").addEventListener("click", function(){
+  hide($("mapErr"));
+  if(MAP.name === undefined || MAP.date === undefined){
+    fail($("mapErr"), "«환자 이름»과 «마지막 내원일»은 반드시 골라주세요.");
+    return;
+  }
+  var noDate = build();
+  if(!RESULT.length){
+    fail($("mapErr"), "1년 넘게 안 오신 분이 없습니다. 날짜 칸을 잘못 고르지 않았는지 확인해주세요.");
+    return;
+  }
+  renderOut(noDate);
+});
+
+/* ---------- 구경하기 (가짜 환자) ---------- */
+$("demo").addEventListener("click", function(){
+  var last = ["김","이","박","최","정","강","조","윤","장","임","한","오","서","신","권","황","안","송","전","홍"];
+  var mid  = ["민","서","지","현","준","예","도","하","수","은","재","성","우","영","선","진"];
+  var endK = ["준","우","윤","서","호","연","아","진","희","현","경","석"];
+  var treats = ["임플란트","임플란트 보철","틀니","스케일링","잇몸치료","충치치료","크라운","사랑니 발치","정기검진","교정"];
+  var rows = [["차트번호","환자명","연락처","최종내원일","진료내역"]];
+  var seed = 20260801;
+  function rnd(){ seed = (seed * 1103515245 + 12345) & 0x7fffffff; return seed / 0x7fffffff; }
+  for(var i=0; i<300; i++){
+    var name = last[Math.floor(rnd()*last.length)] + mid[Math.floor(rnd()*mid.length)] + endK[Math.floor(rnd()*endK.length)];
+    var daysAgo = Math.floor(rnd()*1600) + 30;
+    var d = new Date(); d.setDate(d.getDate() - daysAgo);
+    var ds = d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
+    var ph = "010-" + String(Math.floor(rnd()*9000)+1000) + "-" + String(Math.floor(rnd()*9000)+1000);
+    rows.push([ "C" + String(10000 + i), name, ph, ds, treats[Math.floor(rnd()*treats.length)] ]);
+  }
+  setData(rows);
+});
+</script>
+</body>
+</html>
