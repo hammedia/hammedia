@@ -1,0 +1,729 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow, noarchive">
+    <meta name="theme-color" content="#F5F3EE">
+    <title>백령도 여행 포켓 | 둘이 잘 다녀오기</title>
+    <meta name="description" content="백령도 2박 3일 준비물, 배멀미, 식사, 안전 확인표">
+    <style>
+      :root {
+        --paper: #f9f7f3;
+        --paper-deep: #f5f3ee;
+        --ink: #1c1814;
+        --muted: #4a423c;
+        --line: rgba(28, 24, 20, 0.14);
+        --accent: #7eb5e8;
+        --action: #00704a;
+        --warn: #cc0000;
+        --highlight: #f4dc59;
+        --radius-sm: 12px;
+        --radius: 16px;
+        --radius-lg: 24px;
+        --shadow: 0 28px 80px rgba(45, 37, 27, 0.12);
+        --shadow-soft: 0 18px 45px rgba(32, 26, 22, 0.08);
+        --font: "Pretendard", "Pretendard Variable", -apple-system, BlinkMacSystemFont, "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+      }
+
+      * { box-sizing: border-box; }
+
+      html {
+        color: var(--ink);
+        background: var(--paper-deep);
+        font-family: var(--font);
+        scroll-behavior: smooth;
+        -webkit-text-size-adjust: 100%;
+      }
+
+      body {
+        margin: 0;
+        background:
+          radial-gradient(circle at 8% 0%, rgba(126, 181, 232, 0.22), transparent 31rem),
+          radial-gradient(circle at 94% 16%, rgba(244, 220, 89, 0.16), transparent 25rem),
+          var(--paper-deep);
+        font-size: 16px;
+        line-height: 1.65;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      a { color: inherit; }
+
+      a:focus-visible,
+      button:focus-visible,
+      input:focus-visible + .checkmark {
+        outline: 3px solid var(--accent);
+        outline-offset: 3px;
+      }
+
+      .skip-link {
+        position: fixed;
+        left: 12px;
+        top: 12px;
+        z-index: 100;
+        transform: translateY(-180%);
+        padding: 10px 14px;
+        border-radius: var(--radius-sm);
+        color: white;
+        background: var(--action);
+        font-weight: 700;
+      }
+
+      .skip-link:focus { transform: translateY(0); }
+
+      .shell {
+        width: min(100% - 28px, 780px);
+        margin: 0 auto;
+        padding: 20px 0 80px;
+      }
+
+      .brandbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        margin-bottom: 18px;
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+      }
+
+      .brandbar strong { color: var(--ink); }
+
+      .hero {
+        position: relative;
+        overflow: hidden;
+        padding: 28px 24px 24px;
+        border: 1px solid rgba(255, 255, 255, 0.64);
+        border-radius: var(--radius-lg);
+        background: rgba(249, 247, 243, 0.82);
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(20px);
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        right: -64px;
+        bottom: -82px;
+        width: 210px;
+        aspect-ratio: 1;
+        border: 34px solid rgba(126, 181, 232, 0.15);
+        border-radius: 50%;
+        pointer-events: none;
+      }
+
+      .eyebrow {
+        margin: 0 0 10px;
+        color: #365e7d;
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        max-width: 580px;
+        margin: 0;
+        font-size: clamp(31px, 8.5vw, 46px);
+        line-height: 1.16;
+        letter-spacing: -0.035em;
+      }
+
+      .hero-lead {
+        max-width: 560px;
+        margin: 14px 0 0;
+        color: var(--muted);
+        font-size: 17px;
+      }
+
+      .departure {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 12px 14px;
+        align-items: center;
+        margin-top: 22px;
+        padding: 16px;
+        border-radius: var(--radius);
+        background: var(--ink);
+        color: var(--paper);
+      }
+
+      .departure-mark {
+        grid-row: 1 / 3;
+        color: var(--highlight);
+        font-size: 22px;
+        font-weight: 800;
+        letter-spacing: 0.02em;
+      }
+
+      .departure strong { line-height: 1.3; }
+      .departure span { color: rgba(249, 247, 243, 0.78); font-size: 13px; }
+
+      .progress-wrap {
+        margin-top: 18px;
+        padding: 16px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: var(--paper);
+      }
+
+      .progress-copy {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        margin-bottom: 9px;
+        font-size: 13px;
+        font-weight: 700;
+      }
+
+      .progress-copy output { color: var(--action); }
+
+      .progress-track {
+        height: 9px;
+        overflow: hidden;
+        border-radius: 999px;
+        background: rgba(28, 24, 20, 0.1);
+      }
+
+      .progress-fill {
+        width: 0;
+        height: 100%;
+        border-radius: inherit;
+        background: var(--action);
+        transition: width 180ms ease;
+      }
+
+      .quicknav {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+        margin: 14px 0 24px;
+      }
+
+      .quicknav a {
+        display: grid;
+        min-height: 48px;
+        place-items: center;
+        padding: 9px 6px;
+        border: 1px solid rgba(126, 181, 232, 0.48);
+        border-radius: var(--radius-sm);
+        background: rgba(249, 247, 243, 0.9);
+        text-align: center;
+        text-decoration: none;
+        font-size: 13px;
+        font-weight: 700;
+      }
+
+      section {
+        scroll-margin-top: 16px;
+        margin-top: 18px;
+        padding: 24px 20px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius-lg);
+        background: var(--paper);
+        box-shadow: var(--shadow-soft);
+      }
+
+      .section-kicker {
+        margin: 0 0 4px;
+        color: #365e7d;
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      h2 {
+        margin: 0;
+        font-size: clamp(24px, 6.3vw, 30px);
+        line-height: 1.28;
+        letter-spacing: -0.025em;
+      }
+
+      h3 {
+        margin: 0;
+        font-size: 19px;
+        line-height: 1.4;
+        letter-spacing: -0.015em;
+      }
+
+      .section-lead {
+        margin: 8px 0 18px;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .check-list {
+        display: grid;
+        gap: 2px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .check-list li { border-top: 1px solid var(--line); }
+      .check-list li:first-child { border-top: 0; }
+
+      .check-item {
+        position: relative;
+        display: grid;
+        grid-template-columns: 30px 1fr;
+        gap: 10px;
+        min-height: 52px;
+        align-items: start;
+        padding: 13px 0;
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      .check-item input {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        opacity: 0;
+      }
+
+      .checkmark {
+        position: relative;
+        width: 26px;
+        height: 26px;
+        margin-top: 1px;
+        border: 2px solid rgba(28, 24, 20, 0.32);
+        border-radius: 8px;
+        background: white;
+      }
+
+      .check-item input:checked + .checkmark {
+        border-color: var(--action);
+        background: var(--action);
+      }
+
+      .check-item input:checked + .checkmark::after {
+        content: "";
+        position: absolute;
+        left: 8px;
+        top: 4px;
+        width: 6px;
+        height: 12px;
+        border: solid white;
+        border-width: 0 3px 3px 0;
+        transform: rotate(45deg);
+      }
+
+      .check-text { font-weight: 650; }
+
+      .check-item input:checked ~ .check-text {
+        color: #777069;
+        text-decoration: line-through;
+        text-decoration-thickness: 1px;
+      }
+
+      .small-note {
+        display: block;
+        margin-top: 3px;
+        color: var(--muted);
+        font-size: 13px;
+        font-weight: 400;
+        line-height: 1.55;
+        text-decoration: none;
+      }
+
+      .callout {
+        margin-top: 16px;
+        padding: 15px 16px;
+        border-radius: var(--radius-sm);
+        background: rgba(126, 181, 232, 0.16);
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .callout strong { color: var(--ink); }
+
+      .warning {
+        border: 1px solid rgba(204, 0, 0, 0.2);
+        background: rgba(204, 0, 0, 0.055);
+      }
+
+      .warning strong { color: #a00000; }
+
+      .schedule {
+        display: grid;
+        gap: 10px;
+        margin-top: 18px;
+      }
+
+      .schedule-card {
+        display: grid;
+        grid-template-columns: 70px 1fr;
+        gap: 14px;
+        align-items: center;
+        padding: 16px;
+        border-radius: var(--radius);
+        background: var(--paper-deep);
+      }
+
+      .schedule-card .date {
+        color: #365e7d;
+        font-size: 13px;
+        font-weight: 800;
+        text-align: center;
+      }
+
+      .schedule-card .date b {
+        display: block;
+        color: var(--ink);
+        font-size: 26px;
+        line-height: 1;
+      }
+
+      .schedule-card p { margin: 3px 0 0; color: var(--muted); font-size: 13px; }
+
+      .pharmacy-script {
+        margin: 16px 0 0;
+        padding: 18px;
+        border-left: 4px solid var(--highlight);
+        border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+        background: rgba(244, 220, 89, 0.17);
+        font-size: 15px;
+        font-weight: 650;
+      }
+
+      .food-grid {
+        display: grid;
+        gap: 12px;
+        margin-top: 18px;
+      }
+
+      .food-card {
+        padding: 18px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: #fffefb;
+      }
+
+      .food-top {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 12px;
+      }
+
+      .tag {
+        flex: none;
+        padding: 4px 8px;
+        border-radius: 999px;
+        background: rgba(126, 181, 232, 0.2);
+        color: #365e7d;
+        font-size: 11px;
+        font-weight: 800;
+      }
+
+      .tag.yellow { color: #6b5800; background: rgba(244, 220, 89, 0.36); }
+      .food-card p { margin: 7px 0 0; color: var(--muted); font-size: 14px; }
+
+      .call-button {
+        display: flex;
+        min-height: 46px;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        margin-top: 14px;
+        padding: 10px 14px;
+        border-radius: var(--radius-sm);
+        background: var(--action);
+        color: white;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 700;
+      }
+
+      .call-button span { opacity: 0.82; font-size: 13px; }
+
+      .source-links {
+        display: grid;
+        gap: 9px;
+        margin-top: 18px;
+      }
+
+      .source-links a {
+        display: flex;
+        min-height: 48px;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 11px 14px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius-sm);
+        background: #fffefb;
+        text-decoration: none;
+        font-weight: 700;
+      }
+
+      .source-links a::after { content: "↗"; color: #365e7d; }
+
+      .reset {
+        display: block;
+        min-height: 44px;
+        margin: 22px auto 0;
+        padding: 8px 14px;
+        border: 0;
+        background: transparent;
+        color: var(--muted);
+        font: inherit;
+        font-size: 13px;
+        text-decoration: underline;
+        cursor: pointer;
+      }
+
+      footer {
+        padding: 26px 10px 0;
+        color: var(--muted);
+        text-align: center;
+        font-size: 12px;
+      }
+
+      .privacy-note { margin-top: 8px; }
+
+      @media (min-width: 640px) {
+        .shell { padding-top: 32px; }
+        .hero { padding: 38px 36px 32px; }
+        section { padding: 30px 28px; }
+        .food-grid { grid-template-columns: repeat(2, 1fr); }
+        .schedule { grid-template-columns: repeat(2, 1fr); }
+      }
+
+      @media (max-width: 360px) {
+        .shell { width: min(100% - 20px, 780px); }
+        .quicknav { grid-template-columns: repeat(2, 1fr); }
+        .departure { grid-template-columns: 1fr; }
+        .departure-mark { grid-row: auto; }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+        *, *::before, *::after { transition-duration: 0.01ms !important; }
+      }
+
+      @media (prefers-reduced-transparency: reduce) {
+        .hero { background: var(--paper); backdrop-filter: none; }
+      }
+
+      @media (forced-colors: active) {
+        .hero, section, .progress-wrap, .food-card, .source-links a { border: 1px solid CanvasText; }
+        .checkmark { forced-color-adjust: none; }
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">준비표로 바로 가기</a>
+    <main class="shell" id="main">
+      <div class="brandbar">
+        <strong>HAM MEDIA</strong>
+        <span>TRIP POCKET · 2026</span>
+      </div>
+
+      <header class="hero">
+        <p class="eyebrow">Baengnyeong Island · Travel checklist</p>
+        <h1>백령도, 둘이<br>잘 다녀오기</h1>
+        <p class="hero-lead">짐부터 멀미약, 먹을 곳, 조심할 것까지. 이동하면서 필요한 것만 한 화면에 모았습니다.</p>
+        <div class="departure">
+          <strong class="departure-mark">READY</strong>
+          <strong>집에서 출발하기 전</strong>
+          <span>신분 확인 서류와 멀미약부터 실제 가방에 넣기</span>
+        </div>
+      </header>
+
+      <div class="progress-wrap" aria-label="전체 준비 진행률">
+        <div class="progress-copy">
+          <span>우리 준비 진행률</span>
+          <output id="progressText" aria-live="polite">0 / 0 완료</output>
+        </div>
+        <div class="progress-track" aria-hidden="true">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+      </div>
+
+      <nav class="quicknav" aria-label="여행 포켓 바로가기">
+        <a href="#pack">준비물</a>
+        <a href="#ferry">배 시간</a>
+        <a href="#sickness">배멀미</a>
+        <a href="#food">먹을 곳</a>
+        <a href="#safety">조심할 것</a>
+        <a href="#official">당일 확인</a>
+      </nav>
+
+      <section id="pack">
+        <p class="section-kicker">01 · Pack</p>
+        <h2>출발 전에, 이것부터</h2>
+        <p class="section-lead">체크는 이 휴대폰에 저장됩니다. 새로 열어도 그대로 남습니다.</p>
+        <ul class="check-list">
+          <li><label class="check-item"><input type="checkbox" data-check="id"><span class="checkmark" aria-hidden="true"></span><span class="check-text">두 사람 신분 확인 서류<span class="small-note">성인은 신분증, 아이는 인정되는 신분 확인 서류를 승선 안내에 맞춰 준비</span></span></label></li>
+          <li><label class="check-item"><input type="checkbox" data-check="ticket"><span class="checkmark" aria-hidden="true"></span><span class="check-text">승선권·예약 문자 화면 캡처</span></label></li>
+          <li><label class="check-item"><input type="checkbox" data-check="medicine"><span class="checkmark" aria-hidden="true"></span><span class="check-text">성인용·아이용 멀미약 왕복분 + 여분<span class="small-note">아이 나이·체중과 운전 여부를 약사에게 먼저 말하기</span></span></label></li>
+          <li><label class="check-item"><input type="checkbox" data-check="firstaid"><span class="checkmark" aria-hidden="true"></span><span class="check-text">처방약·해열진통제·밴드</span></label></li>
+          <li><label class="check-item"><input type="checkbox" data-check="sun"><span class="checkmark" aria-hidden="true"></span><span class="check-text">선크림·벌레기피제·모자</span></label></li>
+          <li><label class="check-item"><input type="checkbox" data-check="drink"><span class="checkmark" aria-hidden="true"></span><span class="check-text">물·이온음료·가벼운 간식</span></label></li>
+          <li><label class="check-item"><input type="checkbox" data-check="bag"><span class="checkmark" aria-hidden="true"></span><span class="check-text">물티슈·비닐봉투·작은 수건</span></label></li>
+          <li><label class="check-item"><input type="checkbox" data-check="power"><span class="checkmark" aria-hidden="true"></span><span class="check-text">보조배터리·충전선</span></label></li>
+          <li><label class="check-item"><input type="checkbox" data-check="rain"><span class="checkmark" aria-hidden="true"></span><span class="check-text">우비·여벌옷 하루치 더</span></label></li>
+          <li><label class="check-item"><input type="checkbox" data-check="field"><span class="checkmark" aria-hidden="true"></span><span class="check-text">긴팔·긴바지·장갑·미끄럼 적은 신발</span></label></li>
+        </ul>
+      </section>
+
+      <section id="ferry">
+        <p class="section-kicker">02 · Ferry</p>
+        <h2>배 시간과 터미널</h2>
+        <p class="section-lead">운항·출항 시각은 기상과 선사 사정으로 달라질 수 있으니 당일 예약 문자와 공식 안내를 우선합니다.</p>
+        <div class="schedule">
+          <article class="schedule-card">
+            <div class="date">가는 날</div>
+            <div><h3>예약 문자에서 출항 확인</h3><p>신분 확인 서류와 승선권을 손에 들고 이동</p></div>
+          </article>
+          <article class="schedule-card">
+            <div class="date">오는 날</div>
+            <div><h3>당일 운항 상태 재확인</h3><p>기상 변화에 대비해 선착장에 넉넉히 도착</p></div>
+          </article>
+        </div>
+        <div class="callout"><strong>최소 1시간 전 도착을 목표로.</strong> 인천항 연안여객터미널은 인천 중구 연안부두로 70입니다. 성수기에는 주차·발권 시간을 더 넉넉히 잡으세요.</div>
+      </section>
+
+      <section id="sickness">
+        <p class="section-kicker">03 · Motion sickness</p>
+        <h2>둘 다 편하게 배 타기</h2>
+        <p class="pharmacy-script">“성인 1명과 아이 1명이 4시간 배를 왕복합니다. 아이 나이·체중과 복용 중인 약에 맞는 제품으로 왕복분과 여분을 주세요. 운전할 수 있어 졸림도 확인해 주세요.”</p>
+        <ul class="check-list">
+          <li><label class="check-item"><input type="checkbox" data-check="med-label"><span class="checkmark" aria-hidden="true"></span><span class="check-text">두 사람 약을 이름 써서 따로 보관</span></label></li>
+          <li><label class="check-item"><input type="checkbox" data-check="med-alarm"><span class="checkmark" aria-hidden="true"></span><span class="check-text">제품 설명서·약사가 말한 복용 시각 알람</span></label></li>
+          <li><label class="check-item"><input type="checkbox" data-check="med-drive"><span class="checkmark" aria-hidden="true"></span><span class="check-text">졸림·시야 흐림·운전 금지 문구 확인<span class="small-note">졸리는 약을 먹었다면 운전하지 않기</span></span></label></li>
+          <li><label class="check-item"><input type="checkbox" data-check="med-food"><span class="checkmark" aria-hidden="true"></span><span class="check-text">출발 전 기름진 음식 대신 가볍게 먹기</span></label></li>
+          <li><label class="check-item"><input type="checkbox" data-check="med-horizon"><span class="checkmark" aria-hidden="true"></span><span class="check-text">배에서는 수평선 보고 휴대폰·독서 쉬기</span></label></li>
+          <li><label class="check-item"><input type="checkbox" data-check="med-bag"><span class="checkmark" aria-hidden="true"></span><span class="check-text">봉투와 화장실 위치 먼저 확인</span></label></li>
+        </ul>
+        <div class="callout warning"><strong>아이에게 성인용 약을 나눠 먹이지 마세요.</strong> 증상이 생긴 뒤가 아니라 제품·약사 지시에 맞춰 승선 전에 복용하고, 술이나 다른 진정 성분과 함께 먹지 않습니다.</div>
+      </section>
+
+      <section id="food">
+        <p class="section-kicker">04 · Eat</p>
+        <h2>좋아하는 메뉴 순서대로</h2>
+        <p class="section-lead">섬은 영업시간과 재료 수급이 자주 바뀝니다. 출발 전이나 도착 직후 전화 확인이 가장 정확합니다.</p>
+        <div class="food-grid">
+          <article class="food-card">
+            <div class="food-top"><h3>삼삼구이</h3><span class="tag">고기 1순위</span></div>
+            <p>삼겹살·염소불고기 · 백령로 322<br>휴무일인지 꼭 확인</p>
+            <a class="call-button" href="tel:0328363392">영업 전화 확인 <span>032-836-3392</span></a>
+          </article>
+          <article class="food-card">
+            <div class="food-top"><h3>백령고모네</h3><span class="tag yellow">고기 대안</span></div>
+            <p>삼겹살·목살·갈매기살 · 백령로 853<br>온라인 영업정보는 전화로 재확인</p>
+            <a class="call-button" href="tel:0328368277">영업 전화 확인 <span>032-836-8277</span></a>
+          </article>
+          <article class="food-card">
+            <div class="food-top"><h3>사곶냉면</h3><span class="tag">냉면</span></div>
+            <p>물냉면·굴 메밀칼국수·짠지떡<br>이른 마감 가능성이 있어 15시 전 추천</p>
+            <a class="call-button" href="tel:0328360559">영업 전화 확인 <span>032-836-0559</span></a>
+          </article>
+          <article class="food-card">
+            <div class="food-top"><h3>가을면옥</h3><span class="tag yellow">점심 냉면</span></div>
+            <p>냉면·반냉면·수육 · 가을길 142-18<br>재료 소진과 휴무를 먼저 확인</p>
+            <a class="call-button" href="tel:050713961708">영업 전화 확인 <span>0507-1396-1708</span></a>
+          </article>
+          <article class="food-card">
+            <div class="food-top"><h3>두선네한상</h3><span class="tag">해산물 대안</span></div>
+            <p>홍합밥·전복솥밥·삼겹살 · 백령로 60<br>제철 조개 요리가 가능한지 전화로 질문</p>
+            <a class="call-button" href="tel:050714078228">메뉴 전화 확인 <span>0507-1407-8228</span></a>
+          </article>
+        </div>
+        <div class="callout"><strong>조개구이 전문점은 확정하지 못했습니다.</strong> 없는 집을 있다고 적지 않고, 홍합밥·전복솥밥을 확실한 대안으로 두었습니다.</div>
+      </section>
+
+      <section id="safety">
+        <p class="section-kicker">05 · Safe</p>
+        <h2>백령도에서 조심할 것</h2>
+        <ul class="check-list">
+          <li><label class="check-item"><input type="checkbox" data-check="safe-camera"><span class="checkmark" aria-hidden="true"></span><span class="check-text">군부대·초소·철책·레이더·통제표지 촬영하지 않기</span></label></li>
+          <li><label class="check-item"><input type="checkbox" data-check="safe-drone"><span class="checkmark" aria-hidden="true"></span><span class="check-text">드론은 띄우지 않기</span></label></li>
+          <li><label class="check-item"><input type="checkbox" data-check="safe-privacy"><span class="checkmark" aria-hidden="true"></span><span class="check-text">사람 얼굴·차량 번호판은 허락 없이 찍지 않기</span></label></li>
+          <li><label class="check-item"><input type="checkbox" data-check="safe-field"><span class="checkmark" aria-hidden="true"></span><span class="check-text">풀이 높아 바닥이 안 보이면 들어가지 않기</span></label></li>
+          <li><label class="check-item"><input type="checkbox" data-check="safe-cliff"><span class="checkmark" aria-hidden="true"></span><span class="check-text">절벽·갯바위·방파제 통제선 넘지 않기</span></label></li>
+          <li><label class="check-item"><input type="checkbox" data-check="safe-together"><span class="checkmark" aria-hidden="true"></span><span class="check-text">서로 보이는 거리 유지·각자 휴대폰 배터리 확보</span></label></li>
+          <li><label class="check-item"><input type="checkbox" data-check="safe-heat"><span class="checkmark" aria-hidden="true"></span><span class="check-text">한 시간마다 물·그늘 휴식<span class="small-note">두통·메스꺼움이 생기면 즉시 중단</span></span></label></li>
+          <li><label class="check-item"><input type="checkbox" data-check="safe-extra"><span class="checkmark" aria-hidden="true"></span><span class="check-text">결항 대비 약·속옷·충전 전원 하루치 더</span></label></li>
+        </ul>
+        <div class="source-links">
+          <a href="tel:119">긴급 상황 119 전화</a>
+          <a href="tel:0328361732">백령병원 032-836-1732</a>
+        </div>
+      </section>
+
+      <section id="official">
+        <p class="section-kicker">06 · Check today</p>
+        <h2>출발 직전 공식 확인</h2>
+        <p class="section-lead">안개·태풍·해상 상태는 육지 체감과 다를 수 있습니다. 운항 여부는 당일 공지가 최종입니다.</p>
+        <ul class="check-list">
+          <li><label class="check-item"><input type="checkbox" data-check="final-weather"><span class="checkmark" aria-hidden="true"></span><span class="check-text">기상청 해상특보·태풍정보 확인</span></label></li>
+          <li><label class="check-item"><input type="checkbox" data-check="final-ferry"><span class="checkmark" aria-hidden="true"></span><span class="check-text">여객선 운항 여부·출항 시각 확인</span></label></li>
+          <li><label class="check-item"><input type="checkbox" data-check="final-stay"><span class="checkmark" aria-hidden="true"></span><span class="check-text">숙소 체크인·섬 안 이동수단 확인</span></label></li>
+          <li><label class="check-item"><input type="checkbox" data-check="final-food"><span class="checkmark" aria-hidden="true"></span><span class="check-text">먹을 곳 1순위에 영업·재료 전화 확인</span></label></li>
+          <li><label class="check-item"><input type="checkbox" data-check="final-id"><span class="checkmark" aria-hidden="true"></span><span class="check-text">신분 확인 서류를 가방에서 손으로 확인</span></label></li>
+        </ul>
+        <div class="source-links">
+          <a href="https://www.weather.go.kr/w/ocean/warning.do" target="_blank" rel="noopener noreferrer">기상청 해상특보</a>
+          <a href="https://www.weather.go.kr/w/hazard/typhoon/report.do" target="_blank" rel="noopener noreferrer">기상청 태풍정보</a>
+          <a href="https://www.icpa.or.kr/icferry/mobile/content/view.do?contentKey=215&amp;menuKey=1203" target="_blank" rel="noopener noreferrer">승선 절차·신분증 안내</a>
+          <a href="https://www.icpa.or.kr/icferry/content/view.do?contentKey=69&amp;menuKey=1282" target="_blank" rel="noopener noreferrer">연안여객터미널 위치</a>
+        </div>
+      </section>
+
+      <button class="reset" id="resetChecks" type="button">이 휴대폰의 체크 전부 지우기</button>
+      <footer>
+        <strong>HAM MEDIA · TRIP POCKET</strong><br>
+        영업과 운항은 당일 전화·공식 공지 우선
+        <div class="privacy-note">좌석·숙소·개인 현장정보를 제외한 여행용 사본입니다.</div>
+      </footer>
+    </main>
+
+    <script>
+      (() => {
+        const storageKey = "ham-baengnyeong-trip-c7e94b2a51";
+        const checks = [...document.querySelectorAll("[data-check]")];
+        const progressText = document.getElementById("progressText");
+        const progressFill = document.getElementById("progressFill");
+
+        let saved = {};
+        try {
+          saved = JSON.parse(localStorage.getItem(storageKey) || "{}");
+        } catch (_error) {
+          saved = {};
+        }
+
+        const updateProgress = () => {
+          const done = checks.filter((check) => check.checked).length;
+          progressText.textContent = `${done} / ${checks.length} 완료`;
+          progressFill.style.width = `${checks.length ? (done / checks.length) * 100 : 0}%`;
+        };
+
+        const save = () => {
+          const state = Object.fromEntries(checks.map((check) => [check.dataset.check, check.checked]));
+          try { localStorage.setItem(storageKey, JSON.stringify(state)); } catch (_error) {}
+          updateProgress();
+        };
+
+        checks.forEach((check) => {
+          check.checked = Boolean(saved[check.dataset.check]);
+          check.addEventListener("change", save);
+        });
+
+        document.getElementById("resetChecks").addEventListener("click", () => {
+          checks.forEach((check) => { check.checked = false; });
+          save();
+        });
+
+        updateProgress();
+      })();
+    </script>
+  </body>
+</html>
