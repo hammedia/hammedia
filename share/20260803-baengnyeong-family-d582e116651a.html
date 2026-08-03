@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow, noarchive">
   <meta name="theme-color" content="#dff2f3">
-  <title>여보에게 보내는 오늘의 백령도</title>
-  <meta name="description" content="햄과 소율이의 백령도 둘째 날 가족 기록">
+  <title>아빠와 딸의 백령도 | 햄과 소율</title>
+  <meta name="description" content="아빠 햄과 딸 소율이 함께 걸은 백령도 둘째 날 가족 기록">
   <style>
     :root {
       --sea:#006b75; --sea-deep:#073f48; --sky:#dff2f3; --paper:#fffdf8;
@@ -38,6 +38,9 @@
     .caption{margin:9px 3px 0;color:var(--muted);font-size:13px;line-height:1.55}
     .pair{display:grid;grid-template-columns:1.15fr .85fr;gap:10px}
     .pair .photo img{height:100%;min-height:270px;object-fit:cover}
+    .gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+    .gallery .photo img{height:100%;min-height:260px;object-fit:cover}
+    .gallery .wide{grid-column:1/-1}
     .timeline{list-style:none;margin:4px 0 0;padding:0}
     .timeline li{position:relative;padding:0 0 20px 34px}
     .timeline li:last-child{padding-bottom:0}
@@ -50,19 +53,19 @@
     .note{margin-top:16px;padding:18px;border-radius:20px;background:var(--sand);color:#584a37;line-height:1.7}
     .note strong{color:var(--ink)}
     footer{padding:28px 12px 0;color:var(--muted);text-align:center;font-size:12px;line-height:1.7}
-    @media(max-width:520px){.shell{width:min(100% - 16px,760px)}.hero img{aspect-ratio:4/5}.hero-copy{padding:22px 18px 20px}.route{gap:5px}.route a{font-size:12px}section{padding:18px 16px}.pair{grid-template-columns:1fr}.pair .photo img{min-height:0;max-height:520px}}
+    @media(max-width:520px){.shell{width:min(100% - 16px,760px)}.hero img{aspect-ratio:4/5}.hero-copy{padding:22px 18px 20px}.route{gap:5px}.route a{font-size:12px}section{padding:18px 16px}.pair,.gallery{grid-template-columns:1fr}.pair .photo img,.gallery .photo img{min-height:0;max-height:520px}.gallery .wide{grid-column:auto}}
   </style>
 </head>
 <body>
   <main class="shell">
-    <div class="privacy"><b>햄 × 소율 · 가족용 기록</b><span>2026.08.03 · 링크 전달 금지</span></div>
+    <div class="privacy"><b>아빠 햄 × 딸 소율 · 가족용 기록</b><span>2026.08.03 · 가족끼리 보기</span></div>
 
     <header class="hero">
       <img src="assets/20260803-baengnyeong-family-d582e116651a/sagot-soyul.jpg" alt="사곶해변을 걷는 소율이">
       <div class="hero-copy">
-        <p class="eyebrow">A LETTER FROM BAENGNYEONG</p>
-        <h1>여보,<br>오늘 백령도는 이랬어.</h1>
-        <p class="lead">소율이랑 단단한 모래를 밟고, 자그락거리는 콩돌을 지나, 두무진 포구까지 왔어. 오늘의 풍경을 한 장에 모았어.</p>
+        <p class="eyebrow">FATHER &amp; DAUGHTER IN BAENGNYEONG</p>
+        <h1>아빠와 딸의<br>백령도</h1>
+        <p class="lead">아빠와 소율이가 단단한 모래를 밟고, 자그락거리는 콩돌을 지나, 두무진 데크길까지 함께 걸은 하루를 모았어.</p>
       </div>
     </header>
 
@@ -75,10 +78,11 @@
     <section id="sagot">
       <p class="section-label">13:06 · FIRST STOP</p>
       <h2>비행기가 내려앉았던 모래</h2>
-      <p class="section-copy">사곶은 모래사장인데도 발이 푹 빠지지 않았어. 소율이는 바다를 보며 음료를 마시고, 우리는 넓어진 물가를 천천히 걸었어.</p>
-      <div class="pair">
-        <figure class="photo"><img src="assets/20260803-baengnyeong-family-d582e116651a/sagot-view.jpg" alt="넓게 펼쳐진 사곶해변"></figure>
-        <figure class="photo"><img src="assets/20260803-baengnyeong-family-d582e116651a/sagot-soyul.jpg" alt="사곶해변의 소율이"></figure>
+      <p class="section-copy">사곶은 모래사장인데도 발이 푹 빠지지 않았어. 소율이는 바다를 보며 음료를 마시고, 두 팔을 활짝 펴며 넓어진 물가를 신나게 걸었어.</p>
+      <div class="gallery">
+        <figure class="photo wide"><img loading="lazy" src="assets/20260803-baengnyeong-family-d582e116651a/sagot-view.jpg" alt="넓게 펼쳐진 사곶해변"></figure>
+        <figure class="photo"><img loading="lazy" src="assets/20260803-baengnyeong-family-d582e116651a/sagot-soyul.jpg" alt="사곶해변에서 음료를 마시는 소율이"></figure>
+        <figure class="photo"><img loading="lazy" src="assets/20260803-baengnyeong-family-d582e116651a/sagot-joy.jpg" alt="사곶해변에서 두 팔을 펼친 소율이"></figure>
       </div>
       <p class="caption">단단한 석영 모래와 수평선. 사진 원본은 가족 보관함에 따로 안전하게 남겼어.</p>
     </section>
@@ -87,16 +91,24 @@
       <p class="section-label">13:46 · SECOND STOP</p>
       <h2>걷는 소리가 자그락</h2>
       <p class="section-copy">콩돌해안은 모래 대신 둥근 돌이 해변을 가득 채웠어. 파도보다 발밑의 자그락 소리가 먼저 기억나는 곳이었어.</p>
-      <figure class="photo"><img src="assets/20260803-baengnyeong-family-d582e116651a/kongdol-soyul.jpg" alt="콩돌해안에서 바다를 바라보는 소율이"></figure>
+      <div class="gallery">
+        <figure class="photo"><img loading="lazy" src="assets/20260803-baengnyeong-family-d582e116651a/kongdol-soyul.jpg" alt="콩돌해안에서 바다를 바라보는 소율이"></figure>
+        <figure class="photo"><img loading="lazy" src="assets/20260803-baengnyeong-family-d582e116651a/kongdol-stones.jpg" alt="콩돌해안의 둥글고 고운 돌"></figure>
+      </div>
       <p class="caption">돌은 하나도 가져오지 않고, 사진과 소리만 챙겨왔어.</p>
     </section>
 
     <section id="dumujin">
-      <p class="section-label">14:11 · THIRD STOP</p>
-      <h2>두무진 포구에 도착</h2>
-      <p class="section-copy">콩돌에서 바로 두무진으로 왔어. 햇볕이 가장 뜨거운 시간이라 포구 앞 카페에서 먼저 쉬고, 조금 선선해지면 데크길을 걸으려고 해.</p>
-      <figure class="photo"><img src="assets/20260803-baengnyeong-family-d582e116651a/dumujin-soyul.jpg" alt="두무진 포구의 소율이"></figure>
-      <p class="caption">오늘 저녁은 두무진에서 먹고, 19:49 해넘이를 본 뒤 숙소로 돌아갈 예정이야.</p>
+      <p class="section-label">14:11~15:06 · THIRD STOP</p>
+      <h2>두무진 포구에서 전망대까지</h2>
+      <p class="section-copy">콩돌에서 바로 두무진으로 왔어. 포구 앞 카페에서 잠깐 쉬고 데크길을 올라, 소율이와 바위 사이로 펼쳐진 푸른 바다를 함께 봤어.</p>
+      <div class="gallery">
+        <figure class="photo wide"><img loading="lazy" src="assets/20260803-baengnyeong-family-d582e116651a/dumujin-soyul.jpg" alt="두무진 포구의 소율이"></figure>
+        <figure class="photo"><img loading="lazy" src="assets/20260803-baengnyeong-family-d582e116651a/dumujin-viewpoint.jpg" alt="두무진 전망대에 선 소율이"></figure>
+        <figure class="photo"><img loading="lazy" src="assets/20260803-baengnyeong-family-d582e116651a/dumujin-pointing.jpg" alt="두무진 바위를 가리키는 소율이"></figure>
+        <figure class="photo wide"><img loading="lazy" src="assets/20260803-baengnyeong-family-d582e116651a/dumujin-deck.jpg" alt="두무진 데크길과 푸른 바다 전경"></figure>
+      </div>
+      <p class="caption">포구에서 전망대까지, 아빠와 딸이 나란히 걸은 오늘의 마지막 산책.</p>
     </section>
 
     <section>
@@ -108,12 +120,12 @@
         <li><time>점심 뒤</time><strong>자연마을</strong><span>커피를 마시고 더위를 식힌 뒤 출발.</span></li>
         <li><time>13:06</time><strong>사곶해변</strong><span>단단한 모래와 넓은 수평선.</span></li>
         <li><time>13:46</time><strong>콩돌해안</strong><span>파도와 둥근 돌이 만든 자그락 소리.</span></li>
-        <li><time>14:11</time><strong>두무진</strong><span>포구 도착. 카페에서 잠깐 쉬는 중.</span></li>
+        <li><time>14:11~15:06</time><strong>두무진</strong><span>포구에서 쉬고 데크길과 전망대까지 산책.</span></li>
       </ol>
-      <div class="note"><strong>오늘 기록은 여기까지.</strong><br>저녁과 해넘이는 다녀온 뒤 이어 붙일게. 우리가 흘려보낼 뻔한 하루를 이렇게 남겨두니 벌써 작은 여행책 한 장이 됐어.</div>
+      <div class="note"><strong>아빠와 딸의 백령도 둘째 날.</strong><br>둘이 걷고 웃었던 하루를 사진 아홉 장으로 남겼어. 저녁과 해넘이는 다녀온 뒤 다음 장에 이어 붙일게.</div>
     </section>
 
-    <footer>가족사진과 정확한 위치정보는 공개본에 사용하지 않았습니다.<br>HAM MEDIA · Local family trip note</footer>
+    <footer>햄과 소율의 가족 공유용 기록입니다. 정확한 위치정보는 포함하지 않았습니다.<br>HAM MEDIA · Local family trip note</footer>
   </main>
 </body>
 </html>
