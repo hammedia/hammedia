@@ -31,8 +31,8 @@
   th:first-child,td:first-child{text-align:left}
   thead th{background:#f2eee6;font-size:17px;color:var(--sub);font-weight:600}
   tbody tr:last-child td{border-bottom:0}
-  tbody tr:last-child{background:var(--hibg)}
-  tbody tr:last-child td{font-weight:700}
+  tbody tr.basis{background:var(--hibg)}
+  tbody tr.basis td{font-weight:700}
   .note{color:var(--sub);font-size:17px;border-left:3px solid var(--line);padding:4px 0 4px 18px;margin:18px 0}
   .say{background:var(--box);border:2px solid var(--hi);border-radius:14px;padding:26px 28px;margin:26px 0;font-size:21px}
   .say p:last-child{margin-bottom:0}
@@ -71,26 +71,32 @@
 <strong>묶는 것만으로 값이 두 배 가까이 됩니다.</strong></p>
 
 <h2><span class="num">3</span>얼마쯤 받을 수 있나</h2>
-<p>바로 옆 땅(1527)이 2023년에 <strong>평당 9만 4천원</strong>에 팔렸습니다. 다만 그건 급매로 싸게 나온 거래였습니다.
-같은 진촌리 1000번대의 비슷한 크기 전은 <strong>평당 12만원</strong>에도 팔렸습니다.</p>
-<p>평당 12만원으로 잡고, 임야를 묶어서 계산하면 이렇습니다.</p>
+
+<p class="lead">먼저 말씀드릴 것 — 이건 받고 싶은 값이지 정해진 값이 아닙니다.</p>
+<p>땅값은 사겠다는 사람이 나와야 정해집니다. 그래서 <strong>낮게 잡은 쪽을 기준으로 놓고</strong> 말씀드립니다.</p>
+
+<p>바로 옆 땅(1527)이 2023년에 <strong>평당 9만 4천원</strong>에 팔렸습니다.
+가장 가까운 실제 거래라 이걸 기준선으로 봅니다.
+같은 진촌리에서 비슷한 크기가 <strong>평당 12만원</strong>에 팔린 적도 있지만, 그건 잘 풀렸을 때 이야기입니다.</p>
 
 <table>
   <thead><tr><th>&nbsp;</th><th>땅 전체</th><th>작은아버지 몫</th><th>제 몫</th></tr></thead>
   <tbody>
-    <tr><td>무덤을 그대로 두고 팔면</td><td>약 1억 1,400만</td><td>약 5,700만</td><td>약 5,700만</td></tr>
-    <tr><td>무덤을 옮기고 팔면</td><td>약 1억 4,600만</td><td>약 7,300만</td><td>약 7,300만</td></tr>
+    <tr><td>지금 그대로 내놓으면 (무덤 있는 채로)</td><td>약 9,200만</td><td>약 4,600만</td><td>약 4,600만</td></tr>
+    <tr class="basis"><td><strong>무덤을 옮기고 팔면</strong> (기준선)</td><td>약 1억 1,800만</td><td>약 5,900만</td><td>약 5,900만</td></tr>
+    <tr><td>기다렸다가 값을 잘 받으면</td><td>약 1억 5,700만</td><td>약 7,900만</td><td>약 7,900만</td></tr>
   </tbody>
 </table>
 
-<p class="lead">차이가 한 사람당 1,600만원입니다.</p>
+<p class="lead">무덤을 옮기느냐 마느냐가 한 사람당 1,300만원입니다.</p>
 
-<p class="note">이 금액은 주변에서 실제로 거래된 값을 우리 평수에 대입한 것이지, 감정평가나 확정 가격이 아닙니다.
-실제 값은 사겠다는 사람이 나와야 정해집니다.</p>
+<p class="note">가운데 줄이 제가 현실적으로 보는 값입니다. 맨 아랫줄은 <strong>운이 좋을 때</strong>이지 기대하고 계실 값이 아닙니다.
+지금 사겠다고 나선 분의 사정을 보면(6번 참고) <strong>당장은 윗줄에 가까울 수도 있습니다.</strong>
+감정평가가 아니라 주변 실거래를 우리 평수에 대입한 값입니다.</p>
 
 <h2><span class="num">4</span>그래서 무덤이 먼저입니다 — 다만 순서가 있습니다</h2>
 <p>무덤은 1530 전 안에 있습니다. 우리 땅값의 8할이 걸린 필지입니다.</p>
-<p>무덤이 있는 채로 내놓으면 사는 사람이 <strong>20~30%를 깎습니다.</strong> 위 표의 1,600만원 차이가 그것입니다.</p>
+<p>무덤이 있는 채로 내놓으면 사는 사람이 <strong>20~30%를 깎습니다.</strong> 위 표의 1,300만원 차이가 그것입니다.</p>
 
 <p class="lead">먼저 할 일은 부탁입니다.</p>
 <p>문중 어른들께 <strong>「땅을 정리하게 되어 그러니 언제까지 이장해 주십시오」</strong>라고 정중히 말씀드리고,
@@ -127,8 +133,9 @@
 <div class="say">
   <p>작은아버지, 판다고 해주셔서 감사합니다.</p>
   <p><strong>오늘 정할 것은 하나입니다 — 얼마에 걸어둘지.</strong></p>
-  <p>저는 <strong>평당 12만원 선</strong>을 생각하고 있습니다. 옆 땅이 급매로 9만 4천에 나갔으니 그보다는 위여야 하고,
-  그렇다고 15만원까지 부르면 사겠다는 사람이 아예 안 붙는다고 합니다.</p>
+  <p>저는 <strong>평당 9만원에서 12만원 사이</strong>로 보고 있습니다. 바로 옆 땅이 9만 4천에 나갔으니 그 언저리가 현실이고,
+  기다렸다 잘 되면 12만원입니다. 15만원까지 부르면 사겠다는 사람이 아예 안 붙는다고 하더군요.</p>
+  <p><strong>높게 불러놓고 나중에 내리는 건 하고 싶지 않습니다.</strong> 처음부터 받을 만한 값으로 말씀드리는 게 맞다고 봅니다.</p>
   <p>무덤 문제는 저 혼자 못 합니다. <strong>문중 어느 분께 말씀드리는 게 좋을지</strong> 작은아버지 생각을 듣고 싶습니다.</p>
   <p>서류만 보고 정하지 말고, <strong>저와 함께 백령도 한번 가시죠.</strong></p>
 </div>
