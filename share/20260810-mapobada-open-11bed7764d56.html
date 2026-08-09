@@ -28,6 +28,20 @@
   .on .rv.d1{transition-delay:.15s}.on .rv.d2{transition-delay:.3s}.on .rv.d3{transition-delay:.45s}
   .on .rv.d4{transition-delay:.6s}.on .rv.d5{transition-delay:.75s}
 
+  /* S0 요약 첫 화면 */
+  #s0 .lede{font-size:clamp(15px,2vw,19px);color:var(--muted);margin:0 0 10px;font-weight:700}
+  #s0 h1{font-size:clamp(30px,5vw,54px);font-weight:800;letter-spacing:-.03em;line-height:1.45;margin:0 0 40px;text-align:center}
+  #s0 h1 em{font-style:normal;background:var(--yolk);padding:2px 14px;border-radius:10px}
+  .plan3{display:flex;flex-direction:column;gap:16px;width:min(720px,92vw)}
+  .p3{display:flex;gap:18px;align-items:flex-start;background:#fff;border:2px solid var(--line);
+      border-radius:16px;padding:18px 22px}
+  .p3 .n{flex:none;width:40px;height:40px;border-radius:50%;background:var(--ink);color:var(--paper);
+      display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:800}
+  .p3 .tx{font-size:clamp(15.5px,2.1vw,19px);line-height:1.65}
+  .p3 .tx b{font-weight:800}
+  .p3 .tx small{display:block;font-size:.82em;color:var(--muted);margin-top:2px}
+  #s0 .soft{margin-top:30px;font-size:clamp(15px,2vw,18.5px);font-weight:700;color:var(--green);text-align:center}
+
   /* S1 검색 */
   #s1{background:var(--ink);color:var(--paper)}
   #s1 .who{font-size:16px;color:#B9B2A7;margin-bottom:26px}
@@ -167,10 +181,38 @@
   @media (max-width:760px){
     .board,.do{flex-direction:column}
     #s4 .mapstage{height:78vw}
+    .pin span{font-size:36px;padding:5px 16px;top:24px}
+    .pin.us span{font-size:44px;bottom:34px;padding:8px 20px}
+    .pin.far span{font-size:32px}
+    .pin.st span{font-size:30px;top:16px}
+    .pin::before{width:34px;height:34px;left:-17px;top:-17px;border-width:6px}
+    .pin.us::before{width:52px;height:52px;left:-26px;top:-26px}
+    .pin.st::before{width:20px;height:20px;left:-10px;top:-10px}
+    .bardot{width:22px;height:22px}
+    .mapsearch .mq{font-size:16px}
+    .mc{font-size:20px;padding:6px 13px}
   }
 </style>
 </head>
 <body>
+
+<section id="s0" class="sect">
+  <p class="lede rv">8월 20일 오픈 전, 신경 쓰셔야 할 온라인 일 — HAM MEDIA가 맡아 정리합니다</p>
+  <h1 class="rv d1">대표님, 오픈 전에<br>딱 <em>세 가지</em>만 끝내겠습니다.</h1>
+  <div class="plan3">
+    <div class="p3 rv d2"><span class="n">1</span>
+      <span class="tx"><b>손님이 가게를 찾을 수 있게.</b>
+      <small>네이버 · 카카오 · 구글 · 티맵 · 당근 다섯 곳 정리 (옛 가게 정보 포함)</small></span></div>
+    <div class="p3 rv d3"><span class="n">2</span>
+      <span class="tx"><b>매장 TV에서 돌아갈 영상 제작.</b>
+      <small>거래처 사장님들 · 가을 새우 · 전어 — USB로 꽂기만 하면 됩니다</small></span></div>
+    <div class="p3 rv d4"><span class="n">3</span>
+      <span class="tx"><b>오픈 뒤에도 방치되지 않게.</b>
+      <small>정보 수정 · 리뷰 답글 · 장사 숫자 한 장, 매주</small></span></div>
+  </div>
+  <p class="soft rv d5">매달 관리는 오픈 후 한 달 해보고 정하셔도 됩니다.</p>
+  <div class="down">아래로 — 어제 저희가 조사한 것</div>
+</section>
 
 <section id="s1" class="sect">
   <p class="who rv">김재민 대표님 · 제철담은마포바다 · 오픈 열흘 전</p>
@@ -388,6 +430,9 @@
     if(sec.id === 's3') sec.querySelectorAll('.num').forEach(function(n,i){
       setTimeout(function(){ count(n); }, 300 + i*450);
     });
+    if(sec.id === 's3') setTimeout(function(){
+      sec.querySelectorAll('.num').forEach(function(n){ n.textContent = (+n.dataset.n).toLocaleString(); });
+    }, 3400);
   }
 
   // 지도 스케일 맞춤 (1280px 원판을 무대 폭에)
