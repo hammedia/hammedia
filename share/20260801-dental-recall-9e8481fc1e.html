@@ -69,8 +69,12 @@
   .tab.sel{background:#fff;color:var(--ink);border-color:var(--line);margin-bottom:-2px}
   .tab .cnt{color:var(--green)}
   .scroller{overflow-x:auto;background:#fff;border:1px solid var(--line);border-top:none;border-radius:0 0 12px 12px}
-  table{border-collapse:collapse;width:100%;font-size:15px;min-width:720px}
-  th,td{padding:11px 12px;text-align:left;border-bottom:1px solid var(--line);white-space:nowrap}
+  table{border-collapse:collapse;width:100%;font-size:15px}
+  th,td{padding:11px 12px;text-align:left;border-bottom:1px solid var(--line);white-space:nowrap;vertical-align:top}
+  /* 치료 내용만 줄바꿈을 허용한다 — 이것 때문에 표가 옆으로 넘치던 것을 막는다 */
+  td.tx,th.tx{white-space:normal;word-break:keep-all;line-height:1.5;min-width:180px}
+  td.sub2{color:var(--ink2);font-size:13px;display:block;margin-top:2px;font-weight:400}
+  .t-name{display:block} .t-min{color:var(--ink2);font-size:13px;font-weight:400}
   th{background:var(--paper2);font-size:14px;color:var(--ink2);position:sticky;top:0}
   tr.done{opacity:.45;text-decoration:line-through}
   .pill{display:inline-block;padding:3px 10px;border-radius:999px;font-size:13px;font-weight:700}
@@ -85,6 +89,10 @@
   .cuts{display:flex;gap:8px;flex-wrap:wrap}
   .cuts button{padding:9px 16px;font-size:15px;border:2px solid var(--line);background:#fff;color:var(--ink2)}
   .cuts button.sel{border-color:var(--green);background:var(--green);color:#fff}
+  .chk{display:flex;flex-direction:column;gap:4px;align-items:flex-start;cursor:pointer}
+  .chk input{width:19px;height:19px;accent-color:var(--green);cursor:pointer}
+  .stamp{font-size:12px;color:var(--green);font-weight:700;white-space:nowrap;min-height:14px}
+  tr.done .stamp{color:var(--ink2)}
   .sent{width:132px;font-family:inherit;font-size:14px;padding:5px 7px;
         border:1px solid var(--line);border-radius:7px;background:#fff;color:var(--ink)}
   .howto{margin-top:14px;background:var(--paper2);border:1px solid var(--line);border-radius:12px;padding:12px 16px}
@@ -189,11 +197,27 @@
   <div class="cards" id="cards"></div>
 
   <div class="tabs" id="tabs"></div>
+
+  <div class="row" style="margin:12px 0 0;justify-content:space-between">
+    <div class="cuts" id="pages">
+      <button type="button" data-p="10">10명씩</button>
+      <button type="button" data-p="20" class="sel">20명씩</button>
+      <button type="button" data-p="50">50명씩</button>
+      <button type="button" data-p="0">전체 보기</button>
+    </div>
+    <span class="hint" id="pageInfo" style="margin:0"></span>
+  </div>
+
   <div class="scroller"><table id="tbl"><thead></thead><tbody></tbody></table></div>
+
+  <div class="row" style="margin-top:12px">
+    <button class="ghost" id="more">더 보기</button>
+    <span class="hint" id="moreInfo" style="margin:0"></span>
+  </div>
 
   <div class="row" style="margin-top:16px">
     <button id="save">연락 기록 내보내기 (엑셀에서 열림)</button>
-    <span class="hint" style="margin:0">체크한 분은 «연락함»으로 저장됩니다.</span>
+    <span class="hint" style="margin:0">«연락 완료»에 체크하신 분은 날짜·시각과 함께 저장됩니다.</span>
   </div>
 
   <div class="law">
@@ -284,6 +308,9 @@ var RESULT = [];     // 분류 결과 (사람 단위)
 var TAB = "all";
 var DONE = {};       // 사람 id -> 연락한 날짜 문자열 ("" 이면 아직)
 var CUT = 180;       // 며칠 이상 안 오신 분을 볼 것인가 (기본 6개월)
+var PAGE = 20;       // 한 번에 몇 분씩 볼 것인가 (0이면 전부)
+var SHOWN = 20;      // 지금 화면에 펼쳐진 줄 수
+var LAST_NODATE = 0; // 날짜를 못 읽어 뺀 줄 수 (다시 그릴 때 씀)
 
 /* ───────────────────────────────────────────────────────────────
    병원 기본값 — 이 파일에서 병원마다 다른 곳은 여기 한 곳뿐이다.
@@ -551,6 +578,10 @@ function guessMap(headers, rows){
    저장되는 것은 «차트번호 → 연락한 날짜»뿐이다.
    열쇠를 차트번호로 잡아서, 기준을 바꾸거나 다음 달 파일을 다시 넣어도 기록이 이어진다. */
 var DONE_KEY = "ham_dental_recall_contacted_v1";
+function stampNow(){
+  var d = new Date(), p = function(n){ return String(n).padStart(2,"0"); };
+  return d.getFullYear()+"-"+p(d.getMonth()+1)+"-"+p(d.getDate())+" "+p(d.getHours())+":"+p(d.getMinutes());
+}
 function saveDone(){
   try{
     var keep = {};
@@ -663,6 +694,7 @@ function cutLabel(){
   return CUT>=1095 ? "3년" : CUT>=730 ? "2년" : CUT>=365 ? "1년" : CUT>=180 ? "6개월" : "3개월";
 }
 function renderOut(noDate){
+  LAST_NODATE = noDate = noDate || 0;
   var nc = RESULT.filter(function(x){ return x.how==="call"; }).length;
   var ns = RESULT.length - nc;
   var many = RESULT.filter(function(x){ return x.visits >= 5; }).length;   // 여러 번 오셨던 분
@@ -692,7 +724,7 @@ function renderOut(noDate){
     return '<button class="tab'+(TAB===x.k?" sel":"")+'" data-k="'+x.k+'">'+x.t+' <span class="cnt">'+x.n+'</span></button>';
   }).join("");
   Array.prototype.forEach.call($("tabs").children, function(b){
-    b.addEventListener("click", function(){ TAB = b.dataset.k; renderOut(noDate); });
+    b.addEventListener("click", function(){ TAB = b.dataset.k; SHOWN = PAGE || RESULT.length; renderOut(noDate); });
   });
 
   var list = RESULT.filter(function(x){
@@ -703,39 +735,56 @@ function renderOut(noDate){
   });
 
   var t = $("tbl");
-  t.tHead.innerHTML = '<tr><th>연락한 날</th><th>순서</th><th>이름</th><th>차트번호</th><th>전화번호</th>'
-    + '<th>오신 횟수</th><th>마지막 내원</th><th>안 오신 기간</th><th>치료</th><th>어떻게</th></tr>';
-  t.tBodies[0].innerHTML = list.map(function(x, i){
+  // 한 번에 다 뿌리지 않는다 — 몇 백 줄이 한꺼번에 나오면 눈으로 못 쫓는다
+  if(PAGE) SHOWN = Math.min(Math.max(SHOWN, PAGE), list.length);
+  else SHOWN = list.length;
+  var view = list.slice(0, SHOWN);
+  $("pageInfo").textContent = list.length.toLocaleString() + "분 중 " + view.length.toLocaleString() + "분 보는 중";
+  var rest = list.length - view.length;
+  if(rest > 0){
+    show($("more"));
+    $("more").textContent = "다음 " + Math.min(PAGE || rest, rest) + "명 더 보기";
+    $("moreInfo").textContent = rest.toLocaleString() + "분 남았습니다.";
+  } else {
+    hide($("more"));
+    $("moreInfo").textContent = list.length ? "여기까지가 전부입니다." : "";
+  }
+
+  // 칸을 열 개에서 일곱 개로 줄였다 — 화면 밖으로 넘어가 잘리던 것을 막는다.
+  // 이름 밑에 차트번호를, 마지막 내원 밑에 안 오신 기간을 붙였다.
+  t.tHead.innerHTML = '<tr><th>연락 완료</th><th>이름</th><th>전화번호</th>'
+    + '<th>오신 횟수</th><th>마지막 내원</th><th class="tx">치료</th><th>어떻게</th></tr>';
+  t.tBodies[0].innerHTML = view.map(function(x){
     var yc = x.band===3?"y3":(x.band===2?"y2":"y1");
     var yy = Math.floor(x.days/365), mm = Math.floor((x.days%365)/30);
     var yl = (yy ? yy+"년 " : "") + mm + "개월";
     var vc = x.visits>=5 ? "y3" : (x.visits>=2 ? "y2" : "y1");
+    var ds = x.date.getFullYear()+"-"+String(x.date.getMonth()+1).padStart(2,"0")+"-"+String(x.date.getDate()).padStart(2,"0");
     return '<tr class="'+(DONE[x.id]?"done":"")+'">'
-      + '<td><input type="date" class="sent" data-id="'+x.id+'" value="'+(DONE[x.id]||"")+'"></td>'
-      + '<td>'+(i+1)+'</td>'
-      + '<td><b>'+esc(x.name)+'</b></td>'
-      + '<td>'+esc(x.chart)+'</td>'
+      + '<td><div class="chk"><input type="checkbox" data-id="'+x.id+'"'+(DONE[x.id]?" checked":"")+'>'
+        + '<span class="stamp">'+(DONE[x.id]||"")+'</span></div></td>'
+      + '<td><b class="t-name">'+esc(x.name)+'</b>'
+        + (x.chart ? '<span class="t-min">차트 '+esc(x.chart)+'</span>' : '') + '</td>'
       + '<td>'+esc(x.phone)+'</td>'
       + '<td class="'+vc+'">'+x.visits+'번</td>'
-      + '<td>'+x.date.getFullYear()+"-"+String(x.date.getMonth()+1).padStart(2,"0")+"-"+String(x.date.getDate()).padStart(2,"0")+'</td>'
-      + '<td class="'+yc+'">'+yl+'</td>'
-      + '<td>'+esc(x.treat)+'</td>'
+      + '<td>'+ds+'<span class="t-min '+yc+'" style="display:block">'+yl+' 안 오심</span></td>'
+      + '<td class="tx">'+esc(x.treat)+'</td>'
       + '<td><span class="pill '+(x.how==="call"?"p-call":"p-sms")+'">'+(x.how==="call"?"전화":"문자")+'</span></td>'
       + '</tr>';
   }).join("");
-  // 「연락한 날」은 체크가 아니라 날짜다 — 원장님이 본인 엑셀에 직접 만들어 쓰시던 칸이다
+  // 「연락 완료」에 체크하면 그 순간의 날짜·시각이 자동으로 찍힌다.
+  // 원장님이 본인 엑셀에 직접 만들어 쓰시던 칸이다
   // (2026-08-03 통화: "보낸 날짜를 체크할 수 있게 고거를 따로 칸을 만들어 놨어요")
-  Array.prototype.forEach.call(t.querySelectorAll("input.sent"), function(inp){
-    inp.addEventListener("focus", function(){
-      if(!inp.value){                      // 비어 있으면 오늘 날짜를 미리 넣어준다
-        var d = new Date();
-        inp.value = d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
-        inp.dispatchEvent(new Event("change"));
+  Array.prototype.forEach.call(t.querySelectorAll("input[type=checkbox]"), function(cb){
+    cb.addEventListener("change", function(){
+      var id = cb.dataset.id, tr = cb.closest("tr");
+      if(cb.checked){
+        DONE[id] = stampNow();
+      } else {
+        delete DONE[id];                    // 잘못 눌렀으면 다시 눌러 지운다
       }
-    });
-    inp.addEventListener("change", function(){
-      DONE[inp.dataset.id] = inp.value || "";
-      inp.closest("tr").classList.toggle("done", !!inp.value);
+      tr.querySelector(".stamp").textContent = DONE[id] || "";
+      tr.classList.toggle("done", cb.checked);
       saveDone();
     });
   });
@@ -887,6 +936,22 @@ function syncCuts(){
     });
   });
 }
+/* 몇 명씩 볼지 */
+Array.prototype.forEach.call($("pages").querySelectorAll("button"), function(b){
+  b.addEventListener("click", function(){
+    PAGE = +b.dataset.p;
+    SHOWN = PAGE || RESULT.length;
+    Array.prototype.forEach.call($("pages").querySelectorAll("button"), function(o){
+      o.classList.toggle("sel", o === b); });
+    if(RAW && RESULT.length) renderOut(LAST_NODATE);
+  });
+});
+$("more").addEventListener("click", function(){
+  SHOWN += (PAGE || 20);
+  renderOut(LAST_NODATE);
+  $("more").scrollIntoView({block:"center"});
+});
+
 wireCuts($("cuts"));
 wireCuts($("cuts2"), function(){
   if(!RAW) return;
