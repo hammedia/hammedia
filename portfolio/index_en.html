@@ -862,6 +862,45 @@
       margin-bottom: 2.5rem; max-width: 480px;
       line-height: 1.9;
     }
+    .hamjipsa-bridge {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 1.5rem;
+      align-items: center;
+      max-width: 760px;
+      margin-bottom: 2.7rem;
+      padding: 1.4rem 1.5rem;
+      border: 1px solid rgba(0,112,74,.16);
+      border-radius: 16px;
+      background: linear-gradient(135deg, rgba(0,112,74,.07), rgba(126,181,232,.08));
+      box-shadow: 0 16px 36px rgba(44,34,26,.05);
+    }
+    .hamjipsa-bridge-copy { display: grid; gap: .3rem; }
+    .hamjipsa-bridge-kicker {
+      color: var(--green); font-size: 11px; font-weight: 800;
+      letter-spacing: .12em; text-transform: uppercase;
+    }
+    .hamjipsa-bridge-title {
+      font-family: var(--serif);
+      font-size: clamp(1.14rem, 2vw, 1.36rem);
+      line-height: 1.45;
+    }
+    .hamjipsa-bridge-text {
+      max-width: 520px; color: var(--muted);
+      font-size: .9rem; line-height: 1.7;
+    }
+    .hamjipsa-bridge-link {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-height: 46px; padding: 11px 18px; border-radius: 999px;
+      background: var(--green); color: #fff; font-size: 13px;
+      font-weight: 700; text-decoration: none; white-space: nowrap;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .hamjipsa-bridge-link:hover,
+    .hamjipsa-bridge-link:focus-visible {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(0,112,74,.18);
+    }
     .contact-form-block {
       margin-bottom: 2.7rem;
       max-width: 760px;
@@ -987,6 +1026,8 @@
       .what-grid { grid-template-columns: 1fr; }
       .positioning-wrap, .service-grid, .target-grid, .eq-grid, .cred-grid { grid-template-columns: 1fr; }
       .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .hamjipsa-bridge { grid-template-columns: 1fr; gap: 1.1rem; padding: 1.25rem; }
+      .hamjipsa-bridge-link { width: 100%; }
       .hero-title { font-size: 2rem; line-height: 1.17; }
       .hero-bridge { font-size: 1.02rem; line-height: 1.6; }
       .hero-sub { font-size: .96rem; line-height: 1.8; margin-bottom: 1.6rem; }
@@ -1689,6 +1730,15 @@
   <p class="cta-sub">
     Video, documents, lectures, and AI-assisted workflows can all become ways to show what you already know. HAM MEDIA helps organize your experience and materials into a form other people can understand.
   </p>
+
+  <aside class="hamjipsa-bridge" aria-label="Start with Hamjipsa">
+    <div class="hamjipsa-bridge-copy">
+      <p class="hamjipsa-bridge-kicker">HAM MEDIA · HAMJIPSA</p>
+      <h3 class="hamjipsa-bridge-title">Not sure how to frame the request? Start with your story.</h3>
+      <p class="hamjipsa-bridge-text">You do not need a polished brief. Share what you have done and where things feel stuck now.</p>
+    </div>
+    <a class="hamjipsa-bridge-link" href="https://hamjipsa.hammedia.co.kr/">Talk to Hamjipsa →</a>
+  </aside>
 
   <div class="contact-form-block">
     <p class="contact-form-note">Use the form below to tell me where things stand now.</p>

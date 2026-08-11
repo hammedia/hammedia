@@ -1010,6 +1010,57 @@ section {
   display: none;
 }
 
+.hamjipsa-guide {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 24px;
+  align-items: center;
+  max-width: 820px;
+  margin-top: 34px;
+  padding: 24px 26px;
+  border: 1px solid color-mix(in srgb, var(--brand) 48%, var(--line) 52%);
+  border-radius: 18px;
+  background: linear-gradient(135deg, color-mix(in srgb, var(--brand) 13%, var(--paper) 87%), var(--paper));
+  box-shadow: 0 16px 36px rgba(28, 24, 20, 0.06);
+}
+
+.hamjipsa-guide > div {
+  display: grid;
+  gap: 7px;
+}
+
+.hamjipsa-guide-kicker {
+  margin: 0;
+  color: color-mix(in srgb, var(--brand) 64%, var(--ink) 36%);
+  font-size: 12px;
+  line-height: 1.2;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.hamjipsa-guide h3 {
+  margin: 0;
+  color: var(--ink);
+  font-size: clamp(21px, 2.4vw, 27px);
+  line-height: 1.38;
+  word-break: keep-all;
+}
+
+.hamjipsa-guide p:not(.hamjipsa-guide-kicker) {
+  max-width: 590px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.7;
+  word-break: keep-all;
+}
+
+.hamjipsa-guide .secondary-button {
+  justify-self: start;
+  min-height: 46px;
+  white-space: nowrap;
+}
+
 .copy-toast {
   position: fixed;
   left: 18px;
@@ -1083,6 +1134,10 @@ section {
 
   .contact-tab-panels > .contact-panel + .contact-panel {
     border-top: 0;
+  }
+
+  .hamjipsa-guide {
+    grid-template-columns: 1fr;
   }
 
   .hero-facts {
@@ -1264,6 +1319,14 @@ section {
   .contact-tab {
     flex: 1 1 0;
     min-width: 0;
+  }
+
+  .hamjipsa-guide {
+    padding: 22px 20px;
+  }
+
+  .hamjipsa-guide .secondary-button {
+    width: 100%;
   }
 
   .site-footer {
