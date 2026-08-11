@@ -1,0 +1,39 @@
+name: Temporary Whisper Model Fetch
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/tmp-whisper-model-fetch.yml
+
+jobs:
+  fetch-model:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
+    steps:
+      - name: Download and verify Whisper small q5_1 model
+        run: |
+          set -euo pipefail
+          curl -L --fail --retry 3 --retry-delay 5 \
+            "https://github.com/w3xgroup/taskurio-models/releases/download/whisper-models-v1/ggml-small-q5_1.bin" \
+            -o ggml-small-q5_1.bin
+          echo "ae85e4a935d7a567bd102fe55afc16bb595bdb618e11b2fc7591bc08120411bb  ggml-small-q5_1.bin" | sha256sum -c -
+
+      - name: Upload one-day artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: whisper-small-q5_1-model
+          path: ggml-small-q5_1.bin
+          retention-days: 1
+
+      - name: Publish temporary run locator
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh issue create \
+            --repo "$GITHUB_REPOSITORY" \
+            --title "TMP_WHISPER_RUN_${GITHUB_RUN_ID}" \
+            --body "Temporary run locator for public model retrieval. Safe to close after artifact download."
