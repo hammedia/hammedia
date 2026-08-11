@@ -1,0 +1,62 @@
+name: Temporary Speaker Model Fetch
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/tmp-speaker-model-fetch.yml
+
+jobs:
+  fetch-model:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Download SpeechBrain ECAPA speaker model
+        run: |
+          set -euo pipefail
+          python -m pip install --quiet huggingface_hub
+          python - <<'PY'
+          from huggingface_hub import snapshot_download
+          snapshot_download(
+              repo_id='speechbrain/spkrec-ecapa-voxceleb',
+              local_dir='spkrec-ecapa-voxceleb',
+              local_dir_use_symlinks=False,
+          )
+          PY
+          find spkrec-ecapa-voxceleb -type f -printf '%p %s\n'
+
+      - name: Upload one-day artifact
+        id: upload
+        uses: actions/upload-artifact@v4
+        with:
+          name: speechbrain-ecapa-speaker-model
+          path: spkrec-ecapa-voxceleb
+          retention-days: 1
+          compression-level: 0
+
+      - name: Publish temporary artifact locator
+        env:
+          ARTIFACT_ID: ${{ steps.upload.outputs.artifact-id }}
+          ARTIFACT_URL: ${{ steps.upload.outputs.artifact-url }}
+        run: |
+          set -euo pipefail
+          cat > tmp-speaker-model-artifact-info-8f2d9.json <<EOF
+          {
+            "run_id": "${GITHUB_RUN_ID}",
+            "artifact_id": "${ARTIFACT_ID}",
+            "artifact_url": "${ARTIFACT_URL}",
+            "model": "speechbrain/spkrec-ecapa-voxceleb"
+          }
+          EOF
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add tmp-speaker-model-artifact-info-8f2d9.json
+          git commit -m "chore: publish temporary speaker artifact locator"
+          git push origin HEAD:main
