@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="color-scheme" content="light">
+  <title>대리님, 통화 내용을 이렇게 이해했습니다 | HAM MEDIA</title>
+  <meta name="description" content="통화에서 나눈 배송 운영업무와 AI 활용 순서를 짧고 쉽게 정리한 복습 안내입니다.">
+  <link rel="canonical" href="https://hammedia.co.kr/share/20260815-ai-work-note-620b08a255d4.html">
+  <style>
+    :root {
+      --paper: #F9F7F3;
+      --paper-deep: #F5F3EE;
+      --ink: #1C1814;
+      --muted: #4A423C;
+      --accent: #7EB5E8;
+      --action: #00704A;
+      --highlight: #F4DC59;
+      --warn: #CC0000;
+      --line: rgba(28, 24, 20, .14);
+      --accent-soft: rgba(126, 181, 232, .16);
+      --action-soft: rgba(0, 112, 74, .09);
+      --shadow: 0 18px 45px rgba(28, 24, 20, .08);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--muted);
+      background:
+        radial-gradient(circle at 10% 0%, rgba(126, 181, 232, .13), transparent 34rem),
+        var(--paper-deep);
+      font-family: "Pretendard", "Pretendard Variable", -apple-system, BlinkMacSystemFont,
+        "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      overflow-wrap: anywhere;
+    }
+
+    main {
+      width: min(100%, 860px);
+      margin: 0 auto;
+      padding: 22px 16px 64px;
+    }
+
+    article {
+      overflow: hidden;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    header {
+      padding: clamp(30px, 7vw, 62px);
+      color: var(--paper);
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.08), transparent 44%),
+        var(--action);
+    }
+
+    .eyebrow {
+      margin: 0 0 18px;
+      color: var(--paper);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: .1em;
+    }
+
+    h1 {
+      max-width: 680px;
+      margin: 0;
+      color: var(--paper);
+      font-size: clamp(34px, 8vw, 58px);
+      line-height: 1.12;
+      letter-spacing: -.04em;
+    }
+
+    .lead {
+      max-width: 650px;
+      margin: 24px 0 0;
+      color: var(--paper);
+      font-size: clamp(17px, 3vw, 21px);
+      line-height: 1.65;
+    }
+
+    .content { padding: clamp(28px, 7vw, 58px); }
+    section + section { margin-top: 58px; }
+
+    h2 {
+      margin: 0 0 18px;
+      color: var(--ink);
+      font-size: clamp(25px, 5vw, 34px);
+      line-height: 1.3;
+      letter-spacing: -.025em;
+    }
+
+    h3 {
+      margin: 0 0 8px;
+      color: var(--ink);
+      font-size: 18px;
+      line-height: 1.4;
+    }
+
+    p { margin: 0 0 16px; font-size: 17px; }
+    strong { color: var(--ink); }
+
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin: 22px 0 0;
+    }
+
+    .card {
+      padding: 20px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 17px;
+    }
+
+    .card span {
+      display: block;
+      margin-bottom: 7px;
+      color: var(--action);
+      font-size: 12px;
+      font-weight: 850;
+      letter-spacing: .05em;
+    }
+
+    .card p { margin: 0; font-size: 16px; line-height: 1.6; }
+
+    .check {
+      margin-top: 22px;
+      padding: 20px 22px;
+      background: var(--accent-soft);
+      border-left: 5px solid var(--accent);
+      border-radius: 16px;
+    }
+
+    .check p { margin: 0; font-size: 16px; }
+    .check ul { margin-bottom: 0; }
+
+    ul, ol {
+      margin: 0;
+      padding-left: 1.25em;
+    }
+
+    li {
+      margin: 9px 0;
+      padding-left: .2em;
+      font-size: 17px;
+    }
+
+    .good {
+      padding: 24px;
+      background: var(--action-soft);
+      border: 1px solid rgba(0, 112, 74, .22);
+      border-radius: 18px;
+    }
+
+    .good p:last-child { margin-bottom: 0; }
+
+    .prompt-wrap {
+      overflow: hidden;
+      margin-top: 22px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: var(--ink);
+    }
+
+    .prompt-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 14px 12px 18px;
+      color: var(--paper-deep);
+      background: var(--muted);
+      font-size: 13px;
+      font-weight: 750;
+    }
+
+    button {
+      appearance: none;
+      min-height: 40px;
+      padding: 8px 14px;
+      color: var(--paper);
+      background: var(--action);
+      border: 0;
+      border-radius: 10px;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    button:focus-visible { outline: 3px solid var(--highlight); outline-offset: 3px; }
+
+    pre {
+      margin: 0;
+      padding: 22px;
+      color: var(--paper);
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+      font-size: 14px;
+      line-height: 1.75;
+      white-space: pre-wrap;
+      word-break: keep-all;
+    }
+
+    .three {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 20px;
+      counter-reset: item;
+    }
+
+    .step {
+      position: relative;
+      min-height: 185px;
+      padding: 54px 19px 20px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 17px;
+    }
+
+    .step::before {
+      counter-increment: item;
+      content: counter(item);
+      position: absolute;
+      top: 17px;
+      left: 18px;
+      display: grid;
+      width: 28px;
+      height: 28px;
+      place-items: center;
+      color: var(--paper);
+      background: var(--action);
+      border-radius: 50%;
+      font-size: 13px;
+      font-weight: 850;
+    }
+
+    .step p { margin: 0; font-size: 15px; line-height: 1.6; }
+
+    .one-action {
+      padding: clamp(24px, 5vw, 36px);
+      color: var(--paper);
+      background: var(--action);
+      border-radius: 20px;
+    }
+
+    .one-action h2 { color: var(--paper); }
+    .one-action p { color: var(--paper); }
+    .one-action p:last-child { margin-bottom: 0; }
+
+    footer {
+      padding: 24px clamp(28px, 7vw, 58px) 30px;
+      color: var(--muted);
+      background: var(--paper-deep);
+      border-top: 1px solid var(--line);
+      font-size: 13px;
+    }
+
+    footer p { margin: 0; font-size: 13px; }
+
+    @media (max-width: 680px) {
+      main { padding: 10px 8px 36px; }
+      article { border-radius: 20px; }
+      .summary, .three { grid-template-columns: 1fr; }
+      .step { min-height: 0; }
+      p, li { font-size: 16px; }
+      .prompt-head { align-items: flex-start; }
+      pre { padding: 18px; font-size: 13px; word-break: break-word; }
+    }
+
+    @media print {
+      body { background: var(--paper); }
+      main { width: 100%; padding: 0; }
+      article { border: 0; box-shadow: none; }
+      button { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <article>
+      <header>
+        <p class="eyebrow">HAM MEDIA · 통화 복습</p>
+        <h1>대리님, 통화 내용을<br>이렇게 이해했습니다</h1>
+        <p class="lead">긴 설명보다 먼저 제가 업무를 제대로 이해했는지 확인받고 싶었습니다. 틀린 부분이 있으면 다음에 바로 고치겠습니다.</p>
+      </header>
+
+      <div class="content">
+        <section aria-labelledby="understood">
+          <h2 id="understood">제가 이해한 업무</h2>
+          <div class="summary">
+            <div class="card">
+              <span>자료</span>
+              <p>Redash 자료를 내려받아 엑셀이나 스프레드시트로 확인합니다.</p>
+            </div>
+            <div class="card">
+              <span>비교</span>
+              <p>당일·새벽배송과 1회차·2회차 자료를 서로 비교합니다.</p>
+            </div>
+            <div class="card">
+              <span>판단</span>
+              <p>배정 인원과 지원 인원을 보고 중복·과배정·지연을 찾습니다.</p>
+            </div>
+            <div class="card">
+              <span>결과</span>
+              <p>문제의 이유와 조치를 정리하고, 나중에는 메일 초안까지 만듭니다.</p>
+            </div>
+          </div>
+
+          <div class="check">
+            <h3>제가 아직 모르는 것</h3>
+            <ul>
+              <li>통화에서 ‘화이트’로 들린 용어의 정확한 이름과 뜻</li>
+              <li>중복·과배정·지연을 가르는 실제 기준과 정상으로 보는 예외</li>
+              <li>현재 1·2회차 표가 현업 기준으로 맞고 다음 자료에서도 다시 작동하는지</li>
+            </ul>
+          </div>
+        </section>
+
+        <section aria-labelledby="already">
+          <h2 id="already">이미 잘하신 부분이 있습니다</h2>
+          <div class="good">
+            <p><strong>1회차에서 된 표를 2회차에 보여주고 같은 방식으로 해달라고 해서 결국 작동시킨 것</strong>은 좋은 방법이었습니다.</p>
+            <p>AI를 못 쓰신 게 아닙니다. 머릿속 업무 기준을 AI가 읽을 수 있게 설명하고 남기는 순서가 없어서 시간이 오래 걸린 겁니다.</p>
+            <p>다음 목표는 거대한 대시보드가 아니라 <strong>새 자료가 와도 같은 기준으로 다시 확인할 수 있는 방법 한 장</strong>입니다.</p>
+          </div>
+        </section>
+
+        <section aria-labelledby="prompt-title">
+          <h2 id="prompt-title">다음에는 이 문장부터 보내보세요</h2>
+          <p>아래 문장을 복사해 지금 쓰는 AI에 붙여넣으면 됩니다.</p>
+          <div class="prompt-wrap">
+            <div class="prompt-head">
+              <span>AI에게 보내는 시작 문장</span>
+              <button id="copyButton" type="button" aria-label="AI 시작 문장 복사하기">문장 복사</button>
+            </div>
+            <pre id="promptText">나는 배송 운영자료를 확인하는 일을 하고 있어.
+Redash에서 내려받은 자료로 당일·새벽배송과 1·2회차를 비교하고,
+운송사별 중복·과배정·지연을 찾아 이유와 조치를 정리해야 해.
+
+지금은 표나 대시보드를 만들지 마.
+먼저 네가 이해한 내 업무를 짧게 설명하고,
+확실히 아는 것과 아직 모르는 것을 나눠서 말해줘.
+그다음 꼭 필요한 질문을 한 번에 하나씩 해줘.
+
+내가 예시 파일을 보여주면 전체를 바로 처리하지 말고,
+정상·중복·과배정·지연·예외 사례를 작은 구간에서 먼저 맞춰보자.</pre>
+          </div>
+          <p style="margin-top:16px">AI가 다르게 이해하면 <strong>‘맞는 부분 / 다른 부분 / 빠진 조건’</strong> 세 가지만 말해주면 됩니다.</p>
+        </section>
+
+        <section aria-labelledby="materials">
+          <h2 id="materials">자료는 세 묶음이면 됩니다</h2>
+          <div class="three">
+            <div class="step">
+              <h3>예시 파일 1개</h3>
+              <p>개인정보를 가린 Redash 자료면 충분합니다.</p>
+            </div>
+            <div class="step">
+              <h3>현재 검증표</h3>
+              <p>지금 작동하는 1회차·2회차 표를 함께 봅니다.</p>
+            </div>
+            <div class="step">
+              <h3>판단 사례</h3>
+              <p>정상·중복·과배정·지연·예외 행과 각각의 이유를 붙입니다.</p>
+            </div>
+          </div>
+          <div class="check">
+            <p><strong>자료를 올리기 전 확인:</strong> 고객명·전화번호·주소·운송장번호·계정정보를 가리고, 회사에서 개인 AI에 올리면 안 된다고 정한 자료는 올리지 마세요.</p>
+          </div>
+        </section>
+
+        <section aria-labelledby="human-check">
+          <h2 id="human-check">마지막 확인은 사람이 합니다</h2>
+          <p>Gemini와 GPT가 같은 답을 해도 바로 정답은 아닙니다. <strong>원래 숫자와 대리님의 실제 업무 기준에서 맞아야 합니다.</strong></p>
+          <p>메일도 처음부터 자동으로 보내지 말고, 운송사·날짜·수치·표현을 사람이 확인한 뒤 발송하는 순서로 시작하면 됩니다.</p>
+        </section>
+
+        <section class="one-action" aria-labelledby="one-action">
+          <h2 id="one-action">지금은 한 가지만 해보세요</h2>
+          <p>위 문장을 지금 쓰는 AI에 붙여넣고, AI가 다시 설명한 내용이 대리님 업무와 맞는지만 확인해보세요.</p>
+          <p>그 답과 개인정보를 가린 예시 파일을 다음에 함께 보면, 제가 옆에서 <strong>업무 기준 한 장</strong>부터 같이 만들겠습니다.</p>
+        </section>
+      </div>
+
+      <footer>
+        <p>이 자료는 2026년 8월 14일 통화 내용을 바탕으로 정리했습니다. 실제 업무 기준이 다르면 대리님의 기준이 우선입니다. · HAM MEDIA</p>
+      </footer>
+    </article>
+  </main>
+
+  <script>
+    const button = document.getElementById('copyButton');
+    const prompt = document.getElementById('promptText').textContent.trim();
+
+    button.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(prompt);
+        button.textContent = '복사됐어요';
+      } catch {
+        const range = document.createRange();
+        range.selectNodeContents(document.getElementById('promptText'));
+        const selection = window.getSelection();
+        selection.removeAllRanges();
+        selection.addRange(range);
+        button.textContent = '선택됐어요';
+      }
+
+      window.setTimeout(() => {
+        button.textContent = '문장 복사';
+      }, 1800);
+    });
+  </script>
+</body>
+</html>
