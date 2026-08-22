@@ -158,6 +158,18 @@
       gap: 16px;
     }
 
+    .header-tools {
+      display: inline-flex;
+      min-height: 44px;
+      align-items: center;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .header-tools:hover { color: var(--ink); }
+
     .header-cta,
     .cta-primary,
     .cta-secondary,
@@ -2034,6 +2046,7 @@
       .brand strong { font-size: 21px; }
       .header-meta { gap: 10px; }
       .header-course { display: none; }
+      .header-tools { min-height: 40px; font-size: 12px; }
       .header-cta { min-height: 40px; padding: 9px 13px; font-size: 12px; }
 
       .hero { gap: 32px; padding: 38px 0 32px; }
@@ -2314,6 +2327,7 @@
           <span>현재 과정</span>
           <strong>바른생활 · 새 일곱 강</strong>
         </div>
+        <a class="header-tools" href="../tools/">무료 도구</a>
         <a class="header-cta" href="classroom/#lesson-1">1강 시작하기</a>
       </div>
     </header>
