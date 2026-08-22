@@ -200,7 +200,21 @@
       background: var(--warm);
       border-color: var(--warm);
     }
-    .hero-quote + .btn-primary { margin-top: 1rem; animation: fadeUp .5s .38s both; }
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: .85rem 1rem;
+      margin-top: 1rem;
+      animation: fadeUp .5s .38s both;
+    }
+    .hero-hamjipsa-link {
+      color: var(--warm);
+      font-size: .9rem;
+      font-weight: 800;
+      text-underline-offset: .25rem;
+    }
+    .hero-hamjipsa-link:hover { color: var(--accent); }
 
     /* Hero proof points */
     .hero-points {
@@ -1344,12 +1358,14 @@
         padding: 1.25rem;
       }
       .hamjipsa-bridge-link { width: 100%; }
+      .hero-text { min-width: 0; }
       .hero-title {
         font-size: 1.85rem;
         line-height: 1.22;
         word-break: keep-all;
         overflow-wrap: normal;
       }
+      .hero-title .sky { display: inline; }
       .sec-title {
         font-size: 1.62rem;
         line-height: 1.34;
@@ -1438,18 +1454,21 @@
     <p class="hero-label">함동민 · HAM MEDIA</p>
     <h1 class="hero-title">
       27년의 현장을,<br>
-      <span class="sky">AI 시대의 일하는 방식으로.</span>
+      <span class="sky">사람과 AI가 함께 일하는 방식으로.</span>
     </h1>
-    <p class="hero-bridge">현장에서 얻은 판단을, 사람과 AI가 함께 일하는 구조로 바꿉니다.</p>
+    <p class="hero-bridge">혼자 붙잡고 있던 일을 사람과 AI가 나눠 맡고,<br>마지막 판단은 사람이 하도록 정리합니다.</p>
     <p class="hero-sub">
       스타벅스와 델라카사에서 사람·공간·운영을 배웠습니다.<br>
-      지금은 그 경험을 영상·문서·강의와 실제 업무 흐름으로 연결합니다.
+      지금은 그 경험을 영상·문서·강의와 실제 업무에 연결합니다.
     </p>
     <div class="hero-quote">
-      AI가 제안하고, 결정은 사람이 합니다.<br>
-      <strong>마지막 판단과 책임은 늘 사람에게 남깁니다.</strong>
+      AI는 일을 돕습니다.<br>
+      <strong>판단과 책임은 사람이 맡습니다.</strong>
     </div>
-    <a class="btn-primary" href="#about">함동민이 걸어온 길 보기</a>
+    <div class="hero-actions">
+      <a class="btn-primary" href="#channels">직접 해온 일 보기</a>
+      <a class="hero-hamjipsa-link" href="https://hamjipsa.hammedia.co.kr/">햄집사에게 이야기하기 →</a>
+    </div>
   </div>
   <div class="hero-photo">
     <img src="/profile.JPG" alt="함동민 햄PD">
@@ -1475,7 +1494,7 @@
     </article>
     <article class="entry-card">
       <p class="entry-kicker">지금의 일</p>
-      <h2 class="entry-title">사람과 AI가 함께 일하는 구조를 설계합니다</h2>
+      <h2 class="entry-title">사람과 AI가 함께 일하도록 정리합니다</h2>
       <p class="entry-copy">누가 맡고, 어디서 멈추고, 누가 검수하며, 무엇을 사람이 결정할지 실제 업무 안에서 정리합니다.</p>
       <p class="entry-result">구조 — 사람은 방향을 정하고 AI는 실행을 돕습니다</p>
       <a class="entry-cta" href="#equipment">작업 방식 보기</a>
@@ -1496,7 +1515,7 @@
     </div>
     <div class="positioning-card">
       <div class="positioning-card-title">한 문장으로 말하면</div>
-      <p>현실에서 얻은 운영 경험을 AI 시대의 일하는 방식으로 번역하는 운영형 설계자입니다.</p>
+      <p>현장에서 배운 운영을 사람과 AI가 함께 일하는 방식으로 바꾸는 사람입니다.</p>
     </div>
   </div>
 </section>

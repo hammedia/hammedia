@@ -170,7 +170,21 @@
       background: var(--warm);
       border-color: var(--warm);
     }
-    .hero-quote + .btn-primary { margin-top: 1rem; animation: fadeUp .5s .38s both; }
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: .85rem 1rem;
+      margin-top: 1rem;
+      animation: fadeUp .5s .38s both;
+    }
+    .hero-hamjipsa-link {
+      color: var(--warm);
+      font-size: .9rem;
+      font-weight: 800;
+      text-underline-offset: .25rem;
+    }
+    .hero-hamjipsa-link:hover { color: var(--accent); }
 
     /* Stats */
     .hero-stats {
@@ -1029,7 +1043,9 @@
       .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
       .hamjipsa-bridge { grid-template-columns: 1fr; gap: 1.1rem; padding: 1.25rem; }
       .hamjipsa-bridge-link { width: 100%; }
+      .hero-text { min-width: 0; }
       .hero-title { font-size: 2rem; line-height: 1.17; }
+      .hero-title .sky { display: inline; }
       .hero-bridge { font-size: 1.02rem; line-height: 1.6; }
       .hero-sub { font-size: .96rem; line-height: 1.8; margin-bottom: 1.6rem; }
       .service-name { font-size: 1.12rem; }
@@ -1204,19 +1220,22 @@
     <div class="hero-accent-line"></div>
     <p class="hero-label">Dongmin Ham · HAM MEDIA</p>
     <h1 class="hero-title">
-      27 years in the field.<br>
-      <span class="sky">Translated for the AI era.</span>
+      27 years in the field,<br>
+      <span class="sky">now shaping how people and AI work together.</span>
     </h1>
-    <p class="hero-bridge">I turn judgment earned in the field into ways for people and AI to work together.</p>
+    <p class="hero-bridge">I divide work once carried by one person between people and AI,<br>while keeping the final decision human.</p>
     <p class="hero-sub">
-      I learned people, space, and operations at Starbucks Korea and Della Casa.<br>
-      Today, I connect that experience to video, documents, teaching, and real workflows.
+      At Starbucks Korea and Della Casa, I learned how people, spaces, and operations work.<br>
+      Today, I connect that experience to video, documents, teaching, and real work.
     </p>
     <div class="hero-quote">
-      AI proposes. People decide.<br>
-      <strong>The final judgment and responsibility stay human.</strong>
+      AI supports the work.<br>
+      <strong>People carry the judgment and responsibility.</strong>
     </div>
-    <a class="btn-primary" href="#about">Meet Dongmin Ham</a>
+    <div class="hero-actions">
+      <a class="btn-primary" href="#channels">See What I’ve Done</a>
+      <a class="hero-hamjipsa-link" href="https://hamjipsa.hammedia.co.kr/">Talk to Hamjipsa →</a>
+    </div>
   </div>
   <div class="hero-photo">
     <img src="/profile.JPG" alt="Dongmin Ham, Ham PD">
@@ -1242,7 +1261,7 @@
     </article>
     <article class="entry-card">
       <p class="entry-kicker">What I Do Now</p>
-      <h2 class="entry-title">I design how people and AI work together</h2>
+      <h2 class="entry-title">I organize work so people and AI can work together</h2>
       <p class="entry-copy">I define who does what, where work pauses, who reviews it, and which decisions stay human.</p>
       <p class="entry-result">Structure — people set direction; AI supports execution</p>
       <a class="entry-cta" href="#equipment">See How I Work</a>
@@ -1263,7 +1282,7 @@
     </div>
     <div class="positioning-card">
       <div class="positioning-card-title">In One Sentence</div>
-      <p>I am an operational designer who translates field-tested experience into ways of working for the AI era.</p>
+      <p>I turn field-tested operations into ways for people and AI to work together.</p>
     </div>
   </div>
 </section>

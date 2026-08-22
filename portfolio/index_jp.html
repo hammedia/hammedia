@@ -170,7 +170,21 @@
       background: var(--warm);
       border-color: var(--warm);
     }
-    .hero-quote + .btn-primary { margin-top: 1rem; animation: fadeUp .5s .38s both; }
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: .85rem 1rem;
+      margin-top: 1rem;
+      animation: fadeUp .5s .38s both;
+    }
+    .hero-hamjipsa-link {
+      color: var(--warm);
+      font-size: .9rem;
+      font-weight: 800;
+      text-underline-offset: .25rem;
+    }
+    .hero-hamjipsa-link:hover { color: var(--accent); }
 
     /* Hero quote */
     .hero-quote {
@@ -1001,7 +1015,13 @@
       .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
       .hamjipsa-bridge { grid-template-columns: 1fr; gap: 1.1rem; padding: 1.25rem; }
       .hamjipsa-bridge-link { width: 100%; }
+      .hero-text { min-width: 0; }
       .hero-title { font-size: 2rem; line-height: 1.17; }
+      .hero-title .sky {
+        display: inline;
+        word-break: normal;
+        overflow-wrap: anywhere;
+      }
       .hero-bridge { font-size: 1.02rem; line-height: 1.6; }
       .hero-sub { font-size: .96rem; line-height: 1.8; margin-bottom: 1.6rem; }
       .service-name { font-size: 1.12rem; }
@@ -1178,18 +1198,21 @@
     <p class="hero-label">咸東旼 · HAM MEDIA</p>
     <h1 class="hero-title">
       27年の現場を、<br>
-      <span class="sky">AI時代の働き方へ。</span>
+      <span class="sky">人とAIが働く方法へ。</span>
     </h1>
-    <p class="hero-bridge">現場で得た判断を、人とAIが共に働ける仕組みに変えます。</p>
+    <p class="hero-bridge">一人で抱えていた仕事を人とAIで分け、<br>最後の判断は人が行うように整えます。</p>
     <p class="hero-sub">
       スターバックスとデラカーサで、人・空間・運営を学びました。<br>
-      今はその経験を、映像・資料・講義と実際の業務の流れへつないでいます。
+      今はその経験を、映像・資料・講義と実際の仕事へつないでいます。
     </p>
     <div class="hero-quote">
-      AIが提案し、人が決めます。<br>
-      <strong>最後の判断と責任は、いつも人に残します。</strong>
+      AIは仕事を支えます。<br>
+      <strong>判断と責任は人が担います。</strong>
     </div>
-    <a class="btn-primary" href="#about">咸東旼という人を見る</a>
+    <div class="hero-actions">
+      <a class="btn-primary" href="#channels">実際にしてきた仕事を見る</a>
+      <a class="hero-hamjipsa-link" href="https://hamjipsa.hammedia.co.kr/">ハムジプサに話す →</a>
+    </div>
   </div>
   <div class="hero-photo">
     <img src="/profile.JPG" alt="咸東旼 ハムPD">
@@ -1215,7 +1238,7 @@
     </article>
     <article class="entry-card">
       <p class="entry-kicker">今していること</p>
-      <h2 class="entry-title">人とAIが共に働ける仕組みを設計します</h2>
+      <h2 class="entry-title">人とAIが共に働けるように整えます</h2>
       <p class="entry-copy">誰が担当し、どこで止まり、誰が確認し、何を人が決めるのかを、実際の業務の中で整理します。</p>
       <p class="entry-result">仕組み — 人が方向を決め、AIが実行を支えます</p>
       <a class="entry-cta" href="#equipment">仕事の進め方を見る</a>
@@ -1236,7 +1259,7 @@
     </div>
     <div class="positioning-card">
       <div class="positioning-card-title">一文で言えば</div>
-      <p>現場で得た運営経験を、AI時代の働き方へ翻訳する運営設計者です。</p>
+      <p>現場で学んだ運営を、人とAIが共に働く方法へ変える人です。</p>
     </div>
   </div>
 </section>
