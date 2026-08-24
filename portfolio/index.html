@@ -4,16 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>함동민 · 햄PD | HAM MEDIA</title>
+  <link rel="icon" href="/assets/tools/logo_10.png" type="image/png">
   <link rel="canonical" href="https://hammedia.co.kr/portfolio/">
-  <meta name="description" content="27년 현장 경험을 사람과 AI가 함께 일하는 구조로 바꾸는 함동민(햄PD)의 포트폴리오. 사람·공간·교육·콘텐츠를 직접 겪고 연결해온 기록과 실제 작업을 소개합니다.">
+  <meta name="description" content="전문가와 작은 사업자의 경험을 영상과 홈페이지로 만드는 콘텐츠 프로듀서 함동민의 포트폴리오. 맡은 역할과 공개된 작업 결과를 직접 확인할 수 있습니다.">
   <meta property="og:type" content="website">
   <meta property="og:title" content="함동민 · 햄PD | HAM MEDIA">
-  <meta property="og:description" content="27년 현장 경험을 사람과 AI가 함께 일하는 구조로 바꾸는 함동민(햄PD)의 포트폴리오. 직접 겪고 연결해온 기록과 실제 작업을 소개합니다.">
+  <meta property="og:description" content="전문가와 작은 사업자의 경험을 영상과 홈페이지로 만드는 콘텐츠 프로듀서 함동민의 대표 작업과 경력.">
   <meta property="og:image" content="https://hammedia.co.kr/profile.JPG">
   <meta property="og:url" content="https://hammedia.co.kr/portfolio/">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="함동민 · 햄PD | HAM MEDIA">
-  <meta name="twitter:description" content="27년의 현장을, AI 시대의 일하는 방식으로. AI가 제안하고, 결정은 사람이 합니다. HAM MEDIA 함동민.">
+  <meta name="twitter:description" content="전문가와 작은 사업자의 경험을 영상과 홈페이지로 만드는 콘텐츠 프로듀서 함동민의 대표 작업과 경력.">
   <meta name="twitter:image" content="https://hammedia.co.kr/profile.JPG">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
@@ -33,9 +34,10 @@
       --ivory:   #F5F3EE;
       --warm:    #1C1814;
       --muted:   #4A423C;
-      --accent:  #7A5C47;
+      --accent:  #00704A;
       --green:   #00704A;
       --sky:     #7EB5E8;
+      --sky-ink: #3F78A8;
       --yellow:  #F4DC59;
       --line:    rgba(28,24,20,0.10);
       --shadow:  0 20px 50px rgba(44,34,26,0.07);
@@ -53,6 +55,23 @@
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
     }
+    .skip-link {
+      position: fixed;
+      top: .75rem;
+      left: .75rem;
+      z-index: 200;
+      padding: .7rem 1rem;
+      border-radius: 12px;
+      background: var(--warm);
+      color: var(--pearl);
+      font-size: 13px;
+      font-weight: 800;
+      text-decoration: none;
+      transform: translateY(-160%);
+      transition: transform .2s ease;
+    }
+    .skip-link:focus { transform: translateY(0); }
+    main:focus { outline: none; }
 
     /* ── NAV ── */
     nav {
@@ -155,7 +174,7 @@
       text-wrap: balance;
       animation: fadeUp .55s .14s both;
     }
-    .hero-title .sky { color: var(--sky); }
+    .hero-title .sky { color: var(--green); }
     .hero-sub {
       max-width: 32rem;
       font-size: 1.04rem;
@@ -171,7 +190,7 @@
       justify-content: center;
       min-height: 44px;
       padding: .75rem 1.15rem;
-      border-radius: 999px;
+      border-radius: 14px;
       background: var(--accent);
       color: var(--pearl);
       border: 1px solid var(--accent);
@@ -228,6 +247,14 @@
       background: var(--ivory);
       box-shadow: 0 24px 60px rgba(44,34,26,.11);
     }
+    .hero-work-link::after {
+      content: '';
+      position: absolute;
+      inset: auto 0 0;
+      height: 32%;
+      background: linear-gradient(to top, rgba(20,16,13,.68), transparent);
+      pointer-events: none;
+    }
     .hero-work-link:first-child { grid-row: 1 / 3; }
     .hero-work-link img {
       width: 100%; height: 100%;
@@ -237,6 +264,16 @@
     }
     .hero-work-link:first-child img { object-position: center 54%; }
     .hero-work-link:hover img { transform: scale(1.035); }
+    .hero-work-name {
+      position: absolute;
+      z-index: 1;
+      left: .85rem;
+      bottom: .72rem;
+      color: #fff;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .03em;
+    }
     .hero-work-caption {
       display: flex;
       justify-content: space-between;
@@ -321,7 +358,7 @@
     .project-type {
       font-size: 11px;
       font-weight: 800;
-      color: var(--sky);
+      color: var(--sky-ink);
       margin-bottom: 1rem;
     }
     .project-title {
@@ -402,7 +439,7 @@
     .sec-label {
       font-size: 10px; font-weight: 700;
       letter-spacing: .18em; text-transform: uppercase;
-      color: var(--sky); margin-bottom: .6rem;
+      color: var(--sky-ink); margin-bottom: .6rem;
     }
     .sec-title {
       font-family: var(--serif);
@@ -417,44 +454,7 @@
       color: inherit;
       text-decoration: none;
     }
-    .sec-title a:hover { color: var(--sky); }
-
-    /* ── WHAT I DO ── */
-    .what-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: var(--line);
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      overflow: hidden;
-    }
-    .what-item {
-      background: var(--pearl);
-      padding: 1.7rem 1.25rem;
-      transition: background .2s;
-    }
-    .what-item:hover { background: var(--ivory); }
-    .what-icon {
-      width: 36px; height: 36px;
-      border-radius: 8px;
-      background: rgba(126,181,232,.12);
-      display: flex; align-items: center; justify-content: center;
-      margin-bottom: 1rem;
-    }
-    .what-icon [data-lucide] {
-      width: 18px; height: 18px;
-      stroke: var(--sky); stroke-width: 1.8;
-    }
-    .what-name {
-      font-size: 1rem; font-weight: 800;
-      color: var(--warm); margin-bottom: .65rem;
-      line-height: 1.35;
-    }
-    .what-desc {
-      font-size: 13px; color: var(--muted);
-      line-height: 1.7;
-    }
+    .sec-title a:hover { color: var(--sky-ink); }
 
     /* ── POSITIONING / SERVICES ── */
     .positioning-wrap {
@@ -488,7 +488,7 @@
     .positioning-card-title {
       font-size: 11px;
       font-weight: 800;
-      color: var(--sky);
+      color: var(--sky-ink);
       letter-spacing: .08em;
       text-transform: uppercase;
       margin: 0 .65rem .45rem;
@@ -503,34 +503,26 @@
       display: grid;
       grid-template-columns: 1.1fr .95fr .95fr;
       align-items: stretch;
-      gap: 1px;
+      gap: 1.5rem;
       width: min(1040px, calc(100vw - 6rem));
       margin-left: 50%;
       transform: translateX(-50%);
-      background: var(--line);
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      overflow: hidden;
     }
     .service-item {
-      background: var(--pearl);
-      padding: 1.75rem 1.25rem 1.45rem;
+      padding: 1.4rem 0 0;
+      border-top: 1px solid var(--line);
       position: relative;
       display: flex;
       flex-direction: column;
       height: auto;
       min-height: 0;
-      transition: background .2s;
+      transition: border-color .2s;
     }
     .service-item.is-primary {
-      background: var(--ivory);
-      box-shadow:
-        inset 0 4px 0 var(--sky),
-        inset 0 0 0 1px rgba(126,181,232,.26);
+      border-top-color: var(--sky);
     }
     .service-item.is-secondary {
-      background: rgba(245,243,238,.72);
-      box-shadow: inset 0 3px 0 var(--yellow);
+      border-top-color: var(--yellow);
     }
     .service-name {
       font-size: 1.08rem;
@@ -572,6 +564,24 @@
       color: var(--muted);
       line-height: 1.65;
       margin: -.25rem 0 1rem;
+    }
+    .service-evidence,
+    .service-contact-link {
+      width: fit-content;
+      color: var(--warm);
+      font-size: 13px;
+      font-weight: 800;
+      text-underline-offset: .28rem;
+    }
+    .service-evidence { margin-top: auto; }
+    .service-evidence:hover,
+    .service-contact-link:hover { color: var(--green); }
+    .service-contact {
+      width: min(1040px, calc(100vw - 6rem));
+      margin: 2rem 0 0 50%;
+      transform: translateX(-50%);
+      padding-top: 1.4rem;
+      border-top: 1px solid var(--line);
     }
     .site-proof {
       width: min(1040px, calc(100vw - 6rem));
@@ -786,7 +796,7 @@
     .academy-inline-link,
     .tools-inline-link {
       display: inline-block;
-      color: var(--sky);
+      color: var(--sky-ink);
       font-size: 13px;
       font-weight: 700;
       line-height: 1.5;
@@ -866,7 +876,7 @@
       font-weight: 800;
       letter-spacing: .14em;
       text-transform: uppercase;
-      color: var(--sky);
+      color: var(--sky-ink);
       margin-bottom: .7rem;
     }
     .workflow-proof-title {
@@ -1028,7 +1038,7 @@
     .ch-card-name a {
       color: inherit; text-decoration: none;
     }
-    .ch-card-name a:hover { color: var(--sky); }
+    .ch-card-name a:hover { color: var(--sky-ink); }
     .ch-card-desc { font-size: 12.5px; color: var(--muted); line-height: 1.6; }
 
     /* Video embed */
@@ -1102,7 +1112,7 @@
     }
     .eq-block-title {
       font-size: 11px; font-weight: 700;
-      color: var(--sky); margin-bottom: .75rem;
+      color: var(--sky-ink); margin-bottom: .75rem;
       letter-spacing: .08em; text-transform: uppercase;
     }
     .eq-list { list-style: none; }
@@ -1134,7 +1144,7 @@
     .tl-dot.green { background: var(--green); }
     .tl-dot.yellow { background: var(--yellow); }
     .tl-period {
-      font-size: 11px; color: var(--sky);
+      font-size: 11px; color: var(--sky-ink);
       font-weight: 700; margin-bottom: .25rem;
     }
     .tl-role { font-size: 15px; font-weight: 700; color: var(--warm); margin-bottom: .15rem; }
@@ -1147,7 +1157,7 @@
       background: var(--ivory); color: var(--muted);
       border: 1px solid var(--line);
     }
-    .tl-badge.sky { background: rgba(126,181,232,.12); color: #5A9DD4; border-color: rgba(126,181,232,.3); }
+    .tl-badge.sky { background: rgba(126,181,232,.12); color: var(--sky-ink); border-color: rgba(126,181,232,.3); }
     .tl-badge.green { background: rgba(0,112,74,.1); color: var(--green); border-color: rgba(0,112,74,.25); }
 
     /* ── SKILLS ── */
@@ -1159,7 +1169,7 @@
     }
     .cred-title {
       font-size: 11px; font-weight: 700;
-      color: var(--sky); margin-bottom: .75rem;
+      color: var(--sky-ink); margin-bottom: .75rem;
       letter-spacing: .08em; text-transform: uppercase;
       padding-bottom: .6rem; border-bottom: 1px solid var(--line);
     }
@@ -1185,7 +1195,7 @@
       word-break: keep-all;
       overflow-wrap: normal;
     }
-    .cta-heading .sky { color: var(--sky); }
+    .cta-heading .sky { color: var(--green); }
     .cta-sub {
       font-size: .95rem; color: var(--muted);
       margin-bottom: 2.5rem; max-width: 480px;
@@ -1283,7 +1293,7 @@
       color: var(--warm); min-width: 70px;
     }
     .contact-val {
-      font-size: 14px; color: var(--sky);
+      font-size: 14px; color: var(--sky-ink);
       text-decoration: none;
       word-break: break-all;
     }
@@ -1295,7 +1305,7 @@
       text-decoration: none; color: var(--warm);
       transition: transform .2s, color .2s;
     }
-    .sns-list li a:hover { transform: translateX(5px); color: var(--sky); }
+    .sns-list li a:hover { transform: translateX(5px); color: var(--sky-ink); }
     .sns-icon {
       width: 34px; height: 34px; border-radius: 50%;
       background: var(--ivory); border: 1px solid var(--line);
@@ -1319,8 +1329,18 @@
       from { opacity: 0; transform: translateY(18px); }
       to   { opacity: 1; transform: translateY(0); }
     }
-    .fade-up { opacity: 0; transform: translateY(22px); transition: opacity .7s ease, transform .7s ease; }
-    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .fade-up { transform: translateY(16px); transition: transform .7s ease; }
+    .fade-up.visible { transform: translateY(0); }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+      }
+      .fade-up { transform: none; }
+    }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 980px) {
@@ -1338,6 +1358,11 @@
       .work-secondary { grid-template-columns: 1fr; }
       .service-grid {
         grid-template-columns: 1fr;
+        width: 100%;
+        margin-left: 0;
+        transform: none;
+      }
+      .service-contact {
         width: 100%;
         margin-left: 0;
         transform: none;
@@ -1482,6 +1507,8 @@
 </head>
 <body>
 
+<a class="skip-link" href="#main-content">본문 바로가기</a>
+
 <!-- NAV -->
 <nav>
   <a class="nav-logo" href="#">HAM MEDIA</a>
@@ -1503,30 +1530,35 @@
   </div>
 </nav>
 
+<main id="main-content" tabindex="-1">
+
 <!-- HERO -->
 <div class="hero">
   <div class="hero-text">
-    <p class="hero-label">함동민 · HAM MEDIA</p>
+    <p class="hero-label">콘텐츠 프로듀서 · 함동민</p>
     <h1 class="hero-title">
       현장을 이해하고,<br>
       <span class="sky">사람의 경험을 콘텐츠로 만듭니다.</span>
     </h1>
-    <p class="hero-sub">27년간 매장, 교육, 브랜드를 운영했습니다. 지금은 전문가와 작은 사업자의 경험을 영상, 홈페이지, AI 업무 구조로 바꿉니다.</p>
+    <p class="hero-sub">27년간 매장, 교육, 브랜드를 운영했습니다. 지금은 전문가와 작은 사업자의 경험을 듣고, 고객이 이해하는 영상과 홈페이지로 만듭니다.</p>
     <div class="hero-actions">
       <a class="btn-primary" href="#proof">대표 작업 보기</a>
-      <a class="hero-hamjipsa-link" href="#career">27년 경력 확인하기 →</a>
+      <a class="hero-hamjipsa-link" href="#contact">작업 상담하기 →</a>
     </div>
   </div>
   <div class="hero-work" aria-label="HAM MEDIA 대표 홈페이지 작업">
     <div class="hero-work-grid">
       <a class="hero-work-link" href="/ham-media-archive/pages/food.html" target="_blank" rel="noopener noreferrer">
         <img src="assets/images/star-showcase/food.webp" width="900" height="1200" alt="따뜻한 식탁의 기억을 담은 음식별 홈페이지 작업">
+        <span class="hero-work-name">음식별 · WEBSITE</span>
       </a>
       <a class="hero-work-link" href="/ham-media-archive/pages/cars.html" target="_blank" rel="noopener noreferrer">
         <img src="assets/images/star-showcase/cars.webp" width="1200" height="900" alt="밤길과 자동차의 기억을 담은 자동차별 홈페이지 작업">
+        <span class="hero-work-name">자동차별 · WEBSITE</span>
       </a>
       <a class="hero-work-link" href="/ham-media-archive/pages/fountain-pens.html" target="_blank" rel="noopener noreferrer">
         <img src="assets/images/star-showcase/fountain-pens.webp" width="1200" height="900" alt="손글씨와 기록의 시간을 담은 만년필별 홈페이지 작업">
+        <span class="hero-work-name">만년필별 · WEBSITE</span>
       </a>
     </div>
     <p class="hero-work-caption"><strong>최근 홈페이지 작업</strong><span>인터뷰부터 화면 구현까지</span></p>
@@ -1571,17 +1603,17 @@
         <h3 class="work-case-title">좋아하던 오디오를 6년간 운영한 채널로</h3>
         <p class="work-case-desc">우리끼리오디오를 2020년에 직접 개설했습니다. 촬영, 편집, 업로드를 이어가며 해외 시청자가 찾는 오디오 채널로 운영했습니다.</p>
         <p class="work-case-fact">누적 조회수 1,969만 · 구독자 38,014 · 2026년 5월 실측</p>
-        <a class="proof-link" href="#channels">고객 채널까지 확인하기 →</a>
+        <a class="proof-link" href="https://www.youtube.com/@ookkio" target="_blank" rel="noopener noreferrer">우리끼리오디오 채널 열어보기 →</a>
       </div>
     </article>
     <article class="work-case is-tall">
-      <a class="work-case-media" href="#services"><img src="assets/media/ai-ppt-workflow-guide-poster.png" loading="lazy" alt="AI 발표자료 제작에서 역할을 나눈 실제 작업 흐름"></a>
+      <a class="work-case-media" href="https://www.youtube.com/channel/UC7nfli6RwhfkT8-L3tjcwPg" target="_blank" rel="noopener noreferrer"><img src="https://img.youtube.com/vi/sgVzKxMxCEM/maxresdefault.jpg" loading="lazy" alt="성형외과전문의 김종명 채널의 의료 정보 영상 썸네일"></a>
       <div class="work-case-copy">
-        <p class="project-type">AI 업무 구조와 교육</p>
-        <h3 class="work-case-title">도구 설명을 실제 일의 순서로 바꿨습니다</h3>
-        <p class="work-case-desc">자료 정리, 문장 검토, 화면 제작, 결과 검증을 나눠 발표자료 제작에 쓰는 흐름으로 정리했습니다.</p>
-        <p class="work-case-fact">32초 작업 흐름 영상 · 중장년 AI 교육 카드뉴스</p>
-        <a class="proof-link" href="#services">제작 흐름 더 보기 →</a>
+        <p class="project-type">클라이언트 유튜브 제작</p>
+        <h3 class="work-case-title">의사의 전문 지식을 환자가 이해하는 영상으로</h3>
+        <p class="work-case-desc">성형외과 전문의의 설명을 긴 영상과 쇼츠로 기획하고, 촬영과 편집을 맡아 의료 정보 채널로 운영했습니다.</p>
+        <p class="work-case-fact">채널 개설 · 기획 · 촬영 · 편집 · 누적 조회수 14.8만 · 2026년 5월 실측</p>
+        <a class="proof-link" href="https://www.youtube.com/channel/UC7nfli6RwhfkT8-L3tjcwPg" target="_blank" rel="noopener noreferrer">클라이언트 채널 열어보기 →</a>
       </div>
     </article>
   </div>
@@ -1614,15 +1646,15 @@
       <p class="svc-for"><strong>대상:</strong> 전문성은 깊은데 채널이 없거나 정체된 병원장·강사·컨설턴트·자영업자</p>
       <p class="svc-do">기획·촬영·편집·업로드·쇼츠 분해</p>
       <p class="svc-out"><strong>결과물:</strong> 월 단위 롱폼 + 쇼츠 패키지</p>
-      <a class="svc-cta btn-primary" href="#contact">영상 운영 문의하기</a>
+      <a class="service-evidence" href="#channels">운영한 채널 확인하기 →</a>
     </div>
     <div class="service-item">
       <h3 class="svc-name">홈페이지·상세페이지 제작</h3>
       <p class="svc-for"><strong>대상:</strong> 제품·전문성은 있는데 보여줄 페이지가 없거나 약한 전문가·소상공인·이커머스 셀러</p>
-      <p class="svc-do">설득 구조 설계·카피·제작 (AI 활용 고속 제작)</p>
+      <p class="svc-do">자료 확인·설득 구조·카피·화면 제작</p>
       <p class="svc-out"><strong>결과물:</strong> 경험과 강점이 분명히 보이는 홈페이지/상세페이지 + 문의 폼·분석 연동</p>
       <p class="svc-proof"><strong>예시:</strong> 지금 보고 계신 이 사이트도 직접 제작했습니다.</p>
-      <a class="svc-cta btn-primary" href="#contact">작업 의뢰하기</a>
+      <a class="service-evidence" href="#proof">홈페이지 작업 확인하기 →</a>
     </div>
     <div class="service-item">
       <h3 class="svc-name">AI 강의·실습 교육</h3>
@@ -1632,9 +1664,9 @@
       <p class="svc-proof">실습형 AI 입문 강의를 실제로 진행 중이며, 1강은 무료 공개 강의장으로 열어두고 있습니다.</p>
       <a class="academy-inline-link" href="https://hammedia.co.kr/academy/">강의 안내 · HAM MEDIA Academy</a>
       <a class="tools-inline-link" href="/tools/">비개발자를 위한 무료 AI 협업 도구 보기</a>
-      <a class="svc-cta btn-primary" href="https://tally.so/r/pbzaoV?source=academy_personal">AI 강의 문의하기</a>
     </div>
   </div>
+  <p class="service-contact"><a class="service-contact-link" href="#contact">어떤 방식이 맞는지 함께 정리하기 →</a></p>
   <div class="workflow-proof">
     <div class="workflow-proof-copy">
       <p class="workflow-proof-label">실제 제작 흐름</p>
@@ -1645,7 +1677,6 @@
         <span>AI 강의</span>
         <span>제작 시스템</span>
       </div>
-      <a class="btn-primary" href="#contact">제안서 상담하기</a>
     </div>
     <div class="workflow-proof-media">
       <video controls autoplay muted loop playsinline preload="metadata" poster="assets/media/ai-ppt-workflow-guide-poster.png" aria-label="AI 발표자료 제작 워크플로 미리보기 영상">
@@ -1664,7 +1695,6 @@
         <span>AI 강의</span>
         <span>중장년 교육</span>
       </div>
-      <a class="btn-primary" href="https://tally.so/r/pbzaoV?source=academy_personal">AI 강의 문의하기</a>
     </div>
     <div class="workflow-proof-media is-square">
       <video controls autoplay muted loop playsinline preload="metadata" poster="assets/media/50s-ai-life-cardnews-poster.png" aria-label="50대 AI 카드뉴스 미리보기 영상">
@@ -2068,6 +2098,8 @@
     </div>
   </div>
 </section>
+
+</main>
 
 <footer>
   © 2026 함동민 · 햄PD · HAM MEDIA. All rights reserved.
