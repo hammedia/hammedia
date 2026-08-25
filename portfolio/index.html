@@ -233,46 +233,77 @@
     }
     .hero-work-grid {
       display: grid;
-      grid-template-columns: 1.25fr .75fr;
-      grid-template-rows: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1.7fr 1fr;
       gap: .7rem;
       height: min(65vh, 620px);
       min-height: 480px;
     }
     .hero-work-link {
       position: relative;
-      display: block;
+      display: flex;
+      flex-direction: column;
       overflow: hidden;
       border-radius: 16px;
-      background: var(--ivory);
+      border: 1px solid rgba(44,34,26,.12);
+      background: #171513;
       box-shadow: 0 24px 60px rgba(44,34,26,.11);
+      text-decoration: none;
     }
-    .hero-work-link::after {
-      content: '';
-      position: absolute;
-      inset: auto 0 0;
-      height: 32%;
-      background: linear-gradient(to top, rgba(20,16,13,.68), transparent);
-      pointer-events: none;
+    .hero-work-link:first-child {
+      grid-column: 1 / 3;
     }
-    .hero-work-link:first-child { grid-row: 1 / 3; }
     .hero-work-link img {
-      width: 100%; height: 100%;
+      width: 100%;
+      flex: 1;
+      min-height: 0;
       display: block;
       object-fit: cover;
+      object-position: top center;
       transition: transform .55s cubic-bezier(.2,.7,.2,1);
     }
-    .hero-work-link:first-child img { object-position: center 54%; }
     .hero-work-link:hover img { transform: scale(1.035); }
+    .hero-browser-bar {
+      flex: 0 0 25px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 0 .65rem;
+      background: #f0eee9;
+      color: #726a63;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: .02em;
+    }
+    .hero-browser-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #c8c2bb;
+    }
+    .hero-browser-url {
+      overflow: hidden;
+      margin-left: .3rem;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
     .hero-work-name {
-      position: absolute;
-      z-index: 1;
-      left: .85rem;
-      bottom: .72rem;
+      flex: 0 0 34px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: .5rem;
+      padding: 0 .75rem;
       color: #fff;
       font-size: 11px;
       font-weight: 800;
       letter-spacing: .03em;
+    }
+    .hero-work-name em {
+      color: rgba(255,255,255,.65);
+      font-size: 9px;
+      font-style: normal;
+      font-weight: 650;
     }
     .hero-work-caption {
       display: flex;
@@ -1416,7 +1447,10 @@
       .nav-lang { gap: .35rem; margin-left: auto; order: 2; }
       .lang-btn { padding: 5px 9px; font-size: 10px; }
       .hero { width: auto; padding: 3.5rem 1.5rem 3rem; gap: 2.5rem; }
-      .hero-work-grid { height: 390px; min-height: 0; gap: .5rem; }
+      .hero-work-grid { height: 430px; min-height: 0; gap: .5rem; }
+      .hero-browser-bar { flex-basis: 22px; padding: 0 .5rem; }
+      .hero-work-name { flex-basis: 31px; padding: 0 .55rem; }
+      .hero-work-name em { display: none; }
       .hero-work-caption { align-items: flex-start; flex-direction: column; gap: .15rem; }
       .trust-strip {
         width: auto;
@@ -1549,19 +1583,22 @@
   <div class="hero-work" aria-label="HAM MEDIA 대표 홈페이지 작업">
     <div class="hero-work-grid">
       <a class="hero-work-link" href="/ham-media-archive/pages/food.html" target="_blank" rel="noopener noreferrer">
-        <img src="assets/images/star-showcase/food.webp" width="900" height="1200" alt="따뜻한 식탁의 기억을 담은 음식별 홈페이지 작업">
-        <span class="hero-work-name">음식별 · WEBSITE</span>
+        <span class="hero-browser-bar" aria-hidden="true"><i class="hero-browser-dot"></i><i class="hero-browser-dot"></i><i class="hero-browser-dot"></i><span class="hero-browser-url">hammedia.co.kr · 음식별</span></span>
+        <img src="assets/images/star-showcase/food-page.jpg" width="1280" height="900" alt="음식별 홈페이지 첫 화면. 음식별 제목과 소개 문장, 화면 메뉴가 보인다">
+        <span class="hero-work-name"><strong>음식별 홈페이지</strong><em>실제 화면 열기 ↗</em></span>
       </a>
       <a class="hero-work-link" href="/ham-media-archive/pages/cars.html" target="_blank" rel="noopener noreferrer">
-        <img src="assets/images/star-showcase/cars.webp" width="1200" height="900" alt="밤길과 자동차의 기억을 담은 자동차별 홈페이지 작업">
-        <span class="hero-work-name">자동차별 · WEBSITE</span>
+        <span class="hero-browser-bar" aria-hidden="true"><i class="hero-browser-dot"></i><i class="hero-browser-dot"></i><i class="hero-browser-dot"></i><span class="hero-browser-url">hammedia.co.kr · 자동차별</span></span>
+        <img src="assets/images/star-showcase/cars-page.jpg" width="1280" height="900" alt="자동차별 홈페이지 첫 화면. 자동차별 제목과 소개, 자동차 사진이 보인다">
+        <span class="hero-work-name"><strong>자동차별</strong><em>화면 열기 ↗</em></span>
       </a>
       <a class="hero-work-link" href="/ham-media-archive/pages/fountain-pens.html" target="_blank" rel="noopener noreferrer">
-        <img src="assets/images/star-showcase/fountain-pens.webp" width="1200" height="900" alt="손글씨와 기록의 시간을 담은 만년필별 홈페이지 작업">
-        <span class="hero-work-name">만년필별 · WEBSITE</span>
+        <span class="hero-browser-bar" aria-hidden="true"><i class="hero-browser-dot"></i><i class="hero-browser-dot"></i><i class="hero-browser-dot"></i><span class="hero-browser-url">hammedia.co.kr · 만년필별</span></span>
+        <img src="assets/images/star-showcase/fountain-pens-page.jpg" width="1280" height="900" alt="만년필별 홈페이지 첫 화면. 한 장의 잉크 제목과 손글씨 원본이 보인다">
+        <span class="hero-work-name"><strong>만년필별</strong><em>화면 열기 ↗</em></span>
       </a>
     </div>
-    <p class="hero-work-caption"><strong>최근 홈페이지 작업</strong><span>인터뷰부터 화면 구현까지</span></p>
+    <p class="hero-work-caption"><strong>실제로 열리는 홈페이지 3개</strong><span>인터뷰 · 카피 · 화면 설계 · 구현</span></p>
   </div>
 </div>
 
