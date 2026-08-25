@@ -5,8 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>음악·오디오별 | HAM MEDIA 별자리</title>
   <link rel="canonical" href="https://hammedia.co.kr/ham-media-archive/pages/music-audio.html">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23111318'/%3E%3Ccircle cx='32' cy='32' r='11' fill='%23c9a84c'/%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://cdn.jsdelivr.net" />
   <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
+  <link rel="stylesheet" href="../assets/css/music-audio-v2.css?v=20260825c" />
   <style>
     @font-face {
       font-family: "Ghanachocolate";
@@ -622,6 +624,7 @@
 
     .star-button,
     .bottom-link {
+      position: relative;
       min-height: 52px;
       display: inline-flex;
       align-items: center;
@@ -644,6 +647,9 @@
 
     .star-button.active .star-signal {
       --signal-color: var(--color-record);
+      position: absolute;
+      top: 7px;
+      right: 7px;
     }
 
     .bottom-links {
@@ -968,6 +974,7 @@
     }
 
     .room-sort-control button {
+      min-height: 44px;
       border: 0;
       border-bottom: 2px solid transparent;
       border-radius: 0;
@@ -977,7 +984,7 @@
       font-size: var(--small);
       font-weight: 900;
       line-height: 1.4;
-      padding: 0 0 4px;
+      padding: 4px 0;
       cursor: pointer;
     }
 
@@ -990,7 +997,7 @@
     .room-article-back,
     .room-gallery-detail-button,
     .room-article-bottom-nav button {
-      min-height: 42px;
+      min-height: 44px;
       padding: 0 var(--space-4);
       border: 1px solid var(--line-light);
       border-radius: var(--radius);
@@ -1108,7 +1115,8 @@
     .room-house-photo-thumb,
     .audio-gallery-photo {
       aspect-ratio: 4 / 3;
-      object-fit: cover;
+      object-fit: contain;
+      background: #11151d;
     }
 
     .room-house-photo-detail {
@@ -1152,92 +1160,6 @@
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: var(--space-3);
       margin-top: var(--space-5);
-    }
-
-    .audio-essay-panel {
-      display: grid;
-      gap: var(--space-5);
-    }
-
-    .audio-essay-hero,
-    .audio-essay-image-grid figure,
-    .audio-essay-track-grid figure {
-      margin: 0;
-    }
-
-    .audio-essay-hero img,
-    .audio-essay-image-grid img,
-    .audio-essay-track-grid img {
-      display: block;
-      width: 100%;
-      border-radius: var(--radius);
-      object-fit: cover;
-      background: var(--color-room);
-    }
-
-    .audio-essay-hero img {
-      aspect-ratio: 16 / 9;
-    }
-
-    .audio-essay-image-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: var(--space-3);
-    }
-
-    .audio-essay-image-grid img {
-      aspect-ratio: 4 / 3;
-    }
-
-    .audio-essay-track-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: var(--space-3);
-    }
-
-    .audio-essay-track-grid img {
-      aspect-ratio: 4 / 5;
-    }
-
-    .audio-essay-hero figcaption,
-    .audio-essay-image-grid figcaption,
-    .audio-essay-track-grid figcaption {
-      margin-top: var(--space-2);
-      color: var(--muted-on-light);
-      font-size: 13px;
-      line-height: 1.6;
-    }
-
-    .audio-essay-copy {
-      max-width: 840px;
-    }
-
-    .audio-essay-copy p {
-      margin: 0;
-    }
-
-    .audio-essay-copy p + p {
-      margin-top: var(--space-4);
-    }
-
-    .audio-essay-pull {
-      margin: var(--space-5) 0;
-      padding-left: var(--space-4);
-      border-left: 4px solid var(--color-gold);
-      color: var(--color-room);
-      font-family: var(--font-star);
-      font-size: clamp(28px, 3vw, 42px);
-      line-height: 1.24;
-    }
-
-    .audio-essay-final {
-      display: grid;
-      gap: var(--space-2);
-      margin-top: var(--space-5);
-      color: var(--color-room);
-      font-family: var(--font-star);
-      font-size: clamp(30px, 3.2vw, 48px);
-      line-height: 1.2;
     }
 
     .shared-memory-link a {
@@ -1395,13 +1317,8 @@
       .memory-grid,
       .room-house-photo-grid,
       .shared-memory-layout,
-      .shared-memory-gallery,
-      .audio-essay-image-grid {
+      .shared-memory-gallery {
         grid-template-columns: 1fr;
-      }
-
-      .audio-essay-track-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
       .memory-card,
@@ -1489,7 +1406,8 @@
     .room-house-photo img,
     .room-house-photo-thumb {
       aspect-ratio: 4 / 3;
-      object-fit: cover;
+      object-fit: contain;
+      background: #11151d;
       width: 100%;
     }
 
@@ -1502,6 +1420,20 @@
     @media (max-width: 640px) {
       .room-house-photo-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 360px) {
+      .star-button.active {
+        padding-inline: 2px;
+        font-size: 11px;
+      }
+
+      .star-button.active .star-signal {
+        top: 4px;
+        right: 4px;
+        width: 7px;
+        height: 7px;
       }
     }
 
@@ -1535,194 +1467,344 @@
   </head>
 <body>
   <main class="sheet room-house-page audio-style-page" id="music-audio-star" data-article-nav-label="문장 이동" data-article-list-label="문장" data-article-prev-label="이전 문장" data-article-next-label="다음 문장" data-photo-list-label="장면" data-room-context-nav="true" data-article-house-target="music-audio-writing-room" data-photo-house-target="music-audio-photo-room" data-map-house-target="music-audio-map-room" data-star-list-target="star-list">
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="hero-text">
-        <p class="eyebrow">음악·오디오별 · LPH-B613-08 · HAM MEDIA 별자리</p>
-        <h1 id="hero-title">음악·오디오별</h1>
-        <p class="lead">
+    <section class="audio-v2-hero" aria-labelledby="audio-v2-hero-title">
+      <img
+        class="audio-v2-hero-photo"
+        src="../assets/images/music-audio/hero-listening-space.jpg"
+        srcset="../assets/images/music-audio/hero-listening-space-720.webp 720w, ../assets/images/music-audio/hero-listening-space-1200.webp 1200w, ../assets/images/music-audio/hero-listening-space.jpg 1800w"
+        sizes="100vw"
+        alt="스피커와 화면이 있는 실제 청취 공간 전경"
+        width="1800"
+        height="1350"
+        fetchpriority="high"
+        decoding="async"
+      />
+      <div class="audio-v2-hero-veil" aria-hidden="true"></div>
+      <div class="audio-v2-signal-stage" aria-hidden="true">
+        <div class="audio-v2-record-orbit">
+          <span class="audio-v2-record-label">HAM<br />LISTENING<br />ROOM</span>
+        </div>
+        <div class="audio-v2-spectrum" aria-hidden="true">
+          <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+        </div>
+        <p class="audio-v2-signal-caption">SIGNAL / MEMORY / SPACE</p>
+      </div>
+      <div class="audio-v2-wrap audio-v2-hero-inner">
+        <p class="audio-v2-eyebrow">HAM MEDIA 별자리 · 음악·오디오별</p>
+        <h1 id="audio-v2-hero-title">음악·오디오별</h1>
+        <p class="audio-v2-lead">
           음악은 나를 방해해선 안 된다.<br />
-          나와 함께 있지만,<br />
-          날 더 돋보이게 해주는 역할.<br />
-          그리고 가끔,<br />
-          <span class="gold-line">음악에게서 위로를 받는다.</span>
+          나와 함께 있지만, 날 더 돋보이게 해주는 역할.<br />
+          <span class="audio-v2-lead-accent">그리고 가끔, 음악에게서 위로를 받는다.</span>
         </p>
-        <nav class="entry-nav room-house-nav" aria-label="음악·오디오별 입구">
-          <button class="entry-link room-house-door" type="button" data-scroll-target="#audio-writing" data-house-target="music-audio-writing-room">문장</button>
-          <button class="entry-link room-house-door" type="button" data-scroll-target="#audio-photos" data-house-target="music-audio-photo-room">장면</button>
-          <button class="entry-link room-house-door" type="button" data-scroll-target="#audio-map" data-house-target="music-audio-map-room">지도</button>
-          <a class="entry-link" href="#star-list">별자리</a>
+        <nav class="room-house-nav audio-v2-doors" aria-label="음악·오디오별 입구">
+          <button class="room-house-door audio-v2-door" type="button" data-house-target="music-audio-writing-room">
+            <strong>문장</strong>
+            <span>왜 그 소리가 필요했는지</span>
+          </button>
+          <button class="room-house-door audio-v2-door" type="button" data-house-target="music-audio-photo-room">
+            <strong>장면</strong>
+            <span>듣던 자리의 흔적</span>
+          </button>
+          <button class="room-house-door audio-v2-door" type="button" data-house-target="music-audio-map-room">
+            <strong>지도</strong>
+            <span>조용히 모으는 좌표</span>
+          </button>
+          <a class="room-house-door audio-v2-door" href="#star-list">
+            <strong>별자리</strong>
+            <span>다른 별로 이동</span>
+          </a>
         </nav>
-        <div class="stamp-wrap" aria-label="음악·오디오별 스탬프">
-          <img src="../assets/images/music-audio/stamps/lph-b613-08-audio-stamp.png" alt="LPH-B613-08 음악·오디오별 스탬프" />
+        <div class="audio-v2-hero-meta">
+          <figure class="audio-v2-stamp">
+            <picture>
+              <source srcset="../assets/images/music-audio/stamps/lph-b613-08-audio-stamp-260.webp" type="image/webp" />
+              <img
+                src="../assets/images/music-audio/stamps/lph-b613-08-audio-stamp.png"
+                alt="LPH-B613-08 음악·오디오별 도착 스탬프"
+                width="1254"
+                height="1254"
+                decoding="async"
+              />
+            </picture>
+          </figure>
+          <p class="audio-v2-code-pill"><span class="audio-v2-signal-lamp" aria-hidden="true"></span>LPH-B613-08</p>
+          <p class="audio-v2-provenance">실제 청음 공간</p>
         </div>
-        <div class="star-code-pill">LPH-B613-08 <span class="star-signal" aria-label="열린 별"></span></div>
-      </div>
-      <div class="hero-photo" role="img" aria-label="PMC 스피커가 있는 청취 공간"></div>
-    </section>
-
-    <section class="section" id="audio-color">
-      <div class="section-head">
-        <div class="section-number">01 / 색의 방향</div>
-        <div>
-          <h2>어두운 방 안에서, 불빛 하나만 따뜻하게 남긴다.</h2>
-          <p class="section-intro">음악·오디오별의 색은 조용한 청음실에서 온다. 검은 방은 소리를 앞으로 세우고, 골드는 앰프 불빛처럼 작게 켜지고, 우드는 스피커가 가진 물성을 낮게 받친다.</p>
-        </div>
-      </div>
-      <div class="color-grid" aria-label="음악·오디오별 색">
-        <div class="color-card" style="background: var(--color-room);"><div><strong>청음실 다크</strong><code>#111318</code></div><p>소리가 중심이 되는 조용한 방.</p></div>
-        <div class="color-card light-ink" style="background: var(--color-gold);"><div><strong>앰프 골드</strong><code>#c9a84c</code></div><p>작게 켜지는 진공관 불빛과 선택 신호.</p></div>
-        <div class="color-card" style="background: var(--color-wood);"><div><strong>스피커 우드</strong><code>#7a5c3e</code></div><p>장비를 자랑하지 않고, 방을 따뜻하게 받친다.</p></div>
-        <div class="color-card light-ink" style="background: var(--color-score);"><div><strong>악보 크림</strong><code>#f0ece2</code></div><p>긴 글과 음악 메모를 읽는 표면.</p></div>
-        <div class="color-card" style="background: var(--color-record);"><div><strong>레코드 블랙</strong><code>#1a1a1a</code></div><p>스탬프와 프레임의 깊은 면.</p></div>
-        <div class="color-card light-ink" style="background: var(--color-piano);"><div><strong>소프트 피아노 그레이</strong><code>#9c9a94</code></div><p>캡션과 조용한 설명의 낮은 목소리.</p></div>
-        <div class="color-card" style="background: var(--color-vinyl);"><div><strong>바이닐 핑크</strong><code>#e8449a</code></div><p>기존 스탬프의 색. 화면 강조로 번지지 않는다.</p></div>
       </div>
     </section>
 
-    <section class="section light" id="audio-type">
-      <div class="section-head">
-        <div class="section-number">02 / 말의 리듬</div>
-        <div>
-          <h2>설명보다 먼저, 듣는 자세가 보여야 한다.</h2>
-          <p class="section-intro">짧은 문장은 조용히 세우고, 긴 이야기는 읽기 편하게 풀어낸다. 오디오 지식보다 그날 왜 그 소리가 필요했는지가 먼저다.</p>
+    <section class="audio-v2-section" aria-labelledby="audio-v2-materials-title">
+      <div class="audio-v2-wrap">
+        <div class="audio-v2-section-head">
+          <p class="audio-v2-section-number">01 · 재료</p>
+          <div>
+            <h2 id="audio-v2-materials-title">사진은 장비 목록이 아니라, 듣던 자리의 흔적이다.</h2>
+            <p class="audio-v2-section-intro">이 별은 세 장의 기록 사진에서 출발한다. 어느 방에서, 무엇을, 어떻게 들었는지가 먼저다.</p>
+          </div>
+        </div>
+        <ul class="audio-v2-ledger">
+          <li class="audio-v2-ledger-row">
+            <figure class="audio-v2-ledger-thumb">
+              <img
+                src="../assets/images/music-audio/hero-listening-space.jpg"
+                srcset="../assets/images/music-audio/hero-listening-space-720.webp 720w, ../assets/images/music-audio/hero-listening-space-1200.webp 1200w, ../assets/images/music-audio/hero-listening-space.jpg 1800w"
+                sizes="(max-width: 480px) calc(100vw - 44px), 168px"
+                alt="첫 청취 공간의 전경 사진"
+                width="1800"
+                height="1350"
+                loading="lazy"
+                decoding="async"
+              />
+            </figure>
+            <div class="audio-v2-ledger-body">
+              <h3>첫 청취 공간</h3>
+              <p>오디오, 공간 음향, 공조, 조명을 모두 신경 써서 만든 첫 작품.</p>
+            </div>
+            <p class="audio-v2-tag">실제 청음 공간</p>
+          </li>
+          <li class="audio-v2-ledger-row">
+            <figure class="audio-v2-ledger-thumb">
+              <img
+                src="../assets/images/music-audio/essay-audio-rack-books-amp.jpg"
+                alt="책과 앰프가 함께 놓인 오디오 랙 사진"
+                width="1800"
+                height="1350"
+                loading="lazy"
+                decoding="async"
+              />
+            </figure>
+            <div class="audio-v2-ledger-body">
+              <h3>쉬고 있는 기기들</h3>
+              <p>새로운 조합이 들어오면, 어떤 기기는 잠시 뒤로 물러난다.</p>
+            </div>
+            <p class="audio-v2-tag">HAM의 기록 사진</p>
+          </li>
+          <li class="audio-v2-ledger-row">
+            <figure class="audio-v2-ledger-thumb">
+              <img
+                src="../assets/images/music-audio/audio-matching-01.jpeg"
+                alt="여러 스피커와 앰프가 세팅된 매칭 기록 사진"
+                width="4032"
+                height="3024"
+                loading="lazy"
+                decoding="async"
+              />
+            </figure>
+            <div class="audio-v2-ledger-body">
+              <h3>매칭의 시행착오</h3>
+              <p>여러 조합을 거치며 오디오 매칭을 고민하던 시간의 기록.</p>
+            </div>
+            <p class="audio-v2-tag">HAM의 기록 사진</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="audio-v2-section audio-v2-essay" aria-labelledby="audio-v2-essay-title">
+      <div class="audio-v2-wrap">
+        <div class="audio-v2-section-head">
+          <p class="audio-v2-section-number">02 · 글</p>
+          <div>
+            <h2 id="audio-v2-essay-title">좋은 소리는 단체전이다.</h2>
+          </div>
+        </div>
+        <article class="audio-v2-essay-body">
+          <p>
+            스피커만 좋아도, 앰프만 좋아도 끝나지 않는다. 내가 듣는 시간, 공간, 볼륨,
+            취향, 함께 듣는 사람까지 들어와야 비로소 내 소리가 된다.
+          </p>
+          <blockquote class="audio-v2-quote">
+            <p>듣는 태도.</p>
+          </blockquote>
+          <p>
+            오디오와 음악은 사람마다 다릅니다. 10분을 진하게 집중해서 듣는 분이 있는가
+            하면, 하루 종일 편안하게 틀어두는 분도 있습니다. 스타일이 이렇게 다양하니
+            정답이 하나일 수 없는 것이겠죠.
+          </p>
+          <p>
+            오디오를 하는 이유는 결국 내가 좋아하는 음악을 더 좋은 퀄리티로, 더
+            감동적으로 듣고 싶어서가 아닐까요. 퀄리티도 좋고 감동도 있는 시스템이 제일
+            좋겠죠.
+          </p>
+          <div class="audio-v2-essay-lists">
+            <div class="audio-v2-list audio-v2-list-keep">
+              <h3>남겨도 되는 말</h3>
+              <ul>
+                <li>어떻게 듣는가.</li>
+                <li>오디오와 음악은 사람마다 다르다.</li>
+                <li>무엇을 틀고 무엇을 뺄지 고르는 감각.</li>
+              </ul>
+            </div>
+            <div class="audio-v2-list audio-v2-list-trim">
+              <h3>덜어내야 하는 말</h3>
+              <ul>
+                <li>이 정도는 들어야 한다는 말.</li>
+                <li>장비로 사람을 줄 세우는 말.</li>
+                <li>음악을 교양 시험처럼 만드는 말.</li>
+              </ul>
+            </div>
+          </div>
+          <p class="audio-v2-essay-close">좋은 편집도 좋은 청취처럼, 무엇을 남길지보다 무엇을 뺄지에서 시작된다.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="audio-v2-section" aria-labelledby="audio-v2-scenes-title">
+      <div class="audio-v2-wrap">
+        <div class="audio-v2-section-head">
+          <p class="audio-v2-section-number">03 · 사진</p>
+          <div>
+            <h2 id="audio-v2-scenes-title">왜 그 소리를 선택했는가</h2>
+            <p class="audio-v2-section-intro">방, 매칭, 스피커, 앰프가 모두 나오지만 질문은 하나다. 왜 그 소리를 선택했는가. 전체 기록은 장면 방에 정리했다.</p>
+          </div>
+        </div>
+        <div class="audio-v2-scene-grid">
+          <figure class="audio-v2-scene audio-v2-scene-a">
+            <img
+              src="../assets/images/music-audio/photo-amp-music-screen.jpg"
+              alt="앰프와 음악 화면이 함께 놓인 책상 사진"
+              width="1800"
+              height="1350"
+              loading="lazy"
+              decoding="async"
+            />
+            <figcaption>
+              <span class="audio-v2-tag">실제 사용 중인 오디오</span>
+              <strong>가족과 즐기는 하이파이</strong>
+              시각과 청각을 동시에 만족시킨다. 함께 즐기는 소리.
+            </figcaption>
+          </figure>
+          <figure class="audio-v2-scene audio-v2-scene-b">
+            <img
+              src="../assets/images/music-audio/gallery-img-5452.jpg"
+              alt="세워 둔 스피커의 세로 구도 사진"
+              width="1350"
+              height="1800"
+              loading="lazy"
+              decoding="async"
+            />
+            <figcaption>
+              <span class="audio-v2-tag">HAM의 기록 사진</span>
+              <strong>오래 갖고 싶던 소리</strong>
+              다인 컨투어 1.3 SE. 2005년에는 그렇게 갖고 싶었는데, 결국 2015년에 소장했었다.
+            </figcaption>
+          </figure>
+          <figure class="audio-v2-scene audio-v2-scene-c">
+            <img
+              src="../assets/images/music-audio/gallery-img-9818.jpg"
+              alt="책상 위에 놓인 작은 오디오 조합 사진"
+              width="1800"
+              height="1350"
+              loading="lazy"
+              decoding="async"
+            />
+            <figcaption>
+              <span class="audio-v2-tag">HAM의 기록 사진</span>
+              <strong>책상 위 조합</strong>
+              하이파이로즈와 판도라, 그리고 피에가. 큰 방이 아니어도, 내 자리에서 맞는 소리는 따로 있다.
+            </figcaption>
+          </figure>
         </div>
       </div>
-      <div class="rhythm-grid">
-        <div class="type-stack">
-          <article class="type-panel" style="background: var(--color-room); color: var(--ink-on-dark);">
-            <h3>듣는 태도.</h3>
-            <p>별 이름과 첫 문장은 조용한 음반 표지처럼 세운다. 분위기는 만들되, 듣는 사람을 시험하지 않는다.</p>
+    </section>
+
+    <section class="audio-v2-section audio-v2-channel" aria-labelledby="audio-v2-channel-title">
+      <div class="audio-v2-wrap">
+        <div class="audio-v2-section-head">
+          <p class="audio-v2-section-number">04 · 듣기</p>
+          <div>
+            <h2 id="audio-v2-channel-title">사진 속 소리를, 우리끼리오디오에서 이어 듣는다.</h2>
+            <p class="audio-v2-section-intro">이 별의 사진은 장식이 아니다. 실제로 듣고 바꾸고 기록해 온 채널의 세 장면을 연결했다. 재생을 누를 때만 YouTube를 불러온다.</p>
+          </div>
+        </div>
+        <div class="audio-v2-video-grid">
+          <article class="audio-v2-video-card">
+            <button class="audio-v2-video-launch" type="button" data-youtube-id="v-gGb5DVOe4" data-youtube-title="HiFi ROSE TEST">
+              <img src="https://i.ytimg.com/vi/v-gGb5DVOe4/sddefault.jpg" alt="HiFi ROSE TEST 영상 미리보기" width="640" height="480" loading="lazy" decoding="async" />
+              <span class="audio-v2-play" aria-hidden="true"><span></span></span>
+              <span class="audio-v2-video-action">영상 재생</span>
+            </button>
+            <div class="audio-v2-video-copy">
+              <p class="audio-v2-video-kicker">LISTENING TEST · 1:55</p>
+              <h3>HiFi ROSE TEST</h3>
+              <p>사진 속 하이파이로즈가 실제 청취 기록으로 이어지는 지점.</p>
+              <a href="https://www.youtube.com/watch?v=v-gGb5DVOe4" target="_blank" rel="noopener noreferrer">YouTube에서 보기</a>
+            </div>
           </article>
-          <article class="type-panel" style="background: var(--color-score); color: var(--color-room); border-color: var(--line-light);">
-            <h3 style="color: var(--color-room);">어떤 소리를 왜 틀었는지.</h3>
-            <p style="color: var(--muted-on-light);">긴 글은 읽히는 것이 먼저다. 선곡, 매칭, 위로, 시행착오는 조용한 문단으로 이어진다.</p>
+          <article class="audio-v2-video-card">
+            <button class="audio-v2-video-launch" type="button" data-youtube-id="CCCukJXBo3Q" data-youtube-title="세상에서 두번째로 아름다운 스피커, FOCAL SOPRA">
+              <img src="https://i.ytimg.com/vi/CCCukJXBo3Q/maxresdefault.jpg" alt="Focal Sopra 시리즈 영상 미리보기" width="1280" height="720" loading="lazy" decoding="async" />
+              <span class="audio-v2-play" aria-hidden="true"><span></span></span>
+              <span class="audio-v2-video-action">영상 재생</span>
+            </button>
+            <div class="audio-v2-video-copy">
+              <p class="audio-v2-video-kicker">SYSTEM STORY · 10:11</p>
+              <h3>Focal Sopra</h3>
+              <p>우리끼리오디오가 오래 듣고 기록해 온 스피커를 한 편으로 만난다.</p>
+              <a href="https://www.youtube.com/watch?v=CCCukJXBo3Q" target="_blank" rel="noopener noreferrer">YouTube에서 보기</a>
+            </div>
+          </article>
+          <article class="audio-v2-video-card">
+            <button class="audio-v2-video-launch" type="button" data-youtube-id="S3C_cY5UYWU" data-youtube-title="하이파이 오디오의 세계 첫걸음 안내서">
+              <img src="https://i.ytimg.com/vi/S3C_cY5UYWU/maxresdefault.jpg" alt="하이파이 오디오의 세계 첫걸음 안내서 영상 미리보기" width="1280" height="720" loading="lazy" decoding="async" />
+              <span class="audio-v2-play" aria-hidden="true"><span></span></span>
+              <span class="audio-v2-video-action">영상 재생</span>
+            </button>
+            <div class="audio-v2-video-copy">
+              <p class="audio-v2-video-kicker">FIRST STEP · 5:53</p>
+              <h3>하이파이 오디오 첫걸음</h3>
+              <p>비싼 장비의 나열이 아니라, 처음 듣는 사람이 어디서 시작할지 말한다.</p>
+              <a href="https://www.youtube.com/watch?v=S3C_cY5UYWU" target="_blank" rel="noopener noreferrer">YouTube에서 보기</a>
+            </div>
           </article>
         </div>
-        <article class="quote-panel">
-          <p>음악이 있어<br />위로 받은<br />그날의 기억.</p>
-        </article>
+        <a class="audio-v2-channel-link" href="https://www.youtube.com/@ookkio" target="_blank" rel="noopener noreferrer">우리끼리오디오 채널 전체 보기 <span aria-hidden="true">↗</span></a>
       </div>
     </section>
 
-    <section class="section" id="audio-doors">
-      <div class="section-head">
-        <div class="section-number">03 / 별 안으로</div>
-        <div>
-          <h2>이 별은 장비가 아니라, 선택한 소리로 열린다.</h2>
-          <p class="section-intro">문장은 왜 이 소리가 필요했는지로 들어가고, 장면은 음악이 머물던 시간과 자리를 보여준다. 지도는 메뉴가 아니라 소리가 오래 남은 좌표를 천천히 모으는 일이다.</p>
+    <section class="audio-v2-section audio-v2-note" aria-labelledby="audio-v2-note-title">
+      <div class="audio-v2-wrap">
+        <div class="audio-v2-section-head">
+          <p class="audio-v2-section-number">05 · 노트</p>
+          <div>
+            <h2 id="audio-v2-note-title">좋다는 것들을 모아도 내 방과 내 취향에 맞는지는 다시 들어봐야 한다.</h2>
+          </div>
         </div>
-      </div>
-      <div class="doors">
-        <button class="door-panel room-house-door" type="button" data-scroll-target="#audio-writing" data-house-target="music-audio-writing-room">
-          <div><h3>문장</h3><p>오디오 매칭, 선곡, 앨범 기억, 왜 그 소리가 필요했는지.</p></div>
-          <span>문장</span>
-        </button>
-        <button class="door-panel room-house-door" type="button" data-scroll-target="#audio-photos" data-house-target="music-audio-photo-room">
-          <div><h3>장면</h3><p>장비 목록이 아니라, 소리가 머물렀던 시간과 자리의 흔적.</p></div>
-          <span>장면</span>
-        </button>
-        <button class="door-panel room-house-door" type="button" data-scroll-target="#audio-map" data-house-target="music-audio-map-room">
-          <div><h3>지도</h3><p>청음회, 공연장, 기억에 남는 소리의 장소를 나중에 잇는다.</p></div>
-          <span>좌표 보기</span>
-        </button>
-        <a class="door-panel" href="#star-list">
-          <div><h3>별자리</h3></div>
-        </a>
+        <ol class="audio-v2-steps">
+          <li>
+            <h3>나의 취향과 나의 제약</h3>
+            <p>내가 듣는 음악 장르, 듣는 시간, 듣는 공간, 볼륨 수준, 함께 듣는 구성원, 그리고 나만의 취향.</p>
+          </li>
+          <li>
+            <h3>예산</h3>
+            <p>스피커, 앰프, 소스기기, 케이블 등 각 항목에 배분할 예산.</p>
+          </li>
+          <li>
+            <h3>세팅</h3>
+            <p>오디오 배치, 청취 환경, 청음 위치.</p>
+          </li>
+        </ol>
+        <p class="audio-v2-note-close">다들 그렇게 바꿈질을 합니다. 나빠서가 아니라, 달라서요.</p>
       </div>
     </section>
 
-    <section class="section" id="audio-photos">
-      <div class="section-head">
-        <div class="section-number">04 / 사진 방향</div>
-        <div>
-          <h2>사진은 장비 목록이 아니라, 듣던 자리의 흔적이다.</h2>
-          <p class="section-intro">음악·오디오별은 음식별만큼 많이 쌓지 않고, 카메라별만큼 줄이지도 않는다. 방, 매칭, 스피커, 앰프가 모두 나오지만 질문은 하나다. 왜 그 소리를 선택했는가.</p>
+    <section class="audio-v2-section audio-v2-map" aria-labelledby="audio-v2-map-title">
+      <div class="audio-v2-wrap">
+        <div class="audio-v2-section-head">
+          <p class="audio-v2-section-number">06 · 지도</p>
+          <div>
+            <h2 id="audio-v2-map-title">소리가 오래 머문 장소를 천천히 모은다.</h2>
+            <p class="audio-v2-section-intro">청음회, 공연장, 방, 책상 위 작은 시스템.</p>
+          </div>
+        </div>
+        <div class="audio-v2-map-frame">
+          <p class="audio-v2-map-status">아직 완성된 지도가 아닙니다</p>
+          <p class="audio-v2-map-claim">태그는 관계의 좌표입니다.</p>
+          <p class="audio-v2-map-copy">같은 소리, 같은 위로, 같은 청취 자리가 쌓이면 이 별의 지형이 드러납니다.</p>
+          <p class="audio-v2-map-later">나중에 잇을 것들 : 청음회, 공연장, 소리가 머문 공간</p>
         </div>
       </div>
-      <div class="memory-grid">
-        <figure class="memory-card feature" data-tags="음악·오디오별, 청음 공간, 음악 듣는 자리, 대표 사진">
-          <img src="../assets/images/music-audio/hero-listening-space.jpg" alt="스피커와 화면이 있는 전체 청취 공간" />
-          <figcaption><strong>첫 청취 공간</strong>오디오, 공간 음향, 공조, 조명까지 신경 써서 만든 첫 작품.</figcaption>
-        </figure>
-        <figure class="memory-card" data-tags="음악·오디오별, 앰프, 음악 화면, 사진방, 음악 듣는 장면">
-          <img src="../assets/images/music-audio/photo-amp-music-screen.jpg" alt="음악 화면과 오디오 장비" />
-          <figcaption><strong>가족과 듣는 하이파이</strong>시각과 청각을 동시에 만족시킨다. 함께 즐기는 소리.</figcaption>
-        </figure>
-        <figure class="memory-card" data-tags="음악·오디오별, 오디오 랙, 책과 앰프, 글 이미지, 청음 공간">
-          <img src="../assets/images/music-audio/essay-audio-rack-books-amp.jpg" alt="책과 앰프가 놓인 오디오 랙" />
-          <figcaption><strong>쉬고 있는 기기들</strong>새로운 조합이 들어오면, 어떤 기기는 잠시 뒤로 물러난다.</figcaption>
-        </figure>
-        <figure class="memory-card" data-tags="음악·오디오별, 하이파이로즈, 판도라, 피에가, 책상 위 하이파이, 최고의 시스템, 갤러리">
-          <img src="../assets/images/music-audio/gallery-img-9818.jpg" alt="책상 위 작은 오디오 시스템" />
-          <figcaption><strong>책상 위 조합</strong>큰 방이 아니어도, 내 자리에서 맞는 소리는 따로 있다.</figcaption>
-        </figure>
-        <figure class="memory-card" data-tags="음악·오디오별, 다인 컨투어 1.3 SE, 갖고 싶었던 스피커, 2015년 소장, 갤러리">
-          <img src="../assets/images/music-audio/gallery-img-5452.jpg" alt="다인 스피커 사진" />
-          <figcaption><strong>오래 갖고 싶던 소리</strong>2005년에 바라보던 마음이 시간이 지나 손에 닿았던 기록.</figcaption>
-        </figure>
-        <figure class="memory-card" data-tags="음악·오디오별, 잡스 DAC, 잡스 DDC, 가격 대비 최고, 중고 추천, 함께일 때 좋은 조합, 갤러리">
-          <img src="../assets/images/music-audio/gallery-img-3305.jpg" alt="DAC와 DDC 장비" />
-          <figcaption><strong>둘이 함께일 때</strong>기기는 혼자보다 조합 속에서 자기 역할을 찾는다.</figcaption>
-        </figure>
-        <figure class="memory-card" data-tags="음악·오디오별, LS3/5a, 그라함, 고급스러움, 도도한 스피커, 갤러리">
-          <img src="../assets/images/music-audio/gallery-img-5949.jpg" alt="그라함 LS3/5a 스피커" />
-          <figcaption><strong>도도한 고급스러움</strong>같은 계열 안에서도 각자 다른 표정이 있다.</figcaption>
-        </figure>
-        <figure class="memory-card" data-tags="음악·오디오별, 매지코 A1, 정확한 소리, 스피커, 갤러리">
-          <img src="../assets/images/music-audio/gallery-img-3430.jpg" alt="매지코 A1 스피커" />
-          <figcaption><strong>정확한 소리</strong>정확함이 차갑게만 들리지 않도록, 방과 취향이 함께 맞아야 한다.</figcaption>
-        </figure>
-        <figure class="memory-card">
-          <img src="../assets/images/music-audio/audio-matching-01.jpeg" alt="오디오 매칭을 위한 장비 사진 1" />
-          <figcaption><strong>매칭의 시작</strong>좋다는 것들을 모아도 내 방과 내 취향에 맞는지는 다시 들어봐야 한다.</figcaption>
-        </figure>
-        <figure class="memory-card">
-          <img src="../assets/images/music-audio/audio-matching-02.jpeg" alt="오디오 매칭을 위한 장비 사진 2" />
-          <figcaption><strong>다른 조합</strong>바꿈질은 나빠서가 아니라, 달라서 하게 되는 일.</figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <section class="section light" id="audio-writing">
-      <div class="section-head">
-        <div class="section-number">05 / 이 별이 권하는 것</div>
-        <div>
-          <h2>좋은 소리는 단체전이다.</h2>
-          <p class="section-intro">스피커만 좋아도, 앰프만 좋아도 끝나지 않는다. 내가 듣는 시간, 공간, 볼륨, 취향, 함께 듣는 사람까지 들어와야 비로소 내 소리가 된다.</p>
-        </div>
-      </div>
-      <div class="rule-grid">
-        <article class="rule-card">
-          <h3>남겨도 되는 말</h3>
-          <ul>
-            <li>어떻게 듣는가.</li>
-            <li>오디오와 음악은 사람마다 다르다.</li>
-            <li>좋은 편집도 좋은 청취처럼, 무엇을 뺄지에서 시작된다.</li>
-          </ul>
-        </article>
-        <article class="rule-card no">
-          <h3>덜어내야 하는 말</h3>
-          <ul>
-            <li>이 정도는 들어야 한다는 말.</li>
-            <li>장비로 사람을 줄 세우는 말.</li>
-            <li>음악을 교양 시험처럼 만드는 말.</li>
-          </ul>
-        </article>
-      </div>
-    </section>
-
-    <section class="section" id="audio-map">
-      <div class="section-head">
-        <div class="section-number">06 / 지도</div>
-        <div>
-          <h2>소리가 오래 머문 장소를 천천히 모은다.</h2>
-          <p class="section-intro">청음회, 공연장, 방, 책상 위 작은 시스템. 아직 완성된 지도는 아니지만, 언젠가 이 별은 소리가 머물렀던 자리를 하나씩 다시 꺼내게 된다.</p>
-        </div>
-      </div>
-      <article class="final-card">
-        <p>좋은 편집도<br />좋은 청취처럼,<br />무엇을 남길지보다<br />무엇을 뺄지에서 시작된다.</p>
-        <p class="body-line">HAM MEDIA의 일도 먼저 듣는 일에서 시작한다. 어떤 소리가 필요한지, 어떤 장면이 남아야 하는지, 무엇을 덜어낼 때 더 선명해지는지 듣고 나서 고른다.</p>
-      </article>
     </section>
 
       <section class="room-house-panel" id="music-audio-writing-room" aria-label="음악·오디오별 문장" hidden>
@@ -1913,7 +1995,7 @@
 
               <div class="shared-memory-copy">
                 <div class="room-video">
-                  <iframe src="https://www.youtube.com/embed/bMd2qdJ-Os0?si=Ni9IQ2JHXCFbuiFd" title="Krystian Zimerman plays Beethoven Piano Concerto No. 5, second movement" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                  <iframe loading="lazy" src="https://www.youtube.com/embed/bMd2qdJ-Os0?si=Ni9IQ2JHXCFbuiFd" title="Krystian Zimerman plays Beethoven Piano Concerto No. 5, second movement" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 </div>
                 <p>이 공연은 베토벤 피아노 협주곡 5번 E-flat 장조, Op.73 “황제” 중 2악장 Adagio un poco mosso의 라이브 연주입니다.</p>
                 <p>연주자는 크리스티안 지메르만(Krystian Zimerman), 런던 심포니 오케스트라와 사이먼 래틀 경(Sir Simon Rattle)이 지휘를 맡았습니다.</p>
@@ -1938,11 +2020,11 @@
 
             <figure class="shared-memory-figure">
               <img class="room-photo-image shared-memory-photo" src="../assets/images/music-audio/brahms-piano-trios-cover.jpeg" alt="마리아 주앙 피레스, 오귀스탱 뒤메이, 지안 왕의 브람스 피아노 트리오 1번과 2번 앨범 커버">
-              <figcaption>Deutsche Grammophon Brahms · Piano Trios Nos. 1 &amp; 2 — Maria João Pires, Augustin Dumay, Jian Wang</figcaption>
+              <figcaption>Deutsche Grammophon Brahms · Piano Trios Nos. 1 &amp; 2 · Maria João Pires, Augustin Dumay, Jian Wang</figcaption>
             </figure>
 
             <div class="room-video">
-              <iframe src="https://www.youtube.com/embed/neyLy-xGgoE" title="Maria João Pires Brahms Piano Trio No. 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+              <iframe loading="lazy" src="https://www.youtube.com/embed/neyLy-xGgoE" title="Maria João Pires Brahms Piano Trio No. 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
 
             <div class="shared-memory-copy">
@@ -1995,7 +2077,7 @@
               <p><strong>관련 아티스트</strong><br>Bill Evans: 현대 재즈 피아노의 선구자로, 서정적이고 섬세한 접근법으로 알려져 있습니다.<br>Herbie Hancock: 재즈와 퓨전 장르에 중요한 기여를 한 다재다능한 아티스트입니다.<br>Chick Corea: 재즈를 클래식과 라틴 영향과 결합하여 혁신적인 음악을 만든 것으로 유명합니다.</p>
 
               <div class="room-video">
-                <iframe src="https://www.youtube.com/embed/BhJKfaAEDeo" title="Keith Jarrett My Wild Irish Rose" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <iframe loading="lazy" src="https://www.youtube.com/embed/BhJKfaAEDeo" title="Keith Jarrett My Wild Irish Rose" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
               </div>
               <p class="shared-memory-link"><a href="https://youtu.be/BhJKfaAEDeo" target="_blank" rel="noopener">YouTube에서 듣기</a></p>
               <p class="shared-memory-link"><a href="https://music.apple.com/us/album/the-melody-at-night-with-you/1440930475" target="_blank" rel="noopener">Apple Music에서 듣기</a></p>
@@ -2024,7 +2106,7 @@
               <p>그런데 퀄리티는 엄청 좋아졌는데 감동이 없는 경우가 있습니다. 반대로 퀄리티는 조금 떨어지지만 음악에 감동이 있는 경우도 있습니다. 여러분은 어느 쪽에 한 표를 주시겠어요?</p>
               <p>물론 퀄리티도 좋고 감동도 있는 시스템이 제일 좋겠죠 ^^</p>
               <p>오디오와 음악은 사람마다 다릅니다. 10분을 진하게 집중해서 듣는 분이 있는가 하면, 하루 종일 편안하게 틀어두는 분도 있습니다. 스타일이 이렇게 다양하니 정답이 하나일 수 없는 것이겠죠.</p>
-              <p>오디오가 좋아서 음악을 좋아하게 된 사람, 음악이 좋아서 오디오를 좋아하게 된 사람 — 출발점도 이유도 제각각입니다. 그 사연을 다 책으로 엮으면 제가 죽을 때까지도 연재가 끝나지 않을 것 같습니다.</p>
+              <p>오디오가 좋아서 음악을 좋아하게 된 사람, 음악이 좋아서 오디오를 좋아하게 된 사람. 출발점도 이유도 제각각입니다. 그 사연을 다 책으로 엮으면 제가 죽을 때까지도 연재가 끝나지 않을 것 같습니다.</p>
               <p>오디오 매칭 이야기를 하면서 서론이 좀 길었습니다.</p>
               <p><strong>오디오 매칭에서 가장 중요한 것</strong></p>
               <p><strong>1. 나의 취향과 나의 제약</strong><br>내가 듣는 음악 장르, 듣는 시간, 듣는 공간, 볼륨 수준, 함께 듣는 구성원, 그리고 나만의 취향.</p>
@@ -2032,7 +2114,7 @@
               <p><strong>3. 세팅</strong><br>오디오 배치, 청취 환경, 청음 위치.</p>
               <p>대부분 이런 것들을 간과하고 남들이 좋다는 것에만 집중하다 실패를 겪습니다. 하지만 그 실수와 실패는 분명 오디오라는 취미 안에서 우리를 성장시켜 줍니다. 아무리 베테랑이라도 처음에는 눈팅도 하고, 매칭에서 쓴맛도 보면서 지금에 이른 것이니까요.</p>
               <p>위 사항을 충분히 고민하고 시작해도 실패는 찾아옵니다. 하지만 너무 걱정하지 마세요. 시간이 지나면 분명 여러분만의 매칭을 찾게 될 것입니다.</p>
-              <p>그리고 한 가지 — 놀라지 마세요. 그렇게 좋다고 했던 조합도 시간이 지나면 "다른 매칭은 어떨까?" 하는 궁금증이 생깁니다 ㅋㅋㅋ</p>
+              <p>그리고 한 가지, 놀라지 마세요. 그렇게 좋다고 했던 조합도 시간이 지나면 "다른 매칭은 어떨까?" 하는 궁금증이 생깁니다 ㅋㅋㅋ</p>
               <p>다들 그렇게 바꿈질을 합니다. 나빠서가 아니라, 달라서요 ^^</p>
             </div>
 
@@ -2111,43 +2193,43 @@
             <img class="room-photo-image audio-gallery-photo" src="../assets/images/music-audio/gallery-img-3430.jpg" alt="오디오와 청취 공간 사진 5">
             <figcaption>매지코 A1, 정확한 소리.</figcaption>
           </figure>
-          <figure data-homepage-date="2026-06-07" data-sort-order="6" data-tags="음악·오디오별, 델라카사 신포점, 파스타집, 음악이 있는 공간, 매장 기억, 기존 공개 사진, 기억 문구 보강 후보, display-large" data-memory="델라카사 신포점. 음악이 있는 파스타집.">
+          <figure data-homepage-date="2026-06-07" data-sort-order="6" data-tags="음악·오디오별, 델라카사 신포점, 파스타집, 음악이 있는 공간, 매장 기억" data-memory="델라카사 신포점. 음악이 있는 파스타집.">
             <img class="room-photo-image audio-gallery-photo" src="../assets/images/music-audio/gallery-gptempdownload.jpg" alt="오디오와 청취 공간 사진 6">
             <figcaption>음악이 있던 델라카사 신포점.</figcaption>
           </figure>
-          <figure data-homepage-date="2026-06-07" data-sort-order="7" data-tags="음악·오디오별, Threads 기록, SPL, Director Mk2, Performer S800, 독일 오디오, 프로오디오, 하이파이 홈오디오, 프리앰프, 파워앰프, 애증의 기기, 세 번째 구입, 반려 오디오, 기존 공개 사진, 긴글 반영 완료, display-large" data-memory="프로오디오의 명가 독일 SPL이 하이파이 홈오디오 영역에 첫발을 디디며 내놓았던 기념비적인 조합. 프리앰프 Director Mk2와 Performer S800 파워앰프. 프로 장비 특유의 칼 같은 해상도와 모니터링 성향을 생각했다면 경기도 오산. 진공관 느낌의 따뜻함과 소리의 끝단을 정말 아름답게 다듬은 세련됨이 독보적이었다. 오디오를 접는다는 흔한 거짓말과 함께 방출했다가, 결국 이 소리를 잊지 못해 이 조합만 벌써 세 번째 들였었다. 지금도 가끔 문득문득 다시 들이고 싶어지는 걸 보니, 내 인생의 반려 오디오였나 싶다. 분명 스친 것들 중에도 팔고 나서 피눈물 흘리며 후회하는 장비나 물건이 있을 텐데, 다들 어떤 걸 보내고 후회하셨나요? 앰프 가격은 검색하지 마시라. 사악합니다. ㅋㅋ">
+          <figure data-homepage-date="2026-06-07" data-sort-order="7" data-tags="음악·오디오별, Threads 기록, SPL, Director Mk2, Performer S800, 독일 오디오, 프로오디오, 하이파이 홈오디오, 프리앰프, 파워앰프, 애증의 기기, 세 번째 구입, 반려 오디오" data-memory="프로오디오의 명가 독일 SPL이 하이파이 홈오디오 영역에 첫발을 디디며 내놓았던 기념비적인 조합. 프리앰프 Director Mk2와 Performer S800 파워앰프. 프로 장비 특유의 칼 같은 해상도와 모니터링 성향을 생각했다면 경기도 오산. 진공관 느낌의 따뜻함과 소리의 끝단을 정말 아름답게 다듬은 세련됨이 독보적이었다. 오디오를 접는다는 흔한 거짓말과 함께 방출했다가, 결국 이 소리를 잊지 못해 이 조합만 벌써 세 번째 들였었다. 지금도 가끔 문득문득 다시 들이고 싶어지는 걸 보니, 내 인생의 반려 오디오였나 싶다. 분명 스친 것들 중에도 팔고 나서 피눈물 흘리며 후회하는 장비나 물건이 있을 텐데, 다들 어떤 걸 보내고 후회하셨나요? 앰프 가격은 검색하지 마시라. 사악합니다. ㅋㅋ">
             <img class="room-photo-image audio-gallery-photo" src="../assets/images/music-audio/gallery-img-0912.jpg" alt="오디오와 청취 공간 사진 7">
             <figcaption>세 번째 들이게 만든 SPL Director Mk2와 Performer S800.</figcaption>
           </figure>
-          <figure data-homepage-date="2026-06-07" data-sort-order="8" data-tags="음악·오디오별, SPL, Director Mk2, S800, HiFi Rose, RS250, RSA 780E CD Drive, 미니멀 시스템, 준하이엔드, 올망졸망한 조합, 추천 기기, 기존 공개 사진, 기억 문구 보강 후보, display-large" data-memory="정말 최고의 올망졸망한 조합이었고, 소리도 좋았다. SPL Director Mk2, S800, HiFi Rose RS250, 그리고 HiFi Rose RSA 780E CD Drive. 이건 정말 강추할 만한 미니멀한 고급 준하이엔드 시스템이었다. 소리도 정말 좋았다.">
+          <figure data-homepage-date="2026-06-07" data-sort-order="8" data-tags="음악·오디오별, SPL, Director Mk2, S800, HiFi Rose, RS250, RSA 780E CD Drive, 미니멀 시스템, 준하이엔드, 올망졸망한 조합, 추천 기기" data-memory="정말 최고의 올망졸망한 조합이었고, 소리도 좋았다. SPL Director Mk2, S800, HiFi Rose RS250, 그리고 HiFi Rose RSA 780E CD Drive. 이건 정말 강추할 만한 미니멀한 고급 준하이엔드 시스템이었다. 소리도 정말 좋았다.">
             <img class="room-photo-image audio-gallery-photo" src="../assets/images/music-audio/gallery-dsc0e0307.jpg" alt="오디오와 청취 공간 사진 8">
             <figcaption>올망졸망하지만 소리는 좋았던 준하이엔드 시스템.</figcaption>
           </figure>
-          <figure data-homepage-date="2026-06-07" data-sort-order="9" data-tags="음악·오디오별, HiFi Rose, RA180, HiFi Rose의 첫 인티앰프, 가격 대비 잘 나온 앰프, 아쉬움도 많은 앰프, 사랑하는 앰프, 소장하고 싶은 기기, 기존 공개 사진, 기억 문구 보강 후보, display-large" data-memory="HiFi Rose에서 만든 첫 인티앰프, RA180. 이건 정말 가격 대비 너무 잘 나온 앰프였다. 그런데 아쉬움도 많았다. 지금 여기서 그 이야기를 다 풀기는 그렇지만, 그래도 정말 내가 사랑하는 앰프다. 소장하고 싶을 정도로.">
+          <figure data-homepage-date="2026-06-07" data-sort-order="9" data-tags="음악·오디오별, HiFi Rose, RA180, HiFi Rose의 첫 인티앰프, 가격 대비 잘 나온 앰프, 아쉬움도 많은 앰프, 사랑하는 앰프, 소장하고 싶은 기기" data-memory="HiFi Rose에서 만든 첫 인티앰프, RA180. 이건 정말 가격 대비 너무 잘 나온 앰프였다. 그런데 아쉬움도 많았다. 지금 여기서 그 이야기를 다 풀기는 그렇지만, 그래도 정말 내가 사랑하는 앰프다. 소장하고 싶을 정도로.">
             <img class="room-photo-image audio-gallery-photo" src="../assets/images/music-audio/gallery-img-6294.jpg" alt="오디오와 청취 공간 사진 9">
             <figcaption>아쉬움까지 포함해서 사랑하는 RA180.</figcaption>
           </figure>
-          <figure data-homepage-date="2026-06-07" data-sort-order="10" data-tags="음악·오디오별, 클래식, 공연 영상, 피아노 연주, 카티아 부니아티쉬빌리, Khatia Buniatishvili, 리액션, 표정 연기, 앨범 소장, 기존 공개 사진, 기억 문구 보강 후보, display-large" data-memory="클래식에 빠지게 했던 공연 영상의 인물, 카티아 부니아티쉬빌리. 피아노 연주도 좋았지만, 리액션과 표정 연기도 좋았다. 그래서 내가 앨범까지 소장하고 있다.">
+          <figure data-homepage-date="2026-06-07" data-sort-order="10" data-tags="음악·오디오별, 클래식, 공연 영상, 피아노 연주, 카티아 부니아티쉬빌리, Khatia Buniatishvili, 리액션, 표정 연기, 앨범 소장" data-memory="클래식에 빠지게 했던 공연 영상의 인물, 카티아 부니아티쉬빌리. 피아노 연주도 좋았지만, 리액션과 표정 연기도 좋았다. 그래서 내가 앨범까지 소장하고 있다.">
             <img class="room-photo-image audio-gallery-photo" src="../assets/images/music-audio/gallery-img-2654.jpg" alt="오디오와 청취 공간 사진 10">
             <figcaption>클래식에 빠지게 했던 카티아 부니아티쉬빌리.</figcaption>
           </figure>
-          <figure data-homepage-date="2026-06-07" data-sort-order="11" data-tags="음악·오디오별, 판도라 파워 후보, HiFi Rose, RS250, 프리앰프 활용, 최고의 조합, 힘 있는 소리, 사용 편리성, 가격 대비 조합, 다시 구입 고민, 기존 공개 사진, 기억 문구 보강 후보, display-large" data-memory="이건 정말 내가 사용한 최고의 조합이었다. 판도라 파워와 HiFi Rose RS250을 프리로 사용한 것. 이 가격에 최고의 힘과 사용 편리성을 가진 조합이었다. 다시 이 세트를 구입해 볼까?">
+          <figure data-homepage-date="2026-06-07" data-sort-order="11" data-tags="음악·오디오별, 판도라 파워 후보, HiFi Rose, RS250, 프리앰프 활용, 최고의 조합, 힘 있는 소리, 사용 편리성, 가격 대비 조합, 다시 구입 고민" data-memory="이건 정말 내가 사용한 최고의 조합이었다. 판도라 파워와 HiFi Rose RS250을 프리로 사용한 것. 이 가격에 최고의 힘과 사용 편리성을 가진 조합이었다. 다시 이 세트를 구입해 볼까?">
             <img class="room-photo-image audio-gallery-photo" src="../assets/images/music-audio/gallery-img-5761.jpg" alt="오디오와 청취 공간 사진 11">
             <figcaption>다시 구입을 고민하게 만드는 최고의 조합.</figcaption>
           </figure>
-          <figure data-homepage-date="2026-06-07" data-sort-order="12" data-tags="음악·오디오별, HiFi Rose, RA180, RS130, Musician Pegasus DAC, Piega Coax 311, 스위스 스피커, 중국 DAC, 좋았던 조합, 미친 조합, 기존 공개 사진, 기억 문구 보강 후보, display-large" data-memory="HiFi Rose RA180, HiFi Rose RS130, 그리고 중국의 Musician Pegasus DAC. 스피커는 스위스의 Piega Coax 311. 이 조합은 미쳤었지. 정말 좋았었다.">
+          <figure data-homepage-date="2026-06-07" data-sort-order="12" data-tags="음악·오디오별, HiFi Rose, RA180, RS130, Musician Pegasus DAC, Piega Coax 311, 스위스 스피커, 중국 DAC, 좋았던 조합, 미친 조합" data-memory="HiFi Rose RA180, HiFi Rose RS130, 그리고 중국의 Musician Pegasus DAC. 스피커는 스위스의 Piega Coax 311. 이 조합은 미쳤었지. 정말 좋았었다.">
             <img class="room-photo-image audio-gallery-photo" src="../assets/images/music-audio/gallery-img-7719.jpg" alt="오디오와 청취 공간 사진 12">
             <figcaption>RA180과 RS130, Pegasus DAC, Piega Coax 311의 미친 조합.</figcaption>
           </figure>
-          <figure data-homepage-date="2026-06-07" data-sort-order="13" data-tags="음악·오디오별, TCHERNOV ULTIMATE ANALOG IC RCA, Tchernov Ultimate Analog IC RCA, HiFi Rose RS250, 인터케이블, RCA 케이블, 오디오 케이블, 기기보다 비싼 케이블, 웃픈 오디오 생활, 기존 공개 사진, 기억 문구 보강 후보, display-large" data-memory="기기보다 비싼 인터케이블. ㅋㅋ TCHERNOV ULTIMATE ANALOG IC RCA와 HiFi Rose RS250.">
+          <figure data-homepage-date="2026-06-07" data-sort-order="13" data-tags="음악·오디오별, TCHERNOV ULTIMATE ANALOG IC RCA, Tchernov Ultimate Analog IC RCA, HiFi Rose RS250, 인터케이블, RCA 케이블, 오디오 케이블, 기기보다 비싼 케이블, 웃픈 오디오 생활" data-memory="기기보다 비싼 인터케이블. ㅋㅋ TCHERNOV ULTIMATE ANALOG IC RCA와 HiFi Rose RS250.">
             <img class="room-photo-image audio-gallery-photo" src="../assets/images/music-audio/gallery-img-8346.jpg" alt="오디오와 청취 공간 사진 13">
             <figcaption>기기보다 비쌌던 TCHERNOV ULTIMATE ANALOG IC RCA.</figcaption>
           </figure>
-          <figure data-homepage-date="2026-06-07" data-sort-order="14" data-tags="음악·오디오별, Usher SD-500, 어셔 SD-500, 대만 스피커, 다이아몬드 트위터, 가격 대비 성능, 100만 원대 중고, 작은 스피커, 훌륭한 마감, 추천 스피커, 기존 공개 사진, 기억 문구 보강 후보, display-large" data-memory="대만에서 만든 스피커, Usher SD-500. 다이아몬드 트위터를 갖고 있으며 가격 대비 성능이 뛰어나다. 작은 덩치에서 정말 멋진 음악을 재생하고, 심지어 마감도 너무 훌륭하다. 100만 원대 중고로 이것보다 더 좋은 다이아몬드 트위터 스피커가 있을까? 무조건 써볼 스피커 중 하나다.">
+          <figure data-homepage-date="2026-06-07" data-sort-order="14" data-tags="음악·오디오별, Usher SD-500, 어셔 SD-500, 대만 스피커, 다이아몬드 트위터, 가격 대비 성능, 100만 원대 중고, 작은 스피커, 훌륭한 마감, 추천 스피커" data-memory="대만에서 만든 스피커, Usher SD-500. 다이아몬드 트위터를 갖고 있으며 가격 대비 성능이 뛰어나다. 작은 덩치에서 정말 멋진 음악을 재생하고, 심지어 마감도 너무 훌륭하다. 100만 원대 중고로 이것보다 더 좋은 다이아몬드 트위터 스피커가 있을까? 무조건 써볼 스피커 중 하나다.">
             <img class="room-photo-image audio-gallery-photo" src="../assets/images/music-audio/gallery-img-7693.jpg" alt="오디오와 청취 공간 사진 14">
             <figcaption>작은 덩치에서 멋진 음악을 들려준 Usher SD-500.</figcaption>
           </figure>
-          <figure data-homepage-date="2026-06-11" data-sort-order="15" data-tags="음악·오디오별, 델라카사 청라점, 폐업 이후, 우리끼리오디오, 유튜브 시작, 밤늦게 음악 듣기, Sopra 2, SPL, HiFi Rose, 스피커 이름 확인 필요, 기존 공개 사진, display-large" data-memory="델라카사 청라점 가게를 폐업하고, 여기서 유튜브를 시작했다. 우리끼리오디오. 그리고 저기서 정말 음악을 많이 들었다. 밤늦게까지 Sopra 2, SPL, HiFi Rose, 그리고 저 스피커는 이름이 갑자기 생각나지 않는다.">
+          <figure data-homepage-date="2026-06-11" data-sort-order="15" data-tags="음악·오디오별, 델라카사 청라점, 폐업 이후, 우리끼리오디오, 유튜브 시작, 밤늦게 음악 듣기, Sopra 2, SPL, HiFi Rose" data-memory="델라카사 청라점 가게를 폐업하고, 여기서 유튜브를 시작했다. 우리끼리오디오. 그리고 저기서 정말 음악을 많이 들었다. 밤늦게까지 Sopra 2, SPL, HiFi Rose, 그리고 저 스피커는 이름이 갑자기 생각나지 않는다.">
             <img class="room-photo-image audio-gallery-photo" src="../assets/images/music-audio/audio-matching-01.jpeg" alt="오디오 매칭을 위해 여러 스피커와 앰프가 세팅된 청음 공간">
             <figcaption>델라카사 청라점 이후, 우리끼리오디오가 시작된 자리.</figcaption>
           </figure>
@@ -2170,7 +2252,7 @@
 
     <section class="star-exit" id="star-list" aria-labelledby="star-list-title">
       <h2 id="star-list-title">별자리</h2>
-      <p class="intro">이 별은 HAM MEDIA Design MD 방식으로 정리한 별입니다. 좋아하는 것의 감각을 브랜드의 기준으로 바꾸는 실험이기도 합니다.</p>
+      <p class="intro">이 별은 좋아하는 소리와 오래 남은 장면을 한 사람의 세계로 엮었습니다. 다른 별에는 또 다른 취향과 시간이 흐릅니다.</p>
       <div class="star-grid" aria-label="별자리 목록">
         <a class="star-button" href="fountain-pens.html">만년필별</a>
         <a class="star-button active" href="music-audio.html" aria-current="page">음악·오디오별 <span class="star-signal" aria-label="현재 별"></span></a>
@@ -2187,10 +2269,18 @@
         <a class="bottom-link" href="ham-media-work.html">그래서, 지금은 이런 일을 합니다</a>
         <a class="bottom-link" href="https://hammedia.github.io/design-brief/">Design MD 만드는 도구</a>
       </div>
-      <footer class="footer">음악·오디오별 · LPH-B613-08 · HAM MEDIA · Design MD로 만든 별 페이지</footer>
+      <footer class="footer">음악·오디오별 · LPH-B613-08 · HAM MEDIA 별자리</footer>
     </section>
   </main>
 
+  <div class="audio-v2-vu-rail" aria-hidden="true">
+    <span class="audio-v2-vu-label">VU</span>
+    <span class="audio-v2-vu-track"><i class="audio-v2-vu-fill"></i><i class="audio-v2-vu-needle"></i></span>
+    <span class="audio-v2-vu-db">−20<br />−10<br />0<br />+3</span>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+  <script src="../assets/js/music-audio-motion.js?v=20260825c"></script>
   <script src="../assets/js/main.js?v=room-context-nav-v2-ga4-events-v1"></script>
 </body>
 </html>
