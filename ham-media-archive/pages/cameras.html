@@ -224,12 +224,12 @@
       border: 1px solid var(--line-dark);
       background:
         linear-gradient(180deg, transparent 48%, rgba(11, 13, 15, 0.88)),
-        url("../assets/images/cameras/hero-camera-notebook.jpg") center / cover no-repeat;
+        url("../assets/images/cameras/gallery-camera-self-portrait.jpg") center / cover no-repeat;
       box-shadow: inset 0 0 0 1px rgba(239, 229, 210, 0.08);
     }
 
     .hero-photo::after {
-      content: "작업 책상 위에 놓인 카메라. 보여주기보다, 남길 것을 고르는 자리.";
+      content: "거울 앞에서 카메라를 든 자화상. 찍는 사람도 프레임 안에 남았다.";
       position: absolute;
       left: var(--space-5);
       right: var(--space-5);
@@ -591,6 +591,327 @@
       line-height: 1.8;
     }
 
+    .story-sequence {
+      position: relative;
+      display: grid;
+      gap: 1px;
+      background: var(--line-dark);
+      border: 1px solid var(--line-dark);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    .story-sequence::before {
+      content: "";
+      position: absolute;
+      left: 54px;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: linear-gradient(var(--color-red), var(--color-glass), var(--color-blue));
+      z-index: 2;
+    }
+
+    .story-step {
+      min-height: 230px;
+      display: grid;
+      grid-template-columns: 108px minmax(0, 1fr) minmax(220px, 0.52fr);
+      gap: var(--space-6);
+      align-items: center;
+      padding: var(--space-6);
+      background: rgba(11, 13, 15, 0.92);
+    }
+
+    .story-step-number {
+      position: relative;
+      z-index: 3;
+      display: grid;
+      place-items: center;
+      width: 48px;
+      height: 48px;
+      border: 1px solid var(--line-dark);
+      border-radius: 50%;
+      color: var(--color-silver);
+      background: var(--color-film);
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      transition: color 360ms ease, border-color 360ms ease, box-shadow 360ms ease;
+    }
+
+    .story-step.is-seen .story-step-number {
+      color: var(--ink-on-dark);
+      border-color: var(--color-glass);
+      box-shadow: 0 0 0 6px rgba(79, 143, 122, 0.12), 0 0 28px rgba(79, 143, 122, 0.25);
+    }
+
+    .story-step h3 {
+      margin: 0;
+      font-family: var(--font-star);
+      font-size: clamp(32px, 4vw, 62px);
+      line-height: 1;
+      font-weight: 500;
+    }
+
+    .story-step p {
+      margin: var(--space-3) 0 0;
+      color: var(--muted-on-dark);
+      font-size: var(--body);
+      line-height: 1.7;
+    }
+
+    .story-step-echo {
+      color: var(--color-silver);
+      font-size: 12px;
+      line-height: 1.7;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .selection-lab {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(300px, 0.65fr);
+      gap: var(--space-4);
+      color: var(--ink-on-dark);
+    }
+
+    .selection-stage {
+      position: relative;
+      min-height: 700px;
+      display: grid;
+      grid-template-rows: minmax(0, 1fr) auto;
+      overflow: hidden;
+      border: 1px solid rgba(11, 13, 15, 0.3);
+      border-radius: var(--radius);
+      background: var(--color-film);
+    }
+
+    .selection-stage::before,
+    .selection-stage::after {
+      content: "";
+      position: absolute;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .selection-stage::before {
+      inset: 22px;
+      border: 1px solid rgba(239, 229, 210, 0.28);
+    }
+
+    .selection-stage::after {
+      left: 50%;
+      top: 22px;
+      bottom: 132px;
+      width: 1px;
+      background: rgba(239, 229, 210, 0.16);
+      box-shadow: -24vw 0 rgba(239, 229, 210, 0.08), 24vw 0 rgba(239, 229, 210, 0.08);
+    }
+
+    .selection-stage-media {
+      min-height: 0;
+      display: grid;
+      place-items: center;
+      padding: 42px;
+      background: radial-gradient(circle at center, rgba(79, 143, 122, 0.14), transparent 48%);
+    }
+
+    .selection-stage img {
+      display: block;
+      width: auto;
+      height: auto;
+      max-width: 100%;
+      max-height: 560px;
+      object-fit: contain;
+      object-position: center;
+      opacity: 1;
+      transform: scale(1);
+      transition: opacity 180ms ease, transform 420ms cubic-bezier(.2,.8,.2,1);
+    }
+
+    .selection-stage.is-changing img {
+      opacity: 0.24;
+      transform: scale(0.985);
+    }
+
+    .selection-stage-copy {
+      position: relative;
+      z-index: 3;
+      padding: var(--space-5);
+      border-top: 1px solid rgba(239, 229, 210, 0.18);
+      background: rgba(11, 13, 15, 0.94);
+    }
+
+    .selection-counter {
+      margin: 0 0 var(--space-2);
+      color: var(--color-glass);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+    }
+
+    .selection-stage-copy h3 {
+      margin: 0;
+      font-family: var(--font-star);
+      font-size: clamp(28px, 3vw, 44px);
+      line-height: 1.1;
+      font-weight: 500;
+    }
+
+    .selection-stage-copy p:last-child {
+      margin: var(--space-3) 0 0;
+      color: var(--muted-on-dark);
+      font-size: 15px;
+      line-height: 1.65;
+    }
+
+    .selection-choices {
+      display: grid;
+      align-content: start;
+      gap: var(--space-2);
+    }
+
+    .selection-choice {
+      min-height: 112px;
+      display: grid;
+      grid-template-columns: 88px minmax(0, 1fr);
+      gap: var(--space-3);
+      align-items: center;
+      padding: var(--space-2);
+      border: 1px solid rgba(11, 13, 15, 0.18);
+      border-radius: var(--radius);
+      color: var(--color-film);
+      background: rgba(255, 255, 255, 0.22);
+      text-align: left;
+      cursor: pointer;
+      transition: background 180ms ease, border-color 180ms ease, transform 180ms ease;
+    }
+
+    .selection-choice:hover,
+    .selection-choice:focus-visible {
+      border-color: var(--color-glass);
+      transform: translateX(-4px);
+    }
+
+    .selection-choice[aria-pressed="true"] {
+      color: var(--ink-on-dark);
+      border-color: var(--color-film);
+      background: var(--color-film);
+    }
+
+    .selection-choice img {
+      display: block;
+      width: 88px;
+      height: 88px;
+      object-fit: cover;
+      border-radius: 3px;
+    }
+
+    .selection-choice strong,
+    .selection-choice small {
+      display: block;
+    }
+
+    .selection-choice strong {
+      font-family: var(--font-star);
+      font-size: 20px;
+      font-weight: 500;
+    }
+
+    .selection-choice small {
+      margin-top: 6px;
+      color: currentColor;
+      font-size: 12px;
+      line-height: 1.45;
+      opacity: 0.66;
+    }
+
+    .archive-gate {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: var(--space-6);
+      align-items: end;
+      padding: var(--space-7);
+      border: 1px solid var(--line-dark);
+      border-radius: var(--radius);
+      background:
+        linear-gradient(115deg, rgba(79, 143, 122, 0.14), transparent 34%),
+        repeating-linear-gradient(90deg, transparent 0 72px, rgba(183, 188, 192, 0.06) 72px 73px),
+        rgba(42, 48, 53, 0.66);
+    }
+
+    .archive-count {
+      margin: 0;
+      font-family: var(--font-star);
+      font-size: clamp(72px, 13vw, 180px);
+      line-height: 0.78;
+      font-weight: 500;
+      color: var(--ink-on-dark);
+    }
+
+    .archive-gate h3 {
+      margin: var(--space-5) 0 0;
+      font-family: var(--font-star);
+      font-size: var(--h2);
+      font-weight: 500;
+    }
+
+    .archive-gate p {
+      max-width: 720px;
+      margin: var(--space-3) 0 0;
+      color: var(--muted-on-dark);
+      font-size: var(--body);
+      line-height: 1.75;
+    }
+
+    .archive-open {
+      min-width: 210px;
+      min-height: 58px;
+      border: 1px solid var(--color-glass);
+      border-radius: var(--radius);
+      color: var(--ink-on-dark);
+      background: rgba(79, 143, 122, 0.16);
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+    .editing-path {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1px;
+      border: 1px solid var(--line-dark);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--line-dark);
+    }
+
+    .editing-path article {
+      min-height: 250px;
+      padding: var(--space-5);
+      background: rgba(11, 13, 15, 0.94);
+    }
+
+    .editing-path b {
+      display: block;
+      color: var(--color-glass);
+      font-size: 12px;
+      letter-spacing: 0.12em;
+    }
+
+    .editing-path h3 {
+      margin: var(--space-6) 0 var(--space-3);
+      font-family: var(--font-star);
+      font-size: 30px;
+      font-weight: 500;
+    }
+
+    .editing-path p {
+      margin: 0;
+      color: var(--muted-on-dark);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
     .star-exit {
       padding: var(--space-9) 0 var(--space-7);
     }
@@ -688,6 +1009,28 @@
 
       .star-grid {
         grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .selection-lab {
+        grid-template-columns: 1fr;
+      }
+
+      .selection-choices {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+      }
+
+      .selection-choice {
+        min-height: 0;
+        grid-template-columns: 1fr;
+      }
+
+      .selection-choice img {
+        width: 100%;
+        height: 112px;
+      }
+
+      .editing-path {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
 
@@ -851,6 +1194,77 @@
     body.variant-mobile .star-grid {
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: var(--space-2);
+    }
+
+    body.variant-mobile .story-sequence::before {
+      left: 31px;
+    }
+
+    body.variant-mobile .story-step {
+      min-height: 0;
+      grid-template-columns: 46px minmax(0, 1fr);
+      gap: var(--space-3);
+      padding: var(--space-4) var(--space-3);
+    }
+
+    body.variant-mobile .story-step-number {
+      width: 36px;
+      height: 36px;
+    }
+
+    body.variant-mobile .story-step-echo {
+      grid-column: 2;
+    }
+
+    body.variant-mobile .selection-stage {
+      min-height: 560px;
+    }
+
+    body.variant-mobile .selection-stage-media {
+      padding: var(--space-4);
+    }
+
+    body.variant-mobile .selection-stage::before {
+      inset: 12px;
+    }
+
+    body.variant-mobile .selection-choices {
+      grid-template-columns: 1fr;
+    }
+
+    body.variant-mobile .selection-choice {
+      grid-template-columns: 76px minmax(0, 1fr);
+      min-height: 92px;
+    }
+
+    body.variant-mobile .selection-choice img {
+      width: 76px;
+      height: 76px;
+    }
+
+    body.variant-mobile .archive-gate {
+      grid-template-columns: 1fr;
+      padding: var(--space-4);
+    }
+
+    body.variant-mobile .archive-open {
+      width: 100%;
+    }
+
+    body.variant-mobile .editing-path {
+      grid-template-columns: 1fr;
+    }
+
+    body.variant-mobile .editing-path article {
+      min-height: 0;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .story-step-number,
+      .selection-stage img,
+      .selection-choice {
+        transition: none;
+      }
     }
 
     body.variant-mobile .star-button {
@@ -1344,6 +1758,71 @@
       }
     }
 
+    @media (max-width: 720px) {
+      .story-sequence::before {
+        left: 31px;
+      }
+
+      .story-step {
+        min-height: 0;
+        grid-template-columns: 46px minmax(0, 1fr);
+        gap: var(--space-3);
+        padding: var(--space-4) var(--space-3);
+      }
+
+      .story-step-number {
+        width: 36px;
+        height: 36px;
+      }
+
+      .story-step-echo {
+        grid-column: 2;
+      }
+
+      .selection-stage {
+        min-height: 560px;
+      }
+
+      .selection-stage-media {
+        padding: var(--space-4);
+      }
+
+      .selection-stage::before {
+        inset: 12px;
+      }
+
+      .selection-choices {
+        grid-template-columns: 1fr;
+      }
+
+      .selection-choice {
+        grid-template-columns: 76px minmax(0, 1fr);
+        min-height: 92px;
+      }
+
+      .selection-choice img {
+        width: 76px;
+        height: 76px;
+      }
+
+      .archive-gate {
+        grid-template-columns: 1fr;
+        padding: var(--space-4);
+      }
+
+      .archive-open {
+        width: 100%;
+      }
+
+      .editing-path {
+        grid-template-columns: 1fr;
+      }
+
+      .editing-path article {
+        min-height: 0;
+      }
+    }
+
     /* Photo room sizing: desktop 4, tablet 3, mobile 2. */
     #camera-photo-room {
       background: var(--color-film);
@@ -1448,7 +1927,7 @@
     </script>
   </head>
 <body>
-  <main class="sheet room-house-page camera-room camera-style-page" id="camera-star" data-article-nav-label="문장 이동" data-article-list-label="문장" data-article-prev-label="이전 문장" data-article-next-label="다음 문장" data-photo-list-label="장면" data-room-context-nav="true" data-article-house-target="camera-writing-room" data-photo-house-target="camera-photo-room" data-map-house-target="camera-map-room" data-star-list-target="star-list">
+  <main class="sheet room-house-page camera-room camera-style-page" id="camera-star" data-article-nav-label="문장 이동" data-article-list-label="문장" data-article-prev-label="이전 문장" data-article-next-label="다음 문장" data-photo-list-label="장면" data-map-list-label="디자인" data-room-context-nav="true" data-article-house-target="camera-writing-room" data-photo-house-target="camera-photo-room" data-map-house-target="camera-map-room" data-design-house-target="camera-map-room" data-star-list-target="star-list">
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-text">
         <p class="eyebrow">카메라별 · LPH-B613-09 · HAM MEDIA 별자리</p>
@@ -1461,7 +1940,7 @@
         <nav class="entry-nav room-house-nav" aria-label="카메라별 입구">
           <button class="entry-link room-house-door" type="button" data-scroll-target="#camera-writing" data-house-target="camera-writing-room">문장</button>
           <button class="entry-link room-house-door" type="button" data-scroll-target="#camera-photos" data-house-target="camera-photo-room">장면</button>
-          <button class="entry-link room-house-door" type="button" data-scroll-target="#camera-map" data-house-target="camera-map-room">지도</button>
+          <button class="entry-link room-house-door" type="button" data-scroll-target="#camera-map" data-house-target="camera-map-room">디자인</button>
           <a class="entry-link" href="#star-list">별자리</a>
         </nav>
         <div class="stamp-wrap" aria-label="카메라별 스탬프">
@@ -1469,50 +1948,72 @@
         </div>
         <div class="star-code-pill">LPH-B613-09 <span class="star-signal" aria-label="열린 별"></span></div>
       </div>
-      <div class="hero-photo" role="img" aria-label="작업 책상 위 카메라와 노트"></div>
+      <div class="hero-photo" role="img" aria-label="거울 앞에서 카메라를 든 자화상"></div>
     </section>
 
     <section class="section" id="camera-color">
       <div class="section-head">
-        <div class="section-number">01 / 색의 방향</div>
+        <div class="section-number">01 / 눈이 생긴 순서</div>
         <div>
-          <h2>검은 필름 벽 위에, 신호만 작게 켠다.</h2>
-          <p class="section-intro">카메라별의 색은 많이 말하지 않는다. 검정은 벽이 되고, 베이지는 읽는 면이 되고, 초록과 빨강과 파랑은 렌즈와 각인처럼 아주 작은 순간에만 보인다.</p>
+          <h2>처음부터 잘 고른 것은 아니었다.</h2>
+          <p class="section-intro">두려움이 먼저 있었고, 그다음에는 많이 찍었다. 남길 한 장을 고르는 눈은 실패한 프레임까지 다시 보는 동안 조금씩 생겼다.</p>
         </div>
       </div>
-      <div class="color-grid" aria-label="카메라별 색">
-        <div class="color-card" style="background: var(--color-film);"><div><strong>필름 블랙</strong><code>#0b0d0f</code></div><p>첫 화면의 벽. 장비보다 시작 전의 조용함.</p></div>
-        <div class="color-card" style="background: var(--color-focus);"><div><strong>딥 포커스 그레이</strong><code>#2a3035</code></div><p>어두운 면 사이의 깊이. 설명보다 여백.</p></div>
-        <div class="color-card light-ink" style="background: var(--color-silver);"><div><strong>셔터 실버</strong><code>#b7bcc0</code></div><p>금속 선, 프레임, 조심스러운 기준선.</p></div>
-        <div class="color-card light-ink" style="background: var(--color-photo);"><div><strong>오래된 사진 베이지</strong><code>#efe5d2</code></div><p>긴 글과 사진 메모가 놓이는 종이.</p></div>
-        <div class="color-card light-ink" style="background: var(--color-glass);"><div><strong>렌즈 유리 그린</strong><code>#4f8f7a</code></div><p>살아 있는 별, 선택된 순간의 작은 신호.</p></div>
-        <div class="color-card" style="background: var(--color-red);"><div><strong>정밀한 레드</strong><code>#c8102e</code></div><p>카메라 몸체의 작은 각인처럼 한 번만.</p></div>
-        <div class="color-card" style="background: var(--color-blue);"><div><strong>렌즈 코팅 블루</strong><code>#4f8aff</code></div><p>스탬프와 렌즈 반사에만 남기는 푸른 점.</p></div>
+      <div class="story-sequence" aria-label="카메라별 이야기의 세 단계">
+        <article class="story-step" data-focus-step>
+          <span class="story-step-number">01</span>
+          <div><h3>두려움</h3><p>잘 못 찍을까 봐 카메라를 들기 전에 오래 망설였다.</p></div>
+          <div class="story-step-echo">Before the shot<br />손이 멈추던 시간</div>
+        </article>
+        <article class="story-step" data-focus-step>
+          <span class="story-step-number">02</span>
+          <div><h3>많이 찍음</h3><p>잘 찍을 때까지 기다리지 않고, 일단 들고 나가 여러 장을 남겼다.</p></div>
+          <div class="story-step-echo">Contact sheet<br />실패까지 쌓인 기록</div>
+        </article>
+        <article class="story-step" data-focus-step>
+          <span class="story-step-number">03</span>
+          <div><h3>고르는 눈</h3><p>무엇을 더 넣을지보다, 무엇을 빼야 이야기가 남는지 보기 시작했다.</p></div>
+          <div class="story-step-echo">Final selection<br />남길 이유가 있는 한 장</div>
+        </article>
       </div>
     </section>
 
     <section class="section light" id="camera-type">
       <div class="section-head">
-        <div class="section-number">02 / 말의 리듬</div>
+        <div class="section-number">02 / 고르는 눈의 편집실</div>
         <div>
-          <h2>잘 찍는다는 말보다, 고르는 눈을 말한다.</h2>
-          <p class="section-intro">짧은 문장은 차갑고 정확하게 세운다. 긴 글은 손에 힘을 빼고 읽히게 둔다. 카메라별의 말은 자랑보다 통과의 기록에 가깝다.</p>
+          <h2>다섯 장을 직접 골라본다.</h2>
+          <p class="section-intro">같은 크기의 카드에 사진을 밀어 넣지 않았다. 가로 사진은 가로로, 세로 사진은 세로로 읽히게 두고 한 번에 한 장씩 선택한다.</p>
         </div>
       </div>
-      <div class="rhythm-grid">
-        <div class="type-stack">
-          <article class="type-panel" style="background: var(--color-film); color: var(--ink-on-dark);">
-            <h3>무엇을 담을지보다,<br />무엇을 뺄지 아는 별.</h3>
-            <p>별 이름과 핵심 문장에는 Paperlogy를 쓴다. 짧게, 딱 렌즈 링에 새긴 말처럼.</p>
-          </article>
-          <article class="type-panel" style="background: rgba(11, 13, 15, 0.06); color: var(--color-film); border-color: var(--line-light);">
-            <h3 style="color: var(--color-film);">많이 찍어봐야 안다.</h3>
-            <p style="color: var(--muted-on-light);">긴 이야기는 Pretendard로 둔다. 두려움, 시작, 고르는 안목은 읽혀야 남는다.</p>
-          </article>
+      <div class="selection-lab" data-selection-lab>
+        <figure class="selection-stage">
+          <div class="selection-stage-media">
+            <img src="../assets/images/cameras/gallery-camera-self-portrait.jpg" width="1100" height="1100" alt="거울 앞에서 카메라를 든 자화상" data-selection-image />
+          </div>
+          <figcaption class="selection-stage-copy">
+            <p class="selection-counter" data-selection-counter>SELECTED 01 / 05</p>
+            <h3 data-selection-title>찍는 사람</h3>
+            <p data-selection-reason>카메라만 보여주지 않고, 그 카메라를 든 사람까지 한 장에 남겼다.</p>
+          </figcaption>
+        </figure>
+        <div class="selection-choices" aria-label="대표 장면 선택">
+          <button class="selection-choice" type="button" aria-pressed="true" data-src="../assets/images/cameras/gallery-camera-self-portrait.jpg" data-width="1100" data-height="1100" data-max-width="1100px" data-alt="거울 앞에서 카메라를 든 자화상" data-title="찍는 사람" data-reason="카메라만 보여주지 않고, 그 카메라를 든 사람까지 한 장에 남겼다.">
+            <img src="../assets/images/cameras/gallery-camera-self-portrait.jpg" width="1100" height="1100" alt="" /><span><strong>01 찍는 사람</strong><small>1100 × 1100 · 정방형</small></span>
+          </button>
+          <button class="selection-choice" type="button" aria-pressed="false" data-src="../assets/images/cameras/camera-original-20260604-001-cyworld-image-001.jpg" data-width="513" data-height="770" data-max-width="513px" data-alt="김포공항 2호점 테라스에서 바라본 노을" data-title="다시 본 노을" data-reason="카메라를 시작한 뒤 무엇을 보더라도 다시 한 번 바라보게 된 순간이라서 남겼다.">
+            <img src="../assets/images/cameras/camera-original-20260604-001-cyworld-image-001.jpg" width="513" height="770" alt="" /><span><strong>02 다시 본 노을</strong><small>513 × 770 · 세로</small></span>
+          </button>
+          <button class="selection-choice" type="button" aria-pressed="false" data-src="../assets/images/cameras/camera-original-20260604-026-ef135mm2.0l.jpg" data-width="400" data-height="600" data-max-width="400px" data-alt="벌이 들어온 주안3동 집 마당의 꽃" data-title="곁이 생긴 꽃" data-reason="같은 꽃도 누가 곁에 있느냐에 따라 분위기가 달라지는 장면이라서 남겼다.">
+            <img src="../assets/images/cameras/camera-original-20260604-026-ef135mm2.0l.jpg" width="400" height="600" alt="" /><span><strong>03 곁이 생긴 꽃</strong><small>400 × 600 · 세로</small></span>
+          </button>
+          <button class="selection-choice" type="button" aria-pressed="false" data-src="../assets/images/cameras/camera-original-20260604-030-40mm4l.jpg" data-width="580" data-height="386" data-max-width="580px" data-alt="시애틀의 물가와 도시 풍경" data-title="넓어진 시애틀" data-reason="17mm의 넓은 시선으로 여행지의 거리와 물가를 함께 남긴 장면이라서 골랐다.">
+            <img src="../assets/images/cameras/camera-original-20260604-030-40mm4l.jpg" width="580" height="386" alt="" /><span><strong>04 넓어진 시애틀</strong><small>580 × 386 · 가로</small></span>
+          </button>
+          <button class="selection-choice" type="button" aria-pressed="false" data-src="../assets/images/cameras/camera-original-20260604-035-ef135mm2.0l.jpg" data-width="400" data-height="600" data-max-width="400px" data-alt="주안3동 집 거실의 엄마 재봉틀" data-title="엄마의 재봉틀" data-reason="공간과 가족과 시간이 한 장 안에 함께 남아 있는 생활의 기억이라서 골랐다.">
+            <img src="../assets/images/cameras/camera-original-20260604-035-ef135mm2.0l.jpg" width="400" height="600" alt="" /><span><strong>05 엄마의 재봉틀</strong><small>400 × 600 · 세로</small></span>
+          </button>
         </div>
-        <article class="quote-panel">
-          <p>두려움을 통과해야<br />눈이 생긴다.</p>
-        </article>
       </div>
     </section>
 
@@ -1521,7 +2022,7 @@
         <div class="section-number">03 / 별 안으로</div>
         <div>
           <h2>이 별은 전시장보다 작업실에 가깝다.</h2>
-          <p class="section-intro">문장은 두려움에서 시작하고, 장면은 많이 찍은 뒤 남긴 것만 보인다. 지도는 아직 메뉴가 아니라 찍고 고르고 다시 보는 좌표를 천천히 모으는 일이다.</p>
+          <p class="section-intro">문장은 두려움에서 시작하고, 장면은 대표 다섯 장 뒤의 전체 기록을 연다. 디자인은 색 이름을 설명하지 않고 초점·선택선·덜어내기가 실제로 어떻게 쓰였는지 보여준다.</p>
         </div>
       </div>
       <div class="doors">
@@ -1534,8 +2035,8 @@
           <span>장면</span>
         </button>
         <button class="door-panel room-house-door" type="button" data-scroll-target="#camera-map" data-house-target="camera-map-room">
-          <div><h3>지도</h3><p>완성된 길보다, 찍고 고르고 다시 보는 동선.</p></div>
-          <span>좌표 보기</span>
+          <div><h3>디자인</h3><p>초점을 잡고, 선택선을 남기고, 나머지를 덜어낸 화면의 이유.</p></div>
+          <span>선택의 문법</span>
         </button>
         <a class="door-panel" href="#star-list">
           <div><h3>별자리</h3></div>
@@ -1545,47 +2046,33 @@
 
     <section class="section" id="camera-photos">
       <div class="section-head">
-        <div class="section-number">04 / 사진 방향</div>
+        <div class="section-number">04 / 전체 기록</div>
         <div>
-          <h2>많이 찍었지만, 적게 보여준다.</h2>
-          <p class="section-intro">카메라별은 사진을 쌓아두는 곳이 아니다. 시작을 설명하거나, 작업의 자리를 보여주거나, 무엇을 남길지 고르는 감각을 보여주는 사진만 둔다.</p>
+          <h2>대표 다섯 장 뒤에도 기록은 사라지지 않는다.</h2>
+          <p class="section-intro">첫 흐름은 다섯 장으로 편집했지만, 공개 승인을 받은 39장의 원본 비율과 기억은 장면 문에 그대로 보존했다. 낮은 해상도는 원본보다 키우지 않는다.</p>
         </div>
       </div>
-      <div class="photo-grid">
-        <figure class="photo-card large">
-          <img src="../assets/images/cameras/hero-camera-notebook.jpg" alt="작업 책상 위의 카메라와 손글씨 노트" />
-          <figcaption><strong>작업 책상</strong>예쁘게 전시된 카메라보다, 실제로 일을 시작하는 자리가 먼저 보인다.</figcaption>
-        </figure>
-        <figure class="photo-card">
-          <img src="../assets/images/cameras/fear-starting-youtube.jpeg" alt="두려움에 관한 손글씨 기록" />
-          <figcaption><strong>두려움</strong>잘 못할까 봐 멈췄던 마음. 그래도 시작 쪽으로 몸을 돌린 기록.</figcaption>
-        </figure>
-        <figure class="photo-card">
-          <img src="../assets/images/cameras/essay-shooting-setup.jpg" alt="촬영 준비를 위한 카메라 세팅" />
-          <figcaption><strong>준비</strong>장비를 자랑하려는 자리가 아니라, 찍기 전의 마음을 정리하는 자리.</figcaption>
-        </figure>
-        <figure class="photo-card">
-          <img src="../assets/images/cameras/gallery-action-camera-note.jpg" alt="카메라와 메모가 함께 놓인 장면" />
-          <figcaption><strong>메모</strong>사진도 영상도 결국 남길 것을 고르기 위해 다시 적는 일과 닿아 있다.</figcaption>
-        </figure>
-        <figure class="photo-card">
-          <img src="../assets/images/cameras/photo-frame-eye.jpg" alt="프레임과 시선을 떠올리게 하는 사진" />
-          <figcaption><strong>프레임</strong>눈은 더 많이 담는 데서만 생기지 않는다. 빼고 나서야 선명해진다.</figcaption>
-        </figure>
-      </div>
+      <article class="archive-gate">
+        <div>
+          <p class="archive-count" aria-label="서른아홉 장">39</p>
+          <h3>숨기지 않은 콘택트시트</h3>
+          <p>골라낸 결과만 보여주는 대신, 다시 보고 비교하며 눈을 길러온 전체 기록을 연다. 각 사진은 원본 크기와 공개 여부를 확인한 장면이다.</p>
+        </div>
+        <button class="archive-open room-house-door" type="button" data-house-target="camera-photo-room">39장 전체 보기</button>
+      </article>
     </section>
 
     <section class="section light" id="camera-writing">
       <div class="section-head">
-        <div class="section-number">05 / 이 별이 권하는 것</div>
+        <div class="section-number">05 / 남은 문장</div>
         <div>
           <h2>못 찍을까 봐 멈추지 않는다.</h2>
-          <p class="section-intro">이 별은 잘 찍는 사람의 자랑이 아니다. 잘 못할까 봐 미루던 사람이, 결국 카메라를 들고 많이 찍으며 눈을 길러가는 이야기다.</p>
+          <p class="section-intro">이 별은 잘 찍는 사람의 자랑이 아니다. 잘 못할까 봐 미루던 사람이 결국 카메라를 들고, 많이 찍고, 다시 보며 눈을 길러온 이야기다.</p>
         </div>
       </div>
       <div class="rule-grid">
         <article class="rule-card" style="background: var(--color-film); color: var(--ink-on-dark);">
-          <h3>남겨도 되는 말</h3>
+          <h3>계속 남은 말</h3>
           <ul>
             <li>잘 못 찍을까 봐 고민하지 말고 찍어야 한다.</li>
             <li>많이 찍어봐야 안다. 그래야 고르는 안목도 생긴다.</li>
@@ -1593,7 +2080,7 @@
           </ul>
         </article>
         <article class="rule-card no" style="background: rgba(11, 13, 15, 0.06); color: var(--color-film); border-color: var(--line-light);">
-          <h3 style="color: var(--color-film);">덜어내야 하는 말</h3>
+          <h3 style="color: var(--color-film);">프레임 밖으로 뺀 말</h3>
           <ul style="color: var(--muted-on-light);">
             <li>나 사진 잘 찍는다는 말.</li>
             <li>렌즈와 성능으로 이긴다는 말.</li>
@@ -1605,11 +2092,17 @@
 
     <section class="section" id="camera-map">
       <div class="section-head">
-        <div class="section-number">06 / 지도</div>
+        <div class="section-number">06 / 선택의 디자인</div>
         <div>
-          <h2>찍는 길보다, 다시 보는 길이 길다.</h2>
-          <p class="section-intro">카메라별의 지도는 장소 목록이 아니다. 찍고, 남기고, 버리고, 다시 고르는 순서가 쌓이는 길이다. 아직 완성된 길보다 진행 중인 선이 어울린다.</p>
+          <h2>장식보다 선택이 먼저 보이게 했다.</h2>
+          <p class="section-intro">검은 벽은 사진을 받치고, 초록 신호는 현재 선택만 가리킨다. 가로와 세로 사진을 같은 상자에 자르지 않고 원본 비율로 읽으며, 동작이 줄어들어도 선택된 장면과 문장은 남는다.</p>
         </div>
+      </div>
+      <div class="editing-path" aria-label="카메라별 선택의 과정">
+        <article><b>01 / 찍음</b><h3>프레임을 모은다</h3><p>잘할 때까지 기다리지 않고 우선 장면을 남긴다.</p></article>
+        <article><b>02 / 살핌</b><h3>다시 본다</h3><p>한 번 찍은 사진을 지나치지 않고 무엇이 남았는지 살핀다.</p></article>
+        <article><b>03 / 덜어냄</b><h3>주변을 뺀다</h3><p>색과 장식과 문장을 줄여 한 장의 이유가 흐려지지 않게 한다.</p></article>
+        <article><b>04 / 남김</b><h3>이야기로 잇는다</h3><p>선택된 장면을 HAM MEDIA가 지금 하는 편집의 태도와 연결한다.</p></article>
       </div>
       <article class="final-card">
         <p>무서웠지만 들었다.<br />많이 찍었다.<br />그래서 조금씩 고르는 눈이 생겼다.</p>
@@ -1619,7 +2112,7 @@
 
     <section class="star-exit" id="star-list" aria-labelledby="star-list-title">
       <h2 id="star-list-title">별자리</h2>
-      <p class="intro">이 별은 HAM MEDIA Design MD 방식으로 정리한 별입니다. 좋아하는 것의 감각을 브랜드의 기준으로 바꾸는 실험이기도 합니다.</p>
+      <p class="intro">좋아해서 오래 바라본 것들은 서로 다른 별이 된다. 카메라별에서 눈을 길렀다면, 다음 별에서는 또 다른 감각의 시간을 만날 수 있다.</p>
       <div class="star-grid" aria-label="별자리 목록">
         <a class="star-button" href="fountain-pens.html">만년필별</a>
         <a class="star-button" href="music-audio.html">음악·오디오별</a>
@@ -1636,7 +2129,7 @@
         <a class="bottom-link" href="ham-media-work.html">그래서, 지금은 이런 일을 합니다</a>
         <a class="bottom-link" href="https://hammedia.github.io/design-brief/">Design MD 만드는 도구</a>
       </div>
-      <footer class="footer">카메라별 · LPH-B613-09 · HAM MEDIA · Design MD로 만든 별 페이지</footer>
+      <footer class="footer">카메라별 · LPH-B613-09 · HAM MEDIA</footer>
     </section>
 
     <section class="room-house-panel" id="camera-writing-room" aria-label="카메라별 문장" hidden>
@@ -1731,6 +2224,18 @@
           <p class="room-section-label">카메라와 시선의 좌표</p>
         </div>
         <div class="room-house-photo-grid camera-gallery-grid">
+          <figure class="room-house-photo" data-memory="카메라와 노트가 놓인 실제 작업 책상. 예쁘게 전시된 장비보다 일을 시작하는 자리를 먼저 남겼다." data-tags="카메라별, 작업 책상, 카메라, 노트, 고르는 눈">
+            <img class="room-photo-image camera-gallery-photo" src="../assets/images/cameras/hero-camera-notebook.jpg" width="1800" height="1350" alt="작업 책상 위의 카메라와 손글씨 노트">
+            <figcaption>실제로 일을 시작하는 자리.</figcaption>
+          </figure>
+          <figure class="room-house-photo" data-memory="잘 못할까 봐 멈췄던 마음까지 시작의 일부로 남긴 손글씨 기록." data-tags="카메라별, 두려움, 시작, 손글씨 기록">
+            <img class="room-photo-image camera-gallery-photo" src="../assets/images/cameras/fear-starting-youtube.jpeg" width="1600" height="2133" alt="두려움에 관한 손글씨 기록">
+            <figcaption>잘 못할까 봐 멈췄던 마음도 시작의 일부다.</figcaption>
+          </figure>
+          <figure class="room-house-photo" data-memory="장비를 자랑하려는 자리가 아니라 찍기 전에 마음과 프레임을 정리하는 촬영 준비의 기록." data-tags="카메라별, 촬영 준비, 프레임, 카메라 세팅">
+            <img class="room-photo-image camera-gallery-photo" src="../assets/images/cameras/essay-shooting-setup.jpg" width="848" height="1400" alt="촬영 준비를 위한 카메라 세팅">
+            <figcaption>찍기 전 무엇을 정했는지가 보이는 준비.</figcaption>
+          </figure>
           <figure class="room-house-photo" data-memory="거울 앞에서 카메라를 들었다. 보는 사람과 찍는 사람이 같은 프레임 안에 있다.">
             <img class="room-photo-image camera-gallery-photo" src="../assets/images/cameras/photo-frame-eye.jpg" alt="거울 앞에서 카메라를 들고 프레임을 보는 모습">
             <figcaption>보는 사람과 찍는 사람이 같은 프레임 안에 있다.</figcaption>
@@ -1880,19 +2385,69 @@
         <aside class="room-gallery-detail room-house-photo-detail" aria-live="polite" hidden></aside>
       </section>
 
-    <section class="room-house-panel" id="camera-map-room" aria-label="카메라별 지도" hidden>
+    <section class="room-house-panel" id="camera-map-room" aria-label="카메라별 디자인" hidden>
       <div class="room-house-panel-header">
-        <p class="room-section-label">관계의 지도</p>
-        <h2>시선의 좌표가 쌓이면 지도가 됩니다</h2>
+        <p class="room-section-label">카메라별 · 디자인</p>
+        <h2>선택이 보이는 화면</h2>
         <button class="room-house-back" type="button">카메라별로 돌아가기</button>
       </div>
       <article class="room-map-placeholder">
-        <strong>태그는 관계의 좌표입니다.</strong>
-        <p>같은 프레임, 같은 카메라, 같은 장소, 같은 두려움이 쌓이면 이 별의 지형이 드러납니다.</p>
+        <strong>초점 · 선택선 · 덜어내기</strong>
+        <p>검정은 사진을 받치는 벽, 초록은 현재 선택, 빨강은 한 번의 정밀한 표시다. 원본 비율을 지키고 주변을 덜어내 한 장을 고른 이유가 먼저 보이게 했다.</p>
       </article>
     </section>
   </main>
 
-  <script src="../assets/js/main.js?v=room-context-nav-v2-ga4-events-v1"></script>
+  <script src="../assets/js/main.js?v=room-context-nav-v2-ga4-events-v1-map-label"></script>
+  <script>
+    (() => {
+      const lab = document.querySelector("[data-selection-lab]");
+      const stage = lab?.querySelector(".selection-stage");
+      const image = lab?.querySelector("[data-selection-image]");
+      const title = lab?.querySelector("[data-selection-title]");
+      const reason = lab?.querySelector("[data-selection-reason]");
+      const counter = lab?.querySelector("[data-selection-counter]");
+      const choices = Array.from(lab?.querySelectorAll(".selection-choice") || []);
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      const selectChoice = (choice, index) => {
+        if (!choice || !image || !stage) return;
+        choices.forEach((item) => item.setAttribute("aria-pressed", String(item === choice)));
+        stage.classList.toggle("is-changing", !reduceMotion);
+
+        const applySelection = () => {
+          image.src = choice.dataset.src;
+          image.width = Number(choice.dataset.width || 0);
+          image.height = Number(choice.dataset.height || 0);
+          image.style.maxWidth = choice.dataset.maxWidth || "100%";
+          image.alt = choice.dataset.alt || "카메라별 대표 장면";
+          title.textContent = choice.dataset.title || "선택한 장면";
+          reason.textContent = choice.dataset.reason || "";
+          counter.textContent = `SELECTED ${String(index + 1).padStart(2, "0")} / ${String(choices.length).padStart(2, "0")}`;
+          stage.classList.remove("is-changing");
+        };
+
+        if (reduceMotion) {
+          applySelection();
+          return;
+        }
+        window.setTimeout(applySelection, 160);
+      };
+
+      choices.forEach((choice, index) => choice.addEventListener("click", () => selectChoice(choice, index)));
+
+      const steps = Array.from(document.querySelectorAll("[data-focus-step]"));
+      if (!("IntersectionObserver" in window) || reduceMotion) {
+        steps.forEach((step) => step.classList.add("is-seen"));
+        return;
+      }
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) entry.target.classList.add("is-seen");
+        });
+      }, { threshold: 0.48 });
+      steps.forEach((step) => observer.observe(step));
+    })();
+  </script>
 </body>
 </html>

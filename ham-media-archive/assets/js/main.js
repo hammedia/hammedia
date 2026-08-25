@@ -867,6 +867,7 @@ function buildRoomHouse() {
   const articlePrevLabel = housePage.dataset.articlePrevLabel || "이전 글";
   const articleNextLabel = housePage.dataset.articleNextLabel || "다음 글";
   const photoListLabel = housePage.dataset.photoListLabel || "사진 목록";
+  const mapListLabel = housePage.dataset.mapListLabel || "지도";
   const hasContextNav = housePage.dataset.roomContextNav === "true";
   const contextTargets = {
     article: housePage.dataset.articleHouseTarget || housePage.querySelector("[id$='writing-room']")?.id || "",
@@ -999,7 +1000,7 @@ function buildRoomHouse() {
         }
         openHousePanel(contextTargets.photo);
       }),
-      createButton("지도", "map", () => {
+      createButton(mapListLabel, "map", () => {
         if (currentSection === "map") {
           scrollToElement(document.getElementById(contextTargets.map));
           return;
