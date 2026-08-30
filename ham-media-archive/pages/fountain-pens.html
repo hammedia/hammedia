@@ -7,6 +7,7 @@
   <link rel="canonical" href="https://hammedia.co.kr/ham-media-archive/pages/fountain-pens.html">
   <link rel="preconnect" href="https://cdn.jsdelivr.net">
   <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+  <link rel="stylesheet" href="../assets/css/star-records.css">
   <script>
     if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       document.documentElement.classList.add("motion-ready");
@@ -1769,7 +1770,7 @@
     <a href="#inktrio" aria-label="좋았던 조합을 다시 찾는 InkTrio"></a>
   </nav>
 
-  <main class="room-house-page" data-room-context-nav="false" data-article-house-target="fountain-writing-room" data-photo-house-target="fountain-photo-room" data-star-list-target="inktrio">
+  <main class="room-house-page" data-room-context-nav="true" data-article-house-target="fountain-writing-room" data-photo-house-target="fountain-photo-room" data-map-house-target="fountain-map-room" data-star-list-target="inktrio" data-article-nav-label="문장 이동" data-article-list-label="문장" data-article-prev-label="이전 문장" data-article-next-label="다음 문장" data-photo-list-label="장면" data-map-list-label="지도">
     <section class="scene hero-scene" id="ink" data-dot="0" aria-labelledby="ink-title">
       <div class="hero-photo-wash" aria-hidden="true">
         <img src="../assets/images/fountain-pens/ink-five-pens-five-inks.jpg" alt="">
@@ -1898,32 +1899,136 @@
       <div class="scene-inner">
         <div class="scene-copy">
           <p class="kicker">별 안으로</p>
-          <h2 id="inside-title"><span class="penline"><span class="write">문장 · 장면 · 디자인 · 별자리</span><i class="nib" aria-hidden="true"></i></span></h2>
-          <p class="lead">긴 글은 종이 위에서, 사진은 장면으로, 디자인은 잉크가 마르는 시간으로.</p>
-          <p class="body-copy">새 장면형 구조를 유지하면서, 예전 만년필별에 있던 문장과 장면은 별 안의 기록으로 다시 살린다.</p>
+          <h2 id="inside-title"><span class="penline"><span class="write">기록 · 지도 · 별자리</span><i class="nib" aria-hidden="true"></i></span></h2>
+          <p class="lead">문장과 장면을 한곳에서 읽고, 선택의 흐름을 따라 다른 별로 건너갑니다.</p>
+          <p class="body-copy">만년필별의 기록은 펜을 자랑하는 목록이 아니라, 손으로 쓰며 무엇을 보고 무엇을 남겼는지를 보여주는 편집면입니다.</p>
         </div>
         <nav class="doors" aria-label="만년필별 내부 문">
-          <button class="door-panel" type="button" data-house-target="fountain-writing-room">
-            <strong>문장</strong>
-            <span>취미, 실패, 마음, 행복에 관한 손글씨와 글.</span>
-          </button>
-          <button class="door-panel" type="button" data-house-target="fountain-photo-room">
-            <strong>장면</strong>
-            <span>펜촉, 손글씨, 잉크 테스트로 남은 실제 장면.</span>
-          </button>
-          <button class="door-panel" type="button" data-house-target="fountain-design-room">
-            <strong>디자인</strong>
-            <span>사진, 글, 잉크색을 다루는 이 별의 기준.</span>
+          <a class="door-panel" href="#fountain-records">
+            <strong>기록</strong>
+            <span>전체, 문장, 장면을 한 편집면에서 고릅니다.</span>
+          </a>
+          <button class="door-panel room-house-door" type="button" data-house-target="fountain-map-room">
+            <strong>지도</strong>
+            <span>잉크에서 기록장까지, 선택이 이어진 순서.</span>
           </button>
           <a class="door-panel" href="#inktrio">
             <strong>별자리</strong>
-            <span>다른 별과 마지막 출구로 이동.</span>
+            <span>취미와 작업이 이어지는 다른 별로 이동합니다.</span>
           </a>
         </nav>
+        <div class="record-route-buttons" aria-hidden="true">
+          <button class="room-house-door" type="button" data-house-target="fountain-writing-room">문장</button>
+          <button class="room-house-door" type="button" data-house-target="fountain-photo-room">장면</button>
+        </div>
       </div>
     </section>
 
-    <section class="ink-panel" id="fountain-writing-room" aria-label="만년필별 문장" hidden>
+    <section class="star-record-board" id="fountain-records" data-star-record-board aria-labelledby="fountain-records-title">
+      <div class="star-record-inner">
+        <header class="star-record-heading">
+          <div>
+            <p class="star-record-eyebrow">LPH-B613-01 · 기록 보관소</p>
+            <h2 id="fountain-records-title">손으로<br>남은 것</h2>
+          </div>
+          <p class="star-record-intro">좋았던 펜의 목록보다, 왜 다시 손으로 썼는지를 남깁니다. 문장은 마음을 보여주고 장면은 그 말이 실제였음을 증명합니다. 한 기록을 열면 원문과 사진을 함께 읽을 수 있습니다.</p>
+        </header>
+
+        <div class="star-record-toolbar">
+          <div class="star-record-filters" aria-label="만년필별 기록 종류">
+            <button class="star-record-filter" type="button" data-record-filter="all" aria-pressed="true">전체</button>
+            <button class="star-record-filter" type="button" data-record-filter="sentence" aria-pressed="false">문장</button>
+            <button class="star-record-filter" type="button" data-record-filter="scene" aria-pressed="false">장면</button>
+          </div>
+          <p class="star-record-count" data-record-count>08 / 08 records</p>
+          <span class="sr-only" data-record-announcement aria-live="polite"></span>
+        </div>
+
+        <div class="star-record-grid">
+          <button class="star-record-card" type="button" data-record-id="still-walking" data-record-kind="sentence" data-record-target="still-walking" data-record-tags="실패,손글씨,코스모스">
+            <span class="star-record-card-media"><img src="../assets/images/fountain-pens/still-walking.jpeg" alt="플래티넘 프레피와 코스모스 잉크로 쓴 아직 걷는 중"></span>
+            <span class="star-record-card-copy">
+              <span class="star-record-card-meta"><span class="star-record-type">Sentence 01</span><span class="star-record-index">2025 · 다시 쓰기</span></span>
+              <h3>아직 걷는 중</h3>
+              <p>오늘 실패했다면, 그건 아직 걷는 중이라는 뜻이다. 넘어짐을 끝이 아니라 과정으로 다시 적은 기록.</p>
+              <span class="star-record-card-open">원문과 손글씨 읽기</span>
+            </span>
+          </button>
+
+          <button class="star-record-card" type="button" data-record-id="hobby" data-record-kind="sentence" data-record-target="hobby" data-record-tags="취미,카메라,오디오,바이크">
+            <span class="star-record-card-media"><img src="../assets/images/fountain-pens/essay-hobby-note-original.jpg" alt="취미라는 것에 대해 적은 손글씨 원문"></span>
+            <span class="star-record-card-copy">
+              <span class="star-record-card-meta"><span class="star-record-type">Sentence 02</span><span class="star-record-index">별을 잇는 기록</span></span>
+              <h3>취미란 뭘까</h3>
+              <p>카메라, 바이크, 오디오를 지나 결국 한 페이지를 쓰게 되는 작은 기쁨에 관한 긴 기록.</p>
+              <span class="star-record-card-open">긴 기록 읽기</span>
+            </span>
+          </button>
+
+          <button class="star-record-card" type="button" data-record-id="well-depth" data-record-kind="sentence" data-record-target="well-depth" data-record-tags="마음,위안,오로라88">
+            <span class="star-record-card-media"><img src="../assets/images/fountain-pens/well-depth-01.jpeg" alt="차와 노트, 오로라 88 만년필로 남긴 우물과 마음의 기록"></span>
+            <span class="star-record-card-copy">
+              <span class="star-record-card-meta"><span class="star-record-type">Sentence 03</span><span class="star-record-index">마음의 깊이</span></span>
+              <h3>우물과 마음</h3>
+              <p>따뜻한 글에서 위안을 받고, 자신의 마음을 조금 더 깊이 들여다본 날.</p>
+              <span class="star-record-card-open">기록 열기</span>
+            </span>
+          </button>
+
+          <button class="star-record-card" type="button" data-record-id="handwriting" data-record-kind="scene" data-record-target="handwriting" data-record-tags="손글씨,두자루,기록">
+            <span class="star-record-card-media"><img src="../assets/images/fountain-pens/essay-handwriting-pens.jpg" alt="손글씨와 만년필 두 자루"></span>
+            <span class="star-record-card-copy">
+              <span class="star-record-card-meta"><span class="star-record-type">Scene 01</span><span class="star-record-index">손으로 남음</span></span>
+              <h3>손글씨</h3>
+              <p>키보드로 지나간 말과 다르게, 손으로 적어야 남는 문장들이 있다.</p>
+              <span class="star-record-card-open">장면 크게 보기</span>
+            </span>
+          </button>
+
+          <button class="star-record-card" type="button" data-record-id="human-made" data-record-kind="sentence" data-record-target="human-made" data-record-tags="편지,사람,필사">
+            <span class="star-record-card-media"><img src="../assets/images/fountain-pens/handmade-gift-letter.jpeg" alt="사람은 사람이 만든 것에 약하다는 손글씨"></span>
+            <span class="star-record-card-copy">
+              <span class="star-record-card-meta"><span class="star-record-type">Sentence 04</span><span class="star-record-index">사람이 만든 것</span></span>
+              <h3>어설픔이 무기가 되는 순간</h3>
+              <p>직접 만든 선물과 편지는 완벽하지 않아서 오히려 사람의 마음에 오래 남는다.</p>
+              <span class="star-record-card-open">기록 읽기</span>
+            </span>
+          </button>
+
+          <button class="star-record-card" type="button" data-record-id="nib" data-record-kind="scene" data-record-target="nib" data-record-tags="펜촉,감각,클로즈업">
+            <span class="star-record-card-media"><img src="../assets/images/fountain-pens/photo-nib-closeup.jpg" alt="잉크가 묻은 만년필 펜촉 클로즈업"></span>
+            <span class="star-record-card-copy">
+              <span class="star-record-card-meta"><span class="star-record-type">Scene 02</span><span class="star-record-index">펜촉 끝</span></span>
+              <h3>종이에 닿기 직전</h3>
+              <p>펜촉 끝에 잉크가 머물고, 아직 문장이 되기 전의 감각.</p>
+              <span class="star-record-card-open">장면 크게 보기</span>
+            </span>
+          </button>
+
+          <button class="star-record-card" type="button" data-record-id="happiness" data-record-kind="sentence" data-record-target="happiness" data-record-tags="행복,친절,목표">
+            <span class="star-record-card-media"><img src="../assets/images/fountain-pens/happiness-07.jpeg" alt="행복에 관한 짧은 글을 만년필로 적은 손글씨"></span>
+            <span class="star-record-card-copy">
+              <span class="star-record-card-meta"><span class="star-record-type">Sentence 05</span><span class="star-record-index">일곱 장의 필사</span></span>
+              <h3>행복에 관한 짧은 글</h3>
+              <p>삶과 목표와 친절에 관한 짧은 문장을 일곱 장의 손글씨로 다시 적었다.</p>
+              <span class="star-record-card-open">기록 읽기</span>
+            </span>
+          </button>
+
+          <button class="star-record-card" type="button" data-record-id="ink-test" data-record-kind="scene" data-record-target="ink-test" data-record-tags="잉크,종이,시간">
+            <span class="star-record-card-media"><img src="../assets/images/fountain-pens/archive-ink-test.jpg" alt="잉크병과 펜, 종이 위의 컬러 테스트"></span>
+            <span class="star-record-card-copy">
+              <span class="star-record-card-meta"><span class="star-record-type">Scene 03</span><span class="star-record-index">마른 뒤의 색</span></span>
+              <h3>같은 잉크, 다른 시간</h3>
+              <p>막 나온 색과 마른 뒤의 색. 시간이 지나 다시 보면 또 달라지는 기록.</p>
+              <span class="star-record-card-open">장면 크게 보기</span>
+            </span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="ink-panel room-house-panel" id="fountain-writing-room" aria-label="만년필별 문장" hidden>
       <div class="ink-panel-inner">
         <div class="room-house-panel-header">
           <p class="room-section-label">만년필별 · 문장</p>
@@ -1932,11 +2037,12 @@
         </div>
 
         <div class="room-article-list" aria-label="만년필별 문장 목록">
-          <button class="room-article-link" type="button" data-article-target="fountain-hobby-essay"><strong>취미란 뭘까</strong></button>
+          <button class="room-article-link" type="button" data-record-id="hobby" data-article-target="fountain-hobby-essay"><strong>취미란 뭘까</strong></button>
           <button class="room-article-link" type="button" data-article-target="fountain-beethoven-emperor-note"><strong>황제의 밤</strong></button>
-          <button class="room-article-link" type="button" data-article-target="fountain-still-walking-note"><strong>아직 걷는 중</strong></button>
-          <button class="room-article-link" type="button" data-article-target="fountain-well-depth-note"><strong>우물과 마음</strong></button>
-          <button class="room-article-link" type="button" data-article-target="fountain-happiness-note"><strong>행복 짧은 글</strong></button>
+          <button class="room-article-link" type="button" data-record-id="still-walking" data-article-target="fountain-still-walking-note"><strong>아직 걷는 중</strong></button>
+          <button class="room-article-link" type="button" data-record-id="human-made" data-article-target="fountain-human-made-note"><strong>사람이 만든 것</strong></button>
+          <button class="room-article-link" type="button" data-record-id="well-depth" data-article-target="fountain-well-depth-note"><strong>우물과 마음</strong></button>
+          <button class="room-article-link" type="button" data-record-id="happiness" data-article-target="fountain-happiness-note"><strong>행복 짧은 글</strong></button>
         </div>
 
         <div class="room-card-list room-article-panels">
@@ -2047,6 +2153,27 @@
             </div>
           </article>
 
+          <article class="room-post room-article-panel" id="fountain-human-made-note" hidden>
+            <button class="room-article-back" type="button">문장 목록</button>
+            <header>
+              <p class="room-card-meta">문장</p>
+              <h3>사람은 사람이 만든 것에 약하다</h3>
+              <p>만년필 / 손글씨 / 사람의 마음</p>
+            </header>
+            <div class="shared-memory-layout">
+              <figure class="shared-memory-figure">
+                <img class="room-photo-image shared-memory-photo" src="../assets/images/fountain-pens/handmade-gift-letter.jpeg" alt="사람은 사람이 만든 것에 약하다는 손글씨">
+                <figcaption>직접 만든 선물과 편지가 마음에 남는 이유를 손으로 옮겨 적은 기록.</figcaption>
+              </figure>
+              <div class="shared-memory-copy">
+                <p>사람은 사람이 만든 것에 약하다.</p>
+                <p>어설픔이 무기가 되는 순간이 있다.</p>
+                <p>직접 만든 선물과 손으로 쓴 편지는 완벽하지 않아서, 만든 사람의 시간이 더 잘 보인다.</p>
+                <p>동네 서점에서 만난 『일본광고 카피 도감』의 도큐핸즈 밸런타인 광고를 읽고 남긴 문장이다.</p>
+              </div>
+            </div>
+          </article>
+
           <article class="room-post room-article-panel" id="fountain-well-depth-note" hidden>
             <button class="room-article-back" type="button">문장 목록</button>
             <header>
@@ -2096,7 +2223,7 @@
       </div>
     </section>
 
-    <section class="ink-panel" id="fountain-photo-room" aria-label="만년필별 장면" hidden>
+    <section class="ink-panel room-house-panel" id="fountain-photo-room" aria-label="만년필별 장면" hidden>
       <div class="ink-panel-inner">
         <div class="room-house-panel-header">
           <p class="room-section-label">만년필별 · 장면</p>
@@ -2104,15 +2231,15 @@
           <button class="room-house-back" type="button">만년필별로 돌아가기</button>
         </div>
         <div class="room-house-photo-grid">
-          <figure class="room-house-photo" data-memory="손으로 적어야 남는 문장들이 있다.">
+          <figure class="room-house-photo" data-record-id="handwriting" data-memory="손으로 적어야 남는 문장들이 있다.">
             <img class="room-photo-image room-house-photo-thumb" src="../assets/images/fountain-pens/essay-handwriting-pens.jpg" alt="손글씨와 만년필 두 자루">
             <figcaption>손글씨</figcaption>
           </figure>
-          <figure class="room-house-photo" data-memory="펜촉 끝에 남는 감각.">
+          <figure class="room-house-photo" data-record-id="nib" data-memory="펜촉 끝에 남는 감각.">
             <img class="room-photo-image room-house-photo-thumb" src="../assets/images/fountain-pens/photo-nib-closeup.jpg" alt="잉크가 묻은 만년필 펜촉 클로즈업">
             <figcaption>펜촉</figcaption>
           </figure>
-          <figure class="room-house-photo" data-memory="잉크와 종이, 그리고 써본 흔적.">
+          <figure class="room-house-photo" data-record-id="ink-test" data-memory="잉크와 종이, 그리고 써본 흔적.">
             <img class="room-photo-image room-house-photo-thumb" src="../assets/images/fountain-pens/archive-ink-test.jpg" alt="잉크병, 컬러 테스트, 펜, 종이, 티슈">
             <figcaption>잉크 테스트</figcaption>
           </figure>
@@ -2121,14 +2248,38 @@
       </div>
     </section>
 
-    <section class="ink-panel" id="fountain-design-room" aria-label="만년필별 디자인" hidden>
+    <section class="ink-panel room-house-panel record-map-panel" id="fountain-map-room" aria-label="만년필별 지도" hidden>
       <div class="ink-panel-inner">
         <div class="room-house-panel-header">
-          <p class="room-section-label">만년필별 · 디자인</p>
-          <h2>만년필별 디자인은 잉크가 마르는 시간을 따른다</h2>
+          <p class="room-section-label">만년필별 · 지도</p>
+          <h2>선택이 기록이 되기까지</h2>
           <button class="room-house-back" type="button">만년필별로 돌아가기</button>
         </div>
-        <p class="body-copy">기존 만년필별 01~07 스타일 시트의 기준을 별 안의 디자인 문으로 옮겼다. 사진, 글, 잉크색, 마지막 출구까지 이 기준을 따른다.</p>
+        <div class="record-map-intro">
+          <div>
+            <p class="record-map-kicker">One choice, six traces</p>
+            <h3>좋아함은<br>이렇게 남았다</h3>
+          </div>
+          <p>무엇을 샀는지보다 무엇을 보고, 써보고, 다시 골랐는지를 따라갑니다. 각 지점은 이 페이지의 실제 장면으로 이어집니다.</p>
+        </div>
+        <nav class="record-map-path" aria-label="만년필별 선택 지도">
+          <a class="record-map-node" href="#ink"><strong>잉크를 고름</strong><span>다섯 자루와 다섯 색에서 시작</span></a>
+          <a class="record-map-node" href="#dry"><strong>마른 뒤를 봄</strong><span>처음 색과 남은 색을 비교</span></a>
+          <a class="record-map-node" href="#walking"><strong>문장을 다시 씀</strong><span>실패를 과정으로 고쳐 적음</span></a>
+          <a class="record-map-node" href="#human"><strong>사람을 읽음</strong><span>어설픔 속의 시간을 발견</span></a>
+          <a class="record-map-node" href="#hobby"><strong>취미를 돌아봄</strong><span>모으기보다 쓰는 기쁨을 확인</span></a>
+          <a class="record-map-node" href="#inktrio"><strong>조합을 보관함</strong><span>펜·잉크·종이를 InkTrio에 기록</span></a>
+        </nav>
+      </div>
+    </section>
+
+    <section class="ink-panel fountain-design-method" id="fountain-design-room" aria-label="만년필별 제작 방식">
+      <div class="ink-panel-inner">
+        <div class="room-house-panel-header">
+          <p class="room-section-label">만년필별 · 제작 방식</p>
+          <h2>만년필별 디자인은 잉크가 마르는 시간을 따른다</h2>
+        </div>
+        <p class="body-copy">기록을 읽은 뒤, 이 화면이 왜 이런 색과 글자와 순서로 만들어졌는지 확인할 수 있습니다. 제작 기준은 기록과 경쟁하는 별도 게시판이 아니라 결과 아래의 근거입니다.</p>
         <div class="design-archive" aria-label="만년필별 01부터 07까지 디자인 기준">
           <section class="design-archive-section">
             <p class="section-kicker">01 · 색의 방향</p>
@@ -2176,7 +2327,7 @@
             <div class="component-grid">
               <div class="component-card"><h3>도착 스탬프</h3><p>별 코드 근처에 둔다. 로고보다 도착 표시처럼 보이면 충분하다. 약하게 기울어진 종이 느낌은 남긴다.</p></div>
               <div class="component-card"><h3>전시 사진</h3><p>사진은 장식이 아니라 전시 벽에 걸린 기억이다. 얇은 가장자리와 낮은 그림자만 남긴다.</p></div>
-              <div class="component-card"><h3>별 안의 길</h3><div class="tab-row" aria-label="만년필별 입구"><button class="tab active" type="button" data-house-target="fountain-writing-room">문장</button><button class="tab" type="button" data-house-target="fountain-photo-room">장면</button><button class="tab" type="button" data-house-target="fountain-design-room">디자인</button><a class="tab" href="#inktrio">별자리</a></div></div>
+              <div class="component-card"><h3>별 안의 길</h3><div class="tab-row" aria-label="만년필별 입구"><a class="tab active" href="#fountain-records">기록</a><button class="tab room-house-door" type="button" data-house-target="fountain-map-room">지도</button><a class="tab" href="#inktrio">별자리</a><a class="tab" href="../../tools/design-styles/">디자인 스타일</a></div></div>
             </div>
           </section>
 
@@ -2223,6 +2374,7 @@
             <div class="page-actions" aria-label="만년필별 하단 링크">
               <a class="action-pill" href="../index.html#about-constellation">별자리로 돌아가기</a>
               <a class="action-pill" href="ham-media-work.html">그래서, 지금은 이런 일을 합니다</a>
+              <a class="action-pill" href="../../tools/design-styles/">디자인 스타일 21개 보기</a>
               <a class="action-pill" href="https://hammedia.github.io/design-brief/">Design MD 만드는 도구</a>
             </div>
           </section>
@@ -2351,184 +2503,8 @@
       revealScenes.forEach((scene) => scene.classList.add("is-passed"));
     }
 
-    const panels = Array.from(document.querySelectorAll(".ink-panel"));
-    const panelButtons = Array.from(document.querySelectorAll("[data-house-target]"));
-    const insideScene = document.querySelector("#inside");
-
-    function runInkTransition(change) {
-      if (reduceMotion || typeof document.startViewTransition !== "function") {
-        change();
-        return;
-      }
-
-      document.documentElement.dataset.transition = "ink-panel";
-      const transition = document.startViewTransition(change);
-      transition.finished.finally(() => {
-        delete document.documentElement.dataset.transition;
-      });
-    }
-
-    function showPanel(panelId) {
-      const target = document.getElementById(panelId);
-      if (!target) return;
-
-      runInkTransition(() => {
-        panels.forEach((panel) => {
-          const isTarget = panel === target;
-          panel.hidden = !isTarget;
-          panel.classList.toggle("is-open", isTarget);
-        });
-      });
-
-      window.setTimeout(() => {
-        target.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
-      }, reduceMotion ? 0 : 120);
-    }
-
-    function hidePanels() {
-      runInkTransition(() => {
-        panels.forEach((panel) => {
-          panel.hidden = true;
-          panel.classList.remove("is-open", "is-detail-mode", "is-photo-detail-mode");
-        });
-        document.querySelectorAll(".room-article-panel").forEach((panel) => {
-          panel.hidden = true;
-        });
-        document.querySelectorAll(".room-article-list").forEach((list) => {
-          list.hidden = false;
-        });
-        document.querySelectorAll(".room-house-photo-detail").forEach((detail) => {
-          detail.hidden = true;
-          detail.replaceChildren();
-        });
-      });
-
-      window.setTimeout(() => {
-        insideScene?.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
-      }, reduceMotion ? 0 : 120);
-    }
-
-    panelButtons.forEach((button) => {
-      button.addEventListener("click", () => showPanel(button.dataset.houseTarget));
-    });
-
-    document.querySelectorAll(".room-house-back").forEach((button) => {
-      button.addEventListener("click", hidePanels);
-    });
-
-    document.querySelectorAll(".room-article-link[data-article-target]").forEach((button) => {
-      button.addEventListener("click", () => {
-        const parentPanel = button.closest(".ink-panel");
-        const list = parentPanel?.querySelector(".room-article-list");
-        const target = parentPanel?.querySelector(`#${button.dataset.articleTarget}`);
-        if (!target) return;
-
-        runInkTransition(() => {
-          parentPanel?.classList.add("is-detail-mode");
-          if (list) list.hidden = true;
-          parentPanel?.querySelectorAll(".room-article-panel").forEach((panel) => {
-            panel.hidden = panel !== target;
-          });
-        });
-
-        window.setTimeout(() => {
-          target.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
-        }, reduceMotion ? 0 : 120);
-      });
-    });
-
-    document.querySelectorAll(".room-article-back").forEach((button) => {
-      button.addEventListener("click", () => {
-        const parentPanel = button.closest(".ink-panel");
-        const list = parentPanel?.querySelector(".room-article-list");
-
-        runInkTransition(() => {
-          parentPanel?.classList.remove("is-detail-mode");
-          parentPanel?.querySelectorAll(".room-article-panel").forEach((panel) => {
-            panel.hidden = true;
-          });
-          if (list) list.hidden = false;
-        });
-
-        window.setTimeout(() => {
-          list?.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "nearest" });
-        }, reduceMotion ? 0 : 120);
-      });
-    });
-
-    const photoFigures = Array.from(document.querySelectorAll(".room-house-photo"));
-    let activePhotoIndex = 0;
-
-    function renderPhotoDetail(index) {
-      const figure = photoFigures[index];
-      const panel = figure?.closest(".ink-panel");
-      const detail = panel?.querySelector(".room-house-photo-detail");
-      const image = figure?.querySelector("img");
-      const caption = figure?.querySelector("figcaption")?.textContent || "";
-      if (!figure || !detail || !image) return;
-
-      activePhotoIndex = index;
-      const memory = figure.dataset.memory || caption;
-      const photo = document.createElement("img");
-      photo.className = "room-gallery-detail-photo";
-      photo.src = image.currentSrc || image.src;
-      photo.alt = image.alt;
-
-      const copy = document.createElement("div");
-      copy.className = "room-gallery-detail-copy";
-      copy.innerHTML = `<p class="room-gallery-detail-index">${index + 1} / ${photoFigures.length}</p><p><strong>${caption}</strong></p><p>${memory}</p>`;
-
-      const actions = document.createElement("div");
-      actions.className = "room-gallery-detail-actions";
-      const back = document.createElement("button");
-      back.className = "room-gallery-detail-button";
-      back.type = "button";
-      back.textContent = "장면 목록";
-      back.addEventListener("click", () => {
-        runInkTransition(() => {
-          detail.hidden = true;
-          detail.replaceChildren();
-          panel.classList.remove("is-photo-detail-mode");
-        });
-      });
-      actions.append(back);
-
-      const nav = document.createElement("div");
-      nav.className = "room-gallery-detail-nav";
-      const prev = document.createElement("button");
-      prev.className = "room-gallery-detail-button";
-      prev.type = "button";
-      prev.textContent = "이전 장면";
-      prev.disabled = index === 0;
-      prev.addEventListener("click", () => renderPhotoDetail(activePhotoIndex - 1));
-      const next = document.createElement("button");
-      next.className = "room-gallery-detail-button";
-      next.type = "button";
-      next.textContent = "다음 장면";
-      next.disabled = index === photoFigures.length - 1;
-      next.addEventListener("click", () => renderPhotoDetail(activePhotoIndex + 1));
-      nav.append(prev, next);
-
-      runInkTransition(() => {
-        panel.classList.add("is-photo-detail-mode");
-        detail.hidden = false;
-        detail.replaceChildren(actions, photo, copy, nav);
-      });
-
-      window.setTimeout(() => {
-        detail.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
-      }, reduceMotion ? 0 : 120);
-    }
-
-    photoFigures.forEach((figure, index) => {
-      figure.tabIndex = 0;
-      figure.addEventListener("click", () => renderPhotoDetail(index));
-      figure.addEventListener("keydown", (event) => {
-        if (event.key !== "Enter" && event.key !== " ") return;
-        event.preventDefault();
-        renderPhotoDetail(index);
-      });
-    });
   </script>
+  <script src="../assets/js/main.js?v=room-context-nav-v2"></script>
+  <script src="../assets/js/star-records.js"></script>
 </body>
 </html>

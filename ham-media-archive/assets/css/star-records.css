@@ -1,0 +1,507 @@
+/* Shared star record board — one engine, star-specific color through page variables. */
+.star-record-board {
+  --record-paper: #f3ead8;
+  --record-ink: #111318;
+  --record-blue: #6f8db7;
+  --record-rose: #d28ba3;
+  --record-line: rgba(243, 234, 216, 0.2);
+  position: relative;
+  min-height: 100svh;
+  padding: clamp(5rem, 9vw, 9rem) clamp(1.25rem, 5vw, 6rem);
+  overflow: clip;
+  color: var(--record-paper);
+  background:
+    radial-gradient(circle at var(--record-mx, 18%) var(--record-my, 24%), rgba(92, 126, 171, 0.2), transparent 32rem),
+    linear-gradient(145deg, #07090d 0%, #101827 48%, #08090c 100%);
+}
+
+.star-record-board .sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.star-record-board::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.28;
+  background-image:
+    linear-gradient(rgba(255,255,255,.026) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.026) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: linear-gradient(to bottom, transparent, #000 18%, #000 82%, transparent);
+}
+
+.star-record-inner {
+  position: relative;
+  z-index: 1;
+  width: min(1280px, 100%);
+  margin: 0 auto;
+}
+
+.star-record-heading {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(18rem, .7fr);
+  gap: clamp(2rem, 7vw, 8rem);
+  align-items: end;
+  padding-bottom: clamp(2rem, 4vw, 4rem);
+  border-bottom: 1px solid var(--record-line);
+}
+
+.star-record-eyebrow,
+.star-record-index,
+.star-record-type,
+.star-record-count,
+.record-map-kicker {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.star-record-eyebrow {
+  margin: 0 0 1.1rem;
+  color: #a8bdd7;
+  font-size: .78rem;
+}
+
+.star-record-heading h2 {
+  max-width: 11ch;
+  margin: 0;
+  font-size: clamp(3.5rem, 9vw, 9rem);
+  font-weight: 520;
+  line-height: .84;
+  letter-spacing: -.075em;
+}
+
+.star-record-intro {
+  margin: 0;
+  color: rgba(243, 234, 216, .74);
+  font-size: clamp(1rem, 1.35vw, 1.2rem);
+  line-height: 1.85;
+  text-wrap: pretty;
+}
+
+.star-record-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.2rem;
+  padding: 1.3rem 0;
+}
+
+.star-record-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .55rem;
+}
+
+.star-record-filter {
+  appearance: none;
+  border: 1px solid rgba(243, 234, 216, .22);
+  border-radius: 999px;
+  padding: .72rem 1.1rem;
+  color: rgba(243, 234, 216, .68);
+  background: rgba(7, 9, 13, .34);
+  font: inherit;
+  font-size: .9rem;
+  cursor: pointer;
+  transition: color .25s ease, background .25s ease, border-color .25s ease, transform .25s ease;
+}
+
+.star-record-filter:hover,
+.star-record-filter[aria-pressed="true"] {
+  color: #111318;
+  background: var(--record-paper);
+  border-color: var(--record-paper);
+  transform: translateY(-2px);
+}
+
+.star-record-filter:focus-visible,
+.star-record-card:focus-visible,
+.record-map-node:focus-visible {
+  outline: 3px solid #91b7ef;
+  outline-offset: 4px;
+}
+
+.star-record-count {
+  margin: 0;
+  color: rgba(243, 234, 216, .52);
+  font-size: .72rem;
+}
+
+.star-record-grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: clamp(.8rem, 1.4vw, 1.25rem);
+}
+
+.star-record-card {
+  --card-accent: var(--record-blue);
+  position: relative;
+  grid-column: span 4;
+  min-height: 29rem;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid rgba(243, 234, 216, .14);
+  border-radius: 1.35rem;
+  color: var(--record-paper);
+  text-align: left;
+  background: #111722;
+  cursor: pointer;
+  isolation: isolate;
+  transition: transform .45s cubic-bezier(.2,.8,.2,1), border-color .3s ease, opacity .25s ease;
+}
+
+.star-record-card:nth-child(1) {
+  grid-column: span 7;
+  min-height: 40rem;
+}
+
+.star-record-card:nth-child(2) {
+  grid-column: span 5;
+  min-height: 40rem;
+  --card-accent: var(--record-rose);
+}
+
+.star-record-card:nth-child(4),
+.star-record-card:nth-child(7) {
+  --card-accent: #90a486;
+}
+
+.star-record-card:nth-child(5),
+.star-record-card:nth-child(8) {
+  --card-accent: #c79771;
+}
+
+.star-record-card::before {
+  content: "";
+  position: absolute;
+  inset: auto -20% -48% 20%;
+  z-index: 1;
+  height: 76%;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--card-accent) 48%, transparent);
+  filter: blur(65px);
+  opacity: .26;
+  transform: translate3d(0, 18%, 0);
+  transition: opacity .4s ease, transform .6s cubic-bezier(.2,.8,.2,1);
+}
+
+.star-record-card:hover {
+  z-index: 2;
+  border-color: rgba(243, 234, 216, .42);
+  transform: translateY(-8px);
+}
+
+.star-record-card:hover::before {
+  opacity: .52;
+  transform: translate3d(-8%, 0, 0);
+}
+
+.star-record-card[hidden] {
+  display: none;
+}
+
+.star-record-card-media {
+  position: absolute;
+  inset: 0;
+}
+
+.star-record-card-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(5, 7, 10, .98) 0%, rgba(5, 7, 10, .72) 39%, rgba(5, 7, 10, .08) 72%);
+}
+
+.star-record-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(.76) contrast(1.05);
+  transform: scale(1.01);
+  transition: transform .8s cubic-bezier(.2,.8,.2,1), filter .5s ease;
+}
+
+.star-record-card:hover img {
+  filter: saturate(1) contrast(1.04);
+  transform: scale(1.045);
+}
+
+.star-record-card-copy {
+  position: absolute;
+  inset: auto 0 0;
+  z-index: 2;
+  padding: clamp(1.25rem, 2.6vw, 2.4rem);
+}
+
+.star-record-card-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  color: rgba(243, 234, 216, .58);
+  font-size: .7rem;
+}
+
+.star-record-type {
+  color: color-mix(in srgb, var(--card-accent) 74%, white);
+}
+
+.star-record-card h3 {
+  max-width: 16ch;
+  margin: 0 0 .75rem;
+  font-size: clamp(1.65rem, 3vw, 3.4rem);
+  font-weight: 530;
+  line-height: 1.02;
+  letter-spacing: -.045em;
+}
+
+.star-record-card:not(:nth-child(-n+2)) h3 {
+  font-size: clamp(1.55rem, 2vw, 2.15rem);
+}
+
+.star-record-card p {
+  max-width: 34rem;
+  margin: 0;
+  color: rgba(243, 234, 216, .68);
+  font-size: .93rem;
+  line-height: 1.65;
+}
+
+.star-record-card-open {
+  display: inline-flex;
+  align-items: center;
+  gap: .55rem;
+  margin-top: 1.25rem;
+  color: var(--record-paper);
+  font-size: .82rem;
+}
+
+.star-record-card-open::after {
+  content: "↗";
+  transition: transform .25s ease;
+}
+
+.star-record-card:hover .star-record-card-open::after {
+  transform: translate(3px, -3px);
+}
+
+.record-route-buttons {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+}
+
+.record-map-panel {
+  min-height: 100svh;
+  padding: clamp(4rem, 8vw, 8rem) clamp(1.2rem, 5vw, 6rem);
+  color: #17202c;
+  background: #eee4d2;
+}
+
+.record-map-panel .ink-panel-inner {
+  width: min(1180px, 100%);
+  margin: 0 auto;
+}
+
+.record-map-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(18rem, .65fr);
+  gap: 2rem 6rem;
+  align-items: end;
+  padding: 4rem 0 2.5rem;
+  border-bottom: 1px solid rgba(23, 32, 44, .2);
+}
+
+.record-map-intro h3 {
+  max-width: 12ch;
+  margin: 0;
+  font-size: clamp(2.8rem, 7vw, 6.8rem);
+  line-height: .94;
+  letter-spacing: -.065em;
+}
+
+.record-map-intro p:last-child {
+  margin: 0;
+  color: rgba(23, 32, 44, .68);
+  line-height: 1.8;
+}
+
+.record-map-path {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: .75rem;
+  padding: 5rem 0 2rem;
+}
+
+.record-map-path::before {
+  content: "";
+  position: absolute;
+  top: 7.1rem;
+  right: 5%;
+  left: 5%;
+  height: 1px;
+  background: linear-gradient(90deg, #7e96ae, #d18fa5, #789883, #c69470);
+}
+
+.record-map-node {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 12rem;
+  padding: 1.1rem;
+  border: 1px solid rgba(23, 32, 44, .15);
+  border-radius: 1rem;
+  color: inherit;
+  text-decoration: none;
+  background: rgba(255, 252, 244, .62);
+  transition: transform .3s ease, background .3s ease;
+}
+
+.record-map-node:hover {
+  transform: translateY(-6px);
+  background: rgba(255, 252, 244, .95);
+}
+
+.record-map-node::before {
+  content: "";
+  width: .72rem;
+  height: .72rem;
+  margin: .65rem 0 2.1rem;
+  border: 4px solid #eee4d2;
+  border-radius: 50%;
+  background: #5f7997;
+  box-shadow: 0 0 0 1px rgba(23, 32, 44, .18);
+}
+
+.record-map-node:nth-child(2n)::before { background: #be7891; }
+.record-map-node:nth-child(3n)::before { background: #6c8d77; }
+
+.record-map-node strong {
+  font-size: 1.05rem;
+}
+
+.record-map-node span {
+  margin-top: .5rem;
+  color: rgba(23, 32, 44, .62);
+  font-size: .78rem;
+  line-height: 1.5;
+}
+
+.fountain-design-method {
+  scroll-margin-top: 2rem;
+}
+
+.fountain-design-method > .ink-panel-inner > .room-house-panel-header::before {
+  content: "이 별을 만든 방식";
+  display: block;
+  margin-bottom: .75rem;
+  color: #97aac2;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: .72rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.room-context-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin: 1rem 0 1.5rem;
+}
+
+.room-context-nav .room-gallery-detail-button[aria-current="page"] {
+  color: #0b0f14;
+  background: #f3ead8;
+}
+
+@media (max-width: 900px) {
+  .star-record-heading,
+  .record-map-intro {
+    grid-template-columns: 1fr;
+  }
+
+  .star-record-heading h2 {
+    max-width: 8ch;
+  }
+
+  .star-record-card,
+  .star-record-card:nth-child(1),
+  .star-record-card:nth-child(2) {
+    grid-column: span 6;
+    min-height: 31rem;
+  }
+
+  .record-map-path {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .record-map-path::before {
+    display: none;
+  }
+}
+
+@media (max-width: 620px) {
+  .star-record-board {
+    padding-inline: 1rem;
+  }
+
+  .star-record-heading h2 {
+    font-size: clamp(3.6rem, 21vw, 6.2rem);
+  }
+
+  .star-record-toolbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .star-record-grid {
+    display: block;
+  }
+
+  .star-record-card,
+  .star-record-card:nth-child(1),
+  .star-record-card:nth-child(2) {
+    min-height: 31rem;
+    margin-bottom: .9rem;
+  }
+
+  .star-record-card h3,
+  .star-record-card:not(:nth-child(-n+2)) h3 {
+    font-size: 2.1rem;
+  }
+
+  .record-map-path {
+    grid-template-columns: 1fr 1fr;
+    padding-top: 3rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .star-record-card,
+  .star-record-card img,
+  .star-record-card::before,
+  .star-record-filter,
+  .record-map-node {
+    transition: none !important;
+  }
+
+  .star-record-card:hover,
+  .record-map-node:hover {
+    transform: none;
+  }
+}
