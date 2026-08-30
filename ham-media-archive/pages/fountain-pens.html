@@ -658,6 +658,89 @@
       box-shadow: 0 34px 82px rgba(8, 8, 8, 0.38);
     }
 
+    #inktrio .scene-copy,
+    #inktrio .constellation {
+      gap: 12px;
+    }
+
+    #inktrio h2 {
+      max-width: 760px;
+      font-size: clamp(42px, 4.8vw, 72px);
+    }
+
+    #inktrio .lead {
+      font-size: clamp(21px, 2vw, 30px);
+    }
+
+    #inktrio .star-nav,
+    #inktrio .exit-row {
+      gap: 8px;
+    }
+
+    #inktrio .star-link,
+    #inktrio .exit-link {
+      min-height: 42px;
+      padding: 6px 8px;
+    }
+
+    #inktrio .footer-line {
+      font-size: 13px;
+    }
+
+    .inktrio-bridge {
+      width: fit-content;
+      color: color-mix(in srgb, var(--hotarubi) 88%, var(--paper));
+      font-size: 15px;
+      font-weight: 850;
+      line-height: 1.5;
+      text-underline-offset: 5px;
+    }
+
+    .inktrio-status {
+      width: fit-content;
+      padding: 7px 11px;
+      border: 1px solid var(--line-paper);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.54);
+      color: var(--ink-muted);
+      font-size: 13px;
+      font-weight: 850;
+      line-height: 1.35;
+    }
+
+    .inktrio-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .inktrio-action {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 11px 16px;
+      border: 1px solid var(--platinum);
+      border-radius: 12px;
+      color: var(--platinum);
+      font-size: 15px;
+      font-weight: 900;
+      line-height: 1.25;
+      text-align: center;
+      text-decoration: none;
+    }
+
+    .inktrio-action.is-primary {
+      background: var(--platinum);
+      color: var(--paper);
+    }
+
+    .inktrio-bridge:focus-visible,
+    .inktrio-action:focus-visible {
+      outline: 3px solid var(--studio);
+      outline-offset: 4px;
+    }
+
     .constellation {
       display: grid;
       gap: 20px;
@@ -1533,6 +1616,11 @@
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
+      .inktrio-actions {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
       .hero-photo-full {
         place-items: start center;
         padding: 22px 14px 34svh;
@@ -1605,6 +1693,11 @@
       .exit-link {
         min-height: 52px;
       }
+
+      #inktrio .star-link,
+      #inktrio .exit-link {
+        min-height: 38px;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -1648,7 +1741,7 @@
     <a href="#human" aria-label="사람이 만든 것"></a>
     <a href="#hobby" aria-label="취미라는 것"></a>
     <a href="#inside" aria-label="별 안으로"></a>
-    <a href="#inktrio" aria-label="InkTrio 테스트 중"></a>
+    <a href="#inktrio" aria-label="좋았던 조합을 다시 찾는 InkTrio"></a>
   </nav>
 
   <main class="room-house-page" data-room-context-nav="false" data-article-house-target="fountain-writing-room" data-photo-house-target="fountain-photo-room" data-star-list-target="inktrio">
@@ -1696,6 +1789,7 @@
           <p class="lead">처음 나왔을 때의 색과, 마르고 난 뒤의 색.</p>
           <p class="hand small blue"><span class="penline w2"><span class="write">시간이 지나 다시 보면 또 달라진다.</span><i class="nib" aria-hidden="true"></i></span></p>
           <p class="body-copy">잉크는 처음 펜에서 나왔을 때와 마른 뒤의 색이 다르다.</p>
+          <a class="inktrio-bridge" href="#inktrio">이 조합을 잊지 않게 기록하는 InkTrio</a>
         </div>
         <div class="ink-grid">
           <figure class="scene-photo ink-bottle-photo">
@@ -2115,9 +2209,14 @@
       <div class="scene-inner">
         <div class="scene-copy">
           <p class="kicker">Finale</p>
-          <h2 id="inktrio-title"><span class="penline"><span class="write">InkTrio 테스트 중</span><i class="nib" aria-hidden="true"></i></span></h2>
-          <p class="lead">만년필, 잉크, 종이.</p>
-          <p class="body-copy">이 조합의 베스트를 찾는 것. 그게 잉크트리오의 목표입니다.</p>
+          <h2 id="inktrio-title"><span class="penline"><span class="write">좋았던 조합을 다시 찾는 InkTrio</span><i class="nib" aria-hidden="true"></i></span></h2>
+          <p class="lead">만년필, 잉크, 종이. 마음에 들었던 조합을 기록하고 다시 찾습니다.</p>
+          <p class="body-copy">InkTrio는 만년필·잉크·종이와 필기 사진을 기기 안에 저장하는 개인 기록장입니다. 계정 가입 없이 쓰고, 기록은 기기 안에 남습니다.</p>
+          <p class="inktrio-status">iPhone·iPad 공개 · Android 비공개 테스트 중</p>
+          <div class="inktrio-actions" aria-label="InkTrio 설치와 테스트 참여">
+            <a class="inktrio-action is-primary" href="https://apps.apple.com/kr/app/inktrio/id6786251304" target="_blank" rel="noopener noreferrer">App Store에서 무료로 받기</a>
+            <a class="inktrio-action" href="https://play.google.com/apps/testing/com.inktrio.app" target="_blank" rel="noopener noreferrer">Android 테스트 참여하기</a>
+          </div>
           <div class="constellation">
             <nav class="star-nav" aria-label="HAM MEDIA 별자리">
               <a class="star-link active" href="fountain-pens.html">만년필별 <span class="star-signal" aria-hidden="true"></span></a>
