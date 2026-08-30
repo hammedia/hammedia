@@ -4,9 +4,26 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light">
-  <meta name="robots" content="noindex, nofollow">
+  <meta name="robots" content="index, follow">
   <meta name="description" content="영상 한 편부터 홈페이지, 월 콘텐츠 운영, 회사에 맞춘 AI 업무 환경까지. HAM MEDIA의 상품을 지금 막힌 일에서 골라보세요.">
   <title>상품 메뉴 | HAM MEDIA</title>
+  <link rel="canonical" href="https://hammedia.co.kr/services/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://hammedia.co.kr/services/">
+  <meta property="og:title" content="상품 메뉴 | HAM MEDIA">
+  <meta property="og:description" content="영상 한 편부터 우리 회사 AI 업무실까지. 지금 필요한 상품과 가격 기준을 확인하세요.">
+  <meta property="og:image" content="https://hammedia.co.kr/ham-media-homepage-og-20260601.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="상품 메뉴 | HAM MEDIA">
+  <meta name="twitter:description" content="영상·홈페이지·채널 운영·우리 회사 AI 업무실을 고객의 문제에서 골라보세요.">
+  <meta name="twitter:image" content="https://hammedia.co.kr/ham-media-homepage-og-20260601.jpg">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TEBKMGWPQS"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-TEBKMGWPQS');
+  </script>
   <style>
     :root {
       --paper: #f9f7f3;
@@ -410,8 +427,8 @@
           <article class="product-card reveal" id="product-ai" data-product="ai" tabindex="-1">
             <div>
               <span class="product-kicker">한 업무부터</span>
-              <h3>우리 회사 AI 업무 환경</h3>
-              <p class="product-for">도구를 더 배우는 대신, 지금 반복하는 일을 실제로 돌아가는 업무 환경으로 바꾸고 싶은 분에게 맞습니다.</p>
+              <h3>우리 회사 AI 업무실</h3>
+              <p class="product-for">반복 업무를 실제로 돌아가는 AI 업무 환경으로 바꾸고 싶은 분에게 맞습니다.</p>
               <p class="price"><b>1인·1대·1업무 진단 후 서면 견적</b><span>설치·함께 고치는 기간·유지관리를 한 가격으로 뭉치지 않습니다.</span></p>
             </div>
             <div>
@@ -562,7 +579,7 @@
       single: ["영상·콘텐츠 한 건 완성", "문의 첫 줄에 ‘영상·콘텐츠 한 건’을 적어주세요."],
       monthly: ["한 달 콘텐츠·채널 운영", "문의 첫 줄에 ‘월 채널 운영’을 적어주세요."],
       storefront: ["홈페이지·온라인 매대 만들기", "문의 첫 줄에 ‘온라인 매대’를 적어주세요."],
-      ai: ["우리 회사 AI 업무 환경", "문의 첫 줄에 ‘AI 업무 환경’을 적어주세요."]
+      ai: ["우리 회사 AI 업무실", "문의 첫 줄에 ‘우리 회사 AI 업무실’을 적어주세요."]
     };
 
     const choiceButtons = [...document.querySelectorAll('[data-choice].choice')];
@@ -581,6 +598,9 @@
       const nextUrl = new URL(location.href);
       nextUrl.searchParams.set('product', key);
       history.replaceState(null, '', nextUrl);
+      if (options.track && typeof gtag === 'function') {
+        gtag('event', 'select_service', { service_key: key });
+      }
       if (options.scroll) {
         const target = document.querySelector(`[data-product="${key}"]`);
         target.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'center' });
@@ -588,8 +608,11 @@
       }
     }
 
-    choiceButtons.forEach((button) => button.addEventListener('click', () => selectProduct(button.dataset.choice, { scroll: true })));
-    document.querySelectorAll('.product-cta').forEach((link) => link.addEventListener('click', () => selectProduct(link.dataset.choice)));
+    choiceButtons.forEach((button) => button.addEventListener('click', () => selectProduct(button.dataset.choice, { scroll: true, track: true })));
+    document.querySelectorAll('.product-cta').forEach((link) => link.addEventListener('click', () => {
+      selectProduct(link.dataset.choice);
+      if (typeof gtag === 'function') gtag('event', 'begin_service_inquiry', { service_key: link.dataset.choice });
+    }));
 
     const initial = new URLSearchParams(location.search).get('product');
     if (copy[initial]) selectProduct(initial);
