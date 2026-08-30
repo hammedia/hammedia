@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>제철담은 마포바다 — 영수증 리뷰 안내판</title>
+<!-- 팔레트: 05_HAM_DesignStudio/reference/clients/mapobada/DESIGN.md §4 (아이보리·갈색·금색) -->
+<style>
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body {
+    background:#DCD3BE; color:#4A2E1C;
+    font-family:"Apple SD Gothic Neo","Noto Sans KR",system-ui,sans-serif;
+    word-break:keep-all;
+  }
+  .toolbar {
+    max-width:700px; margin:16px auto 0; padding:0 16px;
+    display:flex; justify-content:space-between; align-items:center;
+    font-size:13px; color:#8C5A2E;
+  }
+  .toolbar button {
+    background:#B8892B; color:#F6EFE1; border:none; border-radius:8px;
+    padding:8px 16px; font-size:14px; font-weight:700; cursor:pointer;
+  }
+  .sheet {
+    width:210mm; height:297mm; max-width:100%; aspect-ratio:210/297;
+    margin:20px auto; background:#F6EFE1;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center; padding:40px; box-shadow:0 4px 24px rgba(74,46,28,.18);
+  }
+  .shopname { font-size:22px; font-weight:800; letter-spacing:.04em; color:#B8892B; margin-bottom:28px; }
+  .kicker { font-size:20px; font-weight:700; color:#8C5A2E; margin-bottom:16px; }
+  h1 { font-size:52px; line-height:1.4; font-weight:800; margin-bottom:40px; }
+  h1 .gift { color:#B8892B; }
+  .steps { font-size:22px; line-height:2; color:#4A2E1C; margin-bottom:40px; }
+  .steps b { color:#B8892B; }
+  .foot { font-size:16px; color:#8C5A2E; }
+  @media print {
+    body { background:#fff; }
+    .toolbar { display:none; }
+    .sheet { margin:0; box-shadow:none; }
+    @page { size:A4; margin:0; }
+  }
+</style>
+</head>
+<body>
+  <div class="toolbar">
+    <span>인쇄용 A4 1장 — 아래 버튼으로 바로 출력하시면 됩니다</span>
+    <button onclick="window.print()">출력하기</button>
+  </div>
+  <div class="sheet">
+    <div class="shopname">제철담은 마포바다</div>
+    <div class="kicker">오늘 방문 후기, 남겨주시면</div>
+    <h1>영수증 리뷰 남기면<br><span class="gift">음료 1병</span> 드립니다</h1>
+    <div class="steps">
+      <b>1.</b> 네이버·카카오맵에 방문 후기 남기기<br>
+      <b>2.</b> 영수증과 함께 직원에게 보여주기<br>
+      <b>3.</b> 음료 1병 바로 드립니다
+    </div>
+    <div class="foot">제철담은 마포바다 드림</div>
+  </div>
+</body>
+</html>
