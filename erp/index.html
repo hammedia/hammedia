@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow">
+  <meta name="description" content="고객·계약·입금·납품·다음 행동을 한 화면에서 보는 작은 회사 ERP">
+  <title>HAM 작은 ERP — 고객부터 납품까지</title>
+  <link rel="canonical" href="https://hammedia.co.kr/erp/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://hammedia.co.kr/erp/">
+  <meta property="og:title" content="HAM 작은 ERP — 고객부터 납품까지">
+  <meta property="og:description" content="누구에게 무엇을 약속했고, 얼마를 받았고, 무엇을 언제까지 끝내는지 한 화면에서 확인하세요.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">본문으로 바로가기</a>
+  <header class="topbar">
+    <a class="brand" href="https://hammedia.co.kr/">HAM MEDIA</a>
+    <div class="top-actions">
+      <button class="button button-light" id="backupButton" type="button">백업 받기</button>
+      <label class="button button-light file-label">백업 열기<input id="restoreInput" type="file" accept="application/json,.json"></label>
+      <button class="button" id="openFormButton" type="button">고객 업무 추가</button>
+    </div>
+  </header>
+
+  <main id="main" class="shell">
+    <section class="hero">
+      <div>
+        <p class="eyebrow">고객에서 돈과 납품까지</p>
+        <h1>작은 회사 ERP</h1>
+        <p class="hero-copy">누구에게 무엇을 약속했고, 얼마를 받았고, 무엇을 언제까지 끝내야 하는지 한 화면에서 봅니다.</p>
+      </div>
+      <aside class="local-note" aria-label="데이터 보관 안내">
+        <strong>이 브라우저 안에만 저장됩니다.</strong>
+        <p>서버로 보내지 않습니다. 주민번호·계좌번호·진료정보·비밀번호는 적지 마세요. 중요한 기록은 백업 파일을 받아 보관하세요.</p>
+      </aside>
+    </section>
+
+    <section class="today" aria-labelledby="todayTitle">
+      <div class="section-title">
+        <div><p class="eyebrow">오늘 먼저 볼 것</p><h2 id="todayTitle">돈과 기한을 놓치지 않게</h2></div>
+        <p id="todayText" class="date-copy"></p>
+      </div>
+      <div class="summary-grid">
+        <article><span>계약한 금액</span><strong id="contractedAmount">0원</strong><small>계약완료 기준</small></article>
+        <article><span>실제 받은 돈</span><strong id="paidAmount">0원</strong><small>입력한 입금 합계</small></article>
+        <article class="summary-alert"><span>아직 받을 돈</span><strong id="receivableAmount">0원</strong><small>계약금액에서 입금 제외</small></article>
+        <article><span>7일 안 납품</span><strong id="dueSoon">0건</strong><small>고객 수락 전</small></article>
+        <article><span>오늘 확인할 일</span><strong id="attention">0건</strong><small>다음 행동 날짜 기준</small></article>
+      </div>
+    </section>
+
+    <section class="work" aria-labelledby="workTitle">
+      <div class="section-title work-head">
+        <div><p class="eyebrow">고객 업무</p><h2 id="workTitle">지금 어디까지 왔나</h2></div>
+        <p><strong id="recordCount">0</strong>건</p>
+      </div>
+      <div class="filters" aria-label="고객 업무 찾기">
+        <label class="search"><span>찾기</span><input id="searchInput" type="search" placeholder="고객·상품·다음 행동"></label>
+        <label><span>계약</span><select id="contractFilter"><option>전체</option><option>문의</option><option>견적</option><option>계약완료</option><option>종료</option></select></label>
+        <label><span>납품</span><select id="deliveryFilter"><option>전체</option><option>시작 전</option><option>진행 중</option><option>납품 대기</option><option>납품 완료</option><option>고객 수락</option></select></label>
+      </div>
+      <div id="emptyState" class="empty" hidden>
+        <strong>조건에 맞는 고객 업무가 없습니다.</strong>
+        <p>필터를 바꾸거나 새 고객 업무를 추가하세요.</p>
+      </div>
+      <div id="recordList" class="record-list"></div>
+    </section>
+
+    <section class="promise">
+      <div><p class="eyebrow">이 도구가 하는 일</p><h2>회계를 대신하지 않고, 약속을 놓치지 않게 합니다.</h2></div>
+      <ul>
+        <li><strong>고객</strong><span>누구의 어떤 일을 맡았는지</span></li>
+        <li><strong>돈</strong><span>계약금액·받은 돈·남은 돈</span></li>
+        <li><strong>납품</strong><span>기한·현재 상태·고객 수락</span></li>
+        <li><strong>다음</strong><span>지금 해야 할 한 가지와 날짜</span></li>
+      </ul>
+      <a class="button" href="https://hammedia.co.kr/services/?product=erp#contact">우리 회사에 맞춰 설치 상담하기</a>
+    </section>
+  </main>
+
+  <dialog id="recordDialog">
+    <form id="recordForm" method="dialog">
+      <div class="dialog-head"><div><p class="eyebrow">고객 업무 한 건</p><h2 id="dialogTitle">추가하기</h2></div><button class="icon-button" id="closeFormButton" type="button" aria-label="닫기">×</button></div>
+      <input id="recordId" type="hidden">
+      <div class="form-grid">
+        <label><span>고객 또는 회사 이름 *</span><input id="customerInput" required maxlength="60" placeholder="예: 새봄책방"></label>
+        <label><span>약속한 상품·결과 *</span><input id="productInput" required maxlength="100" placeholder="예: 홈페이지 1식"></label>
+        <label><span>계약 상태</span><select id="contractStateInput"><option>문의</option><option>견적</option><option>계약완료</option><option>종료</option></select></label>
+        <label><span>납품 상태</span><select id="deliveryStateInput"><option>시작 전</option><option>진행 중</option><option>납품 대기</option><option>납품 완료</option><option>고객 수락</option></select></label>
+        <label><span>계약금액</span><input id="totalAmountInput" type="number" min="0" step="1000" inputmode="numeric"></label>
+        <label><span>받은 돈</span><input id="paidAmountInput" type="number" min="0" step="1000" inputmode="numeric"></label>
+        <label><span>청구·세금계산서</span><select id="invoiceStateInput"><option>미발행</option><option>청구서 발행</option><option>세금계산서 발행</option><option>해당 없음</option></select></label>
+        <label><span>납품 예정일</span><input id="dueDateInput" type="date"></label>
+        <label class="wide"><span>다음에 할 일 *</span><input id="nextActionInput" required maxlength="140" placeholder="예: 고객에게 첫 화면 확인받기"></label>
+        <label><span>다음 확인일</span><input id="nextDateInput" type="date"></label>
+        <label><span>담당</span><input id="ownerInput" maxlength="50" placeholder="예: 햄집사"></label>
+        <label class="wide"><span>근거 위치</span><input id="evidenceInput" maxlength="240" placeholder="계약서·견적서·납품물의 안전한 위치만 적기"></label>
+      </div>
+      <p class="form-warning">받은 돈이 계약금액보다 크면 계약금액까지만 저장합니다.</p>
+      <div class="dialog-actions"><button class="button button-danger" id="deleteButton" type="button" hidden>이 업무 삭제</button><span></span><button class="button button-light" id="cancelButton" type="button">취소</button><button class="button" type="submit">저장하기</button></div>
+    </form>
+  </dialog>
+
+  <template id="recordTemplate">
+    <article class="record-card">
+      <div class="record-top"><div><p class="record-product"></p><h3 class="record-customer"></h3></div><button class="edit-button" type="button">수정</button></div>
+      <div class="status-row"><span class="contract-chip"></span><span class="delivery-chip"></span><span class="invoice-chip"></span></div>
+      <div class="money-line"><span><small>약속금액</small><strong class="total-value"></strong></span><span><small>받은 돈</small><strong class="paid-value"></strong></span><span><small>남은 돈</small><strong class="remaining-value"></strong></span></div>
+      <dl><div><dt>납품 예정</dt><dd class="due-value"></dd></div><div><dt>다음 행동</dt><dd class="next-value"></dd></div><div><dt>담당</dt><dd class="owner-value"></dd></div><div><dt>근거 위치</dt><dd class="evidence-value"></dd></div></dl>
+    </article>
+  </template>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
