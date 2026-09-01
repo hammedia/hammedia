@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow, noarchive">
+    <title>마포바다 정보 확인표 | HAM MEDIA 공유 선반</title>
+    <meta name="description" content="네이버·당근에 올라간 마포바다 매장 정보가 맞는지 확인하는 문서입니다.">
+    <style>
+      :root {
+        --paper-deep: #f5f3ee;
+        --paper: #fffefb;
+        --ink: #1c1814;
+        --muted: #4a423c;
+        --line: rgba(28, 24, 20, .14);
+        --accent: #7eb5e8;
+        --action: #00704a;
+        --flag: #b5551f;
+        --flag-bg: rgba(181, 85, 31, .1);
+        --shadow: 0 1px 2px rgba(28, 24, 20, .05), 0 18px 48px rgba(28, 24, 20, .08);
+      }
+      * { box-sizing: border-box; }
+      html {
+        background: var(--paper-deep);
+        color: var(--ink);
+        font-family: "Pretendard", "Pretendard Variable", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
+        line-height: 1.65;
+        -webkit-font-smoothing: antialiased;
+      }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background: radial-gradient(circle at top left, rgba(126, 181, 232, .18), transparent 34rem), var(--paper-deep);
+      }
+      .share-shell { width: min(100%, 640px); margin: 0 auto; padding: 20px 16px 56px; }
+      .share-document { background: var(--paper); border: 1px solid var(--line); border-radius: 24px; box-shadow: var(--shadow); overflow: hidden; }
+      .share-header { padding: clamp(24px, 6vw, 40px); border-bottom: 1px solid var(--line); }
+      .share-brand { margin: 0 0 16px; color: var(--action); font-size: 12px; font-weight: 900; letter-spacing: .08em; }
+      .share-header h1 { margin: 0; font-size: clamp(26px, 7vw, 38px); line-height: 1.2; letter-spacing: 0; }
+      .share-lede { margin: 14px 0 0; color: var(--muted); font-size: 15.5px; }
+      .share-lede b { color: var(--ink); }
+      .share-content { padding: clamp(20px, 5vw, 36px); }
+
+      .item { border: 1px solid var(--line); border-radius: 16px; padding: 18px; margin-bottom: 14px; background: var(--paper); }
+      .item-head { display: flex; align-items: baseline; gap: 8px; margin-bottom: 10px; }
+      .num { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 999px; background: rgba(126,181,232,.22); color: var(--action); font-size: 12.5px; font-weight: 800; flex: none; }
+      .item h2 { margin: 0; font-size: 16.5px; }
+      .current { border: 1px dashed var(--line); border-radius: 10px; padding: 10px 12px; font-size: 14px; color: var(--muted); margin-bottom: 12px; }
+      .current .tag { display: block; font-size: 11.5px; letter-spacing: .03em; margin-bottom: 4px; opacity: .8; }
+      .question { font-size: 14.5px; margin: 0 0 10px; }
+
+      .pills { display: flex; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; }
+      .pill { position: relative; }
+      .pill input { position: absolute; opacity: 0; width: 100%; height: 100%; margin: 0; cursor: pointer; }
+      .pill label { display: inline-flex; align-items: center; padding: 9px 14px; border-radius: 999px; border: 1.5px solid var(--line); font-size: 14px; font-weight: 700; color: var(--muted); cursor: pointer; user-select: none; }
+      .pill input:checked + label { border-color: var(--action); color: var(--action); background: rgba(0,112,74,.08); }
+      .pill.differs input:checked + label { border-color: var(--flag); color: var(--flag); background: var(--flag-bg); }
+
+      textarea { width: 100%; border: 1px solid var(--line); border-radius: 10px; background: var(--paper-deep); color: var(--ink); font: inherit; font-size: 14px; padding: 10px 12px; resize: vertical; min-height: 44px; }
+      .note-label { display: block; font-size: 12.5px; color: var(--muted); margin-bottom: 5px; }
+
+      .submit-row { margin-top: 22px; display: flex; flex-direction: column; gap: 10px; }
+      button.primary { appearance: none; border: none; border-radius: 999px; background: var(--action); color: #fff; font: inherit; font-size: 16px; font-weight: 800; padding: 14px 20px; cursor: pointer; width: 100%; }
+      .hint { font-size: 12.5px; color: var(--muted); text-align: center; margin: 0; }
+
+      .result { border: 1px solid var(--line); border-radius: 16px; padding: 16px 18px; margin-bottom: 12px; }
+      .result h3 { font-size: 15px; margin: 0 0 8px; display: flex; align-items: center; gap: 8px; }
+      .badge { font-size: 12px; font-weight: 800; padding: 3px 10px; border-radius: 999px; background: rgba(0,112,74,.1); color: var(--action); }
+      .badge.differs { background: var(--flag-bg); color: var(--flag); }
+      .badge.unknown { background: var(--line); color: var(--muted); }
+      .result p { font-size: 14px; color: var(--muted); margin: 6px 0 0; white-space: pre-wrap; }
+
+      .copybox { margin-top: 20px; padding: 16px; border: 1px solid var(--action); background: rgba(0,112,74,.06); border-radius: 14px; }
+      .copybox p { margin: 0 0 8px; font-size: 14px; }
+      .copybox textarea { min-height: 160px; font-size: 13px; }
+      .copy-btn { margin-top: 10px; appearance: none; border: none; border-radius: 999px; background: var(--action); color: #fff; padding: 10px 18px; font: inherit; font-weight: 800; font-size: 14px; cursor: pointer; }
+      .edit-again { display: block; width: 100%; text-align: center; margin-top: 16px; background: none; border: none; color: var(--action); font: inherit; font-weight: 700; font-size: 14px; cursor: pointer; padding: 8px; }
+
+      .share-note { margin-top: 24px; padding: 14px 16px; border-left: 4px solid var(--accent); background: rgba(126,181,232,.12); border-radius: 14px; color: var(--muted); font-size: 13.5px; }
+
+      @media (max-width: 560px) {
+        .share-shell { padding: 12px 10px 36px; }
+        .share-document { border-radius: 18px; }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="share-shell">
+      <article class="share-document">
+        <header class="share-header">
+          <p class="share-brand">HAM MEDIA SHARE</p>
+          <h1>지금 올라간 정보, 맞는지 확인 부탁드려요</h1>
+          <p class="share-lede">네이버·당근에 이미 떠 있는 내용이에요. <b>맞으면 다른 채널(구글·카카오맵)에도 똑같이 맞춰드릴게요.</b> 하나씩 체크만 해주시면 됩니다, 2분이면 끝나요.</p>
+        </header>
+        <section class="share-content" id="app"></section>
+      </article>
+    </main>
+
+    <script>
+      var ITEMS = [
+        { id: "colkage", title: "콜키지 정책", current: "와인·위스키·사케·전통주 각 1병 무료(병수 제한 없음), 1병 초과 시 병당 1만원 — 네이버플레이스에 이렇게 올라가 있어요.", question: "지금도 이 조건 그대로 맞나요?" },
+        { id: "pet", title: "반려동물 동반", current: "“반려동물 동반 불가”로 올라가 있어요.", question: "맞나요?" },
+        { id: "hall", title: "대관", current: "“대관 가능”으로 올라가 있어요.", question: "맞나요? 인원·조건이 있으면 비고에 적어주세요." },
+        { id: "parking-guide", title: "인근 주차장 안내", current: "한 곳엔 “하이카프라자 한라자동차공업사 염리점(백범로 118)”, 다른 곳엔 “투썸플레이스 대흥점 옆”으로 서로 다르게 적혀 있어요.", question: "이 둘, 같은 주차장인가요 다른 곳인가요?" },
+        { id: "takeout", title: "포장 주문", current: "당근에는 아직 꺼져 있어요.", question: "포장 손님 받으실 수 있나요?" },
+        { id: "reservation", title: "예약", current: "당근에는 아직 꺼져 있어요.", question: "예약 받으시나요?" },
+        { id: "group-order", title: "단체주문", current: "당근에는 아직 꺼져 있어요.", question: "단체주문 받으시나요?" },
+        { id: "room", title: "룸(별도 공간)", current: "당근에는 아직 꺼져 있어요.", question: "따로 쓸 수 있는 방이나 공간이 있나요?" }
+      ];
+      var ANSWER_LABEL = { same: "맞아요", differs: "달라요", unknown: "잘 모르겠어요" };
+      var DRAFT_KEY = "mapobada-check-20260901";
+
+      function loadDraft() {
+        try { var raw = localStorage.getItem(DRAFT_KEY); return raw ? JSON.parse(raw) : {}; }
+        catch (e) { return {}; }
+      }
+      function saveDraft(state) {
+        try { localStorage.setItem(DRAFT_KEY, JSON.stringify(state)); } catch (e) {}
+      }
+      function esc(s) {
+        return String(s).replace(/[&<>]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;" }[c]; });
+      }
+
+      function renderForm(container, prefill) {
+        var draft = prefill || loadDraft();
+        var itemsHtml = ITEMS.map(function (item, i) {
+          var a = (draft.answers && draft.answers[item.id]) || {};
+          function pill(val) {
+            var checked = a.answer === val ? "checked" : "";
+            var cls = val === "differs" ? " differs" : "";
+            return '<div class="pill' + cls + '">' +
+              '<input type="radio" name="ans-' + item.id + '" id="ans-' + item.id + '-' + val + '" value="' + val + '" ' + checked + '>' +
+              '<label for="ans-' + item.id + '-' + val + '">' + ANSWER_LABEL[val] + '</label></div>';
+          }
+          return '<div class="item">' +
+            '<div class="item-head"><span class="num">' + (i + 1) + '</span><h2>' + esc(item.title) + '</h2></div>' +
+            '<div class="current"><span class="tag">지금 이렇게 올라가 있어요</span>' + esc(item.current) + '</div>' +
+            '<p class="question">' + esc(item.question) + '</p>' +
+            '<div class="pills">' + pill("same") + pill("differs") + pill("unknown") + '</div>' +
+            '<label class="note-label" for="note-' + item.id + '">비고 (다르면 뭐가 다른지, 하고 싶은 말)</label>' +
+            '<textarea id="note-' + item.id + '" placeholder="선택사항">' + esc(a.note || "") + '</textarea>' +
+            '</div>';
+        }).join("");
+
+        container.innerHTML =
+          '<div id="items">' + itemsHtml + '</div>' +
+          '<div class="item">' +
+            '<h2 style="margin-bottom:8px;">그 밖에 하고 싶은 말</h2>' +
+            '<textarea id="overall-note" placeholder="자유롭게 적어주세요 (선택)">' + esc(draft.overallNote || "") + '</textarea>' +
+          '</div>' +
+          '<div class="submit-row">' +
+            '<button class="primary" id="submit-btn" type="button">보내기</button>' +
+            '<p class="hint">보내기를 누르면 요약이 나와요. 그걸 복사해서 카톡으로 보내주시면 됩니다.</p>' +
+          '</div>' +
+          '<p class="share-note">이 페이지는 자동으로 저장되지 않아요. 마지막에 나오는 복사 버튼으로 카톡에 붙여넣어 보내주셔야 저희가 받을 수 있어요.</p>';
+
+        Array.prototype.forEach.call(container.querySelectorAll('input[type="radio"]'), function (r) {
+          r.addEventListener("change", function () { saveDraft(collectState(container)); });
+        });
+        Array.prototype.forEach.call(container.querySelectorAll("textarea"), function (t) {
+          t.addEventListener("input", function () { saveDraft(collectState(container)); });
+        });
+        container.querySelector("#submit-btn").addEventListener("click", function () { onSubmit(container); });
+      }
+
+      function collectState(container) {
+        var answers = {};
+        ITEMS.forEach(function (item) {
+          var checked = container.querySelector('input[name="ans-' + item.id + '"]:checked');
+          var note = container.querySelector('#note-' + item.id);
+          answers[item.id] = { answer: checked ? checked.value : null, note: note ? note.value.trim() : "" };
+        });
+        var overallNoteEl = container.querySelector("#overall-note");
+        return { answers: answers, overallNote: overallNoteEl ? overallNoteEl.value.trim() : "", submittedAt: new Date().toISOString() };
+      }
+
+      function buildSummaryText(state) {
+        var lines = ["[마포바다 정보 확인 결과]"];
+        ITEMS.forEach(function (item, i) {
+          var a = state.answers[item.id] || {};
+          var label = ANSWER_LABEL[a.answer] || "무응답";
+          lines.push((i + 1) + ". " + item.title + " — " + label + (a.note ? " / 비고: " + a.note : ""));
+        });
+        if (state.overallNote) { lines.push(""); lines.push("그 밖: " + state.overallNote); }
+        return lines.join("\n");
+      }
+
+      function onSubmit(container) {
+        var state = collectState(container);
+        saveDraft(state);
+        renderDone(container, state);
+      }
+
+      function renderDone(container, state) {
+        var when = new Date(state.submittedAt);
+        var whenStr = isNaN(when.getTime()) ? "" : when.toLocaleString("ko-KR");
+        var resultsHtml = ITEMS.map(function (item, i) {
+          var a = state.answers[item.id] || {};
+          var cls = a.answer === "differs" ? "differs" : (a.answer === "unknown" ? "unknown" : "");
+          var label = ANSWER_LABEL[a.answer] || "무응답";
+          return '<div class="result"><h3>' + (i + 1) + '. ' + esc(item.title) + ' <span class="badge ' + cls + '">' + label + '</span></h3>' +
+            (a.note ? '<p>' + esc(a.note) + '</p>' : '') + '</div>';
+        }).join("");
+
+        container.innerHTML =
+          '<p class="hint" style="margin-bottom:14px;">' + whenStr + ' · 확인해주셔서 감사합니다</p>' +
+          resultsHtml +
+          (state.overallNote ? '<div class="result"><h3>그 밖의 말씀</h3><p>' + esc(state.overallNote) + '</p></div>' : '') +
+          '<div class="copybox">' +
+            '<p><b>아래 내용을 복사해서 카톡으로 보내주세요.</b> 그래야 저희가 확인할 수 있어요.</p>' +
+            '<textarea readonly id="summary-text">' + esc(buildSummaryText(state)) + '</textarea>' +
+            '<button class="copy-btn" id="copy-btn" type="button">복사하기</button>' +
+          '</div>' +
+          '<button class="edit-again" id="edit-again" type="button">다시 수정하기</button>';
+
+        container.querySelector("#edit-again").addEventListener("click", function () { renderForm(container, state); });
+        var copyBtn = container.querySelector("#copy-btn");
+        copyBtn.addEventListener("click", function () {
+          var text = container.querySelector("#summary-text").value;
+          var done = function () { copyBtn.textContent = "복사됐어요"; };
+          var fail = function () {
+            var ta = container.querySelector("#summary-text");
+            ta.focus(); ta.select();
+            copyBtn.textContent = "선택됐어요, 길게 눌러 복사하세요";
+          };
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text).then(done, fail);
+          } else { fail(); }
+        });
+      }
+
+      renderForm(document.getElementById("app"));
+    </script>
+  </body>
+</html>
