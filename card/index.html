@@ -923,6 +923,74 @@
         margin-top: clamp(18px, 2.3vw, 30px);
       }
 
+      /* 데스크톱 앱처럼 폭에 비해 높이가 짧은 창에서는
+         폭 기준 글자 크기가 세로 공간을 밀어내지 않도록 한 단계 조인다. */
+      @media (min-width: 761px) and (max-width: 1100px) {
+        .back-content {
+          grid-template-columns: minmax(0, 0.93fr) minmax(0, 1.07fr);
+          gap: 4%;
+          padding: 32px 40px;
+        }
+
+        .back-brand {
+          margin-bottom: 14px;
+          font-size: 15px;
+        }
+
+        .name {
+          font-size: 42px;
+        }
+
+        .role {
+          margin-top: 6px;
+          font-size: 15px;
+        }
+
+        .statement {
+          margin-top: 18px;
+          padding-left: 14px;
+          font-size: 25px;
+          line-height: 1.32;
+        }
+
+        .identity-shortcuts {
+          margin-top: 14px;
+        }
+
+        .identity-shortcut {
+          min-height: 46px;
+          padding: 7px 8px;
+        }
+
+        .contact-panel {
+          padding-left: 24px;
+        }
+
+        .contact-list {
+          gap: 6px;
+        }
+
+        .contact-link {
+          min-height: 48px;
+          padding-block: 6px;
+        }
+
+        .tool-bar {
+          margin-top: 10px;
+        }
+
+        .tool-btn {
+          min-height: 48px;
+          padding-block: 6px;
+        }
+
+        .card-back .flip-control {
+          min-height: 42px;
+          margin-top: 12px;
+          padding-block: 8px;
+        }
+      }
+
       .screen-state {
         position: fixed;
         width: 1px;
@@ -1028,8 +1096,20 @@
         }
 
         .identity-shortcut {
-          min-height: 46px;
-          padding: 7px 8px;
+          min-height: 56px;
+          grid-template-columns: 1fr;
+          grid-template-rows: 18px auto;
+          gap: 4px;
+          place-items: center;
+          padding: 7px 4px;
+        }
+
+        .identity-shortcut span {
+          width: 100%;
+          overflow: visible;
+          font-size: 11px;
+          text-align: center;
+          text-overflow: clip;
         }
 
         .contact-panel {
@@ -1139,9 +1219,9 @@
         }
 
         .identity-shortcut {
-          grid-template-columns: 18px minmax(0, 1fr);
-          gap: 5px;
-          padding-inline: 7px;
+          grid-template-columns: 1fr;
+          gap: 3px;
+          padding-inline: 3px;
         }
 
         .identity-shortcut svg {
@@ -1150,7 +1230,7 @@
         }
 
         .identity-shortcut span {
-          font-size: 11px;
+          font-size: 10.5px;
         }
 
         .tools {
