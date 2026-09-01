@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>바이브 코딩 실행서 — 웹북</title>
+<style>
+  /* HAM MEDIA DESIGN.md 색 — Pearl Ivory / Warm Black / Sky Royal Blue */
+  :root{
+    --canvas:#F9F7F3; --surface:#F5F3EE; --ink:#1C1814; --muted:#4A423C;
+    --accent:#7EB5E8; --line:#DDD8D0;
+  }
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  :root{ --fs:18px; }
+  body{
+    margin:0; background:var(--canvas); color:var(--ink);
+    font-family:"Pretendard","Apple SD Gothic Neo","Noto Sans KR",system-ui,sans-serif;
+    /* 독자가 50~60대다 — 글자를 키우고, 「가+」 버튼으로 더 키울 수 있다 */
+    font-size:var(--fs); line-height:1.95; word-break:keep-all; letter-spacing:-.01em;
+  }
+  a, code, li{ overflow-wrap:anywhere; }
+
+  /* 검수본 띠 — 공개 전 제거 */
+  .review-band{
+    background:#C0392B; color:#fff; text-align:center; padding:8px 16px;
+    font-size:14px; font-weight:700; position:sticky; top:0; z-index:50;
+  }
+
+  header.book-head{
+    background:var(--surface); border-bottom:1px solid var(--line);
+    padding:64px 24px 56px; text-align:left;
+  }
+  .head-inner{ max-width:720px; margin:0 auto; }
+  .eyebrow{ font-size:14px; color:var(--muted); letter-spacing:.08em; margin-bottom:28px; }
+  header h1.book-title{
+    font-size:clamp(28px,6vw,44px); line-height:1.35; margin:0 0 20px; font-weight:800;
+    border-top:0; padding-top:0;
+  }
+  .head-rule{ width:64px; height:4px; background:var(--accent); margin:28px 0; }
+  .head-sub{ color:var(--muted); line-height:1.9; margin-bottom:32px; }
+  .head-by b{ display:block; font-size:18px; margin-bottom:4px; }
+  .head-by{ font-size:15px; color:var(--muted); }
+  .made-with{
+    margin-top:36px; padding:14px 18px; background:var(--canvas);
+    border-left:3px solid var(--accent); font-size:15.5px; color:var(--muted);
+  }
+  .owner-line{
+    margin-top:14px; font-size:15.5px; color:var(--muted); font-weight:700;
+  }
+
+  /* 목차 */
+  nav.toc{ max-width:720px; margin:0 auto; padding:40px 24px 8px; }
+  nav.toc h2{ font-size:16px; color:var(--muted); margin:0 0 12px; letter-spacing:.05em; }
+  nav.toc ol{ margin:0; padding-left:0; list-style:none; }
+  nav.toc li{ margin:0; border-bottom:1px solid var(--line); }
+  nav.toc a{
+    display:block; padding:11px 4px; color:var(--ink); text-decoration:none; font-size:16.5px;
+  }
+  nav.toc a:hover{ color:#2E6FAE; }
+
+  main{ max-width:720px; margin:0 auto; padding:24px 24px 80px; }
+
+  h1{ font-size:clamp(24px,4.5vw,31px); line-height:1.45; margin:72px 0 24px; font-weight:800;
+      padding-top:24px; border-top:3px solid var(--ink); }
+  h2{ font-size:clamp(20px,3.5vw,23px); line-height:1.5; margin:52px 0 18px; font-weight:700; }
+  h3{ font-size:19px; margin:36px 0 12px; font-weight:700; }
+  h4{ font-size:18px; margin:28px 0 10px; font-weight:700; color:var(--muted); }
+  p{ margin:0 0 18px; }
+  strong{ font-weight:700; }
+  ul,ol{ margin:0 0 20px; padding-left:22px; }
+  li{ margin-bottom:10px; }
+  blockquote{
+    margin:26px 0; padding:18px 22px; background:var(--surface);
+    border-left:3px solid var(--accent);
+  }
+  blockquote p{ margin:0 0 10px; } blockquote p:last-child{ margin:0; }
+  code{ font-family:"SF Mono",Menlo,monospace; font-size:.9em; background:var(--surface); padding:1px 5px; border-radius:3px; }
+  hr{ border:0; border-top:1px solid var(--line); margin:44px 0; }
+  img{ max-width:100%; height:auto; display:block; margin:26px auto; border:1px solid var(--line); }
+  a{ color:#2E6FAE; }
+
+  .prewrap{ position:relative; margin:26px 0; }
+  pre{
+    background:var(--surface); border-left:3px solid var(--accent);
+    padding:20px 22px; margin:0; font-size:calc(var(--fs) * .89); line-height:1.85;
+    white-space:pre-wrap; word-break:keep-all; font-family:inherit; overflow-x:auto;
+  }
+  .copy-btn{
+    position:absolute; top:10px; right:10px; border:1px solid var(--line);
+    background:#fff; color:var(--ink); font-size:13.5px; padding:6px 14px;
+    border-radius:6px; cursor:pointer; font-family:inherit;
+  }
+  .copy-btn:hover{ background:var(--canvas); }
+  .copy-btn.done{ background:var(--accent); color:#fff; border-color:var(--accent); }
+  .copy-btn.manual{ position:static; display:block; margin:8px 0 0 auto; }
+
+  table{ width:100%; border-collapse:collapse; margin:26px 0;
+    font-size:calc(var(--fs) * .89); line-height:1.7; }
+  th{ text-align:left; font-weight:700; border-bottom:2px solid var(--ink);
+      padding:10px 10px; background:var(--surface); }
+  td{ border-bottom:1px solid var(--line); padding:10px 10px; vertical-align:top; }
+  .table-scroll{ overflow-x:auto; }
+
+  .video{ position:relative; padding-top:56.25%; margin:26px 0; background:#000; }
+  .video iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; }
+
+  .to-top{
+    position:fixed; right:18px; bottom:18px; width:48px; height:48px; border-radius:50%;
+    border:1px solid var(--line); background:#fff; color:var(--ink); font-size:18px;
+    cursor:pointer; display:none; z-index:40;
+  }
+  .to-top.show{ display:block; }
+
+  /* 노안 배려 — 글자 크기 조절. 버튼 자체는 body 글자 크기를 따라가지 않는다 */
+  .font-ctl{
+    position:fixed; right:18px; bottom:76px; z-index:40;
+    display:flex; flex-direction:column; gap:8px;
+  }
+  .font-ctl button{
+    width:48px; height:48px; border-radius:50%; border:1px solid var(--line);
+    background:#fff; color:var(--ink); cursor:pointer; font-family:inherit;
+    font-size:17px; font-weight:700; line-height:1;
+  }
+  .font-ctl button:hover{ background:var(--canvas); }
+  .font-ctl button:disabled{ opacity:.35; cursor:default; }
+
+  footer.book-foot{
+    background:var(--surface); border-top:1px solid var(--line);
+    padding:40px 24px 60px; font-size:15px; color:var(--muted);
+  }
+  .foot-inner{ max-width:720px; margin:0 auto; }
+  footer a{ color:var(--muted); }
+  .build-receipt{
+    max-width:720px; margin:24px auto; padding:20px 24px;
+    border:1px solid var(--line); background:#fff; color:var(--muted);
+    font-size:15px; line-height:1.75;
+  }
+  .build-receipt p{ margin:0 0 8px; }
+  .build-receipt p:last-child{ margin:0; }
+
+  @media (max-width:520px){
+    header.book-head{ padding-top:42px; }
+    .font-ctl{
+      position:static; flex-direction:row; justify-content:flex-end;
+      padding:10px 16px; background:var(--surface);
+    }
+    .font-ctl button{ width:44px; height:44px; }
+    .copy-btn{ position:static; display:block; margin:8px 0 0 auto; }
+    .to-top{
+      position:static; width:auto; height:auto; margin:18px auto 28px;
+      padding:10px 20px; border-radius:999px;
+    }
+  }
+</style></head><body>
+
+
+<div class="font-ctl" aria-label="글자 크기">
+  <button id="fs-up" aria-label="글자 크게">가+</button>
+  <button id="fs-down" aria-label="글자 작게">가−</button>
+</div>
+
+<header class="book-head"><div class="head-inner">
+  <div class="eyebrow">HAM MEDIA</div>
+  <h1 class="book-title">아무도 나를 채용하지 않는다면,<br>내가 먼저 나를 채용하면 된다</h1>
+  <div class="head-rule"></div>
+  <div class="head-sub">
+    50대, 고졸, 매장 두 곳을 접었습니다.<br>
+    코드는 한 줄도 몰랐습니다.<br>
+    석 달 뒤, 홈페이지를 만들고 강의를 열고 앱을 냈습니다.
+  </div>
+  <div class="head-by"><b>바이브 코딩 실행서</b>함동민 · HAM MEDIA</div>
+  <div class="made-with">
+    지금 보고 계신 <strong>이 웹북도 바이브 코딩으로 만들었습니다.</strong>
+    이 화면이 이 책의 증거입니다.
+  </div>
+  <div class="owner-line" id="owner-line" hidden><!--OWNER_LABEL--></div>
+</div></header>
+
+<nav class="toc"><h2>차례</h2><ol><li><a href="#ch01">바이브 코딩 실행서</a></li><li><a href="#ch02">여는 글 — 내가 더 이상 쓸모가 없나</a></li><li><a href="#ch03">1부. 당신 잘못이 아닙니다</a></li><li><a href="#ch04">1장. 왜 이력서를 넣어도 연락이 안 올까</a></li><li><a href="#ch05">여기까지가 무료 미리보기입니다</a></li></ol></nav>
+
+<main><h1 class="chapter" id="ch01">바이브 코딩 실행서</h1>
+<blockquote><p><strong>이 책은 한 사람의 성공담이 아니다. 코드 한 줄 몰랐던 50대가 AI와 어떻게 대화하고 판단하며, 실패를 실제 결과물로 바꾸었는지를 보여주는 바이브 코딩 실행 기록이다.</strong></p><p><strong>그리고 여기 적힌 방법은 오늘의 답이지 내일의 답이 아니다. 이 책은 무엇을 쓰라고 알려주는 대신, 바뀌었을 때 어떻게 알아채고 어떻게 갈아타는지를 알려준다.</strong></p></blockquote>
+<h2>이 책을 덮을 때 당신 손에 남는 것</h2>
+<p>이 책을 읽고 AI 도구 이름만 몇 개 더 알게 된다면 돈과 시간을 아깝게 쓴 것입니다.</p>
+<p>이 책의 목표는 하나입니다.</p>
+<blockquote><p><strong>당신이 오래 해온 일 하나를 꺼내, AI와 함께 실제 결과물 하나로 끝내는 것.</strong></p></blockquote>
+<p>홈페이지일 수도 있고, 제안서나 강의안, 업무 매뉴얼, 작은 앱일 수도 있습니다. 중요한 것은 무엇을 만드느냐보다 <strong>멈춰 있던 당신의 일을 하나 끝내는 것</strong>입니다.</p>
+<p>책을 따라가면 다음 네 장이 완성됩니다.</p>
+<ol><li><strong>내 경험 원본 한 장</strong> — 내가 오래 해온 일과 남보다 먼저 알아채는 판단을 꺼냅니다.</li><li><strong>AI 역할표 한 장</strong> — 누가 생각하고, 누가 만들고, 누가 마지막으로 결정할지 정합니다.</li><li><strong>완료 증거표 한 장</strong> — 만들었다는 말과 검수·승인·발행을 가릅니다.</li><li><strong>30일 실행판 한 장</strong> — 이번 달에 끝낼 결과물 하나와 매주 해야 할 일을 정합니다.</li></ol>
+<p>코드를 외우게 하지는 않습니다. AI가 돈을 벌어준다고 약속하지도 않습니다. 대신 코드를 모르는 사람이 어디에서 시작하고, 무엇을 맡기고, 무엇을 직접 확인하며, 언제 “아직 아니다”라고 말해야 하는지 보여드립니다.</p>
+<p>처음부터 끝까지 읽은 뒤 부록을 펼쳐도 좋고, 지금 바로 부록의 첫 칸을 작성한 뒤 필요한 장을 찾아 읽어도 좋습니다. 읽는 순서보다 중요한 것은 <strong>당신 이름이 적힌 결과물 하나가 남는 것</strong>입니다.</p>
+<h1 class="chapter" id="ch02">여는 글 — 내가 더 이상 쓸모가 없나</h1>
+<blockquote><p>지천명. 아직 반이 남았다.</p><p>— 「지천명 · 인생에 재미가 붙었다」</p></blockquote>
+<p>어느 날 문득 그런 생각이 듭니다.</p>
+<p>내가 더 이상 쓸모가 없나. 나, 이제 뭐 하지.</p>
+<p>이력서를 넣어도 연락이 없습니다. 오는 연락은 내가 하고 싶던 일이 아닙니다. 회사에서는 이십 년, 삼십 년을 버텼는데, 밖에 나오니 그 시간이 아무 데도 쓰이지 않는 것 같습니다.</p>
+<p>주변에서는 AI 이야기를 합니다. 뉴스에도 나오고, 젊은 사람들은 벌써 쓴다고 합니다. 그런데 나는 그게 뭔지도 잘 모르겠습니다. 배워야 한다는 말은 들리는데, 어디서부터 배워야 하는지 아무도 알려주지 않습니다.</p>
+<p>이 책은 그 자리에 서 있는 분들께 드리는 책입니다.</p>
+<p>저도 거기 있었습니다. 제 이름은 함동민이고, 지금은 HAM MEDIA라는 작은 회사를 꾸리고 있습니다. 고졸로 시작해 일본과 미국을 거쳤고, IMF를 맞았고, 스타벅스에서 십삼 년을 일했고, 제 매장을 열었다가 <strong>코로나 때 두 곳을 접었습니다.</strong> 그리고 오십 대에, 이력서가 열리지 않는 시간을 지났습니다.</p>
+<p>그때 제가 내린 결론은 이것이었습니다.</p>
+<p><strong>아무도 나를 채용하지 않는다면, 내가 먼저 나를 채용하면 된다.</strong></p>
+<p>이 책은 그 뒤의 석 달을 적은 기록입니다. 코드는 한 줄도 몰랐습니다. 지금도 모릅니다. 그런데 홈페이지를 만들었고, 포트폴리오를 올렸고, 강의를 열었고, 앱을 냈고, 영상 편집을 자동으로 돌아가게 만들었습니다.</p>
+<p>미리 말씀드립니다. 이 책은 성공담이 아닙니다.</p>
+<p>제가 팔고 싶은 것은 석 달 성공담이 아니라, <strong>당신이 앞으로 부딪힐 벽의 지도</strong>입니다. 저는 그 벽에 하나하나 머리를 박으며 배웠습니다. 당신은 이 지도를 보고 하루면 건널 수 있습니다.</p>
+<p>그리고 이 말씀부터 드리고 시작하겠습니다.</p>
+<p><strong>AI 시대가 와도, 주인공은 당신입니다.</strong></p>
+<h1 class="chapter" id="ch03">1부. 당신 잘못이 아닙니다</h1>
+<h2 class="chapter" id="ch04">1장. 왜 이력서를 넣어도 연락이 안 올까</h2>
+<p>먼저 숫자부터 보겠습니다. 당신 혼자만의 일이 아니라는 것을 확인하고 시작하는 게 좋겠습니다.</p>
+<p>통계청 경제활동인구조사 고령층 부가조사에 따르면, 취업 경험이 있는 55~64세가 가장 오래 다닌 직장을 그만둔 나이는 평균 마흔아홉 살입니다. 한편 55~79세 고령층 가운데 장래에도 일하기를 원하는 사람들은 평균 일흔세 살까지 일하고 싶다고 답합니다. 서로 다른 집단을 조사한 두 숫자지만, 그 사이에 이십 년 넘는 간격이 있다는 사실은 그대로입니다.</p>
+<p>그리고 기업이 중장년 채용을 꺼리는 첫 번째 이유가 무엇인지 아십니까.</p>
+<p><strong>디지털 역량 부족</strong>입니다.</p>
+<p>이 대목에서 저는 오래 멈춰 있었습니다. 이십 년 넘게 현장에서 일했는데, 그 시간이 아니라 <strong>모르는 프로그램 몇 개</strong> 때문에 문이 닫히는 겁니다.</p>
+<p>억울했습니다. 그런데 억울해한다고 문이 열리지는 않았습니다.</p>
+<h3>열어보지도 않더군요</h3>
+<p>저는 2001년 1월에 스타벅스에 입사해 2014년 5월에 나왔습니다. 십삼 년입니다. 점장을 거쳐 디스트릭트 매니저로 열 개에서 열다섯 개 매장의 운영을 봤습니다. 사람을 뽑고, 가르치고, 손익을 맞추고, 무너진 매장을 다시 세웠습니다. 미국 본사의 교육 자료를 한국 현장에 맞게 고치는 일도 했습니다.</p>
+<p>그래서 저는 이렇게 생각했습니다. <strong>리테일 매장 운영이라면 어디에 내놔도 충분한 이력이라고.</strong></p>
+<p>안 읽더군요.</p>
+<p>거절당한 게 아닙니다. <strong>열어보지도 않았습니다.</strong> 무응답이었습니다. 제 이력서는 누군가의 화면에서 열리지도 못한 채 지나갔습니다.</p>
+<h3>연락이 온 곳은 전부 영업직이었습니다</h3>
+<p>전화가 왔습니다. 채용 사이트에서 제안이 왔습니다. 명함을 모아두는 앱에서도 제안이 왔습니다.</p>
+<p>그런데 전부 같은 종류였습니다. 보험, 부동산, 영업.</p>
+<p>한 곳은 직접 가서 면접도 봤습니다. 가서 알았습니다. 직원이 아니라 프리랜서였습니다. 월급이 아니라 수당이었습니다.</p>
+<p>거기서 제가 무엇인지 알겠더군요.</p>
+<p><strong>저는 그들에게 머릿수였습니다.</strong> 잘하면 돈을 좀 뽑고, 안 되면 자리라도 채우는 사람. 제가 십삼 년 동안 무엇을 했는지는 아무 상관이 없었습니다. 오십 대 남자, 경력 있음 — 그 두 줄이면 자동으로 분류되는 칸이 있었습니다.</p>
+<p>그때 든 생각은 이랬습니다.</p>
+<p><strong>아, 나는 이제 영업직 회사의 자동 타깃밖에 안 되는구나.</strong></p>
+<p>거절보다 이게 더 아팠습니다. 거절은 나를 보고 내린 판단이지만, 이건 <strong>나를 보지도 않고 내린 분류</strong>였으니까요.</p>
+<h3>그리고 무기력이 왔습니다</h3>
+<p>처음에는 열정적이었습니다. 이력서를 고치고, 새로 넣고, 연락을 기다렸습니다.</p>
+<p>그런데 그게 반복되니 사람이 조금씩 꺼집니다.</p>
+<p>나중에는 무기력해졌습니다. 우울해졌습니다. 몸을 움직이는 것부터 싫어졌습니다.</p>
+<p>이상한 건, 사람들과 있을 때는 괜찮았다는 겁니다. 웃고, 이야기하고, 멀쩡했습니다. 그러다 집에 혼자 있으면 — <strong>아무것도 안 했습니다.</strong></p>
+<p>이 문장을 쓰는 이유가 있습니다. 지금 이 책을 읽는 분 중에 그런 하루를 보내고 계신 분이 있을 겁니다. 밖에서는 멀쩡한데 혼자가 되면 아무것도 못 하는 하루. 그게 게으름이 아니라는 걸 저는 압니다. 저도 그랬으니까요.</p>
+<p>그리고 이 말씀도 드리고 싶습니다.</p>
+<p><strong>저는 그 시기를 지나왔습니다.</strong></p>
+<p>어떻게 지나왔는지가 이 책의 나머지입니다. 대단한 각오가 있었던 건 아닙니다. 그냥 뭔가를 만들기 시작했고, 만들다 보니 하루가 다시 굴러가기 시작했습니다.</p>
+<h3>시작을 막은 건 능력이 아니라 두려움이었습니다</h3>
+<p>그때 제가 유튜브를 하려다 못 하고 있었습니다. 이유를 적어본 적이 있습니다.</p>
+<blockquote><p>유튜브를 해야지, 해야지 하면서 못하는 이유. 카메라 앞에 서는 게 두려워서. 편집을 못할까봐 두려워서. 잘 못하면 어쩌나 두려워서.</p></blockquote>
+<p>보시면 아시겠지만, <strong>못 하는 이유가 하나도 능력 이야기가 아닙니다.</strong> 전부 두려움입니다.</p>
+<p>그리고 그때 제가 내린 결론이 이거였습니다.</p>
+<blockquote><p><strong>하면 추억이 되고, 안 하면 후회가 된다.</strong></p></blockquote>
+<p>그래서 카메라를 샀습니다.</p>
+<p>이 이야기를 적는 이유는, 지금 AI 앞에서 멈춰 계신 분도 똑같기 때문입니다. 못 배워서가 아닙니다. <strong>틀리면 창피할까 봐</strong>입니다. 그건 게으름이 아니라 두려움이고, 두려움은 실력으로 넘는 게 아니라 <strong>한 번 해보는 걸로</strong> 넘습니다.</p>
+<p>또 하나 적어둔 게 있습니다.</p>
+<blockquote><p>어른이 되면 이상하게도 한 번의 실패가 전부인 것처럼 느껴진다. 그러니 오늘 실패했다면, <strong>그건 아직 걷는 중이라는 뜻이다.</strong></p></blockquote>
+<p>여기서 한 가지만 분명히 하고 넘어가겠습니다.</p>
+<p>이건 당신이 게을러서도, 능력이 없어서도 아닙니다. <strong>문이 좁아진 것이지, 당신이 작아진 것이 아닙니다.</strong> 다만 그 좁은 문 앞에서 계속 서 있을 것인지, 다른 문을 낼 것인지는 선택할 수 있습니다.</p>
+<p>저는 다른 문을 내기로 했습니다.</p>
+<hr>
+<h1 class="chapter" id="ch05">여기까지가 무료 미리보기입니다</h1>
+<p>책 뒤쪽 실행 부록의 첫 작업지를, 사기 전에 지금 먼저 써보실 수 있게 옮겨왔습니다.</p>
+<h2>작업지 1. 내 경험 원본 한 장</h2>
+<p>AI에게 “내 경험으로 뭔가 만들어줘”라고 말하기 전에 아래 다섯 칸을 채웁니다. 완성된 문장으로 쓰지 않아도 됩니다. 현장에서 실제로 있었던 장면을 적으세요.</p>
+<pre>[내가 오래 해온 일]
+
+[사람들이 자주 어려워하던 순간]
+
+[나는 그 순간 무엇을 먼저 봤는가]
+
+[실제로 했던 행동]
+
+[그 행동 뒤 무엇이 달라졌는가]</pre>
+<p>예시는 이렇습니다.</p>
+<pre>[내가 오래 해온 일] 여러 매장의 운영과 직원 교육
+[사람들이 자주 어려워하던 순간] 신입이 바쁜 시간에 순서를 잃음
+[나는 그 순간 무엇을 먼저 봤는가] 능력보다 첫날 배운 순서가 모호했는지
+[실제로 했던 행동] 첫 일주일 업무를 하루 세 칸으로 나눔
+[그 행동 뒤 무엇이 달라졌는가] 질문이 줄고 혼자 할 수 있는 일이 늘어남</pre>
+<p>이 다섯 줄이 당신의 원본입니다. 전체판은 이 원본을 <strong>AI 역할표 → 완료 증거표 → 30일 실행판</strong>으로 이어갑니다.</p>
+<p>이 뒤로 아래 장들이 이어집니다. 전부 지금 읽으신 것과 같은 밀도의 실제 기록입니다.</p>
+<ul><li>2장. &quot;AI 시대에 나만 뒤처진다&quot;는 불안</li><li>3장. 나는 이제 뭐 하는 사람인가</li><li>2부. 비개발자가 AI와 일을 닫는 법</li><li>4장. 도구를 외우지 말고 역할을 정한다</li><li>오늘 시작하면 뭘 깔고 얼마가 드는가</li><li>오늘의 설치법이 내일의 정답은 아닙니다</li><li>5장. 40년의 경험을 AI가 읽을 수 있게 꺼낸다</li><li>6장. 만듦과 PASS를 가른다</li><li>경계. AI에 무엇을 넣어도 되고 무엇을 넣으면 안 되는가</li><li>3부. 실제로 만들고 실패하고 갈아탄 다섯 프로젝트</li><li>7장. 포트폴리오 — 보기 좋은 문장보다 출처가 먼저다</li><li>8장. 홈페이지 — 검증한 환경과 쓰는 환경을 같게 만든다</li><li>9장. AI 교육 — 내가 아는 길과 초보자가 걷는 길은 다르다</li><li>10장. 앱 — 빌드가 아니라 사람의 데이터까지 지켜야 닫힌다</li><li>11장. 유튜브 자동화 — 렌더 완료와 사람에게 좋은 영상은 다르다</li><li>12장. 그래서 무엇이 실제로 돌아왔는가</li><li>실행 부록. 30일 뒤 결과물 하나를 남기는 네 장의 작업지</li><li>닫는 장. AI가 바뀌어도 일이 이어지는 구조</li><li>이 책 다음</li></ul>
+<p>전체는 <strong>9,900원(도입 특별가)</strong>입니다. 구매하시면 <strong>전체 웹북 링크</strong>(언제 열어도 최신판입니다 — 개정돼도 다시 사실 필요 없습니다)와 <strong>PDF 소장본</strong>을 메일로 보내드립니다.</p>
+<p><a href="../">구매 안내로 가기</a></p></main>
+
+<!--BUILD_RECEIPT_START-->
+<aside class="build-receipt" aria-label="이 웹북의 제작 과정">
+  <p><strong>이 웹북의 제작 과정</strong> — 원고 1개 → <code>make_webbook</code> 조립기 → 웹북·미리보기 동시 생성.</p>
+  <p>이번 판: 장 22개 · 복사 상자 44개 · 제작 2026-09-01 · 판 v7</p>
+  <p>이번 판 검수: 복사 버튼 전수 생성·클릭 확인 · 휴대폰 390·320px 실화면 확인 · 데스크톱 실화면 확인</p>
+</aside>
+<!--BUILD_RECEIPT_END-->
+
+<footer class="book-foot"><div class="foot-inner">
+  <p>HAM MEDIA · 함동민 · 사업자등록번호 526-30-01847 · 문의 hammedia002@gmail.com</p>
+  <p><a href="https://hammedia.co.kr">hammedia.co.kr</a> ·
+     <a href="https://hammedia.co.kr/tools">무료 도구</a> ·
+     <a href="https://hamjipsa.hammedia.co.kr">햄집사에게 이야기하기</a></p>
+</div></footer>
+
+<button class="to-top" aria-label="맨 위로">↑</button>
+
+<script>
+document.querySelectorAll('pre').forEach(function(pre){
+  var wrap = document.createElement('div'); wrap.className = 'prewrap';
+  pre.parentNode.insertBefore(wrap, pre); wrap.appendChild(pre);
+  var btn = document.createElement('button'); btn.className = 'copy-btn'; btn.textContent = '복사';
+  btn.addEventListener('click', function(){
+    function ok(){
+      btn.textContent = '복사됨'; btn.classList.add('done');
+      btn.classList.remove('manual');
+      setTimeout(function(){ btn.textContent = '복사'; btn.classList.remove('done'); }, 1600);
+    }
+    function manual(){
+      var selection = window.getSelection && window.getSelection();
+      if (selection && document.createRange){
+        var range = document.createRange();
+        range.selectNodeContents(pre); selection.removeAllRanges(); selection.addRange(range);
+      }
+      btn.textContent = '길게 눌러 복사해주세요'; btn.classList.add('manual');
+    }
+    function fallback(){
+      var ta = document.createElement('textarea');
+      ta.value = pre.textContent; ta.style.position = 'fixed'; ta.style.opacity = '0';
+      document.body.appendChild(ta); ta.select();
+      var copied = false;
+      try{ copied = (document.execCommand('copy') === true); }catch(e){}
+      document.body.removeChild(ta);
+      if (copied){ ok(); } else { manual(); }
+    }
+    if (navigator.clipboard && window.isSecureContext){
+      navigator.clipboard.writeText(pre.textContent).then(ok, fallback);
+    } else { fallback(); }
+  });
+  wrap.appendChild(btn);
+});
+document.querySelectorAll('table').forEach(function(t){
+  var w = document.createElement('div'); w.className = 'table-scroll';
+  t.parentNode.insertBefore(w, t); w.appendChild(t);
+});
+/* 글자 크기 4단계 — 고른 크기는 이 브라우저에 기억된다 */
+var SIZES = [18, 20, 22, 24], fsIdx = 0;
+try{ fsIdx = Math.min(SIZES.length - 1, Math.max(0, parseInt(localStorage.getItem('book-fs')) || 0)); }catch(e){}
+var up = document.getElementById('fs-up'), down = document.getElementById('fs-down');
+function applyFs(){
+  document.documentElement.style.setProperty('--fs', SIZES[fsIdx] + 'px');
+  up.disabled = (fsIdx === SIZES.length - 1);
+  down.disabled = (fsIdx === 0);
+  try{ localStorage.setItem('book-fs', fsIdx); }catch(e){}
+}
+up.addEventListener('click', function(){ if(fsIdx < SIZES.length - 1){ fsIdx++; applyFs(); } });
+down.addEventListener('click', function(){ if(fsIdx > 0){ fsIdx--; applyFs(); } });
+applyFs();
+
+var top = document.querySelector('.to-top');
+window.addEventListener('scroll', function(){
+  top.classList.toggle('show', window.scrollY > 900);
+});
+top.addEventListener('click', function(){ window.scrollTo({top:0, behavior:'smooth'}); });
+</script>
+</body></html>

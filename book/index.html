@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>바이브 코딩 실행서 — HAM MEDIA</title>
+<style>
+  :root{ --canvas:#F9F7F3; --surface:#F5F3EE; --ink:#1C1814; --muted:#4A423C; --accent:#7EB5E8; --line:#E4DFD7; }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  body{ background:var(--canvas); color:var(--ink);
+    font-family:"Pretendard","Apple SD Gothic Neo","Noto Sans KR",system-ui,sans-serif;
+    font-size:17px; line-height:1.85; word-break:keep-all; -webkit-text-size-adjust:100%; }
+  a, code, li{ overflow-wrap:anywhere; }
+  .wrap{ max-width:680px; margin:0 auto; padding:0 22px; }
+  section{ padding:52px 0; border-bottom:1px solid var(--line); }
+  section:last-of-type{ border-bottom:0; }
+  .eyebrow{ font-size:14px; color:var(--muted); letter-spacing:.06em; margin-bottom:20px; }
+  h1{ font-size:32px; line-height:1.38; font-weight:800; margin-bottom:24px; letter-spacing:-.02em; }
+  h2{ font-size:22px; line-height:1.5; font-weight:800; margin-bottom:18px; }
+  h3{ font-size:17px; font-weight:700; margin:22px 0 8px; }
+  p{ margin-bottom:16px; }
+  .lead{ font-size:18px; color:var(--muted); }
+  .rule{ width:56px; height:4px; background:var(--accent); margin:26px 0; }
+  ul{ padding-left:20px; margin-bottom:16px; }
+  li{ margin-bottom:9px; }
+  blockquote{ background:var(--surface); border-left:4px solid var(--accent);
+    padding:22px 24px; margin:22px 0; font-size:16px; }
+  blockquote p:last-child{ margin-bottom:0; }
+  .src{ font-size:14px; color:var(--muted); margin-top:14px; }
+  .buy{ background:#fff; border:2px solid var(--ink); border-radius:14px; padding:30px 26px; margin:8px 0; }
+  .price{ font-size:34px; font-weight:800; letter-spacing:-.02em; }
+  .price small{ font-size:15px; font-weight:500; color:var(--muted); margin-left:8px; letter-spacing:0; }
+  .acct{ background:var(--surface); border-radius:10px; padding:18px 20px; margin:18px 0;
+    font-size:16px; line-height:1.9; }
+  .todo{ background:#FFF6D9; border:1px dashed #C9A227; border-radius:10px;
+    padding:14px 18px; font-size:15px; color:#6B5510; }
+  .steps{ counter-reset:s; list-style:none; padding:0; }
+  .steps li{ counter-increment:s; position:relative; padding-left:36px; margin-bottom:14px; }
+  .steps li::before{ content:counter(s); position:absolute; left:0; top:2px;
+    width:24px; height:24px; border-radius:50%; background:var(--ink); color:#fff;
+    font-size:13px; font-weight:700; display:flex; align-items:center; justify-content:center; }
+  .note{ font-size:15px; color:var(--muted); }
+  footer{ padding:38px 0 60px; font-size:14px; color:var(--muted); }
+  .build-receipt{ background:#fff; border:1px solid var(--line); border-radius:10px;
+    padding:20px 22px; margin:30px 0; font-size:15px; color:var(--muted); }
+  .build-receipt p{ margin:0 0 8px; }
+  .build-receipt p:last-child{ margin:0; }
+  @media (max-width:520px){ h1{ font-size:26px; } body{ font-size:16px; } }
+</style></head><body>
+<div class="wrap">
+
+<section>
+  <div class="eyebrow">HAM MEDIA · 전자책</div>
+  <h1>아무도 나를 채용하지 않는다면,<br>내가 먼저 나를 채용하면 된다</h1>
+  <div class="rule"></div>
+  <p class="lead">50대, 고졸, 매장 두 곳을 접었습니다. 코드는 한 줄도 몰랐습니다.</p>
+  <p class="lead">석 달 뒤, 저는 홈페이지를 만들었고 포트폴리오를 올렸고 강의를 열었고 앱을 냈습니다.
+  이 책은 그 기록을 따라, <strong>당신이 오래 해온 경험 하나를 꺼내 AI와 함께 30일 안에
+  실제 사람에게 건넬 결과물 하나로 끝내게 하는 실행서</strong>입니다.</p>
+</section>
+
+<section>
+  <h2>이 책이 다른 이유</h2>
+  <p>"AI로 코딩하는 법" 책은 이미 많습니다. 이 책을 덮을 때 당신 손에는 네 장이 남습니다 —
+  <strong>내 경험 원본 · AI 역할표 · 완료 증거표 · 30일 실행판.</strong>
+  그리고 이 네 장이 "작성했다"에서 끝나지 않고 실제 결과로 이어졌는지 가르는 기준이,
+  <strong>만든 것이 진짜 완성됐는지 확인하는 법</strong>입니다.</p>
+  <p>조회 8천에 클릭 0명이 나왔을 때, 저는 처음에 "실패했다"고 판단했습니다. 측정 장치가 꺼져 있었습니다.
+  이 책 12개 장 전부가 이런 순간들입니다. 그럴듯해 보이는 결과를 믿지 않고 원문·화면·통장을 직접 열어 확인합니다.</p>
+</section>
+
+<section>
+  <h2>이런 분께 필요합니다</h2>
+  <ul>
+    <li>이력서를 넣어도 연락이 안 오는 50대, 60대</li>
+    <li>AI를 써야 한다는 건 아는데 어디서부터 시작할지 모르는 분</li>
+    <li>이미 AI를 쓰고 있지만 "이게 진짜 되고 있는 건지" 확신이 안 서는 분</li>
+    <li>혼자 일하지만 결과물의 품질을 스스로 검수해야 하는 1인 창업자</li>
+  </ul>
+</section>
+
+<section>
+  <h2>목차 미리보기</h2>
+  <h3>1부. 당신 잘못이 아닙니다</h3>
+  <p>왜 이력서가 안 열리는지, 그 시간에 무엇을 잃는지, 그리고 잃지 않은 것은 무엇인지.</p>
+  <h3>2부. 비개발자가 AI와 일을 닫는 법</h3>
+  <p>도구를 역할로 나누는 법, 오늘 시작하면 얼마가 드는지(2026년 8월 실제 가격표 포함),
+  40년 경험을 AI가 읽을 재료로 바꾸는 법, "만들어졌다"와 "끝났다"를 가르는 법.</p>
+  <h3>3부. 실제로 만들고 실패하고 갈아탄 다섯 프로젝트</h3>
+  <p>포트폴리오·홈페이지·AI 교육·앱·유튜브 자동화. 각 장마다 실패 → 검수 → 지금 방식으로 이어집니다.</p>
+  <h3>결산. 그래서 무엇이 실제로 돌아왔는가</h3>
+  <p>매출·계약·심사 제출·실사용 반응을 있는 그대로. 부풀리지 않고, 숨기지 않습니다.</p>
+</section>
+
+<section>
+  <h2>한 대목 먼저 읽어보기</h2>
+  <blockquote>
+    <p>문서 제목에는 <code>영상제작완료 보고서</code>라고 적혀 있었습니다. 안에는 화질 분석, 소리 어긋남,
+    마이크 상태 같은 숫자와 표가 있었습니다.</p>
+    <p>제목만 보면 영상이 다 만들어진 것처럼 보였습니다.</p>
+    <p>하지만 본문을 다시 읽어보니 달랐습니다. 최종 파일도, 자막도, 완성 편집본도 없었습니다.
+    무엇보다 영상을 처음부터 끝까지 본 사람이 없었습니다. 스스로 매긴 점수는 백 점 만점에 사십 점이었습니다.</p>
+    <p class="src">— 6장 「만듦과 PASS를 가른다」 중</p>
+  </blockquote>
+  <p><a href="preview/"><strong>→ 여는 글부터 1장까지, 웹북으로 무료로 읽어보기</strong></a><br>
+  지금 여신 그 미리보기 화면도 바이브 코딩으로 만들었습니다. 그 화면이, 이 방법이 실제로 작동한다는 증거입니다.</p>
+</section>
+
+<section>
+  <h2>약속드리지 않는 것</h2>
+  <ul>
+    <li>이 책은 한 사람의 성공담이 아닙니다.</li>
+    <li>결산 장은 실제 매출·계약·앱 심사 상태를 상태별로 나눠 보여주고, <strong>"아직 아닌 것"도 숨기지 않습니다.</strong></li>
+    <li>이 책의 방법을 이 원고 자체에 적용했습니다. 9개 장을 밖의 독립 검토에 두 번 넣어 빠진 부분을 찾고 채웠습니다.</li>
+  </ul>
+</section>
+
+<section>
+  <div class="buy">
+    <div class="price">9,900원 <small>도입 특별가</small></div>
+    <p class="note" style="margin-top:12px">구매하시면 <strong>전체 웹북 링크</strong>(언제 열어도 최신판 · 개정돼도 다시 사실 필요 없음)와
+    <strong>PDF 소장본(98쪽)</strong>을 메일로 보내드립니다. 웹북 첫 화면에는 구매자 성함이 새겨집니다.</p>
+
+    <div class="acct">
+      <strong>입금 계좌</strong><br>
+      카카오뱅크 <strong>3333-03-2534024</strong><br>
+      예금주 함동민
+    </div>
+
+    <ol class="steps">
+      <li>위 계좌로 <strong>9,900원</strong>을 입금합니다.</li>
+      <li><strong>hammedia002@gmail.com</strong>으로 입금자명과 받으실 메일 주소를 보내주세요.</li>
+      <li>확인 후 전체 웹북 링크와 PDF를 보내드립니다. (보통 하루 안)</li>
+    </ol>
+    <p class="note">세금계산서·현금영수증이 필요하시면 메일에 함께 적어주세요.</p>
+    <p class="note">PDF 발송 전에는 전액 환불해드립니다. 발송 후에는 디지털 파일 특성상 환불이 어렵습니다.</p>
+  </div>
+</section>
+
+<!--BUILD_RECEIPT_START-->
+<aside class="build-receipt" aria-label="이 웹북의 제작 과정">
+  <p><strong>이 웹북의 제작 과정</strong> — 원고 1개 → <code>make_webbook</code> 조립기 → 웹북·미리보기 동시 생성.</p>
+  <p>이번 판: 장 22개 · 복사 상자 44개 · 제작 2026-09-01 · 판 v7</p>
+  <p>이번 판 검수: 복사 버튼 전수 생성·클릭 확인 · 휴대폰 390·320px 실화면 확인 · 데스크톱 실화면 확인</p>
+</aside>
+<!--BUILD_RECEIPT_END-->
+
+<footer>
+  <p>HAM MEDIA · 함동민 · 사업자등록번호 526-30-01847</p>
+  <p>문의 hammedia002@gmail.com</p>
+  <p><a href="https://hammedia.co.kr" style="color:inherit">hammedia.co.kr — 우리가 만든 것들</a> · <a href="https://hamjipsa.hammedia.co.kr" style="color:inherit">햄집사에게 이야기하기</a></p>
+</footer>
+
+</div>
+</body></html>
