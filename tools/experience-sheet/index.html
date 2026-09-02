@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>내 경험 원본 한 장 — AI에게 시키기 전에 채우는 다섯 칸 | HAM MEDIA 무료 도구</title>
+<link rel="canonical" href="https://hammedia.co.kr/tools/experience-sheet/">
+<meta name="description" content="AI에게 「내 경험으로 뭔가 만들어줘」라고 말하기 전에 채우는 다섯 칸. 오래 해온 일과 남보다 먼저 알아채는 판단을 꺼내 AI가 읽을 원본 한 장을 만듭니다. 저장·복사·인쇄 가능.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://hammedia.co.kr/tools/experience-sheet/">
+<meta property="og:title" content="내 경험 원본 한 장 | HAM MEDIA 무료 도구">
+<meta property="og:description" content="AI에게 시키기 전에 채우는 다섯 칸. 내 경험을 AI가 읽을 수 있는 원본으로 바꿉니다.">
+<meta property="og:image" content="https://hammedia.co.kr/assets/tools/free-tools-og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="HAM MEDIA 무료 도구 OG 이미지">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="내 경험 원본 한 장 | HAM MEDIA 무료 도구">
+<meta name="twitter:description" content="AI에게 시키기 전에 채우는 다섯 칸. 내 경험을 AI가 읽을 수 있는 원본으로 바꿉니다.">
+<meta name="twitter:image" content="https://hammedia.co.kr/assets/tools/free-tools-og.png">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TEBKMGWPQS"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-TEBKMGWPQS');
+</script>
+<style>
+  :root{color-scheme:light;--bg:#F9F7F3;--surface:#F5F3EE;--card:#FFFEFB;--ink:#1C1814;--muted:#4A423C;--line:#E6E1D9;--blue:#7EB5E8;--blue-dark:#315E86;--blue-soft:rgba(126,181,232,.17);--yellow:#F4DC59;--yellow-soft:rgba(244,220,89,.22);--green:#00704A;--green-dark:#005A3B;--green-soft:rgba(0,112,74,.075);--shadow:0 1px 2px rgba(28,24,20,.04),0 8px 22px rgba(28,24,20,.06)}
+  *{box-sizing:border-box}html{background:var(--bg)}body{margin:0;background:var(--bg);color:var(--ink);font-family:Pretendard,"Pretendard Variable","Apple SD Gothic Neo","Noto Sans KR",sans-serif;font-size:18px;line-height:1.75;word-break:keep-all}
+  .wrap{width:min(calc(100% - 32px),880px);margin:0 auto;padding:22px 0 60px}
+  .brand{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-bottom:20px}.brand-lockup{display:flex;align-items:center;gap:10px;color:inherit;text-decoration:none}.brand-lockup img{width:36px;height:36px}.wordmark{font-weight:900;letter-spacing:.06em;font-size:14px}.brand-sub{font-size:12px;color:var(--muted)}.back-link{font-size:14px;color:var(--blue-dark);text-decoration:none;font-weight:700}
+  .hero{padding:26px 0 8px}.eyebrow{display:inline-block;padding:4px 10px;border-radius:999px;background:var(--yellow-soft);font-size:12px;font-weight:800;letter-spacing:.04em}
+  h1{margin:12px 0 10px;font-size:clamp(28px,5vw,40px);line-height:1.25;letter-spacing:-.01em}.hero p{margin:0;color:var(--muted);font-size:17px}
+  .howto{margin-top:22px;padding:16px 18px;border:1px solid var(--line);border-radius:18px;background:var(--surface)}.howto h2{margin:0 0 8px;font-size:15px}.howto ol{margin:0;padding-left:20px;font-size:16px}
+  .sheet{margin-top:26px;padding:22px;border:1px solid var(--line);border-radius:20px;background:var(--card);box-shadow:var(--shadow)}
+  .field{margin-bottom:18px}.field label{display:block;font-weight:800;font-size:16px;margin-bottom:6px}.field small{display:block;color:var(--muted);font-size:14px;margin-bottom:8px}
+  textarea{width:100%;min-height:76px;padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:#fff;font:inherit;font-size:17px;line-height:1.6;resize:vertical}textarea:focus{outline:2px solid var(--blue);border-color:var(--blue)}
+  .actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}.btn{appearance:none;border:1px solid var(--line);background:#fff;color:var(--ink);padding:11px 16px;border-radius:12px;font:inherit;font-size:15px;font-weight:800;cursor:pointer}.btn.primary{background:var(--green);border-color:var(--green);color:#fff}.btn:hover{filter:brightness(.97)}
+  .note{margin-top:10px;font-size:14px;color:var(--muted)}.status{min-height:22px;font-size:14px;color:var(--green-dark);font-weight:700}
+  .example{margin-top:26px;padding:18px 20px;border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:0 16px 16px 0}.example h2{margin:0 0 8px;font-size:16px}.example dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:15px}.example dt{font-weight:800;color:var(--blue-dark)}.example dd{margin:0}
+  .warn{margin-top:22px;padding:16px 18px;border-radius:16px;background:var(--surface);border:1px solid var(--line);font-size:16px}
+  .next{margin-top:30px;padding:20px 22px;border-radius:18px;background:var(--card);border:1px solid var(--line)}.next h2{margin:0 0 8px;font-size:18px}.next p{margin:0 0 10px;font-size:16px;color:var(--muted)}.next a{color:var(--blue-dark);font-weight:800}
+  .foot{margin-top:40px;font-size:13px;color:var(--muted);text-align:center}
+  @media print{.brand,.howto,.actions,.note,.next,.foot,.status{display:none}body{font-size:14px}textarea{border:1px solid #999;min-height:60px}.sheet{box-shadow:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="brand">
+    <a class="brand-lockup" href="../../" aria-label="HAM MEDIA 홈으로 이동">
+      <img src="../../assets/tools/logo_10.png" alt="">
+      <div><div class="wordmark">HAM MEDIA</div><div class="brand-sub">AI 협업 도구</div></div>
+    </a>
+    <a class="back-link" href="../">← 무료 도구 목록</a>
+  </div>
+
+  <header class="hero">
+    <span class="eyebrow">내 경험 원본 한 장</span>
+    <h1>AI에게 시키기 전에,<br>다섯 칸만 채우세요</h1>
+    <p>「내 경험으로 뭔가 만들어줘」라고 말하면 AI는 빈칸을 그럴듯한 말로 메웁니다. 이 한 장이 있으면 AI는 당신 경험을 대신하지 않고, 읽고 일합니다.</p>
+  </header>
+
+  <section class="howto" aria-labelledby="howto-title">
+    <h2 id="howto-title">이렇게 쓰세요</h2>
+    <ol>
+      <li>완성된 문장으로 쓰지 않아도 됩니다. 현장에서 실제로 있었던 장면을 적습니다.</li>
+      <li>다 채우면 「복사」를 눌러 쓰던 AI에 붙이고, 그 뒤에 부탁을 적습니다.</li>
+      <li>이 화면은 내 브라우저에만 저장됩니다. 어디로도 전송되지 않습니다.</li>
+    </ol>
+  </section>
+
+  <main id="main">
+    <form class="sheet" id="sheet" autocomplete="off">
+      <div class="field"><label for="f1">1. 내가 오래 해온 일</label><small>업종·역할·햇수. 이력서 문장 말고 실제로 하루에 하던 일.</small><textarea id="f1" placeholder="예: 여러 매장의 운영과 직원 교육, 13년"></textarea></div>
+      <div class="field"><label for="f2">2. 사람들이 자주 어려워하던 순간</label><small>손님·직원·동료가 반복해서 막히던 장면 하나.</small><textarea id="f2" placeholder="예: 신입이 바쁜 시간에 순서를 잃음"></textarea></div>
+      <div class="field"><label for="f3">3. 나는 그 순간 무엇을 먼저 봤는가</label><small>남보다 먼저 알아챈 것. 「그냥 보면 알지」의 그 「그냥」을 말로.</small><textarea id="f3" placeholder="예: 능력보다 첫날 배운 순서가 모호했는지"></textarea></div>
+      <div class="field"><label for="f4">4. 실제로 했던 행동</label><small>조언이 아니라 내가 손으로 한 것.</small><textarea id="f4" placeholder="예: 첫 일주일 업무를 하루 세 칸으로 나눔"></textarea></div>
+      <div class="field"><label for="f5">5. 그 행동 뒤 무엇이 달라졌는가</label><small>숫자가 있으면 숫자로. 없으면 없다고.</small><textarea id="f5" placeholder="예: 질문이 줄고 혼자 할 수 있는 일이 늘어남"></textarea></div>
+      <div class="actions">
+        <button type="button" class="btn primary" id="copy">복사 — AI에 붙이기</button>
+        <button type="button" class="btn" id="print">인쇄 · PDF로 저장</button>
+        <button type="button" class="btn" id="clear">지우기</button>
+      </div>
+      <div class="status" id="status" aria-live="polite"></div>
+      <p class="note">복사되는 글의 끝에 이 한 줄이 붙습니다 — 「이 다섯 줄이 원본이다. 여기 없는 성공과 숫자를 사실처럼 쓰지 마라.」</p>
+    </form>
+
+    <section class="example" aria-labelledby="ex-title">
+      <h2 id="ex-title">채운 예</h2>
+      <dl>
+        <dt>오래 해온 일</dt><dd>여러 매장의 운영과 직원 교육</dd>
+        <dt>어려워하던 순간</dt><dd>신입이 바쁜 시간에 순서를 잃음</dd>
+        <dt>먼저 본 것</dt><dd>능력보다 첫날 배운 순서가 모호했는지</dd>
+        <dt>했던 행동</dt><dd>첫 일주일 업무를 하루 세 칸으로 나눔</dd>
+        <dt>달라진 것</dt><dd>질문이 줄고 혼자 할 수 있는 일이 늘어남</dd>
+      </dl>
+    </section>
+
+    <section class="warn">
+      <strong>실명·연락처·계약·비밀번호는 적지 않습니다.</strong> 한 번 AI 밖으로 나간 것은 「아까 것은 잊어줘」로 되돌릴 수 없습니다. 이 한 장에는 장면과 판단만 들어갑니다.
+    </section>
+
+    <section class="next" aria-labelledby="next-title">
+      <h2 id="next-title">이 한 장은 책 「바이브 코딩 실행서」의 첫 작업지입니다</h2>
+      <p>코드 한 줄 몰랐던 50대가 석 달 만에 홈페이지·앱·강의를 낸 기록이고, 잘된 것만 적지 않았습니다. 여는 글부터 1장까지, 그리고 이 작업지가 무료로 열려 있습니다.</p>
+      <p><a href="../../book/preview/?source=experience_sheet">무료로 읽어보기 →</a> &nbsp;·&nbsp; <a href="../../book/?source=experience_sheet">책 소개</a></p>
+    </section>
+  </main>
+
+  <footer class="foot">HAM MEDIA · 무료 도구 · 이 화면의 글은 내 브라우저에만 저장됩니다</footer>
+</div>
+<script>
+(function(){
+  var ids=['f1','f2','f3','f4','f5'];
+  var labels=['내가 오래 해온 일','사람들이 자주 어려워하던 순간','나는 그 순간 무엇을 먼저 봤는가','실제로 했던 행동','그 행동 뒤 무엇이 달라졌는가'];
+  var KEY='ham-experience-sheet-v1';
+  var status=document.getElementById('status');
+  function load(){try{var s=JSON.parse(localStorage.getItem(KEY)||'{}');ids.forEach(function(id){if(s[id])document.getElementById(id).value=s[id];});}catch(e){}}
+  function save(){try{var s={};ids.forEach(function(id){s[id]=document.getElementById(id).value;});localStorage.setItem(KEY,JSON.stringify(s));}catch(e){}}
+  ids.forEach(function(id){document.getElementById(id).addEventListener('input',save);});
+  load();
+  document.getElementById('copy').addEventListener('click',function(){
+    var lines=ids.map(function(id,i){return '['+labels[i]+'] '+(document.getElementById(id).value.trim()||'(비움)');});
+    lines.push('');lines.push('이 다섯 줄이 원본이다. 여기 없는 성공과 숫자를 사실처럼 쓰지 마라. 모르면 질문하라.');
+    var text=lines.join('\n');
+    function done(){status.textContent='복사됐습니다. 쓰던 AI에 붙이고 그 아래에 부탁을 적으세요.';if(window.gtag){gtag('event','experience_sheet_copy');}}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(done,function(){fallback(text);done();});}else{fallback(text);done();}
+  });
+  function fallback(t){var ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');}catch(e){}document.body.removeChild(ta);}
+  document.getElementById('print').addEventListener('click',function(){if(window.gtag){gtag('event','experience_sheet_print');}window.print();});
+  document.getElementById('clear').addEventListener('click',function(){if(!confirm('다섯 칸을 모두 지울까요?'))return;ids.forEach(function(id){document.getElementById(id).value='';});save();status.textContent='지웠습니다.';});
+})();
+</script>
+</body>
+</html>
