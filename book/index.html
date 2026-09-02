@@ -41,6 +41,9 @@
   .price small{ font-size:15px; font-weight:500; color:var(--muted); margin-left:8px; letter-spacing:0; }
   .acct{ background:var(--surface); border-radius:10px; padding:18px 20px; margin:18px 0;
     font-size:16px; line-height:1.9; }
+  .pay-button{ display:block; margin:22px 0; padding:17px 20px; border-radius:10px;
+    background:var(--ink); color:#fff; text-decoration:none; text-align:center; font-weight:800; font-size:18px; }
+  .pay-button:hover,.pay-button:focus{ background:#38312b; }
   .todo{ background:#FFF6D9; border:1px dashed #C9A227; border-radius:10px;
     padding:14px 18px; font-size:15px; color:#6B5510; }
   .steps{ counter-reset:s; list-style:none; padding:0; }
@@ -128,21 +131,17 @@
   <div class="buy">
     <div class="price">9,900원 <small>도입 특별가</small></div>
     <p class="note" style="margin-top:12px">구매하시면 <strong>전체 웹북 링크</strong>(언제 열어도 최신판 · 개정돼도 다시 사실 필요 없음)와
-    <strong>PDF 소장본(98쪽)</strong>을 메일로 보내드립니다. 웹북 첫 화면에는 구매자 성함이 새겨집니다.</p>
+    <strong>PDF 소장본(98쪽)</strong>을 결제 승인 직후 바로 받습니다. 웹북 첫 화면에는 구매자 성함이 새겨집니다.</p>
 
-    <div class="acct">
-      <strong>입금 계좌</strong><br>
-      카카오뱅크 <strong>3333-03-2534024</strong><br>
-      예금주 함동민
-    </div>
+    <a class="pay-button" href="https://hammedia-payment.vercel.app/book">카드·간편결제로 9,900원 결제하기</a>
 
     <ol class="steps">
-      <li>위 계좌로 <strong>9,900원</strong>을 입금합니다.</li>
-      <li><strong>hammedia002@gmail.com</strong>으로 입금자명과 받으실 메일 주소를 보내주세요.</li>
-      <li>확인 후 전체 웹북 링크와 PDF를 보내드립니다. (보통 하루 안)</li>
+      <li>결제 페이지에 받으실 분 성함과 이메일을 입력합니다.</li>
+      <li>신용카드 또는 네이버페이·카카오페이·삼성페이로 결제합니다.</li>
+      <li>승인이 확인되면 전체 웹북 링크와 PDF 내려받기 버튼이 바로 열립니다.</li>
     </ol>
-    <p class="note">세금계산서·현금영수증이 필요하시면 메일에 함께 적어주세요.</p>
-    <p class="note">PDF 발송 전에는 전액 환불해드립니다. 발송 후에는 디지털 파일 특성상 환불이 어렵습니다.</p>
+    <p class="note">승인 상태를 확인한 주문만 전자책이 열리며, 취소된 주문은 링크가 자동으로 닫힙니다.</p>
+    <p class="note">전자책을 내려받기 전에는 전액 환불해드립니다. 전달 뒤에는 디지털 파일 특성상 환불이 어렵습니다. 문의: hammedia002@gmail.com</p>
   </div>
 </section>
 
