@@ -177,6 +177,14 @@
   form.quote-form textarea::placeholder, form.quote-form input::placeholder{ color:#8A8177 }
   form.quote-form textarea{ min-height:64px }
   .form-note{ font-size:.85rem; color:#8A8177; margin-top:-10px }
+  .form-error-summary{ padding:16px 18px; border:2px solid #E8735A; border-radius:14px;
+    background:rgba(232,115,90,.12); color:#fff }
+  .form-error-summary:focus{ outline:3px solid var(--blue); outline-offset:4px }
+  .form-error-summary p{ margin:0 0 8px; font-weight:800 }
+  .form-error-summary ul{ margin:0; padding-left:20px }
+  .form-error-summary a{ color:#fff; text-underline-offset:.2em }
+  .field-error{ min-height:1.4em; margin:6px 0 0; color:#FF9B84; font-size:.85rem; font-weight:700 }
+  form.quote-form [aria-invalid="true"]{ border-color:#FF9B84; box-shadow:0 0 0 2px rgba(255,155,132,.2) }
 
   /* ── 서면 견적 버튼 상태 (피드백·상태 레이어) ── */
   .cta-btn[data-state="loading"]{ opacity:.75; cursor:progress }
@@ -417,18 +425,25 @@
     <h2>서면 견적, 이 다섯 가지만 적어주세요.</h2>
     <p class="desc">전화 통화를 강요하지 않습니다. 아래 다섯 줄을 적어 보내주시면, 조건에 맞춘 서면 견적으로 답합니다.</p>
 
-    <form class="quote-form" id="quote-request-form">
+    <form class="quote-form" id="quote-request-form" novalidate>
+      <div class="form-error-summary" id="quote-error-summary" role="alert" tabindex="-1" hidden>
+        <p>확인할 내용이 있습니다.</p>
+        <ul id="quote-error-list"></ul>
+      </div>
       <div>
         <label for="q1"><span class="field-num">1</span>매일 손으로 하는 반복 업무 한 줄</label>
-        <textarea id="q1" name="daily_task" maxlength="500" required placeholder="예: 매주 월요일, 지난주 문의 내역을 엑셀에 옮겨 정리합니다"></textarea>
+        <textarea id="q1" name="daily_task" maxlength="500" required aria-describedby="q1-error" placeholder="예: 매주 월요일, 지난주 문의 내역을 엑셀에 옮겨 정리합니다"></textarea>
+        <p class="field-error" id="q1-error"></p>
       </div>
       <div>
         <label for="q2"><span class="field-num">2</span>그 업무에서 나왔으면 하는 결과</label>
-        <textarea id="q2" name="desired_result" maxlength="500" required placeholder="예: 자동으로 정리된 표가 매주 월요일 아침에 준비돼 있으면 좋겠습니다"></textarea>
+        <textarea id="q2" name="desired_result" maxlength="500" required aria-describedby="q2-error" placeholder="예: 자동으로 정리된 표가 매주 월요일 아침에 준비돼 있으면 좋겠습니다"></textarea>
+        <p class="field-error" id="q2-error"></p>
       </div>
       <div>
         <label for="q3"><span class="field-num">3</span>같이 쓰는 사람 수와 쓰는 기기</label>
-        <input id="q3" type="text" name="team_size_devices" maxlength="300" required placeholder="예: 저 포함 2명, 노트북 2대">
+        <input id="q3" type="text" name="team_size_devices" maxlength="300" required aria-describedby="q3-error" placeholder="예: 저 포함 2명, 노트북 2대">
+        <p class="field-error" id="q3-error"></p>
       </div>
       <div>
         <label for="q4"><span class="field-num">4</span>다룰 자료와 보안 조건 (밖으로 나가면 안 되는 자료) <span style="font-weight:400;color:#8A8177;">— 선택</span></label>
@@ -436,12 +451,14 @@
       </div>
       <div>
         <label for="q5"><span class="field-num">5</span>희망 기간과 설치 후 유지관리 포함 여부</label>
-        <input id="q5" type="text" name="timeline_maintenance" maxlength="300" required placeholder="예: 2주 이내 설치, 유지관리 포함 여부는 상담 후 결정">
+        <input id="q5" type="text" name="timeline_maintenance" maxlength="300" required aria-describedby="q5-error" placeholder="예: 2주 이내 설치, 유지관리 포함 여부는 상담 후 결정">
+        <p class="field-error" id="q5-error"></p>
       </div>
       <div>
         <label for="qc"><span class="field-num">+</span>연락처</label>
-        <input id="qc" type="text" name="contact" maxlength="200" required placeholder="이메일 또는 전화번호">
-        <p class="form-note">견적 회신 용도로만 사용, 홍보에는 쓰지 않습니다.</p>
+        <input id="qc" type="text" name="contact" maxlength="200" required aria-describedby="qc-note qc-error" placeholder="이메일 또는 전화번호">
+        <p class="field-error" id="qc-error"></p>
+        <p class="form-note" id="qc-note">견적 회신 용도로만 사용, 홍보에는 쓰지 않습니다.</p>
       </div>
       <div style="height:0; width:0; overflow:hidden; opacity:0;" aria-hidden="true">
         <label for="website">website</label>
@@ -463,6 +480,9 @@
     const form = document.getElementById("quote-request-form");
     const msgEl = document.getElementById("quote-form-msg");
     const btnEl = document.getElementById("quote-submit-btn");
+    const errorSummary = document.getElementById("quote-error-summary");
+    const errorList = document.getElementById("quote-error-list");
+    const requiredFields = Array.from(form.querySelectorAll("[required]"));
     const RATE_LIMIT_KEY = "ham_quote_last_submit_at";
     const RATE_LIMIT_MS = 10 * 60 * 1000;
 
@@ -475,9 +495,52 @@
         : text;
     }
 
+    function clearFieldError(field) {
+      field.removeAttribute("aria-invalid");
+      const errorEl = document.getElementById(`${field.id}-error`);
+      if (errorEl) errorEl.textContent = "";
+    }
+
+    function validateRequiredFields() {
+      const invalidFields = requiredFields.filter((field) => !field.value.trim());
+      requiredFields.forEach(clearFieldError);
+      errorList.replaceChildren();
+
+      invalidFields.forEach((field) => {
+        field.setAttribute("aria-invalid", "true");
+        const label = form.querySelector(`label[for="${field.id}"]`);
+        const labelText = label?.textContent.replace(/^\s*[1-5+]\s*/, "").trim() || "필수 항목";
+        const errorEl = document.getElementById(`${field.id}-error`);
+        if (errorEl) errorEl.textContent = "이 내용을 적어주세요.";
+        const item = document.createElement("li");
+        item.dataset.field = field.id;
+        const link = document.createElement("a");
+        link.href = `#${field.id}`;
+        link.textContent = `${labelText}: 이 내용을 적어주세요.`;
+        link.addEventListener("click", () => field.focus());
+        item.append(link);
+        errorList.append(item);
+      });
+
+      errorSummary.hidden = invalidFields.length === 0;
+      if (invalidFields.length) errorSummary.focus();
+      return invalidFields.length === 0;
+    }
+
+    requiredFields.forEach((field) => {
+      field.addEventListener("input", () => {
+        if (!field.value.trim()) return;
+        clearFieldError(field);
+        errorList.querySelector(`[data-field="${field.id}"]`)?.remove();
+        if (!errorList.children.length) errorSummary.hidden = true;
+      });
+    });
+
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
       setMsg(null, "");
+
+      if (!validateRequiredFields()) return;
 
       if (form.website.value) {
         setMsg("ok", "감사합니다. 접수됐습니다.");
@@ -506,19 +569,20 @@
       btnEl.setAttribute("data-state", "loading");
       setMsg(null, "보내는 중...");
 
-      const { error } = await supabase.from("quote_requests").insert(payload);
-
-      btnEl.disabled = false;
-      btnEl.removeAttribute("data-state");
-      if (error) {
-        setMsg("err", "전송 중 문제가 발생했습니다. 잠시 후 다시 시도해주세요.");
+      try {
+        const { error } = await supabase.from("quote_requests").insert(payload);
+        if (error) throw error;
+        localStorage.setItem(RATE_LIMIT_KEY, String(Date.now()));
+        setMsg("ok", "감사합니다. 서면 견적으로 답해드리겠습니다.");
+        form.reset();
+        requiredFields.forEach(clearFieldError);
+      } catch (error) {
+        setMsg("err", "전송 중 문제가 발생했습니다. 작성한 내용은 그대로 있습니다. 잠시 후 다시 시도해주세요.");
         console.error("quote_requests insert error:", error);
-        return;
+      } finally {
+        btnEl.disabled = false;
+        btnEl.removeAttribute("data-state");
       }
-
-      localStorage.setItem(RATE_LIMIT_KEY, String(Date.now()));
-      setMsg("ok", "감사합니다. 서면 견적으로 답해드리겠습니다.");
-      form.reset();
     });
   </script>
 

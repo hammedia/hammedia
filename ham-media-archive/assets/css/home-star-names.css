@@ -1,4 +1,21 @@
 /* Homepage star-name layer — approved 2026-07-12. */
+.constellation-entry .constellation-scene {
+  overflow: clip;
+}
+
+.constellation-entry .star-label {
+  opacity: 0.84;
+}
+
+.constellation-entry .constellation-star:focus-visible {
+  outline-color: #ffd66d;
+  box-shadow: 0 0 0 7px rgba(255, 214, 109, 0.2);
+}
+
+.constellation-entry .constellation-star:focus-visible .star-label {
+  opacity: 1;
+}
+
 .hidden-star-name {
   position: absolute;
   z-index: 1;
@@ -116,7 +133,7 @@
     box-shadow: none;
     font-size: 0.6rem;
     font-weight: 640;
-    opacity: 0.8;
+    opacity: 0.92;
     pointer-events: none;
     white-space: nowrap;
   }
@@ -135,9 +152,7 @@
     transform: translate(0, 0);
   }
 
-  .star-audio .star-label,
-  .star-food .star-label,
-  .star-camera .star-label {
+  .star-food .star-label {
     top: auto;
     bottom: calc(100% - 0.15rem);
   }
