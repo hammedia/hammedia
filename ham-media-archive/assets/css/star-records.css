@@ -476,6 +476,8 @@
   .star-record-card,
   .star-record-card:nth-child(1),
   .star-record-card:nth-child(2) {
+    display: block;
+    width: 100%;
     min-height: 31rem;
     margin-bottom: .9rem;
   }

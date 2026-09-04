@@ -1,18 +1,18 @@
-@font-face{font-family:Pretendard;src:url("../ham-media-archive/assets/fonts/Pretendard-Regular.otf") format("opentype");font-weight:400;font-display:swap}
-@font-face{font-family:Pretendard;src:url("../ham-media-archive/assets/fonts/Pretendard-Medium.otf") format("opentype");font-weight:600;font-display:swap}
-@font-face{font-family:Pretendard;src:url("../ham-media-archive/assets/fonts/Pretendard-Black.otf") format("opentype");font-weight:900;font-display:swap}
-@font-face{font-family:KoPub;src:url("../ham-media-archive/assets/fonts/KoPubWorld_Batang_Pro_Bold.otf") format("opentype");font-weight:700;font-display:swap}
+@font-face{font-family:Pretendard;src:url("../ham-media-archive/assets/fonts/Pretendard-Regular-academy.woff2") format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:Pretendard;src:url("../ham-media-archive/assets/fonts/Pretendard-Medium-academy.woff2") format("woff2");font-weight:600;font-display:swap}
+@font-face{font-family:Pretendard;src:url("../ham-media-archive/assets/fonts/Pretendard-Black-academy.woff2") format("woff2");font-weight:900;font-display:swap}
+@font-face{font-family:KoPub;src:url("../ham-media-archive/assets/fonts/KoPubWorld_Batang_Pro_Bold-academy.woff2") format("woff2");font-weight:700;font-display:swap}
 
 /* 색 토큰 — HAM MEDIA Academy DESIGN.md v1.1(05_HAM_DesignStudio/reference/clients/ham_media_academy/DESIGN.md) 그대로.
    그린·금색·빨강·네온은 쓰지 않는다. 포인트는 Signal Blue 한 곳뿐이다. */
-:root{--paper:#F5F3EE;--paper-2:#F9F7F3;--ink:#1C1814;--muted:#4A423C;--line:#E6E1D9;--accent:#7EB5E8;--accent-deep:#3F8FD3;--radius:14px;--shadow:0 10px 28px rgba(28,24,20,.08);--max:1180px}
+:root{--paper:#F5F3EE;--paper-2:#F9F7F3;--ink:#1C1814;--muted:#4A423C;--line:#E6E1D9;--accent:#7EB5E8;--accent-deep:#326B98;--radius:14px;--shadow:0 10px 28px rgba(28,24,20,.08);--max:1180px}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-snap-type:y mandatory;background:var(--paper);color:var(--ink)}
 body{margin:0;background:var(--paper);font-family:Pretendard,"Apple SD Gothic Neo",sans-serif;line-height:1.6;word-break:keep-all;overflow-wrap:anywhere}
 img{display:block;max-width:100%}
 a{color:inherit}
 button{font:inherit}
-:focus-visible{outline:3px solid var(--accent);outline-offset:4px}
+:focus-visible{outline:3px solid var(--accent-deep);outline-offset:4px}
 .wrap{width:min(calc(100% - 48px),var(--max));margin-inline:auto}
 .skip-link{position:fixed;z-index:100;top:12px;left:12px;padding:10px 14px;background:var(--ink);color:#fff;border-radius:10px;transform:translateY(-160%)}
 .skip-link:focus{transform:translateY(0)}
