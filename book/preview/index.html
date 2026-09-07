@@ -178,14 +178,25 @@
   @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto;}}
 
   /* The approved front cover accompanies the existing free text. */
-  @font-face{font-family:"HAM Book Sans";src:url('/book/assets/HAM-Book-Medium.woff2') format('woff2');font-weight:500;font-display:swap}
-  @font-face{font-family:"HAM Book Sans";src:url('/book/assets/HAM-Book-Black.woff2') format('woff2');font-weight:900;font-display:swap}
+  @font-face{font-family:"HAM Book Sans";src:url('/book/assets/HAM-Book-Medium.woff2?v=20260908') format('woff2');font-weight:500;font-display:swap}
+  @font-face{font-family:"HAM Book Sans";src:url('/book/assets/HAM-Book-Black.woff2?v=20260908') format('woff2');font-weight:900;font-display:swap}
   .book-head .head-inner{max-width:1000px;display:grid;grid-template-columns:minmax(0,1.618fr) minmax(0,1fr);gap:56px;align-items:center;}
   .preview-intro{min-width:0}.preview-intro .book-title{font-family:"HAM Book Sans",sans-serif;font-weight:900;font-synthesis:none;}
   .preview-back{display:inline-block;font-size:14px;margin-bottom:24px;color:var(--muted);text-underline-offset:5px;}
   .preview-cover{margin:0;}.preview-cover img{width:100%;height:auto;margin:0;box-shadow:0 20px 32px -16px #47382044;}
   .preview-cover figcaption{border-left:0;padding:0;margin-top:20px;font-size:14px;}
   @media(max-width:760px){.book-head .head-inner{grid-template-columns:minmax(0,1fr);gap:32px;}.preview-cover{max-width:240px;margin-inline:auto;}}
+
+.preview-route,.preview-next{max-width:1000px;margin:0 auto;padding:32px 40px;border-top:1px solid var(--line,#d8d2c9);}
+.preview-route p,.preview-next p{margin:0 0 16px;}
+.preview-route nav,.preview-next nav{display:flex;flex-wrap:wrap;gap:12px 24px;}
+.preview-route a,.preview-next a{display:inline-flex;align-items:center;min-height:44px;text-underline-offset:5px;}
+.preview-next{background:#e8f0f7;margin-bottom:48px;}
+.preview-next h2{font-size:28px;margin:0 0 20px;border:0;padding:0;}
+.preview-next .next-price{font-weight:700;font-size:22px;}
+.preview-next .next-terms{font-size:14px;}
+.preview-next .next-primary{background:#1c1814;color:#f9f7f3;padding:10px 20px;text-decoration:none;border-radius:4px;}
+@media(max-width:760px){.preview-route,.preview-next{padding:24px}.preview-next h2{font-size:24px}}
 </style></head><body>
 
 
@@ -211,6 +222,8 @@
   </div>
   <div class="owner-line" id="owner-line" hidden><!--OWNER_LABEL--></div>
 </div><figure class="preview-cover"><img src="/book/assets/cover.png?v=20260907-crop1" width="888" height="1260" alt="아무도 나를 채용하지 않는다면, 내가 먼저 나를 채용하면 된다. 함동민 지음." fetchpriority="high"><figcaption>무료 미리보기 · 여는 글과 1장</figcaption></figure></div></header>
+
+<section class="preview-route" aria-label="미리보기 안내"><p><strong>여기서는 여는 글과 1장을 무료로 읽습니다.</strong><br>마음이 먼저 지쳤다면 저자의 이야기부터, 직접 만드는 방법이 궁금하다면 무료 8장부터 시작하세요.</p><nav aria-label="읽기 시작"><a href="#preview02">여는 글부터 읽기 ↓</a><a href="/book/#free-chapter">8장 전체 읽기 ↗</a><a href="/book/#book-try">내 경험 네 줄 실습 ↗</a></nav></section>
 
 <nav class="toc" aria-label="책 차례"><details open><summary>차례 · 필요한 곳부터 읽기</summary><ol><li><a href="#preview02">여는 글 — 내가 더 이상 쓸모가 없나</a></li><li><a href="#preview03">1부. 당신 잘못이 아닙니다</a></li><li><a href="#preview04">1장. 왜 이력서를 넣어도 연락이 안 올까</a></li><li><a href="#preview05">여기까지가 무료 미리보기입니다</a></li></ol></details></nav>
 
@@ -309,14 +322,13 @@
 <ul><li>2장. &quot;AI 시대에 나만 뒤처진다&quot;는 불안</li><li>3장. 나는 이제 뭐 하는 사람인가</li><li>4장. 도구를 외우지 말고 역할을 정한다</li><li>5장. 40년의 경험을 AI가 읽을 수 있게 꺼낸다</li><li>6장. “됐다”는 말을 어디까지 믿을까</li><li>7장. 포트폴리오 — 보기 좋은 문장보다 출처가 먼저다</li><li>8장. 홈페이지 — 검증한 환경과 쓰는 환경을 같게 만든다</li><li>9장. AI 교육 — 내가 아는 길과 초보자가 걷는 길은 다르다</li><li>10장. 앱 — 첫 사용자는 내가 예상한 대로 쓰지 않았습니다</li><li>11장. 유튜브 자동화 — 렌더 완료와 사람에게 좋은 영상은 다르다</li><li>12장. 그래서 무엇이 실제로 돌아왔는가</li></ul>
 <p>첫 실습, 시작 도구와 비용, 자료를 넣기 전의 경계, 30일 실행 부록과 이어 일하는 방법도 함께 담았습니다.</p>
 <p><a href="https://hammedia.co.kr/book/">책 소개와 구매 안내</a>에서 현재 판매 조건과 전체판 제공 방법을 확인할 수 있습니다. 기존 독자는 받은 주소에서 개정판을 이어 읽습니다.</p></main>
+<section class="preview-next" aria-labelledby="preview-next-title"><h2 id="preview-next-title">내 경험으로, 작은 결과물 하나부터.</h2><p>전편에서는 질문 하나를 안내문으로 만들고, 다섯 프로젝트의 실패와 수정 과정을 따라갑니다. 실행 부록의 네 장으로 내 일에 적용해보세요.</p><p><strong>전체 웹북 + PDF 109쪽 + 실행 작업지 4장</strong><br>작업지는 책의 실행 부록에 담았습니다.</p><p class="next-price">9,900원</p><p class="next-terms">2026년 9월 30일까지 · 10월 1일부터 14,900원<br>개정돼도 다시 구매할 필요 없이, 받은 주소에서 최신판을 이어 읽습니다.</p><nav aria-label="미리보기 다음 행동"><a class="next-primary" href="https://hammedia-payment.vercel.app/book">내 책 구매하기 ↗</a><a href="https://hammedia-payment.vercel.app/book?gift=1">이 책 선물하기 ↗</a><a href="/book/#free-chapter">무료 8장 더 읽기 ↗</a></nav><p class="next-terms">구매: 승인 직후 웹북·PDF 버튼이 열리고 구매자 이메일로 책 링크를 안내합니다.<br>선물: 구매자가 결제 후 선물 링크를 복사해 직접 전합니다. 받는 분에게 자동 메일을 보내지 않습니다.<br><a href="/book/#buy">받는 구성·결제·환불 안내 확인</a></p></section>
 
 
 
 <footer class="book-foot"><div class="foot-inner">
   <p>HAM MEDIA · 함동민 · 사업자등록번호 526-30-01847 · 문의 hammedia002@gmail.com</p>
-  <p><a href="https://hammedia.co.kr">hammedia.co.kr</a> ·
-     <a href="https://hammedia.co.kr/tools">무료 도구</a> ·
-     <a href="https://hamjipsa.hammedia.co.kr">햄집사에게 이야기하기</a></p>
+  <p><a href="/book/">책 소개</a> · <a href="/book/#buy">구매·선물 안내</a></p>
 </div></footer>
 
 <button class="to-top" aria-label="맨 위로">↑</button>

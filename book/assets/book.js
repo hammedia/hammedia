@@ -40,3 +40,19 @@
     document.querySelectorAll('.case-image').forEach(element => observer.observe(element));
   }
 })();
+
+// Direct links from the free preview reveal the complete, already-present chapter.
+(() => {
+  const revealChapter = () => {
+    if (location.hash === '#free-chapter') {
+      const chapter = document.getElementById('free-chapter');
+      chapter.open = true;
+      chapter.scrollIntoView({block:'start'});
+    }
+  };
+  document.querySelectorAll('a[href="#free-chapter"]').forEach(link => {
+    link.addEventListener('click', () => { document.getElementById('free-chapter').open = true; });
+  });
+  window.addEventListener('hashchange', revealChapter);
+  revealChapter();
+})();
