@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="ko"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'none'; form-action 'none'; object-src 'none'; base-uri 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://hammedia-payment.vercel.app; form-action 'none'; object-src 'none'; base-uri 'self'">
 <meta name="description" content="내 경험으로 홈페이지·앱을 만드는 AI 실행서. 실제 실패와 수정 사례, 8장 전체, 내 경험 네 줄 실습을 무료로 확인하세요. 책 전편은 웹북·PDF 98쪽·실행 작업지 4종으로 만납니다.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="아무도 나를 채용하지 않는다면, 내가 먼저 나를 채용하면 된다">
@@ -86,10 +86,10 @@
       <div class="experience-price"><strong>9,900<span>원</span></strong><p>9월 30일까지<br>10월 1일부터 14,900원<br>신용·체크카드 결제</p></div>
       <div class="experience-buttons"><a href="https://hammedia-payment.vercel.app/book">내 책 구매하기 <span aria-hidden="true">↗</span></a><a class="experience-gift" href="https://hammedia-payment.vercel.app/book?gift=1">선물하기 <span aria-hidden="true">↗</span></a></div>
     </div>
-    <div class="experience-links"><a href="preview/">여는 글과 1장 무료로 읽기 ↗</a><a href="#gift">선물은 어떻게 전하나요?</a></div>
+    <div class="experience-links"><a href="preview/">여는 글과 1장 무료로 읽기 ↗</a><a href="#book-reviews">독자 후기 보기 ↓</a><a href="#gift">선물은 어떻게 전하나요?</a></div>
   </div>
 </div>
-<a class="sheet-down" href="#experience-story"><span>이 책이 내게 필요한지, 아래에서 더 살펴보세요</span><span aria-hidden="true">아래로 ↓</span></a></section><section class="experience-story" id="experience-story" aria-labelledby="experience-story-title">
+<a class="sheet-down" href="#experience-story"><span>이 책이 내게 필요한지, 아래에서 더 살펴보세요</span><span aria-hidden="true">아래로 ↓</span></a></section><section class="book-reviews" id="book-reviews" aria-labelledby="book-reviews-title"><p class="experience-eyebrow">책을 읽고 남긴 이야기</p><h2 id="book-reviews-title">독자들의 이야기</h2><div data-book-reviews aria-live="polite"><p>후기를 불러오고 있습니다.</p></div><p class="review-invitation">책을 읽으셨다면, 소장본 페이지나 웹북 끝에서 이야기를 남겨주세요.</p><button type="button" data-reviews-retry hidden>다시 불러오기</button><noscript><p>자바스크립트를 켜면 독자 후기를 볼 수 있습니다.</p></noscript></section><section class="experience-story" id="experience-story" aria-labelledby="experience-story-title">
 <p class="experience-eyebrow">먼저 읽고, 직접 해보고, 선택하세요</p>
 <h2 id="experience-story-title">“잘 만들어줘” 다음에,<br> 무엇을 말해야 할까요?</h2>
 <p class="experience-story-lead">이 책은 AI가 알아서 해준 성공담으로 끝나지 않습니다.<br> 어디에서 실패했고 왜 고쳤는지 먼저 읽고, 같은 방법을 내 일에 한번 써보세요.</p>
@@ -280,4 +280,4 @@
 </footer>
 
 </div>
-</body></html>
+<script src="/book/assets/reviews.js" defer></script></body></html>
