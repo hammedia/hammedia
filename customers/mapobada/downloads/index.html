@@ -40,14 +40,111 @@ footer{font-size:13.5px;color:var(--ink2);line-height:1.6;border-top:1px solid v
 .pill.done{color:var(--done);background:var(--done-bg)}
 .check-item p{margin:0;font-size:14px;color:var(--ink2)}
 .check-item a.go{display:inline-block;margin-top:8px;color:var(--brown);font-weight:700;font-size:14px;text-decoration:none;border-bottom:1px solid var(--gold)}
+.achieve-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.achieve-card{border:1px solid var(--line);border-radius:8px;padding:12px;background:var(--bg);display:flex;flex-direction:column}
+.achieve-card .d{font-size:11.5px;color:var(--gold);font-weight:800;letter-spacing:.02em;margin-bottom:4px}
+.achieve-card h3{font-size:14.5px;margin:0 0 4px;color:var(--ink);line-height:1.35}
+.achieve-card p{margin:0;font-size:12.5px;color:var(--ink2);flex:1}
+.achieve-card a.go{margin-top:8px;color:var(--brown);font-weight:700;font-size:13px;text-decoration:none;border-bottom:1px solid var(--gold);align-self:flex-start}
+@media (max-width:480px){.achieve-grid{grid-template-columns:1fr}}
+.tablewrap{overflow-x:auto;margin-top:10px;border:1px solid var(--line);border-radius:8px}
+.revtable{width:100%;border-collapse:collapse;font-size:13px;min-width:520px}
+.revtable th,.revtable td{padding:7px 9px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+.revtable th{background:var(--gold-soft);color:var(--brown);font-size:12px;white-space:nowrap}
+.revtable tr:last-child td{border-bottom:none}
+.revtable a{color:var(--brown);font-weight:700;text-decoration:none;white-space:nowrap}
+.reading{margin:12px 0 0;padding:12px 14px;background:var(--gold-soft);border-radius:8px;font-size:14.5px}
+.reading b{color:var(--brown)}
+.reading ul{margin:6px 0 0;padding-left:18px}
+.reading li{margin:4px 0}
 </style>
 </head>
 <body>
 <main>
 <header>
   <h1>제철담은 마포바다 — 확인·자료 한 곳</h1>
-  <p class="lead">지금 대표님 확인이 필요한 것과, 완성된 영상·인쇄물을 <b>이 페이지 하나</b>에 모아 둡니다. 새로 확인할 게 생겨도 다른 주소를 또 만들지 않고 이 페이지를 계속 고쳐 씁니다 — 나중에 필요할 때도 이 링크 하나만 열어 보시면 됩니다.</p>
+  <p class="lead">저희가 해드린 것, 밖에서 들려오는 반응, 지금 확인이 필요한 것, 자료까지 <b>이 페이지 하나</b>에 모아 둡니다. 새로 생기는 것도 다른 주소를 또 만들지 않고 이 페이지를 계속 고쳐 씁니다 — 나중에 필요할 때도 이 링크 하나만 열어 보시면 됩니다. (매주 새로 갱신)</p>
 </header>
+
+<section>
+  <h2>지금까지 해드린 것</h2>
+  <div class="achieve-grid">
+    <div class="achieve-card">
+      <span class="d">8/12~8/20</span>
+      <h3>계약·세금계산서·입금</h3>
+      <p>서명부터 입금까지 전부 처리 완료.</p>
+    </div>
+    <div class="achieve-card">
+      <span class="d">8/21~</span>
+      <h3>홈페이지 mapobada.com</h3>
+      <p>세트·단품 메뉴, 사진, 오시는 길까지. 지금도 계속 갱신 중.</p>
+      <a class="go" href="https://mapobada.com" target="_blank" rel="noopener">홈페이지 보기 →</a>
+    </div>
+    <div class="achieve-card">
+      <span class="d">9/1</span>
+      <h3>다섯 채널 정비</h3>
+      <p>네이버·구글·당근·카카오맵·티맵 정보 등록·정정(카카오맵 상호 오표기 정정 포함).</p>
+    </div>
+    <div class="achieve-card">
+      <span class="d">9/3</span>
+      <h3>매장 인쇄물 5종 확정</h3>
+      <p>메뉴판·벽 안내 2종·호출벨·콜키지 안내, 매장 서체로 완성.</p>
+      <a class="go" href="#print">아래서 보기 →</a>
+    </div>
+    <div class="achieve-card">
+      <span class="d">9/3</span>
+      <h3>오픈 홍보 게시</h3>
+      <p>당근 소식·릴스 콘티·리뷰 이벤트·플레이스 소식까지 한 번에.</p>
+    </div>
+    <div class="achieve-card">
+      <span class="d">완성·공개</span>
+      <h3>매장TV 영상 (12분 57초)</h3>
+      <p>소리 꺼도 내용이 다 읽히게 만든 매장용 영상, 채널에 공개.</p>
+      <a class="go" href="https://youtu.be/i_kI65pNKRM" target="_blank" rel="noopener">영상 보기 →</a>
+    </div>
+    <div class="achieve-card">
+      <span class="d">9/7</span>
+      <h3>짧은 릴스 (36초)</h3>
+      <p>같은 소재로 인스타에 짧게 올릴 수 있는 세로 영상도 하나 만들어 올려드렸습니다.</p>
+      <a class="go" href="https://www.instagram.com/reel/Dc94ghZpx7V/" target="_blank" rel="noopener">릴스 보기 →</a>
+    </div>
+    <div class="achieve-card">
+      <span class="d">9/7 · 대기 중</span>
+      <h3>구글 프로필 사진 재업로드</h3>
+      <p>지도에 사진이 안 보이던 것 확인, 실제 매장 사진 5장 다시 올림(반영까지 하루 이틀).</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>밖에서 들려오는 반응 — 블로그 후기</h2>
+  <p class="where">오픈(9/2) 다음날부터 오늘까지 저희가 찾은 네이버 블로그 후기 12건</p>
+  <div class="tablewrap">
+    <table class="revtable">
+      <tr><th>게시일</th><th>방문 유형</th><th>한 줄 요지</th><th>보기</th></tr>
+      <tr><td>9/2 23:36</td><td>대흥동 술집</td><td>제철 회·해산물, 술 곁들이기 좋은 곳으로 소개</td><td><a href="https://blog.naver.com/epdp96/224399055083" target="_blank" rel="noopener">epdp96</a></td></tr>
+      <tr><td>9/3 06:20</td><td>가족모임</td><td>가을 전어·새우구이와 회, 시그니처 한 상 후기</td><td><a href="https://blog.naver.com/lovelya3/224399228920" target="_blank" rel="noopener">lovelya3</a></td></tr>
+      <tr><td>9/3 07:47</td><td>가족모임</td><td>새우구이부터 전어까지, 다음 모임도 여기서</td><td><a href="https://blog.naver.com/jong3315/224399269653" target="_blank" rel="noopener">jong3315</a></td></tr>
+      <tr><td>9/3 23:08</td><td>가족모임</td><td>단체 이용 가능, 대흥역 근접 강조</td><td><a href="https://blog.naver.com/veronica2323/224400224236" target="_blank" rel="noopener">veronica2323</a></td></tr>
+      <tr><td>9/4 14:58</td><td>대흥동 술집</td><td>사장님 친절, 재방문 의향 있음</td><td><a href="https://blog.naver.com/poi09890/224400907082" target="_blank" rel="noopener">poi09890</a></td></tr>
+      <tr><td>9/5 13:08</td><td>회식 코스</td><td>제철 해산물 가득한 한상, 회식 장소로 추천</td><td><a href="https://blog.naver.com/matdory_yam/224401767687" target="_blank" rel="noopener">matdory_yam</a></td></tr>
+      <tr><td>9/6 08:10</td><td>가족모임(5인)</td><td>시그니처 세트 솔직 후기</td><td><a href="https://blog.naver.com/somsom_lee/224401975408" target="_blank" rel="noopener">somsom_lee</a></td></tr>
+      <tr><td>9/6 09:33</td><td>대흥동 술집</td><td>제철 술집, 회·새우 조합 총평</td><td><a href="https://blog.naver.com/0916dj/224402413055" target="_blank" rel="noopener">0916dj</a></td></tr>
+      <tr><td>9/6 13:33</td><td>가족모임</td><td>오픈 첫날부터 인산인해, 품질 남다름</td><td><a href="https://blog.naver.com/gpskwhgdk1/224402573847" target="_blank" rel="noopener">gpskwhgdk1</a></td></tr>
+      <tr><td>9/6 22:17</td><td>가족모임</td><td>10분 웨이팅, 로컬 맛집 느낌 확실</td><td><a href="https://blog.naver.com/cwrachel/224402955434" target="_blank" rel="noopener">cwrachel</a></td></tr>
+      <tr><td>9/6 23:36</td><td>가족모임</td><td>시그니처 한 상 솔직 후기, 추천</td><td><a href="https://blog.naver.com/kyy7725/224403022534" target="_blank" rel="noopener">kyy7725</a></td></tr>
+      <tr><td>9/7 08:21</td><td>가족외식(아빠 생일)</td><td>모둠회 구성 정확, 직원 응대 빠르고 친절</td><td><a href="https://blog.naver.com/hjhong7466/224403226781" target="_blank" rel="noopener">hjhong7466</a></td></tr>
+    </table>
+  </div>
+  <div class="reading">
+    <b>저희가 읽은 것</b>
+    <ul>
+      <li>오픈 다음날부터 오늘까지 거의 매일 후기가 올라오고 있습니다 — 좋은 흐름입니다.</li>
+      <li>「가족모임·단체」 방문이 가장 많아, 지금 채널에 반영된 포지셔닝과 잘 맞습니다.</li>
+      <li>저희가 답글을 달거나 SNS로 다시 소개해드릴 수 있습니다 — 원하시면 말씀 주세요. (협찬 표시나 정보 정확도까지 전부 대조하는 건 다음 갱신 때 이어서 하겠습니다)</li>
+    </ul>
+  </div>
+</section>
 
 <section>
   <h2>지금 확인 부탁드리는 것</h2>
@@ -81,7 +178,7 @@ footer{font-size:13.5px;color:var(--ink2);line-height:1.6;border-top:1px solid v
   <p class="ask">12분 57초, 매장에서 소리 끄고 틀어도 내용이 다 읽히게 만들었습니다. TV에 넣으실 파일은 저희가 대표님 구글 드라이브에 넣어 드리겠습니다 — 거기서 내려받아 USB로 옮기시면 TV에서 그대로 재생됩니다.</p>
 </section>
 
-<section>
+<section id="print">
   <h2>메뉴판 (A4 양면)</h2>
   <div class="pop">
     <figure><a href="files/메뉴판_A4양면_v005-1.jpg"><img src="files/메뉴판_A4양면_v005-1.jpg" alt="메뉴판 앞면"></a><figcaption>앞면 <a href="files/메뉴판_A4양면.pdf" download>PDF</a></figcaption></figure>
