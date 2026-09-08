@@ -1,20 +1,20 @@
 @font-face {
   font-family:"HAM Book Sans";
-  src:url("/book/assets/HAM-Book-Regular.woff2?v=20260908") format("woff2");
+  src:url("/book/assets/HAM-Book-Regular.woff2?v=20260909") format("woff2");
   font-weight:400;
   font-style:normal;
   font-display:swap;
 }
 @font-face {
   font-family:"HAM Book Sans";
-  src:url("/book/assets/HAM-Book-Medium.woff2?v=20260908") format("woff2");
+  src:url("/book/assets/HAM-Book-Medium.woff2?v=20260909") format("woff2");
   font-weight:500;
   font-style:normal;
   font-display:swap;
 }
 @font-face {
   font-family:"HAM Book Sans";
-  src:url("/book/assets/HAM-Book-Black.woff2?v=20260908") format("woff2");
+  src:url("/book/assets/HAM-Book-Black.woff2?v=20260909") format("woff2");
   font-weight:900;
   font-style:normal;
   font-display:swap;
@@ -1514,3 +1514,8 @@ footer nav a {
 .book-delivery dt {font-weight:500;font-size:15px;}
 .book-delivery dd {margin:0;color:var(--muted);font-size:15px;}
 @media(max-width:760px){.reading-paths{margin-bottom:48px}.reading-paths>a{grid-template-columns:1fr;gap:4px;padding:18px 0}.coding-meaning{font-size:13px}.book-delivery>div{grid-template-columns:1fr;gap:4px}}
+
+/* Book evidence: the published work and the judgment behind it. */
+.app-evidence{display:grid;grid-template-columns:minmax(180px,.65fr) minmax(0,1.35fr);gap:clamp(28px,5vw,80px);align-items:center;margin:72px 0;padding:48px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.app-evidence figure{margin:0;text-align:center}.app-evidence img{display:block;width:min(100%,240px);height:auto;margin:auto}.app-evidence figcaption{font-size:13px;line-height:1.6;margin:16px auto 0;max-width:280px}.app-evidence h3{font-size:clamp(24px,3vw,38px);line-height:1.35;margin:12px 0 28px;letter-spacing:-.04em}.app-evidence .note{font-size:13px;line-height:1.7;margin-top:16px}.practice-next{max-width:780px;margin-top:40px;border-top:1px solid var(--line);padding-top:28px}.practice-next h3{font-size:22px;line-height:1.5}.practice-next p{line-height:1.85;margin:16px 0}.practice-next .text-link{margin-top:8px}
+@media(max-width:700px){.app-evidence{grid-template-columns:1fr;padding:32px 0;margin:40px 0}.app-evidence img{max-width:190px}.app-evidence h3 br{display:none}}
