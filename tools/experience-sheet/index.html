@@ -123,13 +123,15 @@
   ids.forEach(function(id){document.getElementById(id).addEventListener('input',save);});
   load();
   document.getElementById('copy').addEventListener('click',function(){
+    if(!ids.some(function(id){return document.getElementById(id).value.trim();})){status.textContent='먼저 실제 경험 한 가지를 적어주세요. 지금 적을 경험이 없으면 이 도구는 건너뛰어도 됩니다.';return;}
     var lines=ids.map(function(id,i){return '['+labels[i]+'] '+(document.getElementById(id).value.trim()||'(비움)');});
     lines.push('');lines.push('이 다섯 줄이 원본이다. 여기 없는 성공과 숫자를 사실처럼 쓰지 마라. 모르면 질문하라.');
     var text=lines.join('\n');
     function done(){status.textContent='복사됐습니다. 쓰던 AI에 붙이고 그 아래에 부탁을 적으세요.';if(window.gtag){gtag('event','experience_sheet_copy');}}
-    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(done,function(){fallback(text);done();});}else{fallback(text);done();}
+    function retry(){if(fallback(text)){done();}else{status.textContent='자동 복사가 막혔습니다. 적은 내용을 직접 선택해 복사해주세요.';}}
+    try{if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(done,retry);}else{retry();}}catch(e){retry();}
   });
-  function fallback(t){var ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');}catch(e){}document.body.removeChild(ta);}
+  function fallback(t){var previous=document.activeElement;var ta=document.createElement('textarea');ta.value=t;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();var copied=false;try{copied=document.execCommand('copy')===true;}catch(e){}finally{ta.remove();if(previous){previous.focus();}}return copied;}
   document.getElementById('print').addEventListener('click',function(){if(window.gtag){gtag('event','experience_sheet_print');}window.print();});
   document.getElementById('clear').addEventListener('click',function(){if(!confirm('다섯 칸을 모두 지울까요?'))return;ids.forEach(function(id){document.getElementById(id).value='';});save();status.textContent='지웠습니다.';});
 })();
