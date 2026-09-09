@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>HAM MEDIA Social Connector</title>
-    <meta name="description" content="HAM MEDIA Social Connector is a user-authorized workflow for reviewing TikTok account information and sending a selected video to TikTok as a draft.">
+    <meta name="description" content="HAM MEDIA Social Connector is a user-authorized workflow for reviewing TikTok account information and uploading a user-selected local video to TikTok as a draft.">
     <link rel="canonical" href="https://hammedia.co.kr/social-connector/">
     <link rel="stylesheet" href="legal.css">
   </head>
@@ -20,7 +20,7 @@
         <div>
           <span class="kicker">User-authorized social workflow</span>
           <h1>Social Connector</h1>
-          <p class="lead">A HAM MEDIA production tool that lets an authorized user review their TikTok account and videos, choose one video, and send it to TikTok as a draft for final review in the TikTok app.</p>
+          <p class="lead">A HAM MEDIA production tool that lets an authorized user review their TikTok account and videos, choose a local video file, and upload it to TikTok as a draft for final review in the TikTok app.</p>
         </div>
         <aside class="meta">
           <span>Operator</span><strong>HAM MEDIA</strong>
@@ -30,16 +30,16 @@
         </aside>
       </div>
 
-      <div class="summary"><strong>No automatic public posting.</strong> The user approves access on TikTok, chooses the source video, and completes the final publishing decision inside TikTok.</div>
+      <div class="summary"><strong>No automatic public posting.</strong> The user approves access on TikTok, chooses a local source file, and completes the final publishing decision inside TikTok.</div>
 
       <article>
         <section>
           <h2>What the service does</h2>
-          <p>Social Connector supports HAM MEDIA's short-form production workflow. It brings account and video information into one review screen so the account owner and production operator can confirm the correct source before creating a TikTok draft.</p>
+          <p>Social Connector supports HAM MEDIA's short-form production workflow. It brings account and public-video information into one review screen, then lets the account owner choose a local video file before creating a TikTok draft.</p>
           <div class="feature-grid">
             <div><strong>Account confirmation</strong><span>Shows the connected account's public profile and account statistics.</span></div>
-            <div><strong>Video selection</strong><span>Lists videos available to the authorized account so the user can select the intended source.</span></div>
-            <div><strong>Draft transfer</strong><span>Sends the selected video to TikTok as a draft. It does not publish the video publicly.</span></div>
+            <div><strong>Account video review</strong><span>Lists recent public videos from the authorized account for identity and activity confirmation.</span></div>
+            <div><strong>Local file upload</strong><span>Uploads the local video file selected by the user to TikTok as a draft. It does not publish the video publicly.</span></div>
             <div><strong>Disconnect and delete</strong><span>Lets the user revoke access and request deletion of service-side connection data.</span></div>
           </div>
         </section>
@@ -50,7 +50,7 @@
             <li><strong>Open Social Connector.</strong><span>The user reads this service description and starts the connection from the button below.</span></li>
             <li><strong>Authorize on TikTok.</strong><span>TikTok displays the requested permissions. The user may approve or cancel.</span></li>
             <li><strong>Review the account.</strong><span>The service shows the connected profile, statistics, and recent videos for confirmation.</span></li>
-            <li><strong>Select a video.</strong><span>The user chooses the intended source and confirms the draft transfer.</span></li>
+            <li><strong>Select a local file.</strong><span>The user chooses an MP4, MOV, or WebM file and confirms the draft upload.</span></li>
             <li><strong>Finish in TikTok.</strong><span>The video arrives as a TikTok draft. The user reviews it and decides whether to publish.</span></li>
           </ol>
           <p><a class="cta" href="https://ham-media-tiktok-connector.vercel.app/api/tiktok/oauth/start">Continue with TikTok</a></p>
@@ -66,8 +66,8 @@
                 <tr><td><code>user.info.basic</code></td><td>Confirms the connected TikTok account.</td></tr>
                 <tr><td><code>user.info.profile</code></td><td>Displays the user's authorized profile information in the review screen.</td></tr>
                 <tr><td><code>user.info.stats</code></td><td>Displays account statistics to help confirm the production account.</td></tr>
-                <tr><td><code>video.list</code></td><td>Lists videos available to the authorized account for source selection.</td></tr>
-                <tr><td><code>video.upload</code></td><td>Transfers a user-selected video to TikTok as a draft.</td></tr>
+                <tr><td><code>video.list</code></td><td>Lists recent public videos for account and activity confirmation.</td></tr>
+                <tr><td><code>video.upload</code></td><td>Uploads a local video file selected by the user to TikTok as a draft.</td></tr>
               </tbody>
             </table>
           </div>
@@ -79,8 +79,8 @@
           <ol>
             <li>TikTok authorization and permission review</li>
             <li>Connected profile and statistics display</li>
-            <li>Recent video list and source selection</li>
-            <li>Explicit confirmation before draft transfer</li>
+            <li>Recent public video list for account confirmation</li>
+            <li>Local video file selection and explicit confirmation before draft upload</li>
             <li>Draft received in TikTok with no automatic public post</li>
           </ol>
         </section>
@@ -99,7 +99,7 @@
 
         <section lang="ko">
           <h2>한국어 안내</h2>
-          <p>HAM MEDIA Social Connector는 사용자가 승인한 TikTok 계정의 프로필·통계·영상 목록을 확인하고, 사용자가 고른 영상을 TikTok 초안으로 전달하는 제작 도구입니다. 자동 공개 게시를 하지 않으며 최종 게시 여부는 사용자가 TikTok 앱에서 직접 결정합니다.</p>
+          <p>HAM MEDIA Social Connector는 사용자가 승인한 TikTok 계정의 프로필·통계·최근 공개 영상 목록을 확인하고, 사용자가 직접 고른 로컬 영상 파일을 TikTok 초안으로 업로드하는 제작 도구입니다. 자동 공개 게시를 하지 않으며 최종 게시 여부는 사용자가 TikTok 앱에서 직접 결정합니다.</p>
         </section>
 
         <section>
