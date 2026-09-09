@@ -1,29 +1,116 @@
 <!doctype html>
-<html lang="ko">
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>HAM MEDIA Social Connector</title>
-    <meta name="description" content="사용자 승인 기반으로 소셜 계정을 연결하고 콘텐츠 작업과 성과 확인을 돕는 HAM MEDIA Social Connector입니다.">
+    <meta name="description" content="HAM MEDIA Social Connector is a user-authorized workflow for reviewing TikTok account information and sending a selected video to TikTok as a draft.">
     <link rel="canonical" href="https://hammedia.co.kr/social-connector/">
     <link rel="stylesheet" href="legal.css">
   </head>
   <body>
-    <a class="skip" href="#main">본문으로 이동</a>
+    <a class="skip" href="#main">Skip to content</a>
     <main class="shell" id="main">
       <header class="topbar">
         <a class="brand" href="../"><img src="../assets/tools/logo_10.png" alt=""><span>HAM MEDIA</span></a>
-        <nav class="links" aria-label="관련 페이지"><a href="terms.html">이용약관</a><a href="privacy.html">개인정보처리방침</a><a href="data-deletion.html">데이터 삭제</a></nav>
+        <nav class="links" aria-label="Service documents"><a href="terms.html">Terms</a><a href="privacy.html">Privacy</a><a href="data-deletion.html">Data deletion</a></nav>
       </header>
+
       <div class="hero">
-        <div><span class="kicker">사용자 승인 기반 소셜 연결</span><h1>Social Connector</h1><p class="lead">콘텐츠를 먼저 확인하고 승인한 뒤 연결한 소셜 계정에서 필요한 작업을 진행하고 결과를 확인합니다.</p></div>
-        <aside class="meta"><span>운영 주체</span><strong>HAM MEDIA</strong><span>현재 단계</span><strong>TikTok Sandbox 시험</strong><span>문의</span><strong><a href="mailto:hammedia002@gmail.com">hammedia002@gmail.com</a></strong></aside>
+        <div>
+          <span class="kicker">User-authorized social workflow</span>
+          <h1>Social Connector</h1>
+          <p class="lead">A HAM MEDIA production tool that lets an authorized user review their TikTok account and videos, choose one video, and send it to TikTok as a draft for final review in the TikTok app.</p>
+        </div>
+        <aside class="meta">
+          <span>Operator</span><strong>HAM MEDIA</strong>
+          <span>Service stage</span><strong>Controlled production review</strong>
+          <span>Available to</span><strong>HAM MEDIA-authorized accounts</strong>
+          <span>Contact</span><strong><a href="mailto:hammedia002@gmail.com">hammedia002@gmail.com</a></strong>
+        </aside>
       </div>
-      <div class="summary"><strong>자동으로 몰래 게시하지 않습니다.</strong> 계정 연결과 각 권한은 TikTok 또는 Meta의 공식 승인 화면에서 사용자가 직접 선택하며, 콘텐츠 게시 전에는 사용자가 내용을 확인합니다.</div>
+
+      <div class="summary"><strong>No automatic public posting.</strong> The user approves access on TikTok, chooses the source video, and completes the final publishing decision inside TikTok.</div>
+
       <article>
-        <section><h2>현재 시험하는 기능</h2><ul><li>TikTok 계정 로그인과 공개 프로필 확인</li><li>사용자가 승인한 영상 목록과 계정 통계 확인</li><li>사용자 승인 뒤 TikTok 앱으로 초안 업로드</li><li>연결 해제와 데이터 삭제 요청 처리</li></ul><p class="note">현재는 HAM MEDIA가 관리하는 대상 계정으로만 Sandbox 시험을 진행하며 외부 고객 계정은 연결하지 않았습니다.</p></section>
-        <section><h2>TikTok 연결 시험</h2><p>아래 버튼을 누르면 TikTok의 로그인·권한 승인 화면으로 이동합니다. 승인하지 않으면 연결되지 않습니다.</p><p><a class="cta" href="https://ham-media-tiktok-connector.vercel.app/api/tiktok/oauth/start">TikTok으로 계속</a></p></section>
-        <section><h2>연결 해제</h2><p>TikTok 설정에서 앱 권한을 해제하거나 아래 버튼으로 Vercel의 확인 화면을 연 뒤 이 브라우저의 연결을 해제할 수 있습니다.</p><a class="secondary" href="https://ham-media-tiktok-connector.vercel.app/api/tiktok/oauth/revoke">TikTok 연결 해제</a><p><a href="data-deletion.html">데이터 삭제 요청 방법 보기</a></p></section>
+        <section>
+          <h2>What the service does</h2>
+          <p>Social Connector supports HAM MEDIA's short-form production workflow. It brings account and video information into one review screen so the account owner and production operator can confirm the correct source before creating a TikTok draft.</p>
+          <div class="feature-grid">
+            <div><strong>Account confirmation</strong><span>Shows the connected account's public profile and account statistics.</span></div>
+            <div><strong>Video selection</strong><span>Lists videos available to the authorized account so the user can select the intended source.</span></div>
+            <div><strong>Draft transfer</strong><span>Sends the selected video to TikTok as a draft. It does not publish the video publicly.</span></div>
+            <div><strong>Disconnect and delete</strong><span>Lets the user revoke access and request deletion of service-side connection data.</span></div>
+          </div>
+        </section>
+
+        <section>
+          <h2>Complete user flow</h2>
+          <ol class="steps">
+            <li><strong>Open Social Connector.</strong><span>The user reads this service description and starts the connection from the button below.</span></li>
+            <li><strong>Authorize on TikTok.</strong><span>TikTok displays the requested permissions. The user may approve or cancel.</span></li>
+            <li><strong>Review the account.</strong><span>The service shows the connected profile, statistics, and recent videos for confirmation.</span></li>
+            <li><strong>Select a video.</strong><span>The user chooses the intended source and confirms the draft transfer.</span></li>
+            <li><strong>Finish in TikTok.</strong><span>The video arrives as a TikTok draft. The user reviews it and decides whether to publish.</span></li>
+          </ol>
+          <p><a class="cta" href="https://ham-media-tiktok-connector.vercel.app/api/tiktok/oauth/start">Continue with TikTok</a></p>
+          <p class="note">During platform review, access is limited to accounts authorized by HAM MEDIA. External customer accounts are not connected during this stage.</p>
+        </section>
+
+        <section>
+          <h2>Permissions and their purpose</h2>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Permission</th><th>How Social Connector uses it</th></tr></thead>
+              <tbody>
+                <tr><td><code>user.info.basic</code></td><td>Confirms the connected TikTok account.</td></tr>
+                <tr><td><code>user.info.profile</code></td><td>Displays the user's authorized profile information in the review screen.</td></tr>
+                <tr><td><code>user.info.stats</code></td><td>Displays account statistics to help confirm the production account.</td></tr>
+                <tr><td><code>video.list</code></td><td>Lists videos available to the authorized account for source selection.</td></tr>
+                <tr><td><code>video.upload</code></td><td>Transfers a user-selected video to TikTok as a draft.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section>
+          <h2>What a reviewer can verify</h2>
+          <p>The public information on this page is available without a service account. The service button opens TikTok's official authorization screen. A reviewer using an account permitted for the app can verify the same sequence shown in the submitted review video:</p>
+          <ol>
+            <li>TikTok authorization and permission review</li>
+            <li>Connected profile and statistics display</li>
+            <li>Recent video list and source selection</li>
+            <li>Explicit confirmation before draft transfer</li>
+            <li>Draft received in TikTok with no automatic public post</li>
+          </ol>
+        </section>
+
+        <section>
+          <h2>Data handling and user control</h2>
+          <ul>
+            <li>Social Connector only requests the permissions listed above.</li>
+            <li>It does not sell account data or use it for unrelated advertising.</li>
+            <li>The user can revoke the app in TikTok or use the disconnect link below.</li>
+            <li>Deletion requests and retention details are explained on the data deletion and privacy pages.</li>
+          </ul>
+          <p><a class="secondary" href="https://ham-media-tiktok-connector.vercel.app/api/tiktok/oauth/revoke">Disconnect TikTok</a></p>
+          <p><a href="data-deletion.html">Read the data deletion instructions</a> · <a href="privacy.html">Read the privacy policy</a></p>
+        </section>
+
+        <section lang="ko">
+          <h2>한국어 안내</h2>
+          <p>HAM MEDIA Social Connector는 사용자가 승인한 TikTok 계정의 프로필·통계·영상 목록을 확인하고, 사용자가 고른 영상을 TikTok 초안으로 전달하는 제작 도구입니다. 자동 공개 게시를 하지 않으며 최종 게시 여부는 사용자가 TikTok 앱에서 직접 결정합니다.</p>
+        </section>
+
+        <section>
+          <h2>Operator and support</h2>
+          <div class="contact">
+            <div><strong>Service operator</strong><span>HAM MEDIA</span></div>
+            <div><strong>Website</strong><span><a href="https://hammedia.co.kr/">https://hammedia.co.kr/</a></span></div>
+            <div><strong>Support</strong><span><a href="mailto:hammedia002@gmail.com">hammedia002@gmail.com</a></span></div>
+            <div><strong>Service documents</strong><span><a href="terms.html">Terms</a> · <a href="privacy.html">Privacy</a> · <a href="data-deletion.html">Data deletion</a></span></div>
+          </div>
+        </section>
       </article>
       <p class="footer">HAM MEDIA · Social Connector</p>
     </main>

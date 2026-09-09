@@ -54,6 +54,18 @@ h2 { margin-bottom: 12px; font-size: clamp(22px, 3vw, 30px); letter-spacing: -.0
 p + p, p + ul, p + ol, ul + p, ol + p { margin-top: 12px; }
 ul, ol { padding-left: 1.25em; }
 li + li { margin-top: 7px; }
+.feature-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 18px; }
+.feature-grid div { display: grid; gap: 5px; padding: 18px; border: 1px solid var(--line); border-radius: 16px; background: #f9f7f1; }
+.feature-grid span, .steps span { color: var(--muted); }
+.steps { display: grid; gap: 12px; list-style: none; padding: 0; counter-reset: flow; }
+.steps li { display: grid; grid-template-columns: 28px minmax(0, 1fr); column-gap: 10px; counter-increment: flow; }
+.steps li::before { content: counter(flow); display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; color: #fff; background: var(--green); font-weight: 800; }
+.steps li strong, .steps li span { grid-column: 2; }
+.table-wrap { overflow-x: auto; margin-top: 16px; }
+table { width: 100%; border-collapse: collapse; }
+th, td { padding: 13px 14px; border: 1px solid var(--line); text-align: left; vertical-align: top; }
+th { background: #f0f6f2; }
+code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: .9em; overflow-wrap: anywhere; }
 .note { margin-top: 16px; padding: 15px 17px; border-left: 4px solid var(--green); background: #f0f6f2; border-radius: 0 12px 12px 0; }
 .contact { display: grid; gap: 10px; margin-top: 15px; padding: 18px; background: #f4f1ea; border-radius: 16px; }
 .contact div { display: grid; grid-template-columns: 105px 1fr; gap: 10px; }
@@ -66,5 +78,6 @@ li + li { margin-top: 7px; }
   .hero { grid-template-columns: 1fr; gap: 18px; }
   .meta { padding: 16px; }
   article { border-radius: 18px; }
+  .feature-grid { grid-template-columns: 1fr; }
   .contact div { grid-template-columns: 1fr; gap: 2px; }
 }
