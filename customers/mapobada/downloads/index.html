@@ -41,11 +41,17 @@ footer{font-size:13.5px;color:var(--ink2);line-height:1.6;border-top:1px solid v
 .check-item p{margin:0;font-size:14px;color:var(--ink2)}
 .check-item a.go{display:inline-block;margin-top:8px;color:var(--brown);font-weight:700;font-size:14px;text-decoration:none;border-bottom:1px solid var(--gold)}
 .achieve-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.achieve-card{border:1px solid var(--line);border-radius:8px;padding:12px;background:var(--bg);display:flex;flex-direction:column}
+.achieve-card{border:1px solid var(--line);border-radius:8px;padding:12px;background:var(--bg)}
+.achieve-card[open]{background:var(--paper)}
+.achieve-card summary{list-style:none;cursor:pointer;display:flex;flex-direction:column}
+.achieve-card summary::-webkit-details-marker{display:none}
+.achieve-card summary::after{content:"자세히 보기 ▾";margin-top:8px;font-size:12px;color:var(--gold);font-weight:700;align-self:flex-start}
+.achieve-card[open] summary::after{content:"접기 ▴"}
 .achieve-card .d{font-size:11.5px;color:var(--gold);font-weight:800;letter-spacing:.02em;margin-bottom:4px}
 .achieve-card h3{font-size:14.5px;margin:0 0 4px;color:var(--ink);line-height:1.35}
-.achieve-card p{margin:0;font-size:12.5px;color:var(--ink2);flex:1}
-.achieve-card a.go{margin-top:8px;color:var(--brown);font-weight:700;font-size:13px;text-decoration:none;border-bottom:1px solid var(--gold);align-self:flex-start}
+.achieve-card p{margin:0;font-size:12.5px;color:var(--ink2)}
+.achieve-card .detail{margin-top:10px;padding-top:10px;border-top:1px solid var(--line);font-size:12.5px;color:var(--ink2)}
+.achieve-card a.go{margin-top:8px;display:inline-block;color:var(--brown);font-weight:700;font-size:13px;text-decoration:none;border-bottom:1px solid var(--gold)}
 @media (max-width:480px){.achieve-grid{grid-template-columns:1fr}}
 .tablewrap{overflow-x:auto;margin-top:10px;border:1px solid var(--line);border-radius:8px}
 .revtable{width:100%;border-collapse:collapse;font-size:13px;min-width:520px}
@@ -68,57 +74,50 @@ footer{font-size:13.5px;color:var(--ink2);line-height:1.6;border-top:1px solid v
 
 <section>
   <h2>지금까지 해드린 것</h2>
+  <p class="where" style="margin-top:-2px">카드를 눌러 보시면 자세한 내용이 펼쳐집니다.</p>
   <div class="achieve-grid">
-    <div class="achieve-card">
-      <span class="d">8/12~8/20</span>
-      <h3>계약·세금계산서·입금</h3>
-      <p>서명부터 입금까지 전부 처리 완료.</p>
-    </div>
-    <div class="achieve-card">
-      <span class="d">8/21~</span>
-      <h3>홈페이지 mapobada.com</h3>
-      <p>세트·단품 메뉴, 사진, 오시는 길까지. 지금도 계속 갱신 중.</p>
-      <a class="go" href="https://mapobada.com" target="_blank" rel="noopener">홈페이지 보기 →</a>
-    </div>
-    <div class="achieve-card">
-      <span class="d">9/1</span>
-      <h3>다섯 채널 정비</h3>
-      <p>네이버·구글·당근·카카오맵·티맵 정보 등록·정정(카카오맵 상호 오표기 정정 포함).</p>
-    </div>
-    <div class="achieve-card">
-      <span class="d">9/3</span>
-      <h3>매장 인쇄물 5종 확정</h3>
-      <p>메뉴판·벽 안내 2종·호출벨·콜키지 안내, 매장 서체로 완성.</p>
-      <a class="go" href="#print">아래서 보기 →</a>
-    </div>
-    <div class="achieve-card">
-      <span class="d">9/3</span>
-      <h3>오픈 홍보 게시</h3>
-      <p>당근 소식·릴스 콘티·리뷰 이벤트·플레이스 소식까지 한 번에.</p>
-    </div>
-    <div class="achieve-card">
-      <span class="d">완성·공개</span>
-      <h3>매장TV 영상 (12분 57초)</h3>
-      <p>소리 꺼도 내용이 다 읽히게 만든 매장용 영상, 채널에 공개.</p>
-      <a class="go" href="https://youtu.be/i_kI65pNKRM" target="_blank" rel="noopener">영상 보기 →</a>
-    </div>
-    <div class="achieve-card">
-      <span class="d">9/7</span>
-      <h3>짧은 릴스 (36초)</h3>
-      <p>같은 소재로 인스타에 짧게 올릴 수 있는 세로 영상도 하나 만들어 올려드렸습니다.</p>
-      <a class="go" href="https://www.instagram.com/reel/Dc94ghZpx7V/" target="_blank" rel="noopener">릴스 보기 →</a>
-    </div>
-    <div class="achieve-card">
-      <span class="d">9/7 · 대기 중</span>
-      <h3>구글 프로필 사진 재업로드</h3>
-      <p>지도에 사진이 안 보이던 것 확인, 실제 매장 사진 5장 다시 올림(반영까지 하루 이틀).</p>
-    </div>
+    <details class="achieve-card">
+      <summary><span class="d">8/12~8/20</span><h3>계약·세금계산서·입금</h3><p>서명부터 입금까지 전부 처리 완료.</p></summary>
+      <div class="detail">계약서 서명, 세금계산서 발행, 첫 입금까지 8/20에 전부 마쳤습니다. 계약 기간은 9/11까지입니다.</div>
+    </details>
+    <details class="achieve-card">
+      <summary><span class="d">8/21~</span><h3>홈페이지 mapobada.com</h3><p>세트·단품 메뉴, 사진, 오시는 길까지. 지금도 계속 갱신 중.</p></summary>
+      <div class="detail">세트·단품 메뉴, 매장 사진, 오시는 길, 영업시간까지 한 페이지에 담았습니다. 메뉴나 사진이 바뀌면 이 홈페이지를 계속 고쳐 씁니다.
+        <a class="go" href="https://mapobada.com" target="_blank" rel="noopener">홈페이지 보기 →</a></div>
+    </details>
+    <details class="achieve-card">
+      <summary><span class="d">9/1</span><h3>다섯 채널 정비</h3><p>네이버·구글·당근·카카오맵·티맵 정보 등록·정정(카카오맵 상호 오표기 정정 포함).</p></summary>
+      <div class="detail">네이버 플레이스·구글 지도·당근마켓·카카오맵·티맵 다섯 곳의 매장 정보를 등록하고, 카카오맵에 잘못 올라가 있던 상호를 바로잡았습니다.</div>
+    </details>
+    <details class="achieve-card">
+      <summary><span class="d">9/3</span><h3>매장 인쇄물 5종 확정</h3><p>메뉴판·벽 안내 2종·호출벨·콜키지 안내, 매장 서체로 완성.</p></summary>
+      <div class="detail">메뉴판(A4 양면), 벽 안내 2종(A3), 호출벨 카드, 콜키지 안내까지 매장 서체·색으로 통일해 완성했습니다.
+        <a class="go" href="#print">아래서 실물 보기 →</a></div>
+    </details>
+    <details class="achieve-card">
+      <summary><span class="d">9/3</span><h3>오픈 홍보 게시</h3><p>당근 소식·릴스 콘티·리뷰 이벤트·플레이스 소식까지 한 번에.</p></summary>
+      <div class="detail">당근마켓 동네소식, 인스타 릴스 콘티, 리뷰 이벤트 문구, 네이버 플레이스 소식까지 오픈 당일 한 번에 게시했습니다.</div>
+    </details>
+    <details class="achieve-card">
+      <summary><span class="d">완성·공개</span><h3>매장TV 영상 (12분 57초)</h3><p>소리 꺼도 내용이 다 읽히게 만든 매장용 영상, 채널에 공개.</p></summary>
+      <div class="detail">매장에서 소리 없이 틀어도 내용이 다 읽히도록 자막 위주로 만든 12분 57초 영상입니다. 유튜브에 공개돼 있고, TV용 파일은 구글 드라이브로 전달드립니다.
+        <a class="go" href="https://youtu.be/i_kI65pNKRM" target="_blank" rel="noopener">영상 보기 →</a></div>
+    </details>
+    <details class="achieve-card">
+      <summary><span class="d">9/7</span><h3>짧은 릴스 (36초)</h3><p>같은 소재로 인스타에 짧게 올릴 수 있는 세로 영상도 하나 만들어 올려드렸습니다.</p></summary>
+      <div class="detail">매장TV 영상과 같은 소재를 36초 세로 영상으로 다시 편집해 인스타그램에 올렸습니다.
+        <a class="go" href="https://www.instagram.com/reel/Dc94ghZpx7V/" target="_blank" rel="noopener">릴스 보기 →</a></div>
+    </details>
+    <details class="achieve-card">
+      <summary><span class="d">9/7 · 반영 대기</span><h3>구글 프로필 사진 재업로드</h3><p>지도에 사진이 안 보이던 것 확인, 실제 매장 사진 5장 다시 올림(반영까지 하루 이틀).</p></summary>
+      <div class="detail">구글 지도에 올렸던 사진이 전부 반영되지 않고 있던 것을 확인해, 실제 매장 음식 사진 5장을 다시 올렸습니다. 구글 쪽 반영에는 보통 하루 이틀이 걸려, 지금은 반영 여부를 계속 확인하고 있습니다.</div>
+    </details>
   </div>
 </section>
 
 <section>
   <h2>밖에서 들려오는 반응 — 블로그 후기</h2>
-  <p class="where">오픈(9/2) 다음날부터 오늘(9/8)까지 저희가 찾은 네이버 블로그 후기 21건</p>
+  <p class="where">오픈(9/2)부터 지금까지 저희가 찾은 네이버 블로그 후기 21건 · 구글 리뷰 2건</p>
   <div class="tablewrap">
     <table class="revtable">
       <tr><th>게시일</th><th>방문 유형</th><th>한 줄 요지</th><th>보기</th></tr>
@@ -150,6 +149,7 @@ footer{font-size:13.5px;color:var(--ink2);line-height:1.6;border-top:1px solid v
     <ul>
       <li>오픈 다음날부터 오늘까지 거의 매일 후기가 이어지고 있습니다.</li>
       <li>상판을 통째로 밀어 올리는 서빙 방식과 전복내장죽이 후기마다 유난히 자주 언급됩니다 — 다음 영상·홍보 문구에 쓰기 좋은 포인트입니다.</li>
+      <li>구글 리뷰도 2건 들어왔습니다(별점 5.0 포함) — 네이버 외 채널에서도 반응이 시작됐습니다.</li>
       <li>저희가 답글을 달거나 SNS로 다시 소개해드릴 수 있습니다 — 원하시면 말씀 주세요.</li>
     </ul>
   </div>
