@@ -1,0 +1,105 @@
+[
+  {
+    "id": "ham-stamps-v2",
+    "title": "스탬프 12 · 나의 하루 표정",
+    "prompt": "사진 속 성인을 알아볼 수 있게, 머리가 몸보다 크고 몸이 아주 작은 2등신 치비(chibi) 캐릭터로 그려주세요. 둥글고 귀여운 얼굴, 점과 곡선으로 단순화한 표정, 짧은 팔과 다리, 과장된 몸짓, 거친 크레용 선으로 표현하세요. 성인의 안경·헤어라인·수염 같은 식별 특징을 유지하되 실사 초상화나 아기 얼굴로 만들지 마세요. 입력 사진 1장은 인물 참고 이미지입니다. 사진 속 인물의 실제 나이, 얼굴형, 피부톤, 헤어스타일과 두발 상태, 안경 착용 여부와 모양, 수염 여부, 옷차림 등 특징을 그대로 살려서 그리고, 임의로 젊게 바꾸거나 다른 사람처럼 만들지 마십시오. 완성된 가로 1536x1024 이미지 한 장을 만드십시오. 손그림 색연필과 크레용 질감의 스탬프 팩이며, 크림색 종이 배경 위에 흰 외곽 테두리(다이컷 실루엣)가 각 캐릭터를 감쌉니다. 얼굴은 부드러운 터치, 볼에는 옅은 발그레, 옷과 머리에는 살짝 보이는 필름 질감을 넣습니다. 4열 3행, 총 12칸 균등 격자로 배치하고 각 칸 사이에 여백을 둡니다. 12칸 모두 같은 인물, 같은 크기의 전신 컷이며 얼굴과 체형이 완전히 일관되어야 합니다. 각 칸의 포즈와 표정은 다음과 같습니다. 1행: (1) 눈만 살짝 감고 편안한 무표정, (2) 입꼬리만 미세하게 올라간 옅은 미소, (3) 고개를 살짝 기울여 궁금해하는 표정, (4) 두 손바닥을 몸 앞에 모으고 조용히 기다리는 자세. 2행: (5) 눈썹을 치켜올린 가벼운 놀람, (6) 고개를 끄덕이는 도중의 동작, (7) 한 손바닥을 들어 올려 읽었다는 표시를 하는 포즈, (8) 두 손을 가슴 앞에 모은 정중한 감사 자세. 3행: (9) 웃음을 참다가 터뜨리는 표정, (10) 손등으로 입가를 가리며 웃는 모습, (11) 한 손으로 가슴을 쓸어내리며 안도한 표정, (12) 한 손을 흔들어 작별 인사하는 모습. 이미지 안에 글자, 숫자, 말풍선, 기호, 로고를 절대 넣지 마십시오. 배경 소품 없이 캐릭터만 그리고, 손가락과 팔다리 개수가 정확해야 합니다. 브라우저나 UI 목업 없이 순수 일러스트 작품만 출력하십시오.",
+    "instructions": "사진 1장(현재 정면 사진)을 첨부하세요. 아래 프롬프트를 그대로 복사해 ImageGen에 붙여넣고, 사진과 함께 전송하면 됩니다.",
+    "image": "assets/ham-stamps-v2.png"
+  },
+  {
+    "id": "coco-stamps-v2",
+    "title": "스탬프 12 · 코코의 표정",
+    "prompt": "입력 사진 1장은 강아지 참고 이미지입니다. 사진 속 개의 실제 품종 특징, 귀 모양과 서 있는 방향, 털 색과 무늬와 길이, 얼굴 비율, 눈과 코 모양, 체구를 그대로 유지하고 다른 품종이나 다른 개로 바꾸지 마십시오. 네 발 달린 자연스러운 개 해부학을 지키고, 인간형 손이나 불필요한 팔다리를 추가하지 마십시오. 익숙하고 사랑스러운 의인화 스탬프 톤은 유지하되 동작은 개의 몸으로 표현합니다. 완성된 가로 1536x1024 이미지 한 장, 손그림 색연필과 크레용 질감의 스탬프 팩입니다. 크림색 종이 배경, 각 캐릭터를 감싸는 흰 외곽 테두리, 털에 촉감이 보이는 짧은 필름선, 볼에 옅은 발그레. 4열 3행 총 12칸 균등 격자, 칸마다 여백. 12칸 모두 같은 개이며 얼굴과 체형이 완전히 일관되어야 합니다. 배치는 다음과 같습니다. 1행: (1) 고개를 옆으로 삐딱하게 기울인 모습, (2) 귀를 쫑긋 세우고 주의 깊게 바라보는 모습, (3) 몸을 대각선으로 틀어 뒤를 돌아보는 모습, (4) 코를 찡긋하며 냄새를 맡는 모습. 2행: (5) 꼬리를 빠르게 흔들며 기뻐하는 모습, (6) 몸을 통통 털어내는 흔들기 동작, (7) 한 발짝 뒤로 물러선 뒷걸음 자세, (8) 눈만 방향을 흘겨보는 표정. 3행: (9) 머리를 숙여 살짝 부탁하는 자세, (10) 입을 살짝 벌려 활짝 신이 난 표정, (11) 눈을 감고 편안하게 앉아 있는 모습, (12) 앞으로 살짝 몸을 숙인 인사 자세. 이미지 안에 글자, 숫자, 말풍선, 기호, 로고를 넣지 마십시오. 실제 사진이나 목업 없이 일러스트만 출력하십시오.",
+    "instructions": "사진 1장(강아지 정면 사진)을 첨부하세요. 아래 프롬프트를 그대로 복사해 ImageGen에 붙여넣고, 사진과 함께 전송하면 됩니다.",
+    "image": "assets/coco-stamps-v2.png"
+  },
+  {
+    "id": "ham-replies",
+    "title": "반응 6 · 나의 답장 모음",
+    "prompt": "입력 사진 1장은 인물 참고 이미지입니다. 사진 속 인물의 실제 나이, 얼굴형, 헤어 상태, 안경 착용 여부와 모양, 수염 여부, 옷차림 특징을 그대로 유지하고, 새로운 외모를 만들어내거나 나이를 바꾸지 마십시오. 완성된 가로 1536x1024 이미지 한 장. 손그림 색연필과 크레용 질감의 반응 스탬프 시트이며, 크림색 종이 배경 위에 각 컷을 흰 외곽 테두리가 감쌉니다. 볼에 옅은 발그레, 옷과 머리결에 부드러운 필름 질감. 3열 2행, 총 6칸 균등 격자로 배치하고 칸마다 여백을 둡니다. 6칸 모두 같은 인물, 같은 얼굴과 체형이 일관된 흉상 위주 컷입니다. 각 칸은 채팅 답장처럼 쓸 수 있는 반응 동작입니다. 1행: (1) 한 손을 위로 살짝 들어 올려 읽었다는 표시를 하는 포즈, (2) 고개를 두 번 끄덕이는 도중의 동작과 동감하는 눈매, (3) 눈이 반짝 커지며 무언가 이해한 순간의 표정. 2행: (4) 한 손으로 가슴을 쓸어내리며 길게 숨을 내쉬는 안도 표정, (5) 두 손을 가슴 앞에 모아 깊이 감사하는 자세, (6) 손등으로 입가를 가리며 어이없지만 웃음이 새는 표정. 6개의 표정이 서로 뚜렷하게 달라야 하며, 각 컷의 정체성과 선화 굵기와 색감이 동일해야 합니다. 이미지 안에 글자, 숫자, 말풍선 텍스트, 기호, 로고를 절대 넣지 마십시오. 글자가 깨지는 것을 막기 위해 배경 소품과 텍스트 요소 없이 캐릭터만 그리고, 손가락 개수와 팔다리가 정확해야 합니다. 브라우저나 UI 목업 없이 순수 일러스트만 출력하십시오.",
+    "instructions": "사진 1장(현재 정면 사진)을 첨부하세요. 아래 프롬프트를 그대로 복사해 ImageGen에 붙여넣고, 사진과 함께 전송하면 됩니다.",
+    "image": "assets/ham-replies.png"
+  },
+  {
+    "id": "coco-replies",
+    "title": "반응 6 · 코코의 답장 모음",
+    "prompt": "입력 사진 1장은 강아지 참고 이미지입니다. 사진 속 개의 실제 품종 특징, 귀 모양, 털 색과 무늬와 길이, 얼굴 비율, 눈과 코, 체구를 그대로 유지하고 다른 품종이나 다른 개로 바꾸지 마십시오. 네 발 개 해부학을 정확히 지키고, 인간형 손이나 불필요한 사지를 추가하지 마십시오. 완성된 가로 1536x1024 이미지 한 장. 손그림 색연필과 크레용 질감의 반응 스탬프 시트, 크림색 종이 배경, 각 컷을 감싸는 흰 외곽 테두리, 털에 촉감이 보이는 짧은 필름선, 볼에 옅은 발그레. 3열 2행 총 6칸 균등 격자, 칸마다 여백. 6칸 모두 같은 개이며 얼굴과 체형이 완전히 일관되어야 합니다. 각 칸은 대화용 답장처럼 쓸 수 있는 개의 몸짓입니다. 1행: (1) 칭찬을 받고 가슴을 활짝 펴며 고개를 든 자랑스러운 모습, (2) 재촉받자 머리를 숙이고 귀를 살짝 뒤로 넘긴 억울한 표정, (3) 안도한 듯 몸을 살짝 늘어뜨리고 눈을 부드럽게 감은 모습. 2행: (4) 꼬리를 세우고 곧게 앉아 무언가를 기다리는 집중 표정, (5) 놀라서 한두 걸음 뒤로 물러선 뒷걸음 자세, (6) 앞으로 아래 몸을 숙이고 엉덩이를 든 인사 자세. 6개의 표정과 몸짓이 서로 뚜렷하게 달라야 하며 선화 굵기와 색감은 동일해야 합니다. 이미지 안에 글자, 숫자, 말풍선, 기호, 로고를 넣지 마십시오. 실제 사진이나 UI 목업 없이 일러스트만 출력하십시오.",
+    "instructions": "사진 1장(강아지 정면 사진)을 첨부하세요. 아래 프롬프트를 그대로 복사해 ImageGen에 붙여넣고, 사진과 함께 전송하면 됩니다.",
+    "image": "assets/coco-replies.png"
+  },
+  {
+    "id": "ham-goodnight",
+    "title": "4컷 · 하루의 끝",
+    "prompt": "입력 사진 1장은 인물 참고 이미지입니다. 사진 속 인물의 실제 나이, 얼굴형, 헤어 상태, 안경 착용 여부와 모양, 수염 여부, 옷차림 특징을 그대로 유지하고 다른 사람처럼 그리거나 나이를 바꾸지 마십시오. 완성된 정사각형 1024x1024 이미지 한 장. 2x2, 총 4칸 균등 격자로 시간 순서(왼쪽 위→오른쪽 위→왼쪽 아래→오른쪽 아래)로 읽히는 대사 있는 네컷 만화입니다. 손그림 색연필과 크레용 질감, 크림색 종이 배경, 각 컷을 흰 외곽 테두리가 감싸고, 저녁 느낌의 따뜻하고 어두워지는 색조를 4칸 전체에 점진적으로 적용합니다. 볼에 옅은 발그레, 부드러운 필름 질감. 4칸 모두 같은 인물이며 얼굴과 체형이 일관되어야 합니다. 각 컷에는 흰 배경의 말풍선을 정확히 하나씩 넣고, 그 안의 짧은 한국어 대사는 지정한 문자 그대로만 적습니다. 구성: (1) 하루를 마치고 TV 리모컨을 든 채 소파에 몸을 털썩 앉아 어깨를 늘어뜨린 모습, 말풍선 '퇴근이다! 이제 쉬자.'. (2) 담요를 어깨까지 끌어올려 감싸고 리모컨을 쥔 채 TV 쪽을 기대하는 눈으로 앉은 모습, 말풍선 '오늘은 늦게까지 TV 봐야지.'. (3) 담요 속에 파묻힌 채 리모컨을 들어 TV를 켜고 자리를 잡는 아늑한 모습, 말풍선 '자, 어디 한번…'. (4) 담요 속에서 눈을 감고 깊이 잠든 모습, 잠든 인물 머리 위에 작은 말풍선 '…쿨쿨'. 말풍선 텍스트는 위 네 문장 외에 절대 넣지 마십시오. 이미지 안에 다른 글자, 숫자, 기호, 로고를 넣지 마십시오. 배경은 TV와 소파, 담요 정도의 단순한 실내 암시만 하고 복잡한 소품을 넣지 않으며, 손가락과 팔다리 개수가 정확해야 합니다. 브라우저나 UI 목업 없이 순수 일러스트만 출력하십시오.",
+    "instructions": "사진 1장(현재 정면 사진)을 첨부하세요. 아래 프롬프트를 그대로 복사해 ImageGen에 붙여넣고, 사진과 함께 전송하면 됩니다. 대사 네 문장은 원하는 말로 바꿀 수 있습니다.",
+    "image": "assets/ham-goodnight.png",
+    "captions": [
+      "퇴근이다! 이제 쉬자.",
+      "오늘은 늦게까지 TV 봐야지.",
+      "자, 어디 한번…",
+      "…쿨쿨"
+    ],
+    "prompt_template": "입력 사진 1장은 인물 참고 이미지입니다. 사진 속 인물의 실제 나이, 얼굴형, 헤어 상태, 안경 착용 여부와 모양, 수염 여부, 옷차림 특징을 그대로 유지하고 다른 사람처럼 그리거나 나이를 바꾸지 마십시오. 완성된 정사각형 1024x1024 이미지 한 장. 2x2, 총 4칸 균등 격자로 시간 순서(왼쪽 위→오른쪽 위→왼쪽 아래→오른쪽 아래)로 읽히는 대사 있는 네컷 만화입니다. 손그림 색연필과 크레용 질감, 크림색 종이 배경, 각 컷을 흰 외곽 테두리가 감싸고, 저녁 느낌의 따뜻하고 어두워지는 색조를 4칸 전체에 점진적으로 적용합니다. 볼에 옅은 발그레, 부드러운 필름 질감. 4칸 모두 같은 인물이며 얼굴과 체형이 일관되어야 합니다. 각 컷에는 흰 배경의 말풍선을 정확히 하나씩 넣고, 그 안의 짧은 한국어 대사는 지정한 문자 그대로만 적습니다. 구성: (1) 하루를 마치고 TV 리모컨을 든 채 소파에 몸을 털썩 앉아 어깨를 늘어뜨린 모습, 말풍선 '{{caption1}}'. (2) 담요를 어깨까지 끌어올려 감싸고 리모컨을 쥔 채 TV 쪽을 기대하는 눈으로 앉은 모습, 말풍선 '{{caption2}}'. (3) 담요 속에 파묻힌 채 리모컨을 들어 TV를 켜고 자리를 잡는 아늑한 모습, 말풍선 '{{caption3}}'. (4) 담요 속에서 눈을 감고 깊이 잠든 모습, 잠든 인물 머리 위에 작은 말풍선 '{{caption4}}'. 말풍선 텍스트는 위 네 문장 외에 절대 넣지 마십시오. 이미지 안에 다른 글자, 숫자, 기호, 로고를 넣지 마십시오. 배경은 TV와 소파, 담요 정도의 단순한 실내 암시만 하고 복잡한 소품을 넣지 않으며, 손가락과 팔다리 개수가 정확해야 합니다. 브라우저나 UI 목업 없이 순수 일러스트만 출력하십시오."
+  },
+  {
+    "id": "coco-outing",
+    "title": "4컷 · 산책 가는 날",
+    "prompt": "입력 사진 1장은 강아지 참고 이미지입니다. 사진 속 개의 실제 품종 특징, 귀 모양, 털 색과 무늬와 길이, 얼굴 비율, 눈과 코, 체구를 그대로 유지하고 다른 품종이나 다른 개로 바꾸지 마십시오. 네 발 개 해부학을 정확히 지키고 인간형 손이나 불필요한 사지를 추가하지 마십시오. 완성된 정사각형 1024x1024 이미지 한 장. 2x2, 총 4칸 균등 격자, 시간 순서(왼쪽 위→오른쪽 위→왼쪽 아래→오른쪽 아래)로 읽히는 대사 있는 네컷 만화. 손그림 색연필과 크레용 질감, 크림색 종이 배경, 각 컷을 흰 외곽 테두리가 감쌈, 털에 촉감이 보이는 짧은 필름선, 볼에 옅은 발그레. 4칸 모두 같은 개이며 얼굴과 체형이 완전히 일관되어야 합니다. 각 컷에는 흰 배경의 말풍선을 정확히 하나씩 넣고, 그 안의 짧은 한국어 대사는 지정한 문자 그대로만 적습니다. 말하는 주체는 항상 이 개이며, 개 머리 위나 옆에 말풍선을 붙입니다. 구성: (1) 현관 앞에서 목줄 쪽을 바라보며 귀를 쫑긋 세우고 기대하는 자세, 말풍선 '산책 가자!'. (2) 신발 옆에 반듯하게 앉아 꼬리를 세운 모습, 말풍선 '준비 완료!'. (3) 문이 열리며 앞으로 몸을 숙인 채 신이 나서 나가려는 자세, 말풍선 '빨리빨리!'. (4) 돌아와서 이불 위에 몸을 말고 눈을 감은 만족스러운 모습, 말풍선 '산책 끝… 졸려.'. 기대에서 출발, 그리고 편안한 마무리로 이어지는 순환 구조이며 각 컷의 표정과 몸 자세가 뚜렷하게 달라야 합니다. 말풍선 텍스트는 위 네 문장 외에 절대 넣지 마십시오. 이미지 안에 다른 글자, 숫자, 기호, 로고를 넣지 마십시오. 사람을 등장시키지 말고, 실제 사진이나 UI 목업 없이 일러스트만 출력하십시오.",
+    "instructions": "사진 1장(강아지 정면 사진)을 첨부하세요. 아래 프롬프트를 그대로 복사해 ImageGen에 붙여넣고, 사진과 함께 전송하면 됩니다. 대사 네 문장은 원하는 말로 바꿀 수 있습니다.",
+    "image": "assets/coco-outing.png",
+    "captions": [
+      "산책 가자!",
+      "준비 완료!",
+      "빨리빨리!",
+      "산책 끝… 졸려."
+    ],
+    "prompt_template": "입력 사진 1장은 강아지 참고 이미지입니다. 사진 속 개의 실제 품종 특징, 귀 모양, 털 색과 무늬와 길이, 얼굴 비율, 눈과 코, 체구를 그대로 유지하고 다른 품종이나 다른 개로 바꾸지 마십시오. 네 발 개 해부학을 정확히 지키고 인간형 손이나 불필요한 사지를 추가하지 마십시오. 완성된 정사각형 1024x1024 이미지 한 장. 2x2, 총 4칸 균등 격자, 시간 순서(왼쪽 위→오른쪽 위→왼쪽 아래→오른쪽 아래)로 읽히는 대사 있는 네컷 만화. 손그림 색연필과 크레용 질감, 크림색 종이 배경, 각 컷을 흰 외곽 테두리가 감쌈, 털에 촉감이 보이는 짧은 필름선, 볼에 옅은 발그레. 4칸 모두 같은 개이며 얼굴과 체형이 완전히 일관되어야 합니다. 각 컷에는 흰 배경의 말풍선을 정확히 하나씩 넣고, 그 안의 짧은 한국어 대사는 지정한 문자 그대로만 적습니다. 말하는 주체는 항상 이 개이며, 개 머리 위나 옆에 말풍선을 붙입니다. 구성: (1) 현관 앞에서 목줄 쪽을 바라보며 귀를 쫑긋 세우고 기대하는 자세, 말풍선 '{{caption1}}'. (2) 신발 옆에 반듯하게 앉아 꼬리를 세운 모습, 말풍선 '{{caption2}}'. (3) 문이 열리며 앞으로 몸을 숙인 채 신이 나서 나가려는 자세, 말풍선 '{{caption3}}'. (4) 돌아와서 이불 위에 몸을 말고 눈을 감은 만족스러운 모습, 말풍선 '{{caption4}}'. 기대에서 출발, 그리고 편안한 마무리로 이어지는 순환 구조이며 각 컷의 표정과 몸 자세가 뚜렷하게 달라야 합니다. 말풍선 텍스트는 위 네 문장 외에 절대 넣지 마십시오. 이미지 안에 다른 글자, 숫자, 기호, 로고를 넣지 마십시오. 사람을 등장시키지 말고, 실제 사진이나 UI 목업 없이 일러스트만 출력하십시오."
+  },
+  {
+    "id": "ham-coco-pair",
+    "title": "4컷 · 나와 코코",
+    "prompt": "입력 사진 2장은 각각 서로 다른 역할을 가집니다. 첫 번째 사진은 인물 참고 이미지로, 사진 속 인물의 실제 나이, 얼굴형, 헤어 상태, 안경 착용 여부와 모양, 수염 여부, 옷차림을 그대로 유지하십시오. 두 번째 사진은 강아지 참고 이미지로, 개의 실제 품종 특징, 귀 모양, 털 색과 무늬, 얼굴 비율, 체구를 그대로 유지하고 다른 품종으로 바꾸지 마십시오. 개는 네 발 해부학을 정확히 지키고 인간형 손이나 불필요한 사지를 추가하지 마십시오. 완성된 정사각형 1024x1024 이미지 한 장. 2x2, 총 4칸 균등 격자로 두 주인공이 함께 등장하는 대사 있는 네컷 만화(왼쪽 위→오른쪽 위→왼쪽 아래→오른쪽 아래 순서). 손그림 색연필과 크레용 질감, 크림색 종이 배경, 각 컷을 흰 외곽 테두리가 감쌈, 볼에 옅은 발그레, 털과 옷에 부드러운 필름 질감. 4칸 모두 같은 인물과 같은 개가 함께 나오고, 둘의 외형이 컷 전체에서 완전히 일관되어야 합니다. 각 컷에는 흰 배경의 말풍선을 정확히 하나씩 넣고, 지정한 문자 그대로만 적습니다. 말하는 주체는 말풍선 꼬리 방향으로 명확히 구분합니다. 구성: (1) 소파에 나란히 앉아 같은 방향을 바라보는 모습, 인물의 말풍선 '오늘은 우리 둘이.'. (2) 바닥에 앉은 인물이 개의 털을 쓰다듬고 개는 눈을 감고 기뻐하는 모습, 개의 말풍선 '좋아…'. (3) 현관 문 앞에서 개가 산책 준비 자세로 앞으로 숙이고 인물이 개를 내려다보며 미소 짓는 모습, 인물의 말풍선 '가자, 산책!'. (4) 담요 하나를 함께 뒤집어쓰고 나란히 누워 눈을 감은 모습, 인물의 말풍선 '자장자장…'. 둘의 거리감과 표정 변화가 컷마다 뚜렷해야 합니다. 말풍선 텍스트는 위 네 문장 외에 절대 넣지 마십시오. 이미지 안에 다른 글자, 숫자, 기호, 로고를 넣지 마십시오. 브라우저나 UI 목업 없이 순수 일러스트만 출력하십시오.",
+    "instructions": "사진 2장(인물 정면 사진 1장 + 강아지 정면 사진 1장)을 순서대로 첨부하세요. 아래 프롬프트를 그대로 복사해 ImageGen에 붙여넣고, 사진 2장과 함께 전송하면 됩니다. 대사 네 문장은 원하는 말로 바꿀 수 있습니다.",
+    "image": "assets/ham-coco-pair.png",
+    "captions": [
+      "오늘은 우리 둘이.",
+      "좋아…",
+      "가자, 산책!",
+      "자장자장…"
+    ],
+    "prompt_template": "입력 사진 2장은 각각 서로 다른 역할을 가집니다. 첫 번째 사진은 인물 참고 이미지로, 사진 속 인물의 실제 나이, 얼굴형, 헤어 상태, 안경 착용 여부와 모양, 수염 여부, 옷차림을 그대로 유지하십시오. 두 번째 사진은 강아지 참고 이미지로, 개의 실제 품종 특징, 귀 모양, 털 색과 무늬, 얼굴 비율, 체구를 그대로 유지하고 다른 품종으로 바꾸지 마십시오. 개는 네 발 해부학을 정확히 지키고 인간형 손이나 불필요한 사지를 추가하지 마십시오. 완성된 정사각형 1024x1024 이미지 한 장. 2x2, 총 4칸 균등 격자로 두 주인공이 함께 등장하는 대사 있는 네컷 만화(왼쪽 위→오른쪽 위→왼쪽 아래→오른쪽 아래 순서). 손그림 색연필과 크레용 질감, 크림색 종이 배경, 각 컷을 흰 외곽 테두리가 감쌈, 볼에 옅은 발그레, 털과 옷에 부드러운 필름 질감. 4칸 모두 같은 인물과 같은 개가 함께 나오고, 둘의 외형이 컷 전체에서 완전히 일관되어야 합니다. 각 컷에는 흰 배경의 말풍선을 정확히 하나씩 넣고, 지정한 문자 그대로만 적습니다. 말하는 주체는 말풍선 꼬리 방향으로 명확히 구분합니다. 구성: (1) 소파에 나란히 앉아 같은 방향을 바라보는 모습, 인물의 말풍선 '{{caption1}}'. (2) 바닥에 앉은 인물이 개의 털을 쓰다듬고 개는 눈을 감고 기뻐하는 모습, 개의 말풍선 '{{caption2}}'. (3) 현관 문 앞에서 개가 산책 준비 자세로 앞으로 숙이고 인물이 개를 내려다보며 미소 짓는 모습, 인물의 말풍선 '{{caption3}}'. (4) 담요 하나를 함께 뒤집어쓰고 나란히 누워 눈을 감은 모습, 인물의 말풍선 '{{caption4}}'. 둘의 거리감과 표정 변화가 컷마다 뚜렷해야 합니다. 말풍선 텍스트는 위 네 문장 외에 절대 넣지 마십시오. 이미지 안에 다른 글자, 숫자, 기호, 로고를 넣지 마십시오. 브라우저나 UI 목업 없이 순수 일러스트만 출력하십시오."
+  },
+  {
+    "id": "ham-story",
+    "title": "10년 전의 나에게",
+    "prompt": "Create one finished landscape 1536x1024 three-panel Korean illustrated comic from these TWO likeness-reference photos of the SAME adult man ten years apart. Respectfully preserve his identity and age, not a generic child: photo1 younger smiling man with dark full hair, thin metal glasses, tuxedo and bowtie; photo2 present man with short salt-and-pepper hair, receding hairline, broad rectangular black glasses, light chin stubble, navy T-shirt. Warm expressive ink-and-watercolor editorial comic, cream paper, dark ink, apricot and teal, excellent recognizable facial expressions. EXACT top title '10년 전의 나에게'. Three equal horizontal panels, big readable speech bubbles. Panel1 younger man in tuxedo looks right eagerly, caption '10년 전', dialogue '10년 뒤엔 뭐 하고 살아?'. Panel2 present man with blank unbranded laptop smiles, caption '지금', dialogue 'AI랑 같이 일해.'. Panel3 imaginative meeting of BOTH versions, younger man leans forward amazed, present man chuckles showing blank laptop, ONLY younger dialogue '잠깐, 설명 좀.'. EXACT small footer '사진 두 장으로 만든 상상 대화'. The dialogue is invented, not historical. No other text, background writing, logos, other wedding guests, childish age regression, duplicated limbs. Artwork only, no browser or mockup.",
+    "instructions": "과거 사진과 현재 사진을 순서대로 첨부한 뒤, 아래 프롬프트를 붙여넣으세요. 대사 세 문장은 원하는 말로 바꿀 수 있습니다.",
+    "image": "assets/ham-story.png",
+    "captions": [
+      "10년 뒤엔 뭐 하고 살아?",
+      "AI랑 같이 일해.",
+      "잠깐, 설명 좀."
+    ],
+    "prompt_template": "Create one finished landscape 1536x1024 three-panel Korean illustrated comic from these TWO likeness-reference photos of the SAME adult man ten years apart. Respectfully preserve his identity and age, not a generic child: photo1 younger smiling man with dark full hair, thin metal glasses, tuxedo and bowtie; photo2 present man with short salt-and-pepper hair, receding hairline, broad rectangular black glasses, light chin stubble, navy T-shirt. Warm expressive ink-and-watercolor editorial comic, cream paper, dark ink, apricot and teal, excellent recognizable facial expressions. EXACT top title '10년 전의 나에게'. Three equal horizontal panels, big readable speech bubbles. Panel1 younger man in tuxedo looks right eagerly, caption '10년 전', dialogue '{{caption1}}'. Panel2 present man with blank unbranded laptop smiles, caption '지금', dialogue '{{caption2}}'. Panel3 imaginative meeting of BOTH versions, younger man leans forward amazed, present man chuckles showing blank laptop, ONLY younger dialogue '{{caption3}}'. EXACT small footer '사진 두 장으로 만든 상상 대화'. The dialogue is invented, not historical. No other text, background writing, logos, other wedding guests, childish age regression, duplicated limbs. Artwork only, no browser or mockup."
+  },
+  {
+    "id": "coco-story",
+    "title": "코코의 외출 준비",
+    "prompt": "Create one finished landscape 1536x1024 three-panel Korean illustrated comic from these THREE identity-reference photos of the SAME small dog 코코. Maintain distinctive large upright fringed ears, scruffy golden tan coat, cream-white forehead blaze and muzzle, fluffy white chest, black nose, round dark eyes. Natural four-paw dog anatomy, never a human or another breed. Warm expressive ink-and-watercolor editorial comic, cream paper, dark ink, apricot and teal; lovely textured fur and expressive poses. EXACT top title '코코의 외출 준비'. Three equal horizontal panels, big readable thought bubbles. Panel1 Coco at home on light beige sofa, ears perked with anticipation, thought '나간다고?'. Panel2 sits proudly in colorful soft bucket hat inspired by reference3, ears visibly outside hat, thought '준비 끝!'. Panel3 reveals rain through a window; Coco flops cozy sideways under a blanket on beige sofa, hat rests nearby, sleepy relieved look, thought '내일 나가자.'. Anticipation -> proud readiness -> cozy reversal. EXACT small footer '코코 사진으로 만든 상상 장면'. Invented example, not documentary. No humans, other animals, other text, source-photo background lettering, logos, duplicated legs. Consistent dog identity throughout. Artwork only, no browser or mockup.",
+    "instructions": "반려견 사진과 모자 사진 등 참고 사진 3장을 첨부하고 아래 프롬프트를 붙여넣으세요. 대사 세 문장은 원하는 말로 바꿀 수 있습니다.",
+    "image": "assets/coco-story.png",
+    "captions": [
+      "나간다고?",
+      "준비 끝!",
+      "내일 나가자."
+    ],
+    "prompt_template": "Create one finished landscape 1536x1024 three-panel Korean illustrated comic from these THREE identity-reference photos of the SAME small dog 코코. Maintain distinctive large upright fringed ears, scruffy golden tan coat, cream-white forehead blaze and muzzle, fluffy white chest, black nose, round dark eyes. Natural four-paw dog anatomy, never a human or another breed. Warm expressive ink-and-watercolor editorial comic, cream paper, dark ink, apricot and teal; lovely textured fur and expressive poses. EXACT top title '코코의 외출 준비'. Three equal horizontal panels, big readable thought bubbles. Panel1 Coco at home on light beige sofa, ears perked with anticipation, thought '{{caption1}}'. Panel2 sits proudly in colorful soft bucket hat inspired by reference3, ears visibly outside hat, thought '{{caption2}}'. Panel3 reveals rain through a window; Coco flops cozy sideways under a blanket on beige sofa, hat rests nearby, sleepy relieved look, thought '{{caption3}}'. Anticipation -> proud readiness -> cozy reversal. EXACT small footer '코코 사진으로 만든 상상 장면'. Invented example, not documentary. No humans, other animals, other text, source-photo background lettering, logos, duplicated legs. Consistent dog identity throughout. Artwork only, no browser or mockup."
+  },
+  {
+    "id": "concept-comparison",
+    "title": "3컷 이야기와 3가지 반응",
+    "prompt": "Use case: illustration-story. Make ONE polished landscape Korean concept comparison board, two stacked sections, about 1536x1024. This is a public concept board showing how a prompt gallery visitor can personalize either a tiny narrative comic or expressive reactions. Editorial playful, warm ivory background, crisp ink, restrained black/coral/yellow palette, generous space, hand-drawn contemporary zine quality. Entirely original character: a little rounded human doodle with messy short hair, simple striped shirt, expressive dot eyes. No existing IP or logos. Consistent same character throughout. Upper section heading EXACT Korean '내 사건을 3컷으로'. Three equally sized wide comic panels left to right: (1) character at laptop casually sitting with a coffee, night window, speech EXACT '잠깐만 볼게'; (2) character leaning forward with sparkly widened eyes as light pours from screen, speech EXACT '어? 이게 되네?'; (3) same exhausted delighted character, daylight and sunrise through window, coffee cups, speech EXACT '밖이 왜 밝지?'. Narrative progression and comic timing, dramatic expressive body poses, no extra dialogue. Lower section heading EXACT '내 말투를 표정으로'. Three separate large sticker-like expressive vignettes evenly spaced: same character very upright with tiny serious salute, text EXACT '넵!'; same character sudden understanding with a small glowing light above head, text EXACT '아하!'; same character gently melted into a puddle with two comic tear streams, text EXACT 'ㅠㅠ'. White die-cut style silhouettes around lower vignettes, no commercial brand. Small top eyebrow EXACT '내 이야기, 내 표정'. Small footer EXACT '사진 없이도 만드는 작은 이야기'. All Korean lettering clean and legible, no English, no statistical claims, no UI mockup, no photos. The character and scenes are synthetic illustrations. Board demonstrates narrative time progression versus reusable expressive speech, neither is presented as proven popular.",
+    "instructions": "참고 사진 없이 아래 프롬프트를 이미지 생성 AI에 붙여넣으세요. 대사는 원하는 말로 바꿀 수 있습니다.",
+    "image": "assets/concept-comparison.png"
+  }
+]

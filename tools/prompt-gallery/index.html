@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>프롬프트 갤러리 · HAM MEDIA</title>
+<meta name="description" content="실제로 만든 작품 열 장. 작품을 눌러 프롬프트를 그대로 복사하세요.">
+<link rel="stylesheet" href="style.css">
+<link rel="canonical" href="https://hammedia.co.kr/tools/prompt-gallery/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://hammedia.co.kr/tools/prompt-gallery/">
+<meta property="og:title" content="프롬프트 갤러리 · HAM MEDIA">
+<meta property="og:description" content="실제로 만든 작품 10개. 크게 보고, 대사를 바꾸고, 프롬프트를 무료로 복사하세요.">
+<meta property="og:image" content="https://hammedia.co.kr/tools/prompt-gallery/assets/ham-stamps-v2.png">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<main>
+<header class="mast">
+ <a class="brand" href="https://hammedia.co.kr/" aria-label="HAM MEDIA 홈페이지"><i aria-hidden="true"></i>HAM MEDIA</a>
+ <span class="mast-note">누구나 무료로 쓰는 기본 프롬프트</span>
+</header>
+
+<section class="head">
+ <h1>프롬프트 갤러리</h1>
+ <p class="head-sub">작품을 눌러 크게 보고, 프롬프트를 그대로 가져가세요.</p>
+</section>
+
+<section class="grid" id="grid" aria-label="작품 갤러리"></section>
+
+<footer class="foot">
+ <p>© HAM MEDIA</p>
+ <p><a href="/book/">함동민의 책 살펴보기 ↗</a></p>
+</footer>
+</main>
+
+<dialog id="work-dialog" aria-labelledby="dialog-title">
+ <div class="dialog-top">
+  <p id="dialog-title" class="dialog-title"></p>
+  <button class="close-dialog" aria-label="닫기">닫기 ×</button>
+ </div>
+ <div class="dialog-scroll">
+  <img id="dialog-image" alt="">
+  <div class="dialog-info">
+   <h2 class="dialog-howto" id="dialog-howto"></h2>
+   <div id="caption-edits" class="caption-edits" hidden></div>
+   <p id="caption-note" class="caption-note" hidden>대사를 바꾼 뒤 프롬프트를 복사해 이미지를 새로 만드세요.</p>
+   <label class="prompt-label" for="prompt-text">전체 프롬프트</label>
+   <textarea id="prompt-text" readonly spellcheck="false" aria-label="작품 프롬프트 전문"></textarea>
+   <div class="dialog-actions">
+    <button id="copy-prompt" class="copy-btn">프롬프트 복사</button>
+    <p id="prompt-status" class="prompt-status" hidden></p>
+   </div>
+  </div>
+ </div>
+</dialog>
+
+<script src="app.js"></script>
+</body>
+</html>
