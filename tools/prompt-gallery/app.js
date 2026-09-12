@@ -18,20 +18,16 @@ function subjectLabel(w){
  return w.filter.includes('pet')?SUBJECT.pet:SUBJECT.me;
 }
 
-function badges(w){
- let h='<p class=\'card-meta\'>';
- if(w.format&&FORMAT[w.format])h+='<span class=\'badge\'>'+FORMAT[w.format]+'</span>';
- h+='<span class=\'badge\'>'+photoLabel(w)+'</span>';
- h+='<span class=\'badge lang\'>'+(w.lang==='en'?'영어':'한국어')+'</span>';
- h+='<span class=\'badge subject\'>'+subjectLabel(w)+'</span>';
- return h+'</p>';
-}
-
-function cardHTML(w){
+function cardHTML(w,index){
+ const format=(w.format&&FORMAT[w.format])?FORMAT[w.format]:'이미지';
+ const lang=w.lang==='en'?'영어':'한국어';
  return '<button class=\'frame\' data-id=\''+w.id+'\' aria-label=\''+w.title+' 크게 보기\'>'+
   '<img src=\''+w.image+'\' alt=\''+w.title+' — 생성 예시\' loading=\'lazy\'>'+
-  '<span class=\'peek\'>크게 보기 ↗</span></button>'+
-  '<p class=\'card-title\'>'+w.title+'</p>'+badges(w);
+  '<span class=\'peek\'>작품 열기 ↗</span></button>'+
+  '<div class=\'card-copy\'><p class=\'card-index\'>'+String(index+1).padStart(2,'0')+'</p><div>'+
+  '<h3 class=\'card-title\'>'+w.title+'</h3>'+
+  '<p class=\'card-meta\'>'+format+' · '+photoLabel(w)+' · '+lang+'</p>'+
+  '<p class=\'card-evidence\'>'+(w.evidence||'HAM MEDIA 제작')+'</p></div></div>';
 }
 
 function matches(w){
@@ -47,12 +43,12 @@ function render(){
  }else{
   list.forEach(w=>{
    const card=document.createElement('article');
-   card.className='card';
-   card.innerHTML=cardHTML(w);
+   card.className='card '+w.id;
+   card.innerHTML=cardHTML(w,works.indexOf(w));
    grid.append(card);
   });
  }
- countEl.textContent='총 '+list.length+'개 작품';
+ countEl.textContent=list.length+'개 작품';
 }
 
 function bindFilter(){
@@ -86,6 +82,7 @@ const dialog=document.querySelector('#work-dialog');
 const dialogImage=document.querySelector('#dialog-image');
 const dialogTitle=document.querySelector('#dialog-title');
 const dialogOutcome=document.querySelector('#dialog-outcome');
+const dialogEvidence=document.querySelector('#dialog-evidence');
 const dialogChips=document.querySelector('#dialog-chips');
 const dialogVariants=document.querySelector('#dialog-variants');
 const inputsStep=document.querySelector('#inputs-step');
@@ -109,6 +106,7 @@ function renderVariant(w,variantIndex=0){
  dialogImage.src=view.image||w.image;
  dialogImage.alt=(view.title||w.title)+' — 생성 예시 크게 보기';
  dialogOutcome.textContent=view.outcome||w.outcome||'';
+ dialogEvidence.textContent=view.evidence||w.evidence||'HAM MEDIA 제작';
 
  dialogSteps.innerHTML='';
  (Array.isArray(view.steps)?view.steps:[]).forEach(s=>{
@@ -185,7 +183,7 @@ function openWork(id){
 }
 
 document.addEventListener('click',e=>{
- const opener=e.target.closest('.frame');
+ const opener=e.target.closest('.frame,.hero-art');
  if(opener&&opener.dataset.id)openWork(opener.dataset.id);
 });
 
@@ -215,11 +213,11 @@ async function copyText(text){
  if(ok){
   copyBtn.textContent='복사 완료 ✓';
   copyBtn.classList.add('done');copyBtn.classList.remove('fail');
-  promptStatus.textContent='복사되었습니다. 이미지를 만드는 AI 칸에 붙여넣으세요.';
+  promptStatus.textContent='복사했습니다. 이미지 생성 화면에 붙여넣으세요.';
  }else{
   copyBtn.textContent='복사 실패';
   copyBtn.classList.add('fail');
-  promptStatus.textContent='복사가 막혔습니다. 아래 텍스트를 직접 선택해 복사해 주세요.';
+  promptStatus.textContent='자동 복사가 안 됐습니다. 프롬프트를 선택해 직접 복사해 주세요.';
  }
  clearTimeout(statusTimer);
  statusTimer=setTimeout(()=>{
