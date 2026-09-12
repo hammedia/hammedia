@@ -1,60 +1,98 @@
 <!doctype html>
-<html lang="ko">
+<html lang='ko'>
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset='utf-8'>
+<meta name='viewport' content='width=device-width,initial-scale=1'>
 <title>프롬프트 갤러리 · HAM MEDIA</title>
-<meta name="description" content="실제로 만든 작품 열 장. 작품을 눌러 프롬프트를 그대로 복사하세요.">
-<link rel="stylesheet" href="style.css">
-<link rel="canonical" href="https://hammedia.co.kr/tools/prompt-gallery/">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://hammedia.co.kr/tools/prompt-gallery/">
-<meta property="og:title" content="프롬프트 갤러리 · HAM MEDIA">
-<meta property="og:description" content="실제로 만든 작품 10개. 크게 보고, 대사를 바꾸고, 프롬프트를 무료로 복사하세요.">
-<meta property="og:image" content="https://hammedia.co.kr/tools/prompt-gallery/assets/ham-stamps-v2.png">
-<meta name="twitter:card" content="summary_large_image">
+<meta name='description' content='사진으로 바로 만드는 무료 프롬프트. 작품을 눌러 프롬프트를 그대로 복사하세요.'>
+<link rel='canonical' href='https://hammedia.co.kr/tools/prompt-gallery/'>
+<meta property='og:type' content='website'>
+<meta property='og:url' content='https://hammedia.co.kr/tools/prompt-gallery/'>
+<meta property='og:title' content='프롬프트 갤러리 · HAM MEDIA'>
+<meta property='og:description' content='우리가 같은 글로 만든 결과 13개. 골라 보고, 필요한 것을 준비하고, 프롬프트를 무료로 복사하세요.'>
+<meta property='og:image' content='https://hammedia.co.kr/tools/prompt-gallery/assets/family-memory-restore.png'>
+<meta name='twitter:card' content='summary_large_image'>
+<link rel='stylesheet' href='style.css'>
 </head>
 <body>
+<div class='grain' aria-hidden='true'></div>
 <main>
-<header class="mast">
- <a class="brand" href="https://hammedia.co.kr/" aria-label="HAM MEDIA 홈페이지"><i aria-hidden="true"></i>HAM MEDIA</a>
- <span class="mast-note">누구나 무료로 쓰는 기본 프롬프트</span>
+<header class='mast'>
+ <a class='brand' href='https://hammedia.co.kr/' aria-label='HAM MEDIA 홈페이지'><i aria-hidden='true'></i>HAM MEDIA</a>
+ <span class='mast-note'>누구나 무료로 쓰는 기본 프롬프트</span>
 </header>
 
-<section class="head">
+<section class='head'>
+ <p class='eyebrow'>무료 프롬프트 갤러리</p>
  <h1>프롬프트 갤러리</h1>
- <p class="head-sub">작품을 눌러 크게 보고, 프롬프트를 그대로 가져가세요.</p>
+ <p class='head-sub'>사진으로 바로 만드는 무료 프롬프트</p>
+ <p class='head-note'>우리가 같은 글로 만든 결과 13개. 골라 복사하면 됩니다.</p>
 </section>
 
-<section class="grid" id="grid" aria-label="작품 갤러리"></section>
+<section class='filterbar' aria-label='작품 필터'>
+ <p class='filter-question'>무엇을 만들고 싶나요?</p>
+ <div class='filters' role='group' aria-label='입력 유형으로 걸러보기'>
+  <button class='filter is-on' data-f='all' aria-pressed='true'>전체</button>
+  <button class='filter' data-f='photo' aria-pressed='false'>내 사진으로</button>
+  <button class='filter' data-f='pet' aria-pressed='false'>반려동물과</button>
+  <button class='filter' data-f='none' aria-pressed='false'>사진 없이</button>
+ </div>
+ <p class='count' id='count' aria-live='polite'></p>
+</section>
 
-<footer class="foot">
+<section class='grid' id='grid' aria-label='작품 목록'></section>
+
+<footer class='foot'>
+ <p>같은 글이어도 AI 도구와 입력 사진에 따라 결과가 달라질 수 있습니다.</p>
  <p>© HAM MEDIA</p>
- <p><a href="/book/">함동민의 책 살펴보기 ↗</a></p>
+ <p><a href='/book/'>함동민의 책 살펴보기 ↗</a></p>
 </footer>
 </main>
 
-<dialog id="work-dialog" aria-labelledby="dialog-title">
- <div class="dialog-top">
-  <p id="dialog-title" class="dialog-title"></p>
-  <button class="close-dialog" aria-label="닫기">닫기 ×</button>
+<dialog id='work-dialog' aria-labelledby='dialog-title'>
+ <div class='dialog-top'>
+  <p id='dialog-title' class='dialog-title'></p>
+  <button class='close-dialog' aria-label='닫기'>닫기 ×</button>
  </div>
- <div class="dialog-scroll">
-  <img id="dialog-image" alt="">
-  <div class="dialog-info">
-   <h2 class="dialog-howto" id="dialog-howto"></h2>
-   <div id="caption-edits" class="caption-edits" hidden></div>
-   <p id="caption-note" class="caption-note" hidden>대사를 바꾼 뒤 프롬프트를 복사해 이미지를 새로 만드세요.</p>
-   <label class="prompt-label" for="prompt-text">전체 프롬프트</label>
-   <textarea id="prompt-text" readonly spellcheck="false" aria-label="작품 프롬프트 전문"></textarea>
-   <div class="dialog-actions">
-    <button id="copy-prompt" class="copy-btn">프롬프트 복사</button>
-    <p id="prompt-status" class="prompt-status" hidden></p>
+ <div class='dialog-body'>
+  <div class='dialog-media'>
+   <img id='dialog-image' alt=''>
+  </div>
+  <div class='dialog-scroll'>
+   <p id='dialog-outcome' class='dialog-outcome'></p>
+   <div id='dialog-chips' class='dialog-chips'></div>
+   <div id='dialog-variants' class='dialog-variants' role='group' aria-label='작품 방식 선택' hidden></div>
+   <div class='steps'>
+    <section class='step input-step' id='inputs-step' hidden>
+     <h2 class='steps-title'>먼저 준비할 것</h2>
+     <ul id='dialog-inputs' class='input-list'></ul>
+    </section>
+    <h2 class='steps-title'>사용 3단계</h2>
+    <ol id='dialog-steps' class='step-list'></ol>
+    <section class='step' id='changeable-step' hidden>
+     <h3 class='step-h'>바꿀 수 있는 것</h3>
+     <p id='dialog-changeable' class='step-body'></p>
+    </section>
+    <section class='step' id='captions-step' hidden>
+     <h3 class='step-h'>대사 바꾸기</h3>
+     <p class='step-body caption-help'>원하는 대사로 바꾸면 아래 프롬프트에 바로 반영됩니다.</p>
+     <div id='dialog-caption-fields' class='caption-fields'></div>
+    </section>
+    <section class='step'>
+     <h3 class='step-h'>프롬프트 복사</h3>
+     <label class='prompt-label' for='prompt-text'>전체 프롬프트</label>
+     <textarea id='prompt-text' readonly spellcheck='false' aria-label='작품 프롬프트 전문'></textarea>
+     <div class='dialog-actions'>
+      <button id='copy-prompt' class='copy-btn'>프롬프트 복사</button>
+      <p id='prompt-status' class='prompt-status' hidden></p>
+     </div>
+     <p class='honesty'>같은 글이어도 AI 도구와 입력 사진에 따라 결과가 달라질 수 있습니다.</p>
+    </section>
    </div>
   </div>
  </div>
 </dialog>
 
-<script src="app.js"></script>
+<script src='app.js'></script>
 </body>
 </html>

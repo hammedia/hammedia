@@ -1,153 +1,234 @@
 'use strict';
 
-/* ---- 갤러리 데이터: catalog.json 에서 전부 로드 (하드코딩 프롬프트 없음) ---- */
 let works=[];
+let currentFilter='all';
 
 const grid=document.querySelector('#grid');
+const countEl=document.querySelector('#count');
+
+const FORMAT={stamp:'스티커',reply:'반응',four:'네컷',three:'세 컷',restore:'사진 복원',transform:'모습 바꾸기',archive:'기록 상자'};
+const SUBJECT={me:'나',pet:'반려동물',pair:'나와 반려동물',none:'사진 없이'};
+
+function photoLabel(w){
+ return w.photos===0?'사진 없음':'사진 '+w.photos+'장';
+}
+function subjectLabel(w){
+ if(w.photos===0)return SUBJECT.none;
+ if(w.filter.includes('photo')&&w.filter.includes('pet'))return SUBJECT.pair;
+ return w.filter.includes('pet')?SUBJECT.pet:SUBJECT.me;
+}
+
+function badges(w){
+ let h='<p class=\'card-meta\'>';
+ if(w.format&&FORMAT[w.format])h+='<span class=\'badge\'>'+FORMAT[w.format]+'</span>';
+ h+='<span class=\'badge\'>'+photoLabel(w)+'</span>';
+ h+='<span class=\'badge lang\'>'+(w.lang==='en'?'영어':'한국어')+'</span>';
+ h+='<span class=\'badge subject\'>'+subjectLabel(w)+'</span>';
+ return h+'</p>';
+}
+
+function cardHTML(w){
+ return '<button class=\'frame\' data-id=\''+w.id+'\' aria-label=\''+w.title+' 크게 보기\'>'+
+  '<img src=\''+w.image+'\' alt=\''+w.title+' — 생성 예시\' loading=\'lazy\'>'+
+  '<span class=\'peek\'>크게 보기 ↗</span></button>'+
+  '<p class=\'card-title\'>'+w.title+'</p>'+badges(w);
+}
+
+function matches(w){
+ if(currentFilter==='all')return true;
+ return Array.isArray(w.filter)&&w.filter.includes(currentFilter);
+}
 
 function render(){
+ const list=works.filter(matches);
  grid.innerHTML='';
- works.forEach(w=>{
-  const card=document.createElement('article');
-  card.className='card';
-  card.innerHTML=
-   '<button class="frame" data-id="'+w.id+'" aria-label="'+w.title+' 크게 보기">'+
-   '<img src="'+w.image+'" alt="'+w.title+' — 생성 예시" loading="lazy">'+
-   '<span class="peek">크게 보기 ↗</span></button>'+
-   '<p class="card-title">'+w.title+'</p>';
-  grid.append(card);
+ if(!list.length){
+  grid.innerHTML='<p class=\'empty\'>이 조건에 맞는 작품이 없습니다. 다른 유형을 선택해 보세요.</p>';
+ }else{
+  list.forEach(w=>{
+   const card=document.createElement('article');
+   card.className='card';
+   card.innerHTML=cardHTML(w);
+   grid.append(card);
+  });
+ }
+ countEl.textContent='총 '+list.length+'개 작품';
+}
+
+function bindFilter(){
+ document.querySelectorAll('.filter').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+   currentFilter=btn.dataset.f;
+   document.querySelectorAll('.filter').forEach(b=>{
+    const on=b===btn;
+    b.classList.toggle('is-on',on);
+    b.setAttribute('aria-pressed',on?'true':'false');
+   });
+   render();
+  });
  });
 }
 
 fetch('catalog.json')
  .then(r=>{if(!r.ok)throw 0;return r.json();})
  .then(data=>{
-  if(Array.isArray(data)){works=data;}
-  else if(data&&Array.isArray(data.entries)){works=data.entries;}
-  else{works=[];}
+  works=Array.isArray(data)?data:(data&&Array.isArray(data.entries)?data.entries:[]);
   render();
+  bindFilter();
  })
  .catch(()=>{
-  grid.innerHTML='<p class="head-sub">작품 목록을 불러오지 못했습니다. 잠시 후 새로고침해주세요.</p>';
+  grid.innerHTML='<p class=\'empty\'>작품 목록을 불러오지 못했습니다. 잠시 후 새로고침해주세요.</p>';
+  countEl.textContent='';
  });
 
-/* ---- 팝업: 큰 이미지 + 사용방법 + 대사 입력 + 전체 프롬프트 + 복사 ---- */
+/* dialog */
 const dialog=document.querySelector('#work-dialog');
 const dialogImage=document.querySelector('#dialog-image');
 const dialogTitle=document.querySelector('#dialog-title');
-const dialogHowto=document.querySelector('#dialog-howto');
+const dialogOutcome=document.querySelector('#dialog-outcome');
+const dialogChips=document.querySelector('#dialog-chips');
+const dialogVariants=document.querySelector('#dialog-variants');
+const inputsStep=document.querySelector('#inputs-step');
+const dialogInputs=document.querySelector('#dialog-inputs');
+const dialogSteps=document.querySelector('#dialog-steps');
+const changeableStep=document.querySelector('#changeable-step');
+const dialogChangeable=document.querySelector('#dialog-changeable');
+const captionsStep=document.querySelector('#captions-step');
+const dialogCaptionFields=document.querySelector('#dialog-caption-fields');
 const promptText=document.querySelector('#prompt-text');
 const copyBtn=document.querySelector('#copy-prompt');
 const promptStatus=document.querySelector('#prompt-status');
-const captionEdits=document.querySelector('#caption-edits');
-const captionNote=document.querySelector('#caption-note');
-let lastFocus=null,closeTimer=null,currentTemplate='',currentCaps=[];
+let lastFocus=null,statusTimer=null,scrollY=0,currentWork=null;
 
-function buildPrompt(template,caps){
- let p=template;
- caps.forEach((c,i)=>{
-  p=p.split('{{caption'+(i+1)+'}}').join(c);
+function renderVariant(w,variantIndex=0){
+ const variants=Array.isArray(w.variants)?w.variants:[];
+ const variant=variants[variantIndex]||null;
+ const view=variant?{...w,...variant}:w;
+
+ dialogTitle.textContent=view.title||w.title;
+ dialogImage.src=view.image||w.image;
+ dialogImage.alt=(view.title||w.title)+' — 생성 예시 크게 보기';
+ dialogOutcome.textContent=view.outcome||w.outcome||'';
+
+ dialogSteps.innerHTML='';
+ (Array.isArray(view.steps)?view.steps:[]).forEach(s=>{
+  const li=document.createElement('li');li.textContent=s;dialogSteps.append(li);
  });
- return p;
-}
 
-function refreshPromptFromCaps(){
- if(!currentTemplate)return;
- promptText.value=buildPrompt(currentTemplate,currentCaps);
+ const inputs=Array.isArray(view.inputs)?view.inputs:(Array.isArray(w.inputs)?w.inputs:[]);
+ dialogInputs.innerHTML='';
+ inputs.forEach(s=>{const li=document.createElement('li');li.textContent=s;dialogInputs.append(li);});
+ inputsStep.hidden=!inputs.length;
+
+ if(view.changeable){dialogChangeable.textContent=view.changeable;changeableStep.hidden=false;}
+ else{changeableStep.hidden=true;}
+
+ const captions=Array.isArray(view.captions)?view.captions:(Array.isArray(w.captions)?w.captions:[]);
+ const template=view.prompt_template||w.prompt_template||'';
+ dialogCaptionFields.innerHTML='';
+ const updatePrompt=()=>{
+  let value=template;
+  [...dialogCaptionFields.querySelectorAll('input')].forEach((input,index)=>{
+   value=value.replaceAll(`{{caption${index+1}}}`,input.value.trim());
+  });
+  promptText.value=value;
+ };
+ if(captions.length&&template){
+  captions.forEach((caption,index)=>{
+   const label=document.createElement('label');label.className='caption-field';
+   const span=document.createElement('span');span.textContent=`${index+1}컷 대사`;
+   const input=document.createElement('input');input.type='text';input.value=caption;input.maxLength=40;input.autocomplete='off';
+   input.addEventListener('input',updatePrompt);label.append(span,input);dialogCaptionFields.append(label);
+  });
+  captionsStep.hidden=false;
+ }else{captionsStep.hidden=true;}
+
+ const p=template?(updatePrompt(),promptText.value):(view.prompt||w.prompt||'');
+ promptText.value=p;promptText.disabled=!p.trim();copyBtn.disabled=!p.trim();
+ copyBtn.textContent='프롬프트 복사';copyBtn.classList.remove('done','fail');
+ promptStatus.hidden=true;promptStatus.textContent='';
+
+ [...dialogVariants.querySelectorAll('.variant')].forEach((button,index)=>{
+  const on=index===variantIndex;button.classList.toggle('is-on',on);button.setAttribute('aria-pressed',on?'true':'false');
+ });
 }
 
 function openWork(id){
  const w=works.find(x=>x.id===id);
  if(!w)return;
  lastFocus=document.activeElement;
- dialogTitle.textContent=w.title;
- dialogImage.src=w.image;
- dialogImage.alt=w.title;
- dialogImage.style.width='100%';
- dialogImage.style.height='auto';
- dialogImage.style.objectFit='unset';
- dialogHowto.textContent='사용방법: '+w.instructions;
- captionEdits.innerHTML='';
- currentTemplate='';currentCaps=[];
+ scrollY=window.scrollY;
+ document.body.classList.add('dialog-open');
 
- const caps=Array.isArray(w.captions)?w.captions:null;
- if(caps&&w.prompt_template){
-  currentTemplate=w.prompt_template;
-  currentCaps=caps.slice();
-  caps.forEach((c,i)=>{
-   const lab=document.createElement('label');
-   lab.className='caption-label';
-   lab.setAttribute('for','caption-input-'+(i+1));
-   lab.textContent='대사 '+(i+1);
-   const inp=document.createElement('input');
-   inp.type='text';
-   inp.id='caption-input-'+(i+1);
-   inp.className='caption-input';
-   inp.value=c;
-   inp.spellcheck=false;
-   inp.addEventListener('input',()=>{
-    currentCaps[i]=inp.value;
-    refreshPromptFromCaps();
-   });
-   captionEdits.append(lab,inp);
-  });
-  captionEdits.hidden=false;
-  captionNote.hidden=false;
- }
+ currentWork=w;
 
- currentPromptBuild();
+ let chips='';
+ if(w.format&&FORMAT[w.format])chips+='<span class=\'chip\'>'+FORMAT[w.format]+'</span>';
+ chips+='<span class=\'chip\'>'+photoLabel(w)+'</span>';
+ chips+='<span class=\'chip lang\'>'+(w.lang==='en'?'영어 프롬프트':'한국어 프롬프트')+'</span>';
+ chips+='<span class=\'chip\'>'+subjectLabel(w)+'</span>';
+ dialogChips.innerHTML=chips;
 
- function currentPromptBuild(){
-  const p=currentTemplate?buildPrompt(currentTemplate,currentCaps):(w.prompt||'');
-  if(p.trim()!==''){
-   promptText.value=p;
-   promptText.disabled=false;
-   copyBtn.disabled=false;
-   copyBtn.textContent='프롬프트 복사';
-   promptStatus.hidden=true;
-   promptStatus.textContent='';
-  }
- }
+ const variants=Array.isArray(w.variants)?w.variants:[];
+ dialogVariants.innerHTML='';
+ variants.forEach((variant,index)=>{
+  const button=document.createElement('button');
+  button.type='button';button.className='variant';button.textContent=variant.label||variant.title||('방식 '+(index+1));
+  button.setAttribute('aria-pressed',index===0?'true':'false');
+  button.addEventListener('click',()=>renderVariant(w,index));dialogVariants.append(button);
+ });
+ dialogVariants.hidden=variants.length<2;
+ renderVariant(w,0);
 
  dialog.showModal();
  dialog.querySelector('.close-dialog').focus();
 }
 
-grid.addEventListener('click',e=>{
- const frame=e.target.closest('.frame');
- if(frame)openWork(frame.dataset.id);
+document.addEventListener('click',e=>{
+ const opener=e.target.closest('.frame');
+ if(opener&&opener.dataset.id)openWork(opener.dataset.id);
 });
 
-function closeDialog(){
- dialog.close();
-}
-document.querySelector('.close-dialog').addEventListener('click',closeDialog);
-dialog.addEventListener('click',e=>{if(e.target===dialog)closeDialog();});
-dialog.addEventListener('cancel',e=>{e.preventDefault();closeDialog();});
+document.querySelector('.close-dialog').addEventListener('click',()=>dialog.close());
+dialog.addEventListener('click',e=>{if(e.target===dialog)dialog.close();});
 dialog.addEventListener('close',()=>{
- if(dialog.open)return;
+ document.body.classList.remove('dialog-open');
+ window.scrollTo(0,scrollY);
  if(lastFocus&&typeof lastFocus.focus==='function')lastFocus.focus();
  promptText.value='';
- captionEdits.innerHTML='';
- captionEdits.hidden=true;
- captionNote.hidden=true;
- currentTemplate='';currentCaps=[];
+ currentWork=null;
 });
 
-/* ---- 팝업 안 복사: 프롬프트 전문 그대로 ---- */
 async function copyText(text){
- let ok=true;
- try{await navigator.clipboard.writeText(text);}
- catch{
-  const a=document.createElement('textarea');a.value=text;a.style.position='fixed';a.style.top='0';dialog.append(a);a.select();
-  ok=document.execCommand('copy');a.remove();
+ let ok=false;
+ try{await navigator.clipboard.writeText(text);ok=true;}
+ catch(_){
+  try{
+   const a=document.createElement('textarea');
+   a.value=text;a.style.position='fixed';a.style.top='0';a.style.opacity='0';
+   dialog.append(a);a.select();
+   ok=document.execCommand('copy');
+   a.remove();
+  }catch(_2){ok=false;}
  }
+ promptStatus.hidden=false;
  if(ok){
-  copyBtn.textContent='복사 완료 ✓';copyBtn.classList.add('done');
-  clearTimeout(closeTimer);
-  closeTimer=setTimeout(()=>{copyBtn.textContent='프롬프트 복사';copyBtn.classList.remove('done');},2000);
+  copyBtn.textContent='복사 완료 ✓';
+  copyBtn.classList.add('done');copyBtn.classList.remove('fail');
+  promptStatus.textContent='복사되었습니다. 이미지를 만드는 AI 칸에 붙여넣으세요.';
+ }else{
+  copyBtn.textContent='복사 실패';
+  copyBtn.classList.add('fail');
+  promptStatus.textContent='복사가 막혔습니다. 아래 텍스트를 직접 선택해 복사해 주세요.';
  }
+ clearTimeout(statusTimer);
+ statusTimer=setTimeout(()=>{
+  copyBtn.textContent='프롬프트 복사';
+  copyBtn.classList.remove('done','fail');
+  promptStatus.hidden=true;promptStatus.textContent='';
+ },3000);
 }
+
 copyBtn.addEventListener('click',()=>{
  if(copyBtn.disabled)return;
  const p=promptText.value;

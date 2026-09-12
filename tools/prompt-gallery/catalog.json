@@ -1,37 +1,218 @@
 [
   {
+    "lang": "ko",
+    "wide": false,
+    "id": "family-memory-restore",
+    "title_internal": "우리 가족 기억 복원",
+    "title": "가족사진의 손상만 복원하기",
+    "outcome": "긁힘·접힘·변색만 줄이고 얼굴·표정·구도는 지키는 복원",
+    "format": "restore",
+    "filter": [
+      "photo"
+    ],
+    "photos": 1,
+    "inputs": [
+      "사용 권리가 확인된 가족사진 1장",
+      "사진에 보이는 인원 수와 손상 위치",
+      "원본 색 유지 또는 원본 색 복구"
+    ],
+    "steps": [
+      "가족사진 1장과 손상 위치를 준비한다",
+      "아래 프롬프트의 대괄호만 내 사진에 맞게 채운다",
+      "이미지를 편집하는 AI 칸에 사진과 프롬프트를 함께 보낸다"
+    ],
+    "changeable": "복원 강도와 색상 처리만 바꾸어도 됩니다",
+    "prompt": "Use case: identity-preserve\nAsset type: 가족사진 손상 복원 시험본\n\n[사진 1: 복원 대상]은 새 장면을 만들기 위한 참고 이미지가 아니라, 그대로 고쳐야 하는 유일한 편집 대상이다.\n\n[입력]\n- 인원 수: [인원 수]\n- 손상 유형과 위치: [손상 유형과 위치]\n- 복원 강도: [복원 강도]\n- 색상 처리: [색상 처리]\n- 출력 비율: [출력 비율]\n- 가족이 확인한 특징: [가족이 확인한 특징]\n\n[목표]\n지정된 긁힘, 접힘, 먼지, 얼룩, 변색, 스캔 노이즈와 작은 찢김만 제거하거나 완화한다. 남아 있는 선과 질감으로 확실히 이어지는 작은 결손만 보수한다. 선명함보다 원본과 같은 사람·같은 순간을 우선한다.\n\n[반드시 그대로 둘 것]\n- 인원 수와 각 사람의 신원\n- 얼굴 너비와 길이, 눈 사이 거리, 눈·코·입 위치, 턱선, 귀와 머리 윤곽\n- 나이, 비대칭, 주름, 점, 흉터, 피부결\n- 표정, 입 모양, 치아 보임, 시선\n- 몸 비율, 자세, 머리 기울기, 손 위치와 보이는 손가락\n- 의복의 종류·무늬·주름·해짐, 소품\n- 배경 물건의 수와 위치\n- 카메라 높이·각도·거리, 크롭, 원본에서 잘린 부분, 구도\n- 촬영 당시의 조명, 인화 입자, 시대감\n\n[색상]\n- `원본 유지`: 흑백·세피아·컬러 상태를 바꾸지 않는다.\n- `원본 색 복구`: 바랜 색과 색 번짐만 원본 안의 남은 색 범위로 안정시킨다.\n- `추정 채색본`: 복원본과 섞지 않는 별도 파생본이다. [가족이 확인한 특징]에 적힌 색만 확정하고, 확인되지 않은 눈·머리·피부·옷·배경색은 사실처럼 단정하지 않는다. 이 선택에서도 얼굴·구도·요소는 바꾸지 않는다.\n\n[정보가 없을 때]\n원본과 [가족이 확인한 특징]에 없는 얼굴 세부, 손, 사람, 사물, 색, 표정, 장신구, 글자, 배경은 새로 만들지 않는다. 남은 윤곽이 없는 결손은 그럴듯한 얼굴·손·물건으로 채우지 말고 원본 인화지나 주변의 비서사적 질감으로만 보수한다. 덜 선명하더라도 원본에 더 가까운 쪽을 택한다.\n\n[복원 외 재창작 금지]\n다른 사람 얼굴, 평균적인 미남·미녀 얼굴, 회춘, 피부 보정, 대칭화, 큰 눈, 더 환한 미소, 화장, 체형 보정, 다른 옷, 새 장신구, 새 소품, 새 사람, 새 배경, 배경 정리·확장, 현대식 스튜디오 조명, 영화 색보정, 글자·날짜·액자·테두리·워터마크·설명 자막을 만들지 않는다. 원본에서 잘린 몸이나 장면을 완성하지 않는다. 가족 관계나 성격을 추정해 표정·거리·손 위치를 바꾸지 않는다.\n\n[출력]\n복원된 사진 한 장만 출력한다. 전후 분할 화면이나 콜라주를 만들지 않는다. 기본 비율과 크롭은 원본과 동일하게 유지한다. 출력 비율을 바꿔야 하면 원본 밖 장면을 생성하지 말고 단순 여백만 더한다.",
+    "image": "assets/family-memory-restore.png"
+  },
+  {
+    "lang": "ko",
+    "wide": false,
+    "id": "pet-role-swap",
+    "title_internal": "나와 반려동물의 모습 바꾸기",
+    "title": "나와 반려동물, 서로의 모습 바꾸기",
+    "outcome": "혼종 없이 나와 반려동물의 특징과 관계를 남기는 실사",
+    "format": "transform",
+    "filter": [
+      "photo",
+      "pet"
+    ],
+    "photos": 1,
+    "steps": [
+      "관계 사진과 닮게 옮길 특징 3개를 준비한다",
+      "아래에서 바꿀 방향을 고르고 대괄호를 채운다",
+      "이미지를 만드는 AI 칸에 사진과 선택한 프롬프트를 함께 보낸다"
+    ],
+    "changeable": "바꿀 대상과 닮게 옮길 특징 3개만 바꾸어도 됩니다",
+    "prompt": "첨부한 관계 사진을 바탕으로 사진 같은 실사 한 장을 만든다. `[바꿀 사람]`을 해부학적으로 온전한 `[될 동물]` 한 마리로 완전히 치환한다. 결과에 사람의 얼굴·피부·손·발·사람 몸통·사람 머리카락을 남기지 않는다. 사람에게서 보이는 `[닮음 단서 3개]`는 동물에게 자연스러운 눈매와 표정, 털색·무늬·질감, 머리와 주둥이의 비율, 귀의 자세와 몸짓으로 번역한다. 사람 얼굴에 귀·코·수염·털을 붙인 혼종을 만들지 않는다. `[그대로 남길 반려동물]`은 같은 개체로 온전히 유지한다. 원본의 둘 사이 거리, 몸이 향한 방향, 서로 보는 시선, 자세와 접촉, 장소, 카메라 높이와 화각, 빛과 시간대를 가능한 한 그대로 보존한다. 결과에는 정확히 두 마리의 온전한 동물만 등장한다. 추가 사람·추가 동물·중복 얼굴·중복 팔다리·의미 없는 글자·로고·워터마크를 넣지 않는다.",
+    "image": "assets/pet-role-swap-person-to-animal.png",
+    "variants": [
+      {
+        "label": "나를 동물로",
+        "title": "나를 동물로 바꾸기",
+        "outcome": "나의 특징을 온전한 동물로 옮기고 원래 반려동물은 그대로 남긴 사진",
+        "inputs": [
+          "나와 반려동물이 함께 보이는 권리 확인 사진 1장",
+          "바꿀 사람과 그대로 남길 반려동물",
+          "될 동물과 닮게 옮길 특징 3개"
+        ],
+        "image": "assets/pet-role-swap-person-to-animal.png",
+        "prompt": "첨부한 관계 사진을 바탕으로 사진 같은 실사 한 장을 만든다. `[바꿀 사람]`을 해부학적으로 온전한 `[될 동물]` 한 마리로 완전히 치환한다. 결과에 사람의 얼굴·피부·손·발·사람 몸통·사람 머리카락을 남기지 않는다. 사람에게서 보이는 `[닮음 단서 3개]`는 동물에게 자연스러운 눈매와 표정, 털색·무늬·질감, 머리와 주둥이의 비율, 귀의 자세와 몸짓으로 번역한다. 사람 얼굴에 귀·코·수염·털을 붙인 혼종을 만들지 않는다. `[그대로 남길 반려동물]`은 같은 개체로 온전히 유지한다. 원본의 둘 사이 거리, 몸이 향한 방향, 서로 보는 시선, 자세와 접촉, 장소, 카메라 높이와 화각, 빛과 시간대를 가능한 한 그대로 보존한다. 결과에는 정확히 두 마리의 온전한 동물만 등장한다. 추가 사람·추가 동물·중복 얼굴·중복 팔다리·의미 없는 글자·로고·워터마크를 넣지 않는다."
+      },
+      {
+        "label": "반려동물을 사람으로",
+        "title": "반려동물을 사람으로 바꾸기",
+        "outcome": "반려동물의 특징을 온전한 사람으로 옮기고 원래 반려동물도 함께 남긴 사진",
+        "inputs": [
+          "반려동물 얼굴 사진과 관계가 보이는 권리 확인 사진",
+          "사람이 된 모습의 나이대·성별 표현·옷차림",
+          "닮게 옮길 특징 3개와 관계를 보여 줄 행동"
+        ],
+        "image": "assets/pet-role-swap-animal-to-person.png",
+        "prompt": "첨부한 반려동물 사진과 관계 사진을 바탕으로 사진 같은 실사 한 장을 만든다. `[사람으로 바꿀 반려동물]`의 특징을 지닌 해부학적으로 온전한 사람 한 명을 만든다. 이 인물에게 동물 귀·꼬리·주둥이·코·수염·털·발·발톱을 남기지 않는다. `[닮음 단서 3개]`는 사람에게 자연스러운 눈매와 표정, 머리색과 머리 모양, 얼굴 윤곽, 옷의 색 배치와 몸짓으로 번역한다. 품종을 근거로 인종·국적·성격을 추정하지 않는다. 사람의 나이와 성별 표현은 `[사람이 된 모습의 표현]`만 따른다. 같은 장면에는 원래 모습의 반려동물도 별도의 해부학적으로 온전한 동물 한 마리로 남긴다. 사람이 된 인물과 원래 반려동물이 `[관계를 보여줄 행동]`을 하게 한다. 둘을 한 몸으로 합치지 않고, 얼굴이나 팔다리를 서로 공유하지 않는다. 관계 사진의 장소, 둘 사이 거리, 시선 방향, 접촉, 카메라 높이와 화각, 빛과 시간대를 가능한 한 보존한다. 결과에는 정확히 사람 한 명과 원래 반려동물 한 마리만 등장한다. 추가 인물·추가 동물·중복 얼굴·중복 팔다리·의미 없는 글자·로고·워터마크를 넣지 않는다."
+      }
+    ]
+  },
+  {
+    "lang": "ko",
+    "wide": false,
+    "id": "life-archive-box",
+    "title_internal": "내 삶을 담은 한 상자",
+    "title": "내 삶을 담은 한 상자",
+    "outcome": "내 직업과 생활을 보여 주는 소품 네 개를 담은 개인 기록",
+    "format": "archive",
+    "filter": [
+      "photo"
+    ],
+    "photos": 1,
+    "inputs": [
+      "사용 권리가 확인된 정면 인물사진 1장",
+      "짧은 자기소개와 실제 생활복",
+      "내 일과 생활을 보여 주는 소품 4개"
+    ],
+    "steps": [
+      "정면 사진과 자기소개, 소품 4개를 준비한다",
+      "아래 프롬프트의 대괄호를 내 내용으로 채운다",
+      "이미지를 만드는 AI 칸에 사진과 프롬프트를 함께 보낸다"
+    ],
+    "changeable": "소품은 4개부터 시작하고, 이름과 설명 글자는 결과에 나중에 올립니다",
+    "prompt": "제공한 참조 사진 속 한 사람의 삶을 기록하는 ‘개인 아카이브 상자’ 한 장을 만든다.\n\n결과 형식:\n- 세로 4:5, 1600×2000px 이상, 정면에 가까운 한 장의 편집 사진.\n- 얕고 넓은 기록 보존 상자가 열려 있고, 상자 전체와 내부 구획이 한 화면에 완전히 보인다.\n- 판매용 장난감 포장, 투명 블리스터, 액션 피규어, 수집 완구, 1/7 스케일 모형처럼 보이지 않는다.\n- 오래 보관한 기록물의 따뜻함은 있으나 낡고 슬픈 유품 상자처럼 연출하지 않는다. 현재 살아가는 사람의 능동적인 일과 생활이 느껴져야 한다.\n\n중심 인물 사진 슬롯:\n- 상자 안 가장 큰 구획에 참조 사진을 바탕으로 한 세로 인물 사진 한 장을 둔다.\n- [나이 표현], 얼굴형, 눈·코·입의 비율, 피부톤, 헤어라인, 고유한 비대칭과 표정을 보존한다.\n- 얼굴을 일반적인 미남·미녀, 더 젊은 사람, 다른 성별 표현, 다른 인종적 특징으로 바꾸지 않는다.\n- [직업과 역할]에 맞는 [옷차림]을 입고 자연스럽고 편안한 자세를 취한다.\n- 손이 보인다면 두 손 모두 자연스러운 해부 구조와 정확한 손가락 수를 유지한다. 손을 소품 뒤에 억지로 숨기지 않는다.\n\n자기소개 슬롯:\n- 인물 사진 옆에 종이 카드 한 장을 둔다. 제목 한 줄, 자기소개 두 줄, 날짜 한 줄을 나중에 넣을 수 있는 넉넉한 빈 공간만 만든다.\n- 실제 글자, 가짜 글자, 무작위 알파벳, 로고, 서명, 워터마크는 생성하지 않는다.\n- 카드의 여백과 줄 구분은 분명하되, 특정 서비스나 장난감 회사의 카드 모양을 닮지 않게 한다.\n\n소품 슬롯:\n- [소품 1~6: 물건 — 의미]에서 지정한 물건을 각각 하나씩, 서로 분리된 4~6개 구획에 배치한다.\n- 소품은 직업의 증거와 일상의 증거가 함께 보이게 고른다. 단순 장식이나 분위기용 대체품을 추가하지 않는다.\n- 각 소품의 실제 재질, 크기 차이, 사용 흔적을 살리고, 같은 물건을 복제하거나 합치지 않는다.\n- 반려동물이 입력되면 작은 완구나 브랜드 마스코트로 만들지 말고, 반려동물 자체의 작은 사진 또는 실제 쓰는 목줄·밥그릇 같은 관계의 증거로 표현한다.\n- 각 구획에는 후편집용 빈 번호표만 둔다. 읽을 수 있는 글자는 만들지 않는다.\n\n구성과 분위기:\n- 시선 흐름은 큰 인물 사진 → 자기소개 카드 → 소품 구획 순서다.\n- 상자 재질은 무광 보존지, 천, 얇은 목재 등 절제된 기록 보관 재료로 구성한다.\n- [색과 재질]을 배경과 칸막이에 조용히 반영하되 인물과 소품보다 튀지 않게 한다.\n- 부드러운 자연광, 정확한 제품 사진 수준의 선명도, 과장되지 않은 깊이감을 쓴다.\n- 배경은 단순한 중성색이며 상자의 네 모서리를 자르지 않는다. 사람이 실제로 만질 수 있는 물건처럼 일관된 원근과 그림자를 유지한다.\n\n반드시 제외:\n- 특정 장난감 회사·영화·게임·만화·스포츠팀·명품의 이름, 로고, 색상 체계, 포장 실루엣.\n- BANDAI 또는 다른 실제 브랜드를 연상시키는 상표 배치, ChatGPT/Gemini 공식 사례의 고유 포장 구성, ZBrush 화면이나 3D 제작 도구 UI, 1/7 또는 다른 피규어 스케일 표기.\n- 바코드, 가격표, 나이 등급, 판매 문구, 상업 완구용 걸이 구멍, 투명 플라스틱 몰드.\n- 읽을 수 없는 글자, 임의 문장, 워터마크, 서명.\n- 누락·중복·융합된 소품, 여분 손가락, 뒤틀린 손, 떠 있는 물건, 모순된 그림자.\n- [빼야 할 것].\n\n최종 확인:\n참조 사진 속 같은 사람임이 먼저 보이고, [직업과 역할]과 [생활 한 문장]이 지정 소품만으로 설명되어야 한다. 한 장 안에 인물 사진 슬롯 1개, 빈 자기소개 카드 1개, 서로 다른 소품 슬롯 [입력 개수]개만 정확히 보여라.",
+    "image": "assets/life-archive-box.png"
+  },
+  {
     "id": "ham-stamps-v2",
-    "title": "스탬프 12 · 나의 하루 표정",
+    "title": "내 얼굴로 하루 표정 12장",
+    "title_internal": "스탬프 12 · 나의 하루 표정",
+    "subject": "ham",
+    "format": "stamp",
+    "photos": 1,
+    "lang": "ko",
+    "wide": true,
+    "filter": [
+      "photo"
+    ],
+    "outcome": "단톡·메모에 붙일 스티커 시트 한 장",
+    "steps": [
+      "지금 정면 사진 1장을 연다",
+      "아래 프롬프트를 복사한다",
+      "이미지를 만드는 AI 칸에 사진과 함께 붙여 보낸다"
+    ],
+    "changeable": "",
     "prompt": "사진 속 성인을 알아볼 수 있게, 머리가 몸보다 크고 몸이 아주 작은 2등신 치비(chibi) 캐릭터로 그려주세요. 둥글고 귀여운 얼굴, 점과 곡선으로 단순화한 표정, 짧은 팔과 다리, 과장된 몸짓, 거친 크레용 선으로 표현하세요. 성인의 안경·헤어라인·수염 같은 식별 특징을 유지하되 실사 초상화나 아기 얼굴로 만들지 마세요. 입력 사진 1장은 인물 참고 이미지입니다. 사진 속 인물의 실제 나이, 얼굴형, 피부톤, 헤어스타일과 두발 상태, 안경 착용 여부와 모양, 수염 여부, 옷차림 등 특징을 그대로 살려서 그리고, 임의로 젊게 바꾸거나 다른 사람처럼 만들지 마십시오. 완성된 가로 1536x1024 이미지 한 장을 만드십시오. 손그림 색연필과 크레용 질감의 스탬프 팩이며, 크림색 종이 배경 위에 흰 외곽 테두리(다이컷 실루엣)가 각 캐릭터를 감쌉니다. 얼굴은 부드러운 터치, 볼에는 옅은 발그레, 옷과 머리에는 살짝 보이는 필름 질감을 넣습니다. 4열 3행, 총 12칸 균등 격자로 배치하고 각 칸 사이에 여백을 둡니다. 12칸 모두 같은 인물, 같은 크기의 전신 컷이며 얼굴과 체형이 완전히 일관되어야 합니다. 각 칸의 포즈와 표정은 다음과 같습니다. 1행: (1) 눈만 살짝 감고 편안한 무표정, (2) 입꼬리만 미세하게 올라간 옅은 미소, (3) 고개를 살짝 기울여 궁금해하는 표정, (4) 두 손바닥을 몸 앞에 모으고 조용히 기다리는 자세. 2행: (5) 눈썹을 치켜올린 가벼운 놀람, (6) 고개를 끄덕이는 도중의 동작, (7) 한 손바닥을 들어 올려 읽었다는 표시를 하는 포즈, (8) 두 손을 가슴 앞에 모은 정중한 감사 자세. 3행: (9) 웃음을 참다가 터뜨리는 표정, (10) 손등으로 입가를 가리며 웃는 모습, (11) 한 손으로 가슴을 쓸어내리며 안도한 표정, (12) 한 손을 흔들어 작별 인사하는 모습. 이미지 안에 글자, 숫자, 말풍선, 기호, 로고를 절대 넣지 마십시오. 배경 소품 없이 캐릭터만 그리고, 손가락과 팔다리 개수가 정확해야 합니다. 브라우저나 UI 목업 없이 순수 일러스트 작품만 출력하십시오.",
     "instructions": "사진 1장(현재 정면 사진)을 첨부하세요. 아래 프롬프트를 그대로 복사해 ImageGen에 붙여넣고, 사진과 함께 전송하면 됩니다.",
+    "change_note": "기존 3열4행 스탬프 참고안의 순서와 동작을 재배치해 4열3행으로 교체. 단순 미소·썸즈업 대신 읽음 표시·끄덕·손바닥 대기·두 손 감사·안도 등 반응 동작으로 구성.",
     "image": "assets/ham-stamps-v2.png"
   },
   {
     "id": "coco-stamps-v2",
-    "title": "스탬프 12 · 코코의 표정",
+    "title": "우리 개 표정 12장",
+    "title_internal": "스탬프 12 · 코코의 표정",
+    "subject": "coco",
+    "format": "stamp",
+    "photos": 1,
+    "lang": "ko",
+    "filter": [
+      "pet"
+    ],
+    "outcome": "같은 톤의 반려동물 스티커 시트",
+    "steps": [
+      "반려견 정면 사진 1장을 연다",
+      "아래 프롬프트를 복사한다",
+      "이미지를 만드는 AI 칸에 사진과 함께 붙여 보낸다"
+    ],
+    "changeable": "",
     "prompt": "입력 사진 1장은 강아지 참고 이미지입니다. 사진 속 개의 실제 품종 특징, 귀 모양과 서 있는 방향, 털 색과 무늬와 길이, 얼굴 비율, 눈과 코 모양, 체구를 그대로 유지하고 다른 품종이나 다른 개로 바꾸지 마십시오. 네 발 달린 자연스러운 개 해부학을 지키고, 인간형 손이나 불필요한 팔다리를 추가하지 마십시오. 익숙하고 사랑스러운 의인화 스탬프 톤은 유지하되 동작은 개의 몸으로 표현합니다. 완성된 가로 1536x1024 이미지 한 장, 손그림 색연필과 크레용 질감의 스탬프 팩입니다. 크림색 종이 배경, 각 캐릭터를 감싸는 흰 외곽 테두리, 털에 촉감이 보이는 짧은 필름선, 볼에 옅은 발그레. 4열 3행 총 12칸 균등 격자, 칸마다 여백. 12칸 모두 같은 개이며 얼굴과 체형이 완전히 일관되어야 합니다. 배치는 다음과 같습니다. 1행: (1) 고개를 옆으로 삐딱하게 기울인 모습, (2) 귀를 쫑긋 세우고 주의 깊게 바라보는 모습, (3) 몸을 대각선으로 틀어 뒤를 돌아보는 모습, (4) 코를 찡긋하며 냄새를 맡는 모습. 2행: (5) 꼬리를 빠르게 흔들며 기뻐하는 모습, (6) 몸을 통통 털어내는 흔들기 동작, (7) 한 발짝 뒤로 물러선 뒷걸음 자세, (8) 눈만 방향을 흘겨보는 표정. 3행: (9) 머리를 숙여 살짝 부탁하는 자세, (10) 입을 살짝 벌려 활짝 신이 난 표정, (11) 눈을 감고 편안하게 앉아 있는 모습, (12) 앞으로 살짝 몸을 숙인 인사 자세. 이미지 안에 글자, 숫자, 말풍선, 기호, 로고를 넣지 마십시오. 실제 사진이나 목업 없이 일러스트만 출력하십시오.",
     "instructions": "사진 1장(강아지 정면 사진)을 첨부하세요. 아래 프롬프트를 그대로 복사해 ImageGen에 붙여넣고, 사진과 함께 전송하면 됩니다.",
+    "change_note": "기존 12스탬프 참고안에서 순서·동작 교체. 하품·하트·썸즈업 대신 몸 털기·뒷걸음·흘겨보기·부탁 자세 등 개 몸으로 표현한 반응으로 재구성.",
     "image": "assets/coco-stamps-v2.png"
   },
   {
     "id": "ham-replies",
-    "title": "반응 6 · 나의 답장 모음",
+    "title": "내 얼굴로 답장 6장",
+    "title_internal": "반응 6 · 나의 답장 모음",
+    "subject": "ham",
+    "format": "reply",
+    "photos": 1,
+    "lang": "ko",
+    "filter": [
+      "photo"
+    ],
+    "outcome": "읽음·동의·감사 반응 시트",
+    "steps": [
+      "지금 정면 사진 1장을 연다",
+      "아래 프롬프트를 복사한다",
+      "이미지를 만드는 AI 칸에 사진과 함께 붙여 보낸다"
+    ],
+    "changeable": "",
     "prompt": "입력 사진 1장은 인물 참고 이미지입니다. 사진 속 인물의 실제 나이, 얼굴형, 헤어 상태, 안경 착용 여부와 모양, 수염 여부, 옷차림 특징을 그대로 유지하고, 새로운 외모를 만들어내거나 나이를 바꾸지 마십시오. 완성된 가로 1536x1024 이미지 한 장. 손그림 색연필과 크레용 질감의 반응 스탬프 시트이며, 크림색 종이 배경 위에 각 컷을 흰 외곽 테두리가 감쌉니다. 볼에 옅은 발그레, 옷과 머리결에 부드러운 필름 질감. 3열 2행, 총 6칸 균등 격자로 배치하고 칸마다 여백을 둡니다. 6칸 모두 같은 인물, 같은 얼굴과 체형이 일관된 흉상 위주 컷입니다. 각 칸은 채팅 답장처럼 쓸 수 있는 반응 동작입니다. 1행: (1) 한 손을 위로 살짝 들어 올려 읽었다는 표시를 하는 포즈, (2) 고개를 두 번 끄덕이는 도중의 동작과 동감하는 눈매, (3) 눈이 반짝 커지며 무언가 이해한 순간의 표정. 2행: (4) 한 손으로 가슴을 쓸어내리며 길게 숨을 내쉬는 안도 표정, (5) 두 손을 가슴 앞에 모아 깊이 감사하는 자세, (6) 손등으로 입가를 가리며 어이없지만 웃음이 새는 표정. 6개의 표정이 서로 뚜렷하게 달라야 하며, 각 컷의 정체성과 선화 굵기와 색감이 동일해야 합니다. 이미지 안에 글자, 숫자, 말풍선 텍스트, 기호, 로고를 절대 넣지 마십시오. 글자가 깨지는 것을 막기 위해 배경 소품과 텍스트 요소 없이 캐릭터만 그리고, 손가락 개수와 팔다리가 정확해야 합니다. 브라우저나 UI 목업 없이 순수 일러스트만 출력하십시오.",
     "instructions": "사진 1장(현재 정면 사진)을 첨부하세요. 아래 프롬프트를 그대로 복사해 ImageGen에 붙여넣고, 사진과 함께 전송하면 됩니다.",
+    "change_note": "조사에서 착안한 답장 반응(읽음·넵·아하·안도·감사·실소)을 3열2행 6컷으로 구성. 기존 스탬프와 쓰임이 다르고, 복사된 표정 목록을 그대로 쓰지 않고 동작 단위로 재해석.",
     "image": "assets/ham-replies.png"
   },
   {
     "id": "coco-replies",
-    "title": "반응 6 · 코코의 답장 모음",
+    "title": "우리 개 답장 6장",
+    "title_internal": "반응 6 · 코코의 답장 모음",
+    "subject": "coco",
+    "format": "reply",
+    "photos": 1,
+    "lang": "ko",
+    "filter": [
+      "pet"
+    ],
+    "outcome": "대화에 붙일 개 몸짓 6컷",
+    "steps": [
+      "반려견 정면 사진 1장을 연다",
+      "아래 프롬프트를 복사한다",
+      "이미지를 만드는 AI 칸에 사진과 함께 붙여 보낸다"
+    ],
+    "changeable": "",
     "prompt": "입력 사진 1장은 강아지 참고 이미지입니다. 사진 속 개의 실제 품종 특징, 귀 모양, 털 색과 무늬와 길이, 얼굴 비율, 눈과 코, 체구를 그대로 유지하고 다른 품종이나 다른 개로 바꾸지 마십시오. 네 발 개 해부학을 정확히 지키고, 인간형 손이나 불필요한 사지를 추가하지 마십시오. 완성된 가로 1536x1024 이미지 한 장. 손그림 색연필과 크레용 질감의 반응 스탬프 시트, 크림색 종이 배경, 각 컷을 감싸는 흰 외곽 테두리, 털에 촉감이 보이는 짧은 필름선, 볼에 옅은 발그레. 3열 2행 총 6칸 균등 격자, 칸마다 여백. 6칸 모두 같은 개이며 얼굴과 체형이 완전히 일관되어야 합니다. 각 칸은 대화용 답장처럼 쓸 수 있는 개의 몸짓입니다. 1행: (1) 칭찬을 받고 가슴을 활짝 펴며 고개를 든 자랑스러운 모습, (2) 재촉받자 머리를 숙이고 귀를 살짝 뒤로 넘긴 억울한 표정, (3) 안도한 듯 몸을 살짝 늘어뜨리고 눈을 부드럽게 감은 모습. 2행: (4) 꼬리를 세우고 곧게 앉아 무언가를 기다리는 집중 표정, (5) 놀라서 한두 걸음 뒤로 물러선 뒷걸음 자세, (6) 앞으로 아래 몸을 숙이고 엉덩이를 든 인사 자세. 6개의 표정과 몸짓이 서로 뚜렷하게 달라야 하며 선화 굵기와 색감은 동일해야 합니다. 이미지 안에 글자, 숫자, 말풍선, 기호, 로고를 넣지 마십시오. 실제 사진이나 UI 목업 없이 일러스트만 출력하십시오.",
     "instructions": "사진 1장(강아지 정면 사진)을 첨부하세요. 아래 프롬프트를 그대로 복사해 ImageGen에 붙여넣고, 사진과 함께 전송하면 됩니다.",
+    "change_note": "6반응 3열2행 신규. 사람 표정을 개 몸짓으로 치환한 것이 햄 반응 시트와의 차별점이며, 스탬프 12종과는 쓰임(대화 답장용)이 다름.",
     "image": "assets/coco-replies.png"
   },
   {
     "id": "ham-goodnight",
-    "title": "4컷 · 하루의 끝",
+    "title": "내 하루 끝을 네컷으로",
+    "title_internal": "4컷 · 하루의 끝",
+    "subject": "ham",
+    "format": "four",
+    "photos": 1,
+    "lang": "ko",
+    "filter": [
+      "photo"
+    ],
+    "outcome": "대사 있는 2×2 네컷 한 장",
+    "steps": [
+      "지금 정면 사진 1장을 연다",
+      "아래 프롬프트를 복사한다",
+      "이미지를 만드는 AI 칸에 사진과 함께 붙여 보낸다"
+    ],
+    "changeable": "대사만 바꿔도 됩니다",
     "prompt": "입력 사진 1장은 인물 참고 이미지입니다. 사진 속 인물의 실제 나이, 얼굴형, 헤어 상태, 안경 착용 여부와 모양, 수염 여부, 옷차림 특징을 그대로 유지하고 다른 사람처럼 그리거나 나이를 바꾸지 마십시오. 완성된 정사각형 1024x1024 이미지 한 장. 2x2, 총 4칸 균등 격자로 시간 순서(왼쪽 위→오른쪽 위→왼쪽 아래→오른쪽 아래)로 읽히는 대사 있는 네컷 만화입니다. 손그림 색연필과 크레용 질감, 크림색 종이 배경, 각 컷을 흰 외곽 테두리가 감싸고, 저녁 느낌의 따뜻하고 어두워지는 색조를 4칸 전체에 점진적으로 적용합니다. 볼에 옅은 발그레, 부드러운 필름 질감. 4칸 모두 같은 인물이며 얼굴과 체형이 일관되어야 합니다. 각 컷에는 흰 배경의 말풍선을 정확히 하나씩 넣고, 그 안의 짧은 한국어 대사는 지정한 문자 그대로만 적습니다. 구성: (1) 하루를 마치고 TV 리모컨을 든 채 소파에 몸을 털썩 앉아 어깨를 늘어뜨린 모습, 말풍선 '퇴근이다! 이제 쉬자.'. (2) 담요를 어깨까지 끌어올려 감싸고 리모컨을 쥔 채 TV 쪽을 기대하는 눈으로 앉은 모습, 말풍선 '오늘은 늦게까지 TV 봐야지.'. (3) 담요 속에 파묻힌 채 리모컨을 들어 TV를 켜고 자리를 잡는 아늑한 모습, 말풍선 '자, 어디 한번…'. (4) 담요 속에서 눈을 감고 깊이 잠든 모습, 잠든 인물 머리 위에 작은 말풍선 '…쿨쿨'. 말풍선 텍스트는 위 네 문장 외에 절대 넣지 마십시오. 이미지 안에 다른 글자, 숫자, 기호, 로고를 넣지 마십시오. 배경은 TV와 소파, 담요 정도의 단순한 실내 암시만 하고 복잡한 소품을 넣지 않으며, 손가락과 팔다리 개수가 정확해야 합니다. 브라우저나 UI 목업 없이 순수 일러스트만 출력하십시오.",
     "instructions": "사진 1장(현재 정면 사진)을 첨부하세요. 아래 프롬프트를 그대로 복사해 ImageGen에 붙여넣고, 사진과 함께 전송하면 됩니다. 대사 네 문장은 원하는 말로 바꿀 수 있습니다.",
+    "change_note": "기존 무말풍선 4컷을 대사 있는 4컷 만화로 갱신. 퇴근→TV 기대→자리 잡기→바로 잠의 반전을 유지하고 TV 리모컨·담요로 동작을 설명.",
     "image": "assets/ham-goodnight.png",
     "captions": [
       "퇴근이다! 이제 쉬자.",
@@ -43,9 +224,25 @@
   },
   {
     "id": "coco-outing",
-    "title": "4컷 · 산책 가는 날",
+    "title": "산책 가는 날을 네컷으로",
+    "title_internal": "4컷 · 산책 가는 날",
+    "subject": "coco",
+    "format": "four",
+    "photos": 1,
+    "lang": "ko",
+    "filter": [
+      "pet"
+    ],
+    "outcome": "개 주인공 2×2 네컷 한 장",
+    "steps": [
+      "반려견 정면 사진 1장을 연다",
+      "아래 프롬프트를 복사한다",
+      "이미지를 만드는 AI 칸에 사진과 함께 붙여 보낸다"
+    ],
+    "changeable": "대사만 바꿔도 됩니다",
     "prompt": "입력 사진 1장은 강아지 참고 이미지입니다. 사진 속 개의 실제 품종 특징, 귀 모양, 털 색과 무늬와 길이, 얼굴 비율, 눈과 코, 체구를 그대로 유지하고 다른 품종이나 다른 개로 바꾸지 마십시오. 네 발 개 해부학을 정확히 지키고 인간형 손이나 불필요한 사지를 추가하지 마십시오. 완성된 정사각형 1024x1024 이미지 한 장. 2x2, 총 4칸 균등 격자, 시간 순서(왼쪽 위→오른쪽 위→왼쪽 아래→오른쪽 아래)로 읽히는 대사 있는 네컷 만화. 손그림 색연필과 크레용 질감, 크림색 종이 배경, 각 컷을 흰 외곽 테두리가 감쌈, 털에 촉감이 보이는 짧은 필름선, 볼에 옅은 발그레. 4칸 모두 같은 개이며 얼굴과 체형이 완전히 일관되어야 합니다. 각 컷에는 흰 배경의 말풍선을 정확히 하나씩 넣고, 그 안의 짧은 한국어 대사는 지정한 문자 그대로만 적습니다. 말하는 주체는 항상 이 개이며, 개 머리 위나 옆에 말풍선을 붙입니다. 구성: (1) 현관 앞에서 목줄 쪽을 바라보며 귀를 쫑긋 세우고 기대하는 자세, 말풍선 '산책 가자!'. (2) 신발 옆에 반듯하게 앉아 꼬리를 세운 모습, 말풍선 '준비 완료!'. (3) 문이 열리며 앞으로 몸을 숙인 채 신이 나서 나가려는 자세, 말풍선 '빨리빨리!'. (4) 돌아와서 이불 위에 몸을 말고 눈을 감은 만족스러운 모습, 말풍선 '산책 끝… 졸려.'. 기대에서 출발, 그리고 편안한 마무리로 이어지는 순환 구조이며 각 컷의 표정과 몸 자세가 뚜렷하게 달라야 합니다. 말풍선 텍스트는 위 네 문장 외에 절대 넣지 마십시오. 이미지 안에 다른 글자, 숫자, 기호, 로고를 넣지 마십시오. 사람을 등장시키지 말고, 실제 사진이나 UI 목업 없이 일러스트만 출력하십시오.",
     "instructions": "사진 1장(강아지 정면 사진)을 첨부하세요. 아래 프롬프트를 그대로 복사해 ImageGen에 붙여넣고, 사진과 함께 전송하면 됩니다. 대사 네 문장은 원하는 말로 바꿀 수 있습니다.",
+    "change_note": "기존 산책 4컷 그림 구성을 유지하고 각 컷에 짧은 대사 말풍선 추가. 주체는 코코.",
     "image": "assets/coco-outing.png",
     "captions": [
       "산책 가자!",
@@ -57,9 +254,26 @@
   },
   {
     "id": "ham-coco-pair",
-    "title": "4컷 · 나와 코코",
+    "title": "나와 반려동물이 같이 나오는 네컷",
+    "title_internal": "4컷 · 나와 코코",
+    "subject": "pair",
+    "format": "four",
+    "photos": 2,
+    "lang": "ko",
+    "filter": [
+      "photo",
+      "pet"
+    ],
+    "outcome": "사람과 개가 함께 나오는 2×2 네컷",
+    "steps": [
+      "인물 정면 사진 1장과 반려견 정면 사진 1장을 순서대로 연다",
+      "아래 프롬프트를 복사한다",
+      "이미지를 만드는 AI 칸에 사진 2장과 함께 붙여 보낸다"
+    ],
+    "changeable": "대사만 바꿔도 됩니다",
     "prompt": "입력 사진 2장은 각각 서로 다른 역할을 가집니다. 첫 번째 사진은 인물 참고 이미지로, 사진 속 인물의 실제 나이, 얼굴형, 헤어 상태, 안경 착용 여부와 모양, 수염 여부, 옷차림을 그대로 유지하십시오. 두 번째 사진은 강아지 참고 이미지로, 개의 실제 품종 특징, 귀 모양, 털 색과 무늬, 얼굴 비율, 체구를 그대로 유지하고 다른 품종으로 바꾸지 마십시오. 개는 네 발 해부학을 정확히 지키고 인간형 손이나 불필요한 사지를 추가하지 마십시오. 완성된 정사각형 1024x1024 이미지 한 장. 2x2, 총 4칸 균등 격자로 두 주인공이 함께 등장하는 대사 있는 네컷 만화(왼쪽 위→오른쪽 위→왼쪽 아래→오른쪽 아래 순서). 손그림 색연필과 크레용 질감, 크림색 종이 배경, 각 컷을 흰 외곽 테두리가 감쌈, 볼에 옅은 발그레, 털과 옷에 부드러운 필름 질감. 4칸 모두 같은 인물과 같은 개가 함께 나오고, 둘의 외형이 컷 전체에서 완전히 일관되어야 합니다. 각 컷에는 흰 배경의 말풍선을 정확히 하나씩 넣고, 지정한 문자 그대로만 적습니다. 말하는 주체는 말풍선 꼬리 방향으로 명확히 구분합니다. 구성: (1) 소파에 나란히 앉아 같은 방향을 바라보는 모습, 인물의 말풍선 '오늘은 우리 둘이.'. (2) 바닥에 앉은 인물이 개의 털을 쓰다듬고 개는 눈을 감고 기뻐하는 모습, 개의 말풍선 '좋아…'. (3) 현관 문 앞에서 개가 산책 준비 자세로 앞으로 숙이고 인물이 개를 내려다보며 미소 짓는 모습, 인물의 말풍선 '가자, 산책!'. (4) 담요 하나를 함께 뒤집어쓰고 나란히 누워 눈을 감은 모습, 인물의 말풍선 '자장자장…'. 둘의 거리감과 표정 변화가 컷마다 뚜렷해야 합니다. 말풍선 텍스트는 위 네 문장 외에 절대 넣지 마십시오. 이미지 안에 다른 글자, 숫자, 기호, 로고를 넣지 마십시오. 브라우저나 UI 목업 없이 순수 일러스트만 출력하십시오.",
     "instructions": "사진 2장(인물 정면 사진 1장 + 강아지 정면 사진 1장)을 순서대로 첨부하세요. 아래 프롬프트를 그대로 복사해 ImageGen에 붙여넣고, 사진 2장과 함께 전송하면 됩니다. 대사 네 문장은 원하는 말로 바꿀 수 있습니다.",
+    "change_note": "기존 2x2 4컷 그림 구성을 유지하고 각 컷에 대사 추가. 컷1·3은 인물, 컷2는 코코, 컷4는 인물이 말함.",
     "image": "assets/ham-coco-pair.png",
     "captions": [
       "오늘은 우리 둘이.",
@@ -71,10 +285,25 @@
   },
   {
     "id": "ham-story",
-    "title": "10년 전의 나에게",
+    "title": "예전 나와 지금 나를 한 장에",
+    "title_internal": "10년 전의 나에게",
+    "format": "three",
+    "photos": 2,
+    "lang": "en",
+    "filter": [
+      "photo"
+    ],
+    "outcome": "과거 나와 지금 나의 세 칸 대화",
+    "steps": [
+      "과거 사진 1장과 현재 사진 1장을 순서대로 연다",
+      "아래 프롬프트를 복사한다",
+      "이미지를 만드는 AI 칸에 사진 2장과 함께 붙여 보낸다"
+    ],
+    "changeable": "대사만 바꿔도 됩니다",
     "prompt": "Create one finished landscape 1536x1024 three-panel Korean illustrated comic from these TWO likeness-reference photos of the SAME adult man ten years apart. Respectfully preserve his identity and age, not a generic child: photo1 younger smiling man with dark full hair, thin metal glasses, tuxedo and bowtie; photo2 present man with short salt-and-pepper hair, receding hairline, broad rectangular black glasses, light chin stubble, navy T-shirt. Warm expressive ink-and-watercolor editorial comic, cream paper, dark ink, apricot and teal, excellent recognizable facial expressions. EXACT top title '10년 전의 나에게'. Three equal horizontal panels, big readable speech bubbles. Panel1 younger man in tuxedo looks right eagerly, caption '10년 전', dialogue '10년 뒤엔 뭐 하고 살아?'. Panel2 present man with blank unbranded laptop smiles, caption '지금', dialogue 'AI랑 같이 일해.'. Panel3 imaginative meeting of BOTH versions, younger man leans forward amazed, present man chuckles showing blank laptop, ONLY younger dialogue '잠깐, 설명 좀.'. EXACT small footer '사진 두 장으로 만든 상상 대화'. The dialogue is invented, not historical. No other text, background writing, logos, other wedding guests, childish age regression, duplicated limbs. Artwork only, no browser or mockup.",
     "instructions": "과거 사진과 현재 사진을 순서대로 첨부한 뒤, 아래 프롬프트를 붙여넣으세요. 대사 세 문장은 원하는 말로 바꿀 수 있습니다.",
     "image": "assets/ham-story.png",
+    "change_note": "햄의 서로 다른 두 시절 사진으로 생성한 상상 대화. 대사 3개를 입력칸으로 바꿀 수 있게 prompt_template 분리.",
     "captions": [
       "10년 뒤엔 뭐 하고 살아?",
       "AI랑 같이 일해.",
@@ -84,10 +313,25 @@
   },
   {
     "id": "coco-story",
-    "title": "코코의 외출 준비",
+    "title": "우리 개 외출 준비를 세 컷으로",
+    "title_internal": "코코의 외출 준비",
+    "format": "three",
+    "photos": 3,
+    "lang": "en",
+    "filter": [
+      "pet"
+    ],
+    "outcome": "반려견 주인공 세 칸 이야기",
+    "steps": [
+      "반려견 사진 등 참고 사진 3장을 순서대로 연다",
+      "아래 프롬프트를 복사한다",
+      "이미지를 만드는 AI 칸에 사진 3장과 함께 붙여 보낸다"
+    ],
+    "changeable": "대사만 바꿔도 됩니다",
     "prompt": "Create one finished landscape 1536x1024 three-panel Korean illustrated comic from these THREE identity-reference photos of the SAME small dog 코코. Maintain distinctive large upright fringed ears, scruffy golden tan coat, cream-white forehead blaze and muzzle, fluffy white chest, black nose, round dark eyes. Natural four-paw dog anatomy, never a human or another breed. Warm expressive ink-and-watercolor editorial comic, cream paper, dark ink, apricot and teal; lovely textured fur and expressive poses. EXACT top title '코코의 외출 준비'. Three equal horizontal panels, big readable thought bubbles. Panel1 Coco at home on light beige sofa, ears perked with anticipation, thought '나간다고?'. Panel2 sits proudly in colorful soft bucket hat inspired by reference3, ears visibly outside hat, thought '준비 끝!'. Panel3 reveals rain through a window; Coco flops cozy sideways under a blanket on beige sofa, hat rests nearby, sleepy relieved look, thought '내일 나가자.'. Anticipation -> proud readiness -> cozy reversal. EXACT small footer '코코 사진으로 만든 상상 장면'. Invented example, not documentary. No humans, other animals, other text, source-photo background lettering, logos, duplicated legs. Consistent dog identity throughout. Artwork only, no browser or mockup.",
     "instructions": "반려견 사진과 모자 사진 등 참고 사진 3장을 첨부하고 아래 프롬프트를 붙여넣으세요. 대사 세 문장은 원하는 말로 바꿀 수 있습니다.",
     "image": "assets/coco-story.png",
+    "change_note": "코코 사진을 사용한 외출·비·휴식의 상상 장면. 대사 3개를 입력칸으로 바꿀 수 있게 prompt_template 분리.",
     "captions": [
       "나간다고?",
       "준비 끝!",
@@ -97,9 +341,24 @@
   },
   {
     "id": "concept-comparison",
-    "title": "3컷 이야기와 3가지 반응",
+    "title": "사진 없이 3컷과 반응 만들기",
+    "title_internal": "3컷 이야기와 3가지 반응",
+    "format": "three",
+    "photos": 0,
+    "lang": "en",
+    "filter": [
+      "none"
+    ],
+    "outcome": "형식을 시험해 보는 콘셉트 보드",
+    "steps": [
+      "사진을 첨부하지 않는다",
+      "아래 프롬프트를 복사한다",
+      "이미지를 만드는 AI 칸에 프롬프트만 붙여 보낸다"
+    ],
+    "changeable": "",
     "prompt": "Use case: illustration-story. Make ONE polished landscape Korean concept comparison board, two stacked sections, about 1536x1024. This is a public concept board showing how a prompt gallery visitor can personalize either a tiny narrative comic or expressive reactions. Editorial playful, warm ivory background, crisp ink, restrained black/coral/yellow palette, generous space, hand-drawn contemporary zine quality. Entirely original character: a little rounded human doodle with messy short hair, simple striped shirt, expressive dot eyes. No existing IP or logos. Consistent same character throughout. Upper section heading EXACT Korean '내 사건을 3컷으로'. Three equally sized wide comic panels left to right: (1) character at laptop casually sitting with a coffee, night window, speech EXACT '잠깐만 볼게'; (2) character leaning forward with sparkly widened eyes as light pours from screen, speech EXACT '어? 이게 되네?'; (3) same exhausted delighted character, daylight and sunrise through window, coffee cups, speech EXACT '밖이 왜 밝지?'. Narrative progression and comic timing, dramatic expressive body poses, no extra dialogue. Lower section heading EXACT '내 말투를 표정으로'. Three separate large sticker-like expressive vignettes evenly spaced: same character very upright with tiny serious salute, text EXACT '넵!'; same character sudden understanding with a small glowing light above head, text EXACT '아하!'; same character gently melted into a puddle with two comic tear streams, text EXACT 'ㅠㅠ'. White die-cut style silhouettes around lower vignettes, no commercial brand. Small top eyebrow EXACT '내 이야기, 내 표정'. Small footer EXACT '사진 없이도 만드는 작은 이야기'. All Korean lettering clean and legible, no English, no statistical claims, no UI mockup, no photos. The character and scenes are synthetic illustrations. Board demonstrates narrative time progression versus reusable expressive speech, neither is presented as proven popular.",
     "instructions": "참고 사진 없이 아래 프롬프트를 이미지 생성 AI에 붙여넣으세요. 대사는 원하는 말로 바꿀 수 있습니다.",
-    "image": "assets/concept-comparison.png"
+    "image": "assets/concept-comparison.png",
+    "change_note": "비교 작품. 위 3컷 이야기와 아래 3개 반응을 한 장으로 생성. 내부용 표기를 공개용 문구로 교체."
   }
 ]
