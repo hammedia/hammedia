@@ -2,6 +2,7 @@
 
 let works=[];
 let currentFilter='all';
+let currentSignal='all';
 
 const grid=document.querySelector('#grid');
 const countEl=document.querySelector('#count');
@@ -31,8 +32,23 @@ function cardHTML(w,index){
 }
 
 function matches(w){
- if(currentFilter==='all')return true;
- return Array.isArray(w.filter)&&w.filter.includes(currentFilter);
+ const inputOK=currentFilter==='all'||(Array.isArray(w.filter)&&w.filter.includes(currentFilter));
+ const signalOK=currentSignal==='all'||w.signal===currentSignal;
+ return inputOK&&signalOK;
+}
+
+function bindSignal(){
+ document.querySelectorAll('.signal').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+   currentSignal=btn.dataset.s;
+   document.querySelectorAll('.signal').forEach(b=>{
+    const on=b===btn;
+    b.classList.toggle('is-on',on);
+    b.setAttribute('aria-pressed',on?'true':'false');
+   });
+   render();
+  });
+ });
 }
 
 function render(){
@@ -71,6 +87,7 @@ fetch('catalog.json')
   works=Array.isArray(data)?data:(data&&Array.isArray(data.entries)?data.entries:[]);
   render();
   bindFilter();
+  bindSignal();
  })
  .catch(()=>{
   grid.innerHTML='<p class=\'empty\'>작품 목록을 불러오지 못했습니다. 잠시 후 새로고침해주세요.</p>';

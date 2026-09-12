@@ -3,6 +3,7 @@
     "lang": "ko",
     "wide": false,
     "id": "family-memory-restore",
+    "signal": "steady",
     "title": "가족사진의 손상만 복원하기",
     "outcome": "긁힘과 접힌 자국을 줄이되 얼굴, 표정, 구도는 그대로 둡니다.",
     "format": "restore",
@@ -30,6 +31,7 @@
     "lang": "ko",
     "wide": false,
     "id": "pet-role-swap",
+    "signal": "now",
     "title": "나와 반려동물의 모습 바꾸기",
     "outcome": "사람은 동물로, 반려동물은 사람으로 바꿔 보는 두 가지 사진입니다.",
     "format": "transform",
@@ -81,6 +83,7 @@
     "lang": "ko",
     "wide": false,
     "id": "life-archive-box",
+    "signal": "now",
     "title": "내 삶을 담은 한 상자",
     "outcome": "내가 하는 일과 좋아하는 물건 네 가지를 한 상자에 담습니다.",
     "format": "archive",
@@ -106,6 +109,7 @@
   },
   {
     "id": "ham-stamps-v2",
+    "signal": "steady",
     "title": "내 얼굴로 하루 표정 12장",
     "subject": "ham",
     "format": "stamp",
@@ -132,6 +136,7 @@
   },
   {
     "id": "coco-stamps-v2",
+    "signal": "steady",
     "title": "우리 개 표정 12장",
     "subject": "coco",
     "format": "stamp",
@@ -157,6 +162,7 @@
   },
   {
     "id": "ham-replies",
+    "signal": "steady",
     "title": "내 얼굴로 답장 6장",
     "subject": "ham",
     "format": "reply",
@@ -182,6 +188,7 @@
   },
   {
     "id": "coco-replies",
+    "signal": "steady",
     "title": "우리 개 답장 6장",
     "subject": "coco",
     "format": "reply",
@@ -207,6 +214,7 @@
   },
   {
     "id": "ham-goodnight",
+    "signal": "classic",
     "title": "내 하루 끝을 네컷으로",
     "subject": "ham",
     "format": "four",
@@ -239,6 +247,7 @@
   },
   {
     "id": "coco-outing",
+    "signal": "classic",
     "title": "산책 가는 날을 네컷으로",
     "subject": "coco",
     "format": "four",
@@ -271,6 +280,7 @@
   },
   {
     "id": "ham-coco-pair",
+    "signal": "classic",
     "title": "나와 반려동물이 같이 나오는 네컷",
     "subject": "pair",
     "format": "four",
@@ -305,6 +315,7 @@
   },
   {
     "id": "ham-story",
+    "signal": "steady",
     "title": "예전 나와 지금 나를 한 장에",
     "format": "three",
     "photos": 2,
@@ -336,6 +347,7 @@
   },
   {
     "id": "coco-story",
+    "signal": "classic",
     "title": "우리 개 외출 준비를 세 컷으로",
     "format": "three",
     "photos": 3,
@@ -368,6 +380,7 @@
   },
   {
     "id": "concept-comparison",
+    "signal": "classic",
     "title": "사진 없이 3컷과 반응 만들기",
     "format": "three",
     "photos": 0,
