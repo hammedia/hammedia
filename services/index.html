@@ -50,7 +50,7 @@
       word-break: keep-all;
       overflow-wrap: anywhere;
     }
-    img { display: block; width: 100%; }
+    img { display: block; width: 100%; height: auto; }
     a { color: inherit; }
     button, input, textarea, select { font: inherit; }
     :focus-visible { outline: 3px solid var(--gold); outline-offset: 4px; }
@@ -150,15 +150,19 @@
     .archive-row p { margin: 0; color: #bcb6ab; font-size: .88rem; }
     .archive-row a { color: #fff; font-size: .83rem; text-underline-offset: 5px; }
 
-    .honesty { padding: 100px 0; color: #fff; background: var(--green); }
-    .honesty-grid { display: grid; grid-template-columns: minmax(0,.85fr) minmax(360px,.75fr); gap: 96px; align-items: center; }
-    .honesty .eyebrow { color: #e8c887; }
-    .honesty h2 { max-width: 700px; }
-    .honesty p { max-width: 690px; color: #d8e0da; }
-    .honest-record { padding: 32px; border: 1px solid rgba(255,255,255,.5); }
-    .honest-record small { color: #e8c887; font-weight: 800; letter-spacing: .09em; }
-    .honest-record blockquote { margin: 24px 0; font-family: Georgia, "Noto Serif KR", serif; font-size: 1.43rem; line-height: 1.45; }
-    .honest-record p { margin: 0; font-size: .85rem; }
+    .learning { padding: 100px 0; color: #fff; background: var(--green); }
+    .learning-grid { display: grid; grid-template-columns: minmax(0,.9fr) minmax(360px,.7fr); gap: 96px; align-items: center; }
+    .learning .eyebrow { color: #e8c887; }
+    .learning h2 { max-width: 740px; }
+    .learning-copy > p { max-width: 720px; color: #d8e0da; }
+    .learning-points { padding: 0; margin: 32px 0 0; list-style: none; border-top: 1px solid rgba(255,255,255,.38); }
+    .learning-points li { padding: 13px 0; border-bottom: 1px solid rgba(255,255,255,.38); }
+    .learning-site { background: #fff; color: var(--ink); }
+    .learning-site img { aspect-ratio: 16/11; object-fit: cover; object-position: center; }
+    .learning-site figcaption { padding: 26px 28px 30px; }
+    .learning-site small { display: block; margin-bottom: 8px; color: var(--green); font-weight: 800; letter-spacing: .08em; }
+    .learning-site strong { display: block; margin-bottom: 16px; font-size: 1.35rem; }
+    .learning-limit { margin: 26px 0 0; color: #d8e0da; font-size: .82rem; }
 
     .service { padding: 126px 0; }
     .service-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin-top: 58px; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink); }
@@ -199,7 +203,7 @@
       .feature-copy { padding: 46px 0 8px; }
       .archive-row { grid-template-columns: 135px 1fr auto; }
       .archive-row p { grid-column: 2 / 4; }
-      .honesty-grid { gap: 54px; }
+      .learning-grid { gap: 54px; }
       .owner-grid, .contact-grid { gap: 50px; }
     }
     @media (max-width: 760px) {
@@ -215,7 +219,7 @@
       .hero-visual { min-height: 470px; margin-inline: -15px; }
       .hero-caption { right: 14px; bottom: 14px; left: 14px; flex-direction: column; gap: 2px; }
       .work, .service { padding: 88px 0 94px; }
-      .section-head, .archive-head, .honesty-grid, .owner-grid, .contact-grid { grid-template-columns: 1fr; gap: 35px; }
+      .section-head, .archive-head, .learning-grid, .owner-grid, .contact-grid { grid-template-columns: 1fr; gap: 35px; }
       .section-head { margin-bottom: 45px; }
       .feature-gallery { min-height: 480px; grid-template-columns: 1fr .62fr; }
       .feature-copy { padding-top: 38px; }
@@ -226,8 +230,7 @@
       .archive-row { grid-template-columns: 1fr auto; gap: 8px 20px; }
       .archive-row small { grid-column: 1 / 3; }
       .archive-row p { grid-column: 1 / 3; }
-      .honesty { padding: 82px 0; }
-      .honest-record { padding: 25px 22px; }
+      .learning { padding: 82px 0; }
       .service-grid { grid-template-columns: 1fr; }
       .service-item, .service-item + .service-item { padding: 29px 0 32px; border-left: 0; border-bottom: 1px solid var(--line); }
       .service-item:last-child { border-bottom: 0; }
@@ -371,18 +374,28 @@
       </div>
     </section>
 
-    <section class="honesty" aria-labelledby="honesty-title">
-      <div class="shell honesty-grid">
-        <div>
-          <p class="eyebrow">ONE HONEST RECORD</p>
-          <h2 id="honesty-title">고객에게 맞지 않으면, 성공 사례로 만들지 않습니다.</h2>
-          <p>치과의 오래된 환자에게 연락하는 도구를 만들어 실제로 보냈습니다. 원장님은 기존 엑셀이 더 편하다고 답했습니다. 필요가 확인되지 않은 도구는 크게 만들지 않았고, 이 작업을 성과 사례로 부풀리지 않았습니다.</p>
+    <section class="learning" aria-labelledby="learning-title">
+      <div class="shell learning-grid">
+        <div class="learning-copy">
+          <p class="eyebrow">EDUCATION THAT STAYS</p>
+          <h2 id="learning-title">수업이 끝난 뒤, 원장님 손에 홈페이지와 방법이 남았습니다.</h2>
+          <p>이음턱편한치과 최문호 원장은 HAM MEDIA의 1:1 수업에서 AI와 대화하고, 일을 프로젝트로 나누고, 두 코딩 도구를 함께 쓰는 방법을 배웠습니다. 수업 뒤 맥북을 마련하고 Codex와 Claude Code로 자기 치과 홈페이지를 직접 만들어 공개했습니다.</p>
+          <p>원하는 방향을 업체에 설명하고 기다리는 대신, 자신의 생각을 AI에게 설명하고 바로 고칠 수 있게 됐습니다. 이후 병원 업무를 프로젝트로 정리하고 네이버 블로그 자동화까지 시도하며 스스로 할 수 있는 일을 넓혀갔습니다.</p>
+          <ul class="learning-points">
+            <li>AI 수업에서 배운 방법으로 홈페이지 직접 제작</li>
+            <li>원하는 내용과 방향을 본인이 계속 수정</li>
+            <li>병원 업무 정리와 블로그 운영으로 활용 범위 확대</li>
+          </ul>
+          <p class="learning-limit">후속으로 시험한 환자 연락 도구는 기존 엑셀이 더 편하다는 평가를 받아 확대하지 않았습니다. 교육의 결과와 개별 도구의 평가는 따로 봅니다.</p>
         </div>
-        <aside class="honest-record">
-          <small>치과 연락 업무 도구 · 실제 사용 의견</small>
-          <blockquote>“원래 쓰던 엑셀이 더 편하다.”</blockquote>
-          <p>만들었다는 사실과 고객에게 도움이 됐다는 판단은 다릅니다. HAM MEDIA는 둘을 구분해 기록합니다.</p>
-        </aside>
+        <figure class="learning-site">
+          <img src="https://eumtmj.co.kr/images/hero.jpg" alt="최문호 원장이 AI 수업 뒤 직접 만든 이음턱편한치과 홈페이지 화면의 대표 사진" width="2400" height="1600" loading="lazy">
+          <figcaption>
+            <small>완성된 실제 결과</small>
+            <strong>이음턱편한치과 공식 홈페이지</strong>
+            <a class="text-link" href="https://eumtmj.co.kr/" target="_blank" rel="noopener">원장님이 만든 홈페이지 보기 ↗</a>
+          </figcaption>
+        </figure>
       </div>
     </section>
 
