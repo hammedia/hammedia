@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>제철담은 마포바다 | 첫 달 결과와 다음 90일 제안</title>
+<style>
+:root{--navy:#102d35;--ocean:#0f6772;--sea:#47aeb1;--foam:#eef7f3;--paper:#fffdf7;--sand:#f4ead7;--gold:#c58f36;--ink:#14282d;--muted:#5f7073;--line:#d6e3df;--warn:#9a4a30;--warn-bg:#fff3eb;--ok:#207061;--future:#eef4ff;--future-line:#9eb7de}
+*{box-sizing:border-box} html{scroll-behavior:smooth}
+body{margin:0;background:#eaf1ef;color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;line-height:1.58;word-break:keep-all}
+main{width:min(880px,100%);max-width:100%;margin:auto;background:var(--paper);min-height:100vh;overflow-x:clip;box-shadow:0 22px 70px rgba(16,45,53,.12)}
+.draft{position:sticky;top:0;z-index:10;padding:7px 14px;background:#532f28;color:#fff3df;text-align:center;font-size:12px;letter-spacing:.03em}
+.hero{position:relative;isolation:isolate;min-height:500px;padding:54px 54px 40px;display:flex;flex-direction:column;justify-content:flex-end;color:white;overflow:hidden;background:var(--navy)}
+.hero:before{content:"";position:absolute;inset:0;z-index:-2;background:linear-gradient(180deg,rgba(5,25,31,.18),rgba(5,25,31,.94)),url("assets/photo_hero_모둠한상.jpg") center/cover}
+.hero:after{content:"";position:absolute;right:-110px;bottom:-145px;width:390px;height:390px;border:1px solid rgba(255,255,255,.22);border-radius:50%;box-shadow:0 0 0 34px rgba(255,255,255,.05),0 0 0 78px rgba(255,255,255,.035);z-index:-1}
+.brandbar{position:absolute;top:34px;left:54px;right:54px;display:flex;align-items:center;gap:12px;z-index:1}.brand{height:72px;min-width:108px;padding:8px 13px;border-radius:15px;background:rgba(255,255,255,.94);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,.12)}.brand img{display:block;max-height:58px;max-width:102px;object-fit:contain}.brand.client-logo{min-width:138px}.brand.client-logo img{max-width:126px}.brand-x{font-size:20px;font-weight:900;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.4)}
+.eyebrow{font-size:13px;font-weight:800;letter-spacing:.16em;color:#d7f3e8;text-transform:uppercase;margin-bottom:15px}
+h1{font-size:clamp(34px,6vw,57px);line-height:1.13;margin:0;letter-spacing:-.045em;max-width:760px}
+.hero .lead{font-size:clamp(17px,2.5vw,22px);max-width:710px;margin:22px 0 0;color:#e4efec}
+.candidate{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:25px;align-items:center;padding:22px 54px;background:#fff8e9;border-bottom:1px solid #e7d2ac}.candidate>*{min-width:0}.candidate .tag{font-size:12px;font-weight:850;letter-spacing:.08em;color:#88621f}.candidate strong{display:block;font-size:clamp(22px,3vw,27px);line-height:1.28;color:var(--navy);margin-top:4px;text-wrap:balance;overflow-wrap:anywhere}.candidate p{margin:0;font-size:14px;color:#665942}.candidate b{color:var(--ocean)}
+.supply{margin-top:6px;color:#665942;font-size:14px}.price-summary{margin-top:8px;color:#5e4b2d;font-size:16px}.price-summary b{font-size:18px;color:var(--navy)}.payment-detail{margin-top:8px;border:0;padding:0;color:#7a6b51}.payment-detail summary{font-size:12px;color:#665942}.payment-detail p{margin:5px 0 0!important;font-size:12px!important;line-height:1.55}
+.proofbar{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#bed0ca;border-bottom:1px solid #bed0ca}
+.proof{padding:25px 22px;background:var(--foam);min-height:132px}
+.proof strong{display:block;font-size:28px;line-height:1.1;color:var(--ocean);letter-spacing:-.04em}
+.proof span{display:block;margin-top:8px;font-size:14px;color:var(--muted)}
+.ledger-intro{padding:45px 54px 24px;background:#fff}.ledger-intro h2{margin-bottom:11px}.ledger-intro p{margin:0;color:var(--muted);font-size:17px}.ledger{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;padding:0 54px 50px;background:#fff}.ledger-card{border:1px solid var(--line);border-radius:18px;padding:23px 20px;background:#fff;box-shadow:0 8px 24px rgba(16,45,53,.06)}.ledger-card.zero{border:2px solid #d1a14c;background:#fffaf0}.ledger-card.extra{border:2px solid #4d9e91;background:#f2fbf8}.ledger-card .cap{display:inline-block;padding:4px 8px;border-radius:999px;background:var(--navy);color:#fff;font-size:11px;font-weight:850;letter-spacing:.05em}.ledger-card.zero .cap{background:#9b6b1d}.ledger-card.extra .cap{background:var(--ok)}.ledger-card h3{font-size:21px;line-height:1.25;margin:12px 0 9px}.ledger-card .money{font-weight:900;color:var(--ocean);margin-bottom:12px}.ledger-card ul{margin:0;padding-left:18px}.ledger-card li{margin:8px 0;font-size:14px}.ledger-card small{display:block;margin-top:13px;padding-top:12px;border-top:1px solid var(--line);color:var(--muted);line-height:1.5}.value-callout{margin:0 54px 50px;padding:22px 24px;border-radius:17px;background:var(--navy);color:#fff}.value-callout strong{display:block;color:#ffdfa5;font-size:21px;margin-bottom:7px}.value-callout p{margin:0;color:#e1edeb}.value-callout em{font-style:normal;color:#fff;font-weight:850}
+.market{margin:-28px 54px 46px;padding:17px 20px;border:1px solid var(--line);border-radius:14px;background:#f8faf9;color:var(--muted)}.market summary{color:var(--navy)}.market p{margin:12px 0 0;font-size:14px}.market b{color:var(--ocean)}
+.wrap{padding:50px 54px}.wrap+.wrap{border-top:1px solid var(--line)}
+.kicker{color:var(--ocean);font-size:13px;font-weight:850;letter-spacing:.11em;margin-bottom:8px}
+h2{font-size:clamp(27px,4vw,38px);line-height:1.25;letter-spacing:-.035em;margin:0 0 18px}
+.intro{font-size:18px;color:var(--muted);max-width:720px;margin:0 0 28px}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.evidence{border:1px solid var(--line);border-radius:17px;overflow:hidden;background:#fff}
+.evidence img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;object-position:center}
+.evidence .copy{padding:22px}.evidence h3{margin:0 0 8px;font-size:21px}.evidence p{margin:0;color:var(--muted);font-size:15px}
+.stamp{display:inline-flex;align-items:center;gap:6px;margin-top:14px;padding:5px 9px;border-radius:999px;background:var(--foam);color:var(--ok);font-size:12px;font-weight:800}
+.truth{display:grid;grid-template-columns:150px 1fr;gap:18px;padding:19px 0;border-bottom:1px solid var(--line)}
+.truth:last-child{border-bottom:0}.truth b{color:var(--ocean)}.truth p{margin:0}.truth small{display:block;margin-top:5px;color:var(--muted)}
+.flow{display:grid;grid-template-columns:repeat(5,1fr);gap:9px;margin-top:28px}
+.flow div{position:relative;padding:16px 12px;border-radius:14px;background:var(--foam);font-size:14px;font-weight:750;text-align:center}
+.flow div:not(:last-child):after{content:"→";position:absolute;right:-10px;top:50%;transform:translateY(-50%);z-index:2;color:var(--gold)}
+.offer{background:var(--navy);color:#fff;border-radius:24px;padding:34px;margin-top:26px;box-shadow:0 18px 42px rgba(16,45,53,.17)}
+.offer .label{color:#aee0d5;font-weight:800;font-size:13px;letter-spacing:.12em}.offer h3{font-size:34px;margin:7px 0 5px;letter-spacing:-.04em}.price{font-size:21px;color:#e6f3ef}.price strong{font-size:42px;color:white;letter-spacing:-.05em}.offer .promise{font-size:19px;color:#dcecea;max-width:680px;margin:22px 0}
+.four{display:grid;grid-template-columns:1fr 1fr;gap:12px}.four div{border:1px solid rgba(255,255,255,.17);border-radius:13px;padding:15px;background:rgba(255,255,255,.05)}.four b{display:block;color:#aee0d5;font-size:13px;margin-bottom:5px}.four p{margin:0;font-size:14px;color:#f1f7f5}
+.honest{margin-top:18px;padding:15px 17px;border-left:3px solid var(--gold);background:rgba(255,255,255,.07);color:#f5ead5;font-size:15px}
+.pilot{border:2px solid #9ac9bf;border-radius:24px;overflow:hidden;background:#f3fbf8}.pilot-head{padding:28px 30px;background:linear-gradient(135deg,#0f6772,#183c45);color:#fff}.pilot-head .kicker{color:#bce9df}.pilot-head h2{margin-bottom:10px}.pilot-head p{margin:0;color:#dfefec;font-size:17px}.pilot-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0}.pilot-step{padding:24px 21px;border-right:1px solid #c7dfd8}.pilot-step:last-child{border-right:0}.pilot-step b{color:var(--ocean);font-size:13px}.pilot-step h3{font-size:20px;margin:7px 0}.pilot-step p{margin:0;color:var(--muted);font-size:14px}.pilot-rules{padding:20px 24px;border-top:1px solid #c7dfd8;background:#fff}.pilot-rules p{margin:0;font-size:14px;color:var(--muted)}.pilot-rules strong{color:var(--ink)}.pilot-choice{padding:17px 24px;background:#e3f3ee;border-top:1px solid #b9d9cf;color:var(--ink);font-size:15px}.pilot-choice strong{color:var(--ocean)}
+.months{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:24px}.month{padding:20px;border:1px solid var(--future-line);background:var(--future);border-radius:15px}.month b{color:#355c91}.month h3{margin:7px 0 5px;font-size:20px}.month p{margin:0;color:#53647b;font-size:14px}
+.boundary{display:grid;grid-template-columns:1fr 1fr;gap:15px}.boundary>div{border-radius:16px;padding:22px}.ours{background:var(--foam);border:1px solid #b9d9cf}.client{background:var(--sand);border:1px solid #e0cba5}.boundary h3{margin:0 0 12px;font-size:19px}.boundary ul{margin:0;padding-left:19px}.boundary li{margin:8px 0}
+.unfinished{padding:22px;border:1px solid #efc7b6;background:var(--warn-bg);border-radius:16px}.unfinished h3{color:var(--warn);margin:0 0 10px}.unfinished p{margin:0}.unfinished ul{margin:12px 0 0;padding-left:19px}.unfinished li{margin:7px 0}
+.decision{padding:52px 54px 66px;background:linear-gradient(135deg,#0d5963,var(--navy));color:#fff;text-align:center}.decision h2{margin-bottom:13px}.decision p{max-width:680px;margin:0 auto;color:#d9e9e6;font-size:18px}.reply{margin:25px auto 0;max-width:600px;padding:17px 20px;background:#fff;color:var(--navy);border-radius:13px;font-weight:850;font-size:19px}.fine{margin-top:18px!important;font-size:13px!important;color:#bcd1cd!important}
+details{margin-top:24px;border-top:1px solid var(--line);padding-top:18px;color:var(--muted)}summary{cursor:pointer;font-weight:800;color:var(--ink)}details p{font-size:14px}
+@media(max-width:980px){.candidate{grid-template-columns:1fr;gap:12px}.candidate p{max-width:720px}}
+@media(max-width:720px){.hero{min-height:0;padding:126px 24px 32px}.hero h1{font-size:clamp(30px,9vw,42px)}.hero .lead{font-size:17px}.brandbar{top:27px;left:24px;right:24px}.brand{height:62px;min-width:92px;padding:7px 10px}.brand img{max-height:49px;max-width:86px}.brand.client-logo{min-width:115px}.brand.client-logo img{max-width:104px}.candidate{padding:21px 24px}.proofbar{grid-template-columns:1fr}.proof{min-height:auto}.ledger-intro{padding:38px 24px 20px}.ledger{grid-template-columns:1fr;padding:0 24px 38px}.value-callout{margin:0 24px 38px}.market{margin:-18px 24px 38px}.wrap{padding:38px 24px}.split,.four,.months,.boundary,.pilot-grid{grid-template-columns:1fr}.pilot-step{border-right:0;border-bottom:1px solid #c7dfd8}.pilot-step:last-child{border-bottom:0}.flow{grid-template-columns:1fr}.flow div:not(:last-child):after{content:"↓";right:auto;left:50%;top:auto;bottom:-17px;transform:translateX(-50%)}.truth{grid-template-columns:1fr;gap:4px}.offer{padding:26px 21px}.decision{padding:44px 24px 54px}}
+@media(max-width:420px){.hero{padding-top:118px}.brandbar{gap:7px}.brand-x{font-size:16px}.candidate strong{font-size:22px}.price-summary{font-size:15px}.price-summary b{font-size:17px}}
+</style>
+</head>
+<body>
+<main>
+  <div class="draft">고객 발송 전 내부 검토안 · 고객 답변과 햄 승인 뒤 추천가 확정</div>
+
+  <header class="hero">
+    <div class="brandbar" aria-label="햄미디어와 제철담은 마포바다">
+      <div class="brand"><img src="assets/ham-media-logo.png" alt="햄미디어 로고"></div>
+      <span class="brand-x">×</span>
+      <div class="brand client-logo"><img src="assets/마포바다-logo.png" alt="제철담은 마포바다 로고"></div>
+    </div>
+    <div class="eyebrow">첫 달 결과 · 다음 90일 제안</div>
+    <h1>첫 달, 대표님이 네이버와 매장에 집중하는 동안<br>햄미디어는 다른 온라인 채널의 빈틈을 찾아 처리했습니다.</h1>
+    <p class="lead">거부되어 보이지 않던 음식 사진을 다시 공개하고, 후기 36건에서 반복된 방문 이유를
+    찾아 Google 매장 소식에 반영했습니다.</p>
+  </header>
+
+  <section class="candidate" aria-label="고객 확인 뒤 확정할 추천 후보">
+    <div><span class="tag">고객 확인 뒤 확정할 추천 후보</span><strong>제철 방문이유 운영</strong>
+      <div class="supply">월 공급가 50만 원(VAT 별도) · 3개월 계약</div>
+      <div class="price-summary">실제 결제 <b>55만 원씩 3회</b> = 총 <b>165만 원</b></div>
+      <details class="payment-detail"><summary>계약기간과 3회 결제예정일</summary><p>계약기간 제안 2026.09.12~12.11<br>1회 09.17 · 2회 10.15 · 3회 11.17<br>각 세금계산서 발행 후 3영업일 이내 결제</p></details>
+    </div>
+    <p>대표님은 월 1회 현장 시간과 바뀐 매장 사실을 알려주시고 민감한 답변만 확인합니다.
+    <b>햄미디어는 합의한 채널의 기획·편집·게시·검색정보·공개 리뷰·월말 확인</b>을 맡습니다.</p>
+  </section>
+
+  <section class="ledger-intro">
+    <div class="kicker">첫 달 77만 원으로 무엇을 받으셨는지</div>
+    <h2>돈을 받은 일, 계약할 때 0원으로 약속한 일,<br>그 약속보다 더 한 일을 나눠 적었습니다.</h2>
+    <p>‘무료’와 ‘추가’를 섞지 않았습니다. 계약서에 처음부터 포함된 첫 달 이벤트는 약속대로 한 일이며, 계약서에 항목이 없거나 약속 수량을 넘긴 일만 추가 지원으로 구분했습니다.</p>
+  </section>
+  <section class="ledger" aria-label="첫 달 계약과 추가 작업 전수 대조">
+    <article class="ledger-card">
+      <span class="cap">유상 계약</span>
+      <h3>원래 책임지기로 한 일</h3>
+      <div class="money">VAT 포함 77만 원</div>
+      <ul>
+        <li><b>매장TV 영상</b> — 약속한 10~12분보다 긴 18분 4초 합본 제작·검수·전달</li>
+        <li><b>온라인 기본 운영</b> — 당근·카카오·네이버·Google·TMAP 등록·정보·오류 확인과 후속 처리</li>
+        <li><b>Google 공개 관리</b> — 사진 공개 복구, 리뷰 답글 2건, 매장 소식 1건</li>
+      </ul>
+      <small>두 TV 실제 재생과 일부 채널의 최종 공개 상태는 첫 계약의 남은 확인으로 별도 마감합니다.</small>
+    </article>
+    <article class="ledger-card zero">
+      <span class="cap">계약 때 합의한 0원</span>
+      <h3>첫 달 무료 이벤트로 약속한 일</h3>
+      <div class="money">첫 달 계약서 표시금액 0원</div>
+      <ul>
+        <li><b>홈페이지</b> — 한 페이지 개설 뒤 메뉴·사진·위치·영업정보 반영</li>
+        <li><b>Instagram</b> — 기존 계정 운영, 공개 비주얼 게시물 2건 확인</li>
+        <li><b>Threads</b> — 기존 계정 운영, 공개 게시물 3건 확인</li>
+        <li><b>매장 인쇄물</b> — 계약서에 약속한 POP 시안 1종 제작</li>
+      </ul>
+      <small>Instagram·Threads는 기존 계정을 햄미디어가 운영한 것입니다. 이 첫 달 0원 조건은 다음 계약에 자동으로 이어지거나 자동 유료전환되지 않습니다.</small>
+    </article>
+    <article class="ledger-card extra">
+      <span class="cap">약속보다 더 한 일</span>
+      <h3>계약서에 없거나 수량을 넘긴 지원</h3>
+      <div class="money">첫 달 별도 추가 청구 없음</div>
+      <ul>
+        <li><b>YouTube — 계약서에 없던 항목</b> — 공식 채널 개설, 소개·링크·배너 세팅</li>
+        <li><b>YouTube 실제 운영</b> — 본편 1편 + Shorts 4편 재생목록, 커뮤니티 글 1건</li>
+        <li><b>POP 약속 1종 → 실제 5종</b> — 약속보다 4종 더 제작</li>
+        <li><b>추가 편의물</b> — 고객 자료함, Wi-Fi·네이버 QR 안내물, 갈매기 호출음</li>
+      </ul>
+      <small>계약서에 없다고 모두 추가로 세지 않았습니다. 매장TV 공용 엔딩처럼 유상 결과물 제작에 필요한 일은 유상 계약 안에 남겼고, 공개되지 않은 후보물도 성과 수에서 뺐습니다.</small>
+    </article>
+  </section>
+  <div class="value-callout">
+    <strong>계약한 0원 이벤트는 약속대로, 약속보다 더 한 일은 따로 보이게 했습니다.</strong>
+    <p>홈페이지와 SNS 운영은 계약할 때 첫 달 0원으로 합의한 일입니다. YouTube 채널 개설·공개 운영과 POP 추가 4종 등은 <em>계약서에 항목이 없거나 약속 수량을 넘겼지만 첫 달에 별도 청구하지 않은 일</em>입니다.</p>
+  </div>
+  <details class="market">
+    <summary>외부업체 공개상품과 비교할 때의 기준</summary>
+    <p>같은 묶음의 상품은 없었습니다. 9월 14일 확인한 공개상품에는 트리플아이의 <b>플레이스 관리 월 30만 원 + VAT</b>(촬영·새 숏폼 없음), K시스터즈의 <b>SNS 운영 월 50만 원</b>(고객 원본 사용, 현장촬영 18만 원·출장비 별도), 기여하다의 <b>월 촬영 1회 + Reels 4편 + Instagram 운영 월 150만 원</b> 사례가 있었습니다. 범위가 달라 단순 합산하거나 ‘원래 가격’으로 주장하지 않고, 업무 범위를 비교하는 참고로만 봅니다.</p>
+  </details>
+
+  <section class="proofbar" aria-label="첫 달 핵심 증거">
+    <div class="proof"><strong>0 → 17장</strong><span>Google 지도 공개 음식 사진<br>9월 13일 실제 화면 확인</span></div>
+    <div class="proof"><strong>2건 게시</strong><span>Google 공개 리뷰 답글<br>작성 뒤 새로고침 확인</span></div>
+    <div class="proof"><strong>36건 → 2가지</strong><span>손님 후기를 읽어 찾은 강점<br>상판 서빙 · 전복내장죽</span></div>
+  </section>
+
+  <section class="wrap">
+    <div class="kicker">확인된 변화</div>
+    <h2>게시물을 늘리기 전에,<br>손님에게 안 보이거나 잘못 보이는 것부터 고쳤습니다.</h2>
+    <p class="intro">아래는 햄미디어가 만든 변화와 손님이 만든 반응을 섞지 않고, 실제로 확인된 범위만 적었습니다.</p>
+    <div class="split">
+      <article class="evidence">
+        <img src="assets/google-before-all-rejected.png" alt="Google 비즈니스 사진 거부 상태 화면">
+        <div class="copy">
+          <h3>등록 사진 7장 거부 → 공개 사진 17장</h3>
+          <p>거부 상태를 확인해 실제 음식 사진 5장을 다시 올렸고, 지도에서 사진 17장이 보이는 것까지 확인했습니다.</p>
+          <span class="stamp">햄미디어가 복구하고 공개 상태를 확인한 범위 · 9월 13일</span>
+        </div>
+      </article>
+      <article class="evidence">
+        <img src="assets/실제상차림.jpg" alt="제철담은 마포바다 실제 상차림">
+        <div class="copy">
+          <h3>후기 36건 → 손님이 말한 강점 2가지</h3>
+          <p>손님들이 반복해서 말한 ‘상판 서빙’과 ‘전복내장죽’을 추려 Google 매장 소식에 반영했습니다.</p>
+          <span class="stamp">손님 반응을 햄미디어가 정독·정리</span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="kicker">첫 달 햄미디어가 맡아 처리한 일</div>
+    <h2>만든 파일보다 중요한 것은,<br>햄미디어가 대신 처리한 반복 업무입니다.</h2>
+    <div class="truth"><b>오류와 반려 확인</b><p>각 플랫폼을 다시 열어 등록됐는지 확인하고, 거부되면 원인을 따라 다시 처리하는 일.<small>Google 사진 거부 확인·재등록·라이브 재확인</small></p></div>
+    <div class="truth"><b>손님 반응 정리</b><p>후기를 하나씩 읽고 다음에 무엇을 앞세울지 고르는 일.<small>블로그 후기 36건 전수 확인·공통 강점 추출</small></p></div>
+    <div class="truth"><b>공개 답글 작성</b><p>리뷰에 맞는 매장 답글을 쓰고 실제 게시까지 확인하는 일.<small>Google 리뷰 답글 2건 게시</small></p></div>
+    <div class="truth"><b>제작과 전달</b><p>매장TV 합본과 인쇄물 파일을 만들고 받을 곳에 정리하는 일.<small>18분 4초 영상 전달·인쇄 가능 파일 5종 확보, 실제 사용은 확인 중</small></p></div>
+  </section>
+
+  <section class="wrap">
+    <div class="kicker">햄미디어의 추천 후보</div>
+    <h2>한 번 찍고 끝나는 촬영이 아니라,<br>한 번의 현장을 한 달의 방문이유로 운영합니다.</h2>
+    <div class="flow" aria-label="한 달 운영 흐름">
+      <div>이번 달<br>방문이유 결정</div><div>현장 재료<br>한 번에 확보</div><div>4주 이야기로<br>기획·편집</div><div>맞는 채널에<br>실제 공개</div><div>반응 확인 뒤<br>다음 달 수정</div>
+    </div>
+
+    <div class="offer">
+      <div class="label">대표님이 콘텐츠 운영 전체를 맡기고 싶을 때의 추천안</div>
+      <h3>제철 방문이유 운영</h3>
+      <div class="price">위 추천가에 포함되는 책임</div>
+      <p class="promise">촬영 90분의 값이 아닙니다. 월 주제 선정부터 촬영·선별·편집·채널별 공개,
+      검색정보와 리뷰 확인, 월말의 다음 판단까지 한 흐름으로 책임지는 값입니다.</p>
+      <div class="four">
+        <div><b>대표님이 넘기는 부담</b><p>무엇을 말할지 정하고, 촬영물을 고르고, 편집·게시·반응을 매번 확인하는 전체 흐름</p></div>
+        <div><b>햄미디어가 책임질 상태</b><p>월 방문이유 4개 실제 공개, 검색정보·공개 리뷰 정돈, 월말 유지·수정 판단</p></div>
+        <div><b>대표님이 하실 최소 일</b><p>월 1회 현장 시간, 바뀐 메뉴·가격·영업사실 전달, 민감한 답변 확인</p></div>
+        <div><b>약속하지 않는 것</b><p>유료광고, 추가촬영·무제한 수정, 상시 예약응대, 매출·바이럴·검색순위 보장</p></div>
+      </div>
+      <div class="honest"><b>정보와 리뷰 관리만 필요하다면 50만 원 운영형은 권하지 않습니다.</b><br>
+      그 범위는 새 촬영·콘텐츠가 빠진 ‘검색 신뢰 관리’ 월 30만 원 + VAT가 맞습니다.</div>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="pilot">
+      <div class="pilot-head">
+        <div class="kicker">앞으로 이 금액에 더할 수 있는 일을 확인하는 창립고객 검토안</div>
+        <h2>세 가지를 기본 사용 가능하게 준비할 수 있는지 먼저 확인하고,<br>가장 불편한 한 가지의 집중 범위를 정하겠습니다.</h2>
+        <p>현재 확정된 추천가의 범위는 위 콘텐츠·검색·리뷰 운영입니다. 아래는 현재 시스템과 원가를 확인한 뒤 같은 금액에 더할 수 있는지 판단할 검토 영역이며, 아직 계약에 포함된 일은 아닙니다.</p>
+      </div>
+      <div class="pilot-grid">
+        <div class="pilot-step"><b>확인 영역 1</b><h3>POS 매출·주문 정리</h3><p>비개인 상품·일자 집계를 한 번 꺼내거나, 고객 제공 화면으로 주간 요약을 한 번 만들 수 있는지 확인합니다.</p></div>
+        <div class="pilot-step"><b>확인 영역 2</b><h3>예약 접수·확인</h3><p>기준 예약수단 한 곳에서 테스트 예약 1건을 접수·확인·매장전달·마감까지 통과할 수 있는지 확인합니다.</p></div>
+        <div class="pilot-step"><b>확인 영역 3</b><h3>근태 기록·월 정리</h3><p>직원 안내와 참여를 전제로 1명 이상이 출퇴근을 한 번 기록하고 대표님이 요약을 확인할 수 있는지 봅니다.</p></div>
+      </div>
+      <div class="pilot-rules"><p><strong>최종 계약에 포함하기로 확인된 경우, 서로에게 남는 실증으로 진행합니다.</strong> 시작할 때 현재 시간과 단계를 적고, 30일 안에 최소 흐름을 설정합니다. 60일까지 실제 업무에 두 번 이상 또는 2주 이상 써보고 한 번 고칩니다. 90일에는 대표님이 햄미디어 없이 한 번 다시 쓰는 것과 인계까지 확인합니다. 계정·원본 데이터는 대표님 소유이며, 햄미디어가 익명 사용결과를 학습에 남기는 것은 별도 동의를 받은 경우에만 합니다. 동의하지 않아도 서비스에는 불이익이 없습니다.</p></div>
+      <div class="pilot-choice"><strong>가능하면 세 가지는 각 1회 설정·시험·안내, 가장 불편한 한 가지는 집중 실증으로 제안합니다.</strong> 현재 제품·권한·직원 참여·외부비용과 햄미디어의 수행시간을 확인해 가능한 범위가 확인될 때만 최종 계약서에 넣습니다. <b>확인 전에는 이 가격에 포함된 확정 약속이 아닙니다.</b> 외부 서비스·기기·문자·유료 연동비는 금액을 먼저 보여드리고 승인받은 경우에만 별도입니다.</div>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="kicker">왜 90일인가</div>
+    <h2>묶어두기 위한 3개월이 아니라,<br>한 번 고쳐 보고 계속할 가치를 판단하는 한 주기입니다.</h2>
+    <div class="months">
+      <div class="month"><b>30일</b><h3>기준을 잡습니다</h3><p>채널 정보와 시작 수치를 남기고, 네 가지 방문이유가 실제 공개됐는지 확인합니다.</p></div>
+      <div class="month"><b>60일</b><h3>한 번 고칩니다</h3><p>어떤 이야기와 채널에 상대적 반응이 있었는지 보고 다음 달 한 가지를 조정합니다.</p></div>
+      <div class="month"><b>90일</b><h3>계속할지 판단합니다</h3><p>검색행동·콘텐츠 반응·문의 신호와 대표님이 덜 쓴 시간을 함께 보고 유지·축소·중단을 정합니다.</p></div>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="kicker">책임 경계</div>
+    <h2>대표님이 직접 맡을 판단과 햄미디어가 운영할 일을 분명히 나누겠습니다.</h2>
+    <p class="intro">대표님은 네이버 운영과 매장 사실·민감한 답변·계속 여부를 판단하고, 그 밖의 채널·편수·운영 순서는 햄미디어가 정해 결과로 설명합니다.</p>
+    <div class="boundary">
+      <div class="ours"><h3>햄미디어가 맡을 일</h3><ul><li>월 주제와 촬영 계획</li><li>선별·편집·게시·실제 공개 확인</li><li>합의한 검색정보와 공개 리뷰 점검</li><li>월말 결과와 다음 조치 한 장</li></ul></div>
+      <div class="client"><h3>대표님께 필요한 것</h3><ul><li>월 1회 촬영 가능한 시간</li><li>바뀐 메뉴·가격·영업시간</li><li>가격·알레르기·불편사항 같은 민감 답변</li><li>30·60·90일 결과를 보고 계속할지 판단</li></ul></div>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="unfinished">
+      <h3>첫 계약에 남은 확인은 새 비용으로 넘기지 않습니다.</h3>
+      <p>재계약 여부와 관계없이 햄미디어가 별도로 마감하겠습니다.</p>
+      <ul><li>햄미디어: 네이버·티맵을 포함한 채널 최종 상태와 빠진 보고·인계 대조</li><li>대표님: 18분 4초 영상의 두 TV 재생 여부와 바뀐 매장사실만 확인</li><li>발주표: 계약대로 실제 주문 두 번 사용까지 별도 확인</li></ul>
+    </div>
+    <details>
+      <summary>중단·외부비용·권한 상세</summary>
+      <p>자동연장은 없습니다. 다음 운영주기가 시작되기 전에 중단을 알리면 이후 회차 대금과 위약금은 청구하지 않습니다. 운영주기 도중 중단하면 이전 계약과 같이 이미 수행한 일과 취소할 수 없는 실비만 정산하고 남은 금액은 반환합니다. 햄미디어 책임으로 하지 못한 범위는 감액하거나 환불합니다. 외부 서비스 이용료·기기비·문자비·유료 연동비는 사전 승인한 경우에만 별도입니다. 새 POS·예약·근태 제품 전체를 개발하거나 상시 예약응대, 급여·노무·세무 판단까지 대신하는 것은 포함하지 않습니다. 매출·방문·검색순위는 보장하지 않고, 실제 확인할 수 있는 검색·전화·길찾기·사이트 클릭·반응·문의까지만 결과로 보고합니다.</p>
+    </details>
+  </section>
+
+  <section class="decision">
+    <div class="kicker" style="color:#aee0d5">다음 결정은 하나입니다</div>
+    <h2>대표님이 지금 가장 줄이고 싶은<br>운영 일 한 가지를 알려주세요.</h2>
+    <p>매장에서 반복되어 가장 시간이 많이 드는 일을 지금 하시는 방식 그대로 한 가지만 말씀해 주세요. 햄미디어가 현재 시스템을 확인한 뒤 가능한 방법 한 가지와 완료 기준을 제안하겠습니다.</p>
+    <div class="reply">“지금 가장 손이 많이 가는 일은<br>○○입니다.”</div>
+    <p class="fine">정보와 리뷰 관리만 필요하시거나 이미 대표님 팀에서 지속할 수 있다면, 더 큰 안은 권하지 않겠습니다.</p>
+  </section>
+</main>
+</body>
+</html>
