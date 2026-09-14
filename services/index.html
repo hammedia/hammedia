@@ -3,19 +3,19 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="color-scheme" content="light dark">
   <meta name="robots" content="index, follow">
-  <meta name="description" content="대표님의 경험과 사업을 고객이 이해하고 선택하고 다시 찾는 구조로 만듭니다. 한 번 완성하기, 매달 함께 운영하기, 회사 안에 설치하기의 범위와 가격 기준을 확인하세요.">
-  <title>함께 만드는 일 | HAM MEDIA</title>
+  <meta name="theme-color" content="#f2dd31">
+  <meta name="description" content="영상이 멈췄든 홈페이지가 길을 잃었든 회사 일이 자꾸 손으로 돌아오든, HAM MEDIA 작업대에 올려보세요. 단건 제작, 월간 운영, AI 업무환경과 작은 ERP의 범위와 가격 기준을 확인할 수 있습니다.">
+  <title>일단 작업대에 올려보세요 | HAM MEDIA</title>
   <link rel="canonical" href="https://hammedia.co.kr/services/">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://hammedia.co.kr/services/">
-  <meta property="og:title" content="함께 만드는 일 | HAM MEDIA">
-  <meta property="og:description" content="영상 한 편부터 월간 운영, AI 업무환경과 작은 ERP까지. 필요한 결과와 맡길 범위를 세 가지 방식으로 확인하세요.">
+  <meta property="og:title" content="일단 작업대에 올려보세요 | HAM MEDIA">
+  <meta property="og:description" content="영상, 홈페이지, 반복업무. 어디가 막혔는지부터 듣고 한 번 완성할지, 매달 굴릴지, 회사 안에 설치할지 나눕니다.">
   <meta property="og:image" content="https://hammedia.co.kr/ham-media-homepage-og-20260601.jpg">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="함께 만드는 일 | HAM MEDIA">
-  <meta name="twitter:description" content="대표님의 경험과 사업을 고객이 이해하고 선택하고 다시 찾는 구조로 만듭니다.">
+  <meta name="twitter:title" content="일단 작업대에 올려보세요 | HAM MEDIA">
+  <meta name="twitter:description" content="영상, 홈페이지, 반복업무. 이름보다 어디가 막혔는지부터 듣습니다.">
   <meta name="twitter:image" content="https://hammedia.co.kr/ham-media-homepage-og-20260601.jpg">
   <script>document.documentElement.classList.add('js');</script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-TEBKMGWPQS"></script>
@@ -27,428 +27,396 @@
   </script>
   <style>
     :root {
-      --ivory: #f9f7f3;
-      --deep-ivory: #efebe3;
-      --paper: #fffdf8;
-      --ink: #171410;
-      --ink-2: #26211c;
-      --muted: #665e56;
-      --line: rgba(28, 24, 20, .18);
-      --sky: #7eb5e8;
-      --sky-bright: #a8d8ff;
-      --yellow: #f4dc59;
-      --green: #00704a;
-      --green-dark: #00583b;
-      --max: 1240px;
-      --radius: 22px;
-      --shadow: 0 30px 100px rgba(22, 18, 14, .16);
+      --paper: #f6f0df;
+      --paper-2: #fffaf0;
+      --ink: #151411;
+      --faded: #625e53;
+      --yellow: #f2dd31;
+      --blue: #90c8eb;
+      --red: #d9392b;
+      --green: #086c4b;
+      --rule: rgba(21,20,17,.25);
+      --max: 1320px;
     }
     * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; background: var(--ivory); }
+    html { scroll-behavior: smooth; background: var(--paper); }
     body {
-      margin: 0; color: var(--ink); background: var(--ivory);
-      font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Noto Sans KR", "Segoe UI", sans-serif;
-      line-height: 1.6; word-break: keep-all; overflow-wrap: anywhere;
+      margin: 0; color: var(--ink); background: var(--paper);
+      font-family: "Arial Narrow", "Pretendard", -apple-system, BlinkMacSystemFont, "Noto Sans KR", sans-serif;
+      line-height: 1.55; word-break: keep-all; overflow-wrap: anywhere;
     }
     img { display: block; max-width: 100%; }
+    [hidden] { display: none !important; }
+    html:not(.js) [data-job][hidden] { display: grid !important; }
     a { color: inherit; }
     button, input, textarea, select { font: inherit; }
     button, a { -webkit-tap-highlight-color: transparent; }
-    :focus-visible { outline: 3px solid var(--yellow); outline-offset: 4px; }
-    .shell { width: min(calc(100% - 40px), var(--max)); margin-inline: auto; }
+    :focus-visible { outline: 4px solid var(--blue); outline-offset: 4px; }
+    .shell { width: min(calc(100% - 48px), var(--max)); margin-inline: auto; }
     .skip {
       position: fixed; left: 12px; top: 12px; z-index: 1000; transform: translateY(-180%);
-      padding: 11px 15px; border-radius: 10px; color: var(--ink); background: var(--yellow); font-weight: 900;
+      padding: 10px 14px; color: #fff; background: var(--green); font-weight: 900;
     }
     .skip:focus { transform: none; }
-    .site-head {
-      position: absolute; inset: 0 0 auto; z-index: 50; display: flex; align-items: center;
-      justify-content: space-between; gap: 24px; width: min(calc(100% - 40px), var(--max));
-      margin-inline: auto; padding: 24px 0; color: var(--ivory);
+    .masthead {
+      position: absolute; inset: 0 0 auto; z-index: 30; display: flex; align-items: center;
+      justify-content: space-between; gap: 24px; width: min(calc(100% - 48px), var(--max));
+      margin-inline: auto; padding: 22px 0; border-bottom: 1px solid rgba(255,255,255,.42); color: #fff;
     }
-    .brand { text-decoration: none; font-weight: 950; letter-spacing: .16em; font-size: .84rem; }
-    .head-nav { display: flex; align-items: center; gap: 23px; font-size: .88rem; font-weight: 800; }
-    .head-nav a { color: #e7e0d6; text-decoration: none; }
-    .head-nav a:hover { color: #fff; }
-    .head-nav .head-cta { color: var(--ink); background: var(--yellow); padding: 10px 15px; border-radius: 999px; }
-    .hero {
-      position: relative; min-height: 860px; display: grid; align-items: center; overflow: hidden;
-      color: var(--ivory); background: var(--ink); isolation: isolate;
-    }
-    .hero::before {
-      position: absolute; inset: -20%; z-index: -3; content: "";
-      background:
-        radial-gradient(circle at 78% 20%, rgba(126, 181, 232, .34), transparent 23%),
-        radial-gradient(circle at 12% 90%, rgba(204, 0, 0, .17), transparent 24%),
-        radial-gradient(circle at 63% 84%, rgba(244, 220, 89, .18), transparent 25%);
-      animation: atmosphere 16s ease-in-out infinite alternate;
-    }
-    .hero::after {
-      position: absolute; inset: 0; z-index: -2; content: ""; pointer-events: none; opacity: .23;
-      background-image: linear-gradient(rgba(255,255,255,.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.08) 1px, transparent 1px);
-      background-size: 64px 64px; mask-image: linear-gradient(to bottom, #000, transparent 88%);
-    }
-    @keyframes atmosphere { to { transform: translate3d(-3%, 2%, 0) scale(1.06); } }
-    .hero-grid {
-      display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(360px, .95fr);
-      gap: 64px; align-items: center; padding: 150px 0 100px;
-    }
-    .eyebrow {
-      display: inline-flex; align-items: center; gap: 11px; margin: 0 0 22px;
-      color: var(--sky-bright); font-size: .75rem; font-weight: 900; letter-spacing: .14em; text-transform: uppercase;
-    }
-    .eyebrow::before { width: 36px; height: 4px; border-radius: 99px; background: currentColor; content: ""; }
+    .brand { text-decoration: none; font-weight: 1000; letter-spacing: .17em; font-size: .83rem; }
+    .mast-nav { display: flex; align-items: center; gap: 22px; font-size: .82rem; font-weight: 900; }
+    .mast-nav a { text-decoration: none; }
+    .mast-nav .call { padding: 8px 12px; color: var(--ink); background: var(--yellow); transform: rotate(-1deg); }
+
+    /* SCENE 1 — the real workbench */
+    .workbench { position: relative; min-height: 900px; overflow: hidden; color: #fff; background: #0e0e0d; isolation: isolate; }
+    .bench-photo { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; object-position: 58% 50%; filter: saturate(.72) contrast(1.08); }
+    .workbench::after { position: absolute; inset: 0; z-index: -1; content: ""; background: linear-gradient(90deg, rgba(4,4,3,.96) 0%, rgba(4,4,3,.78) 40%, rgba(4,4,3,.18) 72%, rgba(4,4,3,.42) 100%); }
+    .bench-grid { display: grid; grid-template-columns: minmax(0, 1fr) 420px; gap: 70px; align-items: end; min-height: 900px; padding: 150px 0 92px; }
+    .open-sign { display: inline-block; margin: 0 0 24px; padding: 7px 11px 5px; color: var(--ink); background: var(--blue); font-size: .72rem; font-weight: 1000; letter-spacing: .12em; transform: rotate(-1.5deg); }
     h1, h2, h3, p { margin-top: 0; }
-    h1 { max-width: 800px; margin-bottom: 28px; font-size: clamp(3.25rem, 7.4vw, 7.15rem); line-height: .89; letter-spacing: -.075em; }
-    .hero-line { display: block; }
-    .hero-line.signal { color: var(--yellow); }
-    .hero-lead { max-width: 680px; margin-bottom: 34px; color: #d6cec4; font-size: clamp(1.06rem, 2vw, 1.28rem); }
-    .hero-actions, .mode-actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
-    .btn {
-      display: inline-flex; min-height: 50px; align-items: center; justify-content: center; gap: 10px;
-      padding: 13px 20px; border: 1px solid transparent; border-radius: 14px;
-      text-decoration: none; font-weight: 900; cursor: pointer;
-      transition: transform .2s ease, background-color .2s ease, border-color .2s ease, color .2s ease;
+    h1 { max-width: 850px; margin-bottom: 28px; font-size: clamp(3.7rem, 8vw, 8rem); line-height: .94; letter-spacing: -.08em; }
+    h1 span { display: block; }
+    h1 .odd { margin-left: .54em; color: var(--yellow); font-family: Georgia, "Noto Serif KR", serif; font-style: italic; font-weight: 700; letter-spacing: -.09em; }
+    .bench-lead { max-width: 650px; margin-bottom: 30px; font-size: clamp(1.04rem, 1.8vw, 1.3rem); color: #eee8dc; }
+    .bench-lead strong { color: var(--yellow); }
+    .rough-btn {
+      display: inline-flex; min-height: 50px; align-items: center; justify-content: center; gap: 12px;
+      padding: 12px 18px 10px; border: 2px solid var(--ink); color: var(--ink); background: var(--yellow);
+      text-decoration: none; font-weight: 1000; box-shadow: 5px 5px 0 var(--ink); transform: rotate(-.5deg);
+      transition: transform .15s ease, box-shadow .15s ease;
     }
-    .btn:hover { transform: translateY(-2px); }
-    .btn-primary { color: #fff; background: var(--green); }
-    .btn-primary:hover { background: var(--green-dark); }
-    .btn-signal { color: var(--ink); background: var(--yellow); }
-    .btn-ghost { color: #fff; border-color: rgba(255,255,255,.38); background: rgba(255,255,255,.05); }
-    .btn-light { color: var(--ink); border-color: var(--line); background: var(--paper); }
-    .hero-note { margin: 17px 0 0; color: #aaa197; font-size: .84rem; }
-    .work-stage { position: relative; min-height: 590px; perspective: 1200px; }
-    .stage-card {
-      position: absolute; overflow: hidden; border: 1px solid rgba(255,255,255,.22);
-      border-radius: 20px; background: #2a2520; box-shadow: 0 32px 80px rgba(0,0,0,.42);
+    .rough-btn:hover { transform: translate(2px, 2px) rotate(0); box-shadow: 2px 2px 0 var(--ink); }
+    .rough-btn.dark { color: #fff; background: var(--green); border-color: #fff; box-shadow: 5px 5px 0 #fff; }
+    .bench-small { margin: 18px 0 0; color: #bdb6a9; font-size: .83rem; }
+    .bench-small::before { content: "※ "; color: var(--yellow); }
+    .desk-note { align-self: center; position: relative; padding: 35px 31px 42px; color: var(--ink); background: var(--paper-2); transform: rotate(2.4deg); box-shadow: 14px 18px 0 rgba(0,0,0,.36); }
+    .desk-note::before { position: absolute; top: -14px; left: 38%; width: 98px; height: 30px; content: ""; background: rgba(144,200,235,.8); transform: rotate(-5deg); }
+    .desk-note b { display: block; padding-bottom: 10px; border-bottom: 3px double var(--ink); font-size: .8rem; letter-spacing: .12em; }
+    .desk-note p { margin: 24px 0 0; font-family: Georgia, "Noto Serif KR", serif; font-size: 1.3rem; line-height: 1.45; }
+    .desk-note em { display: block; margin-top: 24px; color: var(--red); font-size: .86rem; font-style: normal; font-weight: 1000; transform: rotate(-2deg); }
+    .side-label { position: absolute; right: 16px; bottom: 20px; writing-mode: vertical-rl; color: rgba(255,255,255,.6); font-size: .66rem; font-weight: 900; letter-spacing: .16em; }
+
+    /* hinge between scenes */
+    .inventory { border-block: 3px solid var(--ink); background: var(--blue); }
+    .inventory .shell { display: grid; grid-template-columns: repeat(4, 1fr); }
+    .inventory span { padding: 13px 18px; border-right: 1px solid var(--ink); text-align: center; font-size: .75rem; font-weight: 1000; letter-spacing: .06em; }
+    .inventory span:first-child { border-left: 1px solid var(--ink); }
+
+    /* SCENE 2 — intake counter */
+    .intake { padding: 126px 0 138px; background-color: var(--paper); background-image: linear-gradient(var(--rule) 1px, transparent 1px); background-size: 100% 34px; }
+    .scene-heading { display: grid; grid-template-columns: 210px 1fr; gap: 28px; align-items: start; margin-bottom: 66px; }
+    .scene-number { display: inline-block; width: max-content; padding: 8px 12px; color: #fff; background: var(--red); font-size: .75rem; font-weight: 1000; letter-spacing: .12em; transform: rotate(-2deg); }
+    h2 { max-width: 900px; margin-bottom: 18px; font-size: clamp(2.8rem, 6.2vw, 6.3rem); line-height: .91; letter-spacing: -.075em; }
+    .scene-intro { max-width: 690px; color: var(--faded); font-size: 1.06rem; }
+    .tickets { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; align-items: start; }
+    .ticket {
+      position: relative; min-height: 366px; padding: 27px 25px 34px; border: 2px solid var(--ink); color: var(--ink); background: var(--paper-2);
+      text-align: left; cursor: pointer; box-shadow: 7px 7px 0 var(--ink); transition: transform .15s ease, background-color .15s ease;
     }
-    .stage-card img { width: 100%; height: 100%; object-fit: cover; }
-    .stage-card::after { position: absolute; inset: 0; content: ""; background: linear-gradient(to top, rgba(0,0,0,.55), transparent 48%); }
-    .stage-main { inset: 38px 18px 90px 72px; transform: rotate(2.5deg); animation: float-main 6s ease-in-out infinite; }
-    .stage-side { width: 48%; height: 46%; right: -5%; bottom: 24px; transform: rotate(-6deg); animation: float-side 7s ease-in-out infinite; }
-    .stage-face { width: 40%; height: 50%; left: 0; bottom: 0; transform: rotate(5deg); animation: float-face 8s ease-in-out infinite; }
-    .stage-label {
-      position: absolute; left: 16px; bottom: 14px; z-index: 2; padding: 7px 10px; border-radius: 8px;
-      color: var(--ink); background: var(--yellow); font-size: .72rem; font-weight: 950; letter-spacing: .05em;
-    }
-    .stage-stamp {
-      position: absolute; right: 4px; top: 0; z-index: 5; width: 126px; aspect-ratio: 1;
-      display: grid; place-items: center; padding: 16px; border-radius: 50%; color: var(--ink);
-      background: var(--sky-bright); font-weight: 950; text-align: center; line-height: 1.15;
-      transform: rotate(8deg); animation: stamp 12s linear infinite;
-    }
-    @keyframes float-main { 50% { transform: rotate(.5deg) translateY(-10px); } }
-    @keyframes float-side { 50% { transform: rotate(-3deg) translateY(9px); } }
-    @keyframes float-face { 50% { transform: rotate(2deg) translateY(-7px); } }
-    @keyframes stamp { 50% { transform: rotate(-4deg); } }
-    .ticker { overflow: hidden; color: var(--ink); background: var(--yellow); border-block: 1px solid var(--ink); }
-    .ticker-track {
-      display: flex; width: max-content; padding: 14px 0; font-size: .8rem;
-      font-weight: 950; letter-spacing: .1em; text-transform: uppercase; animation: ticker 24s linear infinite;
-    }
-    .ticker-track span { padding-right: 42px; }
-    @keyframes ticker { to { transform: translateX(-50%); } }
-    section { padding: 118px 0; }
-    .section-head { max-width: 850px; margin-bottom: 54px; }
-    .section-head .eyebrow { color: #2b70aa; }
-    h2 { margin-bottom: 18px; font-size: clamp(2.2rem, 5vw, 4.7rem); line-height: .98; letter-spacing: -.057em; }
-    .section-lead { max-width: 720px; color: var(--muted); font-size: clamp(1rem, 1.8vw, 1.18rem); }
-    .outcomes { background: var(--ivory); }
-    .outcome-list { border-top: 2px solid var(--ink); }
-    .outcome {
-      display: grid; grid-template-columns: 110px minmax(220px, .72fr) 1.2fr;
-      gap: 34px; align-items: start; padding: 37px 0; border-bottom: 1px solid var(--line);
-    }
-    .outcome-n { color: #2b70aa; font-size: .78rem; font-weight: 950; letter-spacing: .11em; }
-    .outcome h3 { margin: 0; font-size: clamp(1.65rem, 3vw, 2.8rem); line-height: 1.02; letter-spacing: -.045em; }
-    .outcome p { margin: 0; color: var(--muted); font-size: 1.04rem; }
-    .outcome:hover h3 { color: #1767aa; }
-    .proof-scene { color: var(--ivory); background: var(--ink); }
-    .proof-scene .section-head .eyebrow { color: var(--yellow); }
-    .proof-scene .section-lead { color: #bbb2a7; }
-    .proof-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 20px; }
-    .proof-card {
-      position: relative; min-height: 370px; overflow: hidden; border: 1px solid rgba(255,255,255,.17);
-      border-radius: var(--radius); background: var(--ink-2);
-    }
-    .proof-card.feature { grid-row: span 2; min-height: 760px; }
-    .proof-card img { width: 100%; height: 100%; object-fit: cover; filter: saturate(.9) contrast(1.04); transition: transform .7s ease; }
-    .proof-card:hover img { transform: scale(1.035); }
-    .proof-copy {
-      position: absolute; inset: auto 0 0; z-index: 2; padding: 34px;
-      background: linear-gradient(to top, rgba(10,9,8,.98), rgba(10,9,8,.68) 62%, transparent);
-    }
-    .proof-copy small { color: var(--sky-bright); font-weight: 900; letter-spacing: .07em; }
-    .proof-copy h3 { max-width: 550px; margin: 8px 0 7px; font-size: clamp(1.35rem, 2.5vw, 2.35rem); line-height: 1.1; }
-    .proof-copy p { margin: 0 0 10px; color: #d2c9bd; }
-    .proof-copy a { color: var(--yellow); font-weight: 900; text-underline-offset: 4px; }
-    .modes { background: var(--deep-ivory); }
-    .mode-tabs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 18px; }
-    .mode-tab {
-      min-height: 96px; padding: 20px; text-align: left; color: var(--ink);
-      border: 1px solid var(--line); border-radius: 16px; background: rgba(255,253,248,.68); cursor: pointer;
-    }
-    .mode-tab span { display: block; margin-bottom: 7px; color: #2b70aa; font-size: .72rem; font-weight: 950; letter-spacing: .09em; }
-    .mode-tab strong { font-size: 1.08rem; }
-    .mode-tab[aria-selected="true"] { color: var(--ivory); border-color: var(--ink); background: var(--ink); box-shadow: var(--shadow); }
-    .mode-tab[aria-selected="true"] span { color: var(--yellow); }
-    .mode-panel {
-      display: none; grid-template-columns: minmax(260px, .72fr) 1.28fr; gap: 56px;
-      padding: 50px; border: 1px solid var(--line); border-radius: 26px; background: var(--paper); box-shadow: var(--shadow);
-    }
-    .mode-panel.active { display: grid; }
-    .mode-kicker { color: #2b70aa; font-size: .78rem; font-weight: 950; letter-spacing: .09em; }
-    .mode-panel h3 { margin: 10px 0 12px; font-size: clamp(2rem, 4vw, 3.7rem); line-height: .98; letter-spacing: -.055em; }
-    .mode-price { margin: 24px 0 0; padding-top: 21px; border-top: 2px solid var(--ink); }
-    .mode-price b { display: block; font-size: 1.26rem; }
-    .mode-price span { display: block; color: var(--muted); font-size: .88rem; }
-    .mode-detail { display: grid; grid-template-columns: 1fr 1fr; margin: 0; border-top: 1px solid var(--line); }
-    .mode-detail div { padding: 21px 22px 21px 0; border-bottom: 1px solid var(--line); }
-    .mode-detail div:nth-child(even) { padding-left: 22px; border-left: 1px solid var(--line); }
-    .mode-detail dt { margin-bottom: 6px; color: #2b70aa; font-size: .75rem; font-weight: 950; }
-    .mode-detail dd { margin: 0; color: var(--muted); }
-    .mode-actions { margin-top: 28px; }
-    .price-method { background: var(--ivory); }
-    .price-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: 64px; align-items: start; }
-    .quote-sheet { padding: 36px; border-radius: 24px; color: var(--ivory); background: var(--ink); box-shadow: var(--shadow); }
-    .quote-sheet h3 { margin-bottom: 8px; font-size: 1.55rem; }
-    .quote-sheet > p { color: #bbb2a7; }
-    .quote-lines { list-style: none; padding: 0; margin: 27px 0 0; counter-reset: quote; }
-    .quote-lines li { counter-increment: quote; display: grid; grid-template-columns: 34px 1fr; gap: 12px; padding: 13px 0; border-top: 1px solid rgba(255,255,255,.15); }
-    .quote-lines li::before { content: counter(quote, decimal-leading-zero); color: var(--sky-bright); font-weight: 950; font-size: .76rem; }
-    .boundary-list { display: grid; gap: 14px; margin-top: 32px; }
-    .boundary { padding: 20px 0; border-top: 1px solid var(--line); }
-    .boundary strong { display: block; margin-bottom: 5px; }
-    .boundary p { margin: 0; color: var(--muted); }
-    .owner { padding-top: 0; background: var(--ivory); }
-    .owner-card { display: grid; grid-template-columns: minmax(220px, .7fr) 1.3fr; overflow: hidden; border-radius: 28px; background: var(--sky); box-shadow: var(--shadow); }
-    .owner-card img { width: 100%; height: 100%; min-height: 520px; object-fit: cover; }
-    .owner-copy { align-self: center; padding: 60px; }
-    .owner-sign { margin-bottom: 13px; font-size: .78rem; font-weight: 950; letter-spacing: .1em; }
-    .owner-copy h2 { font-size: clamp(2.2rem, 4.6vw, 4.6rem); }
-    .owner-copy p { max-width: 650px; color: #213543; font-size: 1.05rem; }
-    .contact { color: var(--ivory); background: var(--ink); }
-    .contact-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 66px; align-items: start; }
-    .contact .section-head .eyebrow { color: var(--yellow); }
-    .contact .section-lead { color: #bbb2a7; }
-    .selected-summary { margin: 26px 0; padding: 21px; border-left: 4px solid var(--yellow); background: rgba(255,255,255,.06); }
-    .selected-summary small, .selected-summary strong, .selected-summary span { display: block; }
-    .selected-summary small { color: var(--sky-bright); font-weight: 900; }
-    .selected-summary strong { margin: 5px 0; font-size: 1.12rem; }
-    .selected-summary span { color: #bbb2a7; font-size: .88rem; }
-    .contact-alt { color: #bbb2a7; font-size: .88rem; }
-    .contact-alt a { color: #fff; }
-    .tally-wrap { min-height: 560px; padding: 14px; border-radius: 22px; background: #fff; }
-    .tally-wrap iframe { display: block; width: 100%; min-height: 540px; border: 0; }
-    .faq { background: var(--paper); }
-    .faq-list { max-width: 920px; border-top: 2px solid var(--ink); }
-    details { border-bottom: 1px solid var(--line); }
-    summary { position: relative; padding: 23px 50px 23px 0; cursor: pointer; font-weight: 900; list-style: none; }
+    .ticket:nth-child(2) { transform: translateY(24px) rotate(.6deg); }
+    .ticket:nth-child(3) { transform: rotate(-.7deg); }
+    .ticket:hover { background: #fff; transform: translateY(-3px); }
+    .ticket:nth-child(2):hover { transform: translateY(19px) rotate(0); }
+    .ticket[aria-selected="true"] { color: var(--ink); background: var(--yellow); }
+    .ticket[aria-selected="true"]::after { position: absolute; right: 18px; top: 15px; content: "접수"; padding: 6px 5px; border: 3px solid var(--red); border-radius: 50%; color: var(--red); font-weight: 1000; transform: rotate(13deg); }
+    .ticket-no { display: block; margin-bottom: 64px; font: 700 .75rem/1.1 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .08em; }
+    .ticket h3 { margin-bottom: 16px; font-size: clamp(1.7rem, 2.7vw, 2.75rem); line-height: 1.05; letter-spacing: -.05em; }
+    .ticket p { margin-bottom: 0; color: #514d44; }
+    .ticket-price { display: block; margin-top: 24px; padding-top: 14px; border-top: 1px dashed var(--ink); font-size: .92rem; font-weight: 1000; }
+    .counter { display: grid; grid-template-columns: 42% 58%; margin-top: 82px; border: 3px solid var(--ink); background: var(--paper-2); box-shadow: 12px 12px 0 var(--ink); }
+    .counter-photo { position: relative; min-height: 620px; overflow: hidden; border-right: 3px solid var(--ink); background: #28231d; }
+    .counter-photo img { width: 100%; height: 100%; object-fit: cover; }
+    .counter-photo figcaption { position: absolute; inset: auto 14px 14px; padding: 9px 11px; color: #fff; background: var(--ink); font-size: .72rem; font-weight: 900; }
+    .counter-panel { padding: 43px 44px 38px; }
+    .panel-kicker { display: inline-block; margin-bottom: 16px; padding: 5px 8px; color: #fff; background: var(--green); font-size: .72rem; font-weight: 1000; }
+    .counter-panel h3 { margin-bottom: 12px; font-size: clamp(2rem, 4.1vw, 4.1rem); line-height: .95; letter-spacing: -.06em; }
+    .panel-answer { max-width: 620px; color: var(--faded); }
+    .job-lines { display: grid; grid-template-columns: 1fr 1fr; margin: 30px 0; border-top: 2px solid var(--ink); }
+    .job-lines div { padding: 17px 18px 18px 0; border-bottom: 1px solid var(--rule); }
+    .job-lines div:nth-child(even) { padding-left: 18px; border-left: 1px solid var(--rule); }
+    .job-lines dt { margin-bottom: 5px; color: var(--red); font-size: .72rem; font-weight: 1000; letter-spacing: .08em; }
+    .job-lines dd { margin: 0; color: #4d493f; font-size: .92rem; }
+    .panel-actions { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+    .text-link { font-weight: 1000; text-underline-offset: 5px; }
+
+    /* SCENE 3 — the receipt */
+    .receipt-scene { position: relative; overflow: hidden; padding: 134px 0; color: #fff; background: #11100e; }
+    .receipt-scene::before { position: absolute; inset: 0; content: ""; opacity: .13; background-image: radial-gradient(#fff 1px, transparent 1px); background-size: 8px 8px; }
+    .receipt-layout { position: relative; display: grid; grid-template-columns: minmax(0,.85fr) minmax(400px,.75fr); gap: 100px; align-items: center; }
+    .receipt-copy h2 { color: var(--yellow); }
+    .receipt-copy p { max-width: 640px; color: #c8c0b3; font-size: 1.06rem; }
+    .honest-note { display: grid; grid-template-columns: 116px 1fr; gap: 19px; align-items: center; margin-top: 42px; padding-top: 26px; border-top: 1px solid #655f55; }
+    .honest-note img { width: 116px; height: 116px; object-fit: cover; border: 2px solid #fff; transform: rotate(-4deg); }
+    .honest-note strong { display: block; margin-bottom: 4px; color: var(--blue); }
+    .honest-note span { color: #b8b0a4; font-size: .9rem; }
+    .receipt { position: relative; padding: 46px 38px 66px; color: var(--ink); background: var(--paper-2); box-shadow: 18px 20px 0 var(--yellow); transform: rotate(1.2deg); }
+    .receipt::before, .receipt::after { position: absolute; left: 0; width: 100%; height: 14px; content: ""; background: linear-gradient(135deg, transparent 9px, var(--paper-2) 0) 0 0/18px 18px repeat-x; }
+    .receipt::before { top: -13px; }
+    .receipt::after { bottom: -13px; transform: rotate(180deg); }
+    .receipt-head { display: flex; justify-content: space-between; gap: 18px; padding-bottom: 18px; border-bottom: 3px double var(--ink); }
+    .receipt-head strong { font-size: 1.17rem; letter-spacing: .08em; }
+    .receipt-head span { font: .74rem ui-monospace, SFMono-Regular, monospace; }
+    .receipt-lines { list-style: none; padding: 0; margin: 25px 0; counter-reset: receipt; }
+    .receipt-lines li { counter-increment: receipt; display: grid; grid-template-columns: 30px 1fr auto; gap: 10px; padding: 11px 0; border-bottom: 1px dashed #8c877b; font-size: .9rem; }
+    .receipt-lines li::before { content: counter(receipt, decimal-leading-zero); font: .72rem ui-monospace, SFMono-Regular, monospace; }
+    .receipt-lines small { color: var(--faded); }
+    .receipt-total { padding: 18px 0; border-block: 3px solid var(--ink); }
+    .receipt-total b, .receipt-total span { display: block; }
+    .receipt-total b { font-size: 1.28rem; }
+    .receipt-total span { margin-top: 6px; color: var(--faded); font-size: .82rem; }
+    .receipt-hand { margin: 24px 0 0; color: var(--red); font-family: Georgia, "Noto Serif KR", serif; font-size: 1.1rem; font-style: italic; transform: rotate(-2deg); }
+
+    /* epilogue and contact */
+    .evidence { padding: 120px 0; background: var(--blue); border-bottom: 3px solid var(--ink); }
+    .evidence-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 22px; }
+    .evidence-card { border: 2px solid var(--ink); background: var(--paper-2); box-shadow: 6px 6px 0 var(--ink); }
+    .evidence-card:nth-child(2) { transform: rotate(1deg); }
+    .evidence-card img { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-bottom: 2px solid var(--ink); filter: saturate(.84); }
+    .evidence-card div { padding: 22px; }
+    .evidence-card small { color: var(--red); font-weight: 1000; }
+    .evidence-card h3 { margin: 7px 0 8px; font-size: 1.45rem; line-height: 1.1; }
+    .evidence-card p { margin: 0; color: var(--faded); font-size: .9rem; }
+    .contact { padding: 132px 0; background: var(--red); }
+    .contact-layout { display: grid; grid-template-columns: minmax(300px,.8fr) minmax(420px,1.2fr); gap: 70px; align-items: start; }
+    .contact-copy { position: sticky; top: 24px; color: #fff; }
+    .contact-copy h2 { font-size: clamp(3rem, 6vw, 6rem); }
+    .contact-copy > p { max-width: 530px; color: #ffe9dc; }
+    .chosen { margin: 32px 0; padding: 18px 20px; border: 2px solid var(--ink); color: var(--ink); background: var(--yellow); box-shadow: 6px 6px 0 var(--ink); transform: rotate(-1deg); }
+    .chosen small, .chosen strong, .chosen span { display: block; }
+    .chosen small { font-size: .7rem; font-weight: 1000; letter-spacing: .1em; }
+    .chosen strong { margin: 5px 0; font-size: 1.16rem; }
+    .chosen span { font-size: .83rem; }
+    .contact-alt { font-size: .83rem; }
+    .contact-alt a { font-weight: 1000; }
+    .tally-wrap { min-height: 570px; padding: 12px; border: 3px solid var(--ink); background: #fff; box-shadow: 10px 10px 0 var(--ink); }
+    .tally-wrap iframe { display: block; width: 100%; min-height: 545px; border: 0; }
+    .faq { padding: 100px 0; background: var(--paper); }
+    .faq-grid { display: grid; grid-template-columns: .65fr 1.35fr; gap: 70px; }
+    .faq h2 { font-size: clamp(2.5rem, 5vw, 5rem); }
+    details { border-top: 2px solid var(--ink); }
+    details:last-child { border-bottom: 2px solid var(--ink); }
+    summary { position: relative; padding: 22px 44px 22px 0; list-style: none; cursor: pointer; font-weight: 1000; }
     summary::-webkit-details-marker { display: none; }
-    summary::after { position: absolute; right: 4px; top: 20px; content: "+"; color: #2b70aa; font-size: 1.5rem; line-height: 1; }
+    summary::after { position: absolute; right: 4px; content: "+"; color: var(--red); font-size: 1.5rem; }
     details[open] summary::after { content: "−"; }
-    details p { margin: 0; padding: 0 42px 25px 0; color: var(--muted); }
-    footer { padding: 34px 0 48px; color: var(--muted); background: var(--ivory); font-size: .82rem; }
-    .footer-row { display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
-    .footer-row a { text-underline-offset: 3px; }
-    .reveal { opacity: 1; transform: none; }
-    .js .reveal { opacity: 0; transform: translateY(22px); transition: opacity .68s ease, transform .68s ease; }
-    .js .reveal.in { opacity: 1; transform: none; }
-    @media (max-width: 980px) {
-      .hero { min-height: auto; }
-      .hero-grid { grid-template-columns: 1fr; padding-top: 145px; }
-      .work-stage { min-height: 520px; width: min(100%, 640px); }
-      .outcome { grid-template-columns: 70px .75fr 1.25fr; }
-      .mode-panel, .price-grid, .contact-grid { grid-template-columns: 1fr; }
-      .proof-card.feature { min-height: 620px; }
-      .owner-copy { padding: 44px; }
+    details p { max-width: 720px; margin-bottom: 23px; color: var(--faded); }
+    footer { padding: 31px 0 43px; color: #d0c8bc; background: var(--ink); font-size: .8rem; }
+    .foot-row { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 22px; }
+    .foot-row a { text-underline-offset: 4px; }
+
+    @media (max-width: 1000px) {
+      .bench-grid { grid-template-columns: 1fr 340px; gap: 38px; }
+      .scene-heading { grid-template-columns: 150px 1fr; }
+      .counter { grid-template-columns: 38% 62%; }
+      .counter-panel { padding: 34px; }
+      .receipt-layout { gap: 54px; }
     }
-    @media (max-width: 720px) {
-      .shell, .site-head { width: min(calc(100% - 28px), var(--max)); }
-      .site-head { padding-top: 18px; }
-      .head-nav > a:not(.head-cta) { display: none; }
-      .hero-grid { gap: 30px; padding: 120px 0 70px; }
-      h1 { font-size: clamp(3.1rem, 17vw, 5.15rem); }
-      .hero-actions { align-items: stretch; flex-direction: column; }
-      .hero-actions .btn { width: 100%; }
-      .work-stage { min-height: 410px; }
-      .stage-main { inset: 24px 10px 72px 44px; }
-      .stage-side { width: 52%; height: 43%; right: -2%; }
-      .stage-face { width: 43%; height: 48%; }
-      .stage-stamp { width: 96px; font-size: .78rem; }
-      section { padding: 84px 0; }
-      .outcome { grid-template-columns: 48px 1fr; gap: 16px; }
-      .outcome p { grid-column: 2; }
-      .proof-grid { grid-template-columns: 1fr; }
-      .proof-card, .proof-card.feature { min-height: 430px; grid-row: auto; }
-      .mode-tabs { grid-template-columns: 1fr; }
-      .mode-tab { min-height: 76px; }
-      .mode-panel { padding: 30px 22px; gap: 34px; }
-      .mode-detail { grid-template-columns: 1fr; }
-      .mode-detail div, .mode-detail div:nth-child(even) { padding: 18px 0; border-left: 0; }
-      .mode-actions .btn { width: 100%; }
-      .owner-card { grid-template-columns: 1fr; }
-      .owner-card img { min-height: 420px; max-height: 560px; }
-      .owner-copy { padding: 34px 24px; }
-      .tally-wrap { margin-inline: -4px; padding: 4px; }
+    @media (max-width: 900px) {
+      .contact-layout, .faq-grid { grid-template-columns: 1fr; gap: 46px; }
+      .contact-copy { position: static; }
     }
-    @media (max-width: 380px) {
-      h1 { font-size: 2.86rem; }
+    @media (max-width: 760px) {
+      .shell, .masthead { width: min(calc(100% - 28px), var(--max)); }
+      .masthead { padding-top: 17px; }
+      .mast-nav a:not(.call) { display: none; }
+      .workbench { min-height: auto; }
+      .workbench::after { background: linear-gradient(to bottom, rgba(4,4,3,.93) 0%, rgba(4,4,3,.69) 55%, rgba(4,4,3,.84) 100%); }
+      .bench-photo { object-position: 62% 50%; }
+      .bench-grid { grid-template-columns: 1fr; gap: 60px; min-height: 800px; padding: 122px 0 66px; }
+      h1 { font-size: clamp(3.2rem, 18vw, 5.6rem); }
+      h1 .odd { margin-left: .2em; }
+      .desk-note { width: min(88%, 380px); justify-self: end; padding: 28px 25px 34px; }
+      .side-label { display: none; }
+      .inventory .shell { grid-template-columns: 1fr 1fr; width: 100%; }
+      .inventory span { border-bottom: 1px solid var(--ink); }
+      .inventory span:nth-child(odd) { border-left: 0; }
+      .intake, .receipt-scene, .contact { padding: 90px 0; }
+      .scene-heading { grid-template-columns: 1fr; gap: 20px; margin-bottom: 42px; }
+      .tickets { grid-template-columns: 1fr; gap: 16px; }
+      .ticket, .ticket:nth-child(2), .ticket:nth-child(3) { min-height: auto; transform: none; }
+      .ticket:nth-child(2):hover { transform: translateY(-3px); }
+      .ticket-no { margin-bottom: 34px; }
+      .counter { grid-template-columns: 1fr; margin-top: 56px; box-shadow: 7px 7px 0 var(--ink); }
+      .counter-photo { min-height: 300px; max-height: 390px; border-right: 0; border-bottom: 3px solid var(--ink); }
+      .counter-panel { padding: 30px 23px; }
+      .job-lines { grid-template-columns: 1fr; }
+      .job-lines div, .job-lines div:nth-child(even) { padding: 15px 0; border-left: 0; }
+      .receipt-layout { grid-template-columns: 1fr; gap: 60px; }
+      .honest-note { grid-template-columns: 88px 1fr; }
+      .honest-note img { width: 88px; height: 88px; }
+      .receipt { margin-inline: 5px 13px; padding: 38px 25px 54px; box-shadow: 10px 12px 0 var(--yellow); transform: none; }
+      .receipt-lines li { grid-template-columns: 25px 1fr; }
+      .receipt-lines small { grid-column: 2; }
+      .evidence { padding: 86px 0; }
+      .evidence-grid { grid-template-columns: 1fr; }
+      .evidence-card:nth-child(2) { transform: none; }
+      .contact-layout, .faq-grid { grid-template-columns: 1fr; gap: 46px; }
+      .contact-copy { position: static; }
+      .tally-wrap { margin-inline: 0 6px; padding: 4px; box-shadow: 7px 7px 0 var(--ink); }
+      .panel-actions { align-items: stretch; flex-direction: column; }
+      .panel-actions .rough-btn { width: 100%; }
+    }
+    @media (max-width: 360px) {
       .brand { letter-spacing: .1em; }
-      .head-nav .head-cta { padding: 9px 12px; }
-      .work-stage { min-height: 360px; }
+      .mast-nav .call { padding: 7px 9px; }
+      h1 { font-size: 3.1rem; }
+      .ticket { padding-inline: 20px; }
+      .counter-panel { padding-inline: 18px; }
     }
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
-      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
-      .js .reveal { opacity: 1; transform: none; }
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
     }
     @media (forced-colors: active) {
-      .hero, .proof-scene, .contact, .quote-sheet, .mode-tab[aria-selected="true"] { border: 1px solid CanvasText; }
-      .stage-card { border: 2px solid CanvasText; }
+      .ticket, .counter, .receipt, .evidence-card, .tally-wrap, .chosen { border: 2px solid CanvasText; }
     }
   </style>
 </head>
 <body>
   <a class="skip" href="#main">본문으로 바로가기</a>
-  <header class="site-head">
+  <header class="masthead">
     <a class="brand" href="../">HAM MEDIA</a>
-    <nav class="head-nav" aria-label="주요 메뉴">
-      <a href="#results">만드는 변화</a><a href="#ways">맡기는 방식</a><a class="head-cta" href="#contact">내 일 이야기하기</a>
+    <nav class="mast-nav" aria-label="주요 메뉴">
+      <a href="#counter">접수대</a>
+      <a href="#receipt">견적 원칙</a>
+      <a class="call" href="#contact">막힌 곳 말하기</a>
     </nav>
   </header>
+
   <main id="main">
-    <section class="hero">
-      <div class="shell hero-grid">
-        <div class="reveal">
-          <p class="eyebrow">HAM MEDIA · 함께 만드는 일</p>
-          <h1><span class="hero-line">경험을</span><span class="hero-line signal">보이게.</span><span class="hero-line">일을 돌아가게.</span></h1>
-          <p class="hero-lead">대표님의 경험과 사업을 고객이 이해하고 선택하고 다시 찾는 구조로 만듭니다. 영상 한 편부터 월간 운영, 회사 안의 AI 업무환경까지 필요한 만큼 이어갑니다.</p>
-          <div class="hero-actions"><a class="btn btn-signal" href="#ways">HAM MEDIA에 맡기기 <span aria-hidden="true">↓</span></a><a class="btn btn-ghost" href="../book/">내가 직접 해보기</a></div>
-          <p class="hero-note">가격이 정해진 일은 먼저 보여드리고, 달라지는 일은 포함·제외·기간을 서면으로 적습니다.</p>
+    <section class="workbench" aria-labelledby="workbench-title">
+      <img class="bench-photo" src="../ham-media-archive/assets/images/spaces/hero-working-desk.jpg" width="2400" height="1800" alt="영상 편집 화면과 AI 문서, 케이블이 놓인 HAM MEDIA의 실제 작업대">
+      <div class="shell bench-grid">
+        <div>
+          <p class="open-sign">오늘도 뭔가 고치는 중 · OPEN</p>
+          <h1 id="workbench-title"><span>일단</span><span class="odd">작업대에</span><span>올려보세요.</span></h1>
+          <p class="bench-lead">영상이 멈췄든, 홈페이지가 길을 잃었든, 회사 일이 자꾸 손으로 돌아오든. <strong>물건도 안 보고 이름부터 붙이지 않겠습니다.</strong></p>
+          <a class="rough-btn" href="#counter">접수표 세 장 보기 <span aria-hidden="true">↓</span></a>
+          <p class="bench-small">고장 난 물건은 안 고칩니다. 대신 안 보이고, 안 팔리고, 안 돌아가는 일을 봅니다.</p>
         </div>
-        <div class="work-stage reveal" aria-label="HAM MEDIA의 실제 작업 장면">
-          <div class="stage-card stage-main"><img src="https://img.youtube.com/vi/duw8G46JzwQ/maxresdefault.jpg" width="1280" height="720" alt="HAM MEDIA가 운영해온 우리끼리오디오 영상 화면"><span class="stage-label">콘텐츠가 보이게</span></div>
-          <div class="stage-card stage-side"><img src="../portfolio/assets/images/star-showcase/cars.webp" width="1200" height="900" alt="HAM MEDIA가 만든 자동차별 홈페이지 화면"><span class="stage-label">경험을 온라인 매대로</span></div>
-          <div class="stage-card stage-face"><img src="../portfolio/assets/images/profile-hamdongmin.jpg" width="720" height="900" alt="카메라를 든 HAM MEDIA 함동민"><span class="stage-label">함동민이 직접</span></div>
-          <div class="stage-stamp" aria-hidden="true">27년 현장<br>한 사람의 책임</div>
-        </div>
+        <aside class="desk-note" aria-label="HAM MEDIA 작업 메모">
+          <b>작업대 메모 / 2026</b>
+          <p>“그럴듯하게”보다<br>“내일 실제로 쓰게”.</p>
+          <em>— 함동민이 직접 듣고, 직접 책임집니다.</em>
+        </aside>
       </div>
+      <span class="side-label" aria-hidden="true">27년 현장 · 8년 가게 · 6년 채널 · 아직도 직접 작업 중</span>
     </section>
-    <div class="ticker" aria-hidden="true"><div class="ticker-track"><span>다시 꺼내기 · 보이게 만들기 · 돌아가게 만들기 ·</span><span>다시 꺼내기 · 보이게 만들기 · 돌아가게 만들기 ·</span><span>다시 꺼내기 · 보이게 만들기 · 돌아가게 만들기 ·</span><span>다시 꺼내기 · 보이게 만들기 · 돌아가게 만들기 ·</span></div></div>
-    <section class="outcomes" id="results" aria-labelledby="results-title">
+
+    <div class="inventory" aria-label="HAM MEDIA가 다루는 일">
+      <div class="shell"><span>영상 한 편</span><span>매달 이어갈 채널</span><span>길 잃은 홈페이지</span><span>반복되는 회사 일</span></div>
+    </div>
+
+    <section class="intake" id="counter" aria-labelledby="counter-title">
       <div class="shell">
-        <header class="section-head reveal"><p class="eyebrow">서비스 이름보다 먼저</p><h2 id="results-title">무엇이 달라져야 하는지부터 봅니다.</h2><p class="section-lead">영상, 홈페이지, AI라는 도구 이름을 고르지 않아도 됩니다. 지금 가진 것과 바라는 변화를 들으면 맞는 결과와 가장 작은 시작점을 함께 정합니다.</p></header>
-        <div class="outcome-list">
-          <article class="outcome reveal"><span class="outcome-n">01 · RECLAIM</span><h3>다시<br>꺼내기</h3><p>오래 일하며 쌓인 경험·자료·이야기를 글, 책, 콘텐츠, 상품으로 다시 꺼냅니다. 머릿속에만 있던 노하우가 고객에게 건넬 수 있는 결과가 됩니다.</p></article>
-          <article class="outcome reveal"><span class="outcome-n">02 · REVEAL</span><h3>보이게<br>만들기</h3><p>좋은 일·가게·전문성이 발견되지 않는 문제를 영상, 채널, 홈페이지, 온라인 판매 입구로 바꿉니다. 고객이 이해하고 다음 행동을 고를 수 있게 만듭니다.</p></article>
-          <article class="outcome reveal"><span class="outcome-n">03 · RUN</span><h3>돌아가게<br>만들기</h3><p>매번 손으로 되풀이하는 일과 흩어진 고객·계약·입금·납품 정보를 AI 업무환경과 작은 ERP로 잇습니다. 대표가 오늘 할 일을 놓치지 않게 만듭니다.</p></article>
+        <header class="scene-heading">
+          <span class="scene-number">SCENE 02 · 접수대</span>
+          <div><h2 id="counter-title">서비스 이름은<br>몰라도 됩니다.</h2><p class="scene-intro">지금 필요한 문장과 가장 닮은 접수표를 눌러보세요. 고른 표에 따라 받을 결과, 가격 기준, 서로 맡을 일이 아래에 펼쳐집니다.</p></div>
+        </header>
+
+        <div class="tickets" role="tablist" aria-label="일을 맡기는 방식">
+          <button class="ticket" id="ticket-once" role="tab" aria-selected="true" aria-controls="job-once" data-ticket="once">
+            <span class="ticket-no">접수표 01 / 한 번</span><h3>“이거 하나<br>살려주세요.”</h3><p>영상 한 편, 안내 페이지, 온라인 판매 입구처럼 받을 결과가 분명한 일.</p><span class="ticket-price">롱폼 편집 20만 원부터</span>
+          </button>
+          <button class="ticket" id="ticket-monthly" role="tab" aria-selected="false" aria-controls="job-monthly" data-ticket="monthly" tabindex="-1">
+            <span class="ticket-no">접수표 02 / 매달</span><h3>“매달 같이<br>굴려주세요.”</h3><p>새 소식과 고객 반응을 콘텐츠로 만들고, 채널을 멈추지 않게 운영할 일.</p><span class="ticket-price">월 50만 원부터</span>
+          </button>
+          <button class="ticket" id="ticket-install" role="tab" aria-selected="false" aria-controls="job-install" data-ticket="install" tabindex="-1">
+            <span class="ticket-no">접수표 03 / 설치</span><h3>“회사 안에 작은 팀<br>하나 놔주세요.”</h3><p>반복업무와 흩어진 운영정보를 AI 업무환경이나 작은 ERP로 이을 일.</p><span class="ticket-price">현재 업무를 본 뒤 서면 견적</span>
+          </button>
         </div>
-      </div>
-    </section>
-    <section class="proof-scene" id="proof" aria-labelledby="proof-title">
-      <div class="shell">
-        <header class="section-head reveal"><p class="eyebrow">설명보다 먼저 보는 증거</p><h2 id="proof-title">한 사람의 일이<br>화면과 운영으로 남았습니다.</h2><p class="section-lead">없는 성공담을 만들지 않습니다. 지금 열리고 직접 확인할 수 있는 작업을 보여드립니다.</p></header>
-        <div class="proof-grid">
-          <article class="proof-card feature reveal"><img src="https://img.youtube.com/vi/duw8G46JzwQ/maxresdefault.jpg" width="1280" height="720" loading="lazy" alt="우리끼리오디오 유튜브 영상 썸네일"><div class="proof-copy"><small>직접 운영한 채널</small><h3>좋아하던 오디오를 6년간 이어온 콘텐츠로</h3><p>기획·촬영·편집·업로드를 직접 이어온 HAM MEDIA의 운영 증거입니다.</p><a href="https://www.youtube.com/@ookkio" target="_blank" rel="noopener noreferrer">실제 채널 열어보기 →</a></div></article>
-          <article class="proof-card reveal"><img src="https://img.youtube.com/vi/sgVzKxMxCEM/maxresdefault.jpg" width="1280" height="720" loading="lazy" alt="성형외과 전문의 의료 정보 영상 썸네일"><div class="proof-copy"><small>고객 채널 제작</small><h3>전문가의 말을 고객이 이해하는 영상으로</h3><a href="https://www.youtube.com/channel/UC7nfli6RwhfkT8-L3tjcwPg" target="_blank" rel="noopener noreferrer">클라이언트 채널 열어보기 →</a></div></article>
-          <article class="proof-card reveal"><img src="../portfolio/assets/images/star-showcase/food.webp" width="900" height="1200" loading="lazy" alt="HAM MEDIA가 만든 음식별 홈페이지 화면"><div class="proof-copy"><small>서로 다른 온라인 매대</small><h3>같은 틀을 복사하지 않은 홈페이지</h3><a href="../ham-media-archive/pages/food.html">홈페이지 사례 열어보기 →</a></div></article>
-        </div>
-      </div>
-    </section>
-    <section class="modes" id="ways" aria-labelledby="ways-title">
-      <div class="shell">
-        <header class="section-head reveal"><p class="eyebrow">맡기는 방식은 세 가지</p><h2 id="ways-title">필요한 관계와 기간만 고르세요.</h2><p class="section-lead">다섯 상품을 늘어놓지 않았습니다. 한 번 끝낼 일인지, 매달 이어갈 일인지, 회사 안에 설치할 일인지 먼저 나눕니다.</p></header>
-        <div class="mode-tabs reveal" role="tablist" aria-label="맡기는 방식 선택">
-          <button class="mode-tab" id="tab-once" role="tab" aria-selected="true" aria-controls="panel-once" data-mode="once"><span>01 · END CLEARLY</span><strong>한 번 완성하기</strong></button>
-          <button class="mode-tab" id="tab-monthly" role="tab" aria-selected="false" aria-controls="panel-monthly" data-mode="monthly" tabindex="-1"><span>02 · KEEP MOVING</span><strong>매달 함께 운영하기</strong></button>
-          <button class="mode-tab" id="tab-install" role="tab" aria-selected="false" aria-controls="panel-install" data-mode="install" tabindex="-1"><span>03 · BUILD INSIDE</span><strong>회사 안에 설치하기</strong></button>
-        </div>
-        <article class="mode-panel active" id="panel-once" role="tabpanel" aria-labelledby="tab-once" data-panel="once">
-          <div><p class="mode-kicker">끝이 선명한 일</p><h3>한 번<br>완성하기</h3><p>영상 한 편, 안내 페이지, 온라인 판매 입구처럼 받을 결과가 분명한 일에 맞습니다.</p><p class="mode-price"><b>롱폼 편집 20만 원부터</b><span>홈페이지·이벤트 페이지는 필요한 범위를 확인한 뒤 서면 견적</span></p></div>
-          <div><dl class="mode-detail"><div><dt>고객이 주는 것</dt><dd>원본 자료, 꼭 들어갈 사실, 원하는 완료 모습, 기존 채널이나 참고 화면</dd></div><div><dt>받는 결과</dt><dd>합의한 영상·페이지·콘텐츠 완성본과 실제 확인 주소 또는 파일</dd></div><div><dt>기간·수정</dt><dd>분량과 난이도를 확인해 일정과 수정 횟수를 작업 전에 서면으로 확정</dd></div><div><dt>포함·제외</dt><dd>촬영, 문안, 썸네일, 도메인, 등록, 유지관리 포함 여부를 각각 구분</dd></div></dl><div class="mode-actions"><a class="btn btn-primary mode-cta" data-mode-choice="once" href="#contact">한 번 완성할 일 이야기하기</a><a class="btn btn-light" href="#proof">먼저 작업 보기</a></div></div>
+
+        <article class="counter" id="job-once" role="tabpanel" aria-labelledby="ticket-once" data-job="once">
+          <figure class="counter-photo"><img src="../ham-media-archive/assets/images/cameras/gallery-desk-setup-wide.jpg" width="1100" height="825" loading="lazy" alt="카메라와 마이크, 짐벌 사이에 손글씨 메모가 놓인 HAM MEDIA 촬영 작업대"><figcaption>실제 HAM MEDIA 작업대. 정리 전이 아니라 작업 중입니다.</figcaption></figure>
+          <div class="counter-panel"><span class="panel-kicker">접수표 01이 맞는 경우</span><h3>끝이 선명한<br>한 가지 일</h3><p class="panel-answer">원본과 꼭 들어갈 사실을 받아, 합의한 영상·페이지·콘텐츠 완성본으로 돌려드립니다.</p><dl class="job-lines"><div><dt>고객이 올려놓을 것</dt><dd>원본 자료, 꼭 들어갈 사실, 원하는 완료 모습, 기존 채널이나 참고 화면</dd></div><div><dt>받아갈 것</dt><dd>합의한 완성본과 직접 확인할 수 있는 주소 또는 파일</dd></div><div><dt>먼저 적을 것</dt><dd>기간, 수정 횟수, 촬영·문안·썸네일·등록·유지관리의 포함 여부</dd></div><div><dt>가격 기준</dt><dd>롱폼 편집 20만 원부터. 홈페이지·이벤트 페이지는 범위 확인 뒤 서면 견적</dd></div></dl><div class="panel-actions"><a class="rough-btn choose-job" data-choice="once" href="#contact">이 일, 한번 봐달라고 하기</a><a class="text-link" href="../portfolio/">만든 것 먼저 보기 →</a></div></div>
         </article>
-        <article class="mode-panel" id="panel-monthly" role="tabpanel" aria-labelledby="tab-monthly" data-panel="monthly" hidden>
-          <div><p class="mode-kicker">꾸준히 보여야 하는 일</p><h3>매달 함께<br>운영하기</h3><p>새 소식과 고객 반응을 콘텐츠로 만들고, 필요한 채널에 이어서 운영해야 할 때 맞습니다.</p><p class="mode-price"><b>월 50만 원부터</b><span>촬영 횟수·제작 편수·게시 채널·전문 검수 범위별 서면 견적</span></p></div>
-          <div><dl class="mode-detail"><div><dt>고객이 주는 것</dt><dd>이번 달 바뀐 사실, 알릴 일, 사용할 원본, 전문적이거나 민감한 표현의 최종 확인</dd></div><div><dt>받는 결과</dt><dd>합의한 월간 주제와 콘텐츠, 게시·관리 내역, 고객 반응과 다음 달 판단</dd></div><div><dt>50만 원 시작 경계</dt><dd>기존 자료와 핵심 채널을 중심으로 제작량·게시 범위를 작게 합의한 운영</dd></div><div><dt>가격이 달라지는 조건</dt><dd>신규 촬영, 이동, 다채널 동시 운영, 제작량 증가, 의료·법률 등 전문 검수</dd></div><div><dt>월별 조정</dt><dd>한 번 만드는 제작비와 매달 관리하는 운영비를 분리하고 다음 달 범위를 다시 확인</dd></div><div><dt>중단·갱신</dt><dd>기간, 넘겨받을 원본, 게시 계정, 남은 제작물을 월 범위표에 적어 종료와 갱신을 구분</dd></div></dl><div class="mode-actions"><a class="btn btn-primary mode-cta" data-mode-choice="monthly" href="#contact">월간 운영 범위 이야기하기</a></div></div>
+        <article class="counter" id="job-monthly" role="tabpanel" aria-labelledby="ticket-monthly" data-job="monthly" hidden>
+          <figure class="counter-photo"><img src="../ham-media-archive/assets/images/cameras/hero-camera-notebook.jpg" width="1800" height="1350" loading="lazy" alt="손글씨 작업 노트 위에 놓인 HAM MEDIA의 카메라"><figcaption>매달 필요한 건 유행어가 아니라, 계속 꺼낼 수 있는 기록입니다.</figcaption></figure>
+          <div class="counter-panel"><span class="panel-kicker">접수표 02가 맞는 경우</span><h3>혼자서는 자꾸<br>멈추는 운영</h3><p class="panel-answer">이번 달 바뀐 사실을 받아 주제·콘텐츠·게시·다음 판단으로 이어갑니다. 제작비와 운영비는 섞지 않습니다.</p><dl class="job-lines"><div><dt>고객이 올려놓을 것</dt><dd>이번 달 바뀐 사실, 알릴 일, 원본, 민감하거나 전문적인 표현의 최종 확인</dd></div><div><dt>받아갈 것</dt><dd>합의한 월간 콘텐츠와 게시·관리 내역, 고객 반응과 다음 달 판단</dd></div><div><dt>월 50만 원 경계</dt><dd>기존 자료와 핵심 채널 중심으로 제작량·게시 범위를 작게 합의한 운영</dd></div><div><dt>가격이 달라질 때</dt><dd>신규 촬영, 이동, 다채널, 제작량 증가, 의료·법률 등 전문 검수</dd></div></dl><div class="panel-actions"><a class="rough-btn choose-job" data-choice="monthly" href="#contact">매달 굴릴 일 올려놓기</a></div></div>
         </article>
-        <article class="mode-panel" id="panel-install" role="tabpanel" aria-labelledby="tab-install" data-panel="install" hidden>
-          <div><p class="mode-kicker">반복되는 일을 바꾸는 설치</p><h3>회사 안에<br>설치하기</h3><p>AI 업무실은 대표의 자료와 판단을 연결한 일하는 환경이고, 작은 ERP는 고객·계약·입금·납품을 보는 운영판입니다.</p><p class="mode-price"><b>현재 업무 진단 뒤 서면 견적</b><span>작은 ERP 공개 체험판은 무료</span></p></div>
-          <div><dl class="mode-detail"><div><dt>고객이 주는 것</dt><dd>지금 하는 순서, 쓰는 문서와 도구, 반복되는 막힘, 권한과 보안 경계</dd></div><div><dt>받는 결과</dt><dd>한 업무부터 실제로 쓰는 AI 환경 또는 고객 한 건이 끝까지 이어지는 운영판</dd></div><div><dt>계약을 나누는 법</dt><dd>진단·설계, 설치·구축, 실제 업무로 길들이기, 유지관리·건별 AS를 구분</dd></div><div><dt>완료 기준</dt><dd>대표가 직접 요청·확인하거나 실제 고객 한 건을 등록해 다음 행동까지 이어갈 수 있는 상태</dd></div><div><dt>포함·제외</dt><dd>계정, 데이터 이전, 장비, 외부 서비스 비용, 교육 인원, 유지 기간을 각각 표시</dd></div><div><dt>안전선</dt><dd>AI가 결정을 대신하지 않으며 ERP는 회계·세무 프로그램을 대신하지 않음</dd></div></dl><div class="mode-actions"><a class="btn btn-primary mode-cta" data-mode-choice="install" href="#contact">회사 안의 첫 업무 이야기하기</a><a class="btn btn-light" href="../erp/">작은 ERP 체험판 보기</a></div></div>
+        <article class="counter" id="job-install" role="tabpanel" aria-labelledby="ticket-install" data-job="install" hidden>
+          <figure class="counter-photo"><img src="../ham-media-archive/assets/images/fountain-pens/archive-ink-test.webp" width="1200" height="900" loading="lazy" alt="잉크병과 만년필, 손으로 그린 색상표와 잉크 자국"><figcaption>툴부터 사지 않습니다. 지금 일이 흐르는 순서를 먼저 그립니다.</figcaption></figure>
+          <div class="counter-panel"><span class="panel-kicker">접수표 03이 맞는 경우</span><h3>매번 손으로<br>되풀이하는 일</h3><p class="panel-answer">한 사람·한 대·한 업무부터 진단합니다. AI는 판단을 대신하지 않고, 작은 ERP는 회계·세무 프로그램을 대신하지 않습니다.</p><dl class="job-lines"><div><dt>고객이 올려놓을 것</dt><dd>현재 순서, 쓰는 문서와 도구, 반복되는 막힘, 권한과 보안 경계</dd></div><div><dt>받아갈 것</dt><dd>실제로 쓰는 AI 환경 또는 고객 한 건이 끝까지 이어지는 운영판</dd></div><div><dt>계약을 나누는 법</dt><dd>진단·설계, 설치·구축, 실제 업무로 길들이기, 유지관리·건별 AS를 구분</dd></div><div><dt>가격과 체험</dt><dd>업무 확인 뒤 서면 견적. 작은 ERP 공개 체험판은 무료</dd></div></dl><div class="panel-actions"><a class="rough-btn choose-job" data-choice="install" href="#contact">반복되는 일부터 말하기</a><a class="text-link" href="../erp/">작은 ERP 체험판 →</a></div></div>
         </article>
       </div>
     </section>
-    <section class="price-method" aria-labelledby="price-title">
-      <div class="shell price-grid">
-        <div><header class="section-head reveal"><p class="eyebrow">가격을 숨기지 않는 법</p><h2 id="price-title">숫자만 싸게 보이고<br>일이 늘어나는 견적은 하지 않습니다.</h2><p class="section-lead">정해진 시작가는 먼저 보여드리고, 범위가 달라지는 일은 받을 결과와 책임을 한 장에 적습니다.</p></header><div class="boundary-list"><div class="boundary reveal"><strong>작게 끝나면 작게 제안합니다.</strong><p>무료 도구나 단건 작업으로 충분한 일에 큰 구축을 붙이지 않습니다.</p></div><div class="boundary reveal"><strong>제작과 운영을 나눕니다.</strong><p>한 번 만드는 값과 매달 관리하는 값을 섞지 않습니다.</p></div><div class="boundary reveal"><strong>과거 계약을 공통가격처럼 쓰지 않습니다.</strong><p>특정 고객·이벤트·시험 범위의 값은 현재 공개가격으로 넓히지 않습니다.</p></div></div></div>
-        <div class="quote-sheet reveal"><h3>일을 시작하기 전에 함께 적는 여섯 줄</h3><p>금액과 결과, 책임이 서로 맞아야 시작합니다.</p><ol class="quote-lines"><li>포함하는 일</li><li>포함하지 않는 일</li><li>고객이 받는 결과물</li><li>작업 기간과 수정 횟수</li><li>전체 금액과 별도 실비</li><li>HAM MEDIA가 끝까지 맡는 책임</li></ol><div class="mode-actions"><a class="btn btn-signal" href="../quote/">서면 견적 신청하기 <span aria-hidden="true">→</span></a></div></div>
+
+    <section class="receipt-scene" id="receipt" aria-labelledby="receipt-title">
+      <div class="shell receipt-layout">
+        <div class="receipt-copy"><span class="scene-number">SCENE 03 · 계산대</span><h2 id="receipt-title">물건도 안 보고<br>가격부터 부르지<br>않겠습니다.</h2><p>정해진 시작가는 먼저 보여드립니다. 사람과 기간과 책임이 달라지는 일은 싼 숫자 하나로 유혹하지 않고, 아래 여섯 줄을 함께 적습니다.</p><div class="honest-note"><img src="../ham-media-archive/assets/images/spaces/detail-power-dellacasa-03-card.jpeg" width="640" height="640" loading="lazy" alt="델라카사 가게 시절 직접 그린 손그림 카드"><div><strong>가게를 8년 해본 사람이 압니다.</strong><span>가격표보다 무서운 건 ‘그것도 포함인 줄 알았는데’라는 한마디입니다.</span></div></div></div>
+        <aside class="receipt" aria-label="HAM MEDIA 서면 견적서에 적는 내용"><div class="receipt-head"><strong>HAM MEDIA 영수증</strong><span>NO. BEFORE-WE-START</span></div><ol class="receipt-lines"><li><span>포함하는 일</span><small>한다</small></li><li><span>포함하지 않는 일</span><small>안 한다</small></li><li><span>받는 결과물</span><small>손에 남는다</small></li><li><span>작업 기간과 수정 횟수</span><small>끝을 안다</small></li><li><span>전체 금액과 별도 실비</span><small>돈을 안다</small></li><li><span>HAM MEDIA가 맡는 책임</span><small>주인을 안다</small></li></ol><div class="receipt-total"><b>합계: 서로 딴소리하지 않기</b><span>작게 끝날 일에는 큰 구축을 붙이지 않습니다.</span></div><p class="receipt-hand">나머지는 보고, 듣고, 적은 뒤 견적드립니다.</p></aside>
       </div>
     </section>
-    <section class="owner"><div class="shell owner-card reveal"><img src="../portfolio/assets/images/profile-hamdongmin.jpg" width="720" height="900" loading="lazy" alt="카메라를 든 HAM MEDIA 함동민"><div class="owner-copy"><p class="owner-sign">함동민 · HAM MEDIA</p><h2>가게를 운영해본 사람이 대표님의 일을 듣습니다.</h2><p>스타벅스에서 매장 운영과 교육을 맡고, 델라카사를 8년간 직접 경영했습니다. 영상·홈페이지·AI 도구를 따로 파는 대신, 지금 고객과 운영에 필요한 결과를 한 사람의 책임으로 연결합니다.</p></div></div></section>
+
+    <section class="evidence" aria-labelledby="evidence-title">
+      <div class="shell"><header class="scene-heading"><span class="scene-number">작업대 서랍 속</span><div><h2 id="evidence-title">예쁜 목업 대신<br>살아온 물건.</h2><p class="scene-intro">카메라를 사고, 가게를 닫고, 채널을 오래 굴리고, 새 도구를 배운 흔적이 지금의 제작 방식이 됐습니다.</p></div></header><div class="evidence-grid">
+        <article class="evidence-card"><img src="../ham-media-archive/assets/images/spaces/detail-power-dellacasa-05-counter.jpeg" width="960" height="960" loading="lazy" alt="함동민이 8년간 운영한 델라카사의 카운터"><div><small>가게 · 8년</small><h3>손님이 어디서 망설이는지</h3><p>운영해본 사람의 눈으로 고객이 이해하고 선택할 입구를 만듭니다.</p></div></article>
+        <article class="evidence-card"><img src="../ham-media-archive/assets/images/cars/saab-ducati-garage.jpg" width="960" height="960" loading="lazy" alt="주차장에 나란히 세워진 사브 자동차와 빨간 두카티 오토바이"><div><small>취향 · 오래</small><h3>좋아하는 건 대충 못 합니다</h3><p>차와 오디오와 카메라를 파고든 시간이 낯선 업종을 배우는 근육이 됐습니다.</p></div></article>
+        <article class="evidence-card"><img src="../portfolio/assets/images/profile-hamdongmin.jpg" width="720" height="900" loading="lazy" alt="카메라를 든 HAM MEDIA 함동민"><div><small>책임 · 한 사람</small><h3>함동민이 직접 듣습니다</h3><p>영상·홈페이지·AI를 따로 팔기보다 지금 필요한 결과를 끝까지 연결합니다.</p></div></article>
+      </div></div>
+    </section>
+
     <section class="contact" id="contact" aria-labelledby="contact-title">
-      <div class="shell contact-grid">
-        <div class="reveal"><header class="section-head"><p class="eyebrow">정리되지 않은 문제부터</p><h2 id="contact-title">상품명을 몰라도 됩니다.</h2><p class="section-lead">무엇이 달라지면 좋은지, 지금 어디서 막히는지, 직접 할 일과 맡길 일, 어떤 상태면 끝인지 네 가지만 들려주세요.</p></header><div class="selected-summary" aria-live="polite"><small>지금 고른 방식</small><strong id="selected-title">한 번 완성하기</strong><span id="selected-help">폼의 ‘맡기고 싶은 일’에 완성하고 싶은 결과를 적어주세요.</span></div><div class="mode-actions"><a class="btn btn-ghost" href="../quote/">전화 없이 서면 견적 신청하기 →</a></div><p class="contact-alt">폼이 열리지 않으면 <a href="mailto:hammedia002@gmail.com">hammedia002@gmail.com</a>으로 보내주세요. 보통 1~2일 안에 답합니다.</p></div>
-        <div class="tally-wrap reveal"><iframe data-tally-src="https://tally.so/embed/vGK44d?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="560" title="HAM MEDIA 작업 의뢰하기"></iframe></div>
+      <div class="shell contact-layout">
+        <div class="contact-copy"><span class="scene-number">마지막 장면 · 의뢰</span><h2 id="contact-title">정리해서<br>오지 마세요.</h2><p>지금 어디서 막히는지, 무엇이 달라지면 좋은지, 어떤 상태면 끝인지. 그 세 가지만 적어도 됩니다.</p><div class="chosen" aria-live="polite"><small>지금 손에 든 접수표</small><strong id="chosen-title">이거 하나 살려주세요</strong><span id="chosen-help">완성하고 싶은 영상·페이지·콘텐츠를 적어주세요.</span></div><p class="contact-alt">폼이 열리지 않으면 <a href="mailto:hammedia002@gmail.com">hammedia002@gmail.com</a>으로 보내주세요. 보통 1~2일 안에 답합니다.</p></div>
+        <div class="tally-wrap"><iframe data-tally-src="https://tally.so/embed/vGK44d?alignLeft=1&amp;hideTitle=1&amp;transparentBackground=1&amp;dynamicHeight=1" loading="lazy" width="100%" height="560" title="HAM MEDIA 작업 의뢰하기"></iframe></div>
       </div>
     </section>
-    <section class="faq" aria-labelledby="faq-title"><div class="shell"><header class="section-head reveal"><p class="eyebrow">결정 전에 필요한 답</p><h2 id="faq-title">자주 묻는 질문</h2></header><div class="faq-list reveal"><details><summary>어떤 방식이 맞는지 모르겠습니다.</summary><p>상품이나 방식을 고를 필요는 없습니다. 지금 반복되는 일, 고객에게 보여주고 싶은 것, 이미 가진 자료를 적어주세요. 한 번 끝낼지, 월 운영이나 설치가 필요한지 나눠 답합니다.</p></details><details><summary>가격을 왜 전부 숫자로 공개하지 않나요?</summary><p>롱폼 편집처럼 범위를 바로 셀 수 있는 일은 시작가를 공개했습니다. 촬영·채널 운영·홈페이지·AI 업무환경은 자료, 기간, 유지관리 범위가 달라 포함·제외·결과·기간·금액·책임을 함께 적습니다.</p></details><details><summary>예산이 작아도 문의해도 되나요?</summary><p>네. 무료 도구나 단건 작업으로 끝나는 일에 큰 구축을 권하지 않습니다. 현재 예산 안의 가장 작은 방법과 나중에 확장할 길을 나눠 제안합니다.</p></details><details><summary>AI가 제 회사의 결정을 대신하나요?</summary><p>아닙니다. AI는 자료를 찾고 정리하고 여러 관점을 연결합니다. 회사의 현실과 대가를 아는 대표님이 결정합니다. 보안과 외부 전송 범위도 시작 전에 함께 정합니다.</p></details><details><summary>작은 ERP가 회계프로그램을 대신하나요?</summary><p>아닙니다. 계약·입금·납품과 다음 행동을 놓치지 않게 보는 운영판입니다. 세무신고·장부기장·은행업무는 기존 회계·세무 체계를 사용합니다.</p></details></div></div></section>
+
+    <section class="faq" aria-labelledby="faq-title"><div class="shell faq-grid"><div><span class="scene-number">계산대 옆 쪽지</span><h2 id="faq-title">그래도<br>궁금한 것.</h2></div><div>
+      <details><summary>세 접수표 중 뭘 골라야 할지 모르겠습니다.</summary><p>아무거나 고르고 막힌 곳부터 적어주세요. 한 번 끝낼 일인지, 매달 이어갈 일인지, 회사 안에 설치할 일인지는 내용을 보고 나눠 답합니다.</p></details>
+      <details><summary>예산이 작아도 문의해도 되나요?</summary><p>네. 무료 도구나 단건 작업으로 끝나는 일에 큰 구축을 권하지 않습니다. 지금 예산 안의 가장 작은 시작과 나중에 넓힐 길을 나눠 제안합니다.</p></details>
+      <details><summary>가격을 왜 전부 숫자로 공개하지 않나요?</summary><p>롱폼 편집처럼 범위를 바로 셀 수 있는 일은 시작가를 공개했습니다. 촬영·운영·홈페이지·AI 업무환경은 자료, 기간, 유지 범위가 달라 결과와 책임을 함께 적어야 합니다.</p></details>
+      <details><summary>AI가 회사의 결정을 대신하나요?</summary><p>아닙니다. AI는 자료를 찾고 정리하고 연결합니다. 회사의 현실과 대가를 아는 대표님이 결정하며, 보안과 외부 전송 범위도 시작 전에 정합니다.</p></details>
+    </div></div></section>
   </main>
-  <footer><div class="shell footer-row"><span>© 2026 HAM MEDIA · 함동민</span><span><a href="../portfolio/">포트폴리오</a> · <a href="../book/">책</a> · <a href="../academy/">AI 공개강의</a> · <a href="mailto:hammedia002@gmail.com">이메일</a></span></div></footer>
+
+  <footer><div class="shell foot-row"><span>© 2026 HAM MEDIA · 함동민</span><span><a href="../portfolio/">포트폴리오</a> · <a href="../book/">책</a> · <a href="../academy/">AI 공개강의</a> · <a href="mailto:hammedia002@gmail.com">이메일</a></span></div></footer>
+
   <script>
-    const modes = {
-      once: ["한 번 완성하기", "폼의 ‘맡기고 싶은 일’에 완성하고 싶은 결과를 적어주세요."],
-      monthly: ["매달 함께 운영하기", "폼의 ‘맡기고 싶은 일’에 매달 이어가고 싶은 콘텐츠와 채널을 적어주세요."],
-      install: ["회사 안에 설치하기", "폼의 ‘맡기고 싶은 일’에 줄이고 싶은 반복업무나 흩어진 운영정보를 적어주세요."]
+    const jobs = {
+      once: ['이거 하나 살려주세요', '완성하고 싶은 영상·페이지·콘텐츠를 적어주세요.'],
+      monthly: ['매달 같이 굴려주세요', '매달 이어가고 싶은 콘텐츠와 채널을 적어주세요.'],
+      install: ['회사 안에 작은 팀 하나 놔주세요', '줄이고 싶은 반복업무나 흩어진 운영정보를 적어주세요.']
     };
-    const tabs = [...document.querySelectorAll('[data-mode]')];
-    const panels = [...document.querySelectorAll('[data-panel]')];
-    const selectedTitle = document.getElementById('selected-title');
-    const selectedHelp = document.getElementById('selected-help');
-    function selectMode(key, options = {}) {
-      if (!modes[key]) return;
-      tabs.forEach((tab) => {
-        const active = tab.dataset.mode === key;
-        tab.setAttribute('aria-selected', String(active));
-        tab.tabIndex = active ? 0 : -1;
+    const tickets = [...document.querySelectorAll('[data-ticket]')];
+    const panels = [...document.querySelectorAll('[data-job]')];
+    const chosenTitle = document.getElementById('chosen-title');
+    const chosenHelp = document.getElementById('chosen-help');
+    function chooseJob(key, options = {}) {
+      if (!jobs[key]) return;
+      tickets.forEach((ticket) => {
+        const selected = ticket.dataset.ticket === key;
+        ticket.setAttribute('aria-selected', String(selected));
+        ticket.tabIndex = selected ? 0 : -1;
       });
-      panels.forEach((panel) => {
-        const active = panel.dataset.panel === key;
-        panel.classList.toggle('active', active);
-        panel.hidden = !active;
-      });
-      selectedTitle.textContent = modes[key][0];
-      selectedHelp.textContent = modes[key][1];
-      const nextUrl = new URL(location.href);
-      nextUrl.searchParams.set('way', key);
-      history.replaceState(null, '', nextUrl);
+      panels.forEach((panel) => { panel.hidden = panel.dataset.job !== key; });
+      chosenTitle.textContent = jobs[key][0];
+      chosenHelp.textContent = jobs[key][1];
+      const url = new URL(location.href);
+      url.searchParams.set('way', key);
+      history.replaceState(null, '', url);
       if (options.track && typeof gtag === 'function') gtag('event', 'select_service_way', { service_way: key });
-      if (options.scroll) document.querySelector('[data-panel="' + key + '"]').scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'center' });
     }
-    tabs.forEach((tab, index) => {
-      tab.addEventListener('click', () => selectMode(tab.dataset.mode, { track: true }));
-      tab.addEventListener('keydown', (event) => {
-        if (!['ArrowLeft', 'ArrowRight'].includes(event.key)) return;
+    tickets.forEach((ticket, index) => {
+      ticket.addEventListener('click', () => chooseJob(ticket.dataset.ticket, { track: true }));
+      ticket.addEventListener('keydown', (event) => {
+        if (!['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(event.key)) return;
         event.preventDefault();
-        const direction = event.key === 'ArrowRight' ? 1 : -1;
-        const next = tabs[(index + direction + tabs.length) % tabs.length];
-        selectMode(next.dataset.mode);
+        const forward = event.key === 'ArrowRight' || event.key === 'ArrowDown';
+        const next = tickets[(index + (forward ? 1 : -1) + tickets.length) % tickets.length];
+        chooseJob(next.dataset.ticket);
         next.focus();
       });
     });
-    document.querySelectorAll('[data-mode-choice]').forEach((link) => link.addEventListener('click', () => {
-      selectMode(link.dataset.modeChoice);
-      if (typeof gtag === 'function') gtag('event', 'begin_service_inquiry', { service_way: link.dataset.modeChoice });
+    document.querySelectorAll('[data-choice]').forEach((link) => link.addEventListener('click', () => {
+      chooseJob(link.dataset.choice);
+      if (typeof gtag === 'function') gtag('event', 'begin_service_inquiry', { service_way: link.dataset.choice });
     }));
     const initial = new URLSearchParams(location.search).get('way');
-    if (modes[initial]) selectMode(initial);
-    if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      const revealObserver = new IntersectionObserver((entries) => entries.forEach((entry) => {
-        if (entry.isIntersecting) { entry.target.classList.add('in'); revealObserver.unobserve(entry.target); }
-      }), { threshold: .08 });
-      document.querySelectorAll('.reveal').forEach((node) => revealObserver.observe(node));
-    } else {
-      document.querySelectorAll('.reveal').forEach((node) => node.classList.add('in'));
-    }
+    if (jobs[initial]) chooseJob(initial);
+
     const d = document;
     const tallySrc = 'https://tally.so/widgets/embed.js';
     const loadTally = () => {
