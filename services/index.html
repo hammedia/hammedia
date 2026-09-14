@@ -70,7 +70,7 @@
     }
     h1, h2, h3, p { margin-top: 0; }
     h1, h2, h3 { line-height: 1.13; letter-spacing: -.055em; }
-    h1 { margin-bottom: 24px; font-size: clamp(3.05rem, 4.75vw, 5rem); font-weight: 720; }
+    h1 { margin-bottom: 24px; font-size: clamp(3rem, 4.5vw, 4.75rem); font-weight: 720; }
     h2 { margin-bottom: 22px; font-size: clamp(2.25rem, 4.4vw, 4.8rem); font-weight: 700; }
     h3 { margin-bottom: 14px; font-size: clamp(1.55rem, 2.5vw, 2.4rem); }
     .lead { max-width: 690px; color: #45433e; font-size: clamp(1.08rem, 1.6vw, 1.28rem); }
@@ -96,24 +96,25 @@
     .nav .contact-link { padding-bottom: 2px; border-bottom: 1px solid var(--ink); }
 
     .hero { border-bottom: 1px solid var(--line); }
-    .hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(420px, 1fr); min-height: 680px; }
+    .hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(420px, 1fr); min-height: 610px; }
     .hero-copy { display: flex; flex-direction: column; justify-content: center; padding: 78px 68px 78px 0; }
     .hero-copy h1 em { color: var(--blue); font-family: Georgia, "Noto Serif KR", serif; font-style: normal; }
     .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
-    .hero-visual {
-      display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1.18fr .82fr;
-      min-height: 620px; gap: 5px; overflow: hidden; background: var(--paper);
+    .hero-portrait { position: relative; min-height: 610px; margin: 0; overflow: hidden; background: #d3c8b9; }
+    .hero-portrait img { height: 100%; object-fit: cover; object-position: 50% 43%; }
+    .hero-portrait figcaption {
+      position: absolute; right: 18px; bottom: 18px; left: 18px;
+      display: flex; justify-content: space-between; gap: 18px; padding: 13px 15px;
+      color: #fff; background: rgba(23,23,21,.88); font-size: .72rem;
     }
-    .hero-proof { position: relative; min-width: 0; margin: 0; overflow: hidden; background: #d3c8b9; }
-    .hero-proof.main { grid-column: 1 / 3; }
-    .hero-proof img { height: 100%; object-fit: cover; }
-    .hero-proof.main img { object-position: 50% 43%; }
-    .hero-proof.screen img { object-position: top center; }
-    .hero-proof span {
-      position: absolute; right: 12px; bottom: 12px; left: 12px;
-      width: max-content; max-width: calc(100% - 24px); padding: 9px 11px;
-      color: #fff; background: rgba(23,23,21,.88); font-size: .7rem; font-weight: 720;
-    }
+    .hero-proof-band { border-top: 1px solid var(--line); }
+    .hero-proof-list { display: grid; grid-template-columns: .58fr repeat(3, 1fr); }
+    .hero-proof-item { min-width: 0; padding: 22px 24px; border-left: 1px solid var(--line); }
+    .hero-proof-item:first-child { padding-left: 0; border-left: 0; }
+    .hero-proof-item b, .hero-proof-item span { display: block; }
+    .hero-proof-item b { margin-bottom: 5px; font-size: .75rem; }
+    .hero-proof-item span { color: var(--muted); font-size: .75rem; line-height: 1.45; }
+    .hero-proof-item a { text-underline-offset: 4px; }
 
     .work { padding: 125px 0 132px; }
     .section-head { display: grid; grid-template-columns: minmax(0,.88fr) minmax(280px,.52fr); gap: 70px; align-items: end; margin-bottom: 65px; }
@@ -219,8 +220,12 @@
       .hero-actions { align-items: stretch; flex-direction: column; }
       .hero-actions .button { width: 100%; }
       .hero-actions .button.secondary { min-height: auto; justify-content: flex-start; padding: 6px 0; border: 0; }
-      .hero-visual { min-height: 500px; margin-inline: -15px; grid-template-rows: 1.12fr .88fr; }
-      .hero-proof span { right: 9px; bottom: 9px; left: 9px; max-width: calc(100% - 18px); padding: 8px 9px; font-size: .65rem; }
+      .hero-portrait { min-height: 350px; margin-inline: -15px; }
+      .hero-portrait figcaption { right: 10px; bottom: 10px; left: 10px; flex-direction: column; gap: 2px; padding: 10px 11px; }
+      .hero-proof-list { grid-template-columns: 1fr 1fr; }
+      .hero-proof-item { padding: 18px 15px; }
+      .hero-proof-item:nth-child(odd) { padding-left: 0; border-left: 0; }
+      .hero-proof-item:nth-child(n+3) { border-top: 1px solid var(--line); }
       .work, .service { padding: 88px 0 94px; }
       .section-head, .archive-head, .learning-grid, .owner-grid, .contact-grid { grid-template-columns: 1fr; gap: 35px; }
       .section-head { margin-bottom: 45px; }
@@ -267,27 +272,25 @@
     <section class="hero">
       <div class="shell hero-grid">
         <div class="hero-copy">
-          <p class="eyebrow">혼자 뛰는 사장님을 위해</p>
-          <h1>영상·홈페이지·<br><em>AI 도구를 만듭니다.</em></h1>
-          <p class="lead">27년 현장의 함동민이 직접 맡고 끝까지 확인합니다.</p>
+          <p class="eyebrow">혼자 뛰는 사장님의 일을</p>
+          <h1>영상·홈페이지로 알리고,<br><em>AI로 반복되는 일을 줄입니다.</em></h1>
+          <p class="lead">함동민이 27년 현장 경험으로 기획부터 운영까지 직접 맡습니다.</p>
           <div class="hero-actions">
             <a class="button primary" href="#service">일 맡기기</a>
             <a class="button secondary" href="../academy/">직접 배워서 해보기</a>
           </div>
         </div>
-        <div class="hero-visual" aria-label="HAM MEDIA 대표와 실제 작업">
-          <figure class="hero-proof main">
-            <img src="assets/ham-hamdongmin-studio.jpg" alt="함동민 대표가 작업실에서 설명하는 모습" width="1920" height="1080">
-            <span>함동민 · 기획부터 최종 확인까지</span>
-          </figure>
-          <figure class="hero-proof screen">
-            <img src="assets/mapobada-homepage.jpg" alt="HAM MEDIA가 만든 마포바다 홈페이지 화면" width="1400" height="1050">
-            <span>마포바다 · 홈페이지와 운영</span>
-          </figure>
-          <figure class="hero-proof screen">
-            <img src="assets/ham-ai-prompt-gallery.jpg" alt="HAM MEDIA가 만든 프롬프트 갤러리 화면" width="1400" height="1050">
-            <span>프롬프트 갤러리 · 직접 만든 AI 도구</span>
-          </figure>
+        <figure class="hero-portrait">
+          <img src="assets/ham-hamdongmin-studio.jpg" alt="함동민 대표가 작업실에서 설명하는 모습" width="1920" height="1080">
+          <figcaption><b>함동민 · HAM MEDIA</b><span>기획 · 촬영 · 제작 · 운영</span></figcaption>
+        </figure>
+      </div>
+      <div class="hero-proof-band" aria-label="실제 작업 요약">
+        <div class="shell hero-proof-list">
+          <div class="hero-proof-item"><b>실제로 한 일</b><span>말보다 작업으로 보여드립니다.</span></div>
+          <div class="hero-proof-item"><b>마포바다</b><span>홈페이지 · 영상 · 매장 홍보물 · 월간 운영</span></div>
+          <div class="hero-proof-item"><b>나비솔한의원</b><span>의료 영상 기획 · 촬영 · 편집</span></div>
+          <div class="hero-proof-item"><b><a href="../tools/prompt-gallery/">프롬프트 갤러리</a></b><span>직접 만든 AI 작업 13개</span></div>
         </div>
       </div>
     </section>
