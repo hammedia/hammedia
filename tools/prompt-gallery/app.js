@@ -7,7 +7,7 @@ let currentSignal='all';
 const grid=document.querySelector('#grid');
 const countEl=document.querySelector('#count');
 
-const FORMAT={stamp:'스티커',reply:'반응',four:'네컷',three:'세 컷',restore:'사진 복원',transform:'모습 바꾸기',archive:'기록 상자'};
+const FORMAT={stamp:'스티커',reply:'반응',four:'네컷',three:'세 컷',restore:'사진 복원',transform:'모습 바꾸기',archive:'기록 상자',board:'광고 시안판'};
 const SUBJECT={me:'나',pet:'반려동물',pair:'나와 반려동물',none:'사진 없이'};
 
 function photoLabel(w){
@@ -81,13 +81,14 @@ function bindFilter(){
  });
 }
 
-fetch('catalog.json')
+fetch('catalog.json?v=20260915')
  .then(r=>{if(!r.ok)throw 0;return r.json();})
  .then(data=>{
   works=Array.isArray(data)?data:(data&&Array.isArray(data.entries)?data.entries:[]);
   render();
   bindFilter();
   bindSignal();
+  document.querySelectorAll('.hero-open').forEach(button=>{button.disabled=false;});
  })
  .catch(()=>{
   grid.innerHTML='<p class=\'empty\'>작품 목록을 불러오지 못했습니다. 잠시 후 새로고침해주세요.</p>';
@@ -200,7 +201,7 @@ function openWork(id){
 }
 
 document.addEventListener('click',e=>{
- const opener=e.target.closest('.frame,.hero-art');
+ const opener=e.target.closest('.frame,.hero-open');
  if(opener&&opener.dataset.id)openWork(opener.dataset.id);
 });
 
