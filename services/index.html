@@ -70,7 +70,7 @@
     }
     h1, h2, h3, p { margin-top: 0; }
     h1, h2, h3 { line-height: 1.13; letter-spacing: -.055em; }
-    h1 { margin-bottom: 24px; font-size: clamp(3.3rem, 5.4vw, 5.6rem); font-weight: 720; }
+    h1 { margin-bottom: 24px; font-size: clamp(3.05rem, 4.75vw, 5rem); font-weight: 720; }
     h2 { margin-bottom: 22px; font-size: clamp(2.25rem, 4.4vw, 4.8rem); font-weight: 700; }
     h3 { margin-bottom: 14px; font-size: clamp(1.55rem, 2.5vw, 2.4rem); }
     .lead { max-width: 690px; color: #45433e; font-size: clamp(1.08rem, 1.6vw, 1.28rem); }
@@ -96,19 +96,24 @@
     .nav .contact-link { padding-bottom: 2px; border-bottom: 1px solid var(--ink); }
 
     .hero { border-bottom: 1px solid var(--line); }
-    .hero-grid { display: grid; grid-template-columns: minmax(0, 1.03fr) minmax(360px, .97fr); min-height: 680px; }
-    .hero-copy { display: flex; flex-direction: column; justify-content: center; padding: 78px 76px 78px 0; }
+    .hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(420px, 1fr); min-height: 680px; }
+    .hero-copy { display: flex; flex-direction: column; justify-content: center; padding: 78px 68px 78px 0; }
     .hero-copy h1 em { color: var(--blue); font-family: Georgia, "Noto Serif KR", serif; font-style: normal; }
     .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
-    .hero-visual { position: relative; min-height: 620px; overflow: hidden; background: #d3c8b9; }
-    .hero-visual > img { height: 100%; object-fit: cover; }
-    .hero-caption {
-      position: absolute; right: 20px; bottom: 20px; left: 20px;
-      display: flex; justify-content: space-between; gap: 20px;
-      padding: 14px 16px; color: #fff; background: rgba(23,23,21,.87);
-      font-size: .76rem;
+    .hero-visual {
+      display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1.18fr .82fr;
+      min-height: 620px; gap: 5px; overflow: hidden; background: var(--paper);
     }
-    .hero-caption b { letter-spacing: .06em; }
+    .hero-proof { position: relative; min-width: 0; margin: 0; overflow: hidden; background: #d3c8b9; }
+    .hero-proof.main { grid-column: 1 / 3; }
+    .hero-proof img { height: 100%; object-fit: cover; }
+    .hero-proof.main img { object-position: 50% 43%; }
+    .hero-proof.screen img { object-position: top center; }
+    .hero-proof span {
+      position: absolute; right: 12px; bottom: 12px; left: 12px;
+      width: max-content; max-width: calc(100% - 24px); padding: 9px 11px;
+      color: #fff; background: rgba(23,23,21,.88); font-size: .7rem; font-weight: 720;
+    }
 
     .work { padding: 125px 0 132px; }
     .section-head { display: grid; grid-template-columns: minmax(0,.88fr) minmax(280px,.52fr); gap: 70px; align-items: end; margin-bottom: 65px; }
@@ -210,12 +215,12 @@
       .nav a:not(.contact-link) { display: none; }
       .hero-grid { grid-template-columns: 1fr; min-height: auto; }
       .hero-copy { padding: 54px 0 40px; }
-      h1 { font-size: clamp(2.85rem, 12.8vw, 4rem); }
+      h1 { font-size: clamp(2.55rem, 11.2vw, 3.35rem); }
       .hero-actions { align-items: stretch; flex-direction: column; }
       .hero-actions .button { width: 100%; }
       .hero-actions .button.secondary { min-height: auto; justify-content: flex-start; padding: 6px 0; border: 0; }
-      .hero-visual { min-height: 420px; margin-inline: -15px; }
-      .hero-caption { right: 14px; bottom: 14px; left: 14px; flex-direction: column; gap: 2px; }
+      .hero-visual { min-height: 500px; margin-inline: -15px; grid-template-rows: 1.12fr .88fr; }
+      .hero-proof span { right: 9px; bottom: 9px; left: 9px; max-width: calc(100% - 18px); padding: 8px 9px; font-size: .65rem; }
       .work, .service { padding: 88px 0 94px; }
       .section-head, .archive-head, .learning-grid, .owner-grid, .contact-grid { grid-template-columns: 1fr; gap: 35px; }
       .section-head { margin-bottom: 45px; }
@@ -262,18 +267,28 @@
     <section class="hero">
       <div class="shell hero-grid">
         <div class="hero-copy">
-          <p class="eyebrow">HAM MEDIA가 하는 일</p>
-          <h1>홈페이지와 영상을 만들고,<br><em>반복 업무를 AI로 줄입니다.</em></h1>
-          <p class="lead">한 번 만드는 일부터 월간 운영, 회사용 AI 도구까지 맡습니다.</p>
+          <p class="eyebrow">혼자 뛰는 사장님을 위해</p>
+          <h1>영상·홈페이지·<br><em>AI 도구를 만듭니다.</em></h1>
+          <p class="lead">27년 현장의 함동민이 직접 맡고 끝까지 확인합니다.</p>
           <div class="hero-actions">
-            <a class="button primary" href="#service">HAM MEDIA에 맡기기</a>
+            <a class="button primary" href="#service">일 맡기기</a>
             <a class="button secondary" href="../academy/">직접 배워서 해보기</a>
           </div>
         </div>
-        <figure class="hero-visual">
-          <img src="../customers/mapobada/promo-0903/photos/01_모둠회.jpg" alt="마포바다의 모둠회 상차림" width="2000" height="1500">
-          <figcaption class="hero-caption"><b>마포바다 · 2026</b><span>사진 · 영상 · 홈페이지 · 매장 홍보물</span></figcaption>
-        </figure>
+        <div class="hero-visual" aria-label="HAM MEDIA 대표와 실제 작업">
+          <figure class="hero-proof main">
+            <img src="assets/ham-hamdongmin-studio.jpg" alt="함동민 대표가 작업실에서 설명하는 모습" width="1920" height="1080">
+            <span>함동민 · 기획부터 최종 확인까지</span>
+          </figure>
+          <figure class="hero-proof screen">
+            <img src="assets/mapobada-homepage.jpg" alt="HAM MEDIA가 만든 마포바다 홈페이지 화면" width="1400" height="1050">
+            <span>마포바다 · 홈페이지와 운영</span>
+          </figure>
+          <figure class="hero-proof screen">
+            <img src="assets/ham-ai-prompt-gallery.jpg" alt="HAM MEDIA가 만든 프롬프트 갤러리 화면" width="1400" height="1050">
+            <span>프롬프트 갤러리 · 직접 만든 AI 도구</span>
+          </figure>
+        </div>
       </div>
     </section>
 
