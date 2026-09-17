@@ -234,9 +234,66 @@
     .flip-grid.cols-4, .flip-grid.cols-3, .flip-grid.cols-2{ grid-template-columns:1fr }
     #quote-form{ margin:12px; padding:40px 22px; border-radius:24px }
   }
+
+  /* 2026-09-17 · 공개 견적 경험: 종이·잉크·하늘색 한 강조, 기능 보존 */
+  :root { --yellow:var(--bg2); --green:var(--ink); --blue-text:#285c85; }
+  a { color:var(--blue-text); text-underline-offset:.22em; }
+  :focus-visible { outline:3px solid var(--blue-text); outline-offset:5px; }
+  .site-header { max-width:1100px; margin:auto; padding:26px 28px; display:flex; justify-content:space-between; gap:20px; border-bottom:1px solid var(--line); }
+  .site-header>a { font-weight:800; letter-spacing:.06em; color:var(--ink); text-decoration:none; }
+  .site-header nav { display:flex; gap:24px; font-size:.9rem; }
+  main { max-width:1100px; }
+  section { padding:72px 0; }
+  h1,h2,h3,.hook { word-break:keep-all; overflow-wrap:anywhere; text-wrap:balance; }
+  h1 { font-size:clamp(2.3rem,5.4vw,4.5rem); max-width:17ch; line-height:1.2; }
+  h1 .hl { color:var(--ink); }
+  #hero { padding-top:76px; padding-bottom:76px; }
+  .hero-glow,.step-line,.locked-tag { display:none; }
+  .reveal,#hero .reveal,.reveal.in,#hero .reveal.in { opacity:1; transform:none; filter:none; }
+  .eyebrow,.eyebrow.blue { padding:0; border-radius:0; background:none; color:var(--blue-text); letter-spacing:.08em; }
+  .locked { padding:0 0 0 20px; border-left:3px solid var(--blue); border-radius:0; background:none; max-width:40em; }
+  .cta-btn { border-radius:4px; padding:17px 22px; background:var(--ink); box-shadow:none; min-height:52px; }
+  .cta-btn:hover { transform:translateY(-2px); background:#39332d; }
+  .cta-btn .arrow { border-radius:0; background:none; width:auto; height:auto; }
+  .problem-hero { background:var(--bg2); border-radius:0; border-top:2px solid var(--ink); padding:32px; }
+  .problem-hero .kicker,.flip-card .kicker,.case-meta .kicker { background:none; color:var(--blue-text); padding:0; border-radius:0; }
+  details.flip-card { border-radius:0; box-shadow:none; background:none; border-top:1px solid var(--line); }
+  details.flip-card summary { padding:24px 0; min-height:120px; }
+  details.flip-card .body { padding:18px 0 24px; }
+  #how .flip-grid { padding-top:0; }
+  #how .flip-grid.cols-3::before { display:none; }
+  a.case-card { border-radius:0; box-shadow:none; background:none; }
+  a.case-card:hover { box-shadow:none; }
+  .case-shot { aspect-ratio:16/10; border:1px solid var(--line); }
+  .case-meta { padding:24px 0; }
+  .case-live { border-radius:0; background:var(--ink); }
+  .case-live .dot { background:var(--blue); }
+  details.faq-item { border-radius:0; box-shadow:none; background:none; padding:6px 0; border-bottom:1px solid var(--line); }
+  #quote-form { background:var(--bg2); color:var(--ink); border-radius:0; margin:0; padding:52px 40px; border-top:3px solid var(--ink); }
+  #quote-form h2,form.quote-form label { color:var(--ink); }
+  #quote-form .desc,#quote-form .eyebrow.blue { color:var(--ink-soft); }
+  form.quote-form { max-width:760px; }
+  form.quote-form .field-num { background:none; color:var(--blue-text); border-radius:0; }
+  form.quote-form textarea,form.quote-form input[type="text"] { color:var(--ink); background:var(--bg); border:1px solid #8c847a; border-radius:3px; font-size:1rem; }
+  form.quote-form textarea::placeholder,form.quote-form input::placeholder { color:#6d655c; }
+  .form-note { color:#625a51; line-height:1.6; }
+  .form-error-summary { background:var(--bg); color:#8d3025; border-color:#a43a2b; border-radius:3px; }
+  .form-error-summary a,.field-error { color:#8d3025; }
+  #quote-form-msg { color:var(--ink-soft)!important; }
+  #quote-form-msg[data-state="ok"] { color:#285c85!important; }
+  #quote-form-msg[data-state="err"] { color:#8d3025!important; }
+  .book-next { padding:40px 0; max-width:680px; }
+  .book-next h2 { font-size:1.4rem; }
+  .book-next p { color:var(--ink-soft); }
+  .book-next a { display:inline-block; margin:4px 20px 4px 0; padding:8px 0; }
+  .final-cta { text-align:left; }
+  .final-cta p.line { margin-left:0; }
+  @media(max-width:760px) { main { padding:0 22px; } section { padding:48px 0; } #hero { padding:52px 0; } .site-header { padding:22px; } .site-header nav { gap:16px; } .problem-hero { padding:24px 20px; } #quote-form { margin:0 -6px; padding:36px 20px; } #how .flip-grid.cols-3 { padding-left:0; } .case-grid { gap:36px; } }
+
 </style>
 </head>
 <body>
+<header class="site-header"><a href="/">HAM MEDIA</a><nav aria-label="주요 메뉴"><a href="/services/">하는 일</a><a href="#quote-form">견적 요청</a></nav></header>
 
 
 <main>
@@ -245,26 +302,25 @@
   <section id="hero">
     <div class="hero-glow" aria-hidden="true"></div>
     <div class="reveal" style="--d:0s">
-      <span class="eyebrow">공통 첫 문장 · 잠금</span>
-      <h1>세상의 모든 지식을 가진 <span class="hl">AI</span>.
-회사의 현실과 목표를 아는 대표님.
-그 둘의 첫 회의, 햄미디어가 준비하겠습니다.</h1>
-      <p class="sub-copy">매일 반복하던 일을 줄여, 대표님의 시간을 돌려드립니다.</p>
+      <span class="eyebrow">HAM MEDIA · 서면 견적</span>
+      <h1>반복하던 일 하나,
+<span class="hl">어디까지 줄일 수 있을까요?</span></h1>
+      <p class="sub-copy">매일 손으로 하는 일과 원하는 결과를 알려주세요.<br>할 수 있는 범위와 기간, 비용을 글로 답하겠습니다.</p>
     </div>
     <div class="locked reveal" style="--d:.22s">
-      <span class="locked-tag">잠금 · 설명 문장</span>
+
       <p class="desc">AI가 답을 대신 결정하지 않습니다. 대표님의 경험과 회사 현실을 충분히 듣고, 여러 AI의 지식과 관점을 실제 경영 안건에 맞게 연결합니다. 결정은 대표님이 합니다.</p>
     </div>
     <p style="margin-top:36px; --d:.4s" class="reveal">
-      <a class="cta-btn" href="#quote-form">우리 회사 첫 AI 회의 준비하기 <span class="arrow">→</span></a>
+      <a class="cta-btn" href="#quote-form">서면 견적 요청하기 <span class="arrow">→</span></a>
     </p>
   </section>
 
   <!-- 2. 문제 제기 — 직원(채용·교육) 강조 배너 + 보조 카드 -->
   <section id="problem">
     <span class="eyebrow blue reveal">가장 크게 발목 잡는 문제</span>
-    <h2 class="reveal">결국, 직원 때문에 제일 힘드시죠.</h2>
-    <p class="section-hint reveal">채용부터 교육까지 — 이 둘이 해결의 시작입니다</p>
+    <h2 class="reveal">대표님이 매번 직접 해야 하는 일.</h2>
+    <p class="section-hint reveal">사람을 뽑고 가르치는 일부터, 매일 반복하는 정리까지.</p>
 
     <div class="problem-hero reveal">
       <span class="kicker">가장 큰 문제</span>
@@ -381,7 +437,7 @@
       </div>
     <p class="desc reveal" style="margin:24px 0">결제 전에 대표님 실제 업무 하나를 갖고 가능 여부를 같이 확인합니다.</p>
     <div class="locked reveal">
-      <span class="locked-tag">잠금 · 따뜻한 고객용 ①</span>
+
       <p class="desc" style="margin:0">"내 노트북 안에, 나를 위해 일하는 작은 AI 회사를 만듭니다."</p>
     </div>
   </section>
@@ -468,14 +524,21 @@
         <button type="submit" class="cta-btn" id="quote-submit-btn">서면 견적 요청 보내기 <span class="arrow">→</span></button>
         <p class="form-note" id="quote-form-msg" role="status" style="color:#C9C2B8"></p>
       </div>
+      <p class="form-note">전송이 어렵다면 <a href="mailto:hammedia002@gmail.com">hammedia002@gmail.com</a>으로 같은 내용을 보내주세요.</p>
+      <noscript><p>견적 폼을 보내려면 자바스크립트가 필요합니다. 위 이메일로 문의하실 수 있습니다.</p></noscript>
     </form>
   </section>
 
+  <aside class="book-next" aria-labelledby="book-next-title">
+    <h2 id="book-next-title">아직 맡길 단계가 아니라면</h2>
+    <p>직접 해보고 싶은 분을 위해, 저희가 실제로 쓰는 방법을 책으로 적었습니다. 가입이나 결제 없이 첫 장부터 읽어보세요.</p>
+    <a href="/book/preview/">첫 장 무료로 읽기 →</a><a href="/book/">책과 실습 부록 보기 →</a>
+  </aside>
   <script type="module">
-    import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
+
     const SUPABASE_URL = "https://jhdcznxbebekgninpdnt.supabase.co";
     const SUPABASE_ANON_KEY = "sb_publishable_5bNIQB2iil31WejPIJhftQ_i0FgMr7k";
-    const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
 
     const form = document.getElementById("quote-request-form");
     const msgEl = document.getElementById("quote-form-msg");
@@ -548,7 +611,8 @@
         return;
       }
 
-      const lastAt = Number(localStorage.getItem(RATE_LIMIT_KEY) || 0);
+      let lastAt = 0;
+      try { lastAt = Number(localStorage.getItem(RATE_LIMIT_KEY) || 0); } catch {}
       if (Date.now() - lastAt < RATE_LIMIT_MS) {
         setMsg("err", "방금 보내셨습니다. 잠시 후 다시 시도해주세요.");
         return;
@@ -570,9 +634,14 @@
       setMsg(null, "보내는 중...");
 
       try {
-        const { error } = await supabase.from("quote_requests").insert(payload);
-        if (error) throw error;
-        localStorage.setItem(RATE_LIMIT_KEY, String(Date.now()));
+        const response = await fetch(`${SUPABASE_URL}/rest/v1/quote_requests`, {
+          method: "POST",
+          headers: { "apikey": SUPABASE_ANON_KEY, "Content-Type": "application/json", "Prefer": "return=minimal" },
+          body: JSON.stringify(payload),
+          signal: AbortSignal.timeout(15000),
+        });
+        if (!response.ok) throw new Error(`Request failed: ${response.status}`);
+        try { localStorage.setItem(RATE_LIMIT_KEY, String(Date.now())); } catch {}
         setMsg("ok", "감사합니다. 서면 견적으로 답해드리겠습니다.");
         form.reset();
         requiredFields.forEach(clearFieldError);
@@ -590,7 +659,7 @@
   <section id="final-cta" class="final-cta reveal">
     <p class="line">결정은 대표님이 하시되, 그 결정을 더 빠르고 정확하게 돕습니다.</p>
     <p>
-      <a class="cta-btn" href="#quote-form">우리 회사 첫 AI 회의 준비하기 <span class="arrow">→</span></a>
+      <a class="cta-btn" href="#quote-form">서면 견적 요청하기 <span class="arrow">→</span></a>
     </p>
   </section>
 
