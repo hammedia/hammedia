@@ -179,6 +179,18 @@
     .owner-copy ul { padding: 0; margin: 34px 0 0; list-style: none; border-top: 1px solid var(--line); }
     .owner-copy li { padding: 15px 0; border-bottom: 1px solid var(--line); }
 
+    .parody { padding: 104px 0 112px; border-top: 1px solid var(--line); background: #ebe5d9; }
+    .parody-head { display: grid; grid-template-columns: minmax(0,.72fr) minmax(280px,1.28fr); gap: 70px; align-items: end; margin-bottom: 55px; }
+    .parody-head p:last-child { max-width: 650px; margin-bottom: 8px; color: var(--muted); }
+    .parody-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 28px; }
+    .parody-card { min-width: 0; padding-top: 16px; border-top: 1px solid var(--ink); }
+    .parody-card .media { position: relative; display: block; margin-bottom: 24px; overflow: hidden; background: #d5cdbf; aspect-ratio: 16/9; }
+    .parody-card .media img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s ease; }
+    .parody-card:hover .media img { transform: scale(1.025); }
+    .parody-card h3 { max-width: 420px; margin-bottom: 13px; font-size: clamp(1.35rem, 2vw, 1.75rem); }
+    .parody-card p { min-height: 3.3em; margin-bottom: 18px; color: var(--muted); font-size: .9rem; }
+    .parody-card .parody-boundary { min-height: 0; margin-top: -8px; color: var(--blue); font-size: .75rem; font-weight: 800; }
+
     .paths { padding: 82px 0; border-top: 1px solid var(--line); }
     .paths-intro { max-width: 650px; color: var(--muted); }
     .paths-list { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; padding: 0; margin: 34px 0 0; list-style: none; }
@@ -253,6 +265,11 @@
       .paths-list { grid-template-columns: 1fr 1fr; }
       .owner { padding: 82px 0; }
       .owner-photo { min-height: 380px; }
+      .parody { padding: 78px 0 86px; }
+      .parody-head { display: block; margin-bottom: 38px; }
+      .parody-head p:last-child { margin-top: 20px; }
+      .parody-grid { grid-template-columns: 1fr; gap: 46px; }
+      .parody-card .media { max-width: 360px; }
       .contact { padding: 86px 0; }
       .form-wrap { min-height: 570px; margin-top: 10px; padding: 4px; }
     }
@@ -454,6 +471,47 @@
             <li>기획·문장·화면을 제가 직접 보고 고칩니다.</li>
             <li>확인하지 않은 매출, 검색 순위, 고객 반응을 약속하지 않습니다.</li>
           </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="parody" aria-labelledby="parody-title">
+      <div class="shell">
+        <div class="parody-head">
+          <div>
+            <p class="eyebrow">HAM MEDIA 자체 콘텐츠</p>
+            <h2 id="parody-title">햄이 주인공인 패러디 쇼츠</h2>
+          </div>
+          <p>유행 장면의 형식은 참고하고, 문장·편집·브랜드 엔딩은 HAM MEDIA 방식으로 다시 만든 짧은 영상입니다.</p>
+        </div>
+        <div class="parody-grid">
+          <article class="parody-card">
+            <a class="media" href="https://youtube.com/shorts/Tlc73colvmE" target="_blank" rel="noopener noreferrer">
+              <img src="https://i.ytimg.com/vi/Tlc73colvmE/maxresdefault.jpg" alt="AI 영상에 3시간 썼더니 30년 묵은 아재 감성이 나왔습니다 패러디 쇼츠 표지" width="1280" height="720" loading="lazy">
+            </a>
+            <h3>AI 영상에 3시간 썼더니… 30년 묵은 아재 감성이 나왔습니다</h3>
+            <p>AI 영상에 3시간을 쓴 뒤 찾아온 30년 묵은 아재 감성.</p>
+            <p class="parody-boundary">자체 홍보물 · 고객 납품 사례 아님</p>
+            <a class="text-link" href="https://youtube.com/shorts/Tlc73colvmE" target="_blank" rel="noopener noreferrer">YouTube Shorts에서 보기 ↗</a>
+          </article>
+          <article class="parody-card">
+            <a class="media" href="https://youtube.com/shorts/Dkz7cjdLFUw" target="_blank" rel="noopener noreferrer">
+              <img src="https://i.ytimg.com/vi/Dkz7cjdLFUw/maxresdefault.jpg" alt="거대 전어가 마포에 나타났다 HAM MEDIA AI 패러디 광고 표지" width="1280" height="720" loading="lazy">
+            </a>
+            <h3>거대 전어가 마포에 나타났다</h3>
+            <p>마포바다를 배경으로 만든 HAM MEDIA AI 패러디 광고.</p>
+            <p class="parody-boundary">자체 홍보물 · 고객 납품 사례 아님</p>
+            <a class="text-link" href="https://youtube.com/shorts/Dkz7cjdLFUw" target="_blank" rel="noopener noreferrer">YouTube Shorts에서 보기 ↗</a>
+          </article>
+          <article class="parody-card">
+            <a class="media" href="https://youtube.com/shorts/8GhLAuLmLHc" target="_blank" rel="noopener noreferrer">
+              <img src="https://i.ytimg.com/vi/8GhLAuLmLHc/maxresdefault.jpg" alt="대표가 거대 새우와 맨손으로 싸우는 HAM MEDIA 패러디 광고 표지" width="1280" height="720" loading="lazy">
+            </a>
+            <h3>이번엔 새우입니다</h3>
+            <p>대표가 직접 나오는, 거대 새우와의 맨손 대결 광고.</p>
+            <p class="parody-boundary">자체 홍보물 · 고객 납품 사례 아님</p>
+            <a class="text-link" href="https://youtube.com/shorts/8GhLAuLmLHc" target="_blank" rel="noopener noreferrer">YouTube Shorts에서 보기 ↗</a>
+          </article>
         </div>
       </div>
     </section>
