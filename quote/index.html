@@ -185,6 +185,8 @@
   .form-error-summary a{ color:#fff; text-underline-offset:.2em }
   .field-error{ min-height:1.4em; margin:6px 0 0; color:#FF9B84; font-size:.85rem; font-weight:700 }
   form.quote-form [aria-invalid="true"]{ border-color:#FF9B84; box-shadow:0 0 0 2px rgba(255,155,132,.2) }
+  .privacy-note{ padding:14px 16px; border:1px solid rgba(255,255,255,.2); border-radius:12px; color:#C9C2B8; font-size:.88rem; line-height:1.65 }
+  .privacy-note a{ color:inherit; font-weight:800 }
 
   /* ── 서면 견적 버튼 상태 (피드백·상태 레이어) ── */
   .cta-btn[data-state="loading"]{ opacity:.75; cursor:progress }
@@ -481,7 +483,7 @@
     <h2>서면 견적, 이 다섯 가지만 적어주세요.</h2>
     <p class="desc">전화 통화를 강요하지 않습니다. 아래 다섯 줄을 적어 보내주시면, 조건에 맞춘 서면 견적으로 답합니다.</p>
 
-    <form class="quote-form" id="quote-request-form" novalidate>
+    <form class="quote-form" id="quote-request-form" method="post" novalidate>
       <div class="form-error-summary" id="quote-error-summary" role="alert" tabindex="-1" hidden>
         <p>확인할 내용이 있습니다.</p>
         <ul id="quote-error-list"></ul>
@@ -520,8 +522,9 @@
         <label for="website">website</label>
         <input id="website" type="text" name="website" tabindex="-1" autocomplete="off">
       </div>
+      <p class="privacy-note">보내주신 연락처와 업무 내용은 요청하신 견적 상담과 계약 전 검토를 위해서만 사용하며, 상담 종료 후 6개월 이내 파기합니다. 자세한 내용과 삭제 요청 방법은 <a href="/privacy/" target="_blank" rel="noopener noreferrer">개인정보처리방침</a>에서 확인할 수 있습니다.</p>
       <div>
-        <button type="submit" class="cta-btn" id="quote-submit-btn">서면 견적 요청 보내기 <span class="arrow">→</span></button>
+        <button type="submit" class="cta-btn" id="quote-submit-btn" disabled>서면 견적 요청 보내기 <span class="arrow">→</span></button>
         <p class="form-note" id="quote-form-msg" role="status" style="color:#C9C2B8"></p>
       </div>
       <p class="form-note">전송이 어렵다면 <a href="mailto:hammedia002@gmail.com">hammedia002@gmail.com</a>으로 같은 내용을 보내주세요.</p>
@@ -653,6 +656,7 @@
         btnEl.removeAttribute("data-state");
       }
     });
+    btnEl.disabled = false;
   </script>
 
   <!-- 7. 최종 CTA -->
@@ -667,7 +671,7 @@
 
 <footer class="build-note">
   HAM MEDIA · 함동민 · <a href="https://hammedia.co.kr/">hammedia.co.kr</a><br>
-  보내주신 내용은 견적 회신 용도로만 사용하고 홍보에는 쓰지 않습니다.
+  보내주신 내용은 견적 회신 용도로만 사용하고 홍보에는 쓰지 않습니다. · <a href="/privacy/">개인정보처리방침</a>
 </footer>
 
 <script>

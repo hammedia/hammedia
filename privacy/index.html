@@ -15,8 +15,6 @@
     <meta name="twitter:title" content="HAM MEDIA 개인정보처리방침">
     <meta name="twitter:description" content="HAM MEDIA 홈페이지의 개인정보 처리 기준을 안내합니다.">
     <meta name="twitter:image" content="https://hammedia.co.kr/assets/tools/free-tools-og.png">
-    <link rel="preconnect" href="https://cdn.jsdelivr.net">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
     <style>
       :root {
         color-scheme: light;
@@ -129,6 +127,7 @@
 
       .footer { margin-top: 26px; color: var(--muted); font-size: 13px; line-height: 1.7; text-align: center; }
       .footer strong { color: var(--ink); letter-spacing: .06em; }
+      .choice-button { margin-top: 12px; min-height: 42px; border: 1px solid var(--ink); border-radius: 999px; background: var(--surface); color: var(--ink); padding: 8px 14px; font: inherit; font-weight: 800; cursor: pointer; }
 
       @media (max-width: 860px) {
         .hero { grid-template-columns: 1fr; gap: 22px; }
@@ -150,6 +149,7 @@
         table.policy-table tr { margin-bottom: 12px; }
       }
     </style>
+    <script src="/assets/js/privacy-consent.js" data-measurement-id="G-TEBKMGWPQS"></script>
   </head>
   <body>
     <a class="skip-link" href="#main">본문으로 이동</a>
@@ -169,7 +169,7 @@
         <div>
           <span class="kicker">hammedia.co.kr 공개 문서</span>
           <h1 id="page-title">개인정보처리방침</h1>
-          <p class="lead">HAM MEDIA는 홈페이지에서 남겨주신 이름·연락처·이메일을 어떤 목적으로, 얼마나 보관하며, 어떻게 삭제하는지 이 문서로 안내합니다. 회원가입 없이 필요한 안내·상담만을 위해 최소한으로 수집합니다.</p>
+          <p class="lead">HAM MEDIA는 홈페이지에서 직접 받는 이름·연락처·이메일과 방문 과정에서 생성되는 이용 정보를 어떤 목적으로, 얼마나 보관하며, 어떻게 삭제하는지 안내합니다.</p>
         </div>
 
         <aside class="meta-panel" aria-label="문서 기본 정보">
@@ -189,12 +189,12 @@
           <span>이름, 이메일, 연락처처럼 안내·상담에 꼭 필요한 항목만 받습니다.</span>
         </div>
         <div class="summary-item">
-          <b>동의 없이 저장하지 않습니다</b>
-          <span>입력창의 동의 확인 없이는 정보가 전송·저장되지 않습니다.</span>
+          <b>근거를 구분합니다</b>
+          <span>관심등록은 동의를 받고, 견적요청은 요청하신 계약 전 상담을 위해 처리합니다.</span>
         </div>
         <div class="summary-item">
-          <b>다른 곳에 넘기지 않습니다</b>
-          <span>제3자에게 판매하거나 제공하지 않으며, 안내 목적 외에 쓰지 않습니다.</span>
+          <b>방문 통계는 선택입니다</b>
+          <span>허용하기 전에는 Google Analytics를 불러오지 않으며, 거부해도 사이트를 쓸 수 있습니다.</span>
         </div>
         <div class="summary-item">
           <b>요청하면 즉시 삭제합니다</b>
@@ -204,36 +204,72 @@
 
       <article class="document" aria-label="개인정보처리방침 본문">
         <section class="policy-section">
-          <h2>1. 수집하는 개인정보와 목적</h2>
-          <p>HAM MEDIA는 아래 두 창구에서만 개인정보를 수집합니다. 회원가입이나 별도 계정은 없습니다.</p>
+          <h2>1. 직접 수집하는 개인정보</h2>
+          <p>회원가입이나 별도 계정은 없습니다. 아래 입력창에서 필요한 정보만 직접 받습니다.</p>
 
           <h3 style="font-size:17px;margin-top:20px;margin-bottom:6px;">아카데미 관심등록</h3>
           <table class="policy-table">
-            <tr><th>수집 항목</th><td>이름, 이메일 주소 (그 외 자동수집 항목 없음)</td></tr>
-            <tr><th>수집 방법</th><td>아카데미 페이지의 관심등록 입력창</td></tr>
-            <tr><th>이용 목적</th><td>아카데미 강의 공개·개설 안내</td></tr>
-            <tr><th>보유 기간</th><td>안내를 마친 뒤 6개월 이내 파기 · 삭제 요청 시 즉시 파기</td></tr>
+            <tr><th scope="row">수집 항목</th><td>이름, 이메일 주소</td></tr>
+            <tr><th scope="row">수집 방법</th><td>아카데미 페이지의 관심등록 입력창</td></tr>
+            <tr><th scope="row">이용 목적</th><td>아카데미 강의 공개·개설 안내</td></tr>
+            <tr><th scope="row">처리 근거</th><td>개인정보 보호법 제15조제1항제1호에 따른 동의</td></tr>
+            <tr><th scope="row">보유 기간</th><td>안내를 마친 뒤 6개월 이내 파기 · 삭제 요청 시 즉시 파기</td></tr>
           </table>
 
           <h3 style="font-size:17px;margin-top:20px;margin-bottom:6px;">업무 자동화 견적요청</h3>
           <table class="policy-table">
-            <tr><th>수집 항목</th><td>이메일 또는 전화번호(연락처), 상담을 위해 남겨주신 업무 설명 내용</td></tr>
-            <tr><th>수집 방법</th><td>견적요청 페이지의 상담 입력창</td></tr>
-            <tr><th>이용 목적</th><td>견적 상담 회신</td></tr>
-            <tr><th>보유 기간</th><td>상담 종료 후 6개월 이내 파기 · 삭제 요청 시 즉시 파기</td></tr>
+            <tr><th scope="row">수집 항목</th><td>이메일 또는 전화번호(연락처), 반복 업무·희망 결과·사용 인원과 기기·자료와 보안 조건·희망 기간과 유지관리 여부 등 이용자가 적은 상담 내용</td></tr>
+            <tr><th scope="row">수집 방법</th><td>견적요청 페이지의 상담 입력창</td></tr>
+            <tr><th scope="row">이용 목적</th><td>요청한 견적 검토와 상담 회신</td></tr>
+            <tr><th scope="row">처리 근거</th><td>개인정보 보호법 제15조제1항제4호에 따른 계약 체결 전 요청 사항의 이행</td></tr>
+            <tr><th scope="row">보유 기간</th><td>상담 종료 후 6개월 이내 파기 · 삭제 요청 시 즉시 파기</td></tr>
           </table>
 
-          <p class="note">동의하지 않으셔도 됩니다. 다만 동의하지 않으시면 안내나 견적 회신을 드릴 수 없습니다.</p>
+          <p class="note">관심등록 동의를 거부할 수 있으며, 거부하면 개설 안내를 받을 수 없습니다. 견적요청 정보는 적지 않아도 되지만, 연락처와 필수 상담 내용이 없으면 요청한 견적을 검토하거나 회신할 수 없습니다.</p>
         </section>
 
         <section class="policy-section">
-          <h2>2. 제3자 제공과 처리위탁</h2>
-          <p>수집한 개인정보를 외부에 판매하거나 제공하지 않습니다.</p>
-          <p>다만 입력창에서 받은 내용은 데이터베이스 서비스인 <strong>Supabase</strong>(해외 서버)에 보관됩니다. 이는 정보를 팔거나 나누는 것이 아니라, 안내·상담을 위해 안전하게 저장하는 기술적 위탁입니다.</p>
+          <h2>2. 자동으로 생성되는 이용 정보</h2>
+          <p>사이트를 안정적으로 운영하고 이용 흐름을 이해하기 위해 접속 과정에서 아래 정보가 생성될 수 있습니다.</p>
+          <table class="policy-table">
+            <tr><th scope="row">항목</th><td>쿠키·클라이언트 식별자, 방문 페이지·이전 페이지, 브라우저·기기 정보, 대략적인 지역, 페이지 이용 이벤트. IP 주소는 통신 과정에서 사용되지만 Google 설명상 Google Analytics 4에는 기록·저장되지 않습니다.</td></tr>
+            <tr><th scope="row">목적</th><td>방문 통계 확인, 페이지 개선, 오류·부정 이용 대응</td></tr>
+            <tr><th scope="row">도구</th><td>Google Analytics 4 · GitHub Pages의 기본 호스팅 기록</td></tr>
+            <tr><th scope="row">선택</th><td>Google Analytics는 방문자가 “방문 통계 허용”을 누른 뒤에만 불러옵니다. 거부해도 모든 공개 페이지를 이용할 수 있습니다.</td></tr>
+            <tr><th scope="row">보유 기간</th><td>현재 Google Analytics 설정은 이벤트 데이터 2개월, 사용자 데이터 14개월이며 새 활동이 생기면 사용자 데이터 보유기간이 다시 계산됩니다. 표준 집계 보고서는 이 설정의 적용 범위가 다를 수 있습니다.</td></tr>
+          </table>
+          <button class="choice-button" type="button" onclick="window.HAMPrivacy?.openAnalyticsChoice()">방문 통계 선택 다시 열기</button>
         </section>
 
         <section class="policy-section">
-          <h2>3. 이용자 권리와 삭제 요청</h2>
+          <h2>3. 제3자 제공과 처리위탁</h2>
+          <p>개인정보를 판매하지 않으며, 법령에 근거가 있거나 이용자가 따로 동의한 경우가 아니면 제3자에게 제공하지 않습니다.</p>
+          <p>사이트 운영에 필요한 범위에서 아래 업무를 위탁합니다.</p>
+          <table class="policy-table">
+            <tr><th scope="row">Supabase</th><td>관심등록·견적요청 데이터베이스 보관과 운영. 현재 주 데이터베이스는 대한민국 서울 리전(<code>ap-northeast-2</code>)입니다.</td></tr>
+            <tr><th scope="row">GitHub Pages</th><td>공개 웹사이트 파일 전송과 호스팅</td></tr>
+            <tr><th scope="row">Google Analytics</th><td>방문자가 허용한 경우에 한해 사이트 이용 통계 처리</td></tr>
+          </table>
+        </section>
+
+        <section class="policy-section">
+          <h2>4. 개인정보의 국외 이전</h2>
+          <p>관심등록과 견적요청의 주 데이터베이스는 서울에 있습니다. Google Analytics는 방문자가 별도로 허용한 경우에만 아래와 같이 이용 정보를 국외로 전송합니다.</p>
+          <table class="policy-table">
+            <tr><th scope="row">이전받는 자</th><td>Google LLC · <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">개인정보처리방침</a></td></tr>
+            <tr><th scope="row">국가</th><td>미국을 포함한 Google의 데이터센터 운영 국가</td></tr>
+            <tr><th scope="row">항목</th><td>제2항의 Google Analytics 이용 정보</td></tr>
+            <tr><th scope="row">시기·방법</th><td>방문 통계를 허용한 뒤 사이트 이용 시 암호화된 네트워크로 전송</td></tr>
+            <tr><th scope="row">목적</th><td>사이트 이용 통계와 페이지 개선</td></tr>
+            <tr><th scope="row">보유 기간</th><td>이벤트 데이터 2개월, 사용자 데이터 14개월(새 활동 시 재설정) · 그 뒤 삭제 또는 집계 처리</td></tr>
+            <tr><th scope="row">근거</th><td>개인정보 보호법 제28조의8제1항제1호에 따른 별도 동의</td></tr>
+            <tr><th scope="row">거부 방법·영향</th><td>선택창에서 “허용하지 않음”을 누르면 됩니다. 사이트 이용에는 제한이 없습니다.</td></tr>
+          </table>
+          <p class="note">Supabase의 주 데이터 저장 위치나 위탁 구조가 바뀌어 정기적인 국외 이전이 생기면, 이전 전에 이 방침과 필요한 동의 절차를 먼저 갱신합니다.</p>
+        </section>
+
+        <section class="policy-section">
+          <h2>5. 이용자 권리와 삭제 요청</h2>
           <p>남겨주신 정보에 대해 언제든 아래를 요청하실 수 있습니다.</p>
           <ul>
             <li>내 정보가 어떻게 보관되어 있는지 열람</li>
@@ -244,27 +280,27 @@
         </section>
 
         <section class="policy-section">
-          <h2>4. 파기 절차와 방법</h2>
+          <h2>6. 파기 절차와 방법</h2>
           <p>보유 기간이 끝나거나 삭제를 요청하시면, 해당 데이터베이스 레코드를 삭제하는 방식으로 파기합니다. 별도의 종이 문서로는 보관하지 않습니다.</p>
         </section>
 
         <section class="policy-section">
-          <h2>5. 안전성 확보 조치</h2>
-          <p>입력창은 저장 전용으로 설계되어 있어 외부에서 저장된 목록을 임의로 읽어가거나 고칠 수 없습니다. 자동 입력 방지 장치로 스팸·장난 입력을 걸러내며, 이용자에게 불편한 인증절차(캡차 등)는 두지 않습니다.</p>
+          <h2>7. 안전성 확보 조치</h2>
+          <p>입력창용 공개 열쇠는 저장만 허용하고 저장된 목록의 조회·수정·삭제 권한은 주지 않습니다. 전송 중에는 HTTPS를 사용하고, 숨은 입력칸·제출 간격 제한 등 기본적인 자동 입력 방지를 적용합니다. 공개 입력창이므로 CAPTCHA 없이 모든 자동 요청을 완전히 막는다고 보장하지는 않습니다.</p>
         </section>
 
         <section class="policy-section">
-          <h2>6. 어린이 개인정보</h2>
+          <h2>8. 어린이 개인정보</h2>
           <p>HAM MEDIA는 만 14세 미만 아동을 대상으로 하지 않으며, 아동의 개인정보를 의도적으로 수집하지 않습니다.</p>
         </section>
 
         <section class="policy-section">
-          <h2>7. 개인정보처리방침의 변경</h2>
+          <h2>9. 개인정보처리방침의 변경</h2>
           <p>수집 항목이나 처리 방식이 바뀌면 이 페이지를 갱신하고, 문서 정보의 시행일을 새로 표시합니다.</p>
         </section>
 
         <section class="policy-section">
-          <h2>8. 문의</h2>
+          <h2>10. 문의</h2>
           <p>개인정보 관련 문의와 삭제 요청은 아래로 보내 주세요.</p>
           <div class="contact-box">
             <div class="contact-row"><span>운영 주체</span><strong>HAM MEDIA (함동민 대표)</strong></div>
