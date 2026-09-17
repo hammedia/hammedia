@@ -212,6 +212,39 @@
       <div class="closed-gates" aria-label="아직 열지 않은 항목">
         <span>신청 닫힘</span><span>결제 닫힘</span><span>수강 닫힘</span>
       </div>
+
+      <form class="interest-form" id="interest-form" aria-label="관심등록">
+        <p class="interest-note">7강이 공개되면, 그리고 그 뒤에 열리는 과정이 생기면 이메일로 알려드립니다. 결제도, 신청도 아닙니다. 지금은 "열리면 알려주세요" 한 줄입니다. 남기신 이름과 이메일은 안내 외의 목적으로 쓰지 않고, 다른 곳에 넘기지 않습니다.</p>
+
+        <label for="interest-name">이름</label>
+        <input type="text" id="interest-name" name="name" maxlength="120" required autocomplete="name">
+
+        <label for="interest-email">이메일</label>
+        <input type="email" id="interest-email" name="email" maxlength="254" required autocomplete="email">
+
+        <input type="text" class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+        <details>
+          <summary>개인정보 수집·이용 동의 내용 보기</summary>
+          <div class="consent-detail">
+            <ul>
+              <li>수집 항목: 이름, 이메일 주소</li>
+              <li>수집·이용 목적: 아카데미 강의 공개·개설 안내</li>
+              <li>보유·이용 기간: 안내를 마친 뒤 6개월 이내 파기. 삭제를 요청하시면 즉시 파기합니다.</li>
+              <li>동의를 거부하실 수 있습니다. 다만 거부하시면 안내를 보내드릴 수 없습니다.</li>
+            </ul>
+            <p style="margin-top:8px">자세한 내용은 <a href="/privacy/" target="_blank" rel="noopener noreferrer">개인정보처리방침</a>에서 확인하실 수 있습니다.</p>
+          </div>
+        </details>
+
+        <div class="consent-row">
+          <input type="checkbox" id="interest-consent" required>
+          <label for="interest-consent">위 개인정보 수집·이용에 동의합니다. (필수)</label>
+        </div>
+
+        <button type="submit" id="interest-submit">열리면 알려주세요</button>
+        <p class="interest-status" id="interest-status" role="status" aria-live="polite"></p>
+      </form>
     </section>
   </main>
 
@@ -228,5 +261,63 @@
   </footer>
 
   <script src="app.js?v=20260903e"></script>
+  <script type="module">
+    import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
+    const SUPABASE_URL = "https://jhdcznxbebekgninpdnt.supabase.co";
+    const SUPABASE_ANON_KEY = "sb_publishable_5bNIQB2iil31WejPIJhftQ_i0FgMr7k";
+    const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    const form = document.getElementById("interest-form");
+    const statusEl = document.getElementById("interest-status");
+    const submitBtn = document.getElementById("interest-submit");
+    const SENT_KEY = "ham_academy_interest_sent";
+
+    function setStatus(kind, text) {
+      statusEl.textContent = text;
+      statusEl.style.color = kind === "err" ? "#B3441C" : (kind === "ok" ? "#326B98" : "inherit");
+    }
+
+    if (form) {
+      if (localStorage.getItem(SENT_KEY)) {
+        setStatus("ok", "이미 등록해 주셨습니다. 열리면 이메일로 알려드립니다.");
+        submitBtn.disabled = true;
+      }
+
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        if (form.website.value) return;
+
+        const name = form.name.value.trim();
+        const email = form.email.value.trim();
+        const consent = document.getElementById("interest-consent").checked;
+
+        if (!name || !email) {
+          setStatus("err", "이름과 이메일을 입력해 주세요.");
+          return;
+        }
+        if (!consent) {
+          setStatus("err", "개인정보 수집·이용에 동의해 주셔야 등록할 수 있습니다.");
+          return;
+        }
+
+        submitBtn.disabled = true;
+        setStatus(null, "등록하는 중...");
+
+        try {
+          const { error } = await supabase
+            .from("academy_interest")
+            .insert({ name, email, source: "academy" });
+          if (error) throw error;
+          localStorage.setItem(SENT_KEY, "1");
+          setStatus("ok", "감사합니다. 열리면 이메일로 알려드립니다.");
+          form.reset();
+        } catch (error) {
+          setStatus("err", "등록 중 문제가 발생했습니다. 잠시 후 다시 시도해 주세요.");
+          console.error("academy_interest insert error:", error);
+          submitBtn.disabled = false;
+        }
+      });
+    }
+  </script>
 </body>
 </html>
