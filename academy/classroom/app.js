@@ -26,6 +26,8 @@ const elements = {
   attemptPrompt: document.querySelector("[data-attempt-prompt]"),
   retryPrompt: document.querySelector("[data-retry-prompt]"),
   correctionCriteria: document.querySelector("[data-correction-criteria]"),
+  correctionEyebrow: document.querySelector("[data-correction-eyebrow]"),
+  correctionHeading: document.querySelector("[data-correction-heading]"),
   firstAttempt: document.querySelector("[data-first-attempt]"),
   correctionNote: document.querySelector("[data-correction-note]"),
   retry: document.querySelector("[data-retry]"),
@@ -63,6 +65,7 @@ const course = await fetch("data/course.json", { cache: "no-store" }).then((resp
   if (!response.ok) throw new Error(`강의 데이터를 열지 못했습니다: ${response.status}`);
   return response.json();
 });
+const lastOpenLessonIndex = () => course.lessons.reduce((last, lesson, index) => lesson.locked ? last : index, 0);
 
 const freshState = () => ({
   courseVersion: course.courseVersion,
@@ -91,7 +94,7 @@ const loadState = () => {
       }
     }
     baseline.artifactId = saved.artifactId;
-    baseline.currentLesson = Math.min(Math.max(Number(saved.currentLesson) || 0, 0), course.lessons.length - 1);
+    baseline.currentLesson = Math.min(Math.max(Number(saved.currentLesson) || 0, 0), lastOpenLessonIndex());
     baseline.currentStage = Math.min(Math.max(Number(saved.currentStage) || 0, 0), 5);
     return baseline;
   } catch {
@@ -192,12 +195,21 @@ function stageCopyNodes(lesson, stageIndex) {
       truthLine("다음 강 입력", lesson.nextLesson)
     );
     fragment.append(lines);
+    if (lesson.number === 2) {
+      const carryover = truthLine(
+        "1강에서 가져온 내 경험 원본",
+        lessonOutput(0) || "1강을 먼저 저장하면 내가 쓴 문장이 이 자리에 그대로 이어집니다."
+      );
+      carryover.classList.add("carryover-source");
+      carryover.dataset.previousLessonOutput = "lesson-1";
+      fragment.append(carryover);
+    }
   } else if (stageIndex === 1) {
     fragment.append(text("p", lesson.demonstration));
   } else if (stageIndex === 2) {
     fragment.append(text("p", lesson.attemptPrompt));
   } else if (stageIndex === 3) {
-    fragment.append(text("p", "강사가 답을 대신 쓰지 않습니다. 수강생에게 ‘왜 이 결과를 그대로 쓸 수 없나요?’라고 먼저 묻고, 수강생이 말한 이유를 교정 메모에 남깁니다."));
+    fragment.append(text("p", lesson.correctionGuidance ?? "강사가 답을 대신 쓰지 않습니다. 수강생에게 ‘왜 이 결과를 그대로 쓸 수 없나요?’라고 먼저 묻고, 수강생이 말한 이유를 교정 메모에 남깁니다."));
   } else if (stageIndex === 4) {
     fragment.append(text("p", lesson.retryPrompt));
   } else {
@@ -281,6 +293,9 @@ function renderWorkFields() {
   elements.retry.value = work.retry;
   elements.attemptPrompt.textContent = lesson.attemptPrompt;
   elements.retryPrompt.textContent = lesson.retryPrompt;
+  elements.correctionEyebrow.textContent = lesson.correctionEyebrow ?? "햄PD가 함께 짚는 자리";
+  elements.correctionHeading.textContent = lesson.correctionHeading ?? "왜 달라져야 하는지 수강생이 먼저 말합니다";
+  elements.correctionNote.placeholder = lesson.correctionPlaceholder ?? "강사가 결과를 대신 쓰지 않습니다. 수강생이 고칠 기준과 이유를 함께 적습니다.";
   updateCounts();
 
   const criteria = document.createDocumentFragment();
@@ -323,10 +338,12 @@ function renderVerification() {
 }
 
 function updateCompletionState() {
+  const lesson = currentLesson();
   const work = currentWork();
   const checksDone = work.checks.every(Boolean);
-  const ready = work.retry.trim().length > 0 && checksDone;
-  elements.resultState.textContent = ready ? "저장 가능" : work.retry.trim() ? "확인표 남음" : "작성 중";
+  const correctionDone = !lesson.requiresCorrectionNote || work.correctionNote.trim().length > 0;
+  const ready = work.retry.trim().length > 0 && checksDone && correctionDone;
+  elements.resultState.textContent = ready ? "저장 가능" : !correctionDone ? "교정 메모 남음" : work.retry.trim() ? "확인표 남음" : "작성 중";
 }
 
 function renderArtifact() {
@@ -456,10 +473,16 @@ function moveNext() {
   if (state.currentStage < lesson.flow.length - 1) {
     state.currentStage += 1;
   } else {
-    const ready = work.retry.trim() && work.checks.every(Boolean);
+    const correctionDone = !lesson.requiresCorrectionNote || work.correctionNote.trim();
+    const ready = work.retry.trim() && work.checks.every(Boolean) && correctionDone;
     if (!ready) {
-      announce("다시 한 결과와 확인표를 먼저 남겨 주세요.");
-      if (!work.retry.trim()) {
+      announce("자기 교정 메모, 다시 한 결과와 확인표를 먼저 남겨 주세요.");
+      if (!correctionDone) {
+        state.currentStage = 3;
+        persist();
+        render();
+        elements.correctionNote.focus();
+      } else if (!work.retry.trim()) {
         state.currentStage = 4;
         persist();
         render();
@@ -476,7 +499,7 @@ function moveNext() {
       state.currentLesson += 1;
       state.currentStage = 0;
     } else if (nextLesson && nextLesson.locked) {
-      announce("1강을 저장했습니다. 다음 강은 준비 중입니다 — 열리면 알려드립니다.");
+      announce(`${lesson.number}강을 저장했습니다. ${nextLesson.number}강은 준비 중입니다 — 열리면 알려드립니다.`);
     } else {
       announce("사용 확인을 거친 첫 최종본과 다음 작업 카드를 저장했습니다.");
     }
@@ -610,7 +633,7 @@ globalThis.addEventListener("keydown", (event) => {
   if (event.key === "End") {
     event.preventDefault();
     saveInputs();
-    state.currentLesson = course.lessons.length - 1;
+    state.currentLesson = lastOpenLessonIndex();
     state.currentStage = 5;
     persist();
     render();
