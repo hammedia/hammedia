@@ -1,0 +1,781 @@
+{
+  "courseVersion": "2026.09.03-v1",
+  "title": "바른생활 · 내 일을 AI와 끝까지 해내는 일곱 시간",
+  "promise": "코딩을 몰라도, 내가 오래 해온 일을 AI와 대화해 실제 한 페이지 결과물로 완성합니다.",
+  "audience": "오래 자기 일을 해온 경험과 판단이 있지만, 코딩과 새 도구 앞에서 결과를 끝내지 못한 자영업자·비개발자 대표·관리자",
+  "operation": "3~5명 · 7강 × 50분 · 햄PD 설명·시연·직접 교정",
+  "publicStatus": "내부 수업 검증본 · 모집·결제·공개 수강은 열지 않음",
+  "finalResult": "처음 보는 사람의 사용 확인 + 첫 최종본 + 다음 작업 카드 + 7일 재사용 약속",
+  "resultStates": [
+    {
+      "id": "experience_source",
+      "label": "대화를 이어간 기록 · 내 경험 원본"
+    },
+    {
+      "id": "result_promise",
+      "label": "결과 약속"
+    },
+    {
+      "id": "draft_v0",
+      "label": "지우지 않은 결과 v0"
+    },
+    {
+      "id": "result_v1",
+      "label": "내 판단으로 고친 결과 v1"
+    },
+    {
+      "id": "result_v2",
+      "label": "실제로 열리는 결과 v2"
+    },
+    {
+      "id": "verified_candidate",
+      "label": "사람이 확인한 최종 후보"
+    },
+    {
+      "id": "final_package",
+      "label": "사용 확인을 거친 첫 최종본과 다음 작업 카드"
+    }
+  ],
+  "lessons": [
+    {
+      "number": 1,
+      "id": "lesson-1",
+      "shortTitle": "내 안의 원본",
+      "title": "기술보다 먼저, 내가 겪은 일을 꺼냅니다",
+      "question": "AI가 내 이야기를 틀리게 이해했을 때 나는 무엇을 더 말할 수 있을까?",
+      "misbelief": "좋은 프롬프트와 기술을 알아야 시작할 수 있다.",
+      "input": {
+        "id": "experience_seed",
+        "label": "말로 꺼낼 수 있는 실제 사건 하나"
+      },
+      "output": {
+        "id": "experience_source",
+        "label": "대화를 이어간 기록 · 내 경험 원본"
+      },
+      "passCondition": "완성 문서의 모양이 아니라, AI의 틀린 이해를 한 번 고치고 내 말로 대화를 이어갔는가.",
+      "teacherStory": "햄PD는 코딩을 배운 뒤 결과를 만든 사람이 아닙니다. 오래 해온 일을 자기 말로 설명했고, AI가 보탠 추측을 알아차릴 때마다 다시 말했습니다. 첫 시간에는 잘 쓴 문서보다 그 대화를 이어가는 경험을 만듭니다.",
+      "demonstration": "햄PD의 실제 발화와 AI가 정리한 첫 답을 함께 봅니다. 사실, AI의 추측, 햄PD의 판단을 서로 다른 표시로 가릅니다.",
+      "attemptPrompt": "내가 실제로 겪은 사건 하나를 말하듯 적으세요. 언제, 누구와, 무슨 일이 있었는지부터 씁니다. 잘 보이려는 설명은 빼도 됩니다.",
+      "retryPrompt": "AI가 잘못 이해하거나 부풀린 한 곳을 지적하고, 그 자리에 내가 아는 사실과 판단을 더해 다시 적으세요.",
+      "correctionCriteria": [
+        "내가 직접 겪은 사실인가",
+        "AI가 추측해 보탠 문장이 섞였는가",
+        "내가 남보다 먼저 알아챈 판단이 보이는가",
+        "다시 말을 걸 수 있을 만큼 구체적인가"
+      ],
+      "resultTemplate": "사건 / 내가 한 행동 / 당시에는 몰랐던 것 / 지금의 판단",
+      "nextLesson": "2강에서 이 원본 중 누구에게 도움이 될 한 장면을 고릅니다.",
+      "timeline": [
+        {
+          "label": "햄PD 실제 시작 장면",
+          "minutes": 7
+        },
+        {
+          "label": "틀린 이해를 고치는 시연",
+          "minutes": 7
+        },
+        {
+          "label": "실제 대화·영상 대조",
+          "minutes": 6
+        },
+        {
+          "label": "수강생 첫 이야기",
+          "minutes": 8
+        },
+        {
+          "label": "직접 교정",
+          "minutes": 11
+        },
+        {
+          "label": "같은 이야기 재시도",
+          "minutes": 8
+        },
+        {
+          "label": "이어간 대화 기록",
+          "minutes": 3
+        }
+      ],
+      "flow": [
+        {
+          "id": "explain",
+          "label": "햄PD 설명"
+        },
+        {
+          "id": "demo",
+          "label": "실제 장면"
+        },
+        {
+          "id": "attempt",
+          "label": "첫 시도"
+        },
+        {
+          "id": "correction",
+          "label": "함께 고치기"
+        },
+        {
+          "id": "retry",
+          "label": "다시 해보기"
+        },
+        {
+          "id": "result",
+          "label": "오늘 남긴 결과"
+        }
+      ],
+      "evidence": [
+        {
+          "type": "video",
+          "label": "햄PD가 좋은 프롬프트 없이 말을 시작한 29초",
+          "src": "assets/lesson1-prompt-29s.mp4",
+          "poster": "assets/lesson1-prompt-poster.jpg",
+          "alt": "햄PD가 AI와 첫 대화를 시작하는 실제 영상",
+          "source": "20260903_바른생활_1강_실제대화_증거묶음.md",
+          "status": "verified",
+          "publication": "내부 강의 사용 · 외부 공개 범위 별도"
+        },
+        {
+          "type": "text",
+          "label": "전문성과 아이디어는 있지만 새 도구가 어려운 사람에 대한 실제 발화",
+          "source": "task 01a053d0-4fc8-76f0-8bcf-521dd71c5786 · user turn 01a0650f-7159-7923-a605-9a15fb6daf16",
+          "status": "verified",
+          "publication": "내부 강의 사용 · 공개 인용 전 별도 확인",
+          "note": "화면에서는 원문 전체를 재작성하지 않고 강사가 출처와 함께 읽습니다."
+        }
+      ],
+      "locked": false
+    },
+    {
+      "number": 2,
+      "id": "lesson-2",
+      "shortTitle": "만들 결과",
+      "title": "많은 아이디어를 오늘 끝낼 한 페이지로 줄입니다",
+      "question": "누가 어떤 장면에서 이 한 페이지를 열고 무엇을 할까?",
+      "misbelief": "좋은 아이디어는 모두 넣어야 하고 결과물을 먼저 완벽하게 설계해야 한다.",
+      "input": {
+        "id": "experience_source",
+        "label": "1강의 내 경험 원본"
+      },
+      "output": {
+        "id": "result_promise",
+        "label": "결과 약속"
+      },
+      "passCondition": "1강의 내 경험 원본에서 실제 한 사람과 막힌 장면을 골라, 도움·오늘 열 결과·하지 않을 일을 빠짐없이 한 문장으로 다시 썼는가.",
+      "teacherStory": "햄PD는 포트폴리오와 홈페이지를 만들 때 경력을 전부 나열하지 않았습니다. 실제로 읽을 한 사람과 그 사람이 필요한 장면을 먼저 정하고, 오늘 열어볼 수 있는 한 페이지로 범위를 줄였습니다.",
+      "demonstration": "홈페이지, 포트폴리오, 강의, 앱처럼 대화로 만든 실제 결과를 보되 결과의 크기를 따라 하지 않습니다. 누구의 어떤 막힘을 푸는지와 첫 화면이 하는 약속만 찾습니다.",
+      "attemptPrompt": "1강 원본에서 돕고 싶은 실제 사람 한 명을 고르세요. 누구 / 그 사람이 막힌 실제 장면 / 내 경험이 줄 수 있는 도움 / 오늘 7시간 뒤 열 결과 / 이번에는 하지 않을 일을 한 줄씩 적으세요.",
+      "correctionEyebrow": "혼자서 먼저 짚는 자리",
+      "correctionHeading": "네 기준으로 고칠 이유를 직접 찾습니다",
+      "correctionGuidance": "아래 네 기준을 첫 시도에 하나씩 대세요. 기준에 걸리는 문장과 고칠 이유를 자기 교정 메모에 적습니다. 강사가 있으면 더 깊게 짚지만, 없어도 다음 단계로 갈 수 있습니다.",
+      "correctionPlaceholder": "네 기준에 걸린 문장과 그 이유를 적으세요. 예: 대상이 너무 넓다 — 실제로 만난 한 사람의 장면으로 좁힌다.",
+      "requiresCorrectionNote": true,
+      "retryPrompt": "대상·장면·도움·결과를 한 문장으로 연결하고, 이번 한 페이지에 넣지 않을 일 하나를 분명히 적으세요.",
+      "correctionCriteria": [
+        "대상이 나이·직급 같은 범주가 아니라 실제 사람으로 보이는가",
+        "막힘이 감정이 아니라 장면으로 보이는가",
+        "결과가 오늘 브라우저에서 열 수 있는 한 페이지인가",
+        "넣지 않을 일이 있어 범위가 지켜지는가"
+      ],
+      "resultTemplate": "누구 / 막힌 장면 / 내가 줄 도움 / 오늘 열 결과 / 이번에는 하지 않을 일",
+      "nextLesson": "3강에서 이 약속과 경험 원본을 AI에게 건네 첫 초안을 만듭니다.",
+      "timeline": [
+        {
+          "label": "큰 생각이 멈춘 실제 장면",
+          "minutes": 7
+        },
+        {
+          "label": "한 사람·한 장면 선택 시연",
+          "minutes": 7
+        },
+        {
+          "label": "실제 결과 벽 대조",
+          "minutes": 6
+        },
+        {
+          "label": "수강생 첫 약속",
+          "minutes": 8
+        },
+        {
+          "label": "직접 교정",
+          "minutes": 11
+        },
+        {
+          "label": "범위 줄여 재작성",
+          "minutes": 8
+        },
+        {
+          "label": "결과 약속 저장",
+          "minutes": 3
+        }
+      ],
+      "flow": [
+        {
+          "id": "explain",
+          "label": "햄PD 설명"
+        },
+        {
+          "id": "demo",
+          "label": "결과 고르기 시연"
+        },
+        {
+          "id": "attempt",
+          "label": "첫 시도"
+        },
+        {
+          "id": "correction",
+          "label": "함께 좁히기"
+        },
+        {
+          "id": "retry",
+          "label": "다시 정하기"
+        },
+        {
+          "id": "result",
+          "label": "결과 약속"
+        }
+      ],
+      "evidence": [
+        {
+          "type": "image",
+          "label": "낯선 도구의 전체 화면에서 필요한 장면만 고른 안전 크롭",
+          "src": "assets/ham-old-notion-20260806-hero-safe.png",
+          "alt": "개인정보를 가린 옛 작업 화면",
+          "source": "20260831_바른생활7강_전면재창작_지도.md · 보유 재료 판정",
+          "status": "verified",
+          "publication": "내부 보조 교구 · 새 2강 본체 사례로 과장 금지"
+        },
+        {
+          "type": "text",
+          "label": "홈페이지·포트폴리오·강의·앱 결과 벽",
+          "source": "HAMMEDIA_PUBLIC_SITE 공개 결과와 내부 프로젝트 정본",
+          "status": "internal-candidate",
+          "publication": "공개 주소는 강사가 현장에서 최신 상태를 확인한 뒤 사용"
+        }
+      ],
+      "locked": false
+    },
+    {
+      "number": 3,
+      "id": "lesson-3",
+      "shortTitle": "첫 물건",
+      "title": "멋진 명령문 없이 첫 결과를 만들고 남깁니다",
+      "question": "AI가 모르는 것을 묻게 하고 첫 결과의 추측을 어떻게 남길까?",
+      "misbelief": "좋은 명령문을 한 번에 써야 결과가 나오며 첫 답을 바로 최종본으로 써도 된다.",
+      "input": {
+        "id": "result_promise",
+        "label": "2강의 결과 약속"
+      },
+      "output": {
+        "id": "draft_v0",
+        "label": "지우지 않은 결과 v0"
+      },
+      "teacherStory": "햄PD는 완벽한 지시서를 먼저 쓰지 않았습니다. 자기 상황을 설명하고, AI가 모르는 것을 되묻게 하고, 나온 초안을 눈앞에 둔 채 다음 말을 이어갔습니다.",
+      "demonstration": "경험 원본과 결과 약속만 건넨 뒤 AI에게 빠진 질문 하나를 먼저 하게 합니다. AI 첫 답에는 확인된 사실과 추측 표시를 남깁니다.",
+      "attemptPrompt": "내 경험 원본과 결과 약속을 사용 중인 AI에 붙이고 이렇게 요청하세요. ‘먼저 모르는 것 한 가지만 물어본 뒤, 확인된 사실과 추측을 구분해 한 페이지 첫 초안을 만들어 주세요.’ 나온 답을 그대로 이 칸에 남기세요.",
+      "retryPrompt": "AI의 질문에 내 사실로 답한 뒤 같은 한 페이지를 다시 받으세요. 아직 고치지 말고 v0로 보존합니다.",
+      "correctionCriteria": [
+        "결과 약속의 대상과 장면이 첫 줄에 보이는가",
+        "내가 말하지 않은 경력·성과·수치가 사실처럼 들어갔는가",
+        "AI가 모르는 것을 질문했는가",
+        "첫 답을 지우지 않고 비교할 수 있는가"
+      ],
+      "resultTemplate": "첫 제목 / 대상의 막힘 / 내가 주는 도움 / 다음 행동 / 확인 필요 표시",
+      "nextLesson": "4강에서 이 v0의 틀림·부풀림·빠짐·남의 말을 직접 찾습니다.",
+      "timeline": [
+        {
+          "label": "첫 답을 믿었던 장면",
+          "minutes": 7
+        },
+        {
+          "label": "AI가 되묻게 하는 시연",
+          "minutes": 7
+        },
+        {
+          "label": "첫 답의 사실·추측 대조",
+          "minutes": 6
+        },
+        {
+          "label": "수강생 첫 초안",
+          "minutes": 8
+        },
+        {
+          "label": "직접 교정",
+          "minutes": 11
+        },
+        {
+          "label": "질문에 답해 재생성",
+          "minutes": 8
+        },
+        {
+          "label": "v0 보존",
+          "minutes": 3
+        }
+      ],
+      "flow": [
+        {
+          "id": "explain",
+          "label": "햄PD 설명"
+        },
+        {
+          "id": "demo",
+          "label": "첫 초안 시연"
+        },
+        {
+          "id": "attempt",
+          "label": "첫 결과 받기"
+        },
+        {
+          "id": "correction",
+          "label": "사실·추측 짚기"
+        },
+        {
+          "id": "retry",
+          "label": "한 번 더 받기"
+        },
+        {
+          "id": "result",
+          "label": "v0 보존"
+        }
+      ],
+      "evidence": [
+        {
+          "type": "text",
+          "label": "통화 메모에서 제출자료까지의 첫 초안 비교",
+          "source": "18_통화메모부터_제출자료까지_60초증거팩.md",
+          "status": "reconstructed",
+          "publication": "첫 장면부터 비식별 수업용 재구성 사례로 표시",
+          "note": "실제 고객 성공담이나 당시 대화 원문으로 말하지 않습니다."
+        }
+      ],
+      "locked": true
+    },
+    {
+      "number": 4,
+      "id": "lesson-4",
+      "shortTitle": "전문가의 눈",
+      "title": "그럴듯한 첫 답을 내 경험으로 고칩니다",
+      "question": "무엇이 틀렸고, 왜 내 이름으로 내보낼 수 없는가?",
+      "misbelief": "AI가 자연스럽게 쓰면 맞는 말이며 ‘마음에 안 든다’만 말해도 고쳐진다.",
+      "input": {
+        "id": "draft_v0",
+        "label": "3강의 지우지 않은 결과 v0"
+      },
+      "output": {
+        "id": "result_v1",
+        "label": "내 판단 기준 + 결과 v1"
+      },
+      "teacherStory": "AI가 햄PD의 경력을 더 좋아 보이게 만들며 실제로 하지 않은 일을 보탰습니다. 햄PD는 문장이 멋진지보다 사실인지, 현장에서 자기가 믿고 말할 수 있는지를 먼저 봤습니다.",
+      "demonstration": "v0에서 틀림, 부풀림, 빠짐, 남의 말 네 종류를 표시합니다. 햄PD는 목적·원본·결과·하지 않을 일·멈출 선·사람 확인을 말로 붙여 같은 결과를 다시 받습니다.",
+      "attemptPrompt": "3강 v0를 읽고 문제 문장을 그대로 옮기세요. 각 문장 옆에 ‘틀림·부풀림·빠짐·남의 말’ 중 하나와 그 이유를 적으세요.",
+      "retryPrompt": "내가 지킬 판단 기준을 먼저 적고, v0를 같은 목적의 v1로 다시 쓰세요. 사실이 아닌 성과와 수치는 지우고 내가 실제로 한 행동을 넣습니다.",
+      "correctionCriteria": [
+        "원본에서 확인할 수 있는 사실인가",
+        "내가 하지 않은 일을 단독 성과처럼 보탰는가",
+        "현장에서 중요한 제약이 빠졌는가",
+        "내가 실제로 쓰는 말인가",
+        "밖으로 내보내기 전 사람이 확인할 자리가 보이는가"
+      ],
+      "resultTemplate": "버릴 문장 / 이유 / 살릴 사실 / 내 판단 기준 / 고친 v1",
+      "nextLesson": "5강에서 이 v1과 금지 기준을 실제로 열리는 한 페이지로 만듭니다.",
+      "timeline": [
+        {
+          "label": "부풀린 결과의 실제 사건",
+          "minutes": 7
+        },
+        {
+          "label": "네 가지 오류 판별 시연",
+          "minutes": 7
+        },
+        {
+          "label": "전후 문장·영상 대조",
+          "minutes": 6
+        },
+        {
+          "label": "수강생 첫 표시",
+          "minutes": 8
+        },
+        {
+          "label": "직접 교정",
+          "minutes": 11
+        },
+        {
+          "label": "v1 재작성",
+          "minutes": 8
+        },
+        {
+          "label": "판단 기준 저장",
+          "minutes": 3
+        }
+      ],
+      "flow": [
+        {
+          "id": "explain",
+          "label": "햄PD 설명"
+        },
+        {
+          "id": "demo",
+          "label": "판별 시연"
+        },
+        {
+          "id": "attempt",
+          "label": "문제 표시"
+        },
+        {
+          "id": "correction",
+          "label": "직접 교정"
+        },
+        {
+          "id": "retry",
+          "label": "v1 만들기"
+        },
+        {
+          "id": "result",
+          "label": "판단 기준과 v1"
+        }
+      ],
+      "evidence": [
+        {
+          "type": "video",
+          "label": "모호한 위임을 사람이 고치는 실제 작업 영상",
+          "src": "assets/work-guide.mp4",
+          "poster": "assets/work-guide-poster.jpg",
+          "alt": "햄PD가 AI 결과를 보고 작업 기준을 교정하는 영상",
+          "source": "20260831_바른생활7강_전면재창작_지도.md · 보유 교구",
+          "status": "verified",
+          "publication": "내부 강의 사용"
+        },
+        {
+          "type": "text",
+          "label": "사실이 아닌 ‘스타벅스 교육 시스템 단독 설계’ 문장 제거",
+          "source": "《나를 내가 고용하세요》 포트폴리오 교정 장면",
+          "status": "verified",
+          "publication": "AI 부풀림 사례임을 함께 표시 · 책 공개 범위 확인"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "number": 5,
+      "id": "lesson-5",
+      "shortTitle": "말로 시공",
+      "title": "코드를 외우지 않고 실제 한 페이지를 엽니다",
+      "question": "AI에게 원본·원하는 화면·금지를 어떻게 건네야 실제 파일이 될까?",
+      "misbelief": "코딩이나 도구 사용법을 먼저 배워야 화면을 만들 수 있고 채팅 수가 많으면 프로젝트다.",
+      "input": {
+        "id": "result_v1",
+        "label": "4강의 판단 기준과 결과 v1"
+      },
+      "output": {
+        "id": "result_v2",
+        "label": "실제로 열리는 결과 v2"
+      },
+      "teacherStory": "햄PD는 코드를 직접 쓰는 대신 원본, 원하는 화면, 하지 않을 일을 AI에게 설명했습니다. 결과가 나오면 파일 이름이 아니라 실제 화면을 보고 다시 고쳤습니다.",
+      "demonstration": "Orca의 원본 작업공간, 전달된 맥락, AI가 만든 차이, 사람이 다시 연 화면을 순서대로 봅니다. 특정 도구의 버튼을 외우지 않고 원본→작업→결과→사람 결정의 길을 확인합니다.",
+      "attemptPrompt": "v1의 제목과 본문을 붙이고 원하는 분위기, 첫 화면에서 보여야 할 것, 넣지 않을 것을 적으세요. 사용 중인 AI에게 단일 HTML 파일로 만들어 달라고 요청하거나 이 강의장의 기본 제작기를 사용하세요.",
+      "retryPrompt": "만든 페이지를 브라우저에서 보고 ‘위치’가 아니라 ‘존재감·읽는 순서·다음 행동’으로 한 번 교정하세요. 고친 본문을 이 칸에 남기면 오른쪽 결과 미리보기에 반영됩니다.",
+      "correctionCriteria": [
+        "원본 v1의 뜻이 바뀌지 않았는가",
+        "첫 화면에서 누구를 돕는 페이지인지 보이는가",
+        "주행동이 하나로 분명한가",
+        "넣지 않기로 한 내용이 다시 들어오지 않았는가",
+        "실제 HTML 파일이 브라우저에서 열리는가"
+      ],
+      "resultTemplate": "페이지 제목 / 한 문장 약속 / 본문 / 다음 행동 / 시각 방향 / 금지사항",
+      "nextLesson": "6강에서 이 파일의 문장·이미지·버튼·링크를 직접 열어 확인합니다.",
+      "timeline": [
+        {
+          "label": "코드 없이 만든 실제 장면",
+          "minutes": 7
+        },
+        {
+          "label": "원본→결과 시공 시연",
+          "minutes": 7
+        },
+        {
+          "label": "Orca 실제 화면 대조",
+          "minutes": 6
+        },
+        {
+          "label": "수강생 첫 파일",
+          "minutes": 8
+        },
+        {
+          "label": "직접 화면 교정",
+          "minutes": 11
+        },
+        {
+          "label": "v2 재생성",
+          "minutes": 8
+        },
+        {
+          "label": "브라우저 열기",
+          "minutes": 3
+        }
+      ],
+      "flow": [
+        {
+          "id": "explain",
+          "label": "햄PD 설명"
+        },
+        {
+          "id": "demo",
+          "label": "실제 시공 화면"
+        },
+        {
+          "id": "attempt",
+          "label": "첫 파일 만들기"
+        },
+        {
+          "id": "correction",
+          "label": "화면 교정"
+        },
+        {
+          "id": "retry",
+          "label": "v2 만들기"
+        },
+        {
+          "id": "result",
+          "label": "실제로 열기"
+        }
+      ],
+      "evidence": [
+        {
+          "type": "gallery",
+          "label": "Orca에서 원본을 읽고 결과를 고쳐 다시 연 실제 흐름",
+          "srcs": [
+            "assets/orca-01-safe-worktree.png",
+            "assets/orca-04-context-copied.png",
+            "assets/orca-05-ai-diff-result.png",
+            "assets/orca-06-after-refresh.png"
+          ],
+          "alts": [
+            "안전한 작업공간을 연 화면",
+            "원본 맥락을 전달한 화면",
+            "AI가 만든 변경 차이 화면",
+            "사람이 다시 확인한 화면"
+          ],
+          "source": "20260713_orca_beginner_guide_sample_v2/assets/actual_v7",
+          "status": "verified",
+          "publication": "내부 강의 사용 · Orca 기능·요금은 최신 실측 없이 고정 설명 금지"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "number": 6,
+      "id": "lesson-6",
+      "shortTitle": "진짜 확인",
+      "title": "AI의 완료 말 대신 내 손으로 결과를 확인합니다",
+      "question": "만듦·전달·도착·작동 가운데 지금 무엇을 실제로 봤는가?",
+      "misbelief": "AI가 완료라고 말하거나 화면 하나가 보이면 처리·저장·공개까지 끝났다.",
+      "input": {
+        "id": "result_v2",
+        "label": "5강에서 실제로 연 결과 v2"
+      },
+      "output": {
+        "id": "verified_candidate",
+        "label": "사람이 확인한 최종 후보 + 확인 증거"
+      },
+      "teacherStory": "홈페이지 사진이 보이지 않았는데도 파일은 있었다고 보고된 적이 있습니다. 영상은 다시 만들어졌지만 편집 내용은 바뀌지 않은 적도 있습니다. 햄PD는 ‘됐다’는 말 대신 자기 화면에서 결과를 열었습니다.",
+      "demonstration": "내 컴퓨터와 공개 주소, 화면과 처리와 저장, 만듦과 전달과 도착을 서로 다른 칸에 놓습니다. 문장·이미지·버튼·파일·링크를 하나씩 눌러 관찰한 사실만 씁니다.",
+      "attemptPrompt": "5강 결과를 자기 기기에서 여세요. 제목·본문·이미지·버튼·파일 다운로드를 직접 확인하고, 본 것과 아직 보지 않은 것을 나눠 적으세요.",
+      "retryPrompt": "발견한 오류 하나를 AI에게 화면과 함께 보여주고 고친 뒤 같은 검사를 다시 하세요. ‘정상’ 대신 무엇을 눌렀고 무엇이 보였는지 적습니다.",
+      "correctionCriteria": [
+        "파일이 실제로 열리는가",
+        "390px에서 가로로 잘리지 않는가",
+        "제목과 본문이 약속한 내용과 같은가",
+        "이미지가 보이고 대체 설명이 있는가",
+        "주행동이 눌리고 예상한 곳으로 가는가",
+        "확인하지 않은 것을 완료로 쓰지 않았는가"
+      ],
+      "resultTemplate": "검사 항목 / 한 행동 / 관찰한 결과 / 오류 / 고친 뒤 재확인 / 미확인",
+      "nextLesson": "7강에서 원본·판단·최종 후보·확인 증거를 다음 작업 카드로 묶습니다.",
+      "timeline": [
+        {
+          "label": "됐다는데 안 된 실제 사건",
+          "minutes": 7
+        },
+        {
+          "label": "완료와 관찰 분리 시연",
+          "minutes": 7
+        },
+        {
+          "label": "전후 화면 대조",
+          "minutes": 6
+        },
+        {
+          "label": "수강생 첫 검사",
+          "minutes": 8
+        },
+        {
+          "label": "직접 오류 교정",
+          "minutes": 11
+        },
+        {
+          "label": "같은 항목 재검사",
+          "minutes": 8
+        },
+        {
+          "label": "증거 저장",
+          "minutes": 3
+        }
+      ],
+      "flow": [
+        {
+          "id": "explain",
+          "label": "햄PD 설명"
+        },
+        {
+          "id": "demo",
+          "label": "실패 화면 대조"
+        },
+        {
+          "id": "attempt",
+          "label": "내 손으로 검사"
+        },
+        {
+          "id": "correction",
+          "label": "오류 설명"
+        },
+        {
+          "id": "retry",
+          "label": "고치고 재검사"
+        },
+        {
+          "id": "result",
+          "label": "확인 증거"
+        }
+      ],
+      "evidence": [
+        {
+          "type": "gallery",
+          "label": "화면을 보여주고 AI와 고쳐 전후를 확인한 실제 장면",
+          "srcs": [
+            "assets/finalcut-color-01-before.jpg",
+            "assets/finalcut-color-02-chat.png",
+            "assets/finalcut-color-03-after.jpg"
+          ],
+          "alts": [
+            "수정 전 Final Cut 화면",
+            "화면을 본 AI와 나눈 실제 대화",
+            "사람이 판단해 멈춘 수정 후 화면"
+          ],
+          "source": "20260903_바른생활_1강_실제대화_증거묶음.md · Final Cut 전/대화/후",
+          "status": "reconstructed",
+          "publication": "실제 보유 화면 · 당시 역사 채팅 미확인 · 햄PD 회고를 바탕으로 같은 과정을 다시 확인한 화면"
+        },
+        {
+          "type": "text",
+          "label": "사진 미표시·재인코딩 실패",
+          "source": "책과 내부 장애 기록",
+          "status": "internal-candidate",
+          "publication": "실제 화면 원본을 수업 전에 강사가 다시 열지 못하면 HOLD로 표시"
+        }
+      ],
+      "locked": true
+    },
+    {
+      "number": 7,
+      "id": "lesson-7",
+      "shortTitle": "필요한 가치",
+      "title": "이 결과가 필요한 사람이 처음 보고도 쓸 수 있게 고칩니다",
+      "question": "처음 보는 사람이 이 한 페이지의 약속과 다음 행동을 설명 없이 이해하고 쓸 수 있을까?",
+      "misbelief": "내 화면에서 열리고 다시 이어갈 수 있으면 자동으로 가치가 생긴다.",
+      "input": {
+        "id": "verified_candidate",
+        "label": "6강의 최종 후보와 확인 증거"
+      },
+      "output": {
+        "id": "final_package",
+        "label": "처음 보는 사람의 사용 확인 + 첫 최종본 + 다음 작업 카드 + 7일 재사용 약속"
+      },
+      "teacherStory": "햄PD는 AI 동료와 홈페이지·포트폴리오·글·영상·앱을 만들었지만, 만든 수가 가치를 증명하지는 않았습니다. 처음 보는 사람이 무엇인지 알고 다음 행동을 할 수 있어야 가치가 시작됩니다. 그 뒤에야 원본·결정·확인 증거·다음 행동을 남겨 다시 고칩니다.",
+      "demonstration": "한 수강생의 최종 후보를 다른 수강생이 설명 없이 열어 봅니다. 그 사람이 이 페이지가 누구를 위한 것인지, 무엇을 줄 수 있는지, 다음에 무엇을 해야 하는지 말하게 합니다. 작성자는 해설하지 않고 들은 말만 기록합니다. 그 뒤 다음 작업 카드가 있는 새 대화로 그 결과의 작은 수정을 이어갑니다.",
+      "attemptPrompt": "최종 후보에서 실제 고객 정보를 빼고 다른 수강생에게 보여주세요. 해설하지 말고 ‘누구를 위한 것으로 보이나요? 무엇을 줄 수 있나요? 다음에 무엇을 하게 되나요?’를 물으세요. 들은 말과 멈춘 자리를 그대로 적으세요.",
+      "retryPrompt": "처음 보는 사람의 실제 반응으로 제목·약속·다음 행동 중 한 곳을 AI와 고치세요. 다시 그 사람에게 보여 같은 세 질문을 하고, 고친 파일을 직접 열어 확인하세요. 그 뒤 원본·사람 반응·마지막 결정·다음 행동을 카드에 남기고 7일 안에 다시 열 날짜를 적으세요.",
+      "correctionCriteria": [
+        "처음 보는 사람이 누구를 위한 것인지 말할 수 있는가",
+        "그 사람이 무엇을 얻는지 자기 말로 설명했는가",
+        "다음 행동을 찾거나 실제로 시도했는가",
+        "작성자의 설명이 아니라 사용자의 말과 행동을 적었는가",
+        "사용 확인에서 나온 한 곳을 고친 뒤 다시 보여줬는가",
+        "원본·마지막 결정·확인 증거·하지 않을 일·다음 행동이 새 대화에 이어졌는가"
+      ],
+      "resultTemplate": "처음 보는 사람의 말·행동 / 사용 확인으로 고친 곳 / 첫 최종본 / 원본 / 마지막 결정 / 확인 증거 / 하지 않을 일 / 다음 행동 / 7일 날짜",
+      "nextLesson": "7일 안에 이 카드로 같은 결과를 다시 열고, 사용할 사람의 다음 반응을 받아 작은 수정을 이어갑니다.",
+      "timeline": [
+        {
+          "label": "만든 것과 쓰이는 것",
+          "minutes": 7
+        },
+        {
+          "label": "처음 보는 사람 시연",
+          "minutes": 7
+        },
+        {
+          "label": "사용 반응과 이어가기 비교",
+          "minutes": 6
+        },
+        {
+          "label": "수강생 첫 사용 확인",
+          "minutes": 8
+        },
+        {
+          "label": "반응으로 직접 교정",
+          "minutes": 11
+        },
+        {
+          "label": "다시 보여주고 새 대화로 수정",
+          "minutes": 8
+        },
+        {
+          "label": "사용 확인·첫 최종본·7일 약속",
+          "minutes": 3
+        }
+      ],
+      "flow": [
+        {
+          "id": "explain",
+          "label": "햄PD 설명"
+        },
+        {
+          "id": "demo",
+          "label": "사용 확인 시연"
+        },
+        {
+          "id": "attempt",
+          "label": "처음 보는 사람"
+        },
+        {
+          "id": "correction",
+          "label": "반응으로 교정"
+        },
+        {
+          "id": "retry",
+          "label": "다시 보여주고 이어가기"
+        },
+        {
+          "id": "result",
+          "label": "첫 최종본"
+        }
+      ],
+      "evidence": [
+        {
+          "type": "image",
+          "label": "원본 맥락을 다시 읽고 같은 결과를 이어간 실제 화면",
+          "src": "assets/orca-06-after-refresh.png",
+          "alt": "새 작업 자리에서 이전 맥락을 읽고 결과를 이어가는 화면",
+          "source": "20260713_orca_beginner_guide_sample_v2/assets/actual_v7/06_after_refresh.png",
+          "status": "verified",
+          "publication": "내부 강의 사용 · 다음 날 자동 기억의 증거로 사용 금지"
+        },
+        {
+          "type": "text",
+          "label": "같은 말을 반복하고 결과를 잃은 사건",
+          "source": "20260621_코덱스와_대화하는법_원본과_도구가된_기록.md",
+          "status": "internal-candidate",
+          "publication": "자리·주소·고유번호를 가리고 내부 수업에서만 사용"
+        }
+      ],
+      "locked": true
+    }
+  ]
+}
