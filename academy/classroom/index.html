@@ -1,77 +1,195 @@
 <!doctype html>
 <html lang="ko">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#F5F3EE">
-    <meta name="robots" content="noindex">
-    <meta
-      name="description"
-      content="HAM MEDIA Academy 바른생활 1강 수업판 — 다시 만드는 중입니다."
-    >
-    <title>바른생활 1강 · 다시 만드는 중 | HAM MEDIA Academy</title>
-    <link rel="canonical" href="https://hammedia.co.kr/academy/classroom/">
-    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
-    <style>
-      :root {
-        --ivory: #F5F3EE;
-        --ink: #1C1814;
-        --blue: #2F5DA6;
-        --line: rgba(28, 24, 20, 0.12);
-      }
-      * { box-sizing: border-box; }
-      body {
-        margin: 0;
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 24px;
-        padding: 32px 24px;
-        background: var(--ivory);
-        color: var(--ink);
-        font-family: "Pretendard", -apple-system, "Malgun Gothic", sans-serif;
-        text-align: center;
-      }
-      .brand {
-        font-size: 0.8rem;
-        letter-spacing: 0.08em;
-        color: rgba(28, 24, 20, 0.6);
-      }
-      h1 {
-        font-size: clamp(1.5rem, 4vw, 2.1rem);
-        line-height: 1.4;
-        margin: 0;
-        max-width: 640px;
-      }
-      p {
-        max-width: 520px;
-        line-height: 1.7;
-        margin: 0;
-        color: rgba(28, 24, 20, 0.78);
-      }
-      a.back {
-        display: inline-block;
-        margin-top: 12px;
-        padding: 12px 28px;
-        border-radius: 999px;
-        background: var(--ink);
-        color: var(--ivory);
-        text-decoration: none;
-        font-weight: 600;
-      }
-      a.back:hover { background: var(--blue); }
-    </style>
-  </head>
-  <body>
-    <div class="brand">HAM MEDIA ACADEMY · 바른생활</div>
-    <h1>지금 이 수업을 다시 만들고 있습니다.</h1>
-    <p>
-      더 제대로 만들어서 다시 열겠습니다.
-      먼저 만든 무료 도구들은 지금 바로 써보실 수 있습니다.
-    </p>
-    <a class="back" href="../../tools/">무료 도구 보러 가기</a>
-    <a class="back" href="../">아카데미 소개로 돌아가기</a>
-  </body>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f3ee">
+  <meta name="description" content="햄PD가 설명하고 보여주고 직접 고치며, 한 사람의 경험을 실제 한 페이지 결과로 잇는 바른생활 일곱 시간 내부 강의장">
+  <title>바른생활 · 일곱 시간 강의장</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2300704A'/%3E%3Cpath d='M17 44V20h6v9h18v-9h6v24h-6v-9H23v9z' fill='%23F9F7F3'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#lesson-stage">본문으로 건너뛰기</a>
+
+  <header class="site-header">
+    <a class="brand" href="#course-home" aria-label="바른생활 과정 처음으로">
+      <span>HAM MEDIA</span>
+      <strong>Academy</strong>
+    </a>
+    <div class="course-identity">
+      <span>바른생활</span>
+      <strong>내 일을 AI와 끝까지 해내는 일곱 시간</strong>
+    </div>
+    <div class="course-status">
+      <span>내부 수업 검증본</span>
+      <strong data-overall-progress>1 / 7강</strong>
+    </div>
+  </header>
+
+  <main id="course-home" class="course-shell">
+    <aside class="lesson-rail" aria-label="일곱 강 길">
+      <div class="rail-heading">
+        <span>오늘의 일곱 강</span>
+        <strong>한 경험이 한 결과로 자랍니다</strong>
+      </div>
+      <nav class="lesson-navigation" data-lesson-nav aria-label="강 선택"></nav>
+      <div class="rail-progress">
+        <div class="progress-label">
+          <span>전체 진행</span>
+          <strong data-completion-count>0 / 7강 저장</strong>
+        </div>
+        <div class="progress-track" aria-hidden="true"><span data-progress-bar></span></div>
+        <button class="text-button danger-action" type="button" data-reset-course>내 작업 전체 지우기</button>
+      </div>
+    </aside>
+
+    <section class="lesson-column" aria-live="polite">
+      <header class="lesson-header">
+        <p class="eyebrow" data-lesson-kicker>1강 · 내 안의 원본</p>
+        <h1 data-lesson-title>기술보다 먼저, 내가 겪은 일을 꺼냅니다</h1>
+        <p class="lesson-question" data-lesson-question></p>
+        <div class="lesson-meta">
+          <span>50분</span>
+          <span>햄PD 설명·시연·직접 교정</span>
+          <span>3~5명</span>
+        </div>
+      </header>
+
+      <nav class="stage-navigation" data-stage-nav aria-label="현재 강의 여섯 단계"></nav>
+
+      <article id="lesson-stage" class="lesson-stage" tabindex="-1">
+        <div class="stage-heading">
+          <p class="stage-kicker" data-stage-kicker>햄PD 설명</p>
+          <h2 data-stage-title></h2>
+          <span class="stage-time" data-stage-time>00~07분</span>
+        </div>
+
+        <div class="stage-copy" data-stage-copy></div>
+
+        <section class="evidence-panel" data-evidence-panel aria-labelledby="evidence-title">
+          <div class="section-heading-row">
+            <div>
+              <p class="eyebrow">강사용 무대</p>
+              <h3 id="evidence-title">실제 장면과 출처</h3>
+            </div>
+            <button class="text-button" type="button" data-toggle-sources aria-expanded="false">출처 보기</button>
+          </div>
+          <div class="evidence-viewer" data-evidence-viewer></div>
+          <div class="source-list" data-source-list hidden></div>
+        </section>
+
+        <section class="student-work" data-student-work aria-labelledby="student-work-title">
+          <div class="section-heading-row">
+            <div>
+              <p class="eyebrow">수강생 작업판</p>
+              <h3 id="student-work-title">첫 결과를 지우지 않고 남깁니다</h3>
+            </div>
+            <span class="autosave-state" data-autosave-state>이 기기에 자동 저장</span>
+          </div>
+
+          <div class="work-fields">
+            <label class="work-field first-field">
+              <span>첫 시도</span>
+              <small data-attempt-prompt></small>
+              <textarea rows="9" maxlength="6000" data-first-attempt placeholder="처음 나온 생각과 결과를 그대로 남기세요."></textarea>
+              <span class="character-count" data-first-count>0 / 6000</span>
+            </label>
+
+            <section class="correction-sheet" aria-labelledby="correction-title">
+              <div>
+                <p class="eyebrow">햄PD가 함께 짚는 자리</p>
+                <h4 id="correction-title">왜 달라져야 하는지 수강생이 먼저 말합니다</h4>
+              </div>
+              <ul data-correction-criteria></ul>
+              <label>
+                <span>직접 교정 메모</span>
+                <textarea rows="5" maxlength="3000" data-correction-note placeholder="강사가 결과를 대신 쓰지 않습니다. 수강생이 고칠 기준과 이유를 함께 적습니다."></textarea>
+                <span class="character-count" data-correction-count>0 / 3000</span>
+              </label>
+            </section>
+
+            <label class="work-field retry-field">
+              <span>같은 결과 다시 해보기</span>
+              <small data-retry-prompt></small>
+              <textarea rows="11" maxlength="8000" data-retry placeholder="교정 기준을 반영한 두 번째 결과를 남기세요."></textarea>
+              <span class="character-count" data-retry-count>0 / 8000</span>
+            </label>
+          </div>
+        </section>
+
+        <section class="result-stage" data-result-stage aria-labelledby="result-stage-title">
+          <div class="section-heading-row">
+            <div>
+              <p class="eyebrow">오늘 남긴 결과</p>
+              <h3 id="result-stage-title" data-output-label></h3>
+            </div>
+            <span class="result-state" data-result-state>작성 중</span>
+          </div>
+          <p data-result-template></p>
+          <div class="verification-list" data-verification-list></div>
+          <p class="next-lesson-copy" data-next-lesson></p>
+        </section>
+      </article>
+    </section>
+
+    <aside class="artifact-workbench" aria-label="한 페이지 결과 작업대">
+      <div class="workbench-header">
+        <div>
+          <p class="eyebrow">한 페이지 결과</p>
+          <h2>일곱 시간 동안 같은 결과를 고칩니다</h2>
+        </div>
+        <span data-artifact-state>초안 전</span>
+      </div>
+
+      <div class="artifact-paper" data-result-preview tabindex="0">
+        <p class="paper-kicker" data-paper-kicker>내 경험에서 시작한 한 페이지</p>
+        <h3 data-paper-title>아직 제목이 없습니다</h3>
+        <p class="paper-promise" data-paper-promise>2강에서 누구에게 어떤 도움을 줄지 정하면 이곳에 결과 약속이 생깁니다.</p>
+        <div class="paper-body" data-paper-body>
+          <p>1강부터 저장한 결과가 이 종이에 차례로 반영됩니다.</p>
+        </div>
+        <div class="paper-footer">
+          <span data-paper-proof>확인 전</span>
+          <span data-paper-next>다음 행동 미정</span>
+        </div>
+      </div>
+
+      <ol class="artifact-history" data-artifact-history aria-label="일곱 단계 결과 상태"></ol>
+
+      <div class="export-actions">
+        <button class="secondary-button" type="button" data-download-html disabled>한 페이지 HTML 받기</button>
+        <button class="secondary-button" type="button" data-download-handoff disabled>다음 작업 카드 받기</button>
+      </div>
+      <p class="privacy-note">입력한 내용은 이 브라우저의 이 기기에만 저장됩니다. 서버로 보내지 않습니다.</p>
+    </aside>
+  </main>
+
+  <footer class="course-dock">
+    <div class="dock-copy">
+      <span data-next-kicker>지금 할 일</span>
+      <strong data-next-label>햄PD 설명 듣기</strong>
+      <small data-next-description>첫 결과를 만들기 전에 실제 사건부터 봅니다.</small>
+    </div>
+    <div class="dock-actions">
+      <button class="secondary-button" type="button" data-previous-step>이전</button>
+      <button class="primary-button" type="button" data-save-next>계속 수업하기</button>
+    </div>
+  </footer>
+
+  <dialog class="reset-dialog" data-reset-dialog>
+    <form method="dialog">
+      <p class="eyebrow">내 작업 전체 지우기</p>
+      <h2>이 기기에 저장한 일곱 강 기록을 지울까요?</h2>
+      <p>첫 시도, 교정 메모, 다시 한 결과와 완료 표시가 모두 사라집니다. 내려받은 파일은 지워지지 않습니다.</p>
+      <div class="dialog-actions">
+        <button class="secondary-button" value="cancel">취소</button>
+        <button class="danger-button" value="confirm">전체 지우기</button>
+      </div>
+    </form>
+  </dialog>
+
+  <p class="sr-only" aria-live="polite" data-announcement></p>
+  <script type="module" src="app.js"></script>
+</body>
 </html>

@@ -1,612 +1,620 @@
-const ROUTES = new Map([
-  ["home", { mode: "home", title: "바른생활 일곱 강 과정" }],
-  ["lesson-1", { mode: "lesson", title: "1강 · 프롬프트는 버려라" }]
-]);
+const STORAGE_KEY = "ham-academy-barunsaenghwal-seven-hour-v1";
+const STAGE_TIMES = ["00~07분", "07~20분", "20~28분", "28~39분", "39~47분", "47~50분"];
 
-const routeViews = Array.from(document.querySelectorAll("[data-route]"));
-const toast = document.querySelector(".toast");
-const LESSON1_SCENES = [
-  { title: "AI보다 먼저, 우리끼리 대화합니다", time: "00:00–10:00" },
-  { title: "어느 답이 더 위험할까요?", time: "10:00–12:00" },
-  { title: "딱 보기에는 완벽했습니다", time: "12:00–15:00" },
-  { title: "링크를 눌렀더니 아무것도 없었습니다", time: "15:00–17:00" },
-  { title: "화면을 보여주고, 묻고, 고치고, 다시 보여줬습니다", time: "17:00–20:00" },
-  { title: "반쯤 떠오른 생각도 대화하며 선명해집니다", time: "20:00–24:00" },
-  { title: "어떤 AI든 좋아요. 쓰던 곳에서 시작하세요", time: "24:00–39:00" },
-  { title: "이번에는 일을 내려놓고 시시콜콜 말합니다", time: "39:00–46:00" },
-  { title: "원하는 사람만 한 문장을 나눕니다", time: "46:00–50:00" }
-];
-const lesson1SceneButtons = Array.from(document.querySelectorAll("[data-lesson1-scene]"));
-const lesson1Panels = Array.from(document.querySelectorAll("[data-lesson1-panel]"));
-const lesson1Position = document.querySelector("[data-lesson1-position]");
-const lesson1Title = document.querySelector("[data-lesson1-title]");
-const lesson1Time = document.querySelector("[data-lesson1-time]");
-const lesson1Prev = document.querySelector("[data-lesson1-prev]");
-const lesson1Next = document.querySelector("[data-lesson1-next]");
-let currentLesson1Scene = 0;
-let toastTimer;
-let lastDialogTrigger = null;
+const elements = {
+  overallProgress: document.querySelector("[data-overall-progress]"),
+  completionCount: document.querySelector("[data-completion-count]"),
+  progressBar: document.querySelector("[data-progress-bar]"),
+  lessonNav: document.querySelector("[data-lesson-nav]"),
+  stageNav: document.querySelector("[data-stage-nav]"),
+  lessonKicker: document.querySelector("[data-lesson-kicker]"),
+  lessonTitle: document.querySelector("[data-lesson-title]"),
+  lessonQuestion: document.querySelector("[data-lesson-question]"),
+  stage: document.querySelector("#lesson-stage"),
+  stageKicker: document.querySelector("[data-stage-kicker]"),
+  stageTitle: document.querySelector("[data-stage-title]"),
+  stageTime: document.querySelector("[data-stage-time]"),
+  stageCopy: document.querySelector("[data-stage-copy]"),
+  evidencePanel: document.querySelector("[data-evidence-panel]"),
+  evidenceViewer: document.querySelector("[data-evidence-viewer]"),
+  toggleSources: document.querySelector("[data-toggle-sources]"),
+  sourceList: document.querySelector("[data-source-list]"),
+  studentWork: document.querySelector("[data-student-work]"),
+  firstField: document.querySelector(".first-field"),
+  correctionSheet: document.querySelector(".correction-sheet"),
+  retryField: document.querySelector(".retry-field"),
+  attemptPrompt: document.querySelector("[data-attempt-prompt]"),
+  retryPrompt: document.querySelector("[data-retry-prompt]"),
+  correctionCriteria: document.querySelector("[data-correction-criteria]"),
+  firstAttempt: document.querySelector("[data-first-attempt]"),
+  correctionNote: document.querySelector("[data-correction-note]"),
+  retry: document.querySelector("[data-retry]"),
+  firstCount: document.querySelector("[data-first-count]"),
+  correctionCount: document.querySelector("[data-correction-count]"),
+  retryCount: document.querySelector("[data-retry-count]"),
+  autosaveState: document.querySelector("[data-autosave-state]"),
+  resultStage: document.querySelector("[data-result-stage]"),
+  outputLabel: document.querySelector("[data-output-label]"),
+  resultState: document.querySelector("[data-result-state]"),
+  resultTemplate: document.querySelector("[data-result-template]"),
+  verificationList: document.querySelector("[data-verification-list]"),
+  nextLesson: document.querySelector("[data-next-lesson]"),
+  artifactState: document.querySelector("[data-artifact-state]"),
+  paperKicker: document.querySelector("[data-paper-kicker]"),
+  paperTitle: document.querySelector("[data-paper-title]"),
+  paperPromise: document.querySelector("[data-paper-promise]"),
+  paperBody: document.querySelector("[data-paper-body]"),
+  paperProof: document.querySelector("[data-paper-proof]"),
+  paperNext: document.querySelector("[data-paper-next]"),
+  artifactHistory: document.querySelector("[data-artifact-history]"),
+  downloadHtml: document.querySelector("[data-download-html]"),
+  downloadHandoff: document.querySelector("[data-download-handoff]"),
+  nextKicker: document.querySelector("[data-next-kicker]"),
+  nextLabel: document.querySelector("[data-next-label]"),
+  nextDescription: document.querySelector("[data-next-description]"),
+  previousStep: document.querySelector("[data-previous-step]"),
+  saveNext: document.querySelector("[data-save-next]"),
+  resetCourse: document.querySelector("[data-reset-course]"),
+  resetDialog: document.querySelector("[data-reset-dialog]"),
+  announcement: document.querySelector("[data-announcement]")
+};
 
-function routeFromHash() {
-  const candidate = window.location.hash.slice(1);
-  return ROUTES.has(candidate) ? candidate : "home";
-}
+const course = await fetch("data/course.json", { cache: "no-store" }).then((response) => {
+  if (!response.ok) throw new Error(`강의 데이터를 열지 못했습니다: ${response.status}`);
+  return response.json();
+});
 
-function focusWithoutScroll(element) {
-  if (!element) return;
-  element.setAttribute("tabindex", "-1");
-  element.focus({ preventScroll: true });
-  element.addEventListener(
-    "blur",
-    () => {
-      element.removeAttribute("tabindex");
-    },
-    { once: true }
-  );
-}
+const freshState = () => ({
+  courseVersion: course.courseVersion,
+  artifactId: globalThis.crypto?.randomUUID?.() ?? `artifact-${Date.now()}`,
+  currentLesson: 0,
+  currentStage: 0,
+  lessons: Object.fromEntries(course.lessons.map((lesson) => [lesson.id, {
+    firstAttempt: "",
+    correctionNote: "",
+    retry: "",
+    checks: lesson.correctionCriteria.map(() => false),
+    completed: false,
+    verifiedAt: null
+  }]))
+});
 
-function renderRoute({ focusHeading = false } = {}) {
-  const routeName = routeFromHash();
-  const route = ROUTES.get(routeName);
-
-  for (const view of routeViews) {
-    view.hidden = view.dataset.route !== routeName;
-  }
-
-  document.body.dataset.mode = route.mode;
-  document.title = `${route.title} | HAM MEDIA ACADEMY`;
-
-  for (const navLink of document.querySelectorAll("[data-nav-route]")) {
-    const isCurrent = navLink.dataset.navRoute === routeName;
-    if (isCurrent) navLink.setAttribute("aria-current", "page");
-    else navLink.removeAttribute("aria-current");
-  }
-
-  if (focusHeading) {
-    const currentView = routeViews.find((view) => view.dataset.route === routeName);
-    const heading = currentView?.querySelector("h1");
-    window.scrollTo({ top: 0, behavior: "auto" });
-    focusWithoutScroll(heading);
-  }
-}
-
-function showToast(message) {
-  if (!toast) return;
-  window.clearTimeout(toastTimer);
-  toast.textContent = message;
-  toast.hidden = false;
-  toastTimer = window.setTimeout(() => {
-    toast.hidden = true;
-    toast.textContent = "";
-  }, 2600);
-}
-
-async function copyText(text) {
+const loadState = () => {
   try {
-    if (!navigator.clipboard?.writeText) throw new Error("Clipboard API unavailable");
-    await navigator.clipboard.writeText(text);
-    showToast("문장을 복사했습니다. 내 AI 화면에 붙여넣으세요.");
-    return true;
+    const saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
+    if (!saved || saved.courseVersion !== course.courseVersion || !saved.artifactId) return freshState();
+    const baseline = freshState();
+    for (const lesson of course.lessons) {
+      baseline.lessons[lesson.id] = { ...baseline.lessons[lesson.id], ...(saved.lessons?.[lesson.id] ?? {}) };
+      if (!Array.isArray(baseline.lessons[lesson.id].checks) || baseline.lessons[lesson.id].checks.length !== lesson.correctionCriteria.length) {
+        baseline.lessons[lesson.id].checks = lesson.correctionCriteria.map(() => false);
+      }
+    }
+    baseline.artifactId = saved.artifactId;
+    baseline.currentLesson = Math.min(Math.max(Number(saved.currentLesson) || 0, 0), course.lessons.length - 1);
+    baseline.currentStage = Math.min(Math.max(Number(saved.currentStage) || 0, 0), 5);
+    return baseline;
   } catch {
-    let helper;
-    try {
-      helper = document.createElement("textarea");
-      helper.value = text;
-      helper.setAttribute("readonly", "");
-      helper.style.position = "fixed";
-      helper.style.opacity = "0";
-      document.body.append(helper);
-      helper.select();
-      const copied = document.execCommand("copy");
-      if (!copied) throw new Error("Copy command failed");
-      showToast("문장을 복사했습니다. 내 AI 화면에 붙여넣으세요.");
-      return true;
-    } catch {
-      showToast("복사하지 못했습니다. 화면의 문장을 직접 선택해 주세요.");
-      return false;
-    } finally {
-      helper?.remove();
-    }
+    return freshState();
   }
-}
+};
 
-function renderLesson1Scene(index, { focusHeading = false } = {}) {
-  const nextIndex = Math.max(0, Math.min(index, LESSON1_SCENES.length - 1));
-  const scene = LESSON1_SCENES[nextIndex];
-  currentLesson1Scene = nextIndex;
+let state = loadState();
+let saveTimer;
 
-  for (const button of lesson1SceneButtons) {
-    const isCurrent = Number(button.dataset.lesson1Scene) === nextIndex;
-    if (isCurrent) button.setAttribute("aria-current", "step");
-    else button.removeAttribute("aria-current");
-  }
+const currentLesson = () => course.lessons[state.currentLesson];
+const currentWork = () => state.lessons[currentLesson().id];
 
-  for (const panel of lesson1Panels) {
-    panel.hidden = Number(panel.dataset.lesson1Panel) !== nextIndex;
-  }
+const text = (tag, value, className) => {
+  const node = document.createElement(tag);
+  node.textContent = value;
+  if (className) node.className = className;
+  return node;
+};
 
-  if (lesson1Position) lesson1Position.textContent = `장면 ${nextIndex + 1} / ${LESSON1_SCENES.length}`;
-  if (lesson1Title) lesson1Title.textContent = scene.title;
-  if (lesson1Time) lesson1Time.textContent = scene.time;
-  if (lesson1Prev) lesson1Prev.disabled = nextIndex === 0;
-  if (lesson1Next) {
-    lesson1Next.disabled = nextIndex === LESSON1_SCENES.length - 1;
-    lesson1Next.textContent = nextIndex === LESSON1_SCENES.length - 1 ? "1강 흐름 끝" : "다음 장면";
-  }
+const persist = () => {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  elements.autosaveState.textContent = "저장됨";
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(() => { elements.autosaveState.textContent = "이 기기에 자동 저장"; }, 1200);
+};
 
-  if (focusHeading) {
-    const panel = lesson1Panels[nextIndex];
-    panel?.scrollIntoView({ behavior: "auto", block: "start" });
-    focusWithoutScroll(panel?.querySelector("h2"));
-  }
-}
+const announce = (message) => {
+  elements.announcement.textContent = "";
+  requestAnimationFrame(() => { elements.announcement.textContent = message; });
+};
 
-function setPressedChoice(button, selector) {
-  for (const peer of document.querySelectorAll(selector)) {
-    peer.setAttribute("aria-pressed", String(peer === button));
-    peer.classList.toggle("is-chosen", peer === button);
-  }
-}
+const lessonOutput = (index) => state.lessons[course.lessons[index].id].retry.trim();
 
-function handleDangerChoice(button) {
-  const activity = button.closest("[data-danger-activity]");
-  if (!activity || activity.dataset.done === "true") return;
-  const feedback = activity.querySelector("#danger-feedback");
-  const choice = button.dataset.dangerChoice;
-  const triedOnce = activity.dataset.tries === "1";
-
-  if (choice === "rough" && !triedOnce) {
-    activity.dataset.tries = "1";
-    button.disabled = true;
-    button.classList.add("is-tried");
-    if (feedback) {
-      feedback.textContent = "힌트: 위험한 답은 틀린 티가 잘 나는 답보다, 매끈해서 확인을 멈추게 만드는 답일 수 있습니다. 남은 답을 다시 골라보세요.";
-      feedback.classList.add("is-hint");
-    }
-    return;
-  }
-
-  if (choice === "polished") {
-    activity.dataset.done = "true";
-    setPressedChoice(button, "[data-danger-choice]");
-    for (const peer of activity.querySelectorAll("[data-danger-choice]")) peer.disabled = true;
-    if (feedback) {
-      feedback.textContent = triedOnce
-        ? "다시 보고 찾았습니다. 그럴듯한 답일수록 사실·숫자·출처를 직접 확인해야 합니다."
-        : "그럴듯한 답이 더 위험할 수 있습니다. 자연스러운 문장이 사실이라는 보장은 없기 때문입니다.";
-      feedback.classList.remove("is-hint");
-      feedback.classList.add("is-success");
-    }
-  }
-}
-
-function inspectRecreatedDocument(button) {
-  const warning = document.querySelector("[data-doc-warning]");
-  if (warning) warning.hidden = false;
-  button.disabled = true;
-  button.textContent = "사실·숫자·출처를 확인했습니다";
-}
-
-function inspectRecreatedLinks(button) {
-  const labels = ["페이지 없음", "출처와 내용 불일치", "원문 확인 불가"];
-  const rows = Array.from(document.querySelectorAll("[data-link-row]"));
-  rows.forEach((row, index) => {
-    row.classList.add("is-broken");
-    const state = row.querySelector("span");
-    if (state) state.textContent = labels[index];
-  });
-  const feedback = document.querySelector("[data-link-feedback]");
-  if (feedback) feedback.textContent = "햄PD의 현재 회고를 바탕으로 재구성: ‘또 구라친다. 링크 안 열린다. 모르면 모른다고 해.’ 직접 확인하고 다시 말하게 한 것이 대화의 시작이었습니다.";
-  button.disabled = true;
-  button.textContent = "세 출처를 직접 확인했습니다";
-}
-
-function selectEvidenceStep(button) {
-  setPressedChoice(button, "[data-evidence]");
-  const messages = [
-    "말로 설명하기 어려우면 현재 화면을 보여줍니다. 이름·계정·고객정보는 먼저 가립니다.",
-    "한꺼번에 맡기지 않고 ‘지금 어디를 조정하면 되는지 한 단계만’ 묻습니다.",
-    "AI가 대신 누른 것이 아닙니다. 햄이 자기 화면에서 직접 조정합니다.",
-    "바뀐 화면을 다시 보여주며 전후가 맞는지 비교합니다. 첫 답은 끝이 아니라 다음 대화입니다."
-  ];
-  const note = document.querySelector("[data-evidence-note]");
-  if (note) note.textContent = messages[Number(button.dataset.evidence)] ?? messages[0];
-}
-
-function openDemoCorrection(button) {
-  const after = document.querySelector("[data-demo-after]");
-  if (after) after.hidden = false;
-  button.disabled = true;
-  button.textContent = "정정 뒤 달라진 답을 확인했습니다";
-}
-
-function selectUnderstood(button) {
-  setPressedChoice(button, "[data-understood]");
-  const feedback = document.querySelector("[data-understood-feedback]");
-  const messages = {
-    yes: "잘 알아들었다면 왜 그랬는지 한 문장만 더 말해보세요. 대화가 더 구체적으로 바뀝니다.",
-    half: "반쯤 맞았다면 ‘맞는 부분은 여기고, 다른 부분은 이거야’라고 나눠서 말해보세요.",
-    no: "엉뚱해도 괜찮습니다. ‘그건 내 이야기와 달라’라고 멈추고 자기 말로 다시 설명해보세요."
-  };
-  if (feedback) feedback.textContent = messages[button.dataset.understood] ?? messages.no;
-}
-
-function selectLifeTopic(button) {
-  setPressedChoice(button, "[data-topic]");
-  const topic = button.dataset.topic;
-  const feedback = document.querySelector("[data-topic-feedback]");
-  const starter = document.getElementById("lesson1-life-starter");
-  if (!feedback || !topic) return;
-  const extra = topic === "가족" ? " 말하고 싶지 않은 내용은 넘기고, 이름과 개인 정보는 빼도 됩니다." : "";
-  const sentence = `오늘은 일 말고 ${topic}를 이야기하고 싶어. 네가 궁금한 것을 한 번에 하나씩 물어봐.`;
-  if (starter) starter.textContent = sentence;
-  feedback.textContent = `새 채팅에서 아래 문장으로 시작해보세요.${extra}`;
-}
-
-function revealLesson1Bridge(message) {
-  const light = document.querySelector("[data-light]");
-  const feedback = document.querySelector("[data-reflection-feedback]");
-  const bridge = document.querySelector("[data-lesson1-bridge]");
-  light?.classList.add("is-on");
-  if (feedback) feedback.textContent = message;
-  if (bridge) bridge.hidden = false;
-}
-
-function selectReflection(button) {
-  const kind = button.dataset.reflectionKind;
-  if (!kind) return;
-  setPressedChoice(button, `[data-reflection-kind="${kind}"]`);
-  const before = document.querySelector('[data-reflection-kind="before"][aria-pressed="true"]');
-  const after = document.querySelector('[data-reflection-kind="after"][aria-pressed="true"]');
-  if (before && after) {
-    revealLesson1Bridge(`원하면 이렇게 나눌 수 있습니다. “예전에는 ${before.dataset.reflectionWord}, 지금은 ${after.dataset.reflectionWord}.” 말하지 않고 마음속으로만 확인해도 됩니다.`);
-  }
-}
-
-function selectChoice(button) {
-  const groupName = button.dataset.choiceGroup;
-  if (groupName) {
-    for (const peer of document.querySelectorAll(`[data-choice-group="${groupName}"]`)) {
-      peer.classList.toggle("is-chosen", peer === button);
-      peer.setAttribute("aria-pressed", String(peer === button));
-    }
-  }
-
-  const responseTarget = button.dataset.responseTarget;
-  const response = button.dataset.response;
-  if (responseTarget && response) {
-    const output = document.getElementById(responseTarget);
-    if (output) output.textContent = response;
-  }
-}
-
-function selectMaterial(button) {
-  const label = button.dataset.materialChoice;
-  if (!label) return;
-
-  for (const peer of document.querySelectorAll("[data-material-choice]")) {
-    const isCurrent = peer === button;
-    peer.classList.toggle("is-chosen", isCurrent);
-    peer.setAttribute("aria-pressed", String(isCurrent));
-  }
-
-  for (const output of document.querySelectorAll("[data-material-current]")) {
-    output.textContent = label;
-  }
-
-  showToast("이 업무 재료는 2강에서 이어 씁니다.");
-}
-
-function openDialog(id, trigger) {
-  const dialog = document.getElementById(id);
-  if (!(dialog instanceof HTMLDialogElement)) return;
-  lastDialogTrigger = trigger;
-  dialog.showModal();
-  const closeButton = dialog.querySelector("[data-dialog-close]");
-  closeButton?.focus();
-}
-
-function closeDialog(dialog) {
-  if (!(dialog instanceof HTMLDialogElement) || !dialog.open) return;
-  dialog.close();
-}
-
-function safetyButtons(activity) {
-  return Array.from(activity.querySelectorAll("[data-safety-choice]"));
-}
-
-function lockSafetyButtons(activity, highlightedButton) {
-  for (const button of safetyButtons(activity)) {
-    if (button === highlightedButton) {
-      button.disabled = false;
-      button.setAttribute("aria-disabled", "true");
-      button.tabIndex = -1;
-      button.style.setProperty("background-color", "#7EB5E8", "important");
-    } else {
+function renderLessonNavigation() {
+  const fragment = document.createDocumentFragment();
+  course.lessons.forEach((lesson, index) => {
+    const work = state.lessons[lesson.id];
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = `lesson-nav-button${work.completed ? " is-complete" : ""}${lesson.locked ? " is-locked" : ""}`;
+    if (lesson.locked) {
       button.disabled = true;
+      button.title = "준비 중입니다. 1강을 먼저 열었습니다.";
     }
+    button.dataset.lessonIndex = String(index);
+    button.setAttribute("aria-current", index === state.currentLesson ? "true" : "false");
+    button.append(text("span", `${lesson.number}강`, "lesson-number"));
+    const copy = document.createElement("span");
+    copy.className = "lesson-nav-copy";
+    copy.append(text("strong", lesson.shortTitle), text("span", lesson.output.label));
+    button.append(copy, text("span", lesson.locked ? "준비 중" : (work.completed ? "✓" : ""), "lesson-complete-mark"));
+    button.addEventListener("click", () => {
+      saveInputs();
+      state.currentLesson = index;
+      state.currentStage = 0;
+      persist();
+      render();
+      elements.stage.focus({ preventScroll: true });
+    });
+    fragment.append(button);
+  });
+  elements.lessonNav.replaceChildren(fragment);
+  requestAnimationFrame(() => elements.lessonNav.querySelector('[aria-current="true"]')?.scrollIntoView({ block: "nearest", inline: "center" }));
+}
+
+function renderStageNavigation() {
+  const lesson = currentLesson();
+  const fragment = document.createDocumentFragment();
+  lesson.flow.forEach((stage, index) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = `stage-nav-button${index < state.currentStage ? " is-done" : ""}`;
+    button.textContent = stage.label;
+    button.dataset.stageIndex = String(index);
+    if (index === state.currentStage) button.setAttribute("aria-current", "step");
+    button.addEventListener("click", () => {
+      saveInputs();
+      state.currentStage = index;
+      persist();
+      render();
+      elements.stage.focus({ preventScroll: true });
+    });
+    fragment.append(button);
+  });
+  elements.stageNav.replaceChildren(fragment);
+  requestAnimationFrame(() => elements.stageNav.querySelector('[aria-current="step"]')?.scrollIntoView({ block: "nearest", inline: "center" }));
+}
+
+function stageCopyNodes(lesson, stageIndex) {
+  const fragment = document.createDocumentFragment();
+  if (stageIndex === 0) {
+    fragment.append(text("p", lesson.teacherStory));
+    const lines = document.createElement("div");
+    lines.append(
+      truthLine("처음 믿은 것", lesson.misbelief),
+      truthLine("오늘 할 일", lesson.output.label),
+      truthLine("다음 강 입력", lesson.nextLesson)
+    );
+    fragment.append(lines);
+  } else if (stageIndex === 1) {
+    fragment.append(text("p", lesson.demonstration));
+  } else if (stageIndex === 2) {
+    fragment.append(text("p", lesson.attemptPrompt));
+  } else if (stageIndex === 3) {
+    fragment.append(text("p", "강사가 답을 대신 쓰지 않습니다. 수강생에게 ‘왜 이 결과를 그대로 쓸 수 없나요?’라고 먼저 묻고, 수강생이 말한 이유를 교정 메모에 남깁니다."));
+  } else if (stageIndex === 4) {
+    fragment.append(text("p", lesson.retryPrompt));
+  } else {
+    fragment.append(text("p", `첫 결과와 다시 한 결과를 나란히 봅니다. ${lesson.output.label}을 다음 강에 그대로 건넵니다.`));
+  }
+  return fragment;
+}
+
+function truthLine(label, value) {
+  const row = document.createElement("div");
+  row.className = "truth-line";
+  row.append(text("strong", label), text("span", value));
+  return row;
+}
+
+function renderEvidence() {
+  const lesson = currentLesson();
+  const mediaFragment = document.createDocumentFragment();
+  const sourceFragment = document.createDocumentFragment();
+
+  lesson.evidence.forEach((evidence) => {
+    if (evidence.type === "video") {
+      const figure = document.createElement("figure");
+      figure.className = "media-frame";
+      const video = document.createElement("video");
+      video.controls = true;
+      video.preload = "metadata";
+      video.src = evidence.src;
+      video.poster = evidence.poster;
+      video.setAttribute("aria-label", evidence.alt);
+      const caption = document.createElement("figcaption");
+      caption.className = "media-caption";
+      caption.append(text("strong", evidence.label), text("span", evidence.status === "reconstructed" ? "재구성 표시" : "출처 확인"));
+      figure.append(video, caption);
+      mediaFragment.append(figure);
+    } else if (evidence.type === "image") {
+      mediaFragment.append(imageFigure(evidence.src, evidence.alt, evidence.label, evidence.status));
+    } else if (evidence.type === "gallery") {
+      const gallery = document.createElement("div");
+      gallery.className = "gallery-grid";
+      evidence.srcs.forEach((src, index) => gallery.append(imageFigure(src, evidence.alts[index], `${index + 1}. ${evidence.label}`, evidence.status)));
+      mediaFragment.append(gallery);
+    } else {
+      const card = document.createElement("div");
+      card.className = "text-evidence";
+      card.append(text("strong", evidence.label));
+      if (evidence.note) card.append(text("p", evidence.note));
+      mediaFragment.append(card);
+    }
+
+    const source = document.createElement("div");
+    source.className = "source-item";
+    source.append(text("strong", evidence.label), text("span", `원본: ${evidence.source}`), text("span", `사용선: ${evidence.publication}`), text("span", `상태: ${evidence.status}`));
+    sourceFragment.append(source);
+  });
+
+  elements.evidenceViewer.replaceChildren(mediaFragment);
+  elements.sourceList.replaceChildren(sourceFragment);
+}
+
+function imageFigure(src, alt, label, status) {
+  const figure = document.createElement("figure");
+  figure.className = "media-frame";
+  const image = document.createElement("img");
+  image.src = src;
+  image.alt = alt;
+  image.loading = "eager";
+  image.decoding = "async";
+  const caption = document.createElement("figcaption");
+  caption.className = "media-caption";
+  caption.append(text("strong", label), text("span", status === "reconstructed" ? "비식별 재구성" : "실제 화면"));
+  figure.append(image, caption);
+  return figure;
+}
+
+function renderWorkFields() {
+  const lesson = currentLesson();
+  const work = currentWork();
+  elements.firstAttempt.value = work.firstAttempt;
+  elements.correctionNote.value = work.correctionNote;
+  elements.retry.value = work.retry;
+  elements.attemptPrompt.textContent = lesson.attemptPrompt;
+  elements.retryPrompt.textContent = lesson.retryPrompt;
+  updateCounts();
+
+  const criteria = document.createDocumentFragment();
+  lesson.correctionCriteria.forEach((criterion) => criteria.append(text("li", criterion)));
+  elements.correctionCriteria.replaceChildren(criteria);
+
+  const stageIndex = state.currentStage;
+  elements.firstField.hidden = stageIndex < 2;
+  elements.correctionSheet.hidden = stageIndex < 3;
+  elements.retryField.hidden = stageIndex < 4;
+  elements.firstAttempt.readOnly = stageIndex > 2;
+  elements.correctionNote.readOnly = stageIndex > 3;
+  elements.retry.readOnly = stageIndex > 4;
+}
+
+function renderVerification() {
+  const lesson = currentLesson();
+  const work = currentWork();
+  const fragment = document.createDocumentFragment();
+  lesson.correctionCriteria.forEach((criterion, index) => {
+    const label = document.createElement("label");
+    label.className = "verification-item";
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.checked = Boolean(work.checks[index]);
+    checkbox.addEventListener("change", () => {
+      work.checks[index] = checkbox.checked;
+      persist();
+      updateCompletionState();
+      renderArtifact();
+    });
+    label.append(checkbox, text("span", criterion));
+    fragment.append(label);
+  });
+  elements.verificationList.replaceChildren(fragment);
+  elements.outputLabel.textContent = lesson.output.label;
+  elements.resultTemplate.textContent = `결과 형식: ${lesson.resultTemplate}`;
+  elements.nextLesson.textContent = lesson.nextLesson;
+  updateCompletionState();
+}
+
+function updateCompletionState() {
+  const work = currentWork();
+  const checksDone = work.checks.every(Boolean);
+  const ready = work.retry.trim().length > 0 && checksDone;
+  elements.resultState.textContent = ready ? "저장 가능" : work.retry.trim() ? "확인표 남음" : "작성 중";
+}
+
+function renderArtifact() {
+  const outputs = course.lessons.map((lesson) => state.lessons[lesson.id].retry.trim());
+  const completed = course.lessons.filter((lesson) => state.lessons[lesson.id].completed).length;
+  const latestIndex = outputs.reduce((last, value, index) => value ? index : last, -1);
+  const promise = outputs[1];
+  const latest = latestIndex >= 0 ? outputs[latestIndex] : "";
+  const titleCandidate = (promise || outputs[0] || "").split(/\n|\.|。/)[0].trim();
+
+  elements.artifactState.textContent = latestIndex < 0 ? "초안 전" : `${latestIndex + 1}강 결과 반영`;
+  elements.paperKicker.textContent = `결과 ID · ${state.artifactId.slice(0, 8)}`;
+  elements.paperTitle.textContent = titleCandidate || "아직 제목이 없습니다";
+  elements.paperPromise.textContent = promise || "2강에서 누구에게 어떤 도움을 줄지 정하면 이곳에 결과 약속이 생깁니다.";
+  elements.paperBody.replaceChildren(text("p", latest || "1강부터 저장한 결과가 이 종이에 차례로 반영됩니다."));
+  elements.paperProof.textContent = outputs[5] ? "사람 확인 기록 있음" : "확인 전";
+  elements.paperNext.textContent = outputs[6] ? "사용 확인·다음 작업 카드 있음" : "다음 행동 미정";
+
+  const history = document.createDocumentFragment();
+  course.resultStates.forEach((result, index) => {
+    const item = document.createElement("li");
+    const isComplete = Boolean(outputs[index]) || state.lessons[course.lessons[index].id].completed;
+    item.className = `${isComplete ? "is-complete" : ""}${index === state.currentLesson ? " is-current" : ""}`.trim();
+    item.append(text("span", isComplete ? "✓" : String(index + 1), "history-dot"), text("span", result.label), text("small", isComplete ? "남김" : "대기"));
+    history.append(item);
+  });
+  elements.artifactHistory.replaceChildren(history);
+
+  elements.downloadHtml.disabled = !outputs[4];
+  elements.downloadHandoff.disabled = !outputs[6];
+  const openLessons = course.lessons.filter((lesson) => !lesson.locked).length;
+  elements.overallProgress.textContent = `${state.currentLesson + 1} / ${openLessons}강`;
+  elements.completionCount.textContent = `${completed} / ${openLessons}강 저장`;
+  elements.progressBar.style.width = `${(completed / openLessons) * 100}%`;
+}
+
+function renderDock() {
+  const lesson = currentLesson();
+  const stage = lesson.flow[state.currentStage];
+  const isLastStage = state.currentStage === lesson.flow.length - 1;
+  const isLastLesson = state.currentLesson === course.lessons.length - 1;
+  elements.previousStep.disabled = state.currentStage === 0 && state.currentLesson === 0;
+
+  if (!isLastStage) {
+    const nextStage = lesson.flow[state.currentStage + 1];
+    elements.nextKicker.textContent = "계속 수업하기";
+    elements.nextLabel.textContent = nextStage.label;
+    elements.nextDescription.textContent = `${stage.label}을 마치고 같은 결과의 다음 단계로 갑니다.`;
+    elements.saveNext.textContent = `${nextStage.label}로`;
+  } else if (!isLastLesson && course.lessons[state.currentLesson + 1].locked) {
+    const nextLesson = course.lessons[state.currentLesson + 1];
+    elements.nextKicker.textContent = "오늘 여기까지 — 내 결과 저장하기";
+    elements.nextLabel.textContent = `${nextLesson.number}강 · ${nextLesson.shortTitle} (준비 중)`;
+    elements.nextDescription.textContent = "지금 연 강은 여기까지입니다. 남긴 결과는 이 기기에 저장되고, 다음 강이 열리면 그대로 이어서 씁니다.";
+    elements.saveNext.textContent = `${lesson.number}강 저장하고 마치기`;
+  } else if (!isLastLesson) {
+    const nextLesson = course.lessons[state.currentLesson + 1];
+    elements.nextKicker.textContent = "저장하고 다음 강으로";
+    elements.nextLabel.textContent = `${nextLesson.number}강 · ${nextLesson.shortTitle}`;
+    elements.nextDescription.textContent = lesson.nextLesson;
+    elements.saveNext.textContent = `저장하고 ${nextLesson.number}강으로`;
+  } else {
+    elements.nextKicker.textContent = "일곱 시간의 마지막 확인";
+    elements.nextLabel.textContent = "사용 확인·첫 최종본·다음 작업 카드 저장";
+    elements.nextDescription.textContent = "새 대화에서 작은 수정 하나를 이어간 뒤 결과를 내려받습니다.";
+    elements.saveNext.textContent = "일곱 강 저장하기";
   }
 }
 
-function finishSafetyActivity(activity, selectedButton, { foundAfterHint = false } = {}) {
-  const feedback = activity.querySelector(".safety-feedback");
-  const reset = activity.querySelector("[data-safety-reset]");
-  activity.dataset.done = "true";
+function render() {
+  const lesson = currentLesson();
+  const stage = lesson.flow[state.currentStage];
+  document.title = `바른생활 ${lesson.number}강 · ${stage.label}`;
+  elements.lessonKicker.textContent = `${lesson.number}강 · ${lesson.shortTitle}`;
+  elements.lessonTitle.textContent = lesson.title;
+  elements.lessonQuestion.textContent = lesson.question;
+  elements.stageKicker.textContent = stage.label;
+  elements.stageTitle.textContent = stageTitle(lesson, state.currentStage);
+  elements.stageTime.textContent = STAGE_TIMES[state.currentStage];
+  elements.stageCopy.replaceChildren(stageCopyNodes(lesson, state.currentStage));
 
-  selectedButton.classList.add("is-right");
-  lockSafetyButtons(activity, selectedButton);
-  if (feedback) {
-    feedback.hidden = false;
-    feedback.className = "safety-feedback safety-feedback--success";
-    feedback.innerHTML = foundAfterHint
-      ? "<strong>다시 보고 찾았어요.</strong><span>이름·메일·고객정보를 가린 뒤 막힌 화면만 캡처합니다. 고쳐 찾은 것도 중요한 실습입니다.</span>"
-      : "<strong>바로 찾았어요.</strong><span>이름·메일·고객정보를 가린 뒤 막힌 화면만 캡처합니다. 비밀번호와 인증번호는 보여주지 않습니다.</span>";
-  }
-  if (reset) reset.hidden = false;
+  elements.evidencePanel.hidden = state.currentStage !== 1;
+  elements.studentWork.hidden = state.currentStage < 2;
+  elements.resultStage.hidden = state.currentStage !== 5;
+  elements.sourceList.hidden = true;
+  elements.toggleSources.setAttribute("aria-expanded", "false");
+  elements.toggleSources.textContent = "출처 보기";
+
+  renderLessonNavigation();
+  renderStageNavigation();
+  renderEvidence();
+  renderWorkFields();
+  renderVerification();
+  renderArtifact();
+  renderDock();
 }
 
-function handleSafetyChoice(button) {
-  const activity = button.closest("[data-safety-activity]");
-  if (!activity || activity.dataset.done === "true") return;
-
-  const feedback = activity.querySelector(".safety-feedback");
-  const reset = activity.querySelector("[data-safety-reset]");
-  const tries = Number(activity.dataset.tries ?? "0") + 1;
-  const isSafe = button.dataset.safetyChoice === "safe";
-  activity.dataset.tries = String(tries);
-
-  if (isSafe) {
-    finishSafetyActivity(activity, button, { foundAfterHint: tries > 1 });
-    return;
-  }
-
-  button.disabled = true;
-  button.classList.add("is-tried");
-
-  if (tries === 1) {
-    if (feedback) {
-      feedback.hidden = false;
-      feedback.className = "safety-feedback safety-feedback--hint";
-      feedback.innerHTML =
-        "<strong>잠깐, 정답은 아직 보여주지 않을게요.</strong><span>비밀번호·인증번호·계정 연결 승인은 AI에게 보여주거나 맡기지 않아도 됩니다. 민감정보를 가린 뒤 남은 답에서 한 번 더 골라보세요.</span>";
-    }
-    if (reset) reset.hidden = true;
-    return;
-  }
-
-  activity.dataset.done = "true";
-  const safeOption = safetyButtons(activity).find((option) => option.dataset.safetyChoice === "safe");
-  if (safeOption) safeOption.classList.add("is-answer");
-  lockSafetyButtons(activity, safeOption);
-  if (feedback) {
-    feedback.hidden = false;
-    feedback.className = "safety-feedback safety-feedback--review";
-    feedback.innerHTML =
-      "<strong>여기는 함께 한 번 더 봐요.</strong><span>먼저 이름·메일·고객정보를 가린 뒤 화면을 캡처합니다. 비밀번호·인증번호·복구코드·API 키는 캡처하지 않습니다.</span>";
-  }
-  if (reset) reset.hidden = false;
+function stageTitle(lesson, index) {
+  return [
+    `오늘은 ‘${lesson.misbelief.replace(/\.$/, "")}’에서 출발합니다`,
+    "성공한 결과만 보지 않고, 실제 과정과 출처를 봅니다",
+    "내 결과의 첫 판을 직접 남깁니다",
+    "햄PD가 한 사람을 깊게 보고, 모두의 기준을 짚습니다",
+    "같은 결과를 내 사실과 판단으로 다시 만듭니다",
+    `${lesson.output.label}을 다음 강 입력으로 저장합니다`
+  ][index];
 }
 
-function resetSafetyActivity(button) {
-  const activity = button.closest("[data-safety-activity]");
-  if (!activity) return;
-  delete activity.dataset.tries;
-  delete activity.dataset.done;
-  for (const option of safetyButtons(activity)) {
-    option.disabled = false;
-    option.removeAttribute("aria-disabled");
-    option.removeAttribute("tabindex");
-    option.style.removeProperty("background-color");
-    option.classList.remove("is-tried", "is-right", "is-answer");
-  }
-  const feedback = activity.querySelector(".safety-feedback");
-  if (feedback) {
-    feedback.hidden = true;
-    feedback.className = "safety-feedback";
-    feedback.textContent = "";
-  }
-  button.hidden = true;
-  safetyButtons(activity)[0]?.focus();
+function saveInputs() {
+  const work = currentWork();
+  work.firstAttempt = elements.firstAttempt.value;
+  work.correctionNote = elements.correctionNote.value;
+  work.retry = elements.retry.value;
+  persist();
 }
 
-document.addEventListener("click", (event) => {
-  const target = event.target;
-  if (!(target instanceof Element)) return;
+function updateCounts() {
+  elements.firstCount.textContent = `${elements.firstAttempt.value.length} / 6000`;
+  elements.correctionCount.textContent = `${elements.correctionNote.value.length} / 3000`;
+  elements.retryCount.textContent = `${elements.retry.value.length} / 8000`;
+}
 
-  const lesson1SceneButton = target.closest("[data-lesson1-scene]");
-  if (lesson1SceneButton) {
-    renderLesson1Scene(Number(lesson1SceneButton.dataset.lesson1Scene), { focusHeading: true });
-    return;
-  }
-
-  const lesson1Previous = target.closest("[data-lesson1-prev]");
-  if (lesson1Previous) {
-    renderLesson1Scene(currentLesson1Scene - 1, { focusHeading: true });
-    return;
-  }
-
-  const lesson1Following = target.closest("[data-lesson1-next]");
-  if (lesson1Following) {
-    renderLesson1Scene(currentLesson1Scene + 1, { focusHeading: true });
-    return;
-  }
-
-  const dangerChoice = target.closest("[data-danger-choice]");
-  if (dangerChoice) {
-    handleDangerChoice(dangerChoice);
-    return;
-  }
-
-  const documentInspector = target.closest("[data-inspect-doc]");
-  if (documentInspector) {
-    inspectRecreatedDocument(documentInspector);
-    return;
-  }
-
-  const linkInspector = target.closest("[data-open-links]");
-  if (linkInspector) {
-    inspectRecreatedLinks(linkInspector);
-    return;
-  }
-
-  const evidenceStep = target.closest("[data-evidence]");
-  if (evidenceStep) {
-    selectEvidenceStep(evidenceStep);
-    return;
-  }
-
-  const demoCorrection = target.closest("[data-demo-correction]");
-  if (demoCorrection) {
-    openDemoCorrection(demoCorrection);
-    return;
-  }
-
-  const understoodChoice = target.closest("[data-understood]");
-  if (understoodChoice) {
-    selectUnderstood(understoodChoice);
-    return;
-  }
-
-  const topicChoice = target.closest("[data-topic]");
-  if (topicChoice) {
-    selectLifeTopic(topicChoice);
-    return;
-  }
-
-  const reflectionChoice = target.closest("[data-reflection-kind]");
-  if (reflectionChoice) {
-    selectReflection(reflectionChoice);
-    return;
-  }
-
-  const reflectionSkip = target.closest("[data-reflection-skip]");
-  if (reflectionSkip) {
-    revealLesson1Bridge("오늘은 듣기만 해도 됩니다. 자기 AI와 대화가 이어졌다면 이미 성공입니다.");
-    reflectionSkip.disabled = true;
-    reflectionSkip.textContent = "듣기만 하기로 했습니다";
-    return;
-  }
-
-  const skipLink = target.closest("[data-skip-link]");
-  if (skipLink) {
-    event.preventDefault();
-    document.getElementById("main-content")?.focus({ preventScroll: false });
-    return;
-  }
-
-  const scrollButton = target.closest("[data-scroll-target]");
-  if (scrollButton) {
-    const section = document.getElementById(scrollButton.dataset.scrollTarget);
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth", block: "start" });
-      focusWithoutScroll(section.querySelector("h2"));
+function moveNext() {
+  saveInputs();
+  const lesson = currentLesson();
+  const work = currentWork();
+  if (state.currentStage < lesson.flow.length - 1) {
+    state.currentStage += 1;
+  } else {
+    const ready = work.retry.trim() && work.checks.every(Boolean);
+    if (!ready) {
+      announce("다시 한 결과와 확인표를 먼저 남겨 주세요.");
+      if (!work.retry.trim()) {
+        state.currentStage = 4;
+        persist();
+        render();
+        elements.retry.focus();
+      } else {
+        elements.verificationList.querySelector("input:not(:checked)")?.focus();
+      }
+      return;
     }
-    return;
-  }
-
-  const materialChoice = target.closest("[data-material-choice]");
-  if (materialChoice) {
-    selectMaterial(materialChoice);
-    return;
-  }
-
-  const copyTargetButton = target.closest("[data-copy-target]");
-  if (copyTargetButton) {
-    const source = document.getElementById(copyTargetButton.dataset.copyTarget);
-    if (source) {
-      void copyText(source.textContent.trim()).then((copied) => {
-        const feedback = document.querySelector("[data-course-pack-feedback]");
-        if (!feedback) return;
-        if (copied && copyTargetButton.dataset.copyTarget === "lesson1-course-pack") {
-          feedback.textContent = "수업문을 실제로 복사했습니다. 자기 AI에 붙여넣고, 한 번에 질문 하나씩 대화하세요.";
-        } else if (copied && copyTargetButton.dataset.copyTarget === "lesson1-summary-request") {
-          feedback.textContent = "마지막 확인문을 실제로 복사했습니다. AI가 정리한 내용에서 사실과 추측을 직접 확인하세요.";
-        } else if (!copied && copyTargetButton.closest(".course-pack")) {
-          feedback.textContent = "자동 복사가 되지 않았습니다. 위에 보이는 수업문을 직접 선택해 복사해 주세요.";
-        }
-      });
+    work.completed = true;
+    work.verifiedAt = new Date().toISOString();
+    const nextLesson = course.lessons[state.currentLesson + 1];
+    if (nextLesson && !nextLesson.locked) {
+      state.currentLesson += 1;
+      state.currentStage = 0;
+    } else if (nextLesson && nextLesson.locked) {
+      announce("1강을 저장했습니다. 다음 강은 준비 중입니다 — 열리면 알려드립니다.");
+    } else {
+      announce("사용 확인을 거친 첫 최종본과 다음 작업 카드를 저장했습니다.");
     }
-    return;
   }
+  persist();
+  render();
+  elements.stage.focus({ preventScroll: true });
+  globalThis.scrollTo({ top: 0, behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+}
 
-  const copyChoice = target.closest("[data-copy-text]");
-  if (copyChoice) {
-    selectChoice(copyChoice);
-    void copyText(copyChoice.dataset.copyText);
-    return;
+function movePrevious() {
+  saveInputs();
+  if (state.currentStage > 0) {
+    state.currentStage -= 1;
+  } else if (state.currentLesson > 0) {
+    state.currentLesson -= 1;
+    state.currentStage = 5;
   }
+  persist();
+  render();
+  elements.stage.focus({ preventScroll: true });
+}
 
-  const statusChoice = target.closest("[data-status-choice]");
-  if (statusChoice) {
-    selectChoice(statusChoice);
-    return;
-  }
+function escapeHtml(value) {
+  return value.replace(/[&<>'"]/g, (character) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;" })[character]);
+}
 
-  const safetyChoice = target.closest("[data-safety-choice]");
-  if (safetyChoice) {
-    handleSafetyChoice(safetyChoice);
-    return;
-  }
+function download(filename, type, content) {
+  const blob = new Blob([content], { type });
+  const url = URL.createObjectURL(blob);
+  const anchor = document.createElement("a");
+  anchor.href = url;
+  anchor.download = filename;
+  document.body.append(anchor);
+  anchor.click();
+  anchor.remove();
+  URL.revokeObjectURL(url);
+}
 
-  const safetyReset = target.closest("[data-safety-reset]");
-  if (safetyReset) {
-    resetSafetyActivity(safetyReset);
-    return;
-  }
+function downloadResultHtml() {
+  saveInputs();
+  const outputs = course.lessons.map((lesson) => state.lessons[lesson.id].retry.trim());
+  const title = (outputs[1] || outputs[0] || "나의 첫 한 페이지").split(/\n|\.|。/)[0].trim();
+  const body = outputs[4] || outputs[3] || outputs[2] || outputs[0];
+  const proof = outputs[5] || "아직 확인 증거를 남기지 않았습니다.";
+  const next = outputs[6] || "아직 다음 작업 카드를 남기지 않았습니다.";
+  const html = `<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>${escapeHtml(title)}</title>
+  <style>
+    :root{--paper:#f9f7f3;--ink:#1c1814;--muted:#4a423c;--green:#00704a;--yellow:#f4dc59;--line:#d9d3ca}
+    *{box-sizing:border-box}body{margin:0;color:var(--ink);background:#f5f3ee;font-family:system-ui,sans-serif;line-height:1.7}
+    main{width:min(760px,calc(100% - 32px));margin:48px auto;padding:clamp(28px,6vw,64px);background:var(--paper);border:1px solid var(--line)}
+    .label{color:var(--green);font-size:12px;font-weight:800;letter-spacing:.08em}h1{max-width:14ch;margin:12px 0 0;font-family:Georgia,serif;font-size:clamp(38px,8vw,70px);line-height:1.03;letter-spacing:-.04em}
+    .promise{margin:24px 0;padding-bottom:18px;border-bottom:4px solid var(--yellow);font-family:Georgia,serif;font-size:20px;white-space:pre-wrap}.body,.proof,.next{white-space:pre-wrap}.body{font-size:16px}.proof,.next{margin-top:36px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted)}
+  </style>
+</head>
+<body><main><p class="label">바른생활에서 만든 첫 한 페이지</p><h1>${escapeHtml(title)}</h1><p class="promise">${escapeHtml(outputs[1] || "")}</p><div class="body">${escapeHtml(body)}</div><div class="proof"><strong>내가 확인한 것</strong><br>${escapeHtml(proof)}</div><div class="next"><strong>다음 작업</strong><br>${escapeHtml(next)}</div></main></body>
+</html>`;
+  download("나의-첫-한페이지.html", "text/html;charset=utf-8", html);
+  announce("한 페이지 HTML 파일을 내려받았습니다.");
+}
 
-  const checkButton = target.closest("[data-check]");
-  if (checkButton) {
-    const nextState = checkButton.getAttribute("aria-pressed") !== "true";
-    checkButton.setAttribute("aria-pressed", String(nextState));
-    return;
-  }
+function downloadHandoff() {
+  saveInputs();
+  const lines = [
+    "# 다음 작업 카드",
+    "",
+    `결과 ID: ${state.artifactId}`,
+    `과정 버전: ${state.courseVersion}`,
+    "",
+    ...course.lessons.flatMap((lesson) => [`## ${lesson.number}강 · ${lesson.output.label}`, state.lessons[lesson.id].retry.trim() || "미작성", ""]),
+    "## 다음 AI에게 할 말",
+    "위 원본과 마지막 결정을 먼저 읽고, 7강에 적은 다음 행동 하나만 실행하세요. 확인하지 않은 사실을 보태지 말고, 결과를 만든 뒤 내가 직접 열어볼 수 있게 알려주세요."
+  ];
+  download("다음-작업-카드.txt", "text/plain;charset=utf-8", lines.join("\n"));
+  announce("다음 작업 카드를 내려받았습니다.");
+}
 
-  const dialogOpener = target.closest("[data-dialog-open]");
-  if (dialogOpener) {
-    openDialog(dialogOpener.dataset.dialogOpen, dialogOpener);
-    return;
-  }
-
-  const dialogCloser = target.closest("[data-dialog-close]");
-  if (dialogCloser) {
-    closeDialog(dialogCloser.closest("dialog"));
-    return;
-  }
-
-  if (target instanceof HTMLDialogElement) {
-    const bounds = target.getBoundingClientRect();
-    const outside =
-      event.clientX < bounds.left ||
-      event.clientX > bounds.right ||
-      event.clientY < bounds.top ||
-      event.clientY > bounds.bottom;
-    if (outside) closeDialog(target);
-  }
+elements.toggleSources.addEventListener("click", () => {
+  const open = elements.toggleSources.getAttribute("aria-expanded") === "true";
+  elements.toggleSources.setAttribute("aria-expanded", String(!open));
+  elements.toggleSources.textContent = open ? "출처 보기" : "출처 닫기";
+  elements.sourceList.hidden = open;
 });
 
-for (const dialog of document.querySelectorAll("dialog")) {
-  dialog.addEventListener("close", () => {
-    if (lastDialogTrigger instanceof HTMLElement && lastDialogTrigger.isConnected) {
-      lastDialogTrigger.focus();
-    }
-    lastDialogTrigger = null;
+for (const input of [elements.firstAttempt, elements.correctionNote, elements.retry]) {
+  input.addEventListener("input", () => {
+    saveInputs();
+    updateCounts();
+    updateCompletionState();
+    renderArtifact();
   });
 }
 
-window.addEventListener("hashchange", () => {
-  if (window.location.hash === "#main-content") {
-    document.getElementById("main-content")?.focus({ preventScroll: false });
-    return;
-  }
-  if (!ROUTES.has(window.location.hash.slice(1))) {
-    window.history.replaceState(null, "", "#home");
-  }
-  renderRoute({ focusHeading: true });
+elements.saveNext.addEventListener("click", moveNext);
+elements.previousStep.addEventListener("click", movePrevious);
+elements.downloadHtml.addEventListener("click", downloadResultHtml);
+elements.downloadHandoff.addEventListener("click", downloadHandoff);
+elements.resetCourse.addEventListener("click", () => elements.resetDialog.showModal());
+elements.resetDialog.addEventListener("close", () => {
+  if (elements.resetDialog.returnValue !== "confirm") return;
+  localStorage.removeItem(STORAGE_KEY);
+  state = freshState();
+  render();
+  announce("이 기기에 저장한 일곱 강 작업을 모두 지웠습니다.");
 });
 
-if (!window.location.hash || !ROUTES.has(window.location.hash.slice(1))) {
-  window.history.replaceState(null, "", "#home");
-}
+globalThis.addEventListener("keydown", (event) => {
+  const editing = event.target instanceof HTMLTextAreaElement || event.target instanceof HTMLInputElement;
+  if (editing) return;
+  if (event.key === "ArrowRight" || event.key === "PageDown") {
+    event.preventDefault();
+    moveNext();
+  }
+  if (event.key === "ArrowLeft" || event.key === "PageUp") {
+    event.preventDefault();
+    movePrevious();
+  }
+  if (event.key === "Home") {
+    event.preventDefault();
+    saveInputs();
+    state.currentLesson = 0;
+    state.currentStage = 0;
+    persist();
+    render();
+  }
+  if (event.key === "End") {
+    event.preventDefault();
+    saveInputs();
+    state.currentLesson = course.lessons.length - 1;
+    state.currentStage = 5;
+    persist();
+    render();
+  }
+});
 
-renderRoute({ focusHeading: false });
-renderLesson1Scene(0, { focusHeading: false });
+render();
