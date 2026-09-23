@@ -1135,9 +1135,15 @@ function buildRoomHouse() {
     if (!target) return;
 
     door.setAttribute("aria-expanded", "false");
-    door.addEventListener("click", () => {
+    door.addEventListener("click", (event) => {
       const isOpen = !target.hidden;
       if (isOpen) {
+        if (door.tagName === "A") {
+          event.preventDefault();
+          if (window.location.hash === `#${target.id}`) {
+            window.history.replaceState(null, "", `${window.location.pathname}${window.location.search}`);
+          }
+        }
         closePanels();
         return;
       }

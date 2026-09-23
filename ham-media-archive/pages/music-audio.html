@@ -912,6 +912,11 @@
       display: none !important;
     }
 
+    /* Keep the writing entrance usable when its enhancement script is delayed. */
+    .room-house-panel[hidden]:target {
+      display: block !important;
+    }
+
     .room-house-panel:not([hidden]) {
       display: block;
     }
@@ -1563,10 +1568,10 @@
           <span class="audio-v2-lead-accent">그리고 가끔, 음악에게서 위로를 받는다.</span>
         </p>
         <nav class="room-house-nav audio-v2-doors" aria-label="음악·오디오별 입구">
-          <button class="room-house-door audio-v2-door" type="button" data-house-target="music-audio-writing-room">
+          <a class="room-house-door audio-v2-door" href="#music-audio-writing-room" data-house-target="music-audio-writing-room">
             <strong>문장</strong>
             <span>왜 그 소리가 필요했는지</span>
-          </button>
+          </a>
           <button class="room-house-door audio-v2-door" type="button" data-house-target="music-audio-photo-room">
             <strong>장면</strong>
             <span>듣던 자리의 흔적</span>
@@ -2541,6 +2546,6 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
   <script src="../assets/js/music-audio-motion.js?v=20260825c"></script>
-  <script src="../assets/js/main.js?v=music-writing-door-scroll-20260924"></script>
+  <script src="../assets/js/main.js?v=music-writing-door-anchor-20260924"></script>
 </body>
 </html>
