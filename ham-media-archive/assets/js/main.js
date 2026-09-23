@@ -899,7 +899,6 @@ function buildRoomHouse() {
   }
 
   function closeArticles() {
-    syncArticleHash();
     articlePanels.forEach((panel) => {
       panel.hidden = true;
       panel.closest(".room-house-panel")?.classList.remove("is-detail-mode");
@@ -951,6 +950,7 @@ function buildRoomHouse() {
     const target = document.getElementById(panelId);
     if (!target || !housePage.contains(target)) return false;
 
+    syncArticleHash();
     closePanels();
     target.hidden = false;
     syncPanelContextNav(target);
@@ -1100,10 +1100,11 @@ function buildRoomHouse() {
       const defaultButton = sortControl.querySelector('[data-sort-mode][aria-pressed="true"]') || sortControl.querySelector("[data-sort-mode]");
       const defaultMode = defaultButton?.dataset.sortMode || "latest";
 
-      const applySortMode = (mode) => {
+      const applySortMode = (mode, clearArticleHash = false) => {
         updateRoomSortButtons(sortControl, mode);
 
         if (target === "articles") {
+          if (clearArticleHash) syncArticleHash();
           closeArticles();
           sortArticles(mode);
         }
@@ -1115,7 +1116,7 @@ function buildRoomHouse() {
 
       sortControl.querySelectorAll("[data-sort-mode]").forEach((button) => {
         button.addEventListener("click", () => {
-          applySortMode(button.dataset.sortMode || "latest");
+          applySortMode(button.dataset.sortMode || "latest", true);
         });
       });
 
@@ -1150,6 +1151,7 @@ function buildRoomHouse() {
   });
 
   function returnToArticleList() {
+    syncArticleHash();
     closeArticles();
     articleList?.scrollIntoView({
       behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
