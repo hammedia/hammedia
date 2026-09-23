@@ -1518,6 +1518,9 @@
     .diy-panel .diy-warn p { margin: 0; font-size: 15px; line-height: 1.55; color: #2E3239; word-break: keep-all; }
     .diy-panel .diy-src { margin-top: 24px; font-size: 13px; line-height: 1.6; color: #5A5F67; word-break: keep-all; }
     .diy-panel .diy-src a { color: #3A3F47; text-decoration: underline; }
+    .audio-v2-jobs { margin: 18px 0 0; color: rgba(246,240,230,.86); font-size: 15px; line-height: 1.5; }
+    .audio-v2-jobs a { display: inline-flex; align-items: center; min-height: 48px; margin-top: 8px; padding: 10px 14px; border: 1px solid rgba(201,168,76,.7); border-radius: 12px; background: rgba(11,14,25,.72); color: #f2d689; font-weight: 800; text-decoration: none; }
+    .audio-v2-jobs a:hover, .audio-v2-jobs a:focus-visible { background: rgba(201,168,76,.2); outline: 2px solid #f2d689; outline-offset: 3px; }
     @media (max-width: 760px) {
       .diy-panel .diy-top, .diy-panel .diy-parts, .diy-panel .diy-steps, .diy-panel .diy-cautions { grid-template-columns: 1fr; }
       .diy-panel .diy-total-num { font-size: 44px; }
@@ -1577,6 +1580,7 @@
             <span>다른 별로 이동</span>
           </a>
         </nav>
+        <p class="audio-v2-jobs">이 별에서 해 볼 수 있는 일<br><a href="../jobs/room-echo/">방이 울린다면, 먼저 무엇이 남는지 재보기 →</a></p>
         <div class="audio-v2-hero-meta">
           <figure class="audio-v2-stamp">
             <picture>
@@ -1676,6 +1680,7 @@
             스피커만 좋아도, 앰프만 좋아도 끝나지 않는다. 내가 듣는 시간, 공간, 볼륨,
             취향, 함께 듣는 사람까지 들어와야 비로소 내 소리가 된다.
           </p>
+          <p>방도 단체전의 한 사람이다. 공간 크기와 쓰는 목적, 듣는 자리와 스피커 자리, 반사와 저역, 울림과 흡음량이 함께 움직인다. 그래서 울리는 방에서 재료를 고르기 전에, 무엇이 얼마나 남는지부터 들어 보고 재야 한다.</p>
           <blockquote class="audio-v2-quote">
             <p>듣는 태도.</p>
           </blockquote>
@@ -1883,6 +1888,9 @@
         </div>
 
         <div class="room-article-list" aria-label="음악·오디오별 문장">
+          <button class="room-article-link" type="button" data-article-target="audio-absorber-acoustics-talk-note" data-homepage-date="2026-09-24" data-sort-order="10" aria-label="흡음패널 한 장, 건축음향 박사님께 물었습니다 읽기">
+            <strong>흡음패널 한 장, 건축음향 박사님께 물었습니다</strong>
+          </button>
           <button class="room-article-link" type="button" data-article-target="audio-diy-absorber-panel-note" data-homepage-date="2026-09-23" data-sort-order="9" aria-label="10만 원 안쪽, 1m 천 한 장으로 만드는 흡음패널 읽기">
             <strong>10만 원 안쪽, 1m 천 한 장으로 만드는 흡음패널</strong>
           </button>
@@ -1913,14 +1921,57 @@
         </div>
 
         <div class="room-card-list room-article-panels">
+          <article class="room-post shared-memory-card room-article-panel audio-essay-panel" id="audio-absorber-acoustics-talk-note" hidden>
+            <button class="room-article-back" type="button">문장</button>
+            <header class="audio-entry-header">
+              <p class="room-card-meta">문장 · 오디오 · 흡음</p>
+              <h3>흡음패널 한 장, 건축음향 박사님께 물었습니다</h3>
+              <p>재료보다 먼저 물어야 할 것</p>
+            </header>
+
+            <div class="shared-memory-copy audio-essay-copy">
+              <p>청소용 멜라민 블록으로 흡음패널 한 장을 만드는 방법을 정리해 올렸습니다. 올리고 나니 한 가지가 마음에 걸렸습니다. 이 재료, 정말 써도 되는 걸까.</p>
+              <p>그래서 건축음향을 공부한 박사님께 전화를 걸었습니다. 오 분 남짓한 통화였는데, 제가 준비한 질문보다 박사님이 먼저 짚은 것이 더 많았습니다.</p>
+
+              <p><strong>재료는 괜찮다</strong></p>
+              <p>박사님은 청소용 블록도 멜라민폼 계열이라며 재료 자체를 배제하지 않았습니다. 멜라민 오픈셀 폼에는 소리가 다공성 구조를 지나며 줄어드는 원리가 있습니다. 다만 음향용 제품의 시험 수치를 일반 매직블럭에 그대로 옮길 수는 없습니다. 세정용 제품은 밀도와 공기 흐름 저항, 주파수별 흡음값이 음향용 사양처럼 관리·보증되지 않기 때문입니다.</p>
+
+              <p><strong>어려운 건 붙들어 두는 일</strong></p>
+              <p>박사님이 가장 먼저 걱정한 건 재료가 아니라 고정이었습니다. 작은 블록 백여 개가 틀 안에서 가지런히 서 있어야 하고, 흔들려서도 안 됩니다.</p>
+              <p>제일 나은 방법은 큰 판을 사서 원하는 크기로 잘라 쓰는 것이라고 했습니다. 다만 그러면 값이 많이 올라갑니다. 망에 담아 넣는 방법도 떠올려 봤는데, 생각보다 쉽지 않을 거라는 답이 돌아왔습니다.</p>
+
+              <p><strong>어느 소리가 울리는지 먼저</strong></p>
+              <p>그보다 먼저 나온 질문이 저를 멈추게 했습니다. 「어느 주파수 대역을 줄이고 싶은 건데?」</p>
+              <p>처음엔 우리도 순서를 잘못 잡았습니다. 패널을 만들었으니 어디에 붙일지를 먼저 고민했습니다. 그런데 먼저 물어야 했습니다. 「이 방에서는 지금 어떤 소리가 얼마나 오래 남고 있지?」 저역이 한 음에서 붕붕거리는지, 말끝이 오래 남는지, 박수가 양쪽 벽을 오가는지에 따라 다음 일이 다릅니다.</p>
+              <p>얇은 멜라민폼은 주로 중·고역에 작용하는 후보입니다. 확인 없이 많이 붙이면 그쪽만 줄어 공간이 먹먹해지고 저음이 상대적으로 더 두드러질 수도 있습니다.</p>
+
+              <p><strong>「다 잡힌다」는 말 대신</strong></p>
+              <p>보드 한 장 붙여 놓고 이걸로 음향이 다 잡힌다고 말하는 것이 가장 흔한 실수라고 했습니다. 말하려면 「이렇게 하면 목소리 대역의 울림이 줄어든다」처럼, 어느 소리에 대한 이야기인지 밝혀야 한다고요.</p>
+              <p class="audio-essay-pull">좋은 소리는 제품이 아니라 방에서 시작한다는 말로 들렸습니다.</p>
+
+              <p><strong>그래서 순서를 바꿨습니다</strong></p>
+              <p>방마다 크기가 다르고, 뜨는 소리가 다릅니다. 박사님은 먼저 방을 재는 것이 첫 번째라고 했습니다. 휴대폰이나 무료 측정 프로그램으로 한 번 찍어 보고, 어느 대역이 튀는지 본 다음에 그에 맞는 걸 고르라는 것입니다.</p>
+              <p>그래서 순서를 바꿨습니다. 공간을 재고, 소리를 재고, 문제 대역을 찾습니다. 그다음 필요한 만큼 설계하고 임시로 달아, 같은 조건에서 다시 잽니다. 멜라민 패널은 그때 맞는 후보일 수도 있고, 아닐 수도 있습니다.</p>
+              <p>재료는 싸게 구할 수 있어도, 판단은 순서가 필요했습니다.</p>
+              <p><a href="../jobs/room-echo/">방 안 울림 줄이기 — 고친 한 장 보기 →</a></p>
+            </div>
+          </article>
+
           <article class="room-post shared-memory-card room-article-panel diy-panel" id="audio-diy-absorber-panel-note" hidden>
             <button class="room-article-back" type="button">문장</button>
             <header class="audio-entry-header">
               <p class="room-card-meta">기록 · 오디오 · 직접 만들기</p>
               <h3>10만 원 안쪽, 1m 천 한 장으로 만드는 흡음패널</h3>
               <p>천 → 틀 → 멜라민 블록 → 공기층 → 벽</p>
-            </header>
+              <p>이 제작법은 진단 뒤에 고를 수 있는 한 가지 시험입니다. 먼저 <a href="../jobs/room-echo/">내 방에서 무엇이 남는지 재고, 전과 후를 비교하는 한 장 보기 →</a></p>
+          </header>
 
+            <div class="shared-memory-copy audio-essay-copy">
+              <p><strong>먼저 살 일보다 잴 일을 찾았습니다.</strong> 이 방을 대화·촬영·음악 감상 중 무엇에 쓰는지 적고, 가로·세로·높이와 듣는 자리를 잽니다. 말끝이 오래 남는지, 스피커 소리가 옆벽에서 빨리 되튀는지, 특정 저음만 붕 뜨는지부터 구별합니다. 벽 너머로 새는 소리라면 흡음패널이 아니라 차음 문제입니다.</p>
+              <p>휴대폰으로 방 치수와 사진을 남기고, 가능한 측정 앱으로 주파수응답과 대역별 감쇠를 살펴볼 수 있습니다. LiDAR 기기라면 공간 형태도 참고할 수 있습니다. 내장 마이크와 앱마다 한계가 있으니 수치를 전문가 측정처럼 확정하지 말고, 같은 기기·같은 자리·같은 조건의 전후 비교로 시작합니다. 작은 방의 저음은 RT60 숫자 하나보다 주파수별 응답과 시간에 따라 사라지는 모습을 함께 봅니다.</p>
+              <p>그 캡처를 AI와 함께 읽을 수도 있습니다. 방 크기·사진·쓰는 목적·측정 화면을 주고 「어느 대역이 상대적으로 오래 남는가, 무엇을 먼저 시험할까」를 물어보세요. AI가 제안한 두께·면적·공기층·위치는 정답이 아니라 시험 가설입니다. 개인 공간 사진의 노출도 먼저 확인합니다.</p>
+              <p>그 뒤에야 얇은 멜라민 패널이 이 방에 맞는지 판단합니다. 필요한 곳에 임시로 달고 다시 재서, 실제로 줄어든 대역과 듣기 경험을 함께 봅니다. 안 바뀌거나 다른 소리가 거슬리면 패널을 더 사지 말고 원인과 위치부터 다시 봅니다.</p>
+            </div>
             <div class="diy-top">
               <figure class="diy-fig diy-fig-warm">
                 <img src="../assets/images/music-audio/diy-absorber/hero.svg" alt="벽에 건 약 83센티미터 정사각 패브릭 흡음패널과 스피커, 의자 그림">
@@ -2049,12 +2100,12 @@
             </section>
 
             <section class="diy-block diy-cautions" aria-label="주의와 배치">
-              <div class="diy-warn diy-warn-hot"><h4>방음이 아니라 흡음</h4><p>이 패널은 방 안에서 도는 울림을 줄인다. 벽 너머로 새는 소리, 옆집 소리는 못 막는다. 그건 벽을 무겁게 하고 틈을 막는 차음의 일이다.</p></div>
-              <div class="diy-warn diy-warn-hot"><h4>매직블럭은 인증 흡음재가 아니다</h4><p>청소용 멜라민 블록을 DIY 재료로 써 보는 방법일 뿐, 음향용 인증 흡음재와 같은 성능을 보장하지 않는다. 이 패널의 실제 흡음계수도 측정하지 않았다. 건축물 용도와 설치 공간에 따라 방염 대상 여부가 달라질 수 있다. 영업장·다중이용업소 등 해당 기준이 적용되는 곳은 방염성능이 확인된 자재를 사용한다. 난로·조명 열 가까이 두지 않는다.</p></div>
-              <div class="diy-warn"><h4>한 장이면 어디에? 거울 한 장</h4><p>듣는 자리에 앉고, 다른 사람이 옆벽에 거울을 대고 천천히 움직인다. <b>거울 속에 스피커가 보이는 자리</b>가 소리가 처음 되튀는 곳이다. 한 장이면 거기에 건다.</p></div>
+              <div class="diy-warn diy-warn-hot"><h4>방음이 아니라 흡음</h4><p>이 패널은 방 안 울림을 다루는 후보일 뿐이다. 벽 너머로 새는 소리, 옆집 소리는 못 막는다. 그건 차음의 일이다.</p></div>
+              <div class="diy-warn diy-warn-hot"><h4>재료의 원리와 제품 성능은 다르다</h4><p>멜라민 오픈셀 폼은 다공성 흡음 원리가 있다. 다만 일반 세정용 블록은 음향용 제품처럼 주파수별 성능과 제조 편차가 보증되지 않는다. 음향용 제품 수치를 이 블록에 대입하지 말고, 내 방에서 임시 설치 전후를 재서 판단한다. 건축물 용도와 설치 공간에 따라 방염 대상 여부가 달라질 수 있다. 영업장·다중이용업소 등 해당 기준이 적용되는 곳은 방염성능이 확인된 자재를 사용한다. 난로·조명 열 가까이 두지 않는다.</p></div>
+              <div class="diy-warn"><h4>위치도 문제에 따라</h4><p>말소리 잔향이면 말하고 듣는 자리 주변의 반사면을, 스피커 초기반사면이면 청취 자리와 스피커의 관계를 먼저 본다. 후자의 후보를 찾는 방법 중 하나가 옆벽 거울이다. 거울에 스피커가 보이는 곳을 임시 시험할 수 있지만, 저역 공진이나 모든 방의 기본 위치는 아니다.</p></div>
             </section>
 
-            <p class="diy-src">근거 — 음향용 멜라민폼 두께별 흡음(20mm αw 0.45, 125Hz는 60mm도 0.25 · 매직블럭을 잰 값은 아님): <a href="https://acousticindex.com/en/acoustics/acoustic-foam" target="_blank" rel="noopener">acousticindex.com</a> · 흡음과 차음: <a href="https://www.tornex.co.kr/journal/sound-insulation-vs-absorption-basics" target="_blank" rel="noopener">tornex.co.kr</a> · 방염 대상 건물과 흡음재: <a href="https://easylaw.go.kr/CSP/CnpClsMain.laf?popMenu=ov&amp;csmSeq=1574&amp;ccfNo=3&amp;cciNo=4&amp;cnpClsNo=1" target="_blank" rel="noopener">찾기쉬운 생활법령정보</a>. 가격은 2026-09-23 각 쇼핑몰 화면. HAM MEDIA가 이 패널의 효과를 따로 측정하지는 않았다.</p>
+            <p class="diy-src">근거 — <a href="https://plastics-rubber.basf.com/emea/en/performance_polymers/products/basotect" target="_blank" rel="noopener">BASF 멜라민폼 자료</a>는 재료 원리와 조건을 설명하며 이 세정용 블록의 성능표가 아니다. 작은 방의 대역별 잔향 해석은 <a href="https://www.roomeqwizard.com/betahelp/help/html/graph_rt60.html" target="_blank" rel="noopener">REW 안내</a>를 참고했다. 휴대폰 측정의 한계는 <a href="https://www.cdc.gov/niosh/bulletin/2014/sound-app.html" target="_blank" rel="noopener">NIOSH</a> 자료를 참고했다. 방염 대상은 <a href="https://easylaw.go.kr/CSP/CnpClsMain.laf?popMenu=ov&amp;csmSeq=1574&amp;ccfNo=3&amp;cciNo=4&amp;cnpClsNo=1" target="_blank" rel="noopener">찾기쉬운 생활법령정보</a>에서 확인한다. 가격은 2026-09-23 각 쇼핑몰 화면. HAM MEDIA는 이 패널의 전후 성능을 아직 측정하지 않았다.</p>
           </article>
 
           <article class="room-post shared-memory-card room-article-panel audio-essay-panel" id="audio-memory-completes-sound-note" hidden>
@@ -2490,6 +2541,6 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
   <script src="../assets/js/music-audio-motion.js?v=20260825c"></script>
-  <script src="../assets/js/main.js?v=room-context-nav-v5-article-hash-preserve-20260923"></script>
+  <script src="../assets/js/main.js?v=music-writing-door-scroll-20260924"></script>
 </body>
 </html>

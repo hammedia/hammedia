@@ -1,0 +1,159 @@
+/* HAM 별 · 할 일 페이지 공통 (2026-09-24 우마 초안)
+   별 = 사람이 들고 온 일을 끝까지 해내게 돕는 곳.
+   흡음패널 부품(.diy-*)은 2026-09-23 디자인스튜디오 총괄 원본을 .job-page 범위로 옮겨 씀. */
+.job-page {
+  --job-bg: #F6F4EF; --job-ink: #16181D; --job-sub: #4A4F57; --job-line: rgba(17,19,24,.14);
+  --job-accent: #D6307F; --job-accent-dark: #B8246A; --job-room: #111318; --job-gold: #c9a84c;
+  --diy-pink: var(--job-accent); --diy-ink: var(--job-ink); --diy-line: var(--job-line);
+  margin: 0; background: var(--job-bg); color: var(--job-ink);
+  font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Segoe UI", sans-serif;
+  line-height: 1.6; word-break: keep-all;
+}
+.job-page *, .job-page *::before, .job-page *::after { box-sizing: border-box; }
+.job-wrap { max-width: 980px; margin: 0 auto; padding: 0 20px; }
+.job-page a:focus-visible, .job-page button:focus-visible, .job-page input:focus-visible, .job-page textarea:focus-visible { outline: 3px solid var(--job-ink); outline-offset: 3px; }
+
+/* 맨 위 길 */
+.job-trail { background: var(--job-room); color: #f6f0e6; font-size: 14px; }
+.job-trail .job-wrap { display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center; min-height: 48px; }
+.job-trail a { color: #f6f0e6; text-decoration: none; opacity: .85; }
+.job-trail a:hover { opacity: 1; text-decoration: underline; }
+.job-trail b { color: var(--job-gold); font-weight: 800; }
+
+/* 첫 약속 */
+.job-hero { background: var(--job-room); color: #f6f0e6; padding: 40px 0 44px; }
+.job-kicker { margin: 0 0 10px; font-size: 14px; letter-spacing: .02em; color: var(--job-gold); font-weight: 800; }
+.job-hero h1 { margin: 0; font-size: clamp(30px, 5.4vw, 52px); line-height: 1.18; letter-spacing: -0.03em; font-weight: 900; }
+.job-promise { margin: 16px 0 0; font-size: clamp(17px, 2.2vw, 20px); color: rgba(246,240,230,.86); max-width: 40em; }
+.job-facts { display: flex; flex-wrap: wrap; gap: 8px; margin: 22px 0 0; padding: 0; list-style: none; }
+.job-facts li { border: 1px solid rgba(246,240,230,.28); border-radius: 999px; padding: 6px 14px; font-size: 15px; }
+.job-facts b { color: var(--job-gold); }
+.job-jump { display: flex; flex-wrap: wrap; gap: 8px; margin: 26px 0 0; padding: 0; list-style: none; counter-reset: leg; }
+.job-jump a { display: inline-flex; align-items: center; gap: 6px; min-height: 40px; padding: 8px 14px; border-radius: 10px; background: rgba(246,240,230,.08); color: #f6f0e6; text-decoration: none; font-weight: 800; font-size: 15px; }
+.job-jump a::before { counter-increment: leg; content: counter(leg); display: inline-grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; background: var(--job-gold); color: var(--job-room); font-size: 13px; }
+.job-jump a:hover { background: rgba(246,240,230,.18); }
+
+/* 근거 표시 */
+.job-evidence { margin: 26px 0 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 8px; }
+.job-ev { border-radius: 12px; padding: 10px 12px; background: rgba(246,240,230,.06); border: 1px solid rgba(246,240,230,.18); font-size: 14px; line-height: 1.45; }
+.job-ev strong { display: block; font-size: 13px; letter-spacing: .02em; margin-bottom: 2px; }
+.job-ev--yes strong { color: #8fd6a8; }
+.job-ev--no strong { color: #f0a3c6; }
+.job-ev--mid strong { color: var(--job-gold); }
+.ev-tag { display: inline-block; font-size: 12px; font-weight: 800; border-radius: 999px; padding: 1px 8px; margin-right: 6px; vertical-align: 2px; border: 1px solid currentColor; }
+.ev-tag--std { color: #285c85; } .ev-tag--research { color: #7a5c3e; } .ev-tag--guess { color: #6b5bb5; } .ev-tag--none { color: #B8246A; }
+
+/* 구간 */
+.job-leg { padding: 44px 0 8px; }
+.job-leg + .job-leg { border-top: 1px solid var(--job-line); }
+.job-leg-n { margin: 0; font-size: 14px; font-weight: 900; color: var(--job-accent); letter-spacing: .04em; }
+.job-leg h2 { margin: 4px 0 8px; font-size: clamp(24px, 3.6vw, 32px); letter-spacing: -0.02em; line-height: 1.25; }
+.job-lead { margin: 0 0 18px; font-size: 17px; color: var(--job-sub); max-width: 42em; }
+
+/* 내 조건 계산 */
+.job-calc { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; background: #fff; border: 1px solid var(--job-line); border-radius: 14px; padding: 16px; }
+.job-calc label { display: grid; gap: 4px; font-size: 14px; font-weight: 800; color: var(--job-sub); }
+.job-calc input { width: 100%; min-height: 44px; border: 1.5px solid var(--job-line); border-radius: 10px; padding: 8px 10px; font: inherit; font-size: 17px; color: var(--job-ink); background: #fff; }
+.job-calc-out { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin: 4px 0 0; }
+.job-calc-out div { background: var(--job-bg); border-radius: 10px; padding: 10px 12px; }
+.job-calc-out dt { font-size: 13px; color: var(--job-sub); }
+.job-calc-out dd { margin: 2px 0 0; font-size: 24px; font-weight: 900; font-variant-numeric: tabular-nums; }
+.job-note { font-size: 14px; color: var(--job-sub); margin: 10px 0 0; }
+
+/* 결과 확인 */
+.job-measure { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; margin: 0; padding: 0; list-style: none; }
+.job-measure li { background: #fff; border: 1px solid var(--job-line); border-radius: 14px; padding: 16px; font-size: 15px; }
+.job-measure h3 { margin: 0 0 6px; font-size: 18px; }
+.job-measure p { margin: 0; color: #3A3F47; }
+
+/* 내 기록 */
+.job-note-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+.job-note-grid label { display: grid; gap: 4px; font-size: 14px; font-weight: 800; color: var(--job-sub); }
+.job-note-grid textarea { width: 100%; min-height: 96px; resize: vertical; border: 1.5px solid var(--job-line); border-radius: 10px; padding: 10px; font: inherit; font-size: 15px; color: var(--job-ink); background: #fff; }
+.job-actions { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 0; }
+.job-btn { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 10px 16px; border-radius: 10px; border: 1.5px solid var(--job-ink); background: var(--job-ink); color: #fff; font: inherit; font-weight: 900; font-size: 16px; text-decoration: none; cursor: pointer; }
+.job-btn--ghost { background: #fff; color: var(--job-ink); }
+.job-btn:hover { background: #2a2d34; color: #fff; }
+.job-status { min-height: 1.6em; margin: 8px 0 0; font-size: 14px; color: var(--job-sub); }
+
+/* 다음 구간 */
+.job-next { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px; margin: 0; padding: 0; list-style: none; }
+.job-next a { display: grid; gap: 4px; height: 100%; padding: 16px; border-radius: 14px; background: var(--job-room); color: #f6f0e6; text-decoration: none; }
+.job-next a:hover { outline: 2px solid var(--job-gold); }
+.job-next small { color: var(--job-gold); font-weight: 800; font-size: 13px; }
+.job-next strong { font-size: 19px; }
+.job-next span { font-size: 14px; color: rgba(246,240,230,.8); }
+
+.job-foot { margin: 56px 0 0; padding: 28px 0 40px; background: var(--job-room); color: rgba(246,240,230,.8); font-size: 14px; }
+.job-foot a { color: #f6f0e6; }
+
+@media (max-width: 760px) {
+  .job-hero { padding: 28px 0 32px; }
+  .job-leg { padding-top: 34px; }
+}
+@media (prefers-reduced-motion: reduce) { .job-page * { transition: none !important; } }
+
+/* ---- 흡음패널 부품 (원본: music-audio.html .diy-panel, 2026-09-23) ---- */
+.job-page img { display: block; width: 100%; height: auto; }
+.job-page .diy-top { display: grid; grid-template-columns: 1.2fr 1fr; gap: 16px; align-items: stretch; margin-top: 8px; }
+.job-page .diy-fig { margin: 0; border: 1px solid var(--diy-line); border-radius: 14px; overflow: hidden; background: #fff; }
+.job-page .diy-fig-warm { background: #F3F1EC; }
+.job-page .diy-fig figcaption { padding: 8px 12px 10px; font-size: 14px; line-height: 1.45; color: #4A4F57; word-break: keep-all; }
+.job-page .diy-total { background: var(--diy-ink); color: #fff; border-radius: 14px; padding: 18px 18px 16px; display: flex; flex-direction: column; gap: 8px; }
+.job-page .diy-total p { margin: 0; }
+.job-page .diy-total-lbl { font-size: 14px; opacity: .8; }
+.job-page .diy-total-num { font-size: 52px; font-weight: 900; letter-spacing: -0.03em; line-height: 1; font-variant-numeric: tabular-nums; }
+.job-page .diy-total-num small { font-size: 24px; margin-left: 2px; }
+.job-page .diy-total ul { list-style: none; margin: 4px 0 0; padding: 10px 0 0; border-top: 1px solid rgba(255,255,255,.2); display: grid; gap: 6px; font-size: 15px; }
+.job-page .diy-total li { display: flex; justify-content: space-between; gap: 12px; }
+.job-page .diy-total li span:last-child { font-weight: 900; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.job-page .diy-total-note { margin-top: auto !important; font-size: 13px; opacity: .7; word-break: keep-all; }
+.job-page .diy-dl { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 4px; }
+.job-page .diy-btn { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 10px 16px; border-radius: 10px; background: var(--diy-pink); color: #fff; font-weight: 900; font-size: 16px; text-decoration: none; }
+.job-page .diy-btn:hover, .job-page .diy-btn:focus-visible { background: #B8246A; }
+.job-page a:focus-visible { outline: 3px solid #16181D; outline-offset: 3px; }
+.job-page .diy-btn-ghost { background: #fff; color: var(--diy-ink); border: 1.5px solid var(--diy-ink); }
+.job-page .diy-btn-ghost:hover, .job-page .diy-btn-ghost:focus-visible { background: var(--diy-ink); color: #fff; }
+.job-page .diy-block { margin-top: 28px; }
+.job-page .diy-block h4 { margin: 0 0 10px; font-size: 22px; font-weight: 900; letter-spacing: -0.02em; color: var(--diy-ink); word-break: keep-all; }
+.job-page .diy-sub { margin: -2px 0 12px; font-size: 15px; line-height: 1.5; color: #4A4F57; word-break: keep-all; }
+.job-page .diy-why { margin: 12px 0 0; display: grid; gap: 8px; }
+.job-page .diy-why div { display: grid; grid-template-columns: 64px 1fr; gap: 10px; font-size: 16px; line-height: 1.5; word-break: keep-all; }
+.job-page .diy-why dt { font-weight: 900; color: var(--diy-ink); }
+.job-page .diy-why dd { margin: 0; color: #3A3F47; }
+.job-page .diy-parts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.job-page .diy-part { background: #fff; border: 1px solid var(--diy-line); border-radius: 14px; padding: 16px; display: flex; flex-direction: column; gap: 6px; }
+.job-page .diy-part p { margin: 0; word-break: keep-all; }
+.job-page .diy-part-n { font-size: 20px; font-weight: 900; color: var(--diy-pink); line-height: 1; }
+.job-page .diy-part-name { font-size: 19px; font-weight: 900; letter-spacing: -0.02em; color: var(--diy-ink); }
+.job-page .diy-part-spec { font-size: 15px; line-height: 1.45; color: #3A3F47; }
+.job-page .diy-part-won { font-size: 34px; font-weight: 900; letter-spacing: -0.02em; color: var(--diy-ink); font-variant-numeric: tabular-nums; margin-top: 4px !important; }
+.job-page .diy-part-won small { font-size: 16px; margin-left: 2px; }
+.job-page .diy-part-unit { font-size: 14px; line-height: 1.45; color: #4A4F57; }
+.job-page .diy-part .diy-btn { width: 100%; margin-top: 4px; }
+.job-page .diy-shops { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; font-size: 14px; }
+.job-page .diy-shops span { color: #4A4F57; margin-right: 2px; }
+.job-page .diy-shops a { display: inline-flex; align-items: center; min-height: 36px; padding: 6px 12px; border-radius: 999px; border: 1.5px solid var(--diy-ink); color: var(--diy-ink); font-weight: 900; text-decoration: none; }
+.job-page .diy-shops a:hover, .job-page .diy-shops a:focus-visible { background: var(--diy-ink); color: #fff; }
+.job-page .diy-part-kw { font-size: 13.5px; line-height: 1.5; color: #4A4F57; }
+.job-page .diy-part-kw b { color: var(--diy-ink); background: #F3F1EC; border-radius: 4px; padding: 1px 6px; }
+.job-page .diy-daiso { list-style: none; margin: 2px 0 0; padding: 0; display: grid; gap: 4px; font-size: 15px; }
+.job-page .diy-daiso li { display: flex; justify-content: space-between; gap: 10px; border-bottom: 1px dashed var(--diy-line); padding: 6px 0; }
+.job-page .diy-daiso a { color: var(--diy-pink); font-weight: 900; text-decoration: underline; text-underline-offset: 3px; }
+.job-page .diy-daiso span { font-weight: 900; font-variant-numeric: tabular-nums; }
+.job-page .diy-steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.job-page .diy-steps li { background: #fff; border: 1px solid var(--diy-line); border-radius: 14px; overflow: hidden; }
+.job-page .diy-steps p { margin: 0; padding: 10px 14px 14px; font-size: 15px; line-height: 1.55; color: #3A3F47; word-break: keep-all; }
+.job-page .diy-steps p b { display: block; font-size: 19px; font-weight: 900; color: var(--diy-ink); margin-bottom: 4px; }
+.job-page .diy-steps p b i { font-style: normal; color: var(--diy-pink); margin-right: 6px; }
+.job-page .diy-cautions { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.job-page .diy-warn { border-radius: 14px; padding: 16px; background: #fff; border: 1px solid var(--diy-line); }
+.job-page .diy-warn-hot { background: #FDEAF3; border-color: #F4B8D5; }
+.job-page .diy-warn h4 { font-size: 18px; margin: 0 0 6px; }
+.job-page .diy-warn p { margin: 0; font-size: 15px; line-height: 1.55; color: #2E3239; word-break: keep-all; }
+.job-page .diy-src { margin-top: 24px; font-size: 13px; line-height: 1.6; color: #5A5F67; word-break: keep-all; }
+@media (max-width: 760px) {
+  .job-page .diy-top, .job-page .diy-parts, .job-page .diy-steps, .job-page .diy-cautions { grid-template-columns: 1fr; }
+  .job-page .diy-total-num { font-size: 44px; }
+  .job-page .diy-block h4 { font-size: 20px; }
+}

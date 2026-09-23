@@ -959,7 +959,13 @@ function buildRoomHouse() {
       door.classList.toggle("is-active", isActive);
       door.setAttribute("aria-expanded", String(isActive));
     });
-    scrollToElement(target);
+    // Long music-star sections can leave a smooth jump at the hero even after
+    // the destination panel opens. Land at the opened panel immediately.
+    if (housePage.id === "music-audio-star") {
+      requestAnimationFrame(() => target.scrollIntoView({ behavior: "auto", block: "start" }));
+    } else {
+      scrollToElement(target);
+    }
     return true;
   }
 
