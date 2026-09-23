@@ -885,7 +885,21 @@ function buildRoomHouse() {
     photoFigures = Array.from(photoGrid?.querySelectorAll("figure") || housePage.querySelectorAll(".room-house-photo"));
   }
 
+  function syncArticleHash(articleId = "") {
+    const currentArticleId = decodeURIComponent(window.location.hash.replace(/^#/, ""));
+
+    if (!articleId) {
+      if (!articlePanels.some((panel) => panel.id === currentArticleId)) return;
+      window.history.replaceState(null, "", `${window.location.pathname}${window.location.search}`);
+      return;
+    }
+
+    if (currentArticleId === articleId) return;
+    window.history.replaceState(null, "", `#${articleId}`);
+  }
+
   function closeArticles() {
+    syncArticleHash();
     articlePanels.forEach((panel) => {
       panel.hidden = true;
       panel.closest(".room-house-panel")?.classList.remove("is-detail-mode");
@@ -1156,6 +1170,7 @@ function buildRoomHouse() {
     housePage.classList.add("is-reading-mode");
     link.classList.add("is-active");
     link.setAttribute("aria-expanded", "true");
+    syncArticleHash(target.id);
     target.scrollIntoView({
       behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
       block: "start"
