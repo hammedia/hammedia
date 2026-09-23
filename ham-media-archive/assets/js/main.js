@@ -952,6 +952,9 @@ function buildRoomHouse() {
   function scrollToStarList() {
     const starList = document.getElementById(contextTargets.stars);
     closePanels();
+    if (starList?.id) {
+      window.history.replaceState(null, "", `#${starList.id}`);
+    }
     scrollToElement(starList);
   }
 
