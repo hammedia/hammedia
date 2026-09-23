@@ -1456,6 +1456,73 @@
       margin-top: var(--space-2, 10px);
     }
 
+
+    /* 2026-09-23 DIY 흡음패널 글 전용 (디자인스튜디오 총괄) — .diy-panel 안에서만 적용 */
+    .diy-panel { --diy-pink: #D6307F; --diy-ink: #16181D; --diy-line: rgba(17,19,24,.14); }
+    .diy-panel img { display: block; width: 100%; height: auto; }
+    .diy-panel .diy-top { display: grid; grid-template-columns: 1.2fr 1fr; gap: 16px; align-items: stretch; margin-top: 8px; }
+    .diy-panel .diy-fig { margin: 0; border: 1px solid var(--diy-line); border-radius: 14px; overflow: hidden; background: #fff; }
+    .diy-panel .diy-fig-warm { background: #F3F1EC; }
+    .diy-panel .diy-fig figcaption { padding: 8px 12px 10px; font-size: 14px; line-height: 1.45; color: #4A4F57; word-break: keep-all; }
+    .diy-panel .diy-total { background: var(--diy-ink); color: #fff; border-radius: 14px; padding: 18px 18px 16px; display: flex; flex-direction: column; gap: 8px; }
+    .diy-panel .diy-total p { margin: 0; }
+    .diy-panel .diy-total-lbl { font-size: 14px; opacity: .8; }
+    .diy-panel .diy-total-num { font-size: 52px; font-weight: 900; letter-spacing: -0.03em; line-height: 1; font-variant-numeric: tabular-nums; }
+    .diy-panel .diy-total-num small { font-size: 24px; margin-left: 2px; }
+    .diy-panel .diy-total ul { list-style: none; margin: 4px 0 0; padding: 10px 0 0; border-top: 1px solid rgba(255,255,255,.2); display: grid; gap: 6px; font-size: 15px; }
+    .diy-panel .diy-total li { display: flex; justify-content: space-between; gap: 12px; }
+    .diy-panel .diy-total li span:last-child { font-weight: 900; font-variant-numeric: tabular-nums; white-space: nowrap; }
+    .diy-panel .diy-total-note { margin-top: auto !important; font-size: 13px; opacity: .7; word-break: keep-all; }
+    .diy-panel .diy-dl { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 4px; }
+    .diy-panel .diy-btn { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 10px 16px; border-radius: 10px; background: var(--diy-pink); color: #fff; font-weight: 900; font-size: 16px; text-decoration: none; }
+    .diy-panel .diy-btn:hover, .diy-panel .diy-btn:focus-visible { background: #B8246A; }
+    .diy-panel a:focus-visible { outline: 3px solid #16181D; outline-offset: 3px; }
+    .diy-panel .diy-btn-ghost { background: #fff; color: var(--diy-ink); border: 1.5px solid var(--diy-ink); }
+    .diy-panel .diy-btn-ghost:hover, .diy-panel .diy-btn-ghost:focus-visible { background: var(--diy-ink); color: #fff; }
+    .diy-panel .diy-block { margin-top: 28px; }
+    .diy-panel .diy-block h4 { margin: 0 0 10px; font-size: 22px; font-weight: 900; letter-spacing: -0.02em; color: var(--diy-ink); word-break: keep-all; }
+    .diy-panel .diy-sub { margin: -2px 0 12px; font-size: 15px; line-height: 1.5; color: #4A4F57; word-break: keep-all; }
+    .diy-panel .diy-why { margin: 12px 0 0; display: grid; gap: 8px; }
+    .diy-panel .diy-why div { display: grid; grid-template-columns: 64px 1fr; gap: 10px; font-size: 16px; line-height: 1.5; word-break: keep-all; }
+    .diy-panel .diy-why dt { font-weight: 900; color: var(--diy-ink); }
+    .diy-panel .diy-why dd { margin: 0; color: #3A3F47; }
+    .diy-panel .diy-parts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .diy-panel .diy-part { background: #fff; border: 1px solid var(--diy-line); border-radius: 14px; padding: 16px; display: flex; flex-direction: column; gap: 6px; }
+    .diy-panel .diy-part p { margin: 0; word-break: keep-all; }
+    .diy-panel .diy-part-n { font-size: 20px; font-weight: 900; color: var(--diy-pink); line-height: 1; }
+    .diy-panel .diy-part-name { font-size: 19px; font-weight: 900; letter-spacing: -0.02em; color: var(--diy-ink); }
+    .diy-panel .diy-part-spec { font-size: 15px; line-height: 1.45; color: #3A3F47; }
+    .diy-panel .diy-part-won { font-size: 34px; font-weight: 900; letter-spacing: -0.02em; color: var(--diy-ink); font-variant-numeric: tabular-nums; margin-top: 4px !important; }
+    .diy-panel .diy-part-won small { font-size: 16px; margin-left: 2px; }
+    .diy-panel .diy-part-unit { font-size: 14px; line-height: 1.45; color: #4A4F57; }
+    .diy-panel .diy-part .diy-btn { width: 100%; margin-top: 4px; }
+    .diy-panel .diy-shops { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; font-size: 14px; }
+    .diy-panel .diy-shops span { color: #4A4F57; margin-right: 2px; }
+    .diy-panel .diy-shops a { display: inline-flex; align-items: center; min-height: 36px; padding: 6px 12px; border-radius: 999px; border: 1.5px solid var(--diy-ink); color: var(--diy-ink); font-weight: 900; text-decoration: none; }
+    .diy-panel .diy-shops a:hover, .diy-panel .diy-shops a:focus-visible { background: var(--diy-ink); color: #fff; }
+    .diy-panel .diy-part-kw { font-size: 13.5px; line-height: 1.5; color: #4A4F57; }
+    .diy-panel .diy-part-kw b { color: var(--diy-ink); background: #F3F1EC; border-radius: 4px; padding: 1px 6px; }
+    .diy-panel .diy-daiso { list-style: none; margin: 2px 0 0; padding: 0; display: grid; gap: 4px; font-size: 15px; }
+    .diy-panel .diy-daiso li { display: flex; justify-content: space-between; gap: 10px; border-bottom: 1px dashed var(--diy-line); padding: 6px 0; }
+    .diy-panel .diy-daiso a { color: var(--diy-pink); font-weight: 900; text-decoration: underline; text-underline-offset: 3px; }
+    .diy-panel .diy-daiso span { font-weight: 900; font-variant-numeric: tabular-nums; }
+    .diy-panel .diy-steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .diy-panel .diy-steps li { background: #fff; border: 1px solid var(--diy-line); border-radius: 14px; overflow: hidden; }
+    .diy-panel .diy-steps p { margin: 0; padding: 10px 14px 14px; font-size: 15px; line-height: 1.55; color: #3A3F47; word-break: keep-all; }
+    .diy-panel .diy-steps p b { display: block; font-size: 19px; font-weight: 900; color: var(--diy-ink); margin-bottom: 4px; }
+    .diy-panel .diy-steps p b i { font-style: normal; color: var(--diy-pink); margin-right: 6px; }
+    .diy-panel .diy-cautions { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+    .diy-panel .diy-warn { border-radius: 14px; padding: 16px; background: #fff; border: 1px solid var(--diy-line); }
+    .diy-panel .diy-warn-hot { background: #FDEAF3; border-color: #F4B8D5; }
+    .diy-panel .diy-warn h4 { font-size: 18px; margin: 0 0 6px; }
+    .diy-panel .diy-warn p { margin: 0; font-size: 15px; line-height: 1.55; color: #2E3239; word-break: keep-all; }
+    .diy-panel .diy-src { margin-top: 24px; font-size: 13px; line-height: 1.6; color: #5A5F67; word-break: keep-all; }
+    .diy-panel .diy-src a { color: #3A3F47; text-decoration: underline; }
+    @media (max-width: 760px) {
+      .diy-panel .diy-top, .diy-panel .diy-parts, .diy-panel .diy-steps, .diy-panel .diy-cautions { grid-template-columns: 1fr; }
+      .diy-panel .diy-total-num { font-size: 44px; }
+      .diy-panel .diy-block h4 { font-size: 20px; }
+    }
   </style>
 
   <script src="/assets/js/privacy-consent.js" data-measurement-id="G-TEBKMGWPQS"></script>
@@ -1816,6 +1883,9 @@
         </div>
 
         <div class="room-article-list" aria-label="음악·오디오별 문장">
+          <button class="room-article-link" type="button" data-article-target="audio-diy-absorber-panel-note" data-homepage-date="2026-09-23" data-sort-order="9" aria-label="10만 원 안쪽, 1m 천 한 장으로 만드는 흡음패널 읽기">
+            <strong>10만 원 안쪽, 1m 천 한 장으로 만드는 흡음패널</strong>
+          </button>
           <button class="room-article-link" type="button" data-article-target="audio-memory-completes-sound-note" data-homepage-date="2026-07-25" data-sort-order="8" aria-label="소리의 완성은 장비가 아니라 기억이었습니다 읽기">
             <strong>소리의 완성은 장비가 아니라 기억이었습니다</strong>
           </button>
@@ -1843,6 +1913,150 @@
         </div>
 
         <div class="room-card-list room-article-panels">
+          <article class="room-post shared-memory-card room-article-panel diy-panel" id="audio-diy-absorber-panel-note" hidden>
+            <button class="room-article-back" type="button">문장</button>
+            <header class="audio-entry-header">
+              <p class="room-card-meta">기록 · 오디오 · 직접 만들기</p>
+              <h3>10만 원 안쪽, 1m 천 한 장으로 만드는 흡음패널</h3>
+              <p>천 → 틀 → 멜라민 블록 → 공기층 → 벽</p>
+            </header>
+
+            <div class="diy-top">
+              <figure class="diy-fig diy-fig-warm">
+                <img src="../assets/images/music-audio/diy-absorber/hero.svg" alt="벽에 건 약 83센티미터 정사각 패브릭 흡음패널과 스피커, 의자 그림">
+                <figcaption><b>완성 예상</b> · 약 83×83cm, 두께 약 7cm, 무게 약 3kg대(계산값). 천 무늬는 주문할 때 내 그림으로 넣는다. 앞에 보이는 건 천 가운데 약 83cm이니 그림의 중요한 부분은 가운데 75cm 안에 둔다 (그림은 예시)</figcaption>
+              </figure>
+              <div class="diy-total" aria-label="예상 총액">
+                <p class="diy-total-lbl">예상 총액 · 1장 · 배송비 포함</p>
+                <p class="diy-total-num">88,400<small>원</small></p>
+                <ul>
+                  <li><span>① 프린트 천 100×100cm</span><span>32,000</span></li>
+                  <li><span>② 멜라민 블록 100개 × 2</span><span>17,400</span></li>
+                  <li><span>③ 각목 80cm × 4</span><span>27,000</span></li>
+                  <li><span>④ 다이소 부자재 7종 (매장가)</span><span>12,000</span></li>
+                </ul>
+                <p class="diy-total-note">가격 확인 2026-09-23 각 쇼핑몰 화면 · 다이소는 매장 가격 · 값과 품절은 바뀔 수 있다</p>
+              </div>
+            </div>
+
+            <p class="diy-dl">
+              <a class="diy-btn diy-btn-ghost" href="../assets/images/music-audio/diy-absorber/diy-absorber-panel-guide-a4.pdf" target="_blank" rel="noopener">한 장 PDF 받기 (A4)</a>
+              <a class="diy-btn diy-btn-ghost" href="../assets/images/music-audio/diy-absorber/diy-absorber-panel-guide-a4.png" target="_blank" rel="noopener">한 장 이미지로 보기</a>
+            </p>
+
+            <div class="shared-memory-copy">
+              <p>음향 전용 완제품을 사지 않고, 흔한 재료로 방 안의 울림을 줄이는 패널 한 장을 만드는 방법이다. 핵심은 청소용으로 파는 멜라민 블록(매직블럭)이다. 음향용 흡음재와 같은 멜라민폼 계열이라, 천 뒤에 깔고 벽에서 띄워 두면 말소리·박수 소리가 되튀는 울림을 줄이는 데 쓴다.</p>
+            </div>
+
+            <section class="diy-block" aria-labelledby="diy-section-title">
+              <h4 id="diy-section-title">단면 — 이 구조가 하는 일</h4>
+              <figure class="diy-fig">
+                <img src="../assets/images/music-audio/diy-absorber/section.svg" alt="단면 그림: 방 쪽부터 천, 멜라민 블록 2센티미터, 공기층 약 5센티미터, 벽. 틀 깊이 6.8센티미터">
+              </figure>
+              <dl class="diy-why">
+                <div><dt>천</dt><dd>소리를 <b>통과</b>시키는 겉옷</dd></div>
+                <div><dt>멜라민</dt><dd>통과한 소리를 <b>열로 바꿔 줄인다</b> — 말소리·박수 같은 중·고음</dd></div>
+                <div><dt>공기층</dt><dd>벽에서 띄울수록 <b>더 낮은 소리까지</b> 잡는다. 그래서 틀 깊이가 7cm다</dd></div>
+                <div><dt>한계</dt><dd>2cm 멜라민은 <b>저음(쿵쿵)은 거의 못 잡는다</b></dd></div>
+              </dl>
+            </section>
+
+            <section class="diy-block" aria-labelledby="diy-parts-title">
+              <h4 id="diy-parts-title">준비물 네 묶음</h4>
+              <p class="diy-sub">규격만 맞으면 어느 가게든 된다. 분홍 버튼은 우리가 2026-09-23에 확인한 예시이고, 그 아래는 같은 검색어로 다른 가게를 여는 버튼이다.</p>
+              <div class="diy-parts">
+                <div class="diy-part">
+                  <p class="diy-part-n">①</p>
+                  <p class="diy-part-name">프린트 패브릭 포스터</p>
+                  <p class="diy-part-spec"><b>정사각 100×100cm</b> 1장 · 주문할 때 내 그림을 올린다. 앞에서 보이는 건 가운데 약 83cm</p>
+                  <p class="diy-part-won">32,000<small>원</small></p>
+                  <p class="diy-part-unit">29,000 + 배송 3,000 · 마플</p>
+                  <a class="diy-btn" href="https://www.marpple.com/kr/product/detail?bp_id=3061" target="_blank" rel="noopener">확인한 예시 · 마플 ↗</a>
+                  <p class="diy-shops"><span>다른 가게</span>
+                    <a href="https://search.11st.co.kr/Search.tmall?kwd=%ED%8C%A8%EB%B8%8C%EB%A6%AD%ED%8F%AC%EC%8A%A4%ED%84%B0%20100x100" target="_blank" rel="noopener">11번가</a>
+                    <a href="https://www.coupang.com/np/search?q=%ED%8C%A8%EB%B8%8C%EB%A6%AD%ED%8F%AC%EC%8A%A4%ED%84%B0%20100x100" target="_blank" rel="noopener">쿠팡</a>
+                    <a href="https://search.shopping.naver.com/ns/search?query=%ED%8C%A8%EB%B8%8C%EB%A6%AD%ED%8F%AC%EC%8A%A4%ED%84%B0%20100x100" target="_blank" rel="noopener">네이버</a>
+                  </p>
+                  <p class="diy-part-kw">검색어 <b>패브릭포스터 100x100</b> · 다른 천이면 입에 대고 불어 바람이 지나가는지 본다</p>
+                </div>
+                <div class="diy-part">
+                  <p class="diy-part-n">②</p>
+                  <p class="diy-part-name">멜라민 블록 (매직블럭)</p>
+                  <p class="diy-part-spec"><b>5×9×2cm</b> 100개 1봉을 <b>수량 2</b>로 · 약 140개를 쓴다</p>
+                  <p class="diy-part-won">17,400<small>원</small></p>
+                  <p class="diy-part-unit">1봉 8,700 × 2 · 무료배송 · 11번가 최저가(판매처를 고를 때 크기 5×9×2cm 확인)</p>
+                  <a class="diy-btn" href="https://catalog.11st.co.kr/pc/372181996" target="_blank" rel="noopener">확인한 예시 · 11번가 ↗</a>
+                  <p class="diy-shops"><span>다른 가게</span>
+                    <a href="https://www.coupang.com/np/search?q=%EB%A7%A4%EC%A7%81%EB%B8%94%EB%9F%AD%20%EB%8C%80%ED%98%95%20100%EA%B0%9C" target="_blank" rel="noopener">쿠팡</a>
+                    <a href="https://search.shopping.naver.com/ns/search?query=%EB%A7%A4%EC%A7%81%EB%B8%94%EB%9F%AD%20%EB%8C%80%ED%98%95%20100%EA%B0%9C" target="_blank" rel="noopener">네이버</a>
+                    <a href="https://ko.aliexpress.com/w/wholesale-melamine-sponge.html" target="_blank" rel="noopener">알리</a>
+                  </p>
+                  <p class="diy-part-kw">검색어 <b>매직블럭 대형 100개</b> <b>멜라민 스펀지</b> · 알리는 배송이 길고 크기가 제각각이라 규격을 꼭 본다</p>
+                </div>
+                <div class="diy-part">
+                  <p class="diy-part-n">③</p>
+                  <p class="diy-part-name">각목 (길이 재단 주문)</p>
+                  <p class="diy-part-spec"><b>28×68mm, 길이 80cm × 4개</b> · 같은 길이라 톱질이 없다 · 6.8cm 면을 세워 쓴다</p>
+                  <p class="diy-part-won">27,000<small>원</small></p>
+                  <p class="diy-part-unit">6,000×4 + 배송 3,000 · 11번가 요요몰 · 옵션에서 28×68mm → 800mm</p>
+                  <a class="diy-btn" href="https://www.11st.co.kr/products/3316856763" target="_blank" rel="noopener">확인한 예시 · 11번가 ↗</a>
+                  <p class="diy-shops"><span>다른 가게</span>
+                    <a href="https://www.coupang.com/np/search?q=%EA%B0%81%EB%AA%A9%20%EC%82%AC%EC%9D%B4%EC%A6%88%EC%9E%AC%EB%8B%A8" target="_blank" rel="noopener">쿠팡</a>
+                    <a href="https://search.shopping.naver.com/ns/search?query=%EA%B0%81%EB%AA%A9%20%EC%82%AC%EC%9D%B4%EC%A6%88%EC%9E%AC%EB%8B%A8" target="_blank" rel="noopener">네이버</a>
+                    <a href="https://search.11st.co.kr/Search.tmall?kwd=%EA%B0%81%EB%AA%A9%20%EC%82%AC%EC%9D%B4%EC%A6%88%EC%9E%AC%EB%8B%A8" target="_blank" rel="noopener">11번가</a>
+                  </p>
+                  <p class="diy-part-kw">검색어 <b>각목 사이즈재단</b> · 단면 28×68mm인지 꼭 본다</p>
+                </div>
+                <div class="diy-part">
+                  <p class="diy-part-n">④</p>
+                  <p class="diy-part-name">다이소 부자재 7종</p>
+                  <p class="diy-part-spec">매장 가격 기준. 다이소몰에서 사면 배송비가 따로 붙을 수 있다</p>
+                  <p class="diy-part-won">12,000<small>원</small></p>
+                  <ul class="diy-daiso">
+                    <li><a href="https://www.daisomall.co.kr/pd/pdr/SCR_PDR_0001?pdNo=57429" target="_blank" rel="noopener">타카 (심 100개 포함)</a><span>5,000</span></li>
+                    <li><a href="https://www.daisomall.co.kr/pd/pdr/SCR_PDR_0001?pdNo=57430" target="_blank" rel="noopener">타카 심 6mm 2000개</a><span>1,000</span></li>
+                    <li><a href="https://www.daisomall.co.kr/pd/pdr/SCR_PDR_0001?pdNo=1028911" target="_blank" rel="noopener">L자 평철 4개</a><span>1,000</span></li>
+                    <li><a href="https://www.daisomall.co.kr/pd/pdr/SCR_PDR_0001?pdNo=1065868" target="_blank" rel="noopener">목재용 나사 12·16mm</a><span>1,000</span></li>
+                    <li><a href="https://www.daisomall.co.kr/pd/pdr/SCR_PDR_0001?pdNo=1038159" target="_blank" rel="noopener">만능 본드 120g</a><span>2,000</span></li>
+                    <li><a href="https://www.daisomall.co.kr/pd/pdr/SCR_PDR_0001?pdNo=1012145" target="_blank" rel="noopener">액자걸이 6개</a><span>1,000</span></li>
+                    <li><a href="https://www.daisomall.co.kr/pd/pdr/SCR_PDR_0001?pdNo=1052470" target="_blank" rel="noopener">다용도 노끈 3mm</a><span>1,000</span></li>
+                  </ul>
+                  <p class="diy-part-kw">공구: 십자드라이버 · 커터칼 · 망치 · 줄자. 벽 못·핀은 벽 종류에 맞게 따로 산다</p>
+                </div>
+              </div>
+            </section>
+
+            <section class="diy-block" aria-labelledby="diy-steps-title">
+              <h4 id="diy-steps-title">만드는 순서 1 → 2 → 3 → 4</h4>
+              <ol class="diy-steps">
+                <li>
+                  <img src="../assets/images/music-audio/diy-absorber/step1.svg" alt="1단계 그림: 같은 길이 각목 네 개를 6.8센티미터 면이 서게 바람개비 모양으로 놓고 모서리마다 L자 철물">
+                  <p><b><i>1</i>틀 짜기</b>80cm 각목 네 개를 <strong>6.8cm 면이 세워지게</strong> 놓고, 바람개비처럼 한쪽 끝이 옆 각목 옆면에 닿게 맞댄다. 맞닿는 면에 본드를 바르고, 뒷면 모서리마다 L자 평철을 나사로 조인다. 대각선 두 길이가 같으면 직각이다. 바깥 크기 약 83×83cm.</p>
+                </li>
+                <li>
+                  <img src="../assets/images/music-audio/diy-absorber/step2.svg" alt="2단계 그림: 뒤집어 편 천 위에 틀을 올리고 천을 옆면으로 감아 뒷면에 타카">
+                  <p><b><i>2</i>천 씌우기</b>천을 그림이 바닥을 보게 펴고, 틀을 <strong>철물 쪽이 위로</strong> 가게 가운데 올린다. 천을 옆면으로 감아 뒷면에 타카를 박는다. 변마다 가운데부터, 마주 보는 쪽을 번갈아 당긴다. 모서리는 선물 포장처럼 접고, 철판 위는 피해서 박는다. 천 여유는 한 변에 약 8.6cm(옆면 6.8 + 뒷면 1.8)라 빠듯하다.</p>
+                </li>
+                <li>
+                  <img src="../assets/images/music-audio/diy-absorber/step3.svg" alt="3단계 그림: 틀 안쪽에 멜라민 블록을 빈틈없이 깔고 블록끼리 본드 점, 그 뒤에 노끈을 지그재그로 걸어 받침">
+                  <p><b><i>3</i>블록 채우기</b>틀을 뒤집은 채로 안쪽(약 77×77cm)에 블록을 <strong>천에 닿게 놓아</strong> 빈틈없이 깐다. 블록 옆면끼리, 가장자리 블록은 틀 안쪽 벽에 본드를 점점이 찍는다. 끝 줄은 커터칼로 잘라 채운다. 천에는 본드를 바르지 않는다 — 앞면에 번진다. 다 깔면 블록 바로 뒤 높이에서 틀 안쪽 벽에 노끈을 지그재그로 걸고 타카로 고정한다. 블록이 뒤로 빠지지 않게 받치는 끈이다.</p>
+                </li>
+                <li>
+                  <img src="../assets/images/music-audio/diy-absorber/step4.svg" alt="4단계 그림: 뒷면 윗변에 액자걸이 두 개를 달고 벽 못에 건 패널">
+                  <p><b><i>4</i>걸기</b>본드는 하루 말린다(환기). 윗변 뒤쪽에 액자걸이 2개를 박고, 약 3kg대(계산값)를 버티는 벽 못이나 핀 2개에 건다. 블록 뒤로 약 5cm 공기층이 저절로 생긴다.</p>
+                </li>
+              </ol>
+            </section>
+
+            <section class="diy-block diy-cautions" aria-label="주의와 배치">
+              <div class="diy-warn diy-warn-hot"><h4>방음이 아니라 흡음</h4><p>이 패널은 방 안에서 도는 울림을 줄인다. 벽 너머로 새는 소리, 옆집 소리는 못 막는다. 그건 벽을 무겁게 하고 틈을 막는 차음의 일이다.</p></div>
+              <div class="diy-warn diy-warn-hot"><h4>매직블럭은 인증 흡음재가 아니다</h4><p>음향용과 같은 멜라민폼 계열을 흡음재로 쓰는 방법일 뿐, 흡음·난연 인증을 받은 제품이 아니다. 집에서 쓰는 데는 방염 의무가 없다. 방염 대상인 영업장(다중이용업소 등)에 붙이는 흡음재는 방염 검사를 받은 제품이어야 한다. 난로·조명 열 가까이 두지 않는다.</p></div>
+              <div class="diy-warn"><h4>한 장이면 어디에? 거울 한 장</h4><p>듣는 자리에 앉고, 다른 사람이 옆벽에 거울을 대고 천천히 움직인다. <b>거울 속에 스피커가 보이는 자리</b>가 소리가 처음 되튀는 곳이다. 한 장이면 거기에 건다.</p></div>
+            </section>
+
+            <p class="diy-src">근거 — 음향용 멜라민폼 두께별 흡음(20mm αw 0.45, 125Hz는 60mm도 0.25 · 매직블럭을 잰 값은 아님): <a href="https://acousticindex.com/en/acoustics/acoustic-foam" target="_blank" rel="noopener">acousticindex.com</a> · 흡음과 차음: <a href="https://www.tornex.co.kr/journal/sound-insulation-vs-absorption-basics" target="_blank" rel="noopener">tornex.co.kr</a> · 방염 대상 건물과 흡음재: <a href="https://easylaw.go.kr/CSP/CnpClsMain.laf?popMenu=ov&amp;csmSeq=1574&amp;ccfNo=3&amp;cciNo=4&amp;cnpClsNo=1" target="_blank" rel="noopener">찾기쉬운 생활법령정보</a>. 가격은 2026-09-23 각 쇼핑몰 화면. HAM MEDIA가 이 패널의 효과를 따로 측정하지는 않았다.</p>
+          </article>
+
           <article class="room-post shared-memory-card room-article-panel audio-essay-panel" id="audio-memory-completes-sound-note" hidden>
             <button class="room-article-back" type="button">문장</button>
             <header class="audio-entry-header">
