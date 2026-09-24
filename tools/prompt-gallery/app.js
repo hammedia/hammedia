@@ -524,3 +524,16 @@ function renderBookPrompts(){
  });
 }
 renderBookPrompts();
+
+const caseCopyButton=document.querySelector('#copy-case-repair');
+if(caseCopyButton)caseCopyButton.addEventListener('click',async()=>{
+ const value=document.querySelector('#case-repair-text').textContent;
+ let ok=false;
+ try{await navigator.clipboard.writeText(value);ok=true;}
+ catch(_){
+  const area=document.createElement('textarea');area.value=value;area.style.cssText='position:fixed;opacity:0';
+  try{caseCopyButton.parentElement.append(area);area.select();ok=document.execCommand('copy');}catch(_2){ok=false;}finally{area.remove();caseCopyButton.focus();}
+ }
+ document.querySelector('#case-copy-status').textContent=ok?'복사했습니다. 대괄호를 내 상황으로 바꿔 사용하는 AI에 붙여넣으세요.':'자동 복사가 안 됐습니다. 위 문장을 선택해 직접 복사해 주세요.';
+ if(ok)track('prompt_copy',{content_type:'conversation_case',content_id:'find-the-right-material'});
+});
