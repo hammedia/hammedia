@@ -25,7 +25,7 @@
     "prompt": "Use case: identity-preserve\nAsset type: 가족사진 손상 복원 시험본\n\n[사진 1: 복원 대상]은 새 장면을 만들기 위한 참고 이미지가 아니라, 그대로 고쳐야 하는 유일한 편집 대상이다.\n\n[입력]\n- 인원 수: [인원 수]\n- 손상 유형과 위치: [손상 유형과 위치]\n- 복원 강도: [복원 강도]\n- 색상 처리: [색상 처리]\n- 출력 비율: [출력 비율]\n- 가족이 확인한 특징: [가족이 확인한 특징]\n\n[목표]\n지정된 긁힘, 접힘, 먼지, 얼룩, 변색, 스캔 노이즈와 작은 찢김만 제거하거나 완화한다. 남아 있는 선과 질감으로 확실히 이어지는 작은 결손만 보수한다. 선명함보다 원본과 같은 사람·같은 순간을 우선한다.\n\n[반드시 그대로 둘 것]\n- 인원 수와 각 사람의 신원\n- 얼굴 너비와 길이, 눈 사이 거리, 눈·코·입 위치, 턱선, 귀와 머리 윤곽\n- 나이, 비대칭, 주름, 점, 흉터, 피부결\n- 표정, 입 모양, 치아 보임, 시선\n- 몸 비율, 자세, 머리 기울기, 손 위치와 보이는 손가락\n- 의복의 종류·무늬·주름·해짐, 소품\n- 배경 물건의 수와 위치\n- 카메라 높이·각도·거리, 크롭, 원본에서 잘린 부분, 구도\n- 촬영 당시의 조명, 인화 입자, 시대감\n\n[색상]\n- `원본 유지`: 흑백·세피아·컬러 상태를 바꾸지 않는다.\n- `원본 색 복구`: 바랜 색과 색 번짐만 원본 안의 남은 색 범위로 안정시킨다.\n- `추정 채색본`: 복원본과 섞지 않는 별도 파생본이다. [가족이 확인한 특징]에 적힌 색만 확정하고, 확인되지 않은 눈·머리·피부·옷·배경색은 사실처럼 단정하지 않는다. 이 선택에서도 얼굴·구도·요소는 바꾸지 않는다.\n\n[정보가 없을 때]\n원본과 [가족이 확인한 특징]에 없는 얼굴 세부, 손, 사람, 사물, 색, 표정, 장신구, 글자, 배경은 새로 만들지 않는다. 남은 윤곽이 없는 결손은 그럴듯한 얼굴·손·물건으로 채우지 말고 원본 인화지나 주변의 비서사적 질감으로만 보수한다. 덜 선명하더라도 원본에 더 가까운 쪽을 택한다.\n\n[복원 외 재창작 금지]\n다른 사람 얼굴, 평균적인 미남·미녀 얼굴, 회춘, 피부 보정, 대칭화, 큰 눈, 더 환한 미소, 화장, 체형 보정, 다른 옷, 새 장신구, 새 소품, 새 사람, 새 배경, 배경 정리·확장, 현대식 스튜디오 조명, 영화 색보정, 글자·날짜·액자·테두리·워터마크·설명 자막을 만들지 않는다. 원본에서 잘린 몸이나 장면을 완성하지 않는다. 가족 관계나 성격을 추정해 표정·거리·손 위치를 바꾸지 않는다.\n\n[출력]\n복원된 사진 한 장만 출력한다. 전후 분할 화면이나 콜라주를 만들지 않는다. 기본 비율과 크롭은 원본과 동일하게 유지한다. 출력 비율을 바꿔야 하면 원본 밖 장면을 생성하지 말고 단순 여백만 더한다.",
     "image": "assets/family-memory-restore.webp",
     "instructions": "가족사진 1장을 고른 뒤 프롬프트의 대괄호 안을 내 사진에 맞게 바꾸세요. 사진과 프롬프트를 이미지 편집 화면에 함께 넣으면 됩니다.",
-    "evidence": "HAM MEDIA 실제 가족사진 시험 · 첫 결과에서 복원"
+    "evidence": "HAM MEDIA 복원 예시 · 가상 입력 시험 기록 있음 · 현재 예시의 실사진 원본 대조 미확인"
   },
   {
     "lang": "ko",
@@ -59,25 +59,25 @@
           "될 동물과 닮게 남길 특징 3개"
         ],
         "image": "assets/pet-role-swap-person-to-animal.webp",
-        "prompt": "첨부한 관계 사진을 바탕으로 사진 같은 실사 한 장을 만든다. 사진 속 사람 한 명을 완전히 자연스러운 네 발 동물 한 마리로 바꾼다. 바뀐 동물은 반드시 바닥에 네 발을 모두 딛고, 보통 동물의 자세와 몸 비율을 가진다. 사람의 얼굴·피부·손·발·몸통·머리카락·두 발로 선 자세를 남기지 않는다. 사람의 눈매와 표정, 머리색 같은 특징은 동물에게 자연스러운 눈 주위 무늬, 털색, 귀 자세와 표정으로만 옮긴다. 안경은 남기지 않는다. 사진 속 원래 반려동물은 같은 개체로 유지한다. 둘 사이 거리, 시선, 장소, 카메라 높이와 빛은 가능한 한 보존한다. 결과에는 정확히 두 마리의 온전한 동물만 등장한다. 추가 사람·동물·팔다리·글자·로고·워터마크를 넣지 않는다.",
-        "evidence": "실제 사진 시험 · 두 발 자세를 네 발로 1회 보정"
+        "prompt": "첨부한 관계 사진을 바탕으로 사진 같은 실사 한 장을 만든다. 사진 속 사람 한 명을 완전히 자연스러운 [될 네 발 동물] 한 마리로 바꾼다. 바뀐 동물은 반드시 바닥에 네 발을 모두 딛고, 보통 동물의 자세와 몸 비율을 가진다. 사람의 얼굴·피부·손·발·몸통·머리카락·두 발로 선 자세를 남기지 않는다. 사람에게서 남길 [닮음 단서 3개]는 동물에게 자연스러운 눈 주위 무늬, 털색, 귀 자세와 표정으로만 옮긴다. 안경은 남기지 않는다. 사진 속 원래 반려동물은 같은 개체로 유지한다. 둘 사이 거리, 시선, 장소, 카메라 높이와 빛은 가능한 한 보존한다. 결과에는 정확히 두 마리의 온전한 동물만 등장한다. 추가 사람·동물·팔다리·글자·로고·워터마크를 넣지 않는다.",
+        "evidence": "HAM MEDIA 변형 예시 · 현재 프롬프트의 새 입력 재현 미확인"
       },
       {
         "label": "반려동물을 사람으로",
         "title": "반려동물을 사람으로 바꾸기",
-        "outcome": "반려동물의 눈매와 털색을 사람의 얼굴과 옷에 옮깁니다. 원래 반려동물도 함께 남습니다.",
+        "outcome": "반려동물의 특징을 사람의 얼굴과 옷에 옮깁니다. 원래 사람과 사람이 된 반려동물, 두 사람이 남습니다.",
         "inputs": [
           "내가 사용해도 되는 반려동물과 함께 찍은 사진 1장",
           "사람이 된 모습의 나이·성별·관계",
           "완전히 입힐 옷차림과 닮게 남길 특징 3개"
         ],
         "image": "assets/pet-role-swap-animal-to-person-son.webp",
-        "prompt": "첨부한 관계 사진을 바탕으로 사진 같은 실사 한 장을 만든다. 사진 속 반려동물 한 마리를 `[사람이 된 나이와 성별]` 한 명으로 바꾼다. 그 사람과 사진 속 원래 사람의 관계는 `[가족·친구 등 실제 관계]`로 표현하며, 관계를 연인이나 다른 관계로 바꾸지 않는다. 사람은 `[옷차림]`을 완전히 갖춰 입고, 원래 반려동물이 있던 자리에 자연스럽게 앉거나 선다. 노출된 몸, 목욕 장면, 젖은 피부를 만들지 않는다. 반려동물의 눈매, 털색, 귀의 인상과 표정은 사람의 눈매, 머리색과 머리 모양, 표정과 옷 색으로만 옮긴다. 동물 귀·주둥이·털·발·꼬리나 혼합된 몸을 남기지 않는다. 사진 속 원래 사람은 같은 사람으로 유지한다. 둘 사이 거리, 시선, 장소, 카메라 높이와 빛은 가능한 한 보존한다. 결과에는 완전히 옷을 입은 사람 두 명만 등장한다. 추가 사람·동물·팔다리·글자·로고·워터마크를 넣지 않는다.",
-        "evidence": "실제 사진 시험 · 코코가 남자이고 아들 같은 관계임을 반영해 수정"
+        "prompt": "첨부한 관계 사진을 바탕으로 사진 같은 실사 한 장을 만든다. 사진 속 반려동물 한 마리를 `[사람이 된 나이와 성별]` 한 명으로 바꾼다. 그 사람과 사진 속 원래 사람의 관계는 `[가족·친구 등 실제 관계]`로 표현하며, 관계를 연인이나 다른 관계로 바꾸지 않는다. 사람은 `[옷차림]`을 완전히 갖춰 입고, 원래 반려동물이 있던 자리에 자연스럽게 앉거나 선다. 노출된 몸, 목욕 장면, 젖은 피부를 만들지 않는다. 반려동물에게서 남길 [닮음 단서 3개]는 사람의 눈매, 머리색과 머리 모양, 표정과 옷 색으로만 옮긴다. 동물 귀·주둥이·털·발·꼬리나 혼합된 몸을 남기지 않는다. 사진 속 원래 사람은 같은 사람으로 유지한다. 둘 사이 거리, 시선, 장소, 카메라 높이와 빛은 가능한 한 보존한다. 결과에는 완전히 옷을 입은 사람 두 명만 등장한다. 추가 사람·동물·팔다리·글자·로고·워터마크를 넣지 않는다.",
+        "evidence": "HAM MEDIA 변형 예시 · 현재 프롬프트의 새 입력 재현 미확인"
       }
     ],
     "instructions": "나와 반려동물이 함께 나온 사진을 고르세요. 바꿀 방향과 닮게 남길 특징 세 가지를 적은 뒤 사진과 프롬프트를 이미지 생성 화면에 함께 넣으면 됩니다.",
-    "evidence": "HAM MEDIA 실제 함께 찍은 사진 시험 · 성별과 관계도 입력 필요"
+    "evidence": "HAM MEDIA 변형 예시 · 현재 프롬프트의 새 입력 재현 미확인"
   },
   {
     "lang": "ko",
@@ -105,7 +105,7 @@
     "prompt": "제공한 참조 사진 속 한 사람의 삶을 기록하는 ‘개인 아카이브 상자’ 한 장을 만든다.\n\n결과 형식:\n- 세로 4:5, 1600×2000px 이상, 정면에 가까운 한 장의 편집 사진.\n- 얕고 넓은 기록 보존 상자가 열려 있고, 상자 전체와 내부 구획이 한 화면에 완전히 보인다.\n- 판매용 장난감 포장, 투명 블리스터, 액션 피규어, 수집 완구, 1/7 스케일 모형처럼 보이지 않는다.\n- 오래 보관한 기록물의 따뜻함은 있으나 낡고 슬픈 유품 상자처럼 연출하지 않는다. 현재 살아가는 사람의 능동적인 일과 생활이 느껴져야 한다.\n\n중심 인물 사진 슬롯:\n- 상자 안 가장 큰 구획에 참조 사진을 바탕으로 한 세로 인물 사진 한 장을 둔다.\n- [나이 표현], 얼굴형, 눈·코·입의 비율, 피부톤, 헤어라인, 고유한 비대칭과 표정을 보존한다.\n- 얼굴을 일반적인 미남·미녀, 더 젊은 사람, 다른 성별 표현, 다른 인종적 특징으로 바꾸지 않는다.\n- [직업과 역할]에 맞는 [옷차림]을 입고 자연스럽고 편안한 자세를 취한다.\n- 손이 보인다면 두 손 모두 자연스러운 해부 구조와 정확한 손가락 수를 유지한다. 손을 소품 뒤에 억지로 숨기지 않는다.\n\n자기소개 슬롯:\n- 인물 사진 옆에 종이 카드 한 장을 둔다. 제목 한 줄, 자기소개 두 줄, 날짜 한 줄을 나중에 넣을 수 있는 넉넉한 빈 공간만 만든다.\n- 실제 글자, 가짜 글자, 무작위 알파벳, 로고, 서명, 워터마크는 생성하지 않는다.\n- 카드의 여백과 줄 구분은 분명하되, 특정 서비스나 장난감 회사의 카드 모양을 닮지 않게 한다.\n\n소품 슬롯:\n- [소품 1~6: 물건 — 의미]에서 지정한 물건을 각각 하나씩, 서로 분리된 4~6개 구획에 배치한다.\n- 소품은 직업의 증거와 일상의 증거가 함께 보이게 고른다. 단순 장식이나 분위기용 대체품을 추가하지 않는다.\n- 각 소품의 실제 재질, 크기 차이, 사용 흔적을 살리고, 같은 물건을 복제하거나 합치지 않는다.\n- 반려동물이 입력되면 작은 완구나 브랜드 마스코트로 만들지 말고, 반려동물 자체의 작은 사진 또는 실제 쓰는 목줄·밥그릇 같은 관계의 증거로 표현한다.\n- 각 구획에는 후편집용 빈 번호표만 둔다. 읽을 수 있는 글자는 만들지 않는다.\n\n구성과 분위기:\n- 시선 흐름은 큰 인물 사진 → 자기소개 카드 → 소품 구획 순서다.\n- 상자 재질은 무광 보존지, 천, 얇은 목재 등 절제된 기록 보관 재료로 구성한다.\n- [색과 재질]을 배경과 칸막이에 조용히 반영하되 인물과 소품보다 튀지 않게 한다.\n- 부드러운 자연광, 정확한 제품 사진 수준의 선명도, 과장되지 않은 깊이감을 쓴다.\n- 배경은 단순한 중성색이며 상자의 네 모서리를 자르지 않는다. 사람이 실제로 만질 수 있는 물건처럼 일관된 원근과 그림자를 유지한다.\n\n반드시 제외:\n- 특정 장난감 회사·영화·게임·만화·스포츠팀·명품의 이름, 로고, 색상 체계, 포장 실루엣.\n- BANDAI 또는 다른 실제 브랜드를 연상시키는 상표 배치, ChatGPT/Gemini 공식 사례의 고유 포장 구성, ZBrush 화면이나 3D 제작 도구 UI, 1/7 또는 다른 피규어 스케일 표기.\n- 바코드, 가격표, 나이 등급, 판매 문구, 상업 완구용 걸이 구멍, 투명 플라스틱 몰드.\n- 읽을 수 없는 글자, 임의 문장, 워터마크, 서명.\n- 누락·중복·융합된 소품, 여분 손가락, 뒤틀린 손, 떠 있는 물건, 모순된 그림자.\n- [빼야 할 것].\n\n최종 확인:\n참조 사진 속 같은 사람임이 먼저 보이고, [직업과 역할]과 [생활 한 문장]이 지정 소품만으로 설명되어야 한다. 한 장 안에 인물 사진 슬롯 1개, 빈 자기소개 카드 1개, 서로 다른 소품 슬롯 [입력 개수]개만 정확히 보여라.",
     "image": "assets/life-archive-box.webp",
     "instructions": "정면 사진과 자기소개, 물건 네 가지를 준비하세요. 프롬프트의 대괄호 안을 내 내용으로 바꾼 뒤 사진과 함께 이미지 생성 화면에 넣으면 됩니다.",
-    "evidence": "HAM MEDIA 실제 사진 시험 · 인물과 물건 4개 구성 확인"
+    "evidence": "HAM MEDIA 기록 상자 예시 · 가상 입력 시험 기록 있음 · 실제 사진 재현 미확인"
   },
   {
     "id": "ham-stamps-v2",
@@ -357,12 +357,12 @@
     ],
     "outcome": "외출을 기다리는 반려견의 세 컷 이야기입니다.",
     "steps": [
-      "반려견 사진과 모자 사진 등 참고 사진 3장을 순서대로 고릅니다.",
+      "사진 1·2는 같은 반려견의 정면·전신, 사진 3은 모자 참고용으로 준비합니다.",
       "아래 프롬프트를 복사합니다.",
       "사진 세 장과 프롬프트를 이미지 생성 화면에 함께 넣습니다."
     ],
     "changeable": "대사를 바꿀 수 있습니다.",
-    "prompt": "Create one finished landscape 1536x1024 three-panel Korean illustrated comic from these THREE identity-reference photos of the SAME small dog 코코. Maintain distinctive large upright fringed ears, scruffy golden tan coat, cream-white forehead blaze and muzzle, fluffy white chest, black nose, round dark eyes. Natural four-paw dog anatomy, never a human or another breed. Warm expressive ink-and-watercolor editorial comic, cream paper, dark ink, apricot and teal; lovely textured fur and expressive poses. EXACT top title '코코의 외출 준비'. Three equal horizontal panels, big readable thought bubbles. Panel1 Coco at home on light beige sofa, ears perked with anticipation, thought '나간다고?'. Panel2 sits proudly in colorful soft bucket hat inspired by reference3, ears visibly outside hat, thought '준비 끝!'. Panel3 reveals rain through a window; Coco flops cozy sideways under a blanket on beige sofa, hat rests nearby, sleepy relieved look, thought '내일 나가자.'. Anticipation -> proud readiness -> cozy reversal. EXACT small footer '코코 사진으로 만든 상상 장면'. Invented example, not documentary. No humans, other animals, other text, source-photo background lettering, logos, duplicated legs. Consistent dog identity throughout. Artwork only, no browser or mockup. Korean text only. If the exact Korean cannot be rendered, leave that bubble blank instead of translating or paraphrasing.",
+    "prompt": "Create one finished landscape 1536x1024 three-panel Korean illustrated comic from photos 1 and 2 of the SAME dog, with photo 3 used only as the hat reference. Preserve the dog's actual size, coat colors and markings, ear shape, eyes, muzzle and body proportions from photos 1 and 2. Natural four-paw dog anatomy, never a human or another breed. Warm expressive ink-and-watercolor editorial comic, cream paper, dark ink, apricot and teal; lovely textured fur and expressive poses. EXACT top title '우리 개의 외출 준비'. Three equal horizontal panels, big readable thought bubbles. Panel1 the same dog at home on light beige sofa, ears perked with anticipation, thought '나간다고?'. Panel2 sits proudly in colorful soft bucket hat inspired by reference3, ears visibly outside hat, thought '준비 끝!'. Panel3 reveals rain through a window; the same dog flops cozy sideways under a blanket on beige sofa, hat rests nearby, sleepy relieved look, thought '내일 나가자.'. Anticipation -> proud readiness -> cozy reversal. EXACT small footer '우리 개 사진으로 만든 상상 장면'. Invented example, not documentary. No humans, other animals, other text, source-photo background lettering, logos, duplicated legs. Consistent dog identity throughout. Artwork only, no browser or mockup. Korean text only. If the exact Korean cannot be rendered, leave that bubble blank instead of translating or paraphrasing.",
     "instructions": "반려견 사진과 모자 사진 등 참고 사진 3장을 순서대로 고르세요. 사진 세 장과 프롬프트를 이미지 생성 화면에 함께 넣으면 됩니다. 세 컷의 대사는 입력칸에서 바꿀 수 있습니다.",
     "image": "assets/coco-story.webp",
     "captions": [
@@ -370,8 +370,8 @@
       "준비 끝!",
       "내일 나가자."
     ],
-    "prompt_template": "Create one finished landscape 1536x1024 three-panel Korean illustrated comic from these THREE identity-reference photos of the SAME small dog 코코. Maintain distinctive large upright fringed ears, scruffy golden tan coat, cream-white forehead blaze and muzzle, fluffy white chest, black nose, round dark eyes. Natural four-paw dog anatomy, never a human or another breed. Warm expressive ink-and-watercolor editorial comic, cream paper, dark ink, apricot and teal; lovely textured fur and expressive poses. EXACT top title '코코의 외출 준비'. Three equal horizontal panels, big readable thought bubbles. Panel1 Coco at home on light beige sofa, ears perked with anticipation, thought '{{caption1}}'. Panel2 sits proudly in colorful soft bucket hat inspired by reference3, ears visibly outside hat, thought '{{caption2}}'. Panel3 reveals rain through a window; Coco flops cozy sideways under a blanket on beige sofa, hat rests nearby, sleepy relieved look, thought '{{caption3}}'. Anticipation -> proud readiness -> cozy reversal. EXACT small footer '코코 사진으로 만든 상상 장면'. Invented example, not documentary. No humans, other animals, other text, source-photo background lettering, logos, duplicated legs. Consistent dog identity throughout. Artwork only, no browser or mockup. Korean text only. If the exact Korean cannot be rendered, leave that bubble blank instead of translating or paraphrasing.",
-    "evidence": "HAM MEDIA 실제 사진 3장 시험 · 말풍선 문장 1회 보정",
+    "prompt_template": "Create one finished landscape 1536x1024 three-panel Korean illustrated comic from photos 1 and 2 of the SAME dog, with photo 3 used only as the hat reference. Preserve the dog's actual size, coat colors and markings, ear shape, eyes, muzzle and body proportions from photos 1 and 2. Natural four-paw dog anatomy, never a human or another breed. Warm expressive ink-and-watercolor editorial comic, cream paper, dark ink, apricot and teal; lovely textured fur and expressive poses. EXACT top title '우리 개의 외출 준비'. Three equal horizontal panels, big readable thought bubbles. Panel1 the same dog at home on light beige sofa, ears perked with anticipation, thought '{{caption1}}'. Panel2 sits proudly in colorful soft bucket hat inspired by reference3, ears visibly outside hat, thought '{{caption2}}'. Panel3 reveals rain through a window; the same dog flops cozy sideways under a blanket on beige sofa, hat rests nearby, sleepy relieved look, thought '{{caption3}}'. Anticipation -> proud readiness -> cozy reversal. EXACT small footer '우리 개 사진으로 만든 상상 장면'. Invented example, not documentary. No humans, other animals, other text, source-photo background lettering, logos, duplicated legs. Consistent dog identity throughout. Artwork only, no browser or mockup. Korean text only. If the exact Korean cannot be rendered, leave that bubble blank instead of translating or paraphrasing.",
+    "evidence": "HAM MEDIA 코코 사진 제작 예시 · 복사문은 내 반려견 사진 기준으로 조정 · 다른 반려견 재현 미확인",
     "inputs": [
       "같은 반려동물의 정면 사진 1장",
       "전신 사진 1장",
@@ -426,5 +426,161 @@
     "prompt": "첨부한 제품 사진을 유일한 제품 기준으로 사용해, 같은 제품을 서로 다른 광고 상황에서 보여주는 정사각형 3열×3행 비주얼 보드 한 장을 만드세요. 제품의 모양, 비율, 재질, 색, 포장 구조, 라벨 배치와 로고 형태를 임의로 바꾸지 마세요. 실제 고객은 [고객 한 사람], 확인된 장점은 [장점 하나], 실제 사용 장면은 [사용 장면]입니다. 아홉 칸은 ① 깨끗한 대표 제품컷 ② 고객이 사용하는 순간 ③ 손에 들었을 때의 크기 ④ 재질·마감의 접사 ⑤ 사용 전 준비 장면 ⑥ 사용 직후의 생활 장면 ⑦ 포장을 여는 순간 ⑧ 브랜드 색 [색1]과 [색2]를 살린 계절 장면 ⑨ 제품과 고객의 하루가 함께 보이는 마감 장면으로 구성하세요. 모든 칸은 같은 제품이어야 하지만 구도·거리·빛·배경은 분명히 달라야 합니다. 과장된 효능, 확인되지 않은 숫자, 후기, 할인, 수상, 경쟁사 비교를 만들지 마세요. 읽을 수 없는 가짜 문구·새 로고·워터마크는 넣지 말고, 각 칸 위쪽 또는 옆쪽에 나중에 문구를 얹을 깨끗한 여백을 남기세요. 실제 상업 촬영처럼 자연스러운 빛과 재질을 사용하고 정사각형 고해상도 이미지 한 장으로 출력하세요.",
     "image": "assets/product-ad-direction-board.webp",
     "evidence": "HAM MEDIA 책 표지 1장으로 방향 선택판 제작 · 최종 광고는 선택한 장면을 원본으로 다시 마감"
+  },
+  {
+    "id": "menu-selling-six",
+    "signal": "now",
+    "title": "메뉴 사진 한 장으로 판매 컷 6장",
+    "format": "menu",
+    "photos": 1,
+    "subject": "product",
+    "lang": "ko",
+    "filter": ["photo"],
+    "outcome": "한 메뉴를 메뉴판·상세페이지·포장·SNS에 맞는 여섯 방향으로 펼칩니다.",
+    "inputs": [
+      "내가 사용해도 되는 메뉴 사진 1장",
+      "실제 메뉴 이름·재료·판매 단위",
+      "고객이 봐야 할 특징과 넣지 않을 표현"
+    ],
+    "steps": [
+      "메뉴의 실제 모양과 재료가 잘 보이는 사진 1장을 준비합니다.",
+      "메뉴 이름·재료·판매 단위를 대괄호 안에 넣습니다.",
+      "여섯 방향을 비교하고 가장 정확한 컷만 원본과 다시 대조합니다."
+    ],
+    "changeable": "배경·거리·빛·포장·손의 등장만 바꿉니다. 메뉴 모양·재료·양·가격·후기는 지어내지 않습니다.",
+    "prompt": "Use case: product-mockup. Asset type: small-business menu and social image set. 첨부한 메뉴 사진을 유일한 음식 기준으로 사용해 같은 메뉴를 여섯 가지 판매 장면으로 펼친 정사각형 2열×3행 보드를 만드세요. 메뉴의 실제 모양, 층, 재료, 토핑, 양과 색을 임의로 바꾸거나 더 풍성하게 만들지 마세요. 메뉴 이름은 [메뉴 이름], 실제 재료는 [재료], 판매 단위는 [판매 단위], 고객이 먼저 알아야 할 특징은 [특징]입니다. 여섯 칸은 ① 깨끗한 메뉴판 대표컷 ② 재료와 질감 접사 ③ 테이크아웃 포장 ④ 카페 테이블에서 먹는 장면 ⑤ 선물용 포장 ⑥ 모바일 세로 게시물에 잘리는 부분이 없는 생활 장면으로 구성하세요. 모든 칸은 같은 메뉴여야 하며 접시·포장·손의 크기와 원근을 자연스럽게 유지하세요. 가짜 가격·후기·할인·수상·효능·새 재료·새 로고·읽을 수 없는 글자·워터마크를 만들지 마세요. 텍스트를 넣을 빈 여백은 남기되 메뉴 이름은 후편집으로 얹습니다. 실제로 확인하지 않은 알레르기·원산지·보관 기간은 적지 마세요.",
+    "instructions": "메뉴 사진 1장과 실제 메뉴 정보를 준비하세요. 프롬프트의 대괄호를 바꾼 뒤 이미지 생성 화면에 함께 넣고, 결과를 원본 메뉴와 대조하세요.",
+    "image": "assets/menu-selling-six.webp",
+    "evidence": "HAM MEDIA 새 샘플 제작 · 가상 카페 메뉴 1개로 판매 장면 6종 구성; 실제 매장 재현 미확인"
+  },
+  {
+    "id": "profile-four-ways",
+    "signal": "steady",
+    "title": "내 얼굴로 프로필 4가지 방향 비교",
+    "format": "profile",
+    "photos": 1,
+    "subject": "me",
+    "lang": "ko",
+    "filter": ["photo"],
+    "outcome": "홈페이지·소개서·강연·SNS에 쓸 프로필 방향 네 가지를 한 번에 비교합니다.",
+    "inputs": [
+      "내가 사용해도 되는 최근 얼굴 사진 1장",
+      "실제 쓰임: 홈페이지·소개서·강연·SNS 중 선택",
+      "그대로 남길 얼굴 특징과 바꾸고 싶은 배경"
+    ],
+    "steps": [
+      "얼굴이 가려지지 않은 사진을 넣고 실제 쓰임을 고릅니다.",
+      "아래 프롬프트를 사진과 함께 이미지 생성 화면에 넣어 2×2 비교판을 만듭니다.",
+      "원본과 얼굴·나이를 대조하고 네 칸 하단의 빈 여백을 확인합니다. 쓸 방향을 고르면 그 칸만 별도 사진으로 다시 요청합니다."
+    ],
+    "changeable": "첫 비교판은 2×2로 만듭니다. 고른 방향을 별도 사진으로 만들 때 배경·옷차림·조명을 한 가지씩 바꿀 수 있습니다. 얼굴을 미화하거나 나이를 바꾸지 않습니다.",
+    "prompt": "Use case: identity-preserve. Asset type: website, speaker bio and social profile photos. 첨부한 사진 속 같은 사람을 유일한 얼굴 기준으로 사용해 프로필 사진 4종을 한 장의 2×2 비교판으로 만드세요. 얼굴형, 눈·코·입의 위치, 나이감, 피부결, 점·흉터·비대칭, 헤어라인과 안경을 임의로 고치거나 젊게 만들지 마세요. 네 칸은 ① 자연광 홈페이지 프로필 ② 중립 배경 소개서 사진 ③ 일을 하는 장면의 강연자 사진 ④ 절제된 흑백 편집 프로필입니다. 같은 사람이 네 칸 모두 알아볼 수 있어야 하며 옷·배경·조명만 용도에 맞게 바꿉니다. 미남·미녀 평균 얼굴, 다른 사람, 다른 성별, 과한 피부 보정, 가짜 소품, 회사 로고, 읽을 수 없는 글자와 워터마크는 만들지 마세요. 각 칸의 아래쪽 18~20%는 이름·직함을 나중에 넣을 별도의 텍스트 안전 영역으로 비워 두세요. 그 영역에는 얼굴·손·마이크·소품·복잡한 배경을 두지 말고 해당 칸의 배경과 자연스럽게 이어지는 단순한 여백을 유지하세요. 네 칸 모두 같은 높이와 같은 원칙을 적용하고 인물은 그 영역 위쪽에 배치하세요. 글자는 후편집으로 넣습니다.",
+    "instructions": "최근 정면 사진 1장과 실제 사용할 곳을 준비하세요. 사진과 프롬프트를 함께 넣은 뒤 사용하는 화면에서 2×2 전체와 얼굴·나이·안경·헤어라인, 네 칸 하단의 빈 여백을 확인하세요. 비교판 한 장을 만드는 작업이며 별도 사진 네 파일을 한 번에 제공하는 것은 아닙니다.",
+    "image": "assets/profile-four-ways-v2.webp",
+    "evidence": "가상 인물로 만든 비교 예시 · 하단 여백 보강 · 실제 사진으로 현재 복사문을 처음부터 실행한 결과는 미확인"
+  },
+  {
+    "id": "room-layout-three-ways",
+    "signal": "steady",
+    "title": "내 방 사진으로 가구 배치 3안",
+    "format": "space",
+    "photos": 1,
+    "subject": "space",
+    "lang": "ko",
+    "filter": ["photo"],
+    "outcome": "같은 방을 일·휴식·수납 중심 세 방향으로 비교해 봅니다.",
+    "inputs": [
+      "창·문·바닥이 보이는 내 방 사진 1장",
+      "남길 가구와 치수 또는 대략적인 크기",
+      "이번 방의 우선순위: 일·휴식·수납 중 선택"
+    ],
+    "steps": [
+      "방의 창·문·콘센트와 남길 가구가 보이게 사진을 찍습니다.",
+      "바꾸지 않을 구조와 필요한 기능을 대괄호 안에 적습니다.",
+      "세 안을 실제 방의 동선·크기와 대조하고, 시공 전 참고안으로만 씁니다."
+    ],
+    "changeable": "가구 배치·색·조명·수납 아이디어만 바꿉니다. 벽을 허물거나 치수를 추정해 시공 결정을 내리지 않습니다.",
+    "prompt": "Use case: precise-object-edit. Asset type: room planning reference. 첨부한 방 사진을 유일한 공간 기준으로 사용해 같은 방을 세 가지 배치안으로 보여주는 가로 3단 비교판을 만드세요. 창문, 문, 에어컨, 콘센트 위치, 바닥과 방의 비율은 그대로 유지하고 벽·창·문을 새로 만들거나 넓히지 마세요. 첫 칸은 원래 방의 구조를 읽을 수 있는 정리된 기준 장면, 두 번째는 집중 작업 중심, 세 번째는 휴식 중심입니다. 남길 가구는 [남길 가구], 꼭 필요한 기능은 [우선순위], 피해야 할 것은 [피해야 할 것]입니다. 실제로 들어갈 수 있는 가구 크기와 걷는 길을 유지하세요. 과장된 대형 아파트, 불가능한 가구, 새 창문, 사람, 로고, 글자, 워터마크는 만들지 마세요. 세 칸의 같은 방이 먼저 보이고, 가구와 조명만 달라야 합니다.",
+    "instructions": "방의 구조가 보이는 사진 1장과 남길 가구를 준비하세요. 세 결과는 인테리어 계약서가 아니라 배치 아이디어 비교용입니다.",
+    "image": "assets/room-layout-three-ways.webp",
+    "evidence": "HAM MEDIA 새 샘플 제작 · 동일 가상 방 3안 비교; 실제 방 재현과 치수 검증 미확인"
+  },
+  {
+    "id": "character-reference-sheet",
+    "signal": "steady",
+    "title": "내 캐릭터를 계속 같은 모습으로",
+    "format": "character",
+    "photos": 0,
+    "subject": "character",
+    "lang": "ko",
+    "filter": ["none"],
+    "outcome": "다음 장면에서도 얼굴·옷·색이 흔들리지 않도록 기준표 한 장을 만듭니다.",
+    "inputs": [
+      "캐릭터의 역할과 성격 한 줄",
+      "헤어·옷·신발·색 세 가지",
+      "앞으로 만들 장면과 바꾸면 안 되는 특징"
+    ],
+    "steps": [
+      "캐릭터의 고정 특징과 사용 장면을 적습니다.",
+      "프롬프트를 넣어 앞·옆·얼굴·표정 기준표를 만듭니다.",
+      "다음 장면을 만들 때 기준표를 참고 이미지로 함께 넣습니다."
+    ],
+    "changeable": "포즈·표정·배경·소품은 바꾸되 얼굴·헤어·옷의 핵심 색과 비율은 기준표에 고정합니다.",
+    "prompt": "Use case: illustration-story. Asset type: reusable character reference sheet. [역할과 성격]을 가진 완전히 새로운 가상 캐릭터 한 명의 기준표를 정사각형 한 장으로 만드세요. 왼쪽에는 정면 전신, 가운데에는 옆·3/4 전신, 오른쪽 위에는 얼굴 클로즈업, 오른쪽 아래에는 기쁨·집중·걱정 표정 세 가지를 배치합니다. 캐릭터는 [헤어], [옷], [신발], [고정 색 세 가지]를 모든 칸에서 정확히 유지하고 얼굴 비율·체형·액세서리도 바꾸지 마세요. 다음 장면은 [앞으로 만들 장면]입니다. 각 칸 사이에 충분한 여백을 두고 따뜻한 편집 일러스트로 만드세요. 기존 만화·게임·브랜드 캐릭터를 닮게 만들지 말고, 글자·이름·로고·워터마크·추가 인물은 넣지 마세요. 이 기준표는 이후 장면의 참고 이미지로 다시 사용할 수 있어야 합니다.",
+    "instructions": "캐릭터의 고정 특징을 먼저 적으세요. 기준표를 만든 뒤 다음 장면 프롬프트에 같은 이미지를 참고 이미지로 넣으면 됩니다.",
+    "image": "assets/character-reference-sheet.webp",
+    "evidence": "HAM MEDIA 새 샘플 제작 · 가상 카페 주인공 기준표; 다른 장면 재현 미확인"
+  },
+  {
+    "id": "explain-one-page",
+    "signal": "steady",
+    "title": "내 설명을 한 장 그림으로",
+    "format": "infographic",
+    "photos": 0,
+    "subject": "topic",
+    "lang": "ko",
+    "filter": ["none"],
+    "outcome": "긴 설명을 네 단계 시각 안내판으로 바꾸고, 정확한 글은 나중에 얹습니다.",
+    "inputs": [
+      "설명할 원문 또는 작업 순서",
+      "처음 보는 사람의 수준",
+      "반드시 들어갈 단계·주의·숫자와 최종 문구"
+    ],
+    "steps": [
+      "원문에서 실제 순서와 주의사항을 네 단계로 나눕니다.",
+      "장면과 빈 글자 칸을 만든 뒤 글은 이미지 편집에서 얹습니다.",
+      "원문과 그림의 순서·숫자·주의가 같은지 대조합니다."
+    ],
+    "changeable": "주제·단계 수·도형·색·대상 수준을 바꿀 수 있습니다. 모델이 만든 글자를 사실이나 최종 안내문으로 쓰지 않습니다.",
+    "prompt": "Use case: infographic-diagram. Asset type: one-page visual guide. [설명할 주제]를 처음 보는 [대상]에게 보여주는 네 단계 안내 그림 한 장을 만드세요. 원문에서 확인된 순서는 [1단계], [2단계], [3단계], [4단계]이며, 반드시 지켜야 할 주의는 [주의사항]입니다. 각 단계는 실제 행동과 물건이 한눈에 보이는 가로형 칸으로 나누고 방향 화살표와 숫자 1·2·3·4만 사용하세요. 각 칸 아래에는 정확한 문구를 나중에 넣을 수 있는 빈 캡션 칸을 남깁니다. 임의의 숫자·가짜 글자·새 단계·확인하지 않은 효능·로고·워터마크는 만들지 마세요. 최종 글자는 이미지 생성 결과가 아니라 원문을 대조해 후편집으로 넣습니다. 배경과 색은 절제하고 행동의 순서와 차이가 먼저 보이게 하세요.",
+    "instructions": "설명 원문을 네 단계로 먼저 정리하세요. 그림을 만든 뒤 이미지 속 글자를 그대로 믿지 말고, 원문을 대조해 캡션을 후편집으로 넣으세요.",
+    "image": "assets/explain-one-page.webp",
+    "evidence": "HAM MEDIA 새 샘플 제작 · 손드립 커피 4단계 시각 안내판; 원문 대조와 실제 교육 효과 미확인"
+  },
+  {
+    "id": "travel-postcard-three-ways",
+    "signal": "classic",
+    "title": "여행 사진 한 장으로 엽서 3안",
+    "format": "travel",
+    "photos": 1,
+    "subject": "place",
+    "lang": "ko",
+    "filter": ["photo"],
+    "outcome": "내가 찍은 장소를 알아볼 수 있게 자연·손그림·판화 방향으로 남깁니다.",
+    "inputs": [
+      "내가 찍은 여행 사진 1장",
+      "장소·계절·시간과 꼭 남길 랜드마크",
+      "엽서에 나중에 넣을 날짜·짧은 문장"
+    ],
+    "steps": [
+      "사진 속 장소를 알아보게 하는 요소를 세 가지 적습니다.",
+      "프롬프트를 넣어 세 가지 엽서 방향을 비교합니다.",
+      "실제 장소와 다른 요소가 생기지 않았는지 확인한 뒤 글을 후편집합니다."
+    ],
+    "changeable": "화풍·색·여백·출력 비율을 바꿀 수 있습니다. 랜드마크·해안선·건물 위치를 새로 만들지 않습니다.",
+    "prompt": "Use case: style-transfer. Asset type: travel keepsake postcard. 첨부한 여행 사진을 장소의 유일한 기준으로 사용해 세로 엽서 3안을 한 장의 비교판으로 만드세요. 사진 속 [장소], [계절], [시간], [꼭 남길 랜드마크 세 가지]를 알아볼 수 있게 유지하고 새로운 건물·산·배·사람을 추가하지 마세요. 첫 칸은 자연스러운 사진 보정, 두 번째는 질감이 있는 오일파스텔 손그림, 세 번째는 두 가지 색의 단순 판화입니다. 세 칸 모두 같은 장소와 구조를 유지하고 아래쪽에 날짜와 짧은 문장을 후편집으로 넣을 넓은 빈 여백을 남기세요. 읽을 수 없는 글자·관광 브랜드·로고·워터마크·가짜 지명은 넣지 마세요. 결과는 실제 인쇄를 위한 최종 색상 증명이 아니라 방향 비교용입니다.",
+    "instructions": "여행 사진 1장과 꼭 남길 장소 요소를 준비하세요. 결과를 실제 사진과 대조한 뒤 날짜·문장은 후편집으로 넣으세요.",
+    "image": "assets/travel-postcard-three-ways.webp",
+    "evidence": "HAM MEDIA 새 샘플 제작 · 가상 항구 사진 3안 비교; 타 장소 재현과 인쇄 색상 검증 미확인"
   }
 ]
