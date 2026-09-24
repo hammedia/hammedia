@@ -74,29 +74,13 @@
     overflow: hidden;
   }
 
-  /* 사진 카드 링크 — 원본 전체 노출, 크롭 없음 */
-  .photo-link {
-    display: block;
-    min-height: 52px;
-    background: var(--ivory-deep);
-    border-radius: 22px 22px 0 0;
-    overflow: hidden;
-  }
-
-  .photo-link img {
-    display: block;
-    width: 100%;
-    height: auto;
-    border: 0;
-  }
-
-  .body {
-    padding: 26px 24px 24px;
+  .top {
+    padding: 24px 24px 0;
     text-align: center;
   }
 
   .eyebrow {
-    margin: 0 0 10px;
+    margin: 0 0 8px;
     color: var(--accent);
     font-size: 13px;
     font-weight: 700;
@@ -106,26 +90,87 @@
   .headline {
     margin: 0;
     color: var(--ink);
-    font-size: 25px;
-    line-height: 1.35;
+    font-size: 26px;
+    line-height: 1.34;
     font-weight: 800;
     letter-spacing: -0.02em;
+    word-break: keep-all;
   }
 
   .subtitle {
-    margin: 12px 0 0;
+    margin: 10px 0 0;
     color: var(--ink-soft);
     font-size: 15px;
     font-weight: 600;
+    word-break: keep-all;
   }
 
-  .divider {
-    width: 44px;
-    height: 2px;
-    margin: 20px auto;
+  /* 영상 슬롯 — 재생 전에는 원본 가로 카드 전체를 그대로 보여 준다(크롭 없음) */
+  .player-slot {
+    margin-top: 16px;
+    background: var(--ivory-deep);
+    overflow: hidden;
+  }
+
+  .photo-button {
+    display: block;
+    position: relative;
+    width: 100%;
+    margin: 0;
+    padding: 0;
     border: 0;
-    background: var(--line);
-    border-radius: 2px;
+    background: transparent;
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+  }
+
+  .photo-button img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 0;
+  }
+
+  /* 눈에 보이는 안내는 단 한 줄 */
+  .play-hint {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 14px;
+    border-radius: 0;
+    background: rgba(63, 44, 29, 0.8);
+    color: #fff7ee;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    white-space: nowrap;
+    box-shadow: 0 4px 12px -6px rgba(0, 0, 0, 0.6);
+  }
+
+  .play-hint .glyph {
+    font-size: 10px;
+    line-height: 1;
+  }
+
+  .player-slot.is-playing { background: #000; }
+
+  .player {
+    display: block;
+    width: 100%;
+    height: auto;
+    min-height: 200px;
+    min-width: 200px;
+    aspect-ratio: 4 / 5;
+    max-height: 70svh;
+    border: 0;
+    background: #000;
+  }
+
+  .bottom {
+    padding: 20px 24px 24px;
+    text-align: center;
   }
 
   .message {
@@ -136,64 +181,31 @@
     word-break: keep-all;
   }
 
-  /* 큰 CTA — 최소 높이 52px, 같은 탭 이동 */
-  .cta {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    min-height: 56px;
-    margin: 24px 0 0;
-    padding: 14px 22px;
-    background: linear-gradient(180deg, #b54f24 0%, var(--accent-deep) 100%);
-    color: #fff7ee;
-    font-size: 17px;
-    font-weight: 800;
-    letter-spacing: -0.01em;
-    text-decoration: none;
-    border-radius: 14px;
-    box-shadow: 0 8px 18px -8px rgba(140, 58, 25, 0.65);
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
-  }
-
-  .cta .play {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 26px;
-    height: 26px;
-    flex: 0 0 26px;
-    background: rgba(255, 255, 255, 0.22);
-    border-radius: 50%;
-    font-size: 12px;
-    line-height: 1;
-  }
-
-  .cta .ko {
-    display: block;
-  }
-
-  .cta .sub {
-    display: block;
-    font-size: 12px;
-    font-weight: 600;
-    opacity: 0.85;
-    letter-spacing: 0;
-  }
-
-  .brand {
-    margin: 22px 0 0;
-    color: var(--ink-soft);
-    font-size: 13.5px;
-    line-height: 1.6;
-    word-break: keep-all;
-  }
-
   .signature {
-    margin: 14px 0 0;
+    margin: 10px 0 0;
     color: var(--ink);
     font-size: 15px;
     font-weight: 700;
+  }
+
+  .fallback {
+    margin: 12px 0 0;
+    font-size: 13px;
+  }
+
+  .fallback a {
+    color: var(--accent-deep);
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .brand {
+    margin: 18px 0 0;
+    color: var(--ink-soft);
+    font-size: 13px;
+    line-height: 1.6;
+    word-break: keep-all;
   }
 
   .disclaimer {
@@ -206,34 +218,24 @@
     letter-spacing: 0;
   }
 
+  .photo-button:focus-visible,
   a:focus-visible,
-  .cta:focus-visible {
+  .player:focus-visible {
     outline: 3px solid var(--accent);
-    outline-offset: 3px;
-    border-radius: 10px;
-  }
-
-  .photo-link:focus-visible {
     outline-offset: -3px;
-    border-radius: 22px 22px 0 0;
   }
 
   @media (hover: hover) and (pointer: fine) {
-    .cta:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 12px 22px -8px rgba(140, 58, 25, 0.7);
-    }
-    .photo-link:hover img { opacity: 0.96; }
+    .photo-button:hover img { opacity: 0.96; }
   }
 
   @media (prefers-reduced-motion: reduce) {
     * { transition: none !important; animation: none !important; }
-    .cta:hover { transform: none; }
   }
 
   @media (max-width: 360px) {
-    .body { padding: 22px 18px 20px; }
-    .headline { font-size: 22px; }
+    .top, .bottom { padding-left: 18px; padding-right: 18px; }
+    .headline { font-size: 23px; }
     .message { font-size: 16px; }
   }
 </style>
@@ -241,36 +243,75 @@
 <body>
   <main class="wrap">
     <article class="card">
-      <a class="photo-link" href="https://youtube.com/shorts/6uJxFCODE30?feature=share"
-         aria-label="함동민의 25초 추석 인사 영상 보기">
-        <img src="card.jpg"
-             alt="추석 인사를 담은 카드 이미지 — 햄미디어 함동민"
-             width="1672" height="941" decoding="async">
-      </a>
-
-      <div class="body">
+      <div class="top">
         <p class="eyebrow">2026 한가위</p>
-        <h1 class="headline">올해는, 인사가 움직입니다.</h1>
-        <p class="subtitle">함동민이 준비한 25초 추석 인사</p>
+        <h1 class="headline">함께해 주셔서 고맙습니다.</h1>
+        <p class="subtitle">올해는 제 인사를 조금 움직여 봤습니다.</p>
+      </div>
 
-        <hr class="divider">
+      <div class="player-slot" id="playerSlot">
+        <button type="button" class="photo-button" id="playBtn"
+                aria-label="눌러서 25초 인사 영상 보기">
+          <img src="card.jpg"
+               alt="추석 인사를 담은 카드 이미지 — 햄미디어 함동민"
+               width="1672" height="941" decoding="async">
+          <span class="play-hint"><span class="glyph" aria-hidden="true">▶</span>눌러서 25초 인사 보기</span>
+        </button>
+      </div>
 
-        <p class="message">함께해 주셔서 고맙습니다.<br>넉넉한 한가위 보내세요.</p>
+      <div class="bottom">
+        <p class="message">넉넉한 한가위 보내세요.</p>
+        <p class="signature">함동민 드림</p>
 
-        <a class="cta" href="https://youtube.com/shorts/6uJxFCODE30?feature=share">
-          <span class="play" aria-hidden="true">▶</span>
-          <span>
-            <span class="ko">25초 인사 보기</span>
-            <span class="sub">YouTube에서 보기</span>
-          </span>
-        </a>
+        <p class="fallback" id="fallbackLink" hidden>
+          <a href="https://youtube.com/shorts/6uJxFCODE30?feature=share">YouTube에서 보기</a>
+        </p>
 
-        <p class="brand">가게와 사람의 이야기를 영상으로 만듭니다.</p>
-        <p class="signature">햄미디어 함동민 드림</p>
+        <p class="brand">가게와 사람의 이야기를 영상으로 만듭니다.<br>햄미디어</p>
       </div>
     </article>
 
+    <noscript>
+      <p class="fallback" style="text-align:center">
+        <a href="https://youtube.com/shorts/6uJxFCODE30?feature=share">YouTube에서 보기</a>
+      </p>
+    </noscript>
+
     <p class="disclaimer">인물과 장면은 AI로 연출했습니다.</p>
   </main>
+
+  <script>
+    (function () {
+      var slot = document.getElementById('playerSlot');
+      var btn = document.getElementById('playBtn');
+      if (!slot || !btn) return;
+
+      var VIDEO_ID = '6uJxFCODE30';
+
+      function start() {
+        if (slot.classList.contains('is-playing')) return;
+
+        var iframe = document.createElement('iframe');
+        iframe.className = 'player';
+        iframe.title = '함동민의 25초 추석 인사 영상';
+        iframe.setAttribute('allow', 'autoplay; encrypted-media; picture-in-picture; fullscreen');
+        iframe.setAttribute('allowfullscreen', '');
+        iframe.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+        iframe.setAttribute('loading', 'eager');
+        iframe.src = 'https://www.youtube-nocookie.com/embed/' + VIDEO_ID +
+          '?autoplay=1&playsinline=1&rel=0&hl=ko';
+
+        slot.replaceChild(iframe, btn);
+        slot.classList.add('is-playing');
+
+        var fb = document.getElementById('fallbackLink');
+        if (fb) fb.hidden = false;
+
+        try { iframe.focus(); } catch (e) {}
+      }
+
+      btn.addEventListener('click', start);
+    })();
+  </script>
 </body>
 </html>
