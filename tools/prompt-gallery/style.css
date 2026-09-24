@@ -242,7 +242,7 @@ dialog#experiment-dialog{width:min(850px,94vw);max-width:94vw;height:min(900px,9
  .brand{font-size:11px}.brand small{display:none}
  .mast nav a{font-size:9px}
  .hero-stage{padding-bottom:0}.hero-proof{display:none}
- .hero-body{display:none}
+ .hero-body{display:block;font-size:14px;line-height:1.7}
  .hero-actions{gap:9px}.hero-cta{min-width:0;padding-inline:12px}.hero-more{font-size:9px;white-space:normal;text-align:center}
  .filters{width:100%;display:grid;grid-template-columns:repeat(2,1fr)}
  .signals{display:grid;grid-template-columns:1fr;width:100%}
