@@ -85,7 +85,7 @@ renderExperiments();
 const FORMAT={stamp:'스티커',reply:'반응',four:'네컷',three:'세 컷',restore:'사진 복원',transform:'모습 바꾸기',archive:'기록 상자',board:'광고 시안판',profile:'프로필',space:'공간 배치',menu:'메뉴·상품',character:'캐릭터 기준표',infographic:'설명 그림',travel:'여행 엽서'};
 const CATEGORY={board:'상품·브랜드',archive:'내 기록',restore:'보존·복원',transform:'관계 변형',stamp:'반복 사용',reply:'대화·반응',four:'짧은 이야기',three:'장면·기억',profile:'나·프로필',space:'공간·생활',menu:'상품·메뉴',character:'창작·연재',infographic:'설명·교육',travel:'여행·기록'};
 const OUTPUT={board:'9개 방향',archive:'기록판 1장',restore:'복원 사진 1장',transform:'변형 사진 2종',stamp:'표정 12장',reply:'반응 6장',four:'네 컷',three:'세 컷',profile:'4장 비교',space:'3안 비교',menu:'6개 방향',character:'기준표 1장',infographic:'설명 그림 1장',travel:'엽서 3안'};
-const FEATURED=['product-ad-direction-board','menu-selling-six','profile-four-ways','room-layout-three-ways','character-reference-sheet','explain-one-page','travel-postcard-three-ways','life-archive-box','family-memory-restore'];
+const FEATURED=['ham-stamps-v2','coco-stamps-v2','ham-replies','coco-replies','product-ad-direction-board','menu-selling-six','profile-four-ways','room-layout-three-ways','character-reference-sheet','explain-one-page','travel-postcard-three-ways','life-archive-box','family-memory-restore'];
 const SUBJECT={me:'나',pet:'반려동물',pair:'나와 반려동물',none:'사진 없이',space:'내 공간',product:'내 상품',character:'가상 캐릭터',topic:'내 설명',place:'내 장소'};
 const PROMPT_USE_CASE={
  'identity-preserve':'인물 특징 보존',
