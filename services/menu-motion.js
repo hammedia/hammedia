@@ -45,6 +45,7 @@
     text('[data-hm-price]',key==='video'?'롱폼 편집 20만 원부터 · 촬영·원본 길이·수정 범위는 별도 확인':key==='monthly'?'월 50만 원부터 · 편수·채널·촬영 범위는 별도 확인':'범위 확인 후 서면 견적');
     const evidence=q('[data-hm-evidence]');evidence.href=data.evidence;evidence.textContent=data.evidenceText;
     q('#hm-menu-inquiry').value=`${label}\n상담하고 싶은 범위: ${data.scopeTitle}\n원하는 결과와 일정: `;
+    q('[data-hm-email]').href='mailto:hammedia002@gmail.com?subject='+encodeURIComponent('HAM MEDIA 상담 · '+label)+'&body='+encodeURIComponent(q('#hm-menu-inquiry').value+'\n\n답 받을 연락처: ');
     text('[data-hm-copy-status]','아래 양식에 직접 붙여넣어 주세요. 아직 전송되지 않았습니다.');
     if(animate) play();
   }
