@@ -15,6 +15,7 @@
     monthly: {category:'04 · 월간 운영',title:'한 번의 제작을,\n꾸준한 소식으로.',description:'매달 필요한 자료와 일정부터 맞추고, 채널에 맞게 만들고 확인하며 다음 작업을 이어갑니다.',image:food,alt:'마포바다 모둠회 실제 사진을 활용한 월간 콘텐츠 구성 예시',fragment:photo,fragmentA:'이번 달의 자료',fragmentB:'사진 · 문장 · 일정',mediaLabel:'마포바다 실제 촬영 사진',mediaTitle:'가게의 소식이\n이어지도록.',caption:'실제 마포바다 사진을 활용한 콘텐츠 구성 예시입니다. 게시 횟수나 운영 성과를 나타내지 않습니다.',scopeTitle:'매달 함께 정할 운영 범위',scope:'월간 소재 정리 · 콘텐츠 제작 · 게시와 관리. 채널, 제작 수량, 게시 주기와 응대 범위를 먼저 정합니다. 매출이나 조회수는 약속하지 않습니다.',evidence:'#work',evidenceText:'현재 운영 사례 보기 ↗'},
     automation: {category:'05 · 반복 업무 정리',title:'매번 하는 일을,\n확인할 일로.',description:'지금 쓰는 문서와 도구에서 시작합니다. 반복 구간을 찾아 연결하고, 사람이 확인할 지점을 남깁니다.',image:photo,alt:'반복 업무 화면 구성 예시',fragment:'../book/assets/cover.png',fragmentA:'내 업무의 자료',fragmentB:'모으기 · 정리 · 확인',mediaLabel:'업무 흐름 구성 예시',mediaTitle:'확인할 일만,\n한눈에.',caption:'반복 업무를 설명하기 위한 화면 구성 예시입니다. 고객 데이터나 실제 자동 실행 결과가 아닙니다.',scopeTitle:'현재 업무를 확인한 뒤 만들기',scope:'반복 구간 조사 · 자료 형식 정리 · 도구 연결 · 사람이 확인할 단계. 계정 권한, 외부 서비스 비용과 유지관리 범위를 확인한 뒤 서면 견적을 드립니다.',evidence:'../erp/',evidenceText:'작은 ERP 체험판 보기 ↗'}
   };
+  const inquiryDrafts = new Map();
   let selected = 'video';
   let paused = false;
   let running = false;
@@ -32,6 +33,7 @@
   }
   function choose(key, animate=true){
     if(!Object.hasOwn(options,key)) return;
+    if(q('#hm-menu-inquiry').value) inquiryDrafts.set(selected,q('#hm-menu-inquiry').value);
     selected=key; const data=options[key];const index=Object.keys(options).indexOf(key);
     choices.forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.hmChoice===key)));
     stage.dataset.hmScene=key;
@@ -44,11 +46,16 @@
     text('[data-hm-scope-label]',`선택한 부탁 · ${label}`);text('[data-hm-scope-title]',data.scopeTitle);text('[data-hm-scope]',data.scope);
     text('[data-hm-price]',key==='video'?'롱폼 편집 20만 원부터 · 촬영·원본 길이·수정 범위는 별도 확인':key==='monthly'?'월 50만 원부터 · 편수·채널·촬영 범위는 별도 확인':'범위 확인 후 서면 견적');
     const evidence=q('[data-hm-evidence]');evidence.href=data.evidence;evidence.textContent=data.evidenceText;
-    q('#hm-menu-inquiry').value=`${label}\n상담하고 싶은 범위: ${data.scopeTitle}\n원하는 결과와 일정: `;
-    q('[data-hm-email]').href='mailto:hammedia002@gmail.com?subject='+encodeURIComponent('HAM MEDIA 상담 · '+label)+'&body='+encodeURIComponent(q('#hm-menu-inquiry').value+'\n\n답 받을 연락처: ');
+    q('#hm-menu-inquiry').value=inquiryDrafts.has(key)?inquiryDrafts.get(key):`${label}\n상담하고 싶은 범위: ${data.scopeTitle}\n범위 안내: ${data.scope}\n가격 안내: ${q('[data-hm-price]').textContent} (확정 견적 아님)\n\n원하는 결과와 일정: \n가지고 있는 자료 또는 링크: \n이번에 필요하지 않은 일: \n답 받을 연락처: `;
+    syncEmail();
     text('[data-hm-copy-status]','아래 양식에 직접 붙여넣어 주세요. 아직 전송되지 않았습니다.');
     if(animate) play();
   }
+  function syncEmail(){
+    const label=choices.find(button=>button.dataset.hmChoice===selected).textContent;
+    q('[data-hm-email]').href='mailto:hammedia002@gmail.com?subject='+encodeURIComponent('HAM MEDIA 상담 · '+label)+'&body='+encodeURIComponent(q('#hm-menu-inquiry').value);
+  }
+  q('#hm-menu-inquiry').addEventListener('input',()=>{inquiryDrafts.set(selected,q('#hm-menu-inquiry').value);syncEmail();});
   choices.forEach(button=>button.addEventListener('click',()=>choose(button.dataset.hmChoice)));
   pause.addEventListener('click',()=>{if(!running)return;paused=!paused;stage.classList.toggle('hm-menu-paused',paused);syncPause();});
   replay.addEventListener('click',play);
