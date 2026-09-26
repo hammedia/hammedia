@@ -396,3 +396,8 @@
 @media (prefers-reduced-motion: reduce) {
   .home-actions a { transition: none; }
 }
+
+html[lang="ja"] .constellation-home .constellation-intro h1 {
+  word-break: normal;
+  overflow-wrap: anywhere;
+}
