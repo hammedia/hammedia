@@ -278,6 +278,8 @@
       *, *::before, *::after { transition: none !important; }
     }
   </style>
+  <link rel="stylesheet" href="menu-motion.css">
+  <script src="menu-motion.js" defer></script>
 </head>
 <body>
   <a class="skip" href="#main">본문으로 이동</a>
@@ -294,21 +296,38 @@
   </header>
 
   <main id="main">
-    <section class="hero">
-      <div class="shell hero-grid">
-        <div class="hero-copy">
-          <p class="eyebrow">혼자 뛰는 사장님의 일을</p>
-          <h1>영상·홈페이지로 알리고,<br><em>AI로 반복되는 일을 줄입니다.</em></h1>
-          <p class="lead">함동민이 27년 현장 경험으로 기획부터 운영까지 직접 맡습니다.</p>
-          <div class="hero-actions">
-            <a class="button primary" href="#service">일 맡기기</a>
-            <a class="button secondary" href="../academy/">직접 배워서 해보기</a>
-          </div>
+    <section class="hm-menu" id="menu" aria-labelledby="hm-menu-heading">
+      <div class="shell hm-menu-intro">
+        <p class="hm-menu-kicker">HAM MEDIA · 부탁에서 완성까지</p>
+        <h1 id="hm-menu-heading">머릿속에 있던 일,<br><em>눈앞의 결과로.</em></h1>
+        <div class="hm-menu-opening"><p>알리고, 만들고, 꾸준히 이어가는 일.<br>지금 필요한 부탁을 골라보세요.</p><a class="hm-menu-cta" href="#contact">막힌 일 이야기하기 ↗</a></div>
+        <div class="hm-menu-choices" role="group" aria-label="필요한 작업 선택" hidden>
+          <button type="button" data-hm-choice="video" aria-pressed="true">영상으로 알려주세요</button>
+          <button type="button" data-hm-choice="page" aria-pressed="false">페이지로 모아주세요</button>
+          <button type="button" data-hm-choice="document" aria-pressed="false">자료를 정리해주세요</button>
+          <button type="button" data-hm-choice="monthly" aria-pressed="false">꾸준히 운영해주세요</button>
+          <button type="button" data-hm-choice="automation" aria-pressed="false">반복 일을 줄여주세요</button>
         </div>
-        <figure class="hero-portrait">
-          <img src="assets/ham-hamdongmin-studio.jpg" alt="함동민 대표가 작업실에서 설명하는 모습" width="1920" height="1080">
-          <figcaption><b>함동민 · HAM MEDIA</b><span>기획 · 촬영 · 제작 · 운영</span></figcaption>
-        </figure>
+        <noscript><p class="hm-menu-static">영상 제작 · 소개 페이지 · 문서·책 편집 · 월간 운영 · 반복 업무 정리 — 필요한 일을 <a href="#service">아래 범위와 가격</a>에서 확인하고 상담해주세요.</p></noscript>
+      </div>
+      <div class="hm-menu-stage" data-hm-scene="video">
+        <div class="hm-menu-stage-top"><span>구성 예시 · 실제 자료로 보는 제작 방식</span><span data-hm-count>01 / 05</span></div>
+        <div class="hm-menu-composition">
+          <div class="hm-menu-fragment hm-menu-fragment-a" aria-hidden="true"><img src="../customers/mapobada/promo-0903/photos/01_모둠회.jpg" alt="" width="2000" height="1500"><span data-hm-fragment-a>사진</span></div>
+          <div class="hm-menu-fragment hm-menu-fragment-b" aria-hidden="true"><span data-hm-fragment-b>전하고 싶은 한마디</span><b>한 장면에<br>모으다.</b></div>
+          <figure class="hm-menu-result">
+            <div class="hm-menu-browser" aria-hidden="true"><i></i><i></i><i></i><span>HAM MEDIA / 제작 예시</span></div>
+            <img class="hm-menu-main-image" src="../customers/mapobada/promo-0903/photos/02_해산물모듬.jpg" alt="마포바다 해산물 모둠 사진을 활용한 화면 구성 예시" width="2000" height="1500" fetchpriority="high">
+            <div class="hm-menu-sheet" hidden><small>반복 업무 · 구성 예시</small><strong>확인할 일만,<br>한눈에.</strong><div><span>자료 모으기</span><b>01</b></div><div><span>같은 형식으로 정리</span><b>02</b></div><div><span>사람이 확인하고 사용</span><b>03</b></div></div>
+            <figcaption class="hm-menu-result-type"><small data-hm-media-label>마포바다 실제 촬영 사진</small><strong data-hm-media-title>오늘의 바다를<br>보여주는 장면.</strong></figcaption>
+          </figure>
+          <div class="hm-menu-cutline" aria-hidden="true"><span>자료</span><i></i><span>구성</span><i></i><span>결과</span></div>
+        </div>
+        <div class="hm-menu-stage-bottom"><p data-hm-caption>실제 마포바다 사진을 재구성한 예시입니다. 납품 영상의 원본이나 전후 비교가 아닙니다.</p><div class="hm-menu-controls" hidden><button type="button" data-hm-pause aria-pressed="false">움직임 멈추기</button><button type="button" data-hm-replay>다시 보기 ↺</button></div></div>
+      </div>
+      <div class="shell hm-menu-outcome" aria-live="polite" aria-atomic="true">
+        <div><p class="hm-menu-kicker" data-hm-category>01 · 영상 제작</p><h2 data-hm-title>보여주고 싶은 것을,<br>보고 싶은 영상으로.</h2></div>
+        <div><p data-hm-description>사진과 이야기에서 출발해 기획·촬영·편집을 거쳐 매장과 채널에 맞는 영상을 만듭니다.</p><a class="hm-menu-cta" href="#service">이 부탁의 범위 보기 ↓</a><a class="hm-menu-evidence" href="#work" data-hm-evidence>실제 고객 작업 보기 ↗</a></div>
       </div>
       <div class="hero-proof-band" aria-label="실제 작업 요약">
         <div class="shell hero-proof-list">
@@ -317,6 +336,36 @@
           <div class="hero-proof-item"><b>성형외과 전문의 김종명</b><span>의료 영상 기획 · 촬영 · 편집</span></div>
           <div class="hero-proof-item"><b><a href="../tools/prompt-gallery/">프롬프트 갤러리</a></b><span>예시를 보고 프롬프트 무료 복사</span></div>
         </div>
+      </div>
+    </section>
+
+    <section class="service" id="service">
+      <div class="shell">
+        <p class="eyebrow">부탁에서 범위로</p>
+        <h2>어디까지 만들지,<br>함께 분명하게.</h2>
+        <div class="hm-menu-scope" aria-live="polite" aria-atomic="true"><span data-hm-scope-label>선택한 부탁 · 영상으로 알려주세요</span><h3 data-hm-scope-title>영상 한 편에 필요한 일</h3><p class="hm-menu-price" data-hm-price>롱폼 편집 20만 원부터 · 촬영·원본 길이·수정 범위는 별도 확인</p><p data-hm-scope>기획 · 촬영 또는 보유 자료 편집 · 자막 · 내보내기. 길이, 화면 비율, 수정 횟수와 공개 채널은 견적서에서 정합니다.</p><a class="hm-menu-cta" href="#contact">이 부탁으로 상담하기 ↗</a></div>
+        <p class="lead">아래는 기존 가격 기준입니다. 선택한 예시의 확정 가격은 아니며, 실제 범위를 확인한 뒤 견적을 드립니다.</p>
+        <div class="service-grid">
+          <article class="service-item">
+            <small>01 · 단건 제작</small>
+            <h3>단건 제작의 기존 시작 기준</h3>
+            <p>롱폼 영상 편집의 시작 기준입니다. 모든 제작 메뉴에 같은 가격을 적용하지 않습니다. 촬영·원본 길이·수정 범위와 적용 대상은 상담 뒤 견적서에서 합의합니다.</p>
+            <span class="price">20만 원부터</span>
+          </article>
+          <article class="service-item">
+            <small>02 · 월간 운영</small>
+            <h3>매달 함께 운영하기</h3>
+            <p>유튜브·SNS·홈페이지를 월 단위로 만들고 관리합니다.</p>
+            <span class="price">월 50만 원부터</span>
+          </article>
+          <article class="service-item">
+            <small>03 · 회사용 AI</small>
+            <h3>회사에 맞는 AI 도구 만들기</h3>
+            <p>문서 정리와 고객 대응처럼 자주 반복되는 일을 직원이 직접 쓸 수 있게 만듭니다.</p>
+            <span class="price">현재 업무 확인 후 서면 견적</span>
+          </article>
+        </div>
+        <p class="scope-note">견적서에는 하는 일과 하지 않는 일, 받을 결과물, 기간, 수정 횟수, 금액과 별도 비용, 서로 맡을 일을 글로 적습니다.</p>
       </div>
     </section>
 
@@ -435,34 +484,7 @@
       </div>
     </section>
 
-    <section class="service" id="service">
-      <div class="shell">
-        <p class="eyebrow">일 맡기는 방법</p>
-        <h2>필요한 만큼 맡기세요.</h2>
-        <p class="lead">서비스 이름부터 고를 필요 없습니다. 막힌 일과 원하는 끝만 말씀해주세요.</p>
-        <div class="service-grid">
-          <article class="service-item">
-            <small>01 · 단건 제작</small>
-            <h3>한 번 완성하기</h3>
-            <p>영상, 소개 페이지, 매장 홍보물처럼 끝이 분명한 일을 맡습니다.</p>
-            <span class="price">20만 원부터</span>
-          </article>
-          <article class="service-item">
-            <small>02 · 월간 운영</small>
-            <h3>매달 함께 운영하기</h3>
-            <p>유튜브·SNS·홈페이지를 월 단위로 만들고 관리합니다.</p>
-            <span class="price">월 50만 원부터</span>
-          </article>
-          <article class="service-item">
-            <small>03 · 회사용 AI</small>
-            <h3>회사에 맞는 AI 도구 만들기</h3>
-            <p>문서 정리와 고객 대응처럼 자주 반복되는 일을 직원이 직접 쓸 수 있게 만듭니다.</p>
-            <span class="price">현재 업무 확인 후 서면 견적</span>
-          </article>
-        </div>
-        <p class="scope-note">견적서에는 하는 일과 하지 않는 일, 받을 결과물, 기간, 수정 횟수, 금액과 별도 비용, 서로 맡을 일을 글로 적습니다.</p>
-      </div>
-    </section>
+
 
     <section class="owner" aria-labelledby="owner-title">
       <div class="shell owner-grid">
@@ -549,6 +571,7 @@
           <p class="eyebrow">상담</p>
           <h2>막힌 일부터 말씀해주세요.</h2>
           <p>세 가지만 적어주시면 필요한 범위와 다음 순서를 답하겠습니다.</p>
+          <div class="hm-menu-contact" hidden><label for="hm-menu-inquiry">선택한 부탁을 상담에 붙여넣기</label><textarea id="hm-menu-inquiry" rows="4" readonly></textarea><button type="button" data-hm-copy>부탁 내용 복사</button><p data-hm-copy-status role="status">아래 양식에 직접 붙여넣어 주세요. 아직 전송되지 않았습니다.</p></div>
           <ol class="prepare">
             <li><b>1</b><span>무엇이 달라졌으면 하는지</span></li>
             <li><b>2</b><span>지금 어디에서 막히는지</span></li>

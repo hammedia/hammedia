@@ -1,0 +1,398 @@
+/* The public home has two jobs: explain the work, then invite people into the stars. */
+.home-body {
+  background: #111827;
+  color: #1c1814;
+}
+
+.constellation-home.home-hub {
+  display: block;
+  min-height: 100svh;
+  padding: 0;
+}
+
+.constellation-home .hub-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 4.5rem;
+  padding: 0 clamp(1.25rem, 4vw, 4rem);
+  background: #f9f7f3;
+  border-bottom: 1px solid rgba(28, 24, 20, 0.1);
+}
+
+.constellation-home .brand-mark {
+  color: #1c1814;
+  font-size: 1rem;
+  letter-spacing: 0.13em;
+}
+
+.home-header-nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(1rem, 2vw, 2rem);
+}
+
+.home-header-nav a {
+  color: #4a423c;
+  font-size: 0.9rem;
+  font-weight: 650;
+  text-decoration: none;
+  text-underline-offset: 0.3em;
+}
+
+.home-header-nav a:hover,
+.home-header-nav a:focus-visible {
+  color: #1c1814;
+  text-decoration: underline;
+}
+
+.constellation-home .constellation-entry {
+  display: grid;
+  grid-template-columns: minmax(0, 42%) minmax(0, 58%);
+  gap: 0;
+  align-content: stretch;
+  width: 100%;
+  min-height: calc(100svh - 4.5rem);
+  margin: 0;
+  padding: 0;
+}
+
+.constellation-home .constellation-intro {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 0;
+  min-width: 0;
+  max-width: none;
+  padding: clamp(2rem, 5vw, 5rem) clamp(1.5rem, 4.5vw, 5rem);
+  background: #f9f7f3;
+}
+
+.home-kicker {
+  margin: 0 0 clamp(1.2rem, 3vw, 2.4rem);
+  color: #326b98;
+  font-size: 0.85rem;
+  font-weight: 760;
+  letter-spacing: 0.08em;
+}
+
+.constellation-home .constellation-intro h1 {
+  max-width: 13ch;
+  margin: 0;
+  color: #1c1814;
+  font-size: clamp(2.35rem, 4.2vw, 4.4rem);
+  font-weight: 800;
+  line-height: 1.16;
+  letter-spacing: -0.045em;
+  word-break: keep-all;
+}
+
+.constellation-home .constellation-guide {
+  max-width: 29rem;
+  margin: clamp(1.2rem, 2.8vw, 2.4rem) 0 0;
+  color: #4a423c;
+  font-size: clamp(1rem, 1.25vw, 1.16rem);
+  line-height: 1.65;
+}
+
+.home-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.9rem 1.5rem;
+  margin-top: clamp(1.6rem, 3.4vw, 3rem);
+}
+
+.home-actions a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 3rem;
+  font-size: 0.98rem;
+  font-weight: 760;
+  transition: transform 180ms ease, background-color 180ms ease, color 180ms ease;
+}
+
+.home-action-primary {
+  padding: 0.78rem 1.2rem;
+  border-radius: 0.8rem;
+  color: #fff;
+  background: #00704a;
+  text-decoration: none;
+}
+
+.home-action-primary:hover { background: #005c3d; }
+.home-action-primary:active,
+.home-action-secondary:active { transform: translateY(1px); }
+
+.home-action-secondary {
+  color: #1c1814;
+  text-decoration: underline;
+  text-underline-offset: 0.35em;
+}
+
+.home-reading-routes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.85rem;
+  align-items: center;
+  margin-top: 1.25rem;
+  color: #4a423c;
+  font-size: 0.85rem;
+}
+
+.home-reading-routes span { font-weight: 700; }
+.home-reading-routes a { color: #215478; text-underline-offset: 0.2em; }
+.home-reading-routes a:focus-visible { outline: 2px solid #215478; outline-offset: 3px; }
+
+.home-proof {
+  display: grid;
+  grid-template-columns: 4.75rem minmax(0, 1fr);
+  align-items: center;
+  gap: 0.9rem;
+  max-width: 31rem;
+  margin: clamp(1.8rem, 5vw, 4rem) 0 0;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(28, 24, 20, 0.2);
+  color: #4a423c;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  text-decoration: none;
+}
+
+.home-proof img {
+  width: 4.75rem;
+  height: 4.75rem;
+  border-radius: 0.5rem;
+  object-fit: cover;
+}
+
+.home-proof > span { display: grid; gap: 0.15rem; min-width: 0; }
+.home-proof strong { color: #1c1814; font-size: 0.9rem; }
+.home-proof > span > span { display: block; }
+.home-proof:hover > span > span { color: #005c3d; text-decoration: underline; text-underline-offset: 0.25em; }
+
+.constellation-home .constellation-scene {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  min-width: 0;
+  min-height: 36rem;
+  overflow: hidden;
+  padding: clamp(2rem, 5vw, 4rem) clamp(1.3rem, 4vw, 4rem);
+  color: #f9f7f3;
+  background: rgba(11, 18, 31, 0.7);
+}
+
+.home-stars-intro {
+  position: relative;
+  z-index: 3;
+}
+
+.home-stars-intro p {
+  margin: 0 0 0.6rem;
+  color: #f4dc59;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.home-stars-intro h2 {
+  max-width: 18ch;
+  margin: 0;
+  color: #fffdf7;
+  font-size: clamp(1.6rem, 2.6vw, 2.7rem);
+  line-height: 1.2;
+  letter-spacing: -0.035em;
+}
+
+.home-stars-intro span {
+  display: block;
+  margin-top: 0.75rem;
+  color: #e1e8f0;
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+
+.constellation-home .constellation-window {
+  flex: 1 1 auto;
+  align-self: stretch;
+  width: 100%;
+  min-height: 24rem;
+  margin-top: 0.5rem;
+}
+
+.constellation-home .constellation-star {
+  width: 4rem;
+  height: 4rem;
+  margin: -2rem 0 0 -2rem;
+}
+
+.constellation-home .star-label {
+  font-size: 0.82rem;
+  opacity: 1;
+  background: rgba(16, 24, 36, 0.86);
+  border-color: rgba(248, 245, 237, 0.38);
+  transform: translate(-50%, 0);
+}
+
+.constellation-home .star-fountain .star-label,
+.constellation-home .star-audio .star-label,
+.constellation-home .star-motorcycle .star-label,
+.constellation-home .star-space .star-label,
+.constellation-home .star-camera .star-label {
+  transform: translate(0, 0);
+}
+
+.constellation-home .constellation-bridge {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) repeat(2, minmax(0, 1fr));
+  gap: 2rem clamp(1.5rem, 4vw, 4rem);
+  padding: clamp(2.5rem, 5vw, 5rem) clamp(1.5rem, 4.5vw, 5rem) 1.5rem;
+  color: #1c1814;
+  background: #f5f3ee;
+}
+
+.home-footer-intro strong {
+  font-size: 1rem;
+  letter-spacing: 0.12em;
+}
+
+.constellation-home .constellation-bridge .home-footer-intro p {
+  margin-top: 0.8rem;
+  color: #4a423c;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.home-footer-group {
+  display: grid;
+  align-content: start;
+  gap: 0.85rem;
+}
+
+.home-footer-group h2 {
+  margin: 0 0 0.2rem;
+  font-size: 1rem;
+  font-weight: 760;
+}
+
+.constellation-home .constellation-bridge .constellation-work-link {
+  display: block;
+  min-height: 1.7rem;
+  color: #344039;
+  font-size: 0.9rem;
+  font-weight: 520;
+  text-decoration: none;
+}
+
+.constellation-home .constellation-bridge .constellation-work-link:hover,
+.constellation-home .constellation-bridge .constellation-work-link:focus-visible {
+  color: #005c3d;
+  text-decoration: underline;
+}
+
+.home-privacy-link {
+  grid-column: 1 / -1;
+  justify-self: start;
+  color: #4a423c;
+  font-size: 0.82rem;
+  text-underline-offset: 0.22em;
+}
+
+.constellation-home a:focus-visible {
+  outline: 3px solid #326b98;
+  outline-offset: 4px;
+}
+
+.constellation-home .constellation-scene a:focus-visible {
+  outline-color: #f4dc59;
+}
+
+@media (max-width: 960px) {
+  .constellation-home .constellation-entry { grid-template-columns: 1fr; }
+  .constellation-home .constellation-intro {
+    padding: clamp(2rem, 6vw, 3.5rem) clamp(1.25rem, 5vw, 2.5rem);
+  }
+  .constellation-home .constellation-intro h1 { font-size: clamp(2.1rem, 5.4vw, 3.5rem); }
+  .constellation-home .constellation-scene {
+    min-height: 0;
+    padding: 2rem clamp(1.25rem, 5vw, 2.5rem) 2.5rem;
+  }
+  .constellation-home .constellation-window {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.5rem;
+    min-height: 0;
+    margin-top: 1.5rem;
+  }
+  .constellation-home .constellation-path { display: none; }
+  .constellation-home .constellation-star {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+    left: auto;
+    top: auto;
+    width: 100%;
+    min-height: 5.5rem;
+    height: auto;
+    margin: 0;
+    padding: 0.7rem 0.25rem;
+    border-radius: 0.6rem;
+    background: rgba(255, 255, 255, 0.045);
+  }
+  .constellation-home .star-label,
+  .constellation-home .star-fountain .star-label,
+  .constellation-home .star-audio .star-label,
+  .constellation-home .star-motorcycle .star-label,
+  .constellation-home .star-space .star-label,
+  .constellation-home .star-camera .star-label {
+    position: static;
+    display: block;
+    width: auto;
+    max-width: 100%;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    color: #f9f7f3;
+    font-size: 0.9rem;
+    line-height: 1.35;
+    opacity: 1;
+    transform: none;
+    white-space: normal;
+  }
+  .constellation-home .constellation-star:hover .star-label,
+  .constellation-home .constellation-star:focus-visible .star-label { transform: none; }
+  .constellation-home .constellation-bridge { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .home-footer-intro { grid-column: 1 / -1; }
+}
+
+@media (max-width: 620px) {
+  .constellation-home .hub-header { flex-wrap: wrap; gap: 0.35rem; min-height: 3.75rem; padding: 0.65rem 1.1rem; }
+  .home-header-nav { display: flex; width: 100%; justify-content: space-between; gap: 0.5rem; }
+  .home-header-nav a { min-height: 2.75rem; display: inline-flex; align-items: center; font-size: 0.82rem; }
+  .constellation-home .constellation-intro { padding: 2.2rem 1.1rem 2.5rem; }
+  .home-kicker { margin-bottom: 1.1rem; font-size: 0.77rem; }
+  .constellation-home .constellation-intro h1 { font-size: clamp(2.1rem, 8.6vw, 2.8rem); }
+  .constellation-home .constellation-guide { margin-top: 1.1rem; font-size: 1rem; }
+  .home-actions { display: grid; width: 100%; gap: 0.9rem; margin-top: 1.4rem; }
+  .home-action-primary { width: 100%; }
+  .home-action-secondary { justify-self: start; }
+  .home-proof { margin-top: 1.6rem; font-size: 0.83rem; }
+  .constellation-home .constellation-scene { padding: 1.75rem 1.1rem 2rem; }
+  .home-stars-intro h2 { font-size: 1.55rem; }
+  .home-stars-intro span { font-size: 0.82rem; }
+  .constellation-home .constellation-window { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .constellation-home .constellation-bridge { grid-template-columns: 1fr; gap: 2rem; padding: 2.5rem 1.1rem 1.5rem; }
+  .home-footer-intro,
+  .home-privacy-link { grid-column: auto; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-actions a { transition: none; }
+}
