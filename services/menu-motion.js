@@ -17,6 +17,7 @@
   };
   const inquiryDrafts = new Map();
   let selected = 'video';
+  let automaticPurpose = '';
   let paused = false;
   let running = false;
   const pause = q('[data-hm-pause]');
@@ -57,6 +58,17 @@
   }
   q('#hm-menu-inquiry').addEventListener('input',()=>{inquiryDrafts.set(selected,q('#hm-menu-inquiry').value);syncEmail();});
   choices.forEach(button=>button.addEventListener('click',()=>choose(button.dataset.hmChoice)));
+  document.querySelectorAll('[data-hm-video-purpose]').forEach(link=>link.addEventListener('click',()=>{
+    choose('video',false);
+    const field=q('#hm-menu-inquiry');
+    const purpose='영상의 목적: '+link.dataset.hmVideoPurpose;
+    const lines=field.value.split('\n').filter(line=>!automaticPurpose||line!==automaticPurpose);
+    if(!lines.includes(purpose)) lines.push(purpose);
+    field.value=lines.join('\n');
+    automaticPurpose=purpose;
+    inquiryDrafts.set('video',field.value);
+    syncEmail();
+  }));
   pause.addEventListener('click',()=>{if(!running)return;paused=!paused;stage.classList.toggle('hm-menu-paused',paused);syncPause();});
   replay.addEventListener('click',play);
   stage.addEventListener('animationend',event=>{if(event.animationName==='hm-menu-assemble'){running=false;paused=false;syncPause();}});
