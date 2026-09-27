@@ -105,8 +105,14 @@
         <button class="btn" id="setShop">가게 이름</button>
         <button class="btn" id="addEmp">직원 추가</button>
         <button class="btn" id="delEmp">직원 빼기</button>
+        <button class="btn" id="setPin">직원 PIN</button>
       </div>
-      <p class="note">실제 직원 이름을 넣기 전에, 무엇을 기록하고 얼마나 보관하는지 직원에게 알리고 동의를 받으세요. 이 체험판은 PIN을 쓰지 않습니다(실제 판에서는 직원별 4자리 선택).</p>
+      <p class="note" style="margin-top:14px"><b>가게 밖에서 못 누르게</b> — <span id="geoStatus"></span></p>
+      <div class="tools" style="margin-top:6px">
+        <button class="btn primary" id="geoSet">여기를 가게로 등록</button>
+        <button class="btn" id="geoOff" style="display:none">위치 확인 끄기</button>
+      </div>
+      <p class="note">가게 안에서 한 번 누르면 이 기기에 가게 좌표만 남습니다. 그 뒤로는 출근·퇴근을 누를 때 폰 위치가 반경 밖이면 막힙니다(직원 위치는 저장·전송하지 않음). 실내는 오차가 있어 반경을 넉넉히 두세요. 실제 직원 이름·PIN·위치 확인을 쓰기 전에 무엇을 기록하고 얼마나 보관하는지 알리고 동의를 받으세요.</p>
     </div>
   </section>
 
@@ -118,6 +124,7 @@
   <button class="big in" id="btnIn">출근</button>
   <button class="big out" id="btnOut">퇴근</button>
   <button class="big ghost" id="btnClose">닫기</button>
+  <div class="note" id="pMsg" style="min-height:18px"></div>
 </div></div>
 <div class="sheet" id="formSheet"><div class="panel">
   <h2 id="formTitle"></h2><p class="sub" id="formSub"></p>
@@ -142,6 +149,7 @@
       { id: 'e3', n: '가명 셋', r: '홀 매니저 · 정직원' }, { id: 'e4', n: '가명 넷', r: '홀 · 정직원' },
       { id: 'e5', n: '가명 다섯', r: '홀 · 아르바이트' }, { id: 'e6', n: '가명 여섯', r: '홀 · 아르바이트' }
     ],
+    geo: null,             // {lat, lng, radius} — 가게 좌표 하나만 기기 안에 저장. 직원 위치는 저장·전송하지 않는다
     recs: []               // {emp, in(ms), out(ms|null), edited:bool}
   };
   var st = load();
@@ -175,6 +183,21 @@
       sh.onclick = function (ev) { if (ev.target === sh) { close(); resolve(null); } };
       sh.classList.add('on'); var first = box.querySelector('input'); if (first) setTimeout(function () { first.focus(); }, 50);
     });
+  }
+
+  // ── 가게 위치 반경(v2) — 직원 위치는 판정에만 쓰고 저장·전송하지 않는다 ─
+  function getPos() { return new Promise(function (res, rej) { if (!navigator.geolocation) return rej(new Error('nogeo')); navigator.geolocation.getCurrentPosition(function (p) { res({ lat: p.coords.latitude, lng: p.coords.longitude, acc: p.coords.accuracy }); }, function (e) { rej(e); }, { enableHighAccuracy: true, timeout: 8000, maximumAge: 15000 }); }); }
+  function distM(a, b) { var R = 6371000, toR = Math.PI / 180; var dLat = (b.lat - a.lat) * toR, dLng = (b.lng - a.lng) * toR; var x = Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.cos(a.lat * toR) * Math.cos(b.lat * toR) * Math.sin(dLng / 2) * Math.sin(dLng / 2); return 2 * R * Math.asin(Math.sqrt(x)); }
+  // 통과하면 true, 막히면 false(메시지 표시)
+  function gateGeo() {
+    if (!st.geo) return Promise.resolve(true);
+    $('pMsg').textContent = '가게 안인지 확인 중…';
+    return getPos().then(function (p) { var d = Math.round(distM(p, st.geo)); if (d <= st.geo.radius + Math.min(p.acc || 0, 50)) { $('pMsg').textContent = ''; return true; } $('pMsg').textContent = '가게 밖입니다(약 ' + d + 'm). 가게 안에서 눌러 주세요.'; return false; })
+      .catch(function (e) { $('pMsg').textContent = e && e.code === 1 ? '위치 허용이 필요합니다. 브라우저 설정에서 위치를 허용해 주세요.' : '위치를 확인하지 못했습니다. 잠시 뒤 다시 눌러 주세요.'; return false; });
+  }
+  function gatePin(e) {
+    if (!e.pin) return Promise.resolve(true);
+    return ask({ title: e.n + ' · PIN', sub: '본인 확인 4자리', fields: [{ label: 'PIN', type: 'password', placeholder: '••••' }], ok: '확인' }).then(function (v) { if (v && v[0] === e.pin) return true; if (v) toast('PIN이 다릅니다'); return false; });
   }
 
   // ── 시간 계산 ─────────────────────────────────────────────
@@ -220,15 +243,22 @@
   }
   function openSheet(e) {
     cur = e; var o = openRec(e.id);
-    $('pName').textContent = e.n; $('pSub').textContent = e.r + (o ? ' · ' + fmtT(o.in) + ' 출근' : '');
+    $('pName').textContent = e.n; $('pSub').textContent = e.r + (o ? ' · ' + fmtT(o.in) + ' 출근' : '') + (e.pin ? ' · PIN' : ''); $('pMsg').textContent = '';
     $('btnIn').style.display = o ? 'none' : ''; $('btnOut').style.display = o ? '' : 'none';
     $('sheet').classList.add('on');
   }
   function closeSheet() { $('sheet').classList.remove('on'); cur = null; }
   $('btnClose').addEventListener('click', closeSheet);
   $('sheet').addEventListener('click', function (ev) { if (ev.target.id === 'sheet') closeSheet(); });
-  $('btnIn').addEventListener('click', function () { if (!cur) return; var now = Date.now(); st.recs.push({ emp: cur.id, in: now, out: null }); save(); toast(cur.n + ' 출근 ' + fmtT(now)); closeSheet(); renderStaff(); });
-  $('btnOut').addEventListener('click', function () { if (!cur) return; var o = openRec(cur.id); if (!o) return; o.out = Date.now(); save(); toast(cur.n + ' 퇴근 ' + fmtT(o.out)); closeSheet(); renderStaff(); });
+  function punch(kind) {
+    if (!cur) return; var e = cur;
+    gateGeo().then(function (ok) { if (!ok) return; return gatePin(e).then(function (ok2) { if (!ok2) return;
+      if (kind === 'in') { if (openRec(e.id)) return; var now = Date.now(); st.recs.push({ emp: e.id, in: now, out: null }); save(); toast(e.n + ' 출근 ' + fmtT(now)); }
+      else { var o = openRec(e.id); if (!o) return; o.out = Date.now(); save(); toast(e.n + ' 퇴근 ' + fmtT(o.out)); }
+      closeSheet(); renderStaff(); }); });
+  }
+  $('btnIn').addEventListener('click', function () { punch('in'); });
+  $('btnOut').addEventListener('click', function () { punch('out'); });
 
   // ── 사장 화면 ─────────────────────────────────────────────
   var ym = (function () { var d = new Date(); return { y: d.getFullYear(), m: d.getMonth() }; })();
@@ -291,8 +321,14 @@
 
   // ── 설정: 가게 이름·직원 명단(범용) ───────────────────────
   $('setShop').addEventListener('click', function () { ask({ title: '가게 이름', fields: [{ label: '가게 이름', value: st.shop }] }).then(function (v) { if (v && v[0].trim()) { st.shop = v[0].trim(); save(); renderStaff(); renderOwner(); toast('바꿨습니다'); } }); });
-  $('addEmp').addEventListener('click', function () { ask({ title: '직원 추가', sub: '체험판이면 가명으로', fields: [{ label: '이름', placeholder: '가명 일곱' }, { label: '역할', placeholder: '홀 · 아르바이트' }] }).then(function (v) { if (!v || !v[0].trim()) return; st.emps.push({ id: 'e' + Date.now(), n: v[0].trim(), r: (v[1] || '').trim() }); save(); renderStaff(); renderOwner(); toast('추가했습니다'); }); });
+  $('addEmp').addEventListener('click', function () { ask({ title: '직원 추가', sub: '체험판이면 가명으로', fields: [{ label: '이름', placeholder: '가명 일곱' }, { label: '역할', placeholder: '홀 · 아르바이트' }, { label: 'PIN 4자리(비우면 없음)', type: 'password', placeholder: '••••' }] }).then(function (v) { if (!v || !v[0].trim()) return; var pin = (v[2] || '').trim(); if (pin && !/^\d{4}$/.test(pin)) { toast('PIN은 숫자 4자리'); return; } st.emps.push({ id: 'e' + Date.now(), n: v[0].trim(), r: (v[1] || '').trim(), pin: pin || undefined }); save(); renderStaff(); renderOwner(); toast('추가했습니다'); }); });
   $('delEmp').addEventListener('click', function () { ask({ title: '직원 빼기', sub: '누른 사람이 명단에서 빠집니다. 기록은 남습니다.', list: st.emps.map(function (e) { return e.n + ' · ' + e.r; }) }).then(function (v) { if (!v || v.pick === undefined) return; st.emps.splice(v.pick, 1); save(); renderStaff(); renderOwner(); toast('뺐습니다'); }); });
+
+  $('setPin').addEventListener('click', function () { ask({ title: 'PIN 설정할 직원', sub: '누르면 그 직원의 PIN을 정합니다', list: st.emps.map(function (e) { return e.n + (e.pin ? ' · PIN 있음' : ' · PIN 없음'); }) }).then(function (v) { if (!v || v.pick === undefined) return; var e = st.emps[v.pick]; return ask({ title: e.n + ' PIN', sub: '숫자 4자리. 비우면 PIN을 없앱니다', fields: [{ label: 'PIN', type: 'password', placeholder: '••••' }] }).then(function (w) { if (!w) return; var pin = (w[0] || '').trim(); if (pin && !/^\d{4}$/.test(pin)) { toast('PIN은 숫자 4자리'); return; } e.pin = pin || undefined; save(); renderStaff(); toast(pin ? 'PIN을 정했습니다' : 'PIN을 없앴습니다'); }); }); });
+  function renderGeo() { var el = $('geoStatus'); if (!el) return; el.textContent = st.geo ? '가게 위치 등록됨 · 반경 ' + st.geo.radius + 'm 안에서만 출근/퇴근' : '가게 위치 미등록 — 어디서나 눌립니다'; $('geoOff').style.display = st.geo ? '' : 'none'; }
+  $('geoSet').addEventListener('click', function () { toast('가게 위치를 재는 중…'); getPos().then(function (p) { return ask({ title: '여기를 가게로 등록', sub: '지금 위치(오차 약 ' + Math.round(p.acc || 0) + 'm)를 가게 좌표로 저장합니다. 좌표는 이 기기 안에만 남습니다.', fields: [{ label: '허용 반경(m)', type: 'number', value: st.geo ? st.geo.radius : 100 }], ok: '등록' }).then(function (v) { if (!v) return; var r = parseInt(v[0], 10); st.geo = { lat: p.lat, lng: p.lng, radius: isNaN(r) ? 100 : Math.max(30, r) }; save(); renderGeo(); toast('가게 위치를 등록했습니다'); }); }).catch(function (e) { toast(e && e.code === 1 ? '위치 허용이 필요합니다' : '위치를 못 잡았습니다'); }); });
+  $('geoOff').addEventListener('click', function () { ask({ title: '위치 확인 끄기', sub: '가게 밖에서도 눌리게 됩니다.', ok: '끄기', danger: true }).then(function (v) { if (!v) return; st.geo = null; save(); renderGeo(); toast('위치 확인을 껐습니다'); }); });
+  renderGeo();
 
   renderStaff();
 })();
