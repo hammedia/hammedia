@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>가게 출퇴근 기록기 — 체험판</title>
+<meta name="description" content="앱 설치도 회원가입도 없이, 가게 폰 하나로 직원 출근·퇴근을 찍고 사장님이 월 정리를 봅니다. 체험판은 가명 직원만 들어 있습니다.">
+<style>
+  :root{--paper:#f4f1ea;--card:#fffdf8;--ink:#201b17;--muted:#665c55;--line:#ded7cd;--blue:#2367a5;--green:#167253;--green-soft:#e6f3ee;--red:#b54235;--radius:18px;--font:"Pretendard",-apple-system,BlinkMacSystemFont,"Noto Sans KR","Apple SD Gothic Neo",sans-serif}
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font);line-height:1.5;word-break:keep-all;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:640px;margin:0 auto;padding:16px 16px 60px}
+  .demo{font-size:12px;color:var(--muted);background:#fff;border:1px dashed var(--line);border-radius:10px;padding:8px 12px;margin-bottom:12px}
+  header{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}
+  h1{font-size:20px;margin:0}
+  h1 small{display:block;font-size:12px;color:var(--muted);font-weight:500}
+  .clock{font-size:13px;color:var(--muted);text-align:right}
+  .tabs{display:flex;gap:6px;margin-bottom:14px}
+  .tab{flex:1;border:1px solid var(--line);background:#fff;border-radius:12px;padding:11px;font:inherit;font-size:15px;cursor:pointer;color:var(--muted)}
+  .tab.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px;margin-bottom:12px}
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+  .emp{border:1px solid var(--line);background:#fff;border-radius:14px;padding:14px 12px;text-align:left;font:inherit;cursor:pointer;display:flex;flex-direction:column;gap:6px;min-height:92px}
+  .emp .n{font-size:18px;font-weight:700}
+  .emp .r{font-size:12px;color:var(--muted)}
+  .emp .s{font-size:13px;font-weight:600;color:var(--muted)}
+  .emp.in{border-color:var(--green);background:var(--green-soft)}
+  .emp.in .s{color:var(--green)}
+  .emp:active{transform:translateY(1px)}
+  .sheet{position:fixed;inset:0;background:rgba(32,27,23,.45);display:none;align-items:flex-end;justify-content:center;z-index:10}
+  .sheet.on{display:flex}
+  .panel{background:#fff;border-radius:20px 20px 0 0;padding:20px 18px 26px;width:100%;max-width:640px}
+  .panel h2{margin:0 0 4px;font-size:22px}
+  .panel .sub{color:var(--muted);font-size:14px;margin:0 0 14px}
+  .big{display:block;width:100%;border:0;border-radius:14px;padding:18px;font:inherit;font-size:20px;font-weight:800;cursor:pointer;margin-top:8px;color:#fff}
+  .big.in{background:var(--green)} .big.out{background:var(--red)}
+  .big.ghost{background:#fff;color:var(--muted);border:1px solid var(--line);font-weight:500;font-size:15px}
+  .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--ink);color:#fff;padding:12px 18px;border-radius:999px;font-size:15px;display:none;z-index:20}
+  .toast.on{display:block}
+  .kpi{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px}
+  .kpi div{background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px;text-align:center}
+  .kpi b{display:block;font-size:22px}
+  .kpi span{font-size:12px;color:var(--muted)}
+  .tablewrap{overflow-x:auto}
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  th,td{padding:8px 6px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}
+  th:first-child,td:first-child{text-align:left}
+  th{font-size:11px;color:var(--muted);font-weight:600}
+  .tools{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+  .btn{border:1px solid var(--line);background:#fff;border-radius:10px;padding:10px 12px;font:inherit;font-size:14px;cursor:pointer}
+  .btn.primary{background:var(--blue);color:#fff;border-color:var(--blue)}
+  .mini{border:1px solid var(--line);background:#fff;border-radius:8px;padding:3px 8px;font:inherit;font-size:12px;cursor:pointer;margin-left:6px}
+  .note{font-size:12px;color:var(--muted);line-height:1.6;margin-top:10px}
+  .month{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+  .month b{font-size:17px;flex:1;text-align:center}
+  .log{font-size:13px;max-height:260px;overflow:auto;border:1px solid var(--line);border-radius:12px;padding:8px 10px;background:#fff}
+  .log div{padding:5px 0;border-bottom:1px dashed var(--line);display:flex;justify-content:space-between;gap:8px;align-items:center}
+  .log div:last-child{border:0}
+  .warn{color:var(--red)}
+  .flab{display:block;font-size:13px;color:var(--muted);margin:8px 0 12px}
+  .finp{display:block;width:100%;margin-top:4px;font:inherit;font-size:18px;padding:12px;border:1px solid var(--line);border-radius:12px;background:#fff;color:var(--ink)}
+  .pick{display:block;width:100%;text-align:left;margin-top:8px;padding:13px 14px;font-size:16px}
+  footer{font-size:12px;color:var(--muted);line-height:1.7;margin-top:24px;border-top:1px solid var(--line);padding-top:12px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="demo">체험판 — 직원은 전부 <b>가명</b>이고 실제 정보가 없습니다. 기록은 이 기기(브라우저) 안에만 저장되며 어디로도 전송되지 않습니다.</div>
+  <header>
+    <h1>가게 출퇴근 기록기 <small id="shopName"></small></h1>
+    <div class="clock" id="clock"></div>
+  </header>
+  <div class="tabs">
+    <button class="tab on" data-v="staff">직원 화면</button>
+    <button class="tab" data-v="owner">사장 화면</button>
+  </div>
+
+  <section id="staff">
+    <div class="card">
+      <div class="grid" id="empGrid"></div>
+      <p class="note">이름을 누르면 출근·퇴근 버튼이 뜹니다. 지금 출근 중인 사람은 초록으로 보입니다.</p>
+    </div>
+  </section>
+
+  <section id="owner" style="display:none">
+    <div class="card">
+      <div class="month"><button class="btn" id="prevM">‹</button><b id="monthLabel"></b><button class="btn" id="nextM">›</button></div>
+      <div class="kpi"><div><b id="kNow">0</b><span>지금 근무 중</span></div><div><b id="kDays">0</b><span>이달 근무 건수</span></div><div><b id="kHours">0</b><span>이달 총 시간</span></div></div>
+      <div class="tablewrap"><table><thead><tr><th>직원</th><th>근무일</th><th>총(h)</th><th>연장(h)</th><th>야간(h)</th><th>휴일(h)</th><th>주휴 대상 주</th></tr></thead><tbody id="sumBody"></tbody></table></div>
+      <div class="tools">
+        <button class="btn primary" id="csv">이달 CSV 내려받기</button>
+        <button class="btn" id="seed">가명 시연 기록 채우기</button>
+        <button class="btn" id="wipe">이 기기 기록 지우기</button>
+      </div>
+      <p class="note">총 시간 = 출근~퇴근에서 휴게 <b id="breakMin">30</b>분(4시간 넘게 일한 날) 뺀 값 · 연장 = 하루 8시간 넘는 부분 · 야간 = 22시~06시 · 휴일 = 체험판은 일요일. 주휴 대상 주 = 그 주 15시간 이상 일한 주의 수. <b>급여 금액은 계산하지 않습니다</b> — 임금대장에 필요한 기초 숫자까지이고, 확정은 사장님·세무 담당 몫입니다. 퇴근을 안 찍은 기록은 <span class="warn">빨간 표시</span>로 남고 합계에서 빠지며, 사장 화면에서 시각을 넣으면 「수정됨」으로 남습니다.</p>
+    </div>
+    <div class="card">
+      <b style="font-size:14px">이달 기록 (최근순)</b>
+      <div class="log" id="log" style="margin-top:8px"></div>
+    </div>
+    <div class="card">
+      <b style="font-size:14px">우리 가게로 바꾸기</b>
+      <div class="tools" style="margin-top:8px">
+        <button class="btn" id="setShop">가게 이름</button>
+        <button class="btn" id="addEmp">직원 추가</button>
+        <button class="btn" id="delEmp">직원 빼기</button>
+      </div>
+      <p class="note">실제 직원 이름을 넣기 전에, 무엇을 기록하고 얼마나 보관하는지 직원에게 알리고 동의를 받으세요. 이 체험판은 PIN을 쓰지 않습니다(실제 판에서는 직원별 4자리 선택).</p>
+    </div>
+  </section>
+
+  <footer>HAM MEDIA 현장 도구 · 가게 출퇴근 기록기 체험판 v1 (2026-09-28) · 앱 설치·회원가입 없이 화면 하나 · 27년 현장을 산 사람과 AI 동료가 만듭니다.</footer>
+</div>
+
+<div class="sheet" id="sheet"><div class="panel">
+  <h2 id="pName"></h2><p class="sub" id="pSub"></p>
+  <button class="big in" id="btnIn">출근</button>
+  <button class="big out" id="btnOut">퇴근</button>
+  <button class="big ghost" id="btnClose">닫기</button>
+</div></div>
+<div class="sheet" id="formSheet"><div class="panel">
+  <h2 id="formTitle"></h2><p class="sub" id="formSub"></p>
+  <div id="formFields"></div>
+  <button class="big in" id="formOk">저장</button>
+  <button class="big ghost" id="formCancel">취소</button>
+</div></div>
+<div class="toast" id="toast"></div>
+<script>
+/* 가게 출퇴근 기록기 — 체험판 v1 (HAM MEDIA 현장 도구, Case 011)
+   원칙: 앱 설치·회원가입 없음 · 이 기기(브라우저)에만 저장 · 어디로도 전송 없음 · 체험판은 가명만.
+   법정 최소 항목(임금대장, 근로기준법 시행령 27조): 성명 · 출근/퇴근 시각 · 휴게 · 연장/야간/휴일 · 합계 — 사장 화면과 CSV에 모두 나온다.
+   급여 금액은 계산하지 않는다(기초 숫자까지). */
+(function () {
+  var KEY = 'ham_attendance_v1';
+  var DEFAULT = {
+    shop: '체험 가게',
+    breakMin: 30,          // 4시간 넘게 일한 날 휴게 차감(분)
+    nightFrom: 22, nightTo: 6, // 야간 구간
+    emps: [
+      { id: 'e1', n: '가명 하나', r: '주방 · 풀타임' }, { id: 'e2', n: '가명 둘', r: '주방 · 풀타임' },
+      { id: 'e3', n: '가명 셋', r: '홀 매니저 · 정직원' }, { id: 'e4', n: '가명 넷', r: '홀 · 정직원' },
+      { id: 'e5', n: '가명 다섯', r: '홀 · 아르바이트' }, { id: 'e6', n: '가명 여섯', r: '홀 · 아르바이트' }
+    ],
+    recs: []               // {emp, in(ms), out(ms|null), edited:bool}
+  };
+  var st = load();
+  function load() { try { var s = localStorage.getItem(KEY); if (!s) return JSON.parse(JSON.stringify(DEFAULT)); var o = JSON.parse(s); Object.keys(DEFAULT).forEach(function (k) { if (o[k] === undefined) o[k] = DEFAULT[k]; }); return o; } catch (e) { return JSON.parse(JSON.stringify(DEFAULT)); } }
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(st)); } catch (e) { toast('저장 실패 — 브라우저 저장 공간을 확인하세요'); } }
+  var $ = function (id) { return document.getElementById(id); };
+  function pad(n) { return (n < 10 ? '0' : '') + n; }
+  function fmtT(d) { d = new Date(d); return pad(d.getHours()) + ':' + pad(d.getMinutes()); }
+  function fmtD(d) { d = new Date(d); return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate()); }
+  function emp(id) { return st.emps.filter(function (e) { return e.id === id; })[0] || { n: '(삭제된 직원)', r: '' }; }
+  function openRec(id) { for (var i = st.recs.length - 1; i >= 0; i--) { var r = st.recs[i]; if (r.emp === id && !r.out) return r; } return null; }
+  function toast(t) { var el = $('toast'); el.textContent = t; el.classList.add('on'); clearTimeout(toast.t); toast.t = setTimeout(function () { el.classList.remove('on'); }, 1800); }
+
+
+  // ── 화면 안 입력창(앱 내장 브라우저는 prompt/confirm을 막는 경우가 있어 쓰지 않는다) ─
+  function ask(opt) {
+    return new Promise(function (resolve) {
+      var sh = $('formSheet'), box = $('formFields'); box.innerHTML = '';
+      $('formTitle').textContent = opt.title; $('formSub').textContent = opt.sub || '';
+      (opt.fields || []).forEach(function (f, i) {
+        var lab = document.createElement('label'); lab.className = 'flab'; lab.textContent = f.label;
+        var inp = document.createElement('input'); inp.className = 'finp'; inp.type = f.type || 'text'; inp.value = f.value || ''; inp.placeholder = f.placeholder || ''; inp.id = 'ff' + i;
+        lab.appendChild(inp); box.appendChild(lab);
+      });
+      if (opt.list) { opt.list.forEach(function (item, i) { var b = document.createElement('button'); b.className = 'btn pick'; b.textContent = item; b.addEventListener('click', function () { close(); resolve({ pick: i }); }); box.appendChild(b); }); }
+      $('formOk').textContent = opt.ok || '저장'; $('formOk').style.display = opt.list ? 'none' : '';
+      $('formOk').className = 'big ' + (opt.danger ? 'out' : 'in');
+      function close() { sh.classList.remove('on'); $('formOk').onclick = null; $('formCancel').onclick = null; sh.onclick = null; }
+      $('formOk').onclick = function () { var vals = (opt.fields || []).map(function (f, i) { return $('ff' + i).value; }); close(); resolve(vals); };
+      $('formCancel').onclick = function () { close(); resolve(null); };
+      sh.onclick = function (ev) { if (ev.target === sh) { close(); resolve(null); } };
+      sh.classList.add('on'); var first = box.querySelector('input'); if (first) setTimeout(function () { first.focus(); }, 50);
+    });
+  }
+
+  // ── 시간 계산 ─────────────────────────────────────────────
+  function calc(r) {
+    if (!r.out) return null;
+    var ms = r.out - r.in; if (ms <= 0) return null;
+    var raw = ms / 36e5;
+    var brk = raw > 4 ? st.breakMin / 60 : 0;
+    var work = Math.max(0, raw - brk);
+    // 야간: 출근~퇴근 사이 22~06시 구간을 분 단위로 센다
+    var night = 0, t = new Date(r.in); t.setSeconds(0, 0);
+    while (t.getTime() < r.out) { var h = t.getHours(); if (h >= st.nightFrom || h < st.nightTo) night += 1; t.setMinutes(t.getMinutes() + 1); }
+    night = night / 60;
+    var d = new Date(r.in); var holiday = d.getDay() === 0; // 체험판: 일요일 = 휴일
+    return { work: work, brk: brk, over: Math.max(0, work - 8), night: night, holiday: holiday };
+  }
+  function weekKey(ms) { var x = new Date(ms); var day = (x.getDay() + 6) % 7; x.setDate(x.getDate() - day); return fmtD(x); }
+
+  // ── 시계·탭 ───────────────────────────────────────────────
+  setInterval(function () { var d = new Date(); $('clock').textContent = fmtD(d) + ' ' + fmtT(d); }, 1000);
+  document.querySelectorAll('.tab').forEach(function (b) {
+    b.addEventListener('click', function () {
+      document.querySelectorAll('.tab').forEach(function (x) { x.classList.remove('on'); }); b.classList.add('on');
+      var v = b.dataset.v; $('staff').style.display = v === 'staff' ? '' : 'none'; $('owner').style.display = v === 'owner' ? '' : 'none';
+      if (v === 'owner') renderOwner();
+    });
+  });
+
+  // ── 직원 화면 ─────────────────────────────────────────────
+  var cur = null;
+  function renderStaff() {
+    $('shopName').textContent = st.shop;
+    var g = $('empGrid'); g.innerHTML = '';
+    st.emps.forEach(function (e) {
+      var o = openRec(e.id); var b = document.createElement('button');
+      b.className = 'emp' + (o ? ' in' : '');
+      b.innerHTML = '<span class="n"></span><span class="r"></span><span class="s"></span>';
+      b.querySelector('.n').textContent = e.n; b.querySelector('.r').textContent = e.r;
+      b.querySelector('.s').textContent = o ? '출근 중 · ' + fmtT(o.in) : '퇴근 상태';
+      b.addEventListener('click', function () { openSheet(e); });
+      g.appendChild(b);
+    });
+  }
+  function openSheet(e) {
+    cur = e; var o = openRec(e.id);
+    $('pName').textContent = e.n; $('pSub').textContent = e.r + (o ? ' · ' + fmtT(o.in) + ' 출근' : '');
+    $('btnIn').style.display = o ? 'none' : ''; $('btnOut').style.display = o ? '' : 'none';
+    $('sheet').classList.add('on');
+  }
+  function closeSheet() { $('sheet').classList.remove('on'); cur = null; }
+  $('btnClose').addEventListener('click', closeSheet);
+  $('sheet').addEventListener('click', function (ev) { if (ev.target.id === 'sheet') closeSheet(); });
+  $('btnIn').addEventListener('click', function () { if (!cur) return; var now = Date.now(); st.recs.push({ emp: cur.id, in: now, out: null }); save(); toast(cur.n + ' 출근 ' + fmtT(now)); closeSheet(); renderStaff(); });
+  $('btnOut').addEventListener('click', function () { if (!cur) return; var o = openRec(cur.id); if (!o) return; o.out = Date.now(); save(); toast(cur.n + ' 퇴근 ' + fmtT(o.out)); closeSheet(); renderStaff(); });
+
+  // ── 사장 화면 ─────────────────────────────────────────────
+  var ym = (function () { var d = new Date(); return { y: d.getFullYear(), m: d.getMonth() }; })();
+  function monthRecs() { return st.recs.filter(function (r) { var d = new Date(r.in); return d.getFullYear() === ym.y && d.getMonth() === ym.m; }); }
+  function renderOwner() {
+    $('monthLabel').textContent = ym.y + '년 ' + (ym.m + 1) + '월';
+    $('breakMin').textContent = st.breakMin;
+    var recs = monthRecs(), closed = recs.filter(function (r) { return r.out; });
+    var total = closed.reduce(function (a, r) { var c = calc(r); return a + (c ? c.work : 0); }, 0);
+    $('kNow').textContent = st.emps.filter(function (e) { return openRec(e.id); }).length;
+    $('kDays').textContent = closed.length;
+    $('kHours').textContent = total.toFixed(1);
+    var tb = $('sumBody'); tb.innerHTML = '';
+    st.emps.forEach(function (e) {
+      var mine = closed.filter(function (r) { return r.emp === e.id; });
+      var days = {}, wk = {}, tot = 0, over = 0, night = 0, hol = 0;
+      mine.forEach(function (r) { var c = calc(r); if (!c) return; days[fmtD(r.in)] = 1; var k = weekKey(r.in); wk[k] = (wk[k] || 0) + c.work; tot += c.work; over += c.over; night += c.night; if (c.holiday) hol += c.work; });
+      var weeklyHol = Object.keys(wk).filter(function (k) { return wk[k] >= 15; }).length;
+      var open = openRec(e.id);
+      var tr = document.createElement('tr');
+      tr.innerHTML = '<td></td><td>' + Object.keys(days).length + '</td><td>' + tot.toFixed(1) + '</td><td>' + (over ? over.toFixed(1) : '-') + '</td><td>' + (night ? night.toFixed(1) : '-') + '</td><td>' + (hol ? hol.toFixed(1) : '-') + '</td><td>' + weeklyHol + '</td>';
+      tr.firstChild.textContent = e.n + (open ? ' ●' : '');
+      if (open) tr.firstChild.classList.add('warn');
+      tb.appendChild(tr);
+    });
+    var lg = $('log'); lg.innerHTML = '';
+    if (!recs.length) { lg.innerHTML = '<div><span>이달 기록이 아직 없습니다.</span></div>'; }
+    recs.slice().reverse().forEach(function (r) {
+      var c = calc(r); var d = document.createElement('div');
+      var left = document.createElement('span'); left.textContent = fmtD(r.in).slice(5) + ' ' + emp(r.emp).n;
+      var right = document.createElement('span');
+      if (r.out) right.textContent = fmtT(r.in) + ' → ' + fmtT(r.out) + ' · ' + (c ? c.work.toFixed(1) : '0') + 'h' + (r.edited ? ' (수정됨)' : '');
+      else { right.innerHTML = fmtT(r.in) + ' → <span class="warn">퇴근 미기록</span> <button class="mini" data-fix="' + st.recs.indexOf(r) + '">퇴근 시각 넣기</button>'; }
+      d.appendChild(left); d.appendChild(right); lg.appendChild(d);
+    });
+    lg.querySelectorAll('[data-fix]').forEach(function (b) { b.addEventListener('click', function () { var r = st.recs[+b.dataset.fix]; ask({ title: '퇴근 시각 넣기', sub: emp(r.emp).n + ' · ' + fmtD(r.in) + ' ' + fmtT(r.in) + ' 출근', fields: [{ label: '퇴근 시각', type: 'time', value: '' }] }).then(function (v) { if (!v || !v[0]) return; var d = new Date(r.in); var p = v[0].split(':'); d.setHours(+p[0], +p[1], 0, 0); if (d.getTime() <= r.in) d.setDate(d.getDate() + 1); r.out = d.getTime(); r.edited = true; save(); renderOwner(); renderStaff(); toast('퇴근 시각을 넣었습니다(수정 표시)'); }); }); });
+  }
+  $('prevM').addEventListener('click', function () { ym.m--; if (ym.m < 0) { ym.m = 11; ym.y--; } renderOwner(); });
+  $('nextM').addEventListener('click', function () { ym.m++; if (ym.m > 11) { ym.m = 0; ym.y++; } renderOwner(); });
+
+  $('csv').addEventListener('click', function () {
+    var rows = [['사업장', '직원', '날짜', '출근', '퇴근', '휴게(분)', '근무(h)', '연장(h)', '야간(h)', '휴일근로(h)', '수정']];
+    monthRecs().forEach(function (r) { var c = calc(r); rows.push([st.shop, emp(r.emp).n, fmtD(r.in), fmtT(r.in), r.out ? fmtT(r.out) : '', c ? Math.round(c.brk * 60) : 0, c ? c.work.toFixed(2) : '', c ? c.over.toFixed(2) : '', c ? c.night.toFixed(2) : '', c && c.holiday ? c.work.toFixed(2) : '', r.edited ? 'Y' : '']); });
+    var csv = '﻿' + rows.map(function (r) { return r.map(function (v) { return '"' + String(v).replace(/"/g, '""') + '"'; }).join(','); }).join('\n');
+    var a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([csv], { type: 'text/csv' })); a.download = '출퇴근_' + ym.y + '-' + pad(ym.m + 1) + '.csv'; document.body.appendChild(a); a.click(); a.remove(); toast('CSV 내려받음');
+  });
+  $('seed').addEventListener('click', function () {
+    var end = new Date(ym.y, ym.m + 1, 0).getDate(), now = Date.now();
+    for (var day = 1; day <= end; day++) {
+      var dt = new Date(ym.y, ym.m, day); if (dt.getTime() > now) break; var dow = dt.getDay();
+      st.emps.forEach(function (e, i) {
+        var rest = (i < 2 && dow === 1) || (i >= 4 && (dow === 0 || dow === 3 || dow === 6)); if (rest) return;
+        var s = new Date(ym.y, ym.m, day, i >= 4 ? 17 : 10, (i * 7) % 30); var len = i >= 4 ? 5.5 : 9.5;
+        var o = new Date(s.getTime() + len * 36e5); if (o.getTime() < now) st.recs.push({ emp: e.id, in: s.getTime(), out: o.getTime() });
+      });
+    }
+    save(); renderOwner(); renderStaff(); toast('가명 시연 기록을 채웠습니다');
+  });
+  $('wipe').addEventListener('click', function () { ask({ title: '이 기기의 기록을 모두 지웁니다', sub: '되돌릴 수 없습니다. 체험판이라 실제 정보는 없습니다.', ok: '지우기', danger: true }).then(function (v) { if (!v) return; st.recs = []; save(); renderOwner(); renderStaff(); toast('지웠습니다'); }); });
+
+  // ── 설정: 가게 이름·직원 명단(범용) ───────────────────────
+  $('setShop').addEventListener('click', function () { ask({ title: '가게 이름', fields: [{ label: '가게 이름', value: st.shop }] }).then(function (v) { if (v && v[0].trim()) { st.shop = v[0].trim(); save(); renderStaff(); renderOwner(); toast('바꿨습니다'); } }); });
+  $('addEmp').addEventListener('click', function () { ask({ title: '직원 추가', sub: '체험판이면 가명으로', fields: [{ label: '이름', placeholder: '가명 일곱' }, { label: '역할', placeholder: '홀 · 아르바이트' }] }).then(function (v) { if (!v || !v[0].trim()) return; st.emps.push({ id: 'e' + Date.now(), n: v[0].trim(), r: (v[1] || '').trim() }); save(); renderStaff(); renderOwner(); toast('추가했습니다'); }); });
+  $('delEmp').addEventListener('click', function () { ask({ title: '직원 빼기', sub: '누른 사람이 명단에서 빠집니다. 기록은 남습니다.', list: st.emps.map(function (e) { return e.n + ' · ' + e.r; }) }).then(function (v) { if (!v || v.pick === undefined) return; st.emps.splice(v.pick, 1); save(); renderStaff(); renderOwner(); toast('뺐습니다'); }); });
+
+  renderStaff();
+})();
+
+</script>
+</body>
+</html>
