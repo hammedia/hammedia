@@ -6,8 +6,10 @@
 <meta name="robots" content="noindex, nofollow, noarchive">
 <title>나는 어떤 사장님인가 — 30초 진단</title>
 <meta name="description" content="AI를 잘 몰라도 됩니다. 세 번만 고르면, 10/3 AI MONEY GAME에서 무엇을 가져갈지 나옵니다.">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <style>
+  @font-face{font-family:Pretendard;src:url("../ham-media-archive/assets/fonts/Pretendard-Regular-academy.woff2") format("woff2");font-weight:400;font-display:swap}
+  @font-face{font-family:Pretendard;src:url("../ham-media-archive/assets/fonts/Pretendard-Medium-academy.woff2") format("woff2");font-weight:600 700;font-display:swap}
+  @font-face{font-family:Pretendard;src:url("../ham-media-archive/assets/fonts/Pretendard-Black-academy.woff2") format("woff2");font-weight:800 900;font-display:swap}
   :root{
     --ivory:#F5F3EE; --paper:#F9F7F3; --ink:#1C1814; --ink2:#4A423C; --hair:#E6E1D9; --signal:#7EB5E8;
   }
@@ -72,7 +74,7 @@
 
   <footer>
     HAM MEDIA — 27년 현장을 산 사람과 AI 동료가 만듭니다.<br>
-    행사 정보는 <a href="https://ai-money-game.vercel.app/" style="color:inherit">AI MONEY GAME 안내 페이지</a> 원문을 그대로 옮겼습니다. 참가자의 동일한 수익을 보장하지 않습니다.
+    시간·발표자·장소·가격은 <a href="https://ai-money-game.vercel.app/" style="color:inherit">AI MONEY GAME 안내 페이지</a> 원문 그대로이고, 「가져갈 것」과 「첫 걸음」은 HAM MEDIA의 제안입니다. 참가자의 동일한 수익을 보장하지 않습니다.
   </footer>
 </div>
 
@@ -98,13 +100,13 @@
 
   var TYPES = [
     {name:"손님이 급한 사장님", diag:"홍보는 해야 하는데 글도 영상도 손에서 안 나온다. 하루가 장사로 끝난다.",
-     when:"13:40 · CASE 02 · 함동민 / 15:35 · HANDS-ON", what:"소상공인 마케팅, 매장·병원 유튜브 운영 같은 일을 AI로 해 주고 30만~100만원 단위로 실제 돈을 받은 사례.",
-     take:"그 사례를 보고, HANDS-ON에서 내 가게 것 실행 초안 하나를 만든다.", topic:"우리 가게 소개 세 줄", money:false},
+     when:"13:40 · CASE 02 · 함동민 / 15:35 · HANDS-ON", what:"동네 가게 마케팅 운영을 AI와 함께 맡아 매달 50만원을 받고 있는 실제 사례. AI를 고객에게 팔 수 있는 서비스로 묶고, 납품·운영까지 잇는 방법.",
+     take:"내 손님 질문 하나로 홍보 글 첫 문장과 고친 문장 한 장 — 완성된 게시물이나 수익을 약속하지 않습니다.", topic:"우리 가게 소개 세 줄", money:false},
     {name:"만들어 파는 사장님", diag:"팔 것은 있는데 만들고 올리는 데 시간이 다 간다.",
      when:"14:05 · CASE 03 · 이만성 / 14:30 · CASE 04 · 문영상", what:"AI 이커머스 매출 3천만원 — 상품 기획 → AI 콘텐츠 제작 → 반복 업무 자동화. AI 유튜브 협찬·부업 수익화 — 월 100만원 창출.",
      take:"상품 기획부터 콘텐츠 제작, 반복 업무까지 AI로 처리하는 흐름.", topic:"내 상품 소개 한 줄", money:true},
     {name:"서류에 묶인 사장님", diag:"견적·제안서·계획서에 밤을 쓴다. 본업이 뒤로 밀린다.",
-     when:"13:40 · CASE 02 · 함동민 / 15:35 · HANDS-ON", what:"투자제안서·사업계획서를 AI로 써서 실제 서비스로 판 사례를 보고, 노트북으로 직접 따라 한다.",
+     when:"15:05 · LIVE DEMO / 15:35 · HANDS-ON", what:"어사이드 등 최신 AI 도구를 실제 화면으로 보고, 바로 복사해 고쳐 쓸 수 있는 프롬프트를 받은 뒤, 노트북으로 직접 따라 한다.",
      take:"작은 결과물 또는 실행 초안을 최소 하나 — 소재는 지난주 쓴 서류.", topic:"지난주 쓴 서류 한 장", money:false},
     {name:"사람이 재산인 사장님", diag:"모임·강의는 잘하는데 돈이 되는 구조를 모른다.",
      when:"13:15 · CASE 01 · 손병진 / 16:20 · NETWORKING", what:"커뮤니티·교육으로 약 500만원 매출 — 커뮤니티 → 교육/세미나 → AI 광고·AX 비즈니스로 확장. 발표 없이 사람 만나는 시간.",
