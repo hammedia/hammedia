@@ -61,6 +61,17 @@
   .flab{display:block;font-size:13px;color:var(--muted);margin:8px 0 12px}
   .finp{display:block;width:100%;margin-top:4px;font:inherit;font-size:18px;padding:12px;border:1px solid var(--line);border-radius:12px;background:#fff;color:var(--ink)}
   .pick{display:block;width:100%;text-align:left;margin-top:8px;padding:13px 14px;font-size:16px}
+  .slip{font-size:14px}
+  .slipHead{display:flex;justify-content:space-between;gap:10px;border-bottom:2px solid var(--ink);padding-bottom:8px;margin-bottom:8px;font-size:16px}
+  .slipHead span{font-size:12px;color:var(--muted)}
+  .slipRow{display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px dashed var(--line)}
+  .slipT{width:100%;border-collapse:collapse;margin-top:12px;font-size:13px}
+  .slipT th,.slipT td{padding:7px 4px;border-bottom:1px solid var(--line);text-align:right;vertical-align:top}
+  .slipT th:first-child,.slipT td:first-child{text-align:left;white-space:nowrap}
+  .slipT .how{text-align:left;color:var(--muted);font-size:12px;white-space:normal}
+  .slipT .sum td{font-weight:700;border-top:1px solid var(--ink)}
+  .slipNet{display:flex;justify-content:space-between;align-items:center;font-size:18px;margin-top:12px;padding:12px;background:var(--green-soft);border-radius:12px}
+  @media print{body *{visibility:hidden}#slipSheet,#slipSheet *{visibility:visible}#slipSheet{position:static;background:none;display:block}.panel{box-shadow:none;max-width:none}#slipPrint,#slipClose{display:none}}
   footer{font-size:12px;color:var(--muted);line-height:1.7;margin-top:24px;border-top:1px solid var(--line);padding-top:12px}
 </style>
 </head>
@@ -89,7 +100,12 @@
       <div class="kpi"><div><b id="kNow">0</b><span>지금 근무 중</span></div><div><b id="kDays">0</b><span>이달 근무 건수</span></div><div><b id="kHours">0</b><span>이달 총 시간</span></div></div>
       <div class="tablewrap"><table><thead><tr><th>직원</th><th>근무일</th><th>총(h)</th><th>연장(h)</th><th>야간(h)</th><th>휴일(h)</th><th>주휴 대상 주</th></tr></thead><tbody id="sumBody"></tbody></table></div>
       <div class="tools">
-        <button class="btn primary" id="csv">이달 CSV 내려받기</button>
+        <button class="btn primary" id="payslip">직원 임금명세서</button>
+        <button class="btn" id="paySet">급여 설정</button>
+        <button class="btn" id="wageSet">직원 시급</button>
+      </div>
+      <div class="tools">
+        <button class="btn" id="csv">이달 CSV 내려받기</button>
         <button class="btn" id="seed">가명 시연 기록 채우기</button>
         <button class="btn" id="wipe">이 기기 기록 지우기</button>
       </div>
@@ -132,6 +148,11 @@
   <button class="big in" id="formOk">저장</button>
   <button class="big ghost" id="formCancel">취소</button>
 </div></div>
+<div class="sheet" id="slipSheet"><div class="panel" style="max-height:92vh;overflow:auto">
+  <div id="slipBody"></div>
+  <button class="big in" id="slipPrint">인쇄 · PDF로 저장</button>
+  <button class="big ghost" id="slipClose">닫기</button>
+</div></div>
 <div class="toast" id="toast"></div>
 <script>
 /* 가게 출퇴근 기록기 — 체험판 v1 (HAM MEDIA 현장 도구, Case 011)
@@ -149,6 +170,7 @@
       { id: 'e3', n: '가명 셋', r: '홀 매니저 · 정직원' }, { id: 'e4', n: '가명 넷', r: '홀 · 정직원' },
       { id: 'e5', n: '가명 다섯', r: '홀 · 아르바이트' }, { id: 'e6', n: '가명 여섯', r: '홀 · 아르바이트' }
     ],
+    pay: { five: false, wage: 10320, payday: 10 }, // 5인 이상 여부(가산 수당 의무), 기본 시급(2026 최저시급 10,320원), 지급일
     geo: null,             // {lat, lng, radius} — 가게 좌표 하나만 기기 안에 저장. 직원 위치는 저장·전송하지 않는다
     recs: []               // {emp, in(ms), out(ms|null), edited:bool}
   };
@@ -329,6 +351,55 @@
   $('geoSet').addEventListener('click', function () { toast('가게 위치를 재는 중…'); getPos().then(function (p) { return ask({ title: '여기를 가게로 등록', sub: '지금 위치(오차 약 ' + Math.round(p.acc || 0) + 'm)를 가게 좌표로 저장합니다. 좌표는 이 기기 안에만 남습니다.', fields: [{ label: '허용 반경(m)', type: 'number', value: st.geo ? st.geo.radius : 100 }], ok: '등록' }).then(function (v) { if (!v) return; var r = parseInt(v[0], 10); st.geo = { lat: p.lat, lng: p.lng, radius: isNaN(r) ? 100 : Math.max(30, r) }; save(); renderGeo(); toast('가게 위치를 등록했습니다'); }); }).catch(function (e) { toast(e && e.code === 1 ? '위치 허용이 필요합니다' : '위치를 못 잡았습니다'); }); });
   $('geoOff').addEventListener('click', function () { ask({ title: '위치 확인 끄기', sub: '가게 밖에서도 눌리게 됩니다.', ok: '끄기', danger: true }).then(function (v) { if (!v) return; st.geo = null; save(); renderGeo(); toast('위치 확인을 껐습니다'); }); });
   renderGeo();
+
+  // ── 급여 명세(v3) — 임금명세서 필수 항목(근로기준법 §48② → 시행령 §27조의2): 성명·지급일·임금 총액·항목별 금액·계산 방법·공제 내역
+  //    가산(연장·야간·휴일 0.5배)은 5인 이상 사업장만 의무. 주휴수당 = (주 소정근로시간/40)×8×시급, 주 15시간 이상인 주만, 상한 8시간분. 공제는 자동 계산하지 않는다(사장·세무 담당 입력).
+  function won(n) { return Math.round(n).toLocaleString('ko-KR') + '원'; }
+  function payCalc(e, y, m) {
+    var wage = e.wage || st.pay.wage, five = !!st.pay.five;
+    var recs = st.recs.filter(function (r) { var d = new Date(r.in); return r.emp === e.id && r.out && d.getFullYear() === y && d.getMonth() === m; });
+    var work = 0, over = 0, night = 0, hol = 0, wk = {};
+    recs.forEach(function (r) { var c = calc(r); if (!c) return; work += c.work; over += c.over; night += c.night; if (c.holiday) hol += c.work; var k = weekKey(r.in); wk[k] = (wk[k] || 0) + c.work; });
+    var weekly = 0; Object.keys(wk).forEach(function (k) { var h = wk[k]; if (h >= 15) weekly += Math.min(h / 40 * 8, 8); });
+    var items = [
+      ['기본 임금', work + 'h × ' + won(wage), work * wage],
+      ['연장 가산(0.5배)', five ? over.toFixed(1) + 'h × ' + won(wage) + ' × 0.5' : '5인 미만 — 가산 없음', five ? over * wage * 0.5 : 0],
+      ['야간 가산(0.5배)', five ? night.toFixed(1) + 'h × ' + won(wage) + ' × 0.5' : '5인 미만 — 가산 없음', five ? night * wage * 0.5 : 0],
+      ['휴일 가산(0.5배)', five ? hol.toFixed(1) + 'h × ' + won(wage) + ' × 0.5' : '5인 미만 — 가산 없음', five ? hol * wage * 0.5 : 0],
+      ['주휴수당', weekly.toFixed(1) + 'h × ' + won(wage) + ' (15h↑ 주 ' + Object.keys(wk).filter(function (k) { return wk[k] >= 15; }).length + '주)', weekly * wage]
+    ];
+    var total = items.reduce(function (a, it) { return a + it[2]; }, 0);
+    return { wage: wage, five: five, work: work, over: over, night: night, hol: hol, weekly: weekly, items: items, total: total, days: recs.length };
+  }
+  function showPayslip(e, ded) {
+    var pc = payCalc(e, ym.y, ym.m); var dsum = ded.reduce(function (a, d) { return a + d[1]; }, 0);
+    var payDate = new Date(ym.y, ym.m + 1, st.pay.payday || 10);
+    var h = '<div class="slip">' +
+      '<div class="slipHead"><div><b>임금명세서</b><br><span>' + st.shop + '</span></div><div style="text-align:right">' + ym.y + '년 ' + (ym.m + 1) + '월분<br><span>지급일 ' + fmtD(payDate) + '</span></div></div>' +
+      '<div class="slipRow"><span>성명</span><b>' + e.n + '</b></div><div class="slipRow"><span>역할 · 시급</span><b>' + (e.r || '-') + ' · ' + won(pc.wage) + (e.wage ? '' : ' (기본)') + '</b></div>' +
+      '<div class="slipRow"><span>근무</span><b>' + pc.days + '일 · ' + pc.work.toFixed(1) + 'h' + (pc.five ? ' · 5인 이상' : ' · 5인 미만') + '</b></div>' +
+      '<table class="slipT"><thead><tr><th>지급 항목</th><th>계산 방법</th><th>금액</th></tr></thead><tbody>';
+    pc.items.forEach(function (it) { h += '<tr><td>' + it[0] + '</td><td class="how">' + it[1] + '</td><td>' + won(it[2]) + '</td></tr>'; });
+    h += '<tr class="sum"><td>지급 총액</td><td></td><td>' + won(pc.total) + '</td></tr></tbody></table>' +
+      '<table class="slipT"><thead><tr><th>공제 항목</th><th></th><th>금액</th></tr></thead><tbody>';
+    ded.forEach(function (d) { h += '<tr><td>' + d[0] + '</td><td class="how">' + (d[1] ? '사장 입력' : '-') + '</td><td>' + won(d[1]) + '</td></tr>'; });
+    h += '<tr class="sum"><td>공제 합계</td><td></td><td>' + won(dsum) + '</td></tr></tbody></table>' +
+      '<div class="slipNet"><span>실지급액</span><b>' + won(pc.total - dsum) + '</b></div>' +
+      '<p class="note">이 명세는 이 기기의 출퇴근 기록으로 계산한 것입니다. 4대보험·소득세는 자동 계산하지 않으며 사장님·세무 담당이 확인한 숫자를 넣습니다. 근로계약서의 소정근로시간·수당 약정이 다르면 그것이 우선합니다. 기준: 근로기준법 §48②·시행령 §27조의2(임금명세서 기재 사항).</p></div>';
+    $('slipBody').innerHTML = h; $('slipSheet').classList.add('on');
+  }
+  $('payslip').addEventListener('click', function () {
+    ask({ title: '명세를 볼 직원', sub: ym.y + '년 ' + (ym.m + 1) + '월분', list: st.emps.map(function (e) { return e.n + ' · ' + won(e.wage || st.pay.wage) + '/h'; }) }).then(function (v) { if (!v || v.pick === undefined) return; var e = st.emps[v.pick];
+      return ask({ title: '공제 항목(있으면 숫자)', sub: '자동 계산하지 않습니다. 없으면 비워 두세요.', fields: [{ label: '4대보험(원)', type: 'number', placeholder: '0' }, { label: '소득세·지방소득세(원)', type: 'number', placeholder: '0' }, { label: '기타 공제(원)', type: 'number', placeholder: '0' }], ok: '명세 보기' }).then(function (w) { if (!w) return; showPayslip(e, [['4대보험', +w[0] || 0], ['소득세·지방소득세', +w[1] || 0], ['기타 공제', +w[2] || 0]]); }); });
+  });
+  $('slipClose').addEventListener('click', function () { $('slipSheet').classList.remove('on'); });
+  $('slipPrint').addEventListener('click', function () { window.print(); });
+  $('paySet').addEventListener('click', function () {
+    ask({ title: '급여 설정', sub: '5인 이상이면 연장·야간·휴일 가산(0.5배)이 붙습니다.', fields: [{ label: '기본 시급(원) — 2026 최저시급 10,320', type: 'number', value: st.pay.wage }, { label: '지급일(매달 며칠)', type: 'number', value: st.pay.payday }, { label: '5인 이상 사업장이면 1, 아니면 0', type: 'number', value: st.pay.five ? 1 : 0 }] }).then(function (v) { if (!v) return; var w = parseInt(v[0], 10); if (w >= 1000) st.pay.wage = w; var d = parseInt(v[1], 10); if (d >= 1 && d <= 31) st.pay.payday = d; st.pay.five = v[2] === '1'; save(); toast('급여 설정 저장'); });
+  });
+  $('wageSet').addEventListener('click', function () {
+    ask({ title: '시급 정할 직원', list: st.emps.map(function (e) { return e.n + ' · ' + won(e.wage || st.pay.wage) + (e.wage ? '' : '(기본)'); }) }).then(function (v) { if (!v || v.pick === undefined) return; var e = st.emps[v.pick]; return ask({ title: e.n + ' 시급', sub: '비우면 기본 시급', fields: [{ label: '시급(원)', type: 'number', value: e.wage || '' }] }).then(function (w) { if (!w) return; var n = parseInt(w[0], 10); e.wage = n >= 1000 ? n : undefined; save(); toast('시급 저장'); }); });
+  });
 
   renderStaff();
 })();
