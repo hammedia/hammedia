@@ -15,9 +15,20 @@
     monthly: {category:'04 · 월간 운영',title:'한 번의 제작을,\n꾸준한 소식으로.',description:'매달 필요한 자료와 일정부터 맞추고, 채널에 맞게 만들고 확인하며 다음 작업을 이어갑니다.',image:food,alt:'마포바다 모둠회 실제 사진을 활용한 월간 콘텐츠 구성 예시',fragment:photo,fragmentA:'이번 달의 자료',fragmentB:'사진 · 문장 · 일정',mediaLabel:'마포바다 실제 촬영 사진',mediaTitle:'가게의 소식이\n이어지도록.',caption:'실제 마포바다 사진을 활용한 콘텐츠 구성 예시입니다. 게시 횟수나 운영 성과를 나타내지 않습니다.',scopeTitle:'매달 함께 정할 운영 범위',scope:'월간 소재 정리 · 콘텐츠 제작 · 게시와 관리. 채널, 제작 수량, 게시 주기와 응대 범위를 먼저 정합니다. 매출이나 조회수는 약속하지 않습니다.',evidence:'#work',evidenceText:'현재 운영 사례 보기 ↗'},
     automation: {category:'05 · 반복 업무 정리',title:'매번 하는 일을,\n확인할 일로.',description:'지금 쓰는 문서와 도구에서 시작합니다. 반복 구간을 찾아 연결하고, 사람이 확인할 지점을 남깁니다.',image:photo,alt:'반복 업무 화면 구성 예시',fragment:'../book/assets/cover.png',fragmentA:'내 업무의 자료',fragmentB:'모으기 · 정리 · 확인',mediaLabel:'업무 흐름 구성 예시',mediaTitle:'확인할 일만,\n한눈에.',caption:'반복 업무를 설명하기 위한 화면 구성 예시입니다. 고객 데이터나 실제 자동 실행 결과가 아닙니다.',scopeTitle:'현재 업무를 확인한 뒤 만들기',scope:'반복 구간 조사 · 자료 형식 정리 · 도구 연결 · 사람이 확인할 단계. 계정 권한, 외부 서비스 비용과 유지관리 범위를 확인한 뒤 서면 견적을 드립니다.',evidence:'../erp/',evidenceText:'작은 ERP 체험판 보기 ↗'}
   };
-  const inquiryDrafts = new Map();
-  let selected = 'video';
-  let automaticPurpose = '';
+  const DRAFT_KEY = 'ham_service_inquiry_v1';
+  let savedDraft = null;
+  try { const data=JSON.parse(sessionStorage.getItem(DRAFT_KEY)); if(data?.version===1 && Object.hasOwn(options,data.selected) && Array.isArray(data.drafts)) savedDraft=data; } catch {}
+  const inquiryDrafts = new Map((savedDraft?.drafts||[]).filter(row=>Array.isArray(row)&&Object.hasOwn(options,row[0])&&typeof row[1]==='string'));
+  function saveDraft(resetQuote=false){
+    const draft={version:1,selected,drafts:[...inquiryDrafts],automaticPurpose,quote:resetQuote||savedDraft?.selected!==selected?{}:(savedDraft?.quote||{}),quoteOriginal:savedDraft?.selected===selected?savedDraft?.quoteOriginal:null};
+    const encoded=JSON.stringify(draft);
+    sessionStorage.setItem(DRAFT_KEY,encoded);
+    if(sessionStorage.getItem(DRAFT_KEY)!==encoded) throw new Error('draft not saved');
+    savedDraft=draft;
+  }
+
+  let selected = savedDraft?.selected || 'video';
+  let automaticPurpose = typeof savedDraft?.automaticPurpose==='string'?savedDraft.automaticPurpose:'';
   let paused = false;
   let running = false;
   const pause = q('[data-hm-pause]');
@@ -49,14 +60,26 @@
     const evidence=q('[data-hm-evidence]');evidence.href=data.evidence;evidence.textContent=data.evidenceText;
     q('#hm-menu-inquiry').value=inquiryDrafts.has(key)?inquiryDrafts.get(key):`${label}\n상담하고 싶은 범위: ${data.scopeTitle}\n범위 안내: ${data.scope}\n가격 안내: ${q('[data-hm-price]').textContent} (확정 견적 아님)\n\n원하는 결과와 일정: \n가지고 있는 자료 또는 링크: \n이번에 필요하지 않은 일: \n답 받을 연락처: `;
     syncEmail();
-    text('[data-hm-copy-status]','아래 양식에 직접 붙여넣어 주세요. 아직 전송되지 않았습니다.');
+    text('[data-hm-copy-status]','다음 화면에서 내용을 확인하고 연락처를 적어 보내주세요. 아직 전송되지 않았습니다.');
+    inquiryDrafts.set(selected,q('#hm-menu-inquiry').value);
+    try{saveDraft();}catch{}
     if(animate) play();
   }
   function syncEmail(){
     const label=choices.find(button=>button.dataset.hmChoice===selected).textContent;
     q('[data-hm-email]').href='mailto:hammedia002@gmail.com?subject='+encodeURIComponent('HAM MEDIA 상담 · '+label)+'&body='+encodeURIComponent(q('#hm-menu-inquiry').value);
   }
-  q('#hm-menu-inquiry').addEventListener('input',()=>{inquiryDrafts.set(selected,q('#hm-menu-inquiry').value);syncEmail();});
+  q('#hm-menu-inquiry').addEventListener('input',()=>{inquiryDrafts.set(selected,q('#hm-menu-inquiry').value);syncEmail();try{saveDraft();}catch{}});
+  q('[data-hm-continue]').addEventListener('click',()=>{
+    inquiryDrafts.set(selected,q('#hm-menu-inquiry').value);
+    try {
+      let current;try{current=JSON.parse(sessionStorage.getItem(DRAFT_KEY));}catch{}
+      const same=current?.version===1&&current.selected===selected&&Array.isArray(current.drafts)&&current.drafts.some(row=>Array.isArray(row)&&row[0]===selected&&row[1]===q('#hm-menu-inquiry').value);
+      if(same) savedDraft=current;
+      saveDraft(!same); location.assign('../quote/?source=service-menu-'+selected+'#quote-form');
+    }
+    catch { text('[data-hm-copy-status]','이 브라우저에서는 내용을 이어갈 수 없습니다. 작성한 내용은 여기에 남아 있습니다. 이메일 작성이나 내용 복사를 이용해주세요.'); }
+  });
   choices.forEach(button=>button.addEventListener('click',()=>choose(button.dataset.hmChoice)));
   document.querySelectorAll('[data-hm-video-purpose]').forEach(link=>link.addEventListener('click',()=>{
     choose('video',false);
@@ -67,6 +90,7 @@
     field.value=lines.join('\n');
     automaticPurpose=purpose;
     inquiryDrafts.set('video',field.value);
+    try{saveDraft();}catch{}
     syncEmail();
   }));
   pause.addEventListener('click',()=>{if(!running)return;paused=!paused;stage.classList.toggle('hm-menu-paused',paused);syncPause();});
@@ -76,8 +100,8 @@
   reduce.addEventListener('change',()=>{if(reduce.matches){stage.classList.remove('hm-menu-playing','hm-menu-paused');running=false;paused=false;syncPause();}});
   q('[data-hm-copy]').addEventListener('click',async()=>{
     const field=q('#hm-menu-inquiry');
-    try {if(!navigator.clipboard)throw new Error('clipboard unavailable');await navigator.clipboard.writeText(field.value);text('[data-hm-copy-status]','복사했습니다. 아래 양식에 붙여넣고 원하는 결과와 일정을 적어주세요. 아직 전송되지 않았습니다.');}
-    catch {field.focus();field.select();text('[data-hm-copy-status]','내용을 선택했습니다. 기기의 복사 기능으로 복사한 뒤 양식에 붙여넣어 주세요.');}
+    try {if(!navigator.clipboard)throw new Error('clipboard unavailable');await navigator.clipboard.writeText(field.value);text('[data-hm-copy-status]','복사했습니다. 필요한 곳에 붙여넣어 주세요. 아직 전송되지 않았습니다.');}
+    catch {field.focus();field.select();text('[data-hm-copy-status]','내용을 선택했습니다. 기기의 복사 기능을 이용해주세요.');}
   });
   q('.hm-menu-choices').hidden=false;q('.hm-menu-controls').hidden=false;q('.hm-menu-contact').hidden=false;
   choose(selected,false);

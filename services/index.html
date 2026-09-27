@@ -603,17 +603,17 @@
           <p class="eyebrow">상담</p>
           <h2>막힌 일부터 말씀해주세요.</h2>
           <p>세 가지만 적어주시면 필요한 범위와 다음 순서를 답하겠습니다.</p>
-          <div class="hm-menu-contact" hidden><label for="hm-menu-inquiry">선택한 부탁에 원하는 결과를 더해주세요</label><textarea id="hm-menu-inquiry" rows="10"></textarea><a class="hm-menu-cta" data-hm-email href="mailto:hammedia002@gmail.com">선택한 내용으로 이메일 작성 ↗</a><button type="button" data-hm-copy>양식에 붙일 내용 복사</button><p data-hm-copy-status role="status">아래 양식에 직접 붙여넣어 주세요. 아직 전송되지 않았습니다.</p></div>
+          <div class="hm-menu-contact" hidden><label for="hm-menu-inquiry">선택한 부탁에 원하는 결과를 더해주세요</label><textarea id="hm-menu-inquiry" rows="10"></textarea><button class="hm-menu-cta" type="button" data-hm-continue>이 내용으로 문의 이어가기 →</button><a class="hm-menu-cta" data-hm-email href="mailto:hammedia002@gmail.com">선택한 내용으로 이메일 작성 ↗</a><button type="button" data-hm-copy>내용 복사</button><p data-hm-copy-status role="status">다음 화면에서 내용을 확인하고 연락처를 적어 보내주세요. 아직 전송되지 않았습니다.</p></div>
           <ol class="prepare">
             <li><b>1</b><span>무엇이 달라졌으면 하는지</span></li>
             <li><b>2</b><span>지금 어디에서 막히는지</span></li>
             <li><b>3</b><span>어디까지 되면 끝인지</span></li>
           </ol>
-          <p><a class="button light" href="https://tally.so/r/vGK44d" target="_blank" rel="noopener">상담 양식 새 창에서 열기 ↗</a></p>
+          <p><a class="button light" href="https://tally.so/r/vGK44d" target="_blank" rel="noopener">기존 상담 양식 이용하기 ↗</a></p>
           <p class="contact-alt">양식이 열리지 않으면 <a href="mailto:hammedia002@gmail.com">hammedia002@gmail.com</a>으로 보내주세요.</p>
         </div>
         <div class="form-wrap">
-          <iframe data-tally-src="https://tally.so/embed/vGK44d?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="574" title="HAM MEDIA 상담 신청"></iframe>
+          <h3>다시 옮겨 적지 않아도 됩니다.</h3><p>선택한 부탁과 작성한 내용을 그대로 이어가고, 받을 결과와 일정·연락처를 확인한 뒤 보내주세요.</p><p><a class="button light" href="../quote/">서면 문의 양식 열기 →</a></p>
         </div>
       </div>
     </section>
@@ -626,25 +626,6 @@
     </div>
   </footer>
 
-  <script>
-    (function () {
-      var iframe = document.querySelector('iframe[data-tally-src]');
-      if (!iframe) return;
-      function loadForm() {
-        if (!iframe.src) iframe.src = iframe.dataset.tallySrc;
-      }
-      if ('IntersectionObserver' in window) {
-        var observer = new IntersectionObserver(function (entries) {
-          if (entries[0].isIntersecting) {
-            loadForm();
-            observer.disconnect();
-          }
-        }, { rootMargin: '300px' });
-        observer.observe(iframe);
-      } else {
-        loadForm();
-      }
-    }());
-  </script>
+
 </body>
 </html>
