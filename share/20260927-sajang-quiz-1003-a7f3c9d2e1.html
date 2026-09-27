@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>나는 어떤 사장님인가 — 30초 진단</title>
+<meta name="description" content="AI를 잘 몰라도 됩니다. 세 번만 고르면, 10/3 AI MONEY GAME에서 무엇을 가져갈지 나옵니다.">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+  :root{
+    --ivory:#F5F3EE; --paper:#F9F7F3; --ink:#1C1814; --ink2:#4A423C; --hair:#E6E1D9; --signal:#7EB5E8;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--ivory);color:var(--ink);font-family:Pretendard,-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;-webkit-font-smoothing:antialiased;word-break:keep-all}
+  .wrap{max-width:560px;margin:0 auto;padding:28px 16px 64px}
+  header{padding:8px 0 20px;border-bottom:1px solid var(--hair)}
+  .kicker{font-size:12px;letter-spacing:.14em;color:var(--ink2);text-transform:uppercase}
+  h1{font-size:28px;line-height:1.25;margin:10px 0 8px;font-weight:700;letter-spacing:-.01em}
+  .sub{font-size:16px;line-height:1.6;color:var(--ink2);margin:0}
+  .fine{font-size:12px;color:var(--ink2);margin-top:10px}
+  .card{background:var(--paper);border:1px solid var(--hair);border-radius:16px;padding:22px 18px;margin-top:20px}
+  .step{font-size:12px;letter-spacing:.12em;color:var(--ink2);display:flex;gap:6px;align-items:center;margin-bottom:10px}
+  .dots{display:inline-flex;gap:5px;margin-left:auto}
+  .dots i{width:7px;height:7px;border-radius:50%;background:var(--hair);display:block}
+  .dots i.on{background:var(--ink)}
+  .q{font-size:21px;line-height:1.35;font-weight:700;margin:0 0 16px}
+  .opts{display:grid;gap:10px}
+  .opt{appearance:none;width:100%;text-align:left;background:#fff;border:1px solid var(--hair);border-radius:12px;padding:15px 14px;font:inherit;font-size:16px;line-height:1.45;color:var(--ink);cursor:pointer;display:flex;gap:12px;align-items:flex-start}
+  .opt b{flex:0 0 auto;width:26px;height:26px;border-radius:50%;border:1px solid var(--hair);display:inline-flex;align-items:center;justify-content:center;font-size:13px;color:var(--ink2);font-weight:600}
+  .opt:active{transform:translateY(1px)}
+  .opt:hover{border-color:var(--ink2)}
+  .opt small{display:block;color:var(--ink2);font-size:14px;margin-top:2px}
+  .back{background:none;border:0;color:var(--ink2);font:inherit;font-size:13px;padding:10px 0 0;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+  /* result */
+  .result{display:none}
+  .result.on{display:block}
+  .rcard{background:var(--paper);border:1px solid var(--hair);border-radius:18px;padding:24px 20px 20px;margin-top:18px}
+  .rtype{font-size:12px;letter-spacing:.14em;color:var(--ink2)}
+  .rname{font-size:30px;line-height:1.2;font-weight:800;margin:6px 0 12px;letter-spacing:-.01em}
+  .rdiag{font-size:17px;line-height:1.6;margin:0 0 18px}
+  .rsec{border-top:1px solid var(--hair);padding:14px 0 4px}
+  .rsec h3{font-size:12px;letter-spacing:.12em;color:var(--ink2);margin:0 0 6px;font-weight:600}
+  .rsec p{margin:0 0 8px;font-size:16px;line-height:1.6}
+  .rsec .when{font-weight:700}
+  .take{background:#fff;border:1px solid var(--hair);border-radius:12px;padding:12px 14px;margin-top:6px;font-size:16px;line-height:1.55}
+  .take b{color:var(--ink)}
+  .facts{font-size:13px;line-height:1.7;color:var(--ink2);border-top:1px solid var(--hair);padding-top:12px;margin-top:8px}
+  .cta{display:block;text-align:center;background:var(--signal);color:var(--ink);text-decoration:none;font-weight:800;font-size:18px;padding:17px 16px;border-radius:14px;margin-top:16px}
+  .cta:active{transform:translateY(1px)}
+  .ref{font-size:14px;line-height:1.6;color:var(--ink2);margin:12px 0 0}
+  .ref strong{color:var(--ink)}
+  .share{font-size:14px;color:var(--ink2);margin-top:18px;text-align:center}
+  .again{display:block;margin:14px auto 0;background:none;border:0;color:var(--ink2);font:inherit;font-size:13px;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+  footer{margin-top:36px;font-size:12px;color:var(--ink2);line-height:1.7;border-top:1px solid var(--hair);padding-top:14px}
+  @media (prefers-reduced-motion:no-preference){.card,.rcard{animation:in .25s ease-out}}
+  @keyframes in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="kicker">10/3 AI MONEY GAME · 30초 진단</div>
+    <h1>나는 어떤 사장님인가</h1>
+    <p class="sub">AI를 잘 몰라도 됩니다. 세 번만 고르면, 10/3에 오면 무엇을 가져갈지 나옵니다.</p>
+    <p class="fine">아무것도 저장하지 않습니다. 이름·번호를 묻지 않습니다.</p>
+  </header>
+
+  <section id="quiz" class="card" aria-live="polite"></section>
+
+  <section id="result" class="result" aria-live="polite"></section>
+
+  <footer>
+    HAM MEDIA — 27년 현장을 산 사람과 AI 동료가 만듭니다.<br>
+    행사 정보는 <a href="https://ai-money-game.vercel.app/" style="color:inherit">AI MONEY GAME 안내 페이지</a> 원문을 그대로 옮겼습니다. 참가자의 동일한 수익을 보장하지 않습니다.
+  </footer>
+</div>
+
+<script>
+(function(){
+  var Q = [
+    {q:"요즘 내 시간을 제일 많이 뺏는 일은?", opts:[
+      ["손님 오게 하는 일","홍보 글, SNS, 소개 문구"],
+      ["만들어 파는 일","상품, 콘텐츠, 영상"],
+      ["서류 일","견적, 제안서, 정리, 반복 입력"],
+      ["사람 모으는 일","모임, 강의, 커뮤니티"]]},
+    {q:"AI는 지금 어디까지 써 봤나?", opts:[
+      ["거의 안 써 봤다",""],
+      ["챗GPT에 물어보는 정도",""],
+      ["글·이미지는 만들어 봤는데 일에 못 붙였다",""],
+      ["일에 쓰고는 있는데 돈으로 안 이어진다",""]]},
+    {q:"10/3에 딱 하나만 얻어 간다면?", opts:[
+      ["남이 실제로 돈 번 방법을 그대로 보고 싶다",""],
+      ["내 손으로 결과물 하나 만들어 보고 싶다",""],
+      ["같이 할 사람을 만나고 싶다",""],
+      ["내 일에 AI를 어디 붙일지 정하고 싶다",""]]}
+  ];
+
+  var TYPES = [
+    {name:"손님이 급한 사장님", diag:"홍보는 해야 하는데 글도 영상도 손에서 안 나온다. 하루가 장사로 끝난다.",
+     when:"13:40 · CASE 02 · 함동민 / 15:35 · HANDS-ON", what:"소상공인 마케팅, 매장·병원 유튜브 운영 같은 일을 AI로 해 주고 30만~100만원 단위로 실제 돈을 받은 사례.",
+     take:"그 사례를 보고, HANDS-ON에서 내 가게 것 실행 초안 하나를 만든다.", topic:"우리 가게 소개 세 줄", money:false},
+    {name:"만들어 파는 사장님", diag:"팔 것은 있는데 만들고 올리는 데 시간이 다 간다.",
+     when:"14:05 · CASE 03 · 이만성 / 14:30 · CASE 04 · 문영상", what:"AI 이커머스 매출 3천만원 — 상품 기획 → AI 콘텐츠 제작 → 반복 업무 자동화. AI 유튜브 협찬·부업 수익화 — 월 100만원 창출.",
+     take:"상품 기획부터 콘텐츠 제작, 반복 업무까지 AI로 처리하는 흐름.", topic:"내 상품 소개 한 줄", money:true},
+    {name:"서류에 묶인 사장님", diag:"견적·제안서·계획서에 밤을 쓴다. 본업이 뒤로 밀린다.",
+     when:"13:40 · CASE 02 · 함동민 / 15:35 · HANDS-ON", what:"투자제안서·사업계획서를 AI로 써서 실제 서비스로 판 사례를 보고, 노트북으로 직접 따라 한다.",
+     take:"작은 결과물 또는 실행 초안을 최소 하나 — 소재는 지난주 쓴 서류.", topic:"지난주 쓴 서류 한 장", money:false},
+    {name:"사람이 재산인 사장님", diag:"모임·강의는 잘하는데 돈이 되는 구조를 모른다.",
+     when:"13:15 · CASE 01 · 손병진 / 16:20 · NETWORKING", what:"커뮤니티·교육으로 약 500만원 매출 — 커뮤니티 → 교육/세미나 → AI 광고·AX 비즈니스로 확장. 발표 없이 사람 만나는 시간.",
+     take:"커뮤니티 → 교육/세미나 → AI 광고·AX 비즈니스로 확장하는 구조.", topic:"내 모임 소개 한 줄", money:true}
+  ];
+
+  function firstStep(a, topic){
+    return [
+      "노트북만 들고 오세요. 쓰는 AI 계정이 있으면 로그인해 오면 더 편합니다.",
+      "오기 전에 챗GPT에 「"+topic+"」을 한 번 물어보고 오세요. 그 답을 그날 고칩니다.",
+      "만든 것을 어디에 붙일지 — 그게 그날 당신이 받아 갈 답입니다.",
+      "「돈 받는 서비스」로 묶는 법 — 그게 그날 당신이 받아 갈 답입니다."
+    ][a];
+  }
+  var MUST = [
+    ["13:15~14:55","사례 넷 — 남이 실제로 한 것부터 봅니다."],
+    ["15:35~16:20","HANDS-ON — 노트북으로 작은 결과물 하나를 만듭니다."],
+    ["16:20~17:00","NETWORKING — 발표 없이, 사람을 만나는 시간."],
+    ["15:05~15:35","LIVE DEMO — 최신 AI 트렌드와 실제 사용법을 화면으로."]
+  ];
+
+  var ans = [], quiz = document.getElementById('quiz'), res = document.getElementById('result');
+  var L = ["가","나","다","라"];
+
+  function render(i){
+    var d = Q[i], html = '<div class="step">질문 '+(i+1)+' / 3<span class="dots">'+
+      [0,1,2].map(function(k){return '<i class="'+(k<=i?'on':'')+'"></i>'}).join('')+'</span></div>'+
+      '<h2 class="q">'+d.q+'</h2><div class="opts">';
+    d.opts.forEach(function(o,k){
+      html += '<button class="opt" data-k="'+k+'"><b>'+L[k]+'</b><span>'+o[0]+(o[1]?'<small>'+o[1]+'</small>':'')+'</span></button>';
+    });
+    html += '</div>'+(i>0?'<button class="back">← 앞 질문</button>':'');
+    quiz.innerHTML = html;
+    quiz.querySelectorAll('.opt').forEach(function(b){
+      b.addEventListener('click', function(){ ans[i] = +b.dataset.k; if(i<2) render(i+1); else finish(); });
+    });
+    var bk = quiz.querySelector('.back'); if(bk) bk.addEventListener('click', function(){ render(i-1); });
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
+
+  function finish(){
+    var t = TYPES[ans[0]], m = MUST[ans[2]];
+    res.innerHTML =
+      '<div class="rcard">'+
+        '<div class="rtype">진단 결과 · 유형 '+L[ans[0]]+'</div>'+
+        '<div class="rname">'+t.name+'</div>'+
+        '<p class="rdiag">'+t.diag+'</p>'+
+        '<div class="rsec"><h3>10/3에서 당신 것</h3><p class="when">'+t.when+'</p><p>'+t.what+'</p>'+
+          '<div class="take"><b>가져갈 것:</b> '+t.take+'</div>'+(t.money?'<p style="font-size:12px;color:var(--ink2);margin:8px 0 0">※ 위 수치는 발표자가 공유 예정인 대표 사례이며, 참가자의 동일한 수익을 보장하는 의미는 아닙니다.</p>':'')+'</div>'+
+        '<div class="rsec"><h3>첫 걸음</h3><p>'+firstStep(ans[1], t.topic)+'</p></div>'+
+        '<div class="rsec"><h3>그날 꼭 있어야 할 시간</h3><p><span class="when">'+m[0]+'</span> '+m[1]+'</p></div>'+
+        '<div class="facts">10/3(토) 13:00~17:00 · 강남 언더라인 삼성(삼성역 4번 출구 도보 약 5분) · 참가비 40,000원(계좌이체 시 36,000원) · 노트북 필수</div>'+
+        '<a class="cta" href="https://ai-money-game.vercel.app/#apply" target="_blank" rel="noopener">10/3 신청하기</a>'+
+        '<p class="ref">신청폼 「추천인」에서 <strong>함동민</strong>을 고르면, 그날 현장에서 함동민이 먼저 인사드립니다.</p>'+
+      '</div>'+
+      '<p class="share">이 카드를 캡처해서, 같이 갈 사람에게 보내세요.</p>'+
+      '<button class="again">다시 해 보기</button>';
+    quiz.style.display = 'none'; res.classList.add('on');
+    res.querySelector('.again').addEventListener('click', function(){ ans=[]; res.classList.remove('on'); quiz.style.display=''; render(0); });
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
+
+  render(0);
+})();
+</script>
+</body>
+</html>
