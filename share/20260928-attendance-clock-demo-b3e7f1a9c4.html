@@ -170,7 +170,7 @@
       { id: 'e3', n: '가명 셋', r: '홀 매니저 · 정직원' }, { id: 'e4', n: '가명 넷', r: '홀 · 정직원' },
       { id: 'e5', n: '가명 다섯', r: '홀 · 아르바이트' }, { id: 'e6', n: '가명 여섯', r: '홀 · 아르바이트' }
     ],
-    pay: { five: false, wage: 10320, payday: 10 }, // 5인 이상 여부(가산 수당 의무), 기본 시급(2026 최저시급 10,320원), 지급일
+    pay: { five: false, wage: 10320, payday: 10, rates: { np: 4.75, hi: 3.595, ltc: 0.4724, ei: 0.9 } }, // 근로자 부담 요율(%) 2026: 국민연금 4.75 · 건강 3.595 · 장기요양 0.4724(보수 기준) · 고용 0.9 // 5인 이상 여부(가산 수당 의무), 기본 시급(2026 최저시급 10,320원), 지급일
     geo: null,             // {lat, lng, radius} — 가게 좌표 하나만 기기 안에 저장. 직원 위치는 저장·전송하지 않는다
     recs: []               // {emp, in(ms), out(ms|null), edited:bool}
   };
@@ -371,6 +371,17 @@
     var total = items.reduce(function (a, it) { return a + it[2]; }, 0);
     return { wage: wage, five: five, work: work, over: over, night: night, hol: hol, weekly: weekly, items: items, total: total, days: recs.length };
   }
+  // ── 공제 자동 계산(v4) — 4대보험 근로자 부담분(요율은 설정에서 고침) · 월 60시간 미만은 국민연금·건강·장기요양 제외(고용보험만) · 소득세는 간이세액표 근사(확정은 홈택스)
+  function ratesOf() { var r = (st.pay && st.pay.rates) || {}; return { np: +r.np || 4.75, hi: +r.hi || 3.595, ltc: +r.ltc || 0.4724, ei: +r.ei || 0.9 }; }
+  var TAX_PTS = [[1060000, 0], [1500000, 7610], [2000000, 19520], [2500000, 36690], [3000000, 74350], [3500000, 122180], [4000000, 210960], [5000000, 350470], [6000000, 530000], [8000000, 950000], [10000000, 1400000]];
+  function taxEst(pay) { if (pay <= TAX_PTS[0][0]) return 0; for (var i = 1; i < TAX_PTS.length; i++) { if (pay <= TAX_PTS[i][0]) { var a = TAX_PTS[i - 1], b = TAX_PTS[i]; return Math.round((a[1] + (b[1] - a[1]) * (pay - a[0]) / (b[0] - a[0])) / 10) * 10; } } var l = TAX_PTS[TAX_PTS.length - 1]; return Math.round(l[1] + (pay - l[0]) * 0.2); }
+  function dedCalc(pc) {
+    var r = ratesOf(), gross = pc.total, full = pc.work >= 60;
+    var np = full ? gross * r.np / 100 : 0, hi = full ? gross * r.hi / 100 : 0, ltc = full ? gross * r.ltc / 100 : 0, ei = gross * r.ei / 100;
+    var tax = taxEst(gross), local = Math.round(tax * 0.1 / 10) * 10;
+    return { full: full, items: [['국민연금 ' + r.np + '%', Math.round(np / 10) * 10, full ? '자동' : '월 60h 미만 제외'], ['건강보험 ' + r.hi + '%', Math.round(hi / 10) * 10, full ? '자동' : '월 60h 미만 제외'], ['장기요양 ' + r.ltc + '%', Math.round(ltc / 10) * 10, full ? '자동' : '월 60h 미만 제외'], ['고용보험 ' + r.ei + '%', Math.round(ei / 10) * 10, '자동'], ['소득세', tax, '간이세액표 추정(1인) — 홈택스로 확정'], ['지방소득세', local, '소득세의 10%']] };
+  }
+
   function showPayslip(e, ded) {
     var pc = payCalc(e, ym.y, ym.m); var dsum = ded.reduce(function (a, d) { return a + d[1]; }, 0);
     var payDate = new Date(ym.y, ym.m + 1, st.pay.payday || 10);
@@ -382,20 +393,22 @@
     pc.items.forEach(function (it) { h += '<tr><td>' + it[0] + '</td><td class="how">' + it[1] + '</td><td>' + won(it[2]) + '</td></tr>'; });
     h += '<tr class="sum"><td>지급 총액</td><td></td><td>' + won(pc.total) + '</td></tr></tbody></table>' +
       '<table class="slipT"><thead><tr><th>공제 항목</th><th></th><th>금액</th></tr></thead><tbody>';
-    ded.forEach(function (d) { h += '<tr><td>' + d[0] + '</td><td class="how">' + (d[1] ? '사장 입력' : '-') + '</td><td>' + won(d[1]) + '</td></tr>'; });
+    ded.forEach(function (d) { h += '<tr><td>' + d[0] + '</td><td class="how">' + (d[2] || (d[1] ? '사장 입력' : '-')) + '</td><td>' + won(d[1]) + '</td></tr>'; });
     h += '<tr class="sum"><td>공제 합계</td><td></td><td>' + won(dsum) + '</td></tr></tbody></table>' +
       '<div class="slipNet"><span>실지급액</span><b>' + won(pc.total - dsum) + '</b></div>' +
-      '<p class="note">이 명세는 이 기기의 출퇴근 기록으로 계산한 것입니다. 4대보험·소득세는 자동 계산하지 않으며 사장님·세무 담당이 확인한 숫자를 넣습니다. 근로계약서의 소정근로시간·수당 약정이 다르면 그것이 우선합니다. 기준: 근로기준법 §48②·시행령 §27조의2(임금명세서 기재 사항).</p></div>';
+      '<p class="note">이 명세는 이 기기의 출퇴근 기록으로 계산한 것입니다. 4대보험은 근로자 부담 요율(설정에서 확인·수정)로 자동 계산했고, 소득세는 국세청 간이세액표(부양가족 1인) 근사값이라 홈택스 간이세액표로 확정합니다. 근로계약서의 소정근로시간·수당 약정이 다르면 그것이 우선합니다. 기준: 근로기준법 §48②·시행령 §27조의2(임금명세서 기재 사항).</p></div>';
     $('slipBody').innerHTML = h; $('slipSheet').classList.add('on');
   }
   $('payslip').addEventListener('click', function () {
     ask({ title: '명세를 볼 직원', sub: ym.y + '년 ' + (ym.m + 1) + '월분', list: st.emps.map(function (e) { return e.n + ' · ' + won(e.wage || st.pay.wage) + '/h'; }) }).then(function (v) { if (!v || v.pick === undefined) return; var e = st.emps[v.pick];
-      return ask({ title: '공제 항목(있으면 숫자)', sub: '자동 계산하지 않습니다. 없으면 비워 두세요.', fields: [{ label: '4대보험(원)', type: 'number', placeholder: '0' }, { label: '소득세·지방소득세(원)', type: 'number', placeholder: '0' }, { label: '기타 공제(원)', type: 'number', placeholder: '0' }], ok: '명세 보기' }).then(function (w) { if (!w) return; showPayslip(e, [['4대보험', +w[0] || 0], ['소득세·지방소득세', +w[1] || 0], ['기타 공제', +w[2] || 0]]); }); });
+      var pc = payCalc(e, ym.y, ym.m), dc = dedCalc(pc);
+      return ask({ title: '공제 — 자동 계산됨, 고칠 수 있음', sub: (dc.full ? '4대보험 근로자 부담분(2026 요율)' : '월 60시간 미만: 고용보험만') + ' · 소득세는 간이세액표 추정', fields: dc.items.map(function (d) { return { label: d[0] + ' — ' + d[2], type: 'number', value: d[1] }; }), ok: '명세 보기' })
+        .then(function (w) { if (!w) return; showPayslip(e, dc.items.map(function (d, i) { return [d[0], +w[i] || 0, d[2]]; })); }); });
   });
   $('slipClose').addEventListener('click', function () { $('slipSheet').classList.remove('on'); });
   $('slipPrint').addEventListener('click', function () { window.print(); });
   $('paySet').addEventListener('click', function () {
-    ask({ title: '급여 설정', sub: '5인 이상이면 연장·야간·휴일 가산(0.5배)이 붙습니다.', fields: [{ label: '기본 시급(원) — 2026 최저시급 10,320', type: 'number', value: st.pay.wage }, { label: '지급일(매달 며칠)', type: 'number', value: st.pay.payday }, { label: '5인 이상 사업장이면 1, 아니면 0', type: 'number', value: st.pay.five ? 1 : 0 }] }).then(function (v) { if (!v) return; var w = parseInt(v[0], 10); if (w >= 1000) st.pay.wage = w; var d = parseInt(v[1], 10); if (d >= 1 && d <= 31) st.pay.payday = d; st.pay.five = v[2] === '1'; save(); toast('급여 설정 저장'); });
+    ask({ title: '급여 설정', sub: '5인 이상이면 연장·야간·휴일 가산(0.5배)이 붙습니다.', fields: [{ label: '기본 시급(원) — 2026 최저시급 10,320', type: 'number', value: st.pay.wage }, { label: '지급일(매달 며칠)', type: 'number', value: st.pay.payday }, { label: '5인 이상 사업장이면 1, 아니면 0', type: 'number', value: st.pay.five ? 1 : 0 }, { label: '국민연금 근로자 %(2026: 4.75)', type: 'number', value: ratesOf().np }, { label: '건강보험 근로자 %(2026: 3.595)', type: 'number', value: ratesOf().hi }, { label: '장기요양 근로자 %(2026: 0.4724)', type: 'number', value: ratesOf().ltc }, { label: '고용보험 근로자 %(2026: 0.9)', type: 'number', value: ratesOf().ei }] }).then(function (v) { if (!v) return; var w = parseInt(v[0], 10); if (w >= 1000) st.pay.wage = w; var d = parseInt(v[1], 10); if (d >= 1 && d <= 31) st.pay.payday = d; st.pay.five = v[2] === '1'; st.pay.rates = { np: +v[3] || 4.75, hi: +v[4] || 3.595, ltc: +v[5] || 0.4724, ei: +v[6] || 0.9 }; save(); toast('급여 설정 저장'); });
   });
   $('wageSet').addEventListener('click', function () {
     ask({ title: '시급 정할 직원', list: st.emps.map(function (e) { return e.n + ' · ' + won(e.wage || st.pay.wage) + (e.wage ? '' : '(기본)'); }) }).then(function (v) { if (!v || v.pick === undefined) return; var e = st.emps[v.pick]; return ask({ title: e.n + ' 시급', sub: '비우면 기본 시급', fields: [{ label: '시급(원)', type: 'number', value: e.wage || '' }] }).then(function (w) { if (!w) return; var n = parseInt(w[0], 10); e.wage = n >= 1000 ? n : undefined; save(); toast('시급 저장'); }); });
