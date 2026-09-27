@@ -334,7 +334,7 @@
       st.emps.forEach(function (e, i) {
         var rest = (i < 2 && dow === 1) || (i >= 4 && (dow === 0 || dow === 3 || dow === 6)); if (rest) return;
         var s = new Date(ym.y, ym.m, day, i >= 4 ? 17 : 10, (i * 7) % 30); var len = i >= 4 ? 5.5 : 9.5;
-        var o = new Date(s.getTime() + len * 36e5); if (o.getTime() < now) st.recs.push({ emp: e.id, in: s.getTime(), out: o.getTime() });
+        var o = new Date(s.getTime() + len * 36e5); var dup = st.recs.some(function (r) { return r.emp === e.id && r.in === s.getTime(); }); if (o.getTime() < now && !dup) st.recs.push({ emp: e.id, in: s.getTime(), out: o.getTime() });
       });
     }
     save(); renderOwner(); renderStaff(); toast('가명 시연 기록을 채웠습니다');
