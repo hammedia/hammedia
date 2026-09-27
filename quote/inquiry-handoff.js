@@ -19,6 +19,7 @@
   const ids=['q1','q2','q3','q4','q5','qc'];
   const fields=ids.map(id=>document.getElementById(id));
   document.getElementById('inquiry-original').hidden=false;
+  document.getElementById('inquiry-original').open=original.length>fields[0].maxLength;
   document.getElementById('inquiry-original-text').textContent=original;
   fields.forEach(field=>{if(!field.value){const restored=draft.quote?.[field.id];if(field.id==='q1')field.value=draft.quoteOriginal===original&&typeof restored==='string'?restored:original;else if(typeof restored==='string')field.value=restored;}});
   function report(){
