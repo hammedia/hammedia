@@ -1,0 +1,14 @@
+/* Shared cross-star reading paths; keep each star's own design and room navigation. */
+.star-connections { margin:3rem auto 0; padding:clamp(1.5rem,4vw,3rem); max-width:72rem; color:#ede8de; background:#111c24; text-align:left; border-top:1px solid #dccda540; }
+.star-connections .star-connections-kicker { margin:0 0 .6rem; color:#dac99f; font-size:.75rem; letter-spacing:.08em; }
+.star-connections h2 { margin:0 0 1.5rem; color:#f5efe0; font-size:clamp(1.2rem,2vw,1.8rem); line-height:1.5; font-weight:600; letter-spacing:-.03em; }
+.star-connections nav { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1.5rem; }
+.star-connections nav a { display:grid; gap:.6rem; color:inherit; text-decoration:none; padding:1rem 0; border-top:1px solid #ffffff22; }
+.star-connections nav a > span { color:#b8c3cb; font-size:.85rem; line-height:1.7; }
+.star-connections nav strong { font-size:.95rem; font-weight:500; line-height:1.7; }
+.star-connections a:hover { text-decoration:underline; text-underline-offset:.3em; }
+.star-connections a:focus-visible { outline:2px solid #ecd196; outline-offset:5px; }
+.star-connections .star-connections-talk { color:#b8c3cb; font-size:.85rem; line-height:1.9; margin:1.5rem 0 1rem; }
+.star-connections-talk a,.star-connections-home { color:#ecdbb8; text-underline-offset:.3em; }
+.star-connections-home { display:inline-block; padding:.5rem 0; font-size:.82rem; }
+@media(max-width:620px) { .star-connections nav { grid-template-columns:1fr; gap:.5rem; } }
