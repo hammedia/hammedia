@@ -15,3 +15,10 @@
 .star-new-essay ul { padding-left:1.3rem; }
 .car-new-essay { max-width:52rem; margin:4rem auto; padding:clamp(1.25rem,4vw,3rem); background:var(--ivory); color:#222; }
 .room-article-link[href] { text-decoration:none; }
+
+.star-new-essay .star-essay-video { max-width:360px; margin:2.5rem 0; }
+.star-essay-video figcaption { margin-bottom:1rem; line-height:1.7; }
+.star-essay-video figcaption strong,.star-essay-video figcaption span { display:block; }
+.star-essay-video figcaption span { font-size:.8rem; opacity:.75; }
+.star-essay-video video { display:block; width:100%; height:auto; aspect-ratio:9/16; background:#081925; }
+.star-essay-video .travel-short-back { display:inline-block; margin-top:1rem; font-size:.85rem; text-underline-offset:.3em; }
