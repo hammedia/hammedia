@@ -20,7 +20,8 @@
   try { const data=JSON.parse(sessionStorage.getItem(DRAFT_KEY)); if(data?.version===1 && Object.hasOwn(options,data.selected) && Array.isArray(data.drafts)) savedDraft=data; } catch {}
   const inquiryDrafts = new Map((savedDraft?.drafts||[]).filter(row=>Array.isArray(row)&&Object.hasOwn(options,row[0])&&typeof row[1]==='string'));
   function saveDraft(resetQuote=false){
-    const draft={version:1,selected,drafts:[...inquiryDrafts],automaticPurpose,quote:resetQuote||savedDraft?.selected!==selected?{}:(savedDraft?.quote||{}),quoteOriginal:savedDraft?.selected===selected?savedDraft?.quoteOriginal:null};
+    let latest;try{latest=JSON.parse(sessionStorage.getItem(DRAFT_KEY));}catch{}
+    const draft={starVisit:window.HamStarContext?.visit(latest?.starVisit),starContext:window.HamStarContext?.context(latest?.starContext),quoteContext:resetQuote||savedDraft?.selected!==selected?'':savedDraft?.quoteContext,version:1,selected,drafts:[...inquiryDrafts],automaticPurpose,quote:resetQuote||savedDraft?.selected!==selected?{}:(savedDraft?.quote||{}),quoteOriginal:savedDraft?.selected===selected?savedDraft?.quoteOriginal:null};
     const encoded=JSON.stringify(draft);
     sessionStorage.setItem(DRAFT_KEY,encoded);
     if(sessionStorage.getItem(DRAFT_KEY)!==encoded) throw new Error('draft not saved');
