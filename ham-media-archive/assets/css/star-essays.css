@@ -1,0 +1,17 @@
+/* Reading styles for new stories; each star keeps its existing room layout. */
+.star-new-essay { scroll-margin-top:2rem; }
+.star-new-essay header { max-width:44rem; margin-bottom:2rem; }
+.star-new-essay header h2,.star-new-essay header h3 { font-size:clamp(1.5rem,4vw,2.5rem); line-height:1.5; overflow-wrap:anywhere; }
+.star-new-essay .star-essay-copy { max-width:44rem; font-size:1rem; line-height:1.95; overflow-wrap:anywhere; }
+.star-new-essay .star-essay-copy p { margin:0 0 1.5em; }
+.star-new-essay .star-essay-copy blockquote { margin:2rem 0; padding:.3rem 0 .3rem 1.2rem; border-left:2px solid currentColor; font:inherit; }
+.star-new-essay .star-essay-copy blockquote p { margin:0; }
+.star-new-essay .star-essay-photo { margin:2rem 0; max-width:100%; }
+.star-new-essay .star-essay-photo img { display:block; width:auto; max-width:100%; height:auto; max-height:none; object-fit:contain; border-radius:0; }
+.star-new-essay .star-essay-photo figcaption { margin-top:.8rem; font-size:.8rem; line-height:1.8; opacity:.8; }
+#cameras-lenses-portraits-note .star-essay-photo { max-width:400px; }
+#bicycles-terrace-parking-note .star-essay-photo { max-width:640px; }
+.star-new-essay code { white-space:normal; font:inherit; }
+.star-new-essay ul { padding-left:1.3rem; }
+.car-new-essay { max-width:52rem; margin:4rem auto; padding:clamp(1.25rem,4vw,3rem); background:var(--ivory); color:#222; }
+.room-article-link[href] { text-decoration:none; }

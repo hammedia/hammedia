@@ -74,7 +74,7 @@
     const style = document.createElement("style");
     style.textContent = `
       #ham-analytics-consent{position:fixed;z-index:2147483647;left:16px;right:16px;bottom:16px;max-width:760px;margin:auto;padding:18px;border:1px solid rgba(28,24,20,.2);border-radius:14px;background:#fffefb;color:#1c1814;box-shadow:0 12px 40px rgba(28,24,20,.2);font:14px/1.6 -apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",sans-serif}
-      #ham-analytics-consent p{margin:0 0 12px}
+      #ham-analytics-consent p{margin:0 0 12px;color:#1c1814;font:inherit}
       #ham-analytics-consent a{color:#285c85;text-underline-offset:3px}
       #ham-analytics-consent .ham-consent-actions{display:flex;flex-wrap:wrap;gap:8px}
       #ham-analytics-consent button{min-height:42px;padding:9px 14px;border:1px solid #1c1814;border-radius:999px;background:#fffefb;color:#1c1814;font:inherit;font-weight:800;cursor:pointer}
