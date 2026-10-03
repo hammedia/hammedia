@@ -26,6 +26,16 @@
     <link rel="stylesheet" href="ham-media-archive/assets/css/styles.css?v=universe-v3-20260904-p1">
     <link rel="stylesheet" href="ham-media-archive/assets/css/home-star-names.css?v=star-names-20260904-p1">
     <link rel="stylesheet" href="ham-media-archive/assets/css/home-entry.css?v=20260930-senior-1">
+    <style>
+      /* The Oct 3 class entry is presentation only; the classroom stays public. */
+      .home-class-entry { display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:.65rem 1rem; margin:0 0 1.4rem; padding:.8rem 1rem; border:1px solid #eed59a80; border-radius:8px; background:#152333; }
+      .home-class-entry[hidden] { display:none; }
+      .home-class-entry time { color:#eee3c8; font-size:.9rem; white-space:nowrap; }
+      .home-class-entry a { display:inline-flex; align-items:center; justify-content:center; gap:.8rem; min-height:48px; padding:.6rem 1.1rem; border-radius:4px; background:#eed59a; color:#0b1521; font-size:1rem; font-weight:750; text-decoration:none; }
+      .home-class-entry a:hover { background:#fff0c6; }
+      .home-class-entry a:focus-visible { outline:3px solid #fff0c6; outline-offset:4px; }
+      @media(max-width:620px) { .home-class-entry { align-self:stretch; justify-content:space-between; padding:.7rem; } }
+    </style>
   </head>
   <body class="home-body">
     <a class="skip-link" href="#main">본문으로 이동</a>
@@ -43,6 +53,30 @@
       <section class="about-constellation constellation-entry" id="about-constellation" aria-labelledby="constellation-title">
         <div class="constellation-intro">
           <nav class="home-reading-routes" aria-label="언어 선택"><a href="/" lang="ko" aria-current="page">한국어</a><a href="/index_en.html" lang="en">English</a><a href="/index_jp.html" lang="ja">日本語</a></nav>
+          <div class="home-class-entry" id="home-class-entry" hidden>
+            <time datetime="2026-10-03" id="home-class-date">10월 3일 · 1기</time>
+            <a href="https://hammedia.co.kr/academy/cohort-01/" aria-describedby="home-class-date">오늘 수업 입장 <span aria-hidden="true">→</span></a>
+          </div>
+          <script>
+            (() => {
+              const entry = document.getElementById('home-class-entry');
+              const startsAt = Date.parse('2026-10-03T00:00:00+09:00');
+              const endsAt = Date.parse('2026-10-04T00:00:00+09:00');
+              let timer;
+              function updateClassEntry() {
+                const now = Date.now();
+                entry.hidden = now < startsAt || now >= endsAt;
+                clearTimeout(timer);
+                const nextChange = now < startsAt ? startsAt : endsAt;
+                if (now < nextChange) {
+                  timer = setTimeout(updateClassEntry, Math.min(nextChange - now, 2147483647));
+                }
+              }
+              updateClassEntry();
+              window.addEventListener('pageshow', updateClassEntry);
+              document.addEventListener('visibilitychange', updateClassEntry);
+            })();
+          </script>
           <p class="home-kicker">햄의 우주 · 아홉 별과 AI 동료</p>
           <h1 id="constellation-title">좋아하는 것들이 <br>나를 여기까지 데려왔다.</h1>
           <p class="constellation-guide">만년필 한 자루, 달리던 길, 오래 듣던 음악. <br>마음이 가는 별에서 이야기를 만나세요.</p>
