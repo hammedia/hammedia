@@ -8,7 +8,7 @@
     <title>HAM MEDIA | 함동민 디지털 명함</title>
     <meta
       name="description"
-      content="HAM MEDIA의 움직이는 별자리와 함동민의 연락처를 한 장에 담은 클릭형 디지털 명함입니다."
+      content="HAM MEDIA 함동민. 영상·웹·문서 제작, AI 업무 도구와 교육. 연락처와 실제 작업을 한 장에서 확인하세요."
     >
     <link rel="canonical" href="https://hammedia.co.kr/card/">
     <meta property="og:type" content="website">
@@ -16,7 +16,7 @@
     <meta property="og:title" content="HAM MEDIA | 함동민 디지털 명함">
     <meta
       property="og:description"
-      content="별자리 앞면을 보고 링크를 누르면 함동민의 연락처 명함이 바로 열립니다."
+      content="영상·웹·문서 제작부터 AI 업무 도구와 교육까지. 함동민의 연락처와 지금 하는 일을 확인하세요."
     >
     <meta property="og:url" content="https://hammedia.co.kr/card/">
     <meta property="og:image" content="https://hammedia.co.kr/og-image-digital-card-20260726.jpg">
@@ -29,7 +29,7 @@
     <meta name="twitter:title" content="HAM MEDIA | 함동민 디지털 명함">
     <meta
       name="twitter:description"
-      content="별자리 앞면을 보고 링크를 누르면 함동민의 연락처 명함이 바로 열립니다."
+      content="영상·웹·문서 제작부터 AI 업무 도구와 교육까지. 함동민의 연락처와 지금 하는 일을 확인하세요."
     >
     <meta name="twitter:image" content="https://hammedia.co.kr/og-image-digital-card-20260726.jpg">
     <meta name="twitter:image:alt" content="별자리와 좋아하는 것들이 나를 여기까지 데려왔다는 문장이 담긴 HAM MEDIA 명함 앞면">
@@ -805,6 +805,10 @@
         font-weight: 500;
       }
 
+      /* QR modules must never inherit the site-wide icon stroke. */
+      .qr-frame svg, .qr-frame svg * { stroke: none !important; stroke-width: 0 !important; }
+      .work-summary { margin: 15px 0 0; color: var(--card-muted); font-size: 14px; line-height: 1.6; }
+
       /* ── QR (링크 QR · 인라인 SVG · 뒷면 위에 펼친다) ─── */
 
       .qr-panel {
@@ -814,8 +818,8 @@
         display: grid;
         padding: clamp(20px, 4vw, 40px);
         place-items: center;
-        background: rgba(5, 7, 15, 0.94);
-        animation: qr-in 280ms cubic-bezier(0.2, 0.72, 0.18, 1) both;
+        background: #05070f;
+        overflow-y: auto;
       }
 
       .qr-panel[hidden] {
@@ -836,17 +840,17 @@
 
       .qr-inner {
         display: grid;
-        width: min(100%, 260px);
+        width: min(100%, 360px);
         gap: 12px;
         justify-items: center;
       }
 
       .qr-frame {
         width: 100%;
-        max-width: min(216px, 34svh);
-        padding: 10px;
-        border-radius: 12px;
-        background: #fffdf8;
+        max-width: min(328px, 55svh);
+        padding: 0;
+        border-radius: 0;
+        background: #fff;
       }
 
       .qr-frame svg {
@@ -1295,7 +1299,7 @@
 
               <div>
                 <h1 class="headline">좋아하는 것들이 나를 여기까지 데려왔다.</h1>
-                <p class="front-subtitle">AI 강의 · 콘텐츠 제작 · 유튜브 운영</p>
+                <p class="front-subtitle">영상 · 웹 · 문서 · AI 업무 도구와 교육</p>
               </div>
             </div>
 
@@ -1359,7 +1363,8 @@
               <p class="back-brand">HAM MEDIA</p>
               <h2 class="name">함동민</h2>
               <p class="role">HAM MEDIA 대표 · 콘텐츠 프로듀서</p>
-              <p class="statement">50대에 AI로 나를 다시 고용했습니다 — 그 방법을 가르칩니다</p>
+              <p class="statement">필요한 일을 함께 만들고,<br>직접 하는 방법도 가르칩니다.</p>
+              <p class="work-summary">영상 · 웹 · 문서 제작<br>AI 업무 도구 · 실무 교육</p>
               <nav class="identity-shortcuts" aria-label="HAM MEDIA 더 보기">
                 <a class="identity-shortcut" href="https://www.threads.net/@dellacasa_2" target="_blank" rel="noopener noreferrer">
                   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.8 8.7c-.8-2.3-2.5-3.4-4.8-3.4-3.8 0-6.2 2.7-6.2 6.7 0 4.1 2.5 6.7 6.4 6.7 3.4 0 5.8-1.8 5.8-4.6 0-2.4-1.8-3.9-4.7-3.9-2.5 0-4.2 1.2-4.2 3.1 0 1.5 1.2 2.5 2.9 2.5 2.8 0 4.8-2.5 4.8-6 0-3.8-1.9-6.3-5.1-6.3"></path></svg>
@@ -1451,7 +1456,7 @@
                       <span class="contact-icon" aria-hidden="true">
                         <svg viewBox="0 0 24 24"><path d="M5 6h14M5 12h14M5 18h14"></path><circle cx="3" cy="6" r=".6" fill="currentColor" stroke="none"></circle><circle cx="3" cy="12" r=".6" fill="currentColor" stroke="none"></circle><circle cx="3" cy="18" r=".6" fill="currentColor" stroke="none"></circle></svg>
                       </span>
-                      <span class="contact-copy"><small>상품 메뉴</small><strong>지금 필요한 일을 고릅니다</strong></span>
+                      <span class="contact-copy"><small>하는 일 · 실제 작업</small><strong>만든 결과와 맡기는 방법</strong></span>
                       <span class="contact-action" aria-hidden="true">↗</span>
                     </a>
                   </div>
@@ -1471,15 +1476,15 @@
               <div class="tools" role="group" aria-label="명함 도구">
                 <button class="tool-btn is-primary" type="button" id="tool-save">
                   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v11m0 0 4-4m-4 4-4-4"></path><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"></path></svg>
-                  <span>내 명함 저장하기</span>
+                  <span>연락처 저장</span>
                 </button>
                 <button class="tool-btn" type="button" id="tool-share">
                   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4m0 0 4 4m-4-4-4 4"></path><path d="M5 13v5a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-5"></path></svg>
-                  <span>내 명함 전달하기</span>
+                  <span>명함 전달</span>
                 </button>
                 <button class="tool-btn" type="button" id="tool-qr" aria-expanded="false" aria-controls="qr-panel">
                   <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"></rect><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"></rect><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"></rect><path d="M14 14h2m4 0v2m0 4h-2m-4 0v-2m4-2h.01"></path></svg>
-                  <span>QR 코드</span>
+                  <span>QR 크게 보기</span>
                 </button>
               </div>
 
@@ -2128,7 +2133,7 @@
             qrFrame.textContent = "QR을 만들 수 없습니다.";
             return;
           }
-          var qz = 4;                     /* 정지 영역 4모듈 — 규격 최소치 */
+          var qz = 6;                     /* 여유 있는 흰색 정지 영역 6모듈 */
           var dim = QR_SIZE + qz * 2;
           var d = "";
           for (var r = 0; r < QR_SIZE; r++) {
@@ -2138,10 +2143,10 @@
           }
           var svg =
             '<svg viewBox="0 0 ' + dim + " " + dim + '" xmlns="http://www.w3.org/2000/svg" ' +
-            'shape-rendering="crispEdges" role="img" ' +
+            'shape-rendering="crispEdges" style="stroke:none;stroke-width:0" role="img" ' +
             'aria-label="hammedia.co.kr/card/ 로 이동하는 QR 코드">' +
-            '<rect width="' + dim + '" height="' + dim + '" fill="#fffdf8"></rect>' +
-            '<path d="' + d + '" fill="#05070f"></path></svg>';
+            '<rect width="' + dim + '" height="' + dim + '" fill="#ffffff" stroke="none"></rect>' +
+            '<path d="' + d + '" fill="#000000" stroke="none"></path></svg>';
           qrFrame.innerHTML = svg;
           qrDrawn = true;
         }
@@ -2193,3 +2198,4 @@
     </script>
   </body>
 </html>
+
