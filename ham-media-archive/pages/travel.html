@@ -9,6 +9,7 @@
   <link rel="canonical" href="https://hammedia.co.kr/ham-media-archive/pages/travel.html" />
   <link rel="preconnect" href="https://cdn.jsdelivr.net" />
   <link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
+  <link rel="stylesheet" href="../assets/css/travel-ocean.css?v=20261004-1" />
   <style>
     @font-face {
       font-family: "HakgyoansimYeohaeng";
@@ -56,7 +57,7 @@
 
     body {
       margin: 0;
-      min-width: 320px;
+      min-width: 0;
       overflow-x: hidden;
       background: var(--night);
       color: var(--ticket);
@@ -1426,6 +1427,45 @@
       </div>
     </section>
 
+    <section class="ocean-interlude" id="travel-ocean" aria-labelledby="ocean-title" data-ocean-state="still">
+      <div class="ocean-interlude__art" aria-hidden="true">
+        <svg class="ocean-interlude__still" viewBox="0 0 1600 800" preserveAspectRatio="xMidYMid slice" focusable="false">
+          <defs>
+            <linearGradient id="ocean-sky" x2="0" y2="1"><stop stop-color="#839fa6"/><stop offset="1" stop-color="#d8cebc"/></linearGradient>
+            <linearGradient id="ocean-water" x2="0" y2="1"><stop stop-color="#90a9a6"/><stop offset=".35" stop-color="#557f82"/><stop offset="1" stop-color="#183f49"/></linearGradient>
+            <radialGradient id="ocean-light"><stop stop-color="#ffe4b1" stop-opacity=".62"/><stop offset="1" stop-color="#ffe4b1" stop-opacity="0"/></radialGradient>
+            <pattern id="ocean-ripples" width="170" height="34" patternUnits="userSpaceOnUse"><path d="M-30 10Q10 0 48 10T140 10T225 10M-60 27Q-10 19 35 27T135 27T225 27" fill="none" stroke="#b9c9bd" stroke-opacity=".16" stroke-width="1.5"/></pattern>
+          </defs>
+          <path fill="url(#ocean-sky)" d="M0 0h1600v370H0z"/>
+          <ellipse fill="url(#ocean-light)" cx="1120" cy="307" rx="420" ry="240"/>
+          <circle fill="#ffe3ad" opacity=".87" cx="1120" cy="289" r="20"/>
+          <path fill="url(#ocean-water)" d="M0 370h1600v430H0z"/>
+          <path fill="url(#ocean-ripples)" d="M0 390h1600v410H0z"/>
+          <ellipse fill="url(#ocean-light)" cx="1120" cy="540" rx="230" ry="250" opacity=".23"/>
+          <g fill="none" stroke="#d3d5bc" stroke-opacity=".35"><path d="M0 376Q370 371 690 377T1600 376M0 386Q240 379 580 386T1600 386M780 420q160-8 300 0t310 0M850 464q110-10 210 0t215 0M720 536q135-14 270 0t300 0M850 650q120-15 210 0t210 0"/></g>
+        </svg>
+        <picture class="ocean-interlude__poster">
+          <source media="(max-width: 760px)" srcset="../assets/images/travel/ocean-study-still-mobile.webp">
+          <img src="../assets/images/travel/ocean-study-still.webp" alt="" width="1165" height="560" loading="lazy" decoding="async">
+        </picture>
+        <canvas class="ocean-interlude__canvas" aria-hidden="true"></canvas>
+      </div>
+      <div class="ocean-interlude__content">
+        <header class="ocean-interlude__heading">
+          <p class="ocean-interlude__eyebrow">여행과 여행 사이</p>
+          <h2 id="ocean-title">잠깐, 바다를<br>바라보세요.</h2>
+          <p class="ocean-interlude__intro">다음 장면으로 가기 전,<br>잠시 머물러도 좋습니다.</p>
+        </header>
+        <div class="ocean-interlude__footer">
+          <div class="ocean-interlude__caption">
+            <p>웹 그래픽으로 만든 바다 <span aria-hidden="true">·</span> <span>HAM MEDIA 자체 제작 예제</span></p>
+            <p class="ocean-interlude__status" id="ocean-status" role="status" aria-live="polite">고요한 바다를 보고 있습니다</p>
+          </div>
+          <button class="ocean-interlude__toggle" type="button" aria-controls="travel-ocean" aria-describedby="ocean-status" aria-pressed="false" hidden><span class="ocean-interlude__toggle-icon" aria-hidden="true">▷</span><span class="ocean-interlude__toggle-label">바다 움직이기</span></button>
+        </div>
+      </div>
+    </section>
+
     <section class="movement-call" aria-label="여행별 행동 촉구">
       <blockquote>
         <p>위치를 바꿔라.</p>
@@ -1624,5 +1664,6 @@
 })();
 </script>
 <script src="/assets/js/star-inquiry-context.js?v=20260930-1" defer></script>
+<script src="../assets/js/travel-ocean.js?v=20261004-1" defer></script>
 </body>
 </html>
