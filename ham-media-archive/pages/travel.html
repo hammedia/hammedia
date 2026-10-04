@@ -9,7 +9,7 @@
   <link rel="canonical" href="https://hammedia.co.kr/ham-media-archive/pages/travel.html" />
   <link rel="preconnect" href="https://cdn.jsdelivr.net" />
   <link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
-  <link rel="stylesheet" href="../assets/css/travel-ocean.css?v=20261004-1" />
+  <link rel="stylesheet" href="../assets/css/travel-ocean.css?v=20261004-2" />
   <style>
     @font-face {
       font-family: "HakgyoansimYeohaeng";
@@ -223,7 +223,7 @@
       animation: departureCopy 900ms 100ms both cubic-bezier(.2,.7,.2,1);
     }
 
-    .hero-copy h1 {
+    .hero-copy h2 {
       margin-bottom: 22px;
       color: var(--ticket);
       font-family: var(--font-travel);
@@ -1202,7 +1202,7 @@
         padding-bottom: 154px;
       }
 
-      .hero-copy h1 {
+      .hero-copy h2 {
         font-size: clamp(68px, 25vw, 106px);
       }
 
@@ -1308,7 +1308,7 @@
       .stop-copy p,
       .stop-frame,
       .hero-code,
-      .hero-copy h1,
+      .hero-copy h2,
       .hero-command,
       .hero-note,
       .hero-stamp,
@@ -1338,13 +1338,42 @@
       <a href="#star-list">별자리</a>
     </nav>
 
+    <section class="ocean-world" id="travel-ocean" aria-labelledby="ocean-title" data-scene="sunset" data-motion="paused" data-renderer="poster">
+      <div class="ocean-world__visual" aria-hidden="true">
+        <picture class="ocean-world__poster"><source media="(max-width: 760px)" srcset="../assets/images/travel/ocean-sunset-mobile.webp"><img src="../assets/images/travel/ocean-sunset.webp" width="1440" height="900" alt="" fetchpriority="high"></picture>
+        <canvas class="ocean-world__webgl"></canvas>
+        <canvas class="ocean-world__ripples"></canvas>
+        <div class="ocean-world__clouds"><svg viewBox="0 0 1400 300" preserveAspectRatio="none"><path d="M-120 156C75 156 117 117 296 137S473 95 630 120S795 153 937 133 1207 133 1490 103L1490 144C1230 164 1084 151 912 163S697 167 512 149 207 179-120 172Z"/><path d="M206 61C383 34 426 54 583 58S797 31 914 37 1117 80 1339 55L1460 89C1254 95 1073 71 928 68S651 89 477 77 299 81 206 61Z" opacity=".5"/></svg></div>
+        <div class="ocean-world__boat-track"><svg class="ocean-world__boat" viewBox="0 0 120 90"><path class="boat-sail" d="M59 10 22 66h37Z"/><path class="boat-sail boat-sail-small" d="m64 26 25 40H64Z"/><path class="boat-hull" d="M14 70h87l-16 10H35Z"/><path class="boat-mast" d="M61 5v70"/><path class="boat-wake" d="M4 85h106M20 89h64"/></svg></div>
+      </div>
+      <div class="ocean-world__content">
+        <header class="ocean-world__heading">
+          <p class="ocean-world__eyebrow">LPH-B613-03 <span>여행이 시작되는 시간</span></p>
+          <h1 id="ocean-title">여행별</h1>
+          <p class="ocean-world__quote">서 있는 곳이 바뀌면<br>보이는 것도 달라진다.</p>
+        </header>
+        <div class="ocean-world__bottom">
+          <div class="ocean-world__explore">
+            <div class="ocean-world__time-row"><div><p class="ocean-world__place" id="ocean-place">내 기기 시간</p><p class="ocean-world__clock"><time id="ocean-clock">--:--</time><span id="ocean-time-note">지금의 빛</span></p></div><p class="ocean-world__forecast" id="ocean-forecast">날씨를 보려면 도시를 골라보세요</p></div>
+            <div class="ocean-world__destinations"><label for="ocean-destination">가고 싶은 곳</label><select id="ocean-destination"><option value="device">지금, 나의 시간</option><option value="nearby" disabled hidden>내 주변</option><option value="busan">부산</option><option value="donghae">동해</option><option value="chuncheon">춘천</option><option value="seattle">시애틀</option><option value="washington">워싱턴 D.C.</option></select><button class="ocean-world__nearby" id="ocean-nearby" type="button">내 주변 <span aria-hidden="true">⌖</span></button></div>
+            <div class="ocean-world__controls"><div class="ocean-world__phases" role="group" aria-label="바다의 시간"><button type="button" data-ocean-phase="auto" aria-pressed="true">지금</button><button type="button" data-ocean-phase="day" aria-pressed="false">낮</button><button type="button" data-ocean-phase="sunset" aria-pressed="false">노을</button><button type="button" data-ocean-phase="night" aria-pressed="false">밤</button></div><button class="ocean-world__motion" type="button" aria-pressed="false" aria-controls="travel-ocean"><span aria-hidden="true" class="ocean-world__motion-icon">▷</span><span class="ocean-world__motion-label">움직이기</span></button></div>
+            <p class="ocean-world__status" id="ocean-status" role="status" aria-live="polite">시간에 반응하는 바다 연출</p>
+            <p class="ocean-world__weather-source" id="ocean-weather-source" hidden>이 지역 날씨예보 · <span id="ocean-weather-updated"></span> · <a href="https://www.met.no/en" target="_blank" rel="noopener noreferrer">MET Norway</a> <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">CC BY 4.0</a></p>
+          </div>
+          <a class="ocean-world__memory" id="ocean-memory" href="#stop-again" hidden><img src="../assets/images/travel/gallery-img-5134.jpg" width="160" height="120" alt="" loading="lazy"><span><small>햄의 실제 여행사진</small><strong id="ocean-memory-title">또 가자, 부산.</strong><em>이곳에 남은 기억 <span aria-hidden="true">↗</span></em></span></a>
+        </div>
+        <footer class="ocean-world__footnote"><span>HAM MEDIA · 시간과 날씨로 그리는 상상 풍경</span><a href="#departure">사진과 기억으로 이어 걷기 <span aria-hidden="true">↓</span></a></footer>
+      </div>
+      <dialog class="ocean-world__location-dialog" id="ocean-location-dialog" aria-labelledby="ocean-location-title"><form method="dialog"><p class="ocean-world__eyebrow">내 주변의 날씨</p><h2 id="ocean-location-title">지금 있는 곳의<br>하늘을 담아볼까요?</h2><p>내 위치 날씨를 켜면 대략적 좌표와 IP가 예보 제공기관 MET Norway에 전달됩니다. HAM은 정밀 위치를 저장하지 않습니다. 위치 대신 도시를 직접 고를 수 있습니다.</p><div><button value="cancel">도시 직접 선택</button><button value="confirm">동의하고 위치 날씨 보기</button></div></form></dialog>
+    </section>
+
     <header class="journey-hero" id="departure" data-memory-stop="0" data-memory-key="출발">
       <img class="hero-image" src="../assets/images/travel/walking-seaside-back.jpg" alt="바다를 향해 함께 걸어가는 두 사람의 뒷모습" width="1350" height="1800" />
       <div class="departure-air" aria-hidden="true"></div>
       <div class="window-reflection" aria-hidden="true"></div>
       <div class="hero-copy">
         <p class="hero-code">여행별 · LPH-B613-03 · MEMORY LINE</p>
-        <h1>여행별</h1>
+        <h2>여행별</h2>
         <p class="hero-command">움직여라.</p>
         <p class="hero-note">자포자기의 마음이 들면 사람은 자꾸 한곳에 있으려 한다. 그래도 자리를 옮겨라. 다른 것을 보고, 듣고, 경험해라.</p>
         <img class="hero-stamp" src="../assets/images/travel/stamps/lph-b613-03-travel-stamp.jpg" alt="LPH-B613-03 여행별 도착 스탬프" />
@@ -1424,45 +1453,6 @@
             </div>
           </div>
         </article>
-      </div>
-    </section>
-
-    <section class="ocean-interlude" id="travel-ocean" aria-labelledby="ocean-title" data-ocean-state="still">
-      <div class="ocean-interlude__art" aria-hidden="true">
-        <svg class="ocean-interlude__still" viewBox="0 0 1600 800" preserveAspectRatio="xMidYMid slice" focusable="false">
-          <defs>
-            <linearGradient id="ocean-sky" x2="0" y2="1"><stop stop-color="#839fa6"/><stop offset="1" stop-color="#d8cebc"/></linearGradient>
-            <linearGradient id="ocean-water" x2="0" y2="1"><stop stop-color="#90a9a6"/><stop offset=".35" stop-color="#557f82"/><stop offset="1" stop-color="#183f49"/></linearGradient>
-            <radialGradient id="ocean-light"><stop stop-color="#ffe4b1" stop-opacity=".62"/><stop offset="1" stop-color="#ffe4b1" stop-opacity="0"/></radialGradient>
-            <pattern id="ocean-ripples" width="170" height="34" patternUnits="userSpaceOnUse"><path d="M-30 10Q10 0 48 10T140 10T225 10M-60 27Q-10 19 35 27T135 27T225 27" fill="none" stroke="#b9c9bd" stroke-opacity=".16" stroke-width="1.5"/></pattern>
-          </defs>
-          <path fill="url(#ocean-sky)" d="M0 0h1600v370H0z"/>
-          <ellipse fill="url(#ocean-light)" cx="1120" cy="307" rx="420" ry="240"/>
-          <circle fill="#ffe3ad" opacity=".87" cx="1120" cy="289" r="20"/>
-          <path fill="url(#ocean-water)" d="M0 370h1600v430H0z"/>
-          <path fill="url(#ocean-ripples)" d="M0 390h1600v410H0z"/>
-          <ellipse fill="url(#ocean-light)" cx="1120" cy="540" rx="230" ry="250" opacity=".23"/>
-          <g fill="none" stroke="#d3d5bc" stroke-opacity=".35"><path d="M0 376Q370 371 690 377T1600 376M0 386Q240 379 580 386T1600 386M780 420q160-8 300 0t310 0M850 464q110-10 210 0t215 0M720 536q135-14 270 0t300 0M850 650q120-15 210 0t210 0"/></g>
-        </svg>
-        <picture class="ocean-interlude__poster">
-          <source media="(max-width: 760px)" srcset="../assets/images/travel/ocean-study-still-mobile.webp">
-          <img src="../assets/images/travel/ocean-study-still.webp" alt="" width="1165" height="560" loading="lazy" decoding="async">
-        </picture>
-        <canvas class="ocean-interlude__canvas" aria-hidden="true"></canvas>
-      </div>
-      <div class="ocean-interlude__content">
-        <header class="ocean-interlude__heading">
-          <p class="ocean-interlude__eyebrow">여행과 여행 사이</p>
-          <h2 id="ocean-title">잠깐, 바다를<br>바라보세요.</h2>
-          <p class="ocean-interlude__intro">다음 장면으로 가기 전,<br>잠시 머물러도 좋습니다.</p>
-        </header>
-        <div class="ocean-interlude__footer">
-          <div class="ocean-interlude__caption">
-            <p>웹 그래픽으로 만든 바다 <span aria-hidden="true">·</span> <span>HAM MEDIA 자체 제작 예제</span></p>
-            <p class="ocean-interlude__status" id="ocean-status" role="status" aria-live="polite">고요한 바다를 보고 있습니다</p>
-          </div>
-          <button class="ocean-interlude__toggle" type="button" aria-controls="travel-ocean" aria-describedby="ocean-status" aria-pressed="false" hidden><span class="ocean-interlude__toggle-icon" aria-hidden="true">▷</span><span class="ocean-interlude__toggle-label">바다 움직이기</span></button>
-        </div>
       </div>
     </section>
 
@@ -1664,6 +1654,7 @@
 })();
 </script>
 <script src="/assets/js/star-inquiry-context.js?v=20260930-1" defer></script>
-<script src="../assets/js/travel-ocean.js?v=20261004-1" defer></script>
+<script src="../assets/js/travel-ocean-weather.js?v=20261004-2" defer></script>
+<script src="../assets/js/travel-ocean.js?v=20261004-2" defer></script>
 </body>
 </html>
