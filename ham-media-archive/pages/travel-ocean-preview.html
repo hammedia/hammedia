@@ -1547,7 +1547,7 @@
           <circle fill="#ffe3ad" opacity=".87" cx="1120" cy="289" r="20"/>
           <path fill="url(#ocean-water)" d="M0 370h1600v430H0z"/>
           <path fill="url(#ocean-ripples)" d="M0 390h1600v410H0z"/>
-          <path fill="url(#ocean-light)" d="m1110 370 90 0 260 430H770z" opacity=".4"/>
+          <ellipse fill="url(#ocean-light)" cx="1120" cy="540" rx="230" ry="250" opacity=".23"/>
           <g fill="none" stroke="#d3d5bc" stroke-opacity=".35"><path d="M0 376Q370 371 690 377T1600 376M0 386Q240 379 580 386T1600 386M780 420q160-8 300 0t310 0M850 464q110-10 210 0t215 0M720 536q135-14 270 0t300 0M850 650q120-15 210 0t210 0"/></g>
         </svg>
         <canvas class="ocean-interlude__canvas" aria-hidden="true"></canvas>
@@ -1921,7 +1921,10 @@
       draw();
       section.setAttribute('data-ocean-ready', '');
       button.hidden = false;
-    } catch (_) { fallback(); }
+    } catch (error) {
+      section.dataset.oceanFallback = error.message;
+      fallback();
+    }
   }
   function draw() {
     if (!gl || failed || !visible || document.hidden || !pageActive) return;
@@ -2001,6 +2004,14 @@
   addEventListener('pagehide', () => { pageActive = false; sync(); });
   addEventListener('pageshow', () => { pageActive = true; if (visible && !document.hidden) { init(); draw(); } sync(); });
   sync();
+  // Honor the explicit scene deep link after images and fonts have settled.
+  if (location.hash === '#travel-ocean') {
+    const reachScene = () => {
+      if (location.hash === '#travel-ocean') section.scrollIntoView({ behavior: 'auto', block: 'start' });
+    };
+    if (document.readyState === 'complete') reachScene();
+    else addEventListener('load', reachScene, { once: true });
+  }
 })();
 </script>
 <script>
