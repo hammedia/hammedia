@@ -128,16 +128,12 @@
           "src": "assets/lesson1-prompt-29s.mp4",
           "poster": "assets/lesson1-prompt-poster.jpg",
           "alt": "햄PD가 AI와 첫 대화를 시작하는 실제 영상",
-          "source": "20260903_바른생활_1강_실제대화_증거묶음.md",
-          "status": "verified",
-          "publication": "내부 강의 사용 · 외부 공개 범위 별도"
+          "status": "verified"
         },
         {
           "type": "text",
           "label": "전문성과 아이디어는 있지만 새 도구가 어려운 사람에 대한 실제 발화",
-          "source": "task 01a053d0-4fc8-76f0-8bcf-521dd71c5786 · user turn 01a0650f-7159-7923-a605-9a15fb6daf16",
           "status": "verified",
-          "publication": "내부 강의 사용 · 공개 인용 전 별도 확인",
           "note": "화면에서는 원문 전체를 재작성하지 않고 강사가 출처와 함께 읽습니다."
         }
       ],
@@ -238,16 +234,12 @@
           "label": "낯선 도구의 전체 화면에서 필요한 장면만 고른 안전 크롭",
           "src": "assets/ham-old-notion-20260806-hero-safe.png",
           "alt": "개인정보를 가린 옛 작업 화면",
-          "source": "20260831_바른생활7강_전면재창작_지도.md · 보유 재료 판정",
-          "status": "verified",
-          "publication": "내부 보조 교구 · 새 2강 본체 사례로 과장 금지"
+          "status": "verified"
         },
         {
           "type": "text",
           "label": "홈페이지·포트폴리오·강의·앱 결과 벽",
-          "source": "HAMMEDIA_PUBLIC_SITE 공개 결과와 내부 프로젝트 정본",
-          "status": "internal-candidate",
-          "publication": "공개 주소는 강사가 현장에서 최신 상태를 확인한 뒤 사용"
+          "status": "internal-candidate"
         }
       ],
       "locked": false
@@ -339,9 +331,7 @@
         {
           "type": "text",
           "label": "통화 메모에서 제출자료까지의 첫 초안 비교",
-          "source": "18_통화메모부터_제출자료까지_60초증거팩.md",
           "status": "reconstructed",
-          "publication": "첫 장면부터 비식별 수업용 재구성 사례로 표시",
           "note": "실제 고객 성공담이나 당시 대화 원문으로 말하지 않습니다."
         }
       ],
@@ -438,16 +428,12 @@
           "src": "assets/work-guide.mp4",
           "poster": "assets/work-guide-poster.jpg",
           "alt": "햄PD가 AI 결과를 보고 작업 기준을 교정하는 영상",
-          "source": "20260831_바른생활7강_전면재창작_지도.md · 보유 교구",
-          "status": "verified",
-          "publication": "내부 강의 사용"
+          "status": "verified"
         },
         {
           "type": "text",
           "label": "사실이 아닌 ‘스타벅스 교육 시스템 단독 설계’ 문장 제거",
-          "source": "《나를 내가 고용하세요》 포트폴리오 교정 장면",
-          "status": "verified",
-          "publication": "AI 부풀림 사례임을 함께 표시 · 책 공개 범위 확인"
+          "status": "verified"
         }
       ],
       "locked": true
@@ -552,9 +538,7 @@
             "AI가 만든 변경 차이 화면",
             "사람이 다시 확인한 화면"
           ],
-          "source": "20260713_orca_beginner_guide_sample_v2/assets/actual_v7",
-          "status": "verified",
-          "publication": "내부 강의 사용 · Orca 기능·요금은 최신 실측 없이 고정 설명 금지"
+          "status": "verified"
         }
       ],
       "locked": true
@@ -658,16 +642,12 @@
             "화면을 본 AI와 나눈 실제 대화",
             "사람이 판단해 멈춘 수정 후 화면"
           ],
-          "source": "20260903_바른생활_1강_실제대화_증거묶음.md · Final Cut 전/대화/후",
-          "status": "reconstructed",
-          "publication": "실제 보유 화면 · 당시 역사 채팅 미확인 · 햄PD 회고를 바탕으로 같은 과정을 다시 확인한 화면"
+          "status": "reconstructed"
         },
         {
           "type": "text",
           "label": "사진 미표시·재인코딩 실패",
-          "source": "책과 내부 장애 기록",
-          "status": "internal-candidate",
-          "publication": "실제 화면 원본을 수업 전에 강사가 다시 열지 못하면 HOLD로 표시"
+          "status": "internal-candidate"
         }
       ],
       "locked": true
@@ -763,16 +743,12 @@
           "label": "원본 맥락을 다시 읽고 같은 결과를 이어간 실제 화면",
           "src": "assets/orca-06-after-refresh.png",
           "alt": "새 작업 자리에서 이전 맥락을 읽고 결과를 이어가는 화면",
-          "source": "20260713_orca_beginner_guide_sample_v2/assets/actual_v7/06_after_refresh.png",
-          "status": "verified",
-          "publication": "내부 강의 사용 · 다음 날 자동 기억의 증거로 사용 금지"
+          "status": "verified"
         },
         {
           "type": "text",
           "label": "같은 말을 반복하고 결과를 잃은 사건",
-          "source": "20260621_코덱스와_대화하는법_원본과_도구가된_기록.md",
-          "status": "internal-candidate",
-          "publication": "자리·주소·고유번호를 가리고 내부 수업에서만 사용"
+          "status": "internal-candidate"
         }
       ],
       "locked": true

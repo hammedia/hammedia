@@ -262,7 +262,8 @@ function renderEvidence() {
 
     const source = document.createElement("div");
     source.className = "source-item";
-    source.append(text("strong", evidence.label), text("span", `원본: ${evidence.source}`), text("span", `사용선: ${evidence.publication}`), text("span", `상태: ${evidence.status}`));
+    // 공개 화면에는 내부 파일명·작업 번호·사용선 메모를 내보내지 않는다(2026-09-28 교정).
+    source.append(text("strong", evidence.label), text("span", evidence.status === "reconstructed" ? "실제 사례를 가려 다시 만든 수업용 자료" : "HAM MEDIA 실제 작업 기록에서 확인한 자료"));
     sourceFragment.append(source);
   });
 
