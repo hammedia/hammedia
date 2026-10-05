@@ -23,7 +23,7 @@
     clearTimeout(timer);
     try {
       await navigator.clipboard.writeText(input.value);
-      status.textContent = '복사했습니다. Muse Chat 또는 평소 쓰는 AI에 붙여넣으세요.';
+      status.textContent = button.dataset.copyMessage || '복사했습니다. Muse Chat 또는 평소 쓰는 AI에 붙여넣으세요.';
     } catch {
       input.focus(); input.select();
       status.textContent = '문장을 선택했습니다. 기기의 복사 메뉴로 복사해주세요.';
