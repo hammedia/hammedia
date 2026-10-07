@@ -55,7 +55,7 @@
   .note{font-size:12px;color:var(--muted);line-height:1.6;margin-top:10px}
   .month{display:flex;align-items:center;gap:8px;margin-bottom:10px}
   .month b{font-size:17px;flex:1;text-align:center}
-  .log{font-size:13px;max-height:260px;overflow:auto;border:1px solid var(--line);border-radius:12px;padding:8px 10px;background:#fff}
+  .log{font-size:13px;border:1px solid var(--line);border-radius:12px;padding:8px 10px;background:#fff}
   .log div{padding:5px 0;border-bottom:1px dashed var(--line);display:flex;justify-content:space-between;gap:8px;align-items:center}
   .log div:last-child{border:0}
   .warn{color:var(--red)}
@@ -80,6 +80,25 @@
   .owner-summary{list-style:none;padding:0;margin:0}
   .owner-summary li{display:flex;justify-content:space-between;gap:12px;padding:12px 2px;border-bottom:1px solid var(--line)}
   .owner-summary strong{font-size:18px}
+  .sec{font-size:16px;margin:0 0 6px} .sec small{font-size:12px;color:var(--muted);font-weight:500;margin-left:4px}
+  .setrow{display:block;width:100%;margin-top:6px;font:inherit;font-size:18px;padding:12px;border:1px solid var(--line);border-radius:12px;background:#fff;color:var(--ink)}
+  .wage{font-size:12px;padding:2px 8px}
+  .today li{align-items:center} .today li>span:first-child{white-space:nowrap} .today .t{font-size:15px;text-align:right} .today .off{color:var(--muted);font-size:14px}
+  .fixbox{border-color:var(--red)}
+  .log div.just{background:var(--green-soft);border-radius:8px;padding-left:6px;padding-right:6px}
+  .today .mark{display:block;font-size:11px;color:var(--muted)}
+  .more{display:block;width:100%;margin-top:8px}
+  .backup{border-color:var(--blue);background:#eef4fb} .backup p{margin:0 0 8px;font-size:15px}
+  .rows .row{display:flex;justify-content:space-between;align-items:center;gap:10px;width:100%;background:none;border:0;border-bottom:1px solid var(--line);padding:12px 2px;font:inherit;font-size:16px;color:var(--ink);text-align:left;cursor:pointer}
+  .rows .row>span:first-child{flex:1}
+  .rows .row::after{content:'›';color:var(--muted);font-size:18px;margin-left:2px}
+  .rows .row:last-child{border-bottom:0} .rows .row .v{text-align:right;white-space:nowrap} .rows .row .v small{display:block;font-size:11px;color:var(--muted)}
+  .rows .row .off{color:var(--muted)} .rows .row.just{background:var(--green-soft)} .rows .row strong{font-size:18px}
+  .mhead{display:flex;align-items:center;gap:6px} .mhead span{flex:1} .mnav{border:1px solid var(--line);background:#fff;border-radius:8px;width:34px;height:30px;font:inherit;cursor:pointer}
+  .setwrap details{margin:4px 2px} .setwrap summary{font-size:13px}
+  .pinwait{border-color:#b7791f;background:#fdf6e7;font-size:15px} .pinwait p{margin:0 0 8px}
+  .log div{flex-wrap:wrap} .log .mark{display:block;font-size:11px;color:var(--muted);text-align:right}
+  .log .fixbtn{font-size:14px;padding:6px 10px}
   details{margin-top:16px} summary{cursor:pointer;font-size:14px;color:var(--muted);padding:8px 0}
   :focus-visible{outline:3px solid var(--blue);outline-offset:2px}
   @media(max-width:360px){.wrap{padding:12px}.grid{gap:7px}.emp{padding:12px 9px}}
@@ -100,27 +119,37 @@
   </div>
 
   <section id="staff">
+    <div class="card pinwait" id="pinNotice" hidden></div>
     <div class="card">
       <div class="grid" id="empGrid"></div>
     </div>
   </section>
 
   <section id="owner" style="display:none">
+    <div class="card pinwait" id="pinOwner" hidden><p id="pinOwnerMsg"></p><button class="btn" id="pinOwnerBtn"></button></div>
     <div class="card">
-      <div class="month"><button class="btn" id="prevM">‹</button><b id="monthLabel"></b><button class="btn" id="nextM">›</button></div>
-      <p id="missingCount" class="note warn"></p>
-      <ul id="ownerSummary" class="owner-summary"></ul>
-      <div hidden><div class="kpi"><div><b id="kNow">0</b></div><div><b id="kDays">0</b></div><div><b id="kHours">0</b></div></div>
-      <div class="tablewrap"><table><tbody id="sumBody"></tbody></table></div></div>
-      <details><summary>기록 확인·고치기</summary>
-      <div class="log" id="log"></div>
-      <div class="tools"><button class="btn" id="csv">이달 CSV 내려받기</button><button class="btn" id="seed">가명 시연 기록 채우기</button><button class="btn" id="wipe">이 기기 기록 지우기</button></div>
-      </details>
+      <h3 class="sec">오늘 <small id="todayCount"></small></h3>
+      <div id="todayList" class="rows"></div>
+    </div>
+    <div class="card fixbox" id="fixBox" hidden>
+      <h3 class="sec warn" id="missingCount"></h3>
+      <div id="fixList" class="rows"></div>
+    </div>
+    <div class="card">
+      <h3 class="sec mhead"><span id="monthLabel"></span><button class="mnav" id="prevM" aria-label="지난달">‹</button><button class="mnav" id="nextM" aria-label="다음 달">›</button></h3>
+      <div id="monthList" class="rows"></div>
+      <p id="backupMsg" class="note warn" hidden></p>
+      <button class="big in" id="csv">이달 엑셀로 받기</button>
+    </div>
+    <div class="setwrap">
       <details><summary>가게·직원 설정</summary>
-      <div class="tools"><button class="btn" id="setShop">가게 이름</button><button class="btn" id="addEmp">직원 추가</button><button class="btn" id="editEmp">이름 고치기</button><button class="btn" id="delEmp">직원 빼기</button><button class="btn" id="setPin">직원 PIN</button><button class="btn" id="ownerPin">사장 PIN 바꾸기</button></div>
-      <p class="note">가게 밖에서 못 누르게 — <span id="geoStatus"></span></p>
-      <div class="tools"><button class="btn" id="geoSet">여기를 가게로 등록</button><button class="btn" id="geoOff" style="display:none">위치 확인 끄기</button></div>
+      <div class="tools"><button class="btn" id="seed">가명 시연 기록 채우기</button><button class="btn" id="wipe">이 기기 기록 지우기</button></div>
+      <div class="tools"><button class="btn" id="breakSet">휴게 시간</button><button class="btn" id="setShop">가게 이름</button><button class="btn" id="addEmp">직원 추가</button><button class="btn" id="editEmp">이름 고치기</button><button class="btn" id="delEmp">직원 빼기</button><button class="btn" id="setPin">직원 PIN</button><button class="btn" id="ownerPin">사장 PIN 바꾸기</button></div>
+      <p class="note geo">가게 밖에서 못 누르게 — <span id="geoStatus"></span></p>
+      <div class="tools geo"><button class="btn" id="geoSet">여기를 가게로 등록</button><button class="btn" id="geoOff" style="display:none">위치 확인 끄기</button></div>
       </details>
+    </div>
+    <div class="card" hidden>
       <div hidden>
       <div class="tools">
         <button class="btn primary" id="payslip">직원 임금명세서</button>
@@ -136,8 +165,11 @@
 <div class="setup" id="setup"><div class="panel">
   <h2>처음 한 번만 정해 주세요</h2>
   <p class="note">가명 직원과 쉬는 요일, 휴게 시간을 정하면 출퇴근 화면이 열립니다. 사장 PIN은 네 자리로 잠급니다.</p>
-  <label class="flab">직원 이름(쉼표로 구분)<input class="finp" id="setupNames" autocomplete="off"></label>
-  <label class="flab">쉬는 요일<select class="finp" id="setupRest"><option value="0">일요일</option><option value="1">월요일</option><option value="2">화요일</option><option value="3">수요일</option><option value="4">목요일</option><option value="5">금요일</option><option value="6">토요일</option></select></label>
+  <span class="flab" style="margin-bottom:0">직원 이름</span>
+  <div id="setupList"></div>
+  <button class="btn more" id="setupAdd" type="button">+ 직원 더 넣기</button>
+  <input type="hidden" id="setupNames">
+  <label class="flab" style="display:none">쉬는 요일<select class="finp" id="setupRest"><option value="0">일요일</option><option value="1">월요일</option><option value="2">화요일</option><option value="3">수요일</option><option value="4">목요일</option><option value="5">금요일</option><option value="6">토요일</option></select></label>
   <label class="flab">휴게 시간(분)<input class="finp" id="setupBreak" type="number" min="0" max="240" inputmode="numeric"></label>
   <label class="flab">사장 PIN 4자리<input class="finp" id="setupPin" type="password" inputmode="numeric" maxlength="4" autocomplete="new-password"></label>
   <p class="error" id="setupError" role="alert"></p>
@@ -150,6 +182,12 @@
   <button class="big out" id="btnOut">퇴근</button>
   <button class="big ghost" id="btnClose">닫기</button>
   <div class="note" id="pMsg" style="min-height:18px"></div>
+</div></div>
+<div class="sheet" id="personSheet"><div class="panel" style="max-height:92vh;overflow:auto">
+  <h2 id="psName"></h2><p class="sub" id="psSub"></p>
+  <div class="tools"><button class="btn" id="psWage"></button><button class="btn" id="psAdd">안 찍은 날 넣기</button></div>
+  <div id="psList" class="rows" style="margin-top:12px"></div>
+  <button class="big ghost" id="psClose">닫기</button>
 </div></div>
 <div class="sheet" id="formSheet"><div class="panel">
   <h2 id="formTitle"></h2><p class="sub" id="formSub"></p>
@@ -182,8 +220,9 @@
       { id: 'e5', n: '가명 다섯', r: '홀 · 아르바이트' }, { id: 'e6', n: '가명 여섯', r: '홀 · 아르바이트' }
     ],
     pay: { five: false, wage: 10320, payday: 10, rates: { np: 4.75, hi: 3.595, ltc: 0.4724, ei: 0.9 } }, // 근로자 부담 요율(%) 2026: 국민연금 4.75 · 건강 3.595 · 장기요양 0.4724(보수 기준) · 고용 0.9 // 5인 이상 여부(가산 수당 의무), 기본 시급(2026 최저시급 10,320원), 지급일
+    lastExport: null,      // 마지막으로 엑셀로 받은 때(ms) — 백업 알림용
     geo: null,             // {lat, lng, radius} — 가게 좌표 하나만 기기 안에 저장. 직원 위치는 저장·전송하지 않는다
-    recs: []               // {emp, in(ms), out(ms|null), edited:bool}
+    recs: []               // {emp, in(ms), out(ms|null), edited:bool, orig:{in,out}(처음 찍힌 시각, 고쳐도 남음), added:bool(사장이 넣은 기록)}
   };
   var st = load();
   function load() { try { var s = localStorage.getItem(KEY); if (!s) return JSON.parse(JSON.stringify(DEFAULT)); var o = JSON.parse(s); Object.keys(DEFAULT).forEach(function (k) { if (o[k] === undefined) o[k] = DEFAULT[k]; }); return o; } catch (e) { return JSON.parse(JSON.stringify(DEFAULT)); } }
@@ -192,8 +231,27 @@
   function pad(n) { return (n < 10 ? '0' : '') + n; }
   function fmtT(d) { d = new Date(d); return pad(d.getHours()) + ':' + pad(d.getMinutes()); }
   function fmtD(d) { d = new Date(d); return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate()); }
+  function hm(h) { var m = Math.round(h * 60); if (m < 60) return m + '분'; return Math.floor(m / 60) + '시간' + (m % 60 ? ' ' + (m % 60) + '분' : ''); }
+  function isToday(ms) { return fmtD(ms) === fmtD(Date.now()); }
+  // 「지금 근무 중」 판정은 이 하나만 쓴다(직원 카드·오늘 칸·근무 중 수·빠진 퇴근이 같은 답)
+  var SHIFT_MAX_H = 12; // 출근 뒤 12시간이 지나도 퇴근이 없으면 빠진 퇴근(마포바다 최장 12~23시 11시간. 김다온·외부손 10/7)
+  function isCurrent(r) { if (!r || r.out) return false; var age = Date.now() - r.in; return age >= 0 && age < SHIFT_MAX_H * 36e5; }
+  function isMissing(r) { return !r.out && !isCurrent(r); }
+  function dayWord(ms) { if (isToday(ms)) return '오늘'; var y = new Date(); y.setDate(y.getDate() - 1); return fmtD(ms) === fmtD(y) ? '어제' : (new Date(ms).getMonth() + 1) + '월 ' + new Date(ms).getDate() + '일'; }
+  function todayRecs(id) { return st.recs.filter(function (r) { return r.emp === id && (isToday(r.in) || isCurrent(r)); }); }
+  function todayWork(id) { return todayRecs(id).reduce(function (a, r) { var c = calc(r); return a + (c ? c.work : 0); }, 0); }
+  // 시각 고치기·넣기 — 처음 찍힌 시각은 orig에 한 번만 남기고 다시 덮지 않는다(분쟁 때 근거)
+  function atTime(baseMs, hhmm) { var d = new Date(baseMs), p = hhmm.split(':'); d.setHours(+p[0], +p[1], 0, 0); return d.getTime(); }
+  function outAfter(inMs, hhmm) { var o = atTime(inMs, hhmm); if (o <= inMs) o += 864e5; return o; }
+  function keepOrig(r) { if (!r.orig && !r.added && !r.edited) r.orig = { in: r.in, out: r.out || null }; r.edited = true; r.editedAt = Date.now(); }
+  function overlaps(id, a, b, except) { return st.recs.some(function (r) { if (r === except || r.emp !== id) return false; var ro = r.out || (r.in + 20 * 36e5); return a < ro && r.in < b; }); }
+  // 참고 시각 — 그 직원의 가장 최근 출근·퇴근 시각. 칸에 미리 채우지 않고 설명에만 보인다(확인 없이 저장되는 것을 막음, 햄 10/7)
+  function lastTimes(id) { var b = null; st.recs.forEach(function (r) { if (r.emp === id && r.out && (!b || r.in > b.in)) b = r; }); return b ? { in: fmtT(b.in), out: fmtT(b.out) } : null; }
+  var justChanged = null;
+  function kindOf(r) { return r.added ? '넣은 기록' : (r.orig || r.edited ? '고침' : '찍음'); }
+  function origText(r) { if (!r.orig) return ''; return '원래 ' + fmtT(r.orig.in) + ' → ' + (r.orig.out ? fmtT(r.orig.out) : '퇴근 없음'); }
   function emp(id) { return st.emps.filter(function (e) { return e.id === id; })[0] || { id: id, n: '이전 직원 (' + id + ')', r: '' }; }
-  function openRec(id, currentShiftOnly) { for (var i = st.recs.length - 1; i >= 0; i--) { var r = st.recs[i], age = Date.now() - r.in; if (r.emp === id && !r.out && (!currentShiftOnly || (age >= 0 && age < 20 * 36e5))) return r; } return null; }
+  function openRec(id, currentShiftOnly) { for (var i = st.recs.length - 1; i >= 0; i--) { var r = st.recs[i]; if (r.emp === id && !r.out && (currentShiftOnly ? isCurrent(r) : true)) return r; } return null; }
   function toast(t) { var el = $('toast'); el.textContent = t; el.classList.add('on'); clearTimeout(toast.t); toast.t = setTimeout(function () { el.classList.remove('on'); }, 1800); }
 
 
@@ -208,10 +266,11 @@
         lab.appendChild(inp); box.appendChild(lab);
       });
       if (opt.list) { opt.list.forEach(function (item, i) { var b = document.createElement('button'); b.className = 'btn pick'; b.textContent = item; b.addEventListener('click', function () { close(); resolve({ pick: i }); }); box.appendChild(b); }); }
+      if (opt.extra) { var xb = document.createElement('button'); xb.className = 'btn pick'; xb.textContent = opt.extra; xb.addEventListener('click', function () { close(); resolve({ extra: true }); }); box.appendChild(xb); }
       $('formOk').textContent = opt.ok || '저장'; $('formOk').style.display = opt.list ? 'none' : '';
       $('formOk').className = 'big ' + (opt.danger ? 'out' : 'in');
       function close() { sh.classList.remove('on'); $('formOk').onclick = null; $('formCancel').onclick = null; sh.onclick = null; }
-      $('formOk').onclick = function () { var vals = (opt.fields || []).map(function (f, i) { return $('ff' + i).value; }); close(); resolve(vals); };
+      $('formOk').onclick = function () { var vals = (opt.fields || []).map(function (f, i) { return $('ff' + i).value; }); var bad = opt.check && opt.check(vals); if (bad) { toast(bad); return; } close(); resolve(vals); };
       $('formCancel').onclick = function () { close(); resolve(null); };
       sh.onclick = function (ev) { if (ev.target === sh) { close(); resolve(null); } };
       sh.classList.add('on'); var first = box.querySelector('input'); if (first) setTimeout(function () { first.focus(); }, 50);
@@ -239,7 +298,9 @@
     var ms = r.out - r.in; if (ms <= 0) return null;
     var raw = ms / 36e5;
     // 휴게(근로기준법 54조): 4시간 초과 30분, 8시간 초과 1시간 — 자동 차감(실제 휴게가 다르면 사장이 기록을 고친다)
-    var brk = raw > 4 ? Math.min(raw, Math.max(0, Number(st.breakMin) || 0) / 60) : 0;
+    // 근로기준법 54조: 4시간이면 30분 이상, 8시간이면 1시간 이상. 8시간 넘는 날은 따로 정한 값(없으면 max(기본, 60분))을 뺀다 — 실제가 다르면 설정 「휴게 시간」에서
+    var b4 = Math.max(0, Number(st.breakMin) || 0), b8 = st.breakMin8 != null ? Math.max(0, Number(st.breakMin8) || 0) : Math.max(b4, 60);
+    var brk = raw > 8 ? Math.min(raw, b8 / 60) : raw > 4 ? Math.min(raw, b4 / 60) : 0;
     var work = Math.max(0, raw - brk);
     // 야간(22~06시)·휴일(일요일 = 체험판 기준)을 자정 넘김까지 분 단위로 센다
     var night = 0, holMin = 0, t = new Date(r.in); t.setSeconds(0, 0);
@@ -257,7 +318,9 @@
       var v = b.dataset.v;
       if (v === 'owner' && !ownerOpen) {
         if (!st.ownerPin) { toast('처음 설정에서 사장 PIN을 정해 주세요'); document.querySelector('.tab[data-v=staff]').click(); return; }
-        ask({ title: '사장 화면', sub: '사장 PIN 4자리', fields: [{ label: 'PIN', type: 'password', placeholder: '••••' }], ok: '열기' }).then(function (w) {
+        var pc = st.pinChanged && Date.now() - st.pinChanged.at < 30 * 864e5 ? ' · 사장 PIN이 ' + whenText(st.pinChanged.at) + '에 바뀌었습니다' : '';
+        ask({ title: '사장 화면', sub: '사장 PIN 4자리' + pc, fields: [{ label: 'PIN', type: 'password', placeholder: '••••' }], ok: '열기', extra: 'PIN을 잊었어요' }).then(function (w) {
+          if (w && w.extra) { forgotPin(); document.querySelectorAll('.tab').forEach(function (x) { x.classList.remove('on'); }); document.querySelector('.tab[data-v=staff]').classList.add('on'); return; }
           if (w && w[0] === st.ownerPin) { ownerOpen = true; $('staff').style.display = 'none'; $('owner').style.display = ''; renderOwner(); }
           else { if (w) toast('PIN이 다릅니다'); document.querySelectorAll('.tab').forEach(function (x) { x.classList.remove('on'); }); document.querySelector('.tab[data-v=staff]').classList.add('on'); }
         }); return;
@@ -266,6 +329,26 @@
       if (v === 'owner') renderOwner(); else ownerOpen = false;
     });
   });
+
+  // ── 사장 PIN 잊음: 하루 기다리면 새 PIN. 그동안 직원·사장 화면에 보이고, 사장은 취소할 수 있다. 바뀐 뒤엔 사장 화면에 한 번 알린다 ─
+  var PIN_WAIT = 864e5;
+  function whenText(ms) { var d = new Date(ms); return (d.getMonth() + 1) + '월 ' + d.getDate() + '일 ' + fmtT(ms); }
+  function forgotPin() {
+    var now = Date.now(), pr = st.pinReset;
+    if (!pr) { st.pinReset = { at: now }; save(); renderPin(); ask({ title: 'PIN을 잊었어요', sub: whenText(now + PIN_WAIT) + '부터 새 PIN을 정할 수 있습니다. 그때까지 직원 화면에 「사장 PIN 바꾸기 요청 중」이 보이고, 사장님은 사장 화면에서 취소할 수 있습니다. 기록은 지우지 않습니다.', ok: '알겠어요' }); return; }
+    if (now - pr.at < PIN_WAIT) { ask({ title: '아직 기다리는 중', sub: whenText(pr.at + PIN_WAIT) + '부터 새 PIN을 정할 수 있습니다.', ok: '알겠어요' }); return; }
+    ask({ title: '새 사장 PIN', sub: '숫자 네 자리', fields: [{ label: '새 PIN', type: 'password', placeholder: '••••' }], ok: '정하기', check: function (v) { return /^\d{4}$/.test((v[0] || '').trim()) ? '' : '숫자 네 자리를 넣어 주세요'; } }).then(function (w) {
+      if (!w) return; st.ownerPin = w[0].trim(); st.pinChanged = { at: Date.now(), seen: false }; delete st.pinReset; save(); renderPin(); toast('새 PIN을 정했습니다');
+    });
+  }
+  function renderPin() {
+    var pr = st.pinReset, n = $('pinNotice');
+    n.hidden = !pr; if (pr) n.textContent = '사장 PIN 바꾸기 요청 중 · ' + whenText(pr.at + PIN_WAIT) + '에 열림';
+    var box = $('pinOwner'), msg = $('pinOwnerMsg'), btn = $('pinOwnerBtn'), pc = st.pinChanged;
+    if (pr) { box.hidden = false; msg.textContent = whenText(pr.at) + '에 누군가 「PIN을 잊었어요」를 눌렀습니다. 그대로 두면 ' + whenText(pr.at + PIN_WAIT) + '부터 새 PIN을 정할 수 있습니다.'; btn.textContent = '취소 — 내가 누른 게 아니에요'; btn.onclick = function () { delete st.pinReset; save(); renderPin(); toast('취소했습니다'); }; }
+    else if (pc && !pc.seen) { var k = st.recs.filter(function (r) { return r.editedAt && r.editedAt >= pc.at; }).length; box.hidden = false; msg.textContent = '사장 PIN 바뀜 · ' + whenText(pc.at) + ' · 그 뒤 고치거나 넣은 기록 ' + k + '건'; btn.textContent = '확인'; btn.onclick = function () { pc.seen = true; save(); renderPin(); }; }
+    else box.hidden = true;
+  }
 
   // ── 직원 화면 ─────────────────────────────────────────────
   var cur = null, ownerOpen = false;
@@ -277,14 +360,15 @@
       b.className = 'emp' + (o ? ' in' : '');
       b.innerHTML = '<span class="n"></span><span class="r"></span><span class="s"></span>';
       b.querySelector('.n').textContent = e.n;
-      b.querySelector('.s').textContent = o ? '출근 중' : (old ? fmtD(old.in).slice(5) + ' 퇴근 미기록' : '출근');
+      var done = todayRecs(e.id).filter(function (r) { return r.out; }), last = done[done.length - 1];
+      b.querySelector('.s').textContent = o ? '출근 중 · ' + fmtT(o.in) + '부터' : (old ? dayWord(old.in) + ' 퇴근 안 찍음' : (last ? '퇴근 ' + fmtT(last.out) + ' · 오늘 ' + hm(todayWork(e.id)) : '출근'));
       b.addEventListener('click', function () { openSheet(e); });
       g.appendChild(b);
     });
   }
   function openSheet(e) {
     cur = e; var o = openRec(e.id, true), old = openRec(e.id);
-    $('pName').textContent = e.n; $('pSub').textContent = o ? fmtD(o.in) + ' ' + fmtT(o.in) + ' 출근' : (old ? fmtD(old.in) + ' 퇴근 미기록 · 사장에게 알려 주세요. 오늘 출근은 따로 찍을 수 있습니다.' : '출근 버튼을 눌러 주세요.'); $('pMsg').textContent = '';
+    $('pName').textContent = e.n; $('pSub').textContent = o ? fmtD(o.in) + ' ' + fmtT(o.in) + ' 출근' : (old ? dayWord(old.in) + ' 퇴근을 안 찍었어요. 사장님께 몇 시에 나갔는지 말해 주세요.' : ''); $('pMsg').textContent = '';
     $('btnIn').style.display = o ? 'none' : ''; $('btnOut').style.display = o ? '' : 'none';
     $('sheet').classList.add('on');
   }
@@ -295,8 +379,17 @@
     if (!cur) return; var e = cur;
     gateGeo().then(function (ok) { if (!ok) return; return gatePin(e).then(function (ok2) { if (!ok2) return;
       if (kind === 'in') { if (openRec(e.id, true)) return; var now = Date.now(); st.recs.push({ emp: e.id, in: now, out: null }); save(); toast(e.n + ' 출근 ' + fmtT(now)); }
-      else { var o = openRec(e.id, true); if (!o) return; o.out = Date.now(); save(); toast(e.n + ' 퇴근 ' + fmtT(o.out)); }
+      else { var o = openRec(e.id, true); if (!o) return; o.out = Date.now(); save(); renderStaff(); showDone(e, o); return; }
       closeSheet(); renderStaff(); }); });
+  }
+  // 퇴근 직후: 시트에 「오늘 몇 시간」을 그대로 보여 주고 몇 초 뒤 닫는다
+  function showDone(e, r) {
+    var c = calc(r), w = c ? c.work : 0;
+    $('pSub').innerHTML = ''; var big = document.createElement('b'); big.style.fontSize = '20px'; big.style.color = 'var(--ink)'; big.textContent = '퇴근 ' + fmtT(r.out) + ' · 오늘 ' + hm(todayWork(e.id)) + ' 일했어요';
+    $('pSub').appendChild(big); $('pSub').appendChild(document.createElement('br'));
+    $('pSub').appendChild(document.createTextNode(fmtT(r.in) + ' 출근' + (c && c.brk ? ' · 휴게 ' + Math.round(c.brk * 60) + '분 뺌' : '') + (w < 0.02 ? ' · 1분도 안 돼 사장 화면에 0분 기록으로 남습니다' : '')));
+    $('btnIn').style.display = 'none'; $('btnOut').style.display = 'none';
+    clearTimeout(showDone.t); showDone.t = setTimeout(function () { if (cur === e) closeSheet(); }, 6000);
   }
   $('btnIn').addEventListener('click', function () { punch('in'); });
   $('btnOut').addEventListener('click', function () { punch('out'); });
@@ -304,64 +397,146 @@
   // ── 사장 화면 ─────────────────────────────────────────────
   var ym = (function () { var d = new Date(); return { y: d.getFullYear(), m: d.getMonth() }; })();
   function monthRecs() { return st.recs.filter(function (r) { var d = new Date(r.in); return d.getFullYear() === ym.y && d.getMonth() === ym.m; }); }
+  // 사장 첫 화면은 매일 하는 일 셋만: 오늘 누가 왔나 · 확인할 것 · 이번 달(엑셀). 나머지는 사람 줄을 누르면 열리는 「그 사람 화면」(햄 10/7 「사장님 화면 복잡해」)
   function renderOwner() {
-    $('monthLabel').textContent = ym.y + '년 ' + (ym.m + 1) + '월';
-    if (st.recs.length >= 40 && !renderOwner.warned) { renderOwner.warned = true; toast('기록이 쌓였습니다 — 「이달 CSV 내려받기」로 백업해 두세요'); }
-    var recs = monthRecs(), closed = recs.filter(function (r) { return r.out && calc(r); });
-    // 퇴근 없는 기록 중 직원 화면의 「출근 중」과 같은 기준(출근 20시간 안)은 빠진 퇴근으로 세지 않는다(10/7 총괄편집장 검수)
-    var OPEN_MS = 20 * 36e5, nowMs = Date.now();
-    var noOut = recs.filter(function (r) { return !r.out; });
-    var working = noOut.filter(function (r) { var age = nowMs - r.in; return age >= 0 && age < OPEN_MS; }).length;
-    var missing = noOut.length - working;
-    $('missingCount').textContent = '빠진 퇴근 ' + missing + '건' + (missing ? ' · 아래 기록에서 시각을 넣어 주세요' : '') + (working ? ' · 지금 근무 중 ' + working + '명' : '');
-    $('missingCount').classList.toggle('warn', missing > 0);
-    var total = closed.reduce(function (a, r) { var c = calc(r); return a + (c ? c.work : 0); }, 0);
-    $('kNow').textContent = st.emps.filter(function (e) { return openRec(e.id); }).length;
-    $('kDays').textContent = closed.length;
-    $('kHours').textContent = total.toFixed(1);
-    var tb = $('sumBody'); tb.innerHTML = '';
-    var summary = $('ownerSummary'); summary.innerHTML = '';
-    var allEmps = st.emps.slice();
-    closed.forEach(function (r) { if (!allEmps.some(function (e) { return e.id === r.emp; })) allEmps.push(emp(r.emp)); });
-    allEmps.forEach(function (e) {
-      var mine = closed.filter(function (r) { return r.emp === e.id; });
-      var days = {}, wk = {}, wkO = {}, tot = 0, over = 0, night = 0, hol = 0;
-      mine.forEach(function (r) { var c = calc(r); if (!c) return; days[fmtD(r.in)] = 1; var k = weekKey(r.in); wk[k] = (wk[k] || 0) + c.work; wkO[k] = (wkO[k] || 0) + c.over; tot += c.work; over += c.over; night += c.night; hol += c.holHours; });
-      Object.keys(wk).forEach(function (k) { over += Math.max(0, wk[k] - 40 - (wkO[k] || 0)); }); // 주 40h 초과분(명세와 같은 계산)
-      var weeklyHol = Object.keys(wk).filter(function (k) { return wk[k] >= 15; }).length;
-      var open = openRec(e.id);
-      var tr = document.createElement('tr');
-      tr.innerHTML = '<td></td><td>' + Object.keys(days).length + '</td><td>' + tot.toFixed(1) + '</td><td>' + (over ? over.toFixed(1) : '-') + '</td><td>' + (night ? night.toFixed(1) : '-') + '</td><td>' + (hol ? hol.toFixed(1) : '-') + '</td><td>' + weeklyHol + '</td>';
-      tr.firstChild.textContent = e.n + (open ? ' ●' : '');
-      if (open) tr.firstChild.classList.add('warn');
-      tb.appendChild(tr);
-      var li = document.createElement('li'), name = document.createElement('span'), hours = document.createElement('strong');
-      name.textContent = e.n; hours.textContent = tot.toFixed(1) + '시간'; li.appendChild(name); li.appendChild(hours); summary.appendChild(li);
+    $('monthLabel').textContent = (ym.m + 1) + '월' + (ym.y !== new Date().getFullYear() ? ' ' + ym.y : '');
+    renderToday(); renderFix(); renderPin(); renderMonth(); renderBackup();
+    if (personOpen) renderPerson();
+  }
+  function row(left, right, sub, onClick) {
+    var b = document.createElement('button'); b.className = 'row'; b.type = 'button';
+    var l = document.createElement('span'); l.textContent = left; var v = document.createElement('span'); v.className = 'v';
+    if (right && right.nodeType) v.appendChild(right); else v.textContent = right || '';
+    if (sub) { var sm = document.createElement('small'); sm.textContent = sub; v.appendChild(sm); }
+    b.appendChild(l); b.appendChild(v); b.addEventListener('click', onClick); return b;
+  }
+  function span(t, cls) { var x = document.createElement('span'); x.textContent = t; if (cls) x.className = cls; return x; }
+  function markOf(r) { return r.added ? '넣은 기록' : (r.orig ? '고침 · ' + origText(r) : (r.edited ? '고침' : '')); }
+  // ① 오늘 — 이름 · 출근~퇴근. 줄을 누르면 그 기록 고치기, 안 찍은 사람은 오늘 기록 넣기
+  function renderToday() {
+    var box = $('todayList'); box.innerHTML = ''; var came = 0;
+    st.emps.forEach(function (e) {
+      var rs = todayRecs(e.id), last = rs[rs.length - 1];
+      if (!rs.length) { box.appendChild(row(e.n, span('—', 'off'), '', function () { addDayFor(e, Date.now()); })); return; }
+      came++;
+      var t = last.out ? fmtT(rs[0].in) + ' – ' + fmtT(last.out) : isMissing(last) ? span(fmtT(rs[0].in) + ' – 퇴근 안 찍음', 'warn') : fmtT(rs[0].in) + ' – 근무 중';
+      var mk = rs.map(markOf).filter(Boolean).join(' / ');
+      box.appendChild(row(e.n, t, mk, function () { editRec(last); }));
     });
-    var lg = $('log'); lg.innerHTML = '';
-    if (!recs.length) { lg.innerHTML = '<div><span>이달 기록이 아직 없습니다.</span></div>'; }
-    recs.slice().reverse().forEach(function (r) {
-      var c = calc(r); var d = document.createElement('div');
-      var left = document.createElement('span'); left.textContent = fmtD(r.in).slice(5) + ' ' + emp(r.emp).n;
-      var right = document.createElement('span');
-      if (r.out) {
-        right.textContent = fmtT(r.in) + ' → ' + fmtT(r.out) + ' · ' + (c ? c.work.toFixed(1) : '0') + 'h' + (r.edited ? ' (수정됨)' : '');
-        if (!c || r.out - r.in < 60000) { var del = document.createElement('button'); del.className = 'mini'; del.textContent = '0분 기록 지우기'; del.dataset.zero = st.recs.indexOf(r); right.appendChild(del); }
-      }
-      else { right.innerHTML = fmtT(r.in) + ' → <span class="warn">퇴근 미기록</span> <button class="mini" data-fix="' + st.recs.indexOf(r) + '">퇴근 시각 넣기</button>'; }
-      d.appendChild(left); d.appendChild(right); lg.appendChild(d);
+    var td = new Date(); $('todayCount').textContent = (td.getMonth() + 1) + '월 ' + td.getDate() + '일 · ' + came + '명';
+  }
+  // ② 확인할 것 — 있을 때만. 줄을 누르면 시각 넣기
+  function renderFix() {
+    var miss = st.recs.filter(isMissing);
+    $('fixBox').hidden = !miss.length; $('missingCount').textContent = '확인할 것 ' + miss.length + '건';
+    var box = $('fixList'); box.innerHTML = '';
+    miss.forEach(function (r) { var d = new Date(r.in); box.appendChild(row((d.getMonth() + 1) + '/' + d.getDate() + ' ' + emp(r.emp).n, fmtT(r.in) + ' 출근', '퇴근 안 찍음 — 눌러서 넣기', function () { fixOut(r); })); });
+  }
+  // ③ 이번 달 — 사람별 시간, 누르면 그 사람 화면
+  function monthHours(id) { return monthRecs().reduce(function (a, r) { var c = r.emp === id ? calc(r) : null; return a + (c ? c.work : 0); }, 0); }
+  function renderMonth() {
+    var box = $('monthList'); box.innerHTML = ''; var people = st.emps.slice();
+    monthRecs().forEach(function (r) { if (!people.some(function (e) { return e.id === r.emp; })) people.push(emp(r.emp)); });
+    people.forEach(function (e) { var s2 = document.createElement('strong'); s2.textContent = hm(monthHours(e.id)); box.appendChild(row(e.n, s2, '', function () { openPerson(e); })); });
+  }
+  // 그 사람 화면 — 이달 그 사람 기록(누르면 고치기)·안 찍은 날 넣기·시급
+  var personOpen = null;
+  function openPerson(e) { personOpen = e; renderPerson(); $('personSheet').classList.add('on'); $('personSheet').querySelector('.panel').scrollTop = 0; }
+  function closePerson() { personOpen = null; $('personSheet').classList.remove('on'); }
+  $('psClose').addEventListener('click', closePerson);
+  $('personSheet').addEventListener('click', function (ev) { if (ev.target.id === 'personSheet') closePerson(); });
+  $('psAdd').addEventListener('click', function () { if (personOpen) addDayFor(personOpen, Date.now() - 864e5); });
+  $('psWage').addEventListener('click', function () { if (personOpen) setWage(personOpen); });
+  function renderPerson() {
+    var e = personOpen; if (!e) return; var inList = st.emps.indexOf(e) >= 0;
+    $('psName').textContent = e.n; $('psSub').textContent = (ym.m + 1) + '월 ' + hm(monthHours(e.id));
+    $('psWage').textContent = e.wage ? '시급 ' + e.wage.toLocaleString('ko-KR') + '원' : '시급 넣기'; $('psWage').hidden = !inList; $('psAdd').hidden = !inList;
+    var box = $('psList'), jc = justChanged; box.innerHTML = ''; justChanged = null;
+    var mine = monthRecs().filter(function (r) { return r.emp === e.id; }).sort(function (a, b) { return b.in - a.in; });
+    if (!mine.length) box.appendChild(span('이달 기록이 없습니다.', 'note'));
+    mine.forEach(function (r) {
+      var d = new Date(r.in), c = calc(r), miss = isMissing(r);
+      var right = miss ? span(fmtT(r.in) + ' – 퇴근 안 찍음', 'warn') : fmtT(r.in) + ' – ' + (r.out ? fmtT(r.out) + ' · ' + (c ? hm(c.work) : '0분') : '근무 중');
+      var b = row((d.getMonth() + 1) + '/' + d.getDate(), right, markOf(r), function () { if (miss) fixOut(r); else if (r.out && r.out - r.in < 60000) zeroRec(r); else editRec(r); });
+      if (r === jc) b.classList.add('just'); box.appendChild(b);
     });
-    lg.querySelectorAll('[data-fix]').forEach(function (b) { b.addEventListener('click', function () { var r = st.recs[+b.dataset.fix]; ask({ title: '퇴근 시각 넣기', sub: emp(r.emp).n + ' · ' + fmtD(r.in) + ' ' + fmtT(r.in) + ' 출근', fields: [{ label: '퇴근 시각', type: 'time', value: '' }] }).then(function (v) { if (!v || !v[0]) return; var d = new Date(r.in); var p = v[0].split(':'); d.setHours(+p[0], +p[1], 0, 0); if (d.getTime() <= r.in) d.setDate(d.getDate() + 1); r.out = d.getTime(); r.edited = true; save(); renderOwner(); renderStaff(); toast('퇴근 시각을 넣었습니다(수정 표시)'); }); }); });
-    lg.querySelectorAll('[data-zero]').forEach(function (b) { b.addEventListener('click', function () { var i = +b.dataset.zero, r = st.recs[i]; if (!r || !r.out || r.out - r.in >= 60000) return; ask({ title: '0분 기록 지우기', sub: emp(r.emp).n + ' · ' + fmtD(r.in) + ' ' + fmtT(r.in) + ' 기록 하나만 지웁니다. 먼저 CSV로 백업하세요.', fields: [{ label: '확인 문구', placeholder: '지우기' }], ok: '지우기', danger: true }).then(function (v) { if (!v || v[0].trim() !== '지우기') return; if (st.recs[i] !== r) return; st.recs.splice(i, 1); save(); renderOwner(); renderStaff(); toast('0분 기록을 지웠습니다'); }); }); });
+  }
+  function zeroRec(r) { removeRec(r); }
+  // 잘못 누른 기록 지우기 — 한 번 되묻고, 지운 기록은 st.trash로 옮겨 엑셀 맨 아래 「지운 기록」에 남는다(몰래 없애는 길이 되지 않게)
+  function removeRec(r) {
+    ask({ title: '이 기록을 지울까요?', sub: emp(r.emp).n + ' · ' + fmtD(r.in) + ' ' + fmtT(r.in) + ' – ' + (r.out ? fmtT(r.out) : '퇴근 없음') + ' · 지운 기록은 엑셀 맨 아래에 남습니다.', ok: '지우기', danger: true }).then(function (v) {
+      if (!v) return; var i = st.recs.indexOf(r); if (i < 0) return;
+      st.recs.splice(i, 1); (st.trash = st.trash || []).push({ emp: r.emp, in: r.in, out: r.out || null, removedAt: Date.now() }); refresh('지웠습니다');
+    });
+  }
+  function refresh(msg) { save(); renderOwner(); renderStaff(); if (msg) toast(msg); }
+  function fixOut(r) {
+    if (!r || r.out) return;
+    var lt = lastTimes(r.emp);
+    ask({ title: '퇴근 시각 넣기', sub: emp(r.emp).n + ' · ' + fmtD(r.in) + ' ' + fmtT(r.in) + ' 출근' + (lt ? ' · 참고: 지난번 퇴근 ' + lt.out : ''), fields: [{ label: '퇴근 시각', type: 'time', value: '' }], check: function (v) { return v[0] ? '' : '시각을 넣어 주세요'; } }).then(function (v) {
+      if (!v || !v[0]) return; var o = outAfter(r.in, v[0]);
+      if (o - r.in > 20 * 36e5) { toast('출근부터 20시간이 넘습니다 — 시각을 확인해 주세요'); return; }
+      keepOrig(r); r.out = o; justChanged = r; refresh('퇴근 시각을 넣었습니다');
+    });
+  }
+  // 찍힌 시각 고치기. 원래 시각은 r.orig에 남는다
+  function editRec(r) {
+    if (!r) return;
+    var fields = [{ label: '출근 시각', type: 'time', value: fmtT(r.in) }, { label: '퇴근 시각' + (r.out ? '' : '(근무 중이면 비워 두기)'), type: 'time', value: r.out ? fmtT(r.out) : '' }];
+    ask({ title: '시각 고치기', sub: emp(r.emp).n + ' · ' + fmtD(r.in) + (r.orig ? ' · ' + origText(r) : ''), fields: fields, extra: '이 기록 지우기' }).then(function (v) {
+      if (v && v.extra) return removeRec(r);
+      if (!v || !v[0]) return; var ni = atTime(r.in, v[0]), no = v[1] ? outAfter(ni, v[1]) : null;
+      if (!v[1] && r.out) { toast('퇴근 시각을 비울 수는 없습니다'); return; }
+      if (no && no - ni > 20 * 36e5) { toast('20시간이 넘는 근무입니다 — 시각을 확인해 주세요'); return; }
+      if (overlaps(r.emp, ni, no || ni + 60000, r)) { toast('같은 직원의 다른 기록과 시간이 겹칩니다'); return; }
+      if (ni === r.in && no === (r.out || null)) return;
+      keepOrig(r); r.in = ni; r.out = no; justChanged = r; refresh('고쳤습니다 — 원래 시각은 남습니다');
+    });
+  }
+  // 안 찍은 날 넣기 — 그 사람 화면(기본 어제) 또는 오늘 칸의 「—」 줄(기본 오늘)
+  function addDayFor(e, dayMs) {
+    var lt = lastTimes(e.id);
+    ask({ title: e.n + ' · 기록 넣기', sub: (lt ? '참고: 지난번 ' + lt.in + ' – ' + lt.out : ''), fields: [{ label: '날짜 — ' + dayWord(dayMs) + '로 채워 둠, 다른 날이면 바꾸기', type: 'date', value: fmtD(dayMs) }, { label: '출근 시각', type: 'time', value: '' }, { label: '퇴근 시각', type: 'time', value: '' }], ok: '넣기', check: function (w) { return w[0] && w[1] && w[2] ? '' : '시각을 넣어 주세요'; } }).then(function (w) {
+      if (!w) return;
+      var dp = w[0].split('-'), base = new Date(+dp[0], +dp[1] - 1, +dp[2]).getTime(), ni = atTime(base, w[1]), no = outAfter(ni, w[2]);
+      if (ni > Date.now() || no > Date.now() + 60000) { toast('아직 오지 않은 시각은 넣을 수 없습니다'); return; }
+      if (no - ni > 20 * 36e5) { toast('20시간이 넘는 근무입니다 — 시각을 확인해 주세요'); return; }
+      if (overlaps(e.id, ni, no)) { toast('그 시간에 이미 기록이 있습니다 — 그 줄을 눌러 고쳐 주세요'); return; }
+      var nr = { emp: e.id, in: ni, out: no, added: true, edited: true, editedAt: Date.now() }; st.recs.push(nr); justChanged = nr;
+      st.recs.sort(function (a, b) { return a.in - b.in; });
+      var d = new Date(ni); ym.y = d.getFullYear(); ym.m = d.getMonth();
+      refresh('넣었습니다 — 「넣은 기록」으로 표시됩니다');
+    });
+  }
+  // 시급 — 엑셀의 「시간×시급」에만 쓴다. 비우면 그 칸도 비움(급여·주휴·가산·공제 계산은 판 A에서 숨김)
+  function setWage(e) { ask({ title: e.n + ' 시급', sub: '엑셀에 「일한 시간 × 시급」을 함께 적습니다. 비우면 적지 않습니다.', fields: [{ label: '시급(원)', type: 'number', value: e.wage || '' }] }).then(function (w) { if (!w) return; var n = parseInt(w[0], 10); e.wage = n >= 1000 ? n : undefined; if (w[0] && !(n >= 1000)) toast('1,000원 이상 숫자로 넣어 주세요'); refresh(); }); }
+  // 백업 알림 — 엑셀 받기 버튼 위 한 줄. 마지막 받은 날(안 받았으면 첫 기록)부터 7일이 넘으면
+  function renderBackup() {
+    var first = st.recs.length ? st.recs.reduce(function (a, r) { return Math.min(a, r.in); }, Infinity) : null;
+    var since = st.lastExport || first, days = since ? Math.floor((Date.now() - since) / 864e5) : 0;
+    $('backupMsg').hidden = !st.recs.length || days < 7;
+    $('backupMsg').textContent = (st.lastExport ? '엑셀로 받은 지 ' + days + '일 — ' : '') + '기록은 이 기기에만 있습니다. 지금 받아 두세요.';
   }
   $('prevM').addEventListener('click', function () { ym.m--; if (ym.m < 0) { ym.m = 11; ym.y--; } renderOwner(); });
   $('nextM').addEventListener('click', function () { ym.m++; if (ym.m > 11) { ym.m = 0; ym.y++; } renderOwner(); });
 
   $('csv').addEventListener('click', function () {
-    var rows = [['사업장', '직원', '날짜', '출근', '퇴근', '휴게(분)', '근무(h)', '연장(h)', '야간(h)', '휴일근로(h)', '수정']];
-    monthRecs().forEach(function (r) { var c = calc(r); rows.push([st.shop, emp(r.emp).n, fmtD(r.in), fmtT(r.in), r.out ? fmtT(r.out) : '', c ? Math.round(c.brk * 60) : 0, c ? c.work.toFixed(2) : '', c ? c.over.toFixed(2) : '', c ? c.night.toFixed(2) : '', c && c.holiday ? c.work.toFixed(2) : '', r.edited ? 'Y' : '']); });
+    // 엑셀로 열면 맨 위에 「사람별 이달 시간」, 그 아래 날짜별 기록(강태준 10/7: 월말에 손 기록을 엑셀로 옮겨 시급 계산하는 일이 실제 부담)
+    var mr = monthRecs(), people = st.emps.slice();
+    mr.forEach(function (r) { if (!people.some(function (e) { return e.id === r.emp; })) people.push(emp(r.emp)); });
+    var rows = [[st.shop + ' · ' + ym.y + '년 ' + (ym.m + 1) + '월 · 사람별 이달 시간'], ['직원', '일한 날', '일한 시간(h)', '일한 시간', '시급(원)', '시간×시급(원) — 주휴·가산·공제 빠짐', '빠진 퇴근', '고친·넣은 기록']];
+    people.forEach(function (e) {
+      var mine = mr.filter(function (r) { return r.emp === e.id; }), days = {}, tot = 0, miss = 0, ch = 0;
+      mine.forEach(function (r) { var c = calc(r); if (c) { tot += c.work; days[fmtD(r.in)] = 1; } else if (isMissing(r)) miss++; if (r.orig || r.edited || r.added) ch++; });
+      rows.push([e.n, Object.keys(days).length, tot.toFixed(2), hm(tot), e.wage || '', e.wage ? Math.round(tot * e.wage) : '', miss || '', ch || '']);
+    });
+    rows.push([]); rows.push(['날짜별 기록']);
+    rows.push(['사업장', '직원', '날짜', '출근', '퇴근', '휴게(분)', '근무(h)', '연장(h)', '야간(h)', '구분', '원래 출근', '원래 퇴근']);
+    mr.slice().sort(function (a, b) { return a.in - b.in; }).forEach(function (r) { var c = calc(r); rows.push([st.shop, emp(r.emp).n, fmtD(r.in), fmtT(r.in), r.out ? fmtT(r.out) : '', c ? Math.round(c.brk * 60) : 0, c ? c.work.toFixed(2) : '', c ? c.over.toFixed(2) : '', c ? c.night.toFixed(2) : '', kindOf(r), r.orig ? fmtD(r.orig.in) + ' ' + fmtT(r.orig.in) : '', r.orig && r.orig.out ? fmtD(r.orig.out) + ' ' + fmtT(r.orig.out) : '']); });
+    var gone = (st.trash || []).filter(function (t) { var d = new Date(t.in); return d.getFullYear() === ym.y && d.getMonth() === ym.m; });
+    if (gone.length) { rows.push([]); rows.push(['지운 기록']); rows.push(['직원', '날짜', '출근', '퇴근', '지운 때']); gone.forEach(function (t) { rows.push([emp(t.emp).n, fmtD(t.in), fmtT(t.in), t.out ? fmtT(t.out) : '', fmtD(t.removedAt) + ' ' + fmtT(t.removedAt)]); }); }
     var csv = '﻿' + rows.map(function (r) { return r.map(function (v) { var t = String(v); if (/^[=+\-@]/.test(t)) t = "'" + t; return '"' + t.replace(/"/g, '""') + '"'; }).join(','); }).join('\n');
-    var a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([csv], { type: 'text/csv' })); a.download = '출퇴근_' + ym.y + '-' + pad(ym.m + 1) + '.csv'; document.body.appendChild(a); a.click(); a.remove(); toast('CSV 내려받음');
+    var a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([csv], { type: 'text/csv' })); a.download = '출퇴근_' + ym.y + '-' + pad(ym.m + 1) + '.csv'; document.body.appendChild(a); a.click(); a.remove(); st.lastExport = Date.now(); save(); renderBackup(); toast('받았습니다 — 엑셀에서 열 수 있습니다');
   });
   $('seed').addEventListener('click', function () {
     var end = new Date(ym.y, ym.m + 1, 0).getDate(), now = Date.now();
@@ -375,16 +550,17 @@
     }
     save(); renderOwner(); renderStaff(); toast('가명 시연 기록을 채웠습니다');
   });
-  $('wipe').addEventListener('click', function () { ask({ title: '이 기기의 기록을 모두 지웁니다', sub: '되돌릴 수 없습니다. 먼저 「이달 CSV 내려받기」로 백업하세요. 계속하려면 아래에 지우기 라고 입력.', fields: [{ label: '확인 문구', placeholder: '지우기' }], ok: '지우기', danger: true }).then(function (v) { if (!v) return; if ((v[0] || '').trim() !== '지우기') { toast('「지우기」를 입력해야 지워집니다'); return; } st.recs = []; save(); renderOwner(); renderStaff(); toast('지웠습니다'); }); });
+  $('wipe').addEventListener('click', function () { ask({ title: '이 기기의 기록을 모두 지웁니다', sub: '되돌릴 수 없습니다. 먼저 「이달 엑셀로 받기」로 백업하세요. 계속하려면 아래에 지우기 라고 입력.', fields: [{ label: '확인 문구', placeholder: '지우기' }], ok: '지우기', danger: true }).then(function (v) { if (!v) return; if ((v[0] || '').trim() !== '지우기') { toast('「지우기」를 입력해야 지워집니다'); return; } st.recs = []; save(); renderOwner(); renderStaff(); toast('지웠습니다'); }); });
 
   // ── 설정: 가게 이름·직원 명단(범용) ───────────────────────
+  $('breakSet').addEventListener('click', function () { var b8 = st.breakMin8 != null ? st.breakMin8 : Math.max(Number(st.breakMin) || 0, 60); ask({ title: '휴게 시간', sub: '일한 시간에서 빼는 쉬는 시간입니다. 법은 4시간 넘으면 30분, 8시간 넘으면 1시간 이상입니다.', fields: [{ label: '4시간 넘게 일한 날(분)', type: 'number', value: st.breakMin == null ? 30 : st.breakMin }, { label: '8시간 넘게 일한 날(분)', type: 'number', value: b8 }], check: function (v) { return v.every(function (x) { var n = Number(x); return x !== '' && Number.isInteger(n) && n >= 0 && n <= 240; }) ? '' : '0~240분 숫자로 넣어 주세요'; } }).then(function (v) { if (!v) return; st.breakMin = Number(v[0]); st.breakMin8 = Number(v[1]); refresh('휴게 시간을 바꿨습니다'); }); });
   $('setShop').addEventListener('click', function () { ask({ title: '가게 이름', fields: [{ label: '가게 이름', value: st.shop }] }).then(function (v) { if (v && v[0].trim()) { st.shop = v[0].trim(); save(); renderStaff(); renderOwner(); toast('바꿨습니다'); } }); });
   function sameName(name, except) { return st.emps.some(function (e) { return e.id !== except && e.n.trim().toLocaleLowerCase() === name.trim().toLocaleLowerCase(); }); }
   $('addEmp').addEventListener('click', function () { ask({ title: '직원 추가', sub: '체험판이면 가명으로', fields: [{ label: '이름', placeholder: '가명 일곱' }, { label: '역할', placeholder: '홀 · 아르바이트' }, { label: 'PIN 4자리(비우면 없음)', type: 'password', placeholder: '••••' }] }).then(function (v) { if (!v || !v[0].trim()) return; var name = v[0].trim(), pin = (v[2] || '').trim(); if (sameName(name)) { toast('같은 이름은 두 번 넣을 수 없습니다'); return; } if (pin && !/^\d{4}$/.test(pin)) { toast('PIN은 숫자 4자리'); return; } st.emps.push({ id: 'e' + Date.now(), n: name, r: (v[1] || '').trim(), pin: pin || undefined }); save(); renderStaff(); renderOwner(); toast('추가했습니다'); }); });
   $('editEmp').addEventListener('click', function () { ask({ title: '이름 고칠 직원', list: st.emps.map(function (e) { return e.n; }) }).then(function (v) { if (!v || v.pick === undefined) return; var e = st.emps[v.pick]; return ask({ title: '직원 이름 고치기', sub: '기존 출퇴근 기록도 이 이름으로 보입니다.', fields: [{ label: '이름', value: e.n }] }).then(function (w) { if (!w) return; var name = w[0].trim(); if (!name || sameName(name, e.id)) { toast('빈 이름이나 중복 이름은 쓸 수 없습니다'); return; } e.n = name; save(); renderStaff(); renderOwner(); toast('이름을 고쳤습니다'); }); }); });
   $('delEmp').addEventListener('click', function () { ask({ title: '직원 빼기', sub: '누른 사람이 명단에서 빠집니다. 기록은 남습니다.', list: st.emps.map(function (e) { return e.n + ' · ' + e.r; }) }).then(function (v) { if (!v || v.pick === undefined) return; st.emps.splice(v.pick, 1); save(); renderStaff(); renderOwner(); toast('뺐습니다'); }); });
 
-  $('ownerPin').addEventListener('click', function () { ask({ title: '사장 PIN 바꾸기', sub: '4자리 숫자. 잠금을 끌 수는 없습니다. 잊으면 이 기기 기록을 볼 수 없으니 CSV로 백업하세요.', fields: [{ label: '새 사장 PIN', type: 'password', placeholder: '••••' }] }).then(function (w) { if (!w) return; var pin = (w[0] || '').trim(); if (!/^\d{4}$/.test(pin)) { toast('숫자 4자리를 입력해 주세요'); return; } st.ownerPin = pin; save(); toast('사장 PIN을 바꿨습니다'); }); });
+  $('ownerPin').addEventListener('click', function () { ask({ title: '사장 PIN 바꾸기', sub: '4자리 숫자. 잠금을 끌 수는 없습니다. 잊으면 이 기기 기록을 볼 수 없으니 「이달 엑셀로 받기」로 백업하세요.', fields: [{ label: '새 사장 PIN', type: 'password', placeholder: '••••' }] }).then(function (w) { if (!w) return; var pin = (w[0] || '').trim(); if (!/^\d{4}$/.test(pin)) { toast('숫자 4자리를 입력해 주세요'); return; } st.ownerPin = pin; save(); toast('사장 PIN을 바꿨습니다'); }); });
   $('setPin').addEventListener('click', function () { ask({ title: 'PIN 설정할 직원', sub: '누르면 그 직원의 PIN을 정합니다', list: st.emps.map(function (e) { return e.n + (e.pin ? ' · PIN 있음' : ' · PIN 없음'); }) }).then(function (v) { if (!v || v.pick === undefined) return; var e = st.emps[v.pick]; return ask({ title: e.n + ' PIN', sub: '숫자 4자리. 비우면 PIN을 없앱니다', fields: [{ label: 'PIN', type: 'password', placeholder: '••••' }] }).then(function (w) { if (!w) return; var pin = (w[0] || '').trim(); if (pin && !/^\d{4}$/.test(pin)) { toast('PIN은 숫자 4자리'); return; } e.pin = pin || undefined; save(); renderStaff(); toast(pin ? 'PIN을 정했습니다' : 'PIN을 없앴습니다'); }); }); });
   function renderGeo() { var el = $('geoStatus'); if (!el) return; el.textContent = st.geo ? '가게 위치 등록됨 · 반경 ' + st.geo.radius + 'm 안에서만 출근/퇴근' : '가게 위치 미등록 — 어디서나 눌립니다'; $('geoOff').style.display = st.geo ? '' : 'none'; }
   $('geoSet').addEventListener('click', function () { toast('가게 위치를 재는 중…'); getPos().then(function (p) { return ask({ title: '여기를 가게로 등록', sub: '지금 위치(오차 약 ' + Math.round(p.acc || 0) + 'm)를 가게 좌표로 저장합니다. 좌표는 이 기기 안에만 남습니다.', fields: [{ label: '허용 반경(m)', type: 'number', value: st.geo ? st.geo.radius : 100 }], ok: '등록' }).then(function (v) { if (!v) return; var r = parseInt(v[0], 10); st.geo = { lat: p.lat, lng: p.lng, radius: isNaN(r) ? 100 : Math.max(30, r) }; save(); renderGeo(); toast('가게 위치를 등록했습니다'); }); }).catch(function (e) { toast(e && e.code === 1 ? '위치 허용이 필요합니다' : '위치를 못 잡았습니다'); }); });
@@ -460,24 +636,32 @@
 
   function startSetup() {
     if (st.setupDone && /^\d{4}$/.test(st.ownerPin || '')) return;
-    $('setupNames').value = st.emps.map(function (e) { return e.n; }).join(', ');
+    var DEMO = KEY === 'ham_attendance_v1';
+    document.querySelector('#setup .note').textContent = (DEMO ? '가명 직원 이름과 휴게 시간을 넣으면 바로 시작합니다.' : '직원 이름과 휴게 시간을 넣으면 바로 시작합니다.') + ' 사장 화면은 숫자 네 자리로 잠급니다.';
+    $('setupList').innerHTML = ''; var names = st.emps.map(function (e) { return e.n; }); while (names.length < 3) names.push('');
+    names.forEach(function (n) { addSetupRow(n); });
     $('setupRest').value = String(st.restDay || 0);
     $('setupBreak').value = String(st.breakMin == null ? 30 : st.breakMin);
     $('setup').classList.add('on');
   }
+  // 직원 이름은 한 칸에 한 명. 빈 칸은 무시한다
+  function addSetupRow(v) { var i = document.createElement('input'); i.className = 'setrow'; i.autocomplete = 'off'; i.value = v || ''; i.placeholder = KEY === 'ham_attendance_v1' ? '예: 가명 하나' : '예: 민수'; $('setupList').appendChild(i); return i; }
+  $('setupAdd').addEventListener('click', function () { addSetupRow('').focus(); });
   $('setupDone').addEventListener('click', function () {
-    var names = $('setupNames').value.split(',').map(function (n) { return n.trim(); });
+    var names = [].map.call(document.querySelectorAll('#setupList .setrow'), function (i) { return i.value.trim(); }).filter(Boolean);
     var unique = new Set(names.map(function (n) { return n.toLocaleLowerCase(); }));
     var brk = Number($('setupBreak').value), pin = $('setupPin').value.trim();
-    if (!names.length || names.some(function (n) { return !n; }) || unique.size !== names.length) { $('setupError').textContent = '직원 이름을 빠짐없이, 서로 다르게 적어 주세요.'; return; }
+    if (!names.length || names.some(function (n) { return !n; }) || unique.size !== names.length) { $('setupError').textContent = names.length ? '같은 이름이 두 번 있습니다.' : '직원 이름을 한 명 이상 넣어 주세요.'; return; }
     if (st.recs.length && (names.length !== st.emps.length || names.some(function (n, i) { return n !== st.emps[i].n; }))) { $('setupError').textContent = '기존 기록의 직원 이름은 이 화면에서 바꾸지 않습니다. 설정 뒤 사장 화면의 이름 고치기를 사용해 주세요.'; return; }
     if (!Number.isInteger(brk) || brk < 0 || brk > 240) { $('setupError').textContent = '휴게 시간은 0~240분으로 적어 주세요.'; return; }
     if (!/^\d{4}$/.test(pin)) { $('setupError').textContent = '사장 PIN은 숫자 네 자리입니다.'; return; }
     if (!st.recs.length) st.emps = names.map(function (n, i) { return { id: 'e' + (i + 1), n: n, r: '' }; });
-    st.restDay = Number($('setupRest').value); st.breakMin = brk; st.ownerPin = pin; st.setupDone = true;
+    st.breakMin = brk; st.ownerPin = pin; st.setupDone = true;
     save(); $('setup').classList.remove('on'); renderStaff(); toast('설정이 저장됐습니다');
   });
-  renderStaff();
+  // 늘 떠 있는 안내문은 체험판(가명 안내)에서만. 매장판의 백업 안내는 때가 되면 사장 화면 백업 칸이 대신한다
+  if (KEY !== 'ham_attendance_v1') { var dm = document.querySelector('.demo'); if (dm) dm.hidden = true; document.querySelectorAll('.geo').forEach(function (x) { x.style.display = 'none'; }); }
+  renderStaff(); renderPin();
   startSetup();
 })();
 
