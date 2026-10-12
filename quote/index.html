@@ -69,6 +69,11 @@
       <label style="display:flex;align-items:center;gap:.6rem;margin-top:1rem"><input id="star-context-include" type="checkbox" style="width:auto">이 출발 정보도 문의와 함께 보내기</label>
       <p style="font-size:.85rem">아래에 적는 내용은 그대로 보내며, 출발 정보를 빼도 문의할 수 있습니다.</p>
     </fieldset>
+    <aside id="inquiry-case" class="inquiry-case" aria-label="보고 온 웹사이트 사례" hidden>
+      <p class="eyebrow">보고 온 사례</p>
+      <strong id="inquiry-case-name"></strong>
+      <a id="inquiry-case-link">사례 다시 보기 →</a>
+    </aside>
     <p id="inquiry-handoff-status" role="status" hidden></p>
     <details id="inquiry-original" hidden><summary>메뉴에서 작성한 원문 보기</summary><pre style="white-space:pre-wrap;overflow-wrap:anywhere" id="inquiry-original-text"></pre></details>
 
@@ -115,6 +120,7 @@
         <button type="submit" class="cta-btn" id="quote-submit-btn" disabled>서면 견적 요청 보내기 <span class="arrow">→</span></button>
         <p class="form-note" id="quote-form-msg" role="status"></p>
       </div>
+      <p class="form-note">화면에 ‘문의가 접수됐습니다’가 표시되면 전송된 것입니다. 답변은 위에 적은 연락처로 받습니다.</p>
       <p class="form-note">전송이 어렵다면 <a href="mailto:hammedia002@gmail.com">hammedia002@gmail.com</a>으로 같은 내용을 보내주세요.</p>
       <noscript><p>견적 폼을 보내려면 자바스크립트가 필요합니다. 위 이메일로 문의하실 수 있습니다.</p></noscript>
     </form>
@@ -131,7 +137,7 @@
   <a href="/privacy/">개인정보처리방침</a>
 </footer>
   <script src="/assets/js/star-inquiry-context.js?v=20260930-1" defer></script>
-  <script src="inquiry-handoff.js?v=20260930-context-1" defer></script>
+  <script src="inquiry-handoff.js?v=20261012-cases-1" defer></script>
   <script type="module">
 
     const SUPABASE_URL = "https://jhdcznxbebekgninpdnt.supabase.co";
@@ -218,6 +224,13 @@
       }
 
       const params = new URLSearchParams(location.search);
+      const caseId = params.get("case");
+      const caseSource = params.get("service") === "page" && ["mapobada", "hammedia"].includes(caseId)
+        ? "service-case-" + caseId : null;
+      const baseSource = caseSource || params.get("source") || null;
+      const contextSource = window.HamStarContext?.source(baseSource) ?? baseSource;
+      const inquirySource = caseSource && contextSource?.startsWith("star-platform|")
+        ? caseSource + contextSource.slice("star-platform".length) : contextSource;
       const payload = {
         daily_task: form.daily_task.value.trim(),
         desired_result: form.desired_result.value.trim(),
@@ -225,7 +238,7 @@
         data_security: form.data_security.value.trim() || null,
         timeline_maintenance: form.timeline_maintenance.value.trim(),
         contact: form.contact.value.trim(),
-        source: window.HamStarContext?.source(params.get("source") || null) ?? (params.get("source") || null),
+        source: inquirySource,
       };
 
       btnEl.disabled = true;
@@ -241,7 +254,7 @@
         });
         if (!response.ok) throw new Error(`Request failed: ${response.status}`);
         try { localStorage.setItem(RATE_LIMIT_KEY, String(Date.now())); } catch {}
-        setMsg("ok", "감사합니다. 서면 견적으로 답해드리겠습니다.");
+        setMsg("ok", "문의가 접수됐습니다. 입력하신 연락처로 내용을 확인하고 서면으로 답하겠습니다.");
         form.dispatchEvent(new Event("quote-submitted"));
         form.reset();
         requiredFields.forEach(clearFieldError);

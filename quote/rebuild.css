@@ -57,3 +57,9 @@
   .quote-form .cta-btn { width:100%; padding:.9rem .75rem; }
 }
 @media (prefers-reduced-motion:reduce) { .quote-form input,.quote-form textarea,.quote-form .cta-btn { transition:none; } }
+
+.inquiry-case { padding:1.25rem; border-left:3px solid var(--blue); background:var(--paper); }
+.inquiry-case[hidden] { display:none; }
+.inquiry-case .eyebrow { margin:0 0 .5rem; }
+.inquiry-case strong { display:block; font-size:1.2rem; }
+.inquiry-case a { display:inline-block; margin-top:.5rem; padding:.5rem 0; }
