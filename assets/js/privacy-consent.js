@@ -8,19 +8,19 @@
   const language = (document.documentElement.lang || "ko").toLowerCase();
   const copy = language.startsWith("en") ? {
     label: "Analytics preference",
-    message: "We use optional Google Analytics statistics to improve this site. Google Analytics is not loaded until you allow it. ",
+    message: "Analytics is optional. We only load Google Analytics to improve this site if you allow it. ",
     policy: "Privacy policy",
     allow: "Allow analytics",
     deny: "Do not allow",
   } : language.startsWith("ja") ? {
     label: "アクセス解析の選択",
-    message: "サイト改善のため、任意のGoogle Analyticsを使用します。許可するまでGoogleの解析コードは読み込みません。",
+    message: "アクセス解析は任意です。許可した場合のみ、サイト改善のためにGoogle Analyticsを読み込みます。",
     policy: "プライバシーポリシー",
     allow: "アクセス解析を許可",
     deny: "許可しない",
   } : {
     label: "방문 통계 선택",
-    message: "사이트를 고치기 위한 방문 통계에 Google Analytics를 사용합니다. 허용하기 전에는 Google 분석 코드를 불러오지 않습니다. ",
+    message: "방문 통계는 선택입니다. 허용할 때만 사이트 개선을 위한 Google Analytics를 불러옵니다. ",
     policy: "개인정보처리방침",
     allow: "방문 통계 허용",
     deny: "허용하지 않음",
@@ -41,10 +41,18 @@
   }
 
   function savePreference(value) {
-    try { localStorage.setItem(preferenceKey, value); } catch {}
+    try {
+      localStorage.setItem(preferenceKey, value);
+      return true;
+    } catch {
+      // A failed write must not leave an old grant behind when storage is full.
+      try { localStorage.removeItem(preferenceKey); } catch {}
+      return false;
+    }
   }
 
   function loadAnalytics() {
+    if (measurementId) window[`ga-disable-${measurementId}`] = false;
     if (!measurementId || document.querySelector("script[data-ham-analytics]")) return;
 
     window.dataLayer = window.dataLayer || [];
@@ -64,31 +72,54 @@
     document.head.append(analyticsScript);
   }
 
+  let returnFocus = null;
+
   function closeBanner(banner) {
+    const hadFocus = banner.contains(document.activeElement);
     banner.remove();
+    if (!hadFocus) return;
+    const returningToOpener = Boolean(returnFocus?.isConnected);
+    const target = returningToOpener ? returnFocus : document.querySelector("main");
+    returnFocus = null;
+    if (!target) return;
+    const temporaryTabindex = !target.hasAttribute("tabindex") && target.tagName === "MAIN";
+    if (temporaryTabindex) target.setAttribute("tabindex", "-1");
+    target.focus({ preventScroll: !returningToOpener });
+    if (temporaryTabindex) target.addEventListener("blur", () => target.removeAttribute("tabindex"), { once: true });
   }
 
-  function showBanner() {
-    if (document.getElementById("ham-analytics-consent")) return;
+  function showBanner(moveFocus = false) {
+    const existing = document.getElementById("ham-analytics-consent");
+    if (existing) {
+      if (moveFocus) existing.focus();
+      return;
+    }
 
-    const style = document.createElement("style");
-    style.textContent = `
-      #ham-analytics-consent{position:fixed;z-index:2147483647;left:16px;right:16px;bottom:16px;max-width:760px;margin:auto;padding:18px;border:1px solid rgba(28,24,20,.2);border-radius:14px;background:#fffefb;color:#1c1814;box-shadow:0 12px 40px rgba(28,24,20,.2);font:14px/1.6 -apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",sans-serif}
-      #ham-analytics-consent p{margin:0 0 12px;color:#1c1814;font:inherit}
-      #ham-analytics-consent a{color:#285c85;text-underline-offset:3px}
-      #ham-analytics-consent .ham-consent-actions{display:flex;flex-wrap:wrap;gap:8px}
-      #ham-analytics-consent button{min-height:42px;padding:9px 14px;border:1px solid #1c1814;border-radius:999px;background:#fffefb;color:#1c1814;font:inherit;font-weight:800;cursor:pointer}
-      #ham-analytics-consent button[data-choice="granted"]{background:#1c1814;color:#fff}
-      #ham-analytics-consent button:focus-visible,#ham-analytics-consent a:focus-visible{outline:3px solid #7eb5e8;outline-offset:3px}
-    `;
-    document.head.append(style);
+    if (!document.getElementById("ham-consent-style")) {
+      const style = document.createElement("style");
+      style.id = "ham-consent-style";
+      style.textContent = `
+        #ham-analytics-consent{position:relative;box-sizing:border-box;width:100%;margin:0;padding:1rem max(1rem,calc((100% - 1240px)/2));border:0;border-bottom:1px solid #c9c3b6;background:#fffefb;color:#1c1814;font:.875rem/1.6 -apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;letter-spacing:normal;word-break:keep-all;overflow-wrap:anywhere;scroll-margin-top:1rem}
+        #ham-analytics-consent .ham-consent-inner{display:flex;align-items:center;justify-content:space-between;gap:1rem;max-width:1240px;margin:0 auto}
+        #ham-analytics-consent p{flex:1;min-width:0;margin:0;color:#1c1814;font:inherit}
+        #ham-analytics-consent a{color:#285c85;text-decoration:underline;text-underline-offset:3px}
+        #ham-analytics-consent .ham-consent-actions{display:flex;flex-wrap:wrap;flex-shrink:0;min-width:20rem;gap:.5rem}
+        #ham-analytics-consent button{box-sizing:border-box;flex:1;min-height:44px;max-width:100%;padding:.55rem .875rem;border:1px solid #1c1814;border-radius:4px;background:#fffefb;color:#1c1814;font:inherit;font-weight:650;line-height:1.5;white-space:normal;cursor:pointer}
+        #ham-analytics-consent button:hover{background:#eeeae2}
+        #ham-analytics-consent:focus-visible,#ham-analytics-consent button:focus-visible,#ham-analytics-consent a:focus-visible{outline:3px solid #174a92;outline-offset:3px}
+        @media(max-width:60rem){#ham-analytics-consent .ham-consent-inner{display:block}#ham-analytics-consent .ham-consent-actions{min-width:0;margin-top:.75rem}#ham-analytics-consent button{flex:1 1 10rem}}
+      `;
+      document.head.append(style);
+    }
 
     const banner = document.createElement("section");
     banner.id = "ham-analytics-consent";
-    banner.setAttribute("role", "dialog");
     banner.setAttribute("aria-label", copy.label);
+    banner.setAttribute("aria-describedby", "ham-consent-message");
+    banner.tabIndex = -1;
 
     const message = document.createElement("p");
+    message.id = "ham-consent-message";
     message.append(copy.message);
     const policyLink = document.createElement("a");
     policyLink.href = "/privacy/";
@@ -105,26 +136,33 @@
     denyButton.type = "button";
     denyButton.dataset.choice = "denied";
     denyButton.textContent = copy.deny;
-    actions.append(allowButton, denyButton);
-    banner.append(message, actions);
-    document.body.append(banner);
+    actions.append(denyButton, allowButton);
+    const inner = document.createElement("div");
+    inner.className = "ham-consent-inner";
+    inner.append(message, actions);
+    banner.append(inner);
+    const skipLink = document.body.querySelector(":scope > a.skip-link, :scope > a.skip");
+    if (skipLink) skipLink.after(banner);
+    else document.body.prepend(banner);
 
     actions.addEventListener("click", (event) => {
       const choice = event.target.closest("button")?.dataset.choice;
       if (!allowedValues.has(choice)) return;
-      savePreference(choice);
+      const saved = savePreference(choice);
       const analyticsWasLoaded = Boolean(document.querySelector("script[data-ham-analytics]"));
+      if (choice === "denied" && measurementId) window[`ga-disable-${measurementId}`] = true;
       closeBanner(banner);
       if (choice === "granted") loadAnalytics();
-      if (choice === "denied" && analyticsWasLoaded) location.reload();
+      // A saved refusal starts clean; a blocked store keeps this page opted out.
+      if (choice === "denied" && analyticsWasLoaded && saved) location.reload();
     });
-    allowButton.focus();
+    if (moveFocus) banner.focus();
   }
 
   window.HAMPrivacy = {
     openAnalyticsChoice() {
-      savePreference("");
-      showBanner();
+      returnFocus = document.activeElement;
+      showBanner(true);
     },
   };
 
@@ -133,7 +171,7 @@
     loadAnalytics();
   } else if (!preference) {
     if (document.readyState === "loading") {
-      document.addEventListener("DOMContentLoaded", showBanner, { once: true });
+      document.addEventListener("DOMContentLoaded", () => showBanner(), { once: true });
     } else {
       showBanner();
     }
