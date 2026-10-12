@@ -105,7 +105,17 @@ function getBusinessCtaData(link) {
   const targetUrl = link?.href || href;
   const label = cleanTrackingText(link?.textContent || link?.getAttribute("aria-label") || "");
 
-  if (!href || href.startsWith("#")) return null;
+  if (!href) return null;
+
+  const homeEntry = link?.dataset.homeEntry;
+  if (["story", "work", "practice"].includes(homeEntry) && link.closest(".home-first-look, .home-header-nav")) {
+    return {
+      eventName: "home_entry_click",
+      params: { entry_id: homeEntry, entry_position: link.closest(".home-header-nav") ? "header" : "feature", cta_label: label, target_url: targetUrl }
+    };
+  }
+
+  if (href.startsWith("#")) return null;
 
   if (href.startsWith("mailto:")) {
     return {
