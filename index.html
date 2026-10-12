@@ -25,7 +25,7 @@
   <script src="/assets/js/privacy-consent.js" data-measurement-id="G-TEBKMGWPQS"></script>
     <link rel="stylesheet" href="ham-media-archive/assets/css/styles.css?v=universe-v3-20260904-p1">
     <link rel="stylesheet" href="ham-media-archive/assets/css/home-star-names.css?v=star-names-20260904-p1">
-    <link rel="stylesheet" href="ham-media-archive/assets/css/home-entry.css?v=20260930-senior-1">
+    <link rel="stylesheet" href="ham-media-archive/assets/css/home-entry.css?v=20261013-visitor-1">
     <style>
       /* The Oct 3 class entry is presentation only; the classroom stays public. */
       .home-class-entry { display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:.65rem 1rem; margin:0 0 1.4rem; padding:.8rem 1rem; border:1px solid #eed59a80; border-radius:8px; background:#152333; }
@@ -47,7 +47,7 @@
         <a class="brand-mark" href="/" aria-label="HAM MEDIA">
           <span>HAM MEDIA</span>
         </a>
-<nav class="home-header-nav" aria-label="HAM MEDIA"><a href="#stars">아홉 별의 글과 장면</a><a href="#companions">함께하는 동료</a><a href="services/#work">실제 작업</a></nav>
+<nav class="home-header-nav" aria-label="HAM MEDIA"><a data-home-entry="story" href="#stories">글과 사진</a><a data-home-entry="work" href="services/#web-mapobada">웹 제작 사례</a><a data-home-entry="practice" href="book/#book-try">AI 무료 실습</a></nav>
       </header>
 
       <section class="about-constellation constellation-entry" id="about-constellation" aria-labelledby="constellation-title">
@@ -79,12 +79,27 @@
           </script>
           <p class="home-kicker">햄의 우주 · 아홉 별과 AI 동료</p>
           <h1 id="constellation-title">좋아하는 것들이 <br>나를 여기까지 데려왔다.</h1>
-          <p class="constellation-guide">만년필 한 자루, 달리던 길, 오래 듣던 음악. <br>마음이 가는 별에서 이야기를 만나세요.</p>
-          <div class="home-actions">
-            <a class="home-action-primary" href="#stories">별 속 이야기 읽기 <span aria-hidden="true">↓</span></a>
+          <p class="constellation-guide">좋아하던 것에서 이야기를 찾고, 혼자 하던 일에 도움을 더합니다.</p>
+        </div>
+
+        <section class="home-first-look" id="first-look" aria-label="어디서부터 시작할까요?">
+          <article class="home-first-story">
+            <a data-home-entry="story" href="ham-media-archive/pages/travel.html#travel-room-in-a-trip-note">
+              <img src="ham-media-archive/assets/images/travel/essay-place-car-stay.jpg" alt="강과 산 앞의 하얀 독채 펜션, 여행 중 남긴 사진" width="1800" height="1350" decoding="async" fetchpriority="high">
+              <div class="home-first-story-copy"><p class="home-entry-label">춘천의 사진, 동해의 메모</p><h2>여행에도 <br>빈칸이 필요할까요?</h2><blockquote><p>“동해바다 너무 더운날은 풍경도 필요 없다 실내로 가자”</p></blockquote><p class="home-entry-description">계획대로 다 하지 않아도 남는 여행. 햄의 사진과 짧은 메모를 함께 펼쳐봅니다.</p><span class="home-entry-link">다 넣지 않아도 남는 여행 읽기 <span aria-hidden="true">↗</span></span></div>
+            </a>
+          </article>
+          <div class="home-first-help">
+            <p class="home-entry-label">혼자 하던 일에 도움이 필요할 때</p>
+            <article><h2>가게를 소개할 <br>홈페이지가 필요한가요?</h2><p>마포바다의 실제 웹 화면과 우리가 맡은 범위를 먼저 보세요.</p><a data-home-entry="work" href="services/#web-mapobada">웹 제작 사례와 맡기는 방법 <span aria-hidden="true">↗</span></a></article>
+            <article><h2>AI와 일해보고 싶은데, <br>무엇부터 할지 막혔나요?</h2><p>해온 일 하나를 적고, AI와 대화할 첫 요청서를 만들어보세요. 가입 없이 무료로.</p><a data-home-entry="practice" href="book/#book-try">내 경험으로 첫 요청서 만들기 <span aria-hidden="true">↗</span></a></article>
+          </div>
+        </section>
+
+          <div class="home-actions home-explore-actions">
+            <a class="home-action-primary" href="#stars">아홉 별 둘러보기 <span aria-hidden="true">↓</span></a>
             <a class="home-action-secondary" href="https://hamjipsa.hammedia.co.kr/">햄집사와 이야기하기 <span aria-hidden="true">↗</span></a>
           </div>
-        </div>
 
         <div class="constellation-scene" id="stars">
           <div class="home-stars-intro"><p>아홉 별의 글과 장면</p><h2>어느 별부터 가 볼까요?</h2><span>별을 누르면 그곳으로 갑니다.</span></div>
@@ -151,7 +166,7 @@
 <article class="star-story"><a href="ham-media-archive/pages/cars.html#cars-car-in-my-day-note"><img src="ham-media-archive/assets/images/cars/hero-night-direction.jpg" alt="" width="720" height="540" loading="lazy"><div><span class="story-star">06 / 자동차</span><h3>차를 고르기 전, 내 하루를 먼저 그려보기</h3><span class="story-read">읽기 <span aria-hidden="true">↗</span></span></div></a></article>
 <article class="star-story"><a href="ham-media-archive/pages/food.html#food-choose-a-plate-note"><img src="ham-media-archive/assets/images/food/gallery-img-4853.jpg" alt="" width="720" height="540" loading="lazy"><div><span class="story-star">07 / 음식</span><h3>음식을 담기 전에 고르는 것</h3><span class="story-read">읽기 <span aria-hidden="true">↗</span></span></div></a></article></div></section>
 <section class="colleague-profiles" aria-labelledby="colleagues-title"><h2 id="colleagues-title">HAM MEDIA의 AI 동료</h2><article id="colleague-0"><span class="companion-portrait" aria-hidden="true"><img src="ham-media-archive/assets/images/companions/seodoyun.jpg" alt="" width="96" height="96" decoding="async"></span><div><h3>서도윤 · 대표 비서실장</h3><p>하고 싶은 일을 어디서부터 말해야 할지 막힐 때, 생각을 꺼내는 대화부터 시작합니다.</p><a href="https://hamjipsa.hammedia.co.kr/">대화 시작하기 ↗</a></div></article><article id="colleague-1"><span class="companion-portrait" aria-hidden="true"><img src="ham-media-archive/assets/images/companions/kimdaon.jpg" alt="" width="96" height="96" decoding="async"></span><div><h3>김다온 · 편집장</h3><p>글과 사진에서 전하고 싶은 이야기를 찾고, 읽는 사람에게 닿도록 함께 정리하는 동료입니다.</p><a href="https://hamjipsa.hammedia.co.kr/">이야기를 정리하고 싶다면, 햄집사에게 말하기 ↗</a></div></article><article id="colleague-2"><span class="companion-portrait" aria-hidden="true"><img src="ham-media-archive/assets/images/companions/songeonwoo.jpg" alt="" width="96" height="96" decoding="async"></span><div><h3>손건우 · 기술 총괄 책임자</h3><p>정리한 생각을 영상·홈페이지·AI 도구로 만드는 동료입니다. 어떤 일을 함께 만들 수 있는지 실제 작업부터 살펴보세요.</p><a href="services/">실제 작업과 맡기는 방법 보기 ↗</a></div></article></section>
-        <section class="home-next-choices" aria-labelledby="choices-title"><h2 id="choices-title">하고 싶은 일이 생겼다면</h2><div><article><h3>대신 맡기기</h3><p>사진과 이야기를 영상으로 만들고 싶다면, 실제 작업과 상담 범위를 보세요.</p><a data-star-help="delegate" href="services/#video-purpose">영상 사례와 상담 범위 보기 ↗</a></article><article><h3>함께 만들기</h3><p>내가 할 일과 도움이 필요한 단계를 적어 주세요. 역할과 범위는 상담에서 함께 정합니다.</p><a data-star-help="together" href="quote/">서면으로 이야기 남기기 ↗</a></article><article><h3>직접 배우기</h3><p>내 일을 AI와 설명하고 첫 결과를 고쳐 보고 싶다면 무료 1·2강부터 시작하세요.</p><a data-star-help="learn" href="academy/classroom/">무료 교실 열기 ↗</a></article></div></section>
+        <section class="home-next-choices" aria-labelledby="choices-title"><h2 id="choices-title">하고 싶은 일이 생겼다면</h2><div><article><h3>대신 맡기기</h3><p>사진과 이야기를 영상으로 만들고 싶다면, 실제 작업과 상담 범위를 보세요.</p><a data-star-help="delegate" href="services/#video-purpose">영상 사례와 상담 범위 보기 ↗</a></article><article><h3>함께 만들기</h3><p>내가 할 일과 도움이 필요한 단계를 적어 주세요. 역할과 범위는 상담에서 함께 정합니다.</p><a data-star-help="together" href="quote/">서면으로 이야기 남기기 ↗</a></article><article><h3>직접 배우기</h3><p>내 일을 AI와 설명하고 첫 결과를 고쳐 보고 싶다면, 공개된 무료 1·2강부터 시작하세요.</p><a data-star-help="learn" href="academy/">아카데미 무료 강의 보기 ↗</a></article></div></section>
 <footer class="constellation-bridge" aria-label="HAM MEDIA의 다른 길">
           <div class="home-footer-intro">
             <strong>HAM MEDIA</strong>
@@ -181,7 +196,7 @@
       </section>
     </main>
 
-    <script src="ham-media-archive/assets/js/main.js?v=universe-v3-20260712"></script>
+    <script src="ham-media-archive/assets/js/main.js?v=20261013-home-entry-1"></script>
   <script src="/assets/js/star-inquiry-context.js?v=20260930-1" defer></script>
 </body>
 </html>

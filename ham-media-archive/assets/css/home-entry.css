@@ -194,3 +194,60 @@ html[lang="ja"] .colleague-profiles p { word-break:normal; overflow-wrap:anywher
 .home-next-choices p { color:#b9c5d2; font-size:.88rem; line-height:1.9; margin:0 0 1rem; }
 .home-next-choices a { color:#c1e5d5; font-size:.85rem; line-height:1.8; text-underline-offset:.3em; }
 @media(max-width:720px) { .home-next-choices > div { grid-template-columns:1fr; gap:1.5rem; } }
+
+/* First stories and useful work are visible before the constellation map. */
+.home-first-look { min-width:0; display:grid; grid-template-columns:minmax(0,1.618fr) minmax(0,1fr); gap:clamp(1.5rem,3vw,3rem); width:calc(100% - 2.5rem); max-width:78rem; margin:2.2rem auto 2.5rem; }
+.home-first-story { min-width:0; background:#f9f7f3; color:#1c1814; }
+.home-first-story > a { display:grid; grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr); height:100%; color:inherit; text-decoration:none; }
+.home-first-story img { display:block; width:100%; height:100%; min-height:18rem; object-fit:cover; object-position:center; }
+.home-first-story-copy { align-self:center; padding:clamp(1.1rem,2vw,2rem); min-width:0; }
+.home-entry-label { margin:0 0 .8rem; color:#c5b17c; font-size:.75rem; font-weight:600; line-height:1.6; }
+.home-first-story .home-entry-label { color:#645633; }
+.home-first-story h2 { margin:0 0 .9rem; font-size:clamp(1.45rem,2.05vw,2rem); font-weight:650; line-height:1.4; letter-spacing:-.04em; word-break:keep-all; }
+.home-first-story blockquote { border:0; padding:0; margin:0 0 .8rem; color:#3c4840; }
+.home-first-story blockquote p { margin:0; font-size:.94rem; line-height:1.75; word-break:keep-all; }
+.home-entry-description { margin:0 0 1rem; font-size:.86rem; line-height:1.8; color:#4a423c; word-break:keep-all; }
+.home-entry-link { display:block; font-size:.86rem; font-weight:650; color:#245d43; line-height:1.7; text-decoration:underline; text-underline-offset:.3em; }
+.home-first-help { min-width:0; padding:.2rem 0; }
+.home-first-help article + article { margin-top:1.2rem; padding-top:1.2rem; border-top:1px solid #ffffff30; }
+.home-first-help h2 { margin:0 0 .5rem; color:#fff8e9; font-size:clamp(1rem,1.4vw,1.25rem); line-height:1.55; font-weight:600; letter-spacing:-.025em; word-break:keep-all; }
+.home-first-help article > p { margin:0 0 .55rem; color:#c3cbd6; font-size:.86rem; line-height:1.8; word-break:keep-all; }
+.home-first-help a { display:block; overflow-wrap:anywhere; min-height:2.75rem; font-size:.85rem; color:#c1e5d5; line-height:1.7; text-underline-offset:.3em; }
+.home-first-look a { transition:background-color 180ms, color 180ms; }
+.home-first-story > a:hover { background:#f0ece3; }
+.home-first-help a:hover { color:#fff8e9; }
+.home-first-look a:active { transform:translateY(1px); }
+.home-first-story > a:focus-visible { outline:3px solid #7eb5e8; outline-offset:5px; }
+.home-first-look { animation:home-entrance 550ms ease-out both; }
+@keyframes home-entrance { from { opacity:.4; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
+@media(max-width:960px) { .home-first-look { grid-template-columns:minmax(0,1fr); max-width:46rem; }.home-first-help { display:grid; grid-template-columns:1fr 1fr; gap:0 1.8rem; }.home-first-help > .home-entry-label { grid-column:1/-1; }.home-first-help article + article { margin:0; padding:0 0 0 1.8rem; border-top:0; border-left:1px solid #ffffff30; } }
+@media(max-width:620px) {
+ .home-first-look { margin:1.4rem auto 1.5rem; gap:1.4rem; }
+ .home-first-story > a { grid-template-columns:minmax(0,.65fr) minmax(0,1.35fr); }
+ .home-first-story img { min-height:0; }
+ .home-first-story-copy { padding:1rem; }
+ .home-first-story h2 { font-size:1.3rem; }
+ .home-first-story blockquote p { font-size:.85rem; }
+ .home-entry-description { font-size:.82rem; }
+ .home-first-help { display:block; }
+ .home-first-help article + article { margin-top:1rem; padding:1rem 0 0; border-left:0; border-top:1px solid #ffffff30; }
+ .home-first-help h2 br { display:none; }
+ .home-first-help h2 { font-size:1.05rem; }
+ .constellation-home .constellation-guide { font-size:.92rem; }
+}
+html[lang="ja"] .home-first-look :is(h2,p) { word-break:normal; overflow-wrap:anywhere; }
+@media(prefers-reduced-motion:reduce) { .home-first-look { animation:none; }.home-first-look a:active { transform:none; } }
+
+.home-stories h3, .companion-star strong { overflow-wrap:anywhere; }
+.constellation-home .star-label { overflow-wrap:anywhere; white-space:normal; }
+@media(max-width:620px) { .home-first-story > a { grid-template-columns:1fr; }.home-first-story img { height:8rem; min-height:0; object-position:center 55%; }.home-first-story-copy { padding:1rem; }.home-first-story h2 br { display:none; } }
+
+.constellation-home .constellation-entry { grid-template-columns:minmax(0,1fr); }
+
+.constellation-home .constellation-guide { min-width:0; width:100%; }
+.home-footer-group, .home-footer-intro { min-width:0; }
+html[lang="ja"] .constellation-home :is(.constellation-guide,.constellation-bridge p,.constellation-work-link) { word-break:normal; overflow-wrap:anywhere; white-space:normal; }
+@media(max-width:620px) { .constellation-home .constellation-bridge { grid-template-columns:minmax(0,1fr); }.constellation-home .constellation-work-link { max-width:100%; } }
+
+.constellation-home .constellation-intro { gap:0; }
+.home-explore-actions { margin:0 1.25rem 1.5rem; justify-content:center; }
