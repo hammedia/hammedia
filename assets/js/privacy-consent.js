@@ -160,11 +160,50 @@
   }
 
   window.HAMPrivacy = {
+    tracksContactClicks: true,
     openAnalyticsChoice() {
       returnFocus = document.activeElement;
       showBanner(true);
     },
   };
+
+  // Count intent separately from a form accepted by the server. Never send
+  // mail subjects, inquiry text, contact details, or destination query strings.
+  function trackConversion(name, params) {
+    if (!document.querySelector("script[data-ham-analytics]") ||
+        window[`ga-disable-${measurementId}`] || window.gtag.hamPlaceholder) return;
+    try {
+      window.gtag("event", name, {
+        transport_type: "beacon",
+        source_page: location.pathname,
+        ...params,
+      });
+    } catch {
+      // Measurement must not interrupt a visitor's inquiry or navigation.
+    }
+  }
+
+  document.addEventListener("click", (event) => {
+    const link = event.target.closest?.("a[href]");
+    if (!link) return;
+    let url;
+    try { url = new URL(link.href, location.href); } catch { return; }
+    if (url.protocol === "mailto:") {
+      trackConversion("contact_click", { contact_type: "email" });
+    } else if (url.hostname === "tally.so" && url.pathname === "/r/vGK44d") {
+      trackConversion("contact_click", { contact_type: "form", form_id: "academy_interest" });
+    } else if (url.hostname === "hammedia-payment.vercel.app" && url.pathname.replace(/\/$/, "") === "/book") {
+      trackConversion("book_purchase_click", {
+        purchase_type: url.searchParams.get("gift") === "1" ? "gift" : "self",
+      });
+    }
+  });
+
+  // quote-submitted is dispatched only after a successful quote_requests POST.
+  document.addEventListener("quote-submitted", (event) => {
+    if (event.target.id !== "quote-request-form") return;
+    trackConversion("generate_lead", { form_id: "quote_request", contact_type: "quote" });
+  }, true);
 
   const preference = readPreference();
   if (preference === "granted") {

@@ -118,6 +118,7 @@ function getBusinessCtaData(link) {
   if (href.startsWith("#")) return null;
 
   if (href.startsWith("mailto:")) {
+    if (window.HAMPrivacy?.tracksContactClicks) return null;
     return {
       eventName: "contact_click",
       params: {
@@ -129,6 +130,7 @@ function getBusinessCtaData(link) {
   }
 
   if (targetUrl.includes("tally.so/")) {
+    if (window.HAMPrivacy?.tracksContactClicks) return null;
     return {
       eventName: "contact_click",
       params: {
