@@ -1,5 +1,6 @@
 const STORAGE_KEY = "ham-academy-barunsaenghwal-seven-hour-v1";
-const STAGE_TIMES = ["00~07분", "07~20분", "20~28분", "28~39분", "39~47분", "47~50분"];
+
+const eul = (w) => { const c = w.charCodeAt(w.length - 1); return c >= 0xAC00 && c <= 0xD7A3 && (c - 0xAC00) % 28 === 0 ? "를" : "을"; };
 
 const elements = {
   overallProgress: document.querySelector("[data-overall-progress]"),
@@ -13,7 +14,6 @@ const elements = {
   stage: document.querySelector("#lesson-stage"),
   stageKicker: document.querySelector("[data-stage-kicker]"),
   stageTitle: document.querySelector("[data-stage-title]"),
-  stageTime: document.querySelector("[data-stage-time]"),
   stageCopy: document.querySelector("[data-stage-copy]"),
   evidencePanel: document.querySelector("[data-evidence-panel]"),
   evidenceViewer: document.querySelector("[data-evidence-viewer]"),
@@ -36,6 +36,7 @@ const elements = {
   retryCount: document.querySelector("[data-retry-count]"),
   autosaveState: document.querySelector("[data-autosave-state]"),
   resultStage: document.querySelector("[data-result-stage]"),
+  nextDoor: document.querySelector("[data-lesson-next-door]"),
   outputLabel: document.querySelector("[data-output-label]"),
   resultState: document.querySelector("[data-result-state]"),
   resultTemplate: document.querySelector("[data-result-template]"),
@@ -187,17 +188,21 @@ function renderStageNavigation() {
 function stageCopyNodes(lesson, stageIndex) {
   const fragment = document.createDocumentFragment();
   if (stageIndex === 0) {
+    fragment.append(text("p", "읽고 아래 ‘다음’을 누르세요.", "stage-guide"));
+    const keep = document.createElement("div");
+    keep.append(truthLine("오늘 끝나면 남는 것", lesson.output.label));
+    if (lesson.learningGoal) keep.append(truthLine("오늘 배울 것", lesson.learningGoal));
+    fragment.append(keep);
     fragment.append(text("p", lesson.teacherStory));
     const lines = document.createElement("div");
     lines.append(
-      truthLine("처음 믿은 것", lesson.misbelief),
-      truthLine("오늘 할 일", lesson.output.label),
-      truthLine("다음 강 입력", lesson.nextLesson)
+      truthLine("많은 분이 처음에 믿는 것", lesson.misbelief),
+      truthLine("다음 강에서 할 일", lesson.nextLesson)
     );
     fragment.append(lines);
     if (lesson.number === 2) {
       const carryover = truthLine(
-        "1강에서 가져온 내 경험 원본",
+        "1강에서 적어 둔 내 이야기",
         lessonOutput(0) || "1강을 먼저 저장하면 내가 쓴 문장이 이 자리에 그대로 이어집니다."
       );
       carryover.classList.add("carryover-source");
@@ -207,15 +212,35 @@ function stageCopyNodes(lesson, stageIndex) {
   } else if (stageIndex === 1) {
     fragment.append(text("p", lesson.demonstration));
   } else if (stageIndex === 2) {
+    fragment.append(text("p", "AI는 몇 번을 물어봐도 화내지 않습니다.", "hook-line"));
     fragment.append(text("p", lesson.attemptPrompt));
   } else if (stageIndex === 3) {
-    fragment.append(text("p", lesson.correctionGuidance ?? "강사가 답을 대신 쓰지 않습니다. 수강생에게 ‘왜 이 결과를 그대로 쓸 수 없나요?’라고 먼저 묻고, 수강생이 말한 이유를 교정 메모에 남깁니다."));
+    fragment.append(text("p", lesson.correctionGuidance ?? "‘왜 이 결과를 그대로 쓸 수 없나요?’ 먼저 스스로 묻고, 그 이유를 고칠 이유 메모에 남기세요. 정해진 정답을 적는 칸이 아닙니다."));
   } else if (stageIndex === 4) {
     fragment.append(text("p", lesson.retryPrompt));
   } else {
-    fragment.append(text("p", `첫 결과와 다시 한 결과를 나란히 봅니다. ${lesson.output.label}을 다음 강에 그대로 건넵니다.`));
+    fragment.append(text("p", `첫 시도와 다시 쓴 결과를 나란히 봅니다. ${lesson.output.label}${eul(lesson.output.label)} 저장해 다음 강에서 그대로 씁니다.`));
   }
+  (lesson.stageBlocks?.[lesson.flow[stageIndex].id] ?? []).forEach((block) => fragment.append(stageBlock(block)));
   return fragment;
+}
+
+// 강 데이터의 단계별 보조 블록: 그대로 쓰는 문장(prompt)·실제 발화 인용(quote)·짧은 목록(list).
+function stageBlock(block) {
+  const section = document.createElement("section");
+  section.className = `stage-block stage-block-${block.kind}`;
+  section.append(text("strong", block.label, "stage-block-label"));
+  if (block.kind === "prompt") {
+    section.append(text("pre", block.text, "stage-block-prompt"));
+  } else if (block.kind === "quote") {
+    section.append(text("p", block.text, "stage-block-quote"));
+  } else {
+    const list = document.createElement("ul");
+    block.items.forEach((item) => list.append(text("li", item)));
+    section.append(list);
+  }
+  if (block.note) section.append(text("p", block.note, "stage-block-note"));
+  return section;
 }
 
 function truthLine(label, value) {
@@ -237,13 +262,30 @@ function renderEvidence() {
       const video = document.createElement("video");
       video.controls = true;
       video.preload = "metadata";
+      if (evidence.captions) {
+        const track = document.createElement("track");
+        track.kind = "captions";
+        track.srclang = "ko";
+        track.label = "한국어";
+        track.src = evidence.captions;
+        track.setAttribute("default", "");
+        video.append(track);
+      }
       video.src = evidence.src;
       video.poster = evidence.poster;
       video.setAttribute("aria-label", evidence.alt);
+      figure.append(video);
+      if (Array.isArray(evidence.transcript)) {
+        const transcript = document.createElement("div");
+        transcript.className = "video-transcript";
+        transcript.append(text("strong", "영상에 나오는 글"));
+        evidence.transcript.forEach((line) => transcript.append(text("p", line)));
+        figure.append(transcript);
+      }
       const caption = document.createElement("figcaption");
       caption.className = "media-caption";
-      caption.append(text("strong", evidence.label), text("span", evidence.status === "reconstructed" ? "재구성 표시" : "출처 확인"));
-      figure.append(video, caption);
+      caption.append(text("strong", evidence.label), text("span", evidence.status === "reconstructed" ? "실제 사례를 가려 다시 만든 수업용 자료" : evidence.status === "internal-candidate" ? "HAM MEDIA 작업 기록에서 고른 자료" : "HAM MEDIA 실제 작업에서 가져온 자료"));
+      figure.append(caption);
       mediaFragment.append(figure);
     } else if (evidence.type === "image") {
       mediaFragment.append(imageFigure(evidence.src, evidence.alt, evidence.label, evidence.status));
@@ -263,7 +305,7 @@ function renderEvidence() {
     const source = document.createElement("div");
     source.className = "source-item";
     // 공개 화면에는 내부 파일명·작업 번호·사용선 메모를 내보내지 않는다(2026-09-28 교정).
-    source.append(text("strong", evidence.label), text("span", evidence.status === "reconstructed" ? "실제 사례를 가려 다시 만든 수업용 자료" : "HAM MEDIA 실제 작업 기록에서 확인한 자료"));
+    source.append(text("strong", evidence.label), text("span", evidence.status === "reconstructed" ? "실제 사례를 가려 다시 만든 수업용 자료" : evidence.status === "internal-candidate" ? "HAM MEDIA 작업 기록에서 고른 자료" : "HAM MEDIA 실제 작업 기록에서 확인한 자료"));
     sourceFragment.append(source);
   });
 
@@ -281,7 +323,7 @@ function imageFigure(src, alt, label, status) {
   image.decoding = "async";
   const caption = document.createElement("figcaption");
   caption.className = "media-caption";
-  caption.append(text("strong", label), text("span", status === "reconstructed" ? "비식별 재구성" : "실제 화면"));
+  caption.append(text("strong", label), text("span", status === "reconstructed" ? "실제 사례를 가려 다시 만든 수업용 자료" : status === "internal-candidate" ? "HAM MEDIA 작업 기록에서 고른 자료" : "HAM MEDIA 실제 작업에서 가져온 자료"));
   figure.append(image, caption);
   return figure;
 }
@@ -294,9 +336,9 @@ function renderWorkFields() {
   elements.retry.value = work.retry;
   elements.attemptPrompt.textContent = lesson.attemptPrompt;
   elements.retryPrompt.textContent = lesson.retryPrompt;
-  elements.correctionEyebrow.textContent = lesson.correctionEyebrow ?? "햄PD가 함께 짚는 자리";
-  elements.correctionHeading.textContent = lesson.correctionHeading ?? "왜 달라져야 하는지 수강생이 먼저 말합니다";
-  elements.correctionNote.placeholder = lesson.correctionPlaceholder ?? "강사가 결과를 대신 쓰지 않습니다. 수강생이 고칠 기준과 이유를 함께 적습니다.";
+  elements.correctionEyebrow.textContent = lesson.correctionEyebrow ?? "혼자서 먼저 짚는 자리";
+  elements.correctionHeading.textContent = lesson.correctionHeading ?? "왜 고칠지 내가 먼저 찾습니다";
+  elements.correctionNote.placeholder = lesson.correctionPlaceholder ?? "어떤 문장을 왜 고치는지 적으세요. 고친 뒤에도 이 메모가 내 기준으로 남습니다.";
   updateCounts();
 
   const criteria = document.createDocumentFragment();
@@ -344,7 +386,7 @@ function updateCompletionState() {
   const checksDone = work.checks.every(Boolean);
   const correctionDone = !lesson.requiresCorrectionNote || work.correctionNote.trim().length > 0;
   const ready = work.retry.trim().length > 0 && checksDone && correctionDone;
-  elements.resultState.textContent = ready ? "저장 가능" : !correctionDone ? "교정 메모 남음" : work.retry.trim() ? "확인표 남음" : "작성 중";
+  elements.resultState.textContent = ready ? "저장 가능" : !correctionDone ? "고칠 이유 메모 남음" : work.retry.trim() ? "확인표 남음" : "작성 중";
 }
 
 function renderArtifact() {
@@ -356,12 +398,12 @@ function renderArtifact() {
   const titleCandidate = (promise || outputs[0] || "").split(/\n|\.|。/)[0].trim();
 
   elements.artifactState.textContent = latestIndex < 0 ? "초안 전" : `${latestIndex + 1}강 결과 반영`;
-  elements.paperKicker.textContent = `결과 ID · ${state.artifactId.slice(0, 8)}`;
+  elements.paperKicker.textContent = "내가 만든 한 장";
   elements.paperTitle.textContent = titleCandidate || "아직 제목이 없습니다";
-  elements.paperPromise.textContent = promise || "2강에서 누구에게 어떤 도움을 줄지 정하면 이곳에 결과 약속이 생깁니다.";
+  elements.paperPromise.textContent = promise || "2강에서 오늘 끝낼 한 장을 정하면 이곳에 그 내용이 생깁니다.";
   elements.paperBody.replaceChildren(text("p", latest || "1강부터 저장한 결과가 이 종이에 차례로 반영됩니다."));
   elements.paperProof.textContent = outputs[5] ? "사람 확인 기록 있음" : "확인 전";
-  elements.paperNext.textContent = outputs[6] ? "사용 확인·다음 작업 카드 있음" : "다음 행동 미정";
+  elements.paperNext.textContent = outputs[6] ? "사용 확인·다음에 할 일 있음" : "다음 행동 미정";
 
   const history = document.createDocumentFragment();
   course.resultStates.forEach((result, index) => {
@@ -390,10 +432,10 @@ function renderDock() {
 
   if (!isLastStage) {
     const nextStage = lesson.flow[state.currentStage + 1];
-    elements.nextKicker.textContent = "계속 수업하기";
+    elements.nextKicker.textContent = "다음 단계";
     elements.nextLabel.textContent = nextStage.label;
-    elements.nextDescription.textContent = `${stage.label}을 마치고 같은 결과의 다음 단계로 갑니다.`;
-    elements.saveNext.textContent = `${nextStage.label}로`;
+    elements.nextDescription.textContent = "이 단계를 마치고 다음 단계로 갑니다.";
+    elements.saveNext.textContent = `다음: ${nextStage.label}`;
   } else if (!isLastLesson && course.lessons[state.currentLesson + 1].locked) {
     const nextLesson = course.lessons[state.currentLesson + 1];
     elements.nextKicker.textContent = "오늘 여기까지 — 내 결과 저장하기";
@@ -407,8 +449,8 @@ function renderDock() {
     elements.nextDescription.textContent = lesson.nextLesson;
     elements.saveNext.textContent = `저장하고 ${nextLesson.number}강으로`;
   } else {
-    elements.nextKicker.textContent = "일곱 시간의 마지막 확인";
-    elements.nextLabel.textContent = "사용 확인·첫 최종본·다음 작업 카드 저장";
+    elements.nextKicker.textContent = "마지막 확인";
+    elements.nextLabel.textContent = "사용 확인·첫 완성본·다음에 할 일 저장";
     elements.nextDescription.textContent = "새 대화에서 작은 수정 하나를 이어간 뒤 결과를 내려받습니다.";
     elements.saveNext.textContent = "일곱 강 저장하기";
   }
@@ -423,15 +465,15 @@ function render() {
   elements.lessonQuestion.textContent = lesson.question;
   elements.stageKicker.textContent = stage.label;
   elements.stageTitle.textContent = stageTitle(lesson, state.currentStage);
-  elements.stageTime.textContent = STAGE_TIMES[state.currentStage];
   elements.stageCopy.replaceChildren(stageCopyNodes(lesson, state.currentStage));
 
   elements.evidencePanel.hidden = state.currentStage !== 1;
   elements.studentWork.hidden = state.currentStage < 2;
   elements.resultStage.hidden = state.currentStage !== 5;
+  elements.nextDoor.hidden = lesson.number !== 2;
   elements.sourceList.hidden = true;
   elements.toggleSources.setAttribute("aria-expanded", "false");
-  elements.toggleSources.textContent = "출처 보기";
+  elements.toggleSources.textContent = "자료 어디서 왔나 보기";
 
   renderLessonNavigation();
   renderStageNavigation();
@@ -444,12 +486,12 @@ function render() {
 
 function stageTitle(lesson, index) {
   return [
-    `오늘은 ‘${lesson.misbelief.replace(/\.$/, "")}’에서 출발합니다`,
-    "성공한 결과만 보지 않고, 실제 과정과 출처를 봅니다",
+    `많은 분이 ‘${lesson.misbelief.replace(/\.$/, "")}’라고 생각합니다. 오늘은 그렇지 않다는 걸 직접 해 봅니다`,
+    "완성된 결과만 보지 않고, 만들어진 과정을 봅니다",
     "내 결과의 첫 판을 직접 남깁니다",
-    "햄PD가 한 사람을 깊게 보고, 모두의 기준을 짚습니다",
+    "왜 고칠지, 내가 먼저 찾습니다",
     "같은 결과를 내 사실과 판단으로 다시 만듭니다",
-    `${lesson.output.label}을 다음 강 입력으로 저장합니다`
+    `${lesson.output.label}${eul(lesson.output.label)} 저장하고 다음 강으로 넘깁니다`
   ][index];
 }
 
@@ -477,7 +519,7 @@ function moveNext() {
     const correctionDone = !lesson.requiresCorrectionNote || work.correctionNote.trim();
     const ready = work.retry.trim() && work.checks.every(Boolean) && correctionDone;
     if (!ready) {
-      announce("자기 교정 메모, 다시 한 결과와 확인표를 먼저 남겨 주세요.");
+      announce("고칠 이유 메모, 다시 쓴 결과와 확인표를 먼저 남겨 주세요.");
       if (!correctionDone) {
         state.currentStage = 3;
         persist();
@@ -502,7 +544,7 @@ function moveNext() {
     } else if (nextLesson && nextLesson.locked) {
       announce(`${lesson.number}강을 저장했습니다. ${nextLesson.number}강은 준비 중입니다 — 열리면 알려드립니다.`);
     } else {
-      announce("사용 확인을 거친 첫 최종본과 다음 작업 카드를 저장했습니다.");
+      announce("사용 확인을 거친 첫 완성본과 다음에 할 일을 저장했습니다.");
     }
   }
   persist();
@@ -546,7 +588,7 @@ function downloadResultHtml() {
   const title = (outputs[1] || outputs[0] || "나의 첫 한 페이지").split(/\n|\.|。/)[0].trim();
   const body = outputs[4] || outputs[3] || outputs[2] || outputs[0];
   const proof = outputs[5] || "아직 확인 증거를 남기지 않았습니다.";
-  const next = outputs[6] || "아직 다음 작업 카드를 남기지 않았습니다.";
+  const next = outputs[6] || "아직 다음에 할 일을 남기지 않았습니다.";
   const html = `<!doctype html>
 <html lang="ko">
 <head>
@@ -554,11 +596,11 @@ function downloadResultHtml() {
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>${escapeHtml(title)}</title>
   <style>
-    :root{--paper:#f9f7f3;--ink:#1c1814;--muted:#4a423c;--green:#00704a;--yellow:#f4dc59;--line:#d9d3ca}
-    *{box-sizing:border-box}body{margin:0;color:var(--ink);background:#f5f3ee;font-family:system-ui,sans-serif;line-height:1.7}
+    :root{--paper:#f9f7f3;--ink:#1c1814;--muted:#4a423c;--accent:#7eb5e8;--accent-deep:#326b98;--line:#e6e1d9}
+    *{box-sizing:border-box}body{margin:0;color:var(--ink);background:#f5f3ee;font-family:Pretendard,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;line-height:1.7;word-break:keep-all;overflow-wrap:anywhere}
     main{width:min(760px,calc(100% - 32px));margin:48px auto;padding:clamp(28px,6vw,64px);background:var(--paper);border:1px solid var(--line)}
-    .label{color:var(--green);font-size:12px;font-weight:800;letter-spacing:.08em}h1{max-width:14ch;margin:12px 0 0;font-family:Georgia,serif;font-size:clamp(38px,8vw,70px);line-height:1.03;letter-spacing:-.04em}
-    .promise{margin:24px 0;padding-bottom:18px;border-bottom:4px solid var(--yellow);font-family:Georgia,serif;font-size:20px;white-space:pre-wrap}.body,.proof,.next{white-space:pre-wrap}.body{font-size:16px}.proof,.next{margin-top:36px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted)}
+    .label{color:var(--accent-deep);font-size:12px;font-weight:800;letter-spacing:.08em}h1{max-width:16ch;margin:12px 0 0;font-size:clamp(32px,7vw,56px);line-height:1.15}
+    .promise{margin:24px 0;padding-bottom:18px;border-bottom:2px solid var(--accent);font-size:20px;white-space:pre-wrap}.body,.proof,.next{white-space:pre-wrap}.body{font-size:16px}.proof,.next{margin-top:36px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted)}
   </style>
 </head>
 <body><main><p class="label">바른생활에서 만든 첫 한 페이지</p><h1>${escapeHtml(title)}</h1><p class="promise">${escapeHtml(outputs[1] || "")}</p><div class="body">${escapeHtml(body)}</div><div class="proof"><strong>내가 확인한 것</strong><br>${escapeHtml(proof)}</div><div class="next"><strong>다음 작업</strong><br>${escapeHtml(next)}</div></main></body>
@@ -570,7 +612,7 @@ function downloadResultHtml() {
 function downloadHandoff() {
   saveInputs();
   const lines = [
-    "# 다음 작업 카드",
+    "# 다음에 할 일 카드",
     "",
     `결과 ID: ${state.artifactId}`,
     `과정 버전: ${state.courseVersion}`,
@@ -579,14 +621,14 @@ function downloadHandoff() {
     "## 다음 AI에게 할 말",
     "위 원본과 마지막 결정을 먼저 읽고, 7강에 적은 다음 행동 하나만 실행하세요. 확인하지 않은 사실을 보태지 말고, 결과를 만든 뒤 내가 직접 열어볼 수 있게 알려주세요."
   ];
-  download("다음-작업-카드.txt", "text/plain;charset=utf-8", lines.join("\n"));
-  announce("다음 작업 카드를 내려받았습니다.");
+  download("다음에-할-일-카드.txt", "text/plain;charset=utf-8", lines.join("\n"));
+  announce("다음에 할 일 카드를 내려받았습니다.");
 }
 
 elements.toggleSources.addEventListener("click", () => {
   const open = elements.toggleSources.getAttribute("aria-expanded") === "true";
   elements.toggleSources.setAttribute("aria-expanded", String(!open));
-  elements.toggleSources.textContent = open ? "출처 보기" : "출처 닫기";
+  elements.toggleSources.textContent = open ? "자료 어디서 왔나 보기" : "접기";
   elements.sourceList.hidden = open;
 });
 
