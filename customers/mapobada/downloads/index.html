@@ -5,84 +5,228 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <title>제철담은 마포바다 — 확인·자료 한 곳</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@700&family=Noto+Sans+KR:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap">
 <style>
-:root{--bg:#F7F3EA;--paper:#FFFDF8;--ink:#2B2118;--ink2:#5E4E3F;--line:#DCCFB8;--gold:#A8802E;--gold-soft:#F1E6C8;--brown:#6B4A2B;--wait:#B5551F;--wait-bg:rgba(181,85,31,.09);--done:#00704A;--done-bg:rgba(0,112,74,.08)}
+:root{--bg:#F8F8F6;--paper:#FFFFFF;--panel:#F3F3F1;--ink:#171717;--ink2:#565656;--line:#E1E1DE;--gold:#E8380D;--gold-soft:#FFF3EF;--brown:#171717;--wait:#AA351B;--wait-bg:#FFF3EF;--done:#275D48;--done-bg:#EAF4EF}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans KR",-apple-system,"Apple SD Gothic Neo",sans-serif;font-size:17px;line-height:1.6;word-break:keep-all;overflow-wrap:anywhere}
-main{max-width:640px;margin:0 auto;padding:22px 16px 72px;display:flex;flex-direction:column;gap:22px}
-header{border-bottom:2px solid var(--gold);padding-bottom:12px}
-h1{font-family:"Gowun Batang","Noto Serif KR",serif;font-weight:700;font-size:26px;margin:0 0 6px;color:var(--brown);text-wrap:balance}
-.lead{margin:0;color:var(--ink2);font-size:15.5px}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans KR",-apple-system,"Apple SD Gothic Neo",sans-serif;font-size:16px;line-height:1.6;word-break:keep-all;overflow-wrap:anywhere;-webkit-font-smoothing:antialiased}
+button,a{font:inherit}
+button{color:inherit}
+main{max-width:1080px;margin:0 auto;padding:28px clamp(18px,3vw,42px) 88px;display:flex;flex-direction:column;gap:20px}
+header{padding:10px 0 22px;border-bottom:1px solid var(--gold);display:flex;align-items:flex-end;justify-content:space-between;gap:28px}
+h1{font-family:"Noto Sans KR",-apple-system,"Apple SD Gothic Neo",sans-serif;font-weight:800;font-size:clamp(27px,3.2vw,40px);line-height:1.18;letter-spacing:-.055em;margin:0 0 8px;color:var(--brown);text-wrap:balance}
+.lead{margin:0;max-width:700px;color:var(--ink2);font-size:15px}
 .lead b{color:var(--brown)}
-section{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:16px 16px 14px}
-h2{font-size:18px;margin:0 0 10px;color:var(--ink)}
-.where{margin:-4px 0 12px;font-size:14px;color:var(--gold);font-weight:700;letter-spacing:.02em}
-.video{display:block;border-radius:8px;overflow:hidden;border:1px solid var(--line);aspect-ratio:16/9;background:#000}
+.header-mark{flex:none;border-left:1px solid var(--line);padding-left:18px;color:var(--gold);font-size:12px;font-weight:800;letter-spacing:.04em;text-align:right}
+.header-mark strong{display:block;color:var(--brown);font-size:23px;letter-spacing:-.04em;line-height:1.1}
+section{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:22px 22px 20px}
+h2{font-size:20px;line-height:1.3;margin:0 0 10px;color:var(--ink);letter-spacing:-.03em}
+h3{letter-spacing:-.025em}
+.where{margin:-4px 0 14px;font-size:13px;color:var(--gold);font-weight:800;letter-spacing:.02em}
+.eyebrow{display:inline-flex;align-items:center;gap:7px;margin:0 0 8px;color:var(--gold);font-size:11px;font-weight:900;letter-spacing:.11em}
+.eyebrow::before{content:"";width:18px;height:2px;background:var(--gold);display:inline-block}
+.dashboard-overview{background:var(--paper);padding:24px}
+.overview-top{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;margin-bottom:20px}
+.overview-top h2{font-size:26px;margin-bottom:5px}
+.overview-top p{max-width:640px;margin:0;color:var(--ink2);font-size:14px}
+.date-stamp{flex:none;min-width:104px;border:1px solid var(--line);background:var(--panel);padding:10px 12px;text-align:right;color:var(--ink2);font-size:11px;font-weight:800;line-height:1.4}
+.date-stamp strong{display:block;color:var(--brown);font-size:21px;letter-spacing:-.04em}
+.kpi-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.kpi-card{appearance:none;text-align:left;border:1px solid var(--line);border-radius:10px;background:var(--paper);padding:15px;cursor:pointer;min-height:150px;display:flex;flex-direction:column;align-items:flex-start;transition:transform .22s ease,border-color .22s ease,background .22s ease}
+.kpi-card:hover{transform:translateY(-3px);border-color:var(--gold);background:var(--gold-soft)}
+.kpi-card:active{transform:translateY(-1px)}
+.kpi-card:focus-visible,.link-button:focus-visible,.dialog-close:focus-visible,.go:focus-visible,.video:focus-visible,.pop a:focus-visible,.section-links a:focus-visible,.shelf summary:focus-visible{outline:3px solid rgba(232,56,13,.45);outline-offset:3px}
+.kpi-label{color:var(--ink2);font-size:12px;font-weight:800}
+.kpi-card strong{display:block;margin-top:8px;color:var(--brown);font-size:32px;line-height:1;font-variant-numeric:tabular-nums;letter-spacing:-.06em}
+.kpi-card small{display:block;margin-top:8px;color:var(--ink2);font-size:12px}
+.card-action{margin-top:auto;padding-top:12px;color:var(--gold);font-size:12px;font-weight:900}
+.overview-grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(260px,.65fr);gap:12px;margin-top:12px}
+.overview-panel{border-top:1px solid var(--line);padding-top:15px}
+.overview-panel h3{margin:0 0 4px;font-size:15px}
+.overview-panel p{margin:0;color:var(--ink2);font-size:13px}
+.week-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-top:12px}
+.week-card{border:1px solid var(--line);border-radius:10px;padding:12px;background:var(--paper)}
+.week-card .week-label{font-size:11px;color:var(--gold);font-weight:900}
+.week-card strong{display:block;margin-top:3px;color:var(--brown);font-size:25px;line-height:1;font-variant-numeric:tabular-nums}
+.week-card small{display:block;margin-top:7px;color:var(--ink2);font-size:11.5px}
+.week-card button{margin-top:9px;border:0;border-bottom:1px solid var(--gold);padding:0;background:transparent;color:var(--brown);font-size:12px;font-weight:900;cursor:pointer}
+.week-note{margin:10px 0 0;color:var(--ink2);font-size:11.5px}
+.quick-list{list-style:none;margin:12px 0 0;padding:0;display:grid;gap:8px}
+.quick-list li{display:flex;align-items:flex-start;gap:9px;color:var(--ink2);font-size:13px}
+.quick-list b{white-space:nowrap}
+.quick-list li::before{content:"";flex:none;width:7px;height:7px;margin-top:8px;border-radius:50%;background:var(--gold)}
+.section-links{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:18px}
+.section-links a{display:flex;align-items:center;justify-content:space-between;gap:8px;border:1px solid var(--line);border-radius:8px;padding:10px 12px;color:var(--ink);background:var(--panel);text-decoration:none;font-size:12px;font-weight:800}
+.section-links a::after{content:"↗";color:var(--gold);font-size:15px}
+.section-links a:hover{border-color:var(--gold);background:var(--gold-soft)}
+.result-strip{display:flex;align-items:flex-start;gap:14px;margin-top:12px;padding:13px 15px;border-left:3px solid var(--gold);background:var(--panel)}
+.result-strip strong{flex:none;color:var(--ink);font-size:12px}
+.result-strip p{margin:0;color:var(--ink2);font-size:12px}
+.shelf{border:1px solid var(--line);border-radius:10px;background:var(--paper)}
+.shelf>summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:14px;cursor:pointer;padding:16px 20px;color:var(--ink);font-size:16px;font-weight:800}
+.shelf>summary::-webkit-details-marker{display:none}
+.shelf>summary::after{content:"펼치기 +";flex:none;color:var(--gold);font-size:12px}
+.shelf[open]>summary::after{content:"접기 −"}
+.shelf>section{border:0;border-top:1px solid var(--line);border-radius:0;padding:18px 20px}
+.shelf>section>h2{display:none}
+.quick-list a{color:var(--brown);font-weight:800;text-decoration:none;border-bottom:1px solid var(--gold)}
+.link-button{border:0;border-bottom:1px solid var(--gold);background:transparent;padding:0;color:var(--brown);font-size:13px;font-weight:900;cursor:pointer}
+.overview-panel>.link-button{margin-top:11px}
+.video{display:block;border-radius:12px;overflow:hidden;border:1px solid var(--line);aspect-ratio:16/9;background:#000}
 .video img{width:100%;height:100%;object-fit:cover;display:block}
 .playbtn{position:relative}
 .playbtn::after{content:"▶";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:40px;color:#fff;background:rgba(0,0,0,.25);text-shadow:0 2px 6px rgba(0,0,0,.5)}
 .pop{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .pop figure{margin:0}
-.pop img{width:100%;height:auto;display:block;border-radius:6px;border:1px solid var(--line);background:#fff}
-.pop figcaption{font-size:13.5px;color:var(--ink2);margin-top:4px;display:flex;justify-content:space-between;gap:8px}
-.pop a{color:var(--brown);font-weight:700;text-decoration:none;white-space:nowrap}
-.ask{margin:12px 0 0;padding:10px 12px;background:var(--gold-soft);border-radius:8px;font-size:15px}
+.pop img{width:100%;height:auto;display:block;border-radius:10px;border:1px solid var(--line);background:#fff}
+.pop figcaption{font-size:13px;color:var(--ink2);margin-top:5px;display:flex;justify-content:space-between;gap:8px}
+.pop a{color:var(--brown);font-weight:800;text-decoration:none;white-space:nowrap}
+.ask{margin:12px 0 0;padding:12px 14px;background:var(--gold-soft);border-radius:10px;font-size:14px}
 .ask b{color:var(--brown)}
-.status{display:inline-block;font-size:12.5px;padding:2px 9px;border-radius:999px;border:1px solid var(--gold);color:var(--gold);font-weight:700;margin-bottom:8px}
-footer{font-size:13.5px;color:var(--ink2);line-height:1.6;border-top:1px solid var(--line);padding-top:12px}
+.status{display:inline-block;font-size:12px;padding:3px 10px;border-radius:999px;border:1px solid var(--gold);color:var(--gold);font-weight:800;margin-bottom:9px}
+footer{font-size:13px;color:var(--ink2);line-height:1.6;border-top:1px solid var(--line);padding-top:14px}
 .checklist{display:flex;flex-direction:column;gap:10px}
-.check-item{border:1px solid var(--line);border-radius:8px;padding:12px 14px;background:var(--bg)}
+.check-item{border:1px solid var(--line);border-radius:12px;padding:13px 15px;background:var(--bg)}
 .check-item .row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:4px}
-.check-item h3{font-size:15.5px;margin:0;color:var(--ink)}
-.pill{font-size:12px;font-weight:800;padding:3px 10px;border-radius:999px;white-space:nowrap;flex:none}
+.check-item h3{font-size:15px;margin:0;color:var(--ink)}
+.pill{font-size:11px;font-weight:900;padding:3px 10px;border-radius:999px;white-space:nowrap;flex:none}
 .pill.wait{color:var(--wait);background:var(--wait-bg)}
 .pill.done{color:var(--done);background:var(--done-bg)}
-.check-item p{margin:0;font-size:14px;color:var(--ink2)}
-.check-item a.go{display:inline-block;margin-top:8px;color:var(--brown);font-weight:700;font-size:14px;text-decoration:none;border-bottom:1px solid var(--gold)}
-.achieve-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.achieve-card{border:1px solid var(--line);border-radius:8px;padding:12px;background:var(--bg)}
+.check-item p{margin:0;font-size:13.5px;color:var(--ink2)}
+.check-item a.go{display:inline-block;margin-top:8px;color:var(--brown);font-weight:800;font-size:13px;text-decoration:none;border-bottom:1px solid var(--gold)}
+.achieve-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.achieve-card{border:1px solid var(--line);border-radius:12px;padding:13px;background:var(--bg)}
 .achieve-card[open]{background:var(--paper)}
 .achieve-card summary{list-style:none;cursor:pointer;display:flex;flex-direction:column}
 .achieve-card summary::-webkit-details-marker{display:none}
-.achieve-card summary::after{content:"자세히 보기 ▾";margin-top:8px;font-size:12px;color:var(--gold);font-weight:700;align-self:flex-start}
+.achieve-card summary::after{content:"자세히 보기 ▾";margin-top:8px;font-size:11px;color:var(--gold);font-weight:900;align-self:flex-start}
 .achieve-card[open] summary::after{content:"접기 ▴"}
-.achieve-card .d{font-size:11.5px;color:var(--gold);font-weight:800;letter-spacing:.02em;margin-bottom:4px}
-.achieve-card h3{font-size:14.5px;margin:0 0 4px;color:var(--ink);line-height:1.35}
-.achieve-card p{margin:0;font-size:12.5px;color:var(--ink2)}
+.achieve-card .d{font-size:11px;color:var(--gold);font-weight:900;letter-spacing:.02em;margin-bottom:4px}
+.achieve-card h3{font-size:14px;margin:0 0 4px;color:var(--ink);line-height:1.35}
+.achieve-card p{margin:0;font-size:12px;color:var(--ink2)}
 .achieve-card .detail{margin-top:10px;padding-top:10px;border-top:1px solid var(--line);font-size:12.5px;color:var(--ink2)}
-.achieve-card a.go{margin-top:8px;display:inline-block;color:var(--brown);font-weight:700;font-size:13px;text-decoration:none;border-bottom:1px solid var(--gold)}
-@media (max-width:480px){.achieve-grid{grid-template-columns:1fr}}
-.tablewrap{overflow-x:auto;margin-top:10px;border:1px solid var(--line);border-radius:8px}
-.revtable{width:100%;border-collapse:collapse;font-size:13px;min-width:520px}
+.achieve-card a.go{margin-top:8px;display:inline-block;color:var(--brown);font-weight:800;font-size:12px;text-decoration:none;border-bottom:1px solid var(--gold)}
+.legacy-list{margin-top:15px;border-top:1px solid var(--line);padding-top:13px}
+.legacy-list summary{display:flex;align-items:center;justify-content:space-between;gap:12px;cursor:pointer;color:var(--brown);font-size:13px;font-weight:900}
+.legacy-list summary::after{content:"펼치기 ▾";color:var(--gold);font-size:12px}
+.legacy-list[open] summary::after{content:"접기 ▴"}
+.tablewrap{overflow-x:auto;margin-top:12px;border:1px solid var(--line);border-radius:10px}
+.revtable{width:100%;border-collapse:collapse;font-size:12.5px;min-width:520px}
 .revtable th,.revtable td{padding:7px 9px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
-.revtable th{background:var(--gold-soft);color:var(--brown);font-size:12px;white-space:nowrap}
+.revtable th{background:var(--gold-soft);color:var(--brown);font-size:11.5px;white-space:nowrap}
 .revtable tr:last-child td{border-bottom:none}
-.revtable a{color:var(--brown);font-weight:700;text-decoration:none;white-space:nowrap}
-.reading{margin:12px 0 0;padding:12px 14px;background:var(--gold-soft);border-radius:8px;font-size:14.5px}
+.revtable a{color:var(--brown);font-weight:800;text-decoration:none;white-space:nowrap}
+.reading{margin:12px 0 0;padding:12px 14px;background:var(--gold-soft);border-radius:10px;font-size:13.5px}
 .reading b{color:var(--brown)}
 .reading ul{margin:6px 0 0;padding-left:18px}
 .reading li{margin:4px 0}
+.detail-dialog{width:min(680px,calc(100% - 28px));max-height:min(760px,calc(100% - 28px));padding:0;border:0;background:transparent;color:var(--ink)}
+.detail-dialog::backdrop{background:rgba(0,0,0,.52);backdrop-filter:blur(2px)}
+.dialog-card{position:relative;max-height:min(760px,calc(100vh - 28px));overflow:auto;border:1px solid var(--line);border-radius:12px;background:var(--paper);padding:24px;box-shadow:0 24px 70px rgba(0,0,0,.18)}
+.dialog-card h2{margin:0 42px 9px 0;font-size:23px}
+.dialog-card p{margin:0;color:var(--ink2);font-size:14px}
+.dialog-card ul{margin:12px 0 0;padding-left:20px;color:var(--ink2);font-size:14px}
+.dialog-card li{margin:6px 0}
+.dialog-close{position:absolute;top:14px;right:14px;width:36px;height:36px;border:1px solid var(--line);border-radius:50%;background:var(--bg);color:var(--brown);font-size:22px;line-height:1;cursor:pointer}
+.dialog-links{display:grid;gap:9px;margin-top:15px}
+.dialog-link{display:block;width:100%;border:1px solid var(--line);border-radius:8px;padding:11px 13px;color:var(--brown);text-align:left;text-decoration:none;background:var(--bg);font-size:13px;font-weight:800;cursor:pointer}
+.dialog-link:hover{border-color:var(--gold);background:var(--gold-soft)}
+.dialog-back{margin-top:12px;border:0;border-bottom:1px solid var(--gold);padding:0;background:transparent;color:var(--ink);font-size:12px;font-weight:800;cursor:pointer}
+.dialog-note{margin-top:14px;padding:11px 13px;border-left:3px solid var(--gold);background:var(--gold-soft);color:var(--ink2);font-size:12.5px}
+@media (max-width:900px){.achieve-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.kpi-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){main{padding-top:18px}.header-mark{display:none}.overview-top{flex-direction:column}.overview-top h2{font-size:22px}.overview-grid{grid-template-columns:1fr}.week-grid{grid-template-columns:1fr}.achieve-grid{grid-template-columns:1fr}.pop{grid-template-columns:1fr 1fr}.dashboard-overview,section{padding:18px 16px}.shelf>section{padding:16px}.section-links{grid-template-columns:repeat(2,minmax(0,1fr))}.kpi-card{min-height:132px}.kpi-card strong{font-size:29px}}
+@media (max-width:420px){.kpi-grid{grid-template-columns:1fr 1fr;gap:8px}.kpi-card{padding:12px}.kpi-card strong{font-size:26px}.pop{grid-template-columns:1fr}.dialog-card{padding:21px 18px}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.kpi-card{transition:none}.kpi-card:hover{transform:none}}
 </style>
 </head>
 <body>
 <main>
 <header>
-  <h1>제철담은 마포바다 — 확인·자료 한 곳</h1>
-  <p class="lead">저희가 해드린 것, 밖에서 들려오는 반응, 지금 확인이 필요한 것, 자료까지 <b>이 페이지 하나</b>에 모아 둡니다. 새로 생기는 것도 다른 주소를 또 만들지 않고 이 페이지를 계속 고쳐 씁니다 — 나중에 필요할 때도 이 링크 하나만 열어 보시면 됩니다. (매주 새로 갱신)</p>
+  <div>
+    <p class="eyebrow">MAPOBADA CUSTOMER DESK</p>
+    <h1>제철담은 마포바다 — 확인·자료 한 곳</h1>
+    <p class="lead">저희가 해드린 것, 밖에서 들려오는 반응, 지금 확인이 필요한 것, 자료까지 <b>이 페이지 하나</b>에 모아 둡니다. 새로 생기는 것도 다른 주소를 또 만들지 않고 이 페이지를 계속 고쳐 씁니다 — 나중에 필요할 때도 이 링크 하나만 열어 보시면 됩니다.</p>
+  </div>
+  <p class="header-mark">마지막 확인<strong>9.24</strong>2026 · KST</p>
 </header>
 
-<section>
+<section class="dashboard-overview" aria-labelledby="overview-title">
+  <div class="overview-top">
+    <div>
+      <p class="eyebrow">ONE-PAGE OPERATING VIEW</p>
+      <h2 id="overview-title">마포바다 운영 결과, 한눈에</h2>
+      <p>우리가 실제로 반영한 일과 밖에서 나온 반응을 함께 보여 드립니다. 카드를 누르면 원문과 확인 날짜를 볼 수 있습니다.</p>
+    </div>
+    <div class="date-stamp">현재 확인본<strong>9/24</strong>당근·구글 업데이트 반영</div>
+  </div>
+  <div class="kpi-grid" aria-label="마포바다 핵심 현황">
+    <button class="kpi-card" type="button" data-dialog="blog">
+      <span class="kpi-label">공식 블로그 새 글</span>
+      <strong>2</strong>
+      <small>9/21–9/27 주 · 9/23 공개 확인</small>
+      <span class="card-action">게시 글 보기 →</span>
+    </button>
+    <button class="kpi-card" type="button" data-dialog="reviews">
+      <span class="kpi-label">외부 네이버 블로그 후기</span>
+      <strong>36</strong>
+      <small>9/2–9/13 수집 기록</small>
+      <span class="card-action">주차별 흐름 보기 →</span>
+    </button>
+    <button class="kpi-card" type="button" data-dialog="daangn">
+      <span class="kpi-label">당근 비즈프로필</span>
+      <strong>8</strong>
+      <small>단골 8 · 9/24 화면 확인</small>
+      <span class="card-action">최근 소식 보기 →</span>
+    </button>
+    <button class="kpi-card" type="button" data-dialog="google">
+      <span class="kpi-label">Google 비즈니스</span>
+      <strong>2</strong>
+      <small>리뷰 2 · 9/13 확인</small>
+      <span class="card-action">9/24 업데이트 보기 →</span>
+    </button>
+  </div>
+  <div class="result-strip">
+    <strong>우리가 반영한 일</strong>
+    <p>9/23 홈페이지 추석 영업 안내 · 공식 블로그 새 글 2건 · 9/24 당근·Google 추석 소식과 사진 반영을 확인했습니다. 각 결과와 근거 날짜는 카드에서 볼 수 있습니다.</p>
+  </div>
+  <div class="overview-grid">
+    <div class="overview-panel">
+      <h3>외부 후기 주간 흐름</h3>
+      <p>월요일~일요일 게시일 기준으로 묶었습니다. 36건은 9/13까지 확인한 기록입니다.</p>
+      <div class="week-grid" id="weekSummary" aria-live="polite"></div>
+      <p class="week-note">외부 후기 마지막 실측은 9/13입니다. 9/14 이후 새 글은 아직 재집계하지 않아 미확인입니다.</p>
+      <button class="link-button" type="button" data-dialog="reviews">후기 36건의 원문과 주차별 흐름 보기 →</button>
+    </div>
+    <div class="overview-panel">
+      <h3>9/23–9/24 반영한 것</h3>
+      <ul class="quick-list">
+        <li><b>당근</b> 추석 연휴 소식 게시 · 단골 8명 화면 확인</li>
+        <li><b>Google</b> 추석 안내 업데이트 게시 · 사진 반영 화면 확인</li>
+        <li><b>블로그</b> 기존 글은 건드리지 않고 새 글만 이어갑니다</li>
+        <li><a href="#print">자료 상태</a>에서 현재본과 이전 판을 구분해 보실 수 있습니다</li>
+      </ul>
+    </div>
+  </div>
+  <nav class="section-links" aria-label="고객 페이지 자세히 보기">
+    <a href="#achievements">해드린 일</a>
+    <a href="#reviewSection">후기 원문</a>
+    <a href="#requests">확인 요청 기록</a>
+    <a href="#print">인쇄 자료 상태</a>
+  </nav>
+</section>
+
+<section id="achievements">
   <h2>지금까지 해드린 것</h2>
   <p class="where" style="margin-top:-2px">카드를 눌러 보시면 자세한 내용이 펼쳐집니다.</p>
   <div class="achieve-grid">
     <details class="achieve-card">
       <summary><span class="d">8/12~8/20</span><h3>계약·세금계산서·입금</h3><p>서명부터 입금까지 전부 처리 완료.</p></summary>
-      <div class="detail">계약서 서명, 세금계산서 발행, 첫 입금까지 8/20에 전부 마쳤습니다. 계약 기간은 9/11까지입니다.</div>
+      <div class="detail">계약서 서명, 세금계산서 발행, 첫 입금까지 8/20에 마친 기록입니다. 이 기록은 현재 계약 상태를 뜻하지 않습니다.</div>
     </details>
     <details class="achieve-card">
-      <summary><span class="d">8/21~</span><h3>홈페이지 mapobada.com</h3><p>세트·단품 메뉴, 사진, 오시는 길까지. 지금도 계속 갱신 중.</p></summary>
-      <div class="detail">세트·단품 메뉴, 매장 사진, 오시는 길, 영업시간까지 한 페이지에 담았습니다. 메뉴나 사진이 바뀌면 이 홈페이지를 계속 고쳐 씁니다.
+      <summary><span class="d">8/21~</span><h3>홈페이지 mapobada.com</h3><p>매장 소개·사진·오시는 길을 한 주소에 모았습니다.</p></summary>
+      <div class="detail">매장 소개·사진·오시는 길·영업시간을 한 페이지에 담았습니다. 메뉴와 영업정보는 대표님이 관리하시는 네이버의 최신 표시와 다시 대조해 갱신합니다.
         <a class="go" href="https://mapobada.com" target="_blank" rel="noopener">홈페이지 보기 →</a></div>
     </details>
     <details class="achieve-card">
@@ -90,18 +234,17 @@ footer{font-size:13.5px;color:var(--ink2);line-height:1.6;border-top:1px solid v
       <div class="detail">네이버 플레이스·구글 지도·당근마켓·카카오맵·티맵 다섯 곳의 매장 정보를 등록하고, 카카오맵에 잘못 올라가 있던 상호를 바로잡았습니다.</div>
     </details>
     <details class="achieve-card">
-      <summary><span class="d">9/3</span><h3>매장 인쇄물 5종 확정</h3><p>메뉴판·벽 안내 2종·호출벨·콜키지 안내, 매장 서체로 완성.</p></summary>
-      <div class="detail">메뉴판(A4 양면), 벽 안내 2종(A3), 호출벨 카드, 콜키지 안내까지 매장 서체·색으로 통일해 완성했습니다.
-        <a class="go" href="#print">아래서 실물 보기 →</a></div>
+      <summary><span class="d">9/3 제작 기록</span><h3>매장 인쇄물 5종</h3><p>초기 메뉴판·벽 안내·호출벨·콜키지 안내 제작 기록.</p></summary>
+      <div class="detail">초기 메뉴판과 안내물을 제작했습니다. 메뉴판은 현재 메뉴와 달라 새 판을 제작 중이며, 이전 판은 인쇄용 현재본으로 안내하지 않습니다.
+        <a class="go" href="#print">자료 상태 보기 →</a></div>
     </details>
     <details class="achieve-card">
       <summary><span class="d">9/3</span><h3>오픈 홍보 게시</h3><p>당근 소식·릴스 콘티·리뷰 이벤트·플레이스 소식까지 한 번에.</p></summary>
       <div class="detail">당근마켓 동네소식, 인스타 릴스 콘티, 리뷰 이벤트 문구, 네이버 플레이스 소식까지 오픈 당일 한 번에 게시했습니다.</div>
     </details>
     <details class="achieve-card">
-      <summary><span class="d">완성·공개</span><h3>매장TV 영상 (12분 57초)</h3><p>소리 꺼도 내용이 다 읽히게 만든 매장용 영상, 채널에 공개.</p></summary>
-      <div class="detail">매장에서 소리 없이 틀어도 내용이 다 읽히도록 자막 위주로 만든 12분 57초 영상입니다. 유튜브에 공개돼 있고, TV용 파일은 구글 드라이브로 전달드립니다.
-        <a class="go" href="https://youtu.be/i_kI65pNKRM" target="_blank" rel="noopener">영상 보기 →</a></div>
+      <summary><span class="d">이전 판</span><h3>매장TV 영상</h3><p>이전 영상 뒤에 수정 작업이 진행 중입니다.</p></summary>
+      <div class="detail">이전 12분 57초 영상의 기록입니다. 새 매장TV·유튜브 겸용 파일은 최종 품질 확인과 대표님 전달·TV 재생 확인 전입니다. 이전 영상의 현재 공개 상태는 재확인 전이므로 재생 링크를 현행본으로 안내하지 않습니다.</div>
     </details>
     <details class="achieve-card">
       <summary><span class="d">9/7</span><h3>짧은 릴스 (36초)</h3><p>같은 소재로 인스타에 짧게 올릴 수 있는 세로 영상도 하나 만들어 올려드렸습니다.</p></summary>
@@ -109,17 +252,27 @@ footer{font-size:13.5px;color:var(--ink2);line-height:1.6;border-top:1px solid v
         <a class="go" href="https://www.instagram.com/reel/Dc94ghZpx7V/" target="_blank" rel="noopener">릴스 보기 →</a></div>
     </details>
     <details class="achieve-card">
-      <summary><span class="d">9/13 · 반영 완료</span><h3>구글 프로필 사진 재업로드</h3><p>지도에 사진이 안 보이던 것 확인, 실제 매장 사진을 다시 올려 지금 17장 잘 보이는 것까지 확인.</p></summary>
-      <div class="detail">구글 지도에 올렸던 사진이 전부 반영되지 않고 있던 것을 확인해, 실제 매장 음식 사진 5장을 다시 올렸습니다. 9/13에 구글 지도를 직접 열어 지금 17장 모두 잘 보이는 것까지 확인했습니다.</div>
+      <summary><span class="d">9/13 확인</span><h3>구글 프로필 사진 재업로드</h3><p>당시 음식 사진 5장 재업로드와 공개 반영을 확인.</p></summary>
+      <div class="detail">9/13에 음식 사진 5장을 다시 올리고 당시 공개 화면에서 17장을 확인했습니다. 9/24에도 추가 음식·매장 사진의 공개 반영을 확인했으며, 현재 총 장수는 다시 세지 않았습니다.</div>
     </details>
   </div>
 </section>
 
-<section>
+<section id="reviewSection">
   <h2>밖에서 들려오는 반응 — 블로그 후기</h2>
-  <p class="where">오픈(9/2)부터 지금까지 저희가 찾은 네이버 블로그 후기 36건 · 구글 리뷰 2건 <small>(9/13 확인)</small></p>
-  <div class="tablewrap">
-    <table class="revtable">
+  <p class="where">외부 네이버 블로그 후기 36건 · 9/2–9/13에 직접 확인한 기록 · Google 리뷰 2건은 별도로 집계</p>
+  <div class="reading">
+    <b>이렇게 읽으시면 됩니다</b>
+    <ul>
+      <li>첫 화면은 월요일~일요일 주차별 개수만 보여 드리고, 특정 주의 원문은 그 주차 카드를 누릅니다.</li>
+      <li>36건은 플랫폼 전체 통계가 아니라 저희가 실제로 찾아 확인한 외부 후기 기록입니다.</li>
+      <li>공식 블로그(ds1bmy) 글과 방문객 블로그 후기는 서로 다른 묶음으로 관리합니다.</li>
+    </ul>
+  </div>
+  <details class="legacy-list">
+    <summary><span>원문 목록 36건</span><span>게시일·방문 유형·한 줄 요지·링크</span></summary>
+    <div class="tablewrap">
+    <table class="revtable" id="reviewTable">
       <tr><th>게시일</th><th>방문 유형</th><th>한 줄 요지</th><th>보기</th></tr>
       <tr><td>9/2 23:36</td><td>대흥동 술집</td><td>제철 회·해산물, 술 곁들이기 좋은 곳으로 소개</td><td><a href="https://blog.naver.com/epdp96/224399055083" target="_blank" rel="noopener">epdp96</a></td></tr>
       <tr><td>9/3 06:20</td><td>가족모임</td><td>가을 전어·새우구이와 회, 시그니처 한 상 후기</td><td><a href="https://blog.naver.com/lovelya3/224399228920" target="_blank" rel="noopener">lovelya3</a></td></tr>
@@ -158,68 +311,64 @@ footer{font-size:13.5px;color:var(--ink2);line-height:1.6;border-top:1px solid v
       <tr><td>9/12 03:40</td><td>지인모임</td><td>전어와 생새우 제철 한상</td><td><a href="https://blog.naver.com/footory/224408935277" target="_blank" rel="noopener">footory</a></td></tr>
       <tr><td>9/13 18:50</td><td>술자리</td><td>해산물 코스와 생맥주</td><td><a href="https://blog.naver.com/gusalsqpf/224410324725" target="_blank" rel="noopener">gusalsqpf</a></td></tr>
     </table>
-  </div>
+    </div>
+  </details>
   <div class="reading">
     <b>저희가 읽은 것</b>
     <ul>
-      <li>오픈 다음날부터 오늘까지 거의 매일 후기가 이어지고 있습니다.</li>
+      <li>9/2~9/13 확인 구간에 외부 후기가 꾸준히 발견됐습니다. 그 뒤의 새 글은 아직 재집계하지 않았습니다.</li>
       <li>상판을 통째로 밀어 올리는 서빙 방식과 전복내장죽이 후기마다 유난히 자주 언급됩니다 — 다음 영상·홍보 문구에 쓰기 좋은 포인트입니다.</li>
       <li>구글 리뷰도 2건 들어왔습니다(별점 5.0 포함) — 저희가 직접 답글을 작성해 올려드렸습니다.</li>
-      <li>새로 올라오는 리뷰도 계속 챙겨서 답해드립니다.</li>
+      <li>새로 올라온 플랫폼 리뷰는 계정 화면에서 확인한 뒤 답글 여부와 결과를 기록합니다.</li>
     </ul>
   </div>
 </section>
 
-<section>
-  <h2>지금 확인 부탁드리는 것</h2>
+<section id="requests">
+  <h2>9/3 확인 요청 기록</h2>
+  <p class="where">당시 요청한 항목입니다. 현재 회신·완료 상태는 최신 연락과 대조 전입니다.</p>
   <div class="checklist">
     <div class="check-item">
-      <div class="row"><h3>1. 화장실에 붙일 소개 글</h3><span class="pill wait">답변 대기</span></div>
-      <p>오늘 카톡으로 초안을 드렸습니다. 이대로 좋으시면 "이대로", 고치고 싶은 데만 있으면 그 부분만 알려주세요.</p>
+      <div class="row"><h3>1. 화장실에 붙일 소개 글</h3><span class="pill wait">9/3 요청</span></div>
+      <p>당시 카톡으로 초안을 드린 항목입니다. 현재 판정은 최신 대화 확인 뒤 갱신합니다.</p>
     </div>
     <div class="check-item">
-      <div class="row"><h3>2. 매장TV 영상, 손볼 곳</h3><span class="pill wait">답변 대기</span></div>
-      <p>아래 「매장 TV 영상」에서 보시고, 걸리는 데가 있으면 알려주세요.</p>
+      <div class="row"><h3>2. 매장TV 영상, 손볼 곳</h3><span class="pill wait">이후 재제작</span></div>
+      <p>이전 요청 뒤 새 매장TV·유튜브 겸용 영상의 수정이 진행 중입니다. 최종본 전달·TV 재생은 아직 확인 전입니다.</p>
     </div>
     <div class="check-item">
-      <div class="row"><h3>3. 매장 정보 8항목 체크</h3><span class="pill wait">답변 대기</span></div>
+      <div class="row"><h3>3. 매장 정보 8항목 체크</h3><span class="pill wait">상태 재확인</span></div>
       <p>콜키지·반려동물·대관·주차 같은 것이 지금 온라인에 올라간 그대로 맞는지 확인하는 페이지입니다.</p>
       <a class="go" href="../">확인 페이지 열기 →</a>
     </div>
     <div class="check-item">
-      <div class="row"><h3>4. 벽 세트 상차림 원본 사진</h3><span class="pill wait">답변 대기</span></div>
-      <p>지금 벽POP은 붙어 있는 인쇄물을 찍어 쓴 거라 조금 흐립니다. 원본 파일 주시면 선명하게 다시 만듭니다.</p>
+      <div class="row"><h3>4. 벽 세트 상차림 원본 사진</h3><span class="pill wait">상태 재확인</span></div>
+      <p>9/3 안내물은 벽 인쇄물을 촬영한 이미지라 흐림이 있었습니다. 원본 파일 수령 여부는 최신 기록과 대조 전입니다.</p>
     </div>
   </div>
 </section>
 
-<section>
-  <h2>매장 TV 영상</h2>
-  <span class="status">완전공개</span>
-  <a class="video playbtn" href="https://youtu.be/i_kI65pNKRM" target="_blank" rel="noopener">
-    <img src="https://img.youtube.com/vi/i_kI65pNKRM/hqdefault.jpg" alt="매장 TV 영상 — 9월에 이거 안 먹으면 손해입니다">
-  </a>
-  <p class="ask">12분 57초, 매장에서 소리 끄고 틀어도 내용이 다 읽히게 만들었습니다. TV에 넣으실 파일은 저희가 대표님 구글 드라이브에 넣어 드리겠습니다 — 거기서 내려받아 USB로 옮기시면 TV에서 그대로 재생됩니다.</p>
+<section id="videoStatus">
+  <h2>매장 TV 영상 상태</h2>
+  <span class="status">최종본 전달 전</span>
+  <p class="ask">이전 12분 57초 영상 뒤에 매장TV·유튜브 겸용 새 파일을 수정하고 있습니다. 최종 품질 확인과 대표님 전달, 실제 TV 재생 확인이 남아 있습니다. 확정된 파일과 보는 주소가 생기면 이 자리에 연결하겠습니다.</p>
 </section>
 
 <section id="print">
-  <h2>메뉴판 (A4 양면)</h2>
-  <div class="pop">
-    <figure><a href="files/메뉴판_A4양면_v005-1.jpg"><img src="files/메뉴판_A4양면_v005-1.jpg" alt="메뉴판 앞면"></a><figcaption>앞면 <a href="files/메뉴판_A4양면.pdf" download>PDF</a></figcaption></figure>
-    <figure><a href="files/메뉴판_A4양면_v005-2.jpg"><img src="files/메뉴판_A4양면_v005-2.jpg" alt="메뉴판 뒷면"></a><figcaption>뒷면 <a href="files/메뉴판_A4양면.pdf" download>PDF</a></figcaption></figure>
-  </div>
+  <h2>메뉴판 (A4 양면) 상태</h2>
+  <p class="ask" style="margin-top:0">9/3 메뉴판은 현재 네이버 메뉴와 달라 인쇄용 안내에서 내렸습니다. 네이버 메뉴와 대조해 만든 새 판은 대표님 확인·전달 단계입니다. 확인된 인쇄용 PDF가 준비되면 이 자리에 연결하겠습니다.</p>
 </section>
 
 <section>
-  <h2>벽 안내 (A3)</h2>
-  <p class="where">지금 벽에 붙어 있는 A4 두 장 자리</p>
+  <h2>벽 안내 (A3) — 9/3 제작 기록</h2>
+  <p class="where">아래는 당시 만든 보기본입니다. 메뉴 내용의 현재 일치 여부는 다시 확인해야 하므로 인쇄용 PDF는 잠시 안내하지 않습니다.</p>
   <div class="pop">
-    <figure><a href="files/벽POP1_단품세팅표_A3_v005-1.jpg"><img src="files/벽POP1_단품세팅표_A3_v005-1.jpg" alt="벽 안내 — 단품 세팅표"></a><figcaption>단품 세팅표 <a href="files/벽POP_단품세팅표_A3.pdf" download>PDF</a></figcaption></figure>
-    <figure><a href="files/벽POP2_세트별상차림3장_A3가로_v005-1.jpg"><img src="files/벽POP2_세트별상차림3장_A3가로_v005-1.jpg" alt="벽 안내 — 실속 세트"></a><figcaption>실속 세트 <a href="files/벽POP_세트상차림_A3.pdf" download>PDF</a></figcaption></figure>
-    <figure><a href="files/벽POP2_세트별상차림3장_A3가로_v005-2.jpg"><img src="files/벽POP2_세트별상차림3장_A3가로_v005-2.jpg" alt="벽 안내 — 프리미엄 세트"></a><figcaption>프리미엄 세트 <a href="files/벽POP_세트상차림_A3.pdf" download>PDF</a></figcaption></figure>
-    <figure><a href="files/벽POP2_세트별상차림3장_A3가로_v005-3.jpg"><img src="files/벽POP2_세트별상차림3장_A3가로_v005-3.jpg" alt="벽 안내 — 시그니처 세트"></a><figcaption>시그니처 세트 <a href="files/벽POP_세트상차림_A3.pdf" download>PDF</a></figcaption></figure>
+    <figure><img src="files/벽POP1_단품세팅표_A3_v005-1.jpg" alt="9/3 벽 안내 보기본 — 단품 세팅표"><figcaption>단품 세팅표 · 이전 보기본</figcaption></figure>
+    <figure><img src="files/벽POP2_세트별상차림3장_A3가로_v005-1.jpg" alt="9/3 벽 안내 보기본 — 실속 세트"><figcaption>실속 세트 · 이전 보기본</figcaption></figure>
+    <figure><img src="files/벽POP2_세트별상차림3장_A3가로_v005-2.jpg" alt="9/3 벽 안내 보기본 — 프리미엄 세트"><figcaption>프리미엄 세트 · 이전 보기본</figcaption></figure>
+    <figure><img src="files/벽POP2_세트별상차림3장_A3가로_v005-3.jpg" alt="9/3 벽 안내 보기본 — 시그니처 세트"><figcaption>시그니처 세트 · 이전 보기본</figcaption></figure>
   </div>
-  <p class="ask">「세트 상차림」은 벽에 붙은 인쇄물을 찍어 쓴 것이라 조금 흐립니다. <b>원본 사진 파일</b>을 보내주시면 더 선명하게 다시 만듭니다.</p>
+  <p class="ask">「세트 상차림」 보기본은 벽 인쇄물을 촬영해 일부 흐립니다. 현재 메뉴판과 일치하는지 확인한 뒤 인쇄용을 다시 안내합니다.</p>
 </section>
 
 <section>
@@ -228,7 +377,7 @@ footer{font-size:13.5px;color:var(--ink2);line-height:1.6;border-top:1px solid v
     <figure><a href="files/호출벨안내_100x70_v005-1.jpg"><img src="files/호출벨안내_100x70_v005-1.jpg" alt="호출벨 안내 카드"></a><figcaption>호출벨 카드 (100×70) <a href="files/호출벨안내_100x70.pdf" download>PDF</a></figcaption></figure>
     <figure><a href="files/콜키지안내_A5_v005-1.jpg"><img src="files/콜키지안내_A5_v005-1.jpg" alt="콜키지 안내"></a><figcaption>콜키지 안내 (A5) <a href="files/콜키지안내_A5.pdf" download>PDF</a></figcaption></figure>
   </div>
-  <p class="ask">세트 이름은 대표님이 정해 주신 「세트」로, 콜키지 조건은 네이버에 올려두신 대로 넣었습니다.</p>
+  <p class="ask">9/3 제작 자료입니다. 현재 사용 전에는 콜키지 조건과 연락처 등 표기를 다시 확인해 주세요.</p>
 </section>
 
 <section>
@@ -252,10 +401,173 @@ footer{font-size:13.5px;color:var(--ink2);line-height:1.6;border-top:1px solid v
 
 <section>
   <h2>고칠 곳이 있으면</h2>
-  <p class="ask" style="margin-top:0">카톡으로 알려주시면 고쳐서 이 페이지에 다시 올려 드립니다(디자인 수정 1회 포함). 파일은 여기서 바로 받으실 수 있고, 실제 인쇄·설치는 별도입니다.</p>
+  <p class="ask" style="margin-top:0">바꿀 내용이 있으면 카톡으로 알려주세요. 확인된 새 판만 이 페이지의 현재 자료로 올립니다. 이전 보기본은 인쇄에 쓰지 마세요.</p>
 </section>
 
-<footer>제철담은 마포바다 × HAM MEDIA · 이 페이지는 계속 열려 있습니다. 새로 나오는 자료도 여기에 더해집니다.</footer>
+<dialog class="detail-dialog" id="detailDialog" aria-labelledby="dialogTitle">
+  <div class="dialog-card">
+    <button class="dialog-close" type="button" aria-label="상세 닫기" data-close-dialog>×</button>
+    <p class="eyebrow" id="dialogKicker">상세 보기</p>
+    <h2 id="dialogTitle">상세</h2>
+    <div id="dialogBody"></div>
+  </div>
+</dialog>
+
+<footer>제철담은 마포바다 × HAM MEDIA · 확인된 결과와 자료를 이 주소에서 볼 수 있습니다.</footer>
 </main>
+<script>
+(() => {
+  const dialog = document.getElementById("detailDialog");
+  const dialogTitle = document.getElementById("dialogTitle");
+  const dialogKicker = document.getElementById("dialogKicker");
+  const dialogBody = document.getElementById("dialogBody");
+  const summary = document.getElementById("weekSummary");
+  document.querySelectorAll("main > section:not(.dashboard-overview)").forEach((section) => {
+    const shelf = document.createElement("details");
+    shelf.className = "shelf";
+    if (section.id) {
+      shelf.id = section.id;
+      section.removeAttribute("id");
+    }
+    const label = document.createElement("summary");
+    label.textContent = section.querySelector("h2")?.textContent.trim() || "자세히 보기";
+    section.before(shelf);
+    shelf.append(label, section);
+  });
+  document.querySelectorAll('a[href^="#"]').forEach((link) => {
+    link.addEventListener("click", () => {
+      const target = document.getElementById(link.hash.slice(1));
+      if (target?.matches("details.shelf")) target.open = true;
+    });
+  });
+  if (location.hash) {
+    const target = document.getElementById(location.hash.slice(1));
+    if (target?.matches("details.shelf")) target.open = true;
+  }
+  const rows = [...document.querySelectorAll("#reviewTable tr")].slice(1).map((row) => {
+    const cells = [...row.querySelectorAll("td")];
+    const match = cells[0]?.textContent.trim().match(/^(\d{1,2})\/(\d{1,2})/);
+    if (!match || cells.length < 4) return null;
+    const date = new Date(2026, Number(match[1]) - 1, Number(match[2]));
+    return {
+      date,
+      label: cells[0].textContent.trim(),
+      type: cells[1].textContent.trim(),
+      summary: cells[2].textContent.trim(),
+      url: cells[3].querySelector("a")?.href || ""
+    };
+  }).filter(Boolean);
+
+  const weeks = new Map();
+  const shortDate = (date) => (date.getMonth() + 1) + "/" + date.getDate();
+  rows.forEach((item) => {
+    const start = new Date(item.date);
+    start.setDate(item.date.getDate() - (item.date.getDay() + 6) % 7);
+    const index = start.getTime();
+    if (!weeks.has(index)) {
+      const end = new Date(start);
+      end.setDate(start.getDate() + 6);
+      weeks.set(index, {index, start, end, items: []});
+    }
+    weeks.get(index).items.push(item);
+  });
+  const weekList = [...weeks.values()].sort((a, b) => a.index - b.index);
+
+  const escapeHTML = (value) => String(value).replace(/[&<>"']/g, (char) => ({
+    "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+  }[char]));
+
+  weekList.forEach((week) => {
+    const card = document.createElement("article");
+    card.className = "week-card";
+    card.innerHTML = "<span class='week-label'>" + shortDate(week.start) + "–" + shortDate(week.end) + "</span>" +
+      "<strong>" + week.items.length + "건</strong>" +
+      "<small>외부 네이버 후기 · 직접 확인 기록</small>" +
+      "<button type='button' data-week-index='" + week.index + "'>이 주의 글 보기 →</button>";
+    summary.appendChild(card);
+  });
+
+  const openDialog = (kicker, title, html) => {
+    dialogKicker.textContent = kicker;
+    dialogTitle.textContent = title;
+    dialogBody.innerHTML = html;
+    if (!dialog.open && typeof dialog.showModal === "function") dialog.showModal();
+    else dialog.setAttribute("open", "");
+  };
+  const closeDialog = () => {
+    if (typeof dialog.close === "function") dialog.close();
+    else dialog.removeAttribute("open");
+  };
+  const weekHTML = (week) => {
+    const links = week.items.map((item) =>
+      "<a class='dialog-link' href='" + escapeHTML(item.url) + "' target='_blank' rel='noopener'>" +
+      "<b>" + escapeHTML(item.label) + " · " + escapeHTML(item.type) + "</b><br>" +
+      escapeHTML(item.summary) + " <span aria-hidden='true'>↗</span></a>"
+    ).join("");
+    return "<p>" + shortDate(week.start) + "–" + shortDate(week.end) + "에 확인한 외부 후기 <b>" +
+      week.items.length + "건</b>입니다.</p><button class='dialog-back' type='button' data-dialog-all>← 전체 주차</button><div class='dialog-links'>" + links + "</div>";
+  };
+  const openReviews = (index) => {
+    const target = index === undefined ? null : weekList.find((week) => week.index === Number(index));
+    if (target) {
+      openDialog("외부 네이버 블로그 후기", shortDate(target.start) + "–" + shortDate(target.end), weekHTML(target));
+      return;
+    }
+    const cards = weekList.map((week) =>
+      "<button class='dialog-link' type='button' data-dialog-week='" + week.index + "'><b>" + shortDate(week.start) + "–" + shortDate(week.end) + " · " +
+      week.items.length + "건</b><br>원문 목록 보기 →</button>"
+    ).join("");
+    openDialog("외부 네이버 블로그 후기", "주차별 흐름 " + rows.length + "건",
+      "<p>9/13까지 저희가 직접 찾아 확인한 외부 후기 " + rows.length + "건입니다. 플랫폼 전체 통계가 아니라 발견·확인된 기록입니다. 주차를 누르면 해당 글의 원문 링크가 나옵니다.</p>" +
+      "<div class='dialog-links'>" + cards + "</div><div class='dialog-note'>9/14 이후 외부 후기는 아직 재집계하지 않았습니다. 공식 블로그 새 글과는 별도입니다.</div>");
+  };
+
+  const dialogContent = {
+    blog: {
+      kicker: "공식 네이버 블로그",
+      title: "새 글 2건 · 기존 글은 보존",
+      html: "<p>김재민 대표님 블로그 <b>ds1bmy</b>에 추석 안내와 1주차 찾아오는 길 글을 공개했습니다. 앞으로는 실제 원본이 생긴 주에만 새 글을 하나씩 더합니다.</p>" +
+        "<div class='dialog-links'><a class='dialog-link' href='https://blog.naver.com/ds1bmy/224421062278' target='_blank' rel='noopener'>추석 연휴 영업 안내 글 열기 ↗</a>" +
+        "<a class='dialog-link' href='https://blog.naver.com/ds1bmy/224421165524' target='_blank' rel='noopener'>대흥역 3번 출구에서 찾아오는 길 ↗</a></div>" +
+        "<div class='dialog-note'>주 1회 × 4주는 시험 운영안이며, 새 글은 확인된 자료가 있을 때 게시합니다. 기존 글은 삭제하거나 합치지 않았습니다.</div>"
+    },
+    daangn: {
+      kicker: "당근 비즈프로필",
+      title: "단골 8명 · 추석 소식 반영",
+      html: "<p>9/24 실제 화면에서 <b>대흥동 · 단골 8</b>과 새 추석 연휴 소식을 확인했습니다. 단골 수와 소식 조회·반응은 서로 다른 지표라 하나로 합치지 않습니다.</p>" +
+        "<div class='dialog-links'><a class='dialog-link' href='https://www.daangn.com/kr/local-profile/%EC%A0%9C%EC%B2%A0%EB%8B%B4%EC%9D%80%EB%A7%88%ED%8F%AC%EB%B0%94%EB%8B%A4-pokjgwsi1rih/' target='_blank' rel='noopener'>당근 공개 프로필 열기 ↗</a></div>" +
+        "<div class='dialog-note'>알림 도달 수·저장·문의 수는 이 화면에서 확인하지 않았으므로 0으로 추정하지 않고 미확인으로 둡니다.</div>"
+    },
+    google: {
+      kicker: "Google 비즈니스 프로필",
+      title: "리뷰 2건 · 9/24 소식·사진 확인",
+      html: "<p>Google 리뷰는 9/13 확인 기준 2건입니다. 9/24에는 추석 연휴 안내 업데이트가 게시됐고, 음식·매장 사진이 공개 화면에 반영된 것을 확인했습니다.</p>" +
+        "<div class='dialog-note'>조회·전화·길찾기·사이트 클릭 같은 성과 지표는 계정 화면에서 확인된 값만 다음 갱신 때 추가합니다. 확인하지 못한 값은 비워 둡니다.</div>"
+    }
+  };
+
+  document.querySelectorAll("[data-dialog]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const key = button.dataset.dialog;
+      if (key === "reviews") return openReviews();
+      const content = dialogContent[key];
+      if (content) openDialog(content.kicker, content.title, content.html);
+    });
+  });
+  summary.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-week-index]");
+    if (button) openReviews(button.dataset.weekIndex);
+  });
+  dialogBody.addEventListener("click", (event) => {
+    const weekButton = event.target.closest("[data-dialog-week]");
+    if (weekButton) openReviews(weekButton.dataset.dialogWeek);
+    if (event.target.closest("[data-dialog-all]")) openReviews();
+  });
+  document.querySelector("[data-close-dialog]").addEventListener("click", closeDialog);
+  dialog.addEventListener("click", (event) => {
+    if (event.target === dialog) closeDialog();
+  });
+})();
+</script>
 </body>
 </html>
