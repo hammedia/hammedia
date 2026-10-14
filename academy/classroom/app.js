@@ -68,6 +68,44 @@ const course = await fetch("data/course.json", { cache: "no-store" }).then((resp
 });
 const lastOpenLessonIndex = () => course.lessons.reduce((last, lesson, index) => lesson.locked ? last : index, 0);
 
+// 강별 확인 기준(문구·순서·개수)의 식별값. courseVersion이 같아도 확인표가 바뀌면 달라진다.
+const criteriaId = (lesson) => JSON.stringify(lesson.correctionCriteria);
+
+// 같은 courseVersion(2026.09.03-v1) 안에서 확인표 문구가 바뀐 적이 있는 강.
+// 기준 이력(최초 a423707 → 보완 7e6875c, criteria-history.json) 대조 결과이며,
+// 저장에 기준 식별값이 없는 옛 기록을 이행할 때만 이 근거를 쓴다. lesson-1 외 강은 제공된 세 판본에서 같은 확인표다. 과거 모든 판본의 동일성을 보증하는 것은 아니다.
+const CRITERIA_ONCE_REWRITTEN = new Set(["lesson-1"]);
+
+// 옛 체크를 현재 확인 기준에 맞춘다. 작성 내용(첫 답·고칠 이유 메모·다시 쓴 결과)은 어떤 경우에도 지킨다.
+const alignCriteriaState = (lesson, work, savedWork) => {
+  const currentId = criteriaId(lesson);
+  const savedId = typeof savedWork.criteriaId === "string" ? savedWork.criteriaId : null;
+  const validChecks = Array.isArray(work.checks)
+    && work.checks.length === lesson.correctionCriteria.length
+    && work.checks.every((value) => typeof value === "boolean");
+  // ① 저장이 현재 기준을 가리키면: 같은 기준에서 체크한 것이므로 체크·완료를 그대로 믿는다(길이가 깨진 저장만 체크를 바로잡는다).
+  if (savedId === currentId) {
+    if (!validChecks) {
+      work.checks = lesson.correctionCriteria.map(() => false);
+      work.completed = false;
+      work.verifiedAt = null;
+    }
+    work.criteriaId = currentId;
+    return;
+  }
+  // ② 식별값 없는 옛 저장이고 기준 이력상 이 강의 확인표가 한 번도 바뀌지 않았으면: 어느 판본에서 저장했어도 같은 기준이므로 체크·완료를 지킨다.
+  if (savedId === null && !CRITERIA_ONCE_REWRITTEN.has(lesson.id) && validChecks) {
+    work.criteriaId = currentId;
+    return;
+  }
+  // ③ 그 외(기준이 바뀌었거나, 바뀐 적이 있는 강의 식별값 없는 저장이라 어느 문구 기준인지 알 방법이 없으면):
+  //    확인 상태만 새 기준으로 다시 쓰게 한다. 체크를 지우고 완료·verifiedAt도 새로 남기게 한다.
+  work.checks = lesson.correctionCriteria.map(() => false);
+  work.completed = false;
+  work.verifiedAt = null;
+  work.criteriaId = currentId;
+};
+
 const freshState = () => ({
   courseVersion: course.courseVersion,
   artifactId: globalThis.crypto?.randomUUID?.() ?? `artifact-${Date.now()}`,
@@ -79,7 +117,8 @@ const freshState = () => ({
     retry: "",
     checks: lesson.correctionCriteria.map(() => false),
     completed: false,
-    verifiedAt: null
+    verifiedAt: null,
+    criteriaId: criteriaId(lesson)
   }]))
 });
 
@@ -89,10 +128,10 @@ const loadState = () => {
     if (!saved || saved.courseVersion !== course.courseVersion || !saved.artifactId) return freshState();
     const baseline = freshState();
     for (const lesson of course.lessons) {
-      baseline.lessons[lesson.id] = { ...baseline.lessons[lesson.id], ...(saved.lessons?.[lesson.id] ?? {}) };
-      if (!Array.isArray(baseline.lessons[lesson.id].checks) || baseline.lessons[lesson.id].checks.length !== lesson.correctionCriteria.length) {
-        baseline.lessons[lesson.id].checks = lesson.correctionCriteria.map(() => false);
-      }
+      const savedWork = saved.lessons?.[lesson.id] ?? {};
+      const work = { ...baseline.lessons[lesson.id], ...savedWork };
+      alignCriteriaState(lesson, work, savedWork);
+      baseline.lessons[lesson.id] = work;
     }
     baseline.artifactId = saved.artifactId;
     baseline.currentLesson = Math.min(Math.max(Number(saved.currentLesson) || 0, 0), lastOpenLessonIndex());

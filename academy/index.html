@@ -15,7 +15,6 @@
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="classroom/assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css?v=20261003case">
-  <script defer src="event-banner.js"></script>
 
   <script src="/assets/js/privacy-consent.js" data-measurement-id="G-TEBKMGWPQS"></script>
 </head>
@@ -32,12 +31,6 @@
       <strong>1·2강 무료 공개 · 3~7강 준비 중</strong>
     </div>
   </header>
-
-  <aside class="academy-event-banner wrap" data-academy-event-banner hidden aria-label="10월 3일 행사 안내">
-    <span>10월 3일(토) · AI MONEY GAME</span>
-    <strong>햄PD 콘텐츠 운영 사례 · 13:40~14:05</strong>
-    <a href="https://ai-money-game.vercel.app/" target="_blank" rel="noopener noreferrer">행사 안내와 신청 보기</a>
-  </aside>
 
   <main id="main">
     <section class="hero wrap" aria-labelledby="hero-title">
@@ -67,33 +60,45 @@
       </aside>
     </section>
 
+    <section class="video-section wrap" id="intro-video" aria-labelledby="video-title">
+      <div class="video-copy">
+        <p class="eyebrow">먼저 영상으로</p>
+        <h2 id="video-title">AI 공부, 왜 몇 달 뒤 포기하게 될까?</h2>
+        <p>HAM MEDIA 유튜브 「99일째」 영상입니다. 재생 버튼을 누르기 전에는 유튜브로 어떤 정보도 보내지 않습니다.</p>
+        <a class="text-action" href="https://youtu.be/kRYh9u0HOok" target="_blank" rel="noopener noreferrer">유튜브에서 보기 →</a>
+      </div>
+      <div class="video-frame" data-youtube-id="kRYh9u0HOok" data-youtube-title="AI 공부, 왜 몇 달 뒤 포기하게 될까? | 99일째">
+        <button class="video-play" type="button"><span aria-hidden="true">▶</span> 영상 재생하기<small>AI 공부, 왜 몇 달 뒤 포기하게 될까? · 99일째</small></button>
+      </div>
+    </section>
+
     <section class="scene-section" id="real-scene" aria-labelledby="scene-title">
       <div class="wrap scene-heading">
         <p class="eyebrow">실제로 이렇게 배웁니다</p>
-        <h2 id="scene-title">햄PD가 AI 동료와 만든 방식을 <br>내 결과로 반복합니다.</h2>
-        <p>버튼을 누르면 홈페이지·포트폴리오·앱 작업 기록에서 반복 확인한 제작 순서를 볼 수 있습니다. 공개할 햄PD 실제 대화 원문은 아직 정하지 않아, 아래 문장은 작업 기록을 바탕으로 재구성했습니다.</p>
+        <h2 id="scene-title">햄PD가 AI에게 한 실제 말에서 수업이 시작됐습니다.</h2>
+        <p>이 수업을 다시 만들 때 실제로 오간 장면입니다. 요청, 부족했던 첫 결과, 햄PD가 짚은 말, 바뀐 결과 순서로 눌러 보세요. 당시 AI가 쓴 첫 답의 원문은 남아 있지 않아, 그때 나온 결과물로 보여 드립니다.</p>
       </div>
 
       <div class="conversation-stage wrap" data-dialogue-stage>
-        <ol class="stage-tabs" aria-label="대화 진행 단계">
-          <li><button type="button" data-step-button="0" aria-current="step"><span>1</span>내 일 설명</button></li>
-          <li><button type="button" data-step-button="1"><span>2</span>첫 결과</button></li>
-          <li><button type="button" data-step-button="2"><span>3</span>사람의 수정</button></li>
-          <li><button type="button" data-step-button="3"><span>4</span>실제 결과</button></li>
+        <ol class="stage-tabs" aria-label="실제 장면 진행 단계">
+          <li><button type="button" data-step-button="0" aria-current="step"><span>1</span>요청</button></li>
+          <li><button type="button" data-step-button="1"><span>2</span>부족했던 첫 결과</button></li>
+          <li><button type="button" data-step-button="2"><span>3</span>짚은 말</button></li>
+          <li><button type="button" data-step-button="3"><span>4</span>바뀐 결과</button></li>
         </ol>
 
         <div class="stage-canvas" aria-live="polite">
           <div class="speaker-card">
-            <span class="speaker" data-dialogue-speaker>햄PD 작업 방식 · 기록 재구성</span>
-            <p class="dialogue-line" data-dialogue-quote>목적과 원본을 자기 말로 설명합니다</p>
-            <small class="dialogue-source" data-dialogue-source>홈페이지·포트폴리오·앱 작업 기록에서 반복 확인한 방식입니다. 햄PD의 실제 대화 원문은 아닙니다.</small>
+            <span class="speaker" data-dialogue-speaker>1 · 요청 — 햄PD가 실제로 한 말</span>
+            <p class="dialogue-line" data-dialogue-quote>「내가 너네에게 했던 말들이 강의에 쓰이면 될꺼 같아」</p>
+            <small class="dialogue-source" data-dialogue-source>계속 내놓지 못한 강의의 원인을 찾다가, 자기가 실제로 결과를 만든 방법을 강의의 중심에 두자고 한 말입니다.</small>
           </div>
           <div class="work-sheet">
-            <p class="sheet-kicker" data-dialogue-kicker>기능 설명보다 하려는 일과 원본</p>
-            <h3 data-dialogue-title>“누가, 어디서, 왜 멈췄는지”를 먼저 말합니다.</h3>
-            <p data-dialogue-body>햄PD는 코딩 문법을 외우지 않고 경험·사진·글·기존 파일을 AI 동료에게 건넨습니다.</p>
+            <p class="sheet-kicker" data-dialogue-kicker>이 수업을 다시 만들 때 오간 실제 장면</p>
+            <h3 data-dialogue-title>코딩 문법이 아니라, 하려는 일을 자기 말로 합니다.</h3>
+            <p data-dialogue-body>햄PD는 코딩을 배운 뒤 결과를 만든 사람이 아닙니다. 오래 해온 일을 자기 말로 설명했고, AI의 결과가 생각과 다를 때마다 다시 말했습니다.</p>
             <div class="sheet-progress" aria-hidden="true"><span data-progress-bar></span></div>
-            <button class="next-step" type="button" data-next-step>첫 결과 보기 <span aria-hidden="true">→</span></button>
+            <button class="next-step" type="button" data-next-step>부족했던 첫 결과 보기 <span aria-hidden="true">→</span></button>
           </div>
         </div>
       </div>
@@ -105,10 +110,14 @@
           <p class="eyebrow">말이 아니라 확인 가능한 것</p>
           <h2 id="evidence-title">HAM MEDIA가 이미 만든 결과에서 배웁니다.</h2>
         </div>
-        <p>모두 실제 공개 결과이거나 회사 작업 기록입니다. 견본 이미지를 꾸며 만든 가짜 화면이 아닙니다.</p>
+        <p>모두 실제 공개 결과이거나 회사 작업 기록입니다. 가장 먼저 보이는 마포바다는 HAM MEDIA가 만들어 운영하는 실제 고객 홈페이지입니다. 견본 이미지를 꾸며 만든 가짜 화면이 아닙니다.</p>
       </div>
 
-      <div class="evidence-rail" aria-label="실제 결과 여섯 가지">
+      <div class="evidence-rail" aria-label="실제 결과 일곱 가지">
+        <a class="evidence-card evidence-card-wide" href="../services/#web-mapobada">
+          <img height="960" width="1280" src="../services/assets/mapobada-desktop-20261012.jpg" alt="마포바다 실제 공개 홈페이지의 PC 화면. 매장 영상과 제철 한 상 소개, 메뉴·전화·길찾기 입구" loading="lazy" decoding="async">
+          <span>실제 고객 작업</span><strong>마포바다 홈페이지 — 메뉴를 보고 찾아오는 길까지</strong><small>소개·메뉴·사진·영상·오시는 길을 한 페이지에 · 만든 범위 보기</small>
+        </a>
         <a class="evidence-card evidence-card-wide" href="https://hammedia.co.kr/ham-media-archive/pages/spaces.html" target="_blank" rel="noopener noreferrer">
           <img height="844" width="390" src="assets/result-space.webp" alt="공간별 공개 페이지의 실제 모바일 화면" loading="lazy" decoding="async">
           <span>홈페이지</span><strong>한 공간의 경험을 이야기와 증거로</strong><small>실제 페이지 열기</small>

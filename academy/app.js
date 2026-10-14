@@ -1,39 +1,39 @@
 (() => {
   const steps = [
     {
-      speaker: '햄PD 작업 방식 · 기록 재구성',
-      quote: '목적과 원본을 자기 말로 설명합니다',
-      source: '홈페이지·포트폴리오·앱 작업 기록에서 반복 확인한 방식입니다. 햄PD의 실제 대화 원문은 아닙니다.',
-      kicker: '기능 설명보다 하려는 일과 원본',
-      title: '“누가, 어디서, 왜 멈췄는지”를 먼저 말합니다.',
-      body: '햄PD는 코딩 문법을 외우지 않고 경험·사진·글·기존 파일을 AI 동료에게 건넨습니다.',
-      action: '첫 결과 보기'
+      speaker: '1 · 요청 — 햄PD가 실제로 한 말',
+      quote: '「내가 너네에게 했던 말들이 강의에 쓰이면 될꺼 같아」',
+      source: '계속 내놓지 못한 강의의 원인을 찾다가, 자기가 실제로 결과를 만든 방법을 강의의 중심에 두자고 한 말입니다.',
+      kicker: '이 수업을 다시 만들 때 오간 실제 장면',
+      title: '코딩 문법이 아니라, 하려는 일을 자기 말로 합니다.',
+      body: '햄PD는 코딩을 배운 뒤 결과를 만든 사람이 아닙니다. 오래 해온 일을 자기 말로 설명했고, AI의 결과가 생각과 다를 때마다 다시 말했습니다.',
+      action: '부족했던 첫 결과 보기'
     },
     {
-      speaker: 'AI의 첫 결과 · 기록 재구성',
-      quote: '그럴듯하지만 햄PD가 말하지 않은 내용이 섞입니다',
-      source: '실제 작업에서 반복된 실패 유형을 재구성했습니다. 특정 한 대화의 원문은 아닙니다.',
-      kicker: '첫 결과를 지우지 않고 비교본으로 남깁니다',
-      title: '처음 나온 결과를 숨기지 않고 함께 봅니다.',
-      body: '그럴듯한 말, 빠진 증거, 반복되는 버튼처럼 실제 사용을 막는 지점을 눈으로 찾습니다.',
-      action: '사람이 고치기'
+      speaker: '2 · AI와 만든 첫 결과',
+      quote: '7강 × 6장면, 모두 42장면이었습니다. 자동 검사도 통과했습니다.',
+      source: '당시 AI가 쓴 첫 답의 원문은 남아 있지 않아, 그때 나온 결과물로 보여 드립니다.',
+      kicker: '통과했지만 부족했던 첫 결과',
+      title: '카드·도구·화면이 앞에 서고, 수강생이 가져갈 내 결과물 하나가 없었습니다.',
+      body: '햄PD가 실제로 결과를 만든 대화와 판단보다 카드·도구·화면이 앞에 섰습니다. 이 첫 결과를 숨기지 않고 비교본으로 남깁니다.',
+      action: '햄PD가 짚은 말 보기'
     },
     {
-      speaker: '햄PD의 교정 · 기록 재구성',
-      quote: '처음 요청·실제 사실·쓸 사람을 기준으로 다시 고칩니다',
-      source: '햄PD가 AI 결과의 부풀림·빠짐·잘못된 방향을 되돌린 작업 기록을 요약했습니다.',
-      kicker: '현장 경험과 사용할 사람이 수정 기준입니다',
-      title: '더 멋있는 말보다 사실인지, 상대가 쓸 수 있는지를 보고 다시 만듭니다.',
-      body: '햄PD가 기준과 고칠 이유를 말하면 AI 동료가 같은 결과를 다시 만듭니다. 햄PD는 실제 화면을 열어 확인합니다.',
-      action: '실제 결과 보기'
+      speaker: '3 · 햄PD가 짚은 말',
+      quote: '「내 생각을 설명한다 → AI와 같이 만든다 → 내가 판단한다 → 실제 결과물이 나온다.」',
+      source: '햄PD가 쓴 글의 마지막 줄입니다. 앞에서 「프롬프트 잘 쓰기」「AI 기능 많이 알기」「코딩 배우기」를 각각 X로 지웠습니다.',
+      kicker: '무엇을 가르칠지의 기준을 바꾼 말',
+      title: 'AI 기능이 아니라, 내 생각을 설명하고 내가 판단하는 순서를 가르칩니다.',
+      body: '기준이 바뀌자 수업의 중심이 카드·도구에서 수강생 자신의 결과로 옮겨 갔습니다.',
+      action: '바뀐 결과 보기'
     },
     {
-      speaker: '실제 결과 · 공개 화면',
-      quote: '홈페이지·포트폴리오·앱을 직접 열어 결과를 확인합니다',
-      source: '아래 결과 여섯 개의 공개 화면과 회사 작업 기록을 근거로 했습니다.',
-      kicker: '화면이 보인다고 끝이 아닙니다',
-      title: '처음 보는 사람이 무엇인지 알고 다음 행동을 하는지 봅니다.',
-      body: '사람이 멈춘 곳과 틀리게 이해한 말을 기록해 다시 고치고, 결과·확인 증거·다음 행동을 함께 남깁니다.',
+      speaker: '4 · 바뀐 결과',
+      quote: '사람마다 내용은 달라도, 한 페이지 결과물 하나를 끝냅니다.',
+      source: '지금 보고 계신 수업 구조가 그 결과입니다. 1강에서 같은 순서를 직접 해볼 수 있습니다.',
+      kicker: '내 경험 → 결과 약속 → 첫 결과 → 전문가의 눈으로 고치기 → 실제로 만들기 → 확인 → 이어가기',
+      title: '그 순서가 일곱 시간이 됐습니다.',
+      body: '첫 시도를 지우지 않고, 질문과 교정을 거쳐 같은 일을 다시 해보면서 처음 답과 달라진 곳을 직접 확인합니다.',
       action: '처음부터 다시 보기'
     }
   ];
@@ -96,4 +96,18 @@
     }, { threshold: 0.12 });
     revealTargets.forEach((target) => observer.observe(target));
   }
+  document.querySelectorAll('[data-youtube-id]').forEach((frame) => {
+    const button = frame.querySelector('.video-play');
+    if (!button) return;
+    button.addEventListener('click', () => {
+      const iframe = document.createElement('iframe');
+      iframe.src = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(frame.dataset.youtubeId)}?autoplay=1&rel=0`;
+      iframe.title = frame.dataset.youtubeTitle || '영상';
+      iframe.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+      iframe.allowFullscreen = true;
+      iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+      frame.replaceChildren(iframe);
+      iframe.focus();
+    });
+  });
 })();
