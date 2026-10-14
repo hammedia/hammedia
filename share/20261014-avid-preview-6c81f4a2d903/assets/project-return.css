@@ -1,0 +1,1 @@
+.company-return{padding:12px max(20px,calc((100vw - 1280px)/2));font-size:1rem;line-height:1.7;border-bottom:1px solid var(--line)}.company-return a{display:inline-flex;align-items:center;min-height:44px;color:inherit;text-underline-offset:4px}.company-return a:focus-visible{outline:3px solid #d6aa78;outline-offset:4px}
