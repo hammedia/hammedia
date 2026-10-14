@@ -1,3 +1,50 @@
+// The first scene enhances already-visible HTML; slow/failed media never hides copy.
+(() => {
+  const scene = document.querySelector(".constellation-entry");
+  const photo = scene?.querySelector(".home-first-photo img");
+  if (!scene || !photo) return;
+  const preference = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const navigation = performance.getEntriesByType("navigation")[0];
+  const lateArrival = performance.now() - (navigation?.responseEnd || 0) > 1500;
+  if (preference.matches || lateArrival || document.hidden) return;
+
+  let finished = false;
+  let timer;
+  const finish = () => {
+    finished = true;
+    scene.classList.remove("home-arrival-playing");
+    clearTimeout(timer);
+    photo.removeEventListener("load", start);
+    photo.removeEventListener("error", finish);
+    scene.removeEventListener("pointerdown", finish);
+    scene.removeEventListener("focusin", finish);
+    window.removeEventListener("pagehide", finish);
+    document.removeEventListener("visibilitychange", onVisibility);
+    preference.removeEventListener("change", finish);
+  };
+  const onVisibility = () => { if (document.hidden) finish(); };
+  const start = () => {
+    if (finished || preference.matches || document.hidden) return;
+    scene.classList.add("home-arrival-playing");
+    // CSS ends at 1120ms; clean up so resizing/back navigation cannot replay it.
+    clearTimeout(timer);
+    timer = setTimeout(finish, 1200);
+  };
+  scene.addEventListener("pointerdown", finish, { once: true });
+  scene.addEventListener("focusin", finish, { once: true });
+  window.addEventListener("pagehide", finish, { once: true });
+  document.addEventListener("visibilitychange", onVisibility);
+  preference.addEventListener("change", finish, { once: true });
+  if (photo.complete) {
+    if (photo.naturalWidth > 0) start(); else finish();
+  } else {
+    // Give the photo at most 900ms; on a slow connection all text stays static.
+    photo.addEventListener("load", start, { once: true });
+    photo.addEventListener("error", finish, { once: true });
+    timer = setTimeout(finish, 900);
+  }
+})();
+
 const navToggle = document.querySelector(".nav-toggle");
 const siteNav = document.querySelector("#site-nav");
 

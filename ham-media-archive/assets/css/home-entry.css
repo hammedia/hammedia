@@ -218,8 +218,6 @@ html[lang="ja"] .colleague-profiles p { word-break:normal; overflow-wrap:anywher
 .home-first-help a:hover { color:#fff8e9; }
 .home-first-look a:active { transform:translateY(1px); }
 .home-first-story > a:focus-visible { outline:3px solid #7eb5e8; outline-offset:5px; }
-.home-first-look { animation:home-entrance 550ms ease-out both; }
-@keyframes home-entrance { from { opacity:.4; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
 @media(max-width:960px) { .home-first-look { grid-template-columns:minmax(0,1fr); max-width:46rem; }.home-first-help { display:grid; grid-template-columns:1fr 1fr; gap:0 1.8rem; }.home-first-help > .home-entry-label { grid-column:1/-1; }.home-first-help article + article { margin:0; padding:0 0 0 1.8rem; border-top:0; border-left:1px solid #ffffff30; } }
 @media(max-width:620px) {
  .home-first-look { margin:1.4rem auto 1.5rem; gap:1.4rem; }
@@ -251,3 +249,28 @@ html[lang="ja"] .constellation-home :is(.constellation-guide,.constellation-brid
 
 .constellation-home .constellation-intro { gap:0; }
 .home-explore-actions { margin:0 1.25rem 1.5rem; justify-content:center; }
+
+/* Photo → story → useful help: one arrival scene, never a content gate.
+ * Effect: photo depth settles; target: approved travel photo, then copy/help.
+ * Time: photo 1000ms; copy 420ms, 140ms stagger; all settled by 1120ms.
+ * Strength: photo scale 1.045 / 1% vertical drift; text 6px / opacity .65.
+ * Fixed: header, language links, photo frame, grid, borders and touch targets.
+ */
+.home-first-photo { display:block; min-width:0; overflow:hidden; height:100%; }
+.home-first-photo img { transform-origin:50% 55%; }
+@media(max-width:620px) { .home-first-photo { height:8rem; } }
+@media(prefers-reduced-motion:no-preference) {
+ .home-arrival-playing .home-first-photo img { animation:home-photo-settle 1000ms cubic-bezier(.2,.7,.2,1) both; }
+ .home-arrival-playing :where(#constellation-title,.constellation-guide,.home-first-story-copy,.home-first-help > .home-entry-label,.home-first-help article) { animation:home-story-arrive 420ms cubic-bezier(.2,.7,.2,1) both; }
+ .home-arrival-playing #constellation-title { animation-delay:140ms; }
+ .home-arrival-playing .constellation-guide { animation-delay:280ms; }
+ .home-arrival-playing .home-first-story-copy { animation-delay:420ms; }
+ .home-arrival-playing .home-first-help > .home-entry-label,
+ .home-arrival-playing .home-first-help article:first-of-type { animation-delay:560ms; }
+ .home-arrival-playing .home-first-help article:nth-of-type(2) { animation-delay:700ms; }
+}
+@keyframes home-photo-settle { from { transform:scale(1.045) translateY(1%); } to { transform:scale(1) translateY(0); } }
+@keyframes home-story-arrive { from { opacity:.65; transform:translateY(6px); } to { opacity:1; transform:translateY(0); } }
+
+/* Keep the existing consent choice visible above the decorative canvases. */
+.home-body #ham-analytics-consent { z-index:999; }
