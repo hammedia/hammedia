@@ -1,7 +1,7 @@
 const stage=document.querySelector('.stage');
 const state={module:'sound',target:'room',treated:false,check:'structure',material:'wood',zoom:1,vent:'off',layout:'after',spaceCheck:'access'};
 let playback=null,liveContext=null,liveGain=null,playRequest=0;
-const materialPhotos={wood:['assets/media/avid_img_hero_01_1280.webp','실제 AV룸 AV룸의 루버 벽과 천장 연결. 바닥·창호·조명 자재는 별도 공정입니다.'],fabric:['assets/media/avid_img_sinchon_detail_03_1280.webp','실제 AV룸 전실의 패브릭 천장과 문틀·환기구 주변 연결. 환기 설비는 별도 공정입니다.']};
+const materialPhotos={wood:['assets/media/avid_img_hero_01_1280.webp','실제 AV룸의 루버 벽과 천장 연결. 바닥·창호·조명 자재는 별도 공정입니다.'],fabric:['assets/media/avid_img_sinchon_detail_03_1280.webp','실제 AV룸 전실의 패브릭 천장과 문틀·환기구 주변 연결. 환기 설비는 별도 공정입니다.']};
 const checkText={finish:'표면의 느낌과 울림을 살피되, 마감 이름 하나로 다른 공간에 전달되는 소리를 판단하지 않습니다.',structure:'벽만이 아니라 바닥과 천장에 이어진 구조를 함께 살펴봅니다. 이 그림의 층과 간격은 실제 시공 사양이 아닙니다.',door:'문짝의 성능뿐 아니라 문틀·하부·틈과 문 사이 공간을 함께 확인합니다. 틈이 없다고 모든 전달이 사라지는 것은 아닙니다.',services:'천장 위와 덕트·배선이 지나는 곳처럼 돌아가는 전달 경로도 확인합니다. 단면에 보이지 않는 연결은 현장 자료가 필요합니다.'};
 const checksByModule={sound:['불편한 소리가 실내 반사인지, 다른 공간으로의 전달인지','문과 창의 틈, 바닥·천장·벽 연결과 설비 관통부','선택한 마감 뒤의 구조, 시공 범위와 다른 업체 연결','설치 뒤 실제 공간에서 확인할 소리와 사용감'],material:['표면의 이음, 문틀·모서리와 천장 연결 디테일','빛에 따라 보이는 색과 결, 실제 샘플의 촉감','마감 뒤의 구조와 설비 점검·유지관리 접근','계약 범위와 실제 현장의 마감 기록 대조'],air:['공기가 들어오는 곳과 나가는 곳, 소파에서 느끼는 바람','토출구와 덕트의 위치, 설비 소음과 방음 구조의 연결','외기 유입에 따른 온도 변화와 유지관리','풍량·온도·소음을 현장 조건과 실제 측정으로 확인'],space:['가구에 다가가 앉고 일어나는 동선과 실제 치수','문 여닫힘, 창·설비·가구 사이 간섭','바닥 단차와 낮아지는 천장, 기기 배선 위치','쓸 사람의 행동과 현장·도면을 함께 대조']};
 const reduceMotion=matchMedia('(prefers-reduced-motion: reduce)');
