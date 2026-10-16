@@ -4,8 +4,14 @@ set -u
 repo_root="$(git rev-parse --show-toplevel 2>/dev/null || true)"
 hook_dir="$(CDPATH= cd -- "$(dirname "$0")" && pwd)"
 backup_script=""
-cursor="$repo_root"
+# Linked worktrees may live outside AI-Coding; the common Git directory
+# still locates the primary checkout and its neighbouring company tools.
+common_dir="$(git rev-parse --path-format=absolute --git-common-dir 2>/dev/null || true)"
+common_root=""
+[ -z "$common_dir" ] || common_root="$(dirname "$common_dir")"
 
+for search_root in "$repo_root" "$common_root"; do
+cursor="$search_root"
 while [ -n "$cursor" ] && [ "$cursor" != "/" ]; do
   if [ -x "$cursor/scripts/drive_git_bundle/backup.sh" ]; then
     backup_script="$cursor/scripts/drive_git_bundle/backup.sh"
@@ -16,6 +22,8 @@ while [ -n "$cursor" ] && [ "$cursor" != "/" ]; do
     break
   fi
   cursor="$(dirname "$cursor")"
+done
+[ -z "$backup_script" ] || break
 done
 
 if [ -n "$backup_script" ]; then
