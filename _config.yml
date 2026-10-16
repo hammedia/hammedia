@@ -1,0 +1,10 @@
+# Keep repository guidance and maintenance notes out of the Pages build.
+# Do not add .nojekyll: Pages must process these Jekyll exclusions.
+exclude:
+  - AGENTS.md
+  - CLAUDE.md
+  - README.md
+  - MAINTENANCE.md
+  - evidence/20260920_event_portrait_restore/README.md
+  - ham-media-archive/assets/images/README.md
+  - ham-media-archive/assets/images/placeholders/README.md
