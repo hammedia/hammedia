@@ -451,9 +451,9 @@ function renderEditGuidance(input, stageIndex, label) {
     render();
     input.focus({ preventScroll: true });
     input.scrollIntoView({ block: "center", behavior: "instant" });
-    announce(`${stageLabel}로 돌아왔습니다. 앞서 쓴 내용은 그대로이며 ${label}을 수정할 수 있습니다.`);
+    announce(`${stageLabel}로 돌아왔습니다. 앞서 쓴 내용은 그대로이며 ${label}${eul(label)} 수정할 수 있습니다.`);
   });
-  guidance.append(text("p", `${label}은 앞 단계에서 쓴 기록이라 지금은 읽기 전용입니다. 늦게 가져온 AI 답이나 바꿀 내용은 아래에서 해당 단계로 돌아가 수정하세요.`), button);
+  guidance.append(text("p", `${label}${label.endsWith("이유") ? "는" : "은"} 앞 단계에서 쓴 기록이라 지금은 읽기 전용입니다. 늦게 가져온 AI 답이나 바꿀 내용은 아래에서 해당 단계로 돌아가 수정하세요.`), button);
 }
 
 const extraWorkFields = document.createElement("div");
