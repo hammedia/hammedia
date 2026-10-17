@@ -104,6 +104,7 @@ const alignCriteriaState = (lesson, work, savedWork) => {
   work.completed = false;
   work.verifiedAt = null;
   work.criteriaId = currentId;
+  if (lesson.useStageScript && (savedWork.firstAttempt || savedWork.retry || savedWork.completed)) work.recheckRequired = true;
 };
 
 const freshState = () => ({
@@ -226,6 +227,10 @@ function renderStageNavigation() {
 
 function stageCopyNodes(lesson, stageIndex) {
   const fragment = document.createDocumentFragment();
+  if (lesson.useStageScript) {
+    (lesson.stageBlocks?.[lesson.flow[stageIndex].id] ?? []).forEach((block) => fragment.append(stageBlock(block)));
+    return fragment;
+  }
   if (stageIndex === 0) {
     fragment.append(text("p", "읽고 아래 ‘다음’을 누르세요.", "stage-guide"));
     const keep = document.createElement("div");
@@ -268,8 +273,34 @@ function stageCopyNodes(lesson, stageIndex) {
 function stageBlock(block) {
   const section = document.createElement("section");
   section.className = `stage-block stage-block-${block.kind}`;
-  section.append(text("strong", block.label, "stage-block-label"));
-  if (block.kind === "prompt") {
+  if (block.kind === "heading") {
+    section.append(text("h3", block.label, "dialogue-section-title"));
+  } else if (block.label) {
+    section.append(text("strong", block.label, "stage-block-label"));
+  }
+  if (block.kind === "heading") {
+    // The heading is the whole block.
+  } else if (block.kind === "paragraph") {
+    section.append(text("p", block.text));
+  } else if (block.kind === "links") {
+    block.links.forEach((source) => {
+      if (!/^https:\/\//.test(source.href)) return;
+      const link = text("a", source.label, "dialogue-source-link");
+      link.href = source.href;
+      link.target = "_blank";
+      link.rel = "noopener";
+      section.append(link);
+    });
+  } else if (block.kind === "table") {
+    const table = document.createElement("table");
+    block.rows.forEach((row, index) => {
+      const tr = document.createElement("tr");
+      row.forEach((value) => tr.append(text(index === 0 ? "th" : "td", value)));
+      table.append(tr);
+    });
+    section.classList.add("dialogue-table");
+    section.append(table);
+  } else if (block.kind === "prompt") {
     section.append(text("pre", block.text, "stage-block-prompt"));
   } else if (block.kind === "quote") {
     section.append(text("p", block.text, "stage-block-quote"));
@@ -375,6 +406,9 @@ function renderWorkFields() {
   elements.retry.value = work.retry;
   elements.attemptPrompt.textContent = lesson.attemptPrompt;
   elements.retryPrompt.textContent = lesson.retryPrompt;
+  elements.firstField.querySelector("span").textContent = lesson.workLabels?.first ?? "첫 시도";
+  elements.correctionNote.closest("label").querySelector("span").textContent = lesson.workLabels?.correction ?? "고칠 이유 메모";
+  elements.retryField.querySelector("span").textContent = lesson.workLabels?.retry ?? "같은 결과 다시 해보기";
   elements.correctionEyebrow.textContent = lesson.correctionEyebrow ?? "혼자서 먼저 짚는 자리";
   elements.correctionHeading.textContent = lesson.correctionHeading ?? "왜 고칠지 내가 먼저 찾습니다";
   elements.correctionNote.placeholder = lesson.correctionPlaceholder ?? "어떤 문장을 왜 고치는지 적으세요. 고친 뒤에도 이 메모가 내 기준으로 남습니다.";
@@ -392,6 +426,37 @@ function renderWorkFields() {
   elements.correctionNote.readOnly = stageIndex > 3;
   elements.retry.readOnly = stageIndex > 4;
 }
+
+const extraWorkFields = document.createElement("div");
+extraWorkFields.className = "dialogue-work-fields";
+elements.studentWork.querySelector(".work-fields").append(extraWorkFields);
+
+function renderConversationFields() {
+  const fields = currentLesson().conversationFields ?? [];
+  const fragment = document.createDocumentFragment();
+  fields.forEach((field) => {
+    const label = document.createElement("label");
+    label.className = "work-field";
+    label.hidden = state.currentStage < field.stage;
+    const input = document.createElement("textarea");
+    input.rows = 5;
+    input.maxLength = 6000;
+    input.dataset.conversationField = field.id;
+    input.placeholder = field.placeholder;
+    input.value = currentWork()[field.id] ?? "";
+    input.readOnly = state.currentStage > field.stage;
+    input.addEventListener("input", () => {
+      saveInputs();
+      updateCompletionState();
+    });
+    label.append(text("span", field.label), input);
+    fragment.append(label);
+  });
+  extraWorkFields.replaceChildren(fragment);
+  extraWorkFields.hidden = fields.length === 0;
+}
+
+const missingConversationField = (lesson, work) => (lesson.conversationFields ?? []).find((field) => !String(work[field.id] ?? "").trim());
 
 function renderVerification() {
   const lesson = currentLesson();
@@ -424,8 +489,10 @@ function updateCompletionState() {
   const work = currentWork();
   const checksDone = work.checks.every(Boolean);
   const correctionDone = !lesson.requiresCorrectionNote || work.correctionNote.trim().length > 0;
-  const ready = work.retry.trim().length > 0 && checksDone && correctionDone;
-  elements.resultState.textContent = ready ? "저장 가능" : !correctionDone ? "고칠 이유 메모 남음" : work.retry.trim() ? "확인표 남음" : "작성 중";
+  const missing = missingConversationField(lesson, work);
+  const firstDone = !lesson.requiresFirstAttempt || work.firstAttempt.trim().length > 0;
+  const ready = firstDone && work.retry.trim().length > 0 && checksDone && correctionDone && !missing;
+  elements.resultState.textContent = ready ? "저장 가능" : missing ? `${missing.label} 남음` : !correctionDone ? "고칠 이유 메모 남음" : work.retry.trim() ? "확인표 남음" : "작성 중";
 }
 
 function renderArtifact() {
@@ -497,6 +564,7 @@ function renderDock() {
 
 function render() {
   const lesson = currentLesson();
+  document.body.classList.toggle("is-dialogue-lesson", Boolean(lesson.useStageScript));
   const stage = lesson.flow[state.currentStage];
   document.title = `바른생활 ${lesson.number}강 · ${stage.label}`;
   elements.lessonKicker.textContent = `${lesson.number}강 · ${lesson.shortTitle}`;
@@ -505,6 +573,9 @@ function render() {
   elements.stageKicker.textContent = stage.label;
   elements.stageTitle.textContent = stageTitle(lesson, state.currentStage);
   elements.stageCopy.replaceChildren(stageCopyNodes(lesson, state.currentStage));
+  if (currentWork().recheckRequired) {
+    elements.stageCopy.prepend(text("p", "1강이 새 대화 실습으로 바뀌었습니다. 전에 쓴 첫 답·메모·다시 쓴 답은 그대로 두었습니다. 새 확인표만 다시 살펴보세요.", "dialogue-recheck-notice"));
+  }
 
   elements.evidencePanel.hidden = state.currentStage !== 1;
   elements.studentWork.hidden = state.currentStage < 2;
@@ -518,12 +589,14 @@ function render() {
   renderStageNavigation();
   renderEvidence();
   renderWorkFields();
+  renderConversationFields();
   renderVerification();
   renderArtifact();
   renderDock();
 }
 
 function stageTitle(lesson, index) {
+  if (lesson.stageTitles?.[index]) return lesson.stageTitles[index];
   return [
     `많은 분이 ‘${lesson.misbelief.replace(/\.$/, "")}’라고 생각합니다. 오늘은 그렇지 않다는 걸 직접 해 봅니다`,
     "완성된 결과만 보지 않고, 만들어진 과정을 봅니다",
@@ -539,6 +612,9 @@ function saveInputs() {
   work.firstAttempt = elements.firstAttempt.value;
   work.correctionNote = elements.correctionNote.value;
   work.retry = elements.retry.value;
+  extraWorkFields.querySelectorAll("[data-conversation-field]").forEach((input) => {
+    work[input.dataset.conversationField] = input.value;
+  });
   persist();
 }
 
@@ -556,10 +632,22 @@ function moveNext() {
     state.currentStage += 1;
   } else {
     const correctionDone = !lesson.requiresCorrectionNote || work.correctionNote.trim();
-    const ready = work.retry.trim() && work.checks.every(Boolean) && correctionDone;
+    const missing = missingConversationField(lesson, work);
+    const firstDone = !lesson.requiresFirstAttempt || work.firstAttempt.trim();
+    const ready = firstDone && work.retry.trim() && work.checks.every(Boolean) && correctionDone && !missing;
     if (!ready) {
-      announce("고칠 이유 메모, 다시 쓴 결과와 확인표를 먼저 남겨 주세요.");
-      if (!correctionDone) {
+      announce(missing ? `${missing.label}을 먼저 남겨 주세요. 확인하지 못한 것은 미확인이라고 적어도 됩니다.` : "고칠 이유 메모, 다시 쓴 결과와 확인표를 먼저 남겨 주세요.");
+      if (!firstDone) {
+        state.currentStage = 2;
+        persist();
+        render();
+        elements.firstAttempt.focus();
+      } else if (missing) {
+        state.currentStage = missing.stage;
+        persist();
+        render();
+        extraWorkFields.querySelector(`[data-conversation-field="${missing.id}"]`)?.focus();
+      } else if (!correctionDone) {
         state.currentStage = 3;
         persist();
         render();
@@ -575,6 +663,7 @@ function moveNext() {
       return;
     }
     work.completed = true;
+    delete work.recheckRequired;
     work.verifiedAt = new Date().toISOString();
     const nextLesson = course.lessons[state.currentLesson + 1];
     if (nextLesson && !nextLesson.locked) {
