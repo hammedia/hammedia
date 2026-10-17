@@ -425,6 +425,35 @@ function renderWorkFields() {
   elements.firstAttempt.readOnly = stageIndex > 2;
   elements.correctionNote.readOnly = stageIndex > 3;
   elements.retry.readOnly = stageIndex > 4;
+  renderEditGuidance(elements.firstAttempt, 2, "첫 말과 첫 답");
+  renderEditGuidance(elements.correctionNote, 3, "더 말하거나 바로잡은 이유");
+  renderEditGuidance(elements.retry, 4, "다시 받은 답");
+}
+
+function renderEditGuidance(input, stageIndex, label) {
+  const field = input.closest("label");
+  let guidance = field.nextElementSibling;
+  if (!guidance?.classList.contains("dialogue-edit-guidance")) {
+    guidance = document.createElement("div");
+    guidance.className = "dialogue-edit-guidance";
+    field.after(guidance);
+  }
+  guidance.replaceChildren();
+  guidance.hidden = !currentLesson().useStageScript || !input.readOnly;
+  if (guidance.hidden) return;
+  const stageLabel = currentLesson().flow[stageIndex].label;
+  const button = text("button", `${stageLabel}에서 수정`, "dialogue-edit-button");
+  button.type = "button";
+  button.addEventListener("click", () => {
+    saveInputs();
+    state.currentStage = stageIndex;
+    persist();
+    render();
+    input.focus({ preventScroll: true });
+    input.scrollIntoView({ block: "center", behavior: "instant" });
+    announce(`${stageLabel}로 돌아왔습니다. 앞서 쓴 내용은 그대로이며 ${label}을 수정할 수 있습니다.`);
+  });
+  guidance.append(text("p", `${label}은 앞 단계에서 쓴 기록이라 지금은 읽기 전용입니다. 늦게 가져온 AI 답이나 바꿀 내용은 아래에서 해당 단계로 돌아가 수정하세요.`), button);
 }
 
 const extraWorkFields = document.createElement("div");
@@ -451,6 +480,23 @@ function renderConversationFields() {
     });
     label.append(text("span", field.label), input);
     fragment.append(label);
+    if (input.readOnly) {
+      const guidance = document.createElement("div");
+      guidance.className = "dialogue-edit-guidance";
+      const button = text("button", `${currentLesson().flow[field.stage].label}에서 수정`, "dialogue-edit-button");
+      button.type = "button";
+      button.addEventListener("click", () => {
+        saveInputs();
+        state.currentStage = field.stage;
+        persist();
+        render();
+        const editable = extraWorkFields.querySelector(`[data-conversation-field="${field.id}"]`);
+        editable?.focus({ preventScroll: true });
+        editable?.scrollIntoView({ block: "center", behavior: "instant" });
+      });
+      guidance.append(text("p", "앞 단계에서 쓴 기록을 읽는 자리입니다. 내용은 보존되어 있으며 해당 단계에서 수정할 수 있습니다."), button);
+      fragment.append(guidance);
+    }
   });
   extraWorkFields.replaceChildren(fragment);
   extraWorkFields.hidden = fields.length === 0;

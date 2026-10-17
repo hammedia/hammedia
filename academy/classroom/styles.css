@@ -1085,4 +1085,7 @@ button:disabled { cursor: not-allowed; opacity: 0.42; }
 .is-dialogue-lesson .dialogue-work-fields { display: grid; gap: 28px; }
 .is-dialogue-lesson textarea { font-size: 18px; line-height: 1.7; }
 .is-dialogue-lesson .dialogue-recheck-notice { padding: 16px 0; border-block: 1px solid var(--line); color: var(--muted); font-size: 16px; }
+.is-dialogue-lesson .dialogue-edit-guidance { margin: -12px 0 8px; padding: 12px 0; border-bottom: 1px solid var(--line); font-size: 16px; line-height: 1.7; }
+.is-dialogue-lesson .dialogue-edit-guidance p { margin: 0 0 8px; }
+.is-dialogue-lesson .dialogue-edit-button { min-height: 44px; padding: 8px 0; border: 0; background: transparent; color: var(--brand-deep); text-align: left; text-decoration: underline; text-underline-offset: 4px; }
 @media (max-width: 760px) { .is-dialogue-lesson .course-shell { display: block; } }
