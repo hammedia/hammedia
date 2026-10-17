@@ -1,3 +1,5 @@
+import { hasLesson1Record, lesson1RecordText } from "./lesson1-export.mjs?v=20261017-lesson1txt";
+
 const STORAGE_KEY = "ham-academy-barunsaenghwal-seven-hour-v1";
 
 const eul = (w) => { const c = w.charCodeAt(w.length - 1); return c >= 0xAC00 && c <= 0xD7A3 && (c - 0xAC00) % 28 === 0 ? "를" : "을"; };
@@ -50,6 +52,7 @@ const elements = {
   paperProof: document.querySelector("[data-paper-proof]"),
   paperNext: document.querySelector("[data-paper-next]"),
   artifactHistory: document.querySelector("[data-artifact-history]"),
+  downloadLesson1: document.querySelector("[data-download-lesson1]"),
   downloadHtml: document.querySelector("[data-download-html]"),
   downloadHandoff: document.querySelector("[data-download-handoff]"),
   nextKicker: document.querySelector("[data-next-kicker]"),
@@ -567,6 +570,7 @@ function renderArtifact() {
   });
   elements.artifactHistory.replaceChildren(history);
 
+  updateLesson1ExportState();
   elements.downloadHtml.disabled = !outputs[4];
   elements.downloadHandoff.disabled = !outputs[6];
   const openLessons = course.lessons.filter((lesson) => !lesson.locked).length;
@@ -661,6 +665,7 @@ function saveInputs() {
   extraWorkFields.querySelectorAll("[data-conversation-field]").forEach((input) => {
     work[input.dataset.conversationField] = input.value;
   });
+  updateLesson1ExportState();
   persist();
 }
 
@@ -756,6 +761,26 @@ function download(filename, type, content) {
   URL.revokeObjectURL(url);
 }
 
+function updateLesson1ExportState() {
+  if (elements.downloadLesson1) elements.downloadLesson1.disabled = !hasLesson1Record(state.lessons["lesson-1"]);
+}
+
+function downloadLesson1() {
+  saveInputs();
+  const content = lesson1RecordText({
+    lesson: course.lessons.find((lesson) => lesson.id === "lesson-1"),
+    work: state.lessons["lesson-1"],
+    courseVersion: state.courseVersion,
+    artifactId: state.artifactId
+  });
+  if (!content) {
+    announce("1강에서 남긴 말이 없습니다. 먼저 실제 대화 기록을 적어 주세요.");
+    return;
+  }
+  download("1강-내가-이어간-대화.txt", "text/plain;charset=utf-8", content);
+  announce("1강 대화 기록을 파일로 받았습니다. 다른 사람이나 AI에게 보내기 전에 개인정보·고객정보를 확인하세요.");
+}
+
 function downloadResultHtml() {
   saveInputs();
   const outputs = course.lessons.map((lesson) => state.lessons[lesson.id].retry.trim());
@@ -817,6 +842,7 @@ for (const input of [elements.firstAttempt, elements.correctionNote, elements.re
 
 elements.saveNext.addEventListener("click", moveNext);
 elements.previousStep.addEventListener("click", movePrevious);
+elements.downloadLesson1?.addEventListener("click", downloadLesson1);
 elements.downloadHtml.addEventListener("click", downloadResultHtml);
 elements.downloadHandoff.addEventListener("click", downloadHandoff);
 elements.resetCourse.addEventListener("click", () => elements.resetDialog.showModal());
