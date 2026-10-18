@@ -58,8 +58,23 @@
 }
 @media (prefers-reduced-motion:reduce) { .quote-form input,.quote-form textarea,.quote-form .cta-btn { transition:none; } }
 
-.inquiry-case { padding:1.25rem; border-left:3px solid var(--blue); background:var(--paper); }
-.inquiry-case[hidden] { display:none; }
-.inquiry-case .eyebrow { margin:0 0 .5rem; }
-.inquiry-case strong { display:block; font-size:1.2rem; }
-.inquiry-case a { display:inline-block; margin-top:.5rem; padding:.5rem 0; }
+
+/* The form destination opens the first task field, keeping its source case. */
+html{scroll-padding-top:16px}
+.quote-form-section{scroll-margin-top:24px}
+.inquiry-case{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:4px 12px;padding:8px 0;border-bottom:1px solid var(--line);background:var(--paper)}
+.inquiry-case[hidden]{display:none}
+.inquiry-case .eyebrow{display:none}
+.inquiry-case strong{display:block;font-size:15px;font-weight:500}
+.inquiry-case a{display:inline-flex;align-items:center;min-height:36px;padding:4px 0;white-space:nowrap;font-size:14px}
+#inquiry-handoff-status{margin:0;font-size:14px;line-height:1.6}
+@media(max-width:767px){
+ .quote-form-section{padding-top:28px;gap:20px;scroll-margin-top:16px}
+ .quote-form-intro h2{font-size:26px;margin-bottom:12px}
+ .quote-form-intro h2 br{display:none}
+ .quote-form-intro p{margin:0 0 8px;font-size:16px}
+ .quote-form-intro .form-note{font-size:14px}
+ .quote-form-intro .quote-text-link{padding:4px 0;min-height:36px;font-size:14px}
+ .quote-form{gap:24px}
+ #q1{min-height:6em}
+}

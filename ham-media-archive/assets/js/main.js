@@ -191,7 +191,7 @@ function getBusinessCtaData(link) {
   const ctaMap = [
     { id: "academy", test: (url) => url.includes("/academy/") },
     { id: "portfolio", test: (url) => url.includes("/portfolio/") },
-    { id: "work", test: (url) => url.includes("ham-media-work.html") },
+    { id: "work", test: (url) => (url.includes("ham-media-work.html") || url.includes("/services/")) },
     { id: "contact", test: (url) => url.includes("contact.html") }
   ];
   const match = ctaMap.find((item) => item.test(targetUrl));
@@ -331,6 +331,12 @@ function createUniverseExperience() {
   let height = 0;
   let pointerX = 0.5;
   let pointerY = 0.5;
+  // The home sky remains animated where it is visible, without drawing behind reading surfaces.
+  const homeSky = document.querySelector(".home-customer .constellation-scene");
+  let skyVisible = !homeSky;
+  if (homeSky && "IntersectionObserver" in window) {
+    new IntersectionObserver(([entry]) => { skyVisible = entry.isIntersecting; }).observe(homeSky);
+  } else if (homeSky) { skyVisible = true; }
   let lastFrame = performance.now();
   let universeTime = 0;
   let meteor = null;
@@ -357,7 +363,7 @@ function createUniverseExperience() {
     const dt = Math.min((now - lastFrame) / 1000, 0.05);
     lastFrame = now;
     universeTime += dt;
-    if (!document.hidden && !reducedMotion.matches) {
+    if (!document.hidden && !reducedMotion.matches && skyVisible) {
       spaceContext.fillStyle = "#05070f";
       spaceContext.fillRect(0, 0, width, height);
       const px = pointerX - 0.5;

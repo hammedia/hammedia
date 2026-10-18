@@ -40,7 +40,7 @@
   document.getElementById('inquiry-original-text').textContent=original;
   fields.forEach(field=>{if(!field.value){const restored=(draft.quoteContext||'')===signature?draft.quote?.[field.id]:null;if(field.id==='q1')field.value=draft.quoteOriginal===original&&typeof restored==='string'?restored:original;else if(typeof restored==='string')field.value=restored;}});
   function report(){
-    if(caseStudy){status.textContent='사례를 보고 시작한 내용을 첫 항목에 넣었습니다. 원하는 일에 맞게 고쳐주세요. 아직 전송되지 않았습니다.';return;}
+    if(caseStudy){status.textContent='원하는 일에 맞게 고쳐주세요. 아직 전송되지 않았습니다.';return;}
     if(!service){status.textContent='출발 정보를 이어받았습니다. 아래 내용을 확인하고 적어주세요. 아직 전송되지 않았습니다.';return;}
     status.textContent=fields[0].value.length>fields[0].maxLength
       ? `${service?names[selected]:'문의'} 내용을 그대로 가져왔습니다. 첫 항목은 ${fields[0].maxLength}자 이내로 정리해주세요. 원문은 아래에 보존했습니다.`

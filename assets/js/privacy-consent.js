@@ -8,19 +8,19 @@
   const language = (document.documentElement.lang || "ko").toLowerCase();
   const copy = language.startsWith("en") ? {
     label: "Analytics preference",
-    message: "Analytics is optional. We only load Google Analytics to improve this site if you allow it. ",
+    message: "Visit analytics load only if you allow them. ",
     policy: "Privacy policy",
     allow: "Allow analytics",
     deny: "Do not allow",
   } : language.startsWith("ja") ? {
     label: "アクセス解析の選択",
-    message: "アクセス解析は任意です。許可した場合のみ、サイト改善のためにGoogle Analyticsを読み込みます。",
+    message: "許可した場合のみ、訪問の統計を収集します。",
     policy: "プライバシーポリシー",
     allow: "アクセス解析を許可",
     deny: "許可しない",
   } : {
     label: "방문 통계 선택",
-    message: "방문 통계는 선택입니다. 허용할 때만 사이트 개선을 위한 Google Analytics를 불러옵니다. ",
+    message: "허용한 경우에만 방문 통계를 수집합니다. ",
     policy: "개인정보처리방침",
     allow: "방문 통계 허용",
     deny: "허용하지 않음",
@@ -99,15 +99,15 @@
       const style = document.createElement("style");
       style.id = "ham-consent-style";
       style.textContent = `
-        #ham-analytics-consent{position:relative;box-sizing:border-box;width:100%;margin:0;padding:1rem max(1rem,calc((100% - 1240px)/2));border:0;border-bottom:1px solid #c9c3b6;background:#fffefb;color:#1c1814;font:.875rem/1.6 -apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;letter-spacing:normal;word-break:keep-all;overflow-wrap:anywhere;scroll-margin-top:1rem}
-        #ham-analytics-consent .ham-consent-inner{display:flex;align-items:center;justify-content:space-between;gap:1rem;max-width:1240px;margin:0 auto}
+        #ham-analytics-consent{position:relative;box-sizing:border-box;width:100%;margin:0;padding:.5rem max(1rem,calc((100% - 1280px)/2));border:0;border-bottom:1px solid #c9c3b6;background:#fffefb;color:#1c1814;font:.875rem/1.6 -apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;letter-spacing:normal;word-break:keep-all;overflow-wrap:anywhere;scroll-margin-top:1rem}
+        #ham-analytics-consent .ham-consent-inner{display:flex;align-items:center;justify-content:space-between;gap:1rem;max-width:1280px;margin:0 auto}
         #ham-analytics-consent p{flex:1;min-width:0;margin:0;color:#1c1814;font:inherit}
         #ham-analytics-consent a{color:#285c85;text-decoration:underline;text-underline-offset:3px}
         #ham-analytics-consent .ham-consent-actions{display:flex;flex-wrap:wrap;flex-shrink:0;min-width:20rem;gap:.5rem}
-        #ham-analytics-consent button{box-sizing:border-box;flex:1;min-height:44px;max-width:100%;padding:.55rem .875rem;border:1px solid #1c1814;border-radius:4px;background:#fffefb;color:#1c1814;font:inherit;font-weight:650;line-height:1.5;white-space:normal;cursor:pointer}
+        #ham-analytics-consent button{box-sizing:border-box;flex:1;min-height:44px;max-width:100%;padding:.45rem .875rem;border:1px solid #1c1814;border-radius:4px;background:#fffefb;color:#1c1814;font:inherit;font-weight:650;line-height:1.5;white-space:normal;cursor:pointer}
         #ham-analytics-consent button:hover{background:#eeeae2}
         #ham-analytics-consent:focus-visible,#ham-analytics-consent button:focus-visible,#ham-analytics-consent a:focus-visible{outline:3px solid #174a92;outline-offset:3px}
-        @media(max-width:60rem){#ham-analytics-consent .ham-consent-inner{display:block}#ham-analytics-consent .ham-consent-actions{min-width:0;margin-top:.75rem}#ham-analytics-consent button{flex:1 1 10rem}}
+        @media(max-width:60rem){#ham-analytics-consent .ham-consent-inner{display:block}#ham-analytics-consent .ham-consent-actions{min-width:0;margin-top:.5rem}#ham-analytics-consent button{flex:1 1 0;min-width:0}}
       `;
       document.head.append(style);
     }
