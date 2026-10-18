@@ -7,25 +7,7 @@
   <meta name="description" content="자동차별은 사브와 테슬라, 여러 길 위의 기억을 통해 방향을 찾던 습관이 일하는 방식으로 이어진 과정을 기록합니다. 자동차 리뷰보다 사람과 선택의 이야기입니다." />
   <!-- v7: 외부 CDN 제거 — 오더 「외부 리소스 금지」. 본문 Pretendard는 로컬(assets/fonts)로 임베드, 뒤에 SCDream·시스템 폴백. -->
   <style>
-    /* 에스코어드림 (S-Core Dream) · (c) S-Core Co., Ltd.
-       라이선스: 무료 상업 사용·웹 임베딩 허용, 파일 수정·판매 금지 — 배포 형태 그대로 임베드.
-       확인: noonnu.cc/font_page/223 · s-core.co.kr/company/font/ (2026-07-17)
-       채택 근거: 나이트 패널 = "꼭 필요한 계기만 남기고 다 끈다" — 절제. 9단계 굵기가 그 문법이다. */
-    @font-face {
-      font-family: "SCDream";
-      src: url("../assets/fonts/SCDream6.otf") format("opentype");
-      font-weight: 700;
-      font-style: normal;
-      font-display: swap;
-    }
-    @font-face {
-      font-family: "SCDream";
-      src: url("../assets/fonts/SCDream3.otf") format("opentype");
-      font-weight: 300;
-      font-style: normal;
-      font-display: swap;
-    }
-
+    /* 본문은 실제 보유한 로컬 Pretendard, 짧은 제목은 BlackGothic. */
     /* Pretendard (c) Kil Hyung-jin, SIL OFL 1.1 — 본문 정본 폰트. v7: CDN 대신 로컬 임베드. */
     @font-face {
       font-family: "Pretendard";
@@ -61,7 +43,7 @@
       --line: color-mix(in srgb, var(--headlight) 22%, transparent);
       --line-strong: color-mix(in srgb, var(--gold) 48%, transparent);
       --font-sans: "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      --font-star: "SCDream", "Pretendard", sans-serif;
+      --font-star: "Pretendard", sans-serif;
       --radius: 7px;
       --space-1: 4px;
       --space-2: 8px;
@@ -1336,8 +1318,10 @@
   <link rel="stylesheet" href="../assets/css/star-connections.css?v=20260930-1">
 <link rel="stylesheet" href="../assets/css/star-essays.css?v=20261018-reader-1">
   <link rel="canonical" href="https://hammedia.co.kr/ham-media-archive/pages/cars.html">
+<link rel="stylesheet" href="../assets/css/star-reference.css?v=20261019-1">
+<noscript><style>body.star-reference .room-house-panel[hidden],body.star-reference .room-article-panel[hidden],body.star-reference .design-sheet[hidden]{display:block!important}body.star-reference .room-article-list{display:block}body.star-reference .reveal{opacity:1;transform:none}</style></noscript>
 </head>
-<body class="variant-desktop">
+<body class="variant-desktop star-reference" data-star-reference="car">
   <main class="sheet">
     <nav class="top-doors" aria-label="자동차별 입구">
       <button type="button" data-target="#car-writing">문장</button>
@@ -1864,5 +1848,6 @@
     })();
   </script>
 <script src="/assets/js/star-inquiry-context.js?v=20260930-1" defer></script>
+<script src="../assets/js/star-reference.js?v=20261019-1"></script>
 </body>
 </html>

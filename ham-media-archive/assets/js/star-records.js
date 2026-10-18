@@ -53,7 +53,7 @@
         const detailTrigger = document.querySelector(selector);
         if (!detailTrigger) return;
         detailTrigger.click();
-        history.replaceState(null, "", `#record-${card.dataset.recordId || target}`);
+        history.replaceState(history.state, "", `#record-${card.dataset.recordId || target}`);
       }, reduceMotion ? 0 : 180);
     }
 
@@ -76,5 +76,8 @@
     }
 
     applyFilter("all");
+    const recordId = decodeURIComponent(location.hash).replace(/^#record-/, "");
+    const requested = cards.find(card => card.dataset.recordId === recordId);
+    if (location.hash.startsWith("#record-") && requested) openRecord(requested);
   });
 })();
