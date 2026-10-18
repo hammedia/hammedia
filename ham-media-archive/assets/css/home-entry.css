@@ -236,3 +236,10 @@ html[lang='ja'] .home-customer p,html[lang='ja'] .home-customer a,html[lang='ja'
 @media(max-width:760px){.colleague-grid{grid-template-columns:1fr;gap:20px}.colleague-profiles .colleague-grid article{padding:24px 0 8px}.colleague-player{max-width:300px}.colleague-card-heading{align-items:center}.colleague-profiles .colleague-card-heading h3{font-size:20px}.colleague-card-heading .companion-portrait{width:52px;height:52px;flex-basis:52px}.colleague-profiles p.colleague-film-title{font-size:17px}.colleague-profiles .colleague-card-copy p{font-size:16px}.colleague-profiles .colleague-card-copy a{font-size:15px}}
 .colleague-player iframe:focus-visible{outline:3px solid #00704a;outline-offset:-3px}
 @media(max-height:740px) and (min-width:961px){.colleague-player{max-width:220px}}
+
+.colleague-video-controls{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 0}
+.colleague-video-controls button{min-height:44px;padding:8px 14px;border:1px solid #c9c3b9;background:transparent;color:#29251f;font:inherit;font-size:14px;cursor:pointer}
+.colleague-video-controls button:hover{border-color:#007a50}
+.colleague-video-controls button:focus-visible{outline:3px solid #007a50;outline-offset:3px}
+
+.colleague-video-controls[hidden]{display:none}
