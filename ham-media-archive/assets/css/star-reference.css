@@ -475,3 +475,9 @@ body.star-reference[data-star-reference=fountain] .scene-paper .hand.hana,body.s
 body.star-reference[data-star-reference=camera] .room-article-panel .room-record-caption{color:#262c29}
 body.star-reference[data-star-reference=camera] .room-article-panel .room-record-caption :is(.room-card-title,.room-card-note,.room-card-meta){color:#262c29}
 body.star-reference[data-star-reference=camera] .room-article-panel .shared-memory-link a{color:#245a49;text-decoration:underline;text-underline-offset:4px}
+@media(max-width:760px){
+ body.star-reference[data-star-reference=bicycle] .body-route{position:relative;inset:auto;transform:none;width:calc(100% - 40px);height:auto;min-height:0;margin:16px auto 0;padding:8px;display:flex;flex-wrap:nowrap;gap:4px;box-sizing:border-box}
+ body.star-reference[data-star-reference=bicycle] .body-route .route-stop{flex:1 1 0;width:0;min-width:44px;min-height:54px;padding:8px 2px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:8px}
+ body.star-reference[data-star-reference=bicycle] .body-route .route-stop span{position:static;opacity:1;padding:0;background:transparent;font-size:12px;line-height:1.2}
+ body.star-reference[data-star-reference=bicycle] .ride-hero .hero-copy{min-height:0;min-block-size:0;justify-content:flex-start;margin:0 auto;padding:0 0 32px}
+}
