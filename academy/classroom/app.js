@@ -1,4 +1,4 @@
-import { hasLesson1Record, lesson1RecordText } from "./lesson1-export.mjs?v=20261017-lesson1txt";
+import { hasLesson1Record, lesson1RecordText } from "./lesson1-export.mjs?v=20261020-lesson1easy";
 
 const STORAGE_KEY = "ham-academy-barunsaenghwal-seven-hour-v1";
 
@@ -39,6 +39,7 @@ const elements = {
   autosaveState: document.querySelector("[data-autosave-state]"),
   resultStage: document.querySelector("[data-result-stage]"),
   nextDoor: document.querySelector("[data-lesson-next-door]"),
+  cohortNext: document.querySelector("[data-cohort-next]"),
   outputLabel: document.querySelector("[data-output-label]"),
   resultState: document.querySelector("[data-result-state]"),
   resultTemplate: document.querySelector("[data-result-template]"),
@@ -146,6 +147,8 @@ const loadState = () => {
   }
 };
 
+const AUTOSAVE_IDLE = "쓰는 대로 이 기기에 자동저장";
+
 let state = loadState();
 let saveTimer;
 
@@ -161,9 +164,9 @@ const text = (tag, value, className) => {
 
 const persist = () => {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-  elements.autosaveState.textContent = "저장됨";
+  elements.autosaveState.textContent = "작성 내용 자동저장됨";
   clearTimeout(saveTimer);
-  saveTimer = setTimeout(() => { elements.autosaveState.textContent = "이 기기에 자동 저장"; }, 1200);
+  saveTimer = setTimeout(() => { elements.autosaveState.textContent = AUTOSAVE_IDLE; }, 1200);
 };
 
 const announce = (message) => {
@@ -250,7 +253,7 @@ function stageCopyNodes(lesson, stageIndex) {
     if (lesson.number === 2) {
       const carryover = truthLine(
         "1강에서 적어 둔 내 이야기",
-        lessonOutput(0) || "1강을 먼저 저장하면 내가 쓴 문장이 이 자리에 그대로 이어집니다."
+        lessonOutput(0) || "1강 ‘다시 받은 답’ 메모칸에 적어 둔 내용이 있으면 이 자리에 이어집니다. 비어 있으면 AI 대화창에 남은 1강 대화를 보며 이어가면 됩니다."
       );
       carryover.classList.add("carryover-source");
       carryover.dataset.previousLessonOutput = "lesson-1";
@@ -274,6 +277,32 @@ function stageCopyNodes(lesson, stageIndex) {
 
 // 강 데이터의 단계별 보조 블록: 그대로 쓰는 문장(prompt)·실제 발화 인용(quote)·짧은 목록(list).
 function stageBlock(block) {
+  if (block.kind === "details") {
+    // 선택해서 읽는 긴 기록·해설. 안의 실제 인용과 가상 예시 표기는 그대로 보존한다.
+    const details = document.createElement("details");
+    details.className = "stage-block stage-block-details";
+    details.append(text("summary", block.label));
+    block.blocks.forEach((child) => details.append(stageBlock(child)));
+    return details;
+  }
+  if (block.kind === "jump") {
+    const section = document.createElement("section");
+    section.className = "stage-block stage-block-jump";
+    const button = text("button", block.label, "primary-button stage-jump-button");
+    button.type = "button";
+    button.addEventListener("click", () => {
+      saveInputs();
+      state.currentStage = block.target;
+      persist();
+      render();
+      elements.stage.focus({ preventScroll: true });
+      globalThis.scrollTo({ top: 0, behavior: "auto" });
+      announce(`${currentLesson().flow[block.target].label} 단계로 왔습니다.`);
+    });
+    section.append(button);
+    if (block.note) section.append(text("p", block.note, "stage-block-note"));
+    return section;
+  }
   const section = document.createElement("section");
   section.className = `stage-block stage-block-${block.kind}`;
   if (block.kind === "heading") {
@@ -307,6 +336,11 @@ function stageBlock(block) {
     section.append(text("pre", block.text, "stage-block-prompt"));
   } else if (block.kind === "quote") {
     section.append(text("p", block.text, "stage-block-quote"));
+  } else if (block.kind === "steps") {
+    const list = document.createElement("ol");
+    list.className = "stage-block-steps";
+    block.items.forEach((item) => list.append(text("li", item)));
+    section.append(list);
   } else {
     const list = document.createElement("ul");
     block.items.forEach((item) => list.append(text("li", item)));
@@ -415,6 +449,9 @@ function renderWorkFields() {
   elements.correctionEyebrow.textContent = lesson.correctionEyebrow ?? "혼자서 먼저 짚는 자리";
   elements.correctionHeading.textContent = lesson.correctionHeading ?? "왜 고칠지 내가 먼저 찾습니다";
   elements.correctionNote.placeholder = lesson.correctionPlaceholder ?? "어떤 문장을 왜 고치는지 적으세요. 고친 뒤에도 이 메모가 내 기준으로 남습니다.";
+  studentWorkTitle.textContent = lesson.workHeading ?? STUDENT_WORK_TITLE;
+  studentWorkNote.textContent = lesson.workNote ?? "";
+  studentWorkNote.hidden = !lesson.workNote;
   updateCounts();
 
   const criteria = document.createDocumentFragment();
@@ -432,6 +469,12 @@ function renderWorkFields() {
   renderEditGuidance(elements.correctionNote, 3, "더 말하거나 바로잡은 이유");
   renderEditGuidance(elements.retry, 4, "다시 받은 답");
 }
+
+const studentWorkTitle = document.querySelector("#student-work-title");
+const STUDENT_WORK_TITLE = studentWorkTitle.textContent;
+const studentWorkNote = text("p", "", "student-work-note");
+studentWorkNote.hidden = true;
+elements.studentWork.querySelector(".section-heading-row").after(studentWorkNote);
 
 function renderEditGuidance(input, stageIndex, label) {
   const field = input.closest("label");
@@ -528,7 +571,7 @@ function renderVerification() {
   });
   elements.verificationList.replaceChildren(fragment);
   elements.outputLabel.textContent = lesson.output.label;
-  elements.resultTemplate.textContent = `결과 형식: ${lesson.resultTemplate}`;
+  elements.resultTemplate.textContent = lesson.verificationIntro ?? `결과 형식: ${lesson.resultTemplate}`;
   elements.nextLesson.textContent = lesson.nextLesson;
   updateCompletionState();
 }
@@ -537,6 +580,11 @@ function updateCompletionState() {
   const lesson = currentLesson();
   const work = currentWork();
   const checksDone = work.checks.every(Boolean);
+  if (lesson.recordOptional) {
+    const checked = work.checks.filter(Boolean).length;
+    elements.resultState.textContent = checksDone ? "실습 확인 완료" : `실습 확인 ${checked} / ${work.checks.length}`;
+    return;
+  }
   const correctionDone = !lesson.requiresCorrectionNote || work.correctionNote.trim().length > 0;
   const missing = missingConversationField(lesson, work);
   const firstDone = !lesson.requiresFirstAttempt || work.firstAttempt.trim().length > 0;
@@ -575,7 +623,7 @@ function renderArtifact() {
   elements.downloadHandoff.disabled = !outputs[6];
   const openLessons = course.lessons.filter((lesson) => !lesson.locked).length;
   elements.overallProgress.textContent = `${state.currentLesson + 1} / ${openLessons}강`;
-  elements.completionCount.textContent = `${completed} / ${openLessons}강 저장`;
+  elements.completionCount.textContent = `${completed} / ${openLessons}강 완료`;
   elements.progressBar.style.width = `${(completed / openLessons) * 100}%`;
 }
 
@@ -631,6 +679,7 @@ function render() {
   elements.studentWork.hidden = state.currentStage < 2;
   elements.resultStage.hidden = state.currentStage !== 5;
   elements.nextDoor.hidden = lesson.number !== 2;
+  if (elements.cohortNext) elements.cohortNext.hidden = lesson.number !== 1;
   elements.sourceList.hidden = true;
   elements.toggleSources.setAttribute("aria-expanded", "false");
   elements.toggleSources.textContent = "자료 어디서 왔나 보기";
@@ -685,7 +734,14 @@ function moveNext() {
     const correctionDone = !lesson.requiresCorrectionNote || work.correctionNote.trim();
     const missing = missingConversationField(lesson, work);
     const firstDone = !lesson.requiresFirstAttempt || work.firstAttempt.trim();
-    const ready = firstDone && work.retry.trim() && work.checks.every(Boolean) && correctionDone && !missing;
+    const ready = lesson.recordOptional
+      ? work.checks.every(Boolean)
+      : firstDone && work.retry.trim() && work.checks.every(Boolean) && correctionDone && !missing;
+    if (!ready && lesson.recordOptional) {
+      announce("오늘 실제로 해 본 것을 확인표에서 체크해 주세요. 아직 못 한 것은 AI에서 해 본 뒤 체크하면 됩니다. 메모칸은 비워 둬도 됩니다.");
+      elements.verificationList.querySelector("input:not(:checked)")?.focus();
+      return;
+    }
     if (!ready) {
       announce(missing ? `${missing.label}을 먼저 남겨 주세요. 확인하지 못한 것은 미확인이라고 적어도 됩니다.` : "고칠 이유 메모, 다시 쓴 결과와 확인표를 먼저 남겨 주세요.");
       if (!firstDone) {

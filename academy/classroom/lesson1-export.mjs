@@ -20,12 +20,13 @@ export function lesson1RecordText({ lesson, work, courseVersion, artifactId }) {
   const record = (key) => typeof work[key] === "string" && work[key].trim() ? work[key] : "미작성";
   const checked = (work.checks || []).filter(Boolean).length;
   const total = (lesson.correctionCriteria || []).length;
-  const savedComplete = Boolean(work.completed) && RECORD_FIELDS.every((key) => typeof work[key] === "string" && work[key].trim())
+  // 실습 확인은 확인표(실제로 해 본 것)로 정한다. 메모칸을 다 채웠는지는 따지지 않는다.
+  const savedComplete = Boolean(work.completed) && total > 0
     && (work.checks || []).length === total && (work.checks || []).every((value) => value === true);
   return [
     `# 1강 · ${lesson.title}`,
-    "내가 이어간 대화를 다른 기기나 다음 AI 대화에서 다시 읽기 위한 기록입니다.",
-    `저장 상태: ${savedComplete ? "1강 저장 완료" : "작성 중"}`,
+    "메모칸에 쓴 내용을 다른 기기나 다음 AI 대화에서 다시 읽기 위한 선택 파일입니다.",
+    `실습 확인: ${savedComplete ? "1강 실습 확인 완료" : "실습 확인 전"}`,
     `내가 체크한 확인표: ${checked} / ${total}`,
     "파일을 받았다는 것만으로 실제 대화 실습이나 사실확인이 끝난 것은 아닙니다.",
     `결과 ID: ${artifactId}`,
