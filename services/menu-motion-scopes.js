@@ -1,0 +1,120 @@
+(() => {
+  'use strict';
+  const root = document.querySelector('.hm-menu');
+  if (!root) return;
+  const q = selector => document.querySelector(selector);
+  const stage = q('.hm-menu-stage');
+  const choices = [...root.querySelectorAll('[data-hm-choice]')];
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const photo = '../customers/mapobada/promo-0903/photos/02_해산물모듬.jpg';
+  const food = '../customers/mapobada/promo-0903/photos/01_모둠회.jpg';
+  const options = {
+    video: {category:'01 · 영상 제작',title:'보여주고 싶은 것을,\n보고 싶은 영상으로.',image:photo,alt:'마포바다 해산물 모둠 사진을 활용한 화면 구성 예시',fragment:food,fragmentA:'사진',fragmentB:'전하고 싶은 한마디',mediaLabel:'마포바다 실제 촬영 사진',mediaTitle:'오늘의 바다를\n보여주는 장면.',caption:'실제 마포바다 사진을 재구성한 예시입니다. 납품 영상의 원본이나 전후 비교가 아닙니다.',scopeTitle:'영상 한 편에 필요한 일',evidence:'#work',evidenceText:'실제 고객 작업 보기 ↗'},
+    page: {category:'02 · 소개 페이지',title:'흩어진 안내를,\n하나의 페이지로.',image:'assets/mapobada-desktop-20261012.jpg',alt:'마포바다 실제 공개 홈페이지의 PC 화면',fragment:'assets/mapobada-mobile-20261012.jpg',fragmentA:'실제 모바일 화면',fragmentB:'메뉴 · 소개 · 길찾기',mediaLabel:'마포바다 · 공개 홈페이지',mediaTitle:'소개부터\n문의까지.',caption:'2026년 10월 12일 마포바다 공개 홈페이지를 캡처한 화면입니다. 위 사례에서 PC·모바일 화면을 함께 볼 수 있습니다.',scopeTitle:'소개와 문의를 잇는 페이지',evidence:'#web-mapobada',evidenceText:'실제 홈페이지 사례 보기 ↑'},
+    document: {category:'03 · 문서·책 편집',title:'쌓아둔 내용을,\n읽히는 한 권으로.',image:'../book/assets/cover.png',alt:'HAM MEDIA 바이브 코딩 실행서 실제 책 표지',fragment:'../book/assets/cover.png',fragmentA:'실제 책 표지',fragmentB:'원고 · 목차 · 지면',mediaLabel:'HAM MEDIA 자체 출판물',mediaTitle:'내용에\n순서를.',caption:'HAM MEDIA 자체 출판물의 실제 표지입니다. 고객 원고를 편집한 전후 사례는 아닙니다.',scopeTitle:'문서가 읽히기까지 필요한 일',evidence:'../book/preview/',evidenceText:'실제 책 미리보기 ↗'},
+    monthly: {category:'04 · 월간 운영',title:'한 번의 제작을,\n꾸준한 소식으로.',image:food,alt:'마포바다 모둠회 실제 사진을 활용한 월간 콘텐츠 구성 예시',fragment:photo,fragmentA:'이번 달의 자료',fragmentB:'사진 · 문장 · 일정',mediaLabel:'마포바다 실제 촬영 사진',mediaTitle:'가게의 소식이\n이어지도록.',caption:'실제 마포바다 사진을 활용한 콘텐츠 구성 예시입니다. 게시 횟수나 운영 성과를 나타내지 않습니다.',scopeTitle:'매달 함께 정할 운영 범위',evidence:'#work',evidenceText:'현재 운영 사례 보기 ↗'},
+    automation: {category:'05 · 반복 업무 정리',title:'매번 하는 일을,\n확인할 일로.',image:photo,alt:'반복 업무 화면 구성 예시',fragment:'../book/assets/cover.png',fragmentA:'내 업무의 자료',fragmentB:'모으기 · 정리 · 확인',mediaLabel:'업무 흐름 구성 예시',mediaTitle:'확인할 일만,\n한눈에.',caption:'반복 업무를 설명하기 위한 화면 구성 예시입니다. 고객 데이터나 실제 자동 실행 결과가 아닙니다.',scopeTitle:'현재 업무를 확인한 뒤 만들기',evidence:'../erp/',evidenceText:'작은 ERP 체험판 보기 ↗'}
+  };
+  // Read the same scope text that is available without JavaScript.
+  Object.entries(options).forEach(([key, option]) => {
+    const entry = document.getElementById('work-scope-' + key);
+    option.description = entry.querySelector('[data-work-description]').textContent;
+    option.scope = entry.querySelector('[data-work-scope]').textContent;
+  });
+  const DRAFT_KEY = 'ham_service_inquiry_v1';
+  let savedDraft = null;
+  try { const data=JSON.parse(sessionStorage.getItem(DRAFT_KEY)); if(data?.version===1 && Object.hasOwn(options,data.selected) && Array.isArray(data.drafts)) savedDraft=data; } catch {}
+  const inquiryDrafts = new Map((savedDraft?.drafts||[]).filter(row=>Array.isArray(row)&&Object.hasOwn(options,row[0])&&typeof row[1]==='string'));
+  function saveDraft(resetQuote=false){
+    let latest;try{latest=JSON.parse(sessionStorage.getItem(DRAFT_KEY));}catch{}
+    const draft={starVisit:window.HamStarContext?.visit(latest?.starVisit),starContext:window.HamStarContext?.context(latest?.starContext),quoteContext:resetQuote||savedDraft?.selected!==selected?'':savedDraft?.quoteContext,version:1,selected,drafts:[...inquiryDrafts],automaticPurpose,quote:resetQuote||savedDraft?.selected!==selected?{}:(savedDraft?.quote||{}),quoteOriginal:savedDraft?.selected===selected?savedDraft?.quoteOriginal:null};
+    const encoded=JSON.stringify(draft);
+    sessionStorage.setItem(DRAFT_KEY,encoded);
+    if(sessionStorage.getItem(DRAFT_KEY)!==encoded) throw new Error('draft not saved');
+    savedDraft=draft;
+  }
+
+  let selected = savedDraft?.selected || 'video';
+  let automaticPurpose = typeof savedDraft?.automaticPurpose==='string'?savedDraft.automaticPurpose:'';
+  let paused = false;
+  let running = false;
+  const pause = q('[data-hm-pause]');
+  const replay = q('[data-hm-replay]');
+  function text(selector, value) { const el=q(selector); el.textContent=value; }
+  function lines(selector, value) { const el=q(selector); el.replaceChildren(); value.split('\n').forEach((line,i)=>{if(i) el.append(document.createElement('br'));el.append(document.createTextNode(line));}); }
+  function syncPause(){pause.setAttribute('aria-pressed',String(paused));pause.textContent=paused?'움직임 이어보기':running?'움직임 멈추기':'재생 완료';pause.disabled=!running;}
+  function play(){
+    stage.classList.remove('hm-menu-playing','hm-menu-paused'); paused=false;
+    if(reduce.matches){running=false;syncPause();return;}
+    // A one-shot sequence; no intervals or continuous scroll handlers.
+    void stage.offsetWidth;
+    stage.classList.add('hm-menu-playing');running=true;syncPause();
+  }
+  function choose(key, animate=true){
+    if(!Object.hasOwn(options,key)) return;
+    if(q('#hm-menu-inquiry').value) inquiryDrafts.set(selected,q('#hm-menu-inquiry').value);
+    selected=key; const data=options[key];const index=Object.keys(options).indexOf(key);
+    choices.forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.hmChoice===key)));
+    stage.dataset.hmScene=key;
+    q('.hm-menu-browser span').textContent=key==='page'?'mapobada.com / 공개 화면':'HAM MEDIA / 제작 예시';
+    text('[data-hm-count]',`0${index+1} / 05`);text('[data-hm-category]',data.category);lines('[data-hm-title]',data.title);text('[data-hm-description]',data.description);
+    const image=q('.hm-menu-main-image');image.src=data.image;image.alt=data.alt;
+    q('.hm-menu-fragment-a img').src=data.fragment;
+    text('[data-hm-fragment-a]',data.fragmentA);text('[data-hm-fragment-b]',data.fragmentB);text('[data-hm-media-label]',data.mediaLabel);lines('[data-hm-media-title]',data.mediaTitle);text('[data-hm-caption]',data.caption);
+    q('.hm-menu-sheet').hidden=key!=='automation';
+    const label=choices.find(button=>button.dataset.hmChoice===key).textContent;
+    text('[data-hm-scope-label]',`선택한 부탁 · ${label}`);text('[data-hm-scope-title]',data.scopeTitle);text('[data-hm-scope]',data.scope);
+    text('[data-hm-price]',key==='video'?'롱폼 편집 20만 원부터 · 촬영·원본 길이·수정 범위는 별도 확인':key==='monthly'?'월 50만 원부터 · 편수·채널·촬영 범위는 별도 확인':'범위 확인 후 서면 견적');
+    const evidence=q('[data-hm-evidence]');evidence.href=data.evidence;evidence.textContent=data.evidenceText;
+    q('#hm-menu-inquiry').value=inquiryDrafts.has(key)?inquiryDrafts.get(key):`${label}\n상담하고 싶은 범위: ${data.scopeTitle}\n범위 안내: ${data.scope}\n가격 안내: ${q('[data-hm-price]').textContent} (확정 견적 아님)\n\n원하는 결과와 일정: \n가지고 있는 자료 또는 링크: \n이번에 필요하지 않은 일: \n답 받을 연락처: `;
+    syncEmail();
+    text('[data-hm-copy-status]','다음 화면에서 내용을 확인하고 연락처를 적어 보내주세요. 아직 전송되지 않았습니다.');
+    inquiryDrafts.set(selected,q('#hm-menu-inquiry').value);
+    try{saveDraft();}catch{}
+    if(animate) play();
+  }
+  function syncEmail(){
+    const label=choices.find(button=>button.dataset.hmChoice===selected).textContent;
+    q('[data-hm-email]').href='mailto:hammedia002@gmail.com?subject='+encodeURIComponent('HAM MEDIA 상담 · '+label)+'&body='+encodeURIComponent(q('#hm-menu-inquiry').value);
+  }
+  q('#hm-menu-inquiry').addEventListener('input',()=>{inquiryDrafts.set(selected,q('#hm-menu-inquiry').value);syncEmail();try{saveDraft();}catch{}});
+  q('[data-hm-continue]').addEventListener('click',()=>{
+    inquiryDrafts.set(selected,q('#hm-menu-inquiry').value);
+    try {
+      let current;try{current=JSON.parse(sessionStorage.getItem(DRAFT_KEY));}catch{}
+      const same=current?.version===1&&current.selected===selected&&Array.isArray(current.drafts)&&current.drafts.some(row=>Array.isArray(row)&&row[0]===selected&&row[1]===q('#hm-menu-inquiry').value);
+      if(same) savedDraft=current;
+      saveDraft(!same); location.assign('../quote/?source=service-menu-'+selected+'#quote-form');
+    }
+    catch { text('[data-hm-copy-status]','이 브라우저에서는 내용을 이어갈 수 없습니다. 작성한 내용은 여기에 남아 있습니다. 이메일 작성이나 내용 복사를 이용해주세요.'); }
+  });
+  choices.forEach(button=>button.addEventListener('click',()=>choose(button.dataset.hmChoice)));
+  document.querySelectorAll('[data-hm-video-purpose]').forEach(link=>link.addEventListener('click',()=>{
+    choose('video',false);
+    const field=q('#hm-menu-inquiry');
+    const purpose='영상의 목적: '+link.dataset.hmVideoPurpose;
+    const lines=field.value.split('\n').filter(line=>!automaticPurpose||line!==automaticPurpose);
+    if(!lines.includes(purpose)) lines.push(purpose);
+    field.value=lines.join('\n');
+    automaticPurpose=purpose;
+    inquiryDrafts.set('video',field.value);
+    try{saveDraft();}catch{}
+    syncEmail();
+  }));
+  pause.addEventListener('click',()=>{if(!running)return;paused=!paused;stage.classList.toggle('hm-menu-paused',paused);syncPause();});
+  replay.addEventListener('click',play);
+  stage.addEventListener('animationend',event=>{if(event.animationName==='hm-menu-assemble'){running=false;paused=false;syncPause();}});
+  document.addEventListener('visibilitychange',()=>{if(document.hidden&&running&&!paused){paused=true;stage.classList.add('hm-menu-paused');syncPause();}});
+  reduce.addEventListener('change',()=>{if(reduce.matches){stage.classList.remove('hm-menu-playing','hm-menu-paused');running=false;paused=false;syncPause();}});
+  q('[data-hm-copy]').addEventListener('click',async()=>{
+    const field=q('#hm-menu-inquiry');
+    try {if(!navigator.clipboard)throw new Error('clipboard unavailable');await navigator.clipboard.writeText(field.value);text('[data-hm-copy-status]','복사했습니다. 필요한 곳에 붙여넣어 주세요. 아직 전송되지 않았습니다.');}
+    catch {field.focus();field.select();text('[data-hm-copy-status]','내용을 선택했습니다. 기기의 복사 기능을 이용해주세요.');}
+  });
+  q('.hm-menu-choices').hidden=false;q('.hm-menu-controls').hidden=false;q('.hm-menu-contact').hidden=false;
+  choose(selected,false);
+  if('IntersectionObserver' in window){
+    const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){if(entry.target===stage)play();else entry.target.classList.add('hm-menu-in-view');observer.unobserve(entry.target);}}),{threshold:.15});
+    observer.observe(stage);observer.observe(q('.hm-menu-scope'));
+  }else play();
+})();

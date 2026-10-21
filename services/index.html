@@ -288,9 +288,10 @@
     .hm-menu-opening > a { flex-shrink: 0; }
   </style>
   <link rel="stylesheet" href="menu-motion.css?v=20261012-1">
-  <link rel="stylesheet" href="customer-view.css?v=20261018-1">
+  <link rel="stylesheet" href="customer-view.css?v=20261020-1">
   <script src="/assets/js/star-inquiry-context.js?v=20260930-1" defer></script>
-  <script src="menu-motion.js?v=20261012-1" defer></script>
+  <script src="menu-motion-scopes.js?v=20261022" defer></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","@id":"https://hammedia.co.kr/services/#webpage","url":"https://hammedia.co.kr/services/","name":"실제 고객 작업과 서비스 | HAM MEDIA","inLanguage":"ko","about":{"@id":"https://hammedia.co.kr/#organization"},"mainEntity":{"@type":"ItemList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"Service","name":"영상 제작","description":"기획 · 촬영 또는 보유 자료 편집 · 자막 · 내보내기. 길이, 화면 비율, 수정 횟수와 공개 채널은 견적서에서 정합니다.","url":"https://hammedia.co.kr/services/#work-scope-video","provider":{"@id":"https://hammedia.co.kr/#organization"}}},{"@type":"ListItem","position":2,"item":{"@type":"Service","name":"소개 페이지","description":"문장 정리 · 화면 구성 · 모바일 대응 · 문의 동선. 페이지 수, 제공 자료, 도메인·호스팅과 수정 범위는 견적서에서 정합니다.","url":"https://hammedia.co.kr/services/#work-scope-page","provider":{"@id":"https://hammedia.co.kr/#organization"}}},{"@type":"ListItem","position":3,"item":{"@type":"Service","name":"문서·책 편집","description":"자료 분류 · 목차와 흐름 · 원고 편집 · 지면 구성. 분량, 원고 상태, 최종 파일 형식과 인쇄 여부는 별도로 확인합니다.","url":"https://hammedia.co.kr/services/#work-scope-document","provider":{"@id":"https://hammedia.co.kr/#organization"}}},{"@type":"ListItem","position":4,"item":{"@type":"Service","name":"월간 운영","description":"월간 소재 정리 · 콘텐츠 제작 · 게시와 관리. 채널, 제작 수량, 게시 주기와 응대 범위를 먼저 정합니다. 매출이나 조회수는 약속하지 않습니다.","url":"https://hammedia.co.kr/services/#work-scope-monthly","provider":{"@id":"https://hammedia.co.kr/#organization"}}},{"@type":"ListItem","position":5,"item":{"@type":"Service","name":"반복 업무 정리","description":"반복 구간 조사 · 자료 형식 정리 · 도구 연결 · 사람이 확인할 단계. 계정 권한, 외부 서비스 비용과 유지관리 범위를 확인한 뒤 서면 견적을 드립니다.","url":"https://hammedia.co.kr/services/#work-scope-automation","provider":{"@id":"https://hammedia.co.kr/#organization"}}}]}}</script>
   <link rel="stylesheet" href="production-examples.css?v=20261021">
   <script src="production-examples.js?v=20261021" defer></script>
 </head>
@@ -377,7 +378,17 @@
           <button type="button" data-hm-choice="monthly" aria-pressed="false">꾸준히 운영해주세요</button>
           <button type="button" data-hm-choice="automation" aria-pressed="false">반복 일을 줄여주세요</button>
         </div>
-        <noscript><p class="hm-menu-static">영상 제작 · 소개 페이지 · 문서·책 편집 · 월간 운영 · 반복 업무 정리 — 필요한 일을 <a href="#service">아래 범위와 가격</a>에서 확인하고 상담해주세요.</p></noscript>
+        <details class="work-scopes" id="all-work-scopes">
+          <summary>다섯 작업의 범위 한눈에 보기</summary>
+          <dl>
+            <div id="work-scope-video"><dt>영상 제작</dt><dd><p data-work-description>사진과 이야기에서 출발해 기획·촬영·편집을 거쳐 매장과 채널에 맞는 영상을 만듭니다.</p><p data-work-scope>기획 · 촬영 또는 보유 자료 편집 · 자막 · 내보내기. 길이, 화면 비율, 수정 횟수와 공개 채널은 견적서에서 정합니다.</p></dd></div>
+            <div id="work-scope-page"><dt>소개 페이지</dt><dd><p data-work-description>소개부터 조건, 일정, 문의까지. 읽는 사람이 다음 행동을 찾을 수 있는 페이지로 모읍니다.</p><p data-work-scope>문장 정리 · 화면 구성 · 모바일 대응 · 문의 동선. 페이지 수, 제공 자료, 도메인·호스팅과 수정 범위는 견적서에서 정합니다.</p></dd></div>
+            <div id="work-scope-document"><dt>문서·책 편집</dt><dd><p data-work-description>원고와 자료의 순서를 잡고, 읽는 목적에 맞춰 문장과 지면을 다듬습니다.</p><p data-work-scope>자료 분류 · 목차와 흐름 · 원고 편집 · 지면 구성. 분량, 원고 상태, 최종 파일 형식과 인쇄 여부는 별도로 확인합니다.</p></dd></div>
+            <div id="work-scope-monthly"><dt>월간 운영</dt><dd><p data-work-description>매달 필요한 자료와 일정부터 맞추고, 채널에 맞게 만들고 확인하며 다음 작업을 이어갑니다.</p><p data-work-scope>월간 소재 정리 · 콘텐츠 제작 · 게시와 관리. 채널, 제작 수량, 게시 주기와 응대 범위를 먼저 정합니다. 매출이나 조회수는 약속하지 않습니다.</p></dd></div>
+            <div id="work-scope-automation"><dt>반복 업무 정리</dt><dd><p data-work-description>지금 쓰는 문서와 도구에서 시작합니다. 반복 구간을 찾아 연결하고, 사람이 확인할 지점을 남깁니다.</p><p data-work-scope>반복 구간 조사 · 자료 형식 정리 · 도구 연결 · 사람이 확인할 단계. 계정 권한, 외부 서비스 비용과 유지관리 범위를 확인한 뒤 서면 견적을 드립니다.</p></dd></div>
+          </dl>
+          <p class="work-scopes-note">실제 비용과 포함 범위는 아래 안내를 보고 서면 견적에서 함께 정합니다. <a href="#service">범위·비용 확인하기 ↓</a></p>
+        </details>
       </div>
       <div class="shell hm-menu-outcome" aria-live="polite" aria-atomic="true">
         <div><p class="hm-menu-kicker" data-hm-category>01 · 영상 제작</p><h2 data-hm-title>보여주고 싶은 것을,<br>보고 싶은 영상으로.</h2></div>
@@ -622,9 +633,9 @@
           <p>이음턱편한치과 최문호 원장은 1:1 수업 뒤 맥북을 마련하고 Codex와 Claude Code로 홈페이지를 완성했습니다. 지금은 병원 업무 정리와 블로그 운영에도 AI를 쓰고 있습니다.</p>
           <p class="learning-limit">한 사람의 실제 결과이며 같은 결과를 보장하지 않습니다. 후속 환자 연락 도구는 기존 엑셀이 편하다는 의견으로 중단했습니다.</p>
           <div class="learning-resources">
-            <p>『바이브 코딩 실행서』에는 내 경험과 반복 질문을 안내문·홈페이지로 옮긴 과정과 실패를 고친 기록이 있습니다. 도입부와 1장은 무료로 읽을 수 있습니다.</p>
-            <p>아카데미 1·2강은 무료 공개, 3–7강은 준비 중입니다. 공개 수업은 직접 해볼 시작점이며, 맞춤 수업의 일정과 범위는 별도로 확인합니다.</p>
-            <div class="case-links"><a class="text-link" href="../book/">책과 직접 따라 할 내용 ↗</a><a class="text-link" href="../academy/">무료 수업과 공개 실습 ↗</a><a class="text-link" href="../tools/">무료 도구 ↗</a></div>
+            <p>『바이브 코딩 실행서』에는 내 경험과 반복 질문을 안내문·홈페이지로 옮긴 과정과 실패를 고친 기록이 있습니다. 여는 글부터 2장까지 무료로 읽을 수 있습니다.</p>
+            <p>무료 1강에서는 내 일을 AI에게 설명하고 답을 고친 뒤 실습 기록을 파일로 받습니다. 1·2강은 무료 공개, 3–7강은 준비 중이며 맞춤 수업의 일정과 범위는 별도로 확인합니다.</p>
+            <div class="case-links"><a class="text-link" href="../book/">책과 직접 따라 할 내용 ↗</a><a class="text-link" href="../academy/classroom/">무료 1강에서 직접 해보기 ↗</a><a class="text-link" href="../tools/">무료 도구 ↗</a></div>
           </div>
         </div>
         <figure class="learning-site">

@@ -80,3 +80,13 @@
 
 .service-jump{display:flex;flex-wrap:wrap;gap:4px 28px;margin-top:16px}
 .service-jump a{display:inline-flex;align-items:center;min-height:44px;color:var(--blue);font-size:15px;text-underline-offset:5px}
+
+/* Native disclosure: the five scopes remain readable without JavaScript. */
+.work-scopes{margin-top:24px;border-block:1px solid var(--line)}
+.work-scopes>summary{display:list-item;min-height:48px;padding:12px 0;cursor:pointer;font-weight:650;font-size:16px}
+.work-scopes>dl{margin:0}
+.work-scopes>dl>div{display:grid;grid-template-columns:minmax(130px,.3fr) minmax(0,1fr);gap:12px 28px;padding:20px 0;border-top:1px solid var(--line);scroll-margin-top:24px}
+.work-scopes dt{font-weight:700}.work-scopes dd{margin:0;min-width:0}.work-scopes dd p{margin:0 0 10px;font-size:16px;line-height:1.75}
+.work-scopes [data-work-scope],.work-scopes-note{color:var(--muted)}
+.work-scopes-note{font-size:15px;padding-block:8px 16px}.work-scopes-note a{display:inline-flex;min-height:44px;align-items:center;text-underline-offset:4px}
+@media(max-width:600px){.work-scopes>dl>div{grid-template-columns:1fr;gap:8px}}
