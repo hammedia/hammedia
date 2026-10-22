@@ -6,6 +6,7 @@ const fields=['try-reality','try-result','try-material','try-judgment'].map($);
 const output=$('try-request'), copy=$('try-copy'), status=$('try-status');
 const cards=[...document.querySelectorAll('[data-direction]')];
 let selected='', appliedStory='', generated=[], opened=false, pendingChange=null;
+let mode='experience';const drafts={experience:null,question:null};
 function confirmChange(action){pendingChange=action;$('replace-confirm').hidden=false;$('replace-keep').focus();}
 $('replace-keep').addEventListener('click',()=>{pendingChange=null;$('replace-confirm').hidden=true;$('direction-status').textContent='직접 쓴 내용을 그대로 유지했습니다.';});
 $('replace-apply').addEventListener('click',()=>{const action=pendingChange;pendingChange=null;$('replace-confirm').hidden=true;if(action)action();});
@@ -17,7 +18,7 @@ const templates={
 };
 const example='식당에서 직원이 고객 입장에서 생각하고, 더 좋은 음식과 서비스를 스스로 고민하도록 대화했다. 시작 전에는 “우리 음식 가격에 맞는 손님에게 어떤 서비스를 제공할까?”라고 물었다. 마친 뒤에는 “오늘 손님들은 만족했나?”, “아쉬운 순간은 없었나?”를 물었다. 아쉬운 순간에는 “네가 만약 다른 식당에서 이런 서비스나 음식을 받았다면 어땠을 것 같아?”라고 물었다. 이어서 “그러면 어떻게 하면 더 좋았을까? 너는 어떻게 생각해?”라고 물었다. 반성하는 말로 끝내지 않고, 실제로 음식과 서비스가 나아지길 바랐다.';
 const collaboration='먼저 이 대화에 제공된 경험·자료·앞선 정정을 함께 읽고, 내 뜻과 당신의 해석을 구분해주세요. 연결된 자료는 실제 접근 가능한 것만 확인하고, 보지 못한 자료는 읽었다고 하지 마세요. 이미 설명한 기본 내용을 다시 묻기보다, 당신의 추천과 이유를 먼저 말해주세요. 꼭 필요한 새 경험·취향·판단만 쉬운 질문 하나씩 물어주세요.\n방법 비교·작은 초안·자기검수는 당신이 맡고, 현장의 뜻과 최종 선택은 제가 판단합니다. 맡긴 작업은 가능한 범위에서 끝내되 실제 발송·공개·결제는 제 승인 없이 하지 마세요. 없는 사실·경력·가격·고객 반응·실행 성과는 추측하지 마세요.\n수정이 생기면 현재 초안과 판단도 함께 고치고, 원래 말은 보존해주세요. 파일에 접근할 수 있으면 기존 작업 기록에, 없으면 제가 복사할 수 있는 짧은 이어가기 메모에 바뀐 이유·현재 결과·다음 확인을 남겨주세요. 기록 작성과 실제 사용·효과 확인은 구분해주세요.';
-function focusPanel(id,heading){$(id).hidden=false;$(heading).focus({preventScroll:true});$(heading).scrollIntoView({block:'start',behavior:'auto'});}
+function focusPanel(id,heading){$(id).hidden=false;$(heading).focus({preventScroll:true});$(heading).scrollIntoView({block:'start',behavior:'instant'});}
 function recommend(){
  const text=story.value.trim();let key='';
  if(/직원|스스로|생각|판단|돌아보|서비스/.test(text)) key='conversation';
@@ -27,12 +28,21 @@ function recommend(){
  reason.textContent=key==='conversation'?'생각·판단·서비스와 관련된 말이 있어, 먼저 “함께 돌아보는 대화 안내”를 살펴볼 수 있어요.':key==='guide'?'설명·질문·안내와 관련된 말이 있어, 먼저 “쉽게 이해하는 안내 한 장”을 살펴볼 수 있어요.':key==='checklist'?'반복·실수·점검과 관련된 말이 있어, 먼저 “행동을 바꾸는 점검표”를 살펴볼 수 있어요.':'꼭 맞는 형태를 지금 정할 필요는 없어요. 아래 출발점을 비교하거나 AI와 먼저 이야기해보세요.';
 }
 function render(){
- const values=fields.map(el=>el.value.trim());
- output.value='내가 아는 현실:\n'+(values[0]||'[경험을 적어주세요]')+'\n\n원하는 결과:\n'+(values[1]||'[누구에게 어떤 도움이 될지 적어주세요]')+'\n\nAI가 읽을 재료:\n'+(values[2]||'위에 적은 경험 원문. 추가 자료는 아직 제공하지 않았습니다. 필요한 자료가 있으면 먼저 알려주세요.')+'\n\n내가 마지막에 판단할 것:\n'+(values[3]||'아직 정하지 않았습니다. 도움이 됐는지 확인할 기준을 먼저 제안해주세요.')+'\n\n이 방향이 경험의 뜻과 맞는지 먼저 판단하고, 더 나은 길이 있으면 이유와 함께 제안해주세요. 요청한 범위의 작은 초안을 만들어 실제로 쓸 사람이 할 수 있는 행동까지 살펴주세요. 설명한 경험을 임의로 다른 뜻의 매뉴얼로 만들거나 반성·형식적인 확인만 하게 만들지 마세요.\n\n'+collaboration;
+ const values=fields.map(el=>el.value.trim()),question=mode==='question';
+ const material=values[2]||(question?'위에 적은 질문과 실제 조건만 사용합니다. 추가 자료는 제공하지 않았습니다.':'위에 적은 경험 원문. 추가 자료는 아직 제공하지 않았습니다. 필요한 자료가 있으면 먼저 알려주세요.');
+ const judgment=values[3]||'아직 정하지 않았습니다. 도움이 됐는지 확인할 기준을 먼저 제안해주세요.';
+ const task=question?'다음 질문에 답하는 짧은 안내문 한 장을 만들어주세요.\n\n':'';
+ const ending=question?'내가 준 사실만 사용하고, 없는 시간·장소·서비스는 만들어 넣지 마세요. 안내문을 쓸 수 없을 만큼 중요한 정보가 비면 그 부분만 쉬운 질문 하나로 먼저 확인해주세요. 초안을 만든 뒤 각 문장이 제공한 재료에 근거하는지 스스로 살피고, 처음 읽는 사람이 할 다음 행동이 보이게 고쳐주세요. 실제 발송·공개·결제는 제가 정합니다. 수정할 때는 원래 말과 바뀐 이유를 함께 남겨주세요.':'이 방향이 경험의 뜻과 맞는지 먼저 판단하고, 더 나은 길이 있으면 이유와 함께 제안해주세요. 요청한 범위의 작은 초안을 만들어 실제로 쓸 사람이 할 수 있는 행동까지 살펴주세요. 설명한 경험을 임의로 다른 뜻의 매뉴얼로 만들거나 반성·형식적인 확인만 하게 만들지 마세요.\n\n'+collaboration;
+ output.value=task+'내가 아는 현실:\n'+(values[0]||(question?'[받은 질문과 실제 조건을 적어주세요]':'[경험을 적어주세요]'))+'\n\n원하는 결과:\n'+(values[1]||'[누구에게 어떤 도움이 될지 적어주세요]')+'\n\nAI가 읽을 재료:\n'+material+'\n\n내가 마지막에 판단할 것:\n'+judgment+'\n\n'+ending;
  copy.disabled=!values[0]||!values[1];
  $('try-progress').textContent=(values.filter(Boolean).length)+' / 4칸 · 뒤 두 칸은 선택';
- status.textContent=copy.disabled?'경험과 원하는 결과를 적어주세요. 방향이 어렵다면 위의 “아직 모르겠어요”로 시작할 수 있어요.':'요청서가 준비됐습니다. 내 뜻과 다른 문장이 없는지 읽고 복사하세요.';
+ status.textContent=copy.disabled?(question?'받은 질문과 실제 조건부터 적어주세요. 경험 탐색은 하지 않아도 됩니다.':'경험과 원하는 결과를 적어주세요. 방향이 어렵다면 위의 “아직 모르겠어요”로 시작할 수 있어요.'):'요청서가 준비됐습니다. 내 뜻과 다른 문장이 없는지 읽고 복사하세요.';
  fields.forEach(el=>el.classList.toggle('is-empty',!el.value.trim()));
+ $('question-correction-copy').disabled=copy.disabled;
+ if(question){
+  $('question-correction-request').value='방금 만든 안내문을 아래 실제 조건과 다시 대조해주세요.\n\n'+values[0]+'\n\n추가로 제공한 재료:\n'+material+'\n\n각 문장이 제가 준 어느 재료에서 나왔는지 옆에 짚어주세요. 제가 주지 않은 내용은 빼고, 실제와 다른 말은 고쳐주세요. 판단 기준은 '+judgment+'\n고친 안내문과 바뀐 이유를 보여주세요.';
+  $('question-correction-status').textContent='';
+ }
 }
 function renderExplore(){
  $('explore-request').value='내가 해온 경험입니다.\n\n'+story.value.trim()+'\n\n아직 무엇을 만들어야 할지 모르겠습니다. 경험의 뜻을 먼저 짧게 짚고, 누구에게 어떤 도움이 될 수 있을지 서로 다른 방향 두세 가지를 비교해주세요. 각 방향에 도움받는 사람·바뀔 행동·작게 만들 결과물·추천 이유를 붙여주세요.\n가장 적합한 방향 하나와 짧은 견본을 함께 보여주세요. 선택 부담을 전부 저에게 돌리거나, 뜻을 확인하기 전에 긴 완성본으로 굳히지 마세요. 제 설명이 보태지면 추천을 함께 고쳐주세요.\n방향이 잡히면 “내가 아는 현실 / 원하는 결과 / AI가 읽을 재료 / 내가 마지막에 판단할 것”을 정리하고 작은 결과 하나까지 이어가주세요.\n\n'+collaboration;
@@ -63,10 +73,58 @@ cards.forEach(card=>card.addEventListener('click',()=>choose(card.dataset.direct
 $('direction-own').addEventListener('click',()=>choose('own'));
 $('direction-explore').addEventListener('click',()=>{if(!story.value.trim())return;renderExplore();$('worksheet-panel').hidden=true;focusPanel('explore-panel','explore-heading');$('explore-status').textContent='선택을 못 해도 괜찮습니다. 이 요청서로 AI와 먼저 대화해보세요.';});
 fields.forEach(el=>el.addEventListener('input',render));$('experience-form').addEventListener('submit',e=>e.preventDefault());
-async function copyText(area,button,message){if(button.disabled)return;try{await navigator.clipboard.writeText(area.value);message.textContent='복사했습니다. 사용하는 AI의 대화창에 붙여넣으세요.';}catch{area.focus();area.select();message.textContent='자동 복사가 안 되어 요청서 전체를 선택했습니다. 기기의 복사 기능으로 복사하세요.';}}
-copy.addEventListener('click',()=>copyText(output,copy,status));
+async function copyText(area,button,message){if(button.disabled)return false;try{await navigator.clipboard.writeText(area.value);message.textContent='복사했습니다. 사용하는 AI의 대화창에 붙여넣으세요.';return true;}catch{area.focus();area.select();message.textContent='자동 복사가 안 되어 요청서 전체를 선택했습니다. 기기의 복사 기능으로 복사하세요.';return false;}}
+copy.addEventListener('click',async()=>{const copied=await copyText(output,copy,status);if(copied&&mode==='question'){$('question-followthrough-status').textContent='요청서를 복사했습니다. 이제 쓰는 AI에 붙여넣고, 받은 안내문을 실제 조건과 맞춰보세요. AI 답변·저장은 아직 이 페이지에서 확인한 일이 아닙니다.';focusPanel('question-followthrough','question-next-heading');}});
 $('explore-copy').addEventListener('click',()=>copyText($('explore-request'),$('explore-copy'),$('explore-status')));
-render();storyChanged();
+const originalUI={title:$('book-try-title').innerHTML,intro:$('practice-intro').innerHTML,heading:$('worksheet-heading').textContent,worksheetIntro:$('worksheet-intro').textContent,number:$('worksheet-panel').querySelector('.step-number').textContent,realityLabel:$('reality-label').innerHTML,placeholder:fields[0].getAttribute('placeholder')||'',note:$('worksheet-mode-note').textContent,privacy:$('book-try').querySelector('.privacy-note').textContent,materialHelp:$('experience-form').querySelector('.field-help').textContent,materialPlaceholder:fields[2].placeholder};
+function saveDraft(){drafts[mode]={values:fields.map(el=>el.value),selected,appliedStory,generated:[...generated],opened,worksheet:!$('worksheet-panel').hidden,direction:!$('direction-panel').hidden,explore:!$('explore-panel').hidden};}
+function setMode(nextMode,focus=true){
+ if(nextMode!==mode){
+  saveDraft();mode=nextMode;const draft=drafts[mode];
+  if(draft){fields.forEach((el,i)=>el.value=draft.values[i]);selected=draft.selected;appliedStory=draft.appliedStory;generated=[...draft.generated];opened=draft.opened;$('worksheet-panel').hidden=!draft.worksheet;$('direction-panel').hidden=!draft.direction;$('explore-panel').hidden=!draft.explore;}
+  else if(mode==='question'){
+   fields.forEach((el,i)=>el.value=['','이 질문에 답하고, 처음 읽는 사람이 따라 할 수 있는 제목 하나와 짧은 안내문.','','내가 주지 않은 시간·장소·서비스가 들어가지 않고, 다음에 무엇을 하면 되는지 알 수 있는가.'][i]);
+   selected='question';appliedStory='';generated=[];opened=false;$('worksheet-panel').hidden=false;
+  }
+  pendingChange=null;$('replace-confirm').hidden=true;
+ }
+ const question=mode==='question';$('book-try').classList.toggle('question-mode',question);
+ $('question-begin').setAttribute('aria-pressed',String(question));$('experience-begin').setAttribute('aria-pressed',String(!question));
+ $('book-try-title').innerHTML=question?'내 질문 하나를,<br>안내문 한 장으로.':originalUI.title;
+ $('practice-intro').innerHTML=question?'같은 설명을 반복하거나 AI가 보탠 말을 못 쓰겠다면.<br class="desktop-break"> 내 질문과 사실로 시작해, 쓰는 AI와 고쳐 저장하세요.':originalUI.intro;
+ $('experience-start').hidden=question;$('experience-next').hidden=question;$('question-followthrough').hidden=!question;
+ if(question){$('direction-panel').hidden=true;$('explore-panel').hidden=true;$('worksheet-panel').hidden=false;}
+ $('worksheet-heading').textContent=question?'질문과 실제 조건부터 적어보세요':originalUI.heading;
+ $('worksheet-intro').textContent=question?'경험을 먼저 풀어쓰지 않아도 됩니다. 받고 싶은 안내문의 길이·말투는 아래에서 고칠 수 있어요.':originalUI.worksheetIntro;
+ $('worksheet-panel').querySelector('.step-number').textContent=question?'01':originalUI.number;
+ $('reality-label').textContent=question?'1. 받은 질문과 내가 아는 실제 조건':originalUI.realityLabel;
+ fields[0].placeholder=question?'예: 손님이 포장 주문 뒤 어디서 기다리는지 물어요. 실제로는 입구에서 주문하고 오른쪽 벽에서 기다린 뒤, 번호가 불리면 직접 받아가요.':originalUI.placeholder;
+ $('experience-form').querySelector('.field-help').textContent=question?'위에 적은 질문과 실제 조건도 재료입니다. 실제 기록·메뉴표 등이 더 있다면 적어주세요.':originalUI.materialHelp;
+ fields[2].placeholder=question?'예: 실제 안내표시나 메뉴에 적힌 내용. 추가 자료는 아직 없습니다.':originalUI.materialPlaceholder;
+ $('worksheet-mode-note').textContent=question?'질문·조건은 내가 확인 · 안내문은 AI와 고치기':originalUI.note;
+ $('practice-mode-status').textContent=question?'질문·경험 모드의 작성값은 각각 유지됩니다.':'만들 것을 아직 모르면 경험에서 찾습니다. 질문 모드에 적은 내용도 따로 유지합니다.';
+ $('book-try').querySelector('.privacy-note').textContent=question?'가입·AI 연결 없이 요청서만 정리합니다. 입력은 전송·자동 저장하지 않습니다. 개인정보는 빼주세요.':originalUI.privacy;
+ cards.forEach(card=>card.setAttribute('aria-pressed',String(card.dataset.direction===selected)));
+ render();if(focus)focusPanel('book-try','book-try-title');
+}
+$('question-begin').addEventListener('click',()=>{setMode('question');history.replaceState(null,'','#question-start');});
+$('experience-begin').addEventListener('click',()=>{setMode('experience');history.replaceState(null,'','#book-try');});
+$('question-correction-copy').addEventListener('click',()=>copyText($('question-correction-request'),$('question-correction-copy'),$('question-correction-status')));
+function followPracticeHash(){
+ if(location.hash==='#question-start'){setMode('question');return;}
+ if(location.hash==='#book-try'||location.hash==='#experience-start'){setMode('experience',false);focusPanel('book-try','book-try-title');return;}
+ if(['#question-practice','#question-fact-check','#question-save-reopen'].includes(location.hash)){
+  const chapter=$('free-chapter'),target=$(location.hash.slice(1));chapter.open=true;requestAnimationFrame(()=>{target.focus({preventScroll:true});target.scrollIntoView({block:'start',behavior:'instant'});});
+ }
+}
+$('book-try').querySelector('.practice-mode-controls').hidden=false;
+window.addEventListener('hashchange',followPracticeHash);
+// Keep a direct practice destination after the normal-flow consent banner closes.
+document.addEventListener('click',event=>{
+ if(event.target.closest('#ham-analytics-consent button[data-choice]')&&['#question-start','#book-try','#experience-start','#question-practice','#question-fact-check','#question-save-reopen'].includes(location.hash))requestAnimationFrame(followPracticeHash);
+},true);
+document.querySelectorAll('a[href^="#"]').forEach(link=>link.addEventListener('click',event=>{if(link.getAttribute('href')===location.hash&&['#question-start','#question-practice','#question-fact-check','#question-save-reopen'].includes(location.hash)){event.preventDefault();followPracticeHash();}}));
+render();storyChanged();followPracticeHash();
 if('IntersectionObserver' in window){const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');observer.unobserve(entry.target);}}),{threshold:.12});document.querySelectorAll('.case-image').forEach(el=>observer.observe(el));}
 })();
 // Direct links from the free preview reveal the complete, already-present chapter.
