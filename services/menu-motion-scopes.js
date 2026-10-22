@@ -86,7 +86,7 @@
       if(same) savedDraft=current;
       saveDraft(!same); location.assign('../quote/?source=service-menu-'+selected+'#quote-form');
     }
-    catch { text('[data-hm-copy-status]','이 브라우저에서는 내용을 이어갈 수 없습니다. 작성한 내용은 여기에 남아 있습니다. 이메일 작성이나 내용 복사를 이용해주세요.'); }
+    catch { text('[data-hm-copy-status]','이 브라우저에서는 내용을 이어갈 수 없습니다. 작성한 내용은 여기에 남아 있습니다. 이메일 작성이나 내용 복사를 이용해 주세요.'); }
   });
   choices.forEach(button=>button.addEventListener('click',()=>choose(button.dataset.hmChoice)));
   document.querySelectorAll('[data-hm-video-purpose]').forEach(link=>link.addEventListener('click',()=>{
@@ -109,7 +109,7 @@
   q('[data-hm-copy]').addEventListener('click',async()=>{
     const field=q('#hm-menu-inquiry');
     try {if(!navigator.clipboard)throw new Error('clipboard unavailable');await navigator.clipboard.writeText(field.value);text('[data-hm-copy-status]','복사했습니다. 필요한 곳에 붙여넣어 주세요. 아직 전송되지 않았습니다.');}
-    catch {field.focus();field.select();text('[data-hm-copy-status]','내용을 선택했습니다. 기기의 복사 기능을 이용해주세요.');}
+    catch {field.focus();field.select();text('[data-hm-copy-status]','내용을 선택했습니다. 기기의 복사 기능을 이용해 주세요.');}
   });
   q('.hm-menu-choices').hidden=false;q('.hm-menu-controls').hidden=false;q('.hm-menu-contact').hidden=false;
   choose(selected,false);

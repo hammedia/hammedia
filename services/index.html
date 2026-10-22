@@ -40,7 +40,7 @@
       font-family: Pretendard, -apple-system, BlinkMacSystemFont, "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
       font-size: 17px;
       line-height: 1.68;
-      letter-spacing: -.018em;
+      letter-spacing: 0;
       word-break: keep-all;
       overflow-wrap: anywhere;
     }
@@ -60,10 +60,10 @@
       color: var(--blue);
       font-size: .78rem;
       font-weight: 800;
-      letter-spacing: .13em;
+      letter-spacing: 0;
     }
     h1, h2, h3, p { margin-top: 0; }
-    h1, h2, h3 { line-height: 1.13; letter-spacing: -.055em; }
+    h1, h2, h3 { line-height: 1.13; letter-spacing: -.02em; }
     h1 { margin-bottom: 24px; font-size: clamp(3rem, 4.5vw, 4.75rem); font-weight: 720; }
     h2 { margin-bottom: 22px; font-size: clamp(2.25rem, 4.4vw, 4.8rem); font-weight: 700; }
     h3 { margin-bottom: 14px; font-size: clamp(1.55rem, 2.5vw, 2.4rem); }
@@ -240,8 +240,8 @@
       .nav a:not(.contact-link) { display: none; }
       .hero-grid { grid-template-columns: 1fr; min-height: auto; }
       .hero-copy { min-width: 0; padding: 54px 0 40px; }
-      h1 { font-size: clamp(2.2rem, 10.2vw, 3.35rem); word-break: normal; overflow-wrap: anywhere; }
-      .lead { min-width: 0; word-break: normal; overflow-wrap: anywhere; }
+      h1 { font-size: clamp(2.2rem, 10.2vw, 3.35rem); word-break: keep-all; overflow-wrap: anywhere; }
+      .lead { min-width: 0; word-break: keep-all; overflow-wrap: anywhere; }
       .hero-actions { align-items: stretch; flex-direction: column; }
       .hero-actions .button { width: 100%; }
       .hero-actions .button.secondary { min-height: auto; justify-content: flex-start; padding: 6px 0; border: 0; }
@@ -287,10 +287,10 @@
   .hm-menu-opening p { max-width: 850px; }
     .hm-menu-opening > a { flex-shrink: 0; }
   </style>
-  <link rel="stylesheet" href="menu-motion.css?v=20261012-1">
+  <link rel="stylesheet" href="menu-motion.css?v=20261023-spacing">
   <link rel="stylesheet" href="customer-view.css?v=20261020-1">
   <script src="/assets/js/star-inquiry-context.js?v=20260930-1" defer></script>
-  <script src="menu-motion-scopes.js?v=20261022" defer></script>
+  <script src="menu-motion-scopes.js?v=20261023-spacing" defer></script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","@id":"https://hammedia.co.kr/services/#webpage","url":"https://hammedia.co.kr/services/","name":"실제 고객 작업과 서비스 | HAM MEDIA","inLanguage":"ko","about":{"@id":"https://hammedia.co.kr/#organization"},"mainEntity":{"@type":"ItemList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"Service","name":"영상 제작","description":"기획 · 촬영 또는 보유 자료 편집 · 자막 · 내보내기. 길이, 화면 비율, 수정 횟수와 공개 채널은 견적서에서 정합니다.","url":"https://hammedia.co.kr/services/#work-scope-video","provider":{"@id":"https://hammedia.co.kr/#organization"}}},{"@type":"ListItem","position":2,"item":{"@type":"Service","name":"소개 페이지","description":"문장 정리 · 화면 구성 · 모바일 대응 · 문의 동선. 페이지 수, 제공 자료, 도메인·호스팅과 수정 범위는 견적서에서 정합니다.","url":"https://hammedia.co.kr/services/#work-scope-page","provider":{"@id":"https://hammedia.co.kr/#organization"}}},{"@type":"ListItem","position":3,"item":{"@type":"Service","name":"문서·책 편집","description":"자료 분류 · 목차와 흐름 · 원고 편집 · 지면 구성. 분량, 원고 상태, 최종 파일 형식과 인쇄 여부는 별도로 확인합니다.","url":"https://hammedia.co.kr/services/#work-scope-document","provider":{"@id":"https://hammedia.co.kr/#organization"}}},{"@type":"ListItem","position":4,"item":{"@type":"Service","name":"월간 운영","description":"월간 소재 정리 · 콘텐츠 제작 · 게시와 관리. 채널, 제작 수량, 게시 주기와 응대 범위를 먼저 정합니다. 매출이나 조회수는 약속하지 않습니다.","url":"https://hammedia.co.kr/services/#work-scope-monthly","provider":{"@id":"https://hammedia.co.kr/#organization"}}},{"@type":"ListItem","position":5,"item":{"@type":"Service","name":"반복 업무 정리","description":"반복 구간 조사 · 자료 형식 정리 · 도구 연결 · 사람이 확인할 단계. 계정 권한, 외부 서비스 비용과 유지관리 범위를 확인한 뒤 서면 견적을 드립니다.","url":"https://hammedia.co.kr/services/#work-scope-automation","provider":{"@id":"https://hammedia.co.kr/#organization"}}}]}}</script>
   <link rel="stylesheet" href="production-examples.css?v=20261021">
   <script src="production-examples.js?v=20261021" defer></script>
@@ -313,7 +313,7 @@
     <section class="hm-menu" id="menu" aria-labelledby="hm-menu-heading">
       <div class="shell hm-menu-intro">
         <p class="hm-menu-kicker">HAM MEDIA · 홈페이지와 영상 제작</p>
-        <h1 id="hm-menu-heading">가게를 알리는 홈페이지,<br><em>이야기를 전하는 영상.</em></h1>
+        <h1 id="hm-menu-heading">가게를 알리는 홈페이지, <br><em>이야기를 전하는 영상.</em></h1>
         <div class="hm-menu-opening"><p>사진과 소개, 메뉴와 문의를 한곳에. 실제 공개된 작업을 먼저 보고, 필요한 결과와 맡길 범위를 골라보세요.</p><a class="hm-menu-cta" href="#web-work">만든 홈페이지 보기 ↓</a></div>
         <nav class="service-jump" aria-label="제작 사례 선택"><a href="#web-work">홈페이지 사례 ↓</a><a href="#video-purpose">영상 사례 ↓</a><a href="#content-flow">모션·3D 예시 ↓</a><a href="#service">맡길 범위·비용 ↓</a></nav>
       </div>
@@ -328,7 +328,7 @@
           </figure>
           <div class="hm-web-copy">
             <p class="hm-web-label">고객 작업 · 제철담은 마포바다</p>
-            <h3 id="hm-mapobada-title">메뉴를 보고,<br>찾아오는 길까지.</h3>
+            <h3 id="hm-mapobada-title">메뉴를 보고,<br> 찾아오는 길까지.</h3>
             <p>메뉴와 가격, 실제 음식 사진, 매장 이야기와 영상을 한 페이지에 담았습니다. 전화와 네이버 길찾기를 가까이 두어 방문에 필요한 정보를 이어줍니다.</p>
             <details class="web-case-notes"><summary>만든 범위·운영·인수 방식</summary><dl class="hm-web-facts">
               <div><dt>만든 범위</dt><dd>소개·메뉴·사진·영상·오시는 길과 모바일 화면</dd></div>
@@ -346,7 +346,7 @@
           </figure>
           <div class="hm-web-copy">
             <p class="hm-web-label">자사 제작·운영 · HAM MEDIA</p>
-            <h3 id="hm-hammedia-title">글을 즐기는 길과<br>일을 맡기는 길.</h3>
+            <h3 id="hm-hammedia-title">글을 즐기는 길과<br> 일을 맡기는 길.</h3>
             <p>취향과 기록은 아홉 별에서 천천히 읽도록, 일이 필요한 방문자는 서비스와 문의로 이어지도록 구성했습니다. 감상과 상담, 서로 다른 방문 목적을 함께 담은 자사 사이트입니다.</p>
             <details class="web-case-notes"><summary>만든 범위·운영·인수 방식</summary><dl class="hm-web-facts">
               <div><dt>만든 범위</dt><dd>별·글 탐색, 제작 사례, 서비스 선택과 문의 연결</dd></div>
@@ -357,7 +357,7 @@
           </div>
         </article>
         <div class="hm-web-delivery" aria-labelledby="hm-delivery-title">
-          <div><p class="hm-menu-kicker">홈페이지를 맡기면</p><h2 id="hm-delivery-title">받을 결과부터<br>함께 정합니다.</h2></div>
+          <div><p class="hm-menu-kicker">홈페이지를 맡기면</p><h2 id="hm-delivery-title">받을 결과부터<br> 함께 정합니다.</h2></div>
           <ol>
             <li><strong>내용과 화면</strong><span>무엇을 먼저 보여줄지 정리한 소개·서비스·문의 페이지</span></li>
             <li><strong>PC와 모바일</strong><span>약속한 화면 폭에서 읽고 누를 수 있는 반응형 화면</span></li>
@@ -374,8 +374,8 @@
         <div class="hm-menu-choices" role="group" aria-label="필요한 작업 선택" hidden>
           <button type="button" data-hm-choice="video" aria-pressed="true">영상으로 알려주세요</button>
           <button type="button" data-hm-choice="page" aria-pressed="false">페이지로 모아주세요</button>
-          <button type="button" data-hm-choice="document" aria-pressed="false">자료를 정리해주세요</button>
-          <button type="button" data-hm-choice="monthly" aria-pressed="false">꾸준히 운영해주세요</button>
+          <button type="button" data-hm-choice="document" aria-pressed="false">자료를 정리해 주세요</button>
+          <button type="button" data-hm-choice="monthly" aria-pressed="false">꾸준히 운영해 주세요</button>
           <button type="button" data-hm-choice="automation" aria-pressed="false">반복 일을 줄여주세요</button>
         </div>
         <details class="work-scopes" id="all-work-scopes">
@@ -391,7 +391,7 @@
         </details>
       </div>
       <div class="shell hm-menu-outcome" aria-live="polite" aria-atomic="true">
-        <div><p class="hm-menu-kicker" data-hm-category>01 · 영상 제작</p><h2 data-hm-title>보여주고 싶은 것을,<br>보고 싶은 영상으로.</h2></div>
+        <div><p class="hm-menu-kicker" data-hm-category>01 · 영상 제작</p><h2 data-hm-title>보여주고 싶은 것을,<br> 보고 싶은 영상으로.</h2></div>
         <div><p data-hm-description>사진과 이야기에서 출발해 기획·촬영·편집을 거쳐 매장과 채널에 맞는 영상을 만듭니다.</p><a class="hm-menu-cta" href="#service">이 부탁의 범위 보기 ↓</a><a class="hm-menu-evidence" href="#work" data-hm-evidence>실제 고객 작업 보기 ↗</a></div>
       </div>
       <details class="hm-menu-example shell">
@@ -400,12 +400,12 @@
         <div class="hm-menu-stage-top"><span>구성 예시 · 실제 자료로 보는 제작 방식</span><span data-hm-count>01 / 05</span></div>
         <div class="hm-menu-composition">
           <div class="hm-menu-fragment hm-menu-fragment-a" aria-hidden="true"><img src="../customers/mapobada/promo-0903/photos/01_모둠회.jpg" alt="" width="2000" height="1500"><span data-hm-fragment-a>사진</span></div>
-          <div class="hm-menu-fragment hm-menu-fragment-b" aria-hidden="true"><span data-hm-fragment-b>전하고 싶은 한마디</span><b>한 장면에<br>모으다.</b></div>
+          <div class="hm-menu-fragment hm-menu-fragment-b" aria-hidden="true"><span data-hm-fragment-b>전하고 싶은 한마디</span><b>한 장면에<br> 모으다.</b></div>
           <figure class="hm-menu-result">
             <div class="hm-menu-browser" aria-hidden="true"><i></i><i></i><i></i><span>HAM MEDIA / 제작 예시</span></div>
             <img class="hm-menu-main-image" src="../customers/mapobada/promo-0903/photos/02_해산물모듬.jpg" alt="마포바다 해산물 모둠 사진을 활용한 화면 구성 예시" width="2000" height="1500" loading="lazy">
-            <div class="hm-menu-sheet" hidden><small>반복 업무 · 구성 예시</small><strong>확인할 일만,<br>한눈에.</strong><div><span>자료 모으기</span><b>01</b></div><div><span>같은 형식으로 정리</span><b>02</b></div><div><span>사람이 확인하고 사용</span><b>03</b></div></div>
-            <figcaption class="hm-menu-result-type"><small data-hm-media-label>마포바다 실제 촬영 사진</small><strong data-hm-media-title>오늘의 바다를<br>보여주는 장면.</strong></figcaption>
+            <div class="hm-menu-sheet" hidden><small>반복 업무 · 구성 예시</small><strong>확인할 일만,<br> 한눈에.</strong><div><span>자료 모으기</span><b>01</b></div><div><span>같은 형식으로 정리</span><b>02</b></div><div><span>사람이 확인하고 사용</span><b>03</b></div></div>
+            <figcaption class="hm-menu-result-type"><small data-hm-media-label>마포바다 실제 촬영 사진</small><strong data-hm-media-title>오늘의 바다를<br> 보여주는 장면.</strong></figcaption>
           </figure>
           <div class="hm-menu-cutline" aria-hidden="true"><span>자료</span><i></i><span>구성</span><i></i><span>결과</span></div>
         </div>
@@ -425,13 +425,13 @@
     <section class="service" id="service">
       <div class="shell">
         <p class="eyebrow">필요한 결과에 맞춰</p>
-        <h2>지금 원하는 일에서<br>시작합니다.</h2>
+        <h2>지금 원하는 일에서<br> 시작합니다.</h2>
         <div class="hm-menu-scope" aria-live="polite" aria-atomic="true"><span data-hm-scope-label>선택한 부탁 · 영상으로 알려주세요</span><h3 data-hm-scope-title>영상 한 편에 필요한 일</h3><p class="hm-menu-price" data-hm-price>롱폼 편집 20만 원부터 · 촬영·원본 길이·수정 범위는 별도 확인</p><p data-hm-scope>기획 · 촬영 또는 보유 자료 편집 · 자막 · 내보내기. 길이, 화면 비율, 수정 횟수와 공개 채널은 견적서에서 정합니다.</p><a class="hm-menu-cta" href="#contact">이 부탁으로 상담하기 ↗</a></div>
         <p class="lead">한 건을 맡기거나, 꾸준히 운영하거나, 내 일로 직접 배울 수 있습니다. 받을 결과와 필요한 범위를 먼저 함께 정합니다.</p>
         <div class="service-grid">
           <article class="service-item">
             <small>01 · 영상·페이지 한 건</small>
-            <h3>한 편의 영상,<br>한 페이지의 완성</h3>
+            <h3>한 편의 영상,<br> 한 페이지의 완성</h3>
             <p>합의한 한 편 영상 또는 한 페이지를 만듭니다. 촬영·자막·썸네일·게시 문구·수정은 필요한 항목을 견적에 구분합니다.</p>
             <span class="price">롱폼 편집 20만 원부터</span>
             <p>페이지는 범위 확인 후 서면 견적</p>
@@ -444,14 +444,14 @@
             <p>세부 범위는 서면 견적</p>
           </article>
           <article class="service-item">
-            <small>03 · 회사용 AI 업무환경</small>
-            <h3>반복 일을 줄이고,<br>실제로 쓰도록</h3>
+            <small>03 · 회사용 AI 업무 환경</small>
+            <h3>반복 일을 줄이고,<br> 실제로 쓰도록</h3>
             <p>현재 반복 업무를 살펴 필요한 도구, 사람이 확인할 지점, 실제 사용 인계를 함께 정합니다.</p>
             <span class="price">현재 업무·사용자·기능 확인 후 서면 견적</span>
           </article>
           <article class="service-item">
             <small>04 · 내 일로 직접 배우기</small>
-            <h3>자기 일을 재료로<br>직접 만들어보기</h3>
+            <h3>자기 일을 재료로<br> 직접 만들어 보기</h3>
             <p>공개 책·무료 도구·실습 수업에서 자기 일을 재료로 직접 만들어 봅니다.</p>
             <span class="price">『바이브 코딩 실행서』 전체 14,900원</span>
             <p>2026년 10월 1일부터 공개 적용 · 아카데미 1·2강 무료 공개, 3–7강 준비 중</p>
@@ -472,7 +472,7 @@
       <div class="shell example-layout">
         <div class="example-copy">
           <p class="eyebrow">촬영 자료를 오래 쓰는 방법</p>
-          <h2 id="content-flow-title">한 번의 촬영에서,<br>쓸 곳에 맞는 콘텐츠로.</h2>
+          <h2 id="content-flow-title">한 번의 촬영에서,<br> 쓸 곳에 맞는 콘텐츠로.</h2>
           <p>같은 자료도 손님이 보는 화면에 맞춰 다시 구성할 수 있습니다. 휴대전화에서 볼 짧은 영상, 사진과 글, 매장 TV에서 볼 가로 영상으로 이어지는 흐름을 보세요.</p>
           <ol class="example-steps"><li><strong>모으기</strong>촬영하거나 이미 가진 영상·사진을 살펴봅니다.</li><li><strong>고르기</strong>어디에 무엇을 알릴지, 필요한 결과를 정합니다.</li><li><strong>만들기</strong>길이·화면 비율·문구를 각 용도에 맞춥니다.</li></ol>
           <p class="example-boundary">HAM MEDIA가 만든 제작 흐름 설명입니다. 납품물의 종류·수량·공개 채널은 견적서에서 정합니다.</p>
@@ -490,7 +490,7 @@
     <section class="work" id="video-purpose" aria-labelledby="video-purpose-title">
       <div class="shell">
         <header class="section-head">
-          <div><p class="eyebrow">HAM MEDIA 디자인스튜디오 · 영상 제작</p><h2 id="video-purpose-title">어디에서, 누구에게<br>보여줄 영상인가요?</h2></div>
+          <div><p class="eyebrow">HAM MEDIA 디자인스튜디오 · 영상 제작</p><h2 id="video-purpose-title">어디에서, 누구에게<br> 보여줄 영상인가요?</h2></div>
           <p>작품의 분위기를 전하는 일과 가게의 정보를 전하는 일은 출발점이 다릅니다. 촬영부터 필요한지, 가진 자료의 편집이 필요한지부터 함께 정합니다.</p>
         </header>
         <div class="case-pair">
@@ -507,7 +507,7 @@
           <article class="case-card">
             <p class="eyebrow">매장 · 전문 서비스 안내</p>
             <a class="media" style="display:block" href="#work"><img src="../customers/mapobada/promo-0903/photos/02_해산물모듬.jpg" alt="마포바다 제작 사례의 실제 음식 사진" width="2000" height="1500" loading="lazy"></a>
-            <h3>마포바다<br>매장 안내를 하나의 흐름으로</h3>
+            <h3>마포바다<br> 매장 안내를 하나의 흐름으로</h3>
             <p>오픈에 필요한 홈페이지·매장 영상·메뉴와 홍보물을 함께 만들었습니다. 아래 실제 작업에서 맡은 범위를 확인할 수 있습니다.</p>
             <p>가게에서는 메뉴와 공간을, 전문 서비스에서는 자주 받는 질문과 설명을 정리합니다. 매장 TV에서 볼지, 휴대전화로 볼지에 따라 글자와 화면 비율을 정합니다.</p>
             <p class="case-proof">상담할 내용: 알릴 서비스, 촬영할 장소 또는 보유 자료, 보여줄 화면, 희망 일정. 촬영·편집·게시 중 필요한 범위를 고릅니다.</p>
@@ -524,7 +524,7 @@
               <figcaption>40초 · 무음 · 약 48MB. 재생을 누를 때 영상을 불러옵니다. <a class="example-file" href="assets/motion-use-20261021/motor-principle.mp4">영상 파일 열기 ↗</a></figcaption>
             </figure>
             <div class="example-copy">
-              <h3 id="product-explainer-title">겉으로 보이지 않는 작동을,<br>이해할 수 있는 순서로.</h3>
+              <h3 id="product-explainer-title">겉으로 보이지 않는 작동을,<br> 이해할 수 있는 순서로.</h3>
               <p>부품을 나누고, 안쪽 구조를 열고, 움직임과 흐름을 보여줍니다. 제품 소개나 교육에서 말로만 설명하기 어려운 부분을 한 장면씩 풀어가는 방식입니다.</p>
               <p>이 예시에서는 모터의 조립과 분해, 권선과 회전자, 축으로 이어지는 에너지와 냉각 흐름을 볼 수 있습니다.</p>
               <p class="example-boundary">HAM MEDIA의 자체 설명 모델입니다. 고객 납품 사례나 실제 제품 CAD·물리 시뮬레이션·공학 검증 자료가 아닙니다.</p>
@@ -728,7 +728,7 @@
         <nav aria-label="HAM MEDIA 주요 페이지">
           <ul class="paths-list">
             <li><a href="../book/"><strong>전자책</strong><span>바이브 코딩 실행서</span></a></li>
-            <li><a href="../tools/"><strong>무료 AI 도구</strong><span>직접 써보는 작업 도구</span></a></li>
+            <li><a href="../tools/"><strong>무료 AI 도구</strong><span>직접 써 보는 작업 도구</span></a></li>
             <li><a href="../academy/"><strong>AI 아카데미</strong><span>실제 업무를 배우기</span></a></li>
             <li><a href="../portfolio/"><strong>포트폴리오</strong><span>만든 결과물 전체 보기</span></a></li>
             <li><a href="../erp/"><strong>작은 ERP 체험판</strong><span>고객·계약·입금·납품 보기</span></a></li>
@@ -743,9 +743,9 @@
       <div class="shell contact-grid">
         <div class="contact-copy">
           <p class="eyebrow">상담</p>
-          <h2>막힌 일부터 말씀해주세요.</h2>
+          <h2>막힌 일부터 말씀해 주세요.</h2>
           <p>이미 가진 영상·사진·문서·업무 흐름이 있으면 그대로 보여주세요. 먼저 분류하거나 서비스 메뉴를 고르실 필요는 없습니다.</p><p>아래 세 가지를 바탕으로 맡길지, 같이 만들지, 직접 배울지 가능한 시작점을 제안하고 범위·일정·견적을 서면으로 정리합니다.</p>
-          <div class="hm-menu-contact" hidden><label for="hm-menu-inquiry">선택한 부탁에 원하는 결과를 더해주세요</label><textarea id="hm-menu-inquiry" rows="10"></textarea><button class="hm-menu-cta" type="button" data-hm-continue>이 내용으로 문의 이어가기 →</button><a class="hm-menu-cta" data-hm-email href="mailto:hammedia002@gmail.com">선택한 내용으로 이메일 작성 ↗</a><button type="button" data-hm-copy>내용 복사</button><p data-hm-copy-status role="status">다음 화면에서 내용을 확인하고 연락처를 적어 보내주세요. 아직 전송되지 않았습니다.</p></div>
+          <div class="hm-menu-contact" hidden><label for="hm-menu-inquiry">선택한 부탁에 원하는 결과를 더해 주세요</label><textarea id="hm-menu-inquiry" rows="10"></textarea><button class="hm-menu-cta" type="button" data-hm-continue>이 내용으로 문의 이어가기 →</button><a class="hm-menu-cta" data-hm-email href="mailto:hammedia002@gmail.com">선택한 내용으로 이메일 작성 ↗</a><button type="button" data-hm-copy>내용 복사</button><p data-hm-copy-status role="status">다음 화면에서 내용을 확인하고 연락처를 적어 보내주세요. 아직 전송되지 않았습니다.</p></div>
           <ol class="prepare">
             <li><b>1</b><span>무엇이 달라졌으면 하는지</span></li>
             <li><b>2</b><span>지금 어디에서 막히는지</span></li>

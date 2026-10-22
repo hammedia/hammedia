@@ -18,7 +18,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://hammedia.co.kr/quote/">
 <link rel="stylesheet" href="/assets/css/studio-rebuild.css">
-<link rel="stylesheet" href="/quote/rebuild.css?v=20261018-1">
+<link rel="stylesheet" href="/quote/rebuild.css?v=20261023-spacing">
 <script src="/assets/js/studio-rebuild.js" defer></script>
 </head>
 <body class="studio-page quote-page">
@@ -34,7 +34,7 @@
   <section class="page-hero quote-hero" aria-labelledby="quote-title">
     <div>
       <p class="eyebrow">작업 문의</p>
-      <h1 id="quote-title">어떤 일을<br>끝내고 싶으세요?</h1>
+      <h1 id="quote-title">어떤 일을<br> 끝내고 싶으세요?</h1>
       <p class="lede">맡길 일과 받고 싶은 결과를 알려주세요.<br>범위와 기간, 비용을 서면 견적으로 답합니다.</p>
       <a class="button" href="#quote-form">문의 작성하기</a>
     </div>
@@ -56,7 +56,7 @@
   </section>
   <section id="quote-form" class="section quote-form-section" aria-labelledby="form-title">
     <div class="quote-form-intro">
-      <h2 id="form-title">지금 알고 있는<br>내용부터 적어주세요.</h2>
+      <h2 id="form-title">지금 알고 있는<br> 내용부터 적어주세요.</h2>
       <p>완성된 기획서가 없어도 괜찮습니다. 필요한 일과 결과를 짧게 적어주세요.</p>
       <p class="form-note">‘선택’ 표시 외에는 모두 필수 항목입니다.</p>
       <a class="quote-text-link" href="/services/#work">어떤 작업을 했는지 보기 →</a>
@@ -126,8 +126,8 @@
     </form>
   </section>
   <aside class="quote-alternative section" aria-labelledby="alternative-title">
-    <h2 id="alternative-title">먼저 직접 해보고 싶다면</h2>
-    <p>무료 도구를 써보거나, 책의 첫 장을 읽어보세요.</p>
+    <h2 id="alternative-title">먼저 직접 해 보고 싶다면</h2>
+    <p>무료 도구를 써 보거나, 책의 첫 장을 읽어 보세요.</p>
     <div><a class="button-secondary" href="/tools/">도구 쓰기</a><a class="quote-text-link" href="/book/preview/">첫 장 읽기 →</a></div>
   </aside>
 </main>
@@ -178,7 +178,7 @@
         const label = form.querySelector(`label[for="${field.id}"]`);
         const labelText = label?.textContent.replace(/^\s*[1-5+]\s*/, "").trim() || "필수 항목";
         const errorEl = document.getElementById(`${field.id}-error`);
-        const reason=field.maxLength>0 && field.value.length>field.maxLength ? `${field.maxLength}자 이내로 정리해주세요. 원문은 위에서 확인할 수 있습니다.` : "이 내용을 적어주세요.";
+        const reason=field.maxLength>0 && field.value.length>field.maxLength ? `${field.maxLength}자 이내로 정리해 주세요. 원문은 위에서 확인할 수 있습니다.` : "이 내용을 적어주세요.";
         if (errorEl) errorEl.textContent = reason;
         const item = document.createElement("li");
         item.dataset.field = field.id;
@@ -219,7 +219,7 @@
       let lastAt = 0;
       try { lastAt = Number(localStorage.getItem(RATE_LIMIT_KEY) || 0); } catch {}
       if (Date.now() - lastAt < RATE_LIMIT_MS) {
-        setMsg("err", "방금 보내셨습니다. 잠시 후 다시 시도해주세요.");
+        setMsg("err", "방금 보내셨습니다. 잠시 후 다시 시도해 주세요.");
         return;
       }
 
@@ -259,7 +259,7 @@
         form.reset();
         requiredFields.forEach(clearFieldError);
       } catch (error) {
-        setMsg("err", "전송 중 문제가 발생했습니다. 작성한 내용은 그대로 있습니다. 잠시 후 다시 시도해주세요.");
+        setMsg("err", "전송 중 문제가 발생했습니다. 작성한 내용은 그대로 있습니다. 잠시 후 다시 시도해 주세요.");
         console.error("quote_requests insert error:", error);
       } finally {
         btnEl.disabled = false;

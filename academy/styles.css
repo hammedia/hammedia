@@ -84,3 +84,5 @@ h1,h2,h3,p{margin-top:0}h1,h2,h3{line-height:1.12;letter-spacing:0}h2{font-famil
 .video-play small{font-size:13px;font-weight:600;opacity:.8;margin-top:4px}
 .video-play:focus-visible{outline:3px solid var(--accent);outline-offset:-6px}
 @media(max-width:760px){.video-section{grid-template-columns:1fr}.video-play{min-height:44px}}
+
+@media(max-width:760px){.hours-layout{grid-template-columns:minmax(0,1fr);gap:32px}}

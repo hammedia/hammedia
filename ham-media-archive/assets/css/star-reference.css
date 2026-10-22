@@ -481,3 +481,16 @@ body.star-reference[data-star-reference=camera] .room-article-panel .shared-memo
  body.star-reference[data-star-reference=bicycle] .body-route .route-stop span{position:static;opacity:1;padding:0;background:transparent;font-size:12px;line-height:1.2}
  body.star-reference[data-star-reference=bicycle] .ride-hero .hero-copy{min-height:0;min-block-size:0;justify-content:flex-start;margin:0 auto;padding:0 0 32px}
 }
+
+/* Korean copy: preserve an entire word; wrap controls and give captions reading width. */
+body.star-reference{word-break:keep-all;overflow-wrap:anywhere}
+.star-reference :is(.hero-code,.stop-number,.section-number,.audio-v2-eyebrow,.audio-v2-section-number,.num,.label){letter-spacing:0}
+.star-reference[data-star-reference=fountain] .tab-row{display:flex;flex-wrap:wrap;gap:8px}
+.star-reference[data-star-reference=fountain] .tab{flex:0 0 auto;white-space:nowrap}
+@media(max-width:600px){
+ .star-reference[data-star-reference=car] .photo-grid{grid-template-columns:minmax(0,1fr)}
+ .star-reference[data-star-reference=car] .photo-card figcaption{padding:16px 0;min-height:0}
+}
+
+.star-reference .star-button{white-space:nowrap}
+.star-reference[data-star-reference=camera] .selection-choice{display:block}
