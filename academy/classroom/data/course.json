@@ -2175,7 +2175,7 @@
       "evidence": [
         {
           "type": "gallery",
-          "label": "화면을 보여주고 AI와 고쳐 전후를 확인한 실제 장면",
+          "label": "햄의 회고를 바탕으로 전·대화·후를 다시 확인한 화면",
           "srcs": [
             "assets/finalcut-color-01-before.jpg",
             "assets/finalcut-color-02-chat.png",
@@ -2183,7 +2183,7 @@
           ],
           "alts": [
             "수정 전 Final Cut 화면",
-            "화면을 본 AI와 나눈 실제 대화",
+            "당시 역사 채팅이 아니라 같은 과정을 다시 확인한 AI 대화 화면",
             "사람이 판단해 멈춘 수정 후 화면"
           ],
           "status": "reconstructed"
