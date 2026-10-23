@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="canonical" href="https://hammedia.co.kr/ham-media-archive/jobs/pc-amp/">
+  <meta name="description" content="PC에서 WiiM Amp와 두 스피커까지, 소리가 가는 길을 직접 연결해 보는 설명 모형.">
+  <title>소리가 가는 길 · HAM MEDIA</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='8' fill='%2300704a'/%3E%3Cpath d='M10 10v20m20-20v20M10 20h20' stroke='white' stroke-width='4'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header><a href="../../pages/music-audio.html" class="wordmark">HAM MEDIA <span>함께 풀어보기</span></a><a class="internal" href="../../pages/music-audio.html">음악·오디오별로 돌아가기 →</a></header>
+<main id="main">
+  <section class="intro" aria-labelledby="page-title">
+    <div><p class="eyebrow">PC → WiiM Amp → 스피커</p><h1 id="page-title">소리가 가는 길을<br>직접 이어보세요.</h1></div>
+    <p class="lead">어떤 선을 어디에 꽂을까요?<br>단자를 눌러 가까이 보고, 연결과 설정을 하나씩 따라갑니다.</p>
+  </section>
+  <nav class="steps" aria-label="연결 순서">
+    <button data-step="0" aria-current="step"><b>01</b> PC 출력</button>
+    <button data-step="1"><b>02</b> 입력 연결</button>
+    <button data-step="2"><b>03</b> 두 스피커</button>
+    <button data-step="3"><b>04</b> 앱·PC 설정</button>
+    <button data-step="4"><b>05</b> 흐름 확인</button>
+  </nav>
+  <section class="workbench" aria-label="연결을 직접 해 보는 작업대">
+    <div class="visual">
+      <div class="view-head"><div><span class="eyebrow">CONNECTION LAB</span><p id="scene-caption">PC의 소리 출력부터 찾습니다</p></div><div class="view-tools"><button id="overview" aria-pressed="true">전체 보기</button><button id="rear" aria-pressed="false">앰프 뒤쪽</button></div></div>
+      <div class="viewport" id="viewport">
+        <canvas id="scene" aria-label="PC, 앰프 뒷면과 좌우 스피커의 입체 설명 모형"></canvas>
+        <div id="fallback" hidden><svg viewBox="0 0 800 340" role="img" aria-label="PC 출력에서 앰프 LINE IN을 거쳐 좌우 스피커로 이어지는 평면 연결도"><rect x="24" y="100" width="140" height="110" rx="12" fill="#d6dde0"/><text x="94" y="158" text-anchor="middle">PC</text><path d="M164 160 H300 M520 145 H635 V80 M520 175 H635 V260" stroke="#00704a" stroke-width="7" fill="none"/><rect x="300" y="110" width="220" height="100" rx="16" fill="#b6bdc2"/><text x="410" y="150" text-anchor="middle">WiiM Amp</text><text x="410" y="184" text-anchor="middle">LINE IN → Speaker Out</text><rect x="635" y="30" width="100" height="100" rx="10" fill="#c8ad8e"/><rect x="635" y="210" width="100" height="100" rx="10" fill="#c8ad8e"/><text x="685" y="88" text-anchor="middle">왼쪽 L</text><text x="685" y="269" text-anchor="middle">오른쪽 R</text></svg><p>입체 보기를 사용할 수 없어 연결도를 보여드립니다. 아래 단자 버튼으로 같은 설명을 볼 수 있습니다.</p></div>
+        <svg id="leaders" aria-hidden="true"><line data-line="pc"/><line data-line="line"/><line data-line="speaker"/><circle data-dot="pc" r="3"/><circle data-dot="line" r="3"/><circle data-dot="speaker" r="3"/></svg>
+        <div id="hotspots" aria-label="모형에서 단자 선택">
+          <button class="hotspot" data-port="pc"><span>1</span> PC 3.5mm</button>
+          <button class="hotspot" data-port="line"><span>2</span> LINE IN</button>
+          <button class="hotspot" data-port="speaker"><span>3</span> Speaker Out</button>
+        </div>
+      </div>
+      <div class="model-note">설명 모형 · 위치·간격을 단순화했습니다. 실제 단자는 기기 뒷면·설명서로 확인하세요.</div>
+      <div class="port-strip" aria-label="단자 확대 선택"><span>가까이 보기</span><button data-port="pc">PC 3.5mm</button><button data-port="line">LINE IN</button><button data-port="speaker">스피커 + / −</button><button data-port="usb">USB</button><button data-port="hdmi">HDMI ARC</button><button data-port="sub">SUB OUT</button></div>
+      <div class="route" aria-label="현재 연결 상태"><span id="route-pc">PC 출력 확인 전</span><i id="wire-in">→</i><span>WiiM Amp</span><i id="wire-out">→</i><span id="route-speaker">좌·우 스피커</span></div>
+      <p id="signal-status" class="signal-status" role="status">먼저 실제 PC에서 소리가 나오는 출력이 있는지 확인하세요.</p>
+    </div>
+    <aside class="inspector" aria-labelledby="step-title">
+      <div class="step-heading"><span id="step-number" class="eyebrow">01 / 05</span><button id="reset" class="text-button">처음부터</button></div>
+      <h2 id="step-title" tabindex="-1"></h2><p id="step-description" class="description"></p>
+      <div id="detail-drawing" class="detail-drawing" aria-label="선택한 연결 부위의 확대 그림"></div>
+      <div id="controls"></div>
+      <p id="feedback" role="status" class="feedback"></p>
+      <div class="step-footer"><button id="previous" class="secondary">이전</button><button id="next" class="primary">다음: 입력 연결 <span>→</span></button></div>
+    </aside>
+  </section>
+  <section class="help" aria-labelledby="help-title"><div><p class="eyebrow">연결했는데 조용하다면</p><h2 id="help-title">PC부터 한 단계씩<br>확인해요.</h2><p>한꺼번에 바꾸지 말고, 아래 순서로 확인합니다. 배선을 만질 때는 앰프 전원을 먼저 끕니다.</p></div><div class="help-controls"><label for="symptom">어떤 상태인가요?</label><select id="symptom"><option value="silent">양쪽 모두 소리가 안 나요</option><option value="one">한쪽에서만 소리가 나요</option><option value="bass">소리는 나는데 저음이 약해요</option><option value="noport">PC 출력을 찾을 수 없어요</option></select><div id="diagnosis" aria-live="polite"></div></div></section>
+  <footer><p><strong>확인 범위</strong> WiiM Amp의 공식 입력·출력 방식에 맞춘 설명입니다. 실제 PC 단자·운영체제·스피커 후면·현장 재생은 확인 전입니다. 화면의 선과 움직임은 가상 신호이며 기기를 제어하지 않습니다.</p><details><summary>공식 근거와 모형의 범위</summary><p>앰프 뒷면의 단자 간격과 크기는 알아보기 쉽게 단순화했습니다. 스피커는 일반 수동 스피커 모형이며 특정 제품의 사양을 나타내지 않습니다. 광출력은 PC에 실제 S/PDIF OUT이 있을 때만 TOSLINK → Optical In / 2채널 PCM 경로를 검토합니다.</p><p><a href="https://faq.wiimhome.com/en/support/solutions/articles/72000616447-how-to-use-audio-input-ports-of-the-wiim-amp-or-wiim-amp-pro" target="_blank" rel="noreferrer">WiiM 공식 입력 안내 ↗</a> · <a href="https://www.wiimhome.com/langPdf/en/WiiM%20Amp%20UM.pdf" target="_blank" rel="noreferrer">WiiM Amp 매뉴얼 v1.3.5 ↗</a></p></details></footer>
+  <noscript><p class="no-script">상호작용에는 JavaScript가 필요합니다. 정상 PC 3.5mm 출력 → 3.5mm 스테레오 수~RCA 흰 L/빨강 R 수 → 앰프 LINE IN. 전원을 끄고 양쪽 스피커의 +/−를 각각 연결합니다. WiiM Home 입력 Line In·출력 Speaker Out, PC는 실제 아날로그 출력 장치를 선택합니다. USB PC 직결·일반 HDMI→ARC 연결은 이 경로가 아닙니다.</p></noscript>
+</main><script src="app.js" defer></script>
+</body></html>
