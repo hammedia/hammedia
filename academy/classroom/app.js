@@ -1,4 +1,4 @@
-import { hasLesson1Record, lesson1RecordText } from "./lesson1-export.mjs?v=20261020-lesson1easy";
+import { hasLessonRecord, lessonRecordFilename, lessonRecordText } from "./lesson1-export.mjs?v=20261023-lessons2to7";
 
 const STORAGE_KEY = "ham-academy-barunsaenghwal-seven-hour-v1";
 
@@ -13,6 +13,7 @@ const elements = {
   lessonKicker: document.querySelector("[data-lesson-kicker]"),
   lessonTitle: document.querySelector("[data-lesson-title]"),
   lessonQuestion: document.querySelector("[data-lesson-question]"),
+  lessonAlone: document.querySelector("[data-lesson-alone]"),
   stage: document.querySelector("#lesson-stage"),
   stageKicker: document.querySelector("[data-stage-kicker]"),
   stageTitle: document.querySelector("[data-stage-title]"),
@@ -77,8 +78,8 @@ const criteriaId = (lesson) => JSON.stringify(lesson.correctionCriteria);
 
 // 같은 courseVersion(2026.09.03-v1) 안에서 확인표 문구가 바뀐 적이 있는 강.
 // 기준 이력(최초 a423707 → 보완 7e6875c, criteria-history.json) 대조 결과이며,
-// 저장에 기준 식별값이 없는 옛 기록을 이행할 때만 이 근거를 쓴다. lesson-1 외 강은 제공된 세 판본에서 같은 확인표다. 과거 모든 판본의 동일성을 보증하는 것은 아니다.
-const CRITERIA_ONCE_REWRITTEN = new Set(["lesson-1"]);
+// 저장에 기준 식별값이 없는 옛 기록을 이행할 때만 이 근거를 쓴다. lesson-3~7은 2026-10-23 공개 전 확인 기준을 새로 적용했다. lesson-2의 확인표 문구는 유지했다. 과거 모든 판본의 동일성을 보증하는 것은 아니다.
+const CRITERIA_ONCE_REWRITTEN = new Set(["lesson-1", "lesson-3", "lesson-4", "lesson-5", "lesson-6", "lesson-7"]);
 
 // 옛 체크를 현재 확인 기준에 맞춘다. 작성 내용(첫 답·고칠 이유 메모·다시 쓴 결과)은 어떤 경우에도 지킨다.
 const alignCriteriaState = (lesson, work, savedWork) => {
@@ -214,7 +215,7 @@ function renderStageNavigation() {
   lesson.flow.forEach((stage, index) => {
     const button = document.createElement("button");
     button.type = "button";
-    button.className = `stage-nav-button${index < state.currentStage ? " is-done" : ""}`;
+    button.className = "stage-nav-button";
     button.textContent = stage.label;
     button.dataset.stageIndex = String(index);
     if (index === state.currentStage) button.setAttribute("aria-current", "step");
@@ -316,7 +317,7 @@ function stageBlock(block) {
     section.append(text("p", block.text));
   } else if (block.kind === "links") {
     block.links.forEach((source) => {
-      if (!/^https:\/\//.test(source.href)) return;
+      if (!/^https:\/\//.test(source.href) && !/^\/(?!\/)/.test(source.href)) return;
       const link = text("a", source.label, "dialogue-source-link");
       link.href = source.href;
       link.target = "_blank";
@@ -623,7 +624,7 @@ function renderArtifact() {
   elements.downloadHandoff.disabled = !outputs[6];
   const openLessons = course.lessons.filter((lesson) => !lesson.locked).length;
   elements.overallProgress.textContent = `${state.currentLesson + 1} / ${openLessons}강`;
-  elements.completionCount.textContent = `${completed} / ${openLessons}강 완료`;
+  elements.completionCount.textContent = `${completed} / ${openLessons}강 실습 확인`;
   elements.progressBar.style.width = `${(completed / openLessons) * 100}%`;
 }
 
@@ -655,7 +656,7 @@ function renderDock() {
   } else {
     elements.nextKicker.textContent = "마지막 확인";
     elements.nextLabel.textContent = "사용 확인·첫 완성본·다음에 할 일 저장";
-    elements.nextDescription.textContent = "새 대화에서 작은 수정 하나를 이어간 뒤 결과를 내려받습니다.";
+    elements.nextDescription.textContent = "처음 보는 사람의 반응과 새 대화에서 이어갈 말을 확인합니다. 파일 받기는 선택입니다.";
     elements.saveNext.textContent = "일곱 강 저장하기";
   }
 }
@@ -668,17 +669,18 @@ function render() {
   elements.lessonKicker.textContent = `${lesson.number}강 · ${lesson.shortTitle}`;
   elements.lessonTitle.textContent = lesson.title;
   elements.lessonQuestion.textContent = lesson.question;
+  if (elements.lessonAlone) elements.lessonAlone.textContent = lesson.aloneNote || "혼자 해도 됩니다";
   elements.stageKicker.textContent = stage.label;
   elements.stageTitle.textContent = stageTitle(lesson, state.currentStage);
   elements.stageCopy.replaceChildren(stageCopyNodes(lesson, state.currentStage));
   if (currentWork().recheckRequired) {
-    elements.stageCopy.prepend(text("p", "1강이 새 대화 실습으로 바뀌었습니다. 전에 쓴 첫 답·메모·다시 쓴 답은 그대로 두었습니다. 새 확인표만 다시 살펴보세요.", "dialogue-recheck-notice"));
+    elements.stageCopy.prepend(text("p", `${lesson.number}강의 실습 확인 기준이 바뀌었습니다. 전에 쓴 첫 답·메모·다시 쓴 답은 그대로 두었습니다. 새 확인표만 다시 살펴보세요.`, "dialogue-recheck-notice"));
   }
 
   elements.evidencePanel.hidden = state.currentStage !== 1;
   elements.studentWork.hidden = state.currentStage < 2;
   elements.resultStage.hidden = state.currentStage !== 5;
-  elements.nextDoor.hidden = lesson.number !== 2;
+  elements.nextDoor.hidden = true;
   if (elements.cohortNext) elements.cohortNext.hidden = lesson.number !== 1;
   elements.sourceList.hidden = true;
   elements.toggleSources.setAttribute("aria-expanded", "false");
@@ -817,24 +819,29 @@ function download(filename, type, content) {
   URL.revokeObjectURL(url);
 }
 
+// 메모 파일 단추는 지금 보고 있는 강의 메모를 받는다.
 function updateLesson1ExportState() {
-  if (elements.downloadLesson1) elements.downloadLesson1.disabled = !hasLesson1Record(state.lessons["lesson-1"]);
+  if (!elements.downloadLesson1) return;
+  const lesson = currentLesson();
+  elements.downloadLesson1.textContent = `${lesson.number}강 메모 파일로 받기 · 선택`;
+  elements.downloadLesson1.disabled = !hasLessonRecord(lesson, state.lessons[lesson.id]);
 }
 
 function downloadLesson1() {
   saveInputs();
-  const content = lesson1RecordText({
-    lesson: course.lessons.find((lesson) => lesson.id === "lesson-1"),
-    work: state.lessons["lesson-1"],
+  const lesson = currentLesson();
+  const content = lessonRecordText({
+    lesson,
+    work: state.lessons[lesson.id],
     courseVersion: state.courseVersion,
     artifactId: state.artifactId
   });
   if (!content) {
-    announce("1강에서 남긴 말이 없습니다. 먼저 실제 대화 기록을 적어 주세요.");
+    announce(`${lesson.number}강에서 남긴 말이 없습니다. 먼저 실제 실습 기록을 적어 주세요.`);
     return;
   }
-  download("1강-내가-이어간-대화.txt", "text/plain;charset=utf-8", content);
-  announce("1강 대화 기록을 파일로 받았습니다. 다른 사람이나 AI에게 보내기 전에 개인정보·고객정보를 확인하세요.");
+  download(lessonRecordFilename(lesson), "text/plain;charset=utf-8", content);
+  announce(`${lesson.number}강 메모를 파일로 받았습니다. 다른 사람이나 AI에게 보내기 전에 개인정보·고객정보를 확인하세요.`);
 }
 
 function downloadResultHtml() {
