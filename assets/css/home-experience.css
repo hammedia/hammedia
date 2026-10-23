@@ -13,3 +13,6 @@
 
 /* Keep Korean word boundaries visible without changing the other home languages. */
 :lang(ko) :is(h1,h2,h3){letter-spacing:-.02em}
+
+/* The existing learning entrance explains the current public course. */
+.home-contact .home-course-note{max-width:62ch;margin-top:16px;line-height:1.8}
