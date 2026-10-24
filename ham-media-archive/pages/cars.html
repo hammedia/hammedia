@@ -1322,17 +1322,37 @@
     .night-panel-entry>summary::-webkit-details-marker{display:none}
     .night-panel-entry>summary::after{content:'+';margin-left:12px}
     .night-panel-entry[open]>summary::after{content:'−'}
-    .night-panel-experience{max-width:620px;padding:16px 0 4px}
-    .night-panel-experience>p:first-child{font:400 15px/1.7 var(--font-ui,sans-serif);color:var(--ivory);letter-spacing:0}
-    .night-panel-concept{margin:16px 0 12px;padding:10px;background:#111820;border:1px solid #ffffff30}
-    .night-panel-concept svg{display:block;width:100%;height:auto;max-height:150px;color:#e6e3da;font:10px/1 var(--font-ui,sans-serif)}
-    .night-panel-concept svg text{fill:currentColor}
-    .concept-frame{fill:#161b21;stroke:#ffffff30}.concept-gauge{fill:none;stroke:#d8d4c8;stroke-width:2}.concept-needle{stroke:#d8d4c8;stroke-width:2}.concept-secondary-label{opacity:.9}.concept-extra-lights circle{fill:#d8d4c8}.concept-warning{display:none}.concept-warning .warning-body{fill:#d98a32}.concept-warning .warning-mark{fill:none;stroke:#161b21;stroke-width:2;stroke-linecap:round}.concept-warning text{fill:#f1c078;font-size:8px}
-    .night-panel-concept[data-night-mode="night"] .concept-extra-lights,.night-panel-concept[data-night-mode="night"] .concept-secondary-gauge,.night-panel-concept[data-night-mode="night"] .concept-secondary-label,.night-panel-concept[data-night-mode="night"] .concept-secondary-needle{opacity:.18}.night-panel-concept[data-night-mode="night"] .concept-warning{display:block}
-    .night-panel-concept figcaption{margin-top:8px;color:var(--ivory);font:13px/1.5 var(--font-ui,sans-serif)}
-    .night-panel-toggle,.night-panel-close{min-height:44px;margin:0 8px 6px 0;padding:8px 14px;border:1px solid #e9e3d5;background:transparent;color:#f4efdf;font:14px/1.5 var(--font-ui,sans-serif);cursor:pointer}.night-panel-close{border-color:#ffffff70;font-size:13px}
-    .night-panel-note{margin-top:8px!important;color:#ffffffad!important;font:12px/1.5 var(--font-ui,sans-serif)!important;letter-spacing:0!important}
-    @media(max-width:640px){.night-panel-experience{width:min(100%,540px)}.night-panel-concept{padding:6px}.night-panel-concept svg{max-height:130px}}
+    [data-star-reference=car] .route-grid:has(.night-panel-entry[open])>.quote-panel{grid-column:1/-1;align-content:start;min-height:0}
+    .night-panel-experience{width:100%;padding:20px 0 4px}
+    .night-panel-intro{max-width:900px;margin:0 0 18px!important;font:400 16px/1.7 var(--font-ui,sans-serif)!important;color:var(--ivory)!important;letter-spacing:0!important}
+    .night-panel-layout{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(250px,.8fr);gap:24px;align-items:start}
+    .night-panel-figure{min-width:0;margin:0}
+    .night-panel-stage{position:relative;width:100%;aspect-ratio:1.75;min-height:280px;overflow:hidden;border:1px solid rgba(255,255,255,.14);background:radial-gradient(ellipse at 50% 72%,#252018 0%,#111214 44%,#08090a 100%);isolation:isolate}
+    .night-panel-stage canvas,.night-panel-stage img{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:contain}
+    .night-panel-stage canvas{outline:none}
+    .night-panel-stage [hidden]{display:none!important}
+    .night-panel-loading{position:absolute;inset:0;display:grid;place-items:center;padding:24px;color:#e6e3da;font:15px/1.6 var(--font-ui,sans-serif);text-align:center}
+    .night-panel-caption{min-height:3.1em;margin:12px 0 0!important;color:#fff!important;font:500 clamp(18px,2vw,24px)/1.45 var(--font-ui,sans-serif)!important;letter-spacing:0!important}
+    .night-panel-aside{display:grid;gap:16px;align-content:start;padding-top:4px}
+    .night-panel-source,.night-panel-note{margin:0!important;color:#ffffffb5!important;font:13px/1.65 var(--font-ui,sans-serif)!important;letter-spacing:0!important}
+    .night-panel-source a{color:#f0cb81;text-decoration:underline;text-underline-offset:3px}
+    .night-panel-controls{display:grid;gap:10px}
+    .night-panel-control-primary,.night-panel-control-secondary,.night-panel-frame-choice,.night-panel-close{min-height:48px;padding:10px 14px;border:1px solid #ddd2b5;background:transparent;color:#f4efdf;font:500 14px/1.4 var(--font-ui,sans-serif);cursor:pointer}
+    .night-panel-control-primary{display:flex;justify-content:space-between;align-items:center;background:#d08a38;border-color:#f1b35d;color:#17120c;font-weight:700;letter-spacing:.04em}
+    .night-panel-control-secondary{border-color:#ffffff66}
+    .night-panel-control-secondary:disabled{opacity:.45;cursor:not-allowed}
+    .night-panel-control-primary:focus-visible,.night-panel-control-secondary:focus-visible,.night-panel-frame-choice:focus-visible,.night-panel-close:focus-visible,.night-panel-entry>summary:focus-visible{outline:3px solid #7cff9a;outline-offset:3px}
+    .night-panel-static-choices{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+    .night-panel-frame-choice{min-height:44px;padding:8px 10px;border-color:#ffffff50;font-size:12px}
+    .night-panel-frame-choice[aria-pressed=true]{border-color:#7cff9a;color:#b4ffc3;background:#7cff9a12}
+    .night-panel-source-links{display:flex;flex-wrap:wrap;gap:12px 18px}
+    .night-panel-noscript{display:grid;gap:18px;margin:20px 0 0}
+    .night-panel-noscript figure{margin:0}
+    .night-panel-noscript img{display:block;width:100%;height:auto;border:1px solid #ffffff24;background:#111214}
+    .night-panel-noscript figcaption{padding-top:7px;color:#f0eee8;font:14px/1.5 var(--font-ui,sans-serif)}
+    .night-panel-close{justify-self:start;border-color:#ffffff70}
+    @media(max-width:900px){.night-panel-layout{grid-template-columns:1fr}.night-panel-aside{grid-template-columns:1fr 1fr;gap:16px 24px}.night-panel-controls{grid-row:span 2}}
+    @media(max-width:640px){.night-panel-experience{padding-top:16px}.night-panel-intro{font-size:15px!important}.night-panel-layout{gap:16px}.night-panel-stage{aspect-ratio:1.34;min-height:232px}.night-panel-caption{min-height:2.8em;font-size:18px!important}.night-panel-aside{display:grid;grid-template-columns:1fr;gap:13px}.night-panel-controls{grid-row:auto}.night-panel-static-choices{gap:6px}.night-panel-frame-choice{padding:7px 5px;font-size:11px}.night-panel-noscript{gap:14px}}
   </style>
 
   <script src="/assets/js/privacy-consent.js" data-measurement-id="G-TEBKMGWPQS"></script>
@@ -1379,26 +1399,47 @@
       <div class="route-grid">
         <article class="panel quote-panel">
           <p>나이트 패널처럼.<br />꼭 필요한 것만 남기고 달린다.</p>
-          <details class="night-panel-entry">
+          <details class="night-panel-entry" id="night-panel">
             <summary>나이트 패널이 뭐예요?</summary>
-            <div class="night-panel-experience">
-              <p>나이트 패널은 사브 9-3의 야간 계기판 기능입니다. 버튼을 누르면 속도계를 남기고 계기판 조명을 줄입니다. 연료 경고처럼 필요한 상태가 생기면 해당 정보가 다시 나타날 수 있어요.</p>
-              <figure class="night-panel-concept" data-night-mode="normal">
-                <svg viewBox="0 0 420 124" role="img" aria-labelledby="night-panel-title night-panel-description">
-                  <title id="night-panel-title">사브 9-3 나이트 패널 기능의 개념도</title>
-                  <desc id="night-panel-description">나이트 패널 상태에서 회전수와 수온 계기의 조명이 줄어듭니다. 속도계는 남고, 연료 경고가 나타나면 연료 계기와 경고를 다시 보여줍니다.</desc>
-                  <rect x="1" y="1" width="418" height="122" rx="8" class="concept-frame"/>
-                  <circle cx="62" cy="62" r="27" class="concept-gauge concept-speed-gauge"/><circle cx="155" cy="62" r="27" class="concept-gauge concept-secondary-gauge"/><circle cx="248" cy="62" r="27" class="concept-gauge concept-fuel-gauge"/><circle cx="341" cy="62" r="27" class="concept-gauge concept-secondary-gauge"/>
-                  <path d="M62 62 L75 48 M248 62 L258 48" class="concept-needle"/><path d="M155 62 L168 49 M341 62 L352 48" class="concept-needle concept-secondary-needle"/>
-                  <g class="concept-secondary-label"><text x="155" y="106" text-anchor="middle">회전수</text><text x="341" y="106" text-anchor="middle">수온</text></g><text class="concept-fuel-label" x="248" y="106" text-anchor="middle">연료</text><text x="62" y="106" text-anchor="middle">속도계</text>
-                  <g class="concept-extra-lights"><circle cx="34" cy="18" r="3.5"/><circle cx="52" cy="18" r="3.5"/><circle cx="70" cy="18" r="3.5"/><circle cx="88" cy="18" r="3.5"/><circle cx="108" cy="18" r="3.5"/><circle cx="128" cy="18" r="3.5"/><circle cx="148" cy="18" r="3.5"/><circle cx="168" cy="18" r="3.5"/><circle cx="188" cy="18" r="3.5"/><circle cx="208" cy="18" r="3.5"/><circle cx="228" cy="18" r="3.5"/><circle cx="348" cy="18" r="3.5"/><circle cx="368" cy="18" r="3.5"/></g>
-                  <g class="concept-warning"><title>연료 경고</title><path d="M248 30 L258 48 H238 Z" class="warning-body"/><path d="M248 35v6 M248 44v1" class="warning-mark"/></g>
-                </svg>
-                <figcaption data-night-caption>일반 계기판 · 기능을 설명하는 개념 그림</figcaption>
-              </figure>
-              <button class="night-panel-toggle" type="button" aria-pressed="false" hidden>나이트 패널로 바꾸기</button>
-              <button class="night-panel-close" type="button" hidden>설명을 접고 문장으로 돌아가기</button>
-              <p class="night-panel-note">실제 사브 계기판이나 햄의 차량을 재현한 그림은 아닙니다.</p>
+            <div class="night-panel-experience" data-night-panel>
+              <p class="night-panel-intro">사브의 나이트 패널은 밤에 불필요한 계기 조명을 줄여 운전에 필요한 정보만 남기는 기능입니다. 버튼을 누르면 회전계·연료계·수온계 바늘이 내려가고, 속도계와 필요한 표시등은 남습니다. 연료가 필요해지면 연료계가 다시 켜집니다.</p>
+              <div class="night-panel-layout">
+                <figure class="night-panel-figure">
+                  <div class="night-panel-stage" data-night-panel-stage>
+                    <canvas data-night-panel-canvas tabindex="0" aria-label="NIGHT 버튼을 눌러 나이트 패널을 조작할 수 있는 3D 계기판 모형" hidden></canvas>
+                    <img data-night-panel-fallback hidden src="../assets/images/cars/night-panel-frame-normal.webp" alt="기능 설명용 3D 계기판 모형, 일반 상태" />
+                    <div class="night-panel-loading" data-night-panel-loading hidden>계기판 장면을 준비하고 있습니다.</div>
+                  </div>
+                  <figcaption class="night-panel-caption" data-night-panel-caption aria-live="polite">밤길, 계기판 전부 켜짐</figcaption>
+                </figure>
+                <div class="night-panel-aside">
+                  <div class="night-panel-controls" aria-label="나이트 패널 장면 조작">
+                    <button class="night-panel-control-primary" type="button" data-night-panel-toggle aria-pressed="false"><span>NIGHT PANEL</span><span data-night-panel-toggle-copy>켜기</span></button>
+                    <button class="night-panel-control-secondary" type="button" data-night-panel-fuel disabled>연료 확인</button>
+                    <button class="night-panel-control-secondary" type="button" data-night-panel-replay>다시 보기</button>
+                    <button class="night-panel-control-secondary" type="button" data-night-panel-pause>멈춤</button>
+                    <div class="night-panel-static-choices" data-night-panel-frames hidden aria-label="움직임 없이 계기판 상태 보기">
+                      <button class="night-panel-frame-choice" type="button" data-night-panel-frame="normal" aria-pressed="true">일반</button>
+                      <button class="night-panel-frame-choice" type="button" data-night-panel-frame="night" aria-pressed="false">나이트</button>
+                      <button class="night-panel-frame-choice" type="button" data-night-panel-frame="fuel" aria-pressed="false">연료 표시</button>
+                    </div>
+                  </div>
+                  <p class="night-panel-note">설명을 위해 직접 만든 3D 모형입니다. 2005년형 사브 9-5 소유자 매뉴얼의 기능 설명을 바탕으로 했으며, 실제 계기판 복각이나 작동 시간의 정밀 재현은 아닙니다. 차종과 연식에 따라 세부 동작과 기준값이 다를 수 있습니다.</p>
+                  <p class="night-panel-source">실제 계기판 시연과 제조사 설명은 원문에서 확인하세요.</p>
+                  <div class="night-panel-source-links">
+                    <a href="https://www.youtube.com/watch?v=KIfzUqYEkiw" target="_blank" rel="noopener noreferrer">원본 영상 · Deloached, Saab Night Panel Demonstration ↗</a>
+                    <a href="https://www.manualowl.com/am/Saab/2005-9-5/Manual/1138?page=67" target="_blank" rel="noopener noreferrer">2005 Saab 9-5 소유자 매뉴얼 · 인쇄 65쪽 ↗</a>
+                  </div>
+                  <button class="night-panel-close" type="button" data-night-panel-close>설명을 접고 문장으로 돌아가기</button>
+                </div>
+              </div>
+              <noscript>
+                <div class="night-panel-noscript" aria-label="나이트 패널 기능 세 상태">
+                  <figure><img src="../assets/images/cars/night-panel-frame-normal.webp" alt="일반 상태: 속도계, 회전계, 연료계, 수온계의 바늘과 녹색 눈금이 보입니다." loading="lazy" /><figcaption>일반 계기판 · 모든 계기 조명이 켜져 있습니다.</figcaption></figure>
+                  <figure><img src="../assets/images/cars/night-panel-frame-night.webp" alt="나이트 패널 상태: 회전계·연료계·수온계 바늘은 0에 있고 조명은 꺼졌으며, 속도계의 140까지 눈금과 표시등이 남아 있습니다." loading="lazy" /><figcaption>나이트 패널 · 보조 계기는 조명과 바늘이 내려가고 속도계 일부가 남습니다.</figcaption></figure>
+                  <figure><img src="../assets/images/cars/night-panel-frame-fuel.webp" alt="연료 경고 상태: 연료 경고등과 연료계만 다시 켜지고 회전계·수온계는 어둡게 남아 있습니다." loading="lazy" /><figcaption>연료 확인 · 연료계가 돌아오고 다른 보조 계기는 계속 어둡습니다.</figcaption></figure>
+                </div>
+              </noscript>
             </div>
           </details>
         </article>
@@ -1893,37 +1934,6 @@
 <script src="/assets/js/star-inquiry-context.js?v=20260930-1" defer></script>
 <script src="../assets/js/star-reference.js?v=20261024-home-map"></script>
 
-  <script>
-    (() => {
-      const details = document.querySelector(".night-panel-entry");
-      const summary = details?.querySelector("summary");
-      const close = details?.querySelector(".night-panel-close");
-      const figure = details?.querySelector(".night-panel-concept");
-      const button = details?.querySelector(".night-panel-toggle");
-      const caption = details?.querySelector("[data-night-caption]");
-      if (!details || !summary || !close || !figure || !button || !caption) return;
-      button.hidden = false;
-      close.hidden = false;
-      let returnScrollY = window.scrollY;
-      summary.addEventListener("click", () => { if (!details.open) returnScrollY = window.scrollY; });
-      function returnToQuestion() {
-        if (!details.open) return;
-        details.open = false;
-        summary.focus({ preventScroll: true });
-        requestAnimationFrame(() => window.scrollTo({ top: returnScrollY, behavior: "auto" }));
-      }
-      close.addEventListener("click", returnToQuestion);
-      details.addEventListener("keydown", (event) => {
-        if (event.key === "Escape" && details.open) { event.preventDefault(); event.stopPropagation(); returnToQuestion(); }
-      });
-      button.addEventListener("click", () => {
-        const night = figure.dataset.nightMode !== "night";
-        figure.dataset.nightMode = night ? "night" : "normal";
-        button.setAttribute("aria-pressed", String(night));
-        button.textContent = night ? "일반 계기판으로 돌아가기" : "나이트 패널로 바꾸기";
-        caption.textContent = night ? "나이트 패널 · 연료 경고가 나타난 상태를 설명하는 개념 그림" : "일반 계기판 · 기능을 설명하는 개념 그림";
-      });
-    })();
-  </script>
+  <script type="module" src="../assets/js/car-night-panel.js?v=20261025c"></script>
 </body>
 </html>
