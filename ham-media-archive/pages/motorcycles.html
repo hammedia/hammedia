@@ -1408,6 +1408,8 @@
       font-weight: 400;
     }
 
+    .bike-ignite-context { display:none; max-width:28ch; margin:12px 0 0; color:#fff9ef; font-size:15px; line-height:1.6; }
+    .bike-shell.is-ignited .bike-ignite-context { display:block; }
     .bike-ignite {
       align-items: center;
       background: transparent;
@@ -1706,7 +1708,7 @@
   <script src="/assets/js/privacy-consent.js" data-measurement-id="G-TEBKMGWPQS"></script>
     <link rel="stylesheet" href="../assets/css/star-connections.css?v=20260930-1">
 <link rel="stylesheet" href="../assets/css/star-essays.css?v=20261018-reader-1">
-<link rel="stylesheet" href="../assets/css/star-reference.css?v=20261023-spacing">
+<link rel="stylesheet" href="../assets/css/star-reference.css?v=20261024-home-map-2">
 <noscript><style>body.star-reference .room-house-panel[hidden],body.star-reference .room-article-panel[hidden],body.star-reference .design-sheet[hidden]{display:block!important}body.star-reference .room-article-list{display:block}body.star-reference .reveal{opacity:1;transform:none}</style></noscript>
 </head>
 <body class="variant-desktop star-reference" data-star-reference="motorcycle">
@@ -1727,6 +1729,7 @@
         <h1>바이크별</h1>
         <p class="bike-hero-statement">인생에 딱 좋은 시기가 있다.<br />나에게는 40대의 바이크가 그랬다.<strong>딱 좋았던 3년.</strong></p>
         <button class="bike-ignite" id="bike-ignite" type="button" aria-pressed="false"><span class="bike-ignite-dot" aria-hidden="true"></span><span>결심을 켠다</span></button>
+        <p class="bike-ignite-context" aria-live="polite" aria-hidden="true">죽기 전에 하고 싶은 건 하자.</p>
       </div>
       <span class="bike-scroll-note">scroll · the decision</span>
     </header>
@@ -1976,6 +1979,8 @@
         root.classList.toggle('is-ignited', next);
         ignite.setAttribute('aria-pressed', String(next));
         ignite.querySelector('span:last-child').textContent = next ? '결심이 켜졌다' : '결심을 켠다';
+        const context = document.querySelector('.bike-ignite-context');
+        context?.setAttribute('aria-hidden', String(!next));
       });
 
       rail.forEach((button) => {
@@ -1998,6 +2003,6 @@
     })();
   </script>
 <script src="/assets/js/star-inquiry-context.js?v=20260930-1" defer></script>
-<script src="../assets/js/star-reference.js?v=20261019-1"></script>
+<script src="../assets/js/star-reference.js?v=20261024-home-map"></script>
 </body>
 </html>

@@ -6,8 +6,9 @@
  var stars=[['fountain-pens','만년필별'],['motorcycles','바이크별'],['travel','여행별'],['bicycles','자전거별'],['spaces','공간별'],['cars','자동차별'],['food','음식별'],['music-audio','음악·오디오별'],['cameras','카메라별']];
  var own=stars.find(function(s){return location.pathname.endsWith('/'+s[0]+'.html')});
  var header=document.createElement('header');header.className='star-reference-header';
- var home=document.createElement('a');home.href='../../#stars';home.textContent='HAM MEDIA';
- var name=document.createElement('span');name.textContent=own?own[1]:'';var menuButton=document.createElement('button');menuButton.type='button';menuButton.textContent='아홉 별';menuButton.setAttribute('aria-haspopup','dialog');header.append(home,name,menuButton);body.prepend(header);
+ var home=document.createElement('a');home.href='../../';home.textContent='HAM MEDIA';home.setAttribute('aria-label','HAM MEDIA 회사 홈');
+ var map=document.createElement('a');map.className='star-map-link';map.href='../../#stars';map.textContent='별지도';map.setAttribute('aria-label','아홉 별 지도');
+ var name=document.createElement('span');name.textContent=own?own[1]:'';var menuButton=document.createElement('button');menuButton.type='button';menuButton.textContent='아홉 별';menuButton.setAttribute('aria-haspopup','dialog');header.append(home,map,name,menuButton);body.prepend(header);
  var openRoute=null;
  function showDialog(dialog,hash){openRoute={dialog:dialog,url:location.href,focus:document.activeElement,scroll:scrollY,state:history.state};history.pushState(Object.assign({},history.state,{starDialog:true}),'',hash);dialog.showModal()}
  function closeDialog(dialog){if(openRoute&&history.state?.starDialog)history.back();else dialog.close()}

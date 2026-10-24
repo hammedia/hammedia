@@ -1922,7 +1922,12 @@
   <script src="/assets/js/privacy-consent.js" data-measurement-id="G-TEBKMGWPQS"></script>
     <link rel="stylesheet" href="../assets/css/star-connections.css?v=20260930-1">
 <link rel="stylesheet" href="../assets/css/star-essays.css?v=20261018-reader-1">
-<link rel="stylesheet" href="../assets/css/star-reference.css?v=20261023-spacing">
+<style>
+.camera-pick-entry{display:flex;flex-wrap:wrap;align-items:center;gap:12px 24px;margin-top:28px;padding-top:20px;border-top:1px solid rgba(11,13,15,.2)}
+.camera-pick-entry p{max-width:46ch;line-height:1.7}.camera-pick-open,.camera-pick-actions button{min-height:44px;padding:9px 14px;border:1px solid currentColor;border-radius:3px;background:transparent;color:inherit;font:inherit;cursor:pointer}.camera-pick-panel{max-width:1120px;margin:0 auto 28px;padding:20px;background:#f2eee7;color:#1c1814;border:1px solid #d3cabc}.camera-pick-panel>p{max-width:64ch;margin:0 0 12px;line-height:1.7}.camera-pick-actions{display:flex;flex-wrap:wrap;align-items:center;gap:8px}.camera-pick-actions button:disabled{opacity:.55;cursor:not-allowed}.camera-pick-actions button[aria-pressed=true]{background:#1c1814;color:#f9f7f3}.camera-pick-actions [aria-live]{flex:1 1 100%;min-height:24px;font-size:14px}.camera-gallery-grid.camera-pick-active .room-house-photo{cursor:pointer}.camera-gallery-grid.camera-pick-active .room-house-photo[aria-pressed=true]{outline:3px solid #c88b42;outline-offset:3px}.camera-gallery-grid.camera-pick-active .room-house-photo[aria-pressed=true]::after{content:attr(data-camera-pick-order);position:absolute;top:8px;left:8px;display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:#161b21;color:#fff;font:600 14px/1 sans-serif}.camera-gallery-grid.camera-pick-active .room-house-photo{position:relative}.camera-pick-comparison{margin-top:24px;padding-top:20px;border-top:1px solid #c8bfb1}.camera-pick-comparison h3{margin:0 0 6px;font-size:22px}.camera-pick-comparison>p{margin:0 0 16px;line-height:1.65}.camera-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:12px;padding:12px;background:#fff;border:1px solid #d3cabc}.camera-pair article{min-width:0}.camera-pair h4{margin:0 0 8px;font-size:14px;font-weight:600}.camera-pair img{display:block;width:100%;height:auto;max-height:240px;object-fit:contain;background:#eee9e1}.camera-pair p{margin:8px 0 0;font-size:13px;line-height:1.55;overflow-wrap:anywhere}.camera-pair small{display:block;margin-top:4px;color:#514a43;font-size:12px}@media(max-width:520px){.camera-pick-entry{align-items:stretch;flex-direction:column}.camera-pick-open{width:100%}.camera-pick-panel{padding:14px 12px}.camera-pick-actions button{flex:1 1 auto}.camera-pair{gap:8px;padding:8px}.camera-pair img{max-height:190px}.camera-pair h4{font-size:12px}.camera-pair p{font-size:12px}}
+.camera-gallery-grid.camera-pick-active .room-house-photo:focus-visible{outline:3px solid #f1c078;outline-offset:4px}
+</style>
+<link rel="stylesheet" href="../assets/css/star-reference.css?v=20261024-home-map-2">
 <noscript><style>body.star-reference .room-house-panel[hidden],body.star-reference .room-article-panel[hidden],body.star-reference .design-sheet[hidden]{display:block!important}body.star-reference .room-article-list{display:block}body.star-reference .reveal{opacity:1;transform:none}</style></noscript>
 </head>
 <body class="star-reference" data-star-reference="camera">
@@ -2012,6 +2017,10 @@
           <button class="selection-choice" type="button" aria-pressed="false" data-src="../assets/images/cameras/camera-original-20260604-035-ef135mm2.0l.jpg" data-width="400" data-height="600" data-max-width="400px" data-alt="주안3동 집 거실의 엄마 재봉틀" data-title="엄마의 재봉틀" data-reason="공간과 가족과 시간이 한 장 안에 함께 남아 있는 생활의 기억이라서 골랐다.">
             <img src="../assets/images/cameras/camera-original-20260604-035-ef135mm2.0l.jpg" width="400" height="600" alt="" /><span><strong>05 엄마의 재봉틀</strong><small>400 × 600 · 세로</small></span>
           </button>
+        </div>
+        <div class="camera-pick-entry" hidden>
+          <p>이 페이지의 대표 다섯 장과 직접 고른 다섯 장을 나란히 볼 수 있습니다.</p>
+          <button class="room-house-door camera-pick-open" type="button" data-house-target="camera-photo-room" data-camera-start-select>39장 중 직접 다섯 장 고르기</button>
         </div>
       </div>
     </section>
@@ -2222,6 +2231,16 @@
           <button class="room-house-back" type="button">카메라별로 돌아가기</button>
         </div>
 
+        <section class="camera-pick-panel" aria-label="내가 고른 다섯 장" hidden>
+          <p>사진을 눌러 최대 다섯 장을 고르세요. 선택은 이 브라우저 탭에만 임시 보관되며 전송되지 않습니다.</p>
+          <div class="camera-pick-actions">
+            <button type="button" data-camera-pick-mode aria-pressed="false">다섯 장 고르기 시작</button>
+            <button type="button" data-camera-pick-reset>선택 초기화</button>
+            <button type="button" data-camera-pick-compare aria-expanded="false" disabled>대표 다섯 장과 비교</button>
+            <span data-camera-pick-status aria-live="polite">선택 0 / 5 · 사진 크게 보기는 선택 모드를 끈 뒤 이용하세요.</span>
+          </div>
+          <div class="camera-pick-comparison" data-camera-pick-comparison hidden></div>
+        </section>
         <div class="room-sort-control" data-sort-target="photos" aria-label="카메라별 장면 정렬">
           <span>순서</span>
           <button type="button" data-sort-mode="latest" aria-pressed="true">최신순</button>
@@ -2446,6 +2465,88 @@
 
       choices.forEach((choice, index) => choice.addEventListener("click", () => selectChoice(choice, index)));
 
+      const gallery = document.querySelector("#camera-photo-room");
+      const photoGrid = gallery?.querySelector(".camera-gallery-grid");
+      const pickerEntry = document.querySelector(".camera-pick-entry");
+      const pickerPanel = gallery?.querySelector(".camera-pick-panel");
+      const modeButton = gallery?.querySelector("[data-camera-pick-mode]");
+      const resetButton = gallery?.querySelector("[data-camera-pick-reset]");
+      const compareButton = gallery?.querySelector("[data-camera-pick-compare]");
+      const status = gallery?.querySelector("[data-camera-pick-status]");
+      const comparison = gallery?.querySelector("[data-camera-pick-comparison]");
+      const pickKey = "ham_camera_custom_five_v1";
+      const photoFigures = () => Array.from(photoGrid?.querySelectorAll(".room-house-photo") || []);
+      const figureSource = (figure) => figure?.querySelector("img")?.getAttribute("src") || "";
+      let picked = [];
+      let picking = false;
+      let compareOpen = false;
+      const validSources = new Set(photoFigures().map(figureSource).filter(Boolean));
+      try { const saved = JSON.parse(sessionStorage.getItem(pickKey) || "[]"); if (Array.isArray(saved)) picked = saved.filter((src, index) => typeof src === "string" && validSources.has(src) && saved.indexOf(src) === index).slice(0, 5); } catch (_) {}
+      const savePicks = () => { try { sessionStorage.setItem(pickKey, JSON.stringify(picked)); } catch (_) {} };
+      const setPickMode = (value) => {
+        picking = value;
+        if (!photoGrid || !modeButton) return;
+        photoGrid.classList.toggle("camera-pick-active", picking);
+        modeButton.setAttribute("aria-pressed", String(picking));
+        modeButton.textContent = picking ? "사진 크게 보기로 돌아가기" : "다섯 장 고르기 시작";
+        photoFigures().forEach((figure) => {
+          const source = figureSource(figure);
+          const order = picked.indexOf(source);
+          if (picking) { figure.setAttribute("aria-pressed", String(order !== -1)); figure.setAttribute("aria-label", (order === -1 ? "선택: " : ("선택 " + (order + 1) + " 해제: ")) + (figure.querySelector("img")?.alt || "사진")); }
+          else { figure.removeAttribute("aria-pressed"); const image = figure.querySelector("img"); if (image) figure.setAttribute("aria-label", (image.alt || "사진") + " 크게 보기"); }
+          if (order === -1) delete figure.dataset.cameraPickOrder; else figure.dataset.cameraPickOrder = String(order + 1);
+        });
+        renderPicks();
+      };
+      const renderComparison = () => {
+        if (!comparison) return;
+        const current = choices.map((choice) => ({ src: choice.dataset.src, alt: choice.dataset.alt, title: choice.dataset.title, reason: choice.dataset.reason }));
+        const figures = photoFigures();
+        const selected = picked.map((src) => { const figure = figures.find((item) => figureSource(item) === src); if (!figure) return null; return { src, alt: figure.querySelector("img")?.alt || "", title: figure.querySelector("figcaption")?.textContent.trim() || "", reason: figure.querySelector("figcaption")?.textContent.trim() || "" }; }).filter(Boolean);
+        comparison.replaceChildren();
+        const heading = document.createElement("h3"); heading.textContent = "두 가지 대표 장면을 나란히 보기"; comparison.append(heading);
+        const intro = document.createElement("p"); intro.textContent = "왼쪽은 이 페이지의 대표 다섯 장과 각 사진을 고른 이유, 오른쪽은 방금 고른 사진입니다."; comparison.append(intro);
+        selected.forEach((item, index) => {
+          const fixed = current[index]; const pair = document.createElement("div"); pair.className = "camera-pair";
+          [["페이지 대표 " + String(index + 1).padStart(2, "0"), fixed], ["내가 고른 " + String(index + 1).padStart(2, "0"), item]].forEach(([label, data]) => {
+            const card = document.createElement("article"); const title = document.createElement("h4"); title.textContent = label + " · " + data.title;
+            const image = document.createElement("img"); image.src = data.src; image.alt = data.alt; image.loading = "lazy";
+            const caption = document.createElement("p"); caption.textContent = data.reason; card.append(title, image, caption); pair.append(card);
+          }); comparison.append(pair);
+        });
+      };
+      const renderPicks = () => {
+        if (!status || !compareButton) return;
+        const count = picked.length; compareButton.disabled = count !== 5;
+        status.textContent = count === 5 ? "선택 5 / 5 · 고른 순서대로 페이지 대표 사진과 비교할 수 있습니다." : "선택 " + count + " / 5 · " + (picking ? "사진 크게 보기는 선택 모드를 끈 뒤 이용하세요." : "사진 크게 보기를 이용하거나 다섯 장 고르기를 시작할 수 있습니다.");
+        if (count !== 5) { compareOpen = false; compareButton.setAttribute("aria-expanded", "false"); if (comparison) comparison.hidden = true; }
+        else if (compareOpen) { renderComparison(); comparison.hidden = false; compareButton.setAttribute("aria-expanded", "true"); }
+      };
+      const togglePick = (figure) => {
+        const source = figureSource(figure); if (!source) return;
+        const index = picked.indexOf(source);
+        if (index >= 0) picked.splice(index, 1);
+        else if (picked.length < 5) picked.push(source);
+        else { if (status) status.textContent = "다섯 장을 골랐습니다. 하나를 해제한 뒤 추가할 수 있습니다."; return; }
+        savePicks(); setPickMode(true);
+      };
+      photoGrid?.addEventListener("click", (event) => {
+        if (!picking) return; const figure = event.target.closest(".room-house-photo"); if (!figure || !photoGrid.contains(figure)) return;
+        event.preventDefault(); event.stopPropagation(); togglePick(figure);
+      }, true);
+      photoGrid?.addEventListener("keydown", (event) => {
+        if (!picking || !["Enter", " "].includes(event.key)) return; const figure = event.target.closest(".room-house-photo"); if (!figure || !photoGrid.contains(figure)) return;
+        event.preventDefault(); event.stopPropagation(); togglePick(figure);
+      }, true);
+      modeButton?.addEventListener("click", () => setPickMode(!picking));
+      resetButton?.addEventListener("click", () => { picked = []; savePicks(); compareOpen = false; setPickMode(picking); if (comparison) comparison.hidden = true; renderPicks(); });
+      compareButton?.addEventListener("click", () => { if (picked.length !== 5) return; compareOpen = !compareOpen; compareButton.setAttribute("aria-expanded", String(compareOpen)); if (comparison) comparison.hidden = !compareOpen; if (compareOpen) renderComparison(); });
+      document.querySelector("[data-camera-start-select]")?.addEventListener("click", () => setPickMode(true));
+      gallery?.querySelector(".room-house-back")?.addEventListener("click", () => setPickMode(false));
+      renderPicks();
+      if (pickerEntry) pickerEntry.hidden = false;
+      if (pickerPanel) pickerPanel.hidden = false;
+
       const steps = Array.from(document.querySelectorAll("[data-focus-step]"));
       if (!("IntersectionObserver" in window) || reduceMotion) {
         steps.forEach((step) => step.classList.add("is-seen"));
@@ -2460,6 +2561,6 @@
     })();
   </script>
 <script src="/assets/js/star-inquiry-context.js?v=20260930-1" defer></script>
-<script src="../assets/js/star-reference.js?v=20261019-1"></script>
+<script src="../assets/js/star-reference.js?v=20261024-home-map"></script>
 </body>
 </html>
