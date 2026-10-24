@@ -26,6 +26,7 @@
 .joint-host[data-open="true"] .detail-photo-frame{transform:translateX(-15%) rotateY(8deg) scale(.86)}
 .joint-host[data-open="true"] .detail-photo-frame::after{opacity:.45}
 .detail-hotspot{display:none;position:absolute;z-index:3;min-width:48px;min-height:48px;padding:6px 10px;border:1px solid #fff;border-radius:24px;background:#f9f7f3ee;color:#1c1814;box-shadow:0 4px 14px #0002;font:inherit;font-size:15px;line-height:1.4;cursor:pointer;transform:translate(-50%,-50%)}
+@media(prefers-reduced-motion:no-preference){.joint-host .detail-hotspot:active{transform:translate(-50%,-50%) scale(.98)}}
 .detail-hotspot[aria-pressed="true"]{background:#f4dc59;color:#1c1814}
 .detail-hotspot:focus-visible,.detail-controls button:focus-visible{outline:3px solid #3979a5;outline-offset:3px}
 .detail-hotspot[aria-pressed="true"]:not(:focus-visible){opacity:0;pointer-events:none}
