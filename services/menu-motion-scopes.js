@@ -24,6 +24,7 @@
   const DRAFT_KEY = 'ham_service_inquiry_v1';
   const requestedService = new URLSearchParams(window.location.search).get('service');
   const requestedSelection = Object.hasOwn(options, requestedService) ? requestedService : null;
+  const hasExplicitSelection = requestedSelection !== null;
   let savedDraft = null;
   try { const data=JSON.parse(sessionStorage.getItem(DRAFT_KEY)); if(data?.version===1 && Object.hasOwn(options,data.selected) && Array.isArray(data.drafts)) savedDraft=data; } catch {}
   const inquiryDrafts = new Map((savedDraft?.drafts||[]).filter(row=>Array.isArray(row)&&Object.hasOwn(options,row[0])&&typeof row[1]==='string'));
@@ -56,6 +57,11 @@
     if(!Object.hasOwn(options,key)) return;
     if(q('#hm-menu-inquiry').value) inquiryDrafts.set(selected,q('#hm-menu-inquiry').value);
     selected=key; const data=options[key];const index=Object.keys(options).indexOf(key);
+    if(hasExplicitSelection){
+      const url=new URL(window.location.href);
+      url.searchParams.set('service',key);
+      history.replaceState(history.state,'',url);
+    }
     choices.forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.hmChoice===key)));
     stage.dataset.hmScene=key;
     q('.hm-menu-browser span').textContent=key==='page'?'mapobada.com / 공개 화면':'HAM MEDIA / 제작 예시';
@@ -93,11 +99,6 @@
   choices.forEach(button=>button.addEventListener('click',()=>{
     const key=button.dataset.hmChoice;
     choose(key);
-    const url=new URL(window.location.href);
-    if(url.searchParams.has('service')){
-      url.searchParams.set('service',key);
-      history.replaceState(history.state,'',url);
-    }
   }));
   document.querySelectorAll('[data-hm-video-purpose]').forEach(link=>link.addEventListener('click',()=>{
     choose('video',false);
