@@ -22,6 +22,8 @@
     option.scope = entry.querySelector('[data-work-scope]').textContent;
   });
   const DRAFT_KEY = 'ham_service_inquiry_v1';
+  const requestedService = new URLSearchParams(window.location.search).get('service');
+  const requestedSelection = Object.hasOwn(options, requestedService) ? requestedService : null;
   let savedDraft = null;
   try { const data=JSON.parse(sessionStorage.getItem(DRAFT_KEY)); if(data?.version===1 && Object.hasOwn(options,data.selected) && Array.isArray(data.drafts)) savedDraft=data; } catch {}
   const inquiryDrafts = new Map((savedDraft?.drafts||[]).filter(row=>Array.isArray(row)&&Object.hasOwn(options,row[0])&&typeof row[1]==='string'));
@@ -34,7 +36,7 @@
     savedDraft=draft;
   }
 
-  let selected = savedDraft?.selected || 'video';
+  let selected = requestedSelection || savedDraft?.selected || 'video';
   let automaticPurpose = typeof savedDraft?.automaticPurpose==='string'?savedDraft.automaticPurpose:'';
   let paused = false;
   let running = false;
@@ -88,7 +90,15 @@
     }
     catch { text('[data-hm-copy-status]','이 브라우저에서는 내용을 이어갈 수 없습니다. 작성한 내용은 여기에 남아 있습니다. 이메일 작성이나 내용 복사를 이용해 주세요.'); }
   });
-  choices.forEach(button=>button.addEventListener('click',()=>choose(button.dataset.hmChoice)));
+  choices.forEach(button=>button.addEventListener('click',()=>{
+    const key=button.dataset.hmChoice;
+    choose(key);
+    const url=new URL(window.location.href);
+    if(url.searchParams.has('service')){
+      url.searchParams.set('service',key);
+      history.replaceState(history.state,'',url);
+    }
+  }));
   document.querySelectorAll('[data-hm-video-purpose]').forEach(link=>link.addEventListener('click',()=>{
     choose('video',false);
     const field=q('#hm-menu-inquiry');
