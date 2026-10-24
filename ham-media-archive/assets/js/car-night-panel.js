@@ -14,6 +14,7 @@
   const fuelButton = root.querySelector("[data-night-panel-fuel]");
   const replayButton = root.querySelector("[data-night-panel-replay]");
   const pauseButton = root.querySelector("[data-night-panel-pause]");
+  const pauseBadge = root.querySelector("[data-night-panel-pause-badge]");
   const frameChoices = root.querySelector("[data-night-panel-frames]");
   const closeButton = root.querySelector("[data-night-panel-close]");
   const summary = details.querySelector("summary");
@@ -39,6 +40,7 @@
     fuelGlow: 1,
     speedUpperGlow: 1,
     fuelWarning: 0,
+    fuelPulse: 0,
     buttonDepth: 0,
   };
 
@@ -96,6 +98,7 @@
     fallbackImage.hidden = false;
     if (loading) loading.hidden = true;
     if (frameChoices) frameChoices.hidden = false;
+    if (pauseBadge) pauseBadge.hidden = true;
     replayButton.textContent = "처음으로";
     pauseButton.textContent = "정지 화면";
     pauseButton.disabled = true;
@@ -217,6 +220,7 @@
     setGlow(live.gauges.fuel, state.fuelGlow);
     live.gauges.speed.upperMaterial.opacity = state.speedUpperGlow;
     live.gauges.speed.haloMaterial.opacity = 0.12;
+    if (live.gauges.fuel.pulseMaterial) live.gauges.fuel.pulseMaterial.opacity = 0.76 * clamp01(state.fuelPulse || 0);
     live.fuelLamp.material.emissiveIntensity = 1.25 * state.fuelWarning;
     live.fuelLamp.material.color.setRGB(
       lerp(0.01, 1, state.fuelWarning),
@@ -224,6 +228,11 @@
       lerp(0.002, 0.04, state.fuelWarning),
     );
     live.buttonTop.position.z = live.buttonBaseZ - state.buttonDepth * 0.065;
+    const nightActive = state.mode !== "normal";
+    live.buttonGlow.material.emissiveIntensity = nightActive ? 0.9 : 0.04;
+    live.buttonGlow.material.color.set(nightActive ? "#ffc16c" : "#535956");
+    live.buttonFace.material.emissiveIntensity = nightActive ? 0.62 : 0.06;
+    live.buttonLabel.material.color.set(nightActive ? "#ffe0ad" : "#f4bd77");
     live.streetLight.position.x = -1.15 + 2.3 * smoother(0, 16, time || 0);
     if (time !== null && time !== undefined) {
       const move = smoother(0, 16, time);
@@ -242,9 +251,9 @@
     if (time < 5.85) return "보조 계기 바늘이 먼저 0으로 내려갑니다";
     if (time < 10) return "속도계의 140까지 눈금과 필요한 표시등은 남습니다";
     if (time < 12.5) return "연료 경고가 들어오면 연료계만 다시 켜집니다";
-    if (time < 13.2) return "다시 누르면 바늘이 먼저 돌아옵니다";
-    if (time < 14) return "바늘이 돌아온 뒤 조명이 켜집니다";
-    return "다시 누르면 전부 원래대로";
+    if (time < 13.2) return "다시 눌러 다른 계기 바늘부터 돌아옵니다";
+    if (time < 14) return "다른 계기 바늘이 돌아오고, 연료 경고는 남습니다";
+    return "다른 계기는 켜지고, 연료 경고는 남습니다";
   }
 
   function storyState(time) {
@@ -269,7 +278,7 @@
     state.fuelWarning = warning;
     state.fuelGlow = lerp(state.fuelGlow, 1, fuelOn);
     state.fuelNeedle = lerp(state.fuelNeedle, 0.13, fuelOn);
-    state.fuelNeedle = lerp(state.fuelNeedle, 0.72, restoreNeedles);
+    state.fuelPulse = smooth(10.27, 10.34, time) * (1 - smooth(10.75, 10.84, time));
     const restoreLights = smooth(13.22, 13.96, time);
     state.tachGlow = lerp(state.tachGlow, 1, restoreLights);
     state.tempGlow = lerp(state.tempGlow, 1, restoreLights);
@@ -290,7 +299,7 @@
     for (const key of [
       "tachNeedle", "tempNeedle", "fuelNeedle", "speedNeedle",
       "tachGlow", "tempGlow", "fuelGlow", "speedUpperGlow",
-      "fuelWarning", "buttonDepth",
+      "fuelWarning", "fuelPulse", "buttonDepth",
     ]) state[key] = lerp(from[key], to[key], amount);
     return state;
   }
@@ -305,34 +314,39 @@
       const needleMove = easeOutBack(elapsed / 0.82);
       state.tachNeedle = lerp(from.tachNeedle, 0, needleMove);
       state.tempNeedle = lerp(from.tempNeedle, 0, needleMove);
-      state.fuelNeedle = lerp(from.fuelNeedle, 0, needleMove);
+      const fuelIsLow = from.fuelWarning > 0.05;
+      state.fuelNeedle = lerp(from.fuelNeedle, fuelIsLow ? 0.13 : 0, needleMove);
       const dim = smooth(0.82, 1.5, elapsed);
       state.tachGlow = lerp(from.tachGlow, 0, dim);
       state.tempGlow = lerp(from.tempGlow, 0, dim);
-      state.fuelGlow = lerp(from.fuelGlow, 0, dim);
+      state.fuelGlow = lerp(from.fuelGlow, fuelIsLow ? 1 : 0, dim);
       state.speedUpperGlow = lerp(from.speedUpperGlow, 0.14, dim);
-      state.fuelWarning = lerp(from.fuelWarning, 0, dim);
+      state.fuelWarning = from.fuelWarning;
+      state.fuelPulse = lerp(from.fuelPulse, 0, dim);
       state.buttonDepth = 1 - smooth(0, 0.22, elapsed);
       state.mode = elapsed < duration ? "turning-off" : "night";
     } else if (transition.kind === "normal") {
       const needleMove = smooth(0, 0.68, elapsed);
       state.tachNeedle = lerp(from.tachNeedle, 0.28, needleMove);
       state.tempNeedle = lerp(from.tempNeedle, 0.58, needleMove);
-      state.fuelNeedle = lerp(from.fuelNeedle, 0.72, needleMove);
+      const fuelIsLow = from.fuelWarning > 0.05;
+      state.fuelNeedle = lerp(from.fuelNeedle, fuelIsLow ? 0.13 : 0.72, needleMove);
       const lightMove = smooth(0.68, 1.5, elapsed);
       state.tachGlow = lerp(from.tachGlow, 1, lightMove);
       state.tempGlow = lerp(from.tempGlow, 1, lightMove);
       state.fuelGlow = lerp(from.fuelGlow, 1, lightMove);
       state.speedUpperGlow = lerp(from.speedUpperGlow, 1, lightMove);
-      state.fuelWarning = lerp(from.fuelWarning, 0, lightMove);
+      state.fuelWarning = from.fuelWarning;
+      state.fuelPulse = lerp(from.fuelPulse, 0, lightMove);
       state.buttonDepth = smooth(0, 0.18, elapsed);
       state.mode = elapsed < duration ? "restoring" : "normal";
     } else {
       const warning = smooth(0, 0.28, elapsed);
       const fuelMove = smooth(0.3, 0.88, elapsed);
-      state.fuelWarning = warning;
+      state.fuelWarning = lerp(from.fuelWarning, 1, warning);
       state.fuelNeedle = lerp(from.fuelNeedle, 0.13, easeOutBack(fuelMove));
       state.fuelGlow = fuelMove;
+      state.fuelPulse = smooth(0.3, 0.38, elapsed) * (1 - smooth(0.82, 0.9, elapsed));
       state.mode = elapsed < duration ? "fuel" : "fuel";
     }
     if (elapsed >= duration) transition = null;
@@ -363,6 +377,7 @@
       if (!transition) {
         if (state.mode === "night") setCaption("나이트 패널 · 속도계 일부와 필요한 표시등은 남습니다");
         else if (state.mode === "fuel") setCaption("연료 표시가 켜지고 연료계가 돌아옵니다");
+        else if (state.fuelWarning > 0.05) setCaption("일반 계기판 · 연료 경고와 낮은 연료량은 남습니다");
         else setCaption("일반 계기판 · 모든 바늘과 조명이 돌아왔습니다");
       }
     } else {
@@ -383,6 +398,7 @@
       return;
     }
     if (!live) return;
+    if (pauseBadge) pauseBadge.hidden = true;
     storyPlaying = false;
     storyStarted = false;
     storyTime = 0;
@@ -392,7 +408,8 @@
       from: { ...lastState },
       elapsed: 0,
     };
-    pauseButton.disabled = false;
+    pauseButton.textContent = "멈춤";
+    pauseButton.disabled = true;
     setCaption(toNight ? "NIGHT 버튼을 누릅니다" : "바늘이 먼저 돌아온 뒤 조명이 켜집니다");
     startLoop();
   }
@@ -403,6 +420,10 @@
       return;
     }
     if (!live || lastState.mode !== "night" || storyPlaying) return;
+    if (pauseBadge) pauseBadge.hidden = true;
+    storyStarted = false;
+    pauseButton.textContent = "멈춤";
+    pauseButton.disabled = true;
     transition = { kind: "fuel", from: { ...lastState }, elapsed: 0 };
     setCaption("연료 경고가 들어옵니다");
     startLoop();
@@ -414,6 +435,7 @@
       return;
     }
     if (!live) return;
+    if (pauseBadge) pauseBadge.hidden = true;
     transition = null;
     storyTime = 0;
     storyPlaying = true;
@@ -431,10 +453,12 @@
       transition = null;
       pauseButton.textContent = "계속";
       pauseButton.disabled = false;
-      setCaption("장면을 멈췄습니다");
+      if (pauseBadge) pauseBadge.hidden = false;
+      setCaption(storyCaption(storyTime));
     } else if (storyStarted && storyTime < 16 && !transition) {
       storyPlaying = true;
       pauseButton.textContent = "멈춤";
+      if (pauseBadge) pauseBadge.hidden = true;
       setCaption(storyCaption(storyTime));
     }
     startLoop();
@@ -542,14 +566,14 @@
     return makeTexture(THREE, surface);
   }
 
-  function addTextPlane(THREE, scene, text, width, height, x, y, z, color, opacity) {
+  function addTextPlane(THREE, scene, text, width, height, x, y, z, color, opacity, fontSize = 48) {
     const image = document.createElement("canvas");
     image.width = 512;
     image.height = 128;
     const context = image.getContext("2d");
     context.clearRect(0, 0, image.width, image.height);
     context.fillStyle = color;
-    context.font = "600 48px Arial, sans-serif";
+    context.font = `600 ${fontSize}px Arial, sans-serif`;
     context.textAlign = "center";
     context.textBaseline = "middle";
     context.fillText(text, image.width / 2, image.height / 2, 490);
@@ -635,6 +659,14 @@
     halo.position.z = 0.115;
     group.add(halo);
 
+    let pulseMaterial = null;
+    if (options.kind === "fuel") {
+      pulseMaterial = new THREE.MeshBasicMaterial({ color: "#ffc16c", transparent: true, opacity: 0, side: THREE.DoubleSide, depthWrite: false });
+      const pulseRing = new THREE.Mesh(new THREE.TorusGeometry(radius + 0.105, 0.018, 8, 72), pulseMaterial);
+      pulseRing.position.z = 0.248;
+      group.add(pulseRing);
+    }
+
     const glassMaterial = new THREE.MeshPhysicalMaterial({
       color: "#dfe9e2",
       metalness: 0.05,
@@ -649,7 +681,7 @@
     const glass = new THREE.Mesh(new THREE.CircleGeometry(radius * 0.97, 72), glassMaterial);
     glass.position.z = 0.235;
     group.add(glass);
-    return { group, needle, needleMaterial, scaleMaterial, upperMaterial, haloMaterial, radius };
+    return { group, needle, needleMaterial, scaleMaterial, upperMaterial, haloMaterial, pulseMaterial, radius };
   }
 
   function roundedShape(THREE, width, height, radius) {
@@ -782,7 +814,7 @@
     };
     const lampRingMaterial = new THREE.MeshStandardMaterial({ color: "#252b27", metalness: 0.68, roughness: 0.3 });
     const greenLampMaterial = new THREE.MeshStandardMaterial({ color: "#8cff9f", emissive: "#36ef69", emissiveIntensity: 1.05, roughness: 0.28 });
-    for (const [x, label] of [[-0.45, "PARK"], [0.48, "CRUISE"]]) {
+    for (const [x, label] of [[-0.45, "LIGHTS"], [0.48, "CRUISE"]]) {
       const ring = new THREE.Mesh(new THREE.TorusGeometry(0.09, 0.025, 8, 24), lampRingMaterial);
       ring.position.set(x, 1.85, 0.08);
       scene.add(ring);
@@ -793,7 +825,7 @@
     }
 
     const fuelRing = new THREE.Mesh(new THREE.TorusGeometry(0.105, 0.027, 8, 24), lampRingMaterial);
-    fuelRing.position.set(2.73, -1.18, 0.1);
+    fuelRing.position.set(3.56, 1.67, 0.1);
     scene.add(fuelRing);
     const fuelLampMaterial = new THREE.MeshStandardMaterial({
       color: "#342611",
@@ -802,9 +834,9 @@
       roughness: 0.28,
     });
     const fuelLamp = new THREE.Mesh(new THREE.SphereGeometry(0.07, 18, 14), fuelLampMaterial);
-    fuelLamp.position.set(2.73, -1.18, 0.13);
+    fuelLamp.position.set(3.56, 1.67, 0.13);
     scene.add(fuelLamp);
-    addTextPlane(THREE, scene, "FUEL", 0.48, 0.13, 3.16, -1.18, 0.11, "#ffc16c", 0.24);
+    addTextPlane(THREE, scene, "FUEL", 0.42, 0.13, 3.56, 1.45, 0.11, "#ffc16c", 0.7);
 
     const buttonHousing = new THREE.Mesh(
       new THREE.CylinderGeometry(0.39, 0.42, 0.21, 48),
@@ -814,7 +846,7 @@
     buttonHousing.position.set(0, -1.56, 0.12);
     buttonHousing.castShadow = true;
     scene.add(buttonHousing);
-    const buttonGlowMaterial = new THREE.MeshStandardMaterial({ color: "#9a6840", emissive: "#ff8a1e", emissiveIntensity: 0.2, metalness: 0.52, roughness: 0.24 });
+    const buttonGlowMaterial = new THREE.MeshStandardMaterial({ color: "#535956", emissive: "#ff8a1e", emissiveIntensity: 0.04, metalness: 0.52, roughness: 0.24 });
     const buttonGlow = new THREE.Mesh(new THREE.TorusGeometry(0.34, 0.028, 10, 42), buttonGlowMaterial);
     buttonGlow.position.set(0, -1.56, 0.24);
     scene.add(buttonGlow);
@@ -832,18 +864,30 @@
     buttonFace.rotation.x = Math.PI / 2;
     buttonFace.castShadow = true;
     buttonTop.add(buttonFace);
-    addTextPlane(THREE, buttonTop, "NIGHT", 0.42, 0.13, 0, 0, 0.08, "#f4bd77", 0.94);
+    const buttonLabel = addTextPlane(THREE, buttonTop, "NIGHT", 0.54, 0.2, 0, 0, 0.08, "#f4bd77", 0.94, 92);
     const buttonBaseZ = buttonTop.position.z;
 
+    const reflectionCanvas = document.createElement("canvas");
+    reflectionCanvas.width = 32;
+    reflectionCanvas.height = 256;
+    const reflectionContext = reflectionCanvas.getContext("2d");
+    const reflectionGradient = reflectionContext.createLinearGradient(0, 0, 0, reflectionCanvas.height);
+    reflectionGradient.addColorStop(0, "rgba(255,241,220,0)");
+    reflectionGradient.addColorStop(0.22, "rgba(255,241,220,0.42)");
+    reflectionGradient.addColorStop(0.5, "rgba(255,241,220,0.9)");
+    reflectionGradient.addColorStop(0.76, "rgba(255,241,220,0.38)");
+    reflectionGradient.addColorStop(1, "rgba(255,241,220,0)");
+    reflectionContext.fillStyle = reflectionGradient;
+    reflectionContext.fillRect(0, 0, reflectionCanvas.width, reflectionCanvas.height);
     const reflectionShape = new THREE.Shape();
-    reflectionShape.moveTo(-3.5, 1.65);
-    reflectionShape.lineTo(-1.6, 1.78);
-    reflectionShape.lineTo(0.9, -1.28);
-    reflectionShape.lineTo(-1.15, -1.3);
+    reflectionShape.moveTo(-2.52, 1.64);
+    reflectionShape.lineTo(-2.04, 1.76);
+    reflectionShape.lineTo(-0.76, -1.24);
+    reflectionShape.lineTo(-1.28, -1.3);
     reflectionShape.closePath();
     const reflection = new THREE.Mesh(
       new THREE.ShapeGeometry(reflectionShape),
-      new THREE.MeshBasicMaterial({ color: "#fff1dc", transparent: true, opacity: 0.045, side: THREE.DoubleSide, depthWrite: false }),
+      new THREE.MeshBasicMaterial({ map: makeTexture(THREE, reflectionCanvas), color: "#fff1dc", transparent: true, opacity: 0.06, side: THREE.DoubleSide, depthWrite: false }),
     );
     reflection.position.z = 0.26;
     scene.add(reflection);
@@ -876,8 +920,9 @@
       renderer.setSize(bounds.width, bounds.height, false);
       camera.aspect = bounds.width / bounds.height;
       camera.updateProjectionMatrix();
-      const requiredHeight = 10.6 / camera.aspect;
-      const distance = Math.max(10.4, requiredHeight / (2 * Math.tan(THREE.MathUtils.degToRad(camera.fov / 2))) + 0.4);
+      const targetWorldWidth = 9.0;
+      const requiredHeight = targetWorldWidth / camera.aspect;
+      const distance = requiredHeight / (2 * Math.tan(THREE.MathUtils.degToRad(camera.fov / 2)));
       camera.position.set(-0.18, 1.34, distance);
       camera.lookAt(cameraTarget);
     };
@@ -890,9 +935,12 @@
       camera,
       cameraTarget,
       cameraBase: camera.position.clone(),
+      raycaster,
       gauges,
       fuelLamp,
       buttonFace,
+      buttonGlow,
+      buttonLabel,
       buttonTop,
       buttonBaseZ,
       streetLight,
@@ -994,6 +1042,7 @@
       storyPlaying = false;
       transition = null;
       if (frameChoices) frameChoices.hidden = true;
+      if (pauseBadge) pauseBadge.hidden = true;
       if (fallbackImage) fallbackImage.hidden = true;
       if (canvas) canvas.hidden = true;
       if (loading) loading.hidden = true;

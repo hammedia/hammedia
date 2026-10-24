@@ -415,6 +415,8 @@
       box-shadow: 0 0 22px rgba(232, 232, 230, 0.55);
     }
 
+    .quote-panel.night-panel-quote-panel::before { display: none; }
+
     .quote-panel p {
       position: relative;
       color: var(--ivory);
@@ -1328,10 +1330,17 @@
     .night-panel-layout{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(250px,.8fr);gap:24px;align-items:start}
     .night-panel-figure{min-width:0;margin:0}
     .night-panel-stage{position:relative;width:100%;aspect-ratio:1.75;min-height:280px;overflow:hidden;border:1px solid rgba(255,255,255,.14);background:radial-gradient(ellipse at 50% 72%,#252018 0%,#111214 44%,#08090a 100%);isolation:isolate}
-    .night-panel-stage canvas,.night-panel-stage img{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:contain}
+    .night-panel-stage canvas,.night-panel-stage img{position:absolute;inset:0;z-index:1;display:block;width:100%;height:100%;object-fit:contain}
     .night-panel-stage canvas{outline:none}
     .night-panel-stage [hidden]{display:none!important}
-    .night-panel-loading{position:absolute;inset:0;display:grid;place-items:center;padding:24px;color:#e6e3da;font:15px/1.6 var(--font-ui,sans-serif);text-align:center}
+    .night-panel-gauge-labels{position:absolute;inset:0;z-index:3;pointer-events:none}
+    .night-panel-gauge-label{position:absolute;display:inline-flex;align-items:center;min-height:24px;padding:3px 7px;border:1px solid #ffffff40;border-radius:2px;background:#080a09e8;color:#f4efdf;font:600 13px/1.2 var(--font-ui,sans-serif);white-space:nowrap;transform:translate(-50%,-50%);text-shadow:0 1px 3px #000}
+    .night-panel-gauge-label.tach{left:20%;top:65%}
+    .night-panel-gauge-label.speed{left:65%;top:70%}
+    .night-panel-gauge-label.fuel{left:81%;top:47%}
+    .night-panel-gauge-label.temp{left:82%;top:74%}
+    .night-panel-pause-badge{position:absolute;top:12px;right:12px;z-index:4;padding:5px 9px;border:1px solid #ffffff55;background:#080a09e8;color:#fff;font:600 12px/1.2 var(--font-ui,sans-serif);letter-spacing:.06em}
+    .night-panel-loading{position:absolute;inset:0;z-index:5;display:grid;place-items:center;padding:24px;color:#e6e3da;font:15px/1.6 var(--font-ui,sans-serif);text-align:center}
     .night-panel-caption{min-height:3.1em;margin:12px 0 0!important;color:#fff!important;font:500 clamp(18px,2vw,24px)/1.45 var(--font-ui,sans-serif)!important;letter-spacing:0!important}
     .night-panel-aside{display:grid;gap:16px;align-content:start;padding-top:4px}
     .night-panel-source,.night-panel-note{margin:0!important;color:#ffffffb5!important;font:13px/1.65 var(--font-ui,sans-serif)!important;letter-spacing:0!important}
@@ -1397,17 +1406,24 @@
         <h2 id="route-title">해치백만 타고, 멀리 다니고,<br />한 번 간 길은 외우던 사람의 별이다.</h2>
       </div>
       <div class="route-grid">
-        <article class="panel quote-panel">
+        <article class="panel quote-panel night-panel-quote-panel">
           <p>나이트 패널처럼.<br />꼭 필요한 것만 남기고 달린다.</p>
           <details class="night-panel-entry" id="night-panel">
             <summary>나이트 패널이 뭐예요?</summary>
             <div class="night-panel-experience" data-night-panel>
-              <p class="night-panel-intro">사브의 나이트 패널은 밤에 불필요한 계기 조명을 줄여 운전에 필요한 정보만 남기는 기능입니다. 버튼을 누르면 회전계·연료계·수온계 바늘이 내려가고, 속도계와 필요한 표시등은 남습니다. 연료가 필요해지면 연료계가 다시 켜집니다.</p>
+              <p class="night-panel-intro">사브의 나이트 패널은 밤에 불필요한 계기 조명을 줄여 운전에 필요한 정보만 남기는 기능입니다. 버튼을 누르면 회전계·연료계·수온계 바늘이 내려가고, 속도계와 필요한 표시등은 남습니다. 연료가 부족해지면 연료계가 다시 켜집니다.</p>
               <div class="night-panel-layout">
                 <figure class="night-panel-figure">
                   <div class="night-panel-stage" data-night-panel-stage>
                     <canvas data-night-panel-canvas tabindex="0" aria-label="NIGHT 버튼을 눌러 나이트 패널을 조작할 수 있는 3D 계기판 모형" hidden></canvas>
                     <img data-night-panel-fallback hidden src="../assets/images/cars/night-panel-frame-normal.webp" alt="기능 설명용 3D 계기판 모형, 일반 상태" />
+                    <div class="night-panel-gauge-labels" role="group" aria-label="계기 이름">
+                      <span class="night-panel-gauge-label tach">회전계</span>
+                      <span class="night-panel-gauge-label speed">속도계</span>
+                      <span class="night-panel-gauge-label fuel">연료계</span>
+                      <span class="night-panel-gauge-label temp">수온계</span>
+                    </div>
+                    <div class="night-panel-pause-badge" data-night-panel-pause-badge hidden>멈춤</div>
                     <div class="night-panel-loading" data-night-panel-loading hidden>계기판 장면을 준비하고 있습니다.</div>
                   </div>
                   <figcaption class="night-panel-caption" data-night-panel-caption aria-live="polite">밤길, 계기판 전부 켜짐</figcaption>
@@ -1934,6 +1950,6 @@
 <script src="/assets/js/star-inquiry-context.js?v=20260930-1" defer></script>
 <script src="../assets/js/star-reference.js?v=20261024-home-map"></script>
 
-  <script type="module" src="../assets/js/car-night-panel.js?v=20261025c"></script>
+  <script type="module" src="../assets/js/car-night-panel.js?v=20261025g"></script>
 </body>
 </html>
