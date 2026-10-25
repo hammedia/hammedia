@@ -1,0 +1,862 @@
+/* Small, page-specific experiences. Each block is scoped to its own star. */
+
+/* Fountain pen: a writing table beside the published handwriting. */
+body[data-star-reference="fountain"] .fountain-writing-experience {
+  block-size: auto;
+  min-block-size: 100svh;
+  overflow: visible;
+  padding-block: clamp(48px, 7vh, 84px);
+}
+
+body[data-star-reference="fountain"] .fountain-writing-wrap {
+  width: min(100%, var(--max));
+  margin-inline: auto;
+}
+
+body[data-star-reference="fountain"] .fountain-writing-head {
+  display: grid;
+  gap: clamp(12px, 2vh, 20px);
+  max-width: 900px;
+  margin: 0 0 clamp(24px, 4vh, 40px);
+}
+
+body[data-star-reference="fountain"] .fountain-writing-head h2 {
+  max-width: 13ch;
+  font-size: clamp(42px, 5vw, 72px);
+  line-height: 1.06;
+}
+
+body[data-star-reference="fountain"] .fountain-writing-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.12fr) minmax(280px, 0.78fr);
+  gap: clamp(24px, 4vw, 56px);
+  align-items: start;
+}
+
+body[data-star-reference="fountain"] .fountain-writing-work {
+  display: grid;
+  gap: 16px;
+  min-width: 0;
+}
+
+body[data-star-reference="fountain"] .pen-prompt-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+body[data-star-reference="fountain"] .pen-prompt-list button,
+body[data-star-reference="fountain"] .pen-paper-actions button,
+body[data-star-reference="fountain"] .pen-text-row button {
+  min-width: 44px;
+  min-height: 48px;
+  padding: 10px 14px;
+  border: 1px solid rgba(11, 15, 20, 0.32);
+  border-radius: 3px;
+  background: transparent;
+  color: var(--aurora);
+  font: 700 14px/1.35 var(--font-sans);
+  text-align: left;
+  cursor: pointer;
+  transition: color 160ms ease, background-color 160ms ease, border-color 160ms ease;
+}
+
+body[data-star-reference="fountain"] .pen-prompt-list button[aria-pressed="true"] {
+  border-color: var(--wall);
+  background: var(--wall);
+  color: var(--paper-soft);
+}
+
+body[data-star-reference="fountain"] .pen-prompt-list button:focus-visible,
+body[data-star-reference="fountain"] .pen-paper-actions button:focus-visible,
+body[data-star-reference="fountain"] .pen-text-row button:focus-visible,
+body[data-star-reference="fountain"] .pen-text-row input:focus-visible,
+body[data-star-reference="fountain"] .pen-color-palette input:focus-visible + .pen-color-chip,
+body[data-star-reference="fountain"] .food-plate-entry:focus-visible,
+body[data-star-reference="fountain"] .pen-writing-canvas:focus-visible {
+  outline: 3px solid var(--studio);
+  outline-offset: 3px;
+}
+
+body[data-star-reference="fountain"] .pen-prompt-list button:disabled,
+body[data-star-reference="fountain"] .pen-paper-actions button:disabled,
+body[data-star-reference="fountain"] .pen-text-row button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+body[data-star-reference="fountain"] .pen-prompt-quote {
+  min-height: 38px;
+  padding: 2px 0 2px 14px;
+  border-left: 2px solid var(--syo-ro);
+  color: color-mix(in srgb, var(--aurora) 78%, var(--paper));
+  font: 700 clamp(16px, 1.6vw, 21px)/1.5 var(--font-sans);
+}
+
+body[data-star-reference="fountain"] .pen-paper-wrap {
+  position: relative;
+  padding: 12px;
+  border: 1px solid rgba(11, 15, 20, 0.14);
+  background: #f8f2e8;
+  box-shadow: 0 14px 36px rgba(11, 15, 20, 0.12), inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+}
+
+body[data-star-reference="fountain"] .pen-writing-canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 20 / 7;
+  background-color: #f8f2e8;
+  touch-action: none;
+  cursor: crosshair;
+}
+
+body[data-star-reference="fountain"] .pen-canvas-help,
+body[data-star-reference="fountain"] .pen-screen-note,
+body[data-star-reference="fountain"] .pen-experience-status,
+body[data-star-reference="fountain"] .pen-no-script {
+  color: color-mix(in srgb, var(--aurora) 62%, transparent);
+  font: 500 12px/1.6 var(--font-sans);
+}
+
+body[data-star-reference="fountain"] .pen-canvas-help {
+  margin: 8px 2px 0;
+}
+
+body[data-star-reference="fountain"] .pen-writing-controls {
+  display: grid;
+  gap: 12px;
+}
+
+body[data-star-reference="fountain"] .pen-color-palette {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 16px;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+body[data-star-reference="fountain"] .pen-color-palette legend {
+  width: 100%;
+  margin-bottom: 4px;
+  color: var(--ink-muted);
+  font: 800 12px/1.4 var(--font-sans);
+}
+
+body[data-star-reference="fountain"] .pen-color-palette label {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 32px;
+  color: var(--aurora);
+  font: 650 12px/1.35 var(--font-sans);
+  cursor: pointer;
+}
+
+body[data-star-reference="fountain"] .pen-color-chip {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 1px solid rgba(11, 15, 20, 0.28);
+  border-radius: 50%;
+  background: var(--pen-chip);
+}
+
+body[data-star-reference="fountain"] .pen-color-palette input {
+  accent-color: var(--syo-ro);
+}
+
+body[data-star-reference="fountain"] .pen-screen-note {
+  margin-top: -6px;
+}
+
+body[data-star-reference="fountain"] .pen-text-entry {
+  display: grid;
+  gap: 7px;
+}
+
+body[data-star-reference="fountain"] .pen-text-entry label {
+  color: var(--aurora);
+  font: 800 13px/1.4 var(--font-sans);
+}
+
+body[data-star-reference="fountain"] .pen-text-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 8px;
+}
+
+body[data-star-reference="fountain"] .pen-text-row input {
+  min-width: 0;
+  min-height: 48px;
+  padding: 10px 13px;
+  border: 1px solid rgba(11, 15, 20, 0.28);
+  border-radius: 3px;
+  background: #fffaf2;
+  color: var(--aurora);
+  font: 600 15px/1.4 var(--font-sans);
+}
+
+body[data-star-reference="fountain"] .pen-paper-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+body[data-star-reference="fountain"] .pen-paper-actions button {
+  text-align: center;
+}
+
+body[data-star-reference="fountain"] .pen-paper-actions .pen-download {
+  border-color: var(--platinum);
+  background: var(--platinum);
+  color: var(--paper-soft);
+}
+
+body[data-star-reference="fountain"] .pen-experience-status {
+  min-height: 20px;
+}
+
+body[data-star-reference="fountain"] .fountain-writing-photo {
+  align-self: start;
+  overflow: hidden;
+  border: 1px solid rgba(11, 15, 20, 0.12);
+  background: var(--paper-soft);
+}
+
+body[data-star-reference="fountain"] .fountain-writing-photo img {
+  width: 100%;
+  max-height: min(68svh, 760px);
+  object-fit: contain;
+}
+
+body[data-star-reference="fountain"] .fountain-writing-photo figcaption {
+  padding: 12px 14px;
+  color: color-mix(in srgb, var(--aurora) 70%, var(--paper));
+}
+
+body[data-star-reference="fountain"] .fountain-writing-entry {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 48px;
+  margin-top: 8px;
+  padding: 8px 12px;
+  border-top: 1px solid rgba(11, 15, 20, 0.12);
+  color: var(--aurora);
+  font: 700 14px/1.4 var(--font-sans);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+body[data-star-reference="fountain"] .fountain-writing-entry:focus-visible {
+  outline: 3px solid var(--studio);
+  outline-offset: 3px;
+}
+
+/* Food: whole photograph as the permanent base, with a lifted plate and a second magnified view. */
+body[data-star-reference="food"] .food-plate-figure {
+  overflow: visible;
+}
+
+body[data-star-reference="food"] .food-plate-stage {
+  position: relative;
+  isolation: isolate;
+  perspective: 1100px;
+  overflow: hidden;
+  background: #f5f0e8;
+}
+
+body[data-star-reference="food"] .food-plate-contact-shadow {
+  position: absolute;
+  z-index: 1;
+  left: var(--plate-x, 50%);
+  top: var(--plate-y, 56%);
+  width: calc(var(--plate-rx, 8%) + var(--plate-rx, 8%));
+  height: calc(var(--plate-ry, 24%) + var(--plate-ry, 24%));
+  border-radius: 50%;
+  background: rgba(34, 26, 20, 0.34);
+  opacity: 0;
+  filter: blur(7px);
+  transform: translate(-50%, -50%) translateY(10px) scale(1.03);
+  transition: opacity 260ms ease, transform 620ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  pointer-events: none;
+}
+
+body[data-star-reference="food"] .food-plate-figure.has-plate-selection .food-plate-contact-shadow {
+  opacity: 1;
+}
+
+body[data-star-reference="food"] .food-plate-source {
+  position: relative;
+  z-index: 0;
+  width: 100%;
+  height: auto;
+  transition: filter 420ms ease;
+}
+
+body[data-star-reference="food"] .food-plate-figure.has-plate-selection .food-plate-source {
+  filter: brightness(0.68);
+}
+
+body[data-star-reference="food"] .food-plate-lift {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  clip-path: ellipse(var(--plate-rx, 8%) var(--plate-ry, 24%) at var(--plate-x, 50%) var(--plate-y, 56%));
+  transform-origin: var(--plate-x, 50%) var(--plate-y, 56%);
+  transform: translate3d(0, 0, 0) rotateX(0) rotateZ(0) scale(1);
+  filter: blur(0.35px) drop-shadow(0 8px 9px rgba(35, 29, 21, 0.2));
+  transition: opacity 260ms ease, transform 620ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+body[data-star-reference="food"] .food-plate-lift img {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
+
+body[data-star-reference="food"] .food-plate-figure.has-plate-selection .food-plate-lift {
+  opacity: 1;
+  transform: translate3d(0, -5px, 60px) rotateX(4deg) rotateZ(var(--plate-tilt, 10deg)) scale(1.34);
+}
+
+body[data-star-reference="food"] .food-plate-hotspots {
+  position: absolute;
+  z-index: 3;
+  inset: 0;
+}
+
+body[data-star-reference="food"] .food-plate-hotspots button {
+  position: absolute;
+  left: var(--plate-x, 50%);
+  top: var(--plate-y, 68%);
+  width: 48px;
+  height: 48px;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  background: transparent;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+
+body[data-star-reference="food"] .food-plate-hotspots button:focus-visible {
+  border-color: rgba(255, 250, 242, 0.95);
+  outline: 2px solid rgba(31, 66, 54, 0.9);
+  outline-offset: 1px;
+  box-shadow: 0 0 0 3px rgba(31, 66, 54, 0.55);
+}
+
+body[data-star-reference="food"] .food-plate-figure figcaption {
+  margin-top: 8px;
+}
+
+body[data-star-reference="food"] .food-plate-reader {
+  display: grid;
+  gap: 12px;
+  margin: 0 0 30px;
+  color: #3d2b1f;
+}
+
+body[data-star-reference="food"] .food-plate-caption {
+  color: color-mix(in srgb, #3d2b1f 72%, transparent);
+  font: 600 14px/1.6 var(--font-sans);
+}
+
+body[data-star-reference="food"] .food-plate-list {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  border-top: 1px solid rgba(61, 43, 31, 0.2);
+  border-bottom: 1px solid rgba(61, 43, 31, 0.2);
+}
+
+body[data-star-reference="food"] .food-plate-list button,
+body[data-star-reference="food"] .food-plate-return,
+body[data-star-reference="food"] .food-plate-entry {
+  min-width: 44px;
+  min-height: 48px;
+  padding: 10px 8px;
+  border: 0;
+  background: transparent;
+  color: #3d2b1f;
+  font: 700 13px/1.4 var(--font-sans);
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+body[data-star-reference="food"] .food-plate-list button[aria-pressed="true"] {
+  color: #00704a;
+  box-shadow: inset 0 -2px 0 #00704a;
+}
+
+body[data-star-reference="food"] .food-plate-list button:focus-visible,
+body[data-star-reference="food"] .food-plate-return:focus-visible,
+body[data-star-reference="food"] .food-plate-entry:focus-visible {
+  outline: 3px solid #00704a;
+  outline-offset: 3px;
+}
+
+body[data-star-reference="food"] .food-plate-list button:disabled,
+body[data-star-reference="food"] .food-plate-return:disabled,
+body[data-star-reference="food"] .food-plate-entry:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+body[data-star-reference="food"] .food-plate-return {
+  justify-self: start;
+  border-bottom: 1px solid rgba(61, 43, 31, 0.48);
+}
+
+body[data-star-reference="food"] .food-plate-detail {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(180px, 0.7fr);
+  gap: clamp(16px, 3vw, 30px);
+  align-items: center;
+  padding: clamp(14px, 2.5vw, 24px);
+  border: 1px solid rgba(61, 43, 31, 0.18);
+  background: rgba(255, 250, 242, 0.62);
+}
+
+body[data-star-reference="food"] .food-plate-detail:not([hidden]) {
+  margin: 12px 0 20px;
+}
+
+body[data-star-reference="food"] .food-plate-detail[hidden] {
+  display: none;
+}
+
+body[data-star-reference="food"] .food-plate-zoom {
+  position: relative;
+  min-height: 220px;
+  aspect-ratio: 1.42;
+  overflow: hidden;
+  background: #eee7db;
+  perspective: 900px;
+}
+
+body[data-star-reference="food"] .food-plate-zoom-image {
+  position: absolute;
+  max-width: none;
+  height: auto;
+  transform: rotateX(2deg) rotateZ(1deg);
+  transform-origin: center;
+  transition: transform 500ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+body[data-star-reference="food"] .food-plate-detail-copy {
+  display: grid;
+  gap: 10px;
+  color: #3d2b1f;
+}
+
+body[data-star-reference="food"] .food-plate-detail-copy p {
+  color: #00704a;
+  font: 800 12px/1.4 var(--font-sans);
+}
+
+body[data-star-reference="food"] .food-plate-detail-copy h4 {
+  margin: 0;
+  font: 700 clamp(22px, 2.2vw, 32px)/1.25 var(--font-star);
+}
+
+body[data-star-reference="food"] .food-plate-detail-copy span,
+body[data-star-reference="food"] .food-plate-no-script {
+  color: color-mix(in srgb, #3d2b1f 74%, transparent);
+  font: 500 13px/1.65 var(--font-sans);
+}
+
+body[data-star-reference="food"] .food-plate-entry {
+  width: 100%;
+  margin-top: 6px;
+  border-bottom: 1px solid rgba(61, 43, 31, 0.42);
+  text-align: left;
+}
+
+/* Bicycle: the uphill line is a small explanation, separate from the existing scroll-as-pedal story. */
+body[data-star-reference="bicycle"] .bicycle-terrace-experience {
+  width: min(100%, 880px);
+  margin: clamp(36px, 5vw, 64px) auto 20px;
+  padding: clamp(20px, 4vw, 38px);
+  border: 1px solid rgba(243, 234, 216, 0.16);
+  background: linear-gradient(145deg, rgba(48, 54, 51, 0.72), rgba(32, 37, 35, 0.92));
+  color: var(--ride-ivory);
+}
+
+body[data-star-reference="bicycle"] .bicycle-terrace-intro {
+  display: grid;
+  gap: 10px;
+  max-width: 620px;
+}
+
+body[data-star-reference="bicycle"] .bicycle-terrace-kicker {
+  color: var(--ride-yellow);
+  font: 800 11px/1.3 Pretendard, var(--font-sans);
+  letter-spacing: 0.09em;
+}
+
+body[data-star-reference="bicycle"] .bicycle-terrace-intro h4 {
+  margin: 0;
+  color: var(--ride-ivory);
+  font: 900 clamp(28px, 3.8vw, 44px)/1.12 "Hakgyoansim Dunggeunmiso TTF B", Pretendard, sans-serif;
+}
+
+body[data-star-reference="bicycle"] .bicycle-terrace-intro > p:last-child,
+body[data-star-reference="bicycle"] .bicycle-climb-caption,
+body[data-star-reference="bicycle"] .bicycle-climb-note,
+body[data-star-reference="bicycle"] .bicycle-climb-no-script {
+  color: rgba(243, 234, 216, 0.74);
+  font: 500 14px/1.65 Pretendard, var(--font-sans);
+}
+
+body[data-star-reference="bicycle"] .bicycle-climb-stage {
+  position: relative;
+  min-height: clamp(200px, 28vw, 260px);
+  margin: 24px 0 12px;
+  overflow: hidden;
+  border: 1px solid rgba(243, 234, 216, 0.12);
+  background:
+    radial-gradient(ellipse at 86% 18%, rgba(143, 183, 201, 0.14), transparent 36%),
+    linear-gradient(180deg, #252c29, #1d2421 72%);
+  --ride-progress: 0;
+}
+
+body[data-star-reference="bicycle"] .bicycle-climb-route {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+body[data-star-reference="bicycle"] .bicycle-climb-hill {
+  fill: rgba(102, 135, 107, 0.22);
+}
+
+body[data-star-reference="bicycle"] .bicycle-climb-hill-outline {
+  fill: none;
+  stroke: rgba(143, 183, 201, 0.68);
+  stroke-width: 0.8;
+  vector-effect: non-scaling-stroke;
+}
+
+body[data-star-reference="bicycle"] .bicycle-climb-road,
+body[data-star-reference="bicycle"] .bicycle-climb-road-progress {
+  fill: none;
+  stroke-width: 1.35;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+body[data-star-reference="bicycle"] .bicycle-climb-road {
+  stroke: rgba(243, 234, 216, 0.42);
+}
+
+body[data-star-reference="bicycle"] .bicycle-climb-road-progress {
+  stroke: var(--ride-yellow);
+  stroke-dasharray: 1;
+  stroke-dashoffset: calc(1 - var(--ride-progress));
+}
+
+body[data-star-reference="bicycle"] .bicycle-climb-rider {
+  position: absolute;
+  z-index: 2;
+  left: 8%;
+  top: 82%;
+  width: 12px;
+  height: 12px;
+  border: 2px solid #202523;
+  border-radius: 50%;
+  background: var(--ride-yellow);
+  box-shadow: 0 0 0 7px rgba(242, 201, 76, 0.15), 0 0 22px rgba(242, 201, 76, 0.3);
+  transform: translate(-50%, -50%);
+}
+
+body[data-star-reference="bicycle"] .bicycle-climb-start,
+body[data-star-reference="bicycle"] .bicycle-climb-finish {
+  position: absolute;
+  z-index: 1;
+  color: rgba(243, 234, 216, 0.72);
+  font: 800 12px/1.2 Pretendard, var(--font-sans);
+}
+
+body[data-star-reference="bicycle"] .bicycle-climb-start {
+  left: 5%;
+  top: 84%;
+}
+
+body[data-star-reference="bicycle"] .bicycle-climb-finish {
+  right: 5%;
+  top: 18%;
+  color: var(--ride-yellow);
+}
+
+body[data-star-reference="bicycle"] .bicycle-climb-breath {
+  position: absolute;
+  right: 8%;
+  bottom: 8%;
+  display: flex;
+  align-items: end;
+  gap: 4px;
+  height: 30px;
+}
+
+body[data-star-reference="bicycle"] .bicycle-climb-breath i {
+  display: block;
+  width: 3px;
+  height: calc(7px + var(--bar-height, 9px));
+  background: var(--ride-breath);
+  opacity: 0.62;
+  transform: scaleY(var(--breath-scale, 1));
+  transform-origin: bottom;
+}
+
+body[data-star-reference="bicycle"] .bicycle-climb-breath i:nth-child(1) { --bar-height: 3px; }
+body[data-star-reference="bicycle"] .bicycle-climb-breath i:nth-child(2) { --bar-height: 13px; }
+body[data-star-reference="bicycle"] .bicycle-climb-breath i:nth-child(3) { --bar-height: 7px; }
+body[data-star-reference="bicycle"] .bicycle-climb-breath i:nth-child(4) { --bar-height: 17px; }
+
+body[data-star-reference="bicycle"] .bicycle-climb-arrival {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: clamp(16px, 3vw, 28px);
+  align-items: center;
+  margin: 18px 0;
+  padding: clamp(14px, 2.5vw, 22px);
+  border: 1px solid rgba(243, 234, 216, 0.2);
+  background: rgba(18, 24, 21, 0.62);
+}
+
+body[data-star-reference="bicycle"] .bicycle-climb-arrival[hidden] {
+  display: none;
+}
+
+body[data-star-reference="bicycle"] .bicycle-climb-arrival:focus {
+  outline: 2px solid var(--ride-yellow);
+  outline-offset: 4px;
+}
+
+body[data-star-reference="bicycle"] .bicycle-climb-arrival-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+body[data-star-reference="bicycle"] .bicycle-climb-arrival-photo figcaption {
+  margin-top: 8px;
+  color: rgba(243, 234, 216, 0.7);
+  font: 500 12px/1.5 Pretendard, var(--font-sans);
+}
+
+body[data-star-reference="bicycle"] .bicycle-climb-arrival-copy {
+  display: grid;
+  gap: 12px;
+}
+
+body[data-star-reference="bicycle"] .bicycle-climb-arrival-copy > p {
+  margin: 0;
+  color: var(--ride-yellow);
+  font: 800 11px/1.4 Pretendard, var(--font-sans);
+  letter-spacing: 0.06em;
+}
+
+body[data-star-reference="bicycle"] .bicycle-climb-arrival-copy h5 {
+  margin: 0;
+  color: var(--ride-ivory);
+  font: 900 clamp(22px, 3vw, 32px)/1.2 "Hakgyoansim Dunggeunmiso TTF B", Pretendard, sans-serif;
+}
+
+body[data-star-reference="bicycle"] .bicycle-climb-arrival-copy blockquote {
+  margin: 0;
+  padding: 12px 14px;
+  border-left: 2px solid var(--ride-yellow);
+  color: var(--ride-ivory);
+  font: 600 clamp(16px, 2vw, 21px)/1.6 Pretendard, var(--font-sans);
+}
+
+body[data-star-reference="bicycle"] .bicycle-climb-caption {
+  min-height: 24px;
+}
+
+body[data-star-reference="bicycle"] .bicycle-climb-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 16px 0;
+}
+
+body[data-star-reference="bicycle"] .bicycle-climb-controls button,
+body[data-star-reference="bicycle"] .bicycle-terrace-entry {
+  min-width: 44px;
+  min-height: 48px;
+  padding: 11px 15px;
+  border: 1px solid rgba(243, 234, 216, 0.34);
+  border-radius: 2px;
+  background: transparent;
+  color: var(--ride-ivory);
+  font: 700 13px/1.35 Pretendard, var(--font-sans);
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  user-select: none;
+}
+
+body[data-star-reference="bicycle"] .bicycle-climb-controls [data-bicycle-pedal] {
+  border-color: var(--ride-yellow);
+  color: var(--ride-yellow);
+  touch-action: none;
+}
+
+body[data-star-reference="bicycle"] .bicycle-climb-controls button:focus-visible,
+body[data-star-reference="bicycle"] .bicycle-terrace-entry:focus-visible {
+  outline: 3px solid var(--ride-breath);
+  outline-offset: 3px;
+}
+
+body[data-star-reference="bicycle"] .bicycle-climb-controls button:disabled,
+body[data-star-reference="bicycle"] .bicycle-terrace-entry:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+body[data-star-reference="bicycle"] .bicycle-climb-steps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  margin: 18px 0 0;
+  padding: 12px 0 0 20px;
+  border-top: 1px solid rgba(243, 234, 216, 0.14);
+  color: rgba(243, 234, 216, 0.74);
+  font: 600 12px/1.5 Pretendard, var(--font-sans);
+}
+
+body[data-star-reference="bicycle"] .bicycle-terrace-experience.has-bicycle-motion .bicycle-climb-steps {
+  display: none;
+}
+
+body[data-star-reference="bicycle"] .bicycle-terrace-entry {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  margin-top: 8px;
+  border-color: rgba(243, 234, 216, 0.5);
+  background: rgba(32, 37, 35, 0.82);
+  color: var(--ride-ivory);
+}
+
+@media (max-width: 940px) {
+  body[data-star-reference="fountain"] .fountain-writing-experience {
+    block-size: auto;
+    min-block-size: 0;
+    padding: 48px 22px;
+  }
+
+  body[data-star-reference="fountain"] .fountain-writing-grid {
+    grid-template-columns: 1fr;
+  }
+
+  body[data-star-reference="fountain"] .fountain-writing-photo {
+    order: -1;
+  }
+
+  body[data-star-reference="fountain"] .fountain-writing-photo img {
+    width: min(100%, 520px);
+    max-height: none;
+    margin-inline: auto;
+  }
+
+  body[data-star-reference="food"] .food-plate-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  body[data-star-reference="food"] .food-plate-detail {
+    grid-template-columns: 1fr;
+  }
+
+  body[data-star-reference="food"] .food-plate-zoom {
+    min-height: 210px;
+  }
+
+  body[data-star-reference="bicycle"] .bicycle-terrace-experience {
+    margin-inline: 0;
+  }
+}
+
+@media (max-width: 520px) {
+  body[data-star-reference="fountain"] .pen-prompt-list {
+    grid-template-columns: 1fr;
+  }
+
+  body[data-star-reference="fountain"] .pen-prompt-list button {
+    min-height: 50px;
+  }
+
+  body[data-star-reference="fountain"] .pen-text-row {
+    grid-template-columns: 1fr;
+  }
+
+  body[data-star-reference="fountain"] .pen-paper-actions > button {
+    flex: 1 1 120px;
+  }
+
+  body[data-star-reference="food"] .food-plate-list {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  body[data-star-reference="food"] .food-plate-detail {
+    padding: 12px;
+  }
+
+  body[data-star-reference="food"] .food-plate-zoom {
+    min-height: 190px;
+  }
+
+  body[data-star-reference="bicycle"] .bicycle-terrace-experience {
+    padding: 20px 16px;
+  }
+
+  body[data-star-reference="bicycle"] .bicycle-climb-arrival {
+    grid-template-columns: 1fr;
+  }
+
+  body[data-star-reference="bicycle"] .bicycle-climb-controls button {
+    flex: 1 1 44%;
+  }
+
+  body[data-star-reference="bicycle"] .bicycle-climb-steps {
+    display: grid;
+    gap: 6px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body[data-star-reference="fountain"] .pen-prompt-list button,
+  body[data-star-reference="fountain"] .pen-paper-actions button,
+  body[data-star-reference="food"] .food-plate-source,
+  body[data-star-reference="food"] .food-plate-lift,
+  body[data-star-reference="food"] .food-plate-zoom-image {
+    transition: none;
+  }
+
+  body[data-star-reference="food"] .food-plate-figure.has-plate-selection .food-plate-lift {
+    transform: translate3d(0, 0, 24px) rotateX(0) rotateZ(0) scale(1.16);
+  }
+
+  body[data-star-reference="bicycle"] .bicycle-climb-rider,
+  body[data-star-reference="bicycle"] .bicycle-climb-road-progress,
+  body[data-star-reference="bicycle"] .bicycle-climb-breath i {
+    transition: none;
+  }
+}

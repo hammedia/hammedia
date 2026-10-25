@@ -1766,6 +1766,7 @@
   <link rel="stylesheet" href="../assets/css/star-connections.css?v=20260930-1">
 <link rel="stylesheet" href="../assets/css/star-essays.css?v=20261018-reader-1">
 <link rel="stylesheet" href="../assets/css/star-reference.css?v=20261024-home-map-2">
+<link rel="stylesheet" href="../assets/css/star-experiences.css?v=20261025g">
 <noscript><style>body.star-reference .room-house-panel[hidden],body.star-reference .room-article-panel[hidden],body.star-reference .design-sheet[hidden]{display:block!important}body.star-reference .room-article-list{display:block}body.star-reference .reveal{opacity:1;transform:none}</style></noscript>
 </head>
 <body class="star-reference" data-star-reference="fountain">
@@ -1775,6 +1776,7 @@
     <a href="#dry" aria-label="마른 뒤의 색"></a>
     <a href="#walking" aria-label="아직 걷는 중"></a>
     <a href="#human" aria-label="사람이 만든 것"></a>
+    <a href="#one-line" aria-label="내 손으로 남긴 한 줄"></a>
     <a href="#hobby" aria-label="취미라는 것"></a>
     <a href="#inside" aria-label="별 안으로"></a>
     <a href="#inktrio" aria-label="좋았던 조합을 다시 찾는 InkTrio"></a>
@@ -1846,6 +1848,7 @@
         <figure class="scene-photo reading-photo feature-reading-photo">
           <img height="1800" width="1429" src="../assets/images/fountain-pens/still-walking.webp" alt="플래티넘 프레피 만년필과 이로시주쿠 코스모스로 쓴 아직 걷는 중 손글씨" loading="lazy" decoding="async">
           <figcaption class="museum-label">아직 걷는 중.</figcaption>
+          <a class="fountain-writing-entry" href="#one-line">이 원문 곁에 오늘 한 줄 써 보기 <span aria-hidden="true">→</span></a>
         </figure>
         <div class="scene-copy">
           <p class="kicker">Scene 04</p>
@@ -1871,7 +1874,66 @@
       </div>
     </section>
 
-    <section class="scene scene-dark scene-two" id="hobby" data-dot="5" aria-labelledby="hobby-title">
+    <section class="scene scene-paper fountain-writing-experience" id="one-line" data-star-experience data-dot="5" aria-labelledby="one-line-title">
+      <div class="fountain-writing-wrap">
+        <header class="fountain-writing-head">
+          <p class="kicker">Scene 06</p>
+          <h2 id="one-line-title"><span class="penline"><span class="write">내 손으로 남긴 한 줄</span><i class="nib" aria-hidden="true"></i></span></h2>
+          <p class="body-copy">마음에 남은 문장을 고르고, 오늘의 한 줄을 종이에 써 보세요.</p>
+        </header>
+
+        <div class="fountain-writing-grid" data-pen-experience>
+          <div class="fountain-writing-work">
+            <div class="pen-prompt-list" role="group" aria-label="곁에 둘 원문 선택">
+              <button type="button" data-pen-prompt="walking" aria-pressed="true" disabled>아직 걷는 중</button>
+              <button type="button" data-pen-prompt="human" aria-pressed="false" disabled>사람은 사람이 만든 것에 약하다</button>
+            </div>
+            <blockquote class="pen-prompt-quote" data-pen-prompt-copy aria-live="polite">오늘 실패했다면, 그건 아직 걷는 중이라는 뜻이다.</blockquote>
+
+            <div class="pen-paper-wrap">
+              <canvas class="pen-writing-canvas" width="1200" height="420" data-pen-canvas role="img" tabindex="0" aria-label="선택한 문장을 곁에 두고 직접 쓰는 종이" aria-describedby="pen-canvas-help">
+                이 종이에 포인터, 터치, 스타일러스로 직접 쓸 수 있습니다. 글자 입력 대안도 아래에 있습니다.
+              </canvas>
+              <p class="pen-canvas-help" id="pen-canvas-help">손으로 쓰려면 종이 위에서 누른 채 움직이세요. 키보드는 아래 글자 입력을 사용할 수 있습니다.</p>
+            </div>
+
+            <div class="pen-writing-controls">
+              <fieldset class="pen-color-palette" disabled>
+                <legend>화면에 그릴 색</legend>
+                <label><input type="radio" name="pen-screen-color" value="#2f4652" checked><span class="pen-color-chip" style="--pen-chip:#2f4652"></span><span>플래티넘 블루 블랙</span></label>
+                <label><input type="radio" name="pen-screen-color" value="#5a7974"><span class="pen-color-chip" style="--pen-chip:#5a7974"></span><span>소로 마른 틸</span></label>
+                <label><input type="radio" name="pen-screen-color" value="#e392a0"><span class="pen-color-chip" style="--pen-chip:#e392a0"></span><span>하나이카다 소프트 핑크</span></label>
+                <label><input type="radio" name="pen-screen-color" value="#cede85"><span class="pen-color-chip" style="--pen-chip:#cede85"></span><span>호타루비 작은 빛</span></label>
+              </fieldset>
+              <p class="pen-screen-note">화면에서 그리는 색입니다. 실제 잉크나 필체를 재현하지 않습니다.</p>
+
+              <div class="pen-text-entry">
+                <label for="pen-one-line-text">글자로 입력하기</label>
+                <div class="pen-text-row">
+                  <input id="pen-one-line-text" type="text" maxlength="72" autocomplete="off" placeholder="오늘 남기고 싶은 한 줄" data-pen-text>
+                  <button type="button" data-pen-write-text disabled>종이에 옮기기</button>
+                </div>
+              </div>
+
+              <div class="pen-paper-actions" aria-label="종이 도구">
+                <button type="button" data-pen-action="undo" disabled>되돌리기</button>
+                <button type="button" data-pen-action="clear" disabled>지우기</button>
+                <button type="button" class="pen-download" data-pen-action="download" disabled>PNG 저장</button>
+              </div>
+              <p class="pen-experience-status" data-pen-status role="status" aria-live="polite">입력한 내용은 서버로 보내지지 않습니다. PNG 저장은 기기 안에서 만듭니다.</p>
+            </div>
+            <noscript><p class="pen-no-script">이 종이 체험에는 자바스크립트가 필요합니다. 원문과 실제 손글씨 사진은 그대로 볼 수 있습니다.</p></noscript>
+          </div>
+
+          <figure class="fountain-writing-photo">
+            <img src="../assets/images/fountain-pens/still-walking.webp" width="1429" height="1800" alt="아직 걷는 중이라는 문장을 플래티넘 프레피 만년필과 이로시주쿠 코스모스로 쓴 실제 손글씨" loading="lazy" decoding="async" data-pen-prompt-photo>
+            <figcaption class="museum-label" data-pen-prompt-caption>플래티넘 프레피 M · 이로시주쿠 코스모스</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="scene scene-dark scene-two" id="hobby" data-dot="6" aria-labelledby="hobby-title">
       <div class="scene-inner">
         <div class="scene-copy">
           <p class="kicker">Scene 06</p>
@@ -1905,7 +1967,7 @@
       </div>
     </section>
 
-    <section class="scene scene-dark" id="inside" data-dot="6" aria-labelledby="inside-title">
+    <section class="scene scene-dark" id="inside" data-dot="7" aria-labelledby="inside-title">
       <div class="scene-inner">
         <div class="scene-copy">
           <p class="kicker">별 안으로</p>
@@ -2418,7 +2480,7 @@
       </div>
     </section>
 
-    <section class="scene scene-paper scene-two" id="inktrio" data-dot="7" aria-labelledby="inktrio-title">
+    <section class="scene scene-paper scene-two" id="inktrio" data-dot="8" aria-labelledby="inktrio-title">
       <div class="scene-inner">
         <div class="scene-copy">
           <p class="kicker">Finale</p>
@@ -2542,9 +2604,10 @@
     }
 
   </script>
-  <script src="../assets/js/main.js?v=20261019-reference-1"></script>
+  <script src="../assets/js/main.js?v=20261025-nested-anchors-9"></script>
   <script src="../assets/js/star-records.js"></script>
 <script src="/assets/js/star-inquiry-context.js?v=20260930-1" defer></script>
 <script src="../assets/js/star-reference.js?v=20261024-home-map"></script>
+<script type="module" src="../assets/js/fountain-writing-experience.js?v=20261025h"></script>
 </body>
 </html>

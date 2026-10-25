@@ -1511,6 +1511,7 @@
   <link rel="stylesheet" href="../assets/css/star-connections.css?v=20260930-1">
 <link rel="stylesheet" href="../assets/css/star-essays.css?v=20261018-reader-1">
 <link rel="stylesheet" href="../assets/css/star-reference.css?v=20261024-home-map-2">
+<link rel="stylesheet" href="../assets/css/star-experiences.css?v=20261025g">
 <noscript><style>body.star-reference .room-house-panel[hidden],body.star-reference .room-article-panel[hidden],body.star-reference .design-sheet[hidden]{display:block!important}body.star-reference .room-article-list{display:block}body.star-reference .reveal{opacity:1;transform:none}</style></noscript>
 </head>
 <body class="star-reference" data-star-reference="food">
@@ -1674,6 +1675,7 @@
 	          <figure class="photo-frame">
 	            <img src="../assets/images/food/gallery-img-4853.jpg" width="1800" height="1074" alt="델라카사 카운터의 접시 진열과 접시를 고르는 손">
 	            <figcaption>좋아하는 접시를 골라 음식을 받게 했다.</figcaption>
+	            <a class="food-plate-entry" href="#food-plate-experience">사진 속 접시 무늬를 가까이 보기</a>
 	          </figure>
 	        </div>
 	      </div>
@@ -1917,7 +1919,45 @@
 
       <div class="room-article-panels">
 <article class="room-article-panel star-new-essay" id="food-choose-a-plate-note" hidden><button class="room-article-back" type="button">문장</button><header><p class="room-card-meta">사진과 기록</p><h3>음식을 담기 전에 고르는 것</h3></header><div class="star-essay-copy"><p>사진 왼쪽에서 두 손이 접시 쪽으로 뻗어 있다. 앞줄에는 작은 접시, 뒤에는 큰 접시를 세웠다. 노란 테두리 옆에 붉은 꽃무늬가 있고, 오른쪽에는 파란 무늬를 두른 접시가 크기별로 놓여 있다.</p>
-<figure class="star-essay-photo"><img src="../assets/images/food/gallery-img-4853.jpg" alt="무늬와 크기가 다른 접시들을 세워 둔 선반과 접시 쪽으로 뻗은 손" width="1800" height="1074" loading="lazy" decoding="async"></figure>
+<figure class="star-essay-photo food-plate-figure" id="food-plate-experience" data-star-experience data-food-plate-experience>
+  <div class="food-plate-stage" data-food-plate-stage>
+    <img class="food-plate-source" src="../assets/images/food/gallery-img-4853.jpg" alt="무늬와 크기가 다른 접시들을 세워 둔 선반과 접시 쪽으로 뻗은 손" width="1800" height="1074" loading="lazy" decoding="async" data-food-plate-source>
+    <div class="food-plate-contact-shadow" aria-hidden="true" data-food-plate-contact-shadow></div>
+    <div class="food-plate-lift" aria-hidden="true" data-food-plate-lift>
+      <img src="../assets/images/food/gallery-img-4853.jpg" alt="" width="1800" height="1074" loading="lazy" decoding="async">
+    </div>
+    <div class="food-plate-hotspots" role="group" aria-label="사진 속 접시 무늬 선택">
+      <button type="button" data-plate-hotspot="yellow-rim" aria-label="노란 테두리 접시 가까이 보기" aria-pressed="false" disabled></button>
+      <button type="button" data-plate-hotspot="rose" aria-label="장미 무늬 접시 가까이 보기" aria-pressed="false" disabled></button>
+      <button type="button" data-plate-hotspot="red-branch" aria-label="붉은 꽃가지 무늬 접시 가까이 보기" aria-pressed="false" disabled></button>
+      <button type="button" data-plate-hotspot="blue-vine" aria-label="파란 넝쿨 무늬 접시 가까이 보기" aria-pressed="false" disabled></button>
+      <button type="button" data-plate-hotspot="teal-band" aria-label="청록 띠 접시 가까이 보기" aria-pressed="false" disabled></button>
+    </div>
+  </div>
+  <figcaption>좋아하는 접시를 골라 음식을 받게 했다.</figcaption>
+</figure>
+<div class="food-plate-detail" data-plate-detail hidden aria-labelledby="food-plate-detail-title">
+  <div class="food-plate-zoom" data-plate-zoom-stage>
+    <img class="food-plate-zoom-image" src="../assets/images/food/gallery-img-4853.jpg" width="1800" height="1074" alt="" aria-hidden="true" data-plate-zoom-image>
+  </div>
+  <div class="food-plate-detail-copy">
+    <p>사진 속 무늬를 가까이 본다</p>
+    <h4 id="food-plate-detail-title" data-plate-detail-title>고른 접시 무늬</h4>
+    <span>이 사진에서 방문자가 고른 무늬입니다. 당시 손님이 고른 접시와 음식은 기록에 없습니다.</span>
+  </div>
+</div>
+<div class="food-plate-reader" aria-label="접시 무늬 가까이 보기">
+  <p class="food-plate-caption" data-plate-caption role="status" aria-live="polite">사진은 전체로 둡니다. 접시를 누르면 고른 무늬가 앞으로 나옵니다.</p>
+  <div class="food-plate-list" role="group" aria-label="무늬 이름으로 선택">
+    <button type="button" data-plate-choice="yellow-rim" aria-pressed="false" disabled>노란 테두리</button>
+    <button type="button" data-plate-choice="rose" aria-pressed="false" disabled>장미 무늬</button>
+    <button type="button" data-plate-choice="red-branch" aria-pressed="false" disabled>붉은 꽃가지</button>
+    <button type="button" data-plate-choice="blue-vine" aria-pressed="false" disabled>파란 넝쿨</button>
+    <button type="button" data-plate-choice="teal-band" aria-pressed="false" disabled>청록 띠</button>
+  </div>
+  <button class="food-plate-return" type="button" data-plate-return disabled>선반 전체 보기</button>
+  <noscript><p class="food-plate-no-script">접시 선택에는 자바스크립트가 필요합니다. 전체 사진과 원문은 그대로 볼 수 있습니다.</p></noscript>
+</div>
 <p>이 사진에 햄(함동민)이 붙인 기억은 짧다.</p>
 <blockquote><p>델라카사 청라점. 좋아하는 접시를 골라 음식을 받게 했다</p></blockquote>
 <p>음식을 받기 전에 접시를 고를 수 있었다. 사진을 보는 지금도 하나를 골라 보게 된다. 테두리를 따라 작은 꽃이 이어진 것, 가운데를 넓게 비운 것, 노란색을 두른 것. 같은 선반을 봐도 먼저 눈에 들어오는 접시는 다를 듯하다.</p>
@@ -2075,7 +2115,7 @@
     <section class="star-connections" aria-labelledby="star-connections-title"><p class="star-connections-kicker">다음 별에서 만나요</p><h2 id="star-connections-title">이야기는 여기서 이어집니다.</h2><nav aria-label="관심이 이어지는 다른 길"><a href="spaces.html#space-delacasa-music-note"><span>같은 식탁을 공간에서 바라보면</span><strong>공간별의 「식사와 대화가 먼저인 자리」 <span aria-hidden="true">↗</span></strong></a><a href="music-audio.html"><span>식사하는 자리의 음악이 궁금하다면</span><strong>음악·오디오별 둘러보기 <span aria-hidden="true">↗</span></strong></a></nav><p class="star-connections-talk">읽다가 하고 싶은 일이 떠올랐다면, <a href="https://hamjipsa.hammedia.co.kr/">햄집사와 이야기해 보세요 ↗</a></p><a class="star-connections-home" href="../../#stars">아홉 별로 돌아가기</a></section>
   </main>
 
-  <script src="../assets/js/main.js?v=20261019-reference-1"></script>
+  <script src="../assets/js/main.js?v=20261025-nested-anchors-9"></script>
   <script>
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const scenes = Array.from(document.querySelectorAll("[data-scene]"));
@@ -2179,5 +2219,6 @@
   </script>
 <script src="/assets/js/star-inquiry-context.js?v=20260930-1" defer></script>
 <script src="../assets/js/star-reference.js?v=20261024-home-map"></script>
+<script type="module" src="../assets/js/food-plate-experience.js?v=20261025h"></script>
 </body>
 </html>

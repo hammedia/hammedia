@@ -1497,13 +1497,49 @@ function buildRoomHouse() {
   });
 
   if (referenceRouting) {
+    function focusAndScrollToAnchor(target, route) {
+      if (!target || Number.isFinite(route.scroll)) return;
+      let disclosure = target.closest("details");
+      while (disclosure) {
+        disclosure.open = true;
+        disclosure = disclosure.parentElement?.closest("details") || null;
+      }
+      requestAnimationFrame(() => {
+        target.scrollIntoView({ behavior: "instant", block: target.matches("[data-star-experience]") ? "start" : "center" });
+        restoreFocus(target);
+      });
+    }
+
+    function setAnchorRoute(route, target) {
+      const hash = `#${encodeURIComponent(route.anchor)}`;
+      window.history.replaceState({ ...window.history.state, hamStar: route }, "", `${window.location.pathname}${window.location.search}${hash}`);
+      focusAndScrollToAnchor(target, route);
+    }
+
     function showRoute(route) {
       restoringRoute = true;
       closePanels();
-      if (route.type === "article") openArticleById(route.id);
+      if (route.type === "article") {
+        openArticleById(route.id);
+        if (route.anchor) {
+          const anchor = document.getElementById(route.anchor);
+          const parentArticle = anchor?.closest(".room-article-panel");
+          if (parentArticle?.id === route.id) setAnchorRoute(route, anchor);
+        }
+      }
       else if (route.type === "photo") { openHousePanel(contextTargets.photo); openHousePhoto(route.index); }
-      else if (route.type === "panel") openHousePanel(route.id);
+      else if (route.type === "panel") {
+        openHousePanel(route.id);
+        if (route.anchor) {
+          const anchor = document.getElementById(route.anchor);
+          if (anchor?.closest(".room-house-panel")?.id === route.id) focusAndScrollToAnchor(anchor, route);
+        }
+      }
       else if (route.type === "stars") scrollToStarList();
+      else if (route.type === "anchor") {
+        const anchor = document.getElementById(route.id);
+        if (anchor) focusAndScrollToAnchor(anchor, route);
+      }
       restoringRoute = false;
       if (Number.isFinite(route.scroll)) requestAnimationFrame(() => {
         window.scrollTo({ top: route.scroll, behavior: "instant" });
@@ -1514,10 +1550,55 @@ function buildRoomHouse() {
       const hash = decodeURIComponent(window.location.hash.slice(1));
       const photo = hash.match(/^(.*-photo-room)-photo-(\d+)$/);
       if (photo) return { type: "photo", id: photo[1], index: Number(photo[2]) - 1, depth: 0 };
+      const target = document.getElementById(hash);
+      const parentArticle = target?.closest(".room-article-panel");
+      if (parentArticle && target !== parentArticle && articlePanels.includes(parentArticle)) {
+        return { type: "article", id: parentArticle.id, anchor: hash, depth: 0 };
+      }
+      const parentPanel = target?.closest(".room-house-panel");
+      if (parentPanel && target !== parentPanel && panels.includes(parentPanel)) {
+        return { type: "panel", id: parentPanel.id, anchor: hash, depth: 0 };
+      }
       if (articlePanels.some(panel => panel.id === hash)) return { type: "article", id: hash, depth: 0 };
       if (panels.some(panel => panel.id === hash)) return { type: "panel", id: hash, depth: 0 };
+      if (target?.matches("[data-star-experience]")) return { type: "anchor", id: hash, depth: 0 };
       return { type: "home", depth: 0 };
     }
+
+    document.addEventListener("click", event => {
+      const source = event.target instanceof Element ? event.target : event.target?.parentElement;
+      const link = source?.closest('a[href^="#"]');
+      if (!link) return;
+      const anchorId = decodeURIComponent(link.hash.slice(1));
+      const target = document.getElementById(anchorId);
+      const parentArticle = target?.closest(".room-article-panel");
+      if (!target || target === parentArticle || !parentArticle || !articlePanels.includes(parentArticle)) return;
+      event.preventDefault();
+      if (!openArticleById(parentArticle.id)) return;
+      const route = { ...(window.history.state?.hamStar || {}), type: "article", id: parentArticle.id, index: -1, anchor: anchorId };
+      setAnchorRoute(route, target);
+    });
+
+    document.addEventListener("click", event => {
+      const source = event.target instanceof Element ? event.target : event.target?.parentElement;
+      const link = source?.closest('a[href^="#"]');
+      if (!link || link.closest(".room-article-panel")) return;
+      const anchorId = decodeURIComponent(link.hash.slice(1));
+      const target = document.getElementById(anchorId);
+      if (!target?.matches("[data-star-experience]")) return;
+      if (target.closest(".room-article-panel")) return;
+      event.preventDefault();
+      const parentPanel = target.closest(".room-house-panel");
+      if (parentPanel && panels.includes(parentPanel)) {
+        if (!openHousePanel(parentPanel.id)) return;
+        const route = { ...(window.history.state?.hamStar || {}), type: "panel", id: parentPanel.id, anchor: anchorId };
+        setAnchorRoute(route, target);
+        return;
+      }
+      saveRoute("anchor", anchorId);
+      focusAndScrollToAnchor(target, window.history.state?.hamStar || {});
+    });
+
     const initial = window.history.state?.hamStar || hashRoute();
     if (initial.type !== "home") showRoute(initial);
     window.history.replaceState({ ...window.history.state, hamStar: initial }, "", window.location.href);
