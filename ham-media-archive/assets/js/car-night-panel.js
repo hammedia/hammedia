@@ -55,7 +55,7 @@
   let lastState = { ...initial };
   let raf = 0;
   let previousFrameTime = 0;
-  let returnScrollY = window.scrollY;
+  let returnScrollY = null;
   let staticMode = false;
 
 
@@ -1005,12 +1005,22 @@
       window.history.replaceState(window.history.state, "", cleanUrl.pathname + cleanUrl.search);
     }
     summary.focus({ preventScroll: true });
-    requestAnimationFrame(() => window.scrollTo({ top: returnScrollY, behavior: "auto" }));
+    requestAnimationFrame(() => {
+      if (Number.isFinite(returnScrollY)) {
+        window.scrollTo({ top: returnScrollY, behavior: "auto" });
+      } else {
+        const question = details.previousElementSibling || details.closest(".night-panel-quote-panel") || details;
+        question.scrollIntoView({ block: "center", behavior: "auto" });
+      }
+    });
   }
 
   function openFromHash() {
     if (window.location.hash !== "#night-panel" || details.open) return;
-    returnScrollY = window.scrollY;
+    // A direct hash load may run before the browser restores its native anchor
+    // scroll. In that case 0 is not the user's return position; return to the
+    // quote and collapsed question instead.
+    returnScrollY = null;
     details.open = true;
     requestAnimationFrame(() => {
       stage.scrollIntoView({ block: "center", behavior: "auto" });

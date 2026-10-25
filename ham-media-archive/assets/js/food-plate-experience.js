@@ -15,7 +15,7 @@ if (foodPlateExperience) {
   const foodPlateHotspots = [...foodPlateFigure.querySelectorAll("[data-plate-hotspot]")];
 
   const foodPlateData = {
-    "yellow-rim": { label: "노란 테두리", x: 0.3, y: 0.51, rx: 0.055, ry: 0.18, tilt: "6deg" },
+    "yellow-rim": { label: "노란 테두리", x: 0.222, y: 0.495, rx: 0.03, ry: 0.1, tilt: "3deg" },
     rose: { label: "장미 무늬", x: 0.52, y: 0.55, rx: 0.075, ry: 0.2, tilt: "8deg" },
     "red-branch": { label: "붉은 꽃가지", x: 0.38, y: 0.55, rx: 0.065, ry: 0.18, tilt: "-6deg" },
     "blue-vine": { label: "파란 넝쿨", x: 0.67, y: 0.53, rx: 0.08, ry: 0.2, tilt: "6deg" },
