@@ -28,6 +28,7 @@
   <link rel="stylesheet" href="../assets/css/star-connections.css?v=20260930-1">
 <link rel="stylesheet" href="../assets/css/star-essays.css?v=20261018-reader-1">
 <link rel="stylesheet" href="../assets/css/star-reference.css?v=20261024-home-map-2">
+<link rel="stylesheet" href="../assets/css/spaces-waiting-eye.css?v=20261025b">
 <noscript><style>body.star-reference .room-house-panel[hidden],body.star-reference .room-article-panel[hidden],body.star-reference .design-sheet[hidden]{display:block!important}body.star-reference .room-article-list{display:block}body.star-reference .reveal{opacity:1;transform:none}</style></noscript>
 <link rel="stylesheet" href="../../assets/css/detail-stage.css?v=20261024-space-marker-touch"><script defer src="../../assets/js/detail-stage.js?v=20261024-space-scene"></script></head>
 <body class="star-reference" data-star-reference="space">
@@ -37,8 +38,46 @@
     </nav>
     <header class="hero">
       <video class="hero-photo" controls muted loop playsinline poster="../assets/images/spaces/memory-02-dellacasa-cheongna.jpg" aria-label="델라카사 청라점의 조명과 벽 디테일이 천천히 살아나는 8초 기억 영상"><source src="../assets/videos/spaces/dellacasa-memory-light-8s.mp4" type="video/mp4" /></video>
-      <div class="hero-copy"><p class="space-code"><img src="../assets/images/spaces/stamps/lph-b613-05-spaces-stamp.jpg" alt="LPH-B613-05 공간별 스탬프" /><span>공간별 · LPH-B613-05 · HAM MEDIA 별자리</span></p><h1>가게를 만들었고,<br />잃었고,<br />다시 시작했다.</h1><p class="hero-lead">델라카사 신포점은 하나하나 모두 내가 결정하고, 배치하고, 완성한 공간이었다. 공간은 사라졌지만 그곳에서 배운 디테일은 다음 일을 만들고 있다.</p><p class="hero-kicker">한 사람이 공간을 만들고 다시 일하기까지</p></div>
+      <div class="hero-copy"><p class="space-code"><img src="../assets/images/spaces/stamps/lph-b613-05-spaces-stamp.jpg" alt="LPH-B613-05 공간별 스탬프" /><span>공간별 · LPH-B613-05 · HAM MEDIA 별자리</span></p><h1>가게를 만들었고,<br />잃었고,<br />다시 시작했다.</h1><p class="hero-lead">델라카사 신포점은 하나하나 모두 내가 결정하고, 배치하고, 완성한 공간이었다. 공간은 사라졌지만 그곳에서 배운 디테일은 다음 일을 만들고 있다.</p><p class="hero-kicker">한 사람이 공간을 만들고 다시 일하기까지</p><a class="space-waiting-entry" href="#space-waiting-experience"><span>사진에서 보이는 자리, 앉았을 때의 시선</span><strong>보기와 앉은 눈높이를 비교하기 <span aria-hidden="true">↘</span></strong></a></div>
     </header>
+    <section class="space-waiting-experience" id="space-waiting-experience" data-star-experience tabindex="-1" aria-labelledby="space-waiting-title" data-space-waiting-experience>
+      <div class="space-waiting-heading"><p class="label">사진 한 장 · 두 시점</p><h2 id="space-waiting-title">보기와 앉은 눈높이</h2><p>사진에 남은 대기실과 햄이 적은 두 감상을 나란히 봅니다.</p></div>
+      <div class="space-waiting-grid">
+        <div class="space-waiting-record">
+          <figure class="space-waiting-photo"><img src="../assets/images/spaces/memory-03-repair-waiting.jpg" alt="자동차 수리를 기다리던 공간. 갈색 소파와 회색 의자, 탁자가 보이는 대기실" width="1800" height="1199" loading="lazy" decoding="async"><figcaption>자동차 수리를 기다리며 남긴 실제 공간 사진.</figcaption></figure>
+          <blockquote class="space-waiting-quote"><p>생각보다 편하지 않았던 의자<br>하지만 분위기는 좋았다 ㅎ 아이러니</p><cite>햄이 적은 원문</cite></blockquote>
+          <p class="space-waiting-fact">어느 의자에 앉았는지, 불편한 이유가 무엇이었는지는 기록에 없습니다.</p>
+        </div>
+        <div class="space-eye-panel">
+          <div class="space-eye-copy"><p class="space-eye-kicker">설명용 일반 모형</p><h3>보는 높이를 바꿔 보세요.</h3><p>바깥에서 보고, 앉은 사람의 머리 위치로 들어가 탁자 위 판을 바라봅니다.</p></div>
+          <div class="space-eye-controls" role="group" aria-label="설명용 모형 시점 선택"><button type="button" data-space-eye-view="standing" aria-pressed="true">바깥에서 보기</button><button type="button" data-space-eye-view="seated" aria-pressed="false">앉은 눈높이</button></div>
+          <div class="space-eye-stage" data-space-eye-stage data-view="standing">
+            <canvas class="space-eye-canvas" data-space-eye-canvas aria-label="바깥 시점과 앉은 사람의 시점으로 좌석과 탁자 위 범용 판을 보는 설명용 3D 모형"></canvas>
+            <svg class="space-eye-fallback" viewBox="0 0 640 390" role="img" aria-labelledby="space-eye-fallback-title space-eye-fallback-desc">
+              <title id="space-eye-fallback-title">좌석과 탁자를 보는 두 시점의 설명용 모형</title><desc id="space-eye-fallback-desc">바깥에서 보는 시점과 앉은 사람의 머리 위치에서 탁자 위 범용 판을 보는 시점을 바꿉니다.</desc>
+              <defs><linearGradient id="space-eye-wall" x2="0" y2="1"><stop stop-color="#f1eee7"/><stop offset="1" stop-color="#e5dfd4"/></linearGradient></defs>
+              <g class="space-eye-fallback-standing-view">
+              <rect width="640" height="390" fill="url(#space-eye-wall)"/><path d="M0 305H640" stroke="#b4aa9d" stroke-width="3"/><path d="M0 306L640 346V390H0Z" fill="#d8cbb8"/>
+              <ellipse cx="325" cy="315" rx="228" ry="28" fill="#b9afa1" opacity=".32"/>
+              <g fill="#70635a"><rect x="159" y="196" width="116" height="28" rx="8"/><rect x="171" y="121" width="94" height="86" rx="10"/><rect x="163" y="220" width="12" height="80" rx="5"/><rect x="259" y="220" width="12" height="80" rx="5"/></g>
+              <g fill="#a4b2b1"><circle cx="218" cy="112" r="24"/><path d="M196 137Q218 128 241 139L248 207H190Z"/><path d="M198 205L228 205L254 255L239 263L211 230L191 267L176 258Z"/></g>
+              <g fill="#a98458"><rect x="342" y="204" width="165" height="13" rx="6"/><rect x="356" y="217" width="10" height="76" rx="4"/><rect x="482" y="217" width="10" height="76" rx="4"/></g>
+              <g class="space-eye-ray space-eye-ray--standing"><path d="M583 93L282 185" stroke="#b5753a" stroke-width="3" stroke-dasharray="8 9"/><circle cx="583" cy="93" r="8" fill="#b5753a"/><text x="388" y="112" fill="#7a552f" font-size="16" font-weight="700">보기</text></g>
+              <g class="space-eye-ray space-eye-ray--seated"><path d="M583 171L283 188" stroke="#237a75" stroke-width="3" stroke-dasharray="8 9"/><circle cx="583" cy="171" r="8" fill="#237a75"/><text x="394" y="166" fill="#17615d" font-size="16" font-weight="700">앉은 눈높이</text></g>
+              </g>
+              <g class="space-eye-fallback-seated-view" aria-hidden="true">
+                <rect width="640" height="390" fill="url(#space-eye-wall)"/><path d="M0 280H640" stroke="#b4aa9d" stroke-width="3"/><path d="M0 281L640 326V390H0Z" fill="#d8cbb8"/>
+                <path d="M72 168H568L640 330H0Z" fill="#9b7956"/><path d="M72 168L0 330M568 168L640 330" fill="none" stroke="#785f45" stroke-width="8"/>
+                <path d="M222 196L424 196L447 267L193 267Z" fill="#d9ded5" stroke="#59635d" stroke-width="4"/><path d="M235 207L413 207L430 255L209 255Z" fill="#aebbb2"/>
+                <text x="320" y="239" fill="#2d423c" text-anchor="middle" font-size="18" font-weight="700">탁자 위의 범용 판</text>
+              </g>
+            </svg>
+          </div>
+          <p class="space-eye-status" data-space-eye-status role="status" aria-live="polite">바깥에서 좌석과 탁자를 보는 설명용 일반 모형입니다.</p>
+          <p class="space-eye-note">설명용 일반 모형입니다. 실제 대기실·의자·치수를 재현하지 않습니다.</p>
+        </div>
+      </div>
+    </section>
     <section class="story" aria-label="가게를 만들고 다시 시작한 기록">
       <div class="chapters">
         <article class="chapter" id="space-chapter-01"><div class="chapter-copy"><p class="chapter-number">01 · BUILT</p><p class="label">만든 가게</p><h2>하나하나 결정하고,<br />배치하고, 완성했다.</h2><p>델라카사에는 디테일이 엄청 숨어 있다. 텍스트와 시계, 조명과 벽의 질감까지 손님이 무엇을 보고 어떻게 움직일지 직접 정했다.</p></div><div class="chapter-visual joint-host" data-tap-scene data-photo-base="../assets/images/spaces/" data-reset-title="디테일을 꺼내보세요" data-reset-quote="텍스트와 시계, 조명과 벽의 질감. 하나하나 결정하고 배치한 디테일이 공간의 분위기를 만든다." data-reset-source="햄의 글 「디테일의 힘」과 신포점의 실제 사진입니다.">
@@ -110,9 +149,10 @@
 
     <section class="star-connections" aria-labelledby="star-connections-title"><p class="star-connections-kicker">다음 별에서 만나요</p><h2 id="star-connections-title">이야기는 여기서 이어집니다.</h2><nav aria-label="관심이 이어지는 다른 길"><a href="music-audio.html"><span>공간에서 음악을 듣는 이야기</span><strong>음악·오디오별 둘러보기 <span aria-hidden="true">↗</span></strong></a><a href="food.html#food-article-delacasa"><span>같은 장소를 식탁에서 바라보면</span><strong>음식별의 델라카사 기록 <span aria-hidden="true">↗</span></strong></a></nav><p class="star-connections-talk">읽다가 하고 싶은 일이 떠올랐다면, <a href="https://hamjipsa.hammedia.co.kr/">햄집사와 이야기해 보세요 ↗</a></p><a class="star-connections-home" href="../../#stars">아홉 별로 돌아가기</a></section>
   </main>
-  <script src="../assets/js/main.js?v=20261019-reference-1"></script>
+  <script src="../assets/js/main.js?v=20261025-star-reference-anchor-5"></script>
 
 <script src="/assets/js/star-inquiry-context.js?v=20260930-1" defer></script>
 <script src="../assets/js/star-reference.js?v=20261024-home-map"></script>
+  <script type="module" src="../assets/js/spaces-waiting-eye.js?v=20261025d"></script>
 </body>
 </html>

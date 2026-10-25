@@ -1709,6 +1709,7 @@
     <link rel="stylesheet" href="../assets/css/star-connections.css?v=20260930-1">
 <link rel="stylesheet" href="../assets/css/star-essays.css?v=20261018-reader-1">
 <link rel="stylesheet" href="../assets/css/star-reference.css?v=20261024-home-map-2">
+<link rel="stylesheet" href="../assets/css/motorcycle-memory-scene.css?v=20261025a">
 <noscript><style>body.star-reference .room-house-panel[hidden],body.star-reference .room-article-panel[hidden],body.star-reference .design-sheet[hidden]{display:block!important}body.star-reference .room-article-list{display:block}body.star-reference .reveal{opacity:1;transform:none}</style></noscript>
 </head>
 <body class="variant-desktop star-reference" data-star-reference="motorcycle">
@@ -1729,10 +1730,61 @@
         <h1>바이크별</h1>
         <p class="bike-hero-statement">인생에 딱 좋은 시기가 있다.<br />나에게는 40대의 바이크가 그랬다.<strong>딱 좋았던 3년.</strong></p>
         <button class="bike-ignite" id="bike-ignite" type="button" aria-pressed="false"><span class="bike-ignite-dot" aria-hidden="true"></span><span>결심을 켠다</span></button>
+        <a class="bike-memory-entry" href="#motorcycle-memory-scene">그때의 결심과 그 뒤의 길 · 12초</a>
         <p class="bike-ignite-context" aria-live="polite" aria-hidden="true">죽기 전에 하고 싶은 건 하자.</p>
       </div>
       <span class="bike-scroll-note">scroll · the decision</span>
     </header>
+
+    <section class="motorcycle-memory-scene" id="motorcycle-memory-scene" data-star-experience tabindex="-1" aria-labelledby="motorcycle-memory-title">
+      <div class="motorcycle-memory-head">
+        <p>두 시점 · 12초</p>
+        <h2 id="motorcycle-memory-title">그때의 결심, 그 뒤의 길.</h2>
+        <p>자전거로 고갯길을 넘다 지나가는 바이크를 보고, 나도 타고 싶다고 마음먹었다. 그 뒤의 마음은 실제 바이크 사진으로 이어집니다.</p>
+      </div>
+      <div class="motorcycle-memory-layout">
+        <figure class="motorcycle-memory-frame">
+          <div class="motorcycle-memory-art" data-memory-art hidden aria-hidden="true">
+            <svg viewBox="0 0 960 560" role="presentation" focusable="false">
+              <path class="memory-ridge memory-ridge-back" d="M0 296 90 222 161 260 254 150 347 236 432 102 540 232 638 171 741 259 832 188 960 277" />
+              <path class="memory-ridge memory-ridge-front" d="M0 355 120 315 213 332 298 263 387 313 503 240 590 304 689 245 790 318 876 282 960 320" />
+              <path class="memory-line" data-memory-line-path d="M38 450 C160 429 205 396 286 401 S409 378 455 344 532 319 590 337 700 315 750 282 855 270 920 231" pathLength="1000" />
+              <circle class="memory-point" data-memory-point cx="38" cy="450" r="8" />
+            </svg>
+            <div class="motorcycle-memory-art-copy">
+              <span>그때</span>
+              <strong>꼭 나도 바이크로 미시령을 오르기로 했다.</strong>
+              <small>기억을 그린 선 · 실제 경로가 아닙니다</small>
+            </div>
+          </div>
+          <div class="motorcycle-memory-photo-stack" data-memory-photo-stack aria-label="그 뒤에 남은 바이크 사진">
+            <img data-memory-photo="road" src="../assets/images/motorcycles/photo-road-ride.jpg" width="724" height="724" alt="굽은 산길을 달리는 두 대의 바이크" decoding="async">
+            <img data-memory-photo="sea" src="../assets/images/motorcycles/gallery-img-6839.jpg" width="960" height="960" alt="동해 바닷가에 세워 둔 붉은 바이크" decoding="async" hidden>
+            <img data-memory-photo="still" src="../assets/images/motorcycles/gallery-img-7899.jpg" width="960" height="960" alt="카페 유리창 앞에 세운 붉은 바이크와 핸들 쪽의 헬멧, 탱크 위 장갑" decoding="async" hidden>
+            <span class="motorcycle-memory-photo-tag" data-memory-photo-tag>그 뒤 · 길 위</span>
+          </div>
+          <figcaption class="motorcycle-memory-caption">
+            <span data-memory-caption-kicker>그때</span>
+            <strong data-memory-caption-title>지나가는 바이크를 보며 마음이 움직였다.</strong>
+          </figcaption>
+        </figure>
+        <div class="motorcycle-memory-side">
+          <p data-memory-description>원문에는 ‘그렇게 추월하던 바이크를 보며, 꼭 나도 바이크로 미시령을 오르기로 했다’고 적혀 있습니다. 그 결심을 선 하나로 그렸습니다.</p>
+          <div class="motorcycle-memory-choices" role="group" aria-label="기억의 시점">
+            <button type="button" data-memory-choice="then" aria-pressed="true" disabled>그때</button>
+            <button type="button" data-memory-choice="after" aria-pressed="false" disabled>그 뒤</button>
+          </div>
+          <div class="motorcycle-memory-controls" role="group" aria-label="12초 장면 조작">
+            <button type="button" data-memory-play disabled>12초로 보기</button>
+            <button type="button" data-memory-pause disabled>잠시 멈춤</button>
+            <button type="button" data-memory-replay disabled>다시 보기</button>
+          </div>
+          <p class="motorcycle-memory-status" data-memory-status role="status" aria-live="polite">12초로 재생하거나 ‘그때’와 ‘그 뒤’를 직접 골라 볼 수 있습니다.</p>
+          <p class="motorcycle-memory-boundary">붉은 선은 기억을 위한 그림이며 GPS나 실제 길의 기록이 아닙니다. 산길·동해·카페 사진은 각각 기록된 장면이고 같은 장소라고 단정하지 않습니다.</p>
+          <noscript><p class="motorcycle-memory-no-script">장면 조작은 자바스크립트가 필요합니다. 위의 실제 바이크 사진과 원문 기록은 그대로 볼 수 있습니다.</p></noscript>
+        </div>
+      </div>
+    </section>
 
     <nav class="bike-decision-rail" aria-label="결심의 다섯 장면">
       <button type="button" class="is-current" data-bike-jump="0" aria-label="처음"></button>
@@ -1778,7 +1830,7 @@
           <p>자전거로 넘었던 고갯길을 이번에는 바이크로 넘었다. 더 빨리 달린 기록보다, 몸과 기억이 같은 길에서 다시 만난 순간이 오래 남았다.</p>
         </div>
         <figure class="bike-photo-frame">
-          <img src="../assets/images/motorcycles/photo-road-ride.jpg" alt="굽은 산길에 멈춰 선 두 대의 바이크" />
+          <img src="../assets/images/motorcycles/photo-road-ride.jpg" alt="굽은 산길을 달리는 두 대의 바이크" />
           <figcaption>로드에서 바이크로, 추억이 교차한다.</figcaption>
         </figure>
       </div>
@@ -1850,7 +1902,7 @@
 <p>붉은 탱크 위에 장갑을 올려 두고, 핸들 쪽에 헬멧을 걸어 두었다. 유리창 앞에 세운 바이크를 들여다보면 커피를 마시러 온 사람의 준비물이 먼저 눈에 들어온다. 달릴 때 쓰던 것들을 한곳에 모아 둔 모습이다.</p>
 <p>햄(함동민)은 이 사진에 이렇게 적었다.</p>
 <blockquote><p>카페레이서 커피마시러 다니는 바이크족 ㅎㅎ</p></blockquote>
-<p>창에는 길 건너 건물이 비치고, 그 위로 가게 안 조명과 의자가 겹쳐 보인다. 커피잔은 화면에 없다. 제목을 알고 보면 유리창 너머의 빈자리까지 살피게 된다. 누구와 앉았는지, 어떤 커피를 주문했는지는 사진 밖에 둔다.</p>
+<p>유리창에는 길 건너 건물이 비치고, 그 위로 가게 안 조명과 의자가 겹쳐 보인다. 붉은 바이크 옆에는 헬멧과 장갑이 놓여 있다. 잠시 멈춰 숨을 고른 순간이 사진에 남았다.</p>
 <p>바이크를 좋아하는 사람은 빨간 프레임과 엔진부터 볼 수도 있다. 잠깐 들른 카페를 떠올리는 사람은 헬멧과 장갑을 볼 것이다. 한 장 안에서 달리는 도구와 쉬어 가는 준비를 함께 구경한다.</p></div></article>
 
         <article class="room-post room-article-panel" id="motorcycle-alive-note" hidden>
@@ -1965,7 +2017,8 @@
 
     <section class="star-connections" aria-labelledby="star-connections-title"><p class="star-connections-kicker">다음 별에서 만나요</p><h2 id="star-connections-title">이야기는 여기서 이어집니다.</h2><nav aria-label="관심이 이어지는 다른 길"><a href="travel.html#stop-father"><span>달린 길이 기억으로 남을 때</span><strong>여행별의 「다시는 갈 수 없는 길」 <span aria-hidden="true">↗</span></strong></a><a href="bicycles.html#bicycle-trust-legs-note"><span>내 몸으로 길을 느끼는 또 다른 방법</span><strong>자전거별의 「다리를 믿는 시간」 <span aria-hidden="true">↗</span></strong></a></nav><p class="star-connections-talk">읽다가 하고 싶은 일이 떠올랐다면, <a href="https://hamjipsa.hammedia.co.kr/">햄집사와 이야기해 보세요 ↗</a></p><a class="star-connections-home" href="../../#stars">아홉 별로 돌아가기</a></section>
   </main>
-  <script src="../assets/js/main.js?v=20261019-reference-1"></script>
+  <script src="../assets/js/main.js?v=20261025-star-reference-anchor-5"></script>
+<script type="module" src="../assets/js/motorcycle-memory-scene.js?v=20261025d"></script>
   <script>
     (() => {
       const root = document.querySelector('.bike-shell');

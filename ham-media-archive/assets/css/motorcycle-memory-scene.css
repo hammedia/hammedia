@@ -1,0 +1,80 @@
+.motorcycle-memory-scene {
+  --memory-ink: #f4eee7;
+  --memory-muted: #c2b5ad;
+  --memory-red: #e45a4f;
+  --memory-line: rgba(229, 198, 179, .24);
+  margin: clamp(3rem, 7vw, 6.5rem) auto;
+  padding: clamp(1.25rem, 4vw, 3.5rem);
+  color: var(--memory-ink);
+  background: radial-gradient(ellipse at 74% 8%, rgba(128, 41, 34, .28), transparent 40%), #151112;
+  border-top: 1px solid var(--memory-line);
+  border-bottom: 1px solid var(--memory-line);
+  scroll-margin-top: 5rem;
+}
+.motorcycle-memory-scene:focus { outline: 2px solid var(--memory-red); outline-offset: 4px; }
+.motorcycle-memory-head, .motorcycle-memory-layout { max-width: 76rem; margin-inline: auto; }
+.motorcycle-memory-head { margin-bottom: 1.65rem; }
+.motorcycle-memory-head > p:first-child { margin: 0 0 .55rem; color: #ef9386; font-size: .78rem; font-weight: 750; letter-spacing: .14em; }
+.motorcycle-memory-head h2 { margin: 0; font-family: var(--font-display, Georgia, serif); font-size: clamp(1.8rem, 4.2vw, 3.15rem); font-weight: 600; line-height: 1.2; }
+.motorcycle-memory-head > p:last-child { max-width: 58rem; margin: .8rem 0 0; color: #dacbc2; font-size: clamp(.98rem, 1.45vw, 1.1rem); line-height: 1.75; }
+.motorcycle-memory-layout { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(18rem, .75fr); align-items: start; gap: clamp(1.2rem, 3.4vw, 3rem); }
+.motorcycle-memory-frame { box-sizing: border-box; width: 100%; max-width: 100%; min-width: 0; align-self: start; margin: 0; overflow: hidden; background: #090a0a; border: 1px solid var(--memory-line); border-radius: .55rem; box-shadow: 0 1.4rem 3.2rem rgba(0, 0, 0, .3); isolation: isolate; }
+.motorcycle-memory-art, .motorcycle-memory-photo-stack { position: relative; display: grid; place-items: center; width: 100%; aspect-ratio: 1.22; overflow: hidden; background: radial-gradient(ellipse at 53% 59%, #272422 0, #151312 57%, #080909 100%); }
+.motorcycle-memory-art[hidden] { display: none !important; }
+.motorcycle-memory-art svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.memory-ridge { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.memory-ridge-back { stroke: rgba(216, 200, 188, .11); stroke-width: 2; }
+.memory-ridge-front { stroke: rgba(216, 200, 188, .21); stroke-width: 3; }
+.memory-line { fill: none; stroke: var(--memory-red); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1000; stroke-dashoffset: 0; filter: drop-shadow(0 0 12px rgba(228, 90, 79, .48)); }
+.memory-point { fill: #f3e7d9; stroke: var(--memory-red); stroke-width: 3; filter: drop-shadow(0 0 9px rgba(228, 90, 79, .7)); }
+.motorcycle-memory-art-copy { position: relative; z-index: 1; display: grid; justify-items: center; gap: .8rem; max-width: 36rem; padding: 2rem 1.2rem; border: 1px solid rgba(244,238,231,.08); border-radius: .45rem; background: rgba(8,9,9,.52); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); text-align: center; text-shadow: 0 2px 18px rgba(0,0,0,.92); }
+.motorcycle-memory-art-copy span, .motorcycle-memory-photo-tag { color: #f09386; font-size: .76rem; font-weight: 800; letter-spacing: .15em; }
+.motorcycle-memory-art-copy strong { max-width: 19ch; font-family: var(--font-display, Georgia, serif); font-size: clamp(1.5rem, 3vw, 2.5rem); font-weight: 500; line-height: 1.34; }
+.motorcycle-memory-art-copy small { color: #c4b8b0; font-size: .84rem; }
+.motorcycle-memory-photo-stack { background: #090909; }
+.motorcycle-memory-photo-stack img { display: block; width: 100%; height: 100%; object-fit: contain; background: #090909; opacity: 1; transition: opacity .38s ease; }
+.motorcycle-memory-photo-stack img[hidden] { display: none; }
+.motorcycle-memory-photo-stack.is-changing img:not([hidden]) { opacity: .35; }
+.motorcycle-memory-photo-tag { position: absolute; z-index: 1; left: .85rem; top: .85rem; padding: .45rem .62rem; color: #fff5ec; background: rgba(18, 13, 12, .82); border: 1px solid rgba(255, 255, 255, .2); border-radius: .25rem; letter-spacing: .1em; }
+.motorcycle-memory-caption { display: grid; gap: .32rem; min-height: 4.5rem; padding: .85rem 1rem 1rem; border-top: 1px solid var(--memory-line); background: #171414; }
+.motorcycle-memory-caption span { color: #ef9386; font-size: .74rem; font-weight: 750; letter-spacing: .12em; }
+.motorcycle-memory-caption strong { color: #efe4dc; font-size: .98rem; font-weight: 650; line-height: 1.5; }
+.motorcycle-memory-side { display: flex; flex-direction: column; align-items: flex-start; min-width: 0; padding: .25rem 0 .5rem; }
+.motorcycle-memory-side > p:first-child { margin: 0 0 1rem; color: #dfd0c8; font-size: clamp(1rem, 1.5vw, 1.12rem); line-height: 1.8; }
+.motorcycle-memory-choices, .motorcycle-memory-controls { display: flex; flex-wrap: wrap; gap: .55rem; width: 100%; }
+.motorcycle-memory-choices { margin-bottom: .8rem; }
+.motorcycle-memory-choices button, .motorcycle-memory-controls button { min-height: 48px; padding: .65rem .9rem; border: 1px solid rgba(233, 208, 190, .55); border-radius: 999px; color: var(--memory-ink); background: rgba(255, 255, 255, .045); font: inherit; font-size: .94rem; font-weight: 650; cursor: pointer; transition: border-color .2s ease, color .2s ease, background .2s ease, opacity .2s ease; }
+.motorcycle-memory-choices button { min-width: 6rem; }
+.motorcycle-memory-choices button[aria-pressed="true"], .motorcycle-memory-controls [data-memory-play] { color: #211311; background: #ed8b77; border-color: #ed8b77; }
+.motorcycle-memory-choices button:hover, .motorcycle-memory-choices button:focus-visible, .motorcycle-memory-controls button:hover, .motorcycle-memory-controls button:focus-visible { color: #171111; background: #f0b28d; border-color: #f0b28d; outline: none; }
+.motorcycle-memory-controls button:disabled, .motorcycle-memory-choices button:disabled { opacity: .52; cursor: not-allowed; }
+.motorcycle-memory-status { min-height: 3em; margin: .85rem 0 0; color: #f0a292; font-size: .94rem; line-height: 1.6; }
+.motorcycle-memory-boundary, .motorcycle-memory-no-script { margin: .75rem 0 0; padding-top: .8rem; border-top: 1px solid var(--memory-line); color: var(--memory-muted); font-size: .85rem; line-height: 1.7; }
+.bike-memory-entry { display: inline-flex; align-items: center; min-height: 44px; margin-top: .85rem; padding: .55rem .9rem; border: 1px solid rgba(238, 141, 119, .62); border-radius: 999px; color: #f1d9cf; font-size: .9rem; font-weight: 700; text-decoration: none; transition: background .2s ease, color .2s ease; }
+.bike-memory-entry:hover, .bike-memory-entry:focus-visible { color: #1c1110; background: #ef8d77; outline: none; }
+.motorcycle-memory-scene.is-playing .memory-line { filter: drop-shadow(0 0 15px rgba(228, 90, 79, .62)); }
+
+/* At narrow desktop widths, keep the chapter rail in the reading flow so it never sits on top of copy. */
+@media (max-width: 1200px) {
+  .bike-decision-rail { position: relative; inset: auto; display: flex; flex-wrap: wrap; justify-content: center; gap: .45rem; width: max-content; max-width: calc(100% - 2rem); margin: 1rem auto 1.5rem; padding: .45rem; transform: none; z-index: 2; }
+  .bike-decision-rail button { display: inline-flex; align-items: center; justify-content: center; gap: .45rem; width: auto; min-width: 3.7rem; height: 44px; padding: 0 .55rem; }
+  .bike-decision-rail button::after { position: static; width: 8px; height: 8px; transform: none; }
+  .bike-decision-rail button::before { position: static; padding: 0; border: 0; background: transparent; font-size: .78rem; opacity: 1; transform: none; }
+}
+@media (max-width: 760px) {
+  .motorcycle-memory-scene { margin: 2.5rem auto; padding: 1.05rem; }
+  .motorcycle-memory-layout { grid-template-columns: minmax(0, 1fr); gap: 1rem; }
+  .motorcycle-memory-art, .motorcycle-memory-photo-stack { aspect-ratio: 1.08; }
+  .motorcycle-memory-art-copy { gap: .65rem; }
+  .motorcycle-memory-art-copy strong { font-size: clamp(1.45rem, 7vw, 2rem); }
+  .motorcycle-memory-side { padding: .2rem .1rem .25rem; }
+  .motorcycle-memory-controls, .motorcycle-memory-choices { gap: .45rem; }
+  .motorcycle-memory-controls button, .motorcycle-memory-choices button { flex: 1 1 auto; min-height: 48px; }
+}
+@media (max-width: 360px) {
+  .motorcycle-memory-controls { display: grid; grid-template-columns: minmax(0, 1fr); }
+  .motorcycle-memory-choices button { min-width: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bike-memory-entry, .motorcycle-memory-controls button, .motorcycle-memory-choices button, .motorcycle-memory-photo-stack img { transition: none; }
+}

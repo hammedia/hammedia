@@ -1928,6 +1928,7 @@
 .camera-gallery-grid.camera-pick-active .room-house-photo:focus-visible{outline:3px solid #f1c078;outline-offset:4px}
 </style>
 <link rel="stylesheet" href="../assets/css/star-reference.css?v=20261024-home-map-2">
+<link rel="stylesheet" href="../assets/css/camera-pair-experience.css?v=20261025i">
 <noscript><style>body.star-reference .room-house-panel[hidden],body.star-reference .room-article-panel[hidden],body.star-reference .design-sheet[hidden]{display:block!important}body.star-reference .room-article-list{display:block}body.star-reference .reveal{opacity:1;transform:none}</style></noscript>
 </head>
 <body class="star-reference" data-star-reference="camera">
@@ -1942,6 +1943,7 @@
           고르는 순간이 중요했다.
         </p>
         <nav class="entry-nav room-house-nav" aria-label="카메라별 입구">
+          <a class="entry-link camera-experience-entry" href="#camera-pair-experience">누가 누구를 찍었나</a>
           <button class="entry-link room-house-door" type="button" data-scroll-target="#camera-writing" data-house-target="camera-writing-room">문장</button>
           <button class="entry-link room-house-door" type="button" data-scroll-target="#camera-photos" data-house-target="camera-photo-room">장면</button>
           <button class="entry-link room-house-door" type="button" data-scroll-target="#camera-map" data-house-target="camera-map-room">디자인</button>
@@ -1953,6 +1955,59 @@
         <div class="star-code-pill">LPH-B613-09 <span class="star-signal" aria-label="열린 별"></span></div>
       </div>
       <div class="hero-photo" role="img" aria-label="거울 앞에서 카메라를 든 자화상"></div>
+    </section>
+
+    <section class="camera-pair-experience" id="camera-pair-experience" data-star-experience tabindex="-1" aria-labelledby="camera-pair-title">
+      <div class="camera-pair-head">
+        <p class="camera-pair-kicker">두 렌즈의 초상 · 사진과 기록</p>
+        <h2 id="camera-pair-title">중이 제 머리 못 깎는다</h2>
+        <p>백마로 50mm 렌즈를 찍고, 50mm 렌즈로 백마를 찍었습니다. 렌즈가 서로의 프레임 안에 들어갑니다.</p>
+      </div>
+      <div class="camera-pair-layout">
+        <figure class="camera-pair-stage">
+          <canvas class="camera-pair-canvas" data-camera-pair-canvas hidden aria-label="브랜드 표시가 없는 두 금속 렌즈 모형과 서로를 향하는 시야"></canvas>
+          <img class="camera-pair-matchcut" data-camera-pair-image alt="백마로 찍은 50mm 렌즈 사진" hidden>
+          <div class="camera-pair-stage-labels" data-camera-pair-labels aria-live="polite" aria-atomic="true">
+            <span data-camera-pair-left>백마 · 찍는 렌즈</span>
+            <span class="camera-pair-stage-direction" data-camera-pair-direction>→ 찍는 방향</span>
+            <span data-camera-pair-right>50mm · 찍히는 대상</span>
+          </div>
+          <div class="camera-pair-stage-overlay">
+            <span data-camera-pair-counter>01 / 03</span>
+            <strong data-camera-pair-caption>백마로 찍은 50mm</strong>
+          </div>
+          <div class="camera-pair-reflection" aria-hidden="true"></div>
+        </figure>
+        <div class="camera-pair-copy">
+          <p class="camera-pair-state" data-camera-pair-state>첫 번째 시선</p>
+          <h3 data-camera-pair-title>백마가 50mm를 봅니다.</h3>
+          <p data-camera-pair-description>100mm 마크로 렌즈를 부르는 별명인 ‘백마’로 50mm 렌즈를 가까이 찍었습니다. 초점 링과 눈금이 사진에 남았습니다.</p>
+          <div class="camera-pair-controls" aria-label="카메라 시선 장면 조작">
+            <button type="button" data-camera-pair-prev aria-label="이전 시선 장면">←</button>
+            <button type="button" data-camera-pair-view aria-pressed="false">실제 사진 보기</button>
+            <button type="button" data-camera-pair-next>다음 시선</button>
+            <button type="button" data-camera-pair-stop disabled>자동 정지</button>
+            <button type="button" data-camera-pair-replay>다시 보기</button>
+          </div>
+          <p class="camera-pair-status" data-camera-pair-status role="status" aria-live="polite">설명 모형과 실제 사진을 직접 바꿔 볼 수 있습니다.</p>
+          <p class="camera-pair-note">설명용 렌즈 모형입니다. 실제 광학이나 렌즈 제품을 복각하지 않았습니다.</p>
+        </div>
+      </div>
+      <div class="camera-pair-evidence" aria-label="원문에서 짝을 이룬 실제 사진 세 장">
+        <figure>
+          <img src="../assets/images/cameras/camera-original-20260604-002-cyworld-image-002.jpg" width="400" height="287" loading="lazy" decoding="async" alt="100mm 마크로 렌즈인 백마로 찍은 50mm 렌즈의 초점 링과 거리 눈금">
+          <figcaption><strong>백마로 찍은 50mm</strong><span>50mm 렌즈의 초점 링을 가까이 본 사진</span></figcaption>
+        </figure>
+        <figure>
+          <img src="../assets/images/cameras/camera-original-20260604-018-ef50mm1.4.jpg" width="400" height="592" loading="lazy" decoding="async" alt="책 위에 세운 100mm 렌즈 백마">
+          <figcaption><strong>50mm로 찍은 백마</strong><span>책 위에 세워 둔 100mm 렌즈의 사진</span></figcaption>
+        </figure>
+        <figure>
+          <img src="../assets/images/cameras/gallery-camera-self-portrait.jpg" width="1100" height="1100" loading="lazy" decoding="async" alt="거울 앞에서 카메라를 든 사람의 자화상">
+          <figcaption><strong>보는 사람도 프레임 안에</strong><span>거울 자화상에는 촬영 렌즈 정보가 남아 있지 않습니다.</span></figcaption>
+        </figure>
+      </div>
+      <noscript><p class="camera-pair-no-script">설명 모형은 자바스크립트가 필요합니다. 아래 실제 사진과 캡션에서 두 시선의 관계를 읽을 수 있습니다.</p></noscript>
     </section>
 
     <section class="section" id="camera-color">
@@ -2427,7 +2482,8 @@
     <section class="star-connections" aria-labelledby="star-connections-title"><p class="star-connections-kicker">다음 별에서 만나요</p><h2 id="star-connections-title">이야기는 여기서 이어집니다.</h2><nav aria-label="관심이 이어지는 다른 길"><a href="fountain-pens.html#fountain-hobby-essay"><span>사진 옆에 글을 남기는 마음</span><strong>만년필별의 「취미라는 것에 대하여」 <span aria-hidden="true">↗</span></strong></a><a href="../../academy/"><span>직접 만들며 배워보고 싶다면</span><strong>아카데미 둘러보기 <span aria-hidden="true">↗</span></strong></a></nav><p class="star-connections-talk">읽다가 하고 싶은 일이 떠올랐다면, <a href="https://hamjipsa.hammedia.co.kr/">햄집사와 이야기해 보세요 ↗</a></p><a class="star-connections-home" href="../../#stars">아홉 별로 돌아가기</a></section>
   </main>
 
-  <script src="../assets/js/main.js?v=20261019-reference-1"></script>
+  <script src="../assets/js/main.js?v=20261025-star-reference-anchor-5"></script>
+  <script type="module" src="../assets/js/camera-pair-experience.js?v=20261025i"></script>
   <script>
     (() => {
       const lab = document.querySelector("[data-selection-lab]");

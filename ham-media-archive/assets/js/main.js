@@ -945,12 +945,14 @@ function buildRoomHouse() {
   // Other room pages continue to use their existing navigation.
   const referenceRouting = document.body.classList.contains("star-reference");
   let routingReady = false, restoringRoute = false, focusSequence = 0;
-  function saveRoute(type, id = "", index = -1, replace = false) {
+  function saveRoute(type, id = "", index = -1, replace = false, keepReturnAnchor = false) {
     if (!referenceRouting || !routingReady || restoringRoute) return;
     const old = window.history.state?.hamStar || { type: "home", depth: 0 };
-    const active = document.activeElement;
-    if (active && active !== document.body && !active.id) active.id = `star-return-${++focusSequence}`;
-    window.history.replaceState({ ...window.history.state, hamStar: { ...old, scroll: window.scrollY, focus: active?.id || "" } }, "", window.location.href);
+    if (!keepReturnAnchor) {
+      const active = document.activeElement;
+      if (active && active !== document.body && !active.id) active.id = `star-return-${++focusSequence}`;
+      window.history.replaceState({ ...window.history.state, hamStar: { ...old, scroll: window.scrollY, focus: active?.id || "" } }, "", window.location.href);
+    }
     const route = { type, id, index, depth: old.depth + (replace ? 0 : 1) };
     const hash = type === "home" ? "" : type === "photo" ? `#${photoPanel.id}-photo-${index + 1}` : `#${id}`;
     window.history[replace ? "replaceState" : "pushState"]({ hamStar: route }, "", `${window.location.pathname}${window.location.search}${hash}`);
@@ -1038,12 +1040,27 @@ function buildRoomHouse() {
     });
   }
 
-  function openHousePanel(panelId) {
+  function openHousePanel(panelId, returnSectionId = "") {
     if (!panelId) return false;
     const target = document.getElementById(panelId);
     if (!target || !housePage.contains(target)) return false;
 
-    saveRoute("panel", panelId);
+    if (referenceRouting && !restoringRoute) {
+      const activeSection = document.activeElement?.closest("section[id]");
+      const returnSection = document.getElementById(returnSectionId) || activeSection;
+      if (returnSection && !returnSection.closest(".room-house-panel, .room-article-panel")) {
+        const previous = window.history.state?.hamStar || { type: "home", depth: 0 };
+        const anchorRoute = { ...previous, type: "anchor", id: returnSection.id };
+        if (returnSectionId) {
+          delete anchorRoute.scroll;
+          delete anchorRoute.focus;
+        }
+        const hash = `#${encodeURIComponent(returnSection.id)}`;
+        window.history.replaceState({ ...window.history.state, hamStar: anchorRoute }, "", `${window.location.pathname}${window.location.search}${hash}`);
+      }
+    }
+
+    saveRoute("panel", panelId, -1, false, Boolean(returnSectionId));
     syncArticleHash();
     closePanels();
     target.hidden = false;
@@ -1244,7 +1261,7 @@ function buildRoomHouse() {
         return;
       }
       trackStarEntryClick(housePage, door.dataset.houseTarget, door.textContent);
-      openHousePanel(door.dataset.houseTarget);
+      openHousePanel(door.dataset.houseTarget, door.dataset.scrollTarget?.replace(/^#/, ""));
     });
   });
 
@@ -1596,6 +1613,7 @@ function buildRoomHouse() {
         return;
       }
       saveRoute("anchor", anchorId);
+      closePanels();
       focusAndScrollToAnchor(target, window.history.state?.hamStar || {});
     });
 
