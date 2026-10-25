@@ -241,7 +241,159 @@ const dialogCaptionFields=document.querySelector('#dialog-caption-fields');
 const promptText=document.querySelector('#prompt-text');
 const copyBtn=document.querySelector('#copy-prompt');
 const promptStatus=document.querySelector('#prompt-status');
+const variableFields=document.querySelector('#prompt-variable-fields');
+const promptExtraWish=document.querySelector('#prompt-extra-wish');
+const promptExtraKeep=document.querySelector('#prompt-extra-keep');
+const downloadPromptBtn=document.querySelector('#download-prompt');
 let lastFocus=null,statusTimer=null,scrollY=0,currentWork=null;
+let basePromptText='';
+
+const PROMPT_FIELDS={
+ 'family-memory-restore':[
+  {token:'[인원 수]',label:'사진 속 인원 수',hint:'예: 성인 3명, 아이 1명. 이름이나 관계는 적지 않아도 됩니다.'},
+  {token:'[손상 유형과 위치]',label:'사진에서 고칠 손상',hint:'예: 왼쪽 위 접힌 자국, 얼굴 옆 작은 긁힘. 보이는 부분만 적으세요.'},
+  {token:'[복원 강도]',label:'복원 강도',hint:'예: 먼지와 접힌 선만 줄이기. 선명하게 보이도록 과하게 보정하지 않습니다.'},
+  {token:'[색상 처리]',label:'색을 어떻게 다룰까요?',hint:'원본 유지를 기본으로 선택했습니다. 바꾸면 고른 갈래 하나만 요청문에 남습니다.',type:'select',defaultValue:'원본 유지',options:[{value:'원본 유지',label:'원본 유지 · 기본값'},{value:'원본 색 복구',label:'원본 색 복구'},{value:'추정 채색본',label:'추정 채색본 · 별도 파생본'}]},
+  {token:'[출력 비율]',label:'원하는 출력 비율',hint:'원본 유지가 기본입니다. 예: 원본과 같은 비율.'},
+  {token:'[가족이 확인한 특징]',label:'가족이 확인한 눈에 보이는 특징',hint:'선택 항목. 옷 색이나 안경처럼 확인된 사실만 적고, 이름·건강 정보는 빼세요.'}
+ ],
+ 'pet-role-swap':[
+  {token:'[바꿀 사람]',label:'사진 속 어떤 사람인가요?',hint:'예: 왼쪽 사람. 이름 대신 위치나 옷차림을 써도 됩니다.'},
+  {token:'[될 동물]',label:'어떤 동물의 모습으로 바꿀까요?',hint:'예: 여우, 작은 곰. 동물 종류를 적습니다.'},
+  {token:'[닮음 단서 3개]',label:'사람 쪽에서 남길 특징 세 가지',hint:'예: 둥근 안경, 짧은 곱슬머리, 웃을 때 올라가는 한쪽 입꼬리.'},
+  {token:'[그대로 남길 반려동물]',label:'그대로 남길 반려동물',hint:'예: 사진 오른쪽의 검은 강아지는 원래 모습으로 유지.'}
+ ],
+ 'life-archive-box':[
+  {token:'[나이 표현]',label:'나이를 나타내는 방식',hint:'정확한 생년월일 대신 “초등학생 때”, “요즘”처럼 넓게 적으세요.'},
+  {token:'[직업과 역할]',label:'나를 설명하는 역할',hint:'예: 가게를 운영하고 가족을 돌보는 사람.'},
+  {token:'[옷차림]',label:'기억할 옷차림',hint:'예: 편한 작업복과 앞치마.'},
+  {token:'[소품 1~6: 물건 — 의미]',label:'상자에 담을 물건과 의미',hint:'예: 낡은 수첩 — 매일 기록한 시간. 한 줄에 하나씩 적습니다.'},
+  {token:'[색과 재질]',label:'상자의 색과 재질',hint:'예: 짙은 초록 천과 오래된 나무.'},
+  {token:'[빼야 할 것]',label:'넣지 않을 것',hint:'예: 상장, 돈, 실제 회사 로고.'},
+  {token:'[생활 한 문장]',label:'내 생활을 담은 한 문장',hint:'실제 주소나 연락처 없이 일상을 설명해 주세요.'},
+  {token:'[입력 개수]',label:'담을 물건 수',hint:'1~6 사이로 고르세요.'}
+ ],
+ 'product-ad-direction-board':[
+  {token:'[고객 한 사람]',label:'이 제품을 쓸 사람 한 명',hint:'예: 출근 전에 빠르게 아침을 준비하는 사람.'},
+  {token:'[장점 하나]',label:'확인된 장점 한 가지',hint:'광고에서 실제로 말할 수 있는 사실만 적으세요.'},
+  {token:'[사용 장면]',label:'실제로 쓰는 장면',hint:'예: 주방에서 물을 끓이는 순간.'},
+  {token:'[색1]',label:'브랜드 색 첫 번째',hint:'예: 짙은 녹색.'},
+  {token:'[색2]',label:'브랜드 색 두 번째',hint:'예: 크림색. 모르면 비워 두세요.'}
+ ],
+ 'menu-selling-six':[
+  {token:'[메뉴 이름]',label:'메뉴 이름',hint:'실제로 판매하는 이름을 적으세요.'},
+  {token:'[재료]',label:'확인된 재료',hint:'확인한 재료만 적으세요. 알레르기·원산지는 여기에 넣지 마세요.'},
+  {token:'[판매 단위]',label:'판매 단위',hint:'예: 한 그릇, 한 조각, 2인분.'},
+  {token:'[특징]',label:'먼저 알릴 특징',hint:'예: 주문 뒤 바로 구워 냅니다. 확인 가능한 사실만 적으세요.'}
+ ],
+ 'room-layout-three-ways':[
+  {token:'[남길 가구]',label:'그대로 둘 가구',hint:'예: 창가 책상, 낮은 책장.'},
+  {token:'[우선순위]',label:'이 방에서 가장 중요한 기능',hint:'예: 화상회의할 조용한 자리.'},
+  {token:'[피해야 할 것]',label:'배치에서 피할 점',hint:'예: 문 앞 통로를 막지 않기.'}
+ ],
+ 'character-reference-sheet':[
+  {token:'[역할과 성격]',label:'캐릭터 역할과 성격',hint:'기존 인물이나 브랜드를 닮게 하지 말고 새 인물을 설명하세요.'},
+  {token:'[헤어]',label:'머리 모양',hint:'예: 짧고 곱슬한 검은 머리.'},
+  {token:'[옷]',label:'계속 유지할 옷',hint:'예: 주황색 재킷과 흰 셔츠.'},
+  {token:'[신발]',label:'계속 유지할 신발',hint:'예: 낮은 파란 운동화.'},
+  {token:'[고정 색 세 가지]',label:'계속 유지할 색 세 가지',hint:'예: 주황, 남색, 크림색.'},
+  {token:'[앞으로 만들 장면]',label:'다음에 만들 장면',hint:'예: 비 오는 날 창가에서 책 읽기.'}
+ ],
+ 'explain-one-page':[
+  {token:'[설명할 주제]',label:'설명할 주제',hint:'처음 보는 사람이 이해할 한 가지 주제를 적으세요.'},
+  {token:'[대상]',label:'누가 읽나요?',hint:'예: 온라인 예약을 처음 하는 손님.'},
+  {token:'[1단계]',label:'첫 단계',hint:'원문으로 확인된 행동을 적으세요.'},
+  {token:'[2단계]',label:'두 번째 단계',hint:'원문으로 확인된 행동을 적으세요.'},
+  {token:'[3단계]',label:'세 번째 단계',hint:'원문으로 확인된 행동을 적으세요.'},
+  {token:'[4단계]',label:'네 번째 단계',hint:'단계가 없으면 비워 두고 최종 요청에서 원문 확인을 부탁하세요.'},
+  {token:'[주의사항]',label:'꼭 알려야 할 주의',hint:'원문에서 확인된 주의만 적으세요.'}
+ ],
+ 'travel-postcard-three-ways':[
+  {token:'[장소]',label:'사진 속 장소',hint:'공개해도 되는 범위에서 적으세요.'},
+  {token:'[계절]',label:'사진을 찍은 계절',hint:'모르면 비워 두세요.'},
+  {token:'[시간]',label:'사진을 찍은 시간대',hint:'예: 오전, 해질녘. 정확하지 않으면 추측하지 마세요.'},
+  {token:'[꼭 남길 랜드마크 세 가지]',label:'계속 보여야 할 장소 요소 세 가지',hint:'사진에서 실제로 확인되는 요소만 적으세요.'}
+ ]
+};
+
+function syncCustomizedPrompt(){
+ const replacements=new Map();
+ let template=basePromptText;
+ if(currentWork?.id==='family-memory-restore')template=template.replaceAll('원본과 [가족이 확인한 특징]에 없는','원본과 위에 적은 확인된 특징에 없는');
+ variableFields.querySelectorAll('[data-prompt-token]').forEach(input=>{
+  const token=input.dataset.promptToken;
+  replacements.set(token,input.value);
+ });
+ let value=template.replace(/\[[^\]\n]{1,80}\]/g,token=>replacements.has(token)?(replacements.get(token).trim()?replacements.get(token):token):token);
+ if(currentWork?.id==='family-memory-restore'){
+  const selectedColor=variableFields.querySelector('[data-prompt-token="[색상 처리]"]')?.value||'원본 유지';
+  const colorDirections={
+   '원본 유지':'- 원본 유지(기본값): 흑백·세피아·컬러 상태를 바꾸지 않는다. 색을 새로 만들거나 채색하지 않는다.',
+   '원본 색 복구':'- 원본 색 복구: 바랜 색과 색 번짐만 원본 안의 남은 색 범위로 안정시킨다. 확인할 수 없는 색은 새로 만들지 않는다.',
+   '추정 채색본':'- 추정 채색본: 복원본과 섞지 않는 별도 파생본이다. 위에 적은 확인된 특징에 적힌 색만 확정하고, 확인되지 않은 눈·머리·피부·옷·배경색은 사실처럼 단정하지 않는다. 이 선택에서도 얼굴·구도·요소는 바꾸지 않는다.'
+  };
+  const colorStart=value.indexOf('[색상]\n');
+  const infoStart=value.indexOf('\n[정보가 없을 때]',colorStart);
+  if(colorStart>=0&&infoStart>colorStart)value=value.slice(0,colorStart)+'[색상]\n'+colorDirections[selectedColor]+value.slice(infoStart);
+  value=value.replaceAll('가족사진 손상 복원 시험본','가족사진 손상 복원본');
+ }
+ const additions=[];
+ if(promptExtraWish.value.trim())additions.push('추가로 원하는 결과:\n'+promptExtraWish.value);
+ if(promptExtraKeep.value.trim())additions.push('그대로 남길 것:\n'+promptExtraKeep.value);
+ promptText.value=value+(additions.length?'\n\n[내가 더한 조건]\n'+additions.join('\n\n'):'');
+}
+
+function updateCharacterCount(field,counter){
+ const update=()=>{counter.textContent=`${Array.from(field.value).length}자 · 제한 없음`;};
+ field.addEventListener('input',update);update();
+}
+
+[[promptExtraWish,document.querySelector('#prompt-extra-wish-count')],[promptExtraKeep,document.querySelector('#prompt-extra-keep-count')]].forEach(([field,counter])=>{
+ if(field&&counter)updateCharacterCount(field,counter);
+});
+
+function renderPromptVariables(){
+ variableFields.replaceChildren();
+ const fields=(PROMPT_FIELDS[currentWork?.id]||[]).filter(field=>basePromptText.includes(field.token));
+ fields.forEach(field=>{
+  const label=document.createElement('label');label.className='prompt-variable';
+  const name=document.createElement('span');name.textContent=field.label;
+  const hint=document.createElement('small');hint.textContent=field.hint+' 비워 둔 항목은 원문에 남습니다.';
+  let input;
+  if(field.type==='select'){
+   input=document.createElement('select');
+   field.options.forEach(optionData=>{const option=document.createElement('option');option.value=optionData.value;option.textContent=optionData.label;input.append(option);});
+   input.value=field.defaultValue;
+  }else{
+   input=document.createElement('textarea');input.rows=2;
+   input.addEventListener('input',syncCustomizedPrompt);
+  }
+  input.dataset.promptToken=field.token;input.setAttribute('aria-label',field.label);
+  if(field.type==='select')input.addEventListener('change',syncCustomizedPrompt);
+  if(field.type!=='select'){
+   const count=document.createElement('small');count.className='field-count';
+   count.id=`prompt-field-${fields.indexOf(field)}-count`;input.setAttribute('aria-describedby',count.id);updateCharacterCount(input,count);label.append(name,input,hint,count);
+  }else label.append(name,input,hint);
+  variableFields.append(label);
+ });
+ if(!fields.length){
+  const note=document.createElement('p');note.className='variable-empty';note.textContent='이 예시는 채워 넣을 칸 없이 바로 쓸 수 있어요. 아래 두 항목으로 원하는 변화와 지킬 점을 더할 수 있습니다.';variableFields.append(note);
+ }
+}
+
+function downloadPrompt(){
+ const content=promptText.value.trim();
+ if(!content||!currentWork)return;
+ const safeTitle=(currentWork.title||currentWork.id).replace(/[^\p{L}\p{N}-]+/gu,'-').replace(/^-|-$/g,'').slice(0,48)||'prompt';
+ const date=new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
+ const source=document.querySelector('link[rel="canonical"]')?.href||'https://hammedia.co.kr/tools/prompt-gallery/';
+ const fileText=`작업: ${currentWork.title}\n작성일: ${date}\n출처: ${source}\n개인정보 안내: 입력 항목은 이 브라우저에서 요청문을 조합하며 서버로 전송하지 않습니다. 이 페이지는 생성형 AI를 실행하지 않습니다.\n\n--- 복사해 쓸 생성 요청문 ---\n${content}`;
+ const blob=new Blob(['\ufeff'+fileText+'\n'],{type:'text/plain;charset=utf-8'});
+ const url=URL.createObjectURL(blob);const link=document.createElement('a');
+ link.href=url;link.download=`${date.replaceAll('-','')}_HAM-프롬프트갤러리_${safeTitle}.txt`;document.body.append(link);link.click();link.remove();
+ setTimeout(()=>URL.revokeObjectURL(url),1000);
+ promptStatus.hidden=false;promptStatus.textContent='작성일과 출처를 포함한 UTF-8 TXT 파일을 저장했습니다.';
+}
 
 function renderBlueprint(w){
  if(!dialogBlueprint)return;
@@ -292,20 +444,26 @@ function renderVariant(w,variantIndex=0){
   [...dialogCaptionFields.querySelectorAll('input')].forEach((input,index)=>{
    value=value.replaceAll(`{{caption${index+1}}}`,input.value.trim());
   });
-  promptText.value=localizePrompt(value);
+  basePromptText=localizePrompt(value);
+  syncCustomizedPrompt();
  };
  if(captions.length&&template){
   captions.forEach((caption,index)=>{
    const label=document.createElement('label');label.className='caption-field';
    const span=document.createElement('span');span.textContent=`${index+1}컷 대사`;
-   const input=document.createElement('input');input.type='text';input.value=caption;input.maxLength=40;input.autocomplete='off';
-   input.addEventListener('input',updatePrompt);label.append(span,input);dialogCaptionFields.append(label);
+   const input=document.createElement('input');input.type='text';input.value=caption;input.autocomplete='off';
+   input.addEventListener('input',updatePrompt);
+   const count=document.createElement('small');count.className='field-count';count.id=`caption-${index+1}-count`;input.setAttribute('aria-describedby',count.id);updateCharacterCount(input,count);
+   label.append(span,input,count);dialogCaptionFields.append(label);
   });
   captionsStep.hidden=false;
  }else{captionsStep.hidden=true;}
 
- const p=template?(updatePrompt(),promptText.value):localizePrompt(view.prompt||w.prompt||'');
- promptText.value=p;promptText.disabled=!p.trim();copyBtn.disabled=!p.trim();
+ const p=template?(updatePrompt(),basePromptText):localizePrompt(view.prompt||w.prompt||'');
+ if(!template)basePromptText=p;
+ renderPromptVariables();
+ syncCustomizedPrompt();
+ promptText.disabled=!p.trim();copyBtn.disabled=!p.trim();downloadPromptBtn.disabled=!p.trim();
  copyBtn.textContent='프롬프트 복사';copyBtn.classList.remove('done','fail');
  promptStatus.hidden=true;promptStatus.textContent='';
 
@@ -322,6 +480,7 @@ function openWork(id){
  document.body.classList.add('dialog-open');
 
  currentWork=w;
+ variableFields.replaceChildren();promptExtraWish.value='';promptExtraKeep.value='';basePromptText='';
  track('select_content',{content_type:'prompt_work',content_id:w.id});
 
  let chips='';
@@ -360,6 +519,7 @@ dialog.addEventListener('close',()=>{
  window.scrollTo(0,scrollY);
  if(lastFocus&&typeof lastFocus.focus==='function')lastFocus.focus();
  promptText.value='';
+ basePromptText='';variableFields.replaceChildren();promptExtraWish.value='';promptExtraKeep.value='';
  currentWork=null;
 });
 
@@ -401,6 +561,9 @@ copyBtn.addEventListener('click',()=>{
   copyText(p);
  }
 });
+downloadPromptBtn.addEventListener('click',downloadPrompt);
+promptExtraWish.addEventListener('input',syncCustomizedPrompt);
+promptExtraKeep.addEventListener('input',syncCustomizedPrompt);
 
 /* experiments */
 const experimentDialog=document.querySelector('#experiment-dialog');

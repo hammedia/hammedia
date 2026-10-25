@@ -3,20 +3,20 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>디자인 스타일 길잡이 | HAM MEDIA 무료 도구</title>
+  <title>디자인 스타일 미리보기 · CSS 변수와 지시서 | HAM MEDIA</title>
   <link rel="canonical" href="https://hammedia.co.kr/tools/design-styles/">
-  <meta name="description" content="핵심 디자인 스타일을 눈으로 비교하고, 원하는 방향과 이번에 하지 않을 것을 AI에 붙여넣는 두 문장으로 만드는 무료 도구입니다.">
+  <meta name="description" content="21가지 디자인 방향을 작은 실제 HTML 패널에서 비교하세요. 배경·간격·강조색·서체를 조절하고 대비를 확인해 CSS 변수와 디자인 지시서를 저장합니다.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://hammedia.co.kr/tools/design-styles/">
   <meta property="og:title" content="디자인 스타일 길잡이 | HAM MEDIA 무료 도구">
-  <meta property="og:description" content="스타일을 눈으로 고르고 원하는 방향과 이번에 하지 않을 것을 두 문장으로 복사하세요.">
+  <meta property="og:description" content="실제 HTML 패널에서 스타일을 맞춰보고 대비가 확인된 CSS 변수와 디자인 지시서를 저장하세요.">
   <meta property="og:image" content="https://hammedia.co.kr/assets/tools/free-tools-og.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="HAM MEDIA 무료 도구 OG 이미지">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="디자인 스타일 길잡이 | HAM MEDIA 무료 도구">
-  <meta name="twitter:description" content="자주 쓰는 디자인 방향 12가지를 용도별로 비교하고 복사하는 무료 도구입니다.">
+  <meta name="twitter:description" content="21가지 스타일을 직접 미리보고 CSS 변수와 지시서를 가져가세요.">
   <meta name="twitter:image" content="https://hammedia.co.kr/assets/tools/free-tools-og.png">
   <link rel="preconnect" href="https://cdn.jsdelivr.net">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
@@ -105,7 +105,7 @@
 
     dialog{width:min(760px,calc(100% - 28px));max-height:min(88vh,780px);padding:0;overflow:auto;border:0;border-radius:22px;color:var(--ink);background:var(--paper);box-shadow:0 32px 90px rgba(15,12,10,.32)}
     dialog::backdrop{background:rgba(28,24,20,.62);backdrop-filter:blur(4px)}
-    .dialog-head{position:sticky;top:0;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:18px 22px;border-bottom:1px solid var(--line);background:rgba(255,254,251,.96)}
+    .dialog-head{position:sticky;top:0;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:18px 22px;border-bottom:1px solid var(--line);background:var(--paper)}
     .dialog-head small{display:block;color:var(--blue-text);font-size:10px;font-weight:900;letter-spacing:.14em}.dialog-head strong{font-size:23px;letter-spacing:-.04em}
     .close-button{display:grid;flex:0 0 auto;width:44px;height:44px;place-items:center;border:1px solid var(--line);border-radius:999px;color:var(--ink);background:white;cursor:pointer}
     .dialog-body{display:grid;gap:16px;padding:24px}.summary{padding:20px;border-radius:16px;background:var(--blue-soft)}
@@ -113,6 +113,17 @@
     .detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.detail-block{padding:18px;border:1px solid var(--line);border-radius:15px;background:white}.detail-block p{margin:0;color:var(--muted);font-size:13px}
     .copy-box{padding:18px;border:1px solid #b7d7c8;border-radius:15px;background:#e5f1eb}.copy-box .label{color:var(--green)}.copy-pair{display:grid;gap:12px;margin-bottom:16px}.copy-part{padding-bottom:12px;border-bottom:1px solid rgba(45,125,91,.22)}.copy-part:last-child{padding-bottom:0;border-bottom:0}.copy-part small{display:block;margin-bottom:5px;color:var(--green-dark);font-size:10px;font-weight:900;letter-spacing:.1em}.copy-text{margin:0;color:var(--ink);font-size:14px;font-weight:700}
     .copy-button{width:100%;min-height:46px;border:0;border-radius:12px;color:white;background:var(--green);cursor:pointer;font-size:13px;font-weight:800}.copy-button:hover{background:var(--green-dark)}
+    .style-workbench{margin:24px 0;padding:18px;border:1px solid var(--line);border-radius:17px;background:#f5f3ee}
+    .workbench-head{display:grid;grid-template-columns:1fr minmax(180px,.7fr);gap:18px;align-items:end;margin-bottom:15px}.workbench-head h3{margin:5px 0 0;font-size:17px}.workbench-head>p{margin:0;color:var(--muted);font-size:11px;line-height:1.55}
+    .workbench-input{display:grid;gap:5px;margin-top:10px;font-size:11px;font-weight:800}.workbench-input input,.workbench-input textarea{width:100%;border:1px solid var(--line);border-radius:10px;padding:10px 11px;background:#fff;color:var(--ink);font:inherit;font-size:13px;line-height:1.5}.workbench-input textarea{resize:vertical}.field-count{justify-self:end;color:var(--muted);font-size:10px;font-weight:500}
+    .workbench-options{margin:14px 0 0;padding:0;border:0}.workbench-options legend{margin-bottom:6px;font-size:10px;font-weight:850}.workbench-options [role=group]{display:flex;flex-wrap:wrap;gap:6px}.workbench-options button{min-height:38px;padding:8px 11px;border:1px solid var(--line);border-radius:999px;color:var(--ink);background:#fff;font-size:11px;font-weight:700;cursor:pointer}.workbench-options button[aria-pressed=true]{outline:2px solid var(--green);outline-offset:1px;background:#e5f1eb}
+    .design-preview{--accent:#7eb5e8;--accent-text:#1c1814;--accent-ink:#1c1814;--paper:#f9f7f3;--surface:#fff;--ink:#1c1814;--muted:#4a423c;--density:24px;--heading-font:inherit;--radius:18px;--preview-border:1px solid #e6e1d9;--panel-shadow:0 8px 25px rgba(28,24,20,.06);--action-radius:999px;position:relative;display:grid;gap:10px;margin-top:18px;padding:var(--density);border:var(--preview-border);border-radius:var(--radius);color:var(--ink);background:var(--paper);box-shadow:var(--panel-shadow);transition:padding .18s ease,border-radius .18s ease}
+    .design-preview::before{content:"";height:5px;position:absolute;inset:0 0 auto;border-radius:inherit;background:var(--accent)}
+    .preview-kicker{margin:4px 0 0;color:var(--accent-ink);font-size:10px;font-weight:850;letter-spacing:.04em}.preview-surface{display:grid;gap:10px;padding:calc(var(--density) * .7);border:1px solid rgba(80,80,80,.14);border-radius:var(--action-radius);background:var(--surface)}.design-preview h4{margin:0;font-family:var(--heading-font);font-size:22px;line-height:1.2;letter-spacing:-.025em}.preview-audience{margin:0;color:var(--muted);font-size:10px;font-weight:700}.preview-description{margin:0;color:var(--muted);font-size:13px;line-height:1.55;white-space:pre-line;overflow-wrap:anywhere}.preview-action{justify-self:start;min-height:40px;margin-top:4px;padding:9px 15px;border:0;border-radius:var(--action-radius,999px);color:var(--accent-text);background:var(--accent);font-size:12px;font-weight:800}
+    .design-preview[data-density=airy]{--density:30px}.design-preview[data-density=regular]{--density:22px}.design-preview[data-density=compact]{--density:15px}
+    .contrast-note{min-height:18px;margin:8px 0 0;padding:8px 10px;border-left:3px solid var(--green);background:#e5f1eb;color:#1c1814;font-size:10px;line-height:1.5}.contrast-note.warn{border-color:#cc0000;background:#fdf0ed}
+    .css-inspector{margin-top:10px;border-top:1px solid var(--line);padding-top:10px}.css-inspector summary{font-size:11px;font-weight:800;cursor:pointer}.css-inspector pre{white-space:pre-wrap;word-break:break-word;margin:10px 0;padding:12px;border-radius:9px;background:#1c1814;color:#f9f7f3;font:10px/1.55 ui-monospace,SFMono-Regular,Menlo,monospace}.css-inspector p{margin:0;color:var(--muted);font-size:10px}
+    .style-export{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;margin-top:12px}.style-export .copy-button{min-height:40px;font-size:11px}.style-export .secondary{border:1px solid #b7c7b9;color:var(--ink);background:#fff}.style-export span{grid-column:1/-1;color:var(--muted);font-size:10px;line-height:1.45}
     .toast{position:fixed;left:50%;bottom:28px;z-index:50;transform:translate(-50%,24px);padding:12px 18px;border-radius:12px;color:white;background:var(--ink);box-shadow:0 10px 28px rgba(28,24,20,.28);opacity:0;pointer-events:none;transition:opacity 180ms ease,transform 180ms ease;font-size:13px;font-weight:750}.toast.on{transform:translate(-50%,0);opacity:1}
 
     @media(max-width:980px){.atlas{grid-template-columns:repeat(2,minmax(0,1fr))}.hidden-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
@@ -120,6 +131,7 @@
       .style-shell{width:min(100% - 20px,620px);padding-top:12px}.style-topbar{align-items:flex-start;margin-bottom:34px}.style-brand img{width:40px;height:40px}.back-link{padding:7px 10px;font-size:12px}
       .hero{grid-template-columns:1fr;gap:18px}h1{font-size:clamp(40px,13.5vw,58px)}.howto{flex-direction:column}.recommend-head{align-items:flex-start;flex-direction:column;gap:4px}.atlas{grid-template-columns:1fr}
       .style-card{grid-template-rows:230px auto}.editorial{padding:22px}.editorial .display{font-size:clamp(38px,12vw,54px)}.hidden-grid{grid-template-columns:1fr}.tool-note,.detail-grid{grid-template-columns:1fr}footer{flex-direction:column}
+      .style-workbench{padding:14px}.workbench-head{grid-template-columns:1fr;gap:5px}.design-preview h4{font-size:19px}.style-export{grid-template-columns:1fr}
     }
     @media(prefers-reduced-transparency:reduce){.adaptive-nav,.glass-panel{backdrop-filter:none;background:#f8fbfc}.glass-panel{color:#111827}}
     @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
@@ -134,11 +146,11 @@
     </header>
 
     <section class="hero" aria-labelledby="page-title">
-      <div><span class="kicker">디자인 스타일 길잡이</span><h1 id="page-title">무슨 스타일인지<br>몰라도 괜찮아요.</h1></div>
-      <p class="hero-copy">자주 쓰는 핵심 12가지를 용도별로 비교하세요. 카드를 누르면 <strong>원하는 방향과 이번에 하지 않을 것</strong>이 함께 열립니다. 화면 모양이나 분위기를 고를 일이 없다면 이 도구는 건너뛰어도 됩니다.</p>
+      <div><span class="kicker">디자인 스타일 길잡이</span><h1 id="page-title">고른 방향을<br>작은 화면에서 맞춰보세요.</h1></div>
+      <p class="hero-copy">카드를 골라 실제 패널의 종이색·표면·본문·모서리를 비교하고, 간격·강조색·제목 글자를 직접 조절하세요. 대비가 부족하면 화면에서 알려주고, 선택한 값으로 CSS 변수와 디자인 지시서를 저장합니다. 이 결과는 완성 웹사이트가 아닙니다.</p>
     </section>
 
-    <div class="howto" aria-label="사용 방법"><strong>이렇게 쓰세요</strong><span>① 만들 것을 고르면 어울리는 3개가 남습니다. ② 카드를 눌러 설명을 읽습니다. ③ 방향과 하지 않을 것을 함께 복사해 쓰던 AI에 붙여넣습니다.</span></div>
+    <div class="howto" aria-label="사용 방법"><strong>이렇게 쓰세요</strong><span>① 결과물에 맞는 스타일을 고릅니다. ② 작은 패널에서 색·간격·서체를 바꿔봅니다. ③ 대비 안내를 읽고 CSS 변수나 지시서를 저장해 실제 작업에 가져갑니다.</span></div>
 
     <section class="recommend" aria-labelledby="recommend-title">
       <div class="recommend-head"><strong id="recommend-title">무엇을 만들고 있나요?</strong><span class="filter-status" aria-live="polite">핵심 스타일 12개를 모두 보고 있어요.</span></div>
@@ -242,6 +254,21 @@
     <div class="dialog-body">
       <div class="summary"><span class="label">한 문장으로</span><strong id="dialog-summary"></strong></div>
       <div class="detail-grid"><div class="detail-block"><span class="label">이럴 때 좋아요</span><p id="dialog-best"></p></div><div class="detail-block"><span class="label">이럴 때는 피하세요</span><p id="dialog-avoid"></p></div><div class="detail-block"><span class="label">눈에 보이는 특징</span><p id="dialog-look"></p></div><div class="detail-block"><span class="label">AI에게 더 말할 것</span><p id="dialog-check"></p></div></div>
+      <section class="style-workbench" aria-labelledby="workbench-title">
+        <div class="workbench-head"><div><span class="label">직접 조합해 보는 CSS 변수</span><h3 id="workbench-title">이 방향을 작은 화면에서 맞춰보세요.</h3></div><p>이 미리보기는 변수 조합의 예입니다. 완성 웹사이트나 접근성 인증 화면은 아닙니다.</p></div>
+        <label class="workbench-input">이 화면의 이름<input id="preview-name" type="text" value="내 첫 화면" autocomplete="off" aria-describedby="preview-name-count"><small class="field-count" id="preview-name-count">0자 · 제한 없음</small></label>
+        <label class="workbench-input">이 화면을 보는 사람<input id="preview-audience" type="text" placeholder="예: 처음 서비스를 찾는 고객" aria-describedby="preview-audience-count"><small class="field-count" id="preview-audience-count">0자 · 제한 없음</small></label>
+        <label class="workbench-input">여기서 가장 먼저 읽힐 내용<textarea id="preview-copy" rows="2" placeholder="예: 내가 어떤 도움을 받을 수 있는지" aria-describedby="preview-copy-count"></textarea><small class="field-count" id="preview-copy-count">0자 · 제한 없음</small></label>
+        <fieldset class="workbench-options"><legend>정보 간격</legend><div role="group" aria-label="미리보기 정보 간격"><button type="button" data-density="airy" aria-pressed="true">여유</button><button type="button" data-density="regular" aria-pressed="false">보통</button><button type="button" data-density="compact" aria-pressed="false">촘촘</button></div></fieldset>
+        <fieldset class="workbench-options"><legend>강조색</legend><div role="group" aria-label="미리보기 강조색"><button type="button" data-accent="blue" aria-pressed="true">하늘 파랑</button><button type="button" data-accent="green" aria-pressed="false">짙은 초록</button><button type="button" data-accent="yellow" aria-pressed="false">따뜻한 노랑</button></div></fieldset>
+        <fieldset class="workbench-options"><legend>제목 글자</legend><div role="group" aria-label="미리보기 제목 글자"><button type="button" data-type="sans" aria-pressed="true">고딕</button><button type="button" data-type="serif" aria-pressed="false">명조</button></div></fieldset>
+        <article id="design-preview" class="design-preview" data-style="editorial" aria-label="선택한 디자인 변수의 실제 HTML 패널 미리보기">
+          <p id="preview-style-name" class="preview-kicker">Editorial Typography</p><div class="preview-surface"><p id="preview-audience-line" class="preview-audience">보는 사람: 처음 방문한 사람</p><h4 id="preview-title">내 첫 화면</h4><p id="preview-description" class="preview-description">여기에 먼저 읽힐 내용을 적으면 이 패널에 바로 보입니다.</p><span class="preview-action" aria-hidden="true">샘플 버튼 · 동작 없음</span></div>
+        </article>
+        <p id="contrast-note" class="contrast-note" role="status" aria-live="polite"></p>
+        <details class="css-inspector"><summary>실제로 내보낼 CSS 변수와 계산 보기</summary><pre id="css-output-preview"></pre><p>강조색과 종이색의 대비를 계산합니다. 강조색이 본문 글자에 적합하지 않으면 안전한 본문색을 함께 제시합니다.</p></details>
+        <div class="style-export"><button class="copy-button" type="button" id="copy-style-css">CSS 변수 복사</button><button class="copy-button secondary" type="button" id="download-style-css">CSS 파일 저장</button><button class="copy-button secondary" type="button" id="download-style-brief">디자인 지시서 저장</button><span id="style-export-status" role="status" aria-live="polite"></span><span>입력은 이 브라우저에서만 미리보기에 쓰고 서버로 보내지 않습니다. 이 도구는 AI를 호출하거나 사이트를 완성하지 않습니다. 이름·연락처 등 민감한 정보는 입력하지 마세요.</span></div>
+      </section>
       <div class="copy-box"><span class="label">AI에 붙여넣을 두 문장</span><div class="copy-pair"><div class="copy-part"><small>원하는 방향</small><p class="copy-text" id="dialog-copy"></p></div><div class="copy-part"><small>이번에 하지 않을 것</small><p class="copy-text" id="dialog-dont"></p></div></div><button class="copy-button" type="button">두 문장 함께 복사</button></div>
     </div>
   </dialog>
@@ -277,14 +304,84 @@
       pixel:{number:'ATLAS 21',title:'Pixel Retro',summary:'작은 격자와 제한된 색으로 게임처럼 친근하고 향수를 자극하는 인상을 냅니다.',best:'게임, 커뮤니티 이벤트, 복고 콘텐츠, 참여형 미션 안내.',avoid:'고해상도 사진이 중심이거나 전문적인 본문을 오래 읽어야 하는 자료.',look:'각진 픽셀, 제한된 팔레트, 게임 상태창, 짧은 명령형 문구.',check:'본문 글자까지 픽셀 서체로 만들지 말고 장식과 제목에만 써달라고 하세요.',copy:'이번 결과물은 Pixel Retro 방향으로 만들어줘. 제한된 색과 픽셀 요소로 게임 같은 친근함을 만들되, 본문은 일반 서체로 읽기 쉽게 유지해줘.',dont:'본문까지 픽셀 서체로 만들거나 게임 UI 배지와 상태창을 의미 없이 반복하지 말 것.'}
     };
 
-    const dialog=document.querySelector('#style-dialog');const closeButton=dialog.querySelector('.close-button');const copyButton=dialog.querySelector('.copy-button');const toast=document.querySelector('.toast');let opener=null;let currentKey=null;let toastTimer=null;
+    const dialog=document.querySelector('#style-dialog');const closeButton=dialog.querySelector('.close-button');const copyButton=dialog.querySelector('.copy-box .copy-button');const toast=document.querySelector('.toast');let opener=null;let currentKey=null;let toastTimer=null;
+    const styleControls={density:'airy',accent:'blue',type:'sans'};
+    const palette={blue:{name:'하늘 파랑',hex:'#7EB5E8'},green:{name:'짙은 초록',hex:'#00704A'},yellow:{name:'따뜻한 노랑',hex:'#F4DC59'}};
+    const styleThemes={
+      editorial:{paper:'#F9F7F3',surface:'#FFFFFF',ink:'#1C1814',muted:'#4A423C',radius:'18px',border:'1px solid #E6E1D9',shadow:'0 8px 25px rgba(28,24,20,.06)',actionRadius:'999px',type:'serif'},
+      swiss:{paper:'#F3F4F3',surface:'#FFFFFF',ink:'#151817',muted:'#414644',radius:'3px',border:'2px solid #151817',shadow:'none',actionRadius:'3px',type:'sans'},
+      minimal:{paper:'#F8F8F6',surface:'#FFFFFF',ink:'#242624',muted:'#505450',radius:'5px',border:'1px solid #E6E7E4',shadow:'none',actionRadius:'5px',type:'sans'},
+      bento:{paper:'#F0F3F8',surface:'#FFFFFF',ink:'#192433',muted:'#47566A',radius:'20px',border:'1px solid #DCE3EC',shadow:'0 12px 28px rgba(25,40,60,.12)',actionRadius:'13px',type:'sans'},
+      adaptive:{paper:'#F2F6F6',surface:'#FFFFFF',ink:'#203133',muted:'#435456',radius:'10px',border:'1px solid #D8E1E1',shadow:'0 8px 22px rgba(35,65,65,.08)',actionRadius:'10px',type:'sans'},
+      glass:{paper:'#EAF1F7',surface:'#F8FBFF',ink:'#1C2B3D',muted:'#46566A',radius:'18px',border:'1px solid #FFFFFF',shadow:'0 12px 30px rgba(34,55,80,.18)',actionRadius:'999px',type:'sans'},
+      brutal:{paper:'#FFF5DC',surface:'#FFFDF5',ink:'#161616',muted:'#454038',radius:'2px',border:'2px solid #161616',shadow:'5px 5px 0 #D94B38',actionRadius:'2px',type:'sans'},
+      retro:{paper:'#FFF3D7',surface:'#FFE2AE',ink:'#302519',muted:'#57402B',radius:'2px',border:'2px solid #302519',shadow:'4px 4px 0 #D65A31',actionRadius:'2px',type:'serif'},
+      luxury:{paper:'#171615',surface:'#272421',ink:'#F2EDE2',muted:'#D5CBBA',radius:'3px',border:'1px solid #C6A66B',shadow:'0 8px 26px rgba(0,0,0,.18)',actionRadius:'3px',type:'serif'},
+      organic:{paper:'#F2F0E3',surface:'#E3E8D6',ink:'#283629',muted:'#405341',radius:'28px 12px 28px 12px',border:'1px solid #D6DDC9',shadow:'0 9px 24px rgba(52,72,40,.12)',actionRadius:'999px',type:'serif'},
+      collage:{paper:'#F8EFF3',surface:'#FFF9FB',ink:'#2C2028',muted:'#55414E',radius:'4px',border:'2px solid #2C2028',shadow:'6px 6px 0 #E5CBD6',actionRadius:'2px',type:'serif'},
+      cinematic:{paper:'#141923',surface:'#202A36',ink:'#F3F5F6',muted:'#CCD3DC',radius:'6px',border:'1px solid #46515F',shadow:'0 14px 32px rgba(0,0,0,.35)',actionRadius:'4px',type:'serif'},
+      clay:{paper:'#FCF1EA',surface:'#FFFFFF',ink:'#39313C',muted:'#584A54',radius:'28px',border:'0',shadow:'inset 0 -4px 0 rgba(80,45,55,.1),0 12px 22px rgba(75,56,60,.15)',actionRadius:'16px',type:'sans'},
+      monochrome:{paper:'#F3F3F3',surface:'#FFFFFF',ink:'#1F1F1F',muted:'#4C4C4C',radius:'5px',border:'1px solid #D8D8D8',shadow:'0 5px 14px rgba(0,0,0,.1)',actionRadius:'5px',type:'sans'},
+      memphis:{paper:'#FFF6E8',surface:'#FFFFFF',ink:'#29242C',muted:'#504650',radius:'8px',border:'2px solid #29242C',shadow:'5px 5px 0 #F1D6A8',actionRadius:'3px',type:'sans'},
+      chrome:{paper:'#E9EEF5',surface:'#FCFDFF',ink:'#1D2A3F',muted:'#46556C',radius:'14px',border:'1px solid #AAB4C4',shadow:'0 8px 24px rgba(50,70,100,.2)',actionRadius:'999px',type:'sans'},
+      risograph:{paper:'#FAF0E3',surface:'#FFF8EC',ink:'#302D44',muted:'#4E4963',radius:'3px',border:'1px solid #DDC5A4',shadow:'4px 4px 0 rgba(180,75,60,.35)',actionRadius:'3px',type:'serif'},
+      blueprint:{paper:'#103D5B',surface:'#175577',ink:'#F3F7FA',muted:'#D2E3ED',radius:'2px',border:'2px dashed #B9D0DE',shadow:'none',actionRadius:'2px',type:'sans'},
+      cutout:{paper:'#F5EEE4',surface:'#FFF8EF',ink:'#342B22',muted:'#554638',radius:'9px',border:'1px solid #E2D4C1',shadow:'7px 8px 0 rgba(92,67,45,.14)',actionRadius:'6px',type:'serif'},
+      isometric:{paper:'#EEF4F2',surface:'#FFFFFF',ink:'#1E3530',muted:'#425950',radius:'8px',border:'1px solid #9AADA7',shadow:'7px 7px 0 rgba(30,75,70,.16)',actionRadius:'6px',type:'sans'},
+      pixel:{paper:'#191B2D',surface:'#242744',ink:'#ECF0D4',muted:'#CED7B2',radius:'0',border:'3px solid #ECF0D4',shadow:'5px 5px 0 #7D78D8',actionRadius:'0',type:'sans'}
+    };
+    const preview=document.querySelector('#design-preview');
+    const luminance=hex=>{const rgb=hex.replace('#','').match(/.{2}/g).map(v=>parseInt(v,16)/255).map(v=>v<=.04045?v/12.92:((v+.055)/1.055)**2.4);return .2126*rgb[0]+.7152*rgb[1]+.0722*rgb[2]};
+    const contrast=(a,b)=>{const x=luminance(a),y=luminance(b);return (Math.max(x,y)+.05)/(Math.min(x,y)+.05)};
+    const bestText=bg=>contrast(bg,'#1C1814')>=contrast(bg,'#FFFFFF')?'#1C1814':'#FFFFFF';
+    function selectedCss(item){
+      const theme=styleThemes[currentKey]||styleThemes.editorial,color=palette[styleControls.accent],spacing={airy:'30px',regular:'22px',compact:'15px'}[styleControls.density];
+      const font=styleControls.type==='serif'?'Georgia, "Times New Roman", serif':'Pretendard, -apple-system, BlinkMacSystemFont, sans-serif';
+      const safeText=bestText(color.hex),ratio=Math.min(contrast(color.hex,theme.paper),contrast(color.hex,theme.surface)),accentInk=ratio>=4.5?color.hex:theme.ink;
+      const date=new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
+      const source=document.querySelector('link[rel="canonical"]')?.href||'https://hammedia.co.kr/tools/design-styles/';
+      return `/* ${item.title} 방향 · ${date} · 출처: ${source}\n   CSS 변수 예시입니다. 완성 웹사이트 코드가 아닙니다. */\n:root {\n  --hm-canvas: ${theme.paper};\n  --hm-surface: ${theme.surface};\n  --hm-ink: ${theme.ink};\n  --hm-muted: ${theme.muted};\n  --hm-accent: ${color.hex};\n  --hm-accent-text: ${safeText};\n  --hm-accent-ink: ${accentInk};\n  --hm-content-gap: ${spacing};\n  --hm-heading-font: ${font};\n  --hm-radius: ${theme.radius};\n  --hm-panel-border: ${theme.border};\n  --hm-panel-shadow: ${theme.shadow};\n  --hm-action-radius: ${theme.actionRadius};\n  --hm-accent-on-surface-contrast: ${ratio.toFixed(2)};\n}\n\n/* 선택한 스타일의 화면 패널에만 변수로 연결하세요. */\n.preview-panel { color: var(--hm-ink); background: var(--hm-canvas); padding: var(--hm-content-gap); border: var(--hm-panel-border); border-radius: var(--hm-radius); box-shadow: var(--hm-panel-shadow); }\n.preview-title { color: var(--hm-ink); font-family: var(--hm-heading-font); }\n.preview-kicker { color: var(--hm-accent-ink); }\n.preview-action { color: var(--hm-accent-text); background: var(--hm-accent); border-radius: var(--hm-action-radius); }`;
+    }
+    function briefText(item){
+      const theme=styleThemes[currentKey]||styleThemes.editorial,css=selectedCss(item),name=document.querySelector('#preview-name').value.trim()||'이름 미입력',audience=document.querySelector('#preview-audience').value.trim()||'미입력',copy=document.querySelector('#preview-copy').value.trim()||item.summary,color=palette[styleControls.accent],ratio=Math.min(contrast(color.hex,theme.paper),contrast(color.hex,theme.surface)),accentInk=ratio>=4.5?color.hex:theme.ink;
+      const contrastMessage=ratio<4.5?`강조색과 실제 패널 배경 중 더 낮은 대비는 ${ratio.toFixed(2)}:1입니다. 그 색은 작은 글자색으로 쓰지 말고, 미리보기는 ${theme.ink} 글자로 유지합니다. 강조색 면 위 글자는 ${bestText(color.hex)}입니다.`:`강조색과 실제 패널 배경의 최소 대비는 ${ratio.toFixed(2)}:1입니다. 강조색 면 위 글자는 ${bestText(color.hex)}입니다. 실제 결과물의 다른 배경에서도 확인하세요.`;
+      const date=new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
+      const source=document.querySelector('link[rel="canonical"]')?.href||'https://hammedia.co.kr/tools/design-styles/';
+      return `# 디자인 지시서\n\n작성일: ${date}\n출처: ${source}\n결과물: ${name}\n보는 사람: ${audience}\n먼저 읽힐 내용: ${copy}\n고른 방향: ${item.title}\n\n## 시각 방향\n${item.copy}\n\n## 피할 것\n${item.dont}\n\n## 실제 미리보기 설정\n배경: ${theme.paper} · 표면: ${theme.surface}\n본문: ${theme.ink} · 보조 글자: ${theme.muted}\n강조색: ${color.name} ${color.hex}\n정보 간격: ${styleControls.density==='airy'?'여유':styleControls.density==='regular'?'보통':'촘촘'} · ${styleControls.density}\n모서리: ${theme.radius} · 그림자: ${theme.shadow}\n제목: ${styleControls.type==='serif'?'명조':'고딕'}\n\n## 대비 확인\n${contrastMessage}\n종이/표면 위 강조 글자: ${accentInk}\n강조색 면 위 글자색: ${bestText(color.hex)}\n\n## 사용 방법과 한계\n함께 저장한 CSS는 이 작은 화면 패널에 대응하는 변수 예시입니다. 화면 전체의 완성 코드가 아니며, 실제 사진·문장·버튼·모바일 크기에서 글자와 기능 대비를 다시 확인하세요. 입력 내용은 서버로 전송되지 않고, 이 페이지에서 AI를 실행하지 않습니다.\n\n${css}`;
+    }
+    function updatePreview(){
+      const item=styles[currentKey];if(!item)return;
+      const theme=styleThemes[currentKey]||styleThemes.editorial,color=palette[styleControls.accent],name=document.querySelector('#preview-name').value.trim()||item.title,audience=document.querySelector('#preview-audience').value.trim()||'처음 방문한 사람',copy=document.querySelector('#preview-copy').value.trim()||item.summary,ratio=Math.min(contrast(color.hex,theme.paper),contrast(color.hex,theme.surface));
+      preview.dataset.style=currentKey;preview.dataset.density=styleControls.density;preview.dataset.type=styleControls.type;
+      const accentInk=ratio>=4.5?color.hex:theme.ink;
+      preview.style.setProperty('--accent',color.hex);preview.style.setProperty('--accent-text',bestText(color.hex));preview.style.setProperty('--accent-ink',accentInk);preview.style.setProperty('--paper',theme.paper);preview.style.setProperty('--surface',theme.surface);preview.style.setProperty('--ink',theme.ink);preview.style.setProperty('--muted',theme.muted);preview.style.setProperty('--radius',theme.radius);preview.style.setProperty('--preview-border',theme.border);preview.style.setProperty('--panel-shadow',theme.shadow);preview.style.setProperty('--action-radius',theme.actionRadius);preview.style.setProperty('--heading-font',styleControls.type==='serif'?'Georgia, "Times New Roman", serif':'Pretendard, -apple-system, BlinkMacSystemFont, sans-serif');
+      document.querySelector('#preview-style-name').textContent=item.title+' · '+color.name;
+      document.querySelector('#preview-audience-line').textContent='보는 사람: '+audience;document.querySelector('#preview-title').textContent=name;document.querySelector('#preview-description').textContent=copy;
+      const note=document.querySelector('#contrast-note');note.classList.toggle('warn',ratio<4.5);
+      note.textContent=ratio<4.5?`강조색과 실제 패널 배경 중 낮은 대비는 ${ratio.toFixed(2)}:1 — 종이/표면 위의 작은 글자에는 부족합니다. 미리보기 표제는 ${theme.ink}으로 유지했고, 강조색 면에는 ${bestText(color.hex)} 글자를 씁니다.`:`강조색과 실제 패널 배경의 최소 대비는 ${ratio.toFixed(2)}:1 — 두 배경 위에서 일반 글자 기준을 넘습니다. 강조색 면에는 ${bestText(color.hex)} 글자를 쓰고, 다른 배경에서도 확인하세요.`;
+      document.querySelector('#css-output-preview').textContent=selectedCss(item);
+    }
     function combinedPrompt(item){return `${item.copy}\n\n이번 결과에서 하지 않을 것: ${item.dont}`}
-    function openStyle(key,trigger){const item=styles[key];if(!item)return;opener=trigger;currentKey=key;document.querySelector('#dialog-number').textContent=item.number;document.querySelector('#dialog-title').textContent=item.title;document.querySelector('#dialog-summary').textContent=item.summary;document.querySelector('#dialog-best').textContent=item.best;document.querySelector('#dialog-avoid').textContent=item.avoid;document.querySelector('#dialog-look').textContent=item.look;document.querySelector('#dialog-check').textContent=item.check;document.querySelector('#dialog-copy').textContent=item.copy;document.querySelector('#dialog-dont').textContent=item.dont;dialog.showModal();closeButton.focus();trackToolEvent('style_open',{style_name:key})}
-    async function copyCurrent(){const item=styles[currentKey];if(!item)return;const prompt=combinedPrompt(item);let copied=false;try{if(navigator.clipboard&&typeof navigator.clipboard.writeText==='function'){await navigator.clipboard.writeText(prompt);copied=true}}catch(error){copied=false}if(!copied){const area=document.createElement('textarea');area.value=prompt;area.setAttribute('readonly','');area.style.position='fixed';area.style.opacity='0';document.body.appendChild(area);area.select();copied=document.execCommand('copy');area.remove()}clearTimeout(toastTimer);toast.textContent=copied?'두 문장을 복사했어요':'자동 복사가 막혔어요. 문장을 길게 눌러 선택하세요.';toast.classList.add('on');toastTimer=setTimeout(()=>toast.classList.remove('on'),2200);trackToolEvent('prompt_copy',{style_name:currentKey,copy_success:copied})}
+    function openStyle(key,trigger){const item=styles[key];if(!item)return;opener=trigger;currentKey=key;styleControls.type=(styleThemes[key]||styleThemes.editorial).type;document.querySelectorAll('[data-type]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.type===styleControls.type)));document.querySelector('#dialog-number').textContent=item.number;document.querySelector('#dialog-title').textContent=item.title;document.querySelector('#dialog-summary').textContent=item.summary;document.querySelector('#dialog-best').textContent=item.best;document.querySelector('#dialog-avoid').textContent=item.avoid;document.querySelector('#dialog-look').textContent=item.look;document.querySelector('#dialog-check').textContent=item.check;document.querySelector('#dialog-copy').textContent=item.copy;document.querySelector('#dialog-dont').textContent=item.dont;document.querySelector('#style-export-status').textContent='';updatePreview();dialog.showModal();closeButton.focus();trackToolEvent('style_open',{style_name:key})}
+    async function copyTextValue(value){try{await navigator.clipboard.writeText(value);return true}catch(_){const area=document.createElement('textarea');area.value=value;area.setAttribute('readonly','');area.style.position='fixed';area.style.opacity='0';document.body.appendChild(area);area.select();const copied=document.execCommand('copy');area.remove();return copied}}
+    async function copyStyleCss(){const ok=await copyTextValue(selectedCss(styles[currentKey]));document.querySelector('#style-export-status').textContent=ok?'CSS 변수를 복사했습니다.':'복사하지 못했습니다. CSS 변수 내용을 펼쳐 선택해 주세요.'}
+    function saveText(name,text,mime){const url=URL.createObjectURL(new Blob(['\ufeff'+text+'\n'],{type:mime+';charset=utf-8'}));const a=document.createElement('a');a.href=url;a.download=name;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000)}
+    function downloadStyleCss(){const item=styles[currentKey];if(!item)return;const date=new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date()).replaceAll('-','');saveText(`${date}_HAM-디자인스타일_${currentKey}-variables.css`,selectedCss(item),'text/css');document.querySelector('#style-export-status').textContent='작성일과 출처를 담은 CSS 변수 파일을 저장했습니다.'}
+    function downloadStyleBrief(){const item=styles[currentKey];if(!item)return;const date=new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date()).replaceAll('-','');saveText(`${date}_HAM-디자인스타일_${currentKey}-design-brief.txt`,briefText(item),'text/plain');document.querySelector('#style-export-status').textContent='작성일과 출처를 담은 디자인 지시서와 CSS 변수를 TXT로 저장했습니다.'}
+    const previewInputs=['#preview-name','#preview-audience','#preview-copy'].map(selector=>document.querySelector(selector));previewInputs.forEach(input=>{
+      const counter=document.querySelector(`#${input.id}-count`),updateCount=()=>{counter.textContent=`${Array.from(input.value).length}자 · 제한 없음`;};
+      input.addEventListener('input',()=>{updateCount();updatePreview()});updateCount();
+    });
+    document.querySelectorAll('[data-density],[data-accent],[data-type]').forEach(button=>button.addEventListener('click',()=>{
+      const key=button.dataset.density?'density':button.dataset.accent?'accent':'type';styleControls[key]=button.dataset[key];
+      document.querySelectorAll(`[data-${key}]`).forEach(peer=>peer.setAttribute('aria-pressed',String(peer===button)));updatePreview();
+    }));
+    document.querySelector('#copy-style-css').addEventListener('click',copyStyleCss);document.querySelector('#download-style-css').addEventListener('click',downloadStyleCss);document.querySelector('#download-style-brief').addEventListener('click',downloadStyleBrief);
+    async function copyCurrent(){const item=styles[currentKey];if(!item)return;const prompt=combinedPrompt(item);const copied=await copyTextValue(prompt);clearTimeout(toastTimer);toast.textContent=copied?'두 문장을 복사했어요':'자동 복사가 막혔어요. 문장을 길게 눌러 선택하세요.';toast.classList.add('on');toastTimer=setTimeout(()=>toast.classList.remove('on'),2200);trackToolEvent('prompt_copy',{style_name:currentKey,copy_success:copied})}
     const categoryNames={document:'문서·보고',digital:'웹·서비스',brand:'브랜드·홍보',emotion:'감성·이야기'};const coreCards=[...document.querySelectorAll('.atlas .style-card')];const filterButtons=[...document.querySelectorAll('.filter-button')];const filterStatus=document.querySelector('.filter-status');
     function applyFilter(category){coreCards.forEach(card=>{card.hidden=category!=='all'&&card.dataset.category!==category});filterButtons.forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.filter===category)));filterStatus.textContent=category==='all'?'핵심 스타일 12개를 모두 보고 있어요.':`${categoryNames[category]}에 어울리는 3개를 먼저 보여드려요.`;trackToolEvent('style_filter',{style_category:category})}
     filterButtons.forEach(button=>button.addEventListener('click',()=>applyFilter(button.dataset.filter)));
-    document.querySelectorAll('[data-style]').forEach(card=>card.addEventListener('click',()=>openStyle(card.dataset.style,card)));
+    document.querySelectorAll('.style-card[data-style],.hidden-card[data-style]').forEach(card=>card.addEventListener('click',()=>openStyle(card.dataset.style,card)));
     closeButton.addEventListener('click',()=>dialog.close());copyButton.addEventListener('click',copyCurrent);dialog.addEventListener('click',event=>{if(event.target===dialog)dialog.close()});dialog.addEventListener('close',()=>opener?.focus());
   </script>
 </body>

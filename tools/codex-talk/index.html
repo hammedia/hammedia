@@ -3,20 +3,20 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>코딩 AI 호출 카드북 — HAM MEDIA 무료 도구</title>
+<title>코딩 AI 작업 요청서 만들기 — HAM MEDIA 무료 도구</title>
 <link rel="canonical" href="https://hammedia.co.kr/tools/codex-talk/">
-<meta name="description" content="클로드코드·코덱스 같은 코딩 AI에게 작업 범위와 안전 기준을 정확히 전달하는 복사용 호출 카드북입니다.">
+<meta name="description" content="기존 작업 카드를 고르고 목표·현재 상황·유지할 것·확인 방법을 보태, 코딩 AI에게 이어 맡길 요청서로 복사하거나 저장합니다.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://hammedia.co.kr/tools/codex-talk/">
 <meta property="og:title" content="코딩 AI 호출 카드북 | HAM MEDIA 무료 도구">
-<meta property="og:description" content="찾고, 복사하고, 코딩 AI에 붙여넣는 작업 호출 카드북입니다.">
+<meta property="og:description" content="목표·현재 상황·유지할 것·받을 검증을 담은 Codex 작업 요청서를 만들어 복사하거나 저장하세요.">
 <meta property="og:image" content="https://hammedia.co.kr/assets/tools/free-tools-og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="HAM MEDIA 무료 도구 카드뉴스 톤의 OG 이미지">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="코딩 AI 호출 카드북 | HAM MEDIA 무료 도구">
-<meta name="twitter:description" content="클로드코드·코덱스 등 코딩 AI에게 붙여넣을 작업 호출문을 고르는 무료 도구입니다.">
+<meta name="twitter:description" content="기존 작업 카드에 지금의 목표와 검증을 붙여 이어갈 요청서로 저장하세요.">
 <meta name="twitter:image" content="https://hammedia.co.kr/assets/tools/free-tools-og.png">
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
@@ -111,6 +111,8 @@
   .modal{background:var(--card);border-radius:18px;max-width:520px;width:100%;
     box-shadow:0 20px 56px rgba(28,24,20,.26);padding:24px 24px 20px;animation:pop .13s ease;
     max-height:90vh;overflow:auto;border:1px solid var(--line);}
+  .modal-head{position:sticky;top:0;z-index:5;display:flex;justify-content:flex-end;margin:-24px -24px 14px;padding:9px 14px;background:var(--card);border-bottom:1px solid var(--line)}
+  .modal-head button{min-width:70px;min-height:44px;border:1px solid var(--line);border-radius:999px;background:var(--surface);color:var(--ink);font:inherit;font-size:12px;font-weight:750;cursor:pointer}
   @keyframes pop{from{transform:scale(.97);opacity:.5}to{transform:scale(1);opacity:1}}
   .mtags{display:flex;gap:6px;flex-wrap:wrap;}
   .modal .tag{font-size:11px;font-weight:700;color:var(--ink);background:var(--blue-soft);padding:3px 10px;border-radius:20px;display:inline-block;}
@@ -124,6 +126,15 @@
   .modal-note{margin:2px 0 13px;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:var(--yellow-soft);color:var(--sub);font-size:12.5px;line-height:1.55;}
   .modal-note b{color:#8a6d00;}
   .pbox-lbl{font-size:11px;font-weight:700;color:var(--blue);letter-spacing:.02em;margin:16px 0 6px;}
+  .request-builder{margin-top:18px;padding:15px;border:1px solid var(--line);border-radius:14px;background:var(--surface)}
+  .request-builder h4{margin:0 0 5px;font-size:13px}.request-builder>p{margin:0 0 12px;color:var(--sub);font-size:11.5px;line-height:1.5}
+  .request-builder label{display:grid;gap:5px;margin-top:10px;font-size:11px;font-weight:700;color:var(--ink)}
+  .request-builder label small{font-size:10px;font-weight:400;color:var(--sub)}
+  .request-builder label .field-count{justify-self:end;color:var(--sub);font-size:10px;font-weight:500}
+  .request-builder textarea{width:100%;min-height:58px;resize:vertical;border:1px solid var(--line);border-radius:9px;padding:9px 10px;background:#fff;color:var(--ink);font:inherit;font-size:12px;line-height:1.5}
+  .request-actions{display:flex;gap:8px;margin-top:10px}.request-actions button{flex:1;min-height:42px;border:1px solid var(--line);border-radius:9px;background:#fff;color:var(--ink);font-weight:700;cursor:pointer}
+  .request-actions button:first-child{background:var(--green);border-color:var(--green);color:#fff}.request-status{min-height:17px;margin:7px 0 0;color:var(--sub);font-size:10px}
+  @media(max-width:520px){.request-actions{flex-direction:column}.modal{padding:18px}.modal-head{margin:-18px -18px 14px}}
   .pwrap{position:relative;}
   pre.pbox{margin:0;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 14px 14px;
     font-family:'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13px;line-height:1.6;color:var(--ink);
@@ -165,8 +176,8 @@
 
   <header>
     <span class="hlabel">코딩 AI 호출 카드북</span>
-    <h1>코딩 AI와 대화하는 법</h1>
-    <p>클로드코드·코덱스 같은 코딩 AI에게 지금 상황에 맞는 호출문을 골라 복사하세요. 카드를 누르면 언제 쓰는지 · 과할 때 · 복사용 문구가 떠요.</p>
+    <h1>지금 작업을 이어갈<br>요청서를 만드세요</h1>
+    <p>기존 카드에 이번 목표·현재 진행·지킬 범위·받을 검증을 더해 내 작업의 요청서로 가져가세요. 빈칸은 선택 사항이고, 작성한 내용은 이 브라우저에서만 합쳐집니다.</p>
   </header>
 
   <div class="howto">
@@ -195,9 +206,9 @@
   <div id="empty" class="empty">찾는 호출문이 없어요. 다른 단어로 검색하거나 ‘전체’를 눌러보세요.</div>
 
   <div class="foot">
-    <span class="wm">HAM MEDIA</span> · 코딩 AI 호출 카드북 (시제품)<br>
-    원본은 local repo, Notion은 mirror. 위험한 작업일수록 ‘진단’ 카드부터 여세요.<br>
-    <span class="self">UI 용어 대시보드와 한 쌍 — 저쪽은 ‘부르는 말’, 이쪽은 ‘시키는 말’.</span>
+    <span class="wm">HAM MEDIA</span> · 무료 코딩 AI 요청 도구<br>
+    결과를 저장해 쓰던 코딩 AI에서 이어가세요.<br>
+    <span class="self">목표·현재 상황·유지할 것·확인 방법을 선택한 카드에 덧붙입니다.</span>
   </div>
 </div>
 
@@ -611,16 +622,52 @@ function open(p){
     '<div class="wa when"><span class="ic">✓</span><span><b>언제 쓰나</b> — '+p.when+'</span></div>'+
     '<div class="wa avoid"><span class="ic">!</span><span><b>이럴 땐 과해요</b> — '+p.avoid+'</span></div>'+
     (p.note ? '<p class="modal-note"><b>주의</b> — '+p.note+'</p>' : '')+
-    '<p class="pbox-lbl">복사해서 코딩 AI에 붙여넣기</p>'+
+    '<section class="request-builder" aria-labelledby="request-builder-title">'+
+      '<h4 id="request-builder-title">내 작업으로 이어 붙이기</h4><p>이 카드의 기본 지시문에 지금 일의 목표와 확인할 결과를 더합니다. 빈칸은 요청서에 넣지 않습니다. 이 페이지는 AI를 실행하지 않고 입력을 서버로 보내거나 자동 저장하지 않습니다. 비밀번호·API 키·고객 개인정보는 적지 마세요.</p>'+
+      '<label>이번 목표 <small>무엇을 끝내면 되는지 한 문장으로 적어주세요.</small><textarea id="request-goal" rows="2" placeholder="예: 작은 화면에서 메뉴가 가려지는 문제를 고치고, 눌러서 확인하고 싶어요."></textarea></label>'+
+      '<label>현재 상황 <small>이미 한 일이나 실제로 본 오류를 적습니다.</small><textarea id="request-state" rows="2" placeholder="예: 390px에서 메뉴를 열면 마지막 항목이 화면 밖으로 나갑니다."></textarea></label>'+
+      '<label>유지할 것과 제외할 것 <small>이미 잘 되는 부분, 건드리지 말 범위를 적습니다.</small><textarea id="request-boundary" rows="2" placeholder="예: 데스크톱 메뉴와 로그인 흐름은 그대로 둡니다."></textarea></label>'+
+      '<label>완료 확인 방법 <small>화면·시험·파일 중 직접 볼 결과를 적습니다.</small><textarea id="request-proof" rows="2" placeholder="예: 390px에서 열고 닫기, 키보드 초점, 콘솔 오류를 확인합니다."></textarea></label>'+
+    '</section>'+
+    '<p class="pbox-lbl">카드와 내 입력이 합쳐진 요청서</p>'+
     '<div class="pwrap"><pre class="pbox" id="pbox"></pre></div>'+
-    '<button class="copybtn" id="cbtn">복사</button>'+
+    '<div class="request-actions"><button id="request-copy" type="button">내 요청문 복사</button><button id="request-download" type="button">요청서 .md 저장</button></div><p class="request-status" id="request-status" role="status" aria-live="polite"></p>'+
+    '<button class="copybtn" id="cbtn">기본 카드 문구만 복사</button>'+
     '<button class="close" id="closebtn">닫기</button>';
-  document.getElementById('pbox').textContent=p.prompt;
+  let currentRequest=p.prompt;
+  modal.innerHTML='<div class="modal-head"><button type="button" id="modal-close-top" aria-label="요청서 닫기">닫기 ×</button></div>'+modal.innerHTML;
+  const requestFields=['request-goal','request-state','request-boundary','request-proof'].map(id=>document.getElementById(id));
+  const requestLabels=['이번 목표','현재 상황','유지할 것과 제외할 것','완료 확인 방법'];
+  function updateRequestCount(field){const count=document.getElementById(field.id+'-count');count.textContent=`${Array.from(field.value).length}자 · 제한 없음`;}
+  requestFields.forEach(field=>{
+    const count=document.createElement('small');count.className='field-count';count.id=field.id+'-count';
+    field.setAttribute('aria-describedby',count.id);field.after(count);updateRequestCount(field);
+  });
+  const renderRequest=()=>{
+    const details=requestFields.map((field,index)=>field.value.trim()?requestLabels[index]+':\n'+field.value.trim():'').filter(Boolean);
+    currentRequest=p.prompt+(details.length?'\n\n[이번 작업]\n'+details.join('\n\n'):'');
+    document.getElementById('pbox').textContent=currentRequest;
+  };
+  requestFields.forEach(field=>field.addEventListener('input',()=>{updateRequestCount(field);renderRequest()}));renderRequest();
+  document.getElementById('request-copy').addEventListener('click',async()=>{
+    const status=document.getElementById('request-status');
+    try{await navigator.clipboard.writeText(currentRequest);status.textContent='내 작업을 합친 요청문을 복사했습니다.';}
+    catch(_){try{const ta=document.createElement('textarea');ta.value=currentRequest;ta.setAttribute('readonly','');ta.style.position='fixed';ta.style.opacity='0';document.body.append(ta);ta.select();const ok=document.execCommand('copy');ta.remove();status.textContent=ok?'내 작업을 합친 요청문을 복사했습니다.':'복사하지 못했습니다. 아래 요청문을 선택해 직접 복사해 주세요.';}catch(_2){status.textContent='복사하지 못했습니다. 아래 요청문을 선택해 직접 복사해 주세요.';}}
+  });
+  document.getElementById('request-download').addEventListener('click',()=>{
+    const safe=(p.title||'coding-request').replace(/[^\p{L}\p{N}-]+/gu,'-').replace(/^-|-$/g,'').slice(0,48)||'coding-request';
+    const date=new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date()),source=document.querySelector('link[rel="canonical"]')?.href||'https://hammedia.co.kr/tools/codex-talk/';
+    const fileText=`# ${p.title}\n\n작성일: ${date}\n출처: ${source}\n\n${currentRequest}\n\n처리 안내: 이 페이지는 AI를 실행하지 않습니다. 입력은 브라우저에서 요청서를 조합하며 서버로 보내거나 자동 저장하지 않습니다.\n`;
+    const url=URL.createObjectURL(new Blob(['\ufeff'+fileText],{type:'text/markdown;charset=utf-8'}));
+    const a=document.createElement('a');a.href=url;a.download=`${date.replaceAll('-','')}_HAM-CodexTalk_${safe}.md`;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
+    document.getElementById('request-status').textContent='작성일과 출처를 담은 Markdown 요청서를 저장했습니다.';
+  });
   document.getElementById('cbtn').addEventListener('click',()=>copyText(p.prompt,'복사됐어요 — 코딩 AI 채팅에 붙여넣으세요'));
   document.getElementById('closebtn').addEventListener('click',closeM);
+  document.getElementById('modal-close-top').addEventListener('click',closeM);
   ov.classList.add('on');
   ov.setAttribute('aria-hidden','false');
-  modal.focus();
+  document.getElementById('modal-close-top').focus();
 }
 function closeM(){
   ov.classList.remove('on');

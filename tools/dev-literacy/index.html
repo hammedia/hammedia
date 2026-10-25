@@ -3,20 +3,20 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>코드를 몰라도 판단은 해야 하니까 — HAM MEDIA 개발 문해력 사전</title>
+<title>개발 완료보고 증거 검수표 | HAM MEDIA</title>
 <link rel="canonical" href="https://hammedia.co.kr/tools/dev-literacy/">
-<meta name="description" content="비개발자가 AI가 만든 서비스를 이해하고, 다음 질문을 하고, 무엇을 보면 믿을 수 있는지 확인하는 25개 개발 문해력 카드입니다.">
+<meta name="description" content="AI 완료보고를 붙이고 파일·시험·실제 화면·경계 사례를 직접 확인하세요. 선택한 근거에서 빠진 증거 질문이 담긴 검수표를 복사하거나 Markdown으로 저장합니다.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://hammedia.co.kr/tools/dev-literacy/">
 <meta property="og:title" content="개발 문해력 사전 | HAM MEDIA 무료 도구">
-<meta property="og:description" content="코드를 몰라도 AI가 한 개발을 이해하고 따져 물을 수 있게 돕는 25개 판단 카드입니다.">
+<meta property="og:description" content="완료보고를 실제 파일·시험·화면의 근거와 대조해 검수표로 가져갑니다.">
 <meta property="og:image" content="https://hammedia.co.kr/assets/tools/free-tools-og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="HAM MEDIA 무료 도구 OG 이미지">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="개발 문해력 사전 | HAM MEDIA 무료 도구">
-<meta name="twitter:description" content="AI가 만든 서비스를 이해하고 다음 질문을 하게 돕는 25개 판단 카드입니다.">
+<meta name="twitter:description" content="완료보고를 직접 확인한 증거와 다음 질문으로 정리하세요.">
 <meta name="twitter:image" content="https://hammedia.co.kr/assets/tools/free-tools-og.png">
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
@@ -31,6 +31,8 @@
   .area{margin-top:30px}.area-title{display:flex;align-items:center;gap:10px;margin:0 0 14px;font-size:16px}.area-number{display:grid;place-items:center;width:31px;height:31px;border:1px solid var(--line);border-radius:9px;background:var(--surface);color:var(--blue-dark);font-size:12px;font-weight:850}.area-count{padding:1px 9px;border-radius:20px;background:var(--blue-soft);color:var(--blue-dark);font-size:11px;font-weight:800}.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.card{appearance:none;display:flex;min-width:0;min-height:168px;padding:18px;flex-direction:column;justify-content:space-between;gap:24px;border:1px solid var(--line);border-radius:18px;background:var(--card);box-shadow:var(--shadow);text-align:left;cursor:pointer;transition:transform .12s ease,border-color .12s ease,box-shadow .12s ease}.card:hover{transform:translateY(-2px);border-color:var(--blue);box-shadow:var(--shadow-lift)}.card-number{color:var(--blue-dark);font-size:11px;font-weight:850;letter-spacing:.08em}.card strong{display:block;font-size:17px;line-height:1.35}.card small{display:block;margin-top:7px;color:var(--muted);font-size:12px;line-height:1.5;overflow-wrap:anywhere}.empty{padding:54px 12px;color:var(--muted);text-align:center}
   dialog{width:min(calc(100% - 32px),700px);max-height:min(90vh,860px);padding:0;overflow:auto;border:1px solid var(--line);border-radius:20px;background:var(--card);color:var(--ink);box-shadow:0 24px 70px rgba(28,24,20,.28)}dialog::backdrop{background:rgba(28,24,20,.42)}.dialog-head{position:sticky;top:0;z-index:2;display:flex;align-items:flex-start;justify-content:space-between;gap:18px;padding:22px;border-bottom:1px solid var(--line);background:var(--card)}.dialog-kicker{margin:0 0 7px;color:var(--blue-dark);font-size:11px;font-weight:850;letter-spacing:.08em}.dialog-head h2{margin:0;font-size:clamp(24px,4vw,34px);line-height:1.18}.dialog-actual{margin:7px 0 0;color:var(--muted);font-size:13px}.close{flex:0 0 auto;min-width:54px;min-height:44px;border:0;border-radius:999px;background:var(--ink);color:#fff;font-size:13px;font-weight:800;cursor:pointer}.dialog-body{padding:4px 22px 24px}.detail{padding:18px 0;border-bottom:1px solid var(--line)}.detail:last-child{border-bottom:0}.detail h3{margin:0 0 8px;color:var(--blue-dark);font-size:12px;letter-spacing:.02em}.detail p{margin:0;color:var(--muted);font-size:15px;line-height:1.72}.question{margin:10px 0 0;padding:16px;border:1px solid rgba(0,112,74,.24);border-radius:14px;background:var(--green-soft)}.question h3{color:var(--green-dark)}.question p{color:var(--ink);font-weight:650}.question-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:stretch}.copy{min-width:68px;min-height:44px;border:0;border-radius:11px;background:var(--green);color:#fff;font-size:13px;font-weight:800;cursor:pointer}.boundary{margin-top:10px;padding:17px;border:0;border-radius:14px;background:var(--yellow-soft)}.boundary h3{color:var(--ink)}.boundary p{color:var(--ink);font-weight:620}.toast{position:fixed;left:50%;bottom:28px;z-index:40;transform:translateX(-50%) translateY(20px);padding:12px 18px;border-radius:12px;background:var(--ink);box-shadow:0 10px 28px rgba(28,24,20,.28);color:#fff;font-size:14px;font-weight:650;opacity:0;pointer-events:none;transition:all .22s ease}.toast.on{opacity:1;transform:translateX(-50%) translateY(0)}.foot{margin-top:44px;color:var(--muted);font-size:12px;line-height:1.85;text-align:center}.foot img{width:56px;height:56px;margin:0 auto 9px;object-fit:contain}.foot strong{color:var(--ink);letter-spacing:.06em}
   @media(max-width:860px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:520px){.wrap{width:min(calc(100% - 24px),1080px);padding-top:12px}.brand{align-items:flex-start}.brand img{width:44px;height:44px}.hero{padding-top:18px}.hero h1{font-size:32px}.howto{padding:15px}.steps{align-items:stretch;flex-direction:column}.arrow{display:none}.step{min-height:34px}.toolbar{padding-top:8px}.grid{grid-template-columns:1fr}.card{min-height:126px}.dialog-head{padding:18px 16px 15px}.dialog-body{padding:2px 16px 18px}.question-row{grid-template-columns:1fr}.copy{width:100%}}@media(max-width:340px){.hero h1{font-size:28px}.back-link{width:100%;text-align:center}.brand{align-items:stretch}}@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}@media(forced-colors:active){.card,.search,.filters,.howto,dialog,.question{forced-color-adjust:auto;border-color:CanvasText}.filter[aria-pressed="true"]{outline:3px solid Highlight}}
+.review-workbench{margin:28px 0;padding:22px;border:1px solid var(--line);border-radius:20px;background:var(--card);box-shadow:var(--shadow)}.review-workbench h2{margin:0 0 8px;font-size:clamp(22px,4vw,30px)}.review-lead{max-width:760px;color:var(--muted);font-size:13px;line-height:1.65}.review-fields{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:15px}.review-fields label{display:grid;gap:5px;font-size:11px;font-weight:800}.review-fields textarea{width:100%;min-height:80px;border:1px solid var(--line);border-radius:10px;padding:10px;background:#fff;color:var(--ink);font:inherit;font-size:12px;line-height:1.55;resize:vertical}.review-evidence{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin:15px 0;padding:0;border:0}.evidence-item{display:grid;gap:6px;padding:12px;border:1px solid var(--line);border-radius:12px;background:#fff}.evidence-item legend{padding:0 2px;font-size:11px;font-weight:850}.evidence-item select{min-height:40px;border:1px solid var(--line);border-radius:8px;padding:7px;background:#fff;color:var(--ink);font:inherit;font-size:11px}.evidence-item textarea{min-height:60px;border:1px solid var(--line);border-radius:8px;padding:8px;background:#fff;color:var(--ink);font:inherit;font-size:11px;line-height:1.5;resize:vertical}.field-count{justify-self:end;color:var(--muted);font-size:10px;font-weight:500}.review-privacy{margin:10px 0;color:var(--muted);font-size:10px;line-height:1.55}.review-output{width:100%;min-height:250px;border:1px solid var(--line);border-radius:10px;padding:12px;background:#f5f3ee;color:var(--ink);font:11px/1.6 ui-monospace,monospace;white-space:pre-wrap}.review-actions{display:flex;gap:8px;margin-top:9px}.review-actions button{flex:1;min-height:44px;border:1px solid var(--line);border-radius:9px;background:#fff;color:var(--ink);font-weight:750;cursor:pointer}.review-actions button:first-child{background:var(--green);border-color:var(--green);color:#fff}.review-status{min-height:18px;color:var(--muted);font-size:11px}
+@media(max-width:600px){.review-workbench{padding:15px}.review-fields,.review-evidence{grid-template-columns:1fr}.review-actions{flex-direction:column}}
 </style>
 </head>
 <body>
@@ -46,15 +48,44 @@
   </div>
   <header class="hero">
     <span class="eyebrow">개발 문해력 사전</span>
-    <h1>코드를 몰라도<br>판단은 해야 하니까</h1>
-    <p>AI가 만든 서비스를 이해하고, 다음 질문을 하고, 무엇을 보면 믿을 수 있는지 확인하는 25장의 판단 사전입니다. 25장을 전부 배우는 과정이 아닙니다. AI가 만든 서비스를 만들거나 운영할 때 낯선 말·판단을 만난 순간 관련 카드만 여세요. 그런 일을 하지 않는다면 건너뛰어도 됩니다.</p>
+    <h1>완료보고를 붙이고<br>실제 증거를 확인하세요</h1>
+    <p>AI가 끝냈다고 한 작업의 보고서를 읽고, 실제 파일·시험·화면을 직접 확인해 보세요. 보지 못한 근거는 자동으로 성공 처리하지 않습니다. 아래 사전의 개념 카드는 낯선 용어가 있을 때 찾아보면 됩니다.</p>
   </header>
-  <section class="howto" aria-labelledby="howto-title">
-    <h2 id="howto-title">이렇게 쓰세요</h2>
+  <section class="howto" aria-labelledby="review-howto-title">
+    <h2 id="review-howto-title">증거표는 이렇게 작성해요</h2>
     <div class="steps">
-      <span class="step"><b>1</b>상황이나 낯선 말을 찾아요</span><span class="arrow" aria-hidden="true">→</span>
-      <span class="step"><b>2</b>카드를 눌러요</span><span class="arrow" aria-hidden="true">→</span>
-      <span class="step"><b>3</b>질문을 복사해 쓰던 AI에 물어봐요</span>
+      <span class="step"><b>1</b>기대 결과와 완료보고를 붙여요</span><span class="arrow" aria-hidden="true">→</span>
+      <span class="step"><b>2</b>각 근거를 직접 보고 상태를 골라요</span><span class="arrow" aria-hidden="true">→</span>
+      <span class="step"><b>3</b>검수표를 저장하고 미확인 질문을 이어가요</span>
+    </div>
+  </section>
+  <section class="review-workbench" aria-labelledby="review-title">
+    <span class="eyebrow">완료보고 검수 · 증거표</span>
+    <h2 id="review-title">말이 맞는지, 증거를 직접 골라보세요.</h2>
+    <p class="review-lead">완료보고와 기대한 결과를 붙인 뒤, 각 근거를 직접 봤는지 표시합니다. 이 도구는 보고서의 단어를 읽어 성공 점수를 매기지 않습니다. 선택한 상태로 확인한 사실과 다음 질문을 정리합니다.</p>
+    <div class="review-fields">
+      <label>원래 원한 실제 결과<textarea id="review-expected" rows="3" placeholder="예: 390px에서도 예약 버튼을 누르고 결과를 다시 확인할 수 있어야 합니다."></textarea></label>
+      <label>AI의 완료보고 붙여넣기<textarea id="review-report" rows="3" placeholder="고객 이름·연락처·토큰·비밀번호를 지운 뒤 붙여 넣으세요."></textarea></label>
+    </div>
+    <fieldset class="review-evidence">
+      <legend>직접 본 근거 상태 (점수 없이 골라요)</legend>
+      <fieldset class="evidence-item"><legend>수정 파일·차이</legend><select data-evidence-status="files" aria-label="수정 파일이나 변경 차이 확인 상태"><option value="unchecked">아직 안 봄</option><option value="checked">맞는 변경을 직접 봄</option><option value="mismatch">다른 변경·문제 발견</option><option value="na">이번엔 해당 없음</option></select><textarea data-evidence-note="files" rows="2" placeholder="파일 이름이나 실제로 본 차이"></textarea></fieldset>
+      <fieldset class="evidence-item"><legend>실행한 시험</legend><select data-evidence-status="tests" aria-label="시험 실행 결과 확인 상태"><option value="unchecked">아직 안 봄</option><option value="checked">출력과 결과를 직접 봄</option><option value="mismatch">실패·누락을 봄</option><option value="na">이번엔 해당 없음</option></select><textarea data-evidence-note="tests" rows="2" placeholder="실행한 명령이나 시험 결과"></textarea></fieldset>
+      <fieldset class="evidence-item"><legend>실제 화면·기능</legend><select data-evidence-status="live" aria-label="실제 화면이나 기능 확인 상태"><option value="unchecked">아직 안 봄</option><option value="checked">실제 주소에서 사용해 봄</option><option value="mismatch">고장·차이를 봄</option><option value="na">이번엔 해당 없음</option></select><textarea data-evidence-note="live" rows="2" placeholder="주소·버튼·기능에서 직접 본 것"></textarea></fieldset>
+      <fieldset class="evidence-item"><legend>오류·빈 값·모바일 같은 경계</legend><select data-evidence-status="edges" aria-label="오류나 화면 경계 확인 상태"><option value="unchecked">아직 안 봄</option><option value="checked">필요한 경계를 직접 확인함</option><option value="mismatch">빠진 경우·오류를 봄</option><option value="na">이번엔 해당 없음</option></select><textarea data-evidence-note="edges" rows="2" placeholder="빈 입력·실패·작은 화면 등 실제로 본 경우"></textarea></fieldset>
+      <fieldset class="evidence-item"><legend>사용자 결과·인수</legend><select data-evidence-status="use" aria-label="사용자 결과나 인수 확인 상태"><option value="unchecked">아직 안 봄</option><option value="checked">사용자가 직접 써보고 확인함</option><option value="mismatch">사용·인수 중 문제 발견</option><option value="na">이번엔 해당 없음</option></select><textarea data-evidence-note="use" rows="2" placeholder="누가 어떤 결과를 실제로 확인했나요?"></textarea></fieldset>
+    </fieldset>
+    <textarea id="review-output" class="review-output" readonly aria-label="직접 확인한 근거와 다음 질문"></textarea>
+    <div class="review-actions"><button type="button" id="copy-review">검수표 복사</button><button type="button" id="save-review">검수표 Markdown 저장</button></div>
+    <p id="review-status" class="review-status" role="status" aria-live="polite"></p>
+    <p class="review-privacy">입력은 이 브라우저에서만 문서로 조합하고 서버로 전송하거나 자동 저장하지 않습니다. 이 도구는 AI를 실행하거나 완료 여부를 자동 판정하지 않습니다. 비밀번호·API 키·고객 개인정보를 제외하세요.</p>
+  </section>
+  <section class="howto" aria-labelledby="glossary-howto-title">
+    <h2 id="glossary-howto-title">낯선 용어는 아래 사전에서 찾아보세요</h2>
+    <div class="steps">
+      <span class="step"><b>1</b>상황이나 낯선 말을 검색해요</span><span class="arrow" aria-hidden="true">→</span>
+      <span class="step"><b>2</b>설명 카드를 열어요</span><span class="arrow" aria-hidden="true">→</span>
+      <span class="step"><b>3</b>필요하면 질문을 복사해 쓰던 AI에 물어봐요</span>
     </div>
   </section>
   <div class="toolbar">
@@ -93,6 +124,56 @@
   let activeArea=0;
   let lastFocus=null;
   const allCards=AREAS.flatMap(area=>area.cards.map(card=>({...card,areaNumber:area.number,areaTitle:area.title})));
+
+  const evidenceLabels={files:'수정 파일·차이',tests:'실행한 시험',live:'실제 화면·기능',edges:'오류·빈 값·모바일 같은 경계',use:'사용자 결과·인수'};
+  const evidencePrompts={
+    files:'보고서에 적힌 변경 파일과 실제 차이를 열어 보여줄 수 있나요?',
+    tests:'실제로 실행한 시험 명령과 전체 결과를 보여줄 수 있나요?',
+    live:'실제 주소나 실제 기능에서 같은 결과를 직접 확인할 수 있나요?',
+    edges:'빈 입력·실패·작은 화면처럼 중요한 경계도 확인했나요? 빠진 조건을 어떻게 재현하나요?',
+    use:'누가 실제로 써봤고, 어떤 결과를 직접 확인했나요? 아직 안 썼다면 그 상태를 구분해 주세요.'
+  };
+  const reviewExpected=document.getElementById('review-expected'),reviewReport=document.getElementById('review-report'),reviewOutput=document.getElementById('review-output');
+  const reviewTextFields=[reviewExpected,reviewReport,...document.querySelectorAll('[data-evidence-note]')];
+  reviewTextFields.forEach(field=>{
+    const counter=document.createElement('small');counter.className='field-count';counter.id=`${field.id||'evidence-'+field.dataset.evidenceNote}-count`;
+    field.setAttribute('aria-describedby',counter.id);field.after(counter);
+    const updateCount=()=>{counter.textContent=`${Array.from(field.value).length}자 · 제한 없음`;};
+    field.addEventListener('input',updateCount);updateCount();
+  });
+  function reviewDate(){return new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());}
+  function renderReview(){
+    const source=document.querySelector('link[rel="canonical"]')?.href||'https://hammedia.co.kr/tools/dev-literacy/';
+    const evidence=Object.keys(evidenceLabels).map(key=>{
+      const status=document.querySelector(`[data-evidence-status="${key}"]`).value,note=document.querySelector(`[data-evidence-note="${key}"]`).value.trim();
+      const statusText=status==='checked'?'직접 확인함':status==='mismatch'?'문제·차이를 발견함':status==='na'?'이번엔 해당 없음':'아직 확인하지 않음';
+      return {key,status,statusText,note};
+    });
+    const questions=[];
+    evidence.forEach(item=>{
+      if(item.status==='na')return;
+      if(item.status==='unchecked')questions.push(`- ${evidenceLabels[item.key]}: ${evidencePrompts[item.key]}`);
+      else if(item.status==='mismatch')questions.push(`- ${evidenceLabels[item.key]}에서 발견한 차이를 재현할 단계와 원인을 보여주고, 잘된 부분을 유지해 그 차이만 바로잡아 주세요.${item.note?' 확인 메모: '+item.note:''}`);
+      else if(!item.note)questions.push(`- ${evidenceLabels[item.key]}은 확인으로 표시했습니다. 실제로 본 파일·주소·명령·결과를 한 줄로 기록해 주세요.`);
+    });
+    const evidenceText=evidence.map(item=>`### ${evidenceLabels[item.key]}\n상태: ${item.statusText}\n직접 본 내용: ${item.note||'미입력'}`).join('\n\n');
+    reviewOutput.value=`# 개발 작업 증거 검수표\n\n작성일: ${reviewDate()}\n출처: ${source}\n\n## 기대한 결과\n${reviewExpected.value.trim()||'미입력'}\n\n## AI 완료보고 (붙여넣은 원문)\n${reviewReport.value.trim()||'미입력'}\n\n## 직접 확인한 근거\n${evidenceText}\n\n## 아직 필요한 질문\n${questions.length?questions.join('\n'):'현재 선택한 근거 상태에서 남은 확인 질문이 없습니다. 직접 확인한 내용과 실제 사용자 사용 여부를 구분해 보관하세요.'}\n\n이 문서는 사람이 선택한 확인 상태를 옮긴 기록입니다. 완료 여부를 점수화하거나 보고서 문구를 자동 판정하지 않았습니다. 이 페이지는 AI를 호출하지 않고 입력을 서버에 보내거나 자동 저장하지 않습니다.\n`;
+  }
+  [reviewExpected,reviewReport,...document.querySelectorAll('[data-evidence-status],[data-evidence-note]')].forEach(field=>field.addEventListener('input',renderReview));
+  document.querySelectorAll('[data-evidence-status]').forEach(field=>field.addEventListener('change',renderReview));
+  function copyReview(){
+    const status=document.getElementById('review-status');
+    const fallback=()=>{reviewOutput.focus();reviewOutput.select();return document.execCommand('copy')};
+    if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(reviewOutput.value).then(()=>{status.textContent='검수표를 복사했습니다.'}).catch(()=>{try{status.textContent=fallback()?'검수표를 복사했습니다.':'복사하지 못했습니다. 결과문을 선택해 직접 복사해 주세요.'}catch(_){status.textContent='복사하지 못했습니다. 결과문을 선택해 직접 복사해 주세요.'}});
+    else{try{status.textContent=fallback()?'검수표를 복사했습니다.':'복사하지 못했습니다. 결과문을 선택해 직접 복사해 주세요.'}catch(_){status.textContent='복사하지 못했습니다. 결과문을 선택해 직접 복사해 주세요.'}}
+  }
+  document.getElementById('copy-review').addEventListener('click',copyReview);
+  document.getElementById('save-review').addEventListener('click',()=>{
+    const date=reviewDate().replaceAll('-',''),url=URL.createObjectURL(new Blob(['\ufeff'+reviewOutput.value],{type:'text/markdown;charset=utf-8'})),link=document.createElement('a');
+    link.href=url;link.download=`${date}_HAM-개발검수_증거와질문.md`;document.body.append(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
+    document.getElementById('review-status').textContent='작성일과 출처를 담은 Markdown 검수표를 저장했습니다.';
+  });
+  renderReview();
 
   function trackToolEvent(eventName,params){if(typeof window.gtag==='function')window.gtag('event',eventName,{tool_name:'dev_literacy',tool_title:'개발 문해력 사전',tool_path:'/tools/dev-literacy/',...params});}
   function button(label,value,pressed){const el=document.createElement('button');el.type='button';el.className='filter';el.textContent=label;el.dataset.area=value;el.setAttribute('aria-pressed',String(pressed));return el;}
