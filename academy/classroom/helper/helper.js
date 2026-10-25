@@ -1,8 +1,8 @@
 // 강의장에 끼워 넣는 수업 도우미 창 — 지금 보고 있는 강을 서버에 알린다.
 import { createAcademyHelperClient, PUBLIC_DISCLOSURE } from "./client.mjs";
 
-const STORE = "ham-class-helper-v2";
-const START = "수업 도우미예요. 실습은 평소 쓰는 AI에서 하고, 저는 옆에서 막힌 곳을 같이 봐요. 지금 어디서 막혔는지, 또는 AI가 준 답을 붙여서 물어보세요.";
+const STORE = "ham-class-helper-session-v3";
+const START = "수업 도우미예요. 실습은 평소 쓰는 AI에서 하고, 저는 옆에서 막힌 곳을 같이 봐요. 막힌 곳을 물어보고 자기 AI에서 계속해 보세요. 함께 볼 필요가 있을 때만 개인정보를 지운 답의 해당 부분을 가져오세요.";
 // 강의장이 body에 적어 둔 강 번호(심화 강 포함)를 먼저 읽고, 없으면 제목의 「N강」을 읽는다.
 const currentLesson = () => Number(document.body.dataset.lessonNumber || document.title.match(/(\d)강/)?.[1] || 1);
 const endpoint = globalThis.ACADEMY_HELPER_ENDPOINT;
@@ -21,9 +21,10 @@ const STARTERS = [
 ];
 
 let busy = false;
-let messages = [];
-try { messages = JSON.parse(localStorage.getItem(STORE) ?? "[]"); } catch { messages = []; }
-const save = () => { try { localStorage.setItem(STORE, JSON.stringify(messages.slice(-30))); } catch {} };
+let activeLesson = currentLesson();
+const load = (lesson) => { try { const value = JSON.parse(sessionStorage.getItem(`${STORE}-${lesson}`) ?? "[]"); return Array.isArray(value) ? value.filter(m => ["user", "assistant"].includes(m?.role) && typeof m.content === "string").slice(-16) : []; } catch { return []; } };
+let messages = load(activeLesson);
+const save = (conversation = messages, lesson = activeLesson) => { try { sessionStorage.setItem(`${STORE}-${lesson}`, JSON.stringify(conversation.slice(-16))); } catch {} };
 
 const root = document.createElement("div");
 root.className = "ch-root";
@@ -42,7 +43,7 @@ root.innerHTML = `
       <textarea id="ch-input" rows="2" maxlength="1500" placeholder="예: 첫 답이 너무 길어요. 뭐라고 다시 말하죠?"></textarea>
       <button type="submit">묻기</button>
     </form>
-    <p class="ch-note">개인정보·실명은 넣지 마세요. 실습 대화는 평소 쓰는 AI에서 합니다. <button type="button" class="ch-reset">대화 지우기</button></p>
+    <p class="ch-note">개인정보·실명은 넣지 마세요. 도우미 대화는 이 탭에 강별로 잠시 보관되며 탭을 닫으면 사라집니다. 실습은 자기 AI에서 계속하세요. <button type="button" class="ch-reset">대화 지우기</button></p>
   </section>`;
 document.body.append(root);
 
@@ -127,14 +128,16 @@ form.addEventListener("submit", async (event) => {
   root.querySelector(".ch-reset").disabled = true;
   input.disabled = true;
   input.value = "";
-  messages.push({ role: "user", content: text });
-  save();
+  const requestLesson = activeLesson;
+  const requestMessages = messages;
+  requestMessages.push({ role: "user", content: text });
+  save(requestMessages, requestLesson);
   starters.hidden = true;
   bubble("user", text);
   const pending = bubble("assistant", "수업 내용에서 찾아보는 중…");
   const stage = document.querySelector("[data-stage-title]")?.textContent?.trim() ?? "";
   try {
-    const payload = { messages, stage, lesson: currentLesson() };
+    const payload = { messages: requestMessages.slice(-16), stage, lesson: requestLesson };
     let data;
     if (publicMode) {
       if (!publicAsk) throw endpointError || new Error("수업 도우미 연결 주소를 확인해 주세요.");
@@ -149,12 +152,12 @@ form.addEventListener("submit", async (event) => {
       if (!res.ok || !data.answer) throw new Error(data.error);
     }
     fill(pending, data.answer);
-    messages.push({ role: "assistant", content: data.answer });
-    save();
+    requestMessages.push({ role: "assistant", content: data.answer });
+    save(requestMessages, requestLesson);
   } catch (error) {
     pending.textContent = error?.message || "지금은 답을 만들지 못했어요. 잠시 뒤 다시 물어봐 주세요.";
-    messages.pop();
-    save();
+    requestMessages.pop();
+    save(requestMessages, requestLesson);
   } finally {
     busy = false;
     form.querySelector("button").disabled = false;
@@ -165,3 +168,5 @@ form.addEventListener("submit", async (event) => {
 });
 
 root.addEventListener("keydown", (event) => { if (event.key === "Escape") { toggle(false); openBtn.focus(); } });
+
+new MutationObserver(() => { const nextLesson = currentLesson(); if (nextLesson !== activeLesson) { activeLesson = nextLesson; messages = load(activeLesson); if (!panel.hidden) draw(); } }).observe(document.querySelector("title"), { childList: true, subtree: true });
