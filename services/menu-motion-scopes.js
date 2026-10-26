@@ -63,6 +63,8 @@
       history.replaceState(history.state,'',url);
     }
     choices.forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.hmChoice===key)));
+    const entry=q('.automation-entry');
+    if(entry){entry.hidden=key!=='automation';q('.hm-menu-outcome').hidden=key==='automation';}
     stage.dataset.hmScene=key;
     q('.hm-menu-browser span').textContent=key==='page'?'mapobada.com / 공개 화면':'HAM MEDIA / 제작 예시';
     text('[data-hm-count]',`0${index+1} / 05`);text('[data-hm-category]',data.category);lines('[data-hm-title]',data.title);text('[data-hm-description]',data.description);
@@ -99,6 +101,7 @@
   choices.forEach(button=>button.addEventListener('click',()=>{
     const key=button.dataset.hmChoice;
     choose(key);
+    if(key==='automation') q('#choose-work').scrollIntoView({behavior:'instant',block:'start'});
   }));
   document.querySelectorAll('[data-hm-video-purpose]').forEach(link=>link.addEventListener('click',()=>{
     choose('video',false);
@@ -124,6 +127,9 @@
   });
   q('.hm-menu-choices').hidden=false;q('.hm-menu-controls').hidden=false;q('.hm-menu-contact').hidden=false;
   choose(selected,false);
+  if(requestedSelection==='automation' && (!location.hash || location.hash==='#choose-work')){
+    requestAnimationFrame(()=>q('#choose-work').scrollIntoView({behavior:'instant',block:'start'}));
+  }
   if('IntersectionObserver' in window){
     const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){if(entry.target===stage)play();else entry.target.classList.add('hm-menu-in-view');observer.unobserve(entry.target);}}),{threshold:.15});
     observer.observe(stage);observer.observe(q('.hm-menu-scope'));
