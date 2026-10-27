@@ -8,7 +8,7 @@
     <title>HAM MEDIA | 함동민 디지털 명함</title>
     <meta
       name="description"
-      content="HAM MEDIA 함동민. 영상·웹·문서 제작, AI 업무 도구와 교육. 연락처와 실제 작업을 한 장에서 확인하세요."
+      content="HAM MEDIA 함동민. 영상·홈페이지 제작, 문서·책 편집, 반복 업무 정리와 AI 실무 교육. 연락처와 실제 작업을 한 장에서 확인하세요."
     >
     <link rel="canonical" href="https://hammedia.co.kr/card/">
     <meta property="og:type" content="website">
@@ -16,7 +16,7 @@
     <meta property="og:title" content="HAM MEDIA | 함동민 디지털 명함">
     <meta
       property="og:description"
-      content="영상·웹·문서 제작부터 AI 업무 도구와 교육까지. 함동민의 연락처와 지금 하는 일을 확인하세요."
+      content="영상·홈페이지 제작, 문서·책 편집, 반복 업무 정리와 AI 실무 교육. 함동민의 연락처와 HAM MEDIA의 지금 하는 일을 확인하세요."
     >
     <meta property="og:url" content="https://hammedia.co.kr/card/">
     <meta property="og:image" content="https://hammedia.co.kr/og-image-digital-card-20260726.jpg">
@@ -29,7 +29,7 @@
     <meta name="twitter:title" content="HAM MEDIA | 함동민 디지털 명함">
     <meta
       name="twitter:description"
-      content="영상·웹·문서 제작부터 AI 업무 도구와 교육까지. 함동민의 연락처와 지금 하는 일을 확인하세요."
+      content="영상·홈페이지 제작, 문서·책 편집, 반복 업무 정리와 AI 실무 교육. 함동민의 연락처와 HAM MEDIA의 지금 하는 일을 확인하세요."
     >
     <meta name="twitter:image" content="https://hammedia.co.kr/og-image-digital-card-20260726.jpg">
     <meta name="twitter:image:alt" content="별자리와 좋아하는 것들이 나를 여기까지 데려왔다는 문장이 담긴 HAM MEDIA 명함 앞면">
@@ -340,7 +340,7 @@
         display: grid;
         grid-template-columns: minmax(380px, 0.93fr) minmax(460px, 1.07fr);
         grid-template-rows: minmax(0, 1fr) auto;
-        gap: 7%;
+        gap: 20px clamp(28px, 4vw, 48px);
         padding: clamp(46px, 5.4vw, 76px);
         overflow-y: auto;
         overscroll-behavior: contain;
@@ -355,7 +355,7 @@
       }
 
       .back-brand {
-        margin: 0 0 clamp(20px, 2.4vw, 32px);
+        margin: 0 0 clamp(14px, 1.25vw, 18px);
         color: rgba(255, 255, 255, 0.66);
         font-size: clamp(16px, 1.55vw, 21px);
         letter-spacing: 0.08em;
@@ -372,7 +372,7 @@
       }
 
       .role {
-        margin: 11px 0 0;
+        margin: 8px 0 0;
         color: var(--card-muted);
         font-size: clamp(15px, 1.5vw, 20px);
         line-height: 1.45;
@@ -381,11 +381,11 @@
 
       .statement {
         max-width: 590px;
-        margin: clamp(26px, 3vw, 40px) 0 0;
+        margin: clamp(18px, 1.8vw, 26px) 0 0;
         padding-left: 18px;
         border-left: 3px solid var(--card-blue);
         color: rgba(255, 253, 248, 0.94);
-        font-size: clamp(23px, 2.65vw, 36px);
+        font-size: clamp(23px, 2.35vw, 32px);
         letter-spacing: -0.035em;
         line-height: 1.42;
         overflow-wrap: normal;
@@ -397,17 +397,17 @@
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 8px;
-        margin: clamp(20px, 2.4vw, 30px) 0 0;
+        margin: clamp(10px, 1vw, 14px) 0 0;
       }
 
       .identity-shortcut {
         display: grid;
         min-width: 0;
-        min-height: 54px;
+        min-height: 42px;
         grid-template-columns: 21px minmax(0, 1fr);
         gap: 8px;
         align-items: center;
-        padding: 9px 10px;
+        padding: 6px 8px;
         border: 1px solid rgba(255, 255, 255, 0.12);
         border-radius: 13px;
         color: rgba(255, 253, 248, 0.86);
@@ -707,7 +707,7 @@
         min-width: 0;
         grid-column: 1;
         grid-row: 2;
-        margin-top: clamp(14px, 1.8vw, 24px);
+        margin-top: clamp(10px, 1.4vw, 18px);
       }
 
       .tools {
@@ -807,7 +807,7 @@
 
       /* QR modules must never inherit the site-wide icon stroke. */
       .qr-frame svg, .qr-frame svg * { stroke: none !important; stroke-width: 0 !important; }
-      .work-summary { margin: 15px 0 0; color: var(--card-muted); font-size: 14px; line-height: 1.6; }
+      .work-summary { margin: 8px 0 0; color: var(--card-muted); font-size: 14px; line-height: 1.35; }
 
       /* ── QR (링크 QR · 인라인 SVG · 뒷면 위에 펼친다) ─── */
 
@@ -930,9 +930,13 @@
       /* 데스크톱 앱처럼 폭에 비해 높이가 짧은 창에서는
          폭 기준 글자 크기가 세로 공간을 밀어내지 않도록 한 단계 조인다. */
       @media (min-width: 761px) and (max-width: 1100px) {
+        .digital-card {
+          min-height: 500px;
+        }
+
         .back-content {
           grid-template-columns: minmax(0, 0.93fr) minmax(0, 1.07fr);
-          gap: 4%;
+          gap: 18px clamp(22px, 3vw, 34px);
           padding: 32px 40px;
         }
 
@@ -958,12 +962,12 @@
         }
 
         .identity-shortcuts {
-          margin-top: 14px;
+          margin-top: 12px;
         }
 
         .identity-shortcut {
           min-height: 46px;
-          padding: 7px 8px;
+          padding: 6px 8px;
         }
 
         .contact-panel {
@@ -980,7 +984,7 @@
         }
 
         .tool-bar {
-          margin-top: 10px;
+          margin-top: 8px;
         }
 
         .tool-btn {
@@ -992,6 +996,31 @@
           min-height: 42px;
           margin-top: 12px;
           padding-block: 8px;
+        }
+      }
+
+      @media (min-width: 761px) and (max-width: 900px) {
+        .identity-shortcut {
+          min-height: 56px;
+          grid-template-columns: 1fr;
+          grid-template-rows: 18px auto;
+          gap: 4px;
+          place-items: center;
+          padding: 6px 4px;
+        }
+
+        .identity-shortcut svg {
+          width: 17px;
+          height: 17px;
+        }
+
+        .identity-shortcut span {
+          width: 100%;
+          overflow: visible;
+          font-size: 11px;
+          text-align: center;
+          text-overflow: clip;
+          white-space: nowrap;
         }
       }
 
@@ -1299,7 +1328,7 @@
 
               <div>
                 <h1 class="headline">좋아하는 것들이 나를 여기까지 데려왔다.</h1>
-                <p class="front-subtitle">영상 · 웹 · 문서 · AI 업무 도구와 교육</p>
+                <p class="front-subtitle">영상 · 홈페이지 제작 · 문서·책 편집 · 반복 업무 정리 · AI 실무 교육</p>
               </div>
             </div>
 
@@ -1364,7 +1393,7 @@
               <h2 class="name">함동민</h2>
               <p class="role">HAM MEDIA 대표 · 콘텐츠 프로듀서</p>
               <p class="statement">필요한 일을 함께 만들고,<br>직접 하는 방법도 가르칩니다.</p>
-              <p class="work-summary">영상 · 웹 · 문서 제작<br>AI 업무 도구 · 실무 교육</p>
+              <p class="work-summary">영상 · 홈페이지 제작 · 문서·책 편집<br>반복 업무 정리 · AI 실무 교육</p>
               <nav class="identity-shortcuts" aria-label="HAM MEDIA 더 보기">
                 <a class="identity-shortcut" href="https://www.threads.net/@dellacasa_2" target="_blank" rel="noopener noreferrer">
                   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.8 8.7c-.8-2.3-2.5-3.4-4.8-3.4-3.8 0-6.2 2.7-6.2 6.7 0 4.1 2.5 6.7 6.4 6.7 3.4 0 5.8-1.8 5.8-4.6 0-2.4-1.8-3.9-4.7-3.9-2.5 0-4.2 1.2-4.2 3.1 0 1.5 1.2 2.5 2.9 2.5 2.8 0 4.8-2.5 4.8-6 0-3.8-1.9-6.3-5.1-6.3"></path></svg>
@@ -1376,13 +1405,13 @@
                 </a>
                 <a class="identity-shortcut" href="https://hammedia.co.kr/academy/" target="_blank" rel="noopener noreferrer">
                   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4 2.5 8.5 12 13l9.5-4.5L12 4Z"></path><path d="M6.5 11v4.4c0 1.6 2.5 2.9 5.5 2.9s5.5-1.3 5.5-2.9V11"></path></svg>
-                  <span>아카데미</span>
+                  <span>AI 아카데미</span>
                 </a>
               </nav>
             </div>
 
             <div class="contact-panel">
-              <p class="contact-label">Contact &amp; Links</p>
+              <p class="contact-label">연락처와 HAM MEDIA</p>
               <ul class="contact-list" id="contact-list">
                 <li class="contact-item">
                   <div class="tile" data-tile="phone">
@@ -1756,7 +1785,7 @@
             "TITLE:" + vEsc("대표 · 콘텐츠 프로듀서"),
             "TEL;TYPE=CELL:+821039363571",
             "EMAIL:hammedia002@gmail.com",
-            "URL:https://hammedia.co.kr/",
+            "URL:https://hammedia.co.kr/card/",
             "END:VCARD"
           ];
           return lines.map(foldLine).join("\r\n") + "\r\n";
@@ -1791,12 +1820,12 @@
             return;
           }
 
-          /* 이 한 줄이 iOS 저장 성공률을 좌우한다 */
+          /* 저장 파일이 준비된 뒤 각 기기에서 연락처에 추가하는 방법을 안내한다 */
           showNote(
-            "<b>안내</b>아이폰이면 열린 화면을 맨 아래로 내려 ‘새로운 연락처 만들기’를 눌러 주세요."
+            "<b>안내</b>연락처 파일 저장을 요청했습니다. 파일을 열어 주소록에 추가해 주세요. 아이폰은 열린 화면 아래 ‘새로운 연락처 만들기’를 누르세요."
           );
           announce(
-            "연락처 파일을 내려받았습니다. 아이폰이면 열린 화면을 맨 아래로 내려 새로운 연락처 만들기를 눌러 주세요."
+            "연락처 파일 저장을 요청했습니다. 파일을 열어 주소록에 추가해 주세요. 아이폰은 열린 화면 아래 새로운 연락처 만들기를 누르세요."
           );
 
           if (url) {
