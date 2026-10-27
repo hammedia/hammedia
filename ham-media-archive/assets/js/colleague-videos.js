@@ -10,6 +10,7 @@
   }[lang] || ['Play', 'Pause', 'Sound on', 'Sound off'];
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
   var api, active;
+  var keepHomePoster = !!document.querySelector('.home-experience');
   var cards = Array.from(section.querySelectorAll('.colleague-player')).map(function (box, index) {
     var link = box.querySelector('.colleague-video-launch');
     var controls = document.createElement('div');
@@ -88,10 +89,18 @@
         '?enablejsapi=1&mute=1&playsinline=1&rel=0&origin=' + encodeURIComponent(location.origin);
       frame.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
       frame.referrerPolicy = 'strict-origin-when-cross-origin'; frame.allowFullscreen = true;
-      card.box.replaceChildren(frame);
+      if (keepHomePoster) {
+        card.link.style.cssText = 'position:absolute;inset:0;z-index:2';
+        frame.tabIndex = -1;
+        card.box.appendChild(frame);
+      } else card.box.replaceChildren(frame);
       card.player = new YT.Player(frame, {events: {
         onReady: function () { card.ready = true; card.player.mute(); play(); },
         onStateChange: function (event) {
+          if (keepHomePoster && event.data === 1) {
+            card.link.style.cssText = '';
+            frame.removeAttribute('tabindex'); card.link.hidden = true;
+          }
           if (event.data === 1 || event.data === 3) {
             if (!card.visible || document.hidden) { stop(card); return; }
             if (active !== card) {
@@ -112,6 +121,7 @@
         onAutoplayBlocked: function () { update(card); },
         onError: function () {
           stop(card); card.ready = false; card.player.destroy();
+          card.link.hidden = false; card.link.style.cssText = '';
           card.box.replaceChildren(card.link.cloneNode(true));
           card.play.parentElement.hidden = true;
         }
