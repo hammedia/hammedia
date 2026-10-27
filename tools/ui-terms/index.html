@@ -22,7 +22,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
 <link rel="stylesheet" href="../../assets/css/tools.css">
 
-  <script src="/assets/js/privacy-consent.js" data-measurement-id="G-TEBKMGWPQS"></script>
+  <script src="/assets/js/privacy-consent.js?v=20261027-tool-output" data-measurement-id="G-TEBKMGWPQS"></script>
 <style>
   :root{
     color-scheme: light;
@@ -294,10 +294,6 @@ function trackToolEvent(eventName,params={}){
   if(TOOL_DEBUG) baseParams.debug_mode=true;
   window.gtag('event',eventName,Object.assign(baseParams,params));
 }
-trackToolEvent('tool_visit',{
-  page_location:window.location.href,
-  page_path:window.location.pathname
-});
 
 const patternProfiles={
   modal:{name:'모달',trigger:'사용자가 자세히 읽거나 중요한 선택을 해야 할 때 열기',result:'열자마자 초점을 창 안으로 옮기고, 제목과 내용을 읽게 한다.',keyboard:'Esc와 닫기 버튼으로 닫고, Tab 초점은 창 안에서만 이동한다. 닫은 뒤 초점을 연 버튼으로 돌려보낸다.',edge:'확인 전에는 실제 상태를 바꾸지 않는다. 실패하면 무엇이 바뀌지 않았는지와 다음 행동을 창 안에 남긴다.',mobile:'작은 화면에서도 닫기 버튼을 쉽게 누르고 긴 내용은 창 안에서 읽고 스크롤한다.',source:'https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/'},
@@ -356,6 +352,7 @@ sampleTabs.forEach((tab,index)=>{
 async function copyPatternRequest(){
   const status=document.getElementById('pattern-status');let copied=false;
   try{await navigator.clipboard.writeText(patternOutput.value);copied=true}catch(_){try{patternOutput.focus();patternOutput.select();copied=document.execCommand('copy')}catch(_2){copied=false}}
+  if(copied)window.HAMPrivacy?.trackToolOutput('copy','txt');
   status.textContent=copied?'화면 동작 요구서를 복사했습니다.':'복사하지 못했습니다. 결과문을 선택해 직접 복사해 주세요.';
 }
 document.getElementById('copy-pattern-request').addEventListener('click',copyPatternRequest);
@@ -363,7 +360,8 @@ document.getElementById('download-pattern-request').addEventListener('click',()=
   const item=patternProfiles[chosenPattern],date=patternDate().replaceAll('-',''),source=document.querySelector('link[rel="canonical"]')?.href||'https://hammedia.co.kr/tools/ui-terms/';
   const text=patternOutput.value+`\n처리 안내: 이 페이지는 AI를 실행하지 않습니다. 입력은 브라우저에서 조합되며 서버로 전송되거나 자동 저장되지 않습니다.\n`;
   const url=URL.createObjectURL(new Blob(['\ufeff'+text],{type:'text/plain;charset=utf-8'})),a=document.createElement('a');a.href=url;a.download=`${date}_HAM-UI요구서_${chosenPattern}.txt`;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
-  document.getElementById('pattern-status').textContent=`${item.name} 요구서를 작성일과 출처를 포함해 저장했습니다. (${source})`;
+  document.getElementById('pattern-status').textContent=`${item.name} 요구서 TXT 다운로드를 시작했습니다. 브라우저에서 저장을 확인해주세요. (${source})`;
+  window.HAMPrivacy?.trackToolOutput('download_request','txt');
 });
 choosePattern('modal');
 
@@ -563,6 +561,7 @@ function toast(msg){
 }
 function copyText(t,d){
   const done=()=>{
+    window.HAMPrivacy?.trackToolOutput('copy','txt');
     trackToolEvent('tool_use',{
       tool_action:'copy',
       term_ko:d.ko,
@@ -576,11 +575,9 @@ function copyText(t,d){
   } else fb(t,done);
 }
 function fb(t,done){
-  const ta=document.createElement('textarea'); ta.value=t;
-  ta.style.position='fixed'; ta.style.opacity='0'; document.body.appendChild(ta);
-  ta.focus(); ta.select();
-  try{document.execCommand('copy');}catch(e){}
-  document.body.removeChild(ta); done();
+  let ta,copied=false;
+  try{ta=document.createElement('textarea');ta.value=t;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.focus();ta.select();copied=document.execCommand('copy')===true;}catch(e){}finally{ta?.remove();}
+  if(copied)done();else toast('복사하지 못했어요. 문장을 선택해 직접 복사해주세요.');
 }
 
 document.getElementById('q').addEventListener('input',e=>render(e.target.value));

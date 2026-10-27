@@ -19,7 +19,7 @@
 <meta name="twitter:description" content="질문 두 개를 실제 AI에 보내고 답변 비교 메모를 만드세요. 이 페이지는 AI를 실행하지 않습니다.">
 <meta name="twitter:image" content="https://hammedia.co.kr/assets/tools/free-tools-og.png">
 
-  <script src="/assets/js/privacy-consent.js" data-measurement-id="G-TEBKMGWPQS"></script>
+  <script src="/assets/js/privacy-consent.js?v=20261027-tool-output" data-measurement-id="G-TEBKMGWPQS"></script>
 <style>
   :root {
     color-scheme: light;
@@ -761,7 +761,8 @@
   async function copyConceptText(value) {
     var status = document.getElementById("concept-status"), copied = false;
     try { await navigator.clipboard.writeText(value); copied = true; }
-    catch (_) { try { var field = document.createElement("textarea"); field.value = value; field.setAttribute("readonly", ""); field.style.position = "fixed"; field.style.opacity = "0"; document.body.append(field); field.select(); copied = document.execCommand("copy"); field.remove(); } catch (_2) { copied = false; } }
+    catch (_) { var field; try { field = document.createElement("textarea"); field.value = value; field.setAttribute("readonly", ""); field.style.position = "fixed"; field.style.opacity = "0"; document.body.append(field); field.select(); copied = document.execCommand("copy") === true; } catch (_2) { copied = false; } finally { if(field)field.remove(); } }
+    if(copied)window.HAMPrivacy?.trackToolOutput("copy","txt");
     status.textContent = copied ? "복사했습니다. 붙여넣은 뒤 실제 답을 직접 확인하세요." : "복사하지 못했습니다. 문장을 선택해 직접 복사해 주세요.";
   }
 
@@ -848,7 +849,8 @@
     var textValue = document.getElementById("concept-output").value;
     var url = URL.createObjectURL(new Blob(["\ufeff" + textValue], { type: "text/plain;charset=utf-8" }));
     var link = document.createElement("a"); link.href = url; link.download = date + "_HAM-AI개념_" + title + "-비교메모.txt"; document.body.append(link); link.click(); link.remove(); setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
-    document.getElementById("concept-status").textContent = "작성일과 출처를 담은 비교 메모를 저장했습니다. 답변과 결론은 직접 확인해 기록하세요.";
+    document.getElementById("concept-status").textContent = "비교 메모 TXT 다운로드를 시작했습니다. 브라우저에서 저장을 확인해주세요.";
+    window.HAMPrivacy?.trackToolOutput("download_request","txt");
   });
   document.getElementById("clear-concept-draft").addEventListener("click", function () {
     if (!selectedConcept) return;
@@ -869,7 +871,6 @@
     lastTrigger = null;
     selectedConcept = null;
   });
-  trackToolEvent("tool_visit", { page_location: window.location.href, page_path: window.location.pathname });
   render();
 }());
 </script>

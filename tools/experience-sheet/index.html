@@ -21,7 +21,7 @@
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
 
-  <script src="/assets/js/privacy-consent.js" data-measurement-id="G-TEBKMGWPQS"></script>
+  <script src="/assets/js/privacy-consent.js?v=20261027-tool-output" data-measurement-id="G-TEBKMGWPQS"></script>
 <style>
   :root{color-scheme:light;--bg:#F9F7F3;--surface:#F5F3EE;--card:#FFFEFB;--ink:#1C1814;--muted:#4A423C;--line:#E6E1D9;--blue:#7EB5E8;--blue-dark:#315E86;--blue-soft:rgba(126,181,232,.17);--yellow:#F4DC59;--yellow-soft:rgba(244,220,89,.22);--green:#00704A;--green-dark:#005A3B;--green-soft:rgba(0,112,74,.075);--shadow:0 1px 2px rgba(28,24,20,.04),0 8px 22px rgba(28,24,20,.06)}
   *{box-sizing:border-box}html{background:var(--bg)}body{margin:0;background:var(--bg);color:var(--ink);font-family:Pretendard,"Pretendard Variable","Apple SD Gothic Neo","Noto Sans KR",sans-serif;font-size:18px;line-height:1.75;word-break:keep-all}
@@ -200,16 +200,16 @@
   }
   load();loadStarter();refreshPreviews();
   allIds.forEach(function(id){document.getElementById(id).addEventListener('input',function(){save();refreshPreviews();if(id==='goal')goalStatus.textContent='';});});
-  function fallbackCopy(text){var previous=document.activeElement;var ta=document.createElement('textarea');ta.value=text;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();var copied=false;try{copied=document.execCommand('copy')===true;}catch(error){}finally{ta.remove();if(previous)previous.focus();}return copied;}
+  function fallbackCopy(text){var previous=document.activeElement,ta,copied=false;try{ta=document.createElement('textarea');ta.value=text;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();copied=document.execCommand('copy')===true;}catch(error){}finally{if(ta)ta.remove();if(previous)previous.focus();}return copied;}
   function copyText(text,successMessage,feedbackNode){
     var feedback=feedbackNode||flowStatus;
     if(!text){feedback.textContent='먼저 경험 원본과 원하는 결과를 적어주세요.';return;}
-    function done(){feedback.textContent=successMessage;}
-    function retry(){feedback.textContent=fallbackCopy(text)?successMessage+' 직접 붙여넣어 확인해주세요.':'자동 복사가 막혔습니다. 내용을 선택해 직접 복사해주세요.';}
+    function done(){feedback.textContent=successMessage;window.HAMPrivacy?.trackToolOutput("copy","txt");if(feedback===status&&window.gtag)gtag("event","experience_sheet_copy");}
+    function retry(){if(fallbackCopy(text)){done();feedback.textContent+=' 직접 붙여넣어 확인해주세요.';}else{feedback.textContent='자동 복사가 막혔습니다. 내용을 선택해 직접 복사해주세요.';}}
     try{if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(done,retry);}else{retry();}}catch(error){retry();}
   }
   function downloadFile(filename,content,type){
-    try{var blob=new Blob([content],{type:type});var url=URL.createObjectURL(blob);var link=document.createElement('a');link.href=url;link.download=filename;link.style.display='none';document.body.appendChild(link);link.click();link.remove();window.setTimeout(function(){URL.revokeObjectURL(url);},1000);return true;}catch(error){return false;}
+    try{var blob=new Blob([content],{type:type});var url=URL.createObjectURL(blob);var link=document.createElement('a');link.href=url;link.download=filename;link.style.display='none';document.body.appendChild(link);link.click();link.remove();window.setTimeout(function(){URL.revokeObjectURL(url);},1000);window.HAMPrivacy?.trackToolOutput('download_request',type.startsWith('application/json')?'json':'txt');return true;}catch(error){return false;}
   }
   function pad(value){return String(value).padStart(2,'0');}
   function formatSavedAt(date){return date.getFullYear()+'-'+pad(date.getMonth()+1)+'-'+pad(date.getDate())+' '+pad(date.getHours())+':'+pad(date.getMinutes())+':'+pad(date.getSeconds());}
@@ -225,10 +225,9 @@
   document.getElementById('copy').addEventListener('click',function(){
     if(!ids.some(function(id){return value(id);})){status.textContent='먼저 실제 경험 한 가지를 적어주세요. 지금 적을 경험이 없으면 이 도구는 건너뛰어도 됩니다.';return;}
     copyText(originalText(),'경험 원본을 복사했습니다. 쓰던 AI에 직접 붙여넣으세요.',status);
-    if(window.gtag){gtag('event','experience_sheet_copy');}
   });
   document.getElementById('copy-request').addEventListener('click',function(){if(!hasRequest()){requestStatus.textContent='경험 원본이나 원하는 결과를 먼저 적어주세요.';return;}copyText(requestPreview.value,'첫 요청문을 복사했습니다. 쓰던 AI에 직접 붙여넣으세요.',requestStatus);});
-  document.getElementById('download-request').addEventListener('click',function(){if(!hasRequest()){requestStatus.textContent='경험 원본이나 원하는 결과를 먼저 적어주세요.';return;}requestStatus.textContent=downloadFile(datedFilename('ai-request','txt',new Date()),requestPreview.value,'text/plain;charset=utf-8')?'요청문 TXT를 이 기기에 저장했습니다.':'TXT 저장을 시작하지 못했습니다. 브라우저 다운로드 설정을 확인해주세요.';});
+  document.getElementById('download-request').addEventListener('click',function(){if(!hasRequest()){requestStatus.textContent='경험 원본이나 원하는 결과를 먼저 적어주세요.';return;}requestStatus.textContent=downloadFile(datedFilename('ai-request','txt',new Date()),requestPreview.value,'text/plain;charset=utf-8')?'요청문 TXT 다운로드를 시작했습니다. 브라우저에서 저장을 확인해주세요.':'TXT 저장을 시작하지 못했습니다. 브라우저 다운로드 설정을 확인해주세요.';});
   document.getElementById('copy-next-request').addEventListener('click',function(){if(!nextRequestPreview.value){replyStatus.textContent='AI 답을 붙여넣고, 고치고 싶은 점을 적어주세요.';return;}copyText(nextRequestPreview.value,'다음 요청문을 복사했습니다. 쓰던 AI에 직접 붙여넣으세요.',replyStatus);});
   document.getElementById('bring-answer').addEventListener('click',function(){
     var answer=value('ai-answer');if(!answer){flowStatus.textContent='먼저 AI가 준 답을 붙여넣어주세요.';return;}
@@ -239,12 +238,12 @@
   document.getElementById('download-work-text').addEventListener('click',function(){
     var savedAt=new Date();
     var text=['HAM MEDIA · 내 경험 작업 기록','저장 시각: '+formatSavedAt(savedAt),'원하는 결과: '+(value('goal')||'(아직 적지 않음)'),'','[최종본]',value('final-version')||'(아직 작성하지 않음)','','[처음 요청]',requestPreview.value||'(아직 요청문이 만들어지지 않음)','','[AI 답]',value('ai-answer')||'(아직 답을 붙여넣지 않음)','','[내 수정·추가 요청]',value('correction')||'(아직 적지 않음)'].join('\n');
-    flowStatus.textContent=downloadFile(datedFilename('experience-work','txt',savedAt),text,'text/plain;charset=utf-8')?'작업 기록 TXT를 이 기기에 저장했습니다. 저장 시각과 원하는 결과가 파일명에 들어 있습니다.':'TXT 저장을 시작하지 못했습니다. 브라우저 다운로드 설정을 확인해주세요.';
+    flowStatus.textContent=downloadFile(datedFilename('experience-work','txt',savedAt),text,'text/plain;charset=utf-8')?'작업 기록 TXT 다운로드를 시작했습니다. 브라우저에서 저장을 확인해주세요.':'TXT 저장을 시작하지 못했습니다. 브라우저 다운로드 설정을 확인해주세요.';
   });
   document.getElementById('download-work-file').addEventListener('click',function(){
     var savedAt=new Date();
     var payload={format:'ham-experience-work-v1',savedAt:savedAt.toISOString(),fields:currentValues()};
-    flowStatus.textContent=downloadFile(datedFilename('experience-work','json',savedAt),JSON.stringify(payload,null,2),'application/json;charset=utf-8')?'작업 파일에 저장 시각과 작업 내용을 함께 보관했습니다.':'작업 파일 저장을 시작하지 못했습니다. 브라우저 다운로드 설정을 확인해주세요.';
+    flowStatus.textContent=downloadFile(datedFilename('experience-work','json',savedAt),JSON.stringify(payload,null,2),'application/json;charset=utf-8')?'JSON 작업 파일 다운로드를 시작했습니다. 브라우저에서 저장을 확인해주세요.':'작업 파일 저장을 시작하지 못했습니다. 브라우저 다운로드 설정을 확인해주세요.';
   });
   document.getElementById('open-work-file').addEventListener('change',function(event){
     var file=event.target.files&&event.target.files[0];if(!file)return;

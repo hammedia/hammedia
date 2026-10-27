@@ -21,6 +21,7 @@
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
 <link rel="stylesheet" href="../../assets/css/tools.css">
+<script src="/assets/js/privacy-consent.js?v=20261027-tool-output" data-measurement-id="G-TEBKMGWPQS"></script>
 <style>
   :root{
     color-scheme: light;
@@ -647,9 +648,11 @@ function open(p){
   };
   requestFields.forEach(field=>field.addEventListener('input',()=>{updateRequestCount(field);renderRequest()}));renderRequest();
   document.getElementById('request-copy').addEventListener('click',async()=>{
-    const status=document.getElementById('request-status');
-    try{await navigator.clipboard.writeText(currentRequest);status.textContent='내 작업을 합친 요청문을 복사했습니다.';}
-    catch(_){try{const ta=document.createElement('textarea');ta.value=currentRequest;ta.setAttribute('readonly','');ta.style.position='fixed';ta.style.opacity='0';document.body.append(ta);ta.select();const ok=document.execCommand('copy');ta.remove();status.textContent=ok?'내 작업을 합친 요청문을 복사했습니다.':'복사하지 못했습니다. 아래 요청문을 선택해 직접 복사해 주세요.';}catch(_2){status.textContent='복사하지 못했습니다. 아래 요청문을 선택해 직접 복사해 주세요.';}}
+    const status=document.getElementById('request-status');let copied=false;
+    try{await navigator.clipboard.writeText(currentRequest);copied=true;}
+    catch(_){let ta;try{ta=document.createElement('textarea');ta.value=currentRequest;ta.setAttribute('readonly','');ta.style.position='fixed';ta.style.opacity='0';document.body.append(ta);ta.select();copied=document.execCommand('copy')===true;}catch(_2){}finally{ta?.remove();}}
+    status.textContent=copied?'내 작업을 합친 요청문을 복사했습니다.':'복사하지 못했습니다. 아래 요청문을 선택해 직접 복사해 주세요.';
+    if(copied)window.HAMPrivacy?.trackToolOutput('copy','md');
   });
   document.getElementById('request-download').addEventListener('click',()=>{
     const safe=(p.title||'coding-request').replace(/[^\p{L}\p{N}-]+/gu,'-').replace(/^-|-$/g,'').slice(0,48)||'coding-request';
@@ -657,7 +660,8 @@ function open(p){
     const fileText=`# ${p.title}\n\n작성일: ${date}\n출처: ${source}\n\n${currentRequest}\n\n처리 안내: 이 페이지는 AI를 실행하지 않습니다. 입력은 브라우저에서 요청서를 조합하며 서버로 보내거나 자동 저장하지 않습니다.\n`;
     const url=URL.createObjectURL(new Blob(['\ufeff'+fileText],{type:'text/markdown;charset=utf-8'}));
     const a=document.createElement('a');a.href=url;a.download=`${date.replaceAll('-','')}_HAM-CodexTalk_${safe}.md`;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
-    document.getElementById('request-status').textContent='작성일과 출처를 담은 Markdown 요청서를 저장했습니다.';
+    document.getElementById('request-status').textContent='Markdown 요청서 다운로드를 시작했습니다. 브라우저에서 저장을 확인해주세요.';
+    window.HAMPrivacy?.trackToolOutput('download_request','md');
   });
   document.getElementById('cbtn').addEventListener('click',()=>copyText(p.prompt,'복사됐어요 — 코딩 AI 채팅에 붙여넣으세요'));
   document.getElementById('closebtn').addEventListener('click',closeM);
@@ -682,16 +686,16 @@ function copyDaily(){
 
 let toastT=null;
 function copyText(t,msg){
-  const done=()=>{document.getElementById('toastmsg').textContent=msg||'복사됐어요';
+  const done=()=>{window.HAMPrivacy?.trackToolOutput('copy','txt');document.getElementById('toastmsg').textContent=msg||'복사됐어요';
     const el=document.getElementById('toast'); el.classList.add('on'); clearTimeout(toastT);
     toastT=setTimeout(()=>el.classList.remove('on'),1800);};
   if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done).catch(()=>fb(t,done));}
   else fb(t,done);
 }
 function fb(t,done){
-  const ta=document.createElement('textarea'); ta.value=t; ta.style.position='fixed'; ta.style.opacity='0';
-  document.body.appendChild(ta); ta.focus(); ta.select();
-  try{document.execCommand('copy');}catch(e){} document.body.removeChild(ta); done();
+  let ta,copied=false;
+  try{ta=document.createElement('textarea');ta.value=t;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.focus();ta.select();copied=document.execCommand('copy')===true;}catch(e){}finally{ta?.remove();}
+  if(copied)done();else{document.getElementById('toastmsg').textContent='복사하지 못했어요. 문장을 선택해 직접 복사해주세요.';const el=document.getElementById('toast');el.classList.add('on');clearTimeout(toastT);toastT=setTimeout(()=>el.classList.remove('on'),1800);}
 }
 
 document.getElementById('q').addEventListener('input',e=>render(e.target.value));

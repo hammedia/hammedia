@@ -4,6 +4,19 @@
   const script = document.currentScript;
   const measurementId = script?.dataset.measurementId || "";
   const preferenceKey = "ham_analytics_consent";
+  // Fixed tool identities only. Never include a visitor's text, filename or query.
+  const toolNames = {
+    "/tools/prompt-gallery/": "prompt_gallery",
+    "/tools/design-styles/": "design_styles",
+    "/tools/ui-terms/": "ui_terms",
+    "/tools/codex-talk/": "codex_talk",
+    "/tools/ai-concepts/": "ai_concepts",
+    "/tools/dev-literacy/": "dev_literacy",
+    "/tools/experience-sheet/": "experience_sheet",
+  };
+  const toolPath = location.pathname.replace(/index\.html$/, "").replace(/\/?$/, "/");
+  const toolName = toolNames[toolPath];
+  let toolVisitTracked = false;
   const allowedValues = new Set(["granted", "denied"]);
   const language = (document.documentElement.lang || "ko").toLowerCase();
   const copy = language.startsWith("en") ? {
@@ -53,7 +66,11 @@
 
   function loadAnalytics() {
     if (measurementId) window[`ga-disable-${measurementId}`] = false;
-    if (!measurementId || document.querySelector("script[data-ham-analytics]")) return;
+    if (!measurementId) return;
+    if (document.querySelector("script[data-ham-analytics]")) {
+      trackToolVisit();
+      return;
+    }
 
     window.dataLayer = window.dataLayer || [];
     if (window.gtag.hamPlaceholder) {
@@ -70,6 +87,7 @@
     analyticsScript.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(measurementId)}`;
     analyticsScript.dataset.hamAnalytics = "true";
     document.head.append(analyticsScript);
+    trackToolVisit();
   }
 
   let returnFocus = null;
@@ -161,6 +179,16 @@
 
   window.HAMPrivacy = {
     tracksContactClicks: true,
+    trackToolOutput(delivery, format) {
+      if (!toolName || !["copy", "download_request"].includes(delivery) ||
+          !["txt", "md", "css", "json"].includes(format)) return;
+      trackConversion("tool_output", {
+        tool_name: toolName,
+        tool_path: toolPath,
+        output_delivery: delivery,
+        output_format: format,
+      });
+    },
     openAnalyticsChoice() {
       returnFocus = document.activeElement;
       showBanner(true);
@@ -181,6 +209,12 @@
     } catch {
       // Measurement must not interrupt a visitor's inquiry or navigation.
     }
+  }
+
+  function trackToolVisit() {
+    if (!toolName || toolVisitTracked) return;
+    toolVisitTracked = true;
+    trackConversion("tool_visit", { tool_name: toolName, tool_path: toolPath });
   }
 
   document.addEventListener("click", (event) => {

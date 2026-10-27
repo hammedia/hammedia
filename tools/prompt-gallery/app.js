@@ -392,7 +392,8 @@ function downloadPrompt(){
  const url=URL.createObjectURL(blob);const link=document.createElement('a');
  link.href=url;link.download=`${date.replaceAll('-','')}_HAM-프롬프트갤러리_${safeTitle}.txt`;document.body.append(link);link.click();link.remove();
  setTimeout(()=>URL.revokeObjectURL(url),1000);
- promptStatus.hidden=false;promptStatus.textContent='작성일과 출처를 포함한 UTF-8 TXT 파일을 저장했습니다.';
+ promptStatus.hidden=false;promptStatus.textContent='TXT 다운로드를 시작했습니다. 브라우저에서 저장을 확인해주세요.';
+ window.HAMPrivacy?.trackToolOutput('download_request','txt');
 }
 
 function renderBlueprint(w){
@@ -527,16 +528,17 @@ async function copyText(text){
  let ok=false;
  try{await navigator.clipboard.writeText(text);ok=true;}
  catch(_){
+  let area;
   try{
-   const a=document.createElement('textarea');
-   a.value=text;a.style.position='fixed';a.style.top='0';a.style.opacity='0';
-   dialog.append(a);a.select();
-   ok=document.execCommand('copy');
-   a.remove();
-  }catch(_2){ok=false;}
+   area=document.createElement('textarea');
+   area.value=text;area.style.position='fixed';area.style.top='0';area.style.opacity='0';
+   dialog.append(area);area.select();ok=document.execCommand('copy')===true;
+  }catch(_2){ok=false;}finally{area?.remove();}
  }
  promptStatus.hidden=false;
  if(ok){
+  window.HAMPrivacy?.trackToolOutput('copy','txt');
+  track('prompt_copy',{content_type:'prompt_work',content_id:currentWork?currentWork.id:'unknown'});
   copyBtn.textContent='복사 완료 ✓';
   copyBtn.classList.add('done');copyBtn.classList.remove('fail');
   promptStatus.textContent='복사했습니다. 이미지 생성 화면에 붙여넣으세요.';
@@ -557,7 +559,6 @@ copyBtn.addEventListener('click',()=>{
  if(copyBtn.disabled)return;
  const p=promptText.value;
  if(typeof p==='string'&&p.trim()){
-  track('prompt_copy',{content_type:'prompt_work',content_id:currentWork?currentWork.id:'unknown'});
   copyText(p);
  }
 });
@@ -592,8 +593,8 @@ function openExperiment(id){
   const button=document.createElement('button');button.type='button';button.className='copy-experiment';button.textContent='이 문장 복사';
   const pre=document.createElement('pre');pre.textContent=prompt.text;
   button.addEventListener('click',async()=>{
-   track('prompt_copy',{content_type:'ai_experiment',content_id:exp.id,prompt_step:index+1});
-   await copyTextForButton(prompt.text,button);
+   const copied=await copyTextForButton(prompt.text,button);
+   if(copied){window.HAMPrivacy?.trackToolOutput('copy','txt');track('prompt_copy',{content_type:'ai_experiment',content_id:exp.id,prompt_step:index+1});}
   });
   heading.append(h3,button);li.append(heading,pre);experimentPrompts.append(li);
  });
@@ -609,12 +610,14 @@ async function copyTextForButton(value,button){
  let ok=false;
  try{await navigator.clipboard.writeText(value);ok=true;}
  catch(_){
-  const area=document.createElement('textarea');area.value=value;area.style.position='fixed';area.style.opacity='0';
-  experimentDialog.append(area);area.select();ok=document.execCommand('copy');area.remove();
+  let area;
+  try{area=document.createElement('textarea');area.value=value;area.style.position='fixed';area.style.opacity='0';experimentDialog.append(area);area.select();ok=document.execCommand('copy')===true;}
+  catch(_2){ok=false;}finally{area?.remove();}
  }
  const original='이 문장 복사';button.textContent=ok?'복사 완료 ✓':'직접 선택해 주세요';
  button.classList.toggle('done',ok);
  setTimeout(()=>{button.textContent=original;button.classList.remove('done');},2400);
+ return ok;
 }
 
 document.addEventListener('click',event=>{
@@ -678,7 +681,7 @@ function renderBookPrompts(){
     try{detail.append(area);area.select();ok=document.execCommand('copy');}catch(_2){ok=false;}finally{area.remove();button.focus();}
    }
    status.textContent=ok?'복사했습니다. 사용하는 AI에 붙여넣고 대괄호 안을 내 상황으로 바꾸세요.':'자동 복사가 안 됐습니다. 위 문장을 선택해 직접 복사해 주세요.';
-   if(ok)track('prompt_copy',{content_type:'book_companion',content_id:item.id});
+   if(ok){window.HAMPrivacy?.trackToolOutput('copy','txt');track('prompt_copy',{content_type:'book_companion',content_id:item.id});}
   });
   const check=document.createElement('p');check.className='book-prompt-check';check.textContent='결과 확인: '+item.check;
   const link=document.createElement('a');link.href=item.bookHref;link.textContent=item.bookLabel+' ↗';
@@ -698,5 +701,5 @@ if(caseCopyButton)caseCopyButton.addEventListener('click',async()=>{
   try{caseCopyButton.parentElement.append(area);area.select();ok=document.execCommand('copy');}catch(_2){ok=false;}finally{area.remove();caseCopyButton.focus();}
  }
  document.querySelector('#case-copy-status').textContent=ok?'복사했습니다. 대괄호를 내 상황으로 바꿔 사용하는 AI에 붙여넣으세요.':'자동 복사가 안 됐습니다. 위 문장을 선택해 직접 복사해 주세요.';
- if(ok)track('prompt_copy',{content_type:'conversation_case',content_id:'find-the-right-material'});
+ if(ok){window.HAMPrivacy?.trackToolOutput('copy','txt');track('prompt_copy',{content_type:'conversation_case',content_id:'find-the-right-material'});}
 });
