@@ -31,7 +31,7 @@
       @media(max-width:720px){.tool-finder{padding:17px}.recommendation-grid{grid-template-columns:1fr}.recommended-card{min-height:0}}
     </style>
     <script src="/assets/js/privacy-consent.js" data-measurement-id="G-TEBKMGWPQS"></script>
-  </head>
+  <link rel="stylesheet" href="/assets/css/work-practice.css?v=20261027-direct-practice"><script defer src="/assets/js/work-practice.js?v=20261027-direct-practice"></script></head>
   <body class="tools-home">
     <a class="sr-only" href="#main">본문으로 이동</a>
     <main class="tools-shell" id="main">
@@ -49,15 +49,23 @@
 
       <section class="tools-hero" aria-labelledby="tools-title">
         <span class="tools-kicker">무료 도구</span>
-        <h1 id="tools-title">AI에게 정확히 시키는 말을 고릅니다.</h1>
-        <p>하려는 일을 한 문장으로 적으면 맞는 도구를 찾을 수 있습니다. 경험 원본을 만드는 도구에서는 요청문을 만들고, AI 답을 다시 가져와 고치고 저장할 수 있습니다.</p>
+        <h1 id="tools-title">첫 요청부터, 실제 결과 확인까지.</h1>
+        <p>내 경험으로 첫 요청을 만들거나 AI의 완료보고를 확인할 질문을 가져가세요. 아래에서 예시를 바꿔보고, 필요한 도구로 같은 내용을 이어 쓸 수 있습니다.</p>
         <div class="tools-steps" aria-label="사용 순서">
-          <span class="tools-step"><b>1</b>할 일 적기</span>
-          <span class="tools-step"><b>2</b>맞는 도구 고르기</span>
-          <span class="tools-step"><b>3</b>쓰던 AI와 결과 만들기</span>
+          <span class="tools-step"><b>1</b>만들기·확인 고르기</span>
+          <span class="tools-step"><b>2</b>내 내용으로 바꾸기</span>
+          <span class="tools-step"><b>3</b>복사·저장·이어 쓰기</span>
         </div>
       </section>
 
+<section class="work-practice" id="try-my-work" data-work-practice aria-labelledby="work-practice-heading">
+  <header class="practice-intro"><p>내 일로 바로 써보기</p><h2 id="work-practice-heading">먼저 만들고, 끝났는지 직접 확인합니다.</h2><p>회사에서 쓰는 경험 정리와 증거 확인 방법을 작은 실습으로 옮겼습니다. 예시를 보고 내 내용을 적어, 쓰던 AI에 보낼 문장이나 확인 질문을 바로 가져가세요.</p></header>
+  <div class="practice-modes" role="group" aria-label="내 일로 바로 써보기"><button class="practice-mode" type="button" data-practice-mode="create" aria-pressed="true">내 경험으로 만들기</button><button class="practice-mode" type="button" data-practice-mode="check" aria-pressed="false">AI 완료보고 확인하기</button></div>
+  <div class="practice-layout"><div class="practice-inputs"><h3 data-practice-title>내 경험으로 만들기</h3><label for="practice-goal" data-practice-goal-label></label><textarea id="practice-goal" data-practice-goal rows="2"></textarea><label for="practice-material" data-practice-material-label></label><textarea id="practice-material" data-practice-material rows="4"></textarea><p class="practice-boundary" data-practice-boundary></p><button type="button" data-practice-example aria-pressed="true"></button></div>
+  <div class="practice-result"><p class="practice-kind" data-practice-kind></p><h3 id="practice-output-title" data-practice-output-title></h3><textarea class="practice-output" data-practice-output rows="10" readonly aria-labelledby="practice-output-title"></textarea><div class="practice-actions"><button class="practice-copy" type="button" data-practice-copy></button><button type="button" data-practice-save></button></div><a class="practice-next" data-practice-next href="/tools/experience-sheet/">경험으로 첫 요청 만들기</a><p class="practice-status" data-practice-status role="status"></p></div></div>
+  <p class="practice-privacy">이 화면은 AI를 호출하지 않습니다. 입력은 현재 화면에서만 조합하며 서버로 보내거나 자동 저장하지 않습니다. 도구로 이어가기를 누르면 이 탭의 임시 저장소로 전달하고, 뒤로 왔을 때 이어 쓸 수 있게 입력을 잠시 보관합니다. 경험 작업지는 다음 화면에서 기기 안에 자동 저장합니다. 이름·연락처·비밀번호는 제외하세요.</p><p class="practice-fallback"><a href="/tools/experience-sheet/">경험으로 첫 요청 만들기</a> · <a href="/tools/dev-literacy/">AI 완료보고를 증거로 확인하기</a></p>
+</section>
+<details class="practice-catalog"><summary>내 일에 맞는 다른 도구 찾기</summary>
       <section class="tool-finder" aria-labelledby="tool-finder-title">
         <div class="tool-finder-head">
           <span class="tools-kicker">내 일에 맞는 도구 찾기</span>
@@ -76,6 +84,7 @@
         <div class="tool-finder-results" id="tool-finder-results" aria-live="polite" hidden></div>
       </section>
 
+</details>
       <section class="tools-grid" aria-label="무료 도구 목록">
         <a class="tool-card" href="prompt-gallery/?v=20261026-tools-six3">
           <span class="tag">사진으로 나만의 작품을 만드는 분용</span>
