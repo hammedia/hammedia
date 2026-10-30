@@ -135,6 +135,8 @@
     }
     @media(prefers-reduced-transparency:reduce){.adaptive-nav,.glass-panel{backdrop-filter:none;background:#f8fbfc}.glass-panel{color:#111827}}
     @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+    .style-topbar{margin-bottom:24px}.hero{gap:24px;margin-bottom:18px}h1{font-size:clamp(32px,4vw,50px);line-height:1.16;word-break:keep-all;letter-spacing:-.035em}.hero-copy{max-width:46ch}.howto{display:block;padding:0 16px;background:transparent;border-color:var(--line);margin-bottom:16px}.howto summary,.style-edit-controls>summary,.style-reasons>summary{min-height:44px;padding:12px 0;cursor:pointer;font-size:14px;font-weight:700}.howto p{margin:0 0 16px}.recommend{padding:12px 0;margin-bottom:18px;border:0;background:transparent}.recommend-head{margin-bottom:10px}.style-workbench{margin-top:16px}.style-workbench .workbench-head{margin-bottom:14px}.style-workbench .workbench-head h3{font-size:20px}.style-edit-controls,.style-reasons{border-top:1px solid var(--line);margin-top:16px}.style-edit-controls[open]{padding-bottom:12px}.dialog-body .summary{margin-bottom:14px}.style-export>span:last-child{font-size:12px}.style-export .copy-button{min-height:44px}
+    @media(max-width:720px){h1{font-size:32px;line-height:1.16;letter-spacing:-.025em}.hero{gap:12px}.style-topbar{margin-bottom:22px}.hero-copy{font-size:14px}.recommend-head{gap:3px}.filter-buttons{gap:6px}.filter-button{padding:8px 10px}.howto summary{font-size:13px}.workbench-head{display:block}.workbench-head p{font-size:12px}.style-workbench .design-preview{padding:18px}.style-export{gap:8px}}
   </style>
 </head>
 <body>
@@ -146,11 +148,11 @@
     </header>
 
     <section class="hero" aria-labelledby="page-title">
-      <div><span class="kicker">디자인 스타일 길잡이</span><h1 id="page-title">고른 방향을<br>작은 화면에서 맞춰보세요.</h1></div>
-      <p class="hero-copy">카드를 골라 실제 패널의 종이색·표면·본문·모서리를 비교하고, 간격·강조색·제목 글자를 직접 조절하세요. 대비가 부족하면 화면에서 알려주고, 선택한 값으로 CSS 변수와 디자인 지시서를 저장합니다. 이 결과는 완성 웹사이트가 아닙니다.</p>
+      <div><span class="kicker">디자인 스타일 길잡이</span><h1 id="page-title">보고 고르는<br>디자인 스타일.</h1></div>
+      <p class="hero-copy">시안을 누르면 색·간격·글자를 바꿔보고, CSS와 디자인 지시서를 저장할 수 있습니다.</p>
     </section>
 
-    <div class="howto" aria-label="사용 방법"><strong>이렇게 쓰세요</strong><span>① 결과물에 맞는 스타일을 고릅니다. ② 작은 패널에서 색·간격·서체를 바꿔봅니다. ③ 대비 안내를 읽고 CSS 변수나 지시서를 저장해 실제 작업에 가져갑니다.</span></div>
+    <details class="howto"><summary>처음이라면 · 고르기부터 저장까지</summary><p>스타일을 고른 뒤 내 화면의 글·색·간격을 바꾸세요. 대비 안내를 확인하고 CSS나 지시서를 저장합니다. 미리보기는 완성 웹사이트가 아닙니다.</p></details>
 
     <section class="recommend" aria-labelledby="recommend-title">
       <div class="recommend-head"><strong id="recommend-title">무엇을 만들고 있나요?</strong><span class="filter-status" aria-live="polite">핵심 스타일 12개를 모두 보고 있어요.</span></div>
@@ -253,22 +255,24 @@
     <div class="dialog-head"><div><small id="dialog-number">STYLE 01</small><strong id="dialog-title">Editorial Typography</strong></div><button class="close-button" type="button" aria-label="상세 닫기">✕</button></div>
     <div class="dialog-body">
       <div class="summary"><span class="label">한 문장으로</span><strong id="dialog-summary"></strong></div>
-      <div class="detail-grid"><div class="detail-block"><span class="label">이럴 때 좋아요</span><p id="dialog-best"></p></div><div class="detail-block"><span class="label">이럴 때는 피하세요</span><p id="dialog-avoid"></p></div><div class="detail-block"><span class="label">눈에 보이는 특징</span><p id="dialog-look"></p></div><div class="detail-block"><span class="label">AI에게 더 말할 것</span><p id="dialog-check"></p></div></div>
       <section class="style-workbench" aria-labelledby="workbench-title">
         <div class="workbench-head"><div><span class="label">직접 조합해 보는 CSS 변수</span><h3 id="workbench-title">이 방향을 작은 화면에서 맞춰보세요.</h3></div><p>이 미리보기는 변수 조합의 예입니다. 완성 웹사이트나 접근성 인증 화면은 아닙니다.</p></div>
-        <label class="workbench-input">이 화면의 이름<input id="preview-name" type="text" value="내 첫 화면" autocomplete="off" aria-describedby="preview-name-count"><small class="field-count" id="preview-name-count">0자 · 제한 없음</small></label>
-        <label class="workbench-input">이 화면을 보는 사람<input id="preview-audience" type="text" placeholder="예: 처음 서비스를 찾는 고객" aria-describedby="preview-audience-count"><small class="field-count" id="preview-audience-count">0자 · 제한 없음</small></label>
-        <label class="workbench-input">여기서 가장 먼저 읽힐 내용<textarea id="preview-copy" rows="2" placeholder="예: 내가 어떤 도움을 받을 수 있는지" aria-describedby="preview-copy-count"></textarea><small class="field-count" id="preview-copy-count">0자 · 제한 없음</small></label>
-        <fieldset class="workbench-options"><legend>정보 간격</legend><div role="group" aria-label="미리보기 정보 간격"><button type="button" data-density="airy" aria-pressed="true">여유</button><button type="button" data-density="regular" aria-pressed="false">보통</button><button type="button" data-density="compact" aria-pressed="false">촘촘</button></div></fieldset>
-        <fieldset class="workbench-options"><legend>강조색</legend><div role="group" aria-label="미리보기 강조색"><button type="button" data-accent="blue" aria-pressed="true">하늘 파랑</button><button type="button" data-accent="green" aria-pressed="false">짙은 초록</button><button type="button" data-accent="yellow" aria-pressed="false">따뜻한 노랑</button></div></fieldset>
-        <fieldset class="workbench-options"><legend>제목 글자</legend><div role="group" aria-label="미리보기 제목 글자"><button type="button" data-type="sans" aria-pressed="true">고딕</button><button type="button" data-type="serif" aria-pressed="false">명조</button></div></fieldset>
         <article id="design-preview" class="design-preview" data-style="editorial" aria-label="선택한 디자인 변수의 실제 HTML 패널 미리보기">
           <p id="preview-style-name" class="preview-kicker">Editorial Typography</p><div class="preview-surface"><p id="preview-audience-line" class="preview-audience">보는 사람: 처음 방문한 사람</p><h4 id="preview-title">내 첫 화면</h4><p id="preview-description" class="preview-description">여기에 먼저 읽힐 내용을 적으면 이 패널에 바로 보입니다.</p><span class="preview-action" aria-hidden="true">샘플 버튼 · 동작 없음</span></div>
         </article>
         <p id="contrast-note" class="contrast-note" role="status" aria-live="polite"></p>
         <details class="css-inspector"><summary>실제로 내보낼 CSS 변수와 계산 보기</summary><pre id="css-output-preview"></pre><p>강조색과 종이색의 대비를 계산합니다. 강조색이 본문 글자에 적합하지 않으면 안전한 본문색을 함께 제시합니다.</p></details>
         <div class="style-export"><button class="copy-button" type="button" id="copy-style-css">CSS 변수 복사</button><button class="copy-button secondary" type="button" id="download-style-css">CSS 파일 저장</button><button class="copy-button secondary" type="button" id="download-style-brief">디자인 지시서 저장</button><span id="style-export-status" role="status" aria-live="polite"></span><span>입력은 이 브라우저에서만 미리보기에 쓰고 서버로 보내지 않습니다. 이 도구는 AI를 호출하거나 사이트를 완성하지 않습니다. 이름·연락처 등 민감한 정보는 입력하지 마세요.</span></div>
+        <details class="style-edit-controls"><summary>내 화면의 글·색·간격 바꾸기</summary>        <label class="workbench-input">이 화면의 이름<input id="preview-name" type="text" value="내 첫 화면" autocomplete="off" aria-describedby="preview-name-count"><small class="field-count" id="preview-name-count">0자 · 제한 없음</small></label>
+        <label class="workbench-input">이 화면을 보는 사람<input id="preview-audience" type="text" placeholder="예: 처음 서비스를 찾는 고객" aria-describedby="preview-audience-count"><small class="field-count" id="preview-audience-count">0자 · 제한 없음</small></label>
+        <label class="workbench-input">여기서 가장 먼저 읽힐 내용<textarea id="preview-copy" rows="2" placeholder="예: 내가 어떤 도움을 받을 수 있는지" aria-describedby="preview-copy-count"></textarea><small class="field-count" id="preview-copy-count">0자 · 제한 없음</small></label>
+        <fieldset class="workbench-options"><legend>정보 간격</legend><div role="group" aria-label="미리보기 정보 간격"><button type="button" data-density="airy" aria-pressed="true">여유</button><button type="button" data-density="regular" aria-pressed="false">보통</button><button type="button" data-density="compact" aria-pressed="false">촘촘</button></div></fieldset>
+        <fieldset class="workbench-options"><legend>강조색</legend><div role="group" aria-label="미리보기 강조색"><button type="button" data-accent="blue" aria-pressed="true">하늘 파랑</button><button type="button" data-accent="green" aria-pressed="false">짙은 초록</button><button type="button" data-accent="yellow" aria-pressed="false">따뜻한 노랑</button></div></fieldset>
+        <fieldset class="workbench-options"><legend>제목 글자</legend><div role="group" aria-label="미리보기 제목 글자"><button type="button" data-type="sans" aria-pressed="true">고딕</button><button type="button" data-type="serif" aria-pressed="false">명조</button></div></fieldset>
+</details>
       </section>
+      <details class="style-reasons"><summary>이 스타일의 쓰임과 주의할 점</summary>      <div class="detail-grid"><div class="detail-block"><span class="label">이럴 때 좋아요</span><p id="dialog-best"></p></div><div class="detail-block"><span class="label">이럴 때는 피하세요</span><p id="dialog-avoid"></p></div><div class="detail-block"><span class="label">눈에 보이는 특징</span><p id="dialog-look"></p></div><div class="detail-block"><span class="label">AI에게 더 말할 것</span><p id="dialog-check"></p></div></div>
+</details>
       <div class="copy-box"><span class="label">AI에 붙여넣을 두 문장</span><div class="copy-pair"><div class="copy-part"><small>원하는 방향</small><p class="copy-text" id="dialog-copy"></p></div><div class="copy-part"><small>이번에 하지 않을 것</small><p class="copy-text" id="dialog-dont"></p></div></div><button class="copy-button" type="button">두 문장 함께 복사</button></div>
     </div>
   </dialog>

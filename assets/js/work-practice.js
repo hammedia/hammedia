@@ -74,6 +74,15 @@
     const output=section.querySelector('[data-practice-output]'), status=section.querySelector('[data-practice-status]');
     const example=section.querySelector('[data-practice-example]'), next=section.querySelector('[data-practice-next]');
     const copyButton=section.querySelector('[data-practice-copy]'), saveButton=section.querySelector('[data-practice-save]');
+    const navigation={ko:{edit:'내 내용으로 바꾸기 ↓',result:'바뀐 결과 보기 ↑'},en:{edit:'Use my own details ↓',result:'See the updated result ↑'},ja:{edit:'自分の内容に変える ↓',result:'変更した結果を見る ↑'}}[locale];
+    const result=section.querySelector('.practice-result'), inputs=section.querySelector('.practice-inputs');
+    section.querySelector('.practice-layout').prepend(result);
+    const edit=document.createElement('button');edit.type='button';edit.className='practice-edit';edit.textContent=navigation.edit;
+    edit.addEventListener('click',()=>{goal.focus({preventScroll:true});inputs.scrollIntoView({block:'start',behavior:'auto'});});
+    result.querySelector('.practice-actions').append(edit);
+    const showResult=document.createElement('button');showResult.type='button';showResult.className='practice-show-result';showResult.textContent=navigation.result;
+    showResult.addEventListener('click',()=>{output.focus({preventScroll:true});result.scrollIntoView({block:'start',behavior:'auto'});});inputs.append(showResult);
+    result.querySelector('[data-practice-output-title]').after(section.querySelector('[data-practice-boundary]'));
     const sourceNote=document.createElement('p');sourceNote.className='practice-source-note';sourceNote.textContent=copy.sampleNote;example.after(sourceNote);
     function current() { const c=copy[mode];return sample?{goal:c.exampleGoal,material:c.exampleMaterial}:values[mode]; }
     function render() {
@@ -178,6 +187,14 @@
     a.addEventListener('click',event=>{event.preventDefault();const goal=document.getElementById('goal').value,report=document.getElementById('ai-answer').value;if(!goal.trim()&&!report.trim()){status.textContent='먼저 원하는 결과나 AI 답을 적어주세요.';return;}const text=requestText('check',goal,report,false);transfer(payload('check',goal,report,text,false),a,status);});
     details.append(summary,p,a,status);final.append(details);
   }
-  function start(){document.querySelectorAll('[data-work-practice]').forEach(initPractice);receive();addReviewBridge();}
+  function revealPractice(){
+    if(location.hash!=='#try-my-work')return;
+    const target=document.getElementById('try-my-work');if(!target)return;
+    if(target.matches('details'))target.open=true;
+    requestAnimationFrame(()=>target.scrollIntoView({block:'start',behavior:'auto'}));
+  }
+  function start(){document.querySelectorAll('[data-work-practice]').forEach(initPractice);receive();addReviewBridge();revealPractice();document.fonts?.ready.then(revealPractice);}
+  window.addEventListener('hashchange',revealPractice);
+
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start,{once:true});else start();
 })();
