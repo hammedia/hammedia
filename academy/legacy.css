@@ -1,0 +1,31 @@
+/* Shared Academy identity for the two earlier learning resources. */
+.academy-legacy{--academy-header-h:0px;overflow-wrap:anywhere}
+.academy-legacy .site-header{position:static;grid-template-columns:auto minmax(0,1fr) auto}
+.academy-legacy .site-header>*{min-width:0}
+.academy-legacy .brand strong{font-size:25px}
+.academy-legacy .release-state{line-height:1.5}
+.academy-legacy .site-navigation{flex-wrap:wrap}
+.academy-legacy h1{font-family:KoPub,serif;font-weight:700}
+.academy-legacy .primary-action{text-align:center;border-radius:999px;min-height:52px;font-weight:900}
+.academy-legacy .course-return{display:flex;align-items:center;min-height:44px;justify-content:center;text-align:center;font-size:16px}
+.academy-legacy .eyebrow{text-transform:none}
+.review-progress{border-bottom:1px solid var(--line);padding:10px 18px}
+.review-progress .steps{justify-content:center;gap:12px}
+.review-progress .steps li{width:44px;height:44px}
+.cohort-review .skip-link{color:var(--paper);font-size:16px}
+.cohort-review .brand,.cohort-review .site-navigation a{color:var(--ink)}
+.cohort-review .next-practice{border-top:1px solid var(--line);margin-top:30px;padding-top:24px}
+.cohort-review .next-practice .primary-action{width:100%}
+.muse-guide .current-course{margin:0 0 32px}
+.muse-guide .current-course .sub{margin:10px 0 0}
+.muse-guide .course-context{max-width:42em;color:var(--muted)}
+.muse-guide .guide-footer{flex-wrap:wrap}
+@media(max-width:760px){
+ .academy-legacy .site-header{grid-template-columns:minmax(0,1fr) auto;grid-template-rows:auto auto;gap:2px 12px;min-height:106px;padding-block:10px}
+ .academy-legacy .brand strong{font-size:20px}
+ .academy-legacy .site-navigation{grid-column:1/-1;grid-row:2;justify-content:space-between;gap:6px}
+ .academy-legacy .release-state{grid-column:2;grid-row:1;max-width:11em}
+ .academy-legacy .site-navigation a{font-size:12px;min-height:44px}
+ .muse-guide .opening h1{font-size:clamp(1.75rem,8vw,2.125rem)}
+}
+@media print{.academy-legacy .site-header,.review-progress,.academy-legacy .course-return,.academy-legacy .primary-action{display:none!important}}

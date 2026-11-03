@@ -5,12 +5,14 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow,noarchive">
 <meta name="theme-color" content="#F5F3EE">
-<title>10월 3일 수업, 혼자 다시 해보기 · HAM MEDIA 1기</title>
+<title>지난 수업 · 1기 복습 · HAM MEDIA Academy</title>
 <meta name="description" content="HAM MEDIA 1기 복습. 내 일 하나를 적고, 평소 쓰는 AI에 물어보고, 받은 답을 고쳐 글 파일로 남깁니다.">
-<meta property="og:title" content="10월 3일 수업, 혼자 다시 해보기 · HAM MEDIA 1기">
+<meta property="og:title" content="지난 수업 · 1기 복습 · HAM MEDIA Academy">
 <meta property="og:description" content="한 화면에 한 가지씩. 내 일 하나를 AI에게 물어보고, 고쳐서, 내 휴대폰에 남깁니다.">
 <meta property="og:url" content="https://hammedia.co.kr/academy/cohort-01/">
 <meta property="og:type" content="website">
+<link rel="icon" href="../classroom/assets/favicon.svg">
+<link rel="stylesheet" href="../styles.css">
 <style>
 @font-face{font-family:Pretendard;src:url("../../ham-media-archive/assets/fonts/Pretendard-Regular.otf") format("opentype");font-weight:400;font-display:swap}
 @font-face{font-family:Pretendard;src:url("../../ham-media-archive/assets/fonts/Pretendard-Medium.otf") format("opentype");font-weight:600 900;font-display:swap}
@@ -65,21 +67,26 @@ footer{max-width:620px;margin:0 auto;padding:0 18px 40px;font-size:15px;color:va
 @media (min-width:700px){h1{font-size:34px}}
 @media print{.top,.nav,.ai,button,.more,footer{display:none!important}.js .screen{display:block!important}}
 </style>
+<link rel="stylesheet" href="../legacy.css">
 </head>
-<body>
-<header class="top">
-  <a href="https://hammedia.co.kr/academy/">HAM MEDIA 아카데미</a>
-  <ol class="steps" aria-label="복습 다섯 단계" id="steps">
-    <li>1</li><li>2</li><li>3</li><li>4</li><li>5</li>
-  </ol>
+<body class="academy-legacy cohort-review">
+<a class="skip-link" href="#main">본문으로 바로가기</a>
+<header class="site-header wrap">
+  <a class="brand" href="/academy/" aria-label="HAM MEDIA Academy 소개로 이동"><span>HAM MEDIA</span><strong>Academy</strong></a>
+  <nav class="site-navigation" aria-label="회사 전체 메뉴"><a href="/">회사 홈</a><a href="/academy/">아카데미 소개</a><a href="/tools/">무료 도구</a></nav>
+  <div class="release-state" aria-label="이 자료의 구분"><span>지난 수업 자료</span><strong>1기 · 10월 3일</strong></div>
 </header>
+<div class="review-progress"><ol class="steps" aria-label="복습 다섯 단계" id="steps"><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li></ol></div>
 
 <main id="main">
+  <p class="status warn" id="storage-status" role="status" aria-live="polite" hidden></p>
   <!-- 1. 문 -->
   <section class="screen" id="s1" aria-labelledby="t1">
-    <p class="kicker">1기 복습 · 10월 3일 수업</p>
+    <p class="kicker">지난 수업 · 1기 복습 · 10월 3일</p>
     <h1 id="t1">수업에서 해 본 것을,<br>내 일로 한 번 더 해 봅니다.</h1>
-    <p class="lead">한 화면에 한 가지씩, 다섯 번이면 끝납니다.</p>
+    <p class="lead">10월 3일 수업에서 해 본 일을 다시 연습하는 자료입니다. 현재 과정은 <strong>바른생활 · 새 일곱 강</strong>입니다.</p>
+    <button type="button" data-go="2">시작하기</button>
+    <a class="text-action course-return" href="/academy/classroom/">새 일곱 강으로 이어가기 →</a>
     <div class="box">
       <b>끝나면 남는 것</b>
       내 일 하나에 대해 AI에게 받은 답을 내가 고친 <strong>글 한 장</strong>이 휴대폰에 파일로 남습니다.
@@ -90,7 +97,6 @@ footer{max-width:620px;margin:0 auto;padding:0 18px 40px;font-size:15px;color:va
     </div>
     <p class="note">여기에 쓰는 글은 이 휴대폰에만 저장됩니다. 저희 서버로 보내지 않습니다.</p>
     <p class="note" id="resume" hidden>지난번에 쓰던 내용이 이 휴대폰에 남아 있어서 이어서 보여 드립니다.</p>
-    <button type="button" data-go="2">시작하기</button>
   </section>
 
   <!-- 2. 내 일 적기 -->
@@ -139,8 +145,8 @@ footer{max-width:620px;margin:0 auto;padding:0 18px 40px;font-size:15px;color:va
   <!-- 4. 답 고치기 -->
   <section class="screen" id="s4" aria-labelledby="t4">
     <p class="kicker">4 / 5 · 답 고치기</p>
-    <h2 id="t4">받은 답을 읽고,<br>한 번만 고쳐 달라고 하세요.</h2>
-    <p>첫 답은 대개 내 상황을 다 모릅니다. 마음에 안 드는 곳을 하나 골라 <b>같은 대화에</b> 아래 말을 보내세요.</p>
+    <h2 id="t4">받은 답을 읽고,<br>내 일에 맞는지 살펴보세요.</h2>
+    <p>내가 알려준 사실인지, 읽을 사람에게 말투와 길이가 맞는지 살펴보세요. <strong>이미 쓸 만하다면 그대로 써도 됩니다.</strong> 고칠 곳이 있으면 하나를 골라 <b>같은 대화에</b> 아래 말을 보내세요.</p>
     <div class="chips" id="chips">
       <button type="button" class="sub" data-fix="더 짧게, 휴대폰 한 화면에 들어오게 다시 써 주세요.">더 짧게 해 달라고 하기</button>
       <button type="button" class="sub" data-fix="어려운 말을 빼고, 처음 보는 손님도 바로 알아듣게 쉬운 말로 다시 써 주세요.">더 쉬운 말로 해 달라고 하기</button>
@@ -171,12 +177,18 @@ footer{max-width:620px;margin:0 auto;padding:0 18px 40px;font-size:15px;color:va
     <button type="button" id="download">글 파일로 저장하기</button>
     <button type="button" class="sub" id="copyAll">전체 내용 복사하기</button>
     <p class="status" id="st5" role="status" aria-live="polite"></p>
-    <p class="note">카카오톡 안에서 저장이 안 되면, 화면의 점 세 개 메뉴에서 <b>다른 브라우저로 열기</b>(아이폰은 <b>Safari로 열기</b>)를 누른 뒤 다시 저장하세요. 저장한 파일은 휴대폰의 다운로드 폴더에 있습니다.</p>
+    <p class="note">카카오톡 안에서 저장이 안 되면, 먼저 <b>전체 내용 복사하기</b>로 메모장에 보관하세요. 다른 브라우저에는 작성 내용이 자동으로 옮겨지지 않습니다. 복사한 뒤 화면의 점 세 개 메뉴에서 <b>다른 브라우저로 열기</b>(아이폰은 <b>Safari로 열기</b>)를 누른 뒤 다시 저장하세요. 저장한 파일은 휴대폰의 다운로드 폴더에 있습니다.</p>
 
+    <div class="next-practice">
+      <h2>다음에도 혼자 해보려면</h2>
+      <p>저장한 파일을 다시 열어 <strong>내가 쓸 답과 다시 쓸 때</strong>가 남았는지 확인하세요. 다른 기기로 옮길 때는 이 파일도 함께 가져가세요. 입력한 내용은 기기 사이에서 자동으로 옮겨지지 않습니다.</p>
+      <p>다음에는 같은 일에서 바뀐 상황 하나를 AI에게 알려주세요. 답이 내 사실과 맞는지 읽고, 그대로 쓸지 고칠지 정해보세요.</p>
+      <p class="note">현재 과정에서도 이 일을 이어가세요. 새 대화라면 막힌 곳·가진 것·쓸 답을 함께 알려주면 됩니다.</p>
+      <a class="primary-action" href="/academy/classroom/">1강 무료로 시작하기</a>
+    </div>
     <h2 style="margin-top:28px">더 해 보고 싶다면</h2>
     <ul class="more">
-      <li><a href="https://hammedia.co.kr/academy/#interest-form" class="primary-more">다음 과정 소식 받기<span>결제·신청이 아니라, 열리면 이메일로 알려 드리는 한 줄입니다</span></a></li>
-      <li><a href="https://hammedia.co.kr/academy/classroom/">아카데미 무료 1~7강<span>내가 겪은 일 하나를 AI와 대화로 정리하는 수업</span></a></li>
+      <li><a href="https://hammedia.co.kr/academy/#interest-form">다음 과정 소식 받기<span>결제·신청이 아니라, 열리면 이메일로 알려 드리는 한 줄입니다</span></a></li>
       <li><a href="../muse/">Muse 첫 사용 안내<span>수업에서 소개한 Meta의 AI · 지금 한국에서 쓸 수 있는지부터 봅니다</span></a></li>
       <li><a href="https://hammedia.co.kr/book/preview/">햄PD 책 무료 미리보기<span>『아무도 나를 채용하지 않는다면, 내가 먼저 나를 채용하면 된다』</span></a></li>
       <li><a href="class/">10월 3일 수업 때 본 전체 자료<span>수업 화면·예시·참고 작품을 모두 담은 긴 페이지</span></a></li>
@@ -193,8 +205,12 @@ footer{max-width:620px;margin:0 auto;padding:0 18px 40px;font-size:15px;color:va
   var KEY='ham-academy-cohort01-v4';
   var FIELDS=['moment','material','wish','changed-line','final-answer','next-use'];
   var $=function(id){return document.getElementById(id)};
+  function storageWarning(){
+    $('storage-status').hidden=false;
+    $('storage-status').textContent='이 브라우저에서 자동 저장이 안 됩니다. 창을 닫거나 옮기기 전에 마지막 화면에서 전체 내용을 복사하거나 글 파일로 보관하세요.';
+  }
   var saved={};
-  try{saved=JSON.parse(localStorage.getItem(KEY))||{}}catch(e){saved={}}
+  try{saved=JSON.parse(localStorage.getItem(KEY))||{}}catch(e){saved={};storageWarning()}
   var had=false;
   FIELDS.forEach(function(id){if(saved[id]){$(id).value=saved[id];had=true}});
   if(had)$('resume').hidden=false;
@@ -204,7 +220,8 @@ footer{max-width:620px;margin:0 auto;padding:0 18px 40px;font-size:15px;color:va
       var v={};try{v=JSON.parse(localStorage.getItem(KEY))||{}}catch(e){}
       FIELDS.forEach(function(id){v[id]=$(id).value});
       localStorage.setItem(KEY,JSON.stringify(v));
-    }catch(e){}
+      $('storage-status').hidden=true;
+    }catch(e){storageWarning()}
   }
   FIELDS.forEach(function(id){$(id).addEventListener('input',save)});
 
@@ -218,7 +235,12 @@ footer{max-width:620px;margin:0 auto;padding:0 18px 40px;font-size:15px;color:va
   }
 
   var current=1;
-  function show(n){
+  function stepFromHash(){
+    if(location.hash==='#workshop')return 5;
+    var n=parseInt(location.hash.slice(1),10);
+    return n>=1&&n<=5?n:1;
+  }
+  function show(n,writeHistory){
     current=n;
     for(var i=1;i<=5;i++){
       $('s'+i).classList.toggle('on',i===n);
@@ -229,9 +251,11 @@ footer{max-width:620px;margin:0 auto;padding:0 18px 40px;font-size:15px;color:va
     if(n===3)$('request').textContent=request();
     window.scrollTo(0,0);
     var h=$('s'+n).querySelector('h1,h2');h.setAttribute('tabindex','-1');h.focus({preventScroll:true});
-    if(location.hash!=='#'+n)try{history.pushState(null,'','#'+n)}catch(e){}
+    var rect=h.getBoundingClientRect();
+    if(rect.top<0||rect.bottom>window.innerHeight)h.scrollIntoView({block:'nearest',behavior:'instant'});
+    if(writeHistory!==false&&location.hash!=='#'+n)try{history.pushState(null,'','#'+n)}catch(e){}
   }
-  window.addEventListener('popstate',function(){var n=parseInt(location.hash.slice(1),10);show(n>=1&&n<=5?n:1)});
+  window.addEventListener('popstate',function(){show(stepFromHash(),false)});
   document.querySelectorAll('[data-go]').forEach(function(b){b.addEventListener('click',function(){show(parseInt(b.dataset.go,10))})});
 
   $('to3').addEventListener('click',function(){
@@ -250,12 +274,12 @@ footer{max-width:620px;margin:0 auto;padding:0 18px 40px;font-size:15px;color:va
       var t=document.createElement('textarea');t.value=text;t.setAttribute('readonly','');t.style.position='fixed';t.style.top='-1000px';document.body.appendChild(t);t.select();
       var done=false;try{done=document.execCommand('copy')}catch(e){}
       document.body.removeChild(t);
-      if(done)ok();else{$(out).className='status warn';$(out).textContent='자동 복사가 안 됩니다. 위 글을 길게 눌러 직접 복사해 주세요.'}
+      if(done)ok();else{$(out).className='status warn';$(out).textContent='자동 복사가 안 됩니다. 아래 문장을 길게 눌러 직접 복사해 주세요.\n'+text}
     }
     if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(text).then(ok,fallback)}else fallback();
   }
   $('copyRequest').addEventListener('click',function(){copy(request(),'st3')});
-  document.querySelectorAll('[data-fix]').forEach(function(b){b.addEventListener('click',function(){copy(b.dataset.fix,'st4')})});
+  document.querySelectorAll('[data-fix]').forEach(function(b){b.addEventListener('click',function(){if(!val('changed-line')){$('changed-line').value=b.dataset.fix;save()}copy(b.dataset.fix,'st4')})});
   $('copyFix').addEventListener('click',function(){
     if(!val('changed-line')){$('st4').className='status warn';$('st4').textContent='고쳐 달라고 할 말을 먼저 적어 주세요.';$('changed-line').focus();return}
     copy('방금 답에서 이 부분을 고쳐 주세요.\n\n'+val('changed-line')+'\n\n나머지 사실은 그대로 두세요.','st4');
@@ -267,7 +291,7 @@ footer{max-width:620px;margin:0 auto;padding:0 18px 40px;font-size:15px;color:va
       '■ 막힌 곳\n'+val('moment')+'\n\n'+
       '■ 가진 것\n'+val('material')+'\n\n'+
       '■ 원한 답\n'+val('wish')+'\n\n'+
-      '■ AI에게 다시 부탁한 것\n'+(val('changed-line')||'(따로 고쳐 달라고 하지 않음)')+'\n\n'+
+      '■ AI에게 다시 부탁한 것\n'+(val('changed-line')||'(이 칸에 남긴 수정 요청 없음)')+'\n\n'+
       '■ 내가 쓸 답\n'+val('final-answer')+'\n\n'+
       '■ 다시 쓸 때\n'+val('next-use')+'\n\n'+
       '※ AI 답은 사실인지 내가 한 번 더 확인하고 씁니다.\n';
@@ -281,7 +305,7 @@ footer{max-width:620px;margin:0 auto;padding:0 18px 40px;font-size:15px;color:va
     var ua=(navigator.userAgent||'').toUpperCase();
     if(ua.indexOf('KAKAOTALK')>-1){
       $('st5').className='status warn';
-      $('st5').textContent='카카오톡 안에서는 파일 저장이 막힐 수 있습니다. 화면의 점 세 개 메뉴에서 「다른 브라우저로 열기」(아이폰은 「Safari로 열기」)를 누른 뒤 다시 저장하거나, 아래 「전체 내용 복사하기」로 메모장에 붙여넣으세요.';
+      $('st5').textContent='카카오톡 안에서는 파일 저장이 막힐 수 있습니다. 먼저 「전체 내용 복사하기」로 메모장에 보관하세요. 다른 브라우저에는 작성 내용이 자동으로 옮겨지지 않습니다. 복사한 뒤 점 세 개 메뉴에서 「다른 브라우저로 열기」(아이폰은 「Safari로 열기」)를 누르세요.';
       return;
     }
     try{
@@ -302,7 +326,7 @@ footer{max-width:620px;margin:0 auto;padding:0 18px 40px;font-size:15px;color:va
     FIELDS.forEach(function(id){$(id).value=''});$('resume').hidden=true;show(1);
   });
 
-  var start=parseInt(location.hash.slice(1),10);
+  var start=stepFromHash();
   history.replaceState(null,'','#'+(start>=1&&start<=5?start:1));
   show(start>=1&&start<=5?start:1);
 })();
