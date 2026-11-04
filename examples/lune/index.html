@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>LUNÉ 루네 | 옷가게 홈페이지 제작예시 · HAM MEDIA</title>
+<meta name="description" content="가상 패션 브랜드 LUNÉ의 다섯 룩과 상품 선택을 직접 경험하세요. HAM MEDIA 홈페이지 제작예시. 실제 판매·결제 없음.">
+<meta name="robots" content="noindex,follow">
+<meta name="theme-color" content="#14110f">
+<link rel="stylesheet" href="lune.css">
+</head>
+<body>
+<a class="skip" href="#rail-sec">본문으로 건너뛰기</a>
+
+<div class="demo-bar"><a href="../../services/#web-work">HAM MEDIA 제작예시</a><span>가상 브랜드 · 실제 판매 없음</span></div>
+
+<header class="nav">
+  <a class="logo" href="#hero" aria-label="LUNÉ 루네 홈">LUNÉ<small>루네</small></a>
+  <nav class="nav-links" aria-label="주요 메뉴">
+    <a href="#hero">룩북</a>
+    <a href="#rail-sec">이 룩의 상품</a>
+    <a href="#collection">컬렉션</a>
+  </nav>
+  <button class="cart-btn" id="cartOpen" aria-haspopup="dialog" aria-controls="cartDrawer"><span class="t">가상 장바구니</span><span class="cart-count" id="cartCount" aria-live="polite">0</span></button>
+</header>
+
+<main>
+<section class="hero" id="hero" aria-roledescription="carousel" aria-label="LUNÉ 다섯 룩">
+  <div class="hero-bg"><div class="hero-word" id="heroWord">LUNÉ</div><div class="hero-glow"></div></div>
+  <div class="stage" id="stage"></div>
+  <div class="floor"></div>
+  <div class="hero-ui">
+    <div class="hero-title">
+      <div class="eyebrow">LUNÉ Lookbook</div>
+      <h1>한 벌에서 시작되는<br> 다섯 장면</h1>
+      <p>AI 캐릭터 윤도해가 입은 다섯 룩.<br> 사진의 포인트를 눌러 상품을 골라보세요.</p>
+    </div>
+    <div class="look-meta" aria-live="polite">
+      <div class="look-no" id="lookNo">01</div>
+      <div class="look-name" id="lookName"></div>
+      <div class="look-model">AI 캐릭터 · 윤도해</div>
+    </div>
+    <div class="ctrls">
+      <button class="arrow" id="prev" aria-label="이전 룩"><span>←</span></button>
+      <div class="dots" id="dots" role="group" aria-label="룩 선택"></div>
+      <button class="arrow" id="next" aria-label="다음 룩"><span>→</span></button>
+    </div>
+  </div>
+  <a class="items-link" href="#rail-sec">선택한 룩의 상품 보기 ↓</a>
+</section>
+
+<section class="rail-sec" id="rail-sec" aria-labelledby="railTitle">
+  <div class="sec-head rv">
+    <div><div class="eyebrow" id="railEyebrow">Look 01 · Shop the look</div><h2 id="railTitle">이 룩의 아이템</h2></div>
+    <p>이미지·상품·가격은 제작예시입니다. 색상과 사이즈 선택, 장바구니까지 직접 써보세요.</p>
+  </div>
+  <div class="rail" id="rail" tabindex="0" aria-label="현재 룩의 상품 목록"></div>
+</section>
+
+<section class="grid-sec" id="collection" aria-labelledby="gridTitle">
+  <div class="sec-head rv">
+    <div><div class="eyebrow">Collection</div><h2 id="gridTitle">전체 컬렉션</h2></div>
+    <p>룩을 고르면 위 사진과 상품이 함께 바뀝니다.</p>
+  </div>
+  <div class="grid" id="grid"></div>
+</section>
+<section class="enquiry" aria-labelledby="enquiry-title">
+  <h2 id="enquiry-title">우리 가게의 화면도 이렇게.</h2>
+  <p>가진 사진과 상품 정보, 만들고 싶은 화면을 알려주세요. 필요한 제작 범위와 일정·비용은 상담 후 서면 견적에서 정합니다.</p>
+  <a class="consult" href="../../quote/?service=page&amp;source=lune-example#quote-request-form">이런 홈페이지 제작 상담하기 ↗</a>
+  <a class="home-return" href="../../">HAM MEDIA 홈으로 돌아가기</a>
+</section>
+</main>
+
+<footer>
+  <span class="logo">LUNÉ</span>
+  <p>LUNÉ(루네)는 HAM MEDIA의 홈페이지 제작예시를 위한 가상 브랜드입니다. 이미지 속 인물은 AI 캐릭터 윤도해이며 상품과 가격은 예시입니다. 실제 판매·주문·결제는 진행되지 않습니다.</p>
+  <a class="home-return" href="../../services/#web-work">다른 홈페이지 작업 보기</a>
+</footer>
+
+<noscript><p class="nojs">룩 전환과 가상 장바구니에는 JavaScript가 필요합니다. <a href="../../services/">제작 서비스 보기</a></p></noscript>
+
+<dialog class="drawer" id="quick" aria-labelledby="qName">
+  <div class="d-head"><h3>상품 자세히 보기</h3><button class="x" data-close aria-label="닫기">✕</button></div>
+  <div class="d-body">
+    <div class="q-img" id="qImg"><img alt="" id="qImgEl" loading="lazy"></div>
+    <h4 class="q-name" id="qName" tabindex="-1"></h4>
+    <div class="q-price"><em>예시가</em><span id="qPrice"></span></div>
+    <p class="q-note">제작예시 상품 · 실제 판매 없음. 아래는 선택 기능을 보여주는 예시 옵션이며 사진은 바뀌지 않습니다.</p>
+    <div class="lbl">예시 색상 · <span id="qColorName"></span></div>
+    <div class="chips" id="qColors" role="group" aria-label="예시 색상"></div>
+    <div class="lbl" id="sizeLabel">예시 사이즈</div>
+    <div class="chips" id="qSizes" role="group" aria-labelledby="sizeLabel"></div>
+  </div>
+  <div class="d-foot">
+    <div class="err" id="qErr" role="alert"></div>
+    <button class="btn" id="qAdd">가상 장바구니에 담기</button>
+  </div>
+</dialog>
+
+<dialog class="drawer" id="cartDrawer" aria-labelledby="cartTitle">
+  <div class="d-head"><h3 id="cartTitle" tabindex="-1">가상 장바구니</h3><button class="x" data-close aria-label="닫기">✕</button></div>
+  <div class="d-body" id="cartBody"></div>
+  <div class="d-foot">
+    <div class="sum"><span>예시 합계</span><b id="cartTotal">₩0</b></div>
+    <p class="cart-note">선택을 체험하는 가상 장바구니입니다. 주문·결제·주소 입력은 없습니다. 새로고침하면 비워집니다.</p><a class="btn" href="../../quote/?service=page&amp;source=lune-example#quote-request-form">이런 홈페이지 제작 상담하기 ↗</a>
+    <button class="btn ghost" data-close>룩 계속 둘러보기</button>
+  </div>
+</dialog>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="lune.js" defer></script>
+</body>
+</html>
