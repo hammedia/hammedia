@@ -52,6 +52,7 @@ LOOKS.forEach(function(L,i){
     var it=L.items[h.p];
     var b=document.createElement("button");b.className="hot";
     b.style.left=h.x+"%";b.style.top=h.y+"%";
+    b.setAttribute("aria-label",it[1]+" 상세 보기");
     b.innerHTML='<span class="dot"></span><span class="tip">'+it[1]+'</span>';
     b.tabIndex=-1;
     b.addEventListener("click",function(e){e.stopPropagation();if(i===cur)openQuick(i,h.p)});
@@ -123,7 +124,6 @@ function renderRail(){
   var r=$("#rail");r.innerHTML="";r.scrollLeft=0;
   LOOKS[cur].items.forEach(function(it,pi){
     var b=document.createElement("button");b.className="pcard";
-    b.setAttribute("aria-label",it[1]+(it[0]==="p1_tote"?" 코디에 더할 예시 · 착장 사진에는 미포함":"")+" 예시가"+fmt(it[2])+" 상세 보기");
     b.appendChild(thumb(it[0],""));
     var n=document.createElement("div");n.className="pname";n.textContent=it[1];
     var p=document.createElement("div");p.className="pprice";p.innerHTML="<em>예시가</em>"+fmt(it[2]);
