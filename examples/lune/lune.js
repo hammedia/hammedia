@@ -90,7 +90,7 @@ function layout(){
     var sc=1-a*.04;
     c.style.transform="translate3d("+x+"px,calc(-50% + "+(a*14)+"px),"+z+"px) rotateY("+ry+"deg) scale("+sc+")";
     c.style.opacity=a>2?0:(a===0?1:Math.max(.0,.62-(a-1)*.3));
-    
+
     c.style.zIndex=String(50-a*5);
     c.style.pointerEvents=a>2?"none":"auto";
     c.classList.toggle("active",a===0);
