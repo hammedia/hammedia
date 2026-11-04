@@ -2,10 +2,15 @@ const root = document.getElementById("camera-pair-experience");
 const canvas = root?.querySelector("[data-camera-pair-canvas]");
 const photoDetail = document.querySelector("#camera-photo-room .room-house-photo-detail");
 
+const pairPhotoSources = new Set(Array.from(root?.querySelectorAll(".camera-pair-evidence img") || [], image => image.src));
+
 if (photoDetail) {
   const addSceneLink = () => {
     const actions = photoDetail.querySelector(".room-gallery-detail-actions");
-    if (!actions || actions.querySelector(".camera-detail-experience-link")) return;
+    if (!actions) return;
+    const isPairPhoto = pairPhotoSources.has(photoDetail.querySelector(".room-gallery-detail-photo")?.src);
+    if (!isPairPhoto) { actions.querySelector(".camera-detail-experience-link")?.remove(); return; }
+    if (actions.querySelector(".camera-detail-experience-link")) return;
     const link = document.createElement("a");
     link.className = "room-gallery-detail-button camera-detail-experience-link";
     link.href = "#camera-pair-experience";
