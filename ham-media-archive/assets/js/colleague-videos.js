@@ -69,11 +69,16 @@
     }
     card.wantSound = false;
   }
+  function canPlay(card) {
+    var panel = card.box.closest('.showcase-panel');
+    return !panel || !panel.hidden;
+  }
   function start(card, sound) {
+    if (!canPlay(card)) return;
     cards.forEach(function (other) { if (other !== card) stop(other); });
     active = card; card.wantSound = !!sound;
     function play() {
-      if (active !== card || document.hidden || !card.visible) return;
+      if (active !== card || document.hidden || !card.visible || !canPlay(card)) return;
       card.player.mute();
       if (card.wantSound) { card.player.setVolume(100); card.player.unMute(); }
       card.player.playVideo(); update(card);
@@ -135,11 +140,11 @@
   }
   function choose() {
     if (document.hidden || reduced.matches) return;
-    if (active && active.visible && !active.ended) {
+    if (active && active.visible && canPlay(active) && !active.ended) {
       if (active.ready && !active.paused && active.player.getPlayerState() === 2) start(active);
       return;
     }
-    var next = cards.find(function (card) { return card.visible && !card.paused && !card.ended; });
+    var next = cards.find(function (card) { return card.visible && canPlay(card) && !card.paused && !card.ended; });
     if (next) start(next);
   }
   if ('IntersectionObserver' in window) {
@@ -154,6 +159,10 @@
     }, {threshold: [0, 0.51]});
     cards.forEach(function (card) { observer.observe(card.box); });
   } else { cards.forEach(function (card) { card.visible = true; }); }
+  document.addEventListener('ham:workchange', function () {
+    cards.forEach(function (card) { if (!canPlay(card)) stop(card); });
+    choose();
+  });
   document.addEventListener('visibilitychange', function () {
     if (document.hidden) cards.forEach(stop);
     else if (active && active.visible && !active.paused && !active.ended) start(active);
