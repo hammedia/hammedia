@@ -1,0 +1,81 @@
+/* Food Star: approved palette and source content; shared main.js owns all record routes. */
+html { scroll-snap-type: none; scroll-behavior: auto; }
+body[data-star-reference="food"] { --ref-accent: var(--color-green); min-width: 0; }
+body[data-star-reference="food"] .scene-dots { display: none; }
+/* Reading must not vanish when another section becomes nearest to the viewport. */
+.motion-ready body[data-star-reference="food"] .scene,
+.motion-ready body[data-star-reference="food"] .scene .reveal,
+.motion-ready body[data-star-reference="food"] .scene .word {
+  opacity: 1; transform: none; will-change: auto;
+}
+body[data-star-reference="food"] .entry-nav { background: transparent; }
+body[data-star-reference="food"] .entry-link { cursor: pointer; }
+body[data-star-reference="food"] .entry-stamps { position: relative; inset: auto; margin: 24px 0; }
+body[data-star-reference="food"] main:has(> .room-house-panel:not([hidden])) > :not(.room-house-panel) { display: none; }
+body[data-star-reference="food"] .room-house-panel {
+  position: relative; inset: auto; z-index: auto; overflow: visible;
+  width: min(1120px, calc(100% - 64px)); margin: 32px auto 64px;
+  padding: 24px 0; background: var(--color-cream); min-height: calc(100svh - 120px);
+}
+body[data-star-reference="food"] .room-house-panel-header { padding: 0 24px 24px; }
+body[data-star-reference="food"] .room-house-panel > :not(.room-house-panel-header) { width: calc(100% - 48px); }
+body[data-star-reference="food"] .room-context-nav { display: flex; flex-wrap: wrap; }
+body[data-star-reference="food"] .room-context-nav a { display: inline-flex; align-items: center; min-height: 44px; padding: 8px 12px; }
+body[data-star-reference="food"] .room-article-panel { overflow-wrap: break-word; }
+body[data-star-reference="food"] .room-house-photo-grid { grid-template-columns: repeat(3,minmax(0,1fr)); }
+body[data-star-reference="food"] .room-house-photo { cursor: zoom-in; }
+body[data-star-reference="food"] h2, body[data-star-reference="food"] h3 { overflow-wrap: break-word; }
+.food-taste-index { max-width: 1280px; padding: 64px 32px; margin: auto; }
+.food-taste-index h2 { font: 500 clamp(32px,4vw,48px)/1.4 var(--font-star); margin: 16px 0 40px; }
+.food-taste-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 32px; }
+.food-taste-grid > a { display: grid; gap: 12px; color: var(--color-espresso); text-decoration: none; min-width: 0; padding-bottom: 16px; border-bottom: 1px solid var(--color-plate); }
+.food-taste-grid img { aspect-ratio: 4/3; object-fit: cover; }
+.food-taste-grid span { color: var(--color-green); font-size: 13px; }
+.food-taste-grid strong { font: 500 24px/1.5 var(--font-star); }
+.food-taste-grid small { font-size: 14px; min-height: 24px; }
+.food-map-entry { margin-top: 32px; min-height: 48px; padding: 12px 20px; border: 1px solid var(--color-espresso); background: var(--color-door); color: var(--color-espresso); border-radius: 4px; cursor: pointer; }
+.food-record-links { display: flex; flex-wrap: wrap; gap: 8px 20px; margin: 24px 0 0; }
+.food-record-links a, .room-record-related, .food-company-link a { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; color: var(--color-green); text-underline-offset: 5px; line-height: 1.7; }
+.food-record-links a { border-bottom: 1px solid var(--color-plate); text-decoration: none; }
+.food-gallery-note, .food-map-intro { font-size: 17px; line-height: 1.85; }
+.food-memory-map { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+.food-memory-map section { border-top: 3px solid var(--color-door); padding: 24px 0; min-width: 0; }
+.food-memory-map h3, .food-company-link h3 { font: 500 28px/1.5 var(--font-star); margin: 12px 0; }
+.food-memory-map p { font-size: 16px; line-height: 1.85; }
+.food-memory-map .food-record-links { flex-direction: column; align-items: flex-start; }
+.food-company-link { margin-top: 40px; padding: 24px 0; border-top: 1px solid var(--color-plate); }
+.food-company-link p { line-height: 1.85; }
+body[data-star-reference="food"] .star-signal { display: inline-block; vertical-align: middle; }
+@media(max-width:900px) {
+  .food-taste-grid { gap: 24px; }
+  .food-taste-grid strong { font-size: 21px; }
+  body[data-star-reference="food"] .room-house-photo-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+}
+@media(max-width:600px) {
+  .food-taste-index { padding: 40px 20px; }
+  .food-taste-index h2 { margin-bottom: 24px; }
+  .food-taste-grid { grid-template-columns: 1fr 1fr; gap: 24px 16px; }
+  .food-taste-grid strong { font-size: 19px; }
+  .food-taste-grid small { font-size: 13px; }
+  .food-memory-map { grid-template-columns: 1fr; gap: 16px; }
+  body[data-star-reference="food"] .room-house-panel { width: calc(100% - 32px); margin: 16px auto 40px; }
+  body[data-star-reference="food"] .room-house-panel-header { padding-inline: 12px; }
+  body[data-star-reference="food"] .room-house-panel > :not(.room-house-panel-header) { width: calc(100% - 24px); }
+  body[data-star-reference="food"] .room-house-panel-header h2 { font-size: 28px; }
+  body[data-star-reference="food"] .room-context-nav { gap: 6px; }
+  body[data-star-reference="food"] .room-context-nav button, body[data-star-reference="food"] .room-context-nav a { font-size: 14px; padding-inline: 10px; }
+  body[data-star-reference="food"] .room-house-photo-grid { grid-template-columns: 1fr; gap: 24px; }
+  body[data-star-reference="food"] .entry-nav { gap: 4px; padding: 0; }
+}
+
+/* Each detail owns one context bar; the parent list header stays out of the reading view. */
+.room-house-page .room-house-panel.is-detail-mode > .room-house-panel-header,
+.room-house-page .room-house-panel.is-photo-detail-mode > .room-house-panel-header { display: none; }
+
+@media (min-width:601px) and (max-width:1000px) {
+ body[data-star-reference="food"] .entry-nav { grid-template-columns: repeat(2,minmax(0,1fr)); }
+}
+body[data-star-reference="food"] .entry-link { word-break: keep-all; overflow-wrap: normal; }
+
+body[data-star-reference="food"] .kicker .star-signal { background: var(--color-green); box-shadow: none; outline: none; }
+body[data-star-reference="food"] .star-button.active .star-signal { background: var(--color-espresso); box-shadow: none; outline: none; }
