@@ -79,3 +79,12 @@ body[data-star-reference="food"] .entry-link { word-break: keep-all; overflow-wr
 
 body[data-star-reference="food"] .kicker .star-signal { background: var(--color-green); box-shadow: none; outline: none; }
 body[data-star-reference="food"] .star-button.active .star-signal { background: var(--color-espresso); box-shadow: none; outline: none; }
+
+/* API review, verified against the actual photos: keep the full remembered frame. */
+body.star-reference[data-star-reference="food"] .photo-frame img { height: auto; max-height: none; object-fit: contain; }
+body.star-reference[data-star-reference="food"] .scene-photo-page > .entry-photo-page { aspect-ratio: auto; height: auto; }
+body.star-reference[data-star-reference="food"] .scene-photo-page > .entry-photo-page img { height: auto; object-fit: contain; }
+body.star-reference[data-star-reference="food"] .star-exit { block-size: auto; min-block-size: 0; overflow: visible; scroll-snap-align: none; }
+body.star-reference[data-star-reference="food"] .room-article-link strong { white-space: normal; overflow: visible; text-overflow: clip; }
+.food-sense-note { margin: 0; padding: 12px 0 12px 24px; border-left: 3px solid var(--color-door); }
+.food-sense-note p { margin: 0; font: 500 clamp(22px,2.7vw,32px)/1.8 var(--font-star); }
