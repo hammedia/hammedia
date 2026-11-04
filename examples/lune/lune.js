@@ -138,8 +138,7 @@ function renderRail(){
 var g=$("#grid");
 LOOKS.forEach(function(L,i){
   var b=document.createElement("button");b.className="gitem rv";
-  b.setAttribute("aria-label","룩 "+(i+1)+" "+L.name+" 보기");
-  var im=new Image();im.alt="AI 캐릭터 윤도해 · "+L.desc;im.width=864;im.height=1152;im.loading="lazy";im.decoding="async";im.src=L.img;
+  var im=new Image();im.alt="";im.width=864;im.height=1152;im.loading="lazy";im.decoding="async";im.src=L.img;
   im.onerror=function(){b.classList.add("noimg")};
   b.appendChild(im);
   var cap=document.createElement("div");cap.className="cap";
