@@ -1,0 +1,29 @@
+/* Camera records follow the eye: starting, trading viewpoints, looking again. */
+body[data-star-reference="camera"] .camera-record-links{display:flex;flex-wrap:wrap;gap:12px 28px;margin:24px 0}
+body[data-star-reference="camera"] .camera-record-links a{display:inline-flex;align-items:center;gap:12px;min-height:44px;max-width:100%;padding:8px 0;color:inherit;font:500 16px/1.7 Pretendard,sans-serif;text-decoration:underline;text-underline-offset:6px;word-break:keep-all;overflow-wrap:anywhere}
+body[data-star-reference="camera"] .camera-record-links a span{flex-shrink:0}
+body[data-star-reference="camera"] .camera-map-intro{max-width:38em;font:400 19px/1.85 Pretendard,sans-serif;margin:16px 0 48px}
+body[data-star-reference="camera"] .camera-record-map{display:grid;gap:48px}
+body[data-star-reference="camera"] .camera-record-trail{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:48px;border-top:1px solid #b7bcc066;padding-top:28px;word-break:keep-all;overflow-wrap:anywhere}
+body[data-star-reference="camera"] .camera-map-number{color:inherit;opacity:.7;font-size:14px;letter-spacing:.12em;margin:0 0 12px}
+body[data-star-reference="camera"] .camera-record-trail h3{font:500 clamp(23px,3vw,32px)/1.5 Paperlogy,Pretendard,sans-serif;margin:0 0 14px}
+body[data-star-reference="camera"] .camera-record-trail p{line-height:1.85}
+body[data-star-reference="camera"] .camera-record-trail nav{display:grid;align-content:start}
+body[data-star-reference="camera"] .camera-record-trail a{display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:52px;padding:12px 0;border-bottom:1px solid #b7bcc033;color:inherit;text-decoration:none;font:400 17px/1.7 Pretendard,sans-serif}
+body[data-star-reference="camera"] .camera-record-trail a:hover{color:#4f8f7a;text-decoration:underline;text-underline-offset:5px}
+body[data-star-reference="camera"] .camera-map-all{margin-top:48px;padding-top:24px;border-top:1px solid #b7bcc066;display:flex;flex-wrap:wrap;gap:16px 28px}
+body[data-star-reference="camera"] .camera-map-all p{flex-basis:100%;margin:0;line-height:1.8}
+body[data-star-reference="camera"] .camera-map-all button{color:inherit;min-height:48px;background:transparent;border:0;border-bottom:1px solid currentColor;border-radius:0;padding:8px 0;font:500 16px/1.7 Pretendard,sans-serif}
+body[data-star-reference="camera"] .room-record-return{display:block;margin:0 0 24px;min-height:44px;white-space:normal;word-break:keep-all}
+body[data-star-reference="camera"] .room-record-related{display:block;max-width:740px;min-height:44px;margin:24px auto;padding:8px 0;color:inherit;font:500 16px/1.7 Pretendard,sans-serif;text-underline-offset:5px}
+body[data-star-reference="camera"] .camera-pick-comparison a{display:inline-block;min-height:44px;margin-top:12px;color:inherit;text-underline-offset:5px;line-height:1.7}
+body[data-star-reference="camera"] :is(.section-intro,.camera-record-links,.camera-map-intro,.room-house-panel){word-break:keep-all;overflow-wrap:anywhere}
+@media(max-width:700px){
+ body[data-star-reference="camera"] .camera-record-trail{grid-template-columns:1fr;gap:12px}
+ body[data-star-reference="camera"] .camera-record-map{gap:32px}
+ body[data-star-reference="camera"] .camera-map-intro{font-size:17px;margin-bottom:32px}
+}
+
+/* The scene panel is film black; new return and related-record links need the same light ink as its existing controls. */
+body[data-star-reference="camera"] #camera-photo-room :is(.room-record-return,.room-record-related){color:#efe5d2;border-color:#efe5d299}
+body[data-star-reference="camera"] #camera-photo-room :is(.room-record-return,.room-record-related):focus-visible{outline:2px solid #a6d2c1;outline-offset:4px}
