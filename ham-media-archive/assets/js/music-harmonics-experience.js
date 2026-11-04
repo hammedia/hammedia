@@ -157,6 +157,7 @@ if (musicHarmonics) {
     } catch {}
     contextToClose.close().catch(() => {});
     cleanClosedContext();
+    setStatus("소리를 멈췄습니다. 다시 들으려면 ‘작게 듣기’를 누르세요.");
   };
 
   const startAudio = async () => {
@@ -242,6 +243,7 @@ if (musicHarmonics) {
       else stopAudio("다른 탭으로 이동해 소리를 멈추고 있습니다.");
     }
   });
+  document.addEventListener("music-audio-stop", hardStopAudio);
   window.addEventListener("pagehide", hardStopAudio);
   reducedMotion.addEventListener?.("change", requestWaveFrame);
 

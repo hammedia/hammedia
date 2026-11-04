@@ -4,22 +4,68 @@
   var page = document.querySelector(".audio-style-page");
   if (!page) return;
 
-  Array.prototype.forEach.call(page.querySelectorAll(".audio-v2-video-launch"), function (button) {
+  // Keep one manually chosen player. Remove its frame when leaving a record;
+  // re-navigating a hidden YouTube frame can add child-frame history entries.
+  var players = [];
+  function stopPlayers(focus) {
+    players.forEach(function (player) { player.stop(focus); });
+  }
+  function bindPlayer(button, template, source, title, owner) {
+    var frame = null, stop = null;
+    var player = { owner: owner, stop: function (focus) {
+      if (!frame) return;
+      frame.remove(); frame = null;
+      stop.remove(); stop = null;
+      button.hidden = false;
+      if (focus) button.focus({ preventScroll: true });
+    }};
+    players.push(player);
     button.addEventListener("click", function () {
-      var videoId = button.getAttribute("data-youtube-id");
-      var title = button.getAttribute("data-youtube-title") || "우리끼리오디오 영상";
-      if (!videoId) return;
-
-      var frame = document.createElement("iframe");
-      frame.className = "audio-v2-video-frame";
+      stopPlayers(false);
+      document.dispatchEvent(new Event("music-audio-stop"));
+      frame = template ? template.cloneNode(false) : document.createElement("iframe");
+      if (!template) frame.className = "audio-v2-video-frame";
       frame.title = title;
-      frame.src = "https://www.youtube-nocookie.com/embed/" + encodeURIComponent(videoId) + "?autoplay=1&rel=0";
+      var url = new URL(source);
+      url.searchParams.set("autoplay", "1");
+      url.searchParams.set("playsinline", "1");
+      url.searchParams.set("rel", "0");
+      frame.src = url.href;
       frame.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
       frame.referrerPolicy = "strict-origin-when-cross-origin";
       frame.allowFullscreen = true;
-      button.replaceWith(frame);
+      stop = document.createElement("button");
+      stop.type = "button"; stop.className = "audio-video-stop";
+      stop.textContent = "재생 닫기 · " + title;
+      stop.addEventListener("click", function () { player.stop(true); });
+      button.hidden = true; button.after(frame); frame.after(stop);
+      stop.focus({ preventScroll: true });
     });
+  }
+  Array.prototype.forEach.call(page.querySelectorAll(".audio-v2-video-launch"), function (button) {
+    var id = button.getAttribute("data-youtube-id");
+    if (!id) return;
+    bindPlayer(button, null, "https://www.youtube-nocookie.com/embed/" + encodeURIComponent(id), button.getAttribute("data-youtube-title") || "우리끼리오디오 영상", null);
   });
+  Array.prototype.forEach.call(page.querySelectorAll(".room-article-panel iframe"), function (template) {
+    var button = document.createElement("button");
+    button.type = "button"; button.className = "audio-article-video-launch";
+    button.textContent = "이 연주 재생 · " + template.title;
+    var owner = template.closest(".room-article-panel");
+    bindPlayer(button, template, template.src, template.title, owner);
+    template.replaceWith(button);
+  });
+  function syncListeningVisibility() {
+    var panelOpen = Boolean(page.querySelector(".room-house-panel:not([hidden])"));
+    players.forEach(function (player) {
+      if (document.hidden || (player.owner ? player.owner.hidden : panelOpen)) player.stop(false);
+    });
+    if (panelOpen) document.dispatchEvent(new Event("music-audio-stop"));
+  }
+  new MutationObserver(syncListeningVisibility).observe(page, { subtree: true, attributes: true, attributeFilter: ["hidden"] });
+  document.addEventListener("visibilitychange", syncListeningVisibility);
+  window.addEventListener("pagehide", function () { stopPlayers(false); });
+  page.querySelector("[data-harmonic-start]")?.addEventListener("click", function () { stopPlayers(false); });
 
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var hero = page.querySelector(".audio-v2-hero");
