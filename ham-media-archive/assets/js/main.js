@@ -944,6 +944,8 @@ function buildRoomHouse() {
   // The reference renewal keeps room/list/detail state in browser history.
   // Other room pages continue to use their existing navigation.
   const referenceRouting = document.body.classList.contains("star-reference");
+  const recordLinks = referenceRouting && housePage.dataset.roomRecordLinks === "true";
+  if (recordLinks && photoDetail && !photoDetail.id) photoDetail.id = `${photoPanel.id}-detail`;
   let routingReady = false, restoringRoute = false, focusSequence = 0;
   function saveRoute(type, id = "", index = -1, replace = false, keepReturnAnchor = false) {
     if (!referenceRouting || !routingReady || restoringRoute) return;
@@ -954,9 +956,21 @@ function buildRoomHouse() {
       window.history.replaceState({ ...window.history.state, hamStar: { ...old, scroll: window.scrollY, focus: active?.id || "" } }, "", window.location.href);
     }
     const route = { type, id, index, depth: old.depth + (replace ? 0 : 1) };
-    const hash = type === "home" ? "" : type === "photo" ? `#${photoPanel.id}-photo-${index + 1}` : `#${id}`;
+    if (recordLinks) {
+      route.from = replace ? old.from : { type: old.type, id: old.id, index: old.index };
+      if (type === "photo") route.photoId = photoFigures[index]?.id || "";
+    }
+    const hash = type === "home" ? "" : type === "photo" ? (route.photoId ? `#${route.photoId}` : `#${photoPanel.id}-photo-${index + 1}`) : `#${id}`;
     window.history[replace ? "replaceState" : "pushState"]({ hamStar: route }, "", `${window.location.pathname}${window.location.search}${hash}`);
   }
+  function rememberRecordPosition() {
+    if (!recordLinks || !routingReady || restoringRoute) return;
+    const route = window.history.state?.hamStar || { type: "home", depth: 0 };
+    const active = document.activeElement;
+    if (active && active !== document.body && !active.id) active.id = `star-return-${++focusSequence}`;
+    window.history.replaceState({ ...window.history.state, hamStar: { ...route, scroll: window.scrollY, focus: active?.id || "" } }, "", window.location.href);
+  }
+
   function restoreFocus(element) {
     if (!referenceRouting || !element) return;
     if (!element.hasAttribute("tabindex") && !element.matches("button,a,input,select,textarea")) element.tabIndex = -1;
@@ -1279,6 +1293,10 @@ function buildRoomHouse() {
   });
 
   function returnToArticleList() {
+    if (recordLinks && (window.history.state?.hamStar?.from?.type !== "panel" || window.history.state?.hamStar?.from?.id !== contextTargets.article)) {
+      openHousePanel(contextTargets.article);
+      return;
+    }
     if (returnInHistory("panel", contextTargets.article)) return;
     syncArticleHash();
     closeArticles();
@@ -1289,13 +1307,13 @@ function buildRoomHouse() {
     });
   }
 
-  function openArticleAt(index) {
+  function openArticleAt(index, keepReturnAnchor = false) {
     const link = articleLinks[index];
     const target = link ? housePage.querySelector(`#${link.dataset.articleTarget}`) : null;
     if (!target) return;
 
     const replacingDetail = articlePanels.some(panel => !panel.hidden);
-    saveRoute("article", target.id, -1, replacingDetail);
+    saveRoute("article", target.id, -1, replacingDetail, keepReturnAnchor);
     closePhotoDetail();
     closeArticles();
     if (articleList) articleList.hidden = true;
@@ -1305,6 +1323,7 @@ function buildRoomHouse() {
     link.classList.add("is-active");
     link.setAttribute("aria-expanded", "true");
     syncArticleHash(target.id);
+    syncRecordReturn(target);
     restoreFocus(target.querySelector("h2,h3") || target);
     target.scrollIntoView({
       behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
@@ -1322,8 +1341,10 @@ function buildRoomHouse() {
     const parentPanel = target?.closest(".room-house-panel");
     if (!target || !parentPanel) return false;
 
+    rememberRecordPosition();
     closePanels();
     parentPanel.hidden = false;
+    if (recordLinks) syncPanelContextNav(parentPanel);
 
     const door = doors.find((button) => button.dataset.houseTarget === parentPanel.id);
     if (door) {
@@ -1331,7 +1352,41 @@ function buildRoomHouse() {
       door.setAttribute("aria-expanded", "true");
     }
 
-    openArticleAt(index);
+    openArticleAt(index, recordLinks);
+    return true;
+  }
+
+  function syncRecordReturn(container) {
+    if (!recordLinks) return;
+    container.querySelector(":scope > .room-record-return")?.remove();
+    const route = window.history.state?.hamStar;
+    const origin = route?.from;
+    let label = origin?.type === "article" ? "보던 문장으로 돌아가기" : origin?.type === "photo" ? "보던 장면으로 돌아가기" : origin?.id === contextTargets.map ? "지도에서 보던 자리로 돌아가기" : "";
+    if (!label || !(route.depth > 0)) return;
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "room-gallery-detail-button room-record-return";
+    button.id = `${container.id || contextTargets.photo}-record-return`;
+    button.textContent = label;
+    button.addEventListener("click", () => window.history.back());
+    container.prepend(button);
+  }
+
+  function openPhotoById(figureId) {
+    if (!recordLinks || !photoPanel || !photoDetail) return false;
+    syncPhotoFigures();
+    const index = photoFigures.findIndex(figure => figure.id === figureId);
+    if (index < 0) return false;
+    rememberRecordPosition();
+    closePanels();
+    photoPanel.hidden = false;
+    syncPanelContextNav(photoPanel);
+    doors.forEach(door => {
+      const active = door.dataset.houseTarget === photoPanel.id;
+      door.classList.toggle("is-active", active);
+      door.setAttribute("aria-expanded", String(active));
+    });
+    openHousePhoto(index, true);
     return true;
   }
 
@@ -1403,6 +1458,10 @@ function buildRoomHouse() {
   });
 
   function returnToPhotoList() {
+    if (recordLinks && (window.history.state?.hamStar?.from?.type !== "panel" || window.history.state?.hamStar?.from?.id !== contextTargets.photo)) {
+      openHousePanel(contextTargets.photo);
+      return;
+    }
     if (returnInHistory("panel", contextTargets.photo)) return;
     const selected = photoFigures.find(figure => figure.classList.contains("is-active"));
     closePhotoDetail();
@@ -1410,14 +1469,14 @@ function buildRoomHouse() {
     scrollToElement(selected || photoGrid);
   }
 
-  function openHousePhoto(index) {
+  function openHousePhoto(index, keepReturnAnchor = false) {
     const figure = photoFigures[index];
     const image = figure?.querySelector("img");
     if (!figure || !image || !photoDetail) return;
 
     const captionText = figure.dataset.memory || figure.querySelector("figcaption")?.textContent.trim() || image.alt || "아직 기록할 기억을 기다리는 사진입니다.";
 
-    saveRoute("photo", photoPanel.id, index, !photoDetail.hidden);
+    saveRoute("photo", photoPanel.id, index, !photoDetail.hidden, keepReturnAnchor);
     photoDetail.replaceChildren();
 
     const actions = document.createElement("div");
@@ -1474,6 +1533,20 @@ function buildRoomHouse() {
 
     nav.append(previousButton, nextButton);
     photoDetail.append(...[contextNav, actions, detailImage, detailCopy, nav].filter(Boolean));
+    if (recordLinks && figure.dataset.relatedArticle) {
+      const article = articlePanels.find(panel => panel.id === figure.dataset.relatedArticle);
+      const title = article?.querySelector("h2,h3")?.textContent.trim();
+      if (article && title) {
+        const related = document.createElement("a");
+        related.className = "room-record-related";
+        related.id = `${figure.id || `room-photo-${index}`}-article-link`;
+        related.href = `#${article.id}`;
+        related.dataset.roomArticleTarget = article.id;
+        related.textContent = `이 사진이 실린 글 · ${title} →`;
+        photoDetail.append(related);
+      }
+    }
+    syncRecordReturn(photoDetail);
     photoDetail.hidden = false;
     photoPanel?.classList.add("is-photo-detail-mode");
     housePage.classList.add("is-reading-mode");
@@ -1513,6 +1586,24 @@ function buildRoomHouse() {
     });
   });
 
+  if (recordLinks) {
+    housePage.addEventListener("click", event => {
+      if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      const source = event.target instanceof Element ? event.target : event.target?.parentElement;
+      const link = source?.closest("a[data-room-article-target],a[data-room-photo-target]");
+      if (!link || !housePage.contains(link)) return;
+      const id = link.dataset.roomArticleTarget || link.dataset.roomPhotoTarget;
+      const target = document.getElementById(id);
+      if (!target || link.getAttribute("href") !== `#${id}`) return;
+      const valid = link.dataset.roomArticleTarget ? articlePanels.includes(target) : photoFigures.includes(target);
+      if (!valid) return;
+      event.preventDefault();
+      link.focus({ preventScroll: true });
+      if (link.dataset.roomArticleTarget) openArticleById(id);
+      else openPhotoById(id);
+    });
+  }
+
   if (referenceRouting) {
     function focusAndScrollToAnchor(target, route) {
       if (!target || Number.isFinite(route.scroll)) return;
@@ -1544,7 +1635,12 @@ function buildRoomHouse() {
           if (parentArticle?.id === route.id) setAnchorRoute(route, anchor);
         }
       }
-      else if (route.type === "photo") { openHousePanel(contextTargets.photo); openHousePhoto(route.index); }
+      else if (route.type === "photo") {
+        openHousePanel(contextTargets.photo);
+        syncPhotoFigures();
+        const stableIndex = recordLinks && route.photoId ? photoFigures.findIndex(figure => figure.id === route.photoId) : -1;
+        openHousePhoto(stableIndex >= 0 ? stableIndex : route.index);
+      }
       else if (route.type === "panel") {
         openHousePanel(route.id);
         if (route.anchor) {
@@ -1568,6 +1664,7 @@ function buildRoomHouse() {
       const photo = hash.match(/^(.*-photo-room)-photo-(\d+)$/);
       if (photo) return { type: "photo", id: photo[1], index: Number(photo[2]) - 1, depth: 0 };
       const target = document.getElementById(hash);
+      if (recordLinks && photoFigures.includes(target)) return { type: "photo", id: photoPanel.id, index: photoFigures.indexOf(target), photoId: target.id, depth: 0 };
       const parentArticle = target?.closest(".room-article-panel");
       if (parentArticle && target !== parentArticle && articlePanels.includes(parentArticle)) {
         return { type: "article", id: parentArticle.id, anchor: hash, depth: 0 };
