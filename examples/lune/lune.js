@@ -23,6 +23,16 @@ var LOOKS=[
   hot:[{x:50,y:30,p:0},{x:50,y:66,p:1},{x:50,y:92,p:2},{x:40,y:18,p:99}],
   items:[["p4_blouse","아이보리 실크 블라우스",119000],["p4_trousers","블랙 와이드 트라우저",139000],["p4_slingback","누드 슬링백",159000]]}
 ];
+// Verified alternate image assets. Look 01 keeps its original front photograph.
+LOOKS.forEach(function(L,i){if(i>0)L.q="assets/looks/look"+i+"_threequarter.webp"});
+LOOKS[1].hot.push({x:30,y:46,p:3});
+var quarterHot={
+  1:[{x:48,y:33,p:0},{x:49,y:65,p:1},{x:49,y:92,p:2},{x:32,y:44,p:3}],
+  2:[{x:53,y:34,p:0},{x:52,y:39,p:1},{x:52,y:92,p:2},{x:43,y:46,p:3}],
+  3:[{x:51,y:29,p:0},{x:50,y:60,p:1},{x:50,y:90,p:2}],
+  4:[{x:51,y:30,p:0},{x:50,y:65,p:1},{x:50,y:92,p:2}]
+};
+var angles=[false,false,false,false,false];
 var COLORS=[["#1b1713","블랙"],["#d9c7a8","베이지"],["#f1ebe0","아이보리"],["#6b5a3e","브라운"]];
 var SIZES=["XS","S","M","L"];
 var fmt=function(n){return "₩"+n.toLocaleString("ko-KR")};
@@ -54,8 +64,8 @@ LOOKS.forEach(function(L,i){
     b.style.left=h.x+"%";b.style.top=h.y+"%";
     b.setAttribute("aria-label",it[1]+" 상세 보기");
     b.innerHTML='<span class="dot"></span><span class="tip">'+it[1]+'</span>';
-    b.tabIndex=-1;
-    b.addEventListener("click",function(e){e.stopPropagation();if(i===cur)openQuick(i,h.p)});
+    b.tabIndex=-1;b.dataset.productIndex=h.p;
+    b.addEventListener("click",function(e){e.stopPropagation();if(i===cur)openQuick(i,h.p,b)});
     hs.appendChild(b);
   });
   c.appendChild(hs);
@@ -107,8 +117,24 @@ function update(){
   $("#railEyebrow").textContent="Look "+String(cur+1).padStart(2,"0")+" · Shop the look";
   $("#railTitle").textContent=L.name+" · 이 룩의 아이템";
   renderRail();
+  renderAngle();
   layout();
 }
+function renderAngle(){
+  var L=LOOKS[cur],quarter=!!(L.q&&angles[cur]);
+  $("#angleControls").hidden=!L.q;
+  $("#angleFront").setAttribute("aria-pressed",quarter?"false":"true");
+  $("#angleQuarter").setAttribute("aria-pressed",quarter?"true":"false");
+  cards.forEach(function(c,i){
+    var li=LOOKS[i],q=i===cur&&quarter,im=c.querySelector("img"),src=q?li.q:li.img;
+    if(im.getAttribute("src")!==src){c.classList.remove("noimg");im.src=src}
+    im.alt="AI 캐릭터 윤도해 착장 제작예시 · "+li.name+(q?" · 3/4 각도":" · 정면");
+    im.onload=function(){c.classList.remove("noimg")};
+    c.querySelectorAll(".hot").forEach(function(b){var p=Number(b.dataset.productIndex),h=(q?quarterHot[i]:li.hot).find(function(h){return h.p===p});if(h){b.style.left=h.x+"%";b.style.top=h.y+"%"}});
+  });
+}
+$("#angleFront").addEventListener("click",function(){angles[cur]=false;renderAngle()});
+$("#angleQuarter").addEventListener("click",function(){if(LOOKS[cur].q){angles[cur]=true;renderAngle()}});
 function go(i){cur=((i%N)+N)%N;update()}
 function step(d){go(cur+d)}
 
@@ -127,8 +153,8 @@ function renderRail(){
     b.appendChild(thumb(it[0],""));
     var n=document.createElement("div");n.className="pname";n.textContent=it[1];
     var p=document.createElement("div");p.className="pprice";p.innerHTML="<em>예시가</em>"+fmt(it[2]);
-    b.appendChild(n);if(it[0]==="p1_tote"){var note=document.createElement("small");note.className="extra-item";note.textContent="코디에 더할 예시 · 착장 사진에는 미포함";b.appendChild(note)}b.appendChild(p);var hint=document.createElement("span");hint.className="sr-only";hint.textContent=" 상세 보기";b.appendChild(hint);
-    b.addEventListener("click",function(){openQuick(cur,pi)});
+    b.appendChild(n);b.appendChild(p);var hint=document.createElement("span");hint.className="sr-only";hint.textContent=" 상세 보기";b.appendChild(hint);
+    b.addEventListener("click",function(){openQuick(cur,pi,b)});
     r.appendChild(b);
   });
   if(!reduce){r.classList.remove("swap");void r.offsetWidth;r.classList.add("swap")}
@@ -151,7 +177,8 @@ LOOKS.forEach(function(L,i){
 
 /* quick view */
 var qState={look:0,pi:0,color:0,size:null};
-function openQuick(li,pi){
+function openQuick(li,pi,trigger){
+  if(trigger)trigger.focus({preventScroll:true});
   if(modalClosing){pendingModal={id:"quick",look:li,pi:pi,focus:document.activeElement};return}
   var it=LOOKS[li].items[pi];if(!it)return;
   qState={look:li,pi:pi,color:0,size:null};
@@ -340,4 +367,12 @@ if("IntersectionObserver" in window&&!reduce){
 /* init */
 renderCart();
 update();
+
+/* Real website-use recording: manual playback only. */
+var useDemo=$("#useDemo"),demoToggle=$("#demoToggle");
+function syncDemo(){var playing=!useDemo.paused&&!useDemo.ended;demoToggle.textContent=playing?"시연 일시정지":"시연 재생";demoToggle.setAttribute("aria-pressed",playing?"true":"false")}
+demoToggle.addEventListener("click",function(){if(useDemo.paused){useDemo.play().catch(function(){$("#demoStatus").textContent="재생 버튼을 다시 누르거나 영상 파일을 열어주세요."})}else useDemo.pause()});
+["play","pause","ended"].forEach(function(e){useDemo.addEventListener(e,syncDemo)});
+$("#demoSpeed").addEventListener("change",function(){useDemo.playbackRate=Number(this.value)});
+
 })();

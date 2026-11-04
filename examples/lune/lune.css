@@ -219,3 +219,21 @@ section[id]{scroll-margin-top:84px}
 @media(min-width:901px){.hero-title h1 br{display:none}.hero-title p br{display:none}.hero-title h1{margin:6px 0}.hero-title p{font-size:13px}.look-no{font-size:58px}.look-meta{bottom:110px}.card .frame{box-shadow:0 14px 40px rgba(0,0,0,.25)}}
 
 .extra-item{display:block;color:var(--mute);font-size:11px;line-height:1.5;margin-top:6px}
+
+/* Angle choices change the actual photograph, separate from card perspective. */
+.angle-controls{position:absolute;top:100px;left:0;right:0;z-index:25;text-align:center;pointer-events:auto}
+.angle-controls[hidden]{display:none}.angle-buttons{display:inline-flex;border:1px solid var(--line);border-radius:3px;padding:3px;gap:3px;background:var(--bg)}
+.angle-buttons button{padding:7px 14px;min-height:36px;font-size:12px;border-radius:2px;letter-spacing:0}
+.angle-buttons button[aria-pressed="true"]{background:var(--accent);color:var(--bg)}
+.angle-controls small{display:block;font-size:10px;color:var(--mute);margin-top:4px}
+.demo-film{max-width:960px;margin:auto;padding:60px 24px;border-top:1px solid var(--line)}
+.demo-film h2{font-family:var(--serif);font-size:clamp(28px,4vw,40px);font-weight:500}
+.demo-film>p{color:var(--mute);max-width:600px;margin:14px 0 28px}
+.demo-film video{display:block;width:min(100%,360px);max-height:75svh;margin:24px auto;background:#14110f;aspect-ratio:9/16;border:1px solid var(--line);border-radius:4px}
+.demo-film details{max-width:580px;margin:20px auto;font-size:13px}.demo-film summary{cursor:pointer;min-height:36px}.demo-film details p{color:var(--mute);line-height:1.7}
+@media(max-width:900px){.angle-controls{top:121px}.angle-buttons button{min-height:32px;padding:4px 14px}.angle-controls small{font-size:9px}.stage{inset:180px 0 130px}}
+@media(prefers-reduced-motion:reduce){.angle-controls *{transition:none!important}}
+
+@media(max-width:360px){.angle-controls{top:166px}}
+
+.film-controls{display:flex;justify-content:center;align-items:center;gap:12px;flex-wrap:wrap;margin:16px 0}.film-controls button,.film-controls select{font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:4px;min-height:44px;padding:8px 14px}.film-controls label{font-size:13px;color:var(--mute)}.demo-film .film-status{font-size:13px;margin:0;color:var(--mute)}

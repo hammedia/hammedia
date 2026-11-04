@@ -40,6 +40,11 @@
       <div class="look-name" id="lookName"></div>
       <div class="look-model">AI 캐릭터 · 윤도해</div>
     </div>
+    <div class="angle-controls" id="angleControls" hidden>
+      <div class="angle-buttons" role="group" aria-label="선택한 룩의 사진 각도">
+        <button id="angleFront" aria-pressed="true">정면</button><button id="angleQuarter" aria-pressed="false">3/4 각도</button>
+      </div><small>AI 착장·각도 제작예시</small>
+    </div>
     <div class="ctrls">
       <button class="arrow" id="prev" aria-label="이전 룩"><span>←</span></button>
       <div class="dots" id="dots" role="group" aria-label="룩 선택"></div>
@@ -63,6 +68,18 @@
     <p>룩을 고르면 위 사진과 상품이 함께 바뀝니다.</p>
   </div>
   <div class="grid" id="grid"></div>
+</section>
+<section class="demo-film" aria-labelledby="demoFilmTitle">
+  <h2 id="demoFilmTitle">옷가게 홈페이지 사용시연</h2>
+  <p>룩 고르기부터 상품 선택, 가상 장바구니와 제작상담까지. 실제 화면을 조작한 무음 시연입니다.</p>
+  <video id="useDemo" controls playsinline preload="none" poster="assets/media/use-demo-poster.webp" aria-labelledby="demoFilmTitle" aria-describedby="demoFilmSteps">
+    <source src="assets/media/lune-use-demo.mp4" type="video/mp4">
+    <track kind="captions" src="assets/media/use-demo.ko.vtt" srclang="ko" label="한국어 설명">
+    <a href="assets/media/lune-use-demo.mp4">사용시연 영상 파일 보기</a>
+  </video>
+  <div class="film-controls"><button id="demoToggle" aria-controls="useDemo" aria-pressed="false">시연 재생</button><label for="demoSpeed">재생 속도</label><select id="demoSpeed"><option value="1">1배</option><option value="0.75">0.75배</option><option value="0.5">0.5배</option></select></div>
+  <p class="film-status" id="demoStatus" role="status"></p>
+  <details id="demoFilmSteps"><summary>시연 순서 읽기</summary><p>다섯 룩을 고르고, 정면과 다른 각도를 봅니다. 사진의 포인트를 눌러 상품 상세를 열고 예시 옵션을 선택합니다. 가상 장바구니에서 수량과 합계를 확인한 뒤 제작상담 화면을 열고 회사 홈으로 돌아갑니다. 실제 주문·결제·문의 제출은 진행하지 않습니다.</p></details>
 </section>
 <section class="enquiry" aria-labelledby="enquiry-title">
   <h2 id="enquiry-title">우리 가게의 화면도 이렇게.</h2>
