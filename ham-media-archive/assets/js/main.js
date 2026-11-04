@@ -957,7 +957,7 @@ function buildRoomHouse() {
     }
     const route = { type, id, index, depth: old.depth + (replace ? 0 : 1) };
     if (recordLinks) {
-      route.from = replace ? old.from : { type: old.type, id: old.id, index: old.index };
+      route.from = replace ? old.from : { type: old.type, id: old.id, index: old.index, label: document.activeElement?.dataset.roomReturnLabel || "" };
       if (type === "photo") route.photoId = photoFigures[index]?.id || "";
     }
     const hash = type === "home" ? "" : type === "photo" ? (route.photoId ? `#${route.photoId}` : `#${photoPanel.id}-photo-${index + 1}`) : `#${id}`;
@@ -1361,7 +1361,7 @@ function buildRoomHouse() {
     container.querySelector(":scope > .room-record-return")?.remove();
     const route = window.history.state?.hamStar;
     const origin = route?.from;
-    let label = origin?.type === "article" ? "보던 문장으로 돌아가기" : origin?.type === "photo" ? "보던 장면으로 돌아가기" : origin?.id === contextTargets.map ? "지도에서 보던 자리로 돌아가기" : "";
+    let label = origin?.label || (origin?.type === "article" ? "보던 문장으로 돌아가기" : origin?.type === "photo" ? "보던 장면으로 돌아가기" : origin?.id === contextTargets.map ? "지도에서 보던 자리로 돌아가기" : ["home", "anchor"].includes(origin?.type) ? "보던 자리로 돌아가기" : "");
     if (!label || !(route.depth > 0)) return;
     const button = document.createElement("button");
     button.type = "button";
@@ -1458,7 +1458,7 @@ function buildRoomHouse() {
   });
 
   function returnToPhotoList() {
-    if (recordLinks && (window.history.state?.hamStar?.from?.type !== "panel" || window.history.state?.hamStar?.from?.id !== contextTargets.photo)) {
+    if (recordLinks && (window.history.state?.hamStar?.from?.label || window.history.state?.hamStar?.from?.type !== "panel" || window.history.state?.hamStar?.from?.id !== contextTargets.photo)) {
       openHousePanel(contextTargets.photo);
       return;
     }
