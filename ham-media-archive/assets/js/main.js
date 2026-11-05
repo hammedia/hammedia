@@ -1721,7 +1721,7 @@ function buildRoomHouse() {
     window.addEventListener("popstate", event => { if (event.state?.hamStar) showRoute(event.state.hamStar); });
     window.addEventListener("hashchange", () => { if (!window.history.state?.hamStar) { const route = hashRoute(); showRoute(route); window.history.replaceState({ hamStar: route }, "", window.location.href); } });
     housePage.addEventListener("keydown", event => {
-      if (event.key !== "Escape" || event.target.closest("dialog")) return;
+      if (event.key !== "Escape" || event.isComposing || event.target.closest("dialog,input,textarea,select,[contenteditable]:not([contenteditable=false])")) return;
       if (photoDetail && !photoDetail.hidden) {
         const recordReturn = recordLinks ? photoDetail.querySelector(":scope > .room-record-return") : null;
         if (recordReturn) recordReturn.click();

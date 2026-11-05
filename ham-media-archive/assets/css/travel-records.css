@@ -68,3 +68,27 @@ body[data-star-reference="travel"] h3 { overflow-wrap: break-word; }
 @media (max-width: 480px) {
  body[data-star-reference="travel"] .rail-map { grid-template-columns: repeat(3,minmax(0,1fr)); }
 }
+
+/* API review: visible focus on paper, readable metadata, clear no-script text. */
+body[data-star-reference="travel"] :is(a,button):focus-visible { outline: 3px solid #7a5230; outline-offset: 4px; }
+body[data-star-reference="travel"] :is(.journey-hero,.room-doors,.ocean-world) :is(a,button):focus-visible { outline-color: #e3b85d; }
+body[data-star-reference="travel"] :is(.hero-code,.door-index,.door-link small,.room-doors-head p) { color: #e8e1d2; }
+body[data-star-reference="travel"] .stop-copy h3 { max-width: none; }
+body[data-star-reference="travel"] .journey-manifesto p { --manifesto-blur: 0px; --manifesto-shift: 0px; }
+body[data-star-reference="travel"] .travel-essay-photo { background: transparent; }
+body[data-star-reference="travel"] .ocean-world__status { font-size: 12px; }
+body[data-star-reference="travel"] :is(.ocean-world__weather-source,.ocean-world__footnote,.ocean-world__memory small) { font-size: 11px; }
+body[data-star-reference="travel"] .ocean-world__eyebrow { font-size: 11px; }
+body[data-star-reference="travel"] .ocean-world__controls { flex-wrap: wrap; }
+@media (max-width: 920px) {
+ body[data-star-reference="travel"] .memory-rail :is(a,button):focus-visible { outline-color: #e3b85d; }
+ body[data-star-reference="travel"] .journey-hero { display: flex; flex-direction: column; width: calc(100% - 40px); margin: 56px auto; min-height: 0; }
+ body[data-star-reference="travel"] .travel-hero-photo-link .hero-image { height: auto; }
+}
+@media (min-width: 921px) {
+ body[data-star-reference="travel"] .memory-rail { height: auto; padding: 24px 0; }
+ body[data-star-reference="travel"] .rail-map { height: min(50vh,520px); }
+}
+@media (prefers-reduced-motion: reduce) {
+ body[data-star-reference="travel"] .journey-manifesto p { filter: none; transform: none; }
+}
