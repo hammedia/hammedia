@@ -40,3 +40,6 @@ body.star-reference[data-star-reference=motorcycle] .star-list .star-pill.is-cur
 body.star-reference[data-star-reference=motorcycle] .star-list .star-pill.is-current .star-signal { --signal-color:var(--color-ivory); }
 /* A reading panel follows the document; keyboard and history share one scroll surface. */
 body.star-reference[data-star-reference=motorcycle] .room-house-panel { position:relative; inset:auto; z-index:auto; overflow:visible; }
+
+/* The caption sits in the figure itself, so the light reading surface must reach it. */
+body.star-reference[data-star-reference=motorcycle] .bike-year-two .bike-photo-frame { background:transparent; }
