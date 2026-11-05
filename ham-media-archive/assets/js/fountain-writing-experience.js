@@ -169,6 +169,20 @@ if (penExperience) {
       penPromptCopy.textContent = prompt.quote;
       penPromptPhoto.src = prompt.image;
       penPromptPhoto.alt = prompt.alt;
+      penPromptPhoto.width = key === "walking" ? 1429 : 1350;
+      penPromptPhoto.height = 1800;
+      const sourcePhoto = penExperience.querySelector("[data-pen-source-photo]");
+      const sourceArticle = penExperience.querySelector("[data-pen-source-article]");
+      const photoId = key === "walking" ? "fountain-photo-still-walking" : "fountain-photo-handmade-gift-letter";
+      const articleId = key === "walking" ? "fountain-still-walking-note" : "fountain-human-made-note";
+      if (sourcePhoto) {
+        sourcePhoto.href = `#${photoId}`;
+        sourcePhoto.dataset.roomPhotoTarget = photoId;
+      }
+      if (sourceArticle) {
+        sourceArticle.href = `#${articleId}`;
+        sourceArticle.dataset.roomArticleTarget = articleId;
+      }
       penPromptCaption.textContent = prompt.caption;
       penPromptButtons.forEach((button) => {
         const selected = button.dataset.penPrompt === key;
