@@ -150,6 +150,7 @@ if (root) {
     if (pauseButton) pauseButton.disabled = !playing;
     if (replayButton) replayButton.disabled = motionOff;
     choiceButtons.forEach((button) => { button.disabled = false; });
+    momentButtons.forEach((button) => { button.disabled = false; });
     root.classList.toggle("is-playing", playing);
     root.classList.toggle("is-paused", !playing);
   };
@@ -218,6 +219,7 @@ if (root) {
     syncControls();
   };
 
+  photoLink?.addEventListener("click", () => pause("사진을 크게 보며 장면을 멈췄습니다."));
   playButton?.addEventListener("click", play);
   pauseButton?.addEventListener("click", () => pause());
   replayButton?.addEventListener("click", play);

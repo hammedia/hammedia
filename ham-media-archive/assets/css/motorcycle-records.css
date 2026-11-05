@@ -30,3 +30,13 @@ body.star-reference[data-star-reference=motorcycle] { min-width:0; word-break:ke
  .bike-shell .door { min-height:112px; padding:16px 12px; }
  .bike-shell .door strong { font-size:23px; }
 }
+
+/* Fable source review: retain readable captions and exits across the two surfaces. */
+body.star-reference[data-star-reference=motorcycle] .bike-year-two .bike-photo-frame :is(figcaption,.bike-record-link) { color:#5a4c44; }
+body.star-reference[data-star-reference=motorcycle] .action-pill,
+body.star-reference[data-star-reference=motorcycle] .action-pill.is-work,
+body.star-reference[data-star-reference=motorcycle] .action-pill.is-tool { background:transparent; color:var(--ref-ink); border:1px solid var(--ref-line); border-radius:4px; }
+body.star-reference[data-star-reference=motorcycle] .star-list .star-pill.is-current { background:var(--color-red); color:var(--color-ivory); border-color:var(--color-red); }
+body.star-reference[data-star-reference=motorcycle] .star-list .star-pill.is-current .star-signal { --signal-color:var(--color-ivory); }
+/* A reading panel follows the document; keyboard and history share one scroll surface. */
+body.star-reference[data-star-reference=motorcycle] .room-house-panel { position:relative; inset:auto; z-index:auto; overflow:visible; }
