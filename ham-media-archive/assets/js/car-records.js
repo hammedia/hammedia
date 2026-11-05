@@ -20,6 +20,13 @@
   enlarge.href = '#' + figure.id;
   enlarge.dataset.roomPhotoTarget = figure.id;
  }
- exhibit.addEventListener('click', sync);
+ exhibit.addEventListener('click', function (event) {
+  sync();
+  // Reaching an endpoint disables that control; retain keyboard focus on the chosen memory.
+  const button = event.target.closest('button');
+  if (button?.disabled && button.parentElement?.classList.contains('car-exhibit-controls')) {
+   exhibit.querySelector('.car-exhibit-dots [aria-pressed="true"]')?.focus({ preventScroll:true });
+  }
+ });
  sync();
 })();
