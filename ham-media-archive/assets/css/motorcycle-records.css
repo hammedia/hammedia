@@ -1,0 +1,32 @@
+/* Bike records use shared reading/history and keep the approved matte-black palette. */
+body.star-reference[data-star-reference=motorcycle] { min-width:0; word-break:keep-all; overflow-wrap:break-word; }
+.bike-shell { --bike-red:#cc0000; }
+.bike-code { display:flex; align-items:center; gap:12px; }
+.bike-arrival-stamp { display:block; width:104px; height:auto; transform:rotate(-6deg); margin:20px 0; }
+.bike-shell .bike-hero-statement strong { display:block; }
+.bike-record-link,.bike-record-map a { display:inline-flex; align-items:center; min-height:44px; padding:10px 0; text-decoration:underline; text-underline-offset:5px; font:600 15px/1.7 Pretendard,sans-serif; }
+.bike-record-link { color:var(--bike-paper); }
+.bike-hero .bike-record-link { display:flex; width:fit-content; }
+.bike-photo-frame .bike-record-link { position:relative; z-index:2; padding:14px 10px; }
+.bike-shell .room-house-panel .bike-record-link { color:var(--ref-accent); }
+.bike-shell .bike-ignite,.bike-shell .bike-memory-entry { border-radius:4px; }
+.bike-shell .bike-ignite-dot { background:var(--bike-red); }
+.bike-map-intro,.bike-map-note,.bike-record-order { color:inherit; max-width:44em; }
+.bike-map-note,.bike-record-order { font-size:14px; }
+.bike-record-map { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:36px 48px; margin-top:32px; }
+.bike-record-map section { padding:24px 0 0; margin:0; border-top:1px solid var(--ref-line); border-bottom:0; min-width:0; }
+.bike-record-map h3 { font:700 clamp(23px,3vw,32px)/1.4 Pretendard,sans-serif; color:inherit; }
+.bike-record-map p { color:inherit; }
+.bike-record-map a { display:flex; width:fit-content; color:var(--ref-accent); }
+.bike-shell .room-article-link strong { white-space:normal; overflow:visible; text-overflow:clip; }
+.bike-shell .room-house-panel { --color-ink:var(--ref-ink); --color-muted:var(--ref-ink); --color-silver:var(--ref-accent); }
+.bike-shell:has(.room-house-panel:not([hidden])) .bike-decision-rail { display:none; }
+.bike-shell :focus-visible { outline:3px solid var(--bike-paper); outline-offset:4px; }
+.bike-shell .room-house-panel :focus-visible { outline-color:var(--ref-accent); }
+@media(max-width:760px) {
+ .bike-record-map { grid-template-columns:1fr; gap:20px; }
+ .bike-arrival-stamp { width:84px; }
+ .bike-shell .door-row { grid-template-columns:repeat(2,minmax(0,1fr)); }
+ .bike-shell .door { min-height:112px; padding:16px 12px; }
+ .bike-shell .door strong { font-size:23px; }
+}

@@ -1711,13 +1711,14 @@
 <link rel="stylesheet" href="../assets/css/star-reference.css?v=20261024-home-map-2">
 <link rel="stylesheet" href="../assets/css/motorcycle-memory-scene.css?v=20261025a">
 <noscript><style>body.star-reference .room-house-panel[hidden],body.star-reference .room-article-panel[hidden],body.star-reference .design-sheet[hidden]{display:block!important}body.star-reference .room-article-list{display:block}body.star-reference .reveal{opacity:1;transform:none}</style></noscript>
+<link rel="stylesheet" href="../assets/css/motorcycle-records.css?v=20261105-1">
 </head>
 <body class="variant-desktop star-reference" data-star-reference="motorcycle">
-<main class="bike-shell room-house-page" data-room-context-nav="true" data-article-house-target="motorcycle-writing-room" data-photo-house-target="motorcycle-photo-room" data-map-house-target="motorcycle-design-room" data-star-list-target="star-list" data-article-nav-label="문장 이동" data-article-list-label="문장" data-article-prev-label="이전 문장" data-article-next-label="다음 문장" data-photo-list-label="장면" data-map-list-label="디자인">
+<main class="bike-shell room-house-page" data-room-context-nav="true" data-room-record-links="true" data-article-house-target="motorcycle-writing-room" data-photo-house-target="motorcycle-photo-room" data-map-house-target="motorcycle-design-room" data-star-list-target="star-list" data-article-nav-label="문장 이동" data-article-list-label="문장" data-article-prev-label="이전 문장" data-article-next-label="다음 문장" data-photo-list-label="장면" data-map-list-label="지도">
     <nav class="star-room-nav room-house-nav" aria-label="바이크별 이동">
       <button class="room-house-door" type="button" data-house-target="motorcycle-writing-room">문장</button>
       <button class="room-house-door" type="button" data-house-target="motorcycle-photo-room">장면</button>
-      <button class="room-house-door" type="button" data-house-target="motorcycle-design-room">디자인</button>
+      <button class="room-house-door" type="button" data-house-target="motorcycle-design-room">지도</button>
       <a href="#star-list">별자리</a>
     </nav>
 
@@ -1726,14 +1727,16 @@
         <img src="../assets/images/motorcycles/ham-pd-walking-to-bike.jpg" alt="" />
       </div>
       <div class="bike-hero-copy">
-        <p class="bike-code">HAM MEDIA · LPH-B613-02</p>
+        <p class="bike-code">HAM MEDIA · LPH-B613-02 <span class="star-signal" aria-label="별 점등"></span></p>
+        <img class="bike-arrival-stamp" src="../assets/images/motorcycles/stamps/lph-b613-02-motorcycle-stamp.png" alt="STILL MOVING, 아직 달리는 중" width="104" />
         <h1>바이크별</h1>
         <p class="bike-hero-statement">인생에 딱 좋은 시기가 있다.<br />나에게는 40대의 바이크가 그랬다.<strong>딱 좋았던 3년.</strong></p>
         <button class="bike-ignite" id="bike-ignite" type="button" aria-pressed="false"><span class="bike-ignite-dot" aria-hidden="true"></span><span>결심을 켠다</span></button>
         <a class="bike-memory-entry" href="#motorcycle-memory-scene">그때의 결심과 그 뒤의 길 · 12초</a>
+        <a class="bike-record-link" id="bike-hero-enlarge" href="#motorcycle-photo-7900" data-room-photo-target="motorcycle-photo-7900" data-room-return-label="첫 장면으로 돌아가기">바이크로 향하는 장면 크게 보기</a>
         <p class="bike-ignite-context" aria-live="polite" aria-hidden="true">죽기 전에 하고 싶은 건 하자.</p>
       </div>
-      <span class="bike-scroll-note">scroll · the decision</span>
+
     </header>
 
     <section class="motorcycle-memory-scene" id="motorcycle-memory-scene" data-star-experience tabindex="-1" aria-labelledby="motorcycle-memory-title">
@@ -1774,6 +1777,8 @@
             <button type="button" data-memory-choice="then" aria-pressed="true" disabled>그때</button>
             <button type="button" data-memory-choice="after" aria-pressed="false" disabled>그 뒤</button>
           </div>
+          <div class="motorcycle-memory-choices" role="group" aria-label="그 뒤의 사진"><button type="button" data-memory-moment="road" aria-pressed="false">산길</button><button type="button" data-memory-moment="sea" aria-pressed="false">동해</button><button type="button" data-memory-moment="still" aria-pressed="false">카페</button></div>
+          <a class="bike-record-link" id="bike-memory-photo-link" href="#motorcycle-photo-road" data-room-photo-target="motorcycle-photo-road" data-room-return-label="보던 기억 장면으로 돌아가기" hidden>이 사진 크게 보기</a>
           <div class="motorcycle-memory-controls" role="group" aria-label="12초 장면 조작">
             <button type="button" data-memory-play disabled>12초로 보기</button>
             <button type="button" data-memory-pause disabled>잠시 멈춤</button>
@@ -1803,7 +1808,7 @@
         </div>
         <figure class="bike-photo-frame">
           <img src="../assets/images/motorcycles/hero-ducati-red-front.jpg" alt="실내에 세워진 붉은 바이크 정면" />
-          <figcaption>두카티 레드. 심장이 뛴다.</figcaption>
+          <figcaption>두카티 레드. 심장이 뛴다.</figcaption><a class="bike-record-link" id="bike-link-red-장면" href="#motorcycle-photo-red" data-room-photo-target="motorcycle-photo-red" data-room-return-label="보던 자리로 돌아가기">장면 크게 보기</a>
         </figure>
       </div>
     </section>
@@ -1812,7 +1817,7 @@
       <div class="bike-story-grid">
         <figure class="bike-photo-frame">
           <img src="../assets/images/motorcycles/essay-rider-ducati-red.jpg" alt="붉은 바이크 위에 앉아 있는 라이더" />
-          <figcaption>면허보다 먼저 도착한 결정.</figcaption>
+          <figcaption>면허보다 먼저 도착한 결정.</figcaption><a class="bike-record-link" id="bike-link-rider-장면" href="#motorcycle-photo-rider" data-room-photo-target="motorcycle-photo-rider" data-room-return-label="보던 자리로 돌아가기">장면 크게 보기</a>
         </figure>
         <div class="bike-story-copy">
           <p class="bike-step">01 · start</p>
@@ -1831,7 +1836,7 @@
         </div>
         <figure class="bike-photo-frame">
           <img src="../assets/images/motorcycles/photo-road-ride.jpg" alt="굽은 산길을 달리는 두 대의 바이크" />
-          <figcaption>로드에서 바이크로, 추억이 교차한다.</figcaption>
+          <figcaption>로드에서 바이크로, 추억이 교차한다.</figcaption><a class="bike-record-link" id="bike-link-road-장면" href="#motorcycle-photo-road" data-room-photo-target="motorcycle-photo-road" data-room-return-label="보던 자리로 돌아가기">장면 크게 보기</a>
         </figure>
       </div>
     </section>
@@ -1840,7 +1845,7 @@
       <div class="bike-story-grid">
         <figure class="bike-photo-frame">
           <img src="../assets/images/motorcycles/gallery-img-6839.jpg" alt="동해 바닷가에 세워 둔 붉은 바이크" />
-          <figcaption>동해 바다. 달린 뒤에 남은 한 장.</figcaption>
+          <figcaption>동해 바다. 달린 뒤에 남은 한 장.</figcaption><a class="bike-record-link" id="bike-link-sea-장면" href="#motorcycle-photo-sea" data-room-photo-target="motorcycle-photo-sea" data-room-return-label="보던 자리로 돌아가기">장면 크게 보기</a>
         </figure>
         <div class="bike-story-copy">
           <p class="bike-step">03 · memory</p>
@@ -1863,11 +1868,11 @@
       <div class="bike-doors-inner">
         <p class="bike-step">inside the star</p>
         <h2 id="bike-doors-title">결정 뒤에 남은 것들</h2>
-        <p>기종표나 코스 추천 대신, 실제 문장과 장면 그리고 이 경험을 만든 디자인 이유를 엽니다.</p>
+        <p>미루지 않기로 한 말, 길 위의 사진, 잠시 멈춘 기억을 골라 봅니다.</p>
         <div class="door-row">
           <button class="door room-house-door" type="button" data-house-target="motorcycle-writing-room"><strong>문장</strong><span>미루지 않기로 한 말</span></button>
           <button class="door room-house-door" type="button" data-house-target="motorcycle-photo-room"><strong>장면</strong><span>딱 좋았던 3년의 사진</span></button>
-          <button class="door room-house-door" type="button" data-house-target="motorcycle-design-room"><strong>디자인</strong><span>왜 검정·빨강·점화인가</span></button>
+          <button class="door room-house-door" type="button" data-house-target="motorcycle-design-room"><strong>지도</strong><span>결심·길·바다·카페의 기억</span></button>
           <a class="door" href="#star-list"><strong>별자리</strong><span>다른 별로 이동</span></a>
         </div>
       </div>
@@ -1898,7 +1903,7 @@
       </div>
 
       <div class="room-article-panels">
-<article class="room-article-panel star-new-essay" id="motorcycles-coffee-stop-note" hidden><button class="room-article-back" type="button">문장</button><header><p class="room-card-meta">사진과 기록</p><h3>커피 마시러 세운 바이크</h3></header><div class="star-essay-copy"><figure class="star-essay-photo"><img src="../assets/images/motorcycles/gallery-img-7899.jpg" alt="카페 유리창 앞의 붉은 바이크. 핸들 쪽에는 헬멧, 탱크 위에는 장갑이 있다." width="960" height="960" loading="lazy" decoding="async"><figcaption>카페 앞에 세워 둔 바이크. 헬멧과 장갑을 함께 놓아두었다.</figcaption></figure>
+<article class="room-article-panel star-new-essay" id="motorcycles-coffee-stop-note" hidden><button class="room-article-back" type="button">문장</button><header><p class="room-card-meta">사진과 기록</p><h3>커피 마시러 세운 바이크</h3></header><div class="star-essay-copy"><figure class="star-essay-photo"><img src="../assets/images/motorcycles/gallery-img-7899.jpg" alt="카페 유리창 앞의 붉은 바이크. 핸들 쪽에는 헬멧, 탱크 위에는 장갑이 있다." width="960" height="960" loading="lazy" decoding="async"><figcaption>카페 앞에 세워 둔 바이크. 헬멧과 장갑을 함께 놓아두었다.</figcaption></figure><a class="bike-record-link" id="bike-link-cafe-사진" href="#motorcycle-photo-cafe" data-room-photo-target="motorcycle-photo-cafe" data-room-return-label="보던 문장으로 돌아가기">사진 크게 보기</a>
 <p>붉은 탱크 위에 장갑을 올려 두고, 핸들 쪽에 헬멧을 걸어 두었다. 유리창 앞에 세운 바이크를 들여다보면 커피를 마시러 온 사람의 준비물이 먼저 눈에 들어온다. 달릴 때 쓰던 것들을 한곳에 모아 둔 모습이다.</p>
 <p>햄(함동민)은 이 사진에 이렇게 적었다.</p>
 <blockquote><p>카페레이서 커피마시러 다니는 바이크족 ㅎㅎ</p></blockquote>
@@ -1915,7 +1920,7 @@
           <figure class="motorcycle-essay-figure" data-tags="바이크별, 두카티, 레드 바이크, 라이더, 글 이미지">
             <img class="room-photo-image" src="../assets/images/motorcycles/essay-rider-ducati-red.jpg" alt="붉은 두카티 바이크 위에 앉아 있는 모습">
             <figcaption>하고 싶은 일을 미루지 않겠다는 결심은 몸의 기억으로 남는다.</figcaption>
-          </figure>
+          </figure><a class="bike-record-link" id="bike-link-rider-사진" href="#motorcycle-photo-rider" data-room-photo-target="motorcycle-photo-rider" data-room-return-label="보던 문장으로 돌아가기">사진 크게 보기</a>
           <div class="motorcycle-copy">
             <p>마흔, 병상에서 정했다. 죽기 전에 하고 싶은 건 하자. 면허도 없이 두카티를 계약했다.</p>
             <p>그때 살아 있다는 감각은 아직 내 안에 남았다. 중요한 건 더 빠르고 더 위험하게 달리는 일이 아니었다. 하고 싶었던 삶을 또 미루지 않는 일이었다.</p>
@@ -1933,7 +1938,7 @@
           <figure class="motorcycle-essay-figure" data-tags="바이크별, 로드에서 바이크로, 산길 라이딩, 추억 교차, 사진방">
             <img class="room-photo-image" src="../assets/images/motorcycles/photo-road-ride.jpg" alt="산길 위의 바이크 라이딩 장면">
             <figcaption>길 위에 서면 생각보다 먼저 감각이 깨어난다.</figcaption>
-          </figure>
+          </figure><a class="bike-record-link" id="bike-link-road-사진" href="#motorcycle-photo-road" data-room-photo-target="motorcycle-photo-road" data-room-return-label="보던 문장으로 돌아가기">사진 크게 보기</a>
           <div class="motorcycle-copy">
             <p>콘텐츠도 바이크도 같다. 완벽한 준비를 기다리지 않는다.</p>
             <p>해도 후회, 안 해도 후회라면 해보고 후회하자. 바이크별은 그 결심이 남긴 짧은 기록이다.</p>
@@ -1949,39 +1954,33 @@
         <button class="room-house-back" type="button">바이크별로 돌아가기</button>
       </div>
 
-      <div class="room-sort-control" data-sort-target="photos" aria-label="바이크별 장면 정렬">
-        <span>정렬</span>
-        <button type="button" data-sort-mode="latest" aria-pressed="true">최신순</button>
-        <button type="button" data-sort-mode="registered" aria-pressed="false">등록순</button>
-      </div>
+      <p class="bike-record-order">사진은 이 별에 모인 기록 순서로 놓았습니다.</p>
 
       <div class="room-house-photo-grid motorcycle-gallery-grid">
-        <figure class="room-house-photo" data-memory="두카티 레드. 심장이 뛴다. 이젠 마음으로만 하자. ㅋ" data-tags="바이크별, 두카티 레드, 심장이 뛰는 바이크, 마음으로만, 대표 사진"><img class="room-photo-image room-house-photo-thumb" src="../assets/images/motorcycles/hero-ducati-red-front.jpg" alt="붉은 두카티 바이크 정면 사진"><figcaption>두카티 레드, 심장이 뛴다.</figcaption></figure>
-        <figure class="room-house-photo" data-memory="두카티는 레드지." data-tags="바이크별, 두카티, 레드 바이크, 라이더, 글 이미지"><img class="room-photo-image room-house-photo-thumb" src="../assets/images/motorcycles/essay-rider-ducati-red.jpg" alt="붉은 두카티 바이크 위에 앉아 있는 모습"><figcaption>두카티는 레드지.</figcaption></figure>
-        <figure class="room-house-photo" data-memory="ㅋㅋㅋ 드디어 바이크로 넘어간다. 로드로 넘어갔던 추억이 교차한다." data-tags="바이크별, 로드에서 바이크로, 산길 라이딩, 추억 교차, 사진방"><img class="room-photo-image room-house-photo-thumb" src="../assets/images/motorcycles/photo-road-ride.jpg" alt="산길 위의 바이크 라이딩 장면"><figcaption>로드에서 바이크로, 추억이 교차한다.</figcaption></figure>
-        <figure class="room-house-photo" data-memory="디아벨, 스트리트파이터, 몬스터." data-tags="바이크별, 디아벨, 스트리트파이터, 몬스터, 두카티, 갤러리"><img class="room-photo-image room-house-photo-thumb" src="../assets/images/motorcycles/gallery-img-0142.jpg" alt="디아벨, 스트리트파이터, 몬스터가 보이는 두카티 바이크 사진"><figcaption>디아벨, 스트리트파이터, 몬스터.</figcaption></figure>
-        <figure class="room-house-photo" data-memory="두카티엔 멀티스트라다가 있지. 멋지다." data-tags="바이크별, 두카티, 멀티스트라다, 멋진 바이크, 갤러리"><img class="room-photo-image room-house-photo-thumb" src="../assets/images/motorcycles/gallery-img-3231.jpg" alt="두카티 멀티스트라다 바이크 사진"><figcaption>두카티엔 멀티스트라다가 있지.</figcaption></figure>
-        <figure class="room-house-photo" data-memory="동해 바다." data-tags="바이크별, 동해 바다, 바이크 여행, 바다와 바이크, 갤러리"><img class="room-photo-image room-house-photo-thumb" src="../assets/images/motorcycles/gallery-img-6839.jpg" alt="동해 바다와 함께 남은 바이크 여행 사진"><figcaption>동해 바다.</figcaption></figure>
-        <figure class="room-house-photo" data-memory="카페레이서. 커피 마시러 다니는 바이크족. ㅎㅎ" data-tags="바이크별, 카페레이서, 커피 마시러 다니는 바이크족, 갤러리"><img class="room-photo-image room-house-photo-thumb" src="../assets/images/motorcycles/gallery-img-7899.jpg" alt="카페레이서 바이크 사진"><figcaption>커피 마시러 다니는 카페레이서.</figcaption></figure>
-        <figure class="room-house-photo" data-memory="두카티 모임. 뭔가 좀 멋진 듯." data-tags="바이크별, 두카티 모임, 바이크 모임, 멋진 듯한 장면, 갤러리"><img class="room-photo-image room-house-photo-thumb" src="../assets/images/motorcycles/gallery-img-7900.jpg" alt="두카티 모임 사진"><figcaption>뭔가 좀 멋진 두카티 모임.</figcaption></figure>
-        <figure class="room-house-photo" data-memory="이태리 음식점 앞에 이태리 바이크." data-tags="바이크별, 이태리 음식점, 이태리 바이크, 두카티, 갤러리"><img class="room-photo-image room-house-photo-thumb" src="../assets/images/motorcycles/gallery-img-8864.jpg" alt="이태리 음식점 앞의 이태리 바이크"><figcaption>이태리 음식점 앞의 이태리 바이크.</figcaption></figure>
-        <figure class="room-house-photo" data-memory="파니갈레는 작품 같다." data-tags="바이크별, 파니갈레, 작품 같은 바이크, 갤러리"><img class="room-photo-image room-house-photo-thumb" src="../assets/images/motorcycles/gallery-iphone-3.jpg" alt="작품 같은 파니갈레 바이크 사진"><figcaption>작품 같은 파니갈레.</figcaption></figure>
+        <figure class="room-house-photo" id="motorcycle-photo-red" data-memory="두카티 레드. 심장이 뛴다. 이젠 마음으로만 하자. ㅋ" data-tags="바이크별, 두카티 레드, 심장이 뛰는 바이크, 마음으로만, 대표 사진"><img class="room-photo-image room-house-photo-thumb" src="../assets/images/motorcycles/hero-ducati-red-front.jpg" alt="붉은 두카티 바이크 정면 사진"><figcaption>두카티 레드, 심장이 뛴다.</figcaption></figure>
+        <figure class="room-house-photo" id="motorcycle-photo-rider" data-related-article="motorcycle-alive-note" data-memory="두카티는 레드지." data-tags="바이크별, 두카티, 레드 바이크, 라이더, 글 이미지"><img class="room-photo-image room-house-photo-thumb" src="../assets/images/motorcycles/essay-rider-ducati-red.jpg" alt="붉은 두카티 바이크 위에 앉아 있는 모습"><figcaption>두카티는 레드지.</figcaption></figure>
+        <figure class="room-house-photo" id="motorcycle-photo-road" data-related-article="motorcycle-road-note" data-memory="ㅋㅋㅋ 드디어 바이크로 넘어간다. 로드로 넘어갔던 추억이 교차한다." data-tags="바이크별, 로드에서 바이크로, 산길 라이딩, 추억 교차, 사진방"><img class="room-photo-image room-house-photo-thumb" src="../assets/images/motorcycles/photo-road-ride.jpg" alt="산길 위의 바이크 라이딩 장면"><figcaption>로드에서 바이크로, 추억이 교차한다.</figcaption></figure>
+        <figure class="room-house-photo" id="motorcycle-photo-0142" data-memory="디아벨, 스트리트파이터, 몬스터." data-tags="바이크별, 디아벨, 스트리트파이터, 몬스터, 두카티, 갤러리"><img class="room-photo-image room-house-photo-thumb" src="../assets/images/motorcycles/gallery-img-0142.jpg" alt="디아벨, 스트리트파이터, 몬스터가 보이는 두카티 바이크 사진"><figcaption>디아벨, 스트리트파이터, 몬스터.</figcaption></figure>
+        <figure class="room-house-photo" id="motorcycle-photo-3231" data-memory="두카티엔 멀티스트라다가 있지. 멋지다." data-tags="바이크별, 두카티, 멀티스트라다, 멋진 바이크, 갤러리"><img class="room-photo-image room-house-photo-thumb" src="../assets/images/motorcycles/gallery-img-3231.jpg" alt="두카티 멀티스트라다 바이크 사진"><figcaption>두카티엔 멀티스트라다가 있지.</figcaption></figure>
+        <figure class="room-house-photo" id="motorcycle-photo-sea" data-memory="동해 바다." data-tags="바이크별, 동해 바다, 바이크 여행, 바다와 바이크, 갤러리"><img class="room-photo-image room-house-photo-thumb" src="../assets/images/motorcycles/gallery-img-6839.jpg" alt="동해 바다와 함께 남은 바이크 여행 사진"><figcaption>동해 바다.</figcaption></figure>
+        <figure class="room-house-photo" id="motorcycle-photo-cafe" data-related-article="motorcycles-coffee-stop-note" data-memory="카페레이서. 커피 마시러 다니는 바이크족. ㅎㅎ" data-tags="바이크별, 카페레이서, 커피 마시러 다니는 바이크족, 갤러리"><img class="room-photo-image room-house-photo-thumb" src="../assets/images/motorcycles/gallery-img-7899.jpg" alt="카페레이서 바이크 사진"><figcaption>커피 마시러 다니는 카페레이서.</figcaption></figure>
+        <figure class="room-house-photo" id="motorcycle-photo-7900" data-memory="두카티 모임. 뭔가 좀 멋진 듯." data-tags="바이크별, 두카티 모임, 바이크 모임, 멋진 듯한 장면, 갤러리"><img class="room-photo-image room-house-photo-thumb" src="../assets/images/motorcycles/gallery-img-7900.jpg" alt="두카티 모임 사진"><figcaption>뭔가 좀 멋진 두카티 모임.</figcaption></figure>
+        <figure class="room-house-photo" id="motorcycle-photo-8864" data-memory="이태리 음식점 앞에 이태리 바이크." data-tags="바이크별, 이태리 음식점, 이태리 바이크, 두카티, 갤러리"><img class="room-photo-image room-house-photo-thumb" src="../assets/images/motorcycles/gallery-img-8864.jpg" alt="이태리 음식점 앞의 이태리 바이크"><figcaption>이태리 음식점 앞의 이태리 바이크.</figcaption></figure>
+        <figure class="room-house-photo" id="motorcycle-photo-iphone" data-memory="파니갈레는 작품 같다." data-tags="바이크별, 파니갈레, 작품 같은 바이크, 갤러리"><img class="room-photo-image room-house-photo-thumb" src="../assets/images/motorcycles/gallery-iphone-3.jpg" alt="작품 같은 파니갈레 바이크 사진"><figcaption>작품 같은 파니갈레.</figcaption></figure>
       </div>
 
       <aside class="room-gallery-detail room-house-photo-detail" aria-live="polite" hidden></aside>
     </section>
 
-    <section class="room-house-panel" id="motorcycle-design-room" aria-label="바이크별 디자인" hidden>
-      <div class="room-house-panel-header">
-        <p class="room-section-label">바이크별 · 디자인</p>
-        <h2>이 장면들이 화면이 된 이유</h2>
-        <button class="room-house-back" type="button">바이크별로 돌아가기</button>
-      </div>
-      <div class="bike-design-room-grid">
-        <article class="bike-design-card"><b>decision</b><h3>빨강은 한 번만</h3><p>두카티를 닮아 보이기 위한 색이 아닙니다. 오래 미룬 선택이 끝난 순간을 표시하는 도장으로만 씁니다.</p></article>
-        <article class="bike-design-card"><b>ignition</b><h3>점화는 소리 없이</h3><p>버튼을 누르면 엔진음 대신 사진의 색이 돌아옵니다. 위험이나 속도를 부추기지 않고 결심이 켜지는 순간만 남깁니다.</p></article>
-        <article class="bike-design-card"><b>three years</b><h3>세 장면의 온도</h3><p>어두운 시작, 밝은 길, 푸른 기억으로 색온도가 바뀝니다. 기종 연대기가 아니라 사람의 감정이 변하는 순서입니다.</p></article>
-        <article class="bike-design-card"><b>still moving</b><h3>멈춤 뒤의 전진</h3><p>사진은 한 장씩 색을 되찾고 마지막 문장은 앞으로 남습니다. 타는 일은 끝났어도 미루지 않는 태도는 계속된다는 뜻입니다.</p></article>
+    <section class="room-house-panel" id="motorcycle-design-room" aria-label="바이크별 지도" hidden>
+      <div class="room-house-panel-header"><p class="room-section-label">바이크별 · 지도</p><h2>결정 뒤에 남은 기억</h2><button class="room-house-back" type="button">바이크별로 돌아가기</button></div>
+      <p class="bike-map-intro">마흔의 결심에서 길 위의 감각으로, 바다와 카페 앞에 남은 사진으로. 이 별에 있는 문장과 장면을 골라 봅니다.</p>
+      <p class="bike-map-note">기억을 찾아가는 지도입니다. 실제 도로나 이동 순서를 나타내지 않습니다.</p>
+      <div class="bike-record-map">
+        <section><h3>미루지 않기로 한 결정</h3><p>해도 후회, 안 해도 후회라면 해보고 후회하자.</p><a id="bike-map-alive" href="#motorcycle-alive-note" data-room-article-target="motorcycle-alive-note">살아 있음을 확인하던 순간 읽기</a><a id="bike-map-rider" href="#motorcycle-photo-rider" data-room-photo-target="motorcycle-photo-rider">바이크 위에 앉은 장면</a></section>
+        <section><h3>길 위에서 만난 감각</h3><p>로드에서 바이크로, 추억이 교차한다.</p><a id="bike-map-road-note" href="#motorcycle-road-note" data-room-article-target="motorcycle-road-note">길 위에서 확인한 감각 읽기</a><a id="bike-map-road" href="#motorcycle-photo-road" data-room-photo-target="motorcycle-photo-road">산길 사진 크게 보기</a><a href="#motorcycle-memory-scene">그때와 그 뒤 · 12초로 보기</a></section>
+        <section><h3>동해 바다</h3><p>동해 바다.</p><a id="bike-map-sea" href="#motorcycle-photo-sea" data-room-photo-target="motorcycle-photo-sea">바다 앞에 멈춘 사진</a></section>
+        <section><h3>커피 마시러 세운 바이크</h3><p>카페레이서. 커피 마시러 다니는 바이크족. ㅎㅎ</p><a id="bike-map-cafe-note" href="#motorcycles-coffee-stop-note" data-room-article-target="motorcycles-coffee-stop-note">커피 마시러 세운 바이크 읽기</a><a id="bike-map-cafe" href="#motorcycle-photo-cafe" data-room-photo-target="motorcycle-photo-cafe">헬멧과 장갑이 놓인 사진</a></section>
       </div>
     </section>
 
@@ -1991,7 +1990,7 @@
           <p class="section-kicker">07 · 별자리</p>
           <h2>별자리</h2>
         </div>
-        <p>이 별은 HAM MEDIA Design MD 방식으로 정리한 별입니다.<br />좋아하는 것의 감각을 브랜드의 기준으로 바꾸는 실험이기도 합니다.</p>
+        <p>딱 좋았던 시절의 기록을 여기 두고,<br />다른 별의 문장과 장면으로 이어갑니다.</p>
       </div>
       <div class="star-list-grid" aria-label="별 목록">
         <a class="star-pill" href="fountain-pens.html">만년필별</a>
@@ -2017,7 +2016,7 @@
 
     <section class="star-connections" aria-labelledby="star-connections-title"><p class="star-connections-kicker">다음 별에서 만나요</p><h2 id="star-connections-title">이야기는 여기서 이어집니다.</h2><nav aria-label="관심이 이어지는 다른 길"><a href="travel.html#stop-father"><span>달린 길이 기억으로 남을 때</span><strong>여행별의 「다시는 갈 수 없는 길」 <span aria-hidden="true">↗</span></strong></a><a href="bicycles.html#bicycle-trust-legs-note"><span>내 몸으로 길을 느끼는 또 다른 방법</span><strong>자전거별의 「다리를 믿는 시간」 <span aria-hidden="true">↗</span></strong></a></nav><p class="star-connections-talk">읽다가 하고 싶은 일이 떠올랐다면, <a href="https://hamjipsa.hammedia.co.kr/">햄집사와 이야기해 보세요 ↗</a></p><a class="star-connections-home" href="../../#stars">아홉 별로 돌아가기</a></section>
   </main>
-  <script src="../assets/js/main.js?v=20261025-star-reference-anchor-5"></script>
+  <script src="../assets/js/main.js?v=room-context-nav-v2-motorcycle-20261105"></script>
 <script type="module" src="../assets/js/motorcycle-memory-scene.js?v=20261025d"></script>
   <script>
     (() => {

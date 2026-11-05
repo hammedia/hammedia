@@ -12,6 +12,8 @@ if (root) {
   const photoTag = root.querySelector("[data-memory-photo-tag]");
   const status = root.querySelector("[data-memory-status]");
   const choiceButtons = Array.from(root.querySelectorAll("[data-memory-choice]"));
+  const momentButtons = Array.from(root.querySelectorAll("[data-memory-moment]"));
+  const photoLink = root.querySelector("#bike-memory-photo-link");
   const playButton = root.querySelector("[data-memory-play]");
   const pauseButton = root.querySelector("[data-memory-pause]");
   const replayButton = root.querySelector("[data-memory-replay]");
@@ -88,6 +90,13 @@ if (root) {
   const setPhoto = (moment) => {
     const item = photoMoments.find((entry) => entry.key === moment) || photoMoments[0];
     const changed = lastMoment !== item.key;
+    momentButtons.forEach(button => button.setAttribute("aria-pressed", String(button.dataset.memoryMoment === item.key)));
+    if (photoLink) {
+      const id = `motorcycle-photo-${{road:"road",sea:"sea",still:"cafe"}[item.key]}`;
+      photoLink.hidden = false;
+      photoLink.href = `#${id}`;
+      photoLink.dataset.roomPhotoTarget = id;
+    }
     if (changed) photoStack?.classList.add("is-changing");
     photos.forEach((photo) => {
       const shouldHide = photo.dataset.memoryPhoto !== item.key;
@@ -106,6 +115,8 @@ if (root) {
   };
 
   const showThen = (time, complete = false) => {
+    if (photoLink) photoLink.hidden = true;
+    momentButtons.forEach(button => button.setAttribute("aria-pressed", "false"));
     if (art?.hidden) art.hidden = false;
     if (photoStack && !photoStack.hidden) photoStack.hidden = true;
     setLineProgress(time, complete);
@@ -214,6 +225,18 @@ if (root) {
     button.addEventListener("click", () => choose(button.dataset.memoryChoice));
   });
 
+  momentButtons.forEach(button => button.addEventListener("click", () => {
+    pause("사진을 골라 장면을 멈췄습니다.");
+    const moment = photoMoments.find(item => item.key === button.dataset.memoryMoment);
+    if (!moment) return;
+    elapsed = moment.at;
+    staticChoice = "after";
+    lastMoment = "";
+    render(elapsed, "after");
+    setStatus(`${moment.tag}: ${moment.title}`);
+    syncControls();
+  }));
+
   const observer = new IntersectionObserver((entries) => {
     const entry = entries[0];
     visible = Boolean(entry?.isIntersecting && entry.intersectionRatio >= .16);
@@ -228,7 +251,7 @@ if (root) {
   reduceMotion.addEventListener?.("change", () => {
     if (!reduceMotion.matches) return;
     pause("감속 설정을 따라 정지 장면을 보여줍니다. 시점을 직접 고를 수 있습니다.");
-    render(elapsed, staticChoice || "then");
+    render(elapsed, staticChoice || (elapsed < thenDuration ? "then" : "after"));
     setStatus("감속 설정을 따라 정지 장면을 보여줍니다. 시점을 직접 고를 수 있습니다.");
     syncControls();
   });
