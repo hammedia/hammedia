@@ -456,6 +456,13 @@
       margin-bottom: 1.2rem;
     }
 
+    .fact-unit { white-space: nowrap; }
+    .work-case-fact { line-height: 1.75; word-break: keep-all; }
+    .case-source { word-break: keep-all; font-size: 12px; line-height: 1.75; color: var(--muted); margin: -.4rem 0 1rem; overflow-wrap: anywhere; }
+    .case-source a { color: var(--warm); text-underline-offset: .2em; }
+    .case-actions { display: flex; flex-wrap: wrap; gap: .75rem 1.25rem; margin-top: .8rem; }
+    .case-actions .proof-link { max-width: 100%; white-space: normal; word-break: keep-all; }
+
     /* ── 공통 섹션 ── */
     .section {
       max-width: 900px; margin: 0 auto;
@@ -1500,7 +1507,7 @@
 
 <section class="trust-strip fade-up" aria-label="확인할 수 있는 경력과 작업 수치">
   <div class="trust-item"><div class="trust-number">27년</div><p class="trust-copy">매장, 교육, 브랜드 운영 경험</p></div>
-  <div class="trust-item"><div class="trust-number">1,969만</div><p class="trust-copy">직접 개설한 대표 채널 누적 조회수</p></div>
+  <div class="trust-item"><div class="trust-number">3,563만+</div><p class="trust-copy">우리끼리오디오 채널 전체 누적 조회<br><a href="#ookkio-case">2026.11.05 확인 · 근거 보기 ↓</a></p></div>
   <div class="trust-item"><div class="trust-number">3개</div><p class="trust-copy">서로 다른 방식으로 공개한 홈페이지</p></div>
 </section>
 
@@ -1522,10 +1529,11 @@
       <p class="project-desc">자동차, 음식, 만년필에 담긴 경험을 인터뷰로 꺼냈습니다. 같은 템플릿을 반복하지 않고 각 기억에 맞는 화면과 움직임을 설계했습니다.</p>
       <dl class="project-meta">
         <div><dt>역할</dt><dd>인터뷰, 구조, 카피, 디자인 방향, 구현</dd></div>
-        <div><dt>결과</dt><dd>공개 홈페이지 3개</dd></div>
+        <div><dt>결과</dt><dd>자체 제작 · 공개 홈페이지 3개</dd></div>
         <div><dt>확인</dt><dd>이미지를 누르면 실제 사이트가 열립니다</dd></div>
       </dl>
       <a class="proof-link" href="/ham-media-archive/pages/food.html" target="_blank" rel="noopener noreferrer">음식별 홈페이지부터 열어보기 →</a>
+      <div class="case-actions"><a class="proof-link" href="/services/#service">홈페이지 제작 범위 보기 →</a><a class="proof-link" href="/quote/?source=portfolio-web#quote-form">이런 홈페이지 상담하기 →</a></div>
     </div>
   </article>
   <div class="work-secondary">
@@ -1539,24 +1547,26 @@
         <a class="proof-link" href="https://www.youtube.com/watch?v=7Ial2qihfHs" target="_blank" rel="noopener noreferrer">마당 첫 화 보기 · 88초 →</a>
       </div>
     </article>
-    <article class="work-case">
-      <a class="work-case-media" href="https://www.youtube.com/@ookkio" target="_blank" rel="noopener noreferrer"><img src="https://img.youtube.com/vi/duw8G46JzwQ/maxresdefault.jpg" width="1280" height="720" loading="lazy" alt="우리끼리오디오 스피커 케이블 연결 영상 썸네일"></a>
+    <article class="work-case" id="ookkio-case">
+      <a class="work-case-media" href="https://www.youtube.com/watch?v=duw8G46JzwQ" target="_blank" rel="noopener noreferrer"><img src="https://img.youtube.com/vi/duw8G46JzwQ/maxresdefault.jpg" width="1280" height="720" loading="lazy" alt="우리끼리오디오 스피커 케이블 연결 영상 썸네일"></a>
       <div class="work-case-copy">
         <p class="project-type">유튜브 기획과 운영</p>
-        <h3 class="work-case-title">좋아하던 오디오를 6년간 운영한 채널로</h3>
-        <p class="work-case-desc">우리끼리오디오를 2020년에 직접 개설했습니다. 촬영, 편집, 업로드를 이어가며 해외 시청자가 찾는 오디오 채널로 운영했습니다.</p>
-        <p class="work-case-fact">누적 조회수 1,969만 · 구독자 38,014 · 2026년 5월 실측</p>
-        <a class="proof-link" href="https://www.youtube.com/@ookkio" target="_blank" rel="noopener noreferrer">우리끼리오디오 채널 열어보기 →</a>
+        <h3 class="work-case-title">2020년, 좋아하던 오디오에서 시작한 채널</h3>
+        <p class="work-case-desc">우리끼리오디오를 2020년에 직접 개설했습니다. 오디오를 쉽게 설명하는 콘텐츠의 촬영, 편집, 업로드를 맡았습니다.</p>
+        <p class="work-case-fact">맡은 범위: 채널 개설 · 촬영 · 편집 · 업로드<br>개설 이후 채널 전체 누적 조회 <span class="fact-unit">35,636,999회</span><br>구독자 <span class="fact-unit">약 5.34만 명</span></p>
+        <p class="case-source">2026.11.05 14:56 KST · YouTube 공개 API 기준 · 구독자는 공개 반올림 값<br><a href="https://www.youtube.com/channel/UChBKgPfrATWSGGS7faCwo0Q/about" target="_blank" rel="noopener noreferrer">우리끼리오디오 채널에서 수치 확인 ↗</a></p>
+        <div class="case-actions"><a class="proof-link" href="https://www.youtube.com/watch?v=duw8G46JzwQ" target="_blank" rel="noopener noreferrer">스피커 케이블 설명 영상 보기 ↗</a><a class="proof-link" href="/services/#service">영상 제작 범위 보기 →</a><a class="proof-link" href="/quote/?source=portfolio-ookkio#quote-form">이런 영상 상담하기 →</a></div>
       </div>
     </article>
-    <article class="work-case is-tall">
-      <a class="work-case-media" href="https://www.youtube.com/channel/UC7nfli6RwhfkT8-L3tjcwPg" target="_blank" rel="noopener noreferrer"><img src="https://img.youtube.com/vi/sgVzKxMxCEM/maxresdefault.jpg" width="1280" height="720" loading="lazy" alt="성형외과전문의 김종명 채널의 의료 정보 영상 썸네일"></a>
+    <article class="work-case is-tall" id="kim-case">
+      <a class="work-case-media" href="https://www.youtube.com/watch?v=sgVzKxMxCEM" target="_blank" rel="noopener noreferrer"><img src="https://img.youtube.com/vi/sgVzKxMxCEM/maxresdefault.jpg" width="1280" height="720" loading="lazy" alt="성형외과전문의 김종명 채널의 의료 정보 영상 썸네일"></a>
       <div class="work-case-copy">
         <p class="project-type">클라이언트 유튜브 제작</p>
         <h3 class="work-case-title">의사의 전문 지식을 환자가 이해하는 영상으로</h3>
         <p class="work-case-desc">성형외과 전문의의 설명을 긴 영상과 쇼츠로 기획하고, 촬영과 편집을 맡아 의료 정보 채널로 운영했습니다.</p>
-        <p class="work-case-fact">채널 개설 · 기획 · 촬영 · 편집 · 누적 조회수 14.8만 · 2026년 5월 실측</p>
-        <a class="proof-link" href="https://www.youtube.com/channel/UC7nfli6RwhfkT8-L3tjcwPg" target="_blank" rel="noopener noreferrer">클라이언트 채널 열어보기 →</a>
+        <p class="work-case-fact">맡은 범위: 2025년 9월 채널 개설 · 기획 · 촬영 · 편집<br>개설 이후 채널 전체 누적 조회 <span class="fact-unit">197,582회</span></p>
+        <p class="case-source">2026.11.05 14:56 KST · YouTube 공개 API 기준<br><a href="https://www.youtube.com/channel/UC7nfli6RwhfkT8-L3tjcwPg/about" target="_blank" rel="noopener noreferrer">김종명 채널에서 수치 확인 ↗</a></p>
+        <div class="case-actions"><a class="proof-link" href="https://www.youtube.com/watch?v=sgVzKxMxCEM" target="_blank" rel="noopener noreferrer">안면거상 설명 영상 보기 ↗</a><a class="proof-link" href="/services/#service">영상 제작 범위 보기 →</a><a class="proof-link" href="/quote/?source=portfolio-kim#quote-form">이런 영상 상담하기 →</a></div>
       </div>
     </article>
   </div>

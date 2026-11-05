@@ -1185,6 +1185,18 @@
       .site-world-name { font-size: 1.75rem; }
       .site-world-desc { font-size: 13.5px; }
     }
+    .case-actions { display: flex; flex-wrap: wrap; gap: .6rem 1rem; margin-top: .75rem; font-size: 12px; line-height: 1.6; overflow-wrap: anywhere; }
+    .case-actions a { color: var(--warm); text-underline-offset: .2em; }
+    .ch-table a { color: var(--warm); text-underline-offset: .2em; }
+    .ch-table td { vertical-align: top; }
+    @media (max-width: 600px) {
+      .ch-table-wrap { overflow: visible; }
+      .ch-table, .ch-table tbody, .ch-table tr, .ch-table td { display: block; width: 100%; min-width: 0; box-sizing: border-box; }
+      .ch-table thead { display: none; }
+      .ch-table tr { padding: .8rem 0; border-top: 1px solid var(--line); }
+      .ch-table td { padding: .45rem 0; border: 0; white-space: normal; overflow-wrap: anywhere; }
+      .ch-table td::before { content: attr(data-label); display: block; font-size: 11px; font-weight: 700; color: var(--muted); margin-bottom: .2rem; }
+    }
   </style>
 </head>
 <body>
@@ -1463,7 +1475,7 @@
 <section class="section fade-up" id="channels">
   <p class="sec-label">Real Work</p>
   <h2 class="sec-title">Content and YouTube Operation Cases</h2>
-  <p class="section-intro">These are YouTube channels and video production cases connected to HAM MEDIA's work. Some were planned and produced directly, and others were supported through content operation.</p>
+  <p class="section-intro">These channels and videos show Dongmin Ham’s production and content-operation experience. Some were planned and produced directly; others involved participation in content operation.</p>
 
   <div class="ch-table-wrap">
     <table class="ch-table">
@@ -1471,14 +1483,11 @@
         <tr><th>Channel</th><th>Cumulative views</th><th>Subscribers</th><th>Notes</th></tr>
       </thead>
       <tbody>
-        <tr><td>Ookkio Audio</td><td>19.69M</td><td>38,014</td><td>Opened directly in 2020 · 6 years</td></tr>
-        <tr><td>Gwangmyeong Cheonsin Bosal TV</td><td>448K</td><td>2,167</td><td>Opened directly in 2025.6</td></tr>
-        <tr><td>Wassada.com</td><td>229K (1 year)</td><td>4,825</td><td>Content operation participation · subscribers up 132%</td></tr>
-        <tr><td>This Life Is a Race</td><td>159K</td><td>324</td><td>Opened directly in February 2026</td></tr>
-        <tr><td>Plastic Surgeon Kim Jongmyung</td><td>148K</td><td>184+</td><td>Opened directly in 2025.9</td></tr>
+        <tr><td data-label="Channel"><a href="https://www.youtube.com/channel/UChBKgPfrATWSGGS7faCwo0Q/about" target="_blank" rel="noopener noreferrer">Ookkio Audio ↗</a></td><td data-label="Lifetime channel views">35,636,999</td><td data-label="Public subscribers">Approx. 53.4K</td><td data-label="Our role">Opened in 2020 · filming, editing, uploads</td></tr>
+        <tr><td data-label="Channel"><a href="https://www.youtube.com/channel/UC7nfli6RwhfkT8-L3tjcwPg/about" target="_blank" rel="noopener noreferrer">Plastic Surgeon Kim Jongmyung ↗</a></td><td data-label="Lifetime channel views">197,582</td><td data-label="Public subscribers">226</td><td data-label="Our role">Opened in September 2025 · planning, filming, editing</td></tr>
       </tbody>
     </table>
-    <p class="ch-note">* Actual YouTube Studio figures as of May 2026</p>
+    <p class="ch-note">YouTube public Data API · checked 5 November 2026, 14:56 KST. Views are lifetime totals for each entire channel; public subscriber counts are rounded. These totals do not isolate the period of our work.</p>
   </div>
 
   <!-- Channel cards + featured videos (3 embeds + 2 link cards) -->
@@ -1490,7 +1499,7 @@
         <span class="ch-tag">Personal</span>
         <div>
           <div class="ch-card-name"><a href="https://www.youtube.com/@ookkio" target="_blank" rel="noopener noreferrer">Ookkio Audio</a></div>
-          <div class="ch-card-desc">A hi-fi audio channel built around product explanation, listening culture, and practical audio knowledge.</div>
+          <div class="ch-card-desc">Opened in 2020. Our role: filming, editing and uploading audio explanations.</div><div class="case-actions"><a href="https://www.youtube.com/watch?v=duw8G46JzwQ" target="_blank" rel="noopener noreferrer">Watch the featured video ↗</a><a href="/services/#service">See production scope (Korean) →</a><a href="/quote/?source=portfolio-ookkio#quote-form">Discuss a video project (Korean) →</a></div>
         </div>
       </div>
       <div class="video-wrap">
@@ -1507,7 +1516,7 @@
         <span class="ch-tag green-tag">Client</span>
         <div>
           <div class="ch-card-name"><a href="https://www.youtube.com/channel/UC7nfli6RwhfkT8-L3tjcwPg" target="_blank" rel="noopener noreferrer">Plastic Surgeon Kim Jongmyung (DIVA Plastic Surgery)</a></div>
-          <div class="ch-card-desc">A medical specialist channel focused on making expert information easier for viewers to understand.</div>
+          <div class="ch-card-desc">Opened in September 2025. Our role: planning, filming and editing specialist explanations as long videos and Shorts.</div><div class="case-actions"><a href="https://www.youtube.com/watch?v=sgVzKxMxCEM" target="_blank" rel="noopener noreferrer">Watch the featured video ↗</a><a href="/services/#service">See production scope (Korean) →</a><a href="/quote/?source=portfolio-kim#quote-form">Discuss a video project (Korean) →</a></div>
         </div>
       </div>
       <div class="video-wrap">
@@ -1546,10 +1555,10 @@
 
     <!-- 5. Wassada.com — link card -->
     <div class="ch-card">
-      <span class="ch-tag green-tag">Client</span>
+      <span class="ch-tag">Content participation</span>
       <div>
         <div class="ch-card-name"><a href="https://www.youtube.com/@Wassadacom" target="_blank" rel="noopener noreferrer">Wassada.com →</a></div>
-        <div class="ch-card-desc">A high-end audio retail channel. HAM MEDIA participated in content operation.</div>
+        <div class="ch-card-desc">A high-end audio retail channel. Dongmin Ham participated in content operation.</div>
       </div>
     </div>
 
