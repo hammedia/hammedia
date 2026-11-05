@@ -1722,7 +1722,11 @@ function buildRoomHouse() {
     window.addEventListener("hashchange", () => { if (!window.history.state?.hamStar) { const route = hashRoute(); showRoute(route); window.history.replaceState({ hamStar: route }, "", window.location.href); } });
     housePage.addEventListener("keydown", event => {
       if (event.key !== "Escape" || event.target.closest("dialog")) return;
-      if (photoDetail && !photoDetail.hidden) returnToPhotoList();
+      if (photoDetail && !photoDetail.hidden) {
+        const recordReturn = recordLinks ? photoDetail.querySelector(":scope > .room-record-return") : null;
+        if (recordReturn) recordReturn.click();
+        else returnToPhotoList();
+      }
       else if (articlePanels.some(panel => !panel.hidden)) returnToArticleList();
     });
   } else {
