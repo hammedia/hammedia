@@ -57,3 +57,6 @@ body.star-reference[data-star-reference=bicycle] .bicycle-star-page:has(.room-ho
 
 /* The existing hero scrim must not cover the new reading link. */
 body.star-reference[data-star-reference=bicycle] .hero-visual .bicycle-record-link { position:relative; z-index:3; }
+
+/* Reading surfaces inherit their own ink, including existing detail copy. */
+body.star-reference[data-star-reference=bicycle] .room-house-panel { --ink:var(--ref-ink); --muted:var(--ref-ink); --yellow:var(--climb); }
