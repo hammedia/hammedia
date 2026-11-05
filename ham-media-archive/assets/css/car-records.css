@@ -1,0 +1,55 @@
+/* Car keeps its approved night exhibition; reading uses the shared room contract. */
+body.star-reference[data-star-reference=car] { --ref-accent:#70501b; min-width:0; word-break:keep-all; overflow-wrap:break-word; }
+.sheet.room-house-page:has(> .room-house-panel:not([hidden])) > :not(.room-house-panel) { display:none; }
+.sheet.room-house-page .room-house-panel { position:relative; inset:auto; overflow:visible; }
+.sheet .room-house-panel :is(h2,h3,p,li,figcaption) { color:var(--ref-ink); }
+.sheet .room-house-panel { --color-ink:var(--ref-ink); --color-muted:var(--ref-ink); --color-silver:var(--ref-accent); }
+.car-record-link { display:inline-flex; align-items:center; min-height:44px; margin-top:16px; padding:10px 0; border:0; border-bottom:1px solid; background:transparent; color:inherit; font:500 16px/1.7 Pretendard,sans-serif; text-align:left; text-decoration:underline; text-underline-offset:5px; cursor:pointer; }
+.sheet > .section .car-record-link { color:var(--gold); }
+.sheet .room-house-panel .car-record-link,.sheet .room-record-related { color:var(--ref-accent); }
+.sheet .room-record-related { display:inline-flex; align-items:center; min-height:44px; padding:10px 0; text-decoration:underline; text-underline-offset:5px; font:500 16px/1.7 Pretendard,sans-serif; }
+.car-image-link { display:block; border:0; }
+.car-image-link:focus-visible { outline:3px solid var(--gold); outline-offset:5px; }
+.car-image-link img { cursor:zoom-in; }
+.car-exhibit-intro { max-width:42em; margin-bottom:24px; }
+.car-exhibit-enlarge { display:flex; width:fit-content; }
+.car-record-order,.car-map-intro { max-width:44em; margin:0 0 28px; font:400 16px/1.8 Pretendard,sans-serif; }
+.car-record-map { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:32px 48px; }
+.car-record-map section { border-top:1px solid var(--ref-line); padding:24px 0 0; min-width:0; }
+.car-record-map h3 { font:500 clamp(22px,3vw,30px)/1.4 Pretendard,sans-serif; }
+.car-record-map a { display:flex; width:fit-content; margin-top:8px; }
+.car-record-photo figcaption strong,.car-record-photo figcaption span { display:block; }
+.car-record-photo figcaption strong { font-weight:600; margin-bottom:8px; }
+.sheet .room-article-panel.story { background:transparent; border:0; border-radius:0; overflow:visible; }
+.sheet .room-article-panel .story-body { padding:0; }
+.sheet .room-article-panel .story-lead img { max-height:none; filter:none; }
+.sheet .room-article-panel .story-gallery { grid-template-columns:1fr 1fr; }
+.sheet .room-article-panel .story-gallery figure { margin:0; border:0; border-radius:0; background:transparent; }
+.sheet .room-article-panel .story-gallery img { aspect-ratio:auto; filter:none; }
+.sheet .room-article-panel .story-video-link { color:var(--ref-accent); background:transparent; border-color:var(--ref-line); }
+.sheet .room-article-panel .story-video-link .pf-arrow { color:inherit; }
+.sheet .room-article-link strong { white-space:normal; overflow:visible; text-overflow:clip; }
+body.star-reference[data-star-reference=car] .star-button.active { background:var(--gold); color:var(--night); border-color:var(--gold); }
+body.star-reference[data-star-reference=car] .star-button.active .star-signal { background:var(--night); }
+body.star-reference[data-star-reference=car] .panel.ivory.saab-panel > p:not(.mini) { color:var(--ivory); }
+@media(max-width:760px) {
+ .car-record-map { grid-template-columns:1fr; gap:24px; }
+ .sheet .room-article-panel .story-gallery { grid-template-columns:1fr; }
+ .sheet .room-house-panel { width:calc(100% - 24px); margin:24px auto; padding:24px 16px; }
+ .sheet .room-house-panel-header { align-items:flex-start; }
+ .sheet .room-house-panel-header .room-context-nav { width:100%; }
+}
+@media(prefers-reduced-motion:reduce) { .car-memory-exhibit img { animation:none!important; transition:none!important; } }
+/* Exit links remain legible on the shared ivory star-list surface. */
+body.star-reference[data-star-reference=car] .star-exit .bottom-link { background:transparent; color:var(--ref-ink); border-color:var(--ref-line); }
+/* The archived sheet's fixed minima must not crop the real photographs at pad widths. */
+body.star-reference[data-star-reference=car] :is(.hero-photo,.writing-image) { min-height:0; aspect-ratio:auto; }
+body.star-reference[data-star-reference=car] :is(.hero-photo,.writing-image) img { min-height:0; height:auto; object-fit:contain; }
+body.star-reference[data-star-reference=car] .saab-panel .mini { color:var(--gold); }
+/* Fable review: available 400/500/900 faces must not turn quiet memory prose into Black. */
+@font-face { font-family:CarBlackGothic; src:url('../fonts/BlackGothic.otf') format('opentype'); font-style:normal; font-weight:900; font-display:swap; }
+body.star-reference[data-star-reference=car] .hero :is(h1,.core) { font-family:CarBlackGothic,Pretendard,sans-serif; font-weight:900; }
+body.star-reference[data-star-reference=car] .route-grid .panel p:not(.mini) { font-weight:500; }
+body.star-reference[data-star-reference=car] .entry-card span { font-weight:500; }
+body.star-reference[data-star-reference=car] .not-joke { font-weight:400; }
+body.star-reference[data-star-reference=car] .writing-grid p.large-copy { font:500 clamp(24px,3vw,34px)/1.5 Pretendard,sans-serif; color:var(--ref-accent); margin-top:20px; }

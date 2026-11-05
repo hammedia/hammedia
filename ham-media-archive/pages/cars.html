@@ -1369,20 +1369,21 @@
 <link rel="stylesheet" href="../assets/css/star-essays.css?v=20261018-reader-1">
   <link rel="canonical" href="https://hammedia.co.kr/ham-media-archive/pages/cars.html">
 <link rel="stylesheet" href="../assets/css/star-reference.css?v=20261024-home-map-2">
+<link rel="stylesheet" href="../assets/css/car-records.css?v=20261105-1">
 <noscript><style>body.star-reference .room-house-panel[hidden],body.star-reference .room-article-panel[hidden],body.star-reference .design-sheet[hidden]{display:block!important}body.star-reference .room-article-list{display:block}body.star-reference .reveal{opacity:1;transform:none}</style></noscript>
 </head>
 <body class="variant-desktop star-reference" data-star-reference="car">
-  <main class="sheet">
-    <nav class="top-doors" aria-label="자동차별 입구">
-      <button type="button" data-target="#car-writing">문장</button>
-      <button type="button" data-target="#car-photos">장면</button>
-      <button type="button" data-target="#car-design">디자인</button>
+  <main class="sheet room-house-page" data-room-context-nav="true" data-room-record-links="true" data-article-house-target="car-writing-room" data-photo-house-target="car-photo-room" data-map-house-target="car-map-room" data-star-list-target="star-list" data-article-nav-label="문장 이동" data-article-list-label="문장" data-article-prev-label="이전 문장" data-article-next-label="다음 문장" data-photo-list-label="장면" data-map-list-label="지도">
+    <nav class="top-doors room-house-nav" aria-label="자동차별 입구">
+      <button type="button" class="room-house-door" data-house-target="car-writing-room">문장</button>
+      <button type="button" class="room-house-door" data-house-target="car-photo-room">장면</button>
+      <button type="button" class="room-house-door" data-house-target="car-map-room">지도</button>
       <a href="#star-list">별자리</a>
     </nav>
 
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-text">
-        <p class="eyebrow">자동차별 · LPH-B613-06 <span class="star-signal" aria-label="자동차별 점등"></span> · HAM MEDIA 별자리</p>
+        <p class="eyebrow">자동차별 · LPH-B613-06 <span class="star-signal" role="img" aria-label="자동차별 점등"></span> · HAM MEDIA 별자리</p>
         <h1 id="hero-title">자동차별</h1>
         <p class="core">한 번 간 길은<br />잊지 않는 사람의 별.</p>
         <p class="lead">
@@ -1396,7 +1397,7 @@
         </figure>
       </div>
       <figure class="hero-photo">
-        <img src="../assets/images/cars/saab-ducati-garage.jpg" alt="지하 주차장에 나란히 선 흰색 사브 9-3과 빨간 두카티" />
+        <a class="car-image-link" href="#car-photo-saab-ducati-garage" data-room-photo-target="car-photo-saab-ducati-garage" data-room-return-label="보던 자리로 돌아가기" aria-label="지하 주차장에 나란히 선 흰색 사브 9-3과 빨간 두카티 크게 보기"><img src="../assets/images/cars/saab-ducati-garage.jpg" alt="지하 주차장에 나란히 선 흰색 사브 9-3과 빨간 두카티" /></a>
       </figure>
     </section>
 
@@ -1464,7 +1465,7 @@
           <h3>없어진 회사지만,<br />기억은 남는다.</h3>
           <p>나를 알아주는 느낌. 의자가 편안하고, 중고속에서 나를 보호해주는 감각.</p>
           <figure class="saab-figure">
-            <img src="../assets/images/cars/saab-wheel-close-memory.jpg" alt="사브 엠블럼이 있는 흰색 차의 앞바퀴" loading="lazy" />
+            <a class="car-image-link" href="#car-photo-saab-wheel-close-memory" data-room-photo-target="car-photo-saab-wheel-close-memory" data-room-return-label="보던 자리로 돌아가기" aria-label="사브 엠블럼이 있는 흰색 차의 앞바퀴 크게 보기"><img src="../assets/images/cars/saab-wheel-close-memory.jpg" alt="사브 엠블럼이 있는 흰색 차의 앞바퀴" loading="lazy" /></a>
           </figure>
         </article>
         <article class="panel">
@@ -1488,29 +1489,15 @@
           <p class="large-copy gold">길 찾던 그 버릇이,<br />일이 되어 돌아왔다.</p>
         </article>
         <figure class="writing-image">
-          <img src="../assets/images/cars/suspension-01.jpeg" alt="충전소에 세워진 흰색 테슬라 모델 Y" />
+          <a class="car-image-link" href="#car-photo-suspension-01" data-room-photo-target="car-photo-suspension-01" data-room-return-label="보던 자리로 돌아가기" aria-label="충전소에 세워진 흰색 테슬라 모델 Y 크게 보기"><img src="../assets/images/cars/suspension-01.jpeg" alt="충전소에 세워진 흰색 테슬라 모델 Y" /></a>
         </figure>
       </div>
+      <button class="room-house-door car-record-link" type="button" data-house-target="car-writing-room">두 편의 문장 고르기</button>
     </section>
 
-    <section class="section" id="car-photos" aria-labelledby="photos-title">
-      <div class="section-head">
-        <p class="num">03 / 장면</p>
-        <h2 id="photos-title">밤 아스팔트 위에<br />남은 길.</h2>
-      </div>
-      <p class="map-intro">차를 몰고 지나온 자리들이다. 확정된 장소 세 곳 — 신포동, 시화공단, 가평(후보) — 을 지나며, 헤드라이트가 지나간 자국을 따라 기억이 남았다. 지금은 스무 장. 기록이 쌓일수록 이 길은 더 자란다.</p>
-
-      <figure class="asphalt-map" aria-label="밤 아스팔트의 기억의 길 — 신포동, 시화공단, 가평(후보)을 지나온 길">
-        <svg class="trail" viewBox="0 0 1000 240" preserveAspectRatio="none" aria-hidden="true">
-          <path class="trail-line" d="M15,190 C210,128 350,74 520,116 S805,178 985,64" />
-          <path class="trail-glow" d="M15,190 C210,128 350,74 520,116 S805,178 985,64" />
-        </svg>
-        <span class="coord coord--1"><i></i>신포동</span>
-        <span class="coord coord--2"><i></i>시화공단</span>
-        <span class="coord coord--3"><i></i>가평 <em>(후보)</em></span>
-        <figcaption>확정 장소 세 곳을 지나온 길. 헤드라이트가 지나간 자국.</figcaption>
-      </figure>
-
+    <section class="section" id="car-photos" aria-labelledby="photos-title" data-star-experience>
+      <div class="section-head"><p class="num">03 / 장면</p><h2 id="photos-title">밤 아스팔트 위에<br />남은 길.</h2></div>
+      <p class="car-exhibit-intro">한 장씩 골라 보는 길 위의 기억. 사진을 크게 열어 그날의 기록을 읽어보세요.</p>
       <figure class="live-wall-wrap">
         <div class="live-wall" aria-label="자동차별 순간들 — 한 장씩 초점이 도는 사진 벽">
           <div class="live-focus" aria-hidden="true"></div>
@@ -1547,174 +1534,29 @@
           <span>Mercedes-Benz GLA 45 AMG. 달리는 느낌을 주게 만드는 차. 실제로는 기름값 때문에 마음껏 밟지는 못하고, 언제나 컴포트 모드로 달렸다.</span>
         </figcaption>
       </figure>
-
-      <figure class="rep-figure curate">
-        <img src="../assets/images/cars/hero-night-direction.jpg" alt="달리는 느낌은 AMG, 현실은 컴포트 모드." loading="lazy" />
-        <figcaption>
-          <span class="rep-badge">대표 · Mercedes-Benz GLA 45 AMG</span>
-          <strong>달리는 느낌은 AMG, 현실은 컴포트 모드.</strong>
-          <span>Mercedes-Benz GLA 45 AMG. 달리는 느낌을 주게 만드는 차. 실제로는 기름값 때문에 마음껏 밟지는 못하고, 언제나 컴포트 모드로 달렸다.</span>
-        </figcaption>
-      </figure>
-
-      <div class="car-group">
-        <p class="group-label">테슬라 모델 Y</p>
-        <div class="photo-grid">
-          <figure class="photo-card curate">
-            <img src="../assets/images/cars/gallery-ec438dff.jpg" alt="잘 빠진 Tesla, 현실은 와이퍼 소리." loading="lazy" />
-            <figcaption><strong>잘 빠진 Tesla, 현실은 와이퍼 소리.</strong><span>Tesla. 공기저항계수가 낮다고 했는데, 정말 잘 빠졌다. 그런데 와이퍼야, 삐걱거리는 소리 좀 안 나게 해라.</span></figcaption>
-          </figure>
-          <figure class="photo-card">
-            <img src="../assets/images/cars/gallery-img-2526.jpg" alt="Tesla를 타면 숙소 선택 기준도 달라진다." loading="lazy" />
-            <figcaption><strong>Tesla를 타면 숙소 선택 기준도 달라진다.</strong><span>가평이었을 거야. Tesla를 타고 나서는 숙소도 전기차 충전이 되는 곳을 찾게 된다. 저 위에 보이는 전기차 충전기.</span></figcaption>
-          </figure>
-          <figure class="photo-card curate">
-            <img src="../assets/images/cars/gallery-output-1883912203.jpg" alt="잠시 쉬어가는 생명 쉼터." loading="lazy" />
-            <figcaption><strong>잠시 쉬어가는 생명 쉼터.</strong><span>고속도로를 달리다 잠시 쉴 수 있는 졸음쉼터. 생명 쉼터. 역광 사진빨.</span></figcaption>
-          </figure>
-        </div>
-      </div>
-
-      <div class="car-group">
-        <p class="group-label">테슬라 모델 Y · 코니 서스펜션 이야기</p>
-        <article class="story" id="car-koni-suspension-note">
-          <figure class="story-lead">
-            <img src="../assets/images/cars/suspension-01.jpeg" alt="테슬라 모델 Y가 전기차 충전소에 주차된 모습" loading="lazy" />
-          </figure>
-          <div class="story-body">
-            <h3>테슬라 모델 Y 롱레인지 코니 서스펜션</h3>
-            <p>2021년식 테슬라 모델 Y 롱레인지를 타면서 순정 서스펜션의 단단함은 그냥 그러려니 하고 지냈습니다.</p>
-            <p>6만 킬로를 달리는 동안에도 덩치가 크고 빠른 차를 잘 잡아주려면 이 정도 단단함은 감수해야 한다고 생각했습니다.</p>
-            <p>그런데 최근에 모델 3 하이랜드를 시승해보고 깜짝 놀랐습니다.</p>
-            <p>같은 회사에서 만든 차가 맞나 싶을 정도로 승차감이 훨씬 좋았습니다. 그래서 검색해보니 하이랜드에 장착된 서스펜션이 코니 FSD를 기반으로 만들어졌다는 것을 알게 되었습니다.</p>
-            <p>후기를 더 찾아보니 대부분 이 서스펜션에 대해 칭찬이 많았습니다. 그래서 직접 장착점을 찾아가 보기로 했습니다.</p>
-            <p>그곳에서 마침 모델 Y에 코니 서스펜션 작업을 하고 있는 차주를 만났고, 작업이 완료되면 한 번 시승해볼 수 있는지 요청드렸습니다.</p>
-            <p>다행히 흔쾌히 승낙해주셔서 함께 한 바퀴 시승을 하게 되었습니다.</p>
-            <p>시승 후 바로 업체에 서스펜션 교체를 요청했습니다.</p>
-            <p>금액은 재작년 기준 135만 원이었습니다. 지금은 어떨지 모르겠습니다. 작은 돈은 아니었지만, 그 이상의 가치가 있다고 판단했습니다.</p>
-            <p>교체를 완료한 후, 차를 잘 아는 지인에게 가장 먼저 시승을 시켜봤습니다.</p>
-            <p class="keep-line">그의 첫마디는 "이제야 차 같네"였습니다.</p>
-            <p>그리고 "이제는 더 깔 데 없이 좋다"는 말도 해주었습니다.</p>
-            <p>가족들의 반응은 워낙 무던한 성격들이라서인지 "조금 좋아졌네" 정도였지만, 제 개인적인 만족도는 매우 높습니다.</p>
-            <p class="keep-line">특히 초창기 버전의 모델 Y를 타고 계신 분이라면 강력히 추천드리고 싶습니다.</p>
-            <p>단단함을 참고 타는 것도 방법이지만, 차를 오래 타려면 내가 매일 느끼는 피로감도 중요하니까요.</p>
-
-            <div class="story-gallery">
-              <figure><img src="../assets/images/cars/suspension-02.jpeg" alt="벤츠 GLA 45A의 후면과 휠" loading="lazy" /></figure>
-              <figure><img src="../assets/images/cars/suspension-03.jpeg" alt="KONI Special Active 서스펜션 설명 이미지" loading="lazy" /></figure>
-              <figure><img src="../assets/images/cars/suspension-04.jpeg" alt="빨간색 KONI 쇼바 단품" loading="lazy" /></figure>
-              <figure><img src="../assets/images/cars/suspension-05.jpeg" alt="스프링과 함께 조립된 빨간색 KONI 서스펜션" loading="lazy" /></figure>
-              <figure><img src="../assets/images/cars/suspension-06.jpg" alt="작업장에 함께 주차된 벤츠와 테슬라 모델 Y" loading="lazy" /></figure>
-            </div>
-
-            <a class="story-video-link focusable" href="https://youtu.be/4x4S6cLl6ik" target="_blank" rel="noopener noreferrer">코니 서스펜션 비교 영상 보기 <span class="pf-arrow" aria-hidden="true">↗</span></a>
-          </div>
-        </article>
-      </div>
-
-      <div class="car-group">
-        <p class="group-label">아우디 A3 스포트백</p>
-        <div class="photo-grid">
-          <figure class="photo-card curate">
-            <img src="../assets/images/cars/gallery-1510842055.jpg" alt="가장 잘생겨 보이던 A3 Sportback의 구도." loading="lazy" />
-            <figcaption><strong>가장 잘생겨 보이던 A3 Sportback의 구도.</strong><span>Audi A3 Sportback. 이 구도가 제일 잘생겨 보인다. 정말 매력적이었던 차. 디젤이라 시끄럽긴 했지만, 그래도 추억이 많은 차다.</span></figcaption>
-          </figure>
-        </div>
-      </div>
-
-      <div class="car-group">
-        <p class="group-label">쉐보레 스파크 · 와이프의 첫차</p>
-        <div class="photo-grid">
-          <figure class="photo-card curate">
-            <img src="../assets/images/cars/gallery-img-0943.jpg" alt="실용적이고 귀여웠던 와이프의 첫차." loading="lazy" />
-            <figcaption><strong>실용적이고 귀여웠던 와이프의 첫차.</strong><span>와이프의 첫차. 이것도 내가 많이 예뻐해 줬는데, 참 실용적이고 귀여운 차였다. 엔진 힘은 너무 없었다. ㅋㅋㅋ</span></figcaption>
-          </figure>
-        </div>
-      </div>
-
-      <div class="car-group">
-        <p class="group-label">길 위의 기억</p>
-        <div class="photo-grid">
-          <figure class="photo-card">
-            <img src="../assets/images/cars/gallery-1510842067.jpg" alt="하루 종일 나를 기다려준 차." loading="lazy" />
-            <figcaption><strong>하루 종일 나를 기다려준 차.</strong><span>신포동 델라카사에서 퇴근하려다 찍은 한 컷. 나를 집에 데려다주려고 하루 종일 기다려줘서 고마워.</span></figcaption>
-          </figure>
-          <figure class="photo-card curate">
-            <img src="../assets/images/cars/gallery-img-2958.jpg" alt="신포동 점심 브레이크에 본 예쁜 하늘." loading="lazy" />
-            <figcaption><strong>신포동 점심 브레이크에 본 예쁜 하늘.</strong><span>신포동 점심 브레이크 때, 하늘이 예뻐서 남긴 사진. 인천여관, 루비살롱, 크라운볼링장이 함께 보이던 동네 풍경.</span></figcaption>
-          </figure>
-          <figure class="photo-card">
-            <img src="../assets/images/cars/gallery-img-0260.jpg" alt="하늘도 예쁘고 내 차도 예뻤던 시화공단." loading="lazy" />
-            <figcaption><strong>하늘도 예쁘고 내 차도 예뻤던 시화공단.</strong><span>부동산에서 근무할 때, 시화공단의 하늘이 예뻤고 내 차도 예뻤다.</span></figcaption>
-          </figure>
-          <figure class="photo-card">
-            <img src="../assets/images/cars/gallery-img-0268.jpg" alt="시화공단의 하늘과 내 차, 다른 각도." loading="lazy" />
-            <figcaption><strong>시화공단의 하늘과 내 차, 다른 각도.</strong><span>부동산에서 근무할 때, 시화공단의 하늘이 예뻤고 내 차도 예뻤다. 다른 각도에서 남긴 한 장.</span></figcaption>
-          </figure>
-          <figure class="photo-card">
-            <img src="../assets/images/cars/essay-open-parking-direction.jpg" alt="세차 후엔 차도 마음도 깨끗해진다." loading="lazy" />
-            <figcaption><strong>세차 후엔 차도 마음도 깨끗해진다.</strong><span>항상 세차 후엔 차도, 마음도, 내 머리도 깨끗해진다. 아직도 셀프 세차를 하는 이유. 그러고 보니 요즘 세차 안 한 지 3개월째인가?</span></figcaption>
-          </figure>
-          <figure class="photo-card">
-            <img src="../assets/images/cars/photo-white-car-line.jpg" alt="밤의 실내 셀프 세차장." loading="lazy" />
-            <figcaption><strong>밤의 실내 셀프 세차장.</strong><span>요즘은 겨울에도 실내 셀프 세차장에서 세차가 가능하다. 그리고 밤에 가면 혼자 이 큰 공간을 차지할 수 있다.</span></figcaption>
-          </figure>
-          <figure class="photo-card">
-            <img src="../assets/images/cars/gallery-img-0215.jpg" alt="세차는 마음을 정리하는 시간." loading="lazy" />
-            <figcaption><strong>세차는 마음을 정리하는 시간.</strong><span>세차를 한다는 것은 마음을 정리한다는 것이다. 이것만큼 다른 생각 안 하고 신나게 두 시간을 재미있게 보낼 방법이 별로 없지 않나?</span></figcaption>
-          </figure>
-          <figure class="photo-card">
-            <img src="../assets/images/cars/gallery-img-0496.jpg" alt="5년째 깨끗한 이유." loading="lazy" />
-            <figcaption><strong>5년째 깨끗한 이유.</strong><span>맨날 세차장이다. 그래서 5년째 타도 깨끗한 이유겠지.</span></figcaption>
-          </figure>
-          <figure class="photo-card">
-            <img src="../assets/images/cars/gallery-img-3233.jpg" alt="야간의 고요함 속에서 스트레스도 씻어냈다." loading="lazy" />
-            <figcaption><strong>야간의 고요함 속에서 스트레스도 씻어냈다.</strong><span>야간의 고요함이 깨끗함과 만나고, 나는 그렇게 스트레스도 씻어냈다.</span></figcaption>
-          </figure>
-          <figure class="photo-card">
-            <img src="../assets/images/cars/gallery-img-7499.jpg" alt="검은 차의 관리 지옥." loading="lazy" />
-            <figcaption><strong>검은 차의 관리 지옥.</strong><span>또 세차장이다. 검은 차를 사면 정말 관리 지옥이 펼쳐진다.</span></figcaption>
-          </figure>
-          <figure class="photo-card curate">
-            <img src="../assets/images/cars/gallery-img-9289.jpg" alt="다시는 블랙 차를 사나 봐라 했는데." loading="lazy" />
-            <figcaption><strong>다시는 블랙 차를 사나 봐라 했는데.</strong><span>다시는 블랙 차를 사나 봐라 했는데, 우리 와이프 차가 블랙이 되었네. ㅜㅜ</span></figcaption>
-          </figure>
-          <figure class="photo-card">
-            <img src="../assets/images/cars/gallery-img-0216.jpg" alt="운전 중 가장 만나기 싫은 순간, 펑크." loading="lazy" />
-            <figcaption><strong>운전 중 가장 만나기 싫은 순간, 펑크.</strong><span>차를 운전하면서 가장 만나기 싫은 순간, 펑크. ㅠㅠ 어떻게 할지 고민된다. 너무 멀리 가면 휠까지 망가질 수 있고, 기다리자니 급하다. 결국 가까운 타이어 가게를 찾아가서 만 원에 해결했다. 보험사를 기다리는 시간이 너무 길 때가 있다.</span></figcaption>
-          </figure>
-          <figure class="photo-card curate">
-            <img src="../assets/images/cars/gallery-img-1886.jpg" alt="안개 속 휴게소에서 탄생한 작품." loading="lazy" />
-            <figcaption><strong>안개 속 휴게소에서 탄생한 작품.</strong><span>안개가 많던 날, 앞이 보이지 않아 고속도로 휴게소로 대피했다. 그리고 작품 탄생. ㅋ</span></figcaption>
-          </figure>
-          <figure class="photo-card curate">
-            <img src="../assets/images/cars/gallery-img-3567.jpg" alt="밤늦게 나를 데려다준 차." loading="lazy" />
-            <figcaption><strong>밤늦게 나를 데려다준 차.</strong><span>밤늦게 나를 데려다준 차, 고마워. 너무 늦어서 이런 자리밖에 남지 않았다. 어떻게 내렸지? ㅋㅋ</span></figcaption>
-          </figure>
-        </div>
-      </div>
+      <button class="room-house-door car-record-link" type="button" data-house-target="car-photo-room">사진과 기억 모두 보기</button>
     </section>
 
     <section class="section" aria-labelledby="entry-title">
       <div class="section-head">
         <p class="num">04 / 별 안으로</p>
-        <h2 id="entry-title">문장 / 장면 / 디자인 / 별자리</h2>
+        <h2 id="entry-title">문장 / 장면 / 지도 / 별자리</h2>
       </div>
       <div class="entry-hub">
         <p class="large-copy">막막한 사람에게<br />방향을 찾아주는 일.</p>
         <div class="entry-grid">
-          <button class="entry-card" type="button" data-target="#car-writing"><strong>문장</strong><span>각 차의 기억, 사브 이야기, 해치백 예찬, 길 찾는 버릇</span></button>
-          <button class="entry-card" type="button" data-target="#car-photos"><strong>장면</strong><span>대표 사진 장면 + 사진 묶음 장면</span></button>
-          <button class="entry-card" type="button" data-target="#car-design"><strong>디자인</strong><span>이 페이지를 어떤 설계로 지었는지, 그 화면 그대로</span></button>
+          <button class="entry-card room-house-door" type="button" data-house-target="car-writing-room"><strong>문장</strong><span>각 차의 기억, 사브 이야기, 해치백 예찬, 길 찾는 버릇</span></button>
+          <button class="entry-card room-house-door" type="button" data-house-target="car-photo-room"><strong>장면</strong><span>대표 사진 장면 + 사진 묶음 장면</span></button>
+          <button class="entry-card room-house-door" type="button" data-house-target="car-map-room"><strong>지도</strong><span>글과 사진에 남은 기억을 따라</span></button>
           <a class="entry-card" href="#star-list"><strong>별자리</strong><span>다른 별로</span></a>
         </div>
       </div>
     </section>
 
-    <section class="section" id="car-design" aria-labelledby="design-title">
+    <section class="section" id="car-design" data-star-experience aria-labelledby="design-title">
       <div class="section-head">
         <p class="num">05 / 디자인</p>
-        <h2 id="design-title">창작은 설계도와<br />스타일 단계에서 끝났다.</h2>
+        <h2 id="design-title">이 별을 지은 화면.</h2>
       </div>
       <details class="design-sheet">
         <summary>이 페이지를 지은 설계 화면 열어 보기</summary>
@@ -1762,7 +1604,7 @@
         <a class="star-button" href="travel.html">여행별</a>
         <a class="star-button" href="food.html">음식별</a>
         <a class="star-button" href="bicycles.html">자전거별</a>
-        <a class="star-button active" href="#hero-title" aria-current="page">자동차별 <span class="star-signal" aria-label="현재 별 점등"></span></a>
+        <a class="star-button active" href="#hero-title" aria-current="page">자동차별 <span class="star-signal" role="img" aria-label="현재 별 점등"></span></a>
         <a class="star-button" href="motorcycles.html">바이크별</a>
         <a class="star-button" href="spaces.html">공간별</a>
       </div>
@@ -1773,10 +1615,9 @@
       </div>
     </section>
 
-    <footer>자동차별 · LPH-B613-06 · HAM MEDIA</footer>
 
-    <article class="star-new-essay car-new-essay" id="cars-car-in-my-day-note"><header><p class="room-card-meta">사진과 기록</p><h2>차를 고르기 전, 내 하루를 먼저 그려보기</h2></header><div class="star-essay-copy"><p>밤에 세워 둔 검은 차를 옆에서 찍었다. 차체 위로 주변 불빛이 비친다. 햄(함동민)은 이 차의 이름과 실제로 타던 방식을 함께 적었다.</p>
-<figure class="star-essay-photo"><img src="../assets/images/cars/hero-night-direction.jpg" alt="밤에 세워 둔 검은 Mercedes-Benz GLA 45 AMG의 옆모습" width="1800" height="1350" loading="lazy" decoding="async"></figure>
+    <section class="room-house-panel" id="car-writing-room" hidden><header class="room-house-panel-header"><h2>자동차별의 문장</h2><button class="room-house-back" type="button">자동차별로 돌아가기</button></header><div class="room-article-list" aria-label="자동차별 문장"><button class="room-article-link" type="button" data-article-target="cars-car-in-my-day-note"><strong>차를 고르기 전, 내 하루를 먼저 그려보기</strong></button><button class="room-article-link" type="button" data-article-target="car-koni-suspension-note"><strong>테슬라 모델 Y 롱레인지 코니 서스펜션</strong></button></div><div class="room-article-panels"><article class="star-new-essay car-new-essay room-article-panel" hidden id="cars-car-in-my-day-note"><header><p class="room-card-meta">사진과 기록</p><h2>차를 고르기 전, 내 하루를 먼저 그려보기</h2></header><div class="star-essay-copy"><p>밤에 세워 둔 검은 차를 옆에서 찍었다. 차체 위로 주변 불빛이 비친다. 햄(함동민)은 이 차의 이름과 실제로 타던 방식을 함께 적었다.</p>
+<figure class="star-essay-photo"><a class="car-image-link" href="#car-photo-hero-night-direction" data-room-photo-target="car-photo-hero-night-direction" data-room-return-label="보던 문장으로 돌아가기" aria-label="밤에 세워 둔 검은 Mercedes-Benz GLA 45 AMG의 옆모습 크게 보기"><img src="../assets/images/cars/hero-night-direction.jpg" alt="밤에 세워 둔 검은 Mercedes-Benz GLA 45 AMG의 옆모습" width="1800" height="1350" loading="lazy" decoding="async"></a></figure>
 <blockquote><p>벤츠 지엘에이 45에이엠쥐 달리는 느낌을 주게 만드는 차 실제로는 기름값때문에 못 밟아 언제나 컴포트모드로</p></blockquote>
 <p>달리는 느낌을 좋아하면서 기름값도 생각했다. 사진 속 차를 보는 것과 그 차로 매일 움직이는 일 사이에는 이런 문장이 있다.</p>
 <p>테슬라를 탈 때 남긴 기록에는 숙소 이야기가 붙는다. 전기차 충전이 되는 곳을 찾게 된다는 기록이다. 여행지에 무엇이 있는지 살피면서, 차를 어디에서 충전할지도 보게 된 것이다.</p>
@@ -1785,7 +1626,48 @@
 <p>그 두 시간이 즐거운 사람이 있다. 다른 기록에는 「또 세차장 검은 차를 사면 정말 관리 지옥이 펼쳐진다」고 적혀 있다. 즐거운 일이어도 손은 자주 간다.</p>
 <p>차를 고르기 전에 이 기록들 옆에 내 하루도 적어 볼 수 있다.</p>
 <ul><li>하루에 타는 시간:</li><li>편안함이 중요한 순간:</li><li>운전이 즐거운 길:</li><li>감당할 수 있는 관리:</li></ul>
-<p>마음에 드는 차가 생겼을 때 이 네 줄을 다시 읽어 보자. 차 이름을 적기 전에는 잘 보이지 않았던 내 생활이 있을 수 있다.</p></div></article>
+<p>마음에 드는 차가 생겼을 때 이 네 줄을 다시 읽어 보자. 차 이름을 적기 전에는 잘 보이지 않았던 내 생활이 있을 수 있다.</p></div></article><article class="story room-article-panel" hidden id="car-koni-suspension-note">
+          <figure class="story-lead">
+            <a class="car-image-link" href="#car-photo-suspension-01" data-room-photo-target="car-photo-suspension-01" data-room-return-label="보던 문장으로 돌아가기" aria-label="테슬라 모델 Y가 전기차 충전소에 주차된 모습 크게 보기"><img src="../assets/images/cars/suspension-01.jpeg" alt="테슬라 모델 Y가 전기차 충전소에 주차된 모습" loading="lazy" /></a>
+          </figure>
+          <div class="story-body">
+            <h3>테슬라 모델 Y 롱레인지 코니 서스펜션</h3>
+            <p>2021년식 테슬라 모델 Y 롱레인지를 타면서 순정 서스펜션의 단단함은 그냥 그러려니 하고 지냈습니다.</p>
+            <p>6만 킬로를 달리는 동안에도 덩치가 크고 빠른 차를 잘 잡아주려면 이 정도 단단함은 감수해야 한다고 생각했습니다.</p>
+            <p>그런데 최근에 모델 3 하이랜드를 시승해보고 깜짝 놀랐습니다.</p>
+            <p>같은 회사에서 만든 차가 맞나 싶을 정도로 승차감이 훨씬 좋았습니다. 그래서 검색해보니 하이랜드에 장착된 서스펜션이 코니 FSD를 기반으로 만들어졌다는 것을 알게 되었습니다.</p>
+            <p>후기를 더 찾아보니 대부분 이 서스펜션에 대해 칭찬이 많았습니다. 그래서 직접 장착점을 찾아가 보기로 했습니다.</p>
+            <p>그곳에서 마침 모델 Y에 코니 서스펜션 작업을 하고 있는 차주를 만났고, 작업이 완료되면 한 번 시승해볼 수 있는지 요청드렸습니다.</p>
+            <p>다행히 흔쾌히 승낙해주셔서 함께 한 바퀴 시승을 하게 되었습니다.</p>
+            <p>시승 후 바로 업체에 서스펜션 교체를 요청했습니다.</p>
+            <p>금액은 재작년 기준 135만 원이었습니다. 지금은 어떨지 모르겠습니다. 작은 돈은 아니었지만, 그 이상의 가치가 있다고 판단했습니다.</p>
+            <p>교체를 완료한 후, 차를 잘 아는 지인에게 가장 먼저 시승을 시켜봤습니다.</p>
+            <p class="keep-line">그의 첫마디는 "이제야 차 같네"였습니다.</p>
+            <p>그리고 "이제는 더 깔 데 없이 좋다"는 말도 해주었습니다.</p>
+            <p>가족들의 반응은 워낙 무던한 성격들이라서인지 "조금 좋아졌네" 정도였지만, 제 개인적인 만족도는 매우 높습니다.</p>
+            <p class="keep-line">특히 초창기 버전의 모델 Y를 타고 계신 분이라면 강력히 추천드리고 싶습니다.</p>
+            <p>단단함을 참고 타는 것도 방법이지만, 차를 오래 타려면 내가 매일 느끼는 피로감도 중요하니까요.</p>
+
+            <div class="story-gallery">
+              <figure><a class="car-image-link" href="#car-photo-suspension-02" data-room-photo-target="car-photo-suspension-02" data-room-return-label="보던 문장으로 돌아가기" aria-label="벤츠 GLA 45A의 후면과 휠 크게 보기"><img src="../assets/images/cars/suspension-02.jpeg" alt="벤츠 GLA 45A의 후면과 휠" loading="lazy" /></a></figure>
+              <figure><a class="car-image-link" href="#car-photo-suspension-03" data-room-photo-target="car-photo-suspension-03" data-room-return-label="보던 문장으로 돌아가기" aria-label="KONI Special Active 서스펜션 설명 이미지 크게 보기"><img src="../assets/images/cars/suspension-03.jpeg" alt="KONI Special Active 서스펜션 설명 이미지" loading="lazy" /></a></figure>
+              <figure><a class="car-image-link" href="#car-photo-suspension-04" data-room-photo-target="car-photo-suspension-04" data-room-return-label="보던 문장으로 돌아가기" aria-label="빨간색 KONI 쇼바 단품 크게 보기"><img src="../assets/images/cars/suspension-04.jpeg" alt="빨간색 KONI 쇼바 단품" loading="lazy" /></a></figure>
+              <figure><a class="car-image-link" href="#car-photo-suspension-05" data-room-photo-target="car-photo-suspension-05" data-room-return-label="보던 문장으로 돌아가기" aria-label="스프링과 함께 조립된 빨간색 KONI 서스펜션 크게 보기"><img src="../assets/images/cars/suspension-05.jpeg" alt="스프링과 함께 조립된 빨간색 KONI 서스펜션" loading="lazy" /></a></figure>
+              <figure><a class="car-image-link" href="#car-photo-suspension-06" data-room-photo-target="car-photo-suspension-06" data-room-return-label="보던 문장으로 돌아가기" aria-label="작업장에 함께 주차된 벤츠와 테슬라 모델 Y 크게 보기"><img src="../assets/images/cars/suspension-06.jpg" alt="작업장에 함께 주차된 벤츠와 테슬라 모델 Y" loading="lazy" /></a></figure>
+            </div>
+
+            <a class="story-video-link focusable" href="https://youtu.be/4x4S6cLl6ik" target="_blank" rel="noopener noreferrer">코니 서스펜션 비교 영상 보기 <span class="pf-arrow" aria-hidden="true">↗</span></a>
+          </div>
+        </article></div></section>
+    <section class="room-house-panel" id="car-photo-room" hidden><header class="room-house-panel-header"><h2>자동차별의 장면</h2><button class="room-house-back" type="button">자동차별로 돌아가기</button></header><p class="car-record-order">사진과 기억은 남겨진 순서로 읽습니다. 각 사진을 누르면 크게 볼 수 있습니다.</p><div class="room-house-photo-detail room-gallery-detail" tabindex="-1" hidden></div><div class="room-house-photo-grid"><figure class="room-house-photo car-record-photo" id="car-photo-hero-night-direction" data-memory="Mercedes-Benz GLA 45 AMG. 달리는 느낌을 주게 만드는 차. 실제로는 기름값 때문에 마음껏 밟지는 못하고, 언제나 컴포트 모드로 달렸다." data-related-article="cars-car-in-my-day-note"><img src="../assets/images/cars/hero-night-direction.jpg" alt="달리는 느낌은 AMG, 현실은 컴포트 모드." loading="lazy" /><figcaption>
+          <span class="rep-badge">대표 · Mercedes-Benz GLA 45 AMG</span>
+          <strong>달리는 느낌은 AMG, 현실은 컴포트 모드.</strong>
+          <span>Mercedes-Benz GLA 45 AMG. 달리는 느낌을 주게 만드는 차. 실제로는 기름값 때문에 마음껏 밟지는 못하고, 언제나 컴포트 모드로 달렸다.</span>
+        </figcaption></figure><figure class="room-house-photo car-record-photo" id="car-photo-gallery-ec438dff" data-memory="Tesla. 공기저항계수가 낮다고 했는데, 정말 잘 빠졌다. 그런데 와이퍼야, 삐걱거리는 소리 좀 안 나게 해라."><img src="../assets/images/cars/gallery-ec438dff.jpg" alt="잘 빠진 Tesla, 현실은 와이퍼 소리." loading="lazy" /><figcaption><strong>잘 빠진 Tesla, 현실은 와이퍼 소리.</strong><span>Tesla. 공기저항계수가 낮다고 했는데, 정말 잘 빠졌다. 그런데 와이퍼야, 삐걱거리는 소리 좀 안 나게 해라.</span></figcaption></figure><figure class="room-house-photo car-record-photo" id="car-photo-gallery-img-2526" data-memory="가평이었을 거야. Tesla를 타고 나서는 숙소도 전기차 충전이 되는 곳을 찾게 된다. 저 위에 보이는 전기차 충전기."><img src="../assets/images/cars/gallery-img-2526.jpg" alt="Tesla를 타면 숙소 선택 기준도 달라진다." loading="lazy" /><figcaption><strong>Tesla를 타면 숙소 선택 기준도 달라진다.</strong><span>가평이었을 거야. Tesla를 타고 나서는 숙소도 전기차 충전이 되는 곳을 찾게 된다. 저 위에 보이는 전기차 충전기.</span></figcaption></figure><figure class="room-house-photo car-record-photo" id="car-photo-gallery-output-1883912203" data-memory="고속도로를 달리다 잠시 쉴 수 있는 졸음쉼터. 생명 쉼터. 역광 사진빨."><img src="../assets/images/cars/gallery-output-1883912203.jpg" alt="잠시 쉬어가는 생명 쉼터." loading="lazy" /><figcaption><strong>잠시 쉬어가는 생명 쉼터.</strong><span>고속도로를 달리다 잠시 쉴 수 있는 졸음쉼터. 생명 쉼터. 역광 사진빨.</span></figcaption></figure><figure class="room-house-photo car-record-photo" id="car-photo-gallery-1510842055" data-memory="Audi A3 Sportback. 이 구도가 제일 잘생겨 보인다. 정말 매력적이었던 차. 디젤이라 시끄럽긴 했지만, 그래도 추억이 많은 차다."><img src="../assets/images/cars/gallery-1510842055.jpg" alt="가장 잘생겨 보이던 A3 Sportback의 구도." loading="lazy" /><figcaption><strong>가장 잘생겨 보이던 A3 Sportback의 구도.</strong><span>Audi A3 Sportback. 이 구도가 제일 잘생겨 보인다. 정말 매력적이었던 차. 디젤이라 시끄럽긴 했지만, 그래도 추억이 많은 차다.</span></figcaption></figure><figure class="room-house-photo car-record-photo" id="car-photo-gallery-img-0943" data-memory="와이프의 첫차. 이것도 내가 많이 예뻐해 줬는데, 참 실용적이고 귀여운 차였다. 엔진 힘은 너무 없었다. ㅋㅋㅋ"><img src="../assets/images/cars/gallery-img-0943.jpg" alt="실용적이고 귀여웠던 와이프의 첫차." loading="lazy" /><figcaption><strong>실용적이고 귀여웠던 와이프의 첫차.</strong><span>와이프의 첫차. 이것도 내가 많이 예뻐해 줬는데, 참 실용적이고 귀여운 차였다. 엔진 힘은 너무 없었다. ㅋㅋㅋ</span></figcaption></figure><figure class="room-house-photo car-record-photo" id="car-photo-gallery-1510842067" data-memory="신포동 델라카사에서 퇴근하려다 찍은 한 컷. 나를 집에 데려다주려고 하루 종일 기다려줘서 고마워."><img src="../assets/images/cars/gallery-1510842067.jpg" alt="하루 종일 나를 기다려준 차." loading="lazy" /><figcaption><strong>하루 종일 나를 기다려준 차.</strong><span>신포동 델라카사에서 퇴근하려다 찍은 한 컷. 나를 집에 데려다주려고 하루 종일 기다려줘서 고마워.</span></figcaption></figure><figure class="room-house-photo car-record-photo" id="car-photo-gallery-img-2958" data-memory="신포동 점심 브레이크 때, 하늘이 예뻐서 남긴 사진. 인천여관, 루비살롱, 크라운볼링장이 함께 보이던 동네 풍경."><img src="../assets/images/cars/gallery-img-2958.jpg" alt="신포동 점심 브레이크에 본 예쁜 하늘." loading="lazy" /><figcaption><strong>신포동 점심 브레이크에 본 예쁜 하늘.</strong><span>신포동 점심 브레이크 때, 하늘이 예뻐서 남긴 사진. 인천여관, 루비살롱, 크라운볼링장이 함께 보이던 동네 풍경.</span></figcaption></figure><figure class="room-house-photo car-record-photo" id="car-photo-gallery-img-0260" data-memory="부동산에서 근무할 때, 시화공단의 하늘이 예뻤고 내 차도 예뻤다."><img src="../assets/images/cars/gallery-img-0260.jpg" alt="하늘도 예쁘고 내 차도 예뻤던 시화공단." loading="lazy" /><figcaption><strong>하늘도 예쁘고 내 차도 예뻤던 시화공단.</strong><span>부동산에서 근무할 때, 시화공단의 하늘이 예뻤고 내 차도 예뻤다.</span></figcaption></figure><figure class="room-house-photo car-record-photo" id="car-photo-gallery-img-0268" data-memory="부동산에서 근무할 때, 시화공단의 하늘이 예뻤고 내 차도 예뻤다. 다른 각도에서 남긴 한 장."><img src="../assets/images/cars/gallery-img-0268.jpg" alt="시화공단의 하늘과 내 차, 다른 각도." loading="lazy" /><figcaption><strong>시화공단의 하늘과 내 차, 다른 각도.</strong><span>부동산에서 근무할 때, 시화공단의 하늘이 예뻤고 내 차도 예뻤다. 다른 각도에서 남긴 한 장.</span></figcaption></figure><figure class="room-house-photo car-record-photo" id="car-photo-essay-open-parking-direction" data-memory="항상 세차 후엔 차도, 마음도, 내 머리도 깨끗해진다. 아직도 셀프 세차를 하는 이유. 그러고 보니 요즘 세차 안 한 지 3개월째인가?"><img src="../assets/images/cars/essay-open-parking-direction.jpg" alt="세차 후엔 차도 마음도 깨끗해진다." loading="lazy" /><figcaption><strong>세차 후엔 차도 마음도 깨끗해진다.</strong><span>항상 세차 후엔 차도, 마음도, 내 머리도 깨끗해진다. 아직도 셀프 세차를 하는 이유. 그러고 보니 요즘 세차 안 한 지 3개월째인가?</span></figcaption></figure><figure class="room-house-photo car-record-photo" id="car-photo-photo-white-car-line" data-memory="요즘은 겨울에도 실내 셀프 세차장에서 세차가 가능하다. 그리고 밤에 가면 혼자 이 큰 공간을 차지할 수 있다."><img src="../assets/images/cars/photo-white-car-line.jpg" alt="밤의 실내 셀프 세차장." loading="lazy" /><figcaption><strong>밤의 실내 셀프 세차장.</strong><span>요즘은 겨울에도 실내 셀프 세차장에서 세차가 가능하다. 그리고 밤에 가면 혼자 이 큰 공간을 차지할 수 있다.</span></figcaption></figure><figure class="room-house-photo car-record-photo" id="car-photo-gallery-img-0215" data-memory="세차를 한다는 것은 마음을 정리한다는 것이다. 이것만큼 다른 생각 안 하고 신나게 두 시간을 재미있게 보낼 방법이 별로 없지 않나?"><img src="../assets/images/cars/gallery-img-0215.jpg" alt="세차는 마음을 정리하는 시간." loading="lazy" /><figcaption><strong>세차는 마음을 정리하는 시간.</strong><span>세차를 한다는 것은 마음을 정리한다는 것이다. 이것만큼 다른 생각 안 하고 신나게 두 시간을 재미있게 보낼 방법이 별로 없지 않나?</span></figcaption></figure><figure class="room-house-photo car-record-photo" id="car-photo-gallery-img-0496" data-memory="맨날 세차장이다. 그래서 5년째 타도 깨끗한 이유겠지."><img src="../assets/images/cars/gallery-img-0496.jpg" alt="5년째 깨끗한 이유." loading="lazy" /><figcaption><strong>5년째 깨끗한 이유.</strong><span>맨날 세차장이다. 그래서 5년째 타도 깨끗한 이유겠지.</span></figcaption></figure><figure class="room-house-photo car-record-photo" id="car-photo-gallery-img-3233" data-memory="야간의 고요함이 깨끗함과 만나고, 나는 그렇게 스트레스도 씻어냈다."><img src="../assets/images/cars/gallery-img-3233.jpg" alt="야간의 고요함 속에서 스트레스도 씻어냈다." loading="lazy" /><figcaption><strong>야간의 고요함 속에서 스트레스도 씻어냈다.</strong><span>야간의 고요함이 깨끗함과 만나고, 나는 그렇게 스트레스도 씻어냈다.</span></figcaption></figure><figure class="room-house-photo car-record-photo" id="car-photo-gallery-img-7499" data-memory="또 세차장이다. 검은 차를 사면 정말 관리 지옥이 펼쳐진다."><img src="../assets/images/cars/gallery-img-7499.jpg" alt="검은 차의 관리 지옥." loading="lazy" /><figcaption><strong>검은 차의 관리 지옥.</strong><span>또 세차장이다. 검은 차를 사면 정말 관리 지옥이 펼쳐진다.</span></figcaption></figure><figure class="room-house-photo car-record-photo" id="car-photo-gallery-img-9289" data-memory="다시는 블랙 차를 사나 봐라 했는데, 우리 와이프 차가 블랙이 되었네. ㅜㅜ"><img src="../assets/images/cars/gallery-img-9289.jpg" alt="다시는 블랙 차를 사나 봐라 했는데." loading="lazy" /><figcaption><strong>다시는 블랙 차를 사나 봐라 했는데.</strong><span>다시는 블랙 차를 사나 봐라 했는데, 우리 와이프 차가 블랙이 되었네. ㅜㅜ</span></figcaption></figure><figure class="room-house-photo car-record-photo" id="car-photo-gallery-img-0216" data-memory="차를 운전하면서 가장 만나기 싫은 순간, 펑크. ㅠㅠ 어떻게 할지 고민된다. 너무 멀리 가면 휠까지 망가질 수 있고, 기다리자니 급하다. 결국 가까운 타이어 가게를 찾아가서 만 원에 해결했다. 보험사를 기다리는 시간이 너무 길 때가 있다."><img src="../assets/images/cars/gallery-img-0216.jpg" alt="운전 중 가장 만나기 싫은 순간, 펑크." loading="lazy" /><figcaption><strong>운전 중 가장 만나기 싫은 순간, 펑크.</strong><span>차를 운전하면서 가장 만나기 싫은 순간, 펑크. ㅠㅠ 어떻게 할지 고민된다. 너무 멀리 가면 휠까지 망가질 수 있고, 기다리자니 급하다. 결국 가까운 타이어 가게를 찾아가서 만 원에 해결했다. 보험사를 기다리는 시간이 너무 길 때가 있다.</span></figcaption></figure><figure class="room-house-photo car-record-photo" id="car-photo-gallery-img-1886" data-memory="안개가 많던 날, 앞이 보이지 않아 고속도로 휴게소로 대피했다. 그리고 작품 탄생. ㅋ"><img src="../assets/images/cars/gallery-img-1886.jpg" alt="안개 속 휴게소에서 탄생한 작품." loading="lazy" /><figcaption><strong>안개 속 휴게소에서 탄생한 작품.</strong><span>안개가 많던 날, 앞이 보이지 않아 고속도로 휴게소로 대피했다. 그리고 작품 탄생. ㅋ</span></figcaption></figure><figure class="room-house-photo car-record-photo" id="car-photo-gallery-img-3567" data-memory="밤늦게 나를 데려다준 차, 고마워. 너무 늦어서 이런 자리밖에 남지 않았다. 어떻게 내렸지? ㅋㅋ"><img src="../assets/images/cars/gallery-img-3567.jpg" alt="밤늦게 나를 데려다준 차." loading="lazy" /><figcaption><strong>밤늦게 나를 데려다준 차.</strong><span>밤늦게 나를 데려다준 차, 고마워. 너무 늦어서 이런 자리밖에 남지 않았다. 어떻게 내렸지? ㅋㅋ</span></figcaption></figure><figure class="room-house-photo car-record-photo" id="car-photo-saab-ducati-garage" data-memory="지하 주차장에 나란히 선 흰색 사브 9-3과 빨간 두카티"><img src="../assets/images/cars/saab-ducati-garage.jpg" alt="지하 주차장에 나란히 선 흰색 사브 9-3과 빨간 두카티" /><figcaption><strong>지하 주차장에 나란히 선 흰색 사브 9-3과 빨간 두카티</strong><span>지하 주차장에 나란히 선 흰색 사브 9-3과 빨간 두카티</span></figcaption></figure><figure class="room-house-photo car-record-photo" id="car-photo-saab-wheel-close-memory" data-memory="사브 엠블럼이 있는 흰색 차의 앞바퀴"><img src="../assets/images/cars/saab-wheel-close-memory.jpg" alt="사브 엠블럼이 있는 흰색 차의 앞바퀴" loading="lazy" /><figcaption><strong>사브 엠블럼이 있는 흰색 차의 앞바퀴</strong><span>사브 엠블럼이 있는 흰색 차의 앞바퀴</span></figcaption></figure><figure class="room-house-photo car-record-photo" id="car-photo-suspension-01" data-memory="테슬라 모델 Y가 전기차 충전소에 주차된 모습" data-related-article="car-koni-suspension-note"><img src="../assets/images/cars/suspension-01.jpeg" alt="테슬라 모델 Y가 전기차 충전소에 주차된 모습" loading="lazy" /><figcaption><strong>테슬라 모델 Y가 전기차 충전소에 주차된 모습</strong><span>테슬라 모델 Y가 전기차 충전소에 주차된 모습</span></figcaption></figure><figure class="room-house-photo car-record-photo" id="car-photo-suspension-02" data-memory="벤츠 GLA 45A의 후면과 휠" data-related-article="car-koni-suspension-note"><img src="../assets/images/cars/suspension-02.jpeg" alt="벤츠 GLA 45A의 후면과 휠" loading="lazy" /><figcaption><strong>벤츠 GLA 45A의 후면과 휠</strong><span>벤츠 GLA 45A의 후면과 휠</span></figcaption></figure><figure class="room-house-photo car-record-photo" id="car-photo-suspension-03" data-memory="KONI Special Active 서스펜션 설명 이미지" data-related-article="car-koni-suspension-note"><img src="../assets/images/cars/suspension-03.jpeg" alt="KONI Special Active 서스펜션 설명 이미지" loading="lazy" /><figcaption><strong>KONI Special Active 서스펜션 설명 이미지</strong><span>KONI Special Active 서스펜션 설명 이미지</span></figcaption></figure><figure class="room-house-photo car-record-photo" id="car-photo-suspension-04" data-memory="빨간색 KONI 쇼바 단품" data-related-article="car-koni-suspension-note"><img src="../assets/images/cars/suspension-04.jpeg" alt="빨간색 KONI 쇼바 단품" loading="lazy" /><figcaption><strong>빨간색 KONI 쇼바 단품</strong><span>빨간색 KONI 쇼바 단품</span></figcaption></figure><figure class="room-house-photo car-record-photo" id="car-photo-suspension-05" data-memory="스프링과 함께 조립된 빨간색 KONI 서스펜션" data-related-article="car-koni-suspension-note"><img src="../assets/images/cars/suspension-05.jpeg" alt="스프링과 함께 조립된 빨간색 KONI 서스펜션" loading="lazy" /><figcaption><strong>스프링과 함께 조립된 빨간색 KONI 서스펜션</strong><span>스프링과 함께 조립된 빨간색 KONI 서스펜션</span></figcaption></figure><figure class="room-house-photo car-record-photo" id="car-photo-suspension-06" data-memory="작업장에 함께 주차된 벤츠와 테슬라 모델 Y" data-related-article="car-koni-suspension-note"><img src="../assets/images/cars/suspension-06.jpg" alt="작업장에 함께 주차된 벤츠와 테슬라 모델 Y" loading="lazy" /><figcaption><strong>작업장에 함께 주차된 벤츠와 테슬라 모델 Y</strong><span>작업장에 함께 주차된 벤츠와 테슬라 모델 Y</span></figcaption></figure></div></section>
+    <section class="room-house-panel" id="car-map-room" hidden><header class="room-house-panel-header"><h2>기억을 따라가는 지도</h2><button class="room-house-back" type="button">자동차별로 돌아가기</button></header><p class="car-map-intro">차와 함께 보낸 시간을 글과 사진에서 찾습니다. 길의 모양보다 그날 남긴 기록을 따라가세요.</p><div class="car-record-map"><section><h3>사브에 남은 기억</h3><a class="car-record-link" id="car-map-car-photo-saab-ducati-garage" href="#car-photo-saab-ducati-garage" data-room-photo-target="car-photo-saab-ducati-garage">주차장의 사브와 두카티</a><a class="car-record-link" id="car-map-car-photo-saab-wheel-close-memory" href="#car-photo-saab-wheel-close-memory" data-room-photo-target="car-photo-saab-wheel-close-memory">사브 앞바퀴의 엠블럼</a></section><section><h3>차와 나의 하루</h3><a class="car-record-link" id="car-map-cars-car-in-my-day-note" href="#cars-car-in-my-day-note" data-room-article-target="cars-car-in-my-day-note">차를 고르기 전, 내 하루를 먼저 그려보기</a><a class="car-record-link" id="car-map-car-photo-hero-night-direction" href="#car-photo-hero-night-direction" data-room-photo-target="car-photo-hero-night-direction">밤의 검은 차</a><a class="car-record-link" id="car-map-car-photo-gallery-img-2526" href="#car-photo-gallery-img-2526" data-room-photo-target="car-photo-gallery-img-2526">숙소 선택에 남은 기록</a></section><section><h3>신포동과 시화공단</h3><a class="car-record-link" id="car-map-car-photo-gallery-img-2958" href="#car-photo-gallery-img-2958" data-room-photo-target="car-photo-gallery-img-2958">점심 브레이크의 하늘</a><a class="car-record-link" id="car-map-car-photo-gallery-1510842067" href="#car-photo-gallery-1510842067" data-room-photo-target="car-photo-gallery-1510842067">하루를 기다려준 차</a><a class="car-record-link" id="car-map-car-photo-gallery-img-0260" href="#car-photo-gallery-img-0260" data-room-photo-target="car-photo-gallery-img-0260">시화공단의 하늘</a><a class="car-record-link" id="car-map-car-photo-gallery-img-0268" href="#car-photo-gallery-img-0268" data-room-photo-target="car-photo-gallery-img-0268">다른 각도로 남긴 한 장</a></section><section><h3>세차하며 보낸 시간</h3><a class="car-record-link" id="car-map-car-photo-gallery-img-0215" href="#car-photo-gallery-img-0215" data-room-photo-target="car-photo-gallery-img-0215">마음을 정리하는 시간</a><a class="car-record-link" id="car-map-car-photo-photo-white-car-line" href="#car-photo-photo-white-car-line" data-room-photo-target="car-photo-photo-white-car-line">밤의 실내 세차장</a><a class="car-record-link" id="car-map-car-photo-gallery-img-3233" href="#car-photo-gallery-img-3233" data-room-photo-target="car-photo-gallery-img-3233">고요함 속에서 씻어낸 스트레스</a></section><section><h3>길 위에서 잠시 멈춘 순간</h3><a class="car-record-link" id="car-map-car-photo-gallery-output-1883912203" href="#car-photo-gallery-output-1883912203" data-room-photo-target="car-photo-gallery-output-1883912203">생명 쉼터</a><a class="car-record-link" id="car-map-car-photo-gallery-img-1886" href="#car-photo-gallery-img-1886" data-room-photo-target="car-photo-gallery-img-1886">안개 속 휴게소</a><a class="car-record-link" id="car-map-car-photo-gallery-img-3567" href="#car-photo-gallery-img-3567" data-room-photo-target="car-photo-gallery-img-3567">밤늦게 도착한 자리</a></section><section><h3>타면서 바꾼 것</h3><a class="car-record-link" id="car-map-car-koni-suspension-note" href="#car-koni-suspension-note" data-room-article-target="car-koni-suspension-note">테슬라 모델 Y 롱레인지 코니 서스펜션</a><a class="car-record-link" id="car-map-car-photo-suspension-01" href="#car-photo-suspension-01" data-room-photo-target="car-photo-suspension-01">그 글의 충전소 사진</a></section></div><a class="car-record-link" href="#car-design">이 별을 지은 화면 보기</a></section>
+    <footer>자동차별 · LPH-B613-06 · HAM MEDIA</footer>
+
+
 <section class="star-connections" aria-labelledby="star-connections-title"><p class="star-connections-kicker">다음 별에서 만나요</p><h2 id="star-connections-title">이야기는 여기서 이어집니다.</h2><nav aria-label="관심이 이어지는 다른 길"><a href="travel.html#stop-father"><span>차로 떠난 뒤에 남는 것</span><strong>여행별 이야기 <span aria-hidden="true">↗</span></strong></a><a href="music-audio.html#audio-hexa-ie8-memory-today-note"><span>길 위에서도 곁에 두는 음악</span><strong>음악·오디오별의 「기억의 소리와 오늘의 소리」 <span aria-hidden="true">↗</span></strong></a></nav><p class="star-connections-talk">읽다가 하고 싶은 일이 떠올랐다면, <a href="https://hamjipsa.hammedia.co.kr/">햄집사와 이야기해 보세요 ↗</a></p><a class="star-connections-home" href="../../#stars">아홉 별로 돌아가기</a></section>
   </main>
   <script>
@@ -1801,20 +1683,7 @@
       window.addEventListener("resize", variant);
     })();
 
-    // 시트 원본 동작 — 문을 누르면 그 장면으로
     var reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    document.querySelectorAll("[data-target]").forEach((item) => {
-      item.addEventListener("click", () => {
-        const target = document.querySelector(item.dataset.target);
-        if (!target) return;
-        if (item.dataset.target === "#car-design") {
-          const designSheet = target.querySelector(".design-sheet");
-          if (designSheet) designSheet.open = true;
-        }
-        target.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth", block: "start" });
-      });
-    });
-
     // 모션 — 대기 / 도착 재생 / 지나침 완성. 한 번 붙은 상태는 떼지 않는다.
     (function () {
       var risers = Array.prototype.slice.call(
@@ -1850,105 +1719,11 @@
       });
     })();
 
-    // 살아있는 벽 — 벽(잘린 썸네일) ↔ 초점(전체 사진 오버레이). 가시성은 이 로직과 무관하게 항상 1.
-    // 초점은 .live-focus 오버레이(background:contain)로 전체 사진이 잘림 없이 뜬다. 트랜지션으로 부드럽게 성장.
-    (function () {
-      var wall = document.querySelector(".live-wall");
-      if (!wall) return;
-      var wrap = wall.closest(".live-wall-wrap");
-      var capEl = wrap ? wrap.querySelector(".live-caption") : null;
-      var focusEl = wall.querySelector(".live-focus");
-      var frames = Array.prototype.slice.call(wall.querySelectorAll(".live-frame"));
-      if (!frames.length) return;
-
-      function setCaption(f) {
-        if (!capEl) return;
-        var s = capEl.querySelector("strong");
-        var d = capEl.querySelector("span");
-        if (s) s.textContent = f.getAttribute("data-s") || "";
-        if (d) d.textContent = f.getAttribute("data-f") || "";
-      }
-
-      // 정적/축소모션 상태: 첫 사진 캡션 표시, 회전·오버레이 없음(9타일 전부 opacity:1).
-      setCaption(frames[0]);
-
-      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-        return; // 정적 벽 — 오버레이/디밍 안 얹음
-      }
-
-      var idx = 0;
-      var timer = null;
-      var running = false;
-
-      function clearActive() {
-        frames.forEach(function (f) { f.classList.remove("is-active"); });
-      }
-
-      function tick() {
-        if (idx >= frames.length) {
-          // 한 바퀴 끝 — 전체 벽으로 ~3s 쉼(오버레이/디밍 해제) 후 루프
-          idx = 0;
-          clearActive();
-          if (focusEl) focusEl.classList.remove("is-on");
-          wall.classList.remove("rotating");
-          timer = setTimeout(function () {
-            if (running) { wall.classList.add("rotating"); tick(); }
-          }, 3000);
-          return;
-        }
-        wall.classList.add("rotating");
-        var f = frames[idx];
-        clearActive();
-        f.classList.add("is-active");
-        // 초점 오버레이에 이 사진의 전체를 잘림 없이 띄운다(background:contain).
-        // 매 사진마다 scale을 리셋→재적용해 '작아졌다 다시 커지는' 성장을 새로 재생한다.
-        if (focusEl) {
-          var img = f.querySelector("img");
-          focusEl.classList.remove("is-on");
-          if (img) focusEl.style.backgroundImage = 'url("' + img.getAttribute("src") + '")';
-          void focusEl.offsetWidth; // reflow — transform 트랜지션 재시작
-          focusEl.classList.add("is-on");
-        }
-        setCaption(f);
-        idx += 1;
-        timer = setTimeout(tick, 2400);
-      }
-
-      function start() {
-        if (running) return;
-        running = true;
-        wall.classList.add("rotating");
-        tick();
-      }
-
-      function stop() {
-        running = false;
-        if (timer) { clearTimeout(timer); timer = null; }
-        clearActive();
-        if (focusEl) focusEl.classList.remove("is-on");
-        wall.classList.remove("rotating"); // 뷰 이탈 = 정적 벽, 9타일 opacity:1 복귀
-      }
-
-      // 뷰 판정 = 스크롤/타이머 기반(IO/rAF가 안 도는 환경에서도 확실히 동작).
-      function viewportH() {
-        return window.innerHeight || document.documentElement.clientHeight || 800;
-      }
-      function inView() {
-        var r = wall.getBoundingClientRect();
-        return r.top < viewportH() && r.bottom > 0;
-      }
-      function sync() {
-        if (inView()) { start(); } else { stop(); }
-      }
-      window.addEventListener("scroll", sync, { passive: true });
-      window.addEventListener("resize", sync);
-      window.addEventListener("load", sync);
-      setInterval(sync, 500);
-      sync();
-    })();
   </script>
 <script src="/assets/js/star-inquiry-context.js?v=20260930-1" defer></script>
 <script src="../assets/js/star-reference.js?v=20261024-home-map"></script>
+<script src="../assets/js/car-records.js?v=20261105-1"></script>
+<script src="../assets/js/main.js?v=room-context-nav-v2-motorcycle-20261105"></script>
 
   <script type="module" src="../assets/js/car-night-panel.js?v=20261025h"></script>
 </body>
