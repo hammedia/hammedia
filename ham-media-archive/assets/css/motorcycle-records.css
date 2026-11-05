@@ -43,3 +43,5 @@ body.star-reference[data-star-reference=motorcycle] .room-house-panel { position
 
 /* The caption sits in the figure itself, so the light reading surface must reach it. */
 body.star-reference[data-star-reference=motorcycle] .bike-year-two .bike-photo-frame { background:transparent; }
+
+body.star-reference[data-star-reference=motorcycle] .room-record-related { display:inline-flex; align-items:center; min-height:44px; padding:10px 0; color:var(--ref-accent); text-decoration:underline; text-underline-offset:5px; font:600 15px/1.7 Pretendard,sans-serif; }
