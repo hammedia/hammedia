@@ -1,0 +1,70 @@
+/* Travel's public records use the shared reader and history. */
+body[data-star-reference="travel"] { --ref-accent: #7a5230; }
+body[data-star-reference="travel"] .travel-record-link,
+body[data-star-reference="travel"] .travel-photo-link { color: inherit; text-underline-offset: .2em; }
+body[data-star-reference="travel"] .travel-photo-link { display: block; }
+body[data-star-reference="travel"] .travel-hero-photo-link { min-width: 0; }
+body[data-star-reference="travel"] .travel-hero-photo-link .hero-image { height: 100%; min-height: 0; object-fit: contain; }
+body[data-star-reference="travel"] .journey-hero { grid-template-columns: minmax(0,1.2fr) minmax(0,1fr); }
+body[data-star-reference="travel"] .hero-copy { width: 100%; min-width: 0; }
+body[data-star-reference="travel"] .hero-copy h2 { font-weight: 400; line-height: 1.2; font-size: clamp(48px,7vw,100px); }
+body[data-star-reference="travel"] .stop-copy h3,
+body[data-star-reference="travel"] .stop-copy p { color: var(--ref-ink); }
+body[data-star-reference="travel"] .stop-number,
+body[data-star-reference="travel"] .rail-kicker,
+body[data-star-reference="travel"] .rail-description { color: #4f6472; }
+body[data-star-reference="travel"] .map-node { color: #4f6472; min-height: 44px; }
+body[data-star-reference="travel"] .map-node.is-active { color: #243640; text-decoration: underline; text-underline-offset: .25em; }
+body[data-star-reference="travel"] .map-node::before { border-color: #f3ead8; }
+body[data-star-reference="travel"] .route-base { stroke: #6f777c; }
+body[data-star-reference="travel"] .route-progress-line { stroke: #7a5230; }
+body[data-star-reference="travel"] .journey-stop .stop-frame img { height: auto; object-fit: contain; clip-path: none; }
+body[data-star-reference="travel"] .journey-stop:first-child .stop-frame img { height: auto; max-height: 560px; object-fit: contain; }
+body[data-star-reference="travel"] .room-house-panel { position: relative; inset: auto; overflow: visible; }
+body[data-star-reference="travel"] .travel-record-order,
+body[data-star-reference="travel"] .travel-map-intro { font: 16px/1.8 var(--font-sans); color: var(--ref-ink); }
+.travel-record-map { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 28px 40px; margin-block: 32px; }
+.travel-record-map section { min-width: 0; border-top: 1px solid var(--ref-line); padding-top: 20px; }
+.travel-record-map h3 { margin-bottom: 12px; font: 600 23px/1.45 var(--font-sans); }
+.travel-record-link { display: block; min-height: 44px; padding: 10px 0; font: 16px/1.6 var(--font-sans); }
+.travel-design-notes { border-top: 1px solid var(--ref-line); margin-top: 32px; padding-top: 16px; }
+.travel-design-notes summary { cursor: pointer; min-height: 44px; padding: 10px 0; }
+.travel-design-notes .design-story { margin-top: 24px; }
+body[data-star-reference="travel"] .star-pill.is-current { background: #d7a64a; color: #243640; border-color: #d7a64a; }
+.star-signal { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #d7a64a; vertical-align: middle; }
+.star-pill.is-current .star-signal { background: #4f6472; }
+body[data-star-reference="travel"] .room-record-return,
+body[data-star-reference="travel"] .room-record-related { display: inline-flex; align-items: center; min-height: 44px; color: inherit; margin-bottom: 20px; }
+body[data-star-reference="travel"] .room-article-panel img { border: 0; box-shadow: none; }
+body[data-star-reference="travel"] h2,
+body[data-star-reference="travel"] h3 { overflow-wrap: break-word; }
+@media (max-width: 900px) {
+ body[data-star-reference="travel"] .memory-journey { grid-template-columns: 180px minmax(0,1fr); gap: 24px; }
+ body[data-star-reference="travel"] .journey-stories { grid-template-columns: 1fr; }
+ body[data-star-reference="travel"] .memory-rail { height: auto; }
+}
+@media (max-width: 640px) {
+ body[data-star-reference="travel"] .memory-journey { display: block; }
+ body[data-star-reference="travel"] .travel-hero-photo-link .hero-image { height: auto; }
+ .travel-record-map { grid-template-columns: 1fr; gap: 24px; }
+ body[data-star-reference="travel"] .room-house-panel { width: calc(100% - 32px); padding: 24px 8px; }
+ body[data-star-reference="travel"] .star-reference-header { gap: 10px; padding-inline: 16px; font-size: 12px; }
+ body[data-star-reference="travel"] .star-reference-header > span { display: none; }
+}
+
+@media (max-width: 650px) {
+ .trip-note-card > .travel-photo-link { grid-column: 1; grid-row: 2; }
+}
+
+/* The existing compact rail occupies a full row before the memories. */
+@media (max-width: 920px) {
+ body[data-star-reference="travel"] .memory-journey { display: block; }
+ body[data-star-reference="travel"] .memory-rail { position: relative; top: auto; height: auto; max-height: none; padding: 16px 12px; margin-bottom: 32px; background: #2f424e; }
+ body[data-star-reference="travel"] .rail-map { width: 100%; max-width: none; height: auto; grid-template-columns: repeat(5,minmax(0,1fr)); gap: 8px; }
+ body[data-star-reference="travel"] .map-node { color: #f3ead8; font-size: 12px; line-height: 1.4; white-space: nowrap; }
+ body[data-star-reference="travel"] .map-node.is-active { color: #f3ead8; }
+ body[data-star-reference="travel"] .map-node::before { border-color: #2f424e; }
+}
+@media (max-width: 480px) {
+ body[data-star-reference="travel"] .rail-map { grid-template-columns: repeat(3,minmax(0,1fr)); }
+}

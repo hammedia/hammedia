@@ -20,11 +20,11 @@
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const mobile = matchMedia('(max-width: 760px), (pointer: coarse)');
   const places = {
-    busan: { name:'부산', zone:'Asia/Seoul', lat:35.18, lon:129.08, photo:'travel/gallery-img-5134.jpg', title:'또 가자, 부산.', href:'#stop-again' },
-    donghae: { name:'동해', weatherName:'동해시', zone:'Asia/Seoul', lat:37.52, lon:129.11, photo:'travel/gallery-img-0182.jpg', title:'동해 바다에 남은 기억', href:'#travel-photo-room', gallery:true },
-    chuncheon: { name:'춘천', zone:'Asia/Seoul', lat:37.88, lon:127.73, photo:'travel/essay-place-car-stay.jpg', title:'강이 보이는 하얀 집', href:'#travel-place-note' },
-    seattle: { name:'시애틀', zone:'America/Los_Angeles', lat:47.61, lon:-122.33, photo:'cameras/camera-original-20260604-028-40mm4l.jpg', title:'시애틀에서 보고 배운 것', href:'#travel-photo-room', gallery:true },
-    washington: { name:'워싱턴 D.C.', zone:'America/New_York', lat:38.90, lon:-77.04, photo:'travel/gallery-img-3233.jpg', title:'여동생 가족과 함께한 여행', href:'#travel-photo-room', gallery:true }
+    busan: { name:'부산', zone:'Asia/Seoul', lat:35.18, lon:129.08, photo:'travel/gallery-img-5134.jpg', title:'또 가자, 부산.', href:'#travel-photo-gallery-img-5134' },
+    donghae: { name:'동해', weatherName:'동해시', zone:'Asia/Seoul', lat:37.52, lon:129.11, photo:'travel/gallery-img-0182.jpg', title:'동해 바다에 남은 기억', href:'#travel-photo-gallery-img-0182' },
+    chuncheon: { name:'춘천', zone:'Asia/Seoul', lat:37.88, lon:127.73, photo:'travel/essay-place-car-stay.jpg', title:'강이 보이는 하얀 집', href:'#travel-photo-essay-place-car-stay' },
+    seattle: { name:'시애틀', zone:'America/Los_Angeles', lat:47.61, lon:-122.33, photo:'cameras/camera-original-20260604-028-40mm4l.jpg', title:'시애틀에서 보고 배운 것', href:'#travel-photo-camera-original-20260604-028-40mm4l' },
+    washington: { name:'워싱턴 D.C.', zone:'America/New_York', lat:38.90, lon:-77.04, photo:'travel/gallery-img-3233.jpg', title:'여동생 가족과 함께한 여행', href:'#travel-photo-gallery-img-3233' }
   };
   const phaseNames = {day:'낮',sunset:'노을',night:'밤'};
   const phaseNumbers = {day:0,sunset:1,night:2};
@@ -394,7 +394,7 @@ void main() {
     const place=places[key];
     memory.hidden=!place;
     if(place) {
-      memory.href=place.href;memory.querySelector('img').src='../assets/images/'+place.photo;
+      memory.href=place.href;memory.dataset.roomPhotoTarget=place.href.slice(1);memory.dataset.roomReturnLabel="보던 도시와 바다로 돌아가기";memory.querySelector('img').src='../assets/images/'+place.photo;
       memory.querySelector('img').alt=place.name+'에서 남긴 실제 여행사진';
       $('#ocean-memory-title').textContent=place.title;
       loadForecast({lat:place.lat,lon:place.lon},place.weatherName||place.name);
@@ -404,13 +404,6 @@ void main() {
   destination.addEventListener('change',()=>changePlace(destination.value));
   phaseButtons.forEach(button=>button.addEventListener('click',()=>{phaseMode=button.dataset.oceanPhase;updateTime();}));
   toggle.addEventListener('click',()=>{wantsMotion=!wantsMotion;sync();});
-  memory.addEventListener('click',event=>{
-    const place=places[placeKey];if(!place?.gallery)return;
-    event.preventDefault();
-    document.querySelector('.star-room-nav [data-house-target="travel-photo-room"]')?.click();
-    const photo=[...document.querySelectorAll('#travel-photo-room img')].find(img=>(img.getAttribute('src')||'').endsWith(place.photo));
-    photo?.closest('figure')?.click();
-  });
   const dialog=$('#ocean-location-dialog');
   $('#ocean-nearby').addEventListener('click',()=>{
     if(!navigator.geolocation) {announce('이 브라우저에서는 위치를 사용할 수 없습니다. 도시를 직접 골라주세요');destination.focus();return;}
