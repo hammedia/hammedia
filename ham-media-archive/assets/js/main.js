@@ -1727,7 +1727,13 @@ function buildRoomHouse() {
         if (recordReturn) recordReturn.click();
         else returnToPhotoList();
       }
-      else if (articlePanels.some(panel => !panel.hidden)) returnToArticleList();
+      else {
+        const activeArticle = articlePanels.find(panel => !panel.hidden);
+        if (!activeArticle) return;
+        const recordReturn = recordLinks ? activeArticle.querySelector(":scope > .room-record-return") : null;
+        if (recordReturn) recordReturn.click();
+        else returnToArticleList();
+      }
     });
   } else {
     openArticleFromHash();
