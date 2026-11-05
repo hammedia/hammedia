@@ -114,7 +114,10 @@ if (bicycleTerraceExperience) {
     bicycleReplay.hidden = true;
     bicycleReplay.disabled = true;
     bicycleRender();
-    bicyclePedal.focus({ preventScroll: true });
+    requestAnimationFrame(() => {
+      bicyclePedal.scrollIntoView({ behavior: "instant", block: "center" });
+      bicyclePedal.focus({ preventScroll: true });
+    });
   };
 
   bicyclePedal.disabled = false;
