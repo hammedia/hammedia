@@ -54,3 +54,6 @@ body.star-reference[data-star-reference=bicycle] :is(.ride-hero h1,.ride-stage h
 body.star-reference[data-star-reference=bicycle] .bicycle-star-page:has(.room-house-panel:not([hidden])) .body-route { display:none; }
 @media(min-width:1101px) { body.star-reference[data-star-reference=bicycle] :is(.ride-doors,footer) { padding-left:max(172px,calc((100% - 1100px)/2)); } }
 @media(min-width:1101px) and (max-width:1384px) { body.star-reference[data-star-reference=bicycle] .hero-copy { padding-left:132px; } }
+
+/* The existing hero scrim must not cover the new reading link. */
+body.star-reference[data-star-reference=bicycle] .hero-visual .bicycle-record-link { position:relative; z-index:3; }
