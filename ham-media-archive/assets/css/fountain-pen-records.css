@@ -1,5 +1,6 @@
 /* Existing fountain-pen photographs, manuscripts and shared record navigation. */
 body.star-reference[data-star-reference=fountain] {
+  min-width: 0;
   --ref-paper: #f3ead8;
   --ref-ink: #141b2d;
   --ref-accent: #2f4652;
@@ -108,4 +109,15 @@ body[data-star-reference=fountain] .ink-note span { padding:8px 12px; }
  body[data-star-reference=fountain] .scene-inner,
  body[data-star-reference=fountain] .scene-reverse .scene-inner { grid-template-columns:minmax(0,1fr); }
  body[data-star-reference=fountain] #inktrio h2 { font-size:34px; }
+}
+
+@media(min-width:761px) {
+ body[data-star-reference=fountain] .hero-scene { grid-template-rows:minmax(0,1fr); }
+ body[data-star-reference=fountain] .hero-photo-full { min-height:0; max-height:100%; }
+ body[data-star-reference=fountain] .hero-photo-full img { width:auto; height:auto; max-width:100%; max-height:calc(100svh - 136px); }
+}
+
+body[data-star-reference=fountain] #inktrio .star-nav { grid-template-columns:repeat(3,minmax(0,1fr)); }
+@media(max-width:600px) {
+ body[data-star-reference=fountain] #inktrio .star-nav { grid-template-columns:repeat(2,minmax(0,1fr)); }
 }
