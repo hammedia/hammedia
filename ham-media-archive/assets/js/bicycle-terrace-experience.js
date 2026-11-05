@@ -42,7 +42,7 @@ if (bicycleTerraceExperience) {
       bicycleArrival.hidden = false;
       if (arrivalWasHidden) {
         requestAnimationFrame(() => {
-          bicycleArrival.scrollIntoView({ behavior: "smooth", block: "center" });
+          bicycleArrival.scrollIntoView({ behavior: bicycleReducedMotion.matches ? "auto" : "smooth", block: "center" });
           bicycleArrival.focus({ preventScroll: true });
         });
       }
@@ -114,12 +114,15 @@ if (bicycleTerraceExperience) {
     bicycleReplay.hidden = true;
     bicycleReplay.disabled = true;
     bicycleRender();
+    bicyclePedal.focus({ preventScroll: true });
   };
 
   bicyclePedal.disabled = false;
   bicycleArrive.disabled = false;
   bicycleReplay.disabled = true;
-  bicycleTerraceExperience.classList.add("has-bicycle-motion");
+  const bicycleSyncMotion = () => bicycleTerraceExperience.classList.toggle("has-bicycle-motion", !bicycleReducedMotion.matches);
+  bicycleSyncMotion();
+  bicycleReducedMotion.addEventListener("change", bicycleSyncMotion);
   bicyclePedal.addEventListener("pointerdown", (event) => {
     if (event.button !== undefined && event.button !== 0) return;
     event.preventDefault();
