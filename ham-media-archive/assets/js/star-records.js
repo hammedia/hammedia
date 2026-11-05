@@ -41,6 +41,7 @@
     }
 
     function openRecord(card) {
+      if (card.matches("a[data-room-article-target],a[data-room-photo-target]")) return;
       const kind = card.dataset.recordKind;
       const target = card.dataset.recordTarget;
       const panelTarget = kind === "sentence" ? "fountain-writing-room" : "fountain-photo-room";
