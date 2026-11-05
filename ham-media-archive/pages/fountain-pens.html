@@ -1044,16 +1044,6 @@
       border-radius: calc(var(--radius) - 2px);
     }
 
-    .room-house-photo-detail {
-      display: grid;
-      grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
-      gap: 22px;
-      align-items: start;
-      padding: clamp(20px, 3vw, 32px);
-      border: 1px solid rgba(8, 8, 8, 0.1);
-      border-radius: var(--radius);
-      background: rgba(255, 255, 255, 0.46);
-    }
 
     .room-gallery-detail-actions,
     .room-gallery-detail-nav {
@@ -1595,8 +1585,7 @@
       .ink-grid,
       .hobby-constellation,
       .shared-memory-layout,
-      .fountain-essay-split,
-      .room-house-photo-detail {
+      .fountain-essay-split {
         grid-template-columns: 1fr;
       }
 
@@ -1768,6 +1757,7 @@
 <link rel="stylesheet" href="../assets/css/star-reference.css?v=20261024-home-map-2">
 <link rel="stylesheet" href="../assets/css/star-experiences.css?v=20261025g">
 <noscript><style>body.star-reference .room-house-panel[hidden],body.star-reference .room-article-panel[hidden],body.star-reference .design-sheet[hidden]{display:block!important}body.star-reference .room-article-list{display:block}body.star-reference .reveal{opacity:1;transform:none}</style></noscript>
+  <link rel="stylesheet" href="../assets/css/fountain-pen-records.css?v=20261105-3">
 </head>
 <body class="star-reference" data-star-reference="fountain">
   <nav class="scene-dots" aria-label="만년필별 장면 이동">
@@ -1782,8 +1772,14 @@
     <a href="#inktrio" aria-label="좋았던 조합을 다시 찾는 InkTrio"></a>
   </nav>
 
-  <main class="room-house-page" data-room-context-nav="true" data-article-house-target="fountain-writing-room" data-photo-house-target="fountain-photo-room" data-map-house-target="fountain-map-room" data-star-list-target="inktrio" data-article-nav-label="문장 이동" data-article-list-label="문장" data-article-prev-label="이전 문장" data-article-next-label="다음 문장" data-photo-list-label="장면" data-map-list-label="지도">
-    <section class="scene hero-scene" id="ink" data-dot="0" aria-labelledby="ink-title">
+  <main class="room-house-page" data-room-context-nav="true" data-room-record-links="true" data-article-house-target="fountain-writing-room" data-photo-house-target="fountain-photo-room" data-map-house-target="fountain-map-room" data-star-list-target="inktrio" data-article-nav-label="문장 이동" data-article-list-label="문장" data-article-prev-label="이전 문장" data-article-next-label="다음 문장" data-photo-list-label="장면" data-map-list-label="지도">
+    <nav class="fountain-entry-nav room-house-nav" aria-label="만년필별 네 입구">
+<button class="room-house-door" type="button" data-house-target="fountain-writing-room">문장 <small>8편의 기록</small></button>
+<button class="room-house-door" type="button" data-house-target="fountain-photo-room">장면 <small>손글씨와 사진</small></button>
+<button class="room-house-door" type="button" data-house-target="fountain-map-room">지도 <small>기록을 고르는 길</small></button>
+<a href="#inktrio">별자리 <small>다른 별로</small></a>
+</nav>
+    <section class="scene hero-scene" id="ink" data-star-experience data-dot="0" aria-labelledby="ink-title">
       <div class="hero-photo-wash" aria-hidden="true">
         <img height="1800" width="1350" src="../assets/images/fountain-pens/ink-five-pens-five-inks.webp" alt="">
       </div>
@@ -1798,6 +1794,7 @@
         <span class="ink-line" aria-hidden="true"></span>
         <p class="lead">5개의 펜에 5개의 잉크를 한 종이에 담았다.</p>
         <p class="body-copy">만년필별은 잉크와 펜과 손글씨를 통해 마음에 쌓인 것을 밖으로 꺼내고, 시간이 지나 달라지는 색을 바라보는 별이다.</p>
+        <a class="fountain-record-link" href="#fountain-photo-ink-five-pens-five-inks" data-room-photo-target="fountain-photo-ink-five-pens-five-inks" >이 손글씨 크게 보기</a>
         <div class="hero-code-row">
           <img height="640" width="302" class="hero-stamp" src="../assets/images/fountain-pens/stamps/lph-b613-01-fountain-pen-stamp.webp" alt="LPH-B613-01 만년필별 도착 스탬프" decoding="async">
           <span class="hero-code">만년필별 <span class="star-signal" aria-hidden="true"></span></span>
@@ -1805,10 +1802,10 @@
       </div>
     </section>
 
-    <section class="scene scene-warm scene-reverse" id="morning" data-dot="1" aria-labelledby="morning-title">
+    <section class="scene scene-warm scene-reverse" id="morning" data-star-experience data-dot="1" aria-labelledby="morning-title">
       <div class="scene-inner">
         <figure class="morning-photo">
-          <img height="1350" width="1800" src="../assets/images/fountain-pens/hero-window-table.webp" alt="아침 햇살이 비치는 테이블 위 차와 필사 노트, 만년필" loading="lazy" decoding="async">
+          <a class="fountain-photo-open" href="#fountain-photo-hero-window-table" data-room-photo-target="fountain-photo-hero-window-table" aria-label="아침 햇살이 비치는 테이블 위 차와 필사 노트, 만년필 크게 보기"><img height="1350" width="1800" src="../assets/images/fountain-pens/hero-window-table.webp" alt="아침 햇살이 비치는 테이블 위 차와 필사 노트, 만년필" loading="lazy" decoding="async"></a>
         </figure>
         <div class="scene-copy">
           <p class="kicker">Scene 02</p>
@@ -1819,7 +1816,7 @@
       </div>
     </section>
 
-    <section class="scene scene-ink scene-two" id="dry" data-dot="2" aria-labelledby="dry-title">
+    <section class="scene scene-ink scene-two" id="dry" data-star-experience data-dot="2" aria-labelledby="dry-title">
       <div class="scene-inner">
         <div class="scene-copy">
           <p class="kicker">Scene 03</p>
@@ -1831,7 +1828,7 @@
         </div>
         <div class="ink-grid">
           <figure class="scene-photo ink-bottle-photo">
-            <img height="900" width="1200" src="../assets/images/fountain-pens/archive-ink-test.webp" alt="잉크병과 만년필, 파란 잉크 테스트 카드가 놓인 장면" loading="lazy" decoding="async">
+            <a class="fountain-photo-open" href="#fountain-photo-archive-ink-test" data-room-photo-target="fountain-photo-archive-ink-test" aria-label="잉크병과 만년필, 파란 잉크 테스트 카드가 놓인 장면 크게 보기"><img height="900" width="1200" src="../assets/images/fountain-pens/archive-ink-test.webp" alt="잉크병과 만년필, 파란 잉크 테스트 카드가 놓인 장면" loading="lazy" decoding="async"></a>
             <figcaption class="museum-label">Ink color and time.</figcaption>
           </figure>
           <div class="ink-note" aria-label="잉크 색의 시간 기록">
@@ -1843,10 +1840,10 @@
       </div>
     </section>
 
-    <section class="scene scene-paper scene-reverse" id="walking" data-dot="3" aria-labelledby="walking-title">
+    <section class="scene scene-paper scene-reverse" id="walking" data-star-experience data-dot="3" aria-labelledby="walking-title">
       <div class="scene-inner">
         <figure class="scene-photo reading-photo feature-reading-photo">
-          <img height="1800" width="1429" src="../assets/images/fountain-pens/still-walking.webp" alt="플래티넘 프레피 만년필과 이로시주쿠 코스모스로 쓴 아직 걷는 중 손글씨" loading="lazy" decoding="async">
+          <a class="fountain-photo-open" href="#fountain-photo-still-walking" data-room-photo-target="fountain-photo-still-walking" aria-label="플래티넘 프레피 만년필과 이로시주쿠 코스모스로 쓴 아직 걷는 중 손글씨 크게 보기"><img height="1800" width="1429" src="../assets/images/fountain-pens/still-walking.webp" alt="플래티넘 프레피 만년필과 이로시주쿠 코스모스로 쓴 아직 걷는 중 손글씨" loading="lazy" decoding="async"></a>
           <figcaption class="museum-label">아직 걷는 중.</figcaption>
           <a class="fountain-writing-entry" href="#one-line">이 원문 곁에 오늘 한 줄 써 보기 <span aria-hidden="true">→</span></a>
         </figure>
@@ -1859,7 +1856,7 @@
       </div>
     </section>
 
-    <section class="scene scene-paper scene-two" id="human" data-dot="4" aria-labelledby="human-title">
+    <section class="scene scene-paper scene-two" id="human" data-star-experience data-dot="4" aria-labelledby="human-title">
       <div class="scene-inner">
         <div class="scene-copy">
           <p class="kicker">Scene 05</p>
@@ -1868,7 +1865,7 @@
           <p class="body-copy">편지라면 어설픔 무기가 된다.</p>
         </div>
         <figure class="scene-photo reading-photo feature-reading-photo">
-          <img height="1800" width="1350" src="../assets/images/fountain-pens/handmade-gift-letter.webp" alt="사람은 사람이 만든 것에 약하다는 문장과 펜, 잉크 정보를 적은 손글씨" loading="lazy" decoding="async">
+          <a class="fountain-photo-open" href="#fountain-photo-handmade-gift-letter" data-room-photo-target="fountain-photo-handmade-gift-letter" aria-label="사람은 사람이 만든 것에 약하다는 문장과 펜, 잉크 정보를 적은 손글씨 크게 보기"><img height="1800" width="1350" src="../assets/images/fountain-pens/handmade-gift-letter.webp" alt="사람은 사람이 만든 것에 약하다는 문장과 펜, 잉크 정보를 적은 손글씨" loading="lazy" decoding="async"></a>
           <figcaption class="museum-label">사람은 사람이 만든 것에 약하다.</figcaption>
         </figure>
       </div>
@@ -1926,24 +1923,25 @@
           </div>
 
           <figure class="fountain-writing-photo">
-            <img src="../assets/images/fountain-pens/still-walking.webp" width="1429" height="1800" alt="아직 걷는 중이라는 문장을 플래티넘 프레피 만년필과 이로시주쿠 코스모스로 쓴 실제 손글씨" loading="lazy" decoding="async" data-pen-prompt-photo>
+            <a class="fountain-photo-open" href="#fountain-photo-still-walking" data-room-photo-target="fountain-photo-still-walking" data-pen-source-photo aria-label="선택한 원문 손글씨 크게 보기"><img src="../assets/images/fountain-pens/still-walking.webp" width="1429" height="1800" alt="아직 걷는 중이라는 문장을 플래티넘 프레피 만년필과 이로시주쿠 코스모스로 쓴 실제 손글씨" loading="lazy" decoding="async" data-pen-prompt-photo></a>
             <figcaption class="museum-label" data-pen-prompt-caption>플래티넘 프레피 M · 이로시주쿠 코스모스</figcaption>
+            <a class="fountain-record-link" href="#fountain-still-walking-note" data-room-article-target="fountain-still-walking-note" data-pen-source-article>선택한 원문 읽기</a>
           </figure>
         </div>
       </div>
     </section>
 
-    <section class="scene scene-dark scene-two" id="hobby" data-dot="6" aria-labelledby="hobby-title">
+    <section class="scene scene-dark scene-two" id="hobby" data-star-experience data-dot="6" aria-labelledby="hobby-title">
       <div class="scene-inner">
         <div class="scene-copy">
-          <p class="kicker">Scene 06</p>
+          <p class="kicker">Scene 07</p>
           <h2 id="hobby-title"><span class="penline"><span class="write">취미라는 것</span><i class="nib" aria-hidden="true"></i></span></h2>
           <p class="lead">만년필이 취미가 됐네요.</p>
           <p class="body-copy">카메라, 바이크, 오디오.</p>
         </div>
         <div class="hobby-constellation">
           <figure class="hobby-note">
-            <img height="1600" width="1241" src="../assets/images/fountain-pens/essay-hobby-note-original.webp" alt="취미라는 것에 대해 적은 손글씨 노트" loading="lazy" decoding="async">
+            <a class="fountain-photo-open" href="#fountain-photo-essay-hobby-note-original" data-room-photo-target="fountain-photo-essay-hobby-note-original" aria-label="취미라는 것에 대해 적은 손글씨 노트 크게 보기"><img height="1600" width="1241" src="../assets/images/fountain-pens/essay-hobby-note-original.webp" alt="취미라는 것에 대해 적은 손글씨 노트" loading="lazy" decoding="async"></a>
           </figure>
           <div class="hobby-tiles" aria-label="다른 별로 가는 사진">
             <a class="hobby-tile" href="cameras.html" aria-label="카메라별로 이동">
@@ -1967,7 +1965,7 @@
       </div>
     </section>
 
-    <section class="scene scene-dark" id="inside" data-dot="7" aria-labelledby="inside-title">
+    <section class="scene scene-dark" id="inside" data-star-experience data-dot="7" aria-labelledby="inside-title">
       <div class="scene-inner">
         <div class="scene-copy">
           <p class="kicker">별 안으로</p>
@@ -1975,28 +1973,18 @@
           <p class="lead">문장과 장면을 한곳에서 읽고, 선택의 흐름을 따라 다른 별로 건너갑니다.</p>
           <p class="body-copy">만년필별의 기록은 펜을 자랑하는 목록이 아니라, 손으로 쓰며 무엇을 보고 무엇을 남겼는지를 보여주는 편집면입니다.</p>
         </div>
-        <nav class="doors" aria-label="만년필별 내부 문">
-          <a class="door-panel" href="#fountain-records">
-            <strong>기록</strong>
-            <span>전체, 문장, 장면을 한 편집면에서 고릅니다.</span>
-          </a>
-          <button class="door-panel room-house-door" type="button" data-house-target="fountain-map-room">
-            <strong>지도</strong>
-            <span>잉크에서 기록장까지, 선택이 이어진 순서.</span>
-          </button>
-          <a class="door-panel" href="#inktrio">
-            <strong>별자리</strong>
-            <span>취미와 작업이 이어지는 다른 별로 이동합니다.</span>
-          </a>
-        </nav>
-        <div class="record-route-buttons" aria-hidden="true">
-          <button class="room-house-door" type="button" data-house-target="fountain-writing-room">문장</button>
-          <button class="room-house-door" type="button" data-house-target="fountain-photo-room">장면</button>
-        </div>
+<nav class="fountain-entry-nav" aria-label="만년필별 네 입구">
+<button class="room-house-door" type="button" data-house-target="fountain-writing-room">문장 <small>8편의 기록</small></button>
+<button class="room-house-door" type="button" data-house-target="fountain-photo-room">장면 <small>손글씨와 사진</small></button>
+<button class="room-house-door" type="button" data-house-target="fountain-map-room">지도 <small>기록을 고르는 길</small></button>
+<a href="#inktrio">별자리 <small>다른 별로</small></a>
+</nav>
+        <a class="fountain-record-link" href="#fountain-records">전체 기록에서 고르기</a>
+
       </div>
     </section>
 
-    <section class="star-record-board" id="fountain-records" data-star-record-board aria-labelledby="fountain-records-title">
+    <section class="star-record-board" id="fountain-records" data-star-experience data-star-record-board aria-labelledby="fountain-records-title">
       <div class="star-record-inner">
         <header class="star-record-heading">
           <div>
@@ -2017,7 +2005,7 @@
         </div>
 
         <div class="star-record-grid">
-          <button class="star-record-card" type="button" data-record-id="still-walking" data-record-kind="sentence" data-record-target="still-walking" data-record-tags="실패,손글씨,코스모스">
+          <a href="#fountain-still-walking-note" data-room-article-target="fountain-still-walking-note" class="star-record-card" data-record-id="still-walking" data-record-kind="sentence" data-record-target="still-walking" data-record-tags="실패,손글씨,코스모스">
             <span class="star-record-card-media"><img height="1800" width="1429" src="../assets/images/fountain-pens/still-walking.webp" alt="플래티넘 프레피와 코스모스 잉크로 쓴 아직 걷는 중" loading="lazy" decoding="async"></span>
             <span class="star-record-card-copy">
               <span class="star-record-card-meta"><span class="star-record-type">Sentence 01</span><span class="star-record-index">2025 · 다시 쓰기</span></span>
@@ -2025,9 +2013,9 @@
               <p>오늘 실패했다면, 그건 아직 걷는 중이라는 뜻이다. 넘어짐을 끝이 아니라 과정으로 다시 적은 기록.</p>
               <span class="star-record-card-open">원문과 손글씨 읽기</span>
             </span>
-          </button>
+          </a>
 
-          <button class="star-record-card" type="button" data-record-id="hobby" data-record-kind="sentence" data-record-target="hobby" data-record-tags="취미,카메라,오디오,바이크">
+          <a href="#fountain-hobby-essay" data-room-article-target="fountain-hobby-essay" class="star-record-card" data-record-id="hobby" data-record-kind="sentence" data-record-target="hobby" data-record-tags="취미,카메라,오디오,바이크">
             <span class="star-record-card-media"><img height="1600" width="1241" src="../assets/images/fountain-pens/essay-hobby-note-original.webp" alt="취미라는 것에 대해 적은 손글씨 원문" loading="lazy" decoding="async"></span>
             <span class="star-record-card-copy">
               <span class="star-record-card-meta"><span class="star-record-type">Sentence 02</span><span class="star-record-index">별을 잇는 기록</span></span>
@@ -2035,9 +2023,9 @@
               <p>카메라, 바이크, 오디오를 지나 결국 한 페이지를 쓰게 되는 작은 기쁨에 관한 긴 기록.</p>
               <span class="star-record-card-open">긴 기록 읽기</span>
             </span>
-          </button>
+          </a>
 
-          <button class="star-record-card" type="button" data-record-id="well-depth" data-record-kind="sentence" data-record-target="well-depth" data-record-tags="마음,위안,오로라88">
+          <a href="#fountain-well-depth-note" data-room-article-target="fountain-well-depth-note" class="star-record-card" data-record-id="well-depth" data-record-kind="sentence" data-record-target="well-depth" data-record-tags="마음,위안,오로라88">
             <span class="star-record-card-media"><img height="1200" width="1600" src="../assets/images/fountain-pens/well-depth-01.webp" alt="차와 노트, 오로라 88 만년필로 남긴 우물과 마음의 기록" loading="lazy" decoding="async"></span>
             <span class="star-record-card-copy">
               <span class="star-record-card-meta"><span class="star-record-type">Sentence 03</span><span class="star-record-index">마음의 깊이</span></span>
@@ -2045,9 +2033,9 @@
               <p>따뜻한 글에서 위안을 받고, 자신의 마음을 조금 더 깊이 들여다본 날.</p>
               <span class="star-record-card-open">기록 열기</span>
             </span>
-          </button>
+          </a>
 
-          <button class="star-record-card" type="button" data-record-id="handwriting" data-record-kind="scene" data-record-target="handwriting" data-record-tags="손글씨,두자루,기록">
+          <a href="#fountain-photo-essay-handwriting-pens" data-room-photo-target="fountain-photo-essay-handwriting-pens" class="star-record-card" data-record-id="handwriting" data-record-kind="scene" data-record-target="handwriting" data-record-tags="손글씨,두자루,기록">
             <span class="star-record-card-media"><img height="800" width="1200" src="../assets/images/fountain-pens/essay-handwriting-pens.webp" alt="손글씨와 만년필 두 자루" loading="lazy" decoding="async"></span>
             <span class="star-record-card-copy">
               <span class="star-record-card-meta"><span class="star-record-type">Scene 01</span><span class="star-record-index">손으로 남음</span></span>
@@ -2055,9 +2043,9 @@
               <p>키보드로 지나간 말과 다르게, 손으로 적어야 남는 문장들이 있다.</p>
               <span class="star-record-card-open">장면 크게 보기</span>
             </span>
-          </button>
+          </a>
 
-          <button class="star-record-card" type="button" data-record-id="human-made" data-record-kind="sentence" data-record-target="human-made" data-record-tags="편지,사람,필사">
+          <a href="#fountain-human-made-note" data-room-article-target="fountain-human-made-note" class="star-record-card" data-record-id="human-made" data-record-kind="sentence" data-record-target="human-made" data-record-tags="편지,사람,필사">
             <span class="star-record-card-media"><img height="1800" width="1350" src="../assets/images/fountain-pens/handmade-gift-letter.webp" alt="사람은 사람이 만든 것에 약하다는 손글씨" loading="lazy" decoding="async"></span>
             <span class="star-record-card-copy">
               <span class="star-record-card-meta"><span class="star-record-type">Sentence 04</span><span class="star-record-index">사람이 만든 것</span></span>
@@ -2065,9 +2053,9 @@
               <p>직접 만든 선물과 편지는 완벽하지 않아서 오히려 사람의 마음에 오래 남는다.</p>
               <span class="star-record-card-open">기록 읽기</span>
             </span>
-          </button>
+          </a>
 
-          <button class="star-record-card" type="button" data-record-id="nib" data-record-kind="scene" data-record-target="nib" data-record-tags="펜촉,감각,클로즈업">
+          <a href="#fountain-photo-photo-nib-closeup" data-room-photo-target="fountain-photo-photo-nib-closeup" class="star-record-card" data-record-id="nib" data-record-kind="scene" data-record-target="nib" data-record-tags="펜촉,감각,클로즈업">
             <span class="star-record-card-media"><img height="1100" width="825" src="../assets/images/fountain-pens/photo-nib-closeup.webp" alt="잉크가 묻은 만년필 펜촉 클로즈업" loading="lazy" decoding="async"></span>
             <span class="star-record-card-copy">
               <span class="star-record-card-meta"><span class="star-record-type">Scene 02</span><span class="star-record-index">펜촉 끝</span></span>
@@ -2075,9 +2063,9 @@
               <p>펜촉 끝에 잉크가 머물고, 아직 문장이 되기 전의 감각.</p>
               <span class="star-record-card-open">장면 크게 보기</span>
             </span>
-          </button>
+          </a>
 
-          <button class="star-record-card" type="button" data-record-id="happiness" data-record-kind="sentence" data-record-target="happiness" data-record-tags="행복,친절,목표">
+          <a href="#fountain-happiness-note" data-room-article-target="fountain-happiness-note" class="star-record-card" data-record-id="happiness" data-record-kind="sentence" data-record-target="happiness" data-record-tags="행복,친절,목표">
             <span class="star-record-card-media"><img height="1800" width="1350" src="../assets/images/fountain-pens/happiness-07.webp" alt="행복에 관한 짧은 글을 만년필로 적은 손글씨" loading="lazy" decoding="async"></span>
             <span class="star-record-card-copy">
               <span class="star-record-card-meta"><span class="star-record-type">Sentence 05</span><span class="star-record-index">일곱 장의 필사</span></span>
@@ -2085,9 +2073,9 @@
               <p>삶과 목표와 친절에 관한 짧은 문장을 일곱 장의 손글씨로 다시 적었다.</p>
               <span class="star-record-card-open">기록 읽기</span>
             </span>
-          </button>
+          </a>
 
-          <button class="star-record-card" type="button" data-record-id="ink-test" data-record-kind="scene" data-record-target="ink-test" data-record-tags="잉크,종이,시간">
+          <a href="#fountain-photo-archive-ink-test" data-room-photo-target="fountain-photo-archive-ink-test" class="star-record-card" data-record-id="ink-test" data-record-kind="scene" data-record-target="ink-test" data-record-tags="잉크,종이,시간">
             <span class="star-record-card-media"><img height="900" width="1200" src="../assets/images/fountain-pens/archive-ink-test.webp" alt="잉크병과 펜, 종이 위의 컬러 테스트" loading="lazy" decoding="async"></span>
             <span class="star-record-card-copy">
               <span class="star-record-card-meta"><span class="star-record-type">Scene 03</span><span class="star-record-index">마른 뒤의 색</span></span>
@@ -2095,7 +2083,7 @@
               <p>막 나온 색과 마른 뒤의 색. 시간이 지나 다시 보면 또 달라지는 기록.</p>
               <span class="star-record-card-open">장면 크게 보기</span>
             </span>
-          </button>
+          </a>
         </div>
       </div>
     </section>
@@ -2123,7 +2111,7 @@
 <article class="room-article-panel star-new-essay" id="fountain-birthday-copying-room-note" hidden>
 <button class="room-article-back" type="button">문장</button>
 <header><h3>오늘은 기분 좋은 날</h3><p class="star-essay-date"><time datetime="2025-03-26">2025년 3월 26일</time>, 생일 전날 남긴 손글씨</p></header>
-<div class="star-essay-copy"><figure class="star-essay-photo"><img src="../assets/images/fountain-pens/birthday-copying-room.jpg" alt="생일 전날 온라인 필사방을 열며 쓴 손글씨와 만년필" width="1280" height="960" loading="lazy" decoding="async"><figcaption>플래티넘 센츄리 10주년 데케이드와 함께 연 온라인 필사방의 생일 전날 기록.</figcaption></figure>
+<div class="star-essay-copy"><figure class="star-essay-photo"><a class="fountain-photo-open" href="#fountain-photo-birthday-copying-room" data-room-photo-target="fountain-photo-birthday-copying-room" aria-label="생일 전날 온라인 필사방을 열며 쓴 손글씨와 만년필 크게 보기"><img src="../assets/images/fountain-pens/birthday-copying-room.jpg" alt="생일 전날 온라인 필사방을 열며 쓴 손글씨와 만년필" width="1280" height="960" loading="lazy" decoding="async"></a><figcaption>플래티넘 센츄리 10주년 데케이드와 함께 연 온라인 필사방의 생일 전날 기록.</figcaption></figure>
 <p>오늘은 기분 좋은 날.</p>
 <p>문방에 기분 좋은 것을 가득 안고서 온라인 필사방 오픈합니다.</p>
 <p>지금부터 2시간 후면 저의 생일입니다.</p>
@@ -2141,7 +2129,7 @@
 <p><code>오늘 쓴 조합: 펜 ______ / 닙 ______ / 잉크 ______ / 종이 ______</code></p>
 <p>다음에 다시 쓰고 싶은 조합 하나에 표시해 두면, 다음 기록은 그 줄에서 시작할 수 있다.</p>
 <p>아래 사진은 다섯 조합을 쓴 종이와는 별개의 기록이다. 파란 잉크를 시험한 작은 카드에도 이름과 날짜를 적어 두었다.</p>
-<figure class="star-essay-photo"><img src="../assets/images/fountain-pens/archive-ink-test.webp" alt="잉크병 옆에 둔 파란색 필기 시험 카드" width="1200" height="900" loading="lazy" decoding="async"></figure>
+<figure class="star-essay-photo"><a class="fountain-photo-open" href="#fountain-photo-archive-ink-test" data-room-photo-target="fountain-photo-archive-ink-test" aria-label="잉크병 옆에 둔 파란색 필기 시험 카드 크게 보기"><img src="../assets/images/fountain-pens/archive-ink-test.webp" alt="잉크병 옆에 둔 파란색 필기 시험 카드" width="1200" height="900" loading="lazy" decoding="async"></a></figure>
 <p>잉크병 옆에 둔 작은 카드에는 날짜와 잉크 이름, 선을 그어 본 흔적이 함께 있다.</p></div></article>
 
           <article class="room-post fountain-essay room-article-panel" id="fountain-hobby-essay" hidden>
@@ -2155,41 +2143,41 @@
               <p>만년필이 취미가 됐네요.</p>
               <p>그런데 만년필이 취미라는 건, 정확히 뭘까요. 만년필을 사용하는 건지. 모으는 건지. 문득 그 질문이 생기면서, 취미가 뭔지 다시 생각해보게 됐어요.</p>
               <figure class="fountain-essay-figure fountain-essay-figure-tall">
-                <img height="1600" width="1241" class="room-photo-image fountain-essay-photo" src="../assets/images/fountain-pens/essay-hobby-note-original.webp" alt="취미라는 것에 대하여 적은 손글씨 원문" loading="lazy" decoding="async">
+                <a class="fountain-photo-open" href="#fountain-photo-essay-hobby-note-original" data-room-photo-target="fountain-photo-essay-hobby-note-original" aria-label="취미라는 것에 대하여 적은 손글씨 원문 크게 보기"><img height="1600" width="1241" class="room-photo-image fountain-essay-photo" src="../assets/images/fountain-pens/essay-hobby-note-original.webp" alt="취미라는 것에 대하여 적은 손글씨 원문" loading="lazy" decoding="async"></a>
                 <figcaption>이 글은 손으로 먼저 시작됐다. 질문도, 결론도, 종이 위에서 조금씩 정리됐다.</figcaption>
               </figure>
               <p>취미란 개인이 여가 시간에 즐겁게 참여하는 활동이나 관심사. 취미의 특징을 찾아보면 이렇습니다.</p>
               <p>즐거움. 자발성. 시간 활용. 스트레스 해소. 자기계발. 사회적 상호작용. 이라고 하는데.</p>
               <p>돌아보면, 내가 취미라고 생각했던 것들이 과연 그랬을까요.</p>
               <figure class="fountain-essay-figure fountain-essay-figure-portrait">
-                <img height="1200" width="800" class="room-photo-image fountain-essay-photo" src="../assets/images/fountain-pens/essay-hobby-camera-self.webp" alt="카메라를 들고 거울을 보는 흑백 사진" loading="lazy" decoding="async">
+                <a class="fountain-photo-open" href="#fountain-photo-essay-hobby-camera-self" data-room-photo-target="fountain-photo-essay-hobby-camera-self" aria-label="카메라를 들고 거울을 보는 흑백 사진 크게 보기"><img height="1200" width="800" class="room-photo-image fountain-essay-photo" src="../assets/images/fountain-pens/essay-hobby-camera-self.webp" alt="카메라를 들고 거울을 보는 흑백 사진" loading="lazy" decoding="async"></a>
                 <figcaption>카메라 — 사진 찍는 것보다 카메라와 렌즈를 모으는 게 더 좋았던 것 같고.</figcaption>
               </figure>
               <div class="fountain-essay-split">
                 <figure class="fountain-essay-figure">
-                  <img height="1200" width="1200" class="room-photo-image fountain-essay-photo" src="../assets/images/fountain-pens/essay-hobby-ducati.webp" alt="빨간 두카티 바이크 위에 앉아 있는 모습" loading="lazy" decoding="async">
+                  <a class="fountain-photo-open" href="#fountain-photo-essay-hobby-ducati" data-room-photo-target="fountain-photo-essay-hobby-ducati" aria-label="빨간 두카티 바이크 위에 앉아 있는 모습 크게 보기"><img height="1200" width="1200" class="room-photo-image fountain-essay-photo" src="../assets/images/fountain-pens/essay-hobby-ducati.webp" alt="빨간 두카티 바이크 위에 앉아 있는 모습" loading="lazy" decoding="async"></a>
                   <figcaption>바이크 — 바람을 맞으며 달리는 게 좋았고.</figcaption>
                 </figure>
                 <figure class="fountain-essay-figure">
-                  <img height="1050" width="1400" class="room-photo-image fountain-essay-photo" src="../assets/images/fountain-pens/essay-hobby-giant-bike.webp" alt="방 안에 세워진 자이언트 자전거" loading="lazy" decoding="async">
+                  <a class="fountain-photo-open" href="#fountain-photo-essay-hobby-giant-bike" data-room-photo-target="fountain-photo-essay-hobby-giant-bike" aria-label="방 안에 세워진 자이언트 자전거 크게 보기"><img height="1050" width="1400" class="room-photo-image fountain-essay-photo" src="../assets/images/fountain-pens/essay-hobby-giant-bike.webp" alt="방 안에 세워진 자이언트 자전거" loading="lazy" decoding="async"></a>
                   <figcaption>자전거 — 이건 너무 힘들었어요. 그래도 아직 있고, 가끔 탑니다.</figcaption>
                 </figure>
               </div>
               <p>자동차 — 이건 원래 좋아했고.</p>
               <div class="fountain-essay-split">
                 <figure class="fountain-essay-figure">
-                  <img height="1050" width="1400" class="room-photo-image fountain-essay-photo" src="../assets/images/fountain-pens/essay-hobby-pmc-radio.webp" alt="클래식 FM 화면과 PMC 스피커가 보이는 오디오 공간" loading="lazy" decoding="async">
+                  <a class="fountain-photo-open" href="#fountain-photo-essay-hobby-pmc-radio" data-room-photo-target="fountain-photo-essay-hobby-pmc-radio" aria-label="클래식 FM 화면과 PMC 스피커가 보이는 오디오 공간 크게 보기"><img height="1050" width="1400" class="room-photo-image fountain-essay-photo" src="../assets/images/fountain-pens/essay-hobby-pmc-radio.webp" alt="클래식 FM 화면과 PMC 스피커가 보이는 오디오 공간" loading="lazy" decoding="async"></a>
                   <figcaption>오디오 — 지금도 클래식 FM을 PMC로 듣고 있어요.</figcaption>
                 </figure>
                 <figure class="fountain-essay-figure">
-                  <img height="787" width="1400" class="room-photo-image fountain-essay-photo" src="../assets/images/fountain-pens/essay-hobby-audio-room.webp" alt="큰 스피커와 오디오 장비가 놓인 청음 공간" loading="lazy" decoding="async">
+                  <a class="fountain-photo-open" href="#fountain-photo-essay-hobby-audio-room" data-room-photo-target="fountain-photo-essay-hobby-audio-room" aria-label="큰 스피커와 오디오 장비가 놓인 청음 공간 크게 보기"><img height="787" width="1400" class="room-photo-image fountain-essay-photo" src="../assets/images/fountain-pens/essay-hobby-audio-room.webp" alt="큰 스피커와 오디오 장비가 놓인 청음 공간" loading="lazy" decoding="async"></a>
                   <figcaption>좋아하는 것을 듣는 일도, 고르고 빼는 일로 남았다.</figcaption>
                 </figure>
               </div>
               <p>만년필은 나도 모르게 그냥 쓰게 됐어요.</p>
               <p>한 페이지 쓰고 나면, 다른 만년필을 뭘 살까 검색하고 있더라고요. 이유가 명확하지 않을 수도 있는데. 그냥 그 과정이 작은 기쁨이라고 생각해요.</p>
               <figure class="fountain-essay-figure fountain-essay-figure-tall">
-                <img height="1400" width="825" class="room-photo-image fountain-essay-photo" src="../assets/images/fountain-pens/essay-hobby-hand-note.webp" alt="만년필로 적은 여러 문장의 손글씨 메모" loading="lazy" decoding="async">
+                <a class="fountain-photo-open" href="#fountain-photo-essay-hobby-hand-note" data-room-photo-target="fountain-photo-essay-hobby-hand-note" aria-label="만년필로 적은 여러 문장의 손글씨 메모 크게 보기"><img height="1400" width="825" class="room-photo-image fountain-essay-photo" src="../assets/images/fountain-pens/essay-hobby-hand-note.webp" alt="만년필로 적은 여러 문장의 손글씨 메모" loading="lazy" decoding="async"></a>
                 <figcaption>만년필은 결국 다시 손으로 돌아오게 한다. 한 문장씩, 오늘을 적게 한다.</figcaption>
               </figure>
               <p>오디오 케이블보다는 저렴하지만, 그보다 큰 만족을 주는 취미입니다.</p>
@@ -2207,7 +2195,7 @@
             </header>
             <div class="shared-memory-layout">
               <figure class="shared-memory-figure">
-                <img height="1800" width="1350" class="room-photo-image shared-memory-photo" src="../assets/images/shared/beethoven-emperor-handwriting.webp" alt="베토벤 피아노 협주곡 황제 2악장에 대해 여러 색 잉크로 쓴 자필 메모" loading="lazy" decoding="async">
+                <a class="fountain-photo-open" href="#fountain-photo-beethoven-emperor-handwriting" data-room-photo-target="fountain-photo-beethoven-emperor-handwriting" aria-label="베토벤 피아노 협주곡 황제 2악장에 대해 여러 색 잉크로 쓴 자필 메모 크게 보기"><img height="1800" width="1350" class="room-photo-image shared-memory-photo" src="../assets/images/shared/beethoven-emperor-handwriting.webp" alt="베토벤 피아노 협주곡 황제 2악장에 대해 여러 색 잉크로 쓴 자필 메모" loading="lazy" decoding="async"></a>
                 <figcaption>진하오 82 10자루로 써본 자필. 음악을 듣고, 잉크를 바꿔가며 문장을 남겼다.</figcaption>
               </figure>
               <div class="shared-memory-copy">
@@ -2231,7 +2219,7 @@
             </header>
             <div class="shared-memory-layout">
               <figure class="shared-memory-figure">
-                <img height="1800" width="1429" class="room-photo-image shared-memory-photo" src="../assets/images/fountain-pens/still-walking.webp" alt="플래티넘 프레피 만년필과 이로시주쿠 코스모스로 쓴 아직 걷는 중 손글씨" loading="lazy" decoding="async">
+                <a class="fountain-photo-open" href="#fountain-photo-still-walking" data-room-photo-target="fountain-photo-still-walking" aria-label="플래티넘 프레피 만년필과 이로시주쿠 코스모스로 쓴 아직 걷는 중 손글씨 크게 보기"><img height="1800" width="1429" class="room-photo-image shared-memory-photo" src="../assets/images/fountain-pens/still-walking.webp" alt="플래티넘 프레피 만년필과 이로시주쿠 코스모스로 쓴 아직 걷는 중 손글씨" loading="lazy" decoding="async"></a>
                 <figcaption>플래티넘 프레피 M, 이로시주쿠 코스모스로 다시 적은 아직 걷는 중.</figcaption>
               </figure>
               <div class="shared-memory-copy">
@@ -2260,7 +2248,7 @@
             </header>
             <div class="shared-memory-layout">
               <figure class="shared-memory-figure">
-                <img height="1800" width="1350" class="room-photo-image shared-memory-photo" src="../assets/images/fountain-pens/handmade-gift-letter.webp" alt="사람은 사람이 만든 것에 약하다는 손글씨" loading="lazy" decoding="async">
+                <a class="fountain-photo-open" href="#fountain-photo-handmade-gift-letter" data-room-photo-target="fountain-photo-handmade-gift-letter" aria-label="사람은 사람이 만든 것에 약하다는 손글씨 크게 보기"><img height="1800" width="1350" class="room-photo-image shared-memory-photo" src="../assets/images/fountain-pens/handmade-gift-letter.webp" alt="사람은 사람이 만든 것에 약하다는 손글씨" loading="lazy" decoding="async"></a>
                 <figcaption>직접 만든 선물과 편지가 마음에 남는 이유를 손으로 옮겨 적은 기록.</figcaption>
               </figure>
               <div class="shared-memory-copy">
@@ -2281,7 +2269,7 @@
             </header>
             <div class="shared-memory-layout">
               <figure class="shared-memory-figure">
-                <img height="1200" width="1600" class="room-photo-image shared-memory-photo" src="../assets/images/fountain-pens/well-depth-03.webp" alt="차와 노트, 오로라 88 만년필이 놓인 책상" loading="lazy" decoding="async">
+                <a class="fountain-photo-open" href="#fountain-photo-well-depth-03" data-room-photo-target="fountain-photo-well-depth-03" aria-label="차와 노트, 오로라 88 만년필이 놓인 책상 크게 보기"><img height="1200" width="1600" class="room-photo-image shared-memory-photo" src="../assets/images/fountain-pens/well-depth-03.webp" alt="차와 노트, 오로라 88 만년필이 놓인 책상" loading="lazy" decoding="async"></a>
                 <figcaption>신사노트에 오로라 88 데몬 블랙 EF와 이로시주쿠 송로로 적은 우물과 마음의 깊이.</figcaption>
               </figure>
               <div class="shared-memory-copy">
@@ -2304,7 +2292,7 @@
             </header>
             <div class="shared-memory-layout">
               <figure class="shared-memory-figure">
-                <img height="1800" width="1350" class="room-photo-image shared-memory-photo" src="../assets/images/fountain-pens/happiness-01.webp" alt="행복에 관한 짧은 글 손글씨 이미지 1" loading="lazy" decoding="async">
+                <a class="fountain-photo-open" href="#fountain-photo-happiness-01" data-room-photo-target="fountain-photo-happiness-01" aria-label="행복에 관한 짧은 글 손글씨 이미지 1 크게 보기"><img height="1800" width="1350" class="room-photo-image shared-memory-photo" src="../assets/images/fountain-pens/happiness-01.webp" alt="행복에 관한 짧은 글 손글씨 이미지 1" loading="lazy" decoding="async"></a>
                 <figcaption>행복에 관한 짧은 글을 만년필과 잉크로 다시 적은 기록.</figcaption>
               </figure>
               <div class="shared-memory-copy">
@@ -2329,19 +2317,36 @@
           <button class="room-house-back" type="button">만년필별로 돌아가기</button>
         </div>
         <div class="room-house-photo-grid">
-          <figure class="room-house-photo" data-record-id="handwriting" data-memory="손으로 적어야 남는 문장들이 있다.">
+          <figure id="fountain-photo-essay-handwriting-pens" class="room-house-photo" data-record-id="handwriting" data-memory="손으로 적어야 남는 문장들이 있다.">
             <img height="800" width="1200" class="room-photo-image room-house-photo-thumb" src="../assets/images/fountain-pens/essay-handwriting-pens.webp" alt="손글씨와 만년필 두 자루" loading="lazy" decoding="async">
             <figcaption>손글씨</figcaption>
           </figure>
-          <figure class="room-house-photo" data-record-id="nib" data-memory="펜촉 끝에 남는 감각.">
+          <figure id="fountain-photo-photo-nib-closeup" class="room-house-photo" data-record-id="nib" data-memory="펜촉 끝에 남는 감각.">
             <img height="1100" width="825" class="room-photo-image room-house-photo-thumb" src="../assets/images/fountain-pens/photo-nib-closeup.webp" alt="잉크가 묻은 만년필 펜촉 클로즈업" loading="lazy" decoding="async">
             <figcaption>펜촉</figcaption>
           </figure>
-          <figure class="room-house-photo" data-record-id="ink-test" data-memory="잉크와 종이, 그리고 써본 흔적.">
+          <figure data-related-article="fountain-pens-same-combination-note" id="fountain-photo-archive-ink-test" class="room-house-photo" data-record-id="ink-test" data-memory="잉크와 종이, 그리고 써본 흔적.">
             <img height="900" width="1200" class="room-photo-image room-house-photo-thumb" src="../assets/images/fountain-pens/archive-ink-test.webp" alt="잉크병, 컬러 테스트, 펜, 종이, 티슈" loading="lazy" decoding="async">
             <figcaption>잉크 테스트</figcaption>
           </figure>
-        </div>
+        <figure class="room-house-photo" id="fountain-photo-ink-five-pens-five-inks" data-related-article="fountain-pens-same-combination-note"><img height="1800" width="1350" src="../assets/images/fountain-pens/ink-five-pens-five-inks.webp" alt="5개의 펜과 5개의 잉크 조합을 한 종이에 적은 손글씨 기록" fetchpriority="high"><figcaption>5개의 펜과 5개의 잉크 조합을 한 종이에 적은 손글씨 기록</figcaption></figure>
+<figure class="room-house-photo" id="fountain-photo-hero-window-table"><img height="1350" width="1800" src="../assets/images/fountain-pens/hero-window-table.webp" alt="아침 햇살이 비치는 테이블 위 차와 필사 노트, 만년필" loading="lazy" decoding="async"><figcaption>아침 햇살이 비치는 테이블 위 차와 필사 노트, 만년필</figcaption></figure>
+<figure class="room-house-photo" id="fountain-photo-still-walking" data-related-article="fountain-still-walking-note"><img height="1800" width="1429" src="../assets/images/fountain-pens/still-walking.webp" alt="플래티넘 프레피 만년필과 이로시주쿠 코스모스로 쓴 아직 걷는 중 손글씨" loading="lazy" decoding="async"><figcaption>아직 걷는 중.</figcaption></figure>
+<figure class="room-house-photo" id="fountain-photo-handmade-gift-letter" data-related-article="fountain-human-made-note"><img height="1800" width="1350" src="../assets/images/fountain-pens/handmade-gift-letter.webp" alt="사람은 사람이 만든 것에 약하다는 문장과 펜, 잉크 정보를 적은 손글씨" loading="lazy" decoding="async"><figcaption>사람은 사람이 만든 것에 약하다.</figcaption></figure>
+<figure class="room-house-photo" id="fountain-photo-essay-hobby-note-original" data-related-article="fountain-hobby-essay"><img height="1600" width="1241" src="../assets/images/fountain-pens/essay-hobby-note-original.webp" alt="취미라는 것에 대해 적은 손글씨 노트" loading="lazy" decoding="async"><figcaption>취미라는 것에 대해 적은 손글씨 노트</figcaption></figure>
+<figure class="room-house-photo" id="fountain-photo-birthday-copying-room" data-related-article="fountain-birthday-copying-room-note"><img src="../assets/images/fountain-pens/birthday-copying-room.jpg" alt="생일 전날 온라인 필사방을 열며 쓴 손글씨와 만년필" width="1280" height="960" loading="lazy" decoding="async"><figcaption>플래티넘 센츄리 10주년 데케이드와 함께 연 온라인 필사방의 생일 전날 기록.</figcaption></figure>
+<figure class="room-house-photo" id="fountain-photo-essay-hobby-camera-self" data-related-article="fountain-hobby-essay"><img height="1200" width="800" class="room-photo-image fountain-essay-photo" src="../assets/images/fountain-pens/essay-hobby-camera-self.webp" alt="카메라를 들고 거울을 보는 흑백 사진" loading="lazy" decoding="async"><figcaption>카메라 — 사진 찍는 것보다 카메라와 렌즈를 모으는 게 더 좋았던 것 같고.</figcaption></figure>
+<figure class="room-house-photo" id="fountain-photo-essay-hobby-ducati" data-related-article="fountain-hobby-essay"><img height="1200" width="1200" class="room-photo-image fountain-essay-photo" src="../assets/images/fountain-pens/essay-hobby-ducati.webp" alt="빨간 두카티 바이크 위에 앉아 있는 모습" loading="lazy" decoding="async"><figcaption>바이크 — 바람을 맞으며 달리는 게 좋았고.</figcaption></figure>
+<figure class="room-house-photo" id="fountain-photo-essay-hobby-giant-bike" data-related-article="fountain-hobby-essay"><img height="1050" width="1400" class="room-photo-image fountain-essay-photo" src="../assets/images/fountain-pens/essay-hobby-giant-bike.webp" alt="방 안에 세워진 자이언트 자전거" loading="lazy" decoding="async"><figcaption>자전거 — 이건 너무 힘들었어요. 그래도 아직 있고, 가끔 탑니다.</figcaption></figure>
+<figure class="room-house-photo" id="fountain-photo-essay-hobby-pmc-radio" data-related-article="fountain-hobby-essay"><img height="1050" width="1400" class="room-photo-image fountain-essay-photo" src="../assets/images/fountain-pens/essay-hobby-pmc-radio.webp" alt="클래식 FM 화면과 PMC 스피커가 보이는 오디오 공간" loading="lazy" decoding="async"><figcaption>오디오 — 지금도 클래식 FM을 PMC로 듣고 있어요.</figcaption></figure>
+<figure class="room-house-photo" id="fountain-photo-essay-hobby-audio-room" data-related-article="fountain-hobby-essay"><img height="787" width="1400" class="room-photo-image fountain-essay-photo" src="../assets/images/fountain-pens/essay-hobby-audio-room.webp" alt="큰 스피커와 오디오 장비가 놓인 청음 공간" loading="lazy" decoding="async"><figcaption>좋아하는 것을 듣는 일도, 고르고 빼는 일로 남았다.</figcaption></figure>
+<figure class="room-house-photo" id="fountain-photo-essay-hobby-hand-note" data-related-article="fountain-hobby-essay"><img height="1400" width="825" class="room-photo-image fountain-essay-photo" src="../assets/images/fountain-pens/essay-hobby-hand-note.webp" alt="만년필로 적은 여러 문장의 손글씨 메모" loading="lazy" decoding="async"><figcaption>만년필은 결국 다시 손으로 돌아오게 한다. 한 문장씩, 오늘을 적게 한다.</figcaption></figure>
+<figure class="room-house-photo" id="fountain-photo-beethoven-emperor-handwriting" data-related-article="fountain-beethoven-emperor-note"><img height="1800" width="1350" class="room-photo-image shared-memory-photo" src="../assets/images/shared/beethoven-emperor-handwriting.webp" alt="베토벤 피아노 협주곡 황제 2악장에 대해 여러 색 잉크로 쓴 자필 메모" loading="lazy" decoding="async"><figcaption>진하오 82 10자루로 써본 자필. 음악을 듣고, 잉크를 바꿔가며 문장을 남겼다.</figcaption></figure>
+<figure class="room-house-photo" id="fountain-photo-well-depth-03" data-related-article="fountain-well-depth-note"><img height="1200" width="1600" class="room-photo-image shared-memory-photo" src="../assets/images/fountain-pens/well-depth-03.webp" alt="차와 노트, 오로라 88 만년필이 놓인 책상" loading="lazy" decoding="async"><figcaption>신사노트에 오로라 88 데몬 블랙 EF와 이로시주쿠 송로로 적은 우물과 마음의 깊이.</figcaption></figure>
+<figure class="room-house-photo" id="fountain-photo-happiness-01" data-related-article="fountain-happiness-note"><img height="1800" width="1350" class="room-photo-image shared-memory-photo" src="../assets/images/fountain-pens/happiness-01.webp" alt="행복에 관한 짧은 글 손글씨 이미지 1" loading="lazy" decoding="async"><figcaption>행복에 관한 짧은 글을 만년필과 잉크로 다시 적은 기록.</figcaption></figure>
+<figure class="room-house-photo" id="fountain-photo-well-depth-01" data-related-article="fountain-well-depth-note"><img height="1200" width="1600" src="../assets/images/fountain-pens/well-depth-01.webp" alt="차와 노트, 오로라 88 만년필로 남긴 우물과 마음의 기록" loading="lazy" decoding="async"><figcaption>우물과 마음</figcaption></figure>
+<figure class="room-house-photo" id="fountain-photo-happiness-07" data-related-article="fountain-happiness-note"><img height="1800" width="1350" src="../assets/images/fountain-pens/happiness-07.webp" alt="행복에 관한 짧은 글을 만년필로 적은 손글씨" loading="lazy" decoding="async"><figcaption>행복에 관한 짧은 글</figcaption></figure>
+</div>
         <aside class="room-gallery-detail room-house-photo-detail" aria-live="polite" hidden></aside>
       </div>
     </section>
@@ -2361,17 +2366,17 @@
           <p>무엇을 샀는지보다 무엇을 보고, 써보고, 다시 골랐는지를 따라갑니다. 각 지점은 이 페이지의 실제 장면으로 이어집니다.</p>
         </div>
         <nav class="record-map-path" aria-label="만년필별 선택 지도">
-          <a class="record-map-node" href="#ink"><strong>잉크를 고름</strong><span>다섯 자루와 다섯 색에서 시작</span></a>
-          <a class="record-map-node" href="#dry"><strong>마른 뒤를 봄</strong><span>처음 색과 남은 색을 비교</span></a>
-          <a class="record-map-node" href="#walking"><strong>문장을 다시 씀</strong><span>실패를 과정으로 고쳐 적음</span></a>
-          <a class="record-map-node" href="#human"><strong>사람을 읽음</strong><span>어설픔 속의 시간을 발견</span></a>
-          <a class="record-map-node" href="#hobby"><strong>취미를 돌아봄</strong><span>모으기보다 쓰는 기쁨을 확인</span></a>
+          <div class="fountain-map-record"><a class="record-map-node" href="#ink"><strong>잉크를 고름</strong><span>다섯 자루와 다섯 색에서 시작</span></a><div class="fountain-map-actions"><a class="fountain-record-link" href="#fountain-photo-ink-five-pens-five-inks" data-room-photo-target="fountain-photo-ink-five-pens-five-inks" >손글씨·사진</a><a href="#fountain-pens-same-combination-note" data-room-article-target="fountain-pens-same-combination-note">원문 읽기</a></div></div>
+          <div class="fountain-map-record"><a class="record-map-node" href="#dry"><strong>마른 뒤를 봄</strong><span>처음 색과 남은 색을 비교</span></a><div class="fountain-map-actions"><a class="fountain-record-link" href="#fountain-photo-archive-ink-test" data-room-photo-target="fountain-photo-archive-ink-test" >손글씨·사진</a><a href="#fountain-pens-same-combination-note" data-room-article-target="fountain-pens-same-combination-note">원문 읽기</a></div></div>
+          <div class="fountain-map-record"><a class="record-map-node" href="#walking"><strong>문장을 다시 씀</strong><span>실패를 과정으로 고쳐 적음</span></a><div class="fountain-map-actions"><a class="fountain-record-link" href="#fountain-photo-still-walking" data-room-photo-target="fountain-photo-still-walking" >손글씨·사진</a><a href="#fountain-still-walking-note" data-room-article-target="fountain-still-walking-note">원문 읽기</a></div></div>
+          <div class="fountain-map-record"><a class="record-map-node" href="#human"><strong>사람을 읽음</strong><span>어설픔 속의 시간을 발견</span></a><div class="fountain-map-actions"><a class="fountain-record-link" href="#fountain-photo-handmade-gift-letter" data-room-photo-target="fountain-photo-handmade-gift-letter" >손글씨·사진</a><a href="#fountain-human-made-note" data-room-article-target="fountain-human-made-note">원문 읽기</a></div></div>
+          <div class="fountain-map-record"><a class="record-map-node" href="#hobby"><strong>취미를 돌아봄</strong><span>모으기보다 쓰는 기쁨을 확인</span></a><div class="fountain-map-actions"><a class="fountain-record-link" href="#fountain-photo-essay-hobby-note-original" data-room-photo-target="fountain-photo-essay-hobby-note-original" >손글씨·사진</a><a href="#fountain-hobby-essay" data-room-article-target="fountain-hobby-essay">원문 읽기</a></div></div>
           <a class="record-map-node" href="#inktrio"><strong>조합을 보관함</strong><span>펜·잉크·종이를 InkTrio에 기록</span></a>
         </nav>
       </div>
     </section>
 
-    <section class="ink-panel fountain-design-method" id="fountain-design-room" aria-label="만년필별 제작 방식">
+    <section class="ink-panel fountain-design-method" id="fountain-design-room" data-star-experience aria-label="만년필별 제작 방식">
       <div class="ink-panel-inner">
         <div class="room-house-panel-header">
           <p class="room-section-label">만년필별 · 제작 방식</p>
@@ -2439,7 +2444,7 @@
                 <p>낯선 제품컷보다 햄PD가 실제로 남긴 만년필, 노트, 손글씨를 먼저 본다. 중요한 손글씨를 숨기는 자르기는 피한다.</p>
               </div>
               <figure class="mini-photo">
-                <img height="800" width="1200" src="../assets/images/fountain-pens/essay-handwriting-pens.webp" alt="만년필과 손글씨가 함께 놓인 실제 사진" loading="lazy" decoding="async">
+                <a class="fountain-photo-open" href="#fountain-photo-essay-handwriting-pens" data-room-photo-target="fountain-photo-essay-handwriting-pens" aria-label="만년필과 손글씨가 함께 놓인 실제 사진 크게 보기"><img height="800" width="1200" src="../assets/images/fountain-pens/essay-handwriting-pens.webp" alt="만년필과 손글씨가 함께 놓인 실제 사진" loading="lazy" decoding="async"></a>
               </figure>
             </div>
           </section>
@@ -2459,7 +2464,7 @@
             <h3>별자리</h3>
             <p class="section-desc">이 별은 HAM MEDIA Design MD 방식으로 정리한 별입니다. 좋아하는 것의 감각을 브랜드의 기준으로 바꾸는 실험이기도 합니다.</p>
             <div class="star-list-grid" aria-label="별 목록">
-              <a class="star-pill is-current" href="fountain-pens.html" aria-current="page">만년필별 <span class="star-signal" aria-hidden="true"></span></a>
+              <a class="star-pill is-current" href="fountain-pens.html" aria-current="page">만년필별</a>
               <a class="star-pill" href="music-audio.html">음악·오디오별</a>
               <a class="star-pill" href="cameras.html">카메라별</a>
               <a class="star-pill" href="travel.html">여행별</a>
@@ -2480,7 +2485,7 @@
       </div>
     </section>
 
-    <section class="scene scene-paper scene-two" id="inktrio" data-dot="8" aria-labelledby="inktrio-title">
+    <section class="scene scene-paper scene-two" id="inktrio" data-star-experience data-dot="8" aria-labelledby="inktrio-title">
       <div class="scene-inner">
         <div class="scene-copy">
           <p class="kicker">Finale</p>
@@ -2604,8 +2609,8 @@
     }
 
   </script>
-  <script src="../assets/js/main.js?v=20261025-star-reference-anchor-5"></script>
-  <script src="../assets/js/star-records.js"></script>
+  <script src="../assets/js/main.js?v=room-context-nav-v2"></script>
+  <script src="../assets/js/star-records.js?v=20261105-1"></script>
 <script src="/assets/js/star-inquiry-context.js?v=20260930-1" defer></script>
 <script src="../assets/js/star-reference.js?v=20261024-home-map"></script>
 <script type="module" src="../assets/js/fountain-writing-experience.js?v=20261025h"></script>
