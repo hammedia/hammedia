@@ -1590,13 +1590,14 @@
 <link rel="stylesheet" href="../assets/css/star-reference.css?v=20261024-home-map-2">
 <link rel="stylesheet" href="../assets/css/star-experiences.css?v=20261025g">
 <noscript><style>body.star-reference .room-house-panel[hidden],body.star-reference .room-article-panel[hidden],body.star-reference .design-sheet[hidden]{display:block!important}body.star-reference .room-article-list{display:block}body.star-reference .reveal{opacity:1;transform:none}</style></noscript>
+<link rel="stylesheet" href="../assets/css/bicycle-records.css?v=20261105-1">
 </head>
 <body class="variant-desktop star-reference" data-star-reference="bicycle">
-  <main class="sheet room-house-page bicycle-star-page" data-motion-progress="true" data-article-nav-label="문장 이동" data-article-list-label="문장" data-article-prev-label="이전 문장" data-article-next-label="다음 문장" data-photo-list-label="장면" data-map-list-label="디자인" data-room-context-nav="true" data-article-house-target="bicycle-writing-room" data-photo-house-target="bicycle-photo-room" data-map-house-target="bicycle-design-room" data-design-house-target="bicycle-design-room" data-star-list-target="star-list">
+  <main class="sheet room-house-page bicycle-star-page" data-motion-progress="true" data-room-record-links="true" data-article-nav-label="문장 이동" data-article-list-label="문장" data-article-prev-label="이전 문장" data-article-next-label="다음 문장" data-photo-list-label="장면" data-map-list-label="지도" data-room-context-nav="true" data-article-house-target="bicycle-writing-room" data-photo-house-target="bicycle-photo-room" data-map-house-target="bicycle-map-room" data-star-list-target="star-list">
     <nav class="top-doors room-house-nav" aria-label="자전거별 입구">
       <button class="room-house-door" type="button" data-house-target="bicycle-writing-room">문장</button>
       <button class="room-house-door" type="button" data-house-target="bicycle-photo-room">장면</button>
-      <button class="room-house-door" type="button" data-house-target="bicycle-design-room">디자인</button>
+      <button class="room-house-door" type="button" data-house-target="bicycle-map-room">지도</button>
       <a href="#star-list">별자리</a>
     </nav>
     <aside class="body-route" aria-label="몸의 고도계">
@@ -1608,10 +1609,10 @@
       <button class="route-stop" type="button" data-route-stop="4"><span>고요</span></button>
     </aside>
 
-    <section class="ride-hero ride-memory" data-stop="0" aria-labelledby="hero-title">
+    <section id="bicycle-body-start" class="ride-hero ride-memory" data-stop="0" aria-labelledby="hero-title">
       <div class="hero-copy">
-        <p class="ride-kicker">LPH-B613-04 · HAM MEDIA CONSTELLATION</p>
-        <h1 id="hero-title">자전거별<span>몸을 비우는 별.</span></h1>
+        <p class="ride-kicker">LPH-B613-04 <span class="star-signal" aria-label="별 점등"></span><img class="bicycle-arrival-stamp" src="../assets/images/bicycles/stamps/lph-b613-04-bicycle-stamp.png" alt="자전거별 도착 스탬프" /></p>
+        <h1 id="hero-title">자전거별 <span>몸을 비우는 별.</span></h1>
         <p class="hero-lead">두 발로 가는 건 딴생각하면 큰일 난다.<br />머리가 복잡한 날엔 다리를 믿고 그냥 전진했다.<br />그렇게 몸을 비우는 법이, 지금도 나를 재운다.<br /><br />비워야 채워진다는 걸 아는 사람이라면.</p>
         <p class="hero-foot"><span class="scroll-mark" aria-hidden="true"></span>스크롤이 페달이 됩니다</p>
         <p class="body-route-note">GPS 경로나 주행 기록이 아니라, 복잡함에서 고요로 이어지는 몸의 흐름입니다.</p>
@@ -1620,6 +1621,7 @@
         <img src="../assets/images/bicycles/gallery-img-4187.jpg" alt="미시령 길을 오르는 자전거 라이더" />
         <span class="cadence-dial" aria-hidden="true"><span></span></span>
         <figcaption class="hero-caption">미시령을 넘어가며 내가 알고 있던 욕을 다 했다. 그리고 내려오며 천국을 맛봤다.</figcaption>
+        <a class="bicycle-record-link" href="#bicycle-photo-misiryeong" data-room-photo-target="bicycle-photo-misiryeong" data-room-return-label="미시령 장면으로 돌아가기">사진과 기억 크게 보기 →</a>
       </figure>
     </section>
 
@@ -1631,7 +1633,7 @@
         <p class="stage-quote">“부평에서 부천은 껌이지. 하하.”</p>
         <div class="effort-wave" aria-hidden="true"><i style="--h:4"></i><i style="--h:9"></i><i style="--h:14"></i><i style="--h:7"></i><i style="--h:17"></i><i style="--h:11"></i><i style="--h:20"></i><i style="--h:13"></i><i style="--h:8"></i></div>
       </div>
-      <figure class="stage-frame"><img src="../assets/images/bicycles/essay-before-ride.jpg" alt="라이딩 전 카페 앞에서 자전거를 끄는 모습" /></figure>
+      <figure class="stage-frame"><img src="../assets/images/bicycles/essay-before-ride.jpg" alt="라이딩 전 카페 앞에서 자전거를 끄는 모습" /><a class="bicycle-record-link" href="#bicycle-photo-before" data-room-photo-target="bicycle-photo-before" data-room-return-label="보던 장면으로 돌아가기">사진과 기억 크게 보기 →</a></figure>
     </section>
 
     <section class="ride-stage ride-memory" data-stop="2" aria-labelledby="climb-title">
@@ -1642,7 +1644,7 @@
         <p class="stage-quote">미시령을 넘어가며 내가 알고 있던 욕을 다 했다.</p>
         <div class="effort-wave" aria-hidden="true"><i style="--h:8"></i><i style="--h:19"></i><i style="--h:11"></i><i style="--h:24"></i><i style="--h:15"></i><i style="--h:26"></i><i style="--h:18"></i><i style="--h:28"></i><i style="--h:13"></i></div>
       </div>
-      <figure class="stage-frame"><img src="../assets/images/bicycles/gallery-img-4187.jpg" alt="미시령 오르막에서 페달을 밟는 라이더" /></figure>
+      <figure class="stage-frame"><img src="../assets/images/bicycles/gallery-img-4187.jpg" alt="미시령 오르막에서 페달을 밟는 라이더" /><a class="bicycle-record-link" href="#bicycle-photo-misiryeong" data-room-photo-target="bicycle-photo-misiryeong" data-room-return-label="보던 장면으로 돌아가기">사진과 기억 크게 보기 →</a></figure>
     </section>
 
     <section class="ride-stage ride-memory" data-stop="3" aria-labelledby="hold-title">
@@ -1652,7 +1654,7 @@
         <p class="stage-body">몸이 기억한 문장은 거창한 승리 선언이 아니었다. 멈추고 싶은 순간에 다시 한 바퀴를 만드는 낮은 기준이었다.</p>
         <p class="stage-quote">패배는 단지 일시적인 것에 불과하지만,<br />포기해버리면 그걸로 모든 건 끝이다.</p>
       </div>
-      <figure class="stage-frame landscape contain"><img src="../assets/images/bicycles/photo-bib-detail.jpg" alt="패배와 포기에 관한 문구가 적힌 자전거 탑튜브" /></figure>
+      <figure class="stage-frame landscape contain"><img src="../assets/images/bicycles/photo-bib-detail.jpg" alt="패배와 포기에 관한 문구가 적힌 자전거 탑튜브" /><a class="bicycle-record-link" href="#bicycle-photo-top-tube" data-room-photo-target="bicycle-photo-top-tube" data-room-return-label="보던 장면으로 돌아가기">사진과 기억 크게 보기 →</a></figure>
     </section>
 
     <section class="ride-stage ride-memory" data-stop="4" aria-labelledby="quiet-title">
@@ -1663,10 +1665,10 @@
         <p class="stage-quote">몸을 비우는 법이, 지금도 나를 재운다.</p>
         <div class="effort-wave" aria-hidden="true"><i style="--h:18"></i><i style="--h:14"></i><i style="--h:11"></i><i style="--h:8"></i><i style="--h:6"></i><i style="--h:4"></i><i style="--h:3"></i><i style="--h:2"></i><i style="--h:1"></i></div>
       </div>
-      <figure class="stage-frame"><img src="../assets/images/bicycles/gallery-img-5757.jpg" alt="강변에서 자전거 곁에 웃으며 선 라이더" /></figure>
+      <figure class="stage-frame"><img src="../assets/images/bicycles/gallery-img-5757.jpg" alt="강변에서 자전거 곁에 웃으며 선 라이더" /><a class="bicycle-record-link" href="#bicycle-photo-weekly" data-room-photo-target="bicycle-photo-weekly" data-room-return-label="보던 장면으로 돌아가기">사진과 기억 크게 보기 →</a></figure>
     </section>
 
-    <section class="ride-afterglow" aria-labelledby="afterglow-title" data-ride-afterglow>
+    <section id="bicycle-afterglow" class="ride-afterglow" aria-labelledby="afterglow-title" data-ride-afterglow>
       <div class="afterglow-copy">
         <p class="ride-kicker">05 · 라이딩 뒤에 남은 것</p>
         <h2 id="afterglow-title">속도는 사라지고,<br />장면이 남았다.</h2>
@@ -1675,25 +1677,19 @@
           누군가를 위해 마련했던 작은 자리였다. 그래서 이 페이지는 얼마나 잘 탔는지가 아니라,
           한 사람이 무엇으로 다시 조용해졌는지를 보여준다.
         </p>
-        <div class="memory-receipt" aria-label="자전거별 제작 재료와 결과">
-          <p><strong>받은 기록</strong><span>실제 사진 11장 · 몸에 남은 문장 2개 · 한 사람의 라이딩 기억</span></p>
-          <p><strong>찾은 중심</strong><span>복잡함에서 고요로 내려오는 몸의 변화</span></p>
-          <p><strong>만든 경험</strong><span>사진·문장·움직임이 한 번의 라이딩처럼 이어지는 웹페이지</span></p>
-        </div>
-        <a class="work-bridge" href="../../services/">당신의 평범한 기록도 어떻게 일이 되는지 보기</a>
+        <div class="bicycle-after-links"><a href="#bicycle-photo-room" class="room-house-door" data-house-target="bicycle-photo-room">남은 장면 모두 보기 →</a><a href="#bicycle-writing-room" class="room-house-door" data-house-target="bicycle-writing-room">몸에 남은 문장 읽기 →</a></div>
       </div>
       <div class="afterglow-scenes" aria-label="라이딩 뒤에 남은 세 장면">
         <figure class="afterglow-scene">
           <img src="../assets/images/bicycles/gallery-img-5752.jpg" alt="자동차에 실린 자이언트 자전거" />
-          <figcaption>스웨덴산 사브와 대만산 자이언트, 그리고 한국산 햄.</figcaption>
-        </figure>
+          <figcaption>스웨덴산 사브와 대만산 자이언트, 그리고 한국산 햄.</figcaption><a class="bicycle-record-link" href="#bicycle-photo-saab" data-room-photo-target="bicycle-photo-saab" data-room-return-label="라이딩 뒤의 장면으로 돌아가기">사진과 기억 크게 보기 →</a></figure>
         <figure class="afterglow-scene">
           <img src="../assets/images/bicycles/gallery-img-6681.jpg" alt="나란히 세워둔 두 대의 자전거" />
-          <figcaption>나의 애마 두 마리.</figcaption>
-        </figure>
+          <figcaption>나의 애마 두 마리.</figcaption><a class="bicycle-record-link" href="#bicycle-photo-two" data-room-photo-target="bicycle-photo-two" data-room-return-label="라이딩 뒤의 장면으로 돌아가기">사진과 기억 크게 보기 →</a></figure>
         <figure class="afterglow-scene">
           <img src="../assets/images/bicycles/bicycle-selected-20260611-dellacasa-shinpo-terrace-bike-parking.jpeg" alt="델라카사 신포점 테라스에 마련한 자전거 주차장" />
           <figcaption>누군가 자전거를 타고 올 자리를 먼저 만들어두었던 때.</figcaption>
+          <a class="bicycle-record-link" href="#bicycle-photo-terrace" data-room-photo-target="bicycle-photo-terrace" data-room-return-label="라이딩 뒤의 테라스으로 돌아가기">사진과 기억 크게 보기 →</a>
           <a class="bicycle-terrace-entry" href="#bicycle-terrace-experience">테라스까지 언덕을 따라가 보기</a>
         </figure>
       </div>
@@ -1705,7 +1701,7 @@
       <div class="door-grid">
         <button class="ride-door room-house-door" type="button" data-house-target="bicycle-writing-room"><small>01</small><strong>문장</strong><span>다리를 믿었던 시간과 몸에 남은 말</span></button>
         <button class="ride-door room-house-door" type="button" data-house-target="bicycle-photo-room"><small>02</small><strong>장면</strong><span>몸을 비우며 지나온 실제 기록 11장</span></button>
-        <button class="ride-door room-house-door" type="button" data-house-target="bicycle-design-room"><small>03</small><strong>디자인</strong><span>페달·호흡·고도선이 이 이야기에서 나온 이유</span></button>
+        <button class="ride-door room-house-door" type="button" data-house-target="bicycle-map-room"><small>03</small><strong>지도</strong><span>몸의 흐름을 따라 문장과 장면 고르기</span></button>
         <a class="ride-door" href="#star-list"><small>04</small><strong>별자리</strong><span>다른 세계로 이어지는 HAM MEDIA의 밤하늘</span></a>
       </div>
     </section>
@@ -1714,8 +1710,7 @@
       <p class="ride-kicker">다른 별로</p>
       <h2 id="star-list-title">별자리</h2>
       <p class="intro">
-        이 별은 HAM MEDIA Design MD 방식으로 정리한 별입니다.
-        좋아하는 것의 감각을 브랜드의 기준으로 바꾸는 실험이기도 합니다.
+        머리가 복잡한 날, 다리를 믿고 앞으로 가는 별. 다른 좋아하는 것들의 이야기로도 이어집니다.
       </p>
       <div class="star-buttons" aria-label="별 목록">
         <a class="star-button" href="fountain-pens.html">만년필별</a>
@@ -1729,7 +1724,8 @@
         <a class="star-button" href="spaces.html">공간별</a>
       </div>
       <div class="bottom-links" aria-label="하단 링크">
-        <a class="bottom-link" href="../index.html#about-constellation">별자리로 돌아가기</a>
+        <a class="bottom-link" href="../../#stars">별자리로 돌아가기</a>
+        <a class="bottom-link" href="../../">HAM MEDIA 홈으로</a>
         <a class="bottom-link" href="../../services/">그래서, 지금은 이런 일을 합니다</a>
         <a class="bottom-link" href="https://hammedia.github.io/design-brief/">Design MD 만드는 도구</a>
       </div>
@@ -1740,16 +1736,12 @@
       <div class="room-house-panel-header">
         <div>
           <p class="room-section-label">자전거별 · 문장</p>
-          <h2>몸으로 남은 사람들</h2>
+          <h2>몸에 남은 문장</h2>
         </div>
         <button class="room-house-back" type="button">자전거별로 돌아가기</button>
       </div>
 
-      <div class="room-sort-control" data-sort-target="articles" aria-label="자전거별 문장 정렬">
-        <span>정렬</span>
-        <button type="button" data-sort-mode="latest" aria-pressed="true">최신순</button>
-        <button type="button" data-sort-mode="registered" aria-pressed="false">등록순</button>
-      </div>
+      <p class="bicycle-record-order">기록 순서로 읽습니다.</p>
 
       <div class="room-article-list" aria-label="자전거별 문장">
 <a class="room-article-link" href="#bicycles-terrace-parking-note" data-article-target="bicycles-terrace-parking-note" data-homepage-date="2026-09-30" data-sort-order="30"><strong>자전거 손님을 기다리던 테라스</strong></a>
@@ -1762,7 +1754,7 @@
       </div>
 
       <div class="room-article-panels">
-<article class="room-article-panel star-new-essay" id="bicycles-terrace-parking-note" hidden><button class="room-article-back" type="button">문장</button><header><p class="room-card-meta">사진과 기록</p><h3>자전거 손님을 기다리던 테라스</h3></header><div class="star-essay-copy"><figure class="star-essay-photo"><img src="../assets/images/bicycles/bicycle-selected-20260611-dellacasa-shinpo-terrace-bike-parking.jpeg" alt="글자 장식이 있는 벽 앞에 세운 흰색 GIANT 로드 자전거." width="640" height="640" loading="lazy" decoding="async"><figcaption>델라카사 신포점 테라스. 자전거를 타고 오는 손님을 위해 자리를 마련했던 곳.</figcaption></figure>
+<article class="room-article-panel star-new-essay" id="bicycles-terrace-parking-note" hidden><button class="room-article-back" type="button">문장</button><header><p class="room-card-meta">사진과 기록</p><h3>자전거 손님을 기다리던 테라스</h3></header><div class="star-essay-copy"><figure class="star-essay-photo"><img src="../assets/images/bicycles/bicycle-selected-20260611-dellacasa-shinpo-terrace-bike-parking.jpeg" alt="글자 장식이 있는 벽 앞에 세운 흰색 GIANT 로드 자전거." width="640" height="640" loading="lazy" decoding="async"><figcaption>델라카사 신포점 테라스. 자전거를 타고 오는 손님을 위해 자리를 마련했던 곳.</figcaption><a class="bicycle-record-link" href="#bicycle-photo-terrace" data-room-photo-target="bicycle-photo-terrace" data-room-return-label="보던 테라스 글로 돌아가기">사진과 기억 크게 보기 →</a></figure>
 <p>흰색 자전거를 벽 앞에 세워 두었다. 벽에는 크고 작은 글자 장식이 붙어 있고, 왼쪽에는 빨간 우편함이 있다. 바퀴 두 개가 사진 아래를 채운다. 자전거를 타고 식사하러 온 사람이라면 자기 자전거도 이 옆에 세우는 모습을 떠올릴 만하다.</p>
 <p>햄(함동민)은 델라카사 신포점 테라스에 자전거 손님을 위한 주차 공간을 마련했다. 실제로 찾아온 자전거 손님은 기대만큼 많지 않았다고 기억한다. 그가 남긴 말에는 이유도 있다.</p>
 <blockquote><p>신포동 델라카사 테라스에서 찍은 사진이고 자전거 타고 오는 사람들을 위해 저기 저렇게 주차장을 만들었지 그런데 실제로는 생각 처럼 많지 않았어 신포동이 언덕이 많아서 자전거 타로 잘 안오지 힘드니까 ㅎㅎ</p></blockquote>
@@ -1826,7 +1818,7 @@
         <figure class="bicycle-essay-figure">
           <img src="../assets/images/bicycles/gallery-img-4187.jpg" alt="미시령 길을 오르는 자전거 라이더" />
           <figcaption>미시령을 넘어가며 내가 알고 있던 욕을 다 했다. 그리고 내려오며 천국을 맛봤다.</figcaption>
-        </figure>
+<a class="bicycle-record-link" href="#bicycle-photo-misiryeong" data-room-photo-target="bicycle-photo-misiryeong" data-room-return-label="다리를 믿는 시간으로 돌아가기">사진과 기억 크게 보기 →</a></figure>
       </article>
 
       <article class="room-article-panel" id="bicycle-top-tube-note" hidden>
@@ -1843,7 +1835,7 @@
         </div>
         <figure class="bicycle-essay-figure">
           <img src="../assets/images/bicycles/photo-bib-detail.jpg" alt="자전거 탑튜브와 번호표" />
-          <figcaption>패배는 일시적이지만 포기하면 끝이라는 문장. 몸으로 읽는 문장에 가까웠다.</figcaption>
+          <figcaption>패배는 일시적이지만 포기하면 끝이라는 문장. 몸으로 읽는 문장에 가까웠다.</figcaption><a class="bicycle-record-link" href="#bicycle-photo-top-tube" data-room-photo-target="bicycle-photo-top-tube" data-room-return-label="몸이 기억한 번호으로 돌아가기">사진과 기억 크게 보기 →</a>
         </figure>
       </article>
       </div>
@@ -1858,54 +1850,49 @@
         <button class="room-house-back" type="button">자전거별로 돌아가기</button>
       </div>
 
-      <div class="room-sort-control" data-sort-target="photos" aria-label="자전거별 장면 정렬">
-        <span>정렬</span>
-        <button type="button" data-sort-mode="latest" aria-pressed="true">최신순</button>
-        <button type="button" data-sort-mode="registered" aria-pressed="false">등록순</button>
-      </div>
+      <p class="bicycle-record-order">기록 순서로 읽습니다.</p>
 
       <div class="room-house-photo-grid">
-        <figure class="room-house-photo" data-display-mode="archive-low" data-archive-max-width="612px" data-tags="자전거별, 미시령, 업힐, 다운힐, 로드 자전거, 바이크로 미시령, 방의 첫 문장, archive-low, old-record, do-not-hero" data-memory="미시령을 넘어가며 내가 알고 있던 욕을 다 했다. 그리고 내려오며 천국을 맛봤다. 그렇게 추월하던 바이크를 보며, 꼭 나도 바이크로 미시령을 오르기로 했다.">
+        <figure class="room-house-photo" id="bicycle-photo-misiryeong" data-related-article="bicycle-trust-legs-note" data-display-mode="archive-low" data-archive-max-width="612px" data-tags="자전거별, 미시령, 업힐, 다운힐, 로드 자전거, 바이크로 미시령, 방의 첫 문장, archive-low, old-record, do-not-hero" data-memory="미시령을 넘어가며 내가 알고 있던 욕을 다 했다. 그리고 내려오며 천국을 맛봤다. 그렇게 추월하던 바이크를 보며, 꼭 나도 바이크로 미시령을 오르기로 했다.">
           <img class="room-house-photo-thumb" src="../assets/images/bicycles/gallery-img-4187.jpg" alt="미시령 길을 오르는 자전거 라이더" />
           <figcaption>미시령</figcaption>
         </figure>
-        <figure class="room-house-photo" data-tags="자전거별, 사브, 자이언트, GIANT, 자동차에 실은 자전거, 한국산 햄, 갤러리" data-memory="스웨덴산 사브와 대만산 자이언트, 그리고 한국산 햄.">
+        <figure class="room-house-photo" id="bicycle-photo-saab" data-tags="자전거별, 사브, 자이언트, GIANT, 자동차에 실은 자전거, 한국산 햄, 갤러리" data-memory="스웨덴산 사브와 대만산 자이언트, 그리고 한국산 햄.">
           <img class="room-house-photo-thumb" src="../assets/images/bicycles/gallery-img-5752.jpg" alt="자동차에 실린 자이언트 자전거" />
           <figcaption>사브와 자이언트</figcaption>
         </figure>
-        <figure class="room-house-photo" data-tags="자전거별, 부평, 부천, 라이딩 전, 카페 앞, 글 이미지" data-memory="부평에서 부천은 껌이지. 하하.">
+        <figure class="room-house-photo" id="bicycle-photo-before" data-tags="자전거별, 부평, 부천, 라이딩 전, 카페 앞, 글 이미지" data-memory="부평에서 부천은 껌이지. 하하.">
           <img class="room-house-photo-thumb" src="../assets/images/bicycles/essay-before-ride.jpg" alt="라이딩 전 카페 앞 자전거와 사람" />
           <figcaption>부평에서 부천은 껌이지.</figcaption>
         </figure>
-        <figure class="room-house-photo" data-tags="자전거별, 로또팀, 반덴브록, 탑튜브 문구, 패배는 일시적, 포기하면 끝, 사진방" data-memory="로또팀의 리더 반덴브록의 자전거 탑튜브에는 인상적인 문구가 새겨져 있습니다. 패배는 단지 일시적인 것에 불과하지만, 포기해버리면 그걸로 모든 건 끝이다.">
+        <figure class="room-house-photo" id="bicycle-photo-top-tube" data-related-article="bicycle-top-tube-note" data-tags="자전거별, 로또팀, 반덴브록, 탑튜브 문구, 패배는 일시적, 포기하면 끝, 사진방" data-memory="로또팀의 리더 반덴브록의 자전거 탑튜브에는 인상적인 문구가 새겨져 있습니다. 패배는 단지 일시적인 것에 불과하지만, 포기해버리면 그걸로 모든 건 끝이다.">
           <img class="room-house-photo-thumb" src="../assets/images/bicycles/photo-bib-detail.jpg" alt="자전거 탑튜브와 번호표" />
           <figcaption>패배는 일시적이지만, 포기하면 끝이다.</figcaption>
         </figure>
-        <figure class="room-house-photo" data-tags="자전거별, 매장 홍보, 파스타, 자전거 타고 오세요, 장식품, 갤러리" data-memory="매장 홍보용 장식품이 된 자전거. 파스타 드시러 오세요. 자전거 타고 오세요.">
+        <figure class="room-house-photo" id="bicycle-photo-pasta" data-tags="자전거별, 매장 홍보, 파스타, 자전거 타고 오세요, 장식품, 갤러리" data-memory="매장 홍보용 장식품이 된 자전거. 파스타 드시러 오세요. 자전거 타고 오세요.">
           <img class="room-house-photo-thumb" src="../assets/images/bicycles/gallery-img-7462.jpg" alt="매장 홍보용 장식품이 된 자전거" />
           <figcaption>파스타 드시러 오세요. 자전거 타고 오세요.</figcaption>
         </figure>
-        <figure class="room-house-photo" data-tags="자전거별, 헬멧, 도심 라이딩, 안전, 두 번 쓰세요, 갤러리" data-memory="여러분, 헬멧 쓰세요. 두 번 쓰세요.">
+        <figure class="room-house-photo" id="bicycle-photo-helmet" data-tags="자전거별, 헬멧, 도심 라이딩, 안전, 두 번 쓰세요, 갤러리" data-memory="여러분, 헬멧 쓰세요. 두 번 쓰세요.">
           <img class="room-house-photo-thumb" src="../assets/images/bicycles/hero-city-ride.jpg" alt="도심 도로를 달리는 자전거 라이더" />
           <figcaption>헬멧 쓰세요. 두 번 쓰세요.</figcaption>
         </figure>
-        <figure class="room-house-photo" data-tags="자전거별, 애마 두 마리, 자전거 두 대, 갤러리" data-memory="나의 애마 두 마리.">
+        <figure class="room-house-photo" id="bicycle-photo-two" data-tags="자전거별, 애마 두 마리, 자전거 두 대, 갤러리" data-memory="나의 애마 두 마리.">
           <img class="room-house-photo-thumb" src="../assets/images/bicycles/gallery-img-6681.jpg" alt="나의 애마 두 마리 자전거 사진" />
-          <figcaption>나의 애마 두 마리.</figcaption>
-        </figure>
-        <figure class="room-house-photo" data-tags="자전거별, 자전거 발렛 가능, 기존 공개 사진, 갤러리" data-memory="자전거 발렛 가능.">
+          <figcaption>나의 애마 두 마리.</figcaption></figure>
+        <figure class="room-house-photo" id="bicycle-photo-valet" data-tags="자전거별, 자전거 발렛 가능, 기존 공개 사진, 갤러리" data-memory="자전거 발렛 가능.">
           <img class="room-house-photo-thumb" src="../assets/images/bicycles/gallery-img-7636.jpg" alt="자전거 발렛 가능 장면" />
           <figcaption>자전거 발렛 가능.</figcaption>
         </figure>
-        <figure class="room-house-photo" data-homepage-date="2026-06-11" data-sort-order="11" data-display-mode="archive-low" data-archive-max-width="640px" data-tags="자전거별, 델라카사 신포점, 신포동, 테라스, 자전거 주차장, 자전거 거치대, 자전거 손님, 언덕 많은 신포동, 생각보다 적었던 자전거 방문, 매장 운영의 기억, 새 업로드 후보, archive-low, old-record, do-not-hero" data-memory="신포동 델라카사 테라스에서 찍은 사진. 자전거를 타고 오는 사람들을 위해 저렇게 주차 공간을 만들었는데, 실제로는 생각만큼 많지 않았다. 신포동은 언덕이 많아서 자전거 타고 오기 힘드니까. ㅎㅎ">
+        <figure class="room-house-photo" id="bicycle-photo-terrace" data-related-article="bicycles-terrace-parking-note" data-homepage-date="2026-06-11" data-sort-order="11" data-display-mode="archive-low" data-archive-max-width="640px" data-tags="자전거별, 델라카사 신포점, 신포동, 테라스, 자전거 주차장, 자전거 거치대, 자전거 손님, 언덕 많은 신포동, 생각보다 적었던 자전거 방문, 매장 운영의 기억, 새 업로드 후보, archive-low, old-record, do-not-hero" data-memory="신포동 델라카사 테라스에서 찍은 사진. 자전거를 타고 오는 사람들을 위해 저렇게 주차 공간을 만들었는데, 실제로는 생각만큼 많지 않았다. 신포동은 언덕이 많아서 자전거 타고 오기 힘드니까. ㅎㅎ">
           <img class="room-house-photo-thumb" src="../assets/images/bicycles/bicycle-selected-20260611-dellacasa-shinpo-terrace-bike-parking.jpeg" alt="델라카사 신포점 테라스의 자전거 주차장" />
           <figcaption>생각보다 쉽지 않았던 델라카사 자전거 주차장.</figcaption>
         </figure>
-        <figure class="room-house-photo" data-tags="자전거별, 서울, 인천, 매주 왕복, 라이딩 기록, 갤러리" data-memory="ㅋㅋㅋㅋ 서울에서 인천까지 언제 가지? 이때 매주 서울을 왕복했다.">
+        <figure class="room-house-photo" id="bicycle-photo-weekly" data-tags="자전거별, 서울, 인천, 매주 왕복, 라이딩 기록, 갤러리" data-memory="ㅋㅋㅋㅋ 서울에서 인천까지 언제 가지? 이때 매주 서울을 왕복했다.">
           <img class="room-house-photo-thumb" src="../assets/images/bicycles/gallery-img-5757.jpg" alt="서울에서 인천까지 매주 왕복하던 자전거 기록" />
           <figcaption>매주 서울을 왕복하던 때.</figcaption>
         </figure>
-        <figure class="room-house-photo" data-tags="자전거별, 딸, 자이언트, 커플 자전거, 가족의 기록, 갤러리" data-memory="우리 딸에게 사준 자이언트. 딸과 커플 자전거.">
+        <figure class="room-house-photo" id="bicycle-photo-daughter" data-tags="자전거별, 딸, 자이언트, 커플 자전거, 가족의 기록, 갤러리" data-memory="우리 딸에게 사준 자이언트. 딸과 커플 자전거.">
           <img class="room-house-photo-thumb" src="../assets/images/bicycles/gallery-1f9a31a9.jpg" alt="딸에게 사준 자이언트 커플 자전거" />
           <figcaption>딸과 커플 자전거.</figcaption>
         </figure>
@@ -1914,27 +1901,21 @@
       <aside class="room-gallery-detail room-house-photo-detail" aria-live="polite" hidden></aside>
     </section>
 
-    <section class="room-house-panel" id="bicycle-design-room" aria-label="자전거별 디자인" hidden>
+    <section class="room-house-panel" id="bicycle-map-room" aria-label="자전거별 지도" hidden>
       <div class="room-house-panel-header">
-        <div>
-          <p class="room-section-label">자전거별 · 디자인</p>
-          <h2>몸의 리듬에서 나온 화면</h2>
-        </div>
+        <div><p class="room-section-label">자전거별 · 지도</p><h2>몸의 흐름에서 기록 고르기</h2></div>
         <button class="room-house-back" type="button">자전거별로 돌아가기</button>
       </div>
-      <div class="design-room-grid">
-        <article class="design-note">
-          <h3>속도계가 아니라 몸의 고도계</h3>
-          <p>이 페이지의 선은 추천 코스나 주행 기록이 아닙니다. 복잡한 머리에서 출발해 페달, 오르막, 버팀, 고요로 이어지는 몸의 상태를 표시합니다. 스크롤할수록 크랭크와 고도선이 함께 움직이는 이유도 기록을 읽는 동작을 한 번의 라이딩처럼 만들기 위해서입니다.</p>
-          <p>오르막에서는 호흡 막대가 촘촘해지고, 내리막에서는 길어졌던 숨이 가라앉습니다. 모션을 줄이도록 설정한 화면에서는 이 감정선만 정적인 순서로 보존합니다.</p>
-        </article>
-        <div class="design-palette" aria-label="자전거별 색상 재료">
-          <div class="design-swatch dark" style="background:#202523">아스팔트 · 생각의 무게</div>
-          <div class="design-swatch dark" style="background:#66876b">오르막 초록 · 버티는 몸</div>
-          <div class="design-swatch" style="background:#f2c94c">안전 노랑 · 한 번 더</div>
-          <div class="design-swatch" style="background:#8fb7c9">호흡 파랑 · 내려온 뒤</div>
-        </div>
-      </div>
+      <p class="bicycle-map-intro">복잡함, 전진, 오르막, 버팀, 고요. 몸의 고도계에서 만난 문장과 사진을 다시 펼칩니다.</p>
+      <p class="bicycle-map-note">이 지도는 기록을 찾아 읽는 길입니다. 실제 도로·고도·추천 코스를 표시하지 않습니다.</p>
+      <ol class="bicycle-record-map">
+        <li><span class="bicycle-map-step">01 · 복잡함</span><h3>머리가 복잡한 날엔</h3><p>머리가 복잡한 날엔 다리를 믿고 그냥 전진했다.</p><a href="#bicycle-trust-legs-note" data-room-article-target="bicycle-trust-legs-note" data-room-return-label="몸의 흐름 지도로 돌아가기">다리를 믿는 시간 읽기 →</a></li>
+        <li><span class="bicycle-map-step">02 · 전진</span><h3>부평에서 부천은 껌이지.</h3><p>부평에서 부천은 껌이지. 하하.</p><a href="#bicycle-photo-before" data-room-photo-target="bicycle-photo-before" data-room-return-label="몸의 흐름 지도로 돌아가기">사진과 기억 펼치기 →</a></li>
+        <li><span class="bicycle-map-step">03 · 오르막</span><h3>미시령</h3><p>미시령을 넘어가며 내가 알고 있던 욕을 다 했다. 그리고 내려오며 천국을 맛봤다.</p><a href="#bicycle-photo-misiryeong" data-room-photo-target="bicycle-photo-misiryeong" data-room-return-label="몸의 흐름 지도로 돌아가기">미시령 사진과 기억 펼치기 →</a></li>
+        <li><span class="bicycle-map-step">04 · 버팀</span><h3>몸이 기억한 번호</h3><p>패배는 단지 일시적인 것에 불과하지만, 포기해버리면 그걸로 모든 건 끝이다.</p><a href="#bicycle-top-tube-note" data-room-article-target="bicycle-top-tube-note" data-room-return-label="몸의 흐름 지도로 돌아가기">몸이 기억한 번호 읽기 →</a></li>
+        <li><span class="bicycle-map-step">05 · 고요</span><h3>라이딩 뒤에 남은 것</h3><p>ㅋㅋㅋㅋ 서울에서 인천까지 언제 가지? 이때 매주 서울을 왕복했다.</p><a href="#bicycle-photo-weekly" data-room-photo-target="bicycle-photo-weekly" data-room-return-label="몸의 흐름 지도로 돌아가기">매주 왕복하던 때의 사진과 기억 →</a></li>
+      </ol>
+      <div class="bicycle-terrace-path"><p>길 위의 기억은 가게 앞에도 남았습니다.</p><a href="#bicycles-terrace-parking-note" data-room-article-target="bicycles-terrace-parking-note" data-room-return-label="몸의 흐름 지도로 돌아가기">자전거 손님을 기다리던 테라스 읽기 →</a><a href="#bicycle-terrace-experience">테라스까지 언덕을 따라가 보기 →</a></div>
     </section>
 
     <footer>자전거별 · LPH-B613-04 · HAM MEDIA · Design MD로 만든 별 페이지</footer>
@@ -2006,9 +1987,9 @@
       updateRide();
     })();
   </script>
-  <script src="../assets/js/main.js?v=20261025-star-reference-anchor-5"></script>
+  <script src="../assets/js/main.js?v=room-context-nav-v2-bicycle-20261105"></script>
 <script src="/assets/js/star-inquiry-context.js?v=20260930-1" defer></script>
 <script src="../assets/js/star-reference.js?v=20261024-home-map"></script>
-<script type="module" src="../assets/js/bicycle-terrace-experience.js?v=20261025g"></script>
+<script type="module" src="../assets/js/bicycle-terrace-experience.js?v=20261105-1"></script>
 </body>
 </html>
