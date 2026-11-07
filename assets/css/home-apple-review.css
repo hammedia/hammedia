@@ -93,3 +93,5 @@
 }
 @media(max-width:360px){.showcase-intro h1{font-size:31px}.showcase-intro>p:last-child{font-size:14px}.showcase-tabs a{font-size:12px}.showcase-caption h2{font-size:24px}.home-choice .home-section-heading h2{font-size:25px}.home-choice-pair h3{font-size:23px}.home-choice-pair .panel-links{display:flex;flex-direction:column}.showcase-caption>div>p{font-size:14px}.home-star-arrival .star-memory{width:62px;height:62px}}
 @media(prefers-reduced-motion:reduce){.showcase-panel:not([hidden]){animation:none}.motor-progress{display:none}.home-star-arrival .star-memory{transition:none}.home-star-arrival .home-star-link:hover .star-memory{transform:none}}
+
+.home-directory-link{margin:18px 0 36px;font-size:14px;font-weight:600}.home-directory-link a{display:inline-flex;align-items:center;min-height:44px;color:#176849;text-underline-offset:5px}
