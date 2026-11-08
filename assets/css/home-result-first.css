@@ -336,11 +336,11 @@
 .home-work-heading p,.home-latest header p{color:#62665f;font-size:15px;margin-top:12px}
 .home-result-first .home-showcase{padding-top:64px;border-top:1px solid #e4dfd7;margin-top:20px}
 .home-result-first .showcase-intro{display:none}
-.home-latest{padding:60px var(--gutter);background:#f0ede6}
+.home-latest{padding:60px var(--gutter);background:#f0ede6;scroll-margin-top:80px}
 .home-latest-list{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:28px}
-.home-latest-item{display:grid;grid-template-columns:120px 1fr;gap:20px;color:var(--ink);text-decoration:none;align-items:center;min-width:0}
-.home-latest-item img{width:120px;aspect-ratio:16/9;object-fit:cover;background:#dedbd5}
-.home-latest-item h3{font-size:17px;line-height:1.5;margin-bottom:5px;overflow-wrap:anywhere}
+.home-latest-item{display:grid;grid-template-columns:minmax(0,1fr);gap:18px;color:var(--ink);text-decoration:none;align-content:start;min-width:0}
+.home-latest-item img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:contain;background:#111;border-radius:8px}
+.home-latest-item h3{font-size:clamp(18px,1.5vw,22px);line-height:1.5;margin-bottom:8px;word-break:keep-all;overflow-wrap:anywhere}
 .home-latest-item span{font-size:12px;color:#62665f}
 .home-explore-links{display:flex;flex-wrap:wrap;gap:8px 28px;border-top:1px solid #d8d3c9;margin-top:30px;padding-top:16px}
 .home-explore-links a{min-height:44px;display:inline-flex;align-items:center;font-size:14px;color:var(--green)}
@@ -371,8 +371,8 @@
 .home-work-heading h2,.home-latest h2,.home-company-film h2{font-size:30px}
 .home-latest{padding-top:42px;padding-bottom:32px}
 .home-latest-list{grid-template-columns:1fr;gap:24px}
-.home-latest-item{grid-template-columns:104px 1fr;gap:16px}
-.home-latest-item img{width:104px}.home-latest-item h3{font-size:15px}
+.home-latest-item{grid-template-columns:minmax(0,1fr);gap:14px}
+.home-latest-item img{width:100%;height:auto}.home-latest-item h3{font-size:18px}
 .home-explore-links{gap:2px 18px}
 .home-company-film{grid-template-columns:1fr;gap:24px;padding-top:44px;padding-bottom:44px}
 .home-company-copy p{max-width:36ch;font-size:15px;margin:14px 0}
