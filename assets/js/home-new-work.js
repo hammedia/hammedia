@@ -1,7 +1,7 @@
 /* Latest work reads the existing publication projection; the featured project stays editorial. */
 (function(){
 'use strict';
-const menu=document.querySelector('.home-mobile-menu');if(menu){menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{menu.open=false;}));menu.addEventListener('keydown',event=>{if(event.key==='Escape'&&menu.open){menu.open=false;menu.querySelector('summary').focus();event.preventDefault();event.stopPropagation();}});}
+const menu=document.querySelector('.home-mobile-menu');if(menu){menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{menu.open=false;}));menu.addEventListener('keydown',event=>{if(event.key==='Escape'&&menu.open){menu.open=false;menu.querySelector('summary').focus();event.preventDefault();event.stopPropagation();}if(event.key==='Tab'&&menu.open&&window.matchMedia('(max-width:767px)').matches){const items=[menu.querySelector('summary'),...menu.querySelectorAll('a')];const at=items.indexOf(document.activeElement);if(event.shiftKey&&at===0){items[items.length-1].focus();event.preventDefault();}else if(!event.shiftKey&&at===items.length-1){items[0].focus();event.preventDefault();}}});}
 const root=document.querySelector('#home-latest');if(!root)return;
 const list=root.querySelector('[data-latest-list]');
 const lang=document.documentElement.lang.toLowerCase();
