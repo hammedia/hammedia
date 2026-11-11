@@ -2,6 +2,26 @@
 <html lang="ko"><head>
     <meta name="facebook-domain-verification" content="2u89h39art3gwta4uitj2dix5memk1">
     <meta charset="utf-8">
+    <script>
+      (() => {
+        const url = new URL(location.href);
+        const returning = url.searchParams.has('intro_done');
+        if (returning) {
+          url.searchParams.delete('intro_done');
+          history.replaceState(null, '', url.pathname + url.search + url.hash);
+          try { localStorage.setItem('hammedia_intro_seen', '1'); } catch (_) {}
+          return;
+        }
+        try {
+          if (localStorage.getItem('hammedia_intro_seen') === '1') return;
+          localStorage.setItem('hammedia_intro_seen', '1');
+        } catch (_) {}
+        url.searchParams.set('intro_done', '1');
+        const intro = new URL('/intro/', location.origin);
+        intro.searchParams.set('return_to', url.pathname + url.search + url.hash);
+        location.replace(intro.href);
+      })();
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="naver-site-verification" content="5183a9c3934484c714a71eb8a5e12bb2c5ad3260">
     <meta name="naver-site-verification" content="dc6ab196d94189375a494e2026fd2cfd67e7198b">
