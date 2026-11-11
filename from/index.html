@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>영상에서 오셨네요 | HAM MEDIA</title>
+<meta name="description" content="영상을 보고 오신 가게 사장님께. 지금 가진 사진과 메뉴에서 시작해 가게 홈페이지와 영상을 만듭니다.">
+<link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48 64x64" type="image/x-icon">
+<!-- 이 페이지는 방문 통계·쿠키·저장소를 쓰지 않는다. 홈의 intro 스크립트와 통계 스크립트를 넣지 않는다. -->
+<style>
+/* 글꼴은 홈과 같은 사이트 안의 파일을 쓴다(외부 주소 아님). 없으면 기기 글꼴로 보인다. */
+@font-face{font-family:HamHome;src:url('/ham-media-archive/assets/fonts/Pretendard-Regular-academy.woff2') format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:HamHome;src:url('/ham-media-archive/assets/fonts/Pretendard-Medium-academy.woff2') format('woff2');font-weight:500;font-display:swap}
+:root{--paper:#f8f6f1;--paper-2:#f0eeea;--card:#ffffff;--ink:#20221f;--muted:#575b54;--green:#245745;--green-deep:#1a4234;--line:#e0dbd1}
+*{box-sizing:border-box}
+html{background:var(--paper)}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:HamHome,Pretendard,-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Noto Sans KR',sans-serif;font-size:16px;line-height:1.6;word-break:keep-all;overflow-wrap:anywhere;-webkit-text-size-adjust:100%}
+h1,h2,h3,p,figure,ol,ul{margin:0;padding:0}
+h1,h2,h3{font-weight:500;letter-spacing:-.025em;text-wrap:balance}
+img{display:block;max-width:100%;height:auto}
+a{color:var(--green);text-underline-offset:4px}
+button{font:inherit;cursor:pointer}
+a:focus-visible,button:focus-visible{outline:3px solid var(--green);outline-offset:4px}
+[hidden]{display:none!important}
+.skip-link{position:fixed;left:12px;top:-100px;z-index:100;padding:10px 14px;background:var(--ink);color:#fff}
+.skip-link:focus{top:10px}
+.wrap{width:100%;max-width:1028px;margin:0 auto;padding:0 20px}
+
+/* 1. 맨 위 작은 줄 */
+.top{background:#faf8f4;border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:48px}
+.top-hello{font-size:14px;color:var(--green);font-weight:500}
+.top-home{display:inline-flex;align-items:center;min-height:44px;color:var(--ink);font-size:14px;letter-spacing:-.02em;text-decoration:none}
+.top-home:hover{text-decoration:underline}
+
+/* 2. 큰 제목 */
+.hero{padding:30px 0 6px;text-align:center}
+.hero h1{font-size:32px;line-height:1.2}
+.hero h1 span{display:block}
+.hero p{max-width:26em;margin:14px auto 0;color:var(--muted);font-size:16px;line-height:1.6}
+
+/* 구역 공통 */
+.block{padding:34px 0}
+.block h2{font-size:24px;line-height:1.3;text-align:center}
+.block-note{margin-top:8px;color:var(--muted);font-size:14px;text-align:center}
+
+/* 3. 20초 움직이는 그림 (가상 예시) */
+.demo{max-width:720px;margin:18px auto 0}
+.stage{position:relative;height:440px;overflow:hidden;border-radius:16px;background:#e9e5dc}
+.stage-badge{position:absolute;z-index:6;top:12px;left:12px;right:12px;padding:8px 10px;border-radius:8px;background:var(--ink);color:#fff;font-size:13px;font-weight:500;line-height:1.4;text-align:center}
+.mock{position:absolute;z-index:1;top:62px;left:50%;width:188px;height:296px;margin-left:-94px;overflow:hidden;border:4px solid #292b28;border-radius:22px;background:#fff;box-shadow:0 14px 30px rgba(43,37,30,.14);transition:box-shadow .6s ease,transform .6s ease}
+.mock>*{opacity:0;transform:translateY(8px);transition:opacity .6s ease,transform .6s ease}
+.mock>.mock-empty{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:1;transform:none;color:var(--muted);font-size:13px}
+.mock-photo{display:grid;grid-template-columns:2fr 1fr;grid-template-rows:1fr 1fr;gap:2px;height:92px}
+.mock-photo i{display:block}
+.mock-photo i:first-child{grid-row:1 / 3}
+.tone-a{background:linear-gradient(135deg,#dba264,#b5613a 60%,#7c4833)}
+.tone-b{background:linear-gradient(135deg,#7fb0b5,#3f7480)}
+.tone-c{background:linear-gradient(135deg,#a9bf86,#5d8451)}
+.mock-name{margin:10px 12px 4px;font-size:15px;font-weight:500;line-height:1.6;color:var(--ink)}
+.mock-row{display:flex;justify-content:space-between;gap:8px;margin:0 12px;padding:6px 0;border-bottom:1px solid #e9e5de;color:#3c3f3a;font-size:12px;line-height:1.6}
+.mock-btns{position:absolute;left:10px;right:10px;bottom:10px;display:flex;gap:6px}
+.mock-btns span{flex:1;padding:7px 0;border-radius:999px;background:var(--green);color:#fff;font-size:12px;line-height:1.6;text-align:center}
+
+/* 들어오는 사진·메뉴 조각: 기본은 화면 가운데로 모여 사라진 상태 */
+.piece{position:absolute;z-index:3;left:calc(50% - 36px);top:150px;width:72px;height:56px;border-radius:8px;opacity:0;transform:scale(.4);box-shadow:0 8px 18px rgba(43,37,30,.2);transition:left .9s ease,top .9s ease,transform .9s ease,opacity .6s ease .25s;transition-delay:var(--out,0s)}
+.piece b{position:absolute;left:6px;bottom:4px;color:#fff;font-size:12px;font-weight:500;line-height:1.4}
+.piece-menu{width:84px;height:76px;padding:8px 9px;border:1px solid #cfc9bd;background:#fff}
+.piece-menu b{position:static;display:block;margin-bottom:6px;color:var(--ink)}
+.piece-menu i{display:block;height:5px;margin-top:6px;border-radius:3px;background:#d6d1c6}
+.piece-menu i:last-child{width:60%}
+.p1{--l:5%;--t:84px;--off:-30%;--in:.2s;--out:0s}
+.p2{--l:73%;--t:122px;--off:110%;--in:.8s;--out:.15s}
+.p3{--l:8%;--t:226px;--off:-30%;--in:1.4s;--out:.3s}
+.p4{--l:70%;--t:236px;--off:110%;--in:2s;--out:.45s}
+
+/* 장면 상태 */
+.stage.reset *{transition:none!important}
+.stage.reset .piece{left:var(--off);top:var(--t);transform:none;opacity:0}
+.stage.in .piece{left:var(--l);top:var(--t);transform:none;opacity:1;transition:left .8s ease,top .8s ease,transform .8s ease,opacity .5s ease;transition-delay:var(--in)}
+.stage.show-page .mock>*{opacity:1;transform:none}
+.stage.show-page .mock>.mock-empty{opacity:0}
+.stage.show-page .mock-photo{transition-delay:.7s}
+.stage.show-page .mock-name{transition-delay:1.2s}
+.stage.show-page .mock-row.r1{transition-delay:1.7s}
+.stage.show-page .mock-row.r2{transition-delay:2.1s}
+.stage.show-page .mock-row.r3{transition-delay:2.5s}
+.stage.show-page .mock>.mock-btns{opacity:0;transform:translateY(8px)}
+.stage.show-page.show-btns .mock>.mock-btns{opacity:1;transform:none;transition-delay:.3s}
+.stage.done .mock{transform:scale(1.03);box-shadow:0 0 0 5px rgba(36,87,69,.3),0 18px 38px rgba(43,37,30,.16)}
+.stage.still *{transition:none!important}
+
+.cap{position:absolute;z-index:4;left:12px;right:12px;bottom:18px;color:var(--ink);font-size:16px;font-weight:500;line-height:1.5;text-align:center;opacity:0;transition:opacity .4s ease}
+.stage.cap-1 .c1,.stage.cap-2 .c2,.stage.cap-3 .c3,.stage.cap-4 .c4{opacity:1}
+.stage-bar{position:absolute;left:0;right:0;bottom:0;height:4px;background:#d8d3c8}
+.stage-bar i{display:block;width:100%;height:100%;background:var(--green);transform-origin:left center}
+.demo-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 14px;margin-top:10px}
+.demo-foot p{color:var(--muted);font-size:13px;line-height:1.5}
+.demo-pause{min-height:44px;padding:8px 18px;border:1px solid var(--green);border-radius:999px;background:transparent;color:var(--green);font-size:14px}
+.demo-pause:hover{background:#e7ece7}
+
+/* 4. 세 단계 */
+.steps{list-style:none;max-width:720px;margin:18px auto 0;border-top:1px solid var(--line)}
+.steps li{display:grid;grid-template-columns:34px 1fr;gap:4px 10px;padding:14px 0;border-bottom:1px solid var(--line)}
+.steps .num{display:flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:var(--green);color:#fff;font-size:14px;font-weight:500}
+.steps strong{align-self:center;font-size:17px;font-weight:500;line-height:1.4}
+.steps span.say{grid-column:2;color:var(--muted);font-size:14px;line-height:1.55}
+
+/* 5. 두 줄 */
+.facts{list-style:none;max-width:720px;margin:0 auto;padding:6px 20px;border-radius:14px;background:var(--card);border:1px solid var(--line)}
+.facts li{padding:14px 0;font-size:17px;font-weight:500;line-height:1.5;text-align:center}
+.facts li+li{border-top:1px solid var(--line)}
+.facts .nb{display:inline-block}
+
+/* 6. 실제 작업 한 건 */
+.case{max-width:860px;margin:18px auto 0}
+.case-screens{display:flex;align-items:flex-end;gap:10px}
+.case-screen{overflow:hidden;border:4px solid #292b28;background:#fff;box-shadow:0 12px 26px rgba(43,37,30,.14)}
+.case-pc{flex:1 1 0;min-width:0;border-radius:10px}
+.case-phone{flex:0 0 28%;max-width:200px;border-radius:16px}
+.case-screen img{width:100%;background:#efece4;color:var(--ink);font-size:13px}
+.case-label{margin-top:14px;color:var(--muted);font-size:13px;line-height:1.5;text-align:center}
+.case-more{display:flex;justify-content:center;margin-top:6px}
+.case-more a{display:inline-flex;align-items:center;min-height:44px;font-size:15px}
+
+/* 7. 큰 버튼 */
+.ask{padding:38px 0 42px;background:var(--paper-2);text-align:center}
+.ask h2{font-size:24px;line-height:1.3}
+.ask p{max-width:24em;margin:10px auto 0;color:var(--muted);font-size:15px}
+.big-button{display:flex;align-items:center;justify-content:center;width:100%;max-width:420px;min-height:58px;margin:20px auto 0;padding:14px 24px;border-radius:999px;background:var(--green);color:#fff;font-size:18px;font-weight:500;line-height:1.3;text-decoration:none}
+.big-button:hover{background:var(--green-deep)}
+
+/* 8. 맨 아래 */
+.foot{padding:20px 0 28px}
+.foot .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:0 24px}
+.foot a{display:inline-flex;align-items:center;min-height:44px;font-size:14px}
+.foot a.quiet{color:var(--muted);font-size:13px}
+
+/* 폰: 화면 아래에 따라오는 버튼 */
+.follow{display:none}
+@media (max-width:767px){
+  body{padding-bottom:84px}
+  .follow{display:block;position:fixed;z-index:50;left:0;right:0;bottom:0;padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));background:rgba(248,246,241,.96);border-top:1px solid var(--line);transition:transform .25s ease,opacity .25s ease}
+  .follow.tucked{transform:translateY(110%);opacity:0;visibility:hidden}
+  .follow .big-button{max-width:none;min-height:52px;margin:0;font-size:17px}
+}
+
+/* PC */
+@media (min-width:768px){
+  .wrap{padding:0 24px}
+  .top-hello,.top-home{font-size:15px}
+  .hero{padding:52px 0 10px}
+  .hero h1{font-size:52px;line-height:1.18}
+  .hero h1 span{display:inline}
+  .hero p{max-width:34em;font-size:19px}
+  .block{padding:46px 0}
+  .block h2,.ask h2{font-size:32px}
+  .block-note{font-size:15px}
+  .stage{height:500px}
+  .mock{top:70px;width:216px;height:336px;margin-left:-108px}
+  .mock-photo{height:108px}
+  .mock-name{font-size:17px}
+  .mock-row{padding:8px 0;font-size:13px}
+  .mock-btns span{font-size:13px}
+  .p1{--l:20%;--t:96px}.p2{--l:68%;--t:140px}.p3{--l:22%;--t:262px}.p4{--l:66%;--t:276px}
+  .cap{bottom:24px;font-size:18px}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:0 28px;max-width:980px;border-top:0}
+  .steps li{border-top:1px solid var(--ink);border-bottom:0;padding:18px 0 0}
+  .steps strong{font-size:19px}
+  .steps span.say{font-size:15px}
+  .facts li{font-size:20px}
+  .case-screens{gap:22px}
+  .case-screen{border-width:5px}
+  .case-phone{flex-basis:24%}
+  .case-label{font-size:14px}
+  .ask{padding:56px 0 60px}
+  .ask p{font-size:17px}
+}
+@media (prefers-reduced-motion:reduce){
+  .stage *,.follow{transition:none!important}
+}
+
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">본문으로 이동</a>
+
+<!-- 1. 맨 위 작은 줄 -->
+<header class="top">
+  <div class="wrap">
+    <p class="top-hello">영상에서 오셨네요</p>
+    <a class="top-home" href="/">HAM MEDIA</a>
+  </div>
+</header>
+
+<main id="main">
+  <!-- 2. 큰 제목 (고쳐도 되는 칸: 제목 문구) -->
+  <section class="hero">
+    <div class="wrap">
+      <h1><span>영상처럼,</span> <span>우리 가게도 보이게.</span></h1>
+      <p>지금 가진 사진과 메뉴에서 시작합니다. 가게를 알리는 홈페이지와 영상을 만듭니다.</p>
+    </div>
+  </section>
+
+  <!-- 먼저 실제 고객 화면으로 결과를 보여주고, 이어 가상 예시로 제작 과정을 설명한다. -->
+  <!-- 6. 실제 작업 한 건 -->
+  <section class="block" aria-labelledby="case-title" style="padding-top:0">
+    <div class="wrap">
+      <h2 id="case-title">실제로 만든 가게 홈페이지</h2>
+      <figure class="case">
+        <div class="case-screens">
+          <div class="case-screen case-pc"><img src="/services/assets/mapobada-home-desktop-20261108.webp" width="2850" height="1800" alt="제철담은 마포바다 홈페이지의 PC 화면"></div>
+          <div class="case-screen case-phone"><img src="/services/assets/mapobada-home-mobile-20261108.webp" width="750" height="1688" alt="제철담은 마포바다 홈페이지의 모바일 화면"></div>
+        </div>
+        <figcaption class="case-label">고객 작업 · 제철담은 마포바다 · 2026.11.08 화면</figcaption>
+      </figure>
+      <p class="case-more"><a href="/services/#case-mapobada">사례 자세히 보기</a></p>
+    </div>
+  </section>
+
+  <!-- 3. 20초 움직이는 그림 -->
+  <section class="block" aria-labelledby="demo-title">
+    <div class="wrap">
+      <h2 id="demo-title">사진과 메뉴가 홈페이지 한 장이 되기까지</h2>
+      <figure class="demo">
+        <!-- 스크립트가 없거나 움직임 줄이기 설정이면 아래 상태(마지막 장면)로 멈춰 있다. -->
+        <div class="stage show-page show-btns done cap-4" id="demo-stage" role="img" aria-label="가상 예시 그림입니다. 실제 고객 화면이 아닙니다. 사진 석 장과 메뉴가 들어오고, 휴대폰 화면 한 장에 사진, 가게 이름, 메뉴, 전화와 길찾기 버튼이 차례로 놓입니다.">
+          <p class="stage-badge" aria-hidden="true">가상 예시 · 실제 고객 화면이 아닙니다</p>
+
+          <div class="mock" aria-hidden="true">
+            <div class="mock-empty">빈 화면</div>
+            <div class="mock-photo"><i class="tone-a"></i><i class="tone-b"></i><i class="tone-c"></i></div>
+            <div class="mock-name">우리 가게</div>
+            <div class="mock-row r1"><span>메뉴 하나</span><span>가격</span></div>
+            <div class="mock-row r2"><span>메뉴 둘</span><span>가격</span></div>
+            <div class="mock-row r3"><span>메뉴 셋</span><span>가격</span></div>
+            <div class="mock-btns"><span>전화</span><span>길찾기</span></div>
+          </div>
+
+          <div class="piece p1 tone-a" aria-hidden="true"><b>사진</b></div>
+          <div class="piece p2 tone-b" aria-hidden="true"><b>사진</b></div>
+          <div class="piece p3 tone-c" aria-hidden="true"><b>사진</b></div>
+          <div class="piece piece-menu p4" aria-hidden="true"><b>메뉴</b><i></i><i></i><i></i></div>
+
+          <p class="cap c1" aria-hidden="true">① 사진과 메뉴를 받습니다</p>
+          <p class="cap c2" aria-hidden="true">② 한 장에 순서대로 놓습니다</p>
+          <p class="cap c3" aria-hidden="true">③ 전화·길찾기 버튼을 답니다</p>
+          <p class="cap c4" aria-hidden="true">④ 가게 홈페이지 한 장이 됩니다</p>
+          <div class="stage-bar" aria-hidden="true"><i id="demo-bar"></i></div>
+        </div>
+        <figcaption class="demo-foot">
+          <p id="demo-note">20초 · 소리 없음 · 이해를 돕는 가상 예시입니다.</p>
+          <button class="demo-pause" id="demo-pause" type="button" aria-pressed="false" hidden>움직임 멈추기</button>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- 4. 세 단계 -->
+  <section class="block" aria-labelledby="steps-title">
+    <div class="wrap">
+      <h2 id="steps-title">세 단계로 진행합니다</h2>
+      <ol class="steps">
+        <li><span class="num" aria-hidden="true">1</span><strong>가지고 있는 자료 알려주기</strong><span class="say">먼저 문의 화면에 맡길 일과 가진 자료를 글로 적어 주세요.</span></li>
+        <li><span class="num" aria-hidden="true">2</span><strong>범위 확인 뒤 서면 견적</strong><span class="say">만들 것과 하지 않을 것, 기간과 비용을 글로 답합니다.</span></li>
+        <li><span class="num" aria-hidden="true">3</span><strong>영상·홈페이지 제작</strong><span class="say">견적에 동의하시면 계약·결제 조건을 서면으로 확인한 뒤 시작합니다.</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 5. 두 줄 (햄 11/12 결정: 시작가 줄은 /services/ 에 이미 있는 설명 영상 50만원(부가세 별도), 답변은 하루 안에) -->
+  <section class="block" aria-labelledby="facts-title" style="padding-top:0">
+    <div class="wrap">
+      <h2 id="facts-title" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap">비용과 답변</h2>
+      <ul class="facts">
+        <li><span class="nb">설명 영상 한 편 50만원(부가세 별도)</span> <span class="nb">· 홈페이지는 범위 확인 뒤 서면 견적</span></li>
+        <li><span class="nb">답변은 하루 안에 드립니다</span></li>
+      </ul>
+    </div>
+  </section>
+
+
+  <!-- 7. 큰 버튼. 주소의 source 값은 아래 스크립트가 ?from= 값을 확인해 넣는다. -->
+  <section class="ask" id="ask" aria-labelledby="ask-title">
+    <div class="wrap">
+      <h2 id="ask-title">우리 가게 이야기를 들려주세요</h2>
+      <p>전화 없이 글로 문의하고, 글로 견적을 받습니다.</p>
+      <a class="big-button" data-quote href="/quote/?service=page&amp;source=video-video">서면 견적 요청</a>
+    </div>
+  </section>
+</main>
+
+<!-- 8. 맨 아래 -->
+<footer class="foot">
+  <div class="wrap">
+    <a href="/services/">제작 사례 더 보기</a>
+    <a class="quiet" href="/privacy/">개인정보처리방침</a>
+  </div>
+</footer>
+
+<!-- 폰에서만 보이는 따라오는 버튼 (큰 버튼이 화면에 보이면 숨는다) -->
+<div class="follow" id="follow">
+  <a class="big-button" data-quote href="/quote/?service=page&amp;source=video-video">서면 견적 요청</a>
+</div>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ── 문의 버튼 주소 만들기 ─────────────────────────────
+     이 페이지 주소의 ?from= 값을 읽어 source=video-<값> 으로 넣는다.
+     영문 소문자·숫자·-·_ 만, 1~30자만 받는다. 아니거나 없으면 기본값을 쓴다.
+     값은 주소 칸에만 넣고, 화면 글자나 HTML로는 쓰지 않는다.
+     저장(쿠키·저장소)이나 전송은 하지 않는다. */
+  var DEFAULT_FROM = 'video';            /* 고쳐도 되는 칸: from 기본값 */
+  var from = DEFAULT_FROM;
+  try {
+    var raw = new URLSearchParams(window.location.search).get('from');
+    if (typeof raw === 'string' && /^[a-z0-9_-]{1,30}$/.test(raw)) from = raw;
+  } catch (e) {}
+  var query = new URLSearchParams();
+  query.set('service', 'page');
+  query.set('source', 'video-' + from);
+  var quoteHref = '/quote/?' + query.toString();
+  var quoteLinks = document.querySelectorAll('a[data-quote]');
+  for (var i = 0; i < quoteLinks.length; i++) quoteLinks[i].setAttribute('href', quoteHref);
+
+  /* ── 폰: 큰 버튼이 화면에 보이면 따라오는 버튼을 숨긴다 ── */
+  var follow = document.getElementById('follow');
+  var ask = document.getElementById('ask');
+  if (follow && ask && 'IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries) {
+      follow.classList.toggle('tucked', entries[0].isIntersecting);
+    }, { threshold: 0.35 }).observe(ask);
+  }
+
+  /* ── 20초 움직이는 그림 ───────────────────────────── */
+  var stage = document.getElementById('demo-stage');
+  var bar = document.getElementById('demo-bar');
+  var pauseBtn = document.getElementById('demo-pause');
+  var note = document.getElementById('demo-note');
+  if (!stage || !pauseBtn) return;
+
+  var TOTAL = 20000;
+  /* [시작 ms, 붙일 class] — 0.3초 준비, 사진·메뉴 들어옴, 한 장에 놓임, 버튼, 완성, 비우기 */
+  var SCENES = [
+    [0,     'reset cap-1'],
+    [300,   'in cap-1'],
+    [4500,  'show-page cap-2'],
+    [10000, 'show-page show-btns cap-3'],
+    [14000, 'show-page show-btns done cap-4'],
+    [19300, 'cap-4']
+  ];
+  var LAST = 'show-page show-btns done cap-4';
+  var NOTE_MOVING = '20초 · 소리 없음 · 이해를 돕는 가상 예시입니다.';
+  var NOTE_STILL = '소리 없음 · 가상 예시입니다. 움직임 줄이기 설정에 맞춰 마지막 장면만 보여 드립니다.';
+
+  var elapsed = 0, last = 0, timer = null, paused = false, current = -1;
+  var reduce = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
+
+  function setScene(index) {
+    if (index === current) return;
+    current = index;
+    stage.className = 'stage ' + SCENES[index][1];
+  }
+  function tick() {
+    var now = Date.now();
+    if (!paused && !document.hidden) elapsed += Math.min(now - last, 500);
+    last = now;
+    var ms = elapsed % TOTAL, index = 0;
+    for (var s = 0; s < SCENES.length; s++) if (ms >= SCENES[s][0]) index = s;
+    setScene(index);
+    if (bar) bar.style.transform = 'scaleX(' + (ms / TOTAL).toFixed(3) + ')';
+  }
+  function start() {
+    stop();
+    elapsed = 0; current = -1; paused = false; last = Date.now();
+    pauseBtn.hidden = false;
+    pauseBtn.setAttribute('aria-pressed', 'false');
+    pauseBtn.textContent = '움직임 멈추기';
+    if (note) note.textContent = NOTE_MOVING;
+    tick();
+    timer = window.setInterval(tick, 100);
+  }
+  function stop() {
+    if (timer) { window.clearInterval(timer); timer = null; }
+  }
+  function showStill() {
+    stop();
+    current = -1;
+    stage.className = 'stage still ' + LAST;
+    if (bar) bar.style.transform = 'scaleX(1)';
+    pauseBtn.hidden = true;
+    if (note) note.textContent = NOTE_STILL;
+  }
+
+  pauseBtn.addEventListener('click', function () {
+    paused = !paused;
+    last = Date.now();
+    pauseBtn.setAttribute('aria-pressed', paused ? 'true' : 'false');
+    pauseBtn.textContent = paused ? '다시 움직이기' : '움직임 멈추기';
+  });
+
+  function choose() { if (reduce && reduce.matches) showStill(); else start(); }
+  if (reduce) {
+    if (reduce.addEventListener) reduce.addEventListener('change', choose);
+    else if (reduce.addListener) reduce.addListener(choose);
+  }
+  choose();
+})();
+</script>
+</body>
+</html>

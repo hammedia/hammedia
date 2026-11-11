@@ -58,8 +58,16 @@
   function source(base){
     const c=get();
     if(!c || !c.include)return base;
-    const prefix=/^service-menu-(video|page|document|monthly|automation)$/.test(base||'')?base:'star-platform';
-    return prefix+'|s='+c.star+'|a='+(c.article?CODES[c.star][c.article]:'room')+'|h='+c.help;
+    // Keep the validated video campaign source when it fits the existing 69-character source contract.
+    const menuSource=/^service-menu-(video|page|document|monthly|automation)$/.test(base||'');
+    const videoSource=/^video-[a-z0-9_-]{1,30}$/.test(base||'');
+    const prefix=menuSource||videoSource?base:'star-platform';
+    const star='|s='+c.star;
+    const article='|a='+(c.article?CODES[c.star][c.article]:'room');
+    const help='|h='+c.help;
+    const tagged=prefix+star+article+help;
+    // Keep the original campaign source and the selected star/help. Drop only the article code if the 69-character contract would be exceeded.
+    return tagged.length<=69?tagged:prefix+star+help;
   }
   window.HamStarContext={get,signature,source,visit,context};
   const form=document.getElementById('quote-request-form');

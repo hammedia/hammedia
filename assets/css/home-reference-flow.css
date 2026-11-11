@@ -16,6 +16,7 @@
 .home-result-first .home-product-title br{display:none}
 .home-result-first .home-product-description{font-size:19px;line-height:1.5;margin:12px auto 0;max-width:42em}
 .home-result-first .home-product-actions{margin-top:18px;gap:16px;flex-wrap:wrap}
+.home-result-first .home-product-terms{display:grid;justify-items:center;gap:2px;margin:10px auto 0;color:#3d433d;font-size:15px;line-height:1.5;word-break:keep-all;overflow-wrap:anywhere;text-wrap:balance}.home-result-first .home-product-terms p{margin:0}.home-result-first .home-product-terms strong{font-weight:650;color:#20221f}.home-result-first .home-product-terms-reply{margin-top:2px!important}
 .home-result-first .home-product-action{font-size:15px;min-height:44px;padding:10px 21px}
 .home-result-first .home-product-stage{width:min(100%,980px);margin:26px auto 0}
 .home-result-first .home-product-label{font-size:11px;margin-top:12px}
@@ -118,6 +119,8 @@
 .home-result-first .home-product-title{font-size:32px;line-height:1.18}.home-result-first .home-product-title br{display:block}
 .home-result-first .home-product-description{font-size:15px;line-height:1.5;margin-top:12px;max-width:25em}
 .home-result-first .home-product-actions{margin-top:16px;gap:12px}.home-result-first .home-product-action{font-size:13px;padding:10px 16px}
+.home-result-first .home-product-terms{font-size:15px;line-height:1.5;margin-top:8px}
+@media(max-width:360px){.home-result-first .home-product-terms{font-size:14px}}
 .home-result-first .home-product-stage{margin-top:22px}.home-result-first .home-product-screen-phone{height:100%}
 .home-result-first .home-product-label{font-size:10px;line-height:1.5;margin-top:12px}
 .home-result-first .home-showcase{min-height:500px;padding:32px 24px;margin-bottom:12px}
