@@ -95,3 +95,26 @@ h1,h2,h3,p{margin-top:0}h1,h2,h3{line-height:1.12;letter-spacing:0}h2{font-famil
   .site-navigation a{min-height:44px;padding-inline:4px;font-size:12px}
   .release-state{grid-column:2;grid-row:1;align-self:center}
 }
+
+/* First visit: one small conversation, then the learner's own work. */
+.hero.hero-entry{min-height:0;display:block;padding-block:38px 30px;scroll-snap-align:none}
+.hero-entry h1{font-size:clamp(2rem,4.5vw,3.6rem);max-width:900px;margin-bottom:18px}
+.hero-entry .hero-lead{max-width:730px;margin-bottom:18px}.hero-entry .eyebrow{margin-bottom:14px}
+.entry-return{display:flex;flex-wrap:wrap;gap:6px 16px;margin:16px 0 0;font-size:14px}.entry-return a{font-weight:700}.entry-return span{color:var(--muted)}
+.try-scene{padding-block:30px 44px;border-top:1px solid var(--line);scroll-margin-top:calc(var(--academy-header-h) + 16px)}
+.try-scene h2{font-size:clamp(1.7rem,3vw,2.5rem);margin-bottom:14px}.try-note{font-size:14px;color:var(--muted);max-width:850px}
+.scene-choices{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:24px 0}
+.scene-choices button{display:grid;gap:7px;min-width:0;padding:20px;text-align:left;background:var(--paper-2);color:var(--ink);border:1px solid #938b80;border-radius:var(--radius);font:inherit;cursor:pointer}
+.scene-choices button span{color:var(--accent-deep);font-size:13px}.scene-choices button strong{font-size:19px;line-height:1.4}.scene-choices button small{font-size:14px;color:var(--muted)}
+.scene-choices button[aria-pressed="true"]{outline:2px solid var(--accent-deep);outline-offset:2px}
+.scene-demo{max-width:900px;margin:32px auto;padding:clamp(18px,4vw,36px);background:var(--paper-2);border:1px solid var(--line);border-radius:var(--radius);scroll-margin-top:calc(var(--academy-header-h) + 16px)}
+.scene-demo-heading{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}.scene-demo-heading h3{font-size:24px;line-height:1.35}.scene-demo-heading p{font-size:14px;color:var(--muted)}
+.demo-line{padding:18px 0;border-top:1px solid var(--line)}.demo-line strong{font-size:14px;color:var(--muted)}.demo-line p{margin:8px 0 0;font-size:18px;line-height:1.7}.demo-line.added,.demo-line.changed{border-left:3px solid var(--accent);padding-left:18px}
+.demo-actions{display:flex;flex-wrap:wrap;gap:16px;align-items:center;margin:18px 0}.demo-actions button{font:inherit;cursor:pointer}.demo-actions .primary-action{border:0;font-weight:700}.demo-actions .text-action{border:0;background:none;color:var(--ink);min-height:44px;text-decoration:underline}
+#demo-finish{border-top:1px solid var(--line);padding-top:24px}#demo-finish .try-note{margin-top:16px}
+.entry-more{display:flex;flex-wrap:wrap;gap:12px 26px;padding-block:20px;border-top:1px solid var(--line)}.entry-more a{min-height:44px;display:inline-flex;align-items:center;font-weight:600;text-underline-offset:4px}
+.entry-reference summary{cursor:pointer;padding-block:16px;min-height:44px}.entry-reference .hero-quote{min-height:0;max-width:740px;padding-block:24px}
+.try-scene button:focus-visible,.try-scene a:focus-visible,.entry-return a:focus-visible{outline:3px solid var(--accent-deep);outline-offset:4px}
+@media(max-width:760px){.hero.hero-entry{padding-block:26px}.hero-entry h1{font-size:clamp(1.9rem,8.2vw,2.6rem)}.scene-choices{grid-template-columns:1fr;gap:12px}.scene-choices button{padding:16px}.try-scene{padding-top:28px}.demo-line p{font-size:17px}.demo-actions{display:grid}.entry-more{display:grid;gap:4px}}
+
+.demo-line.added,.demo-line.changed{scroll-margin-top:calc(var(--academy-header-h) + 16px)}

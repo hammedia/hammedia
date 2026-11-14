@@ -1,3 +1,4 @@
+import { scenes, sceneFrom } from "../try-scenes.mjs?v=20261115";
 import { hasLessonRecord, lessonRecordFilename, lessonRecordText } from "./lesson1-export.mjs?v=20261023-lessons2to7";
 
 const STORAGE_KEY = "ham-academy-barunsaenghwal-seven-hour-v1";
@@ -151,6 +152,18 @@ const loadState = () => {
 const AUTOSAVE_IDLE = "쓰는 대로 이 기기에 자동저장";
 
 let state = loadState();
+let hasSavedProgress = false;
+try {
+  const saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
+  hasSavedProgress = Boolean(saved?.artifactId && saved.courseVersion === course.courseVersion);
+} catch { /* A first visit has no resume destination. */ }
+const entryParams = new URLSearchParams(location.search);
+const entryScene = sceneFrom(entryParams.get('scene'));
+const entryStart = entryScene || entryParams.get('start') === '1';
+// Opening a new scene changes the view only. Existing saved work and resume
+// position stay untouched until the learner takes an action in the classroom.
+if (entryStart) { state.currentLesson = 0; state.currentStage = 0; }
+let recordTracked = false;
 let saveTimer;
 
 const currentLesson = () => course.lessons[state.currentLesson];
@@ -165,6 +178,9 @@ const text = (tag, value, className) => {
 
 const persist = () => {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  if (entryStart && (location.search.includes('scene=') || location.search.includes('start='))) {
+    history.replaceState(null, '', location.pathname + location.hash);
+  }
   elements.autosaveState.textContent = "작성 내용 자동저장됨";
   clearTimeout(saveTimer);
   saveTimer = setTimeout(() => { elements.autosaveState.textContent = AUTOSAVE_IDLE; }, 1200);
@@ -673,6 +689,17 @@ function render() {
   elements.stageKicker.textContent = stage.label;
   elements.stageTitle.textContent = stageTitle(lesson, state.currentStage);
   elements.stageCopy.replaceChildren(stageCopyNodes(lesson, state.currentStage));
+  if (entryScene && state.currentLesson === 0 && state.currentStage === 0) {
+    const intro = document.createElement('aside'); intro.className = 'entry-scene-context';
+    intro.append(text('strong', `골라 온 장면 · ${scenes[entryScene].title}`), text('p', scenes[entryScene].practice));
+    intro.append(text('p', '예시 문장을 옮겨 적을 필요는 없습니다. 본인 이야기로 시작하세요.'));
+    if (hasSavedProgress) {
+      intro.append(text('p', '전에 쓴 메모는 그대로 남아 있습니다.'));
+      const resume = document.createElement('a'); resume.href = '/academy/classroom/'; resume.textContent = '저장된 강의 위치로 돌아가기';
+      intro.append(resume);
+    }
+    elements.stageCopy.prepend(intro);
+  }
   if (currentWork().recheckRequired) {
     elements.stageCopy.prepend(text("p", `${lesson.number}강의 실습 확인 기준이 바뀌었습니다. 전에 쓴 첫 답·메모·다시 쓴 답은 그대로 두었습니다. 새 확인표만 다시 살펴보세요.`, "dialogue-recheck-notice"));
   }
@@ -897,6 +924,10 @@ elements.toggleSources.addEventListener("click", () => {
 for (const input of [elements.firstAttempt, elements.correctionNote, elements.retry]) {
   input.addEventListener("input", () => {
     saveInputs();
+    if (!recordTracked && input === elements.firstAttempt && state.currentLesson === 0 && currentWork().firstAttempt.trim()) {
+      window.HAMPrivacy?.trackAcademy?.('lesson1_record', entryScene || 'direct');
+      recordTracked = true;
+    }
     updateCounts();
     updateCompletionState();
     renderArtifact();
@@ -912,6 +943,7 @@ elements.resetCourse.addEventListener("click", () => elements.resetDialog.showMo
 elements.resetDialog.addEventListener("close", () => {
   if (elements.resetDialog.returnValue !== "confirm") return;
   localStorage.removeItem(STORAGE_KEY);
+  hasSavedProgress = false;
   state = freshState();
   render();
   announce("이 기기에 저장한 일곱 강 작업을 모두 지웠습니다.");
@@ -947,3 +979,4 @@ globalThis.addEventListener("keydown", (event) => {
 });
 
 render();
+window.HAMPrivacy?.trackAcademy?.('lesson_open', entryScene || 'direct');

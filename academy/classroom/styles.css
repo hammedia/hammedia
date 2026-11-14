@@ -1156,3 +1156,5 @@ button:disabled { cursor: not-allowed; opacity: 0.42; }
   .is-dialogue-lesson .lesson-header h1 { font-size: 1.5rem; }
   .is-dialogue-lesson .stage-heading h2 { font-size: 1.35rem; }
 }
+
+.entry-scene-context{padding:20px;margin-bottom:24px;border-left:3px solid #7EB5E8;background:#F9F7F3;color:#1C1814}.entry-scene-context p{margin:12px 0;font-size:16px;line-height:1.7}.entry-scene-context a{display:inline-flex;align-items:center;min-height:44px;text-underline-offset:4px}.entry-scene-context a:focus-visible{outline:3px solid #326B98;outline-offset:3px}

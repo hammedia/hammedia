@@ -189,6 +189,12 @@
         output_format: format,
       });
     },
+    trackAcademy(action, scene = 'direct') {
+      if (!['/academy/', '/academy/classroom/'].includes(toolPath) ||
+          !['scene_select', 'scene_finish', 'lesson_open', 'lesson1_record'].includes(action) ||
+          !['customer', 'experience', 'clarify', 'direct'].includes(scene)) return;
+      trackConversion(`academy_${action}`, { academy_scene: scene });
+    },
     openAnalyticsChoice() {
       returnFocus = document.activeElement;
       showBanner(true);
