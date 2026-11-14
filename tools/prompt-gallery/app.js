@@ -481,6 +481,7 @@ function openWork(id){
  document.body.classList.add('dialog-open');
 
  currentWork=w;
+ resetImageReview();
  variableFields.replaceChildren();promptExtraWish.value='';promptExtraKeep.value='';basePromptText='';
  track('select_content',{content_type:'prompt_work',content_id:w.id});
 
@@ -702,4 +703,31 @@ if(caseCopyButton)caseCopyButton.addEventListener('click',async()=>{
  }
  document.querySelector('#case-copy-status').textContent=ok?'복사했습니다. 대괄호를 내 상황으로 바꿔 사용하는 AI에 붙여넣으세요.':'자동 복사가 안 됐습니다. 위 문장을 선택해 직접 복사해 주세요.';
  if(ok){window.HAMPrivacy?.trackToolOutput('copy','txt');track('prompt_copy',{content_type:'conversation_case',content_id:'find-the-right-material'});}
+});
+
+/* Actual image observation and targeted revision; no generated success claims. */
+const imageReviewFields=['image-result-keep','image-result-observed','image-result-change'].map(id=>document.getElementById(id));
+const imageRevision=document.getElementById('image-revision-text');
+const imageRevisionStatus=document.getElementById('image-revision-status');
+const imageRevisionSave=document.getElementById('image-revision-save');
+function resetImageReview(){
+ imageReviewFields.forEach(field=>field.value='');imageRevision.value='';imageRevisionSave.disabled=true;
+ imageRevisionStatus.textContent='이미지를 보기 전에는 비워 두세요.';
+ document.querySelector('.prompt-review').open=false;
+}
+imageReviewFields.forEach(field=>field.addEventListener('input',()=>{
+ imageRevision.value='';imageRevisionSave.disabled=true;
+ imageRevisionStatus.textContent='관찰 내용을 반영해 수정 요청을 만들어 주세요.';
+}));
+document.getElementById('image-revision-build').addEventListener('click',()=>{
+ const [keep,observed,change]=imageReviewFields.map(field=>field.value.trim());
+ if(!observed||!change){imageRevisionStatus.textContent='실제로 본 문제와 바꿀 내용을 먼저 적어 주세요.';return;}
+ imageRevision.value=['첨부한 결과 이미지의 일부만 수정해 주세요.',keep?'그대로 남길 부분: '+keep:'요청하지 않은 부분은 그대로 유지해 주세요.','실제로 본 문제: '+observed,'바꿀 내용: '+change,'원본에 없는 사실·글자·요소를 새로 만들지 마세요. 요청한 부분만 고친 이미지를 보여 주세요.','수정 결과는 제가 원본과 다시 비교하겠습니다.'].join('\n\n');
+ imageRevisionSave.disabled=false;imageRevisionStatus.textContent='수정할 이미지와 함께 같은 AI 대화에 보내세요.';
+});
+imageRevisionSave.addEventListener('click',()=>{
+ if(!imageRevision.value)return;
+ const url=URL.createObjectURL(new Blob([imageRevision.value],{type:'text/plain;charset=utf-8'}));
+ const link=document.createElement('a');link.href=url;link.download='image-partial-revision.txt';link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+ imageRevisionStatus.textContent='수정 요청 파일을 내려받았습니다. 받은 이미지의 확인은 아직 남아 있습니다.';
 });

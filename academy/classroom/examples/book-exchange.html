@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>동네 책교환 모임 | 첫 방문 안내</title>
+<style>
+:root {
+  --canvas:#F8F8F6;
+  --surface:#FFFFFF;
+  --ink:#242624;
+  --muted:#505450;
+  --accent:#00704A;
+  --line:#E6E7E4;
+}
+* { box-sizing:border-box; }
+
+body {
+  margin:0;
+  padding:24px 16px;
+  background:var(--canvas);
+  color:var(--ink);
+  font-family:Pretendard,-apple-system,BlinkMacSystemFont,
+    "Segoe UI",sans-serif;
+  overflow-wrap:anywhere;
+}
+
+main {
+  width:100%;
+  max-width:520px;
+  margin:0 auto;
+}
+
+.eyebrow {
+  color:var(--accent);
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.12em;
+  margin:0 0 13px;
+}
+
+h1 {
+  font-size:27px;
+  line-height:1.35;
+  letter-spacing:-1px;
+  margin:0 0 9px;
+}
+
+.intro {
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.7;
+  margin:0 0 27px;
+}
+
+.section-label {
+  font-size:13px;
+  font-weight:700;
+  color:var(--muted);
+  margin:0 0 10px;
+}
+
+details {
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:5px;
+  margin-bottom:10px;
+}
+
+summary {
+  cursor:pointer;
+  list-style:none;
+  min-height:58px;
+  padding:17px 15px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  font-size:16px;
+  font-weight:700;
+  line-height:1.5;
+}
+
+summary::-webkit-details-marker {
+  display:none;
+}
+
+summary:focus-visible {
+  outline:3px solid var(--accent);
+  outline-offset:3px;
+}
+
+.arrow {
+  flex:0 0 11px;
+  width:11px;
+  height:11px;
+  border-right:2px solid var(--accent);
+  border-bottom:2px solid var(--accent);
+  transform:rotate(45deg);
+  margin:0 5px 5px 0;
+}
+
+details[open] .arrow {
+  transform:rotate(225deg);
+  margin-top:9px;
+}
+
+.panel {
+  border-top:1px solid var(--line);
+  padding:16px 15px 19px;
+  font-size:15px;
+  line-height:1.75;
+}
+
+.checkline {
+  display:flex;
+  align-items:flex-start;
+  gap:11px;
+  font-weight:650;
+}
+
+input[type="checkbox"] {
+  width:19px;
+  height:19px;
+  flex:0 0 19px;
+  margin:3px 0 0;
+  accent-color:var(--accent);
+  cursor:pointer;
+}
+
+.hint {
+  color:var(--muted);
+  font-size:13px;
+  margin:9px 0 0 30px;
+}
+
+ol {
+  margin:0;
+  padding-left:23px;
+}
+
+li {
+  padding:0 0 12px 4px;
+}
+
+li:last-child { padding-bottom:0; }
+
+li::marker {
+  color:var(--accent);
+  font-weight:750;
+}
+
+.meta {
+  margin-top:28px;
+  padding-top:18px;
+  border-top:1px solid var(--line);
+}
+
+.meta h2 {
+  font-size:14px;
+  margin:0 0 12px;
+}
+
+dl {
+  margin:0;
+  display:grid;
+  grid-template-columns:75px 1fr;
+  gap:9px;
+  font-size:14px;
+}
+
+dt { color:var(--muted); }
+dd { margin:0; font-weight:600; }
+
+.ending {
+  margin:25px 0 0;
+  background:var(--accent);
+  color:#FFFFFF;
+  text-align:center;
+  padding:16px 12px;
+  font-size:17px;
+  font-weight:750;
+  line-height:1.5;
+  border-radius:5px;
+}
+
+.foot {
+  color:var(--muted);
+  font-size:11px;
+  text-align:center;
+  margin:14px 0 0;
+}
+
+@media(max-width:350px) {
+  body { padding:20px 13px; }
+  h1 { font-size:24px; }
+  summary { font-size:15px; padding:15px 12px; }
+  .panel { padding:14px 12px; }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  * { scroll-behavior:auto; }
+}
+</style>
+</head>
+
+<body>
+<main>
+  <aside style="margin:0 0 24px;padding:16px;border:1px solid #c6d6cc;border-radius:8px;background:#fff;font-size:14px;line-height:1.7" aria-label="수업 예시 안내">
+    <strong>AI와 고쳐 만든 실제 결과 · 수업용 가상 사례</strong>
+    <p>실제 모임이 아닌 수업용 가상 사례입니다. 날짜·장소·참가비는 연습을 위해 미정으로 남겼습니다.</p>
+    <p>초안의 중복 설명을 줄이고, 세 단계 안내와 펼침 화면으로 만들었습니다. 새 AI 대화에서는 영문 표제 한 곳만 한글로 고쳤습니다.</p>
+    <p>HAM MEDIA 직접 사용 · 2026-11-15. 펼침과 체크 동작을 확인했으며 실제 참가자 반응은 아직 확인하지 않았습니다. 체크는 저장되지 않습니다.</p>
+    <a href="/academy/classroom/?lesson=5" style="color:#005a3b">5강으로 돌아가기</a>
+  </aside>
+  <p class="eyebrow">첫 방문 안내</p>
+
+  <h1>동네 책교환 모임</h1>
+
+  <p class="intro">
+    처음 오셨나요? 반갑습니다!<br>
+    책 한 권을 가져와 새로운 책 한 권을 만나요.
+  </p>
+
+  <p class="section-label">
+    눌러서 내용을 확인해 보세요
+  </p>
+
+  <details>
+    <summary>
+      <span>준비물 · 책 한 권</span>
+      <span class="arrow" aria-hidden="true"></span>
+    </summary>
+
+    <div class="panel">
+      <label class="checkline">
+        <input type="checkbox">
+        <span>교환할 책 한 권 준비하기</span>
+      </label>
+      <p class="hint">준비물을 챙겼다면 체크해 보세요.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>
+      <span>진행 순서 · 세 단계</span>
+      <span class="arrow" aria-hidden="true"></span>
+    </summary>
+
+    <div class="panel">
+      <ol>
+        <li>
+          <strong>책 상태 확인하기</strong><br>
+          현장에서 함께 책 상태를 확인해요.
+        </li>
+        <li>
+          <strong>책 교환하기</strong><br>
+          차례대로 한 사람씩 책 한 권을 골라요.
+        </li>
+        <li>
+          <strong>내 물건 챙기기</strong><br>
+          교환이 끝나면 개인 소지품을 확인해 주세요.
+        </li>
+      </ol>
+    </div>
+  </details>
+
+  <section class="meta" aria-label="모임 안내">
+    <h2>모임 안내</h2>
+    <dl>
+      <dt>날짜</dt><dd>미정</dd>
+      <dt>장소</dt><dd>미정</dd>
+      <dt>참가비</dt><dd>미정</dd>
+    </dl>
+  </section>
+
+  <p class="ending">🎒 책 한 권 준비하기!</p>
+
+  <p class="foot">
+    교육용 시범 화면 · 실제 신청 및 정보 전송 기능 없음
+  </p>
+</main>
+</body>
+</html>

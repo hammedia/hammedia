@@ -78,11 +78,11 @@
   <p><b>어떤 걸 먼저 볼까요?</b><span>공개 갤러리·공식 기능·실제 쓰임 후보를 다시 대조했습니다.</span></p>
   <div class="signals" role="group" aria-label="현재성과 지속성으로 걸러보기">
    <button class="signal is-on" data-s="all" aria-pressed="true">모두 보기</button>
-   <button class="signal" data-s="now" aria-pressed="false">요즘 많이 찾는 방식</button>
+   <button class="signal" data-s="now" aria-pressed="false">새로 시도할 아이디어</button>
    <button class="signal" data-s="steady" aria-pressed="false">계속 쓸 실용</button>
    <button class="signal" data-s="classic" aria-pressed="false">옛 감성·기본기</button>
   </div>
-  <p class="signal-note">근거가 약하거나 실제 결과를 확인하지 못한 유행은 공개 목록에 넣지 않았습니다.</p>
+  <p class="signal-note">인기 순위가 아닙니다. 각 예시에서 직접 확인한 범위와 아직 확인하지 못한 점을 함께 보세요.</p>
  </div>
  <div class="grid" id="grid"></div>
 </section>
@@ -106,7 +106,7 @@
    <h2 id="lab-title">그림만 만들지 않고,<br>나를 다시 발견합니다.</h2>
   </div>
   <div class="lab-intro">
-   <p>지금 사람들이 궁금해하는 사용법을 HAM MEDIA가 직접 풀어 쓴 실험판입니다.</p>
+   <p>사진·대화 기억을 활용하는 방법을 HAM MEDIA가 직접 풀어 쓴 실험판입니다.</p>
    <p class="lab-rule">유행 문장을 그대로 믿지 않습니다. 무엇을 알 수 있고, 무엇은 직접 확인해야 하는지 함께 적습니다.</p>
   </div>
  </header>
@@ -239,6 +239,18 @@
      <p id="prompt-status" class="prompt-status" hidden></p>
     </div>
     <p class="honesty">이 도구는 생성형 AI를 실행하지 않습니다. 입력한 내용은 브라우저에서 프롬프트를 조합하는 데만 쓰고 서버 전송이나 자동 저장을 하지 않습니다. 이름·연락처·건강 정보와 동의받지 않은 얼굴 사진을 입력하지 마세요. 복사한 요청문은 쓰려는 AI에 붙이고, 필요한 사진은 그 AI 화면에서 직접 첨부하세요. 결과는 도구와 사진에 따라 달라집니다.</p>
+   <details class="prompt-review">
+     <summary>이미지를 받았다면 · 보고 고칠 부분 정하기</summary>
+     <p>생성한 이미지와 원본을 직접 비교하세요. 아래 내용은 이 창에서만 쓰며, 파일로 저장해 가져갈 수 있습니다.</p>
+     <label class="custom-field">그대로 남길 부분<textarea id="image-result-keep" rows="2" placeholder="예: 네 단계의 순서와 초록색 배경"></textarea></label>
+     <label class="custom-field">실제로 본 문제<textarea id="image-result-observed" rows="2" placeholder="예: 2단계 책 그림이 두 번 겹쳐 보입니다"></textarea></label>
+     <label class="custom-field">그 부분을 어떻게 바꿀까요?<textarea id="image-result-change" rows="2" placeholder="예: 2단계 책 그림만 하나로 정리해 주세요"></textarea></label>
+     <button id="image-revision-build" class="copy-experiment" type="button">부분 수정 요청 만들기</button>
+     <p id="image-revision-status" role="status">이미지를 보기 전에는 비워 두세요.</p>
+     <label class="custom-field">AI에 가져갈 수정 요청<textarea id="image-revision-text" rows="8" readonly></textarea></label>
+     <button id="image-revision-save" class="copy-experiment" type="button" disabled>수정 요청 TXT 저장</button>
+     <p>같은 AI 대화에 수정할 이미지와 이 요청을 함께 보내세요. 받은 결과를 다시 원본과 비교하세요.</p>
+    </details>
    </section>
 
    <details class="dialog-details">
@@ -285,6 +297,6 @@
  </div>
 </dialog>
 
-<script src="app.js?v=20261027-tool-output"></script>
+<script src="app.js?v=20261115-result-review"></script>
 </body>
 </html>

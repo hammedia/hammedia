@@ -1,6 +1,11 @@
 import { scenes, sceneFrom } from "../try-scenes.mjs?v=20261115";
 import { hasLessonRecord, lessonRecordFilename, lessonRecordText } from "./lesson1-export.mjs?v=20261023-lessons2to7";
 
+import { aiStartingPoint, aiUpdates } from "../../assets/js/ai-next-step.mjs?v=20261115-upgrade";
+import { createHtmlWorkbench } from "./html-workbench.mjs?v=20261115-upgrade";
+
+const htmlWorkbench = createHtmlWorkbench(document.querySelector("[data-html-workbench]"));
+
 const STORAGE_KEY = "ham-academy-barunsaenghwal-seven-hour-v1";
 
 const eul = (w) => { const c = w.charCodeAt(w.length - 1); return c >= 0xAC00 && c <= 0xD7A3 && (c - 0xAC00) % 28 === 0 ? "를" : "을"; };
@@ -76,6 +81,9 @@ const lastOpenLessonIndex = () => course.lessons.reduce((last, lesson, index) =>
 
 // 강별 확인 기준(문구·순서·개수)의 식별값. courseVersion이 같아도 확인표가 바뀌면 달라진다.
 const criteriaId = (lesson) => JSON.stringify(lesson.correctionCriteria);
+// These equivalent labels also accept an AI preview; old file-based checks remain valid.
+// Do not rewrite the saved criteria identity or reset prior learner completion.
+const criteriaLabels = (lesson) => lesson.correctionCriteriaLabels?.length === lesson.correctionCriteria.length ? lesson.correctionCriteriaLabels : lesson.correctionCriteria;
 
 // 같은 courseVersion(2026.09.03-v1) 안에서 확인표 문구가 바뀐 적이 있는 강.
 // 기준 이력(최초 a423707 → 보완 7e6875c, criteria-history.json) 대조 결과이며,
@@ -163,6 +171,10 @@ const entryStart = entryScene || entryParams.get('start') === '1';
 // Opening a new scene changes the view only. Existing saved work and resume
 // position stay untouched until the learner takes an action in the classroom.
 if (entryStart) { state.currentLesson = 0; state.currentStage = 0; }
+else {
+  const entryLesson = Number(entryParams.get('lesson'));
+  if (Number.isInteger(entryLesson) && entryLesson >= 1 && entryLesson <= course.lessons.length && !course.lessons[entryLesson - 1].locked) { state.currentLesson = entryLesson - 1; state.currentStage = 0; }
+}
 let recordTracked = false;
 let saveTimer;
 
@@ -294,6 +306,8 @@ function stageCopyNodes(lesson, stageIndex) {
 
 // 강 데이터의 단계별 보조 블록: 그대로 쓰는 문장(prompt)·실제 발화 인용(quote)·짧은 목록(list).
 function stageBlock(block) {
+  if (block.kind === "ai-start") return aiStartingPoint();
+  if (block.kind === "ai-updates") return aiUpdates({ classroom: true });
   if (block.kind === "details") {
     // 선택해서 읽는 긴 기록·해설. 안의 실제 인용과 가상 예시 표기는 그대로 보존한다.
     const details = document.createElement("details");
@@ -472,7 +486,7 @@ function renderWorkFields() {
   updateCounts();
 
   const criteria = document.createDocumentFragment();
-  lesson.correctionCriteria.forEach((criterion) => criteria.append(text("li", criterion)));
+  criteriaLabels(lesson).forEach((criterion) => criteria.append(text("li", criterion)));
   elements.correctionCriteria.replaceChildren(criteria);
 
   const stageIndex = state.currentStage;
@@ -571,7 +585,7 @@ function renderVerification() {
   const lesson = currentLesson();
   const work = currentWork();
   const fragment = document.createDocumentFragment();
-  lesson.correctionCriteria.forEach((criterion, index) => {
+  criteriaLabels(lesson).forEach((criterion, index) => {
     const label = document.createElement("label");
     label.className = "verification-item";
     const checkbox = document.createElement("input");
@@ -679,6 +693,7 @@ function renderDock() {
 
 function render() {
   const lesson = currentLesson();
+  htmlWorkbench.show(lesson.number);
   document.body.classList.toggle("is-dialogue-lesson", Boolean(lesson.useStageScript));
   const stage = lesson.flow[state.currentStage];
   document.title = `바른생활 ${lesson.number}강 · ${stage.label}`;
@@ -943,6 +958,7 @@ elements.resetCourse.addEventListener("click", () => elements.resetDialog.showMo
 elements.resetDialog.addEventListener("close", () => {
   if (elements.resetDialog.returnValue !== "confirm") return;
   localStorage.removeItem(STORAGE_KEY);
+  htmlWorkbench.reset();
   hasSavedProgress = false;
   state = freshState();
   render();
@@ -951,7 +967,7 @@ elements.resetDialog.addEventListener("close", () => {
 
 globalThis.addEventListener("keydown", (event) => {
   const editing = event.target instanceof HTMLTextAreaElement || event.target instanceof HTMLInputElement;
-  if (editing) return;
+  if (editing || event.target.closest(".html-workbench, .ai-start-point, .ai-updates")) return;
   if (event.key === "ArrowRight" || event.key === "PageDown") {
     event.preventDefault();
     moveNext();
