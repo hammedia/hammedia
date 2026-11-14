@@ -181,7 +181,7 @@
     tracksContactClicks: true,
     trackToolOutput(delivery, format) {
       if (!toolName || !["copy", "download_request"].includes(delivery) ||
-          !["txt", "md", "css", "json"].includes(format)) return;
+          !["txt", "md", "css", "json", "html"].includes(format)) return;
       trackConversion("tool_output", {
         tool_name: toolName,
         tool_path: toolPath,

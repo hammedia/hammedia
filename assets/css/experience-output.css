@@ -1,0 +1,18 @@
+.try-output{margin-top:22px;padding:18px 20px;border:1px solid #b8d0bf;border-radius:18px;background:#f0f6ee}
+.try-output summary{font-size:17px;font-weight:800;cursor:pointer;min-height:44px;display:list-item;align-content:center}
+.try-output p,.final-delivery p{font-size:15px}.try-output label{display:block;font-size:15px;font-weight:800;margin:12px 0 6px}
+.try-output textarea{min-height:240px}.try-output a.btn{text-decoration:none}
+.final-delivery{margin-top:16px;padding-top:4px;border-top:1px solid var(--line)}
+.final-delivery a{color:var(--green-dark);font-weight:700}.final-delivery small{font-size:13px;color:var(--muted)}
+.final-paper{margin:16px 0;padding:24px;background:white;border:1px solid var(--line);border-radius:6px}
+.paper-label{font-size:12px!important;color:var(--muted);letter-spacing:.04em;margin:0 0 16px!important}
+.paper-text{white-space:pre-wrap;overflow-wrap:anywhere;word-break:normal;font-size:17px;line-height:1.8}
+#final-print-page{display:none}
+@media(max-width:480px){.try-output{padding:16px}.final-paper{padding:18px}.try-output .flow-actions>*{width:100%}}
+@media print{
+  .try-output{display:none!important}
+  body[data-print-final]>:not(#final-print-page){display:none!important}
+  body[data-print-final]>#final-print-page{display:block!important;margin:0;padding:0;background:#fff;color:#111}
+  #final-print-page .paper-text{font-size:11pt;line-height:1.65}
+  @page{margin:18mm}
+}
