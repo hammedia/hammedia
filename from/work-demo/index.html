@@ -1,0 +1,834 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>맡긴 일이 돌아오는 과정 · HAM MEDIA</title>
+  <style>
+    :root {
+      --bg: #F5F3EE;
+      --paper: #F9F7F3;
+      --ink: #1C1814;
+      --muted: #4A423C;
+      --line: #E6E1D9;
+      --blue: #7EB5E8;
+      --blue-ink: #244F70;
+      --green: #00704A;
+      --gold: #F4DC59;
+      --red: #CC0000;
+      --radius: 18px;
+      --shadow: 0 12px 32px rgba(32, 26, 22, 0.07);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-width: 320px;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "Pretendard", "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
+      font-size: 16px;
+      line-height: 1.55;
+    }
+    button, textarea { font: inherit; }
+    a { color: var(--blue-ink); text-underline-offset: 3px; }
+    a:hover { color: var(--green); }
+    button:focus-visible, a:focus-visible, textarea:focus-visible {
+      outline: 3px solid var(--blue-ink);
+      outline-offset: 3px;
+    }
+    .wrap { width: min(100% - 28px, 1040px); margin: 0 auto; padding: 20px 0 48px; }
+    .notice {
+      padding: 8px 12px;
+      border: 1px solid #D6C985;
+      border-radius: 999px;
+      background: #FBF8E8;
+      color: var(--ink);
+      font-size: 12px;
+      font-weight: 800;
+      text-align: center;
+    }
+    .masthead {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 15px 2px 10px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .06em;
+    }
+    .brand { color: var(--ink); letter-spacing: .08em; }
+    .hero {
+      padding: 20px 22px 21px;
+      border: 1px solid rgba(126, 181, 232, .45);
+      border-radius: var(--radius);
+      background:
+        linear-gradient(140deg, rgba(126, 181, 232, .11), rgba(249, 247, 243, .98) 47%),
+        linear-gradient(220deg, rgba(0, 112, 74, .06), rgba(249, 247, 243, .98) 72%);
+      box-shadow: var(--shadow);
+    }
+    .eyebrow {
+      margin: 0 0 6px;
+      color: var(--blue-ink);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+    h1 { margin: 0; font-size: 29px; line-height: 1.18; letter-spacing: -.035em; }
+    .lede { max-width: 720px; margin: 8px 0 0; color: var(--muted); font-size: 14px; }
+    .truth { margin: 8px 0 0; color: var(--muted); font-size: 12px; }
+    .external-links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 15px; }
+    .external-link {
+      display: inline-flex;
+      align-items: center;
+      min-height: 40px;
+      padding: 7px 12px;
+      border: 1px solid #C9D9E6;
+      border-radius: 999px;
+      background: var(--paper);
+      color: var(--blue-ink);
+      font-size: 12px;
+      font-weight: 800;
+      text-decoration: none;
+    }
+    .external-link:hover { border-color: var(--green); text-decoration: underline; }
+    .external-caption { flex-basis: 100%; margin: -2px 2px 2px; color: var(--muted); font-size: 11px; }
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 18px 0 8px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .section-label::after { height: 1px; flex: 1; background: var(--line); content: ""; }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 7px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .step {
+      min-height: 68px;
+      padding: 9px 10px;
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      background: var(--paper);
+      color: var(--muted);
+    }
+    .step-number { display: block; margin-bottom: 2px; font-size: 10px; font-weight: 900; }
+    .step-name { display: block; font-size: 12px; font-weight: 800; line-height: 1.3; }
+    .step[data-state="current"] { border: 2px solid var(--green); padding: 8px 9px; color: var(--ink); }
+    .step[data-state="done"] { background: #EAF3EE; border-color: #93B9A7; color: var(--ink); }
+    .step[data-state="waiting"] { border-style: dashed; }
+    .layout { display: grid; grid-template-columns: minmax(0, 1.65fr) minmax(260px, .85fr); gap: 14px; margin-top: 14px; align-items: start; }
+    .panel {
+      min-width: 0;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--paper);
+      box-shadow: var(--shadow);
+    }
+    .work-panel { padding: 17px; }
+    .side-panel { padding: 16px; }
+    .panel-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+    h2 { margin: 0; font-size: 18px; line-height: 1.3; }
+    h3 { margin: 0; font-size: 19px; line-height: 1.3; }
+    h4 { margin: 0 0 5px; font-size: 13px; line-height: 1.35; }
+    p { margin: 0; }
+    .subtitle { margin-top: 5px; color: var(--muted); font-size: 12px; }
+    .status-chip {
+      display: inline-flex;
+      align-items: center;
+      max-width: 100%;
+      min-height: 28px;
+      padding: 4px 10px;
+      border: 1px solid #B8CBD9;
+      border-radius: 999px;
+      background: #EFF4F7;
+      color: var(--ink);
+      font-size: 11px;
+      font-weight: 900;
+      line-height: 1.3;
+    }
+    .status-chip[data-kind="done"] { border-color: #8FB6A2; background: #EAF3EE; }
+    .reset-button, .secondary-button, .primary-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 9px 14px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 850;
+      line-height: 1.25;
+      text-align: center;
+    }
+    .reset-button, .secondary-button {
+      border: 1px solid #C9D9E6;
+      background: #F3F7FA;
+      color: var(--blue-ink);
+    }
+    .reset-button:hover, .secondary-button:hover { border-color: var(--blue-ink); background: #EAF2F8; }
+    .reset-button { min-height: 38px; padding: 7px 11px; white-space: nowrap; }
+    .primary-button {
+      border: 1px solid var(--green);
+      background: var(--green);
+      color: #fff;
+    }
+    .primary-button:hover { background: #00593B; }
+    .primary-button:disabled, .secondary-button:disabled { cursor: not-allowed; opacity: .55; }
+    .next-step {
+      margin-top: 16px;
+      padding: 13px;
+      border-left: 4px solid var(--green);
+      border-radius: 0 13px 13px 0;
+      background: #EFF5F1;
+    }
+    .next-step p { margin: 0 0 9px; color: var(--ink); font-size: 13px; font-weight: 750; }
+    .role-control {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 9px;
+      margin: 15px 0 13px;
+      padding: 10px 11px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: #F5F3EE;
+    }
+    .role-hint { color: var(--muted); font-size: 11px; }
+    .role-buttons { display: flex; flex-wrap: wrap; gap: 7px; }
+    .role-button {
+      min-height: 40px;
+      padding: 7px 12px;
+      border: 1px solid #B8CBD9;
+      border-radius: 999px;
+      background: var(--paper);
+      color: var(--blue-ink);
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 850;
+    }
+    .role-button[aria-pressed="true"] { border-color: var(--ink); background: var(--ink); color: #fff; }
+    .intro-copy { margin: 14px 0 0; color: var(--muted); font-size: 13px; }
+    .sample-note {
+      margin: 12px 0 0;
+      padding: 10px 11px;
+      border: 1px solid #D7E3EC;
+      border-radius: 13px;
+      background: #F3F7FA;
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .input-label { display: block; margin: 14px 0 6px; font-size: 13px; font-weight: 850; }
+    textarea {
+      display: block;
+      width: 100%;
+      min-height: 130px;
+      resize: vertical;
+      padding: 12px 13px;
+      border: 1px solid #9B9389;
+      border-radius: 14px;
+      background: #fffdfa;
+      color: var(--ink);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+    textarea::placeholder { color: #5D554E; opacity: 1; }
+    .helper { margin-top: 6px; color: var(--muted); font-size: 12px; }
+    .error-message { margin-top: 7px; color: var(--red); font-size: 12px; font-weight: 800; }
+    .error-message[hidden] { display: none; }
+    .intake-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 13px; }
+    .case-content { margin-top: 15px; }
+    .case-intro { margin: 7px 0 0; color: var(--muted); font-size: 13px; }
+    .copy-block {
+      min-width: 0;
+      margin-top: 13px;
+      padding: 12px 13px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: #F5F3EE;
+    }
+    .copy-text { margin: 0; color: var(--ink); font-size: 14px; white-space: pre-wrap; overflow-wrap: anywhere; }
+    .deliverable {
+      margin: 0;
+      padding: 14px;
+      border: 1px solid #C9D9E6;
+      border-radius: 13px;
+      background: #fffdfa;
+      color: var(--ink);
+      font-family: "Pretendard", "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
+      font-size: 14px;
+      line-height: 1.65;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+    }
+    .usage-note {
+      margin-top: 10px;
+      padding: 10px 12px;
+      border-radius: 13px;
+      background: #FBF8E8;
+      color: var(--ink);
+      font-size: 12px;
+    }
+    .case-data {
+      display: grid;
+      grid-template-columns: minmax(100px, .7fr) minmax(0, 1fr);
+      gap: 0;
+      margin: 14px 0 0;
+      border-top: 1px solid var(--line);
+    }
+    .case-data dt, .case-data dd { margin: 0; padding: 8px 4px; border-bottom: 1px solid var(--line); font-size: 12px; }
+    .case-data dt { color: var(--muted); font-weight: 750; }
+    .case-data dd { font-weight: 800; overflow-wrap: anywhere; }
+    .side-panel h2 { margin-bottom: 4px; }
+    .side-copy { color: var(--muted); font-size: 12px; }
+    .record-list { display: grid; gap: 9px; margin: 14px 0 0; padding: 0; list-style: none; }
+    .record-item { padding: 0 0 10px 12px; border-left: 2px solid var(--line); }
+    .record-item[data-state="done"] { border-left-color: var(--green); }
+    .record-title { display: block; font-size: 12px; font-weight: 850; }
+    .record-detail { display: block; margin-top: 2px; color: var(--muted); font-size: 11px; white-space: pre-wrap; overflow-wrap: anywhere; }
+    .file-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+    .download-state { align-self: center; color: var(--muted); font-size: 11px; }
+    .small-print { margin-top: 14px; color: var(--muted); font-size: 11px; }
+    .footer { margin-top: 18px; padding: 11px 3px; border-top: 1px solid var(--line); color: var(--muted); font-size: 11px; }
+    [hidden] { display: none !important; }
+    @media (max-width: 780px) {
+      .layout { grid-template-columns: minmax(0, 1fr); }
+      .steps { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+    @media (max-width: 480px) {
+      .wrap { width: min(100% - 22px, 1040px); padding-top: 12px; }
+      .masthead { align-items: flex-start; flex-direction: column; gap: 3px; }
+      .hero { padding: 17px 15px; }
+      h1 { font-size: 24px; }
+      .lede { font-size: 13px; }
+      .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .work-panel, .side-panel { padding: 13px; }
+      .panel-head { align-items: flex-start; }
+      .case-data { grid-template-columns: minmax(95px, .72fr) minmax(0, 1.28fr); }
+      .reset-button { padding: 7px 9px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="notice">가상 예제로 둘러보기 · 실제 의뢰는 전송되지 않습니다</div>
+      <div class="masthead">
+        <span class="brand">HAM MEDIA</span>
+        <span>고객과 동료가 함께 보는 작업 흐름</span>
+      </div>
+      <section class="hero" aria-labelledby="page-title">
+        <p class="eyebrow">가상 고객 작업 자리</p>
+        <h1 id="page-title">맡긴 일이 돌아오는 과정</h1>
+        <p class="lede">가상 책방의 낭독회 안내문을 맡기고, 접수부터 담당 인수·초안·수정·최종 파일·수락까지 직접 따라가 보세요.</p>
+        <p class="truth">등장하는 책방·인물·행사와 문안은 모두 이 체험용 가상 예시입니다. 실제 직원이 일하거나 AI가 답한 결과가 아닙니다.</p>
+        <nav class="external-links" aria-label="실제 HAM MEDIA 페이지">
+          <a class="external-link" href="#interaction-heading">가상 체험 시작</a>
+          <a class="external-link" href="https://hammedia.co.kr/quote/" target="_blank" rel="noopener noreferrer">실제 의뢰 문의</a>
+          <a class="external-link" href="https://hammedia.dellacasa.chatgpt.site/" target="_blank" rel="noopener noreferrer">실제 고객 작업자리 둘러보기</a>
+          <p class="external-caption">문의 링크에는 이 화면의 입력 내용이 붙지 않습니다. 둘러보기 링크는 공개되어 접근 가능한 화면만 엽니다.</p>
+        </nav>
+      </section>
+    </header>
+
+    <p class="section-label">진행 순서</p>
+    <ol class="steps" id="journey-steps" aria-label="가상 체험 진행 순서">
+      <li class="step" data-step="0" data-state="waiting"><span class="step-number">01</span><span class="step-name">요청 접수</span></li>
+      <li class="step" data-step="1" data-state="waiting"><span class="step-number">02</span><span class="step-name">담당 인수</span></li>
+      <li class="step" data-step="2" data-state="waiting"><span class="step-number">03</span><span class="step-name">초안 확인</span></li>
+      <li class="step" data-step="3" data-state="waiting"><span class="step-number">04</span><span class="step-name">수정 요청</span></li>
+      <li class="step" data-step="4" data-state="waiting"><span class="step-number">05</span><span class="step-name">최종 파일</span></li>
+      <li class="step" data-step="5" data-state="waiting"><span class="step-number">06</span><span class="step-name">고객 수락</span></li>
+    </ol>
+
+    <main class="layout">
+      <section class="panel work-panel" aria-labelledby="interaction-heading">
+        <div class="panel-head">
+          <div>
+            <span class="status-chip" id="status-chip" data-kind="pending">체험 전</span>
+            <h2 id="interaction-heading" tabindex="-1" style="margin-top:8px">가상 예제 요청</h2>
+            <p class="subtitle" id="screen-subtitle">손님 화면 · 요청을 읽고 접수해 보세요</p>
+          </div>
+          <button class="reset-button" id="reset-button" type="button">다시 시작</button>
+        </div>
+        <p class="intro-copy" id="live-status" role="status" aria-live="polite">준비된 요청으로 진행해 보세요. 요청을 고치면 기록에만 남으며, 예시 결과는 바뀌지 않습니다.</p>
+
+        <div class="role-control" id="role-control" hidden>
+          <span class="role-hint">한 사람이 화면을 바꿔 손님과 동료 역할을 번갈아 체험합니다.</span>
+          <div class="role-buttons" role="group" aria-label="화면 역할 바꾸기">
+            <button class="role-button" id="show-customer" type="button" aria-pressed="true">손님 화면 보기</button>
+            <button class="role-button" id="show-staff" type="button" aria-pressed="false">동료 화면 보기</button>
+          </div>
+        </div>
+
+        <section id="intake">
+          <div class="sample-note">
+            <strong>이번 가상 요청</strong><br>
+            가상 책방 ‘느린 페이지’의 낭독 모임 안내문입니다. 입력한 요청은 이 브라우저의 체험 기록에만 담깁니다. 아래 초안과 최종 문안은 미리 준비한 고정 예시이며, 입력에 따라 AI가 생성하지 않습니다.
+          </div>
+          <label class="input-label" for="request-input">손님 요청</label>
+          <textarea id="request-input" required maxlength="1200" aria-describedby="request-help request-error">가상 책방 느린 페이지에서 6월 14일 오후 3시에 여는 낭독 모임 ‘저녁의 문장’ 안내문을 써 주세요. 가상 작가 윤솔이 짧은 글을 읽고, 참가비는 무료이며 좌석은 12석이라고 적어 주세요. 따뜻하고 짧은 문장으로 부탁합니다.</textarea>
+          <p class="helper" id="request-help">실명·연락처·주소·계정 정보 등 민감한 정보는 입력하지 마세요. 이 체험은 외부로 내용을 보내지 않습니다.</p>
+          <p class="error-message" id="request-error" role="alert" hidden>요청 내용을 적어 주세요. 빈 요청은 접수할 수 없습니다.</p>
+          <div class="intake-actions">
+            <button class="secondary-button" id="fill-sample" type="button">예제 요청 채우기</button>
+            <button class="primary-button" id="submit-request" type="button">이 가상 요청으로 접수</button>
+          </div>
+        </section>
+
+        <section class="case-content" id="case-view" aria-live="polite" hidden></section>
+      </section>
+
+      <aside class="panel side-panel" aria-labelledby="record-heading">
+        <h2 id="record-heading">현재 기록</h2>
+        <p class="side-copy">이 가상 체험에서 완료한 단계와 지금 상태를 함께 보여 줍니다.</p>
+        <dl class="case-data" aria-label="체험 상태">
+          <dt>진행 상태</dt><dd id="case-status">시작 전</dd>
+          <dt>담당</dt><dd id="assignment-status">아직 인수 전</dd>
+          <dt>결과 전달</dt><dd id="delivery-status">결과물 없음</dd>
+          <dt>고객 수락</dt><dd id="acceptance-status">아직 수락 전</dd>
+        </dl>
+        <ol class="record-list" id="record-list" aria-label="체험에 추가된 기록"></ol>
+        <p class="small-print">이 화면을 닫으면 체험 기록은 사라집니다. 필요하면 최종 TXT 파일을 내려받아 보관하세요.</p>
+      </aside>
+    </main>
+
+    <footer class="footer">
+      예시 문안은 체험을 위한 샘플입니다. 이 페이지는 고객 정보나 입력 내용을 저장하거나 서버에 전송하지 않습니다.
+    </footer>
+  </div>
+
+  <script>
+    (function () {
+      "use strict";
+
+      const SAMPLE_REQUEST = "가상 책방 느린 페이지에서 6월 14일 오후 3시에 여는 낭독 모임 ‘저녁의 문장’ 안내문을 써 주세요. 가상 작가 윤솔이 짧은 글을 읽고, 참가비는 무료이며 좌석은 12석이라고 적어 주세요. 따뜻하고 짧은 문장으로 부탁합니다.";
+      const SAMPLE_REVISION = "마지막 문장을 ‘참가는 책방 카운터에서 신청해 주세요.’로 바꿔 주세요.";
+      const DRAFT_TEXT = "느린 페이지 낭독 모임\n저녁의 문장\n\n6월 14일 오후 3시, 가상 책방 느린 페이지에서\n가상 작가 윤솔과 짧은 글을 함께 읽습니다.\n참가비는 무료이며 좌석은 12석입니다.\n\n함께 읽고 싶은 분은 편하게 들러 주세요.";
+      const FINAL_TEXT = "느린 페이지 낭독 모임\n저녁의 문장\n\n6월 14일 오후 3시, 가상 책방 느린 페이지에서\n가상 작가 윤솔과 짧은 글을 함께 읽습니다.\n참가비는 무료이며 좌석은 12석입니다.\n\n참가는 책방 카운터에서 신청해 주세요.";
+      const USAGE = "안내판이나 인쇄물에 옮기기 전에 행사 날짜·장소·좌석 수가 현재 정보와 맞는지 한 번 더 확인해 주세요.";
+      const STAGE_INDEX = {
+        ready: -1, received: 0, assigned: 1, draft: 2,
+        revision_requested: 3, final_delivered: 4, accepted: 5
+      };
+      const STATUS = {
+        ready: { label: "체험 전", case: "시작 전", assignment: "아직 인수 전", delivery: "결과물 없음", accepted: "아직 수락 전" },
+        received: { label: "요청 접수됨", case: "접수됨", assignment: "아직 인수 전", delivery: "결과물 없음", accepted: "아직 수락 전" },
+        assigned: { label: "담당 인수됨", case: "접수됨", assignment: "담당이 인수함", delivery: "결과물 없음", accepted: "아직 수락 전" },
+        draft: { label: "초안 공개됨", case: "진행 중", assignment: "담당이 인수함", delivery: "초안 공개됨 · 검토 대기", accepted: "아직 수락 전" },
+        revision_requested: { label: "수정 요청됨", case: "수정 요청", assignment: "담당이 인수함", delivery: "수정 요청됨", accepted: "아직 수락 전" },
+        final_delivered: { label: "최종본 전달됨 · 고객 수락 전", case: "전달 완료", assignment: "담당이 인수함", delivery: "최종본 전달됨", accepted: "아직 수락 전" },
+        accepted: { label: "고객이 수락함", case: "전달 완료", assignment: "담당이 인수함", delivery: "고객이 수락함", accepted: "고객이 확인했어요" }
+      };
+      const state = {
+        stage: "ready",
+        view: "customer",
+        request: "",
+        revision: "",
+        events: [],
+        fileDownloaded: false
+      };
+      let requestTouched = false;
+      const byId = function (id) { return document.getElementById(id); };
+      const requestInput = byId("request-input");
+      const requestError = byId("request-error");
+      const roleControl = byId("role-control");
+      const caseView = byId("case-view");
+      const liveStatus = byId("live-status");
+
+      function make(tag, className, text) {
+        const node = document.createElement(tag);
+        if (className) node.className = className;
+        if (text !== undefined && text !== null) node.textContent = text;
+        return node;
+      }
+
+      function addBlock(parent, heading, text) {
+        const block = make("section", "copy-block");
+        block.append(make("h4", "", heading));
+        const body = make("p", "copy-text", text);
+        block.append(body);
+        parent.append(block);
+        return block;
+      }
+
+      function addDeliverable(parent, text) {
+        const block = make("section", "copy-block");
+        block.append(make("h4", "", "최종 안내문 · 가상 예시"));
+        const pre = make("pre", "deliverable", text);
+        block.append(pre);
+        parent.append(block);
+        return block;
+      }
+
+      function makeButton(label, kind, handler, id) {
+        const button = make("button", kind, label);
+        button.type = "button";
+        if (id) button.id = id;
+        button.addEventListener("click", handler);
+        return button;
+      }
+
+      function addNext(parent, explanation, label, handler, buttonId) {
+        const box = make("div", "next-step");
+        box.append(make("p", "", explanation));
+        box.append(makeButton(label, "primary-button", handler, buttonId));
+        parent.append(box);
+      }
+
+      function addUsage(parent) {
+        const note = make("p", "usage-note");
+        const strong = make("strong", "", "짧은 사용법 · ");
+        note.append(strong, document.createTextNode(USAGE));
+        parent.append(note);
+      }
+
+      function record(title, detail) {
+        state.events.push({ title: title, detail: detail });
+      }
+
+      function stageStatus() {
+        return STATUS[state.stage];
+      }
+
+      function renderStatus() {
+        const info = stageStatus();
+        const chip = byId("status-chip");
+        chip.textContent = info.label;
+        chip.dataset.kind = state.stage === "accepted" ? "done" : (state.stage === "ready" ? "pending" : "current");
+        byId("case-status").textContent = info.case;
+        byId("assignment-status").textContent = info.assignment;
+        byId("delivery-status").textContent = info.delivery;
+        byId("acceptance-status").textContent = info.accepted;
+        const activeIndex = STAGE_INDEX[state.stage];
+        document.querySelectorAll(".step").forEach(function (step) {
+          const index = Number(step.dataset.step);
+          step.dataset.state = activeIndex < 0 ? "waiting" : (index < activeIndex ? "done" : (index === activeIndex ? "current" : "waiting"));
+          if (index === activeIndex) step.setAttribute("aria-current", "step");
+          else step.removeAttribute("aria-current");
+        });
+      }
+
+      function renderTimeline() {
+        const list = byId("record-list");
+        while (list.firstChild) list.removeChild(list.firstChild);
+        if (state.events.length === 0) {
+          const li = make("li", "record-item", "");
+          li.append(make("span", "record-title", "아직 접수 전"));
+          li.append(make("span", "record-detail", "가상 요청을 접수하면 진행한 단계가 차례로 기록됩니다."));
+          list.append(li);
+          return;
+        }
+        state.events.forEach(function (event) {
+          const li = make("li", "record-item");
+          li.dataset.state = "done";
+          li.append(make("span", "record-title", event.title));
+          li.append(make("span", "record-detail", event.detail));
+          list.append(li);
+        });
+      }
+
+      function showRequest(parent) {
+        addBlock(parent, "손님이 맡긴 요청", state.request);
+      }
+
+      function showDraft(parent) {
+        addBlock(parent, "초안 · 손님 확인 전", DRAFT_TEXT);
+        const note = make("p", "helper", "초안은 확인을 위해 공개된 결과입니다. 최종본과 같은 상태로 표시하지 않습니다.");
+        parent.append(note);
+      }
+
+      function showFinal(parent) {
+        addDeliverable(parent, FINAL_TEXT);
+        addUsage(parent);
+      }
+
+      function handleDownload() {
+        if (!state.fileDownloaded) {
+          state.fileDownloaded = true;
+          record("최종 TXT 파일 내려받기", "다운로드를 시작했습니다. 전달 상태는 최종본 전달됨이며 고객 수락과는 별도로 기록됩니다.");
+        }
+        const content = buildExportText();
+        const blob = new Blob([content], { type: "text/plain;charset=utf-8" });
+        const url = URL.createObjectURL(blob);
+        const anchor = document.createElement("a");
+        anchor.href = url;
+        anchor.download = "느린페이지_낭독모임_최종안내문_예시.txt";
+        anchor.style.display = "none";
+        document.body.append(anchor);
+        anchor.click();
+        anchor.remove();
+        window.setTimeout(function () { URL.revokeObjectURL(url); }, 5000);
+        const note = byId("download-state");
+        if (note) note.textContent = "TXT 파일 다운로드를 시작했습니다.";
+        liveStatus.textContent = "최종 TXT 파일 다운로드를 시작했습니다. 전달 상태와 고객 수락 상태는 따로 남습니다.";
+        renderTimeline();
+      }
+
+      function showFinalActions(parent) {
+        const actions = make("div", "file-actions");
+        actions.append(makeButton(
+          state.fileDownloaded ? "TXT 파일 다시 내려받기" : "UTF-8 TXT 파일 내려받기",
+          "secondary-button",
+          handleDownload,
+          "download-button"
+        ));
+        const downloadState = make("span", "download-state", state.fileDownloaded ? "다운로드를 시작했어요." : "내려받은 파일에는 최종 안내문과 사용법만 담깁니다.");
+        downloadState.id = "download-state";
+        actions.append(downloadState);
+        parent.append(actions);
+      }
+
+      function renderCustomer() {
+        const heading = make("h3", "", "");
+        const intro = make("p", "case-intro", "");
+        caseView.append(heading, intro);
+
+        if (state.stage === "received") {
+          heading.textContent = "요청이 접수됐어요";
+          intro.textContent = "이제 동료 화면으로 바꿔 담당 인수를 확인해 보세요.";
+          showRequest(caseView);
+          addNext(caseView, "다음 행동 · 동료 역할로 화면을 바꾸고 요청을 맡습니다.", "동료 화면 보기", function () {
+            state.view = "staff";
+            render();
+          });
+          return;
+        }
+        if (state.stage === "assigned") {
+          heading.textContent = "담당 인수를 확인했어요";
+          intro.textContent = "요청을 맡았고, 초안은 아직 만들어지지 않았습니다.";
+          showRequest(caseView);
+          addNext(caseView, "다음 행동 · 동료 화면에서 초안을 기록합니다.", "동료 화면 보기", function () {
+            state.view = "staff";
+            render();
+          });
+          return;
+        }
+        if (state.stage === "draft") {
+          heading.textContent = "초안을 읽고 한 가지를 고쳐 달라고 해 보세요";
+          intro.textContent = "먼저 초안을 확인한 뒤, 구체적인 수정 요청을 남깁니다.";
+          showDraft(caseView);
+          addBlock(caseView, "이번 체험에서 보낼 수정 요청", SAMPLE_REVISION);
+          caseView.append(make("p", "helper", "준비된 수정 예제로 진행합니다. 마지막 문장이 어떻게 달라지는지 확인해 보세요."));
+          caseView.append(makeButton("이 수정 요청 보내기", "primary-button", function () {
+            state.revision = SAMPLE_REVISION;
+            state.stage = "revision_requested";
+            record("손님이 수정 요청", SAMPLE_REVISION);
+            liveStatus.textContent = "수정 요청이 가상 체험 기록에 들어갔습니다.";
+            render(true);
+          }));
+          return;
+        }
+        if (state.stage === "revision_requested") {
+          heading.textContent = "수정 요청을 전달했어요";
+          intro.textContent = "요청한 수정은 아직 반영되지 않았습니다. 동료 화면에서 작업을 이어갑니다.";
+          showDraft(caseView);
+          addBlock(caseView, "손님이 부탁한 수정", state.revision);
+          addNext(caseView, "다음 행동 · 동료 화면에서 수정본과 최종 파일을 준비합니다.", "동료 화면 보기", function () {
+            state.view = "staff";
+            render();
+          });
+          return;
+        }
+        if (state.stage === "final_delivered" || state.stage === "accepted") {
+          heading.textContent = state.stage === "accepted" ? "결과를 수락했어요" : "최종 파일이 전달됐어요";
+          intro.textContent = state.stage === "accepted"
+            ? "고객 수락 기록까지 완료됐습니다."
+            : "최종본을 전달했습니다. 고객의 확인은 별도 단계로 남아 있습니다.";
+          showFinal(caseView);
+          showFinalActions(caseView);
+          if (state.stage === "final_delivered") {
+            addNext(caseView, "파일을 읽거나 내려받은 뒤, 결과를 확인했으면 수락을 눌러 주세요. 전달과 수락은 다른 기록입니다.", "확인했어요 · 최종본 수락", function () {
+              state.stage = "accepted";
+              record("손님이 최종본을 수락", "전달된 최종 파일을 확인했다고 표시했습니다.");
+              liveStatus.textContent = "고객 수락을 별도로 기록했습니다.";
+              render(true);
+            }, "accept-button");
+          } else {
+            const acceptedNote = make("p", "usage-note", "전달 상태: 최종본 전달됨 · 고객 수락: 확인됨");
+            caseView.append(acceptedNote);
+          }
+          return;
+        }
+      }
+
+      function renderStaff() {
+        const heading = make("h3", "", "");
+        const intro = make("p", "case-intro", "");
+        caseView.append(heading, intro);
+
+        if (state.stage === "received") {
+          heading.textContent = "새 요청이 도착했어요";
+          intro.textContent = "동료 역할로 요청을 살펴보고 담당을 맡아 봅니다.";
+          showRequest(caseView);
+          addNext(caseView, "다음 행동 · 이 가상 요청의 담당을 맡습니다.", "담당 인수하기", function () {
+            state.stage = "assigned";
+            record("동료 역할이 요청을 인수", "담당 상태를 인수됨으로 기록했습니다.");
+            liveStatus.textContent = "동료 역할이 요청을 인수했습니다. 초안은 아직 없습니다.";
+            render(true);
+          });
+          return;
+        }
+        if (state.stage === "assigned") {
+          heading.textContent = "요청을 맡았어요";
+          intro.textContent = "접수와 담당 인수는 완료됐고, 초안 공개는 다음 행동으로 남아 있습니다.";
+          showRequest(caseView);
+          addNext(caseView, "다음 행동 · 진행 중 상태를 기록하고 가상 초안을 손님 화면에 공개합니다.", "초안 작성하고 공개하기", function () {
+            state.stage = "draft";
+            record("동료 역할이 초안을 공개", "진행 상태: 진행 중 · 결과 전달 상태: 초안 공개됨");
+            liveStatus.textContent = "초안이 손님 화면에서 확인할 수 있는 상태로 기록됐습니다.";
+            render(true);
+          });
+          return;
+        }
+        if (state.stage === "draft") {
+          heading.textContent = "초안이 손님에게 공개됐어요";
+          intro.textContent = "초안과 최종본은 서로 다른 결과 상태입니다. 손님이 검토할 차례입니다.";
+          showRequest(caseView);
+          showDraft(caseView);
+          addNext(caseView, "다음 행동 · 손님 화면에서 한 가지 수정 요청을 남깁니다.", "손님 화면 보기", function () {
+            state.view = "customer";
+            render();
+          });
+          return;
+        }
+        if (state.stage === "revision_requested") {
+          heading.textContent = "수정 요청을 받았어요";
+          intro.textContent = "손님이 요청한 한 가지를 반영한 뒤 최종 파일을 전달합니다.";
+          showRequest(caseView);
+          showDraft(caseView);
+          addBlock(caseView, "손님이 부탁한 수정", state.revision);
+          addNext(caseView, "다음 행동 · 수정이 반영된 최종본을 파일로 전달합니다.", "수정 반영 후 최종본 전달", function () {
+            state.stage = "final_delivered";
+            record("동료 역할이 최종본을 전달", "결과 전달 상태: 최종본 전달됨 · 고객 수락은 아직");
+            liveStatus.textContent = "최종본이 전달됐습니다. 고객 수락은 아직 기록되지 않았습니다.";
+            render(true);
+          });
+          return;
+        }
+        if (state.stage === "final_delivered" || state.stage === "accepted") {
+          heading.textContent = state.stage === "accepted" ? "손님이 최종본을 수락했어요" : "최종 파일을 전달했어요";
+          intro.textContent = state.stage === "accepted"
+            ? "전달 뒤 고객이 확인한 별도 기록도 보입니다."
+            : "최종본 전달을 마쳤습니다. 이제 손님이 확인하거나 수락합니다.";
+          showFinal(caseView);
+          const statusCopy = state.stage === "accepted"
+            ? "전달 상태: 고객이 최종본을 수락함"
+            : "전달 상태: 최종본 전달됨 · 고객 수락 전";
+          caseView.append(make("p", "usage-note", statusCopy));
+          addNext(caseView, "다음 행동 · 손님 화면에서 파일을 받고 결과를 확인합니다.", "손님 화면 보기", function () {
+            state.view = "customer";
+            render();
+          });
+          return;
+        }
+      }
+
+      function render(focusNext) {
+        renderStatus();
+        renderTimeline();
+        const isReady = state.stage === "ready";
+        byId("intake").hidden = !isReady;
+        caseView.hidden = isReady;
+        roleControl.hidden = isReady;
+        byId("show-customer").setAttribute("aria-pressed", state.view === "customer" ? "true" : "false");
+        byId("show-staff").setAttribute("aria-pressed", state.view === "staff" ? "true" : "false");
+        if (isReady) {
+          byId("interaction-heading").textContent = "가상 예제 요청";
+          byId("screen-subtitle").textContent = "손님 화면 · 요청을 읽고 접수해 보세요";
+          return;
+        }
+        byId("interaction-heading").textContent = state.view === "customer" ? "손님 화면" : "동료 화면";
+        byId("screen-subtitle").textContent = state.view === "customer"
+          ? "가상 손님 역할 · 맡긴 요청과 결과를 확인합니다"
+          : "가상 동료 역할 · 인수와 작업 결과를 기록합니다";
+        while (caseView.firstChild) caseView.removeChild(caseView.firstChild);
+        if (state.view === "customer") renderCustomer();
+        else renderStaff();
+        if (focusNext) byId("interaction-heading").focus();
+      }
+
+      function buildExportText() {
+        return [
+          "가상 체험용 안내문 — 실제 행사 공지가 아닙니다.",
+          "", FINAL_TEXT, "", "사용 전 확인", USAGE
+        ].join("\n");
+      }
+
+      function submitRequest() {
+        const value = requestInput.value.trim();
+        if (!value) {
+          requestError.hidden = false;
+          requestInput.focus();
+          liveStatus.textContent = "접수하지 않았습니다. 요청 내용을 적어 주세요.";
+          return;
+        }
+        state.request = value;
+        state.stage = "received";
+        state.view = "customer";
+        record("손님 요청을 접수", value);
+        requestError.hidden = true;
+        liveStatus.textContent = "가상 요청이 접수됐습니다. 다음은 동료 역할의 담당 인수입니다.";
+        render(true);
+      }
+
+      function resetExperience() {
+        const hasWork = requestTouched || state.stage !== "ready";
+        if (hasWork && !window.confirm("입력한 내용과 체험 기록을 모두 지우고 처음부터 시작할까요?")) return;
+        state.stage = "ready";
+        state.view = "customer";
+        state.request = "";
+        state.revision = "";
+        state.events = [];
+        state.fileDownloaded = false;
+        requestTouched = false;
+        requestInput.value = SAMPLE_REQUEST;
+        requestError.hidden = true;
+        liveStatus.textContent = "준비된 요청으로 진행해 보세요. 요청을 고치면 기록에만 남으며, 예시 결과는 바뀌지 않습니다.";
+        render();
+        requestInput.focus();
+      }
+
+      requestInput.addEventListener("input", function () {
+        requestTouched = true;
+        requestError.hidden = true;
+      });
+      byId("submit-request").addEventListener("click", submitRequest);
+      byId("fill-sample").addEventListener("click", function () {
+        requestInput.value = SAMPLE_REQUEST;
+        requestError.hidden = true;
+        liveStatus.textContent = "미리 준비된 가상 예제를 채웠습니다.";
+      });
+      byId("reset-button").addEventListener("click", resetExperience);
+      byId("show-customer").addEventListener("click", function () {
+        state.view = "customer";
+        render();
+      });
+      byId("show-staff").addEventListener("click", function () {
+        state.view = "staff";
+        render();
+      });
+      render();
+    }());
+  </script>
+</body>
+</html>
+
