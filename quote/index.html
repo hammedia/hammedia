@@ -137,7 +137,7 @@
   <p>함동민 · <a href="mailto:hammedia002@gmail.com">hammedia002@gmail.com</a></p>
   <a href="/privacy/">개인정보처리방침</a>
 </footer>
-  <script src="/assets/js/star-inquiry-context.js?v=20261112-source-preserve" defer></script>
+  <script src="/assets/js/star-inquiry-context.js?v=20261114-source-service" defer></script>
   <script src="inquiry-handoff.js?v=20261018-1" defer></script>
   <script type="module">
 
@@ -230,8 +230,17 @@
         ? "service-case-" + caseId : null;
       const baseSource = caseSource || params.get("source") || null;
       const contextSource = window.HamStarContext?.source(baseSource) ?? baseSource;
-      const inquirySource = caseSource && contextSource?.startsWith("star-platform|")
+      let inquirySource = caseSource && contextSource?.startsWith("star-platform|")
         ? caseSource + contextSource.slice("star-platform".length) : contextSource;
+      // Keep the selected service alongside the origin in the existing source field.
+      // The notification displays 80 characters; retain origin, service, star and help first.
+      const service = params.get("service");
+      if (["page", "video", "automation"].includes(service)) {
+        const suffix = "|v=" + service;
+        let origin = inquirySource || "unknown";
+        if (origin.length + suffix.length > 80) origin = origin.replace(/\|a=[^|]*/, "");
+        inquirySource = origin.slice(0, 80 - suffix.length) + suffix;
+      }
       const payload = {
         daily_task: form.daily_task.value.trim(),
         desired_result: form.desired_result.value.trim(),

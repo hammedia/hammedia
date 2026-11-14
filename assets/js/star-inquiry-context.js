@@ -61,7 +61,8 @@
     // Keep the validated video campaign source when it fits the existing 69-character source contract.
     const menuSource=/^service-menu-(video|page|document|monthly|automation)$/.test(base||'');
     const videoSource=/^video-[a-z0-9_-]{1,30}$/.test(base||'');
-    const prefix=menuSource||videoSource?base:'star-platform';
+    const homeSource=base==='home-featured';
+    const prefix=menuSource||videoSource||homeSource?base:'star-platform';
     const star='|s='+c.star;
     const article='|a='+(c.article?CODES[c.star][c.article]:'room');
     const help='|h='+c.help;
