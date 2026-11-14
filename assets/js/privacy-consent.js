@@ -13,6 +13,7 @@
     "/tools/ai-concepts/": "ai_concepts",
     "/tools/dev-literacy/": "dev_literacy",
     "/tools/experience-sheet/": "experience_sheet",
+    "/tools/golf-lessons/": "golf_lessons",
   };
   const toolPath = location.pathname.replace(/index\.html$/, "").replace(/\/?$/, "/");
   const toolName = toolNames[toolPath];
@@ -188,6 +189,10 @@
         output_delivery: delivery,
         output_format: format,
       });
+    },
+    trackGolfAction(action) {
+      if (toolName !== 'golf_lessons' || !['lesson_open', 'memo_add'].includes(action)) return;
+      trackConversion(`golf_${action}`, { tool_name: toolName, tool_path: toolPath });
     },
     trackAcademy(action, scene = 'direct') {
       if (!['/academy/', '/academy/classroom/'].includes(toolPath) ||

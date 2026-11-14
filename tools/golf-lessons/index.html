@@ -4,6 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#F5F3EE">
+  <script src="/assets/js/privacy-consent.js?v=20261115-scenes" data-measurement-id="G-TEBKMGWPQS"></script>
+  <link rel="canonical" href="https://hammedia.co.kr/tools/golf-lessons/">
   <title>오늘 다시 볼 골프 수업 · 이경주</title>
   <style>
     :root {
@@ -219,11 +221,12 @@
           <button class="button button-danger button-block" id="clear-memo" type="button">저장한 메모 모두 지우기</button>
         </div>
         <p class="save-status" id="save-status" role="status" aria-live="polite"></p>
-        <p class="privacy">선택과 직접 쓴 메모는 이 브라우저에 자동 저장됩니다. 서버로 전송되지 않습니다. 이 기기를 함께 쓰면 메모를 지워 주세요.</p>
+        <p class="privacy">선택한 수업과 직접 쓴 메모는 이 브라우저에 자동 저장됩니다. 메모·검색어는 서버로 보내지 않습니다. 방문 통계를 허용하면 방문·수업 링크 열기·메모 담기·TXT 저장 버튼 사용 여부만 집계합니다. 이 기기를 함께 쓰면 메모를 지워 주세요.</p>
       </aside>
     </div>
 
     <footer class="footer">
+      <button type="button" class="button button-secondary" onclick="window.HAMPrivacy?.openAnalyticsChoice()">방문 통계 선택 바꾸기</button>
       원영상은 <a href="https://www.youtube.com/@2kyungzoo" target="_blank" rel="noopener noreferrer">이경주 채널 <span aria-label="새 탭에서 열림">↗</span></a>에서 무료로 시청할 수 있습니다. 이 안내는 공개 영상의 특정 설명으로 이동하게 도와줍니다.
     </footer>
   </main>
@@ -387,7 +390,7 @@
     function toggleMemo(id) {
       const index = memo.findIndex(item => item.id === id);
       if (index >= 0) memo.splice(index, 1);
-      else memo.push({ id, note: '' });
+      else { memo.push({ id, note: '' }); window.HAMPrivacy?.trackGolfAction?.('memo_add'); }
       persistMemo();
       renderLessons();
       renderMemo();
@@ -464,8 +467,13 @@
       a.click();
       URL.revokeObjectURL(url);
       saveStatus.textContent = '선택한 수업과 직접 쓴 메모를 TXT로 저장했습니다.';
+      window.HAMPrivacy?.trackToolOutput?.('download_request', 'txt');
     }
 
+    document.addEventListener('click', event => {
+      const link = event.target.closest('a');
+      if (link?.matches('.lesson-actions a, .memo-link')) window.HAMPrivacy?.trackGolfAction?.('lesson_open');
+    });
     searchInput.addEventListener('input', renderLessons);
     document.querySelector('#clear-search').addEventListener('click', () => { searchInput.value = ''; activeTopic = ''; renderTopics(); renderLessons(); searchInput.focus(); });
     document.querySelector('#download-memo').addEventListener('click', downloadMemo);
