@@ -272,6 +272,10 @@ button:not(:disabled) { cursor: pointer; }
   font-variant-numeric: tabular-nums;
 }
 
+/* 일곱 강 뒤에 붙는 심화 강: 점선으로 나누고 이름(심화 1)이 들어갈 폭을 준다. */
+.lesson-nav-button.is-deep { grid-template-columns: 46px 1fr 20px; margin-top: 10px; border-top: 1px dashed var(--line-strong); }
+.lesson-nav-button.is-deep .lesson-number { font-size: 0.86rem; color: var(--brand-deep); }
+
 .lesson-nav-copy { min-width: 0; }
 .lesson-nav-copy strong,
 .lesson-nav-copy span { display: block; }
@@ -1024,6 +1028,8 @@ button:disabled { cursor: not-allowed; opacity: 0.42; }
   }
   .lesson-nav-button::before { inset: auto 8px 0; width: auto; height: 3px; }
   .lesson-number { font-size: 0.85rem; }
+  .lesson-nav-button.is-deep { margin-top: 0; margin-left: 8px; border-top: 0; border-left: 1px dashed var(--line-strong); }
+  .lesson-nav-button.is-deep .lesson-number { font-size: 0.78rem; }
   .lesson-nav-copy strong { font-size: 0.64rem; }
   .lesson-nav-copy span,
   .lesson-complete-mark { display: none; }

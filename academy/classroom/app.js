@@ -1,5 +1,5 @@
 import { scenes, sceneFrom } from "../try-scenes.mjs?v=20261115";
-import { hasLessonRecord, lessonRecordFilename, lessonRecordText } from "./lesson1-export.mjs?v=20261023-lessons2to7";
+import { hasLessonRecord, lessonName, lessonRecordFilename, lessonRecordText } from "./lesson1-export.mjs?v=20261116-deep1";
 
 import { aiStartingPoint, aiUpdates } from "../../assets/js/ai-next-step.mjs?v=20261115-upgrade";
 import { createHtmlWorkbench } from "./html-workbench.mjs?v=20261115-upgrade";
@@ -77,6 +77,12 @@ const course = await fetch("data/course.json", { cache: "no-store" }).then((resp
   if (!response.ok) throw new Error(`강의 데이터를 열지 못했습니다: ${response.status}`);
   return response.json();
 });
+// 심화는 일곱 강과 별도로 진행한다.
+const isDeep = (lesson) => lesson.track === "deep";
+const showInternalPreview = new URLSearchParams(location.search).get("preview") === "deep";
+course.lessons = course.lessons.filter((lesson) => lesson.preview !== "internal" || showInternalPreview);
+const coreLessons = course.lessons.filter((lesson) => !isDeep(lesson));
+const lastCoreIndex = course.lessons.indexOf(coreLessons[coreLessons.length - 1]);
 const lastOpenLessonIndex = () => course.lessons.reduce((last, lesson, index) => lesson.locked ? last : index, 0);
 
 // 강별 확인 기준(문구·순서·개수)의 식별값. courseVersion이 같아도 확인표가 바뀌면 달라진다.
@@ -211,14 +217,14 @@ function renderLessonNavigation() {
     const work = state.lessons[lesson.id];
     const button = document.createElement("button");
     button.type = "button";
-    button.className = `lesson-nav-button${work.completed ? " is-complete" : ""}${lesson.locked ? " is-locked" : ""}`;
+    button.className = `lesson-nav-button${work.completed ? " is-complete" : ""}${lesson.locked ? " is-locked" : ""}${isDeep(lesson) ? " is-deep" : ""}`;
     if (lesson.locked) {
       button.disabled = true;
       button.title = "준비 중입니다. 1강을 먼저 열었습니다.";
     }
     button.dataset.lessonIndex = String(index);
     button.setAttribute("aria-current", index === state.currentLesson ? "true" : "false");
-    button.append(text("span", `${lesson.number}강`, "lesson-number"));
+    button.append(text("span", lessonName(lesson), "lesson-number"));
     const copy = document.createElement("span");
     copy.className = "lesson-nav-copy";
     copy.append(text("strong", lesson.shortTitle), text("span", lesson.output.label));
@@ -624,8 +630,8 @@ function updateCompletionState() {
 }
 
 function renderArtifact() {
-  const outputs = course.lessons.map((lesson) => state.lessons[lesson.id].retry.trim());
-  const completed = course.lessons.filter((lesson) => state.lessons[lesson.id].completed).length;
+  const outputs = coreLessons.map((lesson) => state.lessons[lesson.id].retry.trim());
+  const completed = coreLessons.filter((lesson) => state.lessons[lesson.id].completed).length;
   const latestIndex = outputs.reduce((last, value, index) => value ? index : last, -1);
   const promise = outputs[1];
   const latest = latestIndex >= 0 ? outputs[latestIndex] : "";
@@ -642,7 +648,7 @@ function renderArtifact() {
   const history = document.createDocumentFragment();
   course.resultStates.forEach((result, index) => {
     const item = document.createElement("li");
-    const isComplete = Boolean(outputs[index]) || state.lessons[course.lessons[index].id].completed;
+    const isComplete = Boolean(outputs[index]) || state.lessons[coreLessons[index].id].completed;
     item.className = `${isComplete ? "is-complete" : ""}${index === state.currentLesson ? " is-current" : ""}`.trim();
     item.append(text("span", isComplete ? "✓" : String(index + 1), "history-dot"), text("span", result.label), text("small", isComplete ? "남김" : "대기"));
     history.append(item);
@@ -652,8 +658,8 @@ function renderArtifact() {
   updateLesson1ExportState();
   elements.downloadHtml.disabled = !outputs[4];
   elements.downloadHandoff.disabled = !outputs[6];
-  const openLessons = course.lessons.filter((lesson) => !lesson.locked).length;
-  elements.overallProgress.textContent = `${state.currentLesson + 1} / ${openLessons}강`;
+  const openLessons = coreLessons.filter((lesson) => !lesson.locked).length;
+  elements.overallProgress.textContent = isDeep(currentLesson()) ? `${lessonName(currentLesson())} · 일곱 강 뒤` : `${state.currentLesson + 1} / ${openLessons}강`;
   elements.completionCount.textContent = `${completed} / ${openLessons}강 실습 확인`;
   elements.progressBar.style.width = `${(completed / openLessons) * 100}%`;
 }
@@ -662,7 +668,8 @@ function renderDock() {
   const lesson = currentLesson();
   const stage = lesson.flow[state.currentStage];
   const isLastStage = state.currentStage === lesson.flow.length - 1;
-  const isLastLesson = state.currentLesson === course.lessons.length - 1;
+  const deepLesson = isDeep(lesson);
+  const isLastLesson = deepLesson || state.currentLesson === lastCoreIndex;
   elements.previousStep.disabled = state.currentStage === 0 && state.currentLesson === 0;
 
   if (!isLastStage) {
@@ -674,15 +681,20 @@ function renderDock() {
   } else if (!isLastLesson && course.lessons[state.currentLesson + 1].locked) {
     const nextLesson = course.lessons[state.currentLesson + 1];
     elements.nextKicker.textContent = "오늘 여기까지 — 내 결과 저장하기";
-    elements.nextLabel.textContent = `${nextLesson.number}강 · ${nextLesson.shortTitle} (준비 중)`;
+    elements.nextLabel.textContent = `${lessonName(nextLesson)} · ${nextLesson.shortTitle} (준비 중)`;
     elements.nextDescription.textContent = "지금 연 강은 여기까지입니다. 남긴 결과는 이 기기에 저장되고, 다음 강이 열리면 그대로 이어서 씁니다.";
-    elements.saveNext.textContent = `${lesson.number}강 저장하고 마치기`;
+    elements.saveNext.textContent = `${lessonName(lesson)} 저장하고 마치기`;
   } else if (!isLastLesson) {
     const nextLesson = course.lessons[state.currentLesson + 1];
     elements.nextKicker.textContent = "저장하고 다음 강으로";
-    elements.nextLabel.textContent = `${nextLesson.number}강 · ${nextLesson.shortTitle}`;
+    elements.nextLabel.textContent = `${lessonName(nextLesson)} · ${nextLesson.shortTitle}`;
     elements.nextDescription.textContent = lesson.nextLesson;
-    elements.saveNext.textContent = `저장하고 ${nextLesson.number}강으로`;
+    elements.saveNext.textContent = `저장하고 ${lessonName(nextLesson)}으로`;
+  } else if (deepLesson) {
+    elements.nextKicker.textContent = "심화 확인";
+    elements.nextLabel.textContent = `${lesson.output.label} 저장`;
+    elements.nextDescription.textContent = lesson.nextLesson;
+    elements.saveNext.textContent = `${lessonName(lesson)} 저장하기`;
   } else {
     elements.nextKicker.textContent = "마지막 확인";
     elements.nextLabel.textContent = "사용 확인·첫 완성본·다음에 할 일 저장";
@@ -696,8 +708,9 @@ function render() {
   htmlWorkbench.show(lesson.number);
   document.body.classList.toggle("is-dialogue-lesson", Boolean(lesson.useStageScript));
   const stage = lesson.flow[state.currentStage];
-  document.title = `바른생활 ${lesson.number}강 · ${stage.label}`;
-  elements.lessonKicker.textContent = `${lesson.number}강 · ${lesson.shortTitle}`;
+  document.title = `바른생활 ${lessonName(lesson)} · ${stage.label}`;
+  document.body.dataset.lessonNumber = String(lesson.number);
+  elements.lessonKicker.textContent = `${lessonName(lesson)} · ${lesson.shortTitle}`;
   elements.lessonTitle.textContent = lesson.title;
   elements.lessonQuestion.textContent = lesson.question;
   if (elements.lessonAlone) elements.lessonAlone.textContent = lesson.aloneNote || "혼자 해도 됩니다";
@@ -817,11 +830,15 @@ function moveNext() {
     delete work.recheckRequired;
     work.verifiedAt = new Date().toISOString();
     const nextLesson = course.lessons[state.currentLesson + 1];
-    if (nextLesson && !nextLesson.locked) {
+    if (isDeep(lesson)) {
+      announce(`${lessonName(lesson)}을 저장했습니다. 원문 위치와 고친 곳은 메모칸과 파일로 다시 볼 수 있습니다.`);
+    } else if (nextLesson && isDeep(nextLesson)) {
+      announce("사용 확인을 거친 첫 완성본과 다음에 할 일을 저장했습니다. 원하면 왼쪽 길의 심화 1을 이어서 열 수 있습니다.");
+    } else if (nextLesson && !nextLesson.locked) {
       state.currentLesson += 1;
       state.currentStage = 0;
     } else if (nextLesson && nextLesson.locked) {
-      announce(`${lesson.number}강을 저장했습니다. ${nextLesson.number}강은 준비 중입니다 — 열리면 알려드립니다.`);
+      announce(`${lessonName(lesson)}을 저장했습니다. ${lessonName(nextLesson)}은 준비 중입니다 — 열리면 알려드립니다.`);
     } else {
       announce("사용 확인을 거친 첫 완성본과 다음에 할 일을 저장했습니다.");
     }
@@ -865,7 +882,7 @@ function download(filename, type, content) {
 function updateLesson1ExportState() {
   if (!elements.downloadLesson1) return;
   const lesson = currentLesson();
-  elements.downloadLesson1.textContent = `${lesson.number}강 메모 파일로 받기 · 선택`;
+  elements.downloadLesson1.textContent = `${lessonName(lesson)} 메모 파일로 받기 · 선택`;
   elements.downloadLesson1.disabled = !hasLessonRecord(lesson, state.lessons[lesson.id]);
 }
 
@@ -879,11 +896,11 @@ function downloadLesson1() {
     artifactId: state.artifactId
   });
   if (!content) {
-    announce(`${lesson.number}강에서 남긴 말이 없습니다. 먼저 실제 실습 기록을 적어 주세요.`);
+    announce(`${lessonName(lesson)}에서 남긴 말이 없습니다. 먼저 실제 실습 기록을 적어 주세요.`);
     return;
   }
   download(lessonRecordFilename(lesson), "text/plain;charset=utf-8", content);
-  announce(`${lesson.number}강 메모를 파일로 받았습니다. 다른 사람이나 AI에게 보내기 전에 개인정보·고객정보를 확인하세요.`);
+  announce(`${lessonName(lesson)} 메모를 파일로 받았습니다. 다른 사람이나 AI에게 보내기 전에 개인정보·고객정보를 확인하세요.`);
 }
 
 function downloadResultHtml() {
@@ -921,7 +938,7 @@ function downloadHandoff() {
     `결과 ID: ${state.artifactId}`,
     `과정 버전: ${state.courseVersion}`,
     "",
-    ...course.lessons.flatMap((lesson) => [`## ${lesson.number}강 · ${lesson.output.label}`, state.lessons[lesson.id].retry.trim() || "미작성", ""]),
+    ...coreLessons.flatMap((lesson) => [`## ${lesson.number}강 · ${lesson.output.label}`, state.lessons[lesson.id].retry.trim() || "미작성", ""]),
     "## 다음 AI에게 할 말",
     "위 원본과 마지막 결정을 먼저 읽고, 7강에 적은 다음 행동 하나만 실행하세요. 확인하지 않은 사실을 보태지 말고, 결과를 만든 뒤 내가 직접 열어볼 수 있게 알려주세요."
   ];

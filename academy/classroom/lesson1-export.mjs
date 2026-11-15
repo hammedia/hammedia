@@ -6,17 +6,20 @@ const recordFields = (lesson) => (lesson.number === 1
   ? LESSON1_FIELDS
   : [...BASE_FIELDS, ...(lesson.conversationFields || []).map((field) => field.id)]);
 
+// 화면·파일에 쓰는 강 이름. 심화 강은 label(예: 심화 1)을 쓴다.
+export const lessonName = (lesson) => lesson.label || `${lesson.number}강`;
+
 export function hasLessonRecord(lesson, work = {}) {
   return recordFields(lesson).some((key) => typeof work[key] === "string" && work[key].trim().length > 0);
 }
 
 export function lessonRecordFilename(lesson) {
-  return `${lesson.number}강-${(lesson.output?.label || "메모").trim().replace(/\s+/g, "-")}.txt`;
+  return `${lessonName(lesson).replace(/\s+/g, "-")}-${(lesson.output?.label || "메모").trim().replace(/\s+/g, "-")}.txt`;
 }
 
 export function lessonRecordText({ lesson, work, courseVersion, artifactId }) {
   if (!hasLessonRecord(lesson, work)) return "";
-  const n = `${lesson.number}강`;
+  const n = lessonName(lesson);
   const labels = {
     firstAttempt: lesson.workLabels?.first || "내가 보낸 첫 말과 AI의 첫 답",
     correctionNote: lesson.workLabels?.correction || "내가 더 말하거나 바로잡은 이유",
