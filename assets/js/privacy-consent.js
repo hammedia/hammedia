@@ -235,6 +235,8 @@
     try { url = new URL(link.href, location.href); } catch { return; }
     if (url.protocol === "mailto:") {
       trackConversion("contact_click", { contact_type: "email" });
+    } else if (location.pathname === "/reels/" && url.origin === "https://pf.kakao.com" && url.pathname === "/_xhiFiX/chat") {
+      trackConversion("contact_click", { contact_type: "kakao" });
     } else if (url.hostname === "tally.so" && url.pathname === "/r/vGK44d") {
       trackConversion("contact_click", { contact_type: "form", form_id: "academy_interest" });
     } else if (url.hostname === "hammedia-payment.vercel.app" && url.pathname.replace(/\/$/, "") === "/book") {
