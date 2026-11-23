@@ -1,0 +1,45 @@
+:root{color-scheme:dark;--charcoal:#17120f;--cream:#fff0d9;--quiet:#e6d2b7;--yellow:#f5ca75;font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",sans-serif}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;color:var(--cream);background:#19130f;word-break:keep-all}
+a{color:inherit}
+a:focus-visible,button:focus-visible{outline:3px solid #fff2b4;outline-offset:4px}
+[hidden]{display:none!important}
+.house{max-width:1050px;margin:auto;min-height:100svh;position:relative;isolation:isolate;background:#1d1510}
+.house-header{height:68px;margin-inline:24px;border-bottom:1px solid #eed9b64c;display:flex;align-items:center;justify-content:space-between;gap:12px;position:relative;z-index:2}
+.brand{font-size:15px;font-weight:790;letter-spacing:-.045em;text-decoration:none}
+.home-link,.room-link{display:inline-flex;align-items:center;min-height:44px;gap:7px;font-size:13px;font-weight:650;color:var(--quiet);text-decoration:none}
+.home-link:hover,.room-link:hover{text-decoration:underline;text-underline-offset:4px}
+.welcome{padding:31px 20px 17px;text-align:center;position:relative;z-index:1}
+.arrival .welcome{padding-top:clamp(31px,6.6vh,56px)}
+.welcome h1{font-size:clamp(37px,11vw,67px);line-height:1.12;letter-spacing:-.08em;margin:0 0 9px;font-weight:710}
+.welcome p{font-size:14px;line-height:1.55;color:var(--quiet);margin:0}
+.door-button{display:grid;width:100%;justify-items:center;gap:0;position:relative;background:none;color:inherit;border:0;font:inherit;padding:0 0 21px;cursor:pointer}
+.door-button:focus-visible{outline-offset:-6px}
+.door-stage{width:100%;aspect-ratio:554/604;max-width:550px;position:relative;overflow:hidden;display:block;background:#35261b}
+.door-stage::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#1d1510 0%,transparent 10%,transparent 88%,#1d1510 100%);pointer-events:none}
+.door-stage img,.door-motion{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.door-motion{opacity:0}
+.house[data-state="moving"] .door-motion{opacity:1}
+.door-cta{margin-top:-7px;z-index:1;display:flex;align-items:center;justify-content:center;min-width:162px;min-height:52px;gap:21px;padding:10px 21px;border-radius:99px;background:var(--yellow);color:#2b1e14;font-size:16px;font-weight:780}
+.door-button:hover .door-cta{background:#ffdc91}
+.door-cta b{font-size:20px;line-height:1}
+.inside{text-align:center;padding:0 20px 28px;min-height:calc(100svh - 68px)}
+.house[data-state="open"]::before{content:"";z-index:-1;position:absolute;inset:0;background:linear-gradient(180deg,#1a120ddc 0%,#1a120da8 52%,#1a120df5 92%),url('assets/door-open.webp') 60% center/cover no-repeat}
+.inside .welcome{padding:clamp(54px,12.5vh,110px) 0 24px}
+.inside h1{font-size:clamp(33px,8.8vw,62px)}
+.inside h1:focus{outline:none}
+.episode{margin:0 auto;text-decoration:none;max-width:580px;border:1px solid #ab88618a;border-radius:10px;display:block;position:relative;overflow:hidden;background:#3b2a1b;text-align:left}
+.episode img{width:100%;height:auto;display:block}
+.episode-label{position:absolute;top:11px;left:11px;border-radius:4px;padding:5px 8px;background:#231a14ee;color:#fff0d9;font-size:12px;font-weight:700}
+.episode-play{display:flex;align-items:center;justify-content:center;gap:9px;background:var(--yellow);color:#2b1e14;min-height:50px;font-size:15px;font-weight:780}
+.episode:hover .episode-play{background:#ffdc91}
+.episode-play span{font-size:11px}
+.room-link{margin-top:13px}
+@media(min-width:740px){
+  .house-header{margin-inline:34px}
+  .door-stage::after{background:linear-gradient(180deg,#1d1510,transparent 10%,transparent 87%,#1d1510),linear-gradient(90deg,#1d1510,transparent 18%,transparent 82%,#1d1510)}
+}
+@media(prefers-reduced-motion:no-preference){
+  .house[data-state="open"] .inside{animation:reveal .28s ease-out both}
+  @keyframes reveal{from{opacity:0}to{opacity:1}}
+}

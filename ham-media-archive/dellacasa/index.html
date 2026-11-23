@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="델라카사의 노란 문을 열고 마당 첫 이야기와 3D 공간을 만나보세요.">
+<link rel="canonical" href="https://hammedia.co.kr/ham-media-archive/dellacasa/">
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://hammedia.co.kr/ham-media-archive/dellacasa/">
+<meta property="og:title" content="델라카사 · HAM MEDIA">
+<meta property="og:description" content="노란 문 너머, 마당의 첫 이야기가 기다려요.">
+<meta property="og:image" content="https://hammedia.co.kr/ham-media-archive/dellacasa/assets/door-closed.webp">
+<meta name="twitter:card" content="summary_large_image">
+<title>델라카사 · HAM MEDIA</title>
+<link rel="stylesheet" href="dellacasa.css">
+<script src="door.js" defer></script>
+</head>
+<body>
+<div class="house" data-state="closed">
+  <header class="house-header">
+    <a class="brand" aria-label="HAM MEDIA" href="/">HAM MEDIA</a>
+    <a class="home-link" href="/"><span data-copy="home">홈 바로 보기</span> <span aria-hidden="true">↗</span></a>
+  </header>
+  <main>
+    <section class="arrival" aria-labelledby="door-title">
+      <div class="welcome">
+        <h1 id="door-title" data-copy="title">델라카사</h1>
+        <p data-copy="lead">노란 문 너머, 마당의 첫 이야기가 기다려요.</p>
+      </div>
+      <button class="door-button" type="button" aria-controls="inside" aria-expanded="false" hidden>
+        <span class="door-stage" aria-hidden="true">
+          <img class="closed-door" src="assets/door-closed.webp" alt="" width="554" height="604">
+          <video class="door-motion" src="assets/door-opening.mp4" muted playsinline preload="none" tabindex="-1" disablepictureinpicture></video>
+        </span>
+        <span class="door-cta"><span data-copy="open">문 열기</span> <b aria-hidden="true">→</b></span>
+      </button>
+    </section>
+    <section class="inside" id="inside" aria-labelledby="inside-title" hidden>
+      <div class="welcome">
+        <h1 id="inside-title" tabindex="-1" data-copy="welcome">편하게 둘러보세요</h1>
+        <p data-copy="inside">마당에서 이야기가 시작됩니다.</p>
+      </div>
+      <a class="episode" href="https://www.youtube.com/watch?v=7Ial2qihfHs">
+        <img src="assets/madang-ep01.jpg" alt="" width="950" height="534">
+        <span class="episode-label" data-copy="episode">마당 1화</span>
+        <span class="episode-play"><span aria-hidden="true">▶</span> <span data-copy="play">작품 보기</span></span>
+      </a>
+      <a class="room-link" href="https://hammedia.dellacasa.chatgpt.site/"><span data-copy="room">3D 공간 둘러보기</span> <span aria-hidden="true">↗</span></a>
+    </section>
+    <noscript>
+      <p class="room-link"><a href="https://www.youtube.com/watch?v=7Ial2qihfHs">YouTube에서 마당 1화 보기 ↗</a><br><a href="https://hammedia.dellacasa.chatgpt.site/">3D 공간 둘러보기 ↗</a></p>
+    </noscript>
+  </main>
+</div>
+</body>
+</html>
