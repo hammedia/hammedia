@@ -50,9 +50,37 @@
   Array.prototype.forEach.call(page.querySelectorAll(".room-article-panel iframe"), function (template) {
     var button = document.createElement("button");
     button.type = "button"; button.className = "audio-article-video-launch";
-    button.textContent = "이 연주 재생 · " + template.title;
+    var title = template.title || "유튜브 영상";
+    var label = "영상 재생 · " + title;
+    var source = new URL(template.src);
+    var video = /^\/embed\/([A-Za-z0-9_-]{11})\/?$/.exec(source.pathname);
+    var isYouTube = /^(www\.)?youtube(-nocookie)?\.com$/.test(source.hostname);
+    if (isYouTube && video) {
+      var portrait = Boolean(template.closest(".audio-essay-video-short")) ||
+        (template.width > 0 && Number(template.height) > Number(template.width));
+      var preview = document.createElement("img");
+      var caption = document.createElement("span");
+      var thumbnailBase = "https://i.ytimg.com/vi/" + video[1] + "/";
+      var standardThumbnail = thumbnailBase + "hqdefault.jpg";
+      preview.alt = "";
+      preview.loading = "lazy";
+      preview.decoding = "async";
+      preview.referrerPolicy = "no-referrer";
+      preview.addEventListener("error", function () {
+        if (preview.src === standardThumbnail) preview.remove();
+        else preview.src = standardThumbnail;
+      });
+      preview.src = portrait ? thumbnailBase + "oar2.jpg" : standardThumbnail;
+      caption.textContent = title;
+      button.classList.add("audio-article-video-cover");
+      if (portrait) button.classList.add("audio-article-video-cover-portrait");
+      button.setAttribute("aria-label", label);
+      button.append(preview, caption);
+    } else {
+      button.textContent = label;
+    }
     var owner = template.closest(".room-article-panel");
-    bindPlayer(button, template, template.src, template.title, owner);
+    bindPlayer(button, template, source.href, title, owner);
     template.replaceWith(button);
   });
   function syncListeningVisibility() {
