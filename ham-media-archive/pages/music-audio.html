@@ -1542,11 +1542,11 @@
     }
     .dellacasa-place-crop { width: 100%; aspect-ratio: 4 / 3; overflow: hidden; border-radius: var(--radius); }
     .dellacasa-place-crop img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 35%; }
-    #audio-dynaudio-heritage-special-note :is(.heritage-photo, .heritage-video) {
+    .audio-essay-media :is(.audio-essay-photo, .audio-essay-video) {
       max-width: 640px;
       margin: 1.35rem auto;
     }
-    #audio-dynaudio-heritage-special-note .heritage-photo img {
+    .audio-essay-media .audio-essay-photo img {
       display: block;
       max-width: 100%;
       width: auto;
@@ -1554,7 +1554,7 @@
       max-height: none;
       margin-inline: auto;
     }
-    #audio-dynaudio-heritage-special-note .heritage-gallery {
+    .audio-essay-media .audio-essay-photo-group {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       align-items: start;
@@ -1562,8 +1562,8 @@
       max-width: 640px;
       margin: 1.35rem auto;
     }
-    #audio-dynaudio-heritage-special-note .heritage-gallery .heritage-photo { margin: 0 auto; }
-    #audio-dynaudio-heritage-special-note .heritage-video iframe {
+    .audio-essay-media .audio-essay-photo-group .audio-essay-photo { margin: 0 auto; }
+    .audio-essay-media .audio-essay-video iframe {
       display: block;
       width: 100%;
       aspect-ratio: 16 / 9;
@@ -1571,15 +1571,15 @@
       border-radius: 8px;
       background: #16181d;
     }
-    #audio-dynaudio-heritage-special-note .heritage-video-short { max-width: 300px; }
-    #audio-dynaudio-heritage-special-note .heritage-video-short iframe { aspect-ratio: 9 / 16; }
-    #audio-dynaudio-heritage-special-note :is(.heritage-photo, .heritage-video) figcaption {
+    .audio-essay-media .audio-essay-video-short { max-width: 300px; }
+    .audio-essay-media .audio-essay-video-short iframe { aspect-ratio: 9 / 16; }
+    .audio-essay-media :is(.audio-essay-photo, .audio-essay-video) figcaption {
       margin-top: .45rem;
       font-size: .875rem;
       line-height: 1.55;
     }
     @media (max-width: 520px) {
-      #audio-dynaudio-heritage-special-note .heritage-gallery { grid-template-columns: minmax(0, 1fr); }
+      .audio-essay-media .audio-essay-photo-group { grid-template-columns: minmax(0, 1fr); }
     }
   </style>
 
@@ -1997,6 +1997,9 @@
         </div>
 
         <div class="room-article-list" aria-label="음악·오디오별 문장">
+          <a class="room-article-link" href="#audio-hifi-rose-ra180-ra280" data-article-target="audio-hifi-rose-ra180-ra280-note" data-homepage-date="2026-11-25" data-sort-order="32">
+            <strong>하이파이로즈 RA180 / RA280</strong>
+          </a>
           <a class="room-article-link" href="#audio-dynaudio-heritage-special-note" data-article-target="audio-dynaudio-heritage-special-note" data-homepage-date="2026-11-25" data-sort-order="31">
             <strong>집에서 들어본 다인오디오 헤리티지 스페셜</strong>
           </a>
@@ -2037,7 +2040,77 @@
         </div>
 
         <div class="room-card-list room-article-panels">
-          <article class="room-post shared-memory-card room-article-panel audio-essay-panel" id="audio-dynaudio-heritage-special-note" hidden>
+          <article class="room-post shared-memory-card room-article-panel audio-essay-panel audio-essay-media" id="audio-hifi-rose-ra180-ra280-note" hidden>
+            <button class="room-article-back" type="button">문장</button>
+            <header class="audio-entry-header">
+              <p class="room-card-meta">오디오룸 세팅 · 함동민 · 2024년 9월 1일</p>
+              <h3 id="audio-hifi-rose-ra180-ra280">하이파이로즈 RA180 / RA280</h3>
+            </header>
+            <div class="shared-memory-copy audio-essay-copy">
+              <p>회사에서 오디오룸 세팅을 기획하면서 하이파이로즈 앰프와 네트워크 기기를 선정하여 테스트 중입니다.</p>
+              <div class="audio-essay-photo-group">
+                <figure class="audio-essay-photo">
+                  <img src="../assets/images/music-audio/hifi-rose-ra180-ra280/boxes-in-transit.webp" width="405" height="383" loading="lazy" decoding="async" alt="손수레에 실어 옮기는 하이파이로즈 기기 상자" />
+                </figure>
+                <figure class="audio-essay-photo">
+                  <img src="../assets/images/music-audio/hifi-rose-ra180-ra280/boxes-at-home.webp" width="800" height="1067" loading="lazy" decoding="async" alt="집 안에 들인 하이파이로즈 기기 상자 두 개" />
+                </figure>
+              </div>
+              <p>기기들을 집으로 가져와 여러 가지를 시도해 보고 있는데요.</p>
+              <p>예전에 하이파이로즈 RA180을 사용했을 때는 출시 전 테스트용 모델이었지만, 현재는 실제 판매용 모델이라는 점에서 차이가 있습니다.</p>
+              <div class="audio-essay-photo-group">
+                <figure class="audio-essay-photo">
+                  <img src="../assets/images/music-audio/hifi-rose-ra180-ra280/ra180-front.webp" width="800" height="600" loading="lazy" decoding="async" alt="탁자 위에 올린 은색 RA180 앰프 정면" />
+                </figure>
+                <figure class="audio-essay-photo">
+                  <img src="../assets/images/music-audio/hifi-rose-ra180-ra280/silver-stack-front.webp" width="800" height="1067" loading="lazy" decoding="async" alt="은색 하이파이로즈 기기 두 대를 포개 놓은 모습" />
+                </figure>
+                <figure class="audio-essay-photo">
+                  <img src="../assets/images/music-audio/hifi-rose-ra180-ra280/silver-stack-side.webp" width="800" height="1067" loading="lazy" decoding="async" alt="창가에서 옆으로 바라본 은색 하이파이로즈 세트" />
+                </figure>
+                <figure class="audio-essay-photo">
+                  <img src="../assets/images/music-audio/hifi-rose-ra180-ra280/silver-stack-connections.webp" width="800" height="600" loading="lazy" decoding="async" alt="두 기기 뒤쪽의 입력 단자와 스피커 출력 단자" />
+                </figure>
+              </div>
+              <p>현재 사용 중인 하이파이로즈 RA280에 매우 만족하고 있으며, 많은 분들이 궁금해하실 하이파이로즈 RA180과의 비교도 해보려고 합니다.</p>
+              <div class="audio-essay-photo-group">
+                <figure class="audio-essay-photo">
+                  <img src="../assets/images/music-audio/hifi-rose-ra180-ra280/black-and-silver-front.webp" width="800" height="600" loading="lazy" decoding="async" alt="탁자 위에 나란히 놓인 검은색 세트와 은색 세트" />
+                </figure>
+                <figure class="audio-essay-photo">
+                  <img src="../assets/images/music-audio/hifi-rose-ra180-ra280/black-and-silver-side.webp" width="800" height="600" loading="lazy" decoding="async" alt="비스듬히 바라본 검은색과 은색 하이파이로즈 세트" />
+                </figure>
+                <figure class="audio-essay-photo">
+                  <img src="../assets/images/music-audio/hifi-rose-ra180-ra280/black-and-silver-connections.webp" width="800" height="600" loading="lazy" decoding="async" alt="탁자 뒤쪽에서 바라본 두 세트의 연결 단자" />
+                </figure>
+              </div>
+              <p>또한, 색상에 대한 이야기도 있는데, 하이파이로즈 RA280 세트는 블랙이고, 하이파이로즈 RA180은 실버만 제공되기에 하이파이로즈 RS130도 각각 색상을 맞췄습니다. 여러분은 블랙과 실버 중 어떤 색상이 더 나은지요?</p>
+              <div class="audio-essay-photo-group">
+                <figure class="audio-essay-photo">
+                  <img src="../assets/images/music-audio/hifi-rose-ra180-ra280/black-listening-setup.webp" width="800" height="964" loading="lazy" decoding="async" alt="TV와 스피커 곁에 놓인 검은색 하이파이로즈 세트" />
+                </figure>
+                <figure class="audio-essay-photo">
+                  <img src="../assets/images/music-audio/hifi-rose-ra180-ra280/silver-listening-setup.webp" width="800" height="1067" loading="lazy" decoding="async" alt="TV와 스피커 곁에 놓인 은색 하이파이로즈 세트" />
+                </figure>
+              </div>
+              <p>하이파이로즈 RA280이 가성비가 매우 좋은 모델이지만, 확실히 비교해보면 하이파이로즈 RA180이 조금 더 고급스럽다는 느낌이 듭니다. 외관, 무게, 소리 등 여러 면에서 말이죠.</p>
+              <div class="audio-essay-photo-group">
+                <figure class="audio-essay-photo">
+                  <img src="../assets/images/music-audio/hifi-rose-ra180-ra280/hifi-room-black-and-white.webp" width="800" height="600" loading="lazy" decoding="async" alt="흑백 영상이 재생 중인 오디오룸의 정면" />
+                </figure>
+                <figure class="audio-essay-photo">
+                  <img src="../assets/images/music-audio/hifi-rose-ra180-ra280/hifi-room-color.webp" width="800" height="600" loading="lazy" decoding="async" alt="분홍색 화면이 켜진 TV 양옆의 스피커와 아래 오디오 랙" />
+                </figure>
+              </div>
+              <p>좀 더 들어보고 구체적인 내용을 다시 정리해보겠습니다.</p>
+              <figure class="audio-essay-video audio-essay-video-short">
+                <iframe src="https://www.youtube-nocookie.com/embed/1lDHUScrQZY" title="하이파이로즈 RA180과 RS130 청음" loading="lazy" allow="encrypted-media; picture-in-picture; fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <figcaption><a href="https://www.youtube.com/shorts/1lDHUScrQZY" target="_blank" rel="noopener">하이파이로즈 RA180과 RS130 청음 · YouTube ↗</a></figcaption>
+              </figure>
+            </div>
+          </article>
+
+          <article class="room-post shared-memory-card room-article-panel audio-essay-panel audio-essay-media" id="audio-dynaudio-heritage-special-note" hidden>
             <button class="room-article-back" type="button">문장</button>
             <header class="audio-entry-header">
               <p class="room-card-meta">스피커 사용기 · 함동민 · 2024년 7월</p>
@@ -2054,7 +2127,7 @@
               <section aria-labelledby="heritage-special-part-1" data-heritage-part="1">
                 <h4 id="heritage-special-part-1">1부 · 컨투어 1.3SE를 들인 날</h4>
                 <p>Dynaudio Heritage Special</p>
-                <figure class="heritage-video heritage-video-short">
+                <figure class="audio-essay-video audio-essay-video-short">
                   <iframe src="https://www.youtube-nocookie.com/embed/hYj9CVIwT7A" title="찰리 채플린 영화 〈라임라이트〉의 테마" loading="lazy" allow="encrypted-media; picture-in-picture; fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                   <figcaption><a href="https://www.youtube.com/shorts/hYj9CVIwT7A" target="_blank" rel="noopener">찰리 채플린 영화 〈라임라이트〉의 테마 · YouTube ↗</a></figcaption>
                 </figure>
@@ -2063,7 +2136,7 @@
                   하지만 아직도 다인 이라고 이야기한다면,<br />
                   예전에 다인 컨투어 1.3SE 모델과 25주년 이다.<br />
                   그중에 다인 컨투어 1.3SE 모델은 오래 사용했다.</p>
-                <figure class="heritage-photo"><img src="../assets/images/music-audio/heritage-special/01-contour-listening-room.webp" width="800" height="600" loading="lazy" decoding="async" alt="창가에 놓인 다인 컨투어와 오디오 세팅" /></figure>
+                <figure class="audio-essay-photo"><img src="../assets/images/music-audio/heritage-special/01-contour-listening-room.webp" width="800" height="600" loading="lazy" decoding="async" alt="창가에 놓인 다인 컨투어와 오디오 세팅" /></figure>
                 <p>다인 컨투어 1.3SE 모델은 오디오를 시작하고 3년째 2005년 돈을 벌면 꼭 갖고 싶었던 스피커였다.<br />
                   2003년 다인 컨투어 1.3SE 는 금액이 300만원대 였다.<br />
                   그때는 너무 비싼 스피커였다.(물론 지금도 300만원은 큰돈이다)<br />
@@ -2071,24 +2144,24 @@
                   10년이지나 2015년 드디어 다인<br />
                   컨투어 1.3SE 모델을 갖고 왔다. 9시반에 퇴근해서 춘천 어딘가에 12시넘어 도착해서 새벽 2시에 가게에 가지고 왔다.<br />
                   그집에는 다인 컨투어 1.3SE 를 대신 할 25주년이 위풍당당하게 서 있었다.</p>
-                <figure class="heritage-photo"><img src="../assets/images/music-audio/heritage-special/01-night-listening-room.webp" width="800" height="1067" loading="lazy" decoding="async" alt="어두운 청음 공간과 큰 창" /></figure>
+                <figure class="audio-essay-photo"><img src="../assets/images/music-audio/heritage-special/01-night-listening-room.webp" width="800" height="1067" loading="lazy" decoding="async" alt="어두운 청음 공간과 큰 창" /></figure>
                 <p>처음에는 그냥 좋았지만<br />
                   하지만 내가 가진 100만원대 올인원 앰프로는<br />
                   진짜 이 스피커의 능력을 끌어내지 못한다는<br />
                   생각이 머리속에 맴돌았다.<br />
                   결국 100만원대의 인티앰프를 사왔다.<br />
                   두개나 사왔다.</p>
-                <div class="heritage-gallery">
-                  <figure class="heritage-photo"><img src="../assets/images/music-audio/heritage-special/01-speakers-and-amp.webp" width="800" height="1067" loading="lazy" decoding="async" alt="벽 앞에 나란히 놓인 두 스피커와 앰프" /></figure>
-                  <figure class="heritage-photo"><img src="../assets/images/music-audio/heritage-special/01-speakers-and-rack.webp" width="800" height="600" loading="lazy" decoding="async" alt="스피커 두 대와 오디오 랙, 앞쪽의 둥근 테이블" /></figure>
+                <div class="audio-essay-photo-group">
+                  <figure class="audio-essay-photo"><img src="../assets/images/music-audio/heritage-special/01-speakers-and-amp.webp" width="800" height="1067" loading="lazy" decoding="async" alt="벽 앞에 나란히 놓인 두 스피커와 앰프" /></figure>
+                  <figure class="audio-essay-photo"><img src="../assets/images/music-audio/heritage-special/01-speakers-and-rack.webp" width="800" height="600" loading="lazy" decoding="async" alt="스피커 두 대와 오디오 랙, 앞쪽의 둥근 테이블" /></figure>
                 </div>
                 <p>얼마안가서 200만원대 인티앰프가 다시 배송되었다.</p>
-                <figure class="heritage-photo"><img src="../assets/images/music-audio/heritage-special/01-integrated-amp-setup.webp" width="800" height="1067" loading="lazy" decoding="async" alt="스피커 사이에 놓인 앰프와 오디오 랙" /></figure>
+                <figure class="audio-essay-photo"><img src="../assets/images/music-audio/heritage-special/01-integrated-amp-setup.webp" width="800" height="1067" loading="lazy" decoding="async" alt="스피커 사이에 놓인 앰프와 오디오 랙" /></figure>
                 <p>- 2부를 기대하세요.</p>
               </section>
               <section aria-labelledby="heritage-special-part-2" data-heritage-part="2">
                 <h4 id="heritage-special-part-2">2부 · 앰프를 바꾸고 들린 소리</h4>
-                <figure class="heritage-video">
+                <figure class="audio-essay-video">
                   <iframe src="https://www.youtube-nocookie.com/embed/n4bpewhgYeE" title="다인오디오 헤리티지 스페셜" loading="lazy" allow="encrypted-media; picture-in-picture; fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                   <figcaption><a href="https://www.youtube.com/watch?v=n4bpewhgYeE" target="_blank" rel="noopener">다인오디오 헤리티지 스페셜 · YouTube ↗</a></figcaption>
                 </figure>
@@ -2097,12 +2170,12 @@
                   에이! 스피커가 건성으로 음악을 들려준다고?<br />
                   거짓말이라고 이야기하겠지만..<br />
                   정말이었다.</p>
-                <div class="heritage-gallery">
-                  <figure class="heritage-photo"><img src="../assets/images/music-audio/heritage-special/02-red-spl.webp" width="800" height="1067" loading="lazy" decoding="async" alt="바늘 계기판 두 개가 있는 붉은 SPL 앰프" /></figure>
-                  <figure class="heritage-photo"><img src="../assets/images/music-audio/heritage-special/02-component-stack.webp" width="800" height="1067" loading="lazy" decoding="async" alt="탁자 위에 쌓아 둔 오디오 기기" /></figure>
-                  <figure class="heritage-photo"><img src="../assets/images/music-audio/heritage-special/02-red-amp-rack.webp" width="800" height="600" loading="lazy" decoding="async" alt="스피커 사이의 붉은 앰프와 음악 재생 화면" /></figure>
-                  <figure class="heritage-photo"><img src="../assets/images/music-audio/heritage-special/02-spl-and-towers.webp" width="800" height="600" loading="lazy" decoding="async" alt="톨보이 두 대와 붉은 오디오 기기" /></figure>
-                  <figure class="heritage-photo"><img src="../assets/images/music-audio/heritage-special/02-silver-spl.webp" width="800" height="1000" loading="lazy" decoding="async" alt="은색 SPL 분리형 앰프 앞면" /></figure>
+                <div class="audio-essay-photo-group">
+                  <figure class="audio-essay-photo"><img src="../assets/images/music-audio/heritage-special/02-red-spl.webp" width="800" height="1067" loading="lazy" decoding="async" alt="바늘 계기판 두 개가 있는 붉은 SPL 앰프" /></figure>
+                  <figure class="audio-essay-photo"><img src="../assets/images/music-audio/heritage-special/02-component-stack.webp" width="800" height="1067" loading="lazy" decoding="async" alt="탁자 위에 쌓아 둔 오디오 기기" /></figure>
+                  <figure class="audio-essay-photo"><img src="../assets/images/music-audio/heritage-special/02-red-amp-rack.webp" width="800" height="600" loading="lazy" decoding="async" alt="스피커 사이의 붉은 앰프와 음악 재생 화면" /></figure>
+                  <figure class="audio-essay-photo"><img src="../assets/images/music-audio/heritage-special/02-spl-and-towers.webp" width="800" height="600" loading="lazy" decoding="async" alt="톨보이 두 대와 붉은 오디오 기기" /></figure>
+                  <figure class="audio-essay-photo"><img src="../assets/images/music-audio/heritage-special/02-silver-spl.webp" width="800" height="1000" loading="lazy" decoding="async" alt="은색 SPL 분리형 앰프 앞면" /></figure>
                 </div>
                 <p>처음으로 분리형에 소비자가 1000만원인<br />
                   SPL 분리형 앰프를 들었다 (물론 중고..)</p>
@@ -2112,14 +2185,14 @@
                   너무 감동적인 소리로<br />
                   음악이 들렸다. 온몸에 닭살이 돋았다.<br />
                   그리고 골드문트와 다인오디오의 만남</p>
-                <figure class="heritage-video">
+                <figure class="audio-essay-video">
                   <iframe src="https://www.youtube-nocookie.com/embed/XUD0owE09Sg" title="골드문트 텔로스 590 NextGen 2와 다인 컨투어 1.3SE" loading="lazy" allow="encrypted-media; picture-in-picture; fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                   <figcaption><a href="https://www.youtube.com/watch?v=XUD0owE09Sg" target="_blank" rel="noopener">골드문트 텔로스 590 NextGen 2와 다인 컨투어 1.3SE · YouTube ↗</a></figcaption>
                 </figure>
                 <p>다인 컨투어 1.3SE 모델이 왜 그렇게 지금까지도<br />
                   회자되고, 아직도 장터에서 인기 매물인지 확실하게<br />
                   느꼈다.</p>
-                <figure class="heritage-video">
+                <figure class="audio-essay-video">
                   <iframe src="https://www.youtube-nocookie.com/embed/RKvA8L-9bmg" title="다인오디오 40주년 청음" loading="lazy" allow="encrypted-media; picture-in-picture; fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                   <figcaption><a href="https://www.youtube.com/watch?v=RKvA8L-9bmg" target="_blank" rel="noopener">다인오디오 40주년 청음 · YouTube ↗</a></figcaption>
                 </figure>
@@ -2134,15 +2207,15 @@
               </section>
               <section aria-labelledby="heritage-special-part-3" data-heritage-part="3">
                 <h4 id="heritage-special-part-3">3부 · 헤리티지 스페셜이 집에 왔다</h4>
-                <figure class="heritage-video heritage-video-short">
+                <figure class="audio-essay-video audio-essay-video-short">
                   <iframe src="https://www.youtube-nocookie.com/embed/88MJSM4e3L8" title="다인 헤리티지 스페셜" loading="lazy" allow="encrypted-media; picture-in-picture; fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                   <figcaption><a href="https://www.youtube.com/shorts/88MJSM4e3L8" target="_blank" rel="noopener">다인 헤리티지 스페셜 · YouTube ↗</a></figcaption>
                 </figure>
                 <p>이제 드디어 나에게 다인오디오에서 가장 핫(Hot)한 다인 헤리티지 스페셜이 왔다.</p>
-                <div class="heritage-gallery">
-                  <figure class="heritage-photo"><img src="../assets/images/music-audio/heritage-special/03-speaker-boxes.webp" width="800" height="1067" loading="lazy" decoding="async" alt="집에 도착한 헤리티지 스페셜 상자 두 개" /></figure>
-                  <figure class="heritage-photo"><img src="../assets/images/music-audio/dynaudio-heritage-special.webp" width="960" height="1280" loading="lazy" decoding="async" alt="나뭇결이 드러난 다인오디오 헤리티지 스페셜 스피커 정면" /></figure>
-                  <figure class="heritage-photo"><img src="../assets/images/music-audio/heritage-special/03-home-pair.webp" width="800" height="450" loading="lazy" decoding="async" alt="텔레비전 양쪽에 세운 헤리티지 스페셜 한 쌍" /></figure>
+                <div class="audio-essay-photo-group">
+                  <figure class="audio-essay-photo"><img src="../assets/images/music-audio/heritage-special/03-speaker-boxes.webp" width="800" height="1067" loading="lazy" decoding="async" alt="집에 도착한 헤리티지 스페셜 상자 두 개" /></figure>
+                  <figure class="audio-essay-photo"><img src="../assets/images/music-audio/dynaudio-heritage-special.webp" width="960" height="1280" loading="lazy" decoding="async" alt="나뭇결이 드러난 다인오디오 헤리티지 스페셜 스피커 정면" /></figure>
+                  <figure class="audio-essay-photo"><img src="../assets/images/music-audio/heritage-special/03-home-pair.webp" width="800" height="450" loading="lazy" decoding="async" alt="텔레비전 양쪽에 세운 헤리티지 스페셜 한 쌍" /></figure>
                 </div>
                 <p>정말 대형 북셀프 스피커이다.<br />
                   저음의 양도 웬만한 입문형 대형 톨보이, 2Way 상급 톨보이보다 더 풍부하다.<br />
@@ -2151,7 +2224,7 @@
                   역시 현소리가 정말 나에겐 매력적이다.<br />
                   목소리도 귀에 아주 꼽혀서 후벼판다. 하지만 촉촉하다, 너무 촉촉해서 귀에서 피가 나도 모를 지경이다.<br />
                   외관도 이게 정말 정통성을 가진 다인의 스피커의 모습이다.</p>
-                <figure class="heritage-photo"><img src="../assets/images/music-audio/heritage-special/03-stand-position.webp" width="800" height="1067" loading="lazy" decoding="async" alt="집에서 스탠드 위에 놓고 들어 본 헤리티지 스페셜" /></figure>
+                <figure class="audio-essay-photo"><img src="../assets/images/music-audio/heritage-special/03-stand-position.webp" width="800" height="1067" loading="lazy" decoding="async" alt="집에서 스탠드 위에 놓고 들어 본 헤리티지 스페셜" /></figure>
                 <p>거기에 가장 진보된 다인의 스피커 유닛 에소타3.<br />
                   솔직하게 음악을 틀지 않고 보고만 있어도 머리속에서 연주를 시작하고 음악이 들리는 듯하다.<br />
                   다인 컨투어 1.3SE도 이야기했지만 다인오디오는 웬만한 앰프에 자신들의 상급 스피커들을 물리는 것을 용납하지 않는 듯하다.</p>
@@ -2202,11 +2275,11 @@
                   역시 묵직하면서 진하고 촉촉하게 귀를 후벼파는 이런 스피커는 다인 밖에 없다.</p>
                 <p>마지막 4부 예고..<br />
                   제가 사용했던 스피커와의 비교..</p>
-                <figure class="heritage-photo"><a href="../assets/images/music-audio/heritage-special/03-comparison-preview.webp" target="_blank" rel="noopener"><img src="../assets/images/music-audio/heritage-special/03-comparison-preview.webp" width="759" height="800" loading="lazy" decoding="async" alt="헤리티지 스페셜과 비교할 스피커 5종의 사양 표" /></a><figcaption><a href="../assets/images/music-audio/heritage-special/03-comparison-preview.webp" target="_blank" rel="noopener">4부에 나올 스피커 비교표 크게 보기</a></figcaption></figure>
+                <figure class="audio-essay-photo"><a href="../assets/images/music-audio/heritage-special/03-comparison-preview.webp" target="_blank" rel="noopener"><img src="../assets/images/music-audio/heritage-special/03-comparison-preview.webp" width="759" height="800" loading="lazy" decoding="async" alt="헤리티지 스페셜과 비교할 스피커 5종의 사양 표" /></a><figcaption><a href="../assets/images/music-audio/heritage-special/03-comparison-preview.webp" target="_blank" rel="noopener">4부에 나올 스피커 비교표 크게 보기</a></figcaption></figure>
               </section>
               <section aria-labelledby="heritage-special-part-4" data-heritage-part="4">
                 <h4 id="heritage-special-part-4">4부 · 스피커끼리 한마디씩 한다면</h4>
-                <figure class="heritage-photo"><a href="../assets/images/music-audio/heritage-special/04-speaker-comparison.webp" target="_blank" rel="noopener"><img src="../assets/images/music-audio/heritage-special/04-speaker-comparison.webp" width="759" height="800" loading="lazy" decoding="async" alt="헤리티지 스페셜과 포칼, 피에가, 매지코 스피커의 사양 비교표" /></a><figcaption><a href="../assets/images/music-audio/heritage-special/04-speaker-comparison.webp" target="_blank" rel="noopener">스피커 비교표 크게 보기</a></figcaption></figure>
+                <figure class="audio-essay-photo"><a href="../assets/images/music-audio/heritage-special/04-speaker-comparison.webp" target="_blank" rel="noopener"><img src="../assets/images/music-audio/heritage-special/04-speaker-comparison.webp" width="759" height="800" loading="lazy" decoding="async" alt="헤리티지 스페셜과 포칼, 피에가, 매지코 스피커의 사양 비교표" /></a><figcaption><a href="../assets/images/music-audio/heritage-special/04-speaker-comparison.webp" target="_blank" rel="noopener">스피커 비교표 크게 보기</a></figcaption></figure>
                 <p>스피커의 체적과 우퍼 크기는 저음 성능과 소리의 확산에 큰 영향을 미칩니다.</p>
                 <p>1. 체적:</p>
                 <ul>
@@ -2233,7 +2306,7 @@
                 <p>그렇게 소프라는 자연스럽게 빠지게 된다.<br />
                   (물론 소프라도 정말 좋은 스피커라 생각합니다)<br />
                   하지만 포칼에는 유토피아 라인의 디아블로가 있으니까요.</p>
-                <figure class="heritage-video">
+                <figure class="audio-essay-video">
                   <iframe src="https://www.youtube-nocookie.com/embed/uqtP293yU9U" title="포칼 소프라 1 · FM어쿠스틱스 411과 SPL 디렉터 2" loading="lazy" allow="encrypted-media; picture-in-picture; fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                   <figcaption><a href="https://www.youtube.com/watch?v=uqtP293yU9U" target="_blank" rel="noopener">포칼 소프라 1 · FM어쿠스틱스 411과 SPL 디렉터 2 · YouTube ↗</a></figcaption>
                 </figure>
@@ -2243,7 +2316,7 @@
                   코엑셜 리본을 장착하고 따뜻하며 매끈한 소리가 일품이지만..<br />
                   에소타의 촉촉함엔 다다르지 못합니다.<br />
                   “피에가 coax 311도 나가 있어!!”</p>
-                <figure class="heritage-video">
+                <figure class="audio-essay-video">
                   <iframe src="https://www.youtube-nocookie.com/embed/aGs-ZQs9K_Y" title="피에가 Coax 311 · Dance of the Tumblers" loading="lazy" allow="encrypted-media; picture-in-picture; fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                   <figcaption><a href="https://www.youtube.com/watch?v=aGs-ZQs9K_Y" target="_blank" rel="noopener">피에가 Coax 311 · Dance of the Tumblers · YouTube ↗</a></figcaption>
                 </figure>
@@ -2253,7 +2326,7 @@
                   "나도 베릴륨 트위터라고!! WBT 단자라고.."</p>
                 <p>다인 헤리티지 가 웃으면서..<br />
                   ”그래서.. 뭐!! 세상 사람들이 꼭 한번은 들어보고 싶어서 꿈에도 나오는 에소타 트위터라고 아니? 더 고급진 WBT 단자가 안 보이니.. 그냥 더 열심히 더 인지도를 쌓아서 다시 와라. 매지코, 뭐 얼마나 많은 사람들이 안다고.. 나가 있어!!“</p>
-                <figure class="heritage-video">
+                <figure class="audio-essay-video">
                   <iframe src="https://www.youtube-nocookie.com/embed/x9RH9VqaEwg" title="매지코 A1 · 옥타브 V80SE와 마이텍 맨하탄 2" loading="lazy" allow="encrypted-media; picture-in-picture; fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                   <figcaption><a href="https://www.youtube.com/watch?v=x9RH9VqaEwg" target="_blank" rel="noopener">매지코 A1 · 옥타브 V80SE와 마이텍 맨하탄 2 · YouTube ↗</a></figcaption>
                 </figure>
@@ -2267,7 +2340,7 @@
                   따로 이름을 헤리티지라고 하지 않아도 되는 내가 바로 포칼의 헤리티지 그 자체라고..”</p>
                 <p>하지만 다인도 여기서 멈출 수는 없었다.<br />
                   “자고로 정통성을 가진 스피커는 나무결이 보이고 막 이래야 하지 않아? 후후”</p>
-                <figure class="heritage-photo"><img src="../assets/images/music-audio/heritage-special/04-diablo-walnut.webp" width="800" height="545" loading="lazy" decoding="async" alt="포칼 디아블로 유토피아의 밝은 월넛과 어두운 월넛 마감" /></figure>
+                <figure class="audio-essay-photo"><img src="../assets/images/music-audio/heritage-special/04-diablo-walnut.webp" width="800" height="545" loading="lazy" decoding="async" alt="포칼 디아블로 유토피아의 밝은 월넛과 어두운 월넛 마감" /></figure>
                 <p>그러자 디아블로 네츄럴 월넛과 다크 월넛이 이야기한다.<br />
                   혼자 왔니!?<br />
                   장첸 스타일로!</p>
@@ -2278,7 +2351,7 @@
                   스펙, 크기, 체적, 무게도 다 뒤처지지만 다인 헤리티지의 우퍼 사이즈가 더 크다!! 그래서 그런지 다인의 저음이 더 풍부하고 묵직하게 들린다. 이건 분명 다인의 승리이다.<br />
                   그리고 촉촉한 소리결..<br />
                   이 정도면 그만 해도 되잖아.</p>
-                <figure class="heritage-video">
+                <figure class="audio-essay-video">
                   <iframe src="https://www.youtube-nocookie.com/embed/9ogyQH9XuqI" title="정미조 〈귀로〉 청음" loading="lazy" allow="encrypted-media; picture-in-picture; fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                   <figcaption><a href="https://www.youtube.com/watch?v=9ogyQH9XuqI" target="_blank" rel="noopener">정미조 〈귀로〉 청음 · YouTube ↗</a></figcaption>
                 </figure>
@@ -2296,7 +2369,7 @@
                   꼭 헤리티지 스페셜이 아니라도 상관없다.<br />
                   다인오디오에서 만든 스피커는 꼭 한번은 써보자.<br />
                   그러면 어쩌면 당신의 집에 이 헤리티지 스페셜이 있거나 장승이 서있을 수 있다.</p>
-                <figure class="heritage-video">
+                <figure class="audio-essay-video">
                   <iframe src="https://www.youtube-nocookie.com/embed/jYnv3QSbzSE" title="다인 C4 플래티늄 · 골드문트 텔로스 590 NG2와 하이파이로즈 150" loading="lazy" allow="encrypted-media; picture-in-picture; fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                   <figcaption><a href="https://www.youtube.com/watch?v=jYnv3QSbzSE" target="_blank" rel="noopener">다인 C4 플래티늄 · 골드문트 텔로스 590 NG2와 하이파이로즈 150 · YouTube ↗</a></figcaption>
                 </figure>
